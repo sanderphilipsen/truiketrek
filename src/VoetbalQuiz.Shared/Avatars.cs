@@ -74,7 +74,7 @@ public static class Avatars
         // Wereldsterren
         new("messi", "Lionel Messi", 1, HairStyle.Short, 2, FacialHair.Beard, 5, 2, 10, ShirtPattern.Stripes),
         new("ronaldo", "Cristiano Ronaldo", 2, HairStyle.Slick, 0, FacialHair.None, 6, 7, 7),
-        new("mbappe", "Kylian Mbappé", 4, HairStyle.Bald, 0, FacialHair.None, 8, 2, 10),
+        new("mbappe", "Kylian Mbappé", 4, HairStyle.Buzz, 0, FacialHair.None, 8, 2, 10),
         new("haaland", "Erling Haaland", 1, HairStyle.Bun, 5, FacialHair.None, 9, 2, 9),
         new("salah", "Mohamed Salah", 3, HairStyle.Afro, 0, FacialHair.Beard, 6, 2, 11),
         new("vandijk", "Virgil van Dijk", 3, HairStyle.Bun, 0, FacialHair.Beard, 10, 3, 4),

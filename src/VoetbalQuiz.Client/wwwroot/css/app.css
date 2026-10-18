@@ -381,20 +381,29 @@ select { font: inherit; padding: 8px; border-radius: 8px; border: 1.5px solid #c
 
 /* Aantal vragen van een tafel: − 10 + */
 .count-stepper { display: flex; align-items: center; gap: 6px; }
+/* Alles zelf vastleggen: anders kleurt iOS de tekens blauw en staan ze scheef door de standaard-padding. */
 .count-stepper button {
-    width: 42px; height: 42px;
+    -webkit-appearance: none; appearance: none;
+    flex: 0 0 auto;
+    display: grid; place-items: center;
+    width: 42px; height: 42px; padding: 0;
     border-radius: 10px;
     border: 1.5px solid #cfd8d2;
     background: #fff;
-    font-weight: 800;
-    font-size: 1.2rem;
+    color: var(--text);
+    font-family: inherit; font-weight: 800; font-size: 1.3rem; line-height: 1;
     cursor: pointer;
+    touch-action: manipulation;
 }
+.count-stepper button:not(:disabled):active { background: var(--pitch-2); border-color: var(--pitch-2); color: #fff; }
 .count-stepper button:disabled { opacity: .4; cursor: default; }
 .count-stepper input {
-    width: 64px; height: 42px;
+    -webkit-appearance: none; appearance: none;
+    flex: 0 0 auto;
+    width: 64px; height: 42px; padding: 0;
     text-align: center;
-    font-weight: 800; font-size: 1rem;
+    color: var(--text);
+    font-family: inherit; font-weight: 800; font-size: 1rem;
     -moz-appearance: textfield;
 }
 .count-stepper input::-webkit-outer-spin-button,
