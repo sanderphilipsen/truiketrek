@@ -43,6 +43,14 @@
             <small class="type-summary @(MixIncomplete ? "warn" : "")">@Summary</small>
         }
     </div>
+    <button type="button" class="derby-toggle @(_derby ? "active" : "")" aria-pressed="@(_derby ? "true" : "false")" @onclick="() => _derby = !_derby">
+        <span class="derby-flame">🔥</span>
+        <span class="derby-text">
+            <b>Derby</b>
+            <small>Iedereen krijgt bij de aftrap één geheim wapen: @string.Join(" ", DerbyRules.All.Select(w => w.Icon))</small>
+        </span>
+        <span class="switch" aria-hidden="true"></span>
+    </button>
     @if (_error is not null) { <p class="error">@_error</p> }
     <button class="btn primary" disabled="@(_busy || _active is null || _chosen.Count == 0 || MixIncomplete)">Tafel aanmaken</button>
 </form>
@@ -59,6 +67,7 @@
     private List<QuestionType>? _active;
     private List<QuestionType> _chosen = [];
     private bool _mix;
+    private bool _derby;
 
     private bool MixIncomplete => _mix && _chosen.Count < 2;
 
@@ -104,7 +113,7 @@
         _error = null;
         try
         {
-            var id = await Api.CreateMatchAsync(new CreateMatchRequest(_name, _seats, [.. _chosen]));
+            var id = await Api.CreateMatchAsync(new CreateMatchRequest(_name, _seats, [.. _chosen], _derby));
             Nav.NavigateTo($"online/{id}");
         }
         catch (ApiException ex) { _error = ex.Message; }

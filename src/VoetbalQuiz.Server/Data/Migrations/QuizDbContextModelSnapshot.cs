@@ -525,6 +525,9 @@ namespace VoetbalQuiz.Server.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<bool>("Derby")
+                        .HasColumnType("boolean");
+
                     b.Property<DateTime?>("FinishedAt")
                         .HasColumnType("timestamp with time zone");
 
@@ -595,6 +598,9 @@ namespace VoetbalQuiz.Server.Data.Migrations
                     b.Property<int?>("Position")
                         .HasColumnType("integer");
 
+                    b.Property<string>("RedCardFromUserId")
+                        .HasColumnType("text");
+
                     b.PrimitiveCollection<List<int>>("Skipped")
                         .IsRequired()
                         .HasColumnType("integer[]");
@@ -646,6 +652,21 @@ namespace VoetbalQuiz.Server.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("Weapon")
+                        .HasColumnType("text");
+
+                    b.Property<int>("WeaponEffect")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("WeaponQuestion")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("WeaponTargetUserId")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("WeaponUsedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
@@ -675,6 +696,12 @@ namespace VoetbalQuiz.Server.Data.Migrations
                     b.Property<DateTime?>("EndedAt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<DateTime?>("FlareAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("FlareUserId")
+                        .HasColumnType("text");
+
                     b.Property<int>("MatchId")
                         .HasColumnType("integer");
 
@@ -689,6 +716,12 @@ namespace VoetbalQuiz.Server.Data.Migrations
 
                     b.Property<DateTime?>("StartsAt")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("SwapUserId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("TrumpUserId")
+                        .HasColumnType("text");
 
                     b.Property<string>("Type")
                         .IsRequired()

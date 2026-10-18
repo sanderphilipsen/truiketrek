@@ -49,6 +49,7 @@ public class QuizDbContext(DbContextOptions<QuizDbContext> options) : IdentityDb
         builder.Entity<Match>().HasIndex(m => m.Status);
         builder.Entity<Match>().HasOne(m => m.Host).WithMany().HasForeignKey(m => m.HostUserId);
         builder.Entity<MatchPlayer>().HasIndex(p => new { p.MatchId, p.UserId }).IsUnique();
+        builder.Entity<MatchPlayer>().Property(p => p.Weapon).HasConversion<string>();
         builder.Entity<MatchQuestion>().HasIndex(q => new { q.MatchId, q.Number }).IsUnique();
         builder.Entity<MatchQuestion>().Property(q => q.Type).HasConversion<string>();
         builder.Entity<MatchAnswer>().HasIndex(a => new { a.MatchQuestionId, a.UserId }).IsUnique();

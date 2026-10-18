@@ -93,6 +93,7 @@ public class ApiClient(HttpClient http)
     public Task<MatchState> StartMatchAsync(int id) => PostAsync<MatchState>($"api/matches/{id}/start", null);
     public Task<MatchState> MatchGuessAsync(int id, string guess) => PostAsync<MatchState>($"api/matches/{id}/guess", new AnswerRequest(guess));
     public Task<MatchState> MatchGiveUpAsync(int id) => PostAsync<MatchState>($"api/matches/{id}/giveup", null);
+    public Task<MatchState> UseWeaponAsync(int id, string? target) => PostAsync<MatchState>($"api/matches/{id}/weapon", new UseWeaponRequest(target));
     public Task<OnlineStats> GetOnlineStatsAsync() => GetAsync<OnlineStats>("api/online/stats");
 
     private record CreatedMatch(int Id);

@@ -1,19 +1,43 @@
-@* Compacte rij met alle spelers aan tafel, hun score en of ze al geantwoord hebben. *@
-<div class="player-strip">
+@* Compacte rij met alle spelers aan tafel, hun score en of ze al geantwoord hebben.
+   Derby: wie rood kreeg krijgt een kaartje, en bij het kiezen van een doelwit worden de tegenstanders aantikbaar. *@
+<div class="player-strip @(Picking ? "picking" : "")">
     @foreach (var p in Players.Where(p => !p.Left))
     {
-        <div class="strip-player @(p.IsMe ? "me" : "")">
-            <div class="strip-avatar">
-                <Avatar Id="@p.AvatarId" User="@p.UserName" Size="40" />
-                @if (ShowAnswered && p.AnsweredCurrent) { <span class="check">✓</span> }
-            </div>
-            <small>@p.UserName</small>
-            <b>@p.Score</b>
-        </div>
+        var player = p;
+        var pickable = Picking && !p.IsMe && RedCards?.Contains(p.UserName) != true;
+        @if (pickable)
+        {
+            <button type="button" class="strip-player pickable" @onclick="() => OnPick.InvokeAsync(player.UserName)"
+                    aria-label="Rode kaart voor @p.UserName">
+                @Content(p)
+            </button>
+        }
+        else
+        {
+            <div class="strip-player @(p.IsMe ? "me" : "")">@Content(p)</div>
+        }
     }
 </div>
 
 @code {
     [Parameter, EditorRequired] public List<MatchPlayerState> Players { get; set; } = [];
     [Parameter] public bool ShowAnswered { get; set; }
+
+    /// <summary>Derby: wie bij deze vraag rood kreeg.</summary>
+    [Parameter] public IReadOnlyCollection<string>? RedCards { get; set; }
+
+    /// <summary>Derby: een doelwit kiezen voor de rode kaart.</summary>
+    [Parameter] public bool Picking { get; set; }
+    [Parameter] public EventCallback<string> OnPick { get; set; }
+
+    private RenderFragment Content(MatchPlayerState p) =>
+        @<text>
+            <div class="strip-avatar">
+                <Avatar Id="@p.AvatarId" User="@p.UserName" Size="40" />
+                @if (ShowAnswered && p.AnsweredCurrent) { <span class="check">✓</span> }
+                @if (RedCards?.Contains(p.UserName) == true) { <span class="strip-card" title="Rode kaart">🟥</span> }
+            </div>
+            <small>@p.UserName</small>
+            <b>@p.Score</b>
+        </text>;
 }

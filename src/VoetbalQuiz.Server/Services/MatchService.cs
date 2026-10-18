@@ -8,16 +8,19 @@ namespace VoetbalQuiz.Server.Services;
 /// Online wedstrijden: tafels aanmaken, joinen, starten en antwoorden.
 /// De organisator kiest een vraagtype of een mix; wat per type verschilt, doet <see cref="QuestionEngine"/> (net als in de daily).
 /// De overgangen in de tijd (vraag afsluiten, volgende vraag, einde) doet <see cref="MatchEngine"/>.
+/// Een derby-tafel heeft daarbovenop wapens (zie <see cref="DerbyRules"/>).
 /// </summary>
-public class MatchService(QuizDbContext db, TimeProvider clock, ResultsService results, QuizService quiz, IMatchNotifier notifier)
+public class MatchService(
+    QuizDbContext db, TimeProvider clock, ResultsService results, QuizService quiz, IMatchNotifier notifier, Random? random = null)
 {
     private DateTime Now => clock.GetUtcNow().UtcDateTime;
+    private readonly Random _random = random ?? Random.Shared;
 
     // ---------- Lobby ----------
 
     private record LobbyRow(
         int Id, string Name, string HostName, string? HostAvatar, int Seats, MatchStatus Status,
-        DateTime CreatedAt, DateTime? FinishedAt, int Players, bool IAmIn, bool Played, List<QuestionType> Types);
+        DateTime CreatedAt, DateTime? FinishedAt, int Players, bool IAmIn, bool Played, List<QuestionType> Types, bool Derby);
 
     public async Task<LobbyOverview> GetLobbyAsync(string userId)
     {
@@ -31,11 +34,12 @@ public class MatchService(QuizDbContext db, TimeProvider clock, ResultsService r
                 m.Players.Count(p => p.LeftAt == null),
                 m.Players.Any(p => p.UserId == userId && p.LeftAt == null),
                 m.Players.Any(p => p.UserId == userId),
-                m.Types))
+                m.Types,
+                m.Derby))
             .ToListAsync();
 
         static MatchSummary Summary(LobbyRow m) =>
-            new(m.Id, m.Name, m.HostName, m.HostAvatar, m.Seats, m.Players, m.Status, m.IAmIn, m.CreatedAt, TypesOf(m.Types));
+            new(m.Id, m.Name, m.HostName, m.HostAvatar, m.Seats, m.Players, m.Status, m.IAmIn, m.CreatedAt, TypesOf(m.Types), m.Derby);
 
         return new LobbyOverview(
             matches.Where(m => m.Status == MatchStatus.Lobby && !m.IAmIn && m.Players < m.Seats).Select(m => Summary(m)).ToList(),
@@ -61,6 +65,7 @@ public class MatchService(QuizDbContext db, TimeProvider clock, ResultsService r
             HostUserId = userId,
             Seats = Math.Clamp(req.Seats, MatchRules.MinSeats, MatchRules.MaxSeats),
             Types = types,
+            Derby = req.Derby,
             CreatedAt = Now,
             Players = [new MatchPlayer { UserId = userId, JoinedAt = Now }],
         };
@@ -125,6 +130,15 @@ public class MatchService(QuizDbContext db, TimeProvider clock, ResultsService r
                 Blanks = q.Blanks,
                 CounterPlayerIds = q.CounterPlayerIds,
             });
+
+        if (match.Derby)
+        {
+            // Elke speler één wapen; Trump enkel als er keuzevragen aan tafel komen.
+            var players = match.Players.OrderBy(p => p.JoinedAt).ToList();
+            var armed = questions.Skip(1).SkipLast(1); // de eerste en de laatste vraag: wapenstilstand
+            var weapons = DerbyRules.Deal(players.Count, armed.Any(q => DerbyRules.TrumpWorksOn(q.Type)), _random);
+            for (var i = 0; i < players.Count; i++) players[i].Weapon = weapons[i];
+        }
 
         match.Questions[0].StartsAt = Now.AddSeconds(MatchRules.CountdownSeconds);
         match.Status = MatchStatus.Running;
@@ -234,6 +248,282 @@ public class MatchService(QuizDbContext db, TimeProvider clock, ResultsService r
         return (match, question, answer);
     }
 
+    // ---------- Derby ----------
+
+    /// <summary>
+    /// Zet je wapen in. Tijdens een vraag heeft het effect op die vraag; tijdens het aftellen of de tussenstand
+    /// wordt het klaargezet voor de vraag die komt.
+    /// </summary>
+    public async Task<MatchState> UseWeaponAsync(string userId, int matchId, string? target)
+    {
+        var match = await LoadAsync(matchId);
+        if (!match.Derby) throw new QuizException("Dit is geen derby.");
+        var me = match.Players.SingleOrDefault(p => p.UserId == userId && p.LeftAt == null)
+            ?? throw new QuizException("Je zit niet aan deze tafel.");
+        if (me.Weapon is not { } weapon) throw new QuizException("Je hebt geen wapen.");
+
+        var targetPlayer = weapon == DerbyWeapon.RodeKaart
+            ? match.Players.SingleOrDefault(p => p.User.UserName == target && p.LeftAt == null && p.UserId != userId)
+                ?? throw new QuizException("Kies een tegenstander voor je rode kaart.")
+            : null;
+        var (question, elapsed) = WeaponTarget(match);
+        if (WhyNot(match, me, question, elapsed, targetPlayer) is { } why) throw new QuizException(why);
+        await ClaimAsync(me, question!, weapon);
+
+        switch (weapon)
+        {
+            case DerbyWeapon.RodeKaart:
+                var answer = question!.Answers.SingleOrDefault(a => a.UserId == targetPlayer!.UserId);
+                if (answer is null)
+                {
+                    answer = new MatchAnswer { UserId = targetPlayer!.UserId };
+                    question.Answers.Add(answer);
+                }
+                answer.RedCardFromUserId = userId;
+                me.WeaponTargetUserId = targetPlayer!.UserId;
+                break;
+            case DerbyWeapon.BengaalsVuur:
+                question!.FlareUserId = userId;
+                question.FlareAt = Now;
+                break;
+            case DerbyWeapon.Trump:
+                question!.TrumpUserId = userId;
+                break;
+            case DerbyWeapon.Wissel:
+                await SwapAsync(match, question!);
+                question!.SwapUserId = userId;
+                break;
+        }
+        me.WeaponUsedAt = Now;
+        me.WeaponQuestion = question!.Number;
+        await SaveAndNotifyAsync(match, lobby: false);
+        return await GetStateAsync(userId, matchId);
+    }
+
+    /// <summary>
+    /// Legt het wapen en (bij vuur, Trump en wissel) de plaats op de vraag vast in de database zelf,
+    /// zodat twee verzoeken tegelijk (dubbel tikken, of twee spelers samen) nooit allebei slagen.
+    /// </summary>
+    private async Task ClaimAsync(MatchPlayer me, MatchQuestion question, DerbyWeapon weapon)
+    {
+        var questions = db.MatchQuestions.Where(q => q.Id == question.Id);
+        var slot = weapon switch
+        {
+            DerbyWeapon.Trump => await questions.Where(q => q.TrumpUserId == null)
+                .ExecuteUpdateAsync(s => s.SetProperty(q => q.TrumpUserId, me.UserId)),
+            DerbyWeapon.BengaalsVuur => await questions.Where(q => q.FlareUserId == null)
+                .ExecuteUpdateAsync(s => s.SetProperty(q => q.FlareUserId, me.UserId)),
+            DerbyWeapon.Wissel => await questions.Where(q => q.SwapUserId == null && q.EndedAt == null)
+                .ExecuteUpdateAsync(s => s.SetProperty(q => q.SwapUserId, me.UserId)),
+            _ => 1,
+        };
+        if (slot == 0) throw new QuizException("Iemand was je net voor bij deze vraag.");
+
+        var now = Now;
+        var claimed = await db.MatchPlayers.Where(p => p.Id == me.Id && p.WeaponUsedAt == null)
+            .ExecuteUpdateAsync(s => s.SetProperty(p => p.WeaponUsedAt, now));
+        if (claimed > 0) return;
+
+        // Wapen was al op: de plaats op de vraag terug vrijgeven.
+        switch (weapon)
+        {
+            case DerbyWeapon.Trump:
+                await questions.Where(q => q.TrumpUserId == me.UserId).ExecuteUpdateAsync(s => s.SetProperty(q => q.TrumpUserId, (string?)null));
+                break;
+            case DerbyWeapon.BengaalsVuur:
+                await questions.Where(q => q.FlareUserId == me.UserId).ExecuteUpdateAsync(s => s.SetProperty(q => q.FlareUserId, (string?)null));
+                break;
+            case DerbyWeapon.Wissel:
+                await questions.Where(q => q.SwapUserId == me.UserId).ExecuteUpdateAsync(s => s.SetProperty(q => q.SwapUserId, (string?)null));
+                break;
+        }
+        throw new QuizException("Je hebt je wapen al ingezet.");
+    }
+
+    /// <summary>
+    /// De vraag waarop een wapen nu effect zou hebben, en hoe lang die al loopt (negatief = start nog).
+    /// Tijdens de tussenstand is dat de volgende vraag.
+    /// </summary>
+    private (MatchQuestion? Question, double Elapsed) WeaponTarget(Match match)
+    {
+        var current = CurrentQuestion(match);
+        return PhaseOf(match, current) switch
+        {
+            MatchPhase.Countdown or MatchPhase.Question when current is not null => (current, Elapsed(current)),
+            MatchPhase.Reveal => (match.Questions.SingleOrDefault(q => q.Number == current!.Number + 1), -1),
+            _ => (null, 0),
+        };
+    }
+
+    /// <summary>Waarom je wapen nu niet kan (null = het kan). Zelfde controle voor de knop en voor het inzetten.</summary>
+    private static string? WhyNot(Match match, MatchPlayer me, MatchQuestion? question, double elapsed, MatchPlayer? target)
+    {
+        if (me.Weapon is not { } weapon) return "Je hebt geen wapen.";
+        if (me.WeaponUsedAt is not null) return "Je hebt je wapen al ingezet.";
+        if (match.Status != MatchStatus.Running || question is null) return "Nu kan je geen wapen inzetten.";
+        if (question.EndedAt is not null) return "Deze vraag is al afgelopen.";
+        if (DerbyRules.Ceasefire(question.Number, match.Questions.Count)) return "Wapenstilstand: op de eerste en de laatste vraag zwijgen de wapens.";
+        if (weapon == DerbyWeapon.Trump && !DerbyRules.TrumpWorksOn(question.Type)) return "Trump werkt enkel bij een vraag met antwoordopties of een jaartal.";
+        if (!DerbyRules.CanUse(weapon, question.Type, question.Number, match.Questions.Count, elapsed, TimeLimit(question)))
+            return "Daarvoor is het nu te laat.";
+
+        return weapon switch
+        {
+            DerbyWeapon.BengaalsVuur when question.FlareUserId is not null => "Er brandt al bengaals vuur bij deze vraag.",
+            DerbyWeapon.Wissel when question.SwapUserId is not null => "Deze vraag werd al gewisseld.",
+            DerbyWeapon.Trump when question.TrumpUserId is not null => "Er is al een Trump booster actief bij deze vraag.",
+            DerbyWeapon.Trump when question.Answers.Any(a => a.UserId == me.UserId && a.AnsweredAt != null) => "Zet Trump in vóór je antwoordt.",
+            // Anders is het een herkansing: fout antwoorden, het zien, en dan wisselen.
+            DerbyWeapon.Wissel when question.Answers.Any(a => a.UserId == me.UserId && a.AnsweredAt != null) => "Wisselen kan enkel vóór je antwoordt.",
+            DerbyWeapon.RodeKaart when target is not null && question.Answers.Any(a => a.UserId == target.UserId && a.RedCardFromUserId != null)
+                => $"{target.User.UserName} heeft al rood bij deze vraag.",
+            DerbyWeapon.RodeKaart when target is null && !match.Players.Any(p => p.UserId != me.UserId && p.LeftAt == null
+                    && !question.Answers.Any(a => a.UserId == p.UserId && a.RedCardFromUserId != null))
+                => "Iedereen heeft al rood bij deze vraag.",
+            _ => null,
+        };
+    }
+
+    /// <summary>
+    /// Wissel: dezelfde nieuwe vraag (van hetzelfde type) voor iedereen, met een volle timer na het wisselbord.
+    /// De antwoorden, het vuur en de Trump booster van de oude vraag vervallen; rode kaarten blijven staan.
+    /// </summary>
+    private async Task SwapAsync(Match match, MatchQuestion question)
+    {
+        var usedPlayers = match.Questions.Where(q => q.PlayerId != null).Select(q => q.PlayerId!.Value)
+            .Concat(match.Questions.SelectMany(q => q.CounterPlayerIds));
+        var usedItems = match.Questions.Where(q => q.QuizItemId != null).Select(q => q.QuizItemId!.Value);
+        var fresh = await quiz.BuildReplacementAsync(question.Type, usedPlayers, usedItems)
+            ?? throw new QuizException("Er is geen vraag meer om mee te wisselen.");
+
+        question.Player = fresh.PlayerId is { } playerId ? await db.Players.FindAsync(playerId) : null;
+        question.PlayerId = fresh.PlayerId;
+        question.QuizItem = fresh.QuizItemId is { } itemId ? await db.QuizItems.FindAsync(itemId) : null;
+        question.QuizItemId = fresh.QuizItemId;
+        question.Blanks = fresh.Blanks;
+        question.CounterPlayerIds = fresh.CounterPlayerIds;
+        var counter = await db.Players.Where(p => fresh.CounterPlayerIds.Contains(p.Id)).ToDictionaryAsync(p => p.Id);
+        question.CounterPlayers = fresh.CounterPlayerIds.Select(id => counter[id]).ToList();
+
+        foreach (var answer in question.Answers.ToList())
+        {
+            if (answer.RedCardFromUserId is null)
+            {
+                db.MatchAnswers.Remove(answer);
+                question.Answers.Remove(answer);
+                continue;
+            }
+            (answer.WrongGuesses, answer.LastGuess, answer.Correct, answer.GaveUp, answer.AnsweredAt) = (0, null, false, false, null);
+            (answer.SpeedPoints, answer.Choice, answer.Found, answer.Skipped) = (0, null, [], []);
+        }
+        (question.TrumpUserId, question.FlareUserId, question.FlareAt) = (null, null, null);
+        question.StartsAt = Now.AddSeconds(DerbyRules.SwapCountdownSeconds);
+    }
+
+    /// <summary>
+    /// De vraag zoals ze beoordeeld wordt. Met een Trump booster (en een antwoord van wie hem inzette)
+    /// is diens keuze het juiste antwoord; anders de gewone vraag.
+    /// </summary>
+    private static DailyQuestion Judged(MatchQuestion question) =>
+        TrumpChoice(question) is { } choice ? QuestionEngine.WithAnswer(AsDaily(question), choice) : AsDaily(question);
+
+    private static int? TrumpChoice(MatchQuestion question) =>
+        question.TrumpUserId is { } trump && DerbyRules.TrumpWorksOn(question.Type)
+            ? question.Answers.SingleOrDefault(a => a.UserId == trump && a.AnsweredAt != null)?.Choice
+            : null;
+
+    /// <summary>
+    /// Trump: elke keuze opnieuw beoordelen tegen het "officiële" antwoord, aan hetzelfde tempo als toen.
+    /// Wat tegenstanders erdoor verliezen, komt in het derby-rapport.
+    /// </summary>
+    private static void ApplyTrump(Match match, MatchQuestion question)
+    {
+        if (TrumpChoice(question) is null) return;
+        var judged = Judged(question);
+        var lost = 0;
+        foreach (var answer in question.Answers.Where(a => a.Choice != null && a.AnsweredAt != null))
+        {
+            var attempt = AsAttempt(answer.UserId, answer);
+            var outcome = QuestionEngine.Guess(judged, attempt, answer.Choice!.Value.ToString(), (answer.AnsweredAt!.Value - question.StartsAt!.Value).TotalSeconds);
+            if (answer.UserId != question.TrumpUserId) lost += Math.Max(0, answer.SpeedPoints - outcome.Points);
+            answer.Correct = outcome.Correct;
+            answer.SpeedPoints = outcome.Points;
+        }
+        match.Players.Single(p => p.UserId == question.TrumpUserId).WeaponEffect = lost;
+    }
+
+    /// <summary>Rode kaart: halve punten (snelheid en bonus) voor deze vraag.</summary>
+    private static void ApplyRedCards(Match match, MatchQuestion question)
+    {
+        foreach (var answer in question.Answers.Where(a => a.RedCardFromUserId != null))
+        {
+            var before = answer.SpeedPoints + answer.Bonus;
+            answer.SpeedPoints = DerbyRules.AfterRedCard(answer.SpeedPoints);
+            answer.Bonus = DerbyRules.AfterRedCard(answer.Bonus);
+            match.Players.Single(p => p.UserId == answer.RedCardFromUserId).WeaponEffect = before - answer.SpeedPoints - answer.Bonus;
+        }
+    }
+
+    private DerbyState Derby(Match match, MatchQuestion? question, MatchPhase phase, string userId, Dictionary<string, ResultsService.UserCard> cards)
+    {
+        var me = match.Players.SingleOrDefault(p => p.UserId == userId);
+        var (target, elapsed) = WeaponTarget(match);
+        var canUse = me is { LeftAt: null } && WhyNot(match, me, target, elapsed, null) is null;
+
+        string Name(string id) => match.Players.Single(p => p.UserId == id).User.UserName!;
+        DerbyEvent Event(MatchQuestion q, DerbyWeapon weapon, string by, string? to = null)
+        {
+            var player = match.Players.Single(p => p.UserId == by);
+            // Klaargezet voor een vraag die nog niet gestart is: negatief.
+            var since = q.StartsAt is { } start
+                ? (Now - new[] { player.WeaponUsedAt ?? Now, start }.Max()).TotalSeconds
+                : -1;
+            int? effect = q.EndedAt is null || weapon is DerbyWeapon.BengaalsVuur or DerbyWeapon.Wissel ? null : player.WeaponEffect;
+            return new DerbyEvent(weapon, Name(by), cards.GetValueOrDefault(by)?.AvatarId, by == userId,
+                to is null ? null : Name(to), to == userId, since, effect);
+        }
+        List<DerbyEvent> EventsOf(MatchQuestion q)
+        {
+            var list = new List<DerbyEvent>();
+            if (q.SwapUserId is { } swap) list.Add(Event(q, DerbyWeapon.Wissel, swap));
+            if (q.FlareUserId is { } flare) list.Add(Event(q, DerbyWeapon.BengaalsVuur, flare));
+            if (q.TrumpUserId is { } trump) list.Add(Event(q, DerbyWeapon.Trump, trump));
+            foreach (var a in q.Answers.Where(a => a.RedCardFromUserId != null))
+                list.Add(Event(q, DerbyWeapon.RodeKaart, a.RedCardFromUserId!, a.UserId));
+            // Klaargezet voor een vraag die nog niet begon: enkel wie het klaarzette ziet het (een wissel zie je meteen).
+            var started = q.StartsAt is { } s && s <= Now;
+            return list.Where(e => started || e.ByMe || e.Weapon == DerbyWeapon.Wissel).ToList();
+        }
+
+        var events = new List<DerbyEvent>();
+        if (question is not null && phase is MatchPhase.Countdown or MatchPhase.Question or MatchPhase.Reveal)
+        {
+            events.AddRange(EventsOf(question));
+            if (phase == MatchPhase.Reveal && match.Questions.SingleOrDefault(q => q.Number == question.Number + 1) is { } next)
+                events.AddRange(EventsOf(next));
+        }
+
+        string? official = null, actual = null;
+        if (phase == MatchPhase.Reveal && question is not null && TrumpChoice(question) is not null)
+        {
+            official = QuestionEngine.AnswerLabel(Judged(question));
+            actual = QuestionEngine.AnswerLabel(AsDaily(question));
+        }
+
+        var report = phase == MatchPhase.Finished
+            ? match.Players.Where(p => p.Weapon != null).OrderBy(p => p.WeaponQuestion ?? int.MaxValue)
+                .Select(p => new DerbyReportLine(p.User.UserName!, cards.GetValueOrDefault(p.UserId)?.AvatarId, p.Weapon!.Value,
+                    p.WeaponUsedAt is null ? null : p.WeaponQuestion,
+                    p.WeaponTargetUserId is null ? null : Name(p.WeaponTargetUserId), p.WeaponEffect, p.UserId == userId))
+                .ToList()
+            : null;
+
+        return new DerbyState(
+            me?.Weapon, me?.WeaponUsedAt is not null, canUse, target?.Number ?? 0,
+            target is not null && DerbyRules.Ceasefire(target.Number, match.Questions.Count),
+            events, official, actual, report);
+    }
+
     // ---------- Verloop in de tijd (aangeroepen door MatchEngine) ----------
 
     /// <summary>Zet alle lopende wedstrijden een stap verder waar nodig. Geeft het aantal gewijzigde wedstrijden terug.</summary>
@@ -302,6 +592,7 @@ public class MatchService(QuizDbContext db, TimeProvider clock, ResultsService r
         var daily = AsDaily(question);
         foreach (var answer in question.Answers.Where(a => a.AnsweredAt is null))
             answer.SpeedPoints = QuestionEngine.PointsWhenStopped(daily, AsAttempt(answer.UserId, answer));
+        ApplyTrump(match, question);
 
         var position = 1;
         foreach (var answer in question.Answers.Where(a => a.Correct).OrderBy(a => a.AnsweredAt))
@@ -310,6 +601,7 @@ public class MatchService(QuizDbContext db, TimeProvider clock, ResultsService r
             answer.Bonus = MatchRules.BonusFor(position);
             position++;
         }
+        ApplyRedCards(match, question);
         foreach (var answer in question.Answers)
             match.Players.Single(p => p.UserId == answer.UserId).Score += answer.SpeedPoints + answer.Bonus;
     }
@@ -354,11 +646,13 @@ public class MatchService(QuizDbContext db, TimeProvider clock, ResultsService r
                     (hints, view) = QuestionEngine.Visible(daily, attempt, elapsed);
                     break;
                 case MatchPhase.Reveal:
+                    // Na een Trump booster toont de reveal het "officiële" antwoord (het echte staat in de derby-info).
+                    var judged = Judged(question);
                     elapsed = (Now - question.EndedAt!.Value).TotalSeconds;
-                    result = QuestionEngine.Result(daily, attempt);
-                    (_, view) = QuestionEngine.Visible(daily, attempt, limit);
+                    result = QuestionEngine.Result(judged, attempt);
+                    (_, view) = QuestionEngine.Visible(judged, attempt, limit);
                     hints = result.AllHints;
-                    answerLabel = QuestionEngine.AnswerLabel(daily);
+                    answerLabel = QuestionEngine.AnswerLabel(judged);
                     break;
             }
         }
@@ -402,7 +696,8 @@ public class MatchService(QuizDbContext db, TimeProvider clock, ResultsService r
             limit,
             view,
             result,
-            (myAnswer?.SpeedPoints ?? 0) + (myAnswer?.Bonus ?? 0));
+            (myAnswer?.SpeedPoints ?? 0) + (myAnswer?.Bonus ?? 0),
+            match.Derby ? Derby(match, question, phase, userId, cards) : null);
     }
 
     /// <summary>De vraag die nu loopt of net afgelopen is: de laatst gestarte.</summary>

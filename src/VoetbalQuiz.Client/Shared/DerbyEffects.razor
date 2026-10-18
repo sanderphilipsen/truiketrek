@@ -1,0 +1,141 @@
+@* Derby: de effecten van de wapens over het scherm heen.
+   - Bengaals vuur: een supporter met bivakmuts rechtsonder, en rode rook die de vraag even onleesbaar maakt (niet bij wie het afstak).
+   - Trump booster: een karikatuur rechtsonder zolang de vraag loopt.
+   - Rode kaart: wie ze krijgt, ziet een kaart op zich afkomen.
+   Since komt van de server; de animaties krijgen een negatieve delay zodat ze ook na een herlaadbeurt juist lopen. *@
+
+@if (Flare is { } flare)
+{
+    @if (!flare.ByMe)
+    {
+        <div class="derby-smoke" style="--since:@Secs(flare.Since)" aria-hidden="true">
+            @for (var i = 0; i < 9; i++)
+            {
+                <span class="puff p@(i)"></span>
+            }
+        </div>
+    }
+    else if (LocalSince(flare) < 2)
+    {
+        <div class="derby-toast">🎆 Afgestoken! Je tegenstanders zien even niets.</div>
+    }
+}
+
+@if (Flare is not null || Trump is not null)
+{
+    <div class="derby-corner" aria-hidden="true">
+        @if (Flare is { } f)
+        {
+            <figure class="derby-figure flare-fan" style="--since:@Secs(f.Since)">
+                <svg viewBox="0 0 120 170" width="96" height="136">
+                    <defs>
+                        <radialGradient id="flare-glow">
+                            <stop offset="0" stop-color="#fff6e0" />
+                            <stop offset=".35" stop-color="#ff5a5f" />
+                            <stop offset="1" stop-color="#ff1a2d" stop-opacity="0" />
+                        </radialGradient>
+                    </defs>
+                    @* Gloed en vonken van de fakkel *@
+                    <g class="flare-fire">
+                        <circle cx="96" cy="22" r="22" fill="url(#flare-glow)" />
+                        <circle cx="96" cy="24" r="7" fill="#fff" />
+                    </g>
+                    <g class="flare-sparks" fill="#ffd27a">
+                        <circle cx="96" cy="22" r="1.8" class="s1" />
+                        <circle cx="96" cy="22" r="1.4" class="s2" />
+                        <circle cx="96" cy="22" r="1.6" class="s3" />
+                        <circle cx="96" cy="22" r="1.2" class="s4" />
+                    </g>
+                    @* De fakkel en de arm die hem omhoog steekt *@
+                    <rect x="93" y="28" width="6" height="40" rx="2" fill="#5b5b5b" transform="rotate(8 96 48)" />
+                    <path d="M78 112 L92 66" stroke="#1d1d22" stroke-width="13" stroke-linecap="round" />
+                    <circle cx="93" cy="66" r="7.5" fill="#1d1d22" />
+                    @* Lijf: zwarte hoodie met sjaal in clubkleuren *@
+                    <path d="M18 170 C18 128 34 108 60 108 C86 108 102 128 102 170 Z" fill="#1d1d22" />
+                    <path d="M36 112 L84 112 L80 124 L40 124 Z" fill="#d6262f" />
+                    <path d="M46 112 L52 112 L50 124 L44 124 Z M64 112 L70 112 L70 124 L64 124 Z" fill="#fff" />
+                    <path d="M40 124 L34 150 L44 150 L48 124 Z" fill="#d6262f" />
+                    @* Hoofd met bivakmuts: enkel de ogen zijn te zien *@
+                    <ellipse cx="60" cy="80" rx="25" ry="29" fill="#141418" />
+                    <rect x="42" y="70" width="36" height="13" rx="6.5" fill="#e9b48a" />
+                    <circle cx="52" cy="76.5" r="2.6" fill="#141418" />
+                    <circle cx="68" cy="76.5" r="2.6" fill="#141418" />
+                    <path d="M47 71 L56 73 M73 71 L64 73" stroke="#141418" stroke-width="2" stroke-linecap="round" />
+                    <path d="M44 95 Q60 90 76 95" stroke="#2c2c33" stroke-width="2" fill="none" />
+                    <ellipse cx="60" cy="54" rx="9" ry="4" fill="#2c2c33" />
+                </svg>
+                <figcaption>🎆 Vuur van @(f.ByMe ? "jou" : f.By)</figcaption>
+            </figure>
+        }
+        @if (Trump is { } t)
+        {
+            <figure class="derby-figure trump">
+                <div class="trump-bubble">FAKE NEWS!</div>
+                <svg viewBox="0 0 120 160" width="104" height="139">
+                    @* Pak, hemd en de veel te lange rode das *@
+                    <path d="M12 160 C12 118 30 100 60 100 C90 100 108 118 108 160 Z" fill="#1c2f6b" />
+                    <path d="M46 100 L60 126 L74 100 Z" fill="#fff" />
+                    <g class="trump-tie">
+                        <path d="M56 104 L64 104 L66 110 L62 160 L58 160 L54 110 Z" fill="#d6262f" />
+                        <path d="M55 102 L65 102 L64 108 L56 108 Z" fill="#a8161e" />
+                    </g>
+                    @* Duim omhoog *@
+                    <g class="trump-thumb">
+                        <rect x="92" y="104" width="20" height="18" rx="6" fill="#f2a65a" />
+                        <rect x="99" y="88" width="8" height="20" rx="4" fill="#f2a65a" />
+                        <path d="M88 122 L96 112" stroke="#1c2f6b" stroke-width="10" stroke-linecap="round" />
+                    </g>
+                    @* Oranje hoofd met lichte ogen *@
+                    <ellipse cx="60" cy="64" rx="27" ry="31" fill="#f29a4a" />
+                    <ellipse cx="49" cy="60" rx="8" ry="5.5" fill="#f9d9b0" />
+                    <ellipse cx="71" cy="60" rx="8" ry="5.5" fill="#f9d9b0" />
+                    <path d="M45 60 Q49 58 53 60 M67 60 Q71 58 75 60" stroke="#3b2a1a" stroke-width="2.2" fill="none" stroke-linecap="round" />
+                    <path d="M42 52 L55 53 M65 53 L78 52" stroke="#e7c35a" stroke-width="3" stroke-linecap="round" />
+                    <ellipse cx="60" cy="82" rx="6" ry="4.5" fill="#9b2a1e" />
+                    <ellipse cx="60" cy="81" rx="3" ry="1.6" fill="#5a120c" />
+                    <ellipse cx="33" cy="66" rx="4" ry="7" fill="#e8893a" />
+                    <ellipse cx="87" cy="66" rx="4" ry="7" fill="#e8893a" />
+                    @* De beroemde blonde kuif *@
+                    <g class="trump-hair">
+                        <path d="M30 52 C26 26 50 18 70 22 C90 25 100 36 96 50 C88 40 78 36 64 38 C52 40 40 44 30 52 Z" fill="#f4d36b" />
+                        <path d="M64 38 C80 30 96 34 104 44 C96 42 86 42 80 46 Z" fill="#e9c24f" />
+                    </g>
+                </svg>
+                <figcaption>🟨 Booster van @(t.ByMe ? "jou" : t.By)</figcaption>
+            </figure>
+        }
+    </div>
+}
+
+@if (RedCardOnMe is { } card)
+{
+    <div class="derby-redcard" style="--since:@Secs(card.Since)" role="alert">
+        <div class="rc-card"></div>
+        <div class="rc-text"><b>ROOD!</b> @card.By geeft je een rode kaart: halve punten voor deze vraag.</div>
+    </div>
+}
+
+@code {
+    [Parameter, EditorRequired] public DerbyState Derby { get; set; } = null!;
+    [Parameter] public MatchPhase Phase { get; set; }
+
+    /// <summary>Seconden sinds de laatste toestand van de server (de events zijn sindsdien verder gelopen).</summary>
+    [Parameter] public double Drift { get; set; }
+
+    private double LocalSince(DerbyEvent e) => e.Since + Drift;
+
+    private DerbyEvent? Flare => Phase == MatchPhase.Question
+        ? Derby.Events.FirstOrDefault(e => e.Weapon == DerbyWeapon.BengaalsVuur && LocalSince(e) is >= 0 and < DerbyRules.FlareSeconds)
+        : null;
+
+    // Enkel tijdens de vraag: in de tussenstand zou hij de punten bedekken.
+    private DerbyEvent? Trump => Phase == MatchPhase.Question
+        ? Derby.Events.FirstOrDefault(e => e.Weapon == DerbyWeapon.Trump && e.Since >= 0)
+        : null;
+
+    private DerbyEvent? RedCardOnMe => Phase == MatchPhase.Question
+        ? Derby.Events.FirstOrDefault(e => e.Weapon == DerbyWeapon.RodeKaart && e.TargetIsMe && LocalSince(e) is >= 0 and < 3)
+        : null;
+
+    private static string Secs(double s) => $"{Math.Max(0, s).ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)}s";
+}
