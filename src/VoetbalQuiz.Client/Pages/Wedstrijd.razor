@@ -263,7 +263,12 @@ else
                             <span class="rank">@DerbyRules.Get(r.Weapon).Icon</span>
                             <Avatar Id="@r.AvatarId" User="@r.UserName" Size="36" />
                             <span class="player"><b>@r.UserName</b><small>@ReportLine(r)</small></span>
-                            @if (r.Effect > 0) { <span class="pts">@(r.Weapon == DerbyWeapon.Gokchinees ? "+" : "−")@r.Effect</span> }
+                            @if (r.Effect != 0)
+                            {
+                                @* Wat je zelf won (gok, diefstal) of verloor (gok) met +/−; wat je anderen kostte met −. *@
+                                var gain = r.Weapon is DerbyWeapon.Gokchinees or DerbyWeapon.PropereHanden;
+                                <span class="pts">@(gain && r.Effect > 0 ? "+" : "−")@Math.Abs(r.Effect)</span>
+                            }
                         </li>
                     }
                 </ol>
@@ -396,7 +401,7 @@ else
     /// <summary>Per speler de kaartjes bij zijn avatar: 🟥 rood, 💰 omgekocht.</summary>
     private IReadOnlyDictionary<string, string> Marks =>
         (_state?.Derby?.Events ?? [])
-            .Where(e => e.Since >= 0 && e.Target is not null && e.Weapon is DerbyWeapon.RodeKaart or DerbyWeapon.Gokchinees)
+            .Where(e => e.Since >= 0 && e.Target is not null && e.Weapon is DerbyWeapon.RodeKaart or DerbyWeapon.PropereHanden)
             .GroupBy(e => e.Target!)
             .ToDictionary(g => g.Key, g => string.Concat(g.Select(e => DerbyRules.Get(e.Weapon).Icon)));
 
@@ -429,7 +434,8 @@ else
             DerbyWeapon.RodeKaart => $"Rood voor {r.Target} bij vraag {q}",
             DerbyWeapon.Trump => $"Trump booster bij vraag {q}",
             DerbyWeapon.BengaalsVuur => $"Bengaals vuur bij vraag {q}",
-            DerbyWeapon.Gokchinees => $"Kocht {r.Target} om bij vraag {q}",
+            DerbyWeapon.Gokchinees => $"Gokte dubbel of niks bij vraag {q}" + (r.Effect < 0 ? " en verloor" : r.Effect > 0 ? " en won" : ""),
+            DerbyWeapon.PropereHanden => $"Stal van {r.Target} bij vraag {q}",
             DerbyWeapon.Verlenging => $"Verlenging bij vraag {q}",
             _ => $"Wissel bij vraag {q}",
         };

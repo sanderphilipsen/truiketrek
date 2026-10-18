@@ -286,9 +286,12 @@ public class MatchService(
                 AnswerOf(question!, targetPlayer!.UserId).RedCardFromUserId = userId;
                 me.WeaponTargetUserId = targetPlayer.UserId;
                 break;
-            case DerbyWeapon.Gokchinees:
-                AnswerOf(question!, targetPlayer!.UserId).BribedByUserId = userId;
+            case DerbyWeapon.PropereHanden:
+                AnswerOf(question!, targetPlayer!.UserId).StolenByUserId = userId;
                 me.WeaponTargetUserId = targetPlayer.UserId;
+                break;
+            case DerbyWeapon.Gokchinees:
+                AnswerOf(question!, userId).Gamble = true;
                 break;
             case DerbyWeapon.Verlenging:
                 AnswerOf(question!, userId).ExtraSeconds = DerbyRules.ExtensionSeconds;
@@ -401,9 +404,11 @@ public class MatchService(
             DerbyWeapon.Verlenging when question.Answers.Any(a => a.UserId == me.UserId && a.AnsweredAt != null) => "Een verlenging vraag je vóór je antwoordt.",
             DerbyWeapon.RodeKaart when target is not null && Hit(question, target.UserId, weapon)
                 => $"{target.User.UserName} heeft al rood bij deze vraag.",
-            DerbyWeapon.Gokchinees when target is not null && Hit(question, target.UserId, weapon)
-                => $"{target.User.UserName} is al omgekocht bij deze vraag.",
-            DerbyWeapon.RodeKaart or DerbyWeapon.Gokchinees when target is null
+            // Je mag de vraag eerst zien, maar gokken doe je vóór je antwoordt.
+            DerbyWeapon.Gokchinees when question.Answers.Any(a => a.UserId == me.UserId && a.AnsweredAt != null) => "Gokken doe je vóór je antwoordt.",
+            DerbyWeapon.PropereHanden when target is not null && Hit(question, target.UserId, weapon)
+                => $"Bij {target.User.UserName} wordt al gestolen bij deze vraag.",
+            DerbyWeapon.RodeKaart or DerbyWeapon.PropereHanden when target is null
                     && !match.Players.Any(p => p.UserId != me.UserId && p.LeftAt == null && !Hit(question, p.UserId, weapon))
                 => "Er is niemand meer om te kiezen bij deze vraag.",
             _ => null,
@@ -413,7 +418,7 @@ public class MatchService(
     /// <summary>Heeft deze speler bij deze vraag al een rode kaart (of: is hij al omgekocht)?</summary>
     private static bool Hit(MatchQuestion question, string userId, DerbyWeapon weapon) =>
         question.Answers.Any(a => a.UserId == userId
-            && (weapon == DerbyWeapon.Gokchinees ? a.BribedByUserId != null : a.RedCardFromUserId != null));
+            && (weapon == DerbyWeapon.PropereHanden ? a.StolenByUserId != null : a.RedCardFromUserId != null));
 
     /// <summary>
     /// Wissel: dezelfde nieuwe vraag (van hetzelfde type) voor iedereen, met een volle timer na het wisselbord.
@@ -438,8 +443,8 @@ public class MatchService(
 
         foreach (var answer in question.Answers.ToList())
         {
-            // Rode kaarten, omkoping en verlenging blijven gelden voor de nieuwe vraag.
-            if (answer is { RedCardFromUserId: null, BribedByUserId: null, ExtraSeconds: 0 })
+            // Rode kaarten, stelen, gokken en verlenging blijven gelden voor de nieuwe vraag.
+            if (answer is { RedCardFromUserId: null, StolenByUserId: null, ExtraSeconds: 0, Gamble: false })
             {
                 db.MatchAnswers.Remove(answer);
                 question.Answers.Remove(answer);
@@ -497,18 +502,39 @@ public class MatchService(
     }
 
     /// <summary>
-    /// Gokchinees: alles wat de omgekochte speler bij deze vraag haalt (na een eventuele rode kaart),
-    /// gaat naar wie hem omkocht. Geeft per omkoper het bedrag terug, om bij de score op te tellen.
+    /// Gokchinees: punten gehaald (ook deelpunten) = dubbel, inclusief positiebonus.
+    /// Niets gehaald = <see cref="DerbyRules.GamblePenalty"/> kwijt; dat geeft het terug, af te trekken na de score.
     /// </summary>
-    private static Dictionary<string, int> ApplyBribes(Match match, MatchQuestion question)
+    private static List<MatchPlayer> ApplyGambles(Match match, MatchQuestion question)
+    {
+        var losers = new List<MatchPlayer>();
+        foreach (var answer in question.Answers.Where(a => a.Gamble))
+        {
+            var player = match.Players.Single(p => p.UserId == answer.UserId);
+            var points = answer.SpeedPoints + answer.Bonus;
+            if (points > 0)
+            {
+                (answer.SpeedPoints, answer.Bonus) = (answer.SpeedPoints * 2, answer.Bonus * 2);
+                player.WeaponEffect = points;
+            }
+            else losers.Add(player);
+        }
+        return losers;
+    }
+
+    /// <summary>
+    /// Propere handen: de helft van wat het doelwit bij deze vraag haalt (na rode kaart en gok), gaat naar de dief.
+    /// Geeft per dief het bedrag terug, om bij de score op te tellen.
+    /// </summary>
+    private static Dictionary<string, int> ApplySteals(Match match, MatchQuestion question)
     {
         var gains = new Dictionary<string, int>();
-        foreach (var answer in question.Answers.Where(a => a.BribedByUserId != null))
+        foreach (var answer in question.Answers.Where(a => a.StolenByUserId != null))
         {
-            var amount = answer.SpeedPoints + answer.Bonus;
-            (answer.SpeedPoints, answer.Bonus) = (0, 0);
-            gains[answer.BribedByUserId!] = gains.GetValueOrDefault(answer.BribedByUserId!) + amount;
-            match.Players.Single(p => p.UserId == answer.BribedByUserId).WeaponEffect = amount;
+            var (speed, bonus) = (DerbyRules.Stolen(answer.SpeedPoints), DerbyRules.Stolen(answer.Bonus));
+            (answer.SpeedPoints, answer.Bonus) = (answer.SpeedPoints - speed, answer.Bonus - bonus);
+            gains[answer.StolenByUserId!] = gains.GetValueOrDefault(answer.StolenByUserId!) + speed + bonus;
+            match.Players.Single(p => p.UserId == answer.StolenByUserId).WeaponEffect = speed + bonus;
         }
         return gains;
     }
@@ -540,8 +566,10 @@ public class MatchService(
             if (q.TrumpUserId is { } trump) list.Add(Event(q, DerbyWeapon.Trump, trump));
             foreach (var a in q.Answers.Where(a => a.RedCardFromUserId != null))
                 list.Add(Event(q, DerbyWeapon.RodeKaart, a.RedCardFromUserId!, a.UserId));
-            foreach (var a in q.Answers.Where(a => a.BribedByUserId != null))
-                list.Add(Event(q, DerbyWeapon.Gokchinees, a.BribedByUserId!, a.UserId));
+            foreach (var a in q.Answers.Where(a => a.StolenByUserId != null))
+                list.Add(Event(q, DerbyWeapon.PropereHanden, a.StolenByUserId!, a.UserId));
+            foreach (var a in q.Answers.Where(a => a.Gamble))
+                list.Add(Event(q, DerbyWeapon.Gokchinees, a.UserId));
             foreach (var a in q.Answers.Where(a => a.ExtraSeconds > 0))
                 list.Add(Event(q, DerbyWeapon.Verlenging, a.UserId));
             // Iedereen ziet alles meteen, ook wat klaargezet is voor de volgende vraag (Since < 0).
@@ -657,11 +685,19 @@ public class MatchService(
             position++;
         }
         ApplyRedCards(match, question);
-        var bribes = ApplyBribes(match, question);
+        var losers = ApplyGambles(match, question);
+        var steals = ApplySteals(match, question);
         foreach (var answer in question.Answers)
             match.Players.Single(p => p.UserId == answer.UserId).Score += answer.SpeedPoints + answer.Bonus;
-        foreach (var (briber, amount) in bribes)
-            match.Players.Single(p => p.UserId == briber).Score += amount;
+        foreach (var (thief, amount) in steals)
+            match.Players.Single(p => p.UserId == thief).Score += amount;
+        foreach (var loser in losers)
+        {
+            // Een verloren gok kost punten van je totaal, maar je zakt nooit onder 0.
+            var penalty = Math.Min(DerbyRules.GamblePenalty, loser.Score);
+            loser.Score -= penalty;
+            loser.WeaponEffect = -penalty;
+        }
     }
 
     private void Finish(Match match)

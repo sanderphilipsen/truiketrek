@@ -87,13 +87,14 @@ public sealed class DerbyTests : IDisposable
     }
 
     [Fact]
-    public void Weapons_are_dealt_without_duplicates_up_to_four_players()
+    public void Weapons_are_dealt_without_duplicates_while_there_are_enough()
     {
         var random = new Random(1);
-        Assert.Equal(6, DerbyRules.Deal(6, true, random).Distinct().Count());
+        var all = DerbyRules.All.Count;
+        Assert.Equal(all, DerbyRules.Deal(all, true, random).Distinct().Count());
         Assert.Equal(3, DerbyRules.Deal(3, true, random).Distinct().Count());
-        Assert.Equal(6, DerbyRules.Deal(8, true, random).Distinct().Count());
-        Assert.Equal(5, DerbyRules.Deal(5, false, random).Distinct().Count());
+        Assert.Equal(all, DerbyRules.Deal(all + 1, true, random).Distinct().Count());
+        Assert.Equal(all - 1, DerbyRules.Deal(all - 1, false, random).Distinct().Count());
         Assert.DoesNotContain(DerbyWeapon.Trump, DerbyRules.Deal(8, false, random));
     }
 
@@ -241,26 +242,77 @@ public sealed class DerbyTests : IDisposable
     }
 
     [Fact]
-    public async Task Gokchinees_takes_all_points_of_the_bribed_player()
+    public async Task Propere_handen_steals_half_and_the_victim_knows()
     {
         var id = await AtQuestionTwoAsync();
-        Give(id, _host, DerbyWeapon.Gokchinees);
-        Give(id, _third, DerbyWeapon.Gokchinees);
+        Give(id, _host, DerbyWeapon.PropereHanden);
+        Give(id, _third, DerbyWeapon.PropereHanden);
         await Assert.ThrowsAsync<QuizException>(() => _matches.UseWeaponAsync(_host, id, null)); // zonder doelwit
         await _matches.UseWeaponAsync(_host, id, "gast");
-        await Assert.ThrowsAsync<QuizException>(() => _matches.UseWeaponAsync(_third, id, "gast")); // al omgekocht
+        await Assert.ThrowsAsync<QuizException>(() => _matches.UseWeaponAsync(_third, id, "gast")); // er wordt al gestolen
 
-        var seen = Assert.Single((await _matches.GetStateAsync(_third, id)).Derby!.Events);
-        Assert.Equal((DerbyWeapon.Gokchinees, "host", "gast"), (seen.Weapon, seen.By, seen.Target));
+        // Het doelwit weet het meteen.
+        var seen = Assert.Single((await _matches.GetStateAsync(_guest, id)).Derby!.Events);
+        Assert.Equal((DerbyWeapon.PropereHanden, "host", true), (seen.Weapon, seen.By, seen.TargetIsMe));
 
         var (q, _) = await CurrentAsync(id);
         await _matches.GuessAsync(_guest, id, q.Correct.ToString()); // 100 + 50 bonus
         await Tick(QuestionRules.SnelvuurSeconds + 1);
 
+        var reveal = await _matches.GetStateAsync(_guest, id);
+        Assert.Equal(75, reveal.Players.Single(p => p.UserName == "gast").Score);
+        Assert.Equal(75, reveal.Players.Single(p => p.UserName == "host").Score);
+        var after = reveal.Derby!.Events.Single();
+        Assert.Equal((75, true), (after.Effect, after.TargetIsMe)); // en na de vraag ook hoeveel
+    }
+
+    [Fact]
+    public async Task Gokchinees_doubles_your_points_after_seeing_the_question()
+    {
+        var id = await AtQuestionTwoAsync();
+        Give(id, _guest, DerbyWeapon.Gokchinees);
+        _clock.Advance(TimeSpan.FromSeconds(2)); // eerst de vraag bekijken
+        await _matches.UseWeaponAsync(_guest, id, null);
+        Assert.Equal(DerbyWeapon.Gokchinees, Assert.Single((await _matches.GetStateAsync(_host, id)).Derby!.Events).Weapon);
+
+        var (q, _) = await CurrentAsync(id);
+        await _matches.GuessAsync(_guest, id, q.Correct.ToString());
+        await Tick(QuestionRules.SnelvuurSeconds);
+        var reveal = await _matches.GetStateAsync(_guest, id);
+        var single = QuestionRules.SpeedPoints(2, QuestionRules.SnelvuurSeconds) + 50;
+        Assert.Equal(2 * single, reveal.Players.Single(p => p.IsMe).Score);
+        Assert.Equal(single, reveal.Derby!.Events.Single().Effect);
+    }
+
+    [Fact]
+    public async Task Gokchinees_lost_costs_fifty_points_but_never_below_zero()
+    {
+        var id = await AtQuestionTwoAsync();
+        _db.MatchPlayers.Single(p => p.MatchId == id && p.UserId == _guest).Score = 80;
+        _db.MatchPlayers.Single(p => p.MatchId == id && p.UserId == _third).Score = 20;
+        Give(id, _guest, DerbyWeapon.Gokchinees);
+        Give(id, _third, DerbyWeapon.Gokchinees);
+        await _matches.UseWeaponAsync(_guest, id, null);
+        await _matches.UseWeaponAsync(_third, id, null);
+
+        var (q, _) = await CurrentAsync(id);
+        await _matches.GuessAsync(_guest, id, ((q.Correct + 1) % 4).ToString()); // fout
+        await Assert.ThrowsAsync<QuizException>(() => _matches.UseWeaponAsync(_guest, id, null));
+        await Tick(QuestionRules.SnelvuurSeconds + 1); // derde antwoordt niet
+
         var reveal = await _matches.GetStateAsync(_host, id);
-        Assert.Equal(0, reveal.Players.Single(p => p.UserName == "gast").Score);
-        Assert.Equal(150, reveal.Players.Single(p => p.UserName == "host").Score);
-        Assert.Equal(150, reveal.Derby!.Events.Single().Effect);
+        Assert.Equal(30, reveal.Players.Single(p => p.UserName == "gast").Score);
+        Assert.Equal(0, reveal.Players.Single(p => p.UserName == "derde").Score);
+    }
+
+    [Fact]
+    public async Task Gokchinees_only_before_you_answer()
+    {
+        var id = await AtQuestionTwoAsync();
+        Give(id, _guest, DerbyWeapon.Gokchinees);
+        var (q, _) = await CurrentAsync(id);
+        await _matches.GuessAsync(_guest, id, q.Correct.ToString());
+        await Assert.ThrowsAsync<QuizException>(() => _matches.UseWeaponAsync(_guest, id, null));
     }
 
     [Fact]

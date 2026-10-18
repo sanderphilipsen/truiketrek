@@ -45,7 +45,9 @@
         _ when Derby.Ceasefire => "Wapenstilstand op de eerste en de laatste vraag",
         _ when Derby.CanUseWeapon && Phase is MatchPhase.Reveal or MatchPhase.Countdown => $"Klaarzetten voor vraag {Derby.WeaponFor}",
         _ when Derby.CanUseWeapon && weapon == DerbyWeapon.RodeKaart => "Tik en kies een tegenstander",
-        _ when Derby.CanUseWeapon && weapon == DerbyWeapon.Gokchinees => "Tik en kies wie je omkoopt",
+        _ when Derby.CanUseWeapon && weapon == DerbyWeapon.PropereHanden => "Tik en kies van wie je steelt",
+        _ when Derby.CanUseWeapon && weapon == DerbyWeapon.Gokchinees => $"Tik: dubbel of −{DerbyRules.GamblePenalty} punten",
+        _ when weapon == DerbyWeapon.Gokchinees => "Tijdens een vraag, vóór je antwoordt",
         _ when Derby.CanUseWeapon && weapon == DerbyWeapon.BengaalsVuur => "Tik: het vuur gaat af bij al je tegenstanders",
         _ when Derby.CanUseWeapon && weapon == DerbyWeapon.Verlenging => $"Tik: +{DerbyRules.ExtensionSeconds} seconden voor jou",
         _ when Derby.CanUseWeapon => "Nu inzetten!",
@@ -67,8 +69,10 @@
             DerbyWeapon.Wissel => $"🔁 {by} vraagt een wissel aan: nieuwe vraag voor iedereen",
             DerbyWeapon.Trump => $"🟨 {by} zet de Trump booster in{pending}"
                                  + (e.Effect is > 0 ? $": tegenstanders −{e.Effect} punten" : ""),
-            DerbyWeapon.Gokchinees => $"💰 {by} koopt {(e.TargetIsMe ? "jou" : e.Target)} om{pending}"
-                                      + (e.Effect is > 0 ? $": +{e.Effect} punten" : ""),
+            DerbyWeapon.Gokchinees => $"🎲 {by} gokt dubbel of niks{pending}"
+                                      + (e.Effect switch { > 0 => $": gewonnen, +{e.Effect} punten", < 0 => $": verloren, {e.Effect} punten", _ => "" }),
+            DerbyWeapon.PropereHanden => $"🧤 {by} steelt de helft van de punten van {(e.TargetIsMe ? "jou" : e.Target)}{pending}"
+                                         + (e.Effect is > 0 ? $": {(e.TargetIsMe ? "jij verliest" : "buit")} {e.Effect} punten" : ""),
             DerbyWeapon.Verlenging => $"⏱️ {by} krijgt verlenging: +{DerbyRules.ExtensionSeconds} seconden{pending}",
             _ => "",
         };

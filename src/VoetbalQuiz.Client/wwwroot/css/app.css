@@ -1310,6 +1310,14 @@ button.choice:active { transform: scale(.97); }
 }
 @keyframes cigar-smoke { from { opacity: .9; transform: translateY(0); } to { opacity: 0; transform: translateY(-8px); } }
 
+/* Propere handen: de ene handschoen graait in de zak, de andere zwaait onschuldig */
+.gloves svg { animation: trump-sway 2s ease-in-out infinite; transform-origin: 50% 100%; }
+.gloves .gl-arm { transform-origin: 64px 124px; animation: glove-grab .8s ease-in-out infinite alternate; }
+.gloves .gl-wave { transform-origin: 24px 128px; animation: glove-wave .5s ease-in-out infinite alternate; }
+.gloves .gl-bag { transform-origin: 92px 160px; animation: case-shake 1.1s ease-in-out infinite; }
+@keyframes glove-grab { to { transform: rotate(8deg) translateY(4px); } }
+@keyframes glove-wave { from { transform: rotate(-10deg); } to { transform: rotate(10deg); } }
+
 /* Vierde official: het lichtbord gaat op en neer, de cijfers knipperen */
 .official svg { animation: fan-bounce .6s ease-in-out infinite alternate; }
 .official .of-board text { animation: led-blink 1s steps(2) infinite; }
@@ -1374,6 +1382,7 @@ button.choice:active { transform: scale(.97); }
     .flare-fan svg, .flare-fan .flare-fire, .flare-fan .flare-sparks circle,
     .trump svg, .trump .trump-tie, .trump .trump-hair, .trump .trump-thumb, .trump-bubble { animation: none; }
     .gokbaas svg, .gokbaas .gb-case, .gokbaas .gb-bill, .gokbaas .gb-smoke, .official svg, .official .of-board text { animation: none; }
+    .gloves svg, .gloves .gl-arm, .gloves .gl-wave, .gloves .gl-bag { animation: none; }
     /* Geen drijvende rook, wel een vaste rode waas zolang het vuur brandt. */
     .derby-smoke { animation: none; background: rgba(170, 15, 28, .9); }
     .derby-smoke .puff { display: none; }

@@ -1,7 +1,7 @@
 namespace VoetbalQuiz.Shared;
 
 /// <summary>De wapens van een derby: elke speler krijgt er bij de aftrap één, en kan het één keer inzetten.</summary>
-public enum DerbyWeapon { RodeKaart, BengaalsVuur, Wissel, Trump, Gokchinees, Verlenging }
+public enum DerbyWeapon { RodeKaart, BengaalsVuur, Wissel, Trump, Gokchinees, Verlenging, PropereHanden }
 
 public record DerbyWeaponInfo(DerbyWeapon Weapon, string Name, string Icon, string HowTo);
 
@@ -17,14 +17,21 @@ public static class DerbyRules
         new(DerbyWeapon.BengaalsVuur, "Bengaals vuur", "🎆", "Steek het af: rode rook trekt over het scherm van al je tegenstanders en ze zien een hele tijd niets."),
         new(DerbyWeapon.Wissel, "Wissel", "🔁", "Iedereen krijgt een nieuwe vraag van hetzelfde type, met een volle timer."),
         new(DerbyWeapon.Trump, "Trump booster", "🟨", "Jouw antwoord wordt het juiste. Wie het echte antwoord gaf, heeft het fout. Enkel bij Snelvuur, Wie hoort er niet bij en Raad het jaar."),
-        new(DerbyWeapon.Gokchinees, "Gokchinees", "💰", "Koop een tegenstander om: alle punten die hij bij deze vraag haalt, gaan naar jou."),
+        new(DerbyWeapon.Gokchinees, "Gokchinees", "🎲", $"Dubbel of niks: haal je punten, dan worden ze verdubbeld. Lukt het niet, dan verlies je {GamblePenalty} punten. Je mag eerst de vraag zien."),
         new(DerbyWeapon.Verlenging, "Verlenging", "⏱️", $"Jij krijgt {ExtensionSeconds} seconden extra om te antwoorden."),
+        new(DerbyWeapon.PropereHanden, "Propere handen", "🧤", "Kies een tegenstander: de helft van de punten die hij bij deze vraag haalt, gaat naar jou."),
     ];
 
     public static DerbyWeaponInfo Get(DerbyWeapon weapon) => All.First(w => w.Weapon == weapon);
 
     /// <summary>Wapens waarbij je eerst een tegenstander kiest.</summary>
-    public static bool NeedsTarget(DerbyWeapon weapon) => weapon is DerbyWeapon.RodeKaart or DerbyWeapon.Gokchinees;
+    public static bool NeedsTarget(DerbyWeapon weapon) => weapon is DerbyWeapon.RodeKaart or DerbyWeapon.PropereHanden;
+
+    /// <summary>Gokchinees: zoveel punten kwijt als je bij die vraag niets haalt (je totaal zakt nooit onder 0).</summary>
+    public const int GamblePenalty = 50;
+
+    /// <summary>Propere handen: zoveel van de punten van het doelwit (bij die vraag) gaat naar de dief.</summary>
+    public static int Stolen(int points) => points / 2;
 
     /// <summary>Verlenging: zoveel seconden extra, enkel voor wie ze inzet.</summary>
     public const int ExtensionSeconds = 10;

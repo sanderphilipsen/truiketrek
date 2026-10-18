@@ -576,9 +576,6 @@ namespace VoetbalQuiz.Server.Data.Migrations
                     b.Property<int>("Bonus")
                         .HasColumnType("integer");
 
-                    b.Property<string>("BribedByUserId")
-                        .HasColumnType("text");
-
                     b.Property<int?>("Choice")
                         .HasColumnType("integer");
 
@@ -591,6 +588,9 @@ namespace VoetbalQuiz.Server.Data.Migrations
                     b.PrimitiveCollection<List<int>>("Found")
                         .IsRequired()
                         .HasColumnType("integer[]");
+
+                    b.Property<bool>("Gamble")
+                        .HasColumnType("boolean");
 
                     b.Property<bool>("GaveUp")
                         .HasColumnType("boolean");
@@ -613,6 +613,9 @@ namespace VoetbalQuiz.Server.Data.Migrations
 
                     b.Property<int>("SpeedPoints")
                         .HasColumnType("integer");
+
+                    b.Property<string>("StolenByUserId")
+                        .HasColumnType("text");
 
                     b.Property<string>("UserId")
                         .IsRequired()

@@ -235,8 +235,10 @@ public class MatchAnswer
     public int Bonus { get; set; }
     /// <summary>Derby: rode kaart gekregen van deze speler (halve punten voor deze vraag).</summary>
     public string? RedCardFromUserId { get; set; }
-    /// <summary>Derby (gokchinees): omgekocht door deze speler, die alle punten van deze vraag krijgt.</summary>
-    public string? BribedByUserId { get; set; }
+    /// <summary>Derby (propere handen): deze speler steelt de helft van de punten van deze vraag.</summary>
+    public string? StolenByUserId { get; set; }
+    /// <summary>Derby (gokchinees): dubbel of niks op deze vraag.</summary>
+    public bool Gamble { get; set; }
     /// <summary>Derby (verlenging): extra seconden voor deze speler bij deze vraag.</summary>
     public int ExtraSeconds { get; set; }
 }
