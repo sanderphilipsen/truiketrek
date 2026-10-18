@@ -1,7 +1,7 @@
 namespace VoetbalQuiz.Shared;
 
 /// <summary>De wapens van een derby: elke speler krijgt er bij de aftrap één, en kan het één keer inzetten.</summary>
-public enum DerbyWeapon { RodeKaart, BengaalsVuur, Wissel, Trump }
+public enum DerbyWeapon { RodeKaart, BengaalsVuur, Wissel, Trump, Gokchinees, Verlenging }
 
 public record DerbyWeaponInfo(DerbyWeapon Weapon, string Name, string Icon, string HowTo);
 
@@ -17,9 +17,17 @@ public static class DerbyRules
         new(DerbyWeapon.BengaalsVuur, "Bengaals vuur", "🎆", "Steek het af: rode rook trekt over het scherm van al je tegenstanders en ze zien een hele tijd niets."),
         new(DerbyWeapon.Wissel, "Wissel", "🔁", "Iedereen krijgt een nieuwe vraag van hetzelfde type, met een volle timer."),
         new(DerbyWeapon.Trump, "Trump booster", "🟨", "Jouw antwoord wordt het juiste. Wie het echte antwoord gaf, heeft het fout. Enkel bij Snelvuur, Wie hoort er niet bij en Raad het jaar."),
+        new(DerbyWeapon.Gokchinees, "Gokchinees", "💰", "Koop een tegenstander om: alle punten die hij bij deze vraag haalt, gaan naar jou."),
+        new(DerbyWeapon.Verlenging, "Verlenging", "⏱️", $"Jij krijgt {ExtensionSeconds} seconden extra om te antwoorden."),
     ];
 
     public static DerbyWeaponInfo Get(DerbyWeapon weapon) => All.First(w => w.Weapon == weapon);
+
+    /// <summary>Wapens waarbij je eerst een tegenstander kiest.</summary>
+    public static bool NeedsTarget(DerbyWeapon weapon) => weapon is DerbyWeapon.RodeKaart or DerbyWeapon.Gokchinees;
+
+    /// <summary>Verlenging: zoveel seconden extra, enkel voor wie ze inzet.</summary>
+    public const int ExtensionSeconds = 10;
 
     /// <summary>Hoe lang het bengaals vuur brandt en de rook het scherm van de anderen onleesbaar maakt (tot de vraag afloopt).</summary>
     public const double FlareSeconds = 12;
@@ -58,8 +66,8 @@ public static class DerbyRules
     }
 
     /// <summary>
-    /// Deelt de wapens uit: de vier worden geschud en om de beurt uitgedeeld, zodat er pas vanaf
-    /// vijf spelers dubbels zijn. Zonder keuzevragen aan tafel valt Trump weg.
+    /// Deelt de wapens uit: alle wapens worden geschud en om de beurt uitgedeeld, zodat er pas dubbels zijn
+    /// als er meer spelers dan wapens zijn. Zonder keuzevragen aan tafel valt Trump weg.
     /// </summary>
     public static List<DerbyWeapon> Deal(int players, bool trumpPossible, Random random)
     {

@@ -45,9 +45,12 @@
         _ when Derby.Ceasefire => "Wapenstilstand op de eerste en de laatste vraag",
         _ when Derby.CanUseWeapon && Phase is MatchPhase.Reveal or MatchPhase.Countdown => $"Klaarzetten voor vraag {Derby.WeaponFor}",
         _ when Derby.CanUseWeapon && weapon == DerbyWeapon.RodeKaart => "Tik en kies een tegenstander",
+        _ when Derby.CanUseWeapon && weapon == DerbyWeapon.Gokchinees => "Tik en kies wie je omkoopt",
         _ when Derby.CanUseWeapon && weapon == DerbyWeapon.BengaalsVuur => "Tik: het vuur gaat af bij al je tegenstanders",
+        _ when Derby.CanUseWeapon && weapon == DerbyWeapon.Verlenging => $"Tik: +{DerbyRules.ExtensionSeconds} seconden voor jou",
         _ when Derby.CanUseWeapon => "Nu inzetten!",
         _ when weapon == DerbyWeapon.Trump => "Bij een vraag met antwoordopties of een jaartal, vóór je antwoordt",
+        _ when weapon == DerbyWeapon.Verlenging => "Tijdens een vraag, vóór je antwoordt",
         _ when weapon is DerbyWeapon.Wissel or DerbyWeapon.BengaalsVuur => "In de eerste helft van een vraag",
         _ => "Nu even niet",
     };
@@ -64,6 +67,9 @@
             DerbyWeapon.Wissel => $"🔁 {by} vraagt een wissel aan: nieuwe vraag voor iedereen",
             DerbyWeapon.Trump => $"🟨 {by} zet de Trump booster in{pending}"
                                  + (e.Effect is > 0 ? $": tegenstanders −{e.Effect} punten" : ""),
+            DerbyWeapon.Gokchinees => $"💰 {by} koopt {(e.TargetIsMe ? "jou" : e.Target)} om{pending}"
+                                      + (e.Effect is > 0 ? $": +{e.Effect} punten" : ""),
+            DerbyWeapon.Verlenging => $"⏱️ {by} krijgt verlenging: +{DerbyRules.ExtensionSeconds} seconden{pending}",
             _ => "",
         };
     }

@@ -576,11 +576,17 @@ namespace VoetbalQuiz.Server.Data.Migrations
                     b.Property<int>("Bonus")
                         .HasColumnType("integer");
 
+                    b.Property<string>("BribedByUserId")
+                        .HasColumnType("text");
+
                     b.Property<int?>("Choice")
                         .HasColumnType("integer");
 
                     b.Property<bool>("Correct")
                         .HasColumnType("boolean");
+
+                    b.Property<int>("ExtraSeconds")
+                        .HasColumnType("integer");
 
                     b.PrimitiveCollection<List<int>>("Found")
                         .IsRequired()

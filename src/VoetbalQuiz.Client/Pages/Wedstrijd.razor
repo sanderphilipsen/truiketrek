@@ -131,7 +131,7 @@ else
                     <div class="countdown-number">@Math.Max(1, Math.Ceiling(-LocalElapsed))</div>
                 </div>
             }
-            <PlayerStrip Players="_state.Players" RedCards="RedCards" Picking="_picking" OnPick="RedCardAsync" />
+            <PlayerStrip Players="_state.Players" Marks="Marks" Unpickable="Unpickable" Picking="_picking" OnPick="PickAsync" />
             @if (_state.Derby is { } countdownDerby)
             {
                 <DerbyBar Derby="countdownDerby" Phase="_state.Phase" IAmIn="_state.IAmIn" Busy="_busy" Picking="_picking"
@@ -140,7 +140,7 @@ else
             break;
 
         case MatchPhase.Question:
-            <PlayerStrip Players="_state.Players" ShowAnswered="true" RedCards="RedCards" Picking="_picking" OnPick="RedCardAsync" />
+            <PlayerStrip Players="_state.Players" ShowAnswered="true" Marks="Marks" Unpickable="Unpickable" Picking="_picking" OnPick="PickAsync" />
             @if (_state.Derby is { } derby)
             {
                 <DerbyBar Derby="derby" Phase="_state.Phase" IAmIn="_state.IAmIn" Busy="_busy" Picking="_picking"
@@ -211,7 +211,7 @@ else
             {
                 @if (_picking)
                 {
-                    <PlayerStrip Players="_state.Players" Picking="true" OnPick="RedCardAsync" />
+                    <PlayerStrip Players="_state.Players" Unpickable="Unpickable" Picking="true" OnPick="PickAsync" />
                 }
                 <DerbyBar Derby="revealDerby" Phase="_state.Phase" IAmIn="_state.IAmIn" Busy="_busy" Picking="_picking"
                           OnUse="UseWeaponAsync" OnCancel="() => _picking = false" />
@@ -263,7 +263,7 @@ else
                             <span class="rank">@DerbyRules.Get(r.Weapon).Icon</span>
                             <Avatar Id="@r.AvatarId" User="@r.UserName" Size="36" />
                             <span class="player"><b>@r.UserName</b><small>@ReportLine(r)</small></span>
-                            @if (r.Effect > 0) { <span class="pts">−@r.Effect</span> }
+                            @if (r.Effect > 0) { <span class="pts">@(r.Weapon == DerbyWeapon.Gokchinees ? "+" : "−")@r.Effect</span> }
                         </li>
                     }
                 </ol>
@@ -336,8 +336,8 @@ else
             _syncedAt = DateTime.UtcNow;
             _syncedElapsed = state.PhaseElapsedSeconds;
             _state = state;
-            // Een doelwit kiezen hoort enkel bij een rode kaart die nog niet gebruikt is.
-            if (state.Derby is not { MyWeapon: DerbyWeapon.RodeKaart, MyWeaponUsed: false }) _picking = false;
+            // Een doelwit kiezen hoort enkel bij een rode kaart of gokchinees die nog niet gebruikt is.
+            if (state.Derby is not { MyWeapon: { } w, MyWeaponUsed: false } || !DerbyRules.NeedsTarget(w)) _picking = false;
             _error = null;
         }
         catch (ApiException ex) { _error = ex.Message; }
@@ -390,15 +390,25 @@ else
 
     // ---------- Derby ----------
 
-    /// <summary>Een rode kaart: eerst een tegenstander kiezen in de spelersrij.</summary>
+    /// <summary>Rode kaart of gokchinees: eerst een tegenstander kiezen in de spelersrij.</summary>
     private bool _picking;
 
-    private IReadOnlyCollection<string> RedCards =>
-        _state?.Derby?.Events.Where(e => e.Weapon == DerbyWeapon.RodeKaart && e.Since >= 0).Select(e => e.Target!).ToList() ?? [];
+    /// <summary>Per speler de kaartjes bij zijn avatar: 🟥 rood, 💰 omgekocht.</summary>
+    private IReadOnlyDictionary<string, string> Marks =>
+        (_state?.Derby?.Events ?? [])
+            .Where(e => e.Since >= 0 && e.Target is not null && e.Weapon is DerbyWeapon.RodeKaart or DerbyWeapon.Gokchinees)
+            .GroupBy(e => e.Target!)
+            .ToDictionary(g => g.Key, g => string.Concat(g.Select(e => DerbyRules.Get(e.Weapon).Icon)));
+
+    /// <summary>Wie je niet meer kan kiezen: die heeft dit wapen al tegen zich bij deze vraag.</summary>
+    private IReadOnlyCollection<string> Unpickable =>
+        _state?.Derby is { MyWeapon: { } weapon } derby
+            ? derby.Events.Where(e => e.Weapon == weapon && e.Target is not null).Select(e => e.Target!).ToList()
+            : [];
 
     private async Task UseWeaponAsync()
     {
-        if (_state?.Derby?.MyWeapon == DerbyWeapon.RodeKaart)
+        if (_state?.Derby?.MyWeapon is { } weapon && DerbyRules.NeedsTarget(weapon))
         {
             _picking = !_picking;
             return;
@@ -406,7 +416,7 @@ else
         await ApplyAsync(() => Api.UseWeaponAsync(Id, null), busy: true);
     }
 
-    private async Task RedCardAsync(string target)
+    private async Task PickAsync(string target)
     {
         _picking = false;
         await ApplyAsync(() => Api.UseWeaponAsync(Id, target), busy: true);
@@ -419,6 +429,8 @@ else
             DerbyWeapon.RodeKaart => $"Rood voor {r.Target} bij vraag {q}",
             DerbyWeapon.Trump => $"Trump booster bij vraag {q}",
             DerbyWeapon.BengaalsVuur => $"Bengaals vuur bij vraag {q}",
+            DerbyWeapon.Gokchinees => $"Kocht {r.Target} om bij vraag {q}",
+            DerbyWeapon.Verlenging => $"Verlenging bij vraag {q}",
             _ => $"Wissel bij vraag {q}",
         };
     private Task StartAsync() => ApplyAsync(() => Api.StartMatchAsync(Id), busy: true);

@@ -1258,12 +1258,16 @@ button.choice:active { transform: scale(.97); }
 .derby-corner {
     position: fixed; right: 8px; bottom: calc(env(safe-area-inset-bottom) + 70px); z-index: 45;
     display: flex; align-items: flex-end; gap: 4px; pointer-events: none;
+    /* Met veel wapens tegelijk worden de figuren kleiner in plaats van buiten beeld te vallen. */
+    justify-content: flex-end; max-width: calc(100vw - 16px);
 }
+.derby-corner .derby-figure { flex: 0 1 auto; min-width: 0; max-width: 110px; }
+.derby-corner .derby-figure svg { width: 100%; height: auto; }
 .derby-figure { margin: 0; display: flex; flex-direction: column; align-items: center; animation: figure-in .5s cubic-bezier(.2, .9, .3, 1.3) both; }
 .derby-figure svg { display: block; filter: drop-shadow(0 6px 10px rgba(0, 0, 0, .45)); }
 .derby-figure figcaption {
     margin-top: -4px; background: rgba(0, 0, 0, .75); color: #fff; font-size: .66rem; font-weight: 700;
-    padding: 2px 7px; border-radius: 999px; white-space: nowrap;
+    padding: 2px 7px; border-radius: 10px; text-align: center; max-width: 110px;
 }
 @keyframes figure-in { from { transform: translateY(120%); } }
 
@@ -1292,6 +1296,23 @@ button.choice:active { transform: scale(.97); }
 @keyframes hair-flap { to { transform: rotate(-4deg) translateY(-2px); } }
 @keyframes thumb-pump { to { transform: translateY(-5px) rotate(-6deg); } }
 @keyframes bubble-pop { 0%, 60%, 100% { transform: scale(1); } 70% { transform: scale(1.18) rotate(-4deg); } }
+
+/* Gokbaas: wiegt mee, biljet waait weg, sigaar rookt */
+.gokbaas svg { animation: trump-sway 1.8s ease-in-out infinite; transform-origin: 50% 100%; }
+.gokbaas .gb-case { transform-origin: 92px 128px; animation: case-shake .9s ease-in-out infinite; }
+.gokbaas .gb-bill { animation: bill-fly 2.2s ease-in infinite; }
+.gokbaas .gb-smoke { animation: cigar-smoke 1.6s ease-out infinite; }
+@keyframes case-shake { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-5deg) translateY(-2px); } }
+@keyframes bill-fly {
+    0% { transform: translate(70px, 70px) rotate(0); opacity: 0; }
+    15% { opacity: 1; }
+    100% { transform: translate(-6px, -40px) rotate(-200deg); opacity: 0; }
+}
+@keyframes cigar-smoke { from { opacity: .9; transform: translateY(0); } to { opacity: 0; transform: translateY(-8px); } }
+
+/* Vierde official: het lichtbord gaat op en neer, de cijfers knipperen */
+.official svg { animation: fan-bounce .6s ease-in-out infinite alternate; }
+.official .of-board text { animation: led-blink 1s steps(2) infinite; }
 
 /* Rode rook van het bengaals vuur. Ze komt uit de fakkel van het mannetje rechtsonder (--fx/--fy),
    wolkjes blijven aanvoeren zolang het vuur brandt (--life), en alles loopt synchroon via een negatieve delay. */
@@ -1352,6 +1373,7 @@ button.choice:active { transform: scale(.97); }
     .derby-weapon-btn:not(:disabled) .dw-icon, .player-strip.picking .strip-player.pickable, .sub-board .in { animation: none; }
     .flare-fan svg, .flare-fan .flare-fire, .flare-fan .flare-sparks circle,
     .trump svg, .trump .trump-tie, .trump .trump-hair, .trump .trump-thumb, .trump-bubble { animation: none; }
+    .gokbaas svg, .gokbaas .gb-case, .gokbaas .gb-bill, .gokbaas .gb-smoke, .official svg, .official .of-board text { animation: none; }
     /* Geen drijvende rook, wel een vaste rode waas zolang het vuur brandt. */
     .derby-smoke { animation: none; background: rgba(170, 15, 28, .9); }
     .derby-smoke .puff { display: none; }

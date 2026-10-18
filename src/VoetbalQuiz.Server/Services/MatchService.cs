@@ -183,6 +183,16 @@ public class MatchService(
 
     private double Elapsed(MatchQuestion q) => (Now - q.StartsAt!.Value).TotalSeconds;
 
+    /// <summary>De tijd van deze speler voor deze vraag: met een verlenging (derby) wat langer.</summary>
+    private static double LimitFor(MatchQuestion q, MatchAnswer? a) => TimeLimit(q) + (a?.ExtraSeconds ?? 0);
+
+    /// <summary>
+    /// De tijd waarmee een antwoord gescoord wordt. In de verlenging telt het als op de valreep
+    /// (de laagste punten van een juist antwoord), niet als te laat.
+    /// </summary>
+    private double ScoringElapsed(MatchQuestion q, MatchAnswer a) =>
+        a.ExtraSeconds > 0 ? Math.Min(Elapsed(q), TimeLimit(q) - 0.01) : Elapsed(q);
+
     // ---------- Spelen ----------
 
     public async Task<MatchState> GuessAsync(string userId, int matchId, string? guess)
@@ -196,7 +206,7 @@ public class MatchService(
         {
             answer.LastGuess = trimmed;
             var attempt = AsAttempt(userId, answer);
-            var outcome = QuestionEngine.Guess(AsDaily(question), attempt, trimmed, Elapsed(question));
+            var outcome = QuestionEngine.Guess(AsDaily(question), attempt, trimmed, ScoringElapsed(question, answer));
             (answer.Choice, answer.Found, answer.Skipped) = (attempt.Choice, attempt.Found, attempt.Skipped);
             if (outcome.Wrong)
             {
@@ -236,10 +246,10 @@ public class MatchService(
         var question = CurrentQuestion(match);
         if (me is null || match.Status != MatchStatus.Running || question is null || PhaseOf(match, question) != MatchPhase.Question)
             return (match, null, null);
-        if (Elapsed(question) > TimeLimit(question) + GameRules.LatencyGraceSeconds)
+        var answer = question.Answers.SingleOrDefault(a => a.UserId == userId);
+        if (Elapsed(question) > LimitFor(question, answer) + GameRules.LatencyGraceSeconds)
             return (match, null, null);
 
-        var answer = question.Answers.SingleOrDefault(a => a.UserId == userId);
         if (answer is null)
         {
             answer = new MatchAnswer { UserId = userId };
@@ -262,9 +272,9 @@ public class MatchService(
             ?? throw new QuizException("Je zit niet aan deze tafel.");
         if (me.Weapon is not { } weapon) throw new QuizException("Je hebt geen wapen.");
 
-        var targetPlayer = weapon == DerbyWeapon.RodeKaart
+        var targetPlayer = DerbyRules.NeedsTarget(weapon)
             ? match.Players.SingleOrDefault(p => p.User.UserName == target && p.LeftAt == null && p.UserId != userId)
-                ?? throw new QuizException("Kies een tegenstander voor je rode kaart.")
+                ?? throw new QuizException("Kies eerst een tegenstander.")
             : null;
         var (question, elapsed) = WeaponTarget(match);
         if (WhyNot(match, me, question, elapsed, targetPlayer) is { } why) throw new QuizException(why);
@@ -273,14 +283,15 @@ public class MatchService(
         switch (weapon)
         {
             case DerbyWeapon.RodeKaart:
-                var answer = question!.Answers.SingleOrDefault(a => a.UserId == targetPlayer!.UserId);
-                if (answer is null)
-                {
-                    answer = new MatchAnswer { UserId = targetPlayer!.UserId };
-                    question.Answers.Add(answer);
-                }
-                answer.RedCardFromUserId = userId;
-                me.WeaponTargetUserId = targetPlayer!.UserId;
+                AnswerOf(question!, targetPlayer!.UserId).RedCardFromUserId = userId;
+                me.WeaponTargetUserId = targetPlayer.UserId;
+                break;
+            case DerbyWeapon.Gokchinees:
+                AnswerOf(question!, targetPlayer!.UserId).BribedByUserId = userId;
+                me.WeaponTargetUserId = targetPlayer.UserId;
+                break;
+            case DerbyWeapon.Verlenging:
+                AnswerOf(question!, userId).ExtraSeconds = DerbyRules.ExtensionSeconds;
                 break;
             case DerbyWeapon.BengaalsVuur:
                 question!.FlareUserId = userId;
@@ -298,6 +309,18 @@ public class MatchService(
         me.WeaponQuestion = question!.Number;
         await SaveAndNotifyAsync(match, lobby: false);
         return await GetStateAsync(userId, matchId);
+    }
+
+    /// <summary>De antwoordrij van een speler bij een vraag; bestaat ze nog niet, dan wordt ze aangemaakt.</summary>
+    private static MatchAnswer AnswerOf(MatchQuestion question, string userId)
+    {
+        var answer = question.Answers.SingleOrDefault(a => a.UserId == userId);
+        if (answer is null)
+        {
+            answer = new MatchAnswer { UserId = userId };
+            question.Answers.Add(answer);
+        }
+        return answer;
     }
 
     /// <summary>
@@ -375,18 +398,26 @@ public class MatchService(
             DerbyWeapon.Trump when question.Answers.Any(a => a.UserId == me.UserId && a.AnsweredAt != null) => "Zet Trump in vóór je antwoordt.",
             // Anders is het een herkansing: fout antwoorden, het zien, en dan wisselen.
             DerbyWeapon.Wissel when question.Answers.Any(a => a.UserId == me.UserId && a.AnsweredAt != null) => "Wisselen kan enkel vóór je antwoordt.",
-            DerbyWeapon.RodeKaart when target is not null && question.Answers.Any(a => a.UserId == target.UserId && a.RedCardFromUserId != null)
+            DerbyWeapon.Verlenging when question.Answers.Any(a => a.UserId == me.UserId && a.AnsweredAt != null) => "Een verlenging vraag je vóór je antwoordt.",
+            DerbyWeapon.RodeKaart when target is not null && Hit(question, target.UserId, weapon)
                 => $"{target.User.UserName} heeft al rood bij deze vraag.",
-            DerbyWeapon.RodeKaart when target is null && !match.Players.Any(p => p.UserId != me.UserId && p.LeftAt == null
-                    && !question.Answers.Any(a => a.UserId == p.UserId && a.RedCardFromUserId != null))
-                => "Iedereen heeft al rood bij deze vraag.",
+            DerbyWeapon.Gokchinees when target is not null && Hit(question, target.UserId, weapon)
+                => $"{target.User.UserName} is al omgekocht bij deze vraag.",
+            DerbyWeapon.RodeKaart or DerbyWeapon.Gokchinees when target is null
+                    && !match.Players.Any(p => p.UserId != me.UserId && p.LeftAt == null && !Hit(question, p.UserId, weapon))
+                => "Er is niemand meer om te kiezen bij deze vraag.",
             _ => null,
         };
     }
 
+    /// <summary>Heeft deze speler bij deze vraag al een rode kaart (of: is hij al omgekocht)?</summary>
+    private static bool Hit(MatchQuestion question, string userId, DerbyWeapon weapon) =>
+        question.Answers.Any(a => a.UserId == userId
+            && (weapon == DerbyWeapon.Gokchinees ? a.BribedByUserId != null : a.RedCardFromUserId != null));
+
     /// <summary>
     /// Wissel: dezelfde nieuwe vraag (van hetzelfde type) voor iedereen, met een volle timer na het wisselbord.
-    /// De antwoorden, het vuur en de Trump booster van de oude vraag vervallen; rode kaarten blijven staan.
+    /// De antwoorden, het vuur en de Trump booster van de oude vraag vervallen; rode kaarten, omkoping en verlenging blijven staan.
     /// </summary>
     private async Task SwapAsync(Match match, MatchQuestion question)
     {
@@ -407,7 +438,8 @@ public class MatchService(
 
         foreach (var answer in question.Answers.ToList())
         {
-            if (answer.RedCardFromUserId is null)
+            // Rode kaarten, omkoping en verlenging blijven gelden voor de nieuwe vraag.
+            if (answer is { RedCardFromUserId: null, BribedByUserId: null, ExtraSeconds: 0 })
             {
                 db.MatchAnswers.Remove(answer);
                 question.Answers.Remove(answer);
@@ -464,6 +496,23 @@ public class MatchService(
         }
     }
 
+    /// <summary>
+    /// Gokchinees: alles wat de omgekochte speler bij deze vraag haalt (na een eventuele rode kaart),
+    /// gaat naar wie hem omkocht. Geeft per omkoper het bedrag terug, om bij de score op te tellen.
+    /// </summary>
+    private static Dictionary<string, int> ApplyBribes(Match match, MatchQuestion question)
+    {
+        var gains = new Dictionary<string, int>();
+        foreach (var answer in question.Answers.Where(a => a.BribedByUserId != null))
+        {
+            var amount = answer.SpeedPoints + answer.Bonus;
+            (answer.SpeedPoints, answer.Bonus) = (0, 0);
+            gains[answer.BribedByUserId!] = gains.GetValueOrDefault(answer.BribedByUserId!) + amount;
+            match.Players.Single(p => p.UserId == answer.BribedByUserId).WeaponEffect = amount;
+        }
+        return gains;
+    }
+
     private DerbyState Derby(Match match, MatchQuestion? question, MatchPhase phase, string userId, Dictionary<string, ResultsService.UserCard> cards)
     {
         var me = match.Players.SingleOrDefault(p => p.UserId == userId);
@@ -478,7 +527,8 @@ public class MatchService(
             var since = q.StartsAt is { } start
                 ? (Now - new[] { player.WeaponUsedAt ?? Now, start }.Max()).TotalSeconds
                 : -1;
-            int? effect = q.EndedAt is null || weapon is DerbyWeapon.BengaalsVuur or DerbyWeapon.Wissel ? null : player.WeaponEffect;
+            int? effect = q.EndedAt is null || weapon is DerbyWeapon.BengaalsVuur or DerbyWeapon.Wissel or DerbyWeapon.Verlenging
+                ? null : player.WeaponEffect;
             return new DerbyEvent(weapon, Name(by), cards.GetValueOrDefault(by)?.AvatarId, by == userId,
                 to is null ? null : Name(to), to == userId, since, effect);
         }
@@ -490,9 +540,12 @@ public class MatchService(
             if (q.TrumpUserId is { } trump) list.Add(Event(q, DerbyWeapon.Trump, trump));
             foreach (var a in q.Answers.Where(a => a.RedCardFromUserId != null))
                 list.Add(Event(q, DerbyWeapon.RodeKaart, a.RedCardFromUserId!, a.UserId));
-            // Klaargezet voor een vraag die nog niet begon: enkel wie het klaarzette ziet het (een wissel zie je meteen).
-            var started = q.StartsAt is { } s && s <= Now;
-            return list.Where(e => started || e.ByMe || e.Weapon == DerbyWeapon.Wissel).ToList();
+            foreach (var a in q.Answers.Where(a => a.BribedByUserId != null))
+                list.Add(Event(q, DerbyWeapon.Gokchinees, a.BribedByUserId!, a.UserId));
+            foreach (var a in q.Answers.Where(a => a.ExtraSeconds > 0))
+                list.Add(Event(q, DerbyWeapon.Verlenging, a.UserId));
+            // Iedereen ziet alles meteen, ook wat klaargezet is voor de volgende vraag (Since < 0).
+            return list;
         }
 
         var events = new List<DerbyEvent>();
@@ -567,7 +620,9 @@ public class MatchService(
 
         if (question.EndedAt is null)
         {
-            var timeUp = Elapsed(question) > TimeLimit(question) + GameRules.LatencyGraceSeconds;
+            // Met een verlenging loopt de vraag door tot ook die speler zijn tijd op is.
+            var extra = question.Answers.Select(a => a.ExtraSeconds).DefaultIfEmpty(0).Max();
+            var timeUp = Elapsed(question) > TimeLimit(question) + extra + GameRules.LatencyGraceSeconds;
             var allDone = active.All(p => question.Answers.Any(a => a.UserId == p.UserId && a.AnsweredAt != null));
             if (!timeUp && !allDone) return false;
             EndQuestion(match, question);
@@ -602,8 +657,11 @@ public class MatchService(
             position++;
         }
         ApplyRedCards(match, question);
+        var bribes = ApplyBribes(match, question);
         foreach (var answer in question.Answers)
             match.Players.Single(p => p.UserId == answer.UserId).Score += answer.SpeedPoints + answer.Bonus;
+        foreach (var (briber, amount) in bribes)
+            match.Players.Single(p => p.UserId == briber).Score += amount;
     }
 
     private void Finish(Match match)
@@ -635,7 +693,7 @@ public class MatchService(
         {
             var daily = AsDaily(question);
             var attempt = AsAttempt(userId, myAnswer);
-            limit = QuestionEngine.TimeLimit(daily);
+            limit = LimitFor(question, myAnswer); // met een verlenging: jouw eigen, langere tijd
             switch (phase)
             {
                 case MatchPhase.Countdown:

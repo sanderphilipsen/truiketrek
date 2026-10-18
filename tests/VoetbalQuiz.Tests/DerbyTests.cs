@@ -90,9 +90,10 @@ public sealed class DerbyTests : IDisposable
     public void Weapons_are_dealt_without_duplicates_up_to_four_players()
     {
         var random = new Random(1);
-        Assert.Equal(4, DerbyRules.Deal(4, true, random).Distinct().Count());
+        Assert.Equal(6, DerbyRules.Deal(6, true, random).Distinct().Count());
         Assert.Equal(3, DerbyRules.Deal(3, true, random).Distinct().Count());
-        Assert.Equal(4, DerbyRules.Deal(6, true, random).Distinct().Count());
+        Assert.Equal(6, DerbyRules.Deal(8, true, random).Distinct().Count());
+        Assert.Equal(5, DerbyRules.Deal(5, false, random).Distinct().Count());
         Assert.DoesNotContain(DerbyWeapon.Trump, DerbyRules.Deal(8, false, random));
     }
 
@@ -240,6 +241,66 @@ public sealed class DerbyTests : IDisposable
     }
 
     [Fact]
+    public async Task Gokchinees_takes_all_points_of_the_bribed_player()
+    {
+        var id = await AtQuestionTwoAsync();
+        Give(id, _host, DerbyWeapon.Gokchinees);
+        Give(id, _third, DerbyWeapon.Gokchinees);
+        await Assert.ThrowsAsync<QuizException>(() => _matches.UseWeaponAsync(_host, id, null)); // zonder doelwit
+        await _matches.UseWeaponAsync(_host, id, "gast");
+        await Assert.ThrowsAsync<QuizException>(() => _matches.UseWeaponAsync(_third, id, "gast")); // al omgekocht
+
+        var seen = Assert.Single((await _matches.GetStateAsync(_third, id)).Derby!.Events);
+        Assert.Equal((DerbyWeapon.Gokchinees, "host", "gast"), (seen.Weapon, seen.By, seen.Target));
+
+        var (q, _) = await CurrentAsync(id);
+        await _matches.GuessAsync(_guest, id, q.Correct.ToString()); // 100 + 50 bonus
+        await Tick(QuestionRules.SnelvuurSeconds + 1);
+
+        var reveal = await _matches.GetStateAsync(_host, id);
+        Assert.Equal(0, reveal.Players.Single(p => p.UserName == "gast").Score);
+        Assert.Equal(150, reveal.Players.Single(p => p.UserName == "host").Score);
+        Assert.Equal(150, reveal.Derby!.Events.Single().Effect);
+    }
+
+    [Fact]
+    public async Task Verlenging_gives_only_you_ten_seconds_more()
+    {
+        var id = await AtQuestionTwoAsync();
+        Give(id, _guest, DerbyWeapon.Verlenging);
+        var used = await _matches.UseWeaponAsync(_guest, id, null);
+        Assert.Equal(QuestionRules.SnelvuurSeconds + DerbyRules.ExtensionSeconds, used.TimeLimit);
+        Assert.Equal(QuestionRules.SnelvuurSeconds, (await _matches.GetStateAsync(_host, id)).TimeLimit);
+        Assert.Equal(DerbyWeapon.Verlenging, Assert.Single((await _matches.GetStateAsync(_host, id)).Derby!.Events).Weapon);
+
+        await _matches.GiveUpAsync(_host, id);
+        await _matches.GiveUpAsync(_third, id);
+        await Tick(QuestionRules.SnelvuurSeconds + 3); // de gewone tijd is om, de verlenging loopt nog
+        var late = await _matches.GetStateAsync(_guest, id);
+        Assert.Equal(MatchPhase.Question, late.Phase);
+
+        var (q, _) = await CurrentAsync(id);
+        var answered = await _matches.GuessAsync(_guest, id, q.Correct.ToString());
+        Assert.True(answered.MyCorrect);
+        await Tick(0.1);
+        var reveal = await _matches.GetStateAsync(_guest, id);
+        Assert.Equal(MatchPhase.Reveal, reveal.Phase);
+        Assert.InRange(reveal.MyPoints, 50 + 50, 60 + 50); // telt als op de valreep, plus de bonus van de eerste juiste
+    }
+
+    [Fact]
+    public async Task Verlenging_runs_out_too()
+    {
+        var id = await AtQuestionTwoAsync();
+        Give(id, _guest, DerbyWeapon.Verlenging);
+        await _matches.UseWeaponAsync(_guest, id, null);
+        await Tick(QuestionRules.SnelvuurSeconds + 3);
+        Assert.Equal(MatchPhase.Question, (await _matches.GetStateAsync(_host, id)).Phase);
+        await Tick(DerbyRules.ExtensionSeconds);
+        Assert.Equal(MatchPhase.Reveal, (await _matches.GetStateAsync(_host, id)).Phase);
+    }
+
+    [Fact]
     public async Task Swap_is_not_a_second_chance_after_your_own_answer()
     {
         var id = await AtQuestionTwoAsync();
@@ -321,7 +382,8 @@ public sealed class DerbyTests : IDisposable
         var state = await _matches.UseWeaponAsync(_host, id, null);
         Assert.Equal(2, state.Derby!.WeaponFor);
         Assert.True(Assert.Single(state.Derby.Events).Since < 0);  // klaargezet
-        Assert.Empty((await _matches.GetStateAsync(_guest, id)).Derby!.Events); // geheim tot de aftrap
+        // Iedereen ziet meteen dat er vuur klaarstaat voor de volgende vraag.
+        Assert.True(Assert.Single((await _matches.GetStateAsync(_guest, id)).Derby!.Events).Since < 0);
 
         await Tick(MatchRules.RevealSeconds);
         await Tick(1);
