@@ -817,7 +817,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2015_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2014-2015/kalender/finale/club-brugge/anderlecht"],
-    "tags": ["rode-duivels", "anderlecht"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "anderlecht", "beker-van-belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Bekerfinale 2016: Club Brugge – Standard (1-2)",
@@ -837,7 +837,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2016_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2015-2016/kalender/finale/club-brugge/standard"],
-    "tags": [], "checkedAt": "2026-10-17"
+    "tags": ["beker-van-belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Croky Cup-finale 2018: Genk – Standard (0-1 n.v.)",
@@ -857,7 +857,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2018_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2017-2018/kalender/finale/krc-genk/standard"],
-    "tags": [], "checkedAt": "2026-10-17"
+    "tags": ["beker-van-belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Croky Cup-finale 2019: Gent – KV Mechelen (1-2)",
@@ -877,7 +877,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2019_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2018-2019/kalender/finale/kaa-gent/kv-mechelen"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "beker-van-belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Croky Cup-finale 2020: Club Brugge – Antwerp (0-1)",
@@ -897,7 +897,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2020_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2019-2020/kalender/finale/club-brugge/antwerp", "https://sporza.be/nl/matches/voetbal/croky-cup/2019-2020/finale/01/club-brugge-antwerp-underdog-antwerp-houdt-club-brugge-van-dubbel-in-bekerfinale~1566819600928/"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "beker-van-belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Croky Cup-finale 2021: Standard – Genk (1-2)",
@@ -917,7 +917,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2021_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2020-2021/kalender/finale/standard/krc-genk"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "beker-van-belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Croky Cup-finale 2022: Gent – Anderlecht (0-0, 4-3 n.s.)",
@@ -937,7 +937,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2022_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2021-2022/kalender/finale/kaa-gent/anderlecht"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "beker-van-belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Croky Cup-finale 2023: KV Mechelen – Antwerp (0-2)",
@@ -957,7 +957,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2023_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2022-2023/kalender/finale/kv-mechelen/antwerp"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "beker-van-belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Croky Cup-finale 2024: Union – Antwerp (1-0)",
@@ -977,7 +977,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2024_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2023-2024/kalender/finale/union-sg/antwerp"],
-    "tags": [], "checkedAt": "2026-10-17"
+    "tags": ["beker-van-belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Croky Cup-finale 2025: Club Brugge – Anderlecht (2-1)",
@@ -997,7 +997,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2025_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2024-2025/kalender/finale/club-brugge/anderlecht"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "beker-van-belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Croky Cup-finale 2026: Union – Anderlecht (3-1 n.v.)",
@@ -1017,7 +1017,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2026_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2025-2026/kalender/finale/union-sg/anderlecht"],
-    "tags": ["rode-duivels", "anderlecht"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "anderlecht", "beker-van-belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Standard – Anderlecht, titelmatch 2008 (2-0)",

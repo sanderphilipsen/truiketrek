@@ -50,6 +50,6 @@ Voor meerdere spelers of veel opzoekwerk: laat de agent `speler-redacteur` schri
 - `answers`: enkel extra aanvaarde antwoorden naast de volledige naam (achternaam, bekende bijnaam). Tikfouten, accenten en fonetiek regelt `AnswerMatcher` zelf. Deel twee spelers een achternaam (Eden/Thorgan Hazard), zet dan de voornaam erbij als antwoord.
 - `era`: `modern` of `classic` (max. 2 klassiekers per dag).
 - `difficulty`: 1 = iedereen kent het, 2 = makkelijk, 3 = voetbalfan, 4 = moeilijk, 5 = echte kenner. De daily en specials tonen het gemiddelde als 0–5 sterren op het beginscherm.
-- `tags`, enkel bestaande: `rode-duivels`, `champions-league`, `legende` (alle klassiekers), `gouden-schoen`, `anderlecht`, `club-brugge`, `standard`, `oranje`, `wk`, `familie`, `curiosa`, en de feestdagen `kerst`, `nieuwjaar`, `halloween`, `sinterklaas`. Specials en affiches selecteren op deze tags.
+- `tags`, enkel bestaande: `rode-duivels`, `champions-league`, `legende` (alle klassiekers), `gouden-schoen`, `anderlecht`, `club-brugge`, `standard`, `oranje`, `wk`, `familie`, `curiosa`, `beker-van-belgie`, en de feestdagen `kerst`, `nieuwjaar`, `halloween`, `sinterklaas`. Specials en affiches selecteren op deze tags.
 - `status`: nieuw = `"review"`. Zet pas `"approved"` + `"checkedAt": "JJJJ-MM-DD"` als elk feit gecontroleerd is en er minstens één bron is. Enkel goedgekeurde spelers komen in de quiz.
 - Schrijf in vlot Vlaams-Nederlands. Feiten die kunnen verouderen (huidige club) liever in het verleden formuleren.

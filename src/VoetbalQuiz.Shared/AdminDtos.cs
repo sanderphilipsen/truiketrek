@@ -42,6 +42,7 @@ public static class PlayerTags
         ("wk", "WK-geschiedenis"),
         ("familie", "Voetbalfamilie (vader/zoon, broers)"),
         ("curiosa", "Curiosa en blunders (1 april)"),
+        ("beker-van-belgie", "Beker van België (Croky Cup)"),
     ];
 
     /// <summary>Een special kan meerdere thema's combineren, bv. "anderlecht,club-brugge" voor de topper.</summary>
@@ -125,6 +126,9 @@ public static class SpecialTemplates
             [QuestionType.WieBenIk, QuestionType.Emoji, QuestionType.Rugnummer, QuestionType.Mannetje, QuestionType.Kluts, QuestionType.Counter]),
         new("legendes", "Legendes Special", "🏛️", "Den dezen van vroeger: de grootste namen uit de voetbalgeschiedenis.",
             "legende", null, null, [QuestionType.WieBenIk, QuestionType.Carriere, QuestionType.Jaar, QuestionType.Mannetje, QuestionType.Kluts]),
+        new("croky-cup", "Croky Cup Special", "🏆", "Bekervoetbal! Van Lierse in '99 tot Union in 2026: ken jij de finales van de Beker van België?",
+            "beker-van-belgie", null, null,
+            [QuestionType.Opstelling, QuestionType.Snelvuur, QuestionType.NietBij, QuestionType.Jaar, QuestionType.WieBenIk]),
         new("deadline-day", "Transfer Deadline Day", "⏰", "De transfermarkt sluit! Raad de spraakmakendste transfers en carrières.",
             null, 9, 1, [QuestionType.Wissel, QuestionType.Carriere]),
 

@@ -1610,6 +1610,7 @@
       "https://en.wikipedia.org/wiki/2020_Belgian_Cup_final"
     ],
     "tags": [
+      "beker-van-belgie",
       "sinterklaas"
     ]
   },
@@ -1744,6 +1745,87 @@
       "https://en.wikipedia.org/wiki/Franky_Vercauteren"
     ],
     "tags": [
+      "anderlecht"
+    ]
+  },
+  {
+    "event": "Tweedeklasser KV Mechelen wint de Beker van België met 2-1 tegen AA Gent.",
+    "year": 2019,
+    "difficulty": 3,
+    "status": "approved", "checkedAt": "2026-10-18",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals",
+      "https://en.wikipedia.org/wiki/2019_Belgian_Cup_final"
+    ],
+    "tags": [
+      "beker-van-belgie"
+    ]
+  },
+  {
+    "event": "Zulte Waregem wint de Beker van België na strafschoppen tegen KV Oostende.",
+    "year": 2017,
+    "difficulty": 4,
+    "status": "approved", "checkedAt": "2026-10-18",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals",
+      "https://en.wikipedia.org/wiki/2017_Belgian_Cup_final"
+    ],
+    "tags": [
+      "beker-van-belgie"
+    ]
+  },
+  {
+    "event": "Union Saint-Gilloise wint de Beker van België met 1-0 tegen Antwerp, de eerste beker van de Brusselaars in 110 jaar.",
+    "year": 2024,
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals",
+      "https://en.wikipedia.org/wiki/2024_Belgian_Cup_final"
+    ],
+    "tags": [
+      "beker-van-belgie"
+    ]
+  },
+  {
+    "event": "AA Gent wint de bekerfinale tegen Anderlecht na een 0-0 pas in de strafschoppenreeks.",
+    "year": 2022,
+    "difficulty": 3,
+    "status": "approved", "checkedAt": "2026-10-18",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals",
+      "https://en.wikipedia.org/wiki/2022_Belgian_Cup_final"
+    ],
+    "tags": [
+      "beker-van-belgie",
+      "anderlecht"
+    ]
+  },
+  {
+    "event": "Lierse wint de Beker van België met 3-1 tegen Standard.",
+    "year": 1999,
+    "difficulty": 5,
+    "status": "approved", "checkedAt": "2026-10-18",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals"
+    ],
+    "tags": [
+      "beker-van-belgie",
+      "standard"
+    ]
+  },
+  {
+    "event": "Club Brugge wint de Beker van België met een 2-1-zege tegen Anderlecht in het Koning Boudewijnstadion.",
+    "year": 2025,
+    "difficulty": 2,
+    "status": "approved", "checkedAt": "2026-10-18",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals",
+      "https://en.wikipedia.org/wiki/2025_Belgian_Cup_final"
+    ],
+    "tags": [
+      "beker-van-belgie",
+      "club-brugge",
       "anderlecht"
     ]
   }
