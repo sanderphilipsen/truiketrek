@@ -5,7 +5,7 @@ using VoetbalQuiz.Shared;
 namespace VoetbalQuiz.Server.Services;
 
 /// <summary>Badges, bekers per seizoen en het spelersprofiel met head-to-head.</summary>
-public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsService results, OnlineService online, MonthRankingService ranking)
+public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsService results, OnlineService online, MonthRankingService ranking, GoldenBallService goldenBall)
 {
     private static readonly TimeZoneInfo Brussels = TimeZoneInfo.FindSystemTimeZoneById("Europe/Brussels");
 
@@ -13,7 +13,7 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
     private record Facts(
         int DaysPlayed, int LongestStreak, int PerfectDays, int FirstHintHits, int DaysWon, int BestDay, int WrongGuesses,
         bool NightOwl, bool EarlyBird, int MatchesPlayed, int MatchesWon, int SpecialsPlayed, int SpecialsWon,
-        int Level, int SeasonTitles,
+        int Level, int GoldenBalls, int GoldenBallStreak, int SilverBalls,
         int TypesPlayed, int ExactYears, int FastSnelvuur, int NietBijHits, int FirstClubHits, int EmojiHits,
         int FullLineups, int MonthPodiums, int OnlineWinStreak, bool FullWeek, int RedDevilHits, int ChampionsHits,
         int CleanDays, int TotalPoints, int CorrectTotal, int Stubborn, int LastSecond, int BigTableWins, int Rating);
@@ -38,7 +38,7 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
         new("tafelkampioen", "🏆", "Tafelkampioen", "Win 10 online wedstrijden", BadgeTier.Goud, f => f.MatchesWon, 10),
         new("feestganger", "✨", "Feestganger", "Speel een special", BadgeTier.Brons, f => f.SpecialsPlayed, 1),
         new("specialist", "🎉", "Specialist", "Win een special", BadgeTier.Goud, f => f.SpecialsWon, 1),
-        new("seizoenskampioen", "🏆", "Seizoenskampioen", "Word maandkampioen", BadgeTier.Goud, f => f.SeasonTitles, 1),
+        new("seizoenskampioen", "⚽", "Gouden Bal", "Win de Gouden Bal: word nummer 1 van een maand", BadgeTier.Goud, f => f.GoldenBalls, 1),
         new("basisspeler", "⭐", "Basisspeler", "Bereik level 10", BadgeTier.Zilver, f => f.Level, 10),
         new("rode-duivel", "🌟", "Rode Duivel", "Bereik level 20", BadgeTier.Goud, f => f.Level, 20),
         new("nachtuil", "🦉", "Nachtuil", "Speel een vraag tussen middernacht en 5 uur", BadgeTier.Brons, f => f.NightOwl ? 1 : 0, 1),
@@ -63,6 +63,12 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
         // Regelmaat en klassement
         new("volle-week", "🗓️", "Volle week", "Speel elke dag van een kalenderweek (ma–zo)", BadgeTier.Brons, f => f.FullWeek ? 1 : 0, 1),
         new("maandpodium", "🥉", "Maandpodium", "Eindig in de top 3 van een maand", BadgeTier.Zilver, f => f.MonthPodiums, 1),
+        // Gouden Bal (de nummer 1 van een maand, zie GoldenBallService)
+        new("zilveren-bal", "🥈", "Zilveren Bal", "Eindig als tweede in het maandklassement", BadgeTier.Zilver, f => f.SilverBalls, 1),
+        new("titelverdediger", "🛡️", "Titelverdediger", "Win de Gouden Bal twee maanden na elkaar", BadgeTier.Goud, f => f.GoldenBallStreak, 2),
+        new("gouden-hattrick", "🎩", "Gouden hattrick", "Win 3 Gouden Ballen", BadgeTier.Goud, f => f.GoldenBalls, 3),
+        new("messi-niveau", "💫", "Messi-niveau", "Win 8 Gouden Ballen, net als Messi", BadgeTier.Goud, f => f.GoldenBalls, 8),
+
         new("specials-verzamelaar", "🎁", "Specials-verzamelaar", "Speel 5 specials", BadgeTier.Zilver, f => f.SpecialsPlayed, 5),
 
         // Online
@@ -188,6 +194,7 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
         var matches = await db.MatchPlayers.Where(p => p.UserId == userId && p.Match.Status == MatchStatus.Finished)
             .OrderBy(p => p.Match.FinishedAt)
             .Select(p => p.Rank).ToListAsync();
+        var goldenBalls = await goldenBall.WonByAsync(userId);
         int winStreak = 0, wins = 0;
         foreach (var rank in matches)
         {
@@ -210,7 +217,9 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
             attempts.Where(a => a.Special).Select(a => a.DailyChallengeId).Distinct().Count(),
             challengeWins.Count(special => special),
             (await results.LevelOfAsync(userId)).Level,
-            trophies.Count(t => t.Place == 1 && t.Kind is TrophyKind.Month or TrophyKind.Daily or TrophyKind.Online),
+            goldenBalls.Count,
+            LongestMonthRun(goldenBalls),
+            trophies.Count(t => t.Kind == TrophyKind.Month && t.Place == 2),
             attempts.Select(a => a.Type).Distinct().Count(),
             Hits(QuestionType.Jaar, p => p == 100),
             Hits(QuestionType.Snelvuur, p => p >= 90),
@@ -246,6 +255,19 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
         for (var i = 0; i < sorted.Count; i++)
         {
             run = i > 0 && sorted[i - 1].AddDays(1) == sorted[i] ? run + 1 : 1;
+            longest = Math.Max(longest, run);
+        }
+        return longest;
+    }
+
+    /// <summary>Meeste maanden na elkaar (jaar, maand; oudste eerst).</summary>
+    private static int LongestMonthRun(List<(int Year, int Month)> sorted)
+    {
+        int longest = 0, run = 0;
+        for (var i = 0; i < sorted.Count; i++)
+        {
+            var next = i > 0 && sorted[i - 1].Year * 12 + sorted[i - 1].Month + 1 == sorted[i].Year * 12 + sorted[i].Month;
+            run = next ? run + 1 : 1;
             longest = Math.Max(longest, run);
         }
         return longest;

@@ -36,6 +36,7 @@ builder.Services.AddScoped<ResultsService>();
 builder.Services.AddScoped<MatchService>();
 builder.Services.AddScoped<OnlineService>();
 builder.Services.AddScoped<MonthRankingService>();
+builder.Services.AddScoped<GoldenBallService>();
 builder.Services.AddScoped<AdminService>();
 builder.Services.AddScoped<ProgressService>();
 builder.Services.AddSingleton<IMatchNotifier, MatchNotifier>();

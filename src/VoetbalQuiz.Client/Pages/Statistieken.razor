@@ -1,6 +1,7 @@
 @page "/statistieken"
 @attribute [Authorize]
 @inject ApiClient Api
+@inject GoldenBallState GoldenBall
 
 <PageTitle>Statistieken – Truitje Trek</PageTitle>
 
@@ -61,16 +62,17 @@ else
     <h2 class="section-title">Eregalerij</h2>
     <HallOfFame Cards="_stats.HallOfFame" EmptyText="Nog geen records. Speel een paar dagen en kom terug!" />
 
-    @if (_stats.MonthChampions.Count > 0)
+    @if (GoldenBall.Overview is { History.Count: > 0 } gb)
     {
-        <h2 class="section-title">Maandkampioenen</h2>
+        <h2 class="section-title">⚽ Gouden Ballen</h2>
+        <p class="muted light">@gb.Explanation</p>
         <ol class="board">
-            @foreach (var m in _stats.MonthChampions)
+            @foreach (var m in gb.History)
             {
                 <li class="@(m.IsMe ? "me" : "")">
-                    <span class="rank">🏆</span>
-                    <Avatar Id="@m.AvatarId" Size="38" />
-                    <span class="player"><b>@m.UserName</b><small class="cap">@m.Month</small></span>
+                    <span class="rank">⚽</span>
+                    <Avatar Id="@m.AvatarId" User="@m.UserName" Size="38" />
+                    <span class="player"><b>@m.UserName</b><small class="cap">@DutchDates.MonthYear(m.Year, m.Month)</small></span>
                     <span class="pts">@m.Points</span>
                 </li>
             }
@@ -101,7 +103,11 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        try { _stats = await Api.GetStatsAsync(); }
+        try
+        {
+            _stats = await Api.GetStatsAsync();
+            await GoldenBall.EnsureLoadedAsync();
+        }
         catch (ApiException ex) { _error = ex.Message; }
     }
 

@@ -1,12 +1,22 @@
-@* Tekent een avatar als SVG uit zijn onderdelen (zie AvatarDef). *@
+@* Tekent een avatar als SVG uit zijn onderdelen (zie AvatarDef). Met User erbij ook de sterren en gouden rand van de Gouden Bal. *@
+@implements IDisposable
+@inject GoldenBallState GoldenBall
 @{
     var a = Def ?? Avatars.Get(Id);
     var hair = a.HairHex;
+    var stars = Math.Min(GoldenBall.StarsOf(User), GoldenBallRules.MaxStarsShown);
+    var golden = GoldenBall.IsHolder(User);
 }
-<svg class="avatar" width="@Size" height="@Size" viewBox="0 0 100 100" role="img" aria-label="@a.Name">
+<svg class="avatar @(golden ? "golden" : "")" width="@Size" height="@Size" viewBox="0 0 100 100" role="img" aria-label="@Label(a.Name, stars, golden)">
     <defs>
         <clipPath id="clip-@_uid"><circle cx="50" cy="50" r="50" /></clipPath>
         <clipPath id="shirt-@_uid"><path d="@ShirtPath" /></clipPath>
+        @if (golden)
+        {
+            <linearGradient id="gold-@_uid" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#fff2a8" /><stop offset=".45" stop-color="#f5c400" /><stop offset="1" stop-color="#a87a00" />
+            </linearGradient>
+        }
     </defs>
     <g clip-path="url(#clip-@_uid)">
         <rect width="100" height="100" fill="@a.AccentHex" opacity=".25" />
@@ -55,6 +65,12 @@
         {
             @* <text> is in Razor een gereserveerde tag, daarom als markup (alle waarden komen uit vaste paletten). *@
             @((MarkupString)$"<text x=\"50\" y=\"95\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"800\" font-family=\"system-ui, sans-serif\" fill=\"{NumberColor(a)}\" stroke=\"{a.ShirtHex}\" stroke-width=\".6\">{a.Number}</text>")
+        }
+
+        @* Sterren van de Gouden Bal, boven het clublogo: drie per rij *@
+        @for (var i = 0; i < stars; i++)
+        {
+            <path d="@StarPath(61 + i % 3 * 6, 76 + i / 3 * 6)" fill="#f5c400" stroke="#7a5a00" stroke-width=".5" stroke-linejoin="round" />
         }
 
         @* Nek en hoofd *@
@@ -169,6 +185,12 @@
                 break;
         }
     </g>
+    @if (golden)
+    {
+        @* Gouden rand: de Gouden Bal van vorige maand *@
+        <circle cx="50" cy="50" r="47.5" fill="none" stroke="url(#gold-@_uid)" stroke-width="5" />
+        <circle cx="50" cy="50" r="44.8" fill="none" stroke="#7a5a00" stroke-width=".6" opacity=".6" />
+    }
 </svg>
 
 @code {
@@ -178,12 +200,39 @@
     /// <summary>Rechtstreeks een avatar tekenen (gebruikt door de avatar-bouwer).</summary>
     [Parameter] public AvatarDef? Def { get; set; }
 
+    /// <summary>Gebruikersnaam van wie deze avatar heeft: toont diens sterren en gouden rand. Leeg bij voetballers in de quiz.</summary>
+    [Parameter] public string? User { get; set; }
+
     [Parameter] public int Size { get; set; } = 40;
 
     private const string ShirtPath = "M8 100 Q10 74 34 68 L66 68 Q90 74 92 100 Z";
 
     // Elke avatar op de pagina heeft eigen clipPath-ids nodig.
     private readonly string _uid = Guid.NewGuid().ToString("N")[..8];
+
+    protected override void OnInitialized() => GoldenBall.Changed += Redraw;
+
+    public void Dispose() => GoldenBall.Changed -= Redraw;
+
+    private void Redraw()
+    {
+        if (User is not null) InvokeAsync(StateHasChanged);
+    }
+
+    private static string Label(string name, int stars, bool golden) =>
+        name + (stars > 0 ? $", {stars} × Gouden Bal" : "") + (golden ? ", Gouden Bal van vorige maand" : "");
+
+    /// <summary>Een vijfpuntige ster rond (x, y).</summary>
+    private static string StarPath(double x, double y, double r = 2.7)
+    {
+        var points = Enumerable.Range(0, 10).Select(i =>
+        {
+            var radius = i % 2 == 0 ? r : r * .45;
+            var angle = Math.PI / 5 * i - Math.PI / 2;
+            return FormattableString.Invariant($"{x + radius * Math.Cos(angle):0.##} {y + radius * Math.Sin(angle):0.##}");
+        });
+        return "M" + string.Join(" L", points) + " Z";
+    }
 
     /// <summary>Bij een kaal hoofd tonen we de wenkbrauwen donker in plaats van in de (onzichtbare) haarkleur.</summary>
     private static string Brow(AvatarDef a) => a.Style == HairStyle.Bald ? "#3b2614" : a.HairHex;

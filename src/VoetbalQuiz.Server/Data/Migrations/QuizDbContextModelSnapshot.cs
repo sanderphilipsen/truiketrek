@@ -455,6 +455,65 @@ namespace VoetbalQuiz.Server.Data.Migrations
                     b.ToTable("Feedback");
                 });
 
+            modelBuilder.Entity("VoetbalQuiz.Server.Data.GoldenBall", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("AwardedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("Month")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Points")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("Year", "Month", "UserId")
+                        .IsUnique();
+
+                    b.ToTable("GoldenBalls");
+                });
+
+            modelBuilder.Entity("VoetbalQuiz.Server.Data.GoldenBallMonth", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Month")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("SettledAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Year", "Month")
+                        .IsUnique();
+
+                    b.ToTable("GoldenBallMonths");
+                });
+
             modelBuilder.Entity("VoetbalQuiz.Server.Data.Match", b =>
                 {
                     b.Property<int>("Id")
@@ -928,6 +987,17 @@ namespace VoetbalQuiz.Server.Data.Migrations
                 });
 
             modelBuilder.Entity("VoetbalQuiz.Server.Data.Feedback", b =>
+                {
+                    b.HasOne("VoetbalQuiz.Server.Data.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("VoetbalQuiz.Server.Data.GoldenBall", b =>
                 {
                     b.HasOne("VoetbalQuiz.Server.Data.AppUser", "User")
                         .WithMany()

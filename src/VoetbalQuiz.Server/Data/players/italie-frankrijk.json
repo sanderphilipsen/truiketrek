@@ -20,7 +20,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Gianluigi_Buffon"
     ],
-    "tags": [],
+    "tags": ["wk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -69,6 +69,7 @@
       "https://en.wikipedia.org/wiki/Andrea_Pirlo"
     ],
     "tags": [
+      "wk",
       "champions-league"
     ],
     "checkedAt": "2026-10-17"
@@ -150,6 +151,8 @@
       "https://en.wikipedia.org/wiki/Kak%C3%A1"
     ],
     "tags": [
+      "wk",
+      "familie",
       "champions-league"
     ],
     "checkedAt": "2026-10-17"
@@ -177,7 +180,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Gonzalo_Higua%C3%ADn"
     ],
-    "tags": [],
+    "tags": ["familie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -271,7 +274,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Lautaro_Mart%C3%ADnez"
     ],
-    "tags": [],
+    "tags": ["wk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -319,7 +322,7 @@
       "https://en.wikipedia.org/wiki/Paulo_Dybala",
       "https://www.gazetaesportiva.com/futebol/com-cabeca-no-lugar-dybala-relembra-dificuldade-apos-morte-do-pai/"
     ],
-    "tags": [],
+    "tags": ["wk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -343,6 +346,7 @@
       "https://en.wikipedia.org/wiki/Wesley_Sneijder"
     ],
     "tags": [
+      "familie",
       "champions-league",
       "oranje"
     ],
@@ -371,6 +375,7 @@
       "https://en.wikipedia.org/wiki/Khvicha_Kvaratskhelia"
     ],
     "tags": [
+      "familie",
       "champions-league"
     ],
     "checkedAt": "2026-10-17"
@@ -395,7 +400,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Fabio_Cannavaro"
     ],
-    "tags": [],
+    "tags": ["wk", "familie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -420,7 +425,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Kylian_Mbapp%C3%A9"
     ],
-    "tags": [],
+    "tags": ["wk", "familie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -657,7 +662,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Yoann_Gourcuff"
     ],
-    "tags": [],
+    "tags": ["familie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -705,7 +710,7 @@
       "https://en.wikipedia.org/wiki/Steve_Mandanda",
       "https://www.fotmob.com/fi/news/196p63lrzty7g13mh2gd5v31w5/Marseille-legend-Mandanda-departs-after-record-613-games-for-Ligue-1-giants"
     ],
-    "tags": [],
+    "tags": ["familie"],
     "checkedAt": "2026-10-17"
   },
   {

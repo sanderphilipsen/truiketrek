@@ -212,10 +212,14 @@
       "Olympique Marseille (2014–2016)",
       "Chelsea (2016–2022)",
       "Borussia Dortmund (2018, huur)",
-      "Crystal Palace (2019–2021, huur)",
+      "Valencia (2018–2019, huur)",
+      "Crystal Palace (2019, huur)",
+      "Crystal Palace (2020–2021, huur)",
+      "Beşiktaş (2021–2022, huur)",
       "Fenerbahçe (2022–2024)",
       "Galatasaray (2024–2025)",
-      "Eintracht Frankfurt (2025–2026)"
+      "Eintracht Frankfurt (2025–2026)",
+      "Abha (2026–)"
     ],
     "difficulty": 2,
     "status": "approved",
@@ -225,7 +229,7 @@
     "tags": [
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-17"
+    "checkedAt": "2026-10-18"
   },
   {
     "answer": "Christian Benteke",
@@ -235,12 +239,14 @@
     "clubs": [
       "KRC Genk (2007–2009)",
       "Standard (2009–2011)",
+      "KV Kortrijk (2009–2010, huur)",
       "KV Mechelen (2010–2011, huur)",
       "KRC Genk (2011–2012)",
       "Aston Villa (2012–2015)",
       "Liverpool (2015–2016)",
       "Crystal Palace (2016–2022)",
-      "D.C. United (2022–2026)"
+      "D.C. United (2022–2026)",
+      "Al Wahda (2026–)"
     ],
     "difficulty": 2,
     "status": "approved",
@@ -250,7 +256,7 @@
     "tags": [
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-17"
+    "checkedAt": "2026-10-18"
   },
   {
     "answer": "Divock Origi",
@@ -398,9 +404,12 @@
       "AS Saint-Étienne (2008–2010)",
       "Olympiacos (2010–2012)",
       "Everton (2012–2019)",
+      "Olympiacos (2018, huur)",
       "Fiorentina (2018–2019, huur)",
       "Royal Antwerp (2019–2020)",
-      "Gaziantep (2020–2021)"
+      "Gaziantep (2020–2021)",
+      "Moreirense (2022)",
+      "AEL Limassol (2022–2023)"
     ],
     "difficulty": 3,
     "status": "approved",
@@ -410,7 +419,7 @@
     "tags": [
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-17"
+    "checkedAt": "2026-10-18"
   },
   {
     "answer": "Steven Defour",
@@ -447,9 +456,12 @@
       "AS Roma (2014–2018)",
       "Inter (2018–2021)",
       "Cagliari (2019–2020, huur)",
+      "Cagliari (2021, huur)",
       "Royal Antwerp (2021–2022)",
       "SPAL (2023)",
-      "Bhayangkara (2023–2024)"
+      "Bhayangkara (2023–2024)",
+      "Lokeren (2025–2026)",
+      "Patro Eisden (2026–)"
     ],
     "difficulty": 2,
     "status": "approved",
@@ -459,7 +471,7 @@
     "tags": [
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-17"
+    "checkedAt": "2026-10-18"
   },
   {
     "answer": "Daniel Van Buyten",
@@ -590,7 +602,7 @@
       "FC Twente (2012–2013, huur)",
       "Celtic (2015–2019)",
       "Hertha BSC (2019–2022)",
-      "Club Brugge (2022–2024)"
+      "Club Brugge (2022–2025)"
     ],
     "difficulty": 3,
     "status": "approved",
@@ -600,7 +612,7 @@
     "tags": [
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-17"
+    "checkedAt": "2026-10-18"
   },
   {
     "answer": "Robert Lewandowski",
@@ -791,6 +803,7 @@
       "Manchester United (2007–2009, huur)",
       "Manchester City (2009–2013)",
       "Juventus (2013–2015)",
+      "Boca Juniors (2015–2016)",
       "Shanghai Shenhua (2016–2018)",
       "Boca Juniors (2018–2021)"
     ],
@@ -800,7 +813,7 @@
       "https://en.wikipedia.org/wiki/Carlos_Tevez"
     ],
     "tags": [],
-    "checkedAt": "2026-10-17"
+    "checkedAt": "2026-10-18"
   },
   {
     "answer": "Fernando Torres",
@@ -880,7 +893,8 @@
       "Real Madrid (2009)",
       "AC Milan (2009–2010)",
       "Schalke 04 (2010–2017)",
-      "Ajax (2017–2021)"
+      "Ajax (2017–2021)",
+      "Schalke 04 (2021)"
     ],
     "difficulty": 3,
     "status": "approved",
@@ -888,7 +902,7 @@
       "https://en.wikipedia.org/wiki/Klaas-Jan_Huntelaar"
     ],
     "tags": [],
-    "checkedAt": "2026-10-17"
+    "checkedAt": "2026-10-18"
   },
   {
     "answer": "Mario Balotelli",
@@ -900,10 +914,16 @@
       "Manchester City (2010–2013)",
       "AC Milan (2013–2014)",
       "Liverpool (2014–2016)",
+      "AC Milan (2015–2016, huur)",
       "OGC Nice (2016–2019)",
       "Olympique Marseille (2019)",
       "Brescia (2019–2020)",
-      "Adana Demirspor (2021–2022)"
+      "Monza (2020–2021)",
+      "Adana Demirspor (2021–2022)",
+      "FC Sion (2022–2023)",
+      "Adana Demirspor (2023–2024)",
+      "Genoa (2024–2025)",
+      "Al-Ittifaq (2026–)"
     ],
     "difficulty": 1,
     "status": "approved",
@@ -911,7 +931,7 @@
       "https://en.wikipedia.org/wiki/Mario_Balotelli"
     ],
     "tags": [],
-    "checkedAt": "2026-10-17"
+    "checkedAt": "2026-10-18"
   },
   {
     "answer": "Edin Džeko",
@@ -950,7 +970,9 @@
       "FC Barcelona (2022)",
       "Chelsea (2022–2023)",
       "Olympique Marseille (2023–2024)",
-      "Al-Qadsiah (2024–2025)"
+      "Al-Qadsiah (2024–2025)",
+      "Olympique Marseille (2025–2026)",
+      "Deportivo La Coruña (2026–)"
     ],
     "difficulty": 3,
     "status": "approved",
@@ -958,7 +980,7 @@
       "https://en.wikipedia.org/wiki/Pierre-Emerick_Aubameyang"
     ],
     "tags": [],
-    "checkedAt": "2026-10-17"
+    "checkedAt": "2026-10-18"
   },
   {
     "answer": "Olivier Giroud",
@@ -1082,7 +1104,11 @@
       "Arsenal (2014–2018)",
       "Manchester United (2018–2020)",
       "Inter (2019–2022)",
-      "Olympique Marseille (2022–2023)"
+      "Olympique Marseille (2022–2023)",
+      "Inter (2023–2024)",
+      "Udinese (2024–2025)",
+      "Sevilla (2025–2026)",
+      "CF Montréal (2026–)"
     ],
     "difficulty": 3,
     "status": "approved",
@@ -1090,7 +1116,7 @@
       "https://en.wikipedia.org/wiki/Alexis_S%C3%A1nchez"
     ],
     "tags": [],
-    "checkedAt": "2026-10-17"
+    "checkedAt": "2026-10-18"
   },
   {
     "answer": "Gareth Bale",
@@ -1798,5 +1824,28 @@
     ],
     "tags": [],
     "checkedAt": "2026-10-18"
+  },
+  {
+    "answer": "Frank Vercauteren",
+    "aliases": [
+      "Vercauteren",
+      "Franky Vercauteren"
+    ],
+    "clubs": [
+      "Anderlecht (1975–1987)",
+      "FC Nantes (1987–1990)",
+      "RWDM (1990–1993)"
+    ],
+    "difficulty": 3,
+    "status": "approved", "checkedAt": "2026-10-18",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Frank_Vercauteren",
+      "https://en.wikipedia.org/wiki/Franky_Vercauteren"
+    ],
+    "tags": [
+      "anderlecht",
+      "rode-duivels",
+      "legende"
+    ]
   }
 ]

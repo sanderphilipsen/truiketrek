@@ -12,7 +12,7 @@ Een mobiele quiz-app (Blazor WebAssembly PWA) om met vrienden te spelen. Elke da
 - Iedereen krijgt dezelfde 10 vragen per dag. Elke vraag kan je maar één keer spelen: herladen zet de klok niet terug. Je speelt de vragen in volgorde.
 - Er is een klassement per dag en per maand.
 - **Dagwinnaar:** na middernacht wordt de winnaar van de dag vastgelegd. Bij gelijke stand wint wie meer juist had, dan wie minder fout gokte, dan wie het eerst klaar was. De dagwinnaar krijgt **+50 punten** in het maandklassement (`DailyWinnerBonus`).
-- **Statistieken:** je eigen cijfers, een eregalerij met records (meeste dagzeges, hoogste dagscore, eeuwige tweede, snelste vinger, scherpschutter, …), maandkampioenen en de moeilijkste spelers.
+- **Statistieken:** je eigen cijfers, een eregalerij met records (meeste dagzeges, hoogste dagscore, eeuwige tweede, snelste vinger, scherpschutter, …), alle Gouden Ballen en de moeilijkste spelers.
 
 - **Home:** start de daily, zie je voortgang, maak een online tafel of schuif aan bij een open tafel. Het daily-overzicht staat op `/daily`.
 - **Menu onderaan:** Home, Klassement, Badges, Stats en Profiel. De daily en online spelen start je vanaf Home.
@@ -65,6 +65,14 @@ Er zijn twee klassementen:
   - Podiumbonus: de top 3 van elke daily en special krijgt +100 / +50 / +25, zodra die dag of special afgelopen is.
   - De top 3 van de maand krijgt een beker. Alle waarden staan in [MonthRules.cs](src/VoetbalQuiz.Shared/MonthRules.cs).
 
+### Gouden Bal
+
+- Wie op het einde van de maand **bovenaan het maandklassement** staat, wint de **Gouden Bal**. Bij een gedeelde eerste plaats krijgen ze hem allebei.
+- Elke Gouden Bal is voor altijd een **kleine ster op het shirt** van je avatar (drie per rij, max. 9 getekend).
+- De winnaar draagt de **hele volgende maand een gouden rand** rond de avatar; daarna gaat die over naar de volgende winnaar.
+- Op de **eerste dag van de maand** staat de nieuwe Gouden Bal groot op het dashboard ("Gouden Bal oktober"). Op Stats staat de lijst van alle Gouden Ballen.
+- De server legt de winnaar één keer vast bij het eerste verzoek nadat de maand ook in UTC voorbij is (in België tussen 1 en 2 uur op de eerste). Loopt er nog een special die in die maand startte, dan wacht hij tot die afgelopen is; de aankondiging komt dan op de dag van toekenning. De winnaar wordt bewaard in de tabellen `GoldenBalls` en `GoldenBallMonths` ([GoldenBallService.cs](src/VoetbalQuiz.Server/Services/GoldenBallService.cs)), zodat sterren niet meer verschuiven. Badges: Gouden Bal, Zilveren Bal (tweede), Titelverdediger (twee maanden na elkaar), Gouden hattrick (3) en Messi-niveau (8).
+
 ### Specials
 
 - Via Admin → **Specials** plan je een themadag. Er zijn sjablonen voor Champions League, Christmas, New Year, Halloween, Sinterklaas, Gouden Schoen en "eigen special". Je kiest de datum (van … tot …) en de vragen: alle spelers met een of meer thema's, of zelf een selectie.
@@ -75,7 +83,7 @@ Er zijn twee klassementen:
 
 ### Badges, seizoenen en head-to-head
 
-- **53 badges** (brons, zilver, goud): regelmaat (7 dagen op rij, volle week), snelheid, per vraagtype (Historicus, Scout, Bondscoach, Emoji-expert, …), thema's (Rode Duivels-fan, Champions League-kenner), online (Tafelkoning, Volle tafel, Elo-meester), lange adem (Seizoenkaart, IJzeren man, GOAT) en karakter (Clean sheet, Doorzetter, Op de valreep). Bekijk ze via **🎖️ Badges** in het menu, met je voortgang per badge.
+- **57 badges** (brons, zilver, goud): regelmaat (7 dagen op rij, volle week), snelheid, per vraagtype (Historicus, Scout, Bondscoach, Emoji-expert, …), thema's (Rode Duivels-fan, Champions League-kenner), online (Tafelkoning, Volle tafel, Elo-meester), Gouden Bal (Zilveren Bal, Titelverdediger, Gouden hattrick, Messi-niveau), lange adem (Seizoenkaart, IJzeren man, GOAT) en karakter (Clean sheet, Doorzetter, Op de valreep). Bekijk ze via **🎖️ Badges** in het menu, met je voortgang per badge.
 - **Seizoenen:** elke maand is een seizoen. De top 3 van het daily- en het online maandklassement krijgt een beker in de prijzenkast.
 - **Spelersprofiel:** tik op een naam in een klassement. Je ziet hun badges en bekers, en **jij tegen hen**: onderlinge daily-dagen en online wedstrijden.
 

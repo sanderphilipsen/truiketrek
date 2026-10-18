@@ -17,7 +17,7 @@
     ],
     "difficulty": 1, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "rode-duivels"], "checkedAt": "2026-10-17"
   },
   {
     "title": "België – Japan, achtste finale WK 2018 (3-2)",
@@ -37,7 +37,7 @@
     ],
     "difficulty": 2, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "rode-duivels"], "checkedAt": "2026-10-17"
   },
   {
     "title": "België – Hongarije, achtste finale EK 2016 (4-0)",
@@ -97,7 +97,7 @@
     ],
     "difficulty": 2, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_knockout_stage"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "rode-duivels"], "checkedAt": "2026-10-17"
   },
   {
     "title": "België – Portugal, achtste finale EK 2020 (1-0)",
@@ -157,7 +157,7 @@
     ],
     "difficulty": 1, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_final"],
-    "tags": [], "checkedAt": "2026-10-17"
+    "tags": ["wk"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Duitsland – Argentinië, finale WK 2014 (1-0 n.v.)",
@@ -177,7 +177,7 @@
     ],
     "difficulty": 2, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_final"],
-    "tags": [], "checkedAt": "2026-10-17"
+    "tags": ["wk"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Nederland – Spanje, finale WK 2010 (0-1 n.v.)",
@@ -197,7 +197,7 @@
     ],
     "difficulty": 2, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_final"],
-    "tags": [], "checkedAt": "2026-10-17"
+    "tags": ["wk"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Argentinië – Frankrijk, finale WK 2022 (3-3, 4-2 n.s.)",
@@ -217,7 +217,7 @@
     ],
     "difficulty": 1, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_final"],
-    "tags": [], "checkedAt": "2026-10-17"
+    "tags": ["wk"], "checkedAt": "2026-10-17"
   },
   {
     "title": "AC Milan – Liverpool, finale Champions League 2005 (3-3, 2-3 n.s.)",
@@ -357,7 +357,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_knockout_stage"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "rode-duivels"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Engeland – België, achtste finale WK 1990 (1-0 n.v.)",
@@ -377,7 +377,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1990_FIFA_World_Cup_knockout_stage"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "rode-duivels"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Brazilië – België, achtste finale WK 2002 (2-0)",
@@ -397,7 +397,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_knockout_stage"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "rode-duivels"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Argentinië – België, kwartfinale WK 2014 (1-0)",
@@ -417,7 +417,7 @@
     ],
     "difficulty": 2, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_knockout_stage"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "rode-duivels"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Frankrijk – België, halve finale WK 2018 (1-0)",
@@ -437,7 +437,7 @@
     ],
     "difficulty": 2, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "rode-duivels"], "checkedAt": "2026-10-17"
   },
   {
     "title": "België – Engeland, troostfinale WK 2018 (2-0)",
@@ -457,7 +457,7 @@
     ],
     "difficulty": 2, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "rode-duivels"], "checkedAt": "2026-10-17"
   },
   {
     "title": "België – Italië, kwartfinale EK 2020 (1-2)",
@@ -497,7 +497,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1976_European_Cup_Winners%27_Cup_final"],
-    "tags": [], "checkedAt": "2026-10-17"
+    "tags": ["anderlecht"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Club Brugge – Liverpool, finale Europacup I 1978 (0-1)",
@@ -577,7 +577,7 @@
     ],
     "difficulty": 1, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2006_FIFA_World_Cup_final"],
-    "tags": [], "checkedAt": "2026-10-17"
+    "tags": ["wk"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Duitsland – Spanje, finale EK 2008 (0-1)",
@@ -677,7 +677,7 @@
     ],
     "difficulty": 2, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_Group_B"],
-    "tags": [], "checkedAt": "2026-10-17"
+    "tags": ["wk"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Brazilië – Duitsland, halve finale WK 2014 (1-7)",
@@ -697,7 +697,7 @@
     ],
     "difficulty": 2, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Brazil_v_Germany_(2014_FIFA_World_Cup)"],
-    "tags": [], "checkedAt": "2026-10-17"
+    "tags": ["wk"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Portugal – Frankrijk, finale EK 2016 (1-0 n.v.)",
@@ -817,7 +817,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2015_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2014-2015/kalender/finale/club-brugge/anderlecht"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "anderlecht"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Bekerfinale 2016: Club Brugge – Standard (1-2)",
@@ -1017,7 +1017,7 @@
     ],
     "difficulty": 2, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2026_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2025-2026/kalender/finale/union-sg/anderlecht"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "anderlecht"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Standard – Anderlecht, titelmatch 2008 (2-0)",
@@ -1057,7 +1057,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/286821", "https://www.voetbalkrant.com/belgie/jupiler-pro-league/2009-2010/kalender/speeldag-22/standard/anderlecht/opstellingen"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "anderlecht"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Genk – Standard, titelmatch play-off I 2011 (1-1)",
@@ -1097,7 +1097,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://www.voetbalkrant.com/belgie/play-off-1/2011-2012/kalender/speeldag-8/anderlecht/club-brugge/opstellingen", "https://www.rtbf.be/article/retro-po1-6-mai-2012-le-penalty-du-31e-titre-d-anderlecht-10504427"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "anderlecht"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Standard – Anderlecht, Clasico januari 2015 (2-0)",
@@ -1117,7 +1117,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://www.voetbalkrant.com/belgie/jupiler-pro-league/2014-2015/kalender/speeldag-23/standard/anderlecht/opstellingen", "https://www.maxifoot.fr/match/standard-liege-anderlecht-20150125.htm"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "anderlecht"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Gent – Standard, play-off I 2015 (2-0)",
@@ -1278,5 +1278,525 @@
     "difficulty": 2, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/734564", "https://www.voetbalkrant.com/belgie/play-off-1/2024-2025/kalender/speeldag-10/union-sg/kaa-gent/opstellingen"],
     "tags": [], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Manchester City – QPR, Premier League 2011-12 (3-2)",
+    "team": "Manchester City",
+    "players": [
+      { "name": "Joe Hart", "aliases": ["Hart"], "position": "K" },
+      { "name": "Pablo Zabaleta", "aliases": ["Zabaleta"], "position": "V" },
+      { "name": "Vincent Kompany", "aliases": ["Kompany"], "position": "V" },
+      { "name": "Joleon Lescott", "aliases": ["Lescott"], "position": "V" },
+      { "name": "Gaël Clichy", "aliases": ["Clichy"], "position": "V" },
+      { "name": "Samir Nasri", "aliases": ["Nasri"], "position": "M" },
+      { "name": "Yaya Touré", "aliases": ["Touré", "Yaya"], "position": "M" },
+      { "name": "Gareth Barry", "aliases": ["Barry"], "position": "M" },
+      { "name": "David Silva", "aliases": ["Silva"], "position": "M" },
+      { "name": "Carlos Tevez", "aliases": ["Tevez", "Tévez"], "position": "A" },
+      { "name": "Sergio Agüero", "aliases": ["Agüero", "Aguero", "Kun Agüero"], "position": "A" }
+    ],
+    "difficulty": 1, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/Manchester_City_F.C._3%E2%80%932_Queens_Park_Rangers_F.C."],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-18"
+  },
+  {
+    "title": "Manchester United – Manchester City, Premier League 2011-12 (1-6)",
+    "team": "Manchester City",
+    "players": [
+      { "name": "Joe Hart", "aliases": ["Hart"], "position": "K" },
+      { "name": "Micah Richards", "aliases": ["Richards"], "position": "V" },
+      { "name": "Vincent Kompany", "aliases": ["Kompany"], "position": "V" },
+      { "name": "Joleon Lescott", "aliases": ["Lescott"], "position": "V" },
+      { "name": "Gaël Clichy", "aliases": ["Clichy"], "position": "V" },
+      { "name": "Yaya Touré", "aliases": ["Touré", "Yaya"], "position": "M" },
+      { "name": "Gareth Barry", "aliases": ["Barry"], "position": "M" },
+      { "name": "James Milner", "aliases": ["Milner"], "position": "M" },
+      { "name": "David Silva", "aliases": ["Silva"], "position": "M" },
+      { "name": "Mario Balotelli", "aliases": ["Balotelli", "Super Mario"], "position": "A" },
+      { "name": "Sergio Agüero", "aliases": ["Agüero", "Aguero", "Kun Agüero"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/Manchester_United_F.C._1%E2%80%936_Manchester_City_F.C.", "https://espndeportes.espn.com/futbol/partido/_/juegoId/317936"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-18"
+  },
+  {
+    "title": "Manchester United – Arsenal, Premier League 2011-12 (8-2)",
+    "team": "Manchester United",
+    "players": [
+      { "name": "David de Gea", "aliases": ["De Gea"], "position": "K" },
+      { "name": "Chris Smalling", "aliases": ["Smalling"], "position": "V" },
+      { "name": "Phil Jones", "aliases": ["Jones"], "position": "V" },
+      { "name": "Jonny Evans", "aliases": ["Evans"], "position": "V" },
+      { "name": "Patrice Evra", "aliases": ["Evra"], "position": "V" },
+      { "name": "Nani", "aliases": [], "position": "M" },
+      { "name": "Tom Cleverley", "aliases": ["Cleverley"], "position": "M" },
+      { "name": "Anderson", "aliases": [], "position": "M" },
+      { "name": "Ashley Young", "aliases": ["Young"], "position": "M" },
+      { "name": "Wayne Rooney", "aliases": ["Rooney"], "position": "A" },
+      { "name": "Danny Welbeck", "aliases": ["Welbeck"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/Manchester_United_F.C._8%E2%80%932_Arsenal_F.C."],
+    "tags": [], "checkedAt": "2026-10-18"
+  },
+  {
+    "title": "Liverpool – Manchester United, Premier League 2022-23 (7-0)",
+    "team": "Liverpool",
+    "players": [
+      { "name": "Alisson Becker", "aliases": ["Alisson", "Becker"], "position": "K" },
+      { "name": "Trent Alexander-Arnold", "aliases": ["Alexander-Arnold", "Trent", "TAA"], "position": "V" },
+      { "name": "Ibrahima Konaté", "aliases": ["Konaté", "Konate"], "position": "V" },
+      { "name": "Virgil van Dijk", "aliases": ["Van Dijk"], "position": "V" },
+      { "name": "Andy Robertson", "aliases": ["Robertson", "Robbo"], "position": "V" },
+      { "name": "Fabinho", "aliases": [], "position": "M" },
+      { "name": "Jordan Henderson", "aliases": ["Henderson"], "position": "M" },
+      { "name": "Harvey Elliott", "aliases": ["Elliott"], "position": "M" },
+      { "name": "Mohamed Salah", "aliases": ["Salah"], "position": "A" },
+      { "name": "Darwin Núñez", "aliases": ["Núñez", "Nunez"], "position": "A" },
+      { "name": "Cody Gakpo", "aliases": ["Gakpo"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://www.espn.com/soccer/match/_/gameId/638074", "https://www.espn.com/soccer/lineups/_/gameId/638074"],
+    "tags": [], "checkedAt": "2026-10-18"
+  },
+  {
+    "title": "Tottenham – Arsenal, Premier League 2003-04 (2-2, titelbeslissing)",
+    "team": "Arsenal",
+    "players": [
+      { "name": "Jens Lehmann", "aliases": ["Lehmann"], "position": "K" },
+      { "name": "Lauren", "aliases": [], "position": "V" },
+      { "name": "Kolo Touré", "aliases": ["Touré", "Kolo"], "position": "V" },
+      { "name": "Sol Campbell", "aliases": ["Campbell"], "position": "V" },
+      { "name": "Ashley Cole", "aliases": ["Cole"], "position": "V" },
+      { "name": "Ray Parlour", "aliases": ["Parlour"], "position": "M" },
+      { "name": "Gilberto Silva", "aliases": ["Gilberto"], "position": "M" },
+      { "name": "Patrick Vieira", "aliases": ["Vieira"], "position": "M" },
+      { "name": "Robert Pires", "aliases": ["Pires", "Pirès"], "position": "M" },
+      { "name": "Dennis Bergkamp", "aliases": ["Bergkamp"], "position": "A" },
+      { "name": "Thierry Henry", "aliases": ["Henry"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://spursodyssey.com/0304/ar250404.html", "https://spursodyssey.com/review0304/rev35.html", "https://www.onlinegooner.com/articles/view/3651"],
+    "tags": ["legende"], "checkedAt": "2026-10-18"
+  },
+  {
+    "title": "Manchester City – Leicester City, Premier League 2018-19 (1-0)",
+    "team": "Manchester City",
+    "players": [
+      { "name": "Ederson", "aliases": [], "position": "K" },
+      { "name": "Kyle Walker", "aliases": ["Walker"], "position": "V" },
+      { "name": "Vincent Kompany", "aliases": ["Kompany"], "position": "V" },
+      { "name": "Aymeric Laporte", "aliases": ["Laporte"], "position": "V" },
+      { "name": "Oleksandr Zinchenko", "aliases": ["Zinchenko"], "position": "V" },
+      { "name": "İlkay Gündoğan", "aliases": ["Gündoğan", "Gundogan"], "position": "M" },
+      { "name": "David Silva", "aliases": ["David Silva", "Silva"], "position": "M" },
+      { "name": "Phil Foden", "aliases": ["Foden"], "position": "M" },
+      { "name": "Bernardo Silva", "aliases": ["Bernardo"], "position": "A" },
+      { "name": "Raheem Sterling", "aliases": ["Sterling"], "position": "A" },
+      { "name": "Sergio Agüero", "aliases": ["Agüero", "Aguero", "Kun Agüero"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://espndeportes.espn.com/futbol/partido/_/juegoId/513474", "https://www.fbref.com/en/matches/7c779d41/Manchester-City-Leicester-City-May-6-2019-Premier-League", "https://www.statmuse.com/fc/match/5-6-2019-mci-vs-lei-10496"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-18"
+  },
+  {
+    "title": "Bayern München – VfL Wolfsburg, Bundesliga 2015-16 (5-1)",
+    "team": "Bayern München",
+    "players": [
+      { "name": "Manuel Neuer", "aliases": ["Neuer"], "position": "K" },
+      { "name": "Jérôme Boateng", "aliases": ["Boateng"], "position": "V" },
+      { "name": "Juan Bernat", "aliases": ["Bernat"], "position": "V" },
+      { "name": "Philipp Lahm", "aliases": ["Lahm"], "position": "V" },
+      { "name": "David Alaba", "aliases": ["Alaba"], "position": "V" },
+      { "name": "Thiago Alcântara", "aliases": ["Thiago", "Thiago Alcantara"], "position": "M" },
+      { "name": "Xabi Alonso", "aliases": ["Alonso"], "position": "M" },
+      { "name": "Arturo Vidal", "aliases": ["Vidal"], "position": "M" },
+      { "name": "Douglas Costa", "aliases": ["Costa"], "position": "A" },
+      { "name": "Mario Götze", "aliases": ["Götze", "Gotze", "Goetze"], "position": "A" },
+      { "name": "Thomas Müller", "aliases": ["Müller", "Muller", "Mueller"], "position": "A" }
+    ],
+    "difficulty": 1, "status": "approved",
+    "sources": ["https://www.tntsports.co.uk/football/bundesliga/2015-2016/live-bayern-munich-vfl-wolfsburg_mtc788343/live-lineup.shtml", "https://www.espn.com/soccer/match/_/gameId/427078/vfl-wolfsburg-bayern-munich"],
+    "tags": ["curiosa"], "checkedAt": "2026-10-18"
+  },
+  {
+    "title": "VfL Wolfsburg – Bayern München, Bundesliga 2014-15 (4-1)",
+    "team": "VfL Wolfsburg",
+    "players": [
+      { "name": "Diego Benaglio", "aliases": ["Benaglio"], "position": "K" },
+      { "name": "Vieirinha", "aliases": [], "position": "V" },
+      { "name": "Naldo", "aliases": [], "position": "V" },
+      { "name": "Robin Knoche", "aliases": ["Knoche"], "position": "V" },
+      { "name": "Ricardo Rodríguez", "aliases": ["Rodríguez", "Rodriguez"], "position": "V" },
+      { "name": "Luiz Gustavo", "aliases": ["Gustavo"], "position": "M" },
+      { "name": "Maximilian Arnold", "aliases": ["Arnold"], "position": "M" },
+      { "name": "Kevin De Bruyne", "aliases": ["De Bruyne", "KDB"], "position": "M" },
+      { "name": "Daniel Caligiuri", "aliases": ["Caligiuri"], "position": "A" },
+      { "name": "Ivan Perišić", "aliases": ["Perišić", "Perisic"], "position": "A" },
+      { "name": "Bas Dost", "aliases": ["Dost"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://www.tntsports.co.uk/football/bundesliga/2014-2015/live-vfl-wolfsburg-bayern-munich_mtc706840/live-lineup.shtml", "https://fcbayern.com/de/spiele/profis/bundesliga/2014-2015/vfl-wolfsburg-fc-bayern-muenchen-30-01-2015/aufstellung", "https://www.espn.com/soccer/report/_/gameId/396838"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-18"
+  },
+  {
+    "title": "Bayer Leverkusen – Werder Bremen, Bundesliga 2023-24 (5-0)",
+    "team": "Bayer Leverkusen",
+    "players": [
+      { "name": "Lukáš Hrádecký", "aliases": ["Hrádecký", "Hradecky"], "position": "K" },
+      { "name": "Odilon Kossounou", "aliases": ["Kossounou"], "position": "V" },
+      { "name": "Jonathan Tah", "aliases": ["Tah"], "position": "V" },
+      { "name": "Edmond Tapsoba", "aliases": ["Tapsoba"], "position": "V" },
+      { "name": "Piero Hincapié", "aliases": ["Hincapié", "Hincapie"], "position": "M" },
+      { "name": "Granit Xhaka", "aliases": ["Xhaka"], "position": "M" },
+      { "name": "Robert Andrich", "aliases": ["Andrich"], "position": "M" },
+      { "name": "Nathan Tella", "aliases": ["Tella"], "position": "M" },
+      { "name": "Amine Adli", "aliases": ["Adli"], "position": "A" },
+      { "name": "Jonas Hofmann", "aliases": ["Hofmann"], "position": "A" },
+      { "name": "Victor Boniface", "aliases": ["Boniface"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://global.espn.com/football/lineups/_/gameId/677837", "https://www.fcupdate.nl/voetbalcompetities/duitsland/bundesliga/programma-uitslagen/2023-2024/bayer-leverkusen-bremen-14-04/opstellingen"],
+    "tags": [], "checkedAt": "2026-10-18"
+  },
+  {
+    "title": "Borussia Dortmund – Bayern München, Bundesliga 2011-12 (1-0)",
+    "team": "Borussia Dortmund",
+    "players": [
+      { "name": "Roman Weidenfeller", "aliases": ["Weidenfeller"], "position": "K" },
+      { "name": "Łukasz Piszczek", "aliases": ["Piszczek"], "position": "V" },
+      { "name": "Neven Subotić", "aliases": ["Subotić", "Subotic"], "position": "V" },
+      { "name": "Mats Hummels", "aliases": ["Hummels"], "position": "V" },
+      { "name": "Marcel Schmelzer", "aliases": ["Schmelzer"], "position": "V" },
+      { "name": "Sebastian Kehl", "aliases": ["Kehl"], "position": "M" },
+      { "name": "İlkay Gündoğan", "aliases": ["Gündoğan", "Gundogan", "Guendogan"], "position": "M" },
+      { "name": "Jakub Błaszczykowski", "aliases": ["Błaszczykowski", "Blaszczykowski", "Kuba"], "position": "M" },
+      { "name": "Shinji Kagawa", "aliases": ["Kagawa"], "position": "M" },
+      { "name": "Kevin Großkreutz", "aliases": ["Großkreutz", "Grosskreutz", "Grosskreuz"], "position": "M" },
+      { "name": "Robert Lewandowski", "aliases": ["Lewandowski", "Lewy"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://www.bundesliga.com/en/bundesliga/news/watch-2011-12-klassiker-borussia-dortmund-bayern-munich-lewandowski-robben-10799", "https://www.espn.com/soccer/match/_/gameId/320773/bayern-munich-borussia-dortmund", "https://www.sportschau.de/live-und-ergebnisse/fussball/deutschland-bundesliga/ma377014/borussia-dortmund_bayern-muenchen/taktische-aufstellung"],
+    "tags": [], "checkedAt": "2026-10-18"
+  },
+  {
+    "title": "Borussia Dortmund – Schalke 04, Bundesliga 2017-18 (4-4)",
+    "team": "Schalke 04",
+    "players": [
+      { "name": "Ralf Fährmann", "aliases": ["Fährmann", "Fahrmann", "Faehrmann"], "position": "K" },
+      { "name": "Benjamin Stambouli", "aliases": ["Stambouli"], "position": "V" },
+      { "name": "Thilo Kehrer", "aliases": ["Kehrer"], "position": "V" },
+      { "name": "Naldo", "aliases": [], "position": "V" },
+      { "name": "Weston McKennie", "aliases": ["McKennie"], "position": "M" },
+      { "name": "Max Meyer", "aliases": ["Meyer"], "position": "M" },
+      { "name": "Daniel Caligiuri", "aliases": ["Caligiuri"], "position": "M" },
+      { "name": "Bastian Oczipka", "aliases": ["Oczipka"], "position": "M" },
+      { "name": "Franco Di Santo", "aliases": ["Di Santo", "Disanto"], "position": "A" },
+      { "name": "Yevhen Konoplyanka", "aliases": ["Konoplyanka", "Konoplianka"], "position": "A" },
+      { "name": "Guido Burgstaller", "aliases": ["Burgstaller"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://www.tntsports.co.uk/football/bundesliga/2017-2018/live-borussia-dortmund-fc-schalke-04_mtc956731/live-lineup.shtml", "https://datencenter.dfb.de/datencenter/bundesliga/2017-2018/13-spieltag/borussia-dortmund-fc-schalke-04-2247794", "https://www.skysports.com/football/b-dortmund-vs-schalke/teams/377622"],
+    "tags": ["curiosa"], "checkedAt": "2026-10-18"
+  },
+  {
+    "title": "Borussia Dortmund – Mainz 05, Bundesliga 2022-23 (2-2)",
+    "team": "Borussia Dortmund",
+    "players": [
+      { "name": "Gregor Kobel", "aliases": ["Kobel"], "position": "K" },
+      { "name": "Julian Ryerson", "aliases": ["Ryerson"], "position": "V" },
+      { "name": "Niklas Süle", "aliases": ["Süle", "Sule", "Suele"], "position": "V" },
+      { "name": "Mats Hummels", "aliases": ["Hummels"], "position": "V" },
+      { "name": "Raphaël Guerreiro", "aliases": ["Guerreiro"], "position": "V" },
+      { "name": "Emre Can", "aliases": ["Can"], "position": "M" },
+      { "name": "Julian Brandt", "aliases": ["Brandt"], "position": "M" },
+      { "name": "Marius Wolf", "aliases": ["Wolf"], "position": "M" },
+      { "name": "Donyell Malen", "aliases": ["Malen"], "position": "A" },
+      { "name": "Karim Adeyemi", "aliases": ["Adeyemi"], "position": "A" },
+      { "name": "Sébastien Haller", "aliases": ["Haller", "Sebastien Haller"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://www.bundesliga.com/en/bundesliga/matchday/2022-2023/34/borussia-dortmund-vs-1-fsv-mainz-05/lineup", "https://espndeportes.espn.com/futbol/partido/_/juegoId/638737"],
+    "tags": ["oranje"], "checkedAt": "2026-10-18"
+  },
+  {
+    "title": "FC Barcelona – Real Madrid, La Liga 2010-11 (5-0)",
+    "team": "FC Barcelona",
+    "players": [
+      { "name": "Víctor Valdés", "aliases": ["Valdés", "Valdes", "Victor Valdes"], "position": "K" },
+      { "name": "Dani Alves", "aliases": ["Alves", "Daniel Alves"], "position": "V" },
+      { "name": "Carles Puyol", "aliases": ["Puyol"], "position": "V" },
+      { "name": "Gerard Piqué", "aliases": ["Piqué", "Pique"], "position": "V" },
+      { "name": "Éric Abidal", "aliases": ["Abidal", "Eric Abidal"], "position": "V" },
+      { "name": "Sergio Busquets", "aliases": ["Busquets"], "position": "M" },
+      { "name": "Xavi Hernández", "aliases": ["Xavi", "Hernández"], "position": "M" },
+      { "name": "Andrés Iniesta", "aliases": ["Iniesta", "Andres Iniesta"], "position": "M" },
+      { "name": "Pedro Rodríguez", "aliases": ["Pedro", "Pedro Rodriguez"], "position": "A" },
+      { "name": "David Villa", "aliases": ["Villa", "El Guaje"], "position": "A" },
+      { "name": "Lionel Messi", "aliases": ["Messi", "Leo Messi"], "position": "A" }
+    ],
+    "difficulty": 1, "status": "approved",
+    "sources": ["https://africa.espn.com/football/match/_/gameId/301858", "https://www.espn.com/soccer/lineups/_/gameId/301858"],
+    "tags": ["legende"], "checkedAt": "2026-10-18"
+  },
+  {
+    "title": "Real Madrid – FC Barcelona, La Liga 2008-09 (2-6)",
+    "team": "Real Madrid",
+    "players": [
+      { "name": "Iker Casillas", "aliases": ["Casillas"], "position": "K" },
+      { "name": "Christoph Metzelder", "aliases": ["Metzelder"], "position": "V" },
+      { "name": "Fabio Cannavaro", "aliases": ["Cannavaro"], "position": "V" },
+      { "name": "Gabriel Heinze", "aliases": ["Heinze"], "position": "V" },
+      { "name": "Sergio Ramos", "aliases": ["Ramos"], "position": "V" },
+      { "name": "Fernando Gago", "aliases": ["Gago"], "position": "M" },
+      { "name": "Lassana Diarra", "aliases": ["Diarra", "Lass"], "position": "M" },
+      { "name": "Marcelo", "aliases": ["Marcelo Vieira"], "position": "M" },
+      { "name": "Arjen Robben", "aliases": ["Robben"], "position": "A" },
+      { "name": "Raúl", "aliases": ["Raul", "Raúl González", "Raul Gonzalez"], "position": "A" },
+      { "name": "Gonzalo Higuaín", "aliases": ["Higuaín", "Higuain", "Pipita"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://www.espn.com/soccer/lineups/_/gameId/252775", "https://www.goal.com/en-ae/news/player-ratings-real-madrid-2-6-barcelona/blt73cb725e1afc4e8d"],
+    "tags": ["legende", "oranje"], "checkedAt": "2026-10-18"
+  },
+  {
+    "title": "Real Madrid – FC Barcelona, La Liga 2015-16 (0-4)",
+    "team": "Real Madrid",
+    "players": [
+      { "name": "Keylor Navas", "aliases": ["Navas"], "position": "K" },
+      { "name": "Danilo", "aliases": ["Danilo Luiz"], "position": "V" },
+      { "name": "Sergio Ramos", "aliases": ["Ramos"], "position": "V" },
+      { "name": "Raphaël Varane", "aliases": ["Varane", "Raphael Varane"], "position": "V" },
+      { "name": "Marcelo", "aliases": ["Marcelo Vieira"], "position": "V" },
+      { "name": "Toni Kroos", "aliases": ["Kroos"], "position": "M" },
+      { "name": "Luka Modrić", "aliases": ["Modrić", "Modric", "Luka Modric"], "position": "M" },
+      { "name": "James Rodríguez", "aliases": ["James", "Rodríguez", "James Rodriguez"], "position": "M" },
+      { "name": "Gareth Bale", "aliases": ["Bale"], "position": "A" },
+      { "name": "Karim Benzema", "aliases": ["Benzema"], "position": "A" },
+      { "name": "Cristiano Ronaldo", "aliases": ["Ronaldo", "CR7"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://www.espn.com/soccer/lineups/_/gameId/433859", "https://africa.espn.com/football/match/_/gameId/433859", "https://www.footmercato.net/live/1325433697652417709-real-madrid-vs-barcelone"],
+    "tags": [], "checkedAt": "2026-10-18"
+  },
+  {
+    "title": "FC Barcelona – Real Madrid, La Liga 2018-19 (5-1)",
+    "team": "Real Madrid",
+    "players": [
+      { "name": "Thibaut Courtois", "aliases": ["Courtois"], "position": "K" },
+      { "name": "Nacho", "aliases": ["Nacho Fernández", "Nacho Fernandez"], "position": "V" },
+      { "name": "Sergio Ramos", "aliases": ["Ramos"], "position": "V" },
+      { "name": "Raphaël Varane", "aliases": ["Varane", "Raphael Varane"], "position": "V" },
+      { "name": "Marcelo", "aliases": ["Marcelo Vieira"], "position": "V" },
+      { "name": "Casemiro", "aliases": [], "position": "M" },
+      { "name": "Toni Kroos", "aliases": ["Kroos"], "position": "M" },
+      { "name": "Luka Modrić", "aliases": ["Modrić", "Modric", "Luka Modric"], "position": "M" },
+      { "name": "Isco", "aliases": ["Isco Alarcón", "Alarcón"], "position": "M" },
+      { "name": "Gareth Bale", "aliases": ["Bale"], "position": "A" },
+      { "name": "Karim Benzema", "aliases": ["Benzema"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://www.espn.com/soccer/lineups/_/gameId/521827", "https://www.mykhel.com/football/la-liga-barcelona-vs-real-madrid-lineup-1009406/"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-18"
+  },
+  {
+    "title": "FC Barcelona – Atlético Madrid, La Liga 2013-14 (1-1)",
+    "team": "Atlético Madrid",
+    "players": [
+      { "name": "Thibaut Courtois", "aliases": ["Courtois"], "position": "K" },
+      { "name": "Juanfran", "aliases": ["Juan Francisco Torres"], "position": "V" },
+      { "name": "Miranda", "aliases": ["João Miranda", "Joao Miranda"], "position": "V" },
+      { "name": "Diego Godín", "aliases": ["Godín", "Godin"], "position": "V" },
+      { "name": "Filipe Luís", "aliases": ["Filipe Luis", "Filipe"], "position": "V" },
+      { "name": "Gabi", "aliases": ["Gabi Fernández", "Gabriel Fernández"], "position": "M" },
+      { "name": "Tiago", "aliases": ["Tiago Mendes"], "position": "M" },
+      { "name": "Koke", "aliases": ["Jorge Resurrección"], "position": "M" },
+      { "name": "Arda Turan", "aliases": ["Arda", "Turan"], "position": "M" },
+      { "name": "Diego Costa", "aliases": ["Costa"], "position": "A" },
+      { "name": "David Villa", "aliases": ["Villa", "El Guaje"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/Barcelona_1%E2%80%931_Atl%C3%A9tico_Madrid_(May_2014)"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-18"
+  },
+  {
+    "title": "Real Madrid – FC Barcelona, La Liga 2005-06 (0-3)",
+    "team": "FC Barcelona",
+    "players": [
+      { "name": "Víctor Valdés", "aliases": ["Valdés", "Valdes", "Victor Valdes"], "position": "K" },
+      { "name": "Oleguer", "aliases": ["Oleguer Presas"], "position": "V" },
+      { "name": "Rafael Márquez", "aliases": ["Márquez", "Marquez", "Rafa Márquez"], "position": "V" },
+      { "name": "Carles Puyol", "aliases": ["Puyol"], "position": "V" },
+      { "name": "Giovanni van Bronckhorst", "aliases": ["Van Bronckhorst", "Bronckhorst", "Gio van Bronckhorst"], "position": "V" },
+      { "name": "Edmílson", "aliases": ["Edmilson"], "position": "M" },
+      { "name": "Xavi Hernández", "aliases": ["Xavi", "Hernández"], "position": "M" },
+      { "name": "Deco", "aliases": ["Anderson Luís de Souza"], "position": "M" },
+      { "name": "Ronaldinho", "aliases": ["Ronaldinho Gaúcho", "Dinho"], "position": "A" },
+      { "name": "Lionel Messi", "aliases": ["Messi", "Leo Messi"], "position": "A" },
+      { "name": "Samuel Eto'o", "aliases": ["Eto'o", "Etoo", "Eto o"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://www.fcbarcelona.es/es/noticias/1899174/15-anos-de-un-clasico-historico", "https://www.footmercato.net/live/276278081405223733-real-madrid-vs-barcelone"],
+    "tags": ["legende", "oranje"], "checkedAt": "2026-10-18"
+  },
+  {
+    "title": "Sassuolo – AC Milan, Serie A 2021-22 (0-3)",
+    "team": "AC Milan",
+    "players": [
+      { "name": "Mike Maignan", "aliases": ["Maignan"], "position": "K" },
+      { "name": "Davide Calabria", "aliases": ["Calabria"], "position": "V" },
+      { "name": "Pierre Kalulu", "aliases": ["Kalulu"], "position": "V" },
+      { "name": "Fikayo Tomori", "aliases": ["Tomori"], "position": "V" },
+      { "name": "Theo Hernández", "aliases": ["Theo Hernandez", "Hernández", "Hernandez", "Theo"], "position": "V" },
+      { "name": "Sandro Tonali", "aliases": ["Tonali"], "position": "M" },
+      { "name": "Franck Kessié", "aliases": ["Kessie", "Kessié"], "position": "M" },
+      { "name": "Alexis Saelemaekers", "aliases": ["Saelemaekers"], "position": "M" },
+      { "name": "Rade Krunić", "aliases": ["Krunic", "Krunić"], "position": "M" },
+      { "name": "Rafael Leão", "aliases": ["Leao", "Leão"], "position": "A" },
+      { "name": "Olivier Giroud", "aliases": ["Giroud"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://www.acmilan.com/it/news/articoli/serie-a/2022-05-22/sassuolo-milan-le-formazioni-ufficiali", "https://www.goal.com/it/notizie/sassuolo-milan-0-3-leao-e-giroud-scudetto-rossoneri-campioni-d-italia/blt041b5779c6d52ca8"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-18"
+  },
+  {
+    "title": "Inter – AC Milan, Serie A 2000-01 (0-6)",
+    "team": "AC Milan",
+    "players": [
+      { "name": "Sebastiano Rossi", "aliases": ["Rossi"], "position": "K" },
+      { "name": "Thomas Helveg", "aliases": ["Helveg"], "position": "V" },
+      { "name": "Roque Júnior", "aliases": ["Roque Junior", "Roque"], "position": "V" },
+      { "name": "Alessandro Costacurta", "aliases": ["Costacurta", "Billy"], "position": "V" },
+      { "name": "Paolo Maldini", "aliases": ["Maldini"], "position": "V" },
+      { "name": "Kakha Kaladze", "aliases": ["Kaladze"], "position": "M" },
+      { "name": "Gennaro Gattuso", "aliases": ["Gattuso", "Rino"], "position": "M" },
+      { "name": "Federico Giunti", "aliases": ["Giunti"], "position": "M" },
+      { "name": "Serginho", "aliases": [], "position": "M" },
+      { "name": "Andriy Shevchenko", "aliases": ["Shevchenko", "Sheva"], "position": "A" },
+      { "name": "Gianni Comandini", "aliases": ["Comandini"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://www.tuttomercatoweb.com/accadde-oggi/11-maggio-2001-a-milano-quella-data-non-la-scorda-piu-nessuno-il-derby-finisce-0-6-1827403"],
+    "tags": ["curiosa"], "checkedAt": "2026-10-18"
+  },
+  {
+    "title": "Udinese – Napoli, Serie A 2022-23 (1-1)",
+    "team": "Napoli",
+    "players": [
+      { "name": "Alex Meret", "aliases": ["Meret"], "position": "K" },
+      { "name": "Giovanni Di Lorenzo", "aliases": ["Di Lorenzo"], "position": "V" },
+      { "name": "Amir Rrahmani", "aliases": ["Rrahmani"], "position": "V" },
+      { "name": "Kim Min-jae", "aliases": ["Kim", "Minjae", "Min-jae"], "position": "V" },
+      { "name": "Mathías Olivera", "aliases": ["Olivera", "Mathias Olivera"], "position": "V" },
+      { "name": "André-Frank Zambo Anguissa", "aliases": ["Anguissa", "Zambo Anguissa"], "position": "M" },
+      { "name": "Stanislav Lobotka", "aliases": ["Lobotka"], "position": "M" },
+      { "name": "Tanguy Ndombele", "aliases": ["Ndombele"], "position": "M" },
+      { "name": "Eljif Elmas", "aliases": ["Elmas"], "position": "A" },
+      { "name": "Victor Osimhen", "aliases": ["Osimhen"], "position": "A" },
+      { "name": "Khvicha Kvaratskhelia", "aliases": ["Kvaratskhelia", "Kvara"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://www.sportface.it/calcio/serie-a/formazioni-ufficiali-udinese-napoli-serie-a-2022-2023/2157825", "https://www.napolike.it/udinese-napoli-convocati-ufficiali-in-vista-del-match-2023", "https://www.fantacalcio.it/serie-a/calendario/33/2022-23/udinese-napoli/11984"],
+    "tags": [], "checkedAt": "2026-10-18"
+  },
+  {
+    "title": "Siena – Inter, Serie A 2009-10 (0-1)",
+    "team": "Inter",
+    "players": [
+      { "name": "Júlio César", "aliases": ["Julio Cesar", "Julio César", "Júlio Cesar"], "position": "K" },
+      { "name": "Maicon", "aliases": [], "position": "V" },
+      { "name": "Marco Materazzi", "aliases": ["Materazzi"], "position": "V" },
+      { "name": "Walter Samuel", "aliases": ["Walter Samuel", "El Muro"], "position": "V" },
+      { "name": "Javier Zanetti", "aliases": ["Zanetti", "Pupi"], "position": "V" },
+      { "name": "Esteban Cambiasso", "aliases": ["Cambiasso", "El Cuchu"], "position": "M" },
+      { "name": "Thiago Motta", "aliases": ["Motta"], "position": "M" },
+      { "name": "Wesley Sneijder", "aliases": ["Sneijder"], "position": "M" },
+      { "name": "Mario Balotelli", "aliases": ["Balotelli", "Super Mario"], "position": "A" },
+      { "name": "Samuel Eto'o", "aliases": ["Eto'o", "Etoo"], "position": "A" },
+      { "name": "Diego Milito", "aliases": ["Milito", "El Principe", "Principe"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://www.inter.it/it/notizie/2020-05-16-10-momenti-indimenticabili-siena-inter-0-1-2010-triplete", "https://www.inter.it/it/notizie/2019-05-16-on-this-day-siena-seconda-tappa-verso-il-triplete", "https://www.calcioblog.it/post/12767/siena-inter-del-16-maggio-2010", "https://storiainter.com/Notes/Stagione0910/Campionato0910/Siena%20-%20Inter%200910.htm"],
+    "tags": ["oranje"], "checkedAt": "2026-10-18"
+  },
+  {
+    "title": "Napoli – Fiorentina, Serie A 1986-87 (1-1)",
+    "team": "Napoli",
+    "players": [
+      { "name": "Claudio Garella", "aliases": ["Garella"], "position": "K" },
+      { "name": "Giuseppe Bruscolotti", "aliases": ["Bruscolotti"], "position": "V" },
+      { "name": "Moreno Ferrario", "aliases": ["Ferrario"], "position": "V" },
+      { "name": "Alessandro Renica", "aliases": ["Renica"], "position": "V" },
+      { "name": "Giuseppe Volpecina", "aliases": ["Volpecina"], "position": "V" },
+      { "name": "Salvatore Bagni", "aliases": ["Bagni"], "position": "M" },
+      { "name": "Fernando De Napoli", "aliases": ["De Napoli"], "position": "M" },
+      { "name": "Francesco Romano", "aliases": ["Romano"], "position": "M" },
+      { "name": "Diego Maradona", "aliases": ["Maradona", "Diego Armando Maradona", "El Pibe de Oro"], "position": "A" },
+      { "name": "Bruno Giordano", "aliases": ["Giordano"], "position": "A" },
+      { "name": "Andrea Carnevale", "aliases": ["Carnevale"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://www.90min.com/es/posts/34-anos-del-primer-scudetto-de-napoli-el-xi-titular-que-lo-logro-de-la-mano-de-maradona", "https://www.napolimagazine.com/in-evidenza/articolo/oggi-avvenne-10-maggio-1987-napoli-fiorentina-1-1-e-fu-scudetto-ecco-i-dettagli"],
+    "tags": ["legende"], "checkedAt": "2026-10-18"
+  },
+  {
+    "title": "Lazio – Reggina, Serie A 1999-2000 (3-0)",
+    "team": "Lazio",
+    "players": [
+      { "name": "Marco Ballotta", "aliases": ["Ballotta"], "position": "K" },
+      { "name": "Giuseppe Pancaro", "aliases": ["Pancaro"], "position": "V" },
+      { "name": "Paolo Negro", "aliases": ["Negro"], "position": "V" },
+      { "name": "Fernando Couto", "aliases": ["Couto"], "position": "V" },
+      { "name": "Giuseppe Favalli", "aliases": ["Favalli"], "position": "V" },
+      { "name": "Pavel Nedvěd", "aliases": ["Nedved", "Nedvěd"], "position": "M" },
+      { "name": "Diego Simeone", "aliases": ["Simeone", "El Cholo", "Cholo"], "position": "M" },
+      { "name": "Juan Sebastián Verón", "aliases": ["Veron", "Verón", "La Brujita"], "position": "M" },
+      { "name": "Roberto Mancini", "aliases": ["Mancini"], "position": "M" },
+      { "name": "Simone Inzaghi", "aliases": ["Inzaghi", "Simone"], "position": "A" },
+      { "name": "Marcelo Salas", "aliases": ["Salas", "El Matador"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://laziostories.com/post/lazio-reggina-2000", "https://www.laziowiki.org/wiki/Domenica_14_maggio_2000_%E2%80%93_Roma,_stadio_Olimpico_%E2%80%93_Lazio-Reggina_3-0"],
+    "tags": [], "checkedAt": "2026-10-18"
+  },
+  {
+    "title": "Anderlecht – Austria Wenen, finale Europacup II 1978 (4-0)",
+    "team": "Anderlecht",
+    "players": [
+      { "name": "Nico de Bree", "aliases": ["De Bree", "Nico De Bree"], "position": "K" },
+      { "name": "Gilbert Van Binst", "aliases": ["Van Binst"], "position": "V" },
+      { "name": "Hugo Broos", "aliases": ["Broos"], "position": "V" },
+      { "name": "Johnny Dusbaba", "aliases": ["Dusbaba"], "position": "V" },
+      { "name": "Jean Thissen", "aliases": ["Thissen"], "position": "V" },
+      { "name": "Franky Vercauteren", "aliases": ["Vercauteren", "Frank Vercauteren"], "position": "M" },
+      { "name": "Arie Haan", "aliases": ["Haan"], "position": "M" },
+      { "name": "Ludo Coeck", "aliases": ["Coeck"], "position": "M" },
+      { "name": "François Van der Elst", "aliases": ["Van der Elst", "Francois Van der Elst"], "position": "A" },
+      { "name": "Benny Nielsen", "aliases": ["Nielsen"], "position": "A" },
+      { "name": "Rob Rensenbrink", "aliases": ["Rensenbrink"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved", "checkedAt": "2026-10-18",
+    "sources": ["https://en.wikipedia.org/wiki/1978_European_Cup_Winners%27_Cup_final"],
+    "tags": ["anderlecht"]
+  },
+  {
+    "title": "Anderlecht – Benfica, heenmatch finale UEFA Cup 1983 (1-0)",
+    "team": "Anderlecht",
+    "players": [
+      { "name": "Jacky Munaron", "aliases": ["Munaron"], "position": "K" },
+      { "name": "Luka Peruzović", "aliases": ["Peruzović", "Peruzovic", "Luka Peruzovic"], "position": "V" },
+      { "name": "Michel De Groote", "aliases": ["De Groote"], "position": "V" },
+      { "name": "Per Frimann", "aliases": ["Frimann"], "position": "M" },
+      { "name": "Morten Olsen", "aliases": ["Olsen"], "position": "V" },
+      { "name": "Juan Lozano", "aliases": ["Lozano"], "position": "M" },
+      { "name": "Franky Vercauteren", "aliases": ["Vercauteren", "Frank Vercauteren"], "position": "M" },
+      { "name": "Wim Hofkens", "aliases": ["Hofkens"], "position": "V" },
+      { "name": "Ludo Coeck", "aliases": ["Coeck"], "position": "M" },
+      { "name": "Erwin Vandenbergh", "aliases": ["Vandenbergh"], "position": "A" },
+      { "name": "Kenneth Brylle", "aliases": ["Brylle"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved", "checkedAt": "2026-10-18",
+    "sources": ["https://en.wikipedia.org/wiki/1983_UEFA_Cup_final"],
+    "tags": ["anderlecht"]
   }
 ]

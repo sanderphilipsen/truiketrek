@@ -9,7 +9,7 @@
         var shown = p.Rank ?? rank;
         <li class="@(p.IsMe ? "me" : "") @(p.Left ? "left" : "")">
             <span class="rank">@(shown switch { 1 => "🥇", 2 => "🥈", 3 => "🥉", _ => shown.ToString() })</span>
-            <Avatar Id="@p.AvatarId" Size="36" />
+            <Avatar Id="@p.AvatarId" User="@p.UserName" Size="36" />
             <span class="player"><b>@p.UserName <span class="lvl">Lv @p.Level</span></b>@if (p.Left) {<small>verlaten</small>}</span>
             <span class="pts">@p.Score</span>
         </li>

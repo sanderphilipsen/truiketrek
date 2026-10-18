@@ -98,6 +98,7 @@ public class ApiClient(HttpClient http)
     private record CreatedMatch(int Id);
 
     public Task<StatsOverview> GetStatsAsync() => GetAsync<StatsOverview>("api/stats");
+    public Task<GoldenBallOverview> GetGoldenBallAsync() => GetAsync<GoldenBallOverview>("api/gouden-bal");
 
     private async Task<T?> GetOrNullAsync<T>(string url) where T : class
     {

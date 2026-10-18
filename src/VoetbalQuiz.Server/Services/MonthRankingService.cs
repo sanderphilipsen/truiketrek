@@ -107,23 +107,6 @@ public class MonthRankingService(QuizDbContext db, ResultsService results)
             .ToList();
     }
 
-    /// <summary>Kampioen van elke afgelopen maand met activiteit, nieuwste eerst.</summary>
-    public async Task<List<MonthChampion>> ChampionsAsync(string userId, DateOnly today)
-    {
-        var months = await ActiveMonthsAsync(today);
-        var cards = await results.UserCardsAsync();
-        var names = await db.Users.ToDictionaryAsync(u => u.Id, u => u.UserName!);
-        var champions = new List<MonthChampion>();
-        foreach (var (year, month) in months.OrderByDescending(m => m))
-        {
-            var best = (await ComputeAsync(year, month)).FirstOrDefault();
-            if (best is null || best.Total == 0) continue;
-            champions.Add(new MonthChampion(DutchDates.MonthYear(year, month), names.GetValueOrDefault(best.UserName, "?"),
-                cards.GetValueOrDefault(best.UserName)?.AvatarId, best.Total, best.UserName == userId));
-        }
-        return champions;
-    }
-
     /// <summary>Top 3 van elke afgelopen maand: wie welke plaats haalde (user-id, plaats, totaal).</summary>
     public async Task<List<(string UserId, string Season, int Place, int Points)>> PodiumsPerMonthAsync(DateOnly today)
     {
@@ -142,7 +125,7 @@ public class MonthRankingService(QuizDbContext db, ResultsService results)
     }
 
     /// <summary>Afgelopen maanden waarin iets gespeeld werd (de lopende maand telt nog niet mee).</summary>
-    private async Task<List<(int Year, int Month)>> ActiveMonthsAsync(DateOnly today)
+    public async Task<List<(int Year, int Month)>> ActiveMonthsAsync(DateOnly today)
     {
         var thisMonth = new DateOnly(today.Year, today.Month, 1);
         var days = await db.DailyChallenges.Where(c => c.Date < thisMonth).Select(c => c.Date).ToListAsync();

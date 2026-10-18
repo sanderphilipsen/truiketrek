@@ -15,7 +15,7 @@ else if (_p is null)
 else
 {
     <section class="card profile-head">
-        <Avatar Id="@_p.AvatarId" Size="96" />
+        <Avatar Id="@_p.AvatarId" User="@_p.UserName" Size="96" />
         <div>
             <h1>@_p.UserName</h1>
             <div class="level-line"><span class="lvl big">Level @_p.Level.Level</span> @_p.Level.Title</div>

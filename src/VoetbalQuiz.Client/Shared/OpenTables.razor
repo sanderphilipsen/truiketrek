@@ -22,7 +22,7 @@ else
             @foreach (var m in _lobby.Mine)
             {
                 <a class="table-card mine" href="online/@m.Id">
-                    <Avatar Id="@m.HostAvatarId" Size="40" />
+                    <Avatar Id="@m.HostAvatarId" User="@m.HostName" Size="40" />
                     <div class="table-info">
                         <b>@m.Name</b>
                         <small>@(m.Status == MatchStatus.Running ? "🔴 Bezig" : $"{m.Players}/{m.Seats} spelers · wacht op start")</small>
@@ -45,7 +45,7 @@ else
             @foreach (var m in _lobby.Open)
             {
                 <div class="table-card">
-                    <Avatar Id="@m.HostAvatarId" Size="40" />
+                    <Avatar Id="@m.HostAvatarId" User="@m.HostName" Size="40" />
                     <div class="table-info">
                         <b>@m.Name</b>
                         <small>@m.HostName · @m.Players/@m.Seats spelers</small>

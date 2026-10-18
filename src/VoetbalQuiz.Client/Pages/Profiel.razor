@@ -23,7 +23,7 @@ else
         <aside class="profile-side">
             <section class="card profile-hero">
                 <button class="hero-avatar" title="Avatar wijzigen" @onclick="() => _tab = ProfileTab.Avatar">
-                    <Avatar Id="@_profile.AvatarId" Size="96" />
+                    <Avatar Id="@_profile.AvatarId" User="@_profile.UserName" Size="96" />
                     <span class="hero-edit">✏️</span>
                 </button>
                 <div class="hero-main">

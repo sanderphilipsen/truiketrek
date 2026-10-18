@@ -52,6 +52,7 @@
       "https://thesefootballtimes.co/thomas-muller-the-first-and-possible-last-ramdeuter/"
     ],
     "tags": [
+      "wk",
       "champions-league"
     ],
     "checkedAt": "2026-10-17"
@@ -77,6 +78,7 @@
       "https://en.wikipedia.org/wiki/Manuel_Neuer"
     ],
     "tags": [
+      "wk",
       "champions-league"
     ],
     "checkedAt": "2026-10-17"
@@ -181,6 +183,7 @@
       "https://gulfnews.com/amp/story/sport%2Ffootball%2Ffifa-world-cup-2014-battered-bastian-schweinsteiger-hails-fans-support-1.1359608"
     ],
     "tags": [
+      "wk",
       "champions-league"
     ],
     "checkedAt": "2026-10-17"
@@ -207,6 +210,7 @@
       "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_final"
     ],
     "tags": [
+      "wk",
       "champions-league"
     ],
     "checkedAt": "2026-10-17"
@@ -232,6 +236,8 @@
       "https://en.wikipedia.org/wiki/Toni_Kroos"
     ],
     "tags": [
+      "wk",
+      "familie",
       "champions-league"
     ],
     "checkedAt": "2026-10-17"
@@ -258,7 +264,7 @@
       "https://en.wikipedia.org/wiki/Mario_G%C3%B6tze",
       "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_final"
     ],
-    "tags": [],
+    "tags": ["wk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -282,7 +288,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Pierre-Emerick_Aubameyang"
     ],
-    "tags": [],
+    "tags": ["familie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -401,7 +407,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Mats_Hummels"
     ],
-    "tags": [],
+    "tags": ["wk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -448,7 +454,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Miroslav_Klose"
     ],
-    "tags": [],
+    "tags": ["wk"],
     "checkedAt": "2026-10-17"
   }
 ]

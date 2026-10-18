@@ -13,6 +13,7 @@ builder.Services.AddScoped<ApiClient>();
 builder.Services.AddScoped<AuthState>();
 builder.Services.AddScoped<RealtimeClient>();
 builder.Services.AddScoped<AdminState>();
+builder.Services.AddScoped<GoldenBallState>();
 builder.Services.AddScoped<AuthenticationStateProvider>(sp => sp.GetRequiredService<AuthState>());
 builder.Services.AddAuthorizationCore();
 builder.Services.AddCascadingAuthenticationState();

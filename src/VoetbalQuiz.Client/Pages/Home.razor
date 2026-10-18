@@ -2,21 +2,47 @@
 @attribute [Authorize]
 @inject ApiClient Api
 @inject AuthState Auth
+@inject GoldenBallState GoldenBall
+@implements IDisposable
 
 <PageTitle>Truitje Trek – Voetbalquiz</PageTitle>
 
 <section class="home-hello">
-    <Avatar Id="@Auth.User?.AvatarId" Size="56" />
+    <Avatar Id="@Auth.User?.AvatarId" User="@Auth.User?.UserName" Size="56" />
     <div>
         <h1>Hoi @Auth.User?.UserName 👋</h1>
         <span class="lvl">Level @Auth.User?.Level</span>
     </div>
 </section>
 
+@if (GoldenBall.Overview is { Announce: true, Holders.Count: > 0 } gb)
+{
+    @* Eerste dag van de maand: de Gouden Bal van vorige maand voor iedereen op het dashboard. *@
+    <section class="golden-ball-card @(gb.Holders.Any(h => h.IsMe) ? "me" : "")">
+        <div class="gb-ball" aria-hidden="true">⚽</div>
+        <div class="gb-title">@gb.Holders[0].Title</div>
+        <div class="gb-winners">
+            @foreach (var h in gb.Holders)
+            {
+                <a class="gb-winner" href="speler/@Uri.EscapeDataString(h.UserName)">
+                    <Avatar Id="@h.AvatarId" User="@h.UserName" Size="76" />
+                    <b>@(h.IsMe ? "Jij!" : h.UserName)</b>
+                    <small>@h.Points maandpunten · @StarsText(GoldenBall.StarsOf(h.UserName))</small>
+                </a>
+            }
+        </div>
+        <p>@(gb.Holders.Any(h => h.IsMe)
+            ? "Proficiat! Je krijgt een ster op je shirt en draagt de hele maand de gouden rand."
+            : gb.Holders.Count > 1
+                ? "Gedeelde eerste plaats: allebei een ster op het shirt en de hele maand de gouden rand."
+                : "Een ster op het shirt en de hele maand de gouden rand. Wie pakt de volgende?")</p>
+    </section>
+}
+
 @if (_daily?.LastWinner is { } w)
 {
     <div class="winner-banner @(w.IsMe ? "me" : "")">
-        <Avatar Id="@w.AvatarId" Size="36" />
+        <Avatar Id="@w.AvatarId" User="@w.UserName" Size="36" />
         <span>🏆 @(w.IsMe ? "Jij was" : w.UserName + " was") dagwinnaar op @DutchDates.DayMonth(w.Date) met <b>@w.Points</b> punten</span>
     </div>
 }
@@ -113,12 +139,20 @@
 
     protected override async Task OnInitializedAsync()
     {
+        GoldenBall.Changed += Redraw;
         try
         {
             _daily = await Api.GetDailyAsync();
             _specials = await Api.GetSpecialsAsync();
             await Auth.RefreshAsync(); // level kan gestegen zijn
+            await GoldenBall.EnsureLoadedAsync(); // nieuwe dag: misschien een nieuwe Gouden Bal
         }
         catch (ApiException ex) { _error = ex.Message; }
     }
+
+    private void Redraw() => InvokeAsync(StateHasChanged);
+
+    public void Dispose() => GoldenBall.Changed -= Redraw;
+
+    private static string StarsText(int stars) => stars == 1 ? "1 ster" : $"{stars} sterren";
 }

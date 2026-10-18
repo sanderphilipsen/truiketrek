@@ -33,11 +33,9 @@ public static class QuizEndpoints
                 ? Results.BadRequest(new ErrorResponse("Ongeldige maand."))
                 : Results.Ok(await ranking.GetAsync(UserId(user), year, month)));
 
-        app.MapGet("/api/stats", async (ClaimsPrincipal user, ResultsService results, MonthRankingService ranking, TimeProvider clock) =>
-        {
-            var stats = await results.GetStatsAsync(UserId(user));
-            return stats with { MonthChampions = await ranking.ChampionsAsync(UserId(user), QuizClock.Today(clock)) };
-        }).RequireAuthorization();
+        // De maandwinnaars staan apart: zie /api/gouden-bal.
+        app.MapGet("/api/stats", (ClaimsPrincipal user, ResultsService results) => results.GetStatsAsync(UserId(user)))
+            .RequireAuthorization();
     }
 
     private static string UserId(ClaimsPrincipal user) => user.FindFirstValue(ClaimTypes.NameIdentifier)!;

@@ -4,7 +4,7 @@
     {
         <li class="@(e.IsMe ? "me" : "")">
             <span class="rank">@Medal(e.Rank)</span>
-            <Avatar Id="@e.AvatarId" Size="38" />
+            <Avatar Id="@e.AvatarId" User="@e.UserName" Size="38" />
             <a class="player" href="speler/@Uri.EscapeDataString(e.UserName)">
                 <b>@e.UserName <span class="lvl">Lv @e.Level</span></b>
                 <small>@e.CorrectAnswers juist @(ShowDays ? $"· {e.DaysPlayed} {(e.DaysPlayed == 1 ? "dag" : "dagen")}" : "")@(e.DaysWon > 0 ? $" · {e.DaysWon}× 🏆" : "")</small>

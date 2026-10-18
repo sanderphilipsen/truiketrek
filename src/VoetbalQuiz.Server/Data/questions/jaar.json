@@ -7,7 +7,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/1970_FIFA_World_Cup_final"
     ],
-    "tags": [],
+    "tags": ["wk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -44,7 +44,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/1974_FIFA_World_Cup_final"
     ],
-    "tags": [],
+    "tags": ["wk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -55,7 +55,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/1976_European_Cup_Winners'_Cup_final"
     ],
-    "tags": [],
+    "tags": ["anderlecht"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -115,6 +115,7 @@
       "https://en.wikipedia.org/wiki/1982_FIFA_World_Cup_Group_3"
     ],
     "tags": [
+      "wk",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-17"
@@ -127,7 +128,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/1982_FIFA_World_Cup_final"
     ],
-    "tags": [],
+    "tags": ["wk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -138,7 +139,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/1983_UEFA_Cup_final"
     ],
-    "tags": [],
+    "tags": ["anderlecht"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -176,6 +177,7 @@
       "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_knockout_stage"
     ],
     "tags": [
+      "wk",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-17"
@@ -201,7 +203,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Argentina_v_England_(1986_FIFA_World_Cup)"
     ],
-    "tags": [],
+    "tags": ["wk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -234,11 +236,11 @@
     "sources": [
       "https://en.wikipedia.org/wiki/1990_FIFA_World_Cup_final"
     ],
-    "tags": [],
+    "tags": ["wk"],
     "checkedAt": "2026-10-17"
   },
   {
-    "event": "David Platt beslist met een volley in de 120e minuut de achtste finale tegen België.",
+    "event": "David Platt beslist met een volley in de 119e minuut de achtste finale tegen België.",
     "year": 1990,
     "difficulty": 2,
     "status": "approved",
@@ -246,6 +248,7 @@
       "https://en.wikipedia.org/wiki/1990_FIFA_World_Cup_knockout_stage"
     ],
     "tags": [
+      "wk",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-17"
@@ -283,6 +286,7 @@
       "https://en.wikipedia.org/wiki/1994_FIFA_World_Cup_Group_F"
     ],
     "tags": [
+      "wk",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-17"
@@ -295,7 +299,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/1994_FIFA_World_Cup_final"
     ],
-    "tags": [],
+    "tags": ["wk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -328,7 +332,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/1998_FIFA_World_Cup_final"
     ],
-    "tags": [],
+    "tags": ["wk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -377,6 +381,7 @@
       "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_knockout_stage"
     ],
     "tags": [
+      "wk",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-17"
@@ -389,7 +394,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_final"
     ],
-    "tags": [],
+    "tags": ["wk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -458,7 +463,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2006_FIFA_World_Cup_final"
     ],
-    "tags": [],
+    "tags": ["wk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -552,7 +557,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2008%E2%80%9309_Belgian_First_Division"
     ],
-    "tags": [],
+    "tags": ["anderlecht"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -576,7 +581,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_final"
     ],
-    "tags": [],
+    "tags": ["wk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -718,7 +723,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Brazil_v_Germany_(2014_FIFA_World_Cup)"
     ],
-    "tags": [],
+    "tags": ["wk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -729,7 +734,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Luis_Su%C3%A1rez_(Uruguayan_footballer)"
     ],
-    "tags": [],
+    "tags": ["wk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -741,6 +746,7 @@
       "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_Group_H"
     ],
     "tags": [
+      "wk",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-17"
@@ -754,6 +760,7 @@
       "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_knockout_stage"
     ],
     "tags": [
+      "wk",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-17"
@@ -910,6 +917,7 @@
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"
     ],
     "tags": [
+      "wk",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-17"
@@ -1062,7 +1070,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_final"
     ],
-    "tags": [],
+    "tags": ["wk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1088,6 +1096,7 @@
       "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_Group_F"
     ],
     "tags": [
+      "wk",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-17"
@@ -1302,7 +1311,440 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup"
     ],
-    "tags": [],
+    "tags": ["wk"],
     "checkedAt": "2026-10-17"
+  },
+  {
+    "event": "Barbados scoort bewust in eigen doel tegen Grenada om via een golden goal die telde voor twee de volgende ronde van de Caraïbische Cup te halen.",
+    "year": 1994,
+    "difficulty": 3,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1994_Caribbean_Cup"
+    ],
+    "tags": [
+      "curiosa"
+    ]
+  },
+  {
+    "event": "West-Duitsland en Oostenrijk spelen na een vroege goal bijna zonder tegenstand naar de beide gewenste 1-0; Algerije is uitgeschakeld (de 'Schande van Gijón').",
+    "year": 1982,
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Disgrace_of_Gij%C3%B3n"
+    ],
+    "tags": [
+      "curiosa"
+    ]
+  },
+  {
+    "event": "Doelman Jimmy Glass scoort in de allerlaatste seconden voor Carlisle United en behoedt zijn club voor degradatie uit de Football League.",
+    "year": 1999,
+    "difficulty": 3,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jimmy_Glass"
+    ],
+    "tags": [
+      "curiosa"
+    ]
+  },
+  {
+    "event": "De Champions League-derby AC Milan–Inter wordt gestaakt nadat doelman Dida door een fakkel geraakt wordt.",
+    "year": 2005,
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://www.rferl.org/a/1058456.html",
+      "https://www.beinsports.com/en-mena/football/uefa-champions-league/articles/this-day-in-sport-milan-derby-abandoned"
+    ],
+    "tags": [
+      "curiosa",
+      "champions-league"
+    ]
+  },
+  {
+    "event": "Op het WK in Zuid-Afrika staan de halfbroers Kevin-Prince en Jérôme Boateng voor het eerst tegenover elkaar op een WK (Ghana–Duitsland, 0-1).",
+    "year": 2010,
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/J%C3%A9r%C3%B4me_Boateng"
+    ],
+    "tags": [
+      "familie"
+    ]
+  },
+  {
+    "event": "Paolo Maldini, zoon van Cesare, speelt na 25 jaar zijn laatste wedstrijd voor AC Milan (2-0 tegen Fiorentina).",
+    "year": 2009,
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Paolo_Maldini"
+    ],
+    "tags": [
+      "familie",
+      "legende"
+    ]
+  },
+  {
+    "event": "Kasper Schmeichel wordt met Leicester City Engels kampioen, net als zijn vader Peter ooit met Manchester United.",
+    "year": 2016,
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kasper_Schmeichel"
+    ],
+    "tags": [
+      "familie"
+    ]
+  },
+  {
+    "event": "Pippo Inzaghi scoort twee keer in de Champions League-finale in Athene tegen Liverpool; zijn broer Simone speelde toen bij Lazio.",
+    "year": 2007,
+    "difficulty": 3,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Filippo_Inzaghi",
+      "https://en.wikipedia.org/wiki/Simone_Inzaghi"
+    ],
+    "tags": [
+      "familie",
+      "champions-league"
+    ]
+  },
+  {
+    "event": "Stefan Kießling scoort een 'spookgoal': de bal gaat via een gat in het zijnet binnen en de goal telt toch.",
+    "year": 2013,
+    "difficulty": 3,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Phantom_goal"
+    ],
+    "tags": [
+      "halloween"
+    ]
+  },
+  {
+    "event": "Duitsland bezorgt Brazilië in de WK-halve finale in Belo Horizonte een horrornederlaag van 7-1.",
+    "year": 2014,
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Brazil_v_Germany_(2014_FIFA_World_Cup)"
+    ],
+    "tags": [
+      "halloween"
+    ]
+  },
+  {
+    "event": "Frank Lampard ziet zijn doelpunt tegen Duitsland op het WK ten onrechte afgekeurd, hoewel de bal duidelijk over de lijn was.",
+    "year": 2010,
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_knockout_stage#England_vs_Germany"
+    ],
+    "tags": [
+      "halloween"
+    ]
+  },
+  {
+    "event": "Horror voor AC Milan in Istanbul: de Rossoneri leiden met 3-0 aan de rust, maar Liverpool komt terug en wint na strafschoppen de Champions League.",
+    "year": 2005,
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2005_UEFA_Champions_League_final"
+    ],
+    "tags": [
+      "halloween",
+      "champions-league"
+    ]
+  },
+  {
+    "event": "Argentinië wint na strafschoppen de WK-finale tegen Frankrijk, een week voor Kerst.",
+    "year": 2022,
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_final"
+    ],
+    "tags": [
+      "kerst"
+    ]
+  },
+  {
+    "event": "Liverpool wint net voor Kerst in Doha het WK voor clubs na verlengingen tegen Flamengo.",
+    "year": 2019,
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2019_FIFA_Club_World_Cup_final"
+    ],
+    "tags": [
+      "kerst"
+    ]
+  },
+  {
+    "event": "Real Madrid wint met 4-1 van Al Ain en pakt in december voor het derde jaar op rij het WK voor clubs.",
+    "year": 2018,
+    "difficulty": 3,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2018_FIFA_Club_World_Cup_final"
+    ],
+    "tags": [
+      "kerst",
+      "champions-league"
+    ]
+  },
+  {
+    "event": "Manchester City wint twee dagen voor Kerst in Jeddah met 4-0 van Fluminense het WK voor clubs.",
+    "year": 2023,
+    "difficulty": 3,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2023_FIFA_Club_World_Cup_final"
+    ],
+    "tags": [
+      "kerst"
+    ]
+  },
+  {
+    "event": "Voetballegende Pelé overlijdt op 29 december, enkele dagen voor het nieuwe jaar.",
+    "year": 2022,
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pel%C3%A9"
+    ],
+    "tags": [
+      "nieuwjaar",
+      "legende"
+    ]
+  },
+  {
+    "event": "Op nieuwjaarsdag wordt Virgil van Dijk officieel speler van Liverpool, de duurste verdediger ooit.",
+    "year": 2018,
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Virgil_van_Dijk",
+      "https://www.thescore.com/news/1455040"
+    ],
+    "tags": [
+      "nieuwjaar"
+    ]
+  },
+  {
+    "event": "Chelsea betaalt in de wintermercato 50 miljoen pond voor Fernando Torres, toen een Brits transferrecord.",
+    "year": 2011,
+    "difficulty": 3,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Fernando_Torres"
+    ],
+    "tags": [
+      "nieuwjaar"
+    ]
+  },
+  {
+    "event": "Franz Beckenbauer, 'Der Kaiser', overlijdt in de eerste dagen van het nieuwe jaar.",
+    "year": 2024,
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Franz_Beckenbauer"
+    ],
+    "tags": [
+      "nieuwjaar",
+      "legende"
+    ]
+  },
+  {
+    "event": "Het Bosman-arrest van het Europees Hof van Justitie maakt spelers vrij na afloop van hun contract, waardoor 'cadeautjes' van gratis transfers mogelijk worden.",
+    "year": 1995,
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Bosman_ruling"
+    ],
+    "tags": [
+      "sinterklaas"
+    ]
+  },
+  {
+    "event": "Spanje, het land van de Sint, wint in Wenen met 1-0 van Duitsland het EK en pakt zijn eerste grote titel sinds 1964.",
+    "year": 2008,
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Euro_2008_final"
+    ],
+    "tags": [
+      "sinterklaas"
+    ]
+  },
+  {
+    "event": "Spanje wordt voor het eerst wereldkampioen na een 1-0 tegen Nederland in de verlenging, met een doelpunt van Andrés Iniesta.",
+    "year": 2010,
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_final"
+    ],
+    "tags": [
+      "sinterklaas"
+    ]
+  },
+  {
+    "event": "Royal Antwerp (rood-wit) wint de Beker van België met 1-0 tegen Club Brugge, dankzij een doelpunt van Lior Refaelov.",
+    "year": 2020,
+    "difficulty": 3,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Royal_Antwerp_F.C.",
+      "https://en.wikipedia.org/wiki/2020_Belgian_Cup_final"
+    ],
+    "tags": [
+      "sinterklaas"
+    ]
+  },
+  {
+    "event": "Argentinië wordt in eigen land wereldkampioen na een 3-1 zege in de verlengingen tegen Nederland.",
+    "year": 1978,
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1978_FIFA_World_Cup_final"
+    ],
+    "tags": [
+      "wk"
+    ]
+  },
+  {
+    "event": "Kameroen verrast titelverdediger Argentinië in de openingswedstrijd van het WK in Milaan.",
+    "year": 1990,
+    "difficulty": 3,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1990_FIFA_World_Cup"
+    ],
+    "tags": [
+      "wk"
+    ]
+  },
+  {
+    "event": "Luis Suárez stopt met zijn hand een bal op de doellijn in de WK-kwartfinale tegen Ghana.",
+    "year": 2010,
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_knockout_stage"
+    ],
+    "tags": [
+      "wk"
+    ]
+  },
+  {
+    "event": "Titelverdediger Duitsland wordt in de groepsfase van het WK uitgeschakeld na een 0-2 nederlaag tegen Zuid-Korea.",
+    "year": 2018,
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_Group_F"
+    ],
+    "tags": [
+      "wk"
+    ]
+  },
+  {
+    "event": "Saoedi-Arabië verslaat Argentinië met 2-1 in de groepsfase van het WK.",
+    "year": 2022,
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_Group_C"
+    ],
+    "tags": [
+      "wk"
+    ]
+  },
+  {
+    "event": "Anderlecht verliest als titelverdediger de Europacup II-finale in Amsterdam van Hamburger SV.",
+    "year": 1977,
+    "difficulty": 3,
+    "status": "approved", "checkedAt": "2026-10-18",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1977_European_Cup_Winners%27_Cup_final"
+    ],
+    "tags": [
+      "anderlecht"
+    ]
+  },
+  {
+    "event": "Anderlecht wint in Parijs met 4-0 van Austria Wenen de Europacup II.",
+    "year": 1978,
+    "difficulty": 3,
+    "status": "approved", "checkedAt": "2026-10-18",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1978_European_Cup_Winners%27_Cup_final"
+    ],
+    "tags": [
+      "anderlecht"
+    ]
+  },
+  {
+    "event": "Anderlecht pakt over twee wedstrijden de Europese Supercup tegen Liverpool.",
+    "year": 1978,
+    "difficulty": 3,
+    "status": "approved", "checkedAt": "2026-10-18",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1978_European_Super_Cup"
+    ],
+    "tags": [
+      "anderlecht"
+    ]
+  },
+  {
+    "event": "Anderlecht verliest de UEFA Cup-finale na strafschoppen van Tottenham.",
+    "year": 1984,
+    "difficulty": 3,
+    "status": "approved", "checkedAt": "2026-10-18",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1984_UEFA_Cup_final"
+    ],
+    "tags": [
+      "anderlecht"
+    ]
+  },
+  {
+    "event": "Franky Vercauteren wordt in zijn eerste volledige seizoen als hoofdtrainer van Anderlecht landskampioen, na een beslissing op de laatste speeldag.",
+    "year": 2006,
+    "difficulty": 3,
+    "status": "approved", "checkedAt": "2026-10-18",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Franky_Vercauteren",
+      "https://en.wikipedia.org/wiki/2005%E2%80%9306_Belgian_First_Division"
+    ],
+    "tags": [
+      "anderlecht"
+    ]
+  },
+  {
+    "event": "Anderlecht prolongeert onder Franky Vercauteren zijn landstitel, één speeldag voor het einde.",
+    "year": 2007,
+    "difficulty": 3,
+    "status": "approved", "checkedAt": "2026-10-18",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2006%E2%80%9307_Belgian_First_Division",
+      "https://en.wikipedia.org/wiki/Franky_Vercauteren"
+    ],
+    "tags": [
+      "anderlecht"
+    ]
   }
 ]

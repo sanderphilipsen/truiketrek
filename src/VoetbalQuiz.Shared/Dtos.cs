@@ -93,7 +93,7 @@ public record LeaderboardEntry(
 public record Leaderboard(string Title, string? Note, List<LeaderboardEntry> Entries);
 
 // Statistieken
-public record StatsOverview(MyStats Me, List<StatCard> HallOfFame, List<MonthChampion> MonthChampions, List<HardQuestion> Hardest);
+public record StatsOverview(MyStats Me, List<StatCard> HallOfFame, List<HardQuestion> Hardest);
 
 public record MyStats(
     int DaysPlayed, int DaysWon, int BestDay, int AverageDay, int CorrectPercent,
@@ -101,7 +101,5 @@ public record MyStats(
 
 /// <summary>Eén record in de eregalerij, bv. "Meeste dagzeges".</summary>
 public record StatCard(string Icon, string Title, string Caption, string UserName, string? AvatarId, string Value, bool IsMe);
-
-public record MonthChampion(string Month, string UserName, string? AvatarId, int Points, bool IsMe);
 
 public record HardQuestion(string PlayerName, int CorrectPercent, int Attempts);

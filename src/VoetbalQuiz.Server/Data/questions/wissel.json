@@ -38,7 +38,7 @@
     "answer": "Eden Hazard", "aliases": ["Hazard"],
     "when": "Zomer 2012", "fee": "Ongeveer €40 miljoen",
     "from": "Lille", "to": "Chelsea",
-    "extra": "Belgische dribbelaar die net de Franse dubbel had gewonnen",
+    "extra": "Belgische dribbelaar die twee jaar op rij uitgeroepen werd tot beste speler van de Franse competitie",
     "difficulty": 2, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Eden_Hazard"], "tags": ["rode-duivels"]
   },
   {
@@ -155,7 +155,7 @@
   },
   {
     "answer": "Declan Rice", "aliases": ["Rice"],
-    "when": "Zomer 2023", "fee": "£105 miljoen, een Brits record",
+    "when": "Zomer 2023", "fee": "£105 miljoen, een clubrecord voor Arsenal",
     "from": "West Ham United", "to": "Arsenal",
     "extra": "Engelse controleur die net de Conference League had gewonnen als aanvoerder",
     "difficulty": 2, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Declan_Rice"], "tags": []
@@ -185,7 +185,7 @@
     "answer": "Zlatan Ibrahimović", "aliases": ["Zlatan", "Ibrahimovic"],
     "when": "Zomer 2009", "fee": "Ongeveer €46 miljoen plus Samuel Eto'o in de ruil",
     "from": "Inter", "to": "FC Barcelona",
-    "extra": "Zweedse spits met een eigen werkwoord: zlataneren",
+    "extra": "Zweedse spits die het na één seizoen bij Barça al voor bekeken hield",
     "difficulty": 2, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Zlatan_Ibrahimovi%C4%87"], "tags": []
   },
   {
@@ -211,7 +211,7 @@
   },
   {
     "answer": "Vincent Kompany", "aliases": ["Kompany", "Vince"],
-    "when": "Zomer 2008", "fee": "Ongeveer €8,5 miljoen",
+    "when": "Zomer 2008", "fee": "Ongeveer £6 miljoen",
     "from": "Hamburger SV", "to": "Manchester City",
     "extra": "Brusselse verdediger die later kapitein en kampioen werd in Manchester",
     "difficulty": 2, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Vincent_Kompany"], "tags": ["rode-duivels", "anderlecht"]

@@ -43,7 +43,7 @@ else
                     @foreach (var p in _state.Players)
                     {
                         <li>
-                            <Avatar Id="@p.AvatarId" Size="40" />
+                            <Avatar Id="@p.AvatarId" User="@p.UserName" Size="40" />
                             <span><b>@p.UserName</b> <span class="lvl">Lv @p.Level</span></span>
                             @if (p.IsHost) { <span class="tag">organisator</span> }
                         </li>
@@ -153,7 +153,7 @@ else
                     {
                         <li class="@(r.IsMe ? "me" : "")">
                             <span class="rank">@Medal(r.Position)</span>
-                            <Avatar Id="@r.AvatarId" Size="36" />
+                            <Avatar Id="@r.AvatarId" User="@r.UserName" Size="36" />
                             <span class="player"><b>@r.UserName</b>@if (r.Bonus > 0) {<small>+@r.Bonus positiebonus</small>}</span>
                             <span class="pts">+@r.Points</span>
                         </li>

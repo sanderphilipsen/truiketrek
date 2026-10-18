@@ -21,7 +21,7 @@ else
     @if (_overview.LastWinner is { } w)
     {
         <div class="winner-banner @(w.IsMe ? "me" : "")">
-            <Avatar Id="@w.AvatarId" Size="36" />
+            <Avatar Id="@w.AvatarId" User="@w.UserName" Size="36" />
             <span>🏆 @(w.IsMe ? "Jij was" : w.UserName + " was") dagwinnaar op @DutchDates.DayMonth(w.Date) met <b>@w.Points</b> punten</span>
         </div>
     }

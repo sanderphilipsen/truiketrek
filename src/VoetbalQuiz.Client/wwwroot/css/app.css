@@ -1134,3 +1134,34 @@ button.choice:active { transform: scale(.97); }
     .reward-badges-title, .reward-badge, .reward-bar span { animation: none; opacity: 1; }
     .reward-badge::after, .confetti { display: none; }
 }
+
+/* ---------- Gouden Bal ---------- */
+.avatar.golden { filter: drop-shadow(0 0 4px rgba(245, 196, 0, .75)); }
+
+.golden-ball-card {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    color: #1b1600;
+    background: radial-gradient(circle at 50% 0%, #fff6c4 0%, #f5c400 55%, #c99a00 100%);
+    border-radius: var(--radius);
+    padding: 18px 16px 14px;
+    margin-bottom: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
+}
+.golden-ball-card .gb-ball { font-size: 2rem; line-height: 1; animation: gb-spin 2.4s ease-in-out infinite; }
+.golden-ball-card .gb-title { font-size: 1.35rem; font-weight: 900; text-transform: uppercase; letter-spacing: .04em; margin: 6px 0 10px; }
+.golden-ball-card .gb-winners { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; }
+.golden-ball-card .gb-winner { display: flex; flex-direction: column; align-items: center; gap: 4px; color: inherit; text-decoration: none; }
+.golden-ball-card .gb-winner b { font-size: 1.15rem; }
+.golden-ball-card .gb-winner small { font-size: .78rem; opacity: .8; }
+.golden-ball-card p { margin: 10px 0 0; font-size: .88rem; }
+.golden-ball-card.me { box-shadow: 0 0 0 3px #fff, 0 8px 24px rgba(0, 0, 0, .25); }
+
+@keyframes gb-spin {
+    0%, 100% { transform: rotate(-12deg) translateY(0); }
+    50% { transform: rotate(12deg) translateY(-4px); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .golden-ball-card .gb-ball { animation: none; }
+}

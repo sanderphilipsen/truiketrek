@@ -168,7 +168,8 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
     }
 
     /// <summary>
-    /// Vragen uit de bank: langst niet gebruikt eerst, goedgekeurd eerst, bij een special eerst die met het thema.
+    /// Vragen uit de bank: bij een special eerst die met het thema (ook als ze nog te keuren zijn), dan goedgekeurd eerst,
+    /// dan langst niet gebruikt eerst. Zijn er te weinig themavragen, dan vullen gewone vragen aan.
     /// <paramref name="exclude"/> (online): deze vragen niet, en verder willekeurig, zodat de rotatie van de daily ongemoeid blijft.
     /// </summary>
     private async Task<List<QuizItem>> PickItemsAsync(QuestionType type, int count, string? tag, HashSet<int>? exclude = null)
@@ -181,8 +182,8 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
 
         return (await db.QuizItems.Where(i => i.Type == type && i.Status != PlayerStatus.Rejected).ToListAsync())
             .Where(i => exclude?.Contains(i.Id) != true)
-            .OrderBy(i => i.Status == PlayerStatus.Approved ? 0 : 1)
-            .ThenBy(i => PlayerTags.Any(i.Tags, tag) ? 0 : 1)
+            .OrderBy(i => PlayerTags.Any(i.Tags, tag) ? 0 : 1)
+            .ThenBy(i => i.Status == PlayerStatus.Approved ? 0 : 1)
             .ThenBy(i => lastUsed.TryGetValue(i.Id, out var d) ? d : DateOnly.MinValue)
             .ThenBy(_ => Random.Shared.Next())
             // Bij emoji, carrièrepad, wissel, rugnummer en mannetje is het antwoord het onderwerp: nooit twee keer dezelfde speler of club

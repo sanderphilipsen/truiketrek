@@ -63,7 +63,7 @@ else
                 <a class="mt-row @(e.IsMe ? "me" : "")" href="speler/@Uri.EscapeDataString(e.UserName)">
                     <span class="mt-rank">@Medal(e.Rank)</span>
                     <span class="mt-player">
-                        <Avatar Id="@e.AvatarId" Size="34" />
+                        <Avatar Id="@e.AvatarId" User="@e.UserName" Size="34" />
                         <span>
                             <b>@e.UserName</b> <span class="lvl">Lv @e.Level</span>
                             <small>@Details(e)</small>

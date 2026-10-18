@@ -322,7 +322,7 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
             Add("🎲", "Gokker van dienst", "Meeste foute pogingen", gambler.User, $"{gambler.Wrong}");
 
         return new StatsOverview(MyStatsFor(userId, rows, days, winners.Count(w => w.UserId == userId), today),
-            cards, [], Hardest(rows, today)); // maandkampioenen komen uit het maandklassement (MonthRankingService)
+            cards, Hardest(rows, today)); // maandwinnaars: zie GoldenBallService
     }
 
     private static MyStats MyStatsFor(string userId, List<Row> rows, List<DayTotal> days, int wins, DateOnly today)

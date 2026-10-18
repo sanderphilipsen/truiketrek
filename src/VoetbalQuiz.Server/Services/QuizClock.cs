@@ -7,4 +7,8 @@ public static class QuizClock
 
     public static DateOnly Today(TimeProvider clock) =>
         DateOnly.FromDateTime(TimeZoneInfo.ConvertTime(clock.GetUtcNow(), Brussels).DateTime);
+
+    /// <summary>De Belgische datum van een UTC-tijdstip uit de database.</summary>
+    public static DateOnly ToBrusselsDate(DateTime utc) =>
+        DateOnly.FromDateTime(TimeZoneInfo.ConvertTimeFromUtc(DateTime.SpecifyKind(utc, DateTimeKind.Utc), Brussels));
 }

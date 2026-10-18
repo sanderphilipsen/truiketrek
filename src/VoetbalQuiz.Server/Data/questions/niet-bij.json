@@ -54,6 +54,7 @@
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"
     ],
     "tags": [
+      "wk",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-17"
@@ -67,7 +68,7 @@
       "Dick Advocaat"
     ],
     "odd": 1,
-    "explanation": "Waseige (1999–2002), Anthuenis (2002–2004) en Advocaat (2009–2010) waren bondscoach; Gerets weigerde in 2009 een aanbod van de bond en werd het nooit.",
+    "explanation": "Waseige (1999–2002), Anthuenis (2002–2005) en Advocaat (2009–2010) waren bondscoach; Gerets weigerde in 2009 een aanbod van de bond en werd het nooit.",
     "difficulty": 3,
     "status": "approved",
     "sources": [
@@ -95,6 +96,7 @@
       "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_squads"
     ],
     "tags": [
+      "wk",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-17"
@@ -117,6 +119,7 @@
       "https://en.wikipedia.org/wiki/Stijn_Stijnen"
     ],
     "tags": [
+      "wk",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-17"
@@ -156,7 +159,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals"
     ],
-    "tags": [],
+    "tags": ["wk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -252,6 +255,7 @@
       "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"
     ],
     "tags": [
+      "wk",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-17"
@@ -389,6 +393,7 @@
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
     ],
     "tags": [
+      "wk",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-17"
@@ -408,7 +413,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals"
     ],
-    "tags": [],
+    "tags": ["wk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -617,7 +622,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_squads"
     ],
-    "tags": [],
+    "tags": ["wk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -635,7 +640,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
     ],
-    "tags": [],
+    "tags": ["wk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -845,6 +850,7 @@
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"
     ],
     "tags": [
+      "wk",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-17"
@@ -885,6 +891,7 @@
       "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"
     ],
     "tags": [
+      "wk",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-17"
@@ -905,6 +912,7 @@
       "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"
     ],
     "tags": [
+      "wk",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-17"
@@ -945,6 +953,7 @@
       "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"
     ],
     "tags": [
+      "wk",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-17"
@@ -1005,6 +1014,7 @@
       "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"
     ],
     "tags": [
+      "wk",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-17"
@@ -1026,6 +1036,7 @@
       "https://nl.wikipedia.org/wiki/Belgisch_voetbalelftal_(mannen)"
     ],
     "tags": [
+      "wk",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-17"
@@ -1066,6 +1077,7 @@
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"
     ],
     "tags": [
+      "wk",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-17"
@@ -1633,6 +1645,7 @@
       "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_Group_B"
     ],
     "tags": [
+      "wk",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-18"
@@ -1653,6 +1666,7 @@
       "https://en.wikipedia.org/wiki/1990_FIFA_World_Cup_Group_E"
     ],
     "tags": [
+      "wk",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-18"
@@ -1673,6 +1687,7 @@
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_Group_G"
     ],
     "tags": [
+      "wk",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-18"
@@ -1695,5 +1710,608 @@
     ],
     "tags": [],
     "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Welke doelman scoorde nooit in de Premier League?",
+    "options": [
+      "Tim Howard",
+      "Asmir Begović",
+      "Petr Čech",
+      "Alisson"
+    ],
+    "odd": 2,
+    "explanation": "Howard (2012), Begović (2013) en Alisson (2021) scoorden in de Premier League; Petr Čech nooit.",
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_goalkeepers_who_have_scored_in_the_Premier_League"
+    ],
+    "tags": [
+      "curiosa"
+    ]
+  },
+  {
+    "prompt": "Wie kreeg nooit een rode kaart in een WK-finale?",
+    "options": [
+      "Pedro Monzón",
+      "Marco Materazzi",
+      "Zinédine Zidane",
+      "John Heitinga"
+    ],
+    "odd": 1,
+    "explanation": "Monzón (1990), Zidane (2006) en Heitinga (2010) werden uitgesloten in een WK-finale; Materazzi lokte de rode kaart van Zidane uit maar kreeg er zelf geen.",
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://www.wionews.com/sports/fifa-world-cup-5-players-who-were-shown-red-card-in-final-143274",
+      "https://www.goal.com/en/news/most-red-cards-in-world-cup-history/blte958c8e99f134336"
+    ],
+    "tags": [
+      "curiosa"
+    ]
+  },
+  {
+    "prompt": "Wie kreeg geen rode kaart in de 'Slag van Neurenberg' (Portugal–Nederland, WK 2006)?",
+    "options": [
+      "Costinha",
+      "Khalid Boulahrouz",
+      "Maniche",
+      "Deco"
+    ],
+    "odd": 2,
+    "explanation": "Costinha, Boulahrouz, Deco en Giovanni van Bronckhorst kregen een tweede gele kaart en dus rood; Maniche (de doelpuntenmaker) kreeg alleen geel.",
+    "difficulty": 3,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Battle_of_Nuremberg_(2006_FIFA_World_Cup)"
+    ],
+    "tags": [
+      "curiosa"
+    ]
+  },
+  {
+    "prompt": "Welke van deze doelmannen scoorde nooit voor zijn club in de Premier League?",
+    "options": [
+      "Peter Schmeichel",
+      "Brad Friedel",
+      "Paul Robinson",
+      "Edwin van der Sar"
+    ],
+    "odd": 3,
+    "explanation": "Schmeichel (Aston Villa, 2001), Friedel (Blackburn, 2004) en Robinson (Tottenham, 2007) scoorden in de Premier League; Van der Sar staat niet op de lijst.",
+    "difficulty": 3,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_goalkeepers_who_have_scored_in_the_Premier_League"
+    ],
+    "tags": [
+      "curiosa"
+    ]
+  },
+  {
+    "prompt": "Welk duo zijn geen broers?",
+    "options": [
+      "Gary en Phil Neville",
+      "Pippo en Simone Inzaghi",
+      "Peter en Kasper Schmeichel",
+      "Kolo en Yaya Touré"
+    ],
+    "odd": 2,
+    "explanation": "Gary en Phil Neville, Filippo en Simone Inzaghi en Kolo en Yaya Touré zijn broers; Peter en Kasper Schmeichel zijn vader en zoon.",
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gary_Neville",
+      "https://en.wikipedia.org/wiki/Filippo_Inzaghi",
+      "https://en.wikipedia.org/wiki/Yaya_Tour%C3%A9",
+      "https://en.wikipedia.org/wiki/Kasper_Schmeichel"
+    ],
+    "tags": [
+      "familie"
+    ]
+  },
+  {
+    "prompt": "Welke broers speelden nooit voor hetzelfde land?",
+    "options": [
+      "Eden en Thorgan Hazard",
+      "Romelu en Jordan Lukaku",
+      "Kevin-Prince en Jérôme Boateng",
+      "Émile en Mbo Mpenza"
+    ],
+    "odd": 2,
+    "explanation": "De Hazards, Lukaku's en Mpenza's speelden allemaal voor België; Kevin-Prince Boateng koos voor Ghana en Jérôme voor Duitsland.",
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/J%C3%A9r%C3%B4me_Boateng",
+      "https://en.wikipedia.org/wiki/Thorgan_Hazard",
+      "https://en.wikipedia.org/wiki/Jordan_Lukaku",
+      "https://en.wikipedia.org/wiki/Mbo_Mpenza"
+    ],
+    "tags": [
+      "familie",
+      "rode-duivels"
+    ]
+  },
+  {
+    "prompt": "Wiens vader was nooit profvoetballer?",
+    "options": [
+      "Erling Haaland",
+      "Cristiano Ronaldo",
+      "Kasper Schmeichel",
+      "Jordi Cruijff"
+    ],
+    "odd": 1,
+    "explanation": "Alf-Inge Haaland, Peter Schmeichel en Johan Cruijff waren profvoetballers; de vader van Cristiano Ronaldo werkte als tuinman en was onderhoudsman bij een amateurclub.",
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Cristiano_Ronaldo",
+      "https://en.wikipedia.org/wiki/Erling_Haaland",
+      "https://en.wikipedia.org/wiki/Kasper_Schmeichel",
+      "https://en.wikipedia.org/wiki/Jordi_Cruyff"
+    ],
+    "tags": [
+      "familie"
+    ]
+  },
+  {
+    "prompt": "Welke speler heeft geen vader die ook profvoetballer was?",
+    "options": [
+      "Paolo Maldini",
+      "Frank Lampard",
+      "Son Heung-min",
+      "Cristiano Ronaldo"
+    ],
+    "odd": 3,
+    "explanation": "Cesare Maldini, Frank Lampard senior en Son Woong-jung waren profvoetballers; de vader van Ronaldo was tuinman en onderhoudsman bij een amateurclub.",
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Cristiano_Ronaldo",
+      "https://en.wikipedia.org/wiki/Cesare_Maldini",
+      "https://en.wikipedia.org/wiki/Frank_Lampard_Sr.",
+      "https://en.wikipedia.org/wiki/Son_Heung-min"
+    ],
+    "tags": [
+      "familie"
+    ]
+  },
+  {
+    "prompt": "Wie speelde nooit voor de 'Red Devils' van Manchester United?",
+    "options": [
+      "Marouane Fellaini",
+      "Romelu Lukaku",
+      "Vincent Kompany",
+      "Adnan Januzaj"
+    ],
+    "odd": 2,
+    "explanation": "Fellaini, Lukaku en Januzaj speelden allemaal voor Manchester United; Kompany speelde bij Hamburg en Manchester City, nooit bij United.",
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Marouane_Fellaini",
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku",
+      "https://en.wikipedia.org/wiki/Adnan_Januzaj",
+      "https://en.wikipedia.org/wiki/Vincent_Kompany"
+    ],
+    "tags": [
+      "halloween",
+      "rode-duivels"
+    ]
+  },
+  {
+    "prompt": "Welke club speelt traditioneel niet in zwart-witte shirts (zwarte kat-kleuren)?",
+    "options": [
+      "Juventus",
+      "Newcastle United",
+      "Fiorentina",
+      "Udinese"
+    ],
+    "odd": 2,
+    "explanation": "Juventus, Newcastle United en Udinese spelen in zwart-wit; Fiorentina speelt in paars.",
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Juventus_F.C.",
+      "https://en.wikipedia.org/wiki/Newcastle_United_F.C.",
+      "https://en.wikipedia.org/wiki/Udinese_Calcio",
+      "https://en.wikipedia.org/wiki/ACF_Fiorentina"
+    ],
+    "tags": [
+      "halloween"
+    ]
+  },
+  {
+    "prompt": "Wie scoorde niet voor Duitsland in de 7-1 tegen Brazilië in 2014?",
+    "options": [
+      "Toni Kroos",
+      "André Schürrle",
+      "Thomas Müller",
+      "Mario Götze"
+    ],
+    "odd": 3,
+    "explanation": "Müller, Klose, Kroos (2), Khedira en Schürrle (2) scoorden; Götze kwam erin maar scoorde niet (hij deed dat wel in de finale).",
+    "difficulty": 3,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Brazil_v_Germany_(2014_FIFA_World_Cup)"
+    ],
+    "tags": [
+      "halloween"
+    ]
+  },
+  {
+    "prompt": "Voor welke club was Béla Guttmann, van de beruchte vloek, nooit trainer?",
+    "options": [
+      "Benfica",
+      "FC Porto",
+      "Real Madrid",
+      "AC Milan"
+    ],
+    "odd": 2,
+    "explanation": "Guttmann trainde Benfica (1959–62, 1965–66), Porto (1958–59, 1973–74) en AC Milan (1953–55), maar nooit Real Madrid.",
+    "difficulty": 3,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/B%C3%A9la_Guttmann"
+    ],
+    "tags": [
+      "halloween",
+      "champions-league"
+    ]
+  },
+  {
+    "prompt": "Wie werd niet op kerstavond (24 december) geboren?",
+    "options": [
+      "Alexis Mac Allister",
+      "Serge Aurier",
+      "Hugo Lloris",
+      "Marcelo Salas"
+    ],
+    "odd": 2,
+    "explanation": "Mac Allister (1998), Aurier (1992) en Salas (1974) zijn op 24 december geboren; Lloris op 26 december 1986.",
+    "difficulty": 3,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/December_24",
+      "https://en.wikipedia.org/wiki/December_26"
+    ],
+    "tags": [
+      "kerst"
+    ]
+  },
+  {
+    "prompt": "Wie werd niet op tweede kerstdag (26 december) geboren?",
+    "options": [
+      "Hugo Lloris",
+      "Aaron Ramsey",
+      "Sofiane Feghouli",
+      "Alexis Mac Allister"
+    ],
+    "odd": 3,
+    "explanation": "Lloris (1986), Ramsey (1990) en Feghouli (1989) zijn op 26 december geboren; Mac Allister op 24 december 1998.",
+    "difficulty": 3,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/December_24",
+      "https://en.wikipedia.org/wiki/December_26"
+    ],
+    "tags": [
+      "kerst"
+    ]
+  },
+  {
+    "prompt": "Welke club won het WK voor clubs niet in de weken voor Kerst?",
+    "options": [
+      "Barcelona (2015)",
+      "Liverpool (2019)",
+      "Chelsea (2022)",
+      "Manchester City (2023)"
+    ],
+    "odd": 2,
+    "explanation": "Barcelona won de finale op 20 december 2015, Liverpool op 21 december 2019 en Manchester City op 22 december 2023; Chelsea won het toernooi pas op 12 februari 2022.",
+    "difficulty": 3,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/FIFA_Club_World_Cup"
+    ],
+    "tags": [
+      "kerst"
+    ]
+  },
+  {
+    "prompt": "Welke competitie speelt traditioneel doorheen de kerstperiode, zonder winterstop?",
+    "options": [
+      "Bundesliga",
+      "Eredivisie",
+      "Premier League",
+      "Ligue 1"
+    ],
+    "odd": 2,
+    "explanation": "In Engeland wordt op Boxing Day en tussen Kerst en Nieuwjaar gespeeld; de Bundesliga, Eredivisie en Ligue 1 hebben een winterstop rond de jaarwisseling.",
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Boxing_Day#Sport"
+    ],
+    "tags": [
+      "kerst"
+    ]
+  },
+  {
+    "prompt": "Wie werd niet op oudejaarsdag (31 december) geboren?",
+    "options": [
+      "Steve Bruce",
+      "Davor Šuker",
+      "Grégory Coupet",
+      "Craig Gordon"
+    ],
+    "odd": 1,
+    "explanation": "Bruce (1960), Coupet (1972) en Gordon (1982) zijn op 31 december geboren; Šuker op 1 januari 1968.",
+    "difficulty": 3,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/December_31",
+      "https://en.wikipedia.org/wiki/Davor_%C5%A0uker"
+    ],
+    "tags": [
+      "nieuwjaar"
+    ]
+  },
+  {
+    "prompt": "Wie werd niet op nieuwjaarsdag (1 januari) geboren?",
+    "options": [
+      "Paolo Guerrero",
+      "Jack Wilshere",
+      "Davor Šuker",
+      "Grégory Coupet"
+    ],
+    "odd": 3,
+    "explanation": "Guerrero (1984), Wilshere (1992) en Šuker (1968) zijn op 1 januari geboren; Coupet op 31 december 1972.",
+    "difficulty": 3,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Paolo_Guerrero",
+      "https://en.wikipedia.org/wiki/Jack_Wilshere",
+      "https://en.wikipedia.org/wiki/Davor_%C5%A0uker",
+      "https://en.wikipedia.org/wiki/Gr%C3%A9gory_Coupet"
+    ],
+    "tags": [
+      "nieuwjaar"
+    ]
+  },
+  {
+    "prompt": "Wie verhuisde niet tijdens een wintermercato (januari)?",
+    "options": [
+      "Neymar (PSG)",
+      "Virgil van Dijk (Liverpool)",
+      "Fernando Torres (Chelsea)",
+      "Philippe Coutinho (Barcelona)"
+    ],
+    "odd": 0,
+    "explanation": "Van Dijk (2018), Torres (2011) en Coutinho (2018) tekenden in januari; Neymar ging in augustus 2017 naar PSG.",
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Virgil_van_Dijk",
+      "https://en.wikipedia.org/wiki/Fernando_Torres",
+      "https://en.wikipedia.org/wiki/Philippe_Coutinho",
+      "https://en.wikipedia.org/wiki/Neymar"
+    ],
+    "tags": [
+      "nieuwjaar"
+    ]
+  },
+  {
+    "prompt": "Welke legende overleed niet in december of januari?",
+    "options": [
+      "Pelé",
+      "Franz Beckenbauer",
+      "Diego Maradona",
+      "Eusébio"
+    ],
+    "odd": 2,
+    "explanation": "Pelé overleed op 29 december 2022, Beckenbauer op 7 januari 2024 en Eusébio op 5 januari 2014; Maradona op 25 november 2020.",
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pel%C3%A9",
+      "https://en.wikipedia.org/wiki/Franz_Beckenbauer",
+      "https://en.wikipedia.org/wiki/Eus%C3%A9bio",
+      "https://en.wikipedia.org/wiki/Diego_Maradona"
+    ],
+    "tags": [
+      "nieuwjaar",
+      "legende"
+    ]
+  },
+  {
+    "prompt": "Welke club speelt traditioneel niet in rood-wit (de kleuren van de mijter)?",
+    "options": [
+      "Royal Antwerp",
+      "Atlético Madrid",
+      "Club Brugge",
+      "Feyenoord"
+    ],
+    "odd": 2,
+    "explanation": "Antwerp, Atlético Madrid en Feyenoord spelen in rood-wit; Club Brugge speelt in blauw-zwart.",
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Royal_Antwerp_F.C.",
+      "https://en.wikipedia.org/wiki/Atl%C3%A9tico_Madrid",
+      "https://en.wikipedia.org/wiki/Feyenoord",
+      "https://en.wikipedia.org/wiki/Club_Brugge_KV"
+    ],
+    "tags": [
+      "sinterklaas"
+    ]
+  },
+  {
+    "prompt": "Welke Rode Duivel speelde nooit in Spanje, het land van de Sint?",
+    "options": [
+      "Thibaut Courtois",
+      "Eden Hazard",
+      "Kevin De Bruyne",
+      "Adnan Januzaj"
+    ],
+    "odd": 2,
+    "explanation": "Courtois (Atlético, Real), Hazard (Real) en Januzaj (Real Sociedad) speelden in Spanje; De Bruyne speelde in Duitsland, Engeland en Italië.",
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Thibaut_Courtois",
+      "https://en.wikipedia.org/wiki/Eden_Hazard",
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
+      "https://en.wikipedia.org/wiki/Adnan_Januzaj"
+    ],
+    "tags": [
+      "sinterklaas",
+      "rode-duivels"
+    ]
+  },
+  {
+    "prompt": "Welke Nederlander speelde nooit voor FC Barcelona?",
+    "options": [
+      "Johan Cruijff",
+      "Ronald Koeman",
+      "Marco van Basten",
+      "Frank Rijkaard"
+    ],
+    "odd": 2,
+    "explanation": "Cruijff, Koeman en Rijkaard speelden voor Barcelona; Van Basten speelde bij Ajax en AC Milan.",
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Johan_Cruyff",
+      "https://en.wikipedia.org/wiki/Ronald_Koeman",
+      "https://en.wikipedia.org/wiki/Frank_Rijkaard",
+      "https://en.wikipedia.org/wiki/Marco_van_Basten"
+    ],
+    "tags": [
+      "sinterklaas",
+      "legende"
+    ]
+  },
+  {
+    "prompt": "Welke Spaanse club heeft geen 'Real' (koninklijk) in zijn naam?",
+    "options": [
+      "Real Madrid",
+      "Real Sociedad",
+      "Atlético Madrid",
+      "Real Betis"
+    ],
+    "odd": 2,
+    "explanation": "Real Madrid, Real Sociedad en Real Betis dragen 'Real' in hun naam; Atlético Madrid niet.",
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/La_Liga"
+    ],
+    "tags": [
+      "sinterklaas"
+    ]
+  },
+  {
+    "prompt": "Wie werd nooit wereldkampioen als speler?",
+    "options": [
+      "Pelé",
+      "Franz Beckenbauer",
+      "Johan Cruijff",
+      "Diego Maradona"
+    ],
+    "odd": 2,
+    "explanation": "Pelé (1958, 1962, 1970), Beckenbauer (1974) en Maradona (1986) werden wereldkampioen; Cruijff verloor de finale van 1974 en werd het nooit.",
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/FIFA_World_Cup",
+      "https://en.wikipedia.org/wiki/Johan_Cruyff"
+    ],
+    "tags": [
+      "wk",
+      "legende"
+    ]
+  },
+  {
+    "prompt": "Wie won nooit de Gouden Schoen van een WK?",
+    "options": [
+      "Miroslav Klose",
+      "Harry Kane",
+      "Kylian Mbappé",
+      "Lionel Messi"
+    ],
+    "odd": 3,
+    "explanation": "Klose (2006), Kane (2018) en Mbappé (2022 en 2026) werden topschutter van een WK; Messi won wel de Gouden Bal, maar nooit de Gouden Schoen.",
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_top_goalscorers",
+      "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup"
+    ],
+    "tags": [
+      "wk"
+    ]
+  },
+  {
+    "prompt": "Welk land organiseerde nooit een WK?",
+    "options": [
+      "Duitsland",
+      "Mexico",
+      "Nederland",
+      "Zweden"
+    ],
+    "odd": 2,
+    "explanation": "Duitsland (1974, 2006), Mexico (1970, 1986) en Zweden (1958) waren gastland; Nederland nooit.",
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/FIFA_World_Cup"
+    ],
+    "tags": [
+      "wk"
+    ]
+  },
+  {
+    "prompt": "Welk land won het WK nooit in eigen land?",
+    "options": [
+      "Italië",
+      "Frankrijk",
+      "Engeland",
+      "Brazilië"
+    ],
+    "odd": 3,
+    "explanation": "Italië (1934), Engeland (1966) en Frankrijk (1998) werden wereldkampioen als gastland; Brazilië verloor in 1950 de beslissende match tegen Uruguay en werd in 2014 vierde.",
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/FIFA_World_Cup",
+      "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup"
+    ],
+    "tags": [
+      "wk"
+    ]
+  },
+  {
+    "prompt": "Welk dier was nooit mascotte van een WK?",
+    "options": [
+      "Wolf",
+      "Jaguar",
+      "Olifant",
+      "Gordeldier"
+    ],
+    "odd": 2,
+    "explanation": "Zabivaka (2018) is een wolf, Zayu (2026) een jaguar en Fuleco (2014) een gordeldier; een olifant was nooit WK-mascotte.",
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Maple,_Zayu_and_Clutch",
+      "https://en.wikipedia.org/wiki/Fuleco",
+      "https://en.wikipedia.org/wiki/Zabivaka"
+    ],
+    "tags": [
+      "wk"
+    ]
   }
 ]

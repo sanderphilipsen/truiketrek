@@ -4,7 +4,7 @@
     {
         <div class="strip-player @(p.IsMe ? "me" : "")">
             <div class="strip-avatar">
-                <Avatar Id="@p.AvatarId" Size="40" />
+                <Avatar Id="@p.AvatarId" User="@p.UserName" Size="40" />
                 @if (ShowAnswered && p.AnsweredCurrent) { <span class="check">✓</span> }
             </div>
             <small>@p.UserName</small>

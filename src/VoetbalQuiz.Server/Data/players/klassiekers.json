@@ -136,6 +136,7 @@
       "https://nl.wikipedia.org/wiki/%C3%89mile_Mpenza"
     ],
     "tags": [
+      "familie",
       "rode-duivels",
       "standard",
       "legende"
@@ -367,6 +368,8 @@
       "https://nl.wikipedia.org/wiki/Zin%C3%A9dine_Zidane"
     ],
     "tags": [
+      "wk",
+      "familie",
       "champions-league",
       "legende"
     ],
@@ -396,6 +399,7 @@
       "https://nl.wikipedia.org/wiki/Ronaldo_(Braziliaans_voetballer)"
     ],
     "tags": [
+      "wk",
       "legende"
     ],
     "checkedAt": "2026-10-17"
@@ -422,6 +426,8 @@
       "https://nl.wikipedia.org/wiki/Diego_Maradona"
     ],
     "tags": [
+      "wk",
+      "familie",
       "legende"
     ],
     "checkedAt": "2026-10-17"
@@ -451,6 +457,7 @@
       "https://en.wikipedia.org/wiki/Cruyff_turn"
     ],
     "tags": [
+      "familie",
       "champions-league",
       "legende",
       "oranje"
@@ -535,6 +542,7 @@
       "https://en.wikipedia.org/wiki/Paolo_Maldini"
     ],
     "tags": [
+      "familie",
       "champions-league",
       "legende"
     ],
@@ -589,6 +597,8 @@
       "https://en.wikipedia.org/wiki/Ronaldinho"
     ],
     "tags": [
+      "wk",
+      "familie",
       "champions-league",
       "legende"
     ],
@@ -669,6 +679,7 @@
       "https://en.wikipedia.org/wiki/Eric_Cantona"
     ],
     "tags": [
+      "familie",
       "legende"
     ],
     "checkedAt": "2026-10-17"
@@ -753,5 +764,126 @@
       "legende"
     ],
     "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Rob Rensenbrink",
+    "answers": ["Rensenbrink"],
+    "country": "Nederland",
+    "competition": "Jupiler Pro League",
+    "era": "classic",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1947 geboren in Amsterdam en begon mijn profcarrière bij DWS.",
+      "Ik was een linksbuiten en speelde twee seizoenen voor Club Brugge voor ik naar Brussel trok.",
+      "In het seizoen 1972-73 werd ik topschutter van de Belgische competitie.",
+      "In 1976 won ik de Gouden Schoen en werd ik tweede in de verkiezing van de Ballon d'Or.",
+      "Op het WK 1978 raakte ik in de laatste minuut van de reguliere speeltijd van de finale tegen Argentinië de paal."
+    ],
+    "status": "approved", "checkedAt": "2026-10-18",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Rob_Rensenbrink"
+    ],
+    "tags": ["legende", "anderlecht", "gouden-schoen", "oranje", "wk"]
+  },
+  {
+    "name": "Arie Haan",
+    "answers": ["Haan"],
+    "country": "Nederland",
+    "competition": "Jupiler Pro League",
+    "era": "classic",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1948 geboren in het Groningse Finsterwolde.",
+      "Met Ajax won ik drie keer op rij de Europacup I.",
+      "In 1975 trok ik naar Brussel, waar ik twee keer de Europacup II won.",
+      "Op het WK 1978 trof ik Dino Zoff met een afstandsschot van ruim dertig meter.",
+      "Als trainer werd ik in 1986 kampioen met Anderlecht en haalde ik met Stuttgart de UEFA Cup-finale van 1989."
+    ],
+    "status": "approved", "checkedAt": "2026-10-18",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Arie_Haan"
+    ],
+    "tags": ["legende", "anderlecht", "oranje", "wk"]
+  },
+  {
+    "name": "Ludo Coeck",
+    "answers": ["Coeck"],
+    "country": "België",
+    "competition": "Jupiler Pro League",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1955 geboren in Berchem, bij Antwerpen.",
+      "Ik was een middenvelder en speelde elf seizoenen voor dezelfde Brusselse club.",
+      "Met die club won ik de Europacup II in 1976 en 1978 en de UEFA Cup in 1983.",
+      "Op het WK 1982 speelde ik alle wedstrijden van België en scoorde ik tegen El Salvador.",
+      "In 1983 trok ik naar Inter en in 1985 overleed ik op 30-jarige leeftijd na een auto-ongeval op de snelweg."
+    ],
+    "status": "approved", "checkedAt": "2026-10-18",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ludo_Coeck"
+    ],
+    "tags": ["legende", "anderlecht", "rode-duivels", "wk"]
+  },
+  {
+    "name": "Jean Dockx",
+    "answers": ["Dockx"],
+    "country": "België",
+    "competition": "Jupiler Pro League",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1941 geboren in Sint-Katelijne-Waver en leerde voetballen in de jeugd van Mechelen.",
+      "Als middenvelder speelde ik voor Mechelen en Racing White voor ik in Brussel belandde.",
+      "Ik behoorde tot de selectie voor het WK 1970 en werd derde op het EK 1972 in eigen land.",
+      "Tussen 1971 en 1978 won ik met Anderlecht twee landstitels, vier bekers en twee keer de Europacup II.",
+      "In het seizoen 1998-99 sprong ik bij Anderlecht nog even in als interim-trainer."
+    ],
+    "status": "approved", "checkedAt": "2026-10-18",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jean_Dockx",
+      "https://en.wikipedia.org/wiki/Franky_Vercauteren"
+    ],
+    "tags": ["legende", "anderlecht", "rode-duivels"]
+  },
+  {
+    "name": "Gilbert Van Binst",
+    "answers": ["Van Binst", "Binst"],
+    "country": "België",
+    "competition": "Jupiler Pro League",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1951 geboren in Machelen, vlak bij Brussel.",
+      "Ik was verdediger en speelde twaalf seizoenen voor de club die me ook opleidde.",
+      "Met de Rode Duivels werd ik derde op het EK 1972 in eigen land.",
+      "Na mijn tijd in Brussel speelde ik nog voor Toulouse en Club Brugge.",
+      "In de Europacup II-finale van 1978 tegen Austria Wenen scoorde ik als verdediger twee keer."
+    ],
+    "status": "approved", "checkedAt": "2026-10-18",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gilbert_Van_Binst"
+    ],
+    "tags": ["legende", "anderlecht", "rode-duivels"]
+  },
+  {
+    "name": "Hugo Broos",
+    "answers": ["Broos"],
+    "country": "België",
+    "competition": "Jupiler Pro League",
+    "era": "classic",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1952 geboren in Humbeek, in Vlaams-Brabant.",
+      "Als verdediger speelde ik zo'n 350 competitiewedstrijden voor Anderlecht en daarna vijf seizoenen voor Club Brugge.",
+      "Ik speelde 24 interlands en werd vierde op het WK 1986.",
+      "Als trainer werd ik kampioen met zowel Club Brugge als Anderlecht.",
+      "In 2017 won ik de Afrika Cup met Kameroen en van 2021 tot 2026 was ik bondscoach van Zuid-Afrika."
+    ],
+    "status": "approved", "checkedAt": "2026-10-18",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Hugo_Broos"
+    ],
+    "tags": ["legende", "anderlecht", "club-brugge", "rode-duivels", "wk"]
   }
 ]

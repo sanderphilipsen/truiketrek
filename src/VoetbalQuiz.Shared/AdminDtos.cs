@@ -39,6 +39,9 @@ public static class PlayerTags
         ("standard", "Speelde bij Standard"),
         ("oranje", "Nederlander"),
         ("legende", "Legende (klassieker)"),
+        ("wk", "WK-geschiedenis"),
+        ("familie", "Voetbalfamilie (vader/zoon, broers)"),
+        ("curiosa", "Curiosa en blunders (1 april)"),
     ];
 
     /// <summary>Een special kan meerdere thema's combineren, bv. "anderlecht,club-brugge" voor de topper.</summary>
@@ -102,6 +105,10 @@ public static class SpecialTemplates
 {
     private static readonly List<QuestionType> PlayerRounds = [QuestionType.WieBenIk, QuestionType.Kluts, QuestionType.Counter];
 
+    /// <summary>Themaspecials: de spelersrondes plus de vraagtypes waarvoor de vragenbank themavragen heeft.</summary>
+    private static readonly List<QuestionType> ThemedRounds =
+        [QuestionType.WieBenIk, QuestionType.Kluts, QuestionType.Snelvuur, QuestionType.NietBij, QuestionType.Jaar, QuestionType.Emoji];
+
     public static readonly List<SpecialTemplate> All =
     [
         // Affiches
@@ -122,11 +129,18 @@ public static class SpecialTemplates
             null, 9, 1, [QuestionType.Wissel, QuestionType.Carriere]),
 
         new("champions-league", "Champions League Special", "⭐", "Speeldag in de Champions League: raad de winnaars van de grootste beker.", "champions-league", null, null),
-        new("kerst", "Christmas Special", "🎄", "Voetballers die rond Kerstmis jarig zijn.", "kerst", 12, 25),
-        new("nieuwjaar", "New Year Special", "🎆", "Voetballers die op oudjaar of nieuwjaar geboren zijn.", "nieuwjaar", 1, 1),
-        new("halloween", "Halloween Special", "🎃", "Griezelig goed: voetballers die op Halloween geboren zijn.", "halloween", 10, 31),
-        new("sinterklaas", "Sinterklaas Special", "🎁", "Voetballers die rond Sinterklaas jarig zijn.", "sinterklaas", 12, 6),
+        new("kerst", "Christmas Special", "🎄", "Boxing Day, kerstmatchen en voetballers die met Kerstmis jarig zijn.", "kerst", 12, 25, ThemedRounds),
+        new("nieuwjaar", "New Year Special", "🎆", "Nieuwjaarsmatchen, de wintermercato en voetballers die op oudjaar of nieuwjaar geboren zijn.",
+            "nieuwjaar", 1, 1, ThemedRounds),
+        new("halloween", "Halloween Special", "🎃", "Griezelig goed: spookgoals, vervloekingen, duivels en voetballers die op Halloween geboren zijn.",
+            "halloween", 10, 31, ThemedRounds),
+        new("sinterklaas", "Sinterklaas Special", "🎁", "Cadeaugoals, Spaans voetbal en voetballers die rond Sinterklaas jarig zijn.", "sinterklaas", 12, 6, ThemedRounds),
         new("gouden-schoen", "Gouden Schoen Special", "👟", "Op de avond van de Gouden Schoen: alle winnaars.", "gouden-schoen", null, null),
+        new("wk", "WK Special", "🌍", "Van Mexico '70 tot Noord-Amerika 2026: finales, helden en drama op het wereldkampioenschap.", "wk", null, null,
+            [.. ThemedRounds, QuestionType.Opstelling]),
+        new("vaderdag", "Vaderdag Special", "👨‍👦", "Vaders, zonen en broers: de grootste voetbalfamilies.", "familie", null, null, ThemedRounds),
+        new("1-april", "1 april Special", "🤡", "Geen grap: de gekste momenten, blunders en curiosa uit de voetbalgeschiedenis.", "curiosa", 4, 1,
+            [QuestionType.Snelvuur, QuestionType.NietBij, QuestionType.Jaar, QuestionType.Emoji]),
         new("custom", "Eigen special", "✨", "", null, null, null),
     ];
 

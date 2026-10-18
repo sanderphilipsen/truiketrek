@@ -45,7 +45,7 @@ public sealed class SpecialAndProgressTests : IDisposable
         _admin = new AdminService(_db, _quiz);
         var online = new OnlineService(_db, _results);
         _ranking = new MonthRankingService(_db, _results);
-        _progress = new ProgressService(_db, _clock, _results, online, _ranking);
+        _progress = new ProgressService(_db, _clock, _results, online, _ranking, new GoldenBallService(_db, _clock, _ranking, _results));
     }
 
     private string AddUser(string name)

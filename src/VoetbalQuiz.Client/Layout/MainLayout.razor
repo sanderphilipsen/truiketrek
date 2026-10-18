@@ -1,6 +1,8 @@
 ﻿@inherits LayoutComponentBase
 @inject AuthState Auth
 @inject NavigationManager Nav
+@inject GoldenBallState GoldenBall
+@implements IDisposable
 
 @* Het admin-paneel gebruikt de volle breedte van een groot scherm. *@
 <div class="app @(IsAdminPage ? "wide" : IsRankingPage || IsProfilePage ? "medium" : "")">
@@ -15,7 +17,7 @@
                 <a href="profiel" class="who">
                     <span>@context.User.Identity?.Name</span>
                     <span class="lvl">Lv @Auth.User?.Level</span>
-                    <Avatar Id="@Auth.User?.AvatarId" Size="34" />
+                    <Avatar Id="@Auth.User?.AvatarId" User="@Auth.User?.UserName" Size="34" />
                 </a>
             </Authorized>
         </AuthorizeView>
@@ -39,6 +41,24 @@
 </div>
 
 @code {
+    // Sterren en gouden randen van de Gouden Bal: laden zodra er iemand aangemeld is.
+    protected override async Task OnInitializedAsync()
+    {
+        Auth.AuthenticationStateChanged += OnAuthChanged;
+        await Auth.GetAuthenticationStateAsync();
+        await LoadGoldenBallAsync();
+    }
+
+    private async void OnAuthChanged(Task<AuthenticationState> _) => await LoadGoldenBallAsync();
+
+    private async Task LoadGoldenBallAsync()
+    {
+        if (Auth.User is null) GoldenBall.Clear();
+        else await GoldenBall.EnsureLoadedAsync();
+    }
+
+    public void Dispose() => Auth.AuthenticationStateChanged -= OnAuthChanged;
+
     // Het maandklassement heeft kolommen nodig: op een groot scherm wat breder dan de gsm-kolom.
     private bool IsRankingPage => Nav.ToBaseRelativePath(Nav.Uri).StartsWith("klassement", StringComparison.OrdinalIgnoreCase);
 

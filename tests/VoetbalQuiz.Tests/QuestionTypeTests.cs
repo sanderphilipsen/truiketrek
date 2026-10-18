@@ -183,6 +183,23 @@ public sealed class QuestionTypeTests : IDisposable
     }
 
     [Fact]
+    public async Task Special_prefers_themed_questions_even_when_still_in_review()
+    {
+        for (var i = 0; i < 3; i++)
+            _db.QuizItems.Add(new QuizItem { Type = QuestionType.Snelvuur, Key = $"Kerst{i}", Status = PlayerStatus.Review, Tags = ["kerst"],
+                Data = QuestionEngine.Serialize(new SnelvuurData($"Kerstvraag {i}?", ["A", "B", "C", "D"], 1)) });
+        await _db.SaveChangesAsync();
+
+        var id = await _admin.SaveSpecialAsync(new SpecialEdit(0, "kerst", "Kerst", "🎄", "", _quiz.Today, _quiz.Today, "kerst",
+            [], [QuestionType.Snelvuur]));
+        var keys = (await _quiz.GetOrCreateSpecialChallengeAsync(id)).Questions.Select(q => q.QuizItem!.Key).ToList();
+
+        Assert.Equal(10, keys.Count);
+        Assert.All(Enumerable.Range(0, 3), i => Assert.Contains($"Kerst{i}", keys)); // eerst het thema
+        Assert.Equal(7, keys.Count(k => k.StartsWith('V'))); // daarna aangevuld met gewone vragen
+    }
+
+    [Fact]
     public async Task Admin_rejects_incomplete_or_unsourced_bank_questions()
     {
         var empty = new QuizItemEdit(0, QuestionType.Snelvuur, QuestionEngine.Serialize(new SnelvuurData("", ["A", "", "C", "D"], 0)),
