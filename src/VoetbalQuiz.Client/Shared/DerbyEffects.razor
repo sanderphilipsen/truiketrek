@@ -1,0 +1,287 @@
+@* Derby: de effecten van de wapens over het scherm heen.
+   - Bengaals vuur: een supporter met bivakmuts rechtsonder, en rode rook die de vraag even onleesbaar maakt (niet bij wie het afstak).
+   - Trump booster: een karikatuur rechtsonder zolang de vraag loopt.
+   - Rode kaart: wie ze krijgt, ziet een kaart op zich afkomen.
+   - Gokchinees: een louche gokbaas met koffertje vol geld rechtsonder (dubbel of niks).
+   - Propere handen: een nette heer met smetteloos witte handschoenen die in een zak geld graait;
+     wie bestolen wordt, krijgt een melding.
+   - Verlenging: de vierde official met het lichtbord (+10) rechtsonder.
+   Since komt van de server; de animaties krijgen een negatieve delay zodat ze ook na een herlaadbeurt juist lopen. *@
+
+@if (Flare is { } flare)
+{
+    @if (!flare.ByMe)
+    {
+        @* De rook komt uit de fakkel van het mannetje rechtsonder en blijft aanvoeren zolang het vuur brandt. *@
+        <div class="derby-smoke" style="--since:@Start(flare);--life:@Secs(DerbyRules.FlareSeconds)" aria-hidden="true">
+            @for (var i = 0; i < 10; i++)
+            {
+                <span class="puff p@(i)"></span>
+            }
+        </div>
+    }
+    else if (LocalSince(flare) < 2)
+    {
+        <div class="derby-toast">🎆 Afgestoken! Je tegenstanders zien even niets.</div>
+    }
+}
+
+@if (Flare is not null || Trump is not null || Gambles.Count > 0 || Steals.Count > 0 || Extensions.Count > 0)
+{
+    <div class="derby-corner" aria-hidden="true">
+        @* Het vuur staat altijd helemaal rechts (CSS order): de rook komt uit zijn fakkel. *@
+        @if (Flare is { } f)
+        {
+            <figure class="derby-figure flare-fan" style="--since:@Start(f)">
+                <svg viewBox="0 0 120 170" width="96" height="136">
+                    <defs>
+                        <radialGradient id="flare-glow">
+                            <stop offset="0" stop-color="#fff6e0" />
+                            <stop offset=".35" stop-color="#ff5a5f" />
+                            <stop offset="1" stop-color="#ff1a2d" stop-opacity="0" />
+                        </radialGradient>
+                    </defs>
+                    @* Gloed en vonken van de fakkel *@
+                    <g class="flare-fire">
+                        <circle cx="96" cy="22" r="22" fill="url(#flare-glow)" />
+                        <circle cx="96" cy="24" r="7" fill="#fff" />
+                    </g>
+                    <g class="flare-sparks" fill="#ffd27a">
+                        <circle cx="96" cy="22" r="1.8" class="s1" />
+                        <circle cx="96" cy="22" r="1.4" class="s2" />
+                        <circle cx="96" cy="22" r="1.6" class="s3" />
+                        <circle cx="96" cy="22" r="1.2" class="s4" />
+                    </g>
+                    @* De fakkel en de arm die hem omhoog steekt *@
+                    <rect x="93" y="28" width="6" height="40" rx="2" fill="#5b5b5b" transform="rotate(8 96 48)" />
+                    <path d="M78 112 L92 66" stroke="#1d1d22" stroke-width="13" stroke-linecap="round" />
+                    <circle cx="93" cy="66" r="7.5" fill="#1d1d22" />
+                    @* Lijf: zwarte hoodie met sjaal in clubkleuren *@
+                    <path d="M18 170 C18 128 34 108 60 108 C86 108 102 128 102 170 Z" fill="#1d1d22" />
+                    <path d="M36 112 L84 112 L80 124 L40 124 Z" fill="#d6262f" />
+                    <path d="M46 112 L52 112 L50 124 L44 124 Z M64 112 L70 112 L70 124 L64 124 Z" fill="#fff" />
+                    <path d="M40 124 L34 150 L44 150 L48 124 Z" fill="#d6262f" />
+                    @* Hoofd met bivakmuts: enkel de ogen zijn te zien *@
+                    <ellipse cx="60" cy="80" rx="25" ry="29" fill="#141418" />
+                    <rect x="42" y="70" width="36" height="13" rx="6.5" fill="#e9b48a" />
+                    <circle cx="52" cy="76.5" r="2.6" fill="#141418" />
+                    <circle cx="68" cy="76.5" r="2.6" fill="#141418" />
+                    <path d="M47 71 L56 73 M73 71 L64 73" stroke="#141418" stroke-width="2" stroke-linecap="round" />
+                    <path d="M44 95 Q60 90 76 95" stroke="#2c2c33" stroke-width="2" fill="none" />
+                    <ellipse cx="60" cy="54" rx="9" ry="4" fill="#2c2c33" />
+                </svg>
+                <figcaption>🎆 Vuur van @(f.ByMe ? "jou" : f.By)</figcaption>
+            </figure>
+        }
+        @if (Trump is { } t)
+        {
+            <figure class="derby-figure trump">
+                <div class="trump-bubble">FAKE NEWS!</div>
+                <svg viewBox="0 0 120 160" width="104" height="139">
+                    @* Pak, hemd en de veel te lange rode das *@
+                    <path d="M12 160 C12 118 30 100 60 100 C90 100 108 118 108 160 Z" fill="#1c2f6b" />
+                    <path d="M46 100 L60 126 L74 100 Z" fill="#fff" />
+                    <g class="trump-tie">
+                        <path d="M56 104 L64 104 L66 110 L62 160 L58 160 L54 110 Z" fill="#d6262f" />
+                        <path d="M55 102 L65 102 L64 108 L56 108 Z" fill="#a8161e" />
+                    </g>
+                    @* Duim omhoog *@
+                    <g class="trump-thumb">
+                        <rect x="92" y="104" width="20" height="18" rx="6" fill="#f2a65a" />
+                        <rect x="99" y="88" width="8" height="20" rx="4" fill="#f2a65a" />
+                        <path d="M88 122 L96 112" stroke="#1c2f6b" stroke-width="10" stroke-linecap="round" />
+                    </g>
+                    @* Oranje hoofd met lichte ogen *@
+                    <ellipse cx="60" cy="64" rx="27" ry="31" fill="#f29a4a" />
+                    <ellipse cx="49" cy="60" rx="8" ry="5.5" fill="#f9d9b0" />
+                    <ellipse cx="71" cy="60" rx="8" ry="5.5" fill="#f9d9b0" />
+                    <path d="M45 60 Q49 58 53 60 M67 60 Q71 58 75 60" stroke="#3b2a1a" stroke-width="2.2" fill="none" stroke-linecap="round" />
+                    <path d="M42 52 L55 53 M65 53 L78 52" stroke="#e7c35a" stroke-width="3" stroke-linecap="round" />
+                    <ellipse cx="60" cy="82" rx="6" ry="4.5" fill="#9b2a1e" />
+                    <ellipse cx="60" cy="81" rx="3" ry="1.6" fill="#5a120c" />
+                    <ellipse cx="33" cy="66" rx="4" ry="7" fill="#e8893a" />
+                    <ellipse cx="87" cy="66" rx="4" ry="7" fill="#e8893a" />
+                    @* De beroemde blonde kuif *@
+                    <g class="trump-hair">
+                        <path d="M30 52 C26 26 50 18 70 22 C90 25 100 36 96 50 C88 40 78 36 64 38 C52 40 40 44 30 52 Z" fill="#f4d36b" />
+                        <path d="M64 38 C80 30 96 34 104 44 C96 42 86 42 80 46 Z" fill="#e9c24f" />
+                    </g>
+                </svg>
+                <figcaption>🟨 Booster van @(t.ByMe ? "jou" : t.By)</figcaption>
+            </figure>
+        }
+        @foreach (var b in Gambles)
+        {
+            <figure class="derby-figure gokbaas" @key="Key(b)">
+                <svg viewBox="0 0 120 165" width="100" height="138">
+                    @* Wit pak, zwart hemd en een gouden ketting *@
+                    <path d="M14 165 C14 122 32 104 60 104 C88 104 106 122 106 165 Z" fill="#f4f1ea" />
+                    <path d="M48 104 L60 136 L72 104 Z" fill="#1d1d22" />
+                    <path d="M50 110 Q60 124 70 110" stroke="#e5b80b" stroke-width="2.5" fill="none" />
+                    <path d="M40 106 L52 140 L46 165 M80 106 L68 140 L74 165" stroke="#d9d4c7" stroke-width="2" fill="none" />
+                    @* Koffertje vol biljetten *@
+                    <g class="gb-case">
+                        <rect x="72" y="128" width="40" height="28" rx="3" fill="#5a3a1e" />
+                        <rect x="86" y="123" width="12" height="7" rx="2" fill="none" stroke="#3d2712" stroke-width="2.5" />
+                        <rect x="76" y="122" width="16" height="9" rx="1" fill="#57a05a" transform="rotate(-12 84 126)" />
+                        <rect x="90" y="120" width="16" height="9" rx="1" fill="#6bb86e" transform="rotate(9 98 124)" />
+                        <text x="92" y="146" font-size="12" font-weight="900" fill="#e5b80b" text-anchor="middle">€</text>
+                    </g>
+                    @* Een biljet dat wegwaait *@
+                    <g class="gb-bill" fill="#6bb86e"><rect x="6" y="60" width="18" height="10" rx="1" /></g>
+                    @* Hoofd: achterovergekamd haar, zonnebril, snor en dikke sigaar *@
+                    <ellipse cx="60" cy="70" rx="24" ry="28" fill="#d9a77a" />
+                    <path d="M36 64 C36 40 84 40 84 64 C78 52 66 48 60 48 C52 48 42 52 36 64 Z" fill="#2b1d14" />
+                    <rect x="40" y="62" width="17" height="9" rx="3" fill="#111" />
+                    <rect x="63" y="62" width="17" height="9" rx="3" fill="#111" />
+                    <path d="M57 66 L63 66" stroke="#111" stroke-width="2" />
+                    <path d="M48 82 Q60 76 72 82 Q60 86 48 82 Z" fill="#2b1d14" />
+                    <g class="gb-cigar">
+                        <rect x="66" y="86" width="22" height="5" rx="2" fill="#7a4a22" transform="rotate(-10 66 88)" />
+                        <circle cx="88" cy="84" r="2.5" fill="#ff7a2a" />
+                        <path class="gb-smoke" d="M90 80 C86 72 96 68 92 60" stroke="#cfcfcf" stroke-width="2.5" fill="none" stroke-linecap="round" />
+                    </g>
+                    <path d="M40 46 L80 46 L76 36 L44 36 Z" fill="#f4f1ea" />
+                    <rect x="38" y="44" width="44" height="5" rx="2" fill="#1d1d22" />
+                </svg>
+                <figcaption>🎲 @(b.ByMe ? "Jij gokt" : $"{b.By} gokt"): dubbel of niks</figcaption>
+            </figure>
+        }
+        @foreach (var s in Steals)
+        {
+            <figure class="derby-figure gloves" @key="Key(s)">
+                <svg viewBox="0 0 120 165" width="100" height="138">
+                    @* Een zak geld met een euroteken; de handschoenen graaien erin *@
+                    <g class="gl-bag">
+                        <path d="M72 122 C66 132 66 158 92 160 C118 158 118 132 112 122 Z" fill="#c8a165" />
+                        <path d="M80 118 L104 118 L98 126 L86 126 Z" fill="#a8834a" />
+                        <text x="92" y="148" font-size="16" font-weight="900" fill="#5a3a1e" text-anchor="middle">€</text>
+                    </g>
+                    @* Net grijs pak, wit hemd, blauwe das *@
+                    <path d="M12 165 C12 122 30 104 58 104 C80 104 94 114 100 130 L86 165 Z" fill="#5b6470" />
+                    <path d="M46 104 L58 132 L70 104 Z" fill="#fff" />
+                    <path d="M55 106 L61 106 L62 128 L58 134 L54 128 Z" fill="#2c5aa0" />
+                    @* Arm met smetteloos witte handschoen, in de zak *@
+                    <g class="gl-arm">
+                        <path d="M64 124 Q76 118 86 128" stroke="#5b6470" stroke-width="12" stroke-linecap="round" fill="none" />
+                        <ellipse cx="90" cy="128" rx="10" ry="8" fill="#fff" stroke="#d8d8d8" stroke-width="1.5" />
+                        <path d="M92 121 L96 113 M95 124 L101 118" stroke="#fff" stroke-width="5" stroke-linecap="round" />
+                    </g>
+                    @* De andere handschoen zwaait onschuldig *@
+                    <g class="gl-wave">
+                        <path d="M24 128 Q16 110 20 92" stroke="#5b6470" stroke-width="12" stroke-linecap="round" fill="none" />
+                        <ellipse cx="20" cy="86" rx="8" ry="10" fill="#fff" stroke="#d8d8d8" stroke-width="1.5" />
+                    </g>
+                    @* Hoofd: keurig gekamd, onschuldige glimlach *@
+                    <ellipse cx="58" cy="70" rx="23" ry="27" fill="#e8c09a" />
+                    <path d="M35 64 C34 42 82 40 81 64 C76 54 68 50 58 50 C48 50 40 54 35 64 Z" fill="#6b4a2b" />
+                    <path d="M58 48 L58 58" stroke="#5a3d22" stroke-width="1.5" />
+                    <ellipse cx="49" cy="70" rx="2.6" ry="3" fill="#1d1d22" />
+                    <ellipse cx="67" cy="70" rx="2.6" ry="3" fill="#1d1d22" />
+                    <path d="M44 63 Q49 60 54 63 M62 63 Q67 60 72 63" stroke="#6b4a2b" stroke-width="2" fill="none" />
+                    <path d="M48 82 Q58 90 68 82" stroke="#8a3b2a" stroke-width="2.5" fill="none" stroke-linecap="round" />
+                    <circle cx="44" cy="78" r="3.5" fill="#f0a0a0" opacity=".6" />
+                    <circle cx="72" cy="78" r="3.5" fill="#f0a0a0" opacity=".6" />
+                </svg>
+                <figcaption>🧤 @(s.ByMe ? "Jij steelt" : $"{s.By} steelt") van @(s.TargetIsMe ? "jou" : s.Target)</figcaption>
+            </figure>
+        }
+        @foreach (var x in Extensions)
+        {
+            <figure class="derby-figure official" @key="Key(x)">
+                <svg viewBox="0 0 120 165" width="96" height="132">
+                    @* Het lichtbord van de vierde official, met de extra seconden *@
+                    <g class="of-board">
+                        <rect x="18" y="4" width="84" height="44" rx="6" fill="#111" stroke="#444" stroke-width="3" />
+                        <text x="60" y="38" font-family="'Courier New', monospace" font-size="30" font-weight="900" fill="#2bff6e" text-anchor="middle">+@DerbyRules.ExtensionSeconds</text>
+                        <rect x="56" y="48" width="8" height="18" fill="#333" />
+                    </g>
+                    @* Armen omhoog, zwart shirt, hoofd *@
+                    <path d="M40 112 L50 62 M80 112 L70 62" stroke="#1d1d22" stroke-width="11" stroke-linecap="round" />
+                    <circle cx="51" cy="60" r="6" fill="#d9a77a" />
+                    <circle cx="69" cy="60" r="6" fill="#d9a77a" />
+                    <path d="M20 165 C20 124 36 106 60 106 C84 106 100 124 100 165 Z" fill="#1d1d22" />
+                    <path d="M54 106 L60 118 L66 106 Z" fill="#f5c400" />
+                    <ellipse cx="60" cy="88" rx="17" ry="20" fill="#d9a77a" />
+                    <path d="M44 82 C44 66 76 66 76 82 C70 74 50 74 44 82 Z" fill="#3b2a1a" />
+                    <circle cx="54" cy="88" r="2" fill="#1d1d22" />
+                    <circle cx="66" cy="88" r="2" fill="#1d1d22" />
+                    <path d="M54 98 Q60 101 66 98" stroke="#7a3b2a" stroke-width="2" fill="none" />
+                </svg>
+                <figcaption>⏱️ Verlenging voor @(x.ByMe ? "jou" : x.By)</figcaption>
+            </figure>
+        }
+    </div>
+}
+
+@if (Steals.FirstOrDefault(s => s.TargetIsMe && LocalSince(s) < 4) is { } steal)
+{
+    <div class="derby-toast" role="alert">🧤 @steal.By steelt de helft van je punten bij deze vraag!</div>
+}
+
+@if (RedCardOnMe is { } card)
+{
+    <div class="derby-redcard" style="--since:@Start(card)" role="alert">
+        <div class="rc-card"></div>
+        <div class="rc-text"><b>ROOD!</b> @card.By geeft je een rode kaart: halve punten voor deze vraag.</div>
+    </div>
+}
+
+@code {
+    [Parameter, EditorRequired] public DerbyState Derby { get; set; } = null!;
+    [Parameter] public MatchPhase Phase { get; set; }
+
+    /// <summary>Seconden sinds de laatste toestand van de server (de events zijn sindsdien verder gelopen).</summary>
+    [Parameter] public double Drift { get; set; }
+
+    private double LocalSince(DerbyEvent e) => e.Since + Drift;
+
+    private DerbyEvent? Flare => Phase == MatchPhase.Question
+        ? Derby.Events.FirstOrDefault(e => e.Weapon == DerbyWeapon.BengaalsVuur && LocalSince(e) is >= 0 and < DerbyRules.FlareSeconds)
+        : null;
+
+    // Enkel tijdens de vraag: in de tussenstand zou hij de punten bedekken.
+    private DerbyEvent? Trump => Phase == MatchPhase.Question
+        ? Derby.Events.FirstOrDefault(e => e.Weapon == DerbyWeapon.Trump && e.Since >= 0)
+        : null;
+
+    // Gokbaas en vierde official: zolang de vraag loopt (zoals Trump).
+    private List<DerbyEvent> Gambles => Phase == MatchPhase.Question
+        ? Derby.Events.Where(e => e.Weapon == DerbyWeapon.Gokchinees && e.Since >= 0).ToList()
+        : [];
+
+    private List<DerbyEvent> Steals => Phase == MatchPhase.Question
+        ? Derby.Events.Where(e => e.Weapon == DerbyWeapon.PropereHanden && e.Since >= 0).ToList()
+        : [];
+
+    private List<DerbyEvent> Extensions => Phase == MatchPhase.Question
+        ? Derby.Events.Where(e => e.Weapon == DerbyWeapon.Verlenging && e.Since >= 0).ToList()
+        : [];
+
+    private DerbyEvent? RedCardOnMe => Phase == MatchPhase.Question
+        ? Derby.Events.FirstOrDefault(e => e.Weapon == DerbyWeapon.RodeKaart && e.TargetIsMe && LocalSince(e) is >= 0 and < 3)
+        : null;
+
+    private static string Secs(double s) => $"{Math.Max(0, s).ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)}s";
+
+    /// <summary>
+    /// Hoe ver een animatie al was toen ze op het scherm kwam. Eén keer vastgelegd per effect: een CSS-animatie
+    /// loopt zelf verder, dus bij elke nieuwe toestand de delay bijwerken zou ze dubbel zo snel laten lopen.
+    /// </summary>
+    private readonly Dictionary<string, string> _starts = [];
+
+    private string Start(DerbyEvent e)
+    {
+        var key = Key(e);
+        if (!_starts.TryGetValue(key, out var start)) _starts[key] = start = Secs(LocalSince(e));
+        return start;
+    }
+
+    private static string Key(DerbyEvent e) => $"{e.Weapon}|{e.By}|{e.Target}";
+
+    protected override void OnParametersSet()
+    {
+        var current = Derby.Events.Select(Key).ToHashSet();
+        foreach (var gone in _starts.Keys.Where(k => !current.Contains(k)).ToList()) _starts.Remove(gone);
+    }
+}

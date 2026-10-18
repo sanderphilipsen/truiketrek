@@ -253,12 +253,33 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
     /// </summary>
     public async Task<List<DailyQuestion>?> BuildOnlineAsync(List<QuestionType> types)
     {
+        var (pool, dailyItems) = await OnlinePoolAsync();
+        return await BuildMixAsync(types, null, pool, dailyItems);
+    }
+
+    /// <summary>
+    /// Derby-wissel: één nieuwe vraag van dit type, niet uit de daily van vandaag en (zo mogelijk) nog niet aan tafel gebruikt.
+    /// Null als er geen vraag meer over is.
+    /// </summary>
+    public async Task<DailyQuestion?> BuildReplacementAsync(QuestionType type, IEnumerable<int> usedPlayers, IEnumerable<int> usedItems)
+    {
+        var (pool, dailyItems) = await OnlinePoolAsync();
+        // Geen terugval op spelers die al aan tafel waren: liever geen wissel dan een vraag die iedereen al zag.
+        var used = usedPlayers.ToHashSet();
+        var part = await BuildAsync(type, 1, null, QuestionTypes.Get(type).FromPlayers ? pool.Where(p => !used.Contains(p.Id)).ToList() : null,
+            used, [.. dailyItems, .. usedItems]);
+        return part?.FirstOrDefault();
+    }
+
+    /// <summary>Spelers en vragen voor online: alles behalve wat in de daily van vandaag zit.</summary>
+    private async Task<(List<Player> Pool, HashSet<int> DailyItems)> OnlinePoolAsync()
+    {
         var daily = await db.DailyQuestions.Where(q => q.DailyChallenge.Date == Today).ToListAsync();
         var dailyPlayers = daily.Where(q => q.PlayerId != null).Select(q => q.PlayerId!.Value)
             .Concat(daily.SelectMany(q => q.CounterPlayerIds)).ToHashSet();
         var dailyItems = daily.Where(q => q.QuizItemId != null).Select(q => q.QuizItemId!.Value).ToHashSet();
         var pool = await db.Players.Where(p => p.Status != PlayerStatus.Rejected && !dailyPlayers.Contains(p.Id)).ToListAsync();
-        return await BuildMixAsync(types, null, pool, dailyItems);
+        return (pool, dailyItems);
     }
 
     /// <summary>

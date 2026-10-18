@@ -294,6 +294,30 @@ public static class QuestionEngine
         }
     }
 
+    /// <summary>
+    /// Derby (Trump booster): een kopie van een keuzevraag waarin <paramref name="choice"/> (optie of jaartal) het juiste antwoord is.
+    /// Niet opgeslagen: enkel om opnieuw te beoordelen en het "officiële" antwoord te tonen.
+    /// </summary>
+    public static DailyQuestion WithAnswer(DailyQuestion q, int choice)
+    {
+        var data = q.Type switch
+        {
+            QuestionType.Snelvuur => Serialize(Data<SnelvuurData>(q) with { Correct = choice }),
+            QuestionType.NietBij => Serialize(Data<NietBijData>(q) with { Odd = choice }),
+            QuestionType.Jaar => Serialize(Data<JaarData>(q) with { Year = choice }),
+            _ => q.QuizItem!.Data,
+        };
+        var item = q.QuizItem!;
+        return new DailyQuestion
+        {
+            Id = q.Id,
+            Number = q.Number,
+            Type = q.Type,
+            QuizItemId = q.QuizItemId,
+            QuizItem = new QuizItem { Id = item.Id, Type = item.Type, Key = item.Key, Data = data, Difficulty = item.Difficulty },
+        };
+    }
+
     /// <summary>Een getypte naam bij een type dat stap voor stap onthult (wissel, rugnummer, mannetje, kluts).</summary>
     private static Outcome Typed(string guess, string answer, IEnumerable<string> aliases, double elapsed, Attempt a) =>
         AnswerMatcher.IsMatch(guess, answer, aliases)

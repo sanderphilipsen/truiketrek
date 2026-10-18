@@ -1,0 +1,80 @@
+@* Derby: jouw wapen (één keer in te zetten) en een ticker met wat er aan tafel ingezet werd. *@
+
+@if (Derby.Events.Count > 0)
+{
+    <ul class="derby-ticker" aria-live="polite">
+        @foreach (var e in Derby.Events)
+        {
+            <li class="@(e.TargetIsMe ? "hit" : "")">📣 @Line(e)</li>
+        }
+    </ul>
+}
+
+@if (IAmIn && Derby.MyWeapon is { } weapon)
+{
+    var info = DerbyRules.Get(weapon);
+    <div class="derby-weapon @(Derby.MyWeaponUsed ? "used" : "") @(Picking ? "picking" : "")">
+        <button type="button" class="derby-weapon-btn" disabled="@(Busy || !Derby.CanUseWeapon)" @onclick="OnUse"
+                title="@info.HowTo">
+            <span class="dw-icon">@(Derby.Ceasefire && !Derby.MyWeaponUsed ? "🔒" : info.Icon)</span>
+            <span class="dw-text">
+                <b>@info.Name</b>
+                <small>@Status(weapon)</small>
+            </span>
+        </button>
+        @if (Picking)
+        {
+            <button type="button" class="linkish" @onclick="OnCancel">Annuleer</button>
+        }
+    </div>
+}
+
+@code {
+    [Parameter, EditorRequired] public DerbyState Derby { get; set; } = null!;
+    [Parameter] public MatchPhase Phase { get; set; }
+    [Parameter] public bool IAmIn { get; set; }
+    [Parameter] public bool Busy { get; set; }
+    [Parameter] public bool Picking { get; set; }
+    [Parameter] public EventCallback OnUse { get; set; }
+    [Parameter] public EventCallback OnCancel { get; set; }
+
+    private string Status(DerbyWeapon weapon) => this switch
+    {
+        _ when Derby.MyWeaponUsed => "Ingezet",
+        _ when Picking => "Tik op een tegenstander hierboven",
+        _ when Derby.Ceasefire => "Wapenstilstand op de eerste en de laatste vraag",
+        _ when Derby.CanUseWeapon && Phase is MatchPhase.Reveal or MatchPhase.Countdown => $"Klaarzetten voor vraag {Derby.WeaponFor}",
+        _ when Derby.CanUseWeapon && weapon == DerbyWeapon.RodeKaart => "Tik en kies een tegenstander",
+        _ when Derby.CanUseWeapon && weapon == DerbyWeapon.PropereHanden => "Tik en kies van wie je steelt",
+        _ when Derby.CanUseWeapon && weapon == DerbyWeapon.Gokchinees => $"Tik: dubbel of −{DerbyRules.GamblePenalty} punten",
+        _ when weapon == DerbyWeapon.Gokchinees => "Tijdens een vraag, vóór je antwoordt",
+        _ when Derby.CanUseWeapon && weapon == DerbyWeapon.BengaalsVuur => "Tik: het vuur gaat af bij al je tegenstanders",
+        _ when Derby.CanUseWeapon && weapon == DerbyWeapon.Verlenging => $"Tik: +{DerbyRules.ExtensionSeconds} seconden voor jou",
+        _ when Derby.CanUseWeapon => "Nu inzetten!",
+        _ when weapon == DerbyWeapon.Trump => "Bij een vraag met antwoordopties of een jaartal, vóór je antwoordt",
+        _ when weapon == DerbyWeapon.Verlenging => "Tijdens een vraag, vóór je antwoordt",
+        _ when weapon is DerbyWeapon.Wissel or DerbyWeapon.BengaalsVuur => "In de eerste helft van een vraag",
+        _ => "Nu even niet",
+    };
+
+    private static string Line(DerbyEvent e)
+    {
+        var by = e.ByMe ? "Jij" : e.By;
+        var pending = e.Since < 0 ? " (klaargezet)" : "";
+        return e.Weapon switch
+        {
+            DerbyWeapon.RodeKaart => $"🟥 {by} geeft rood aan {(e.TargetIsMe ? "jou" : e.Target)}{pending}"
+                                     + (e.Effect is > 0 ? $": −{e.Effect} punten" : ""),
+            DerbyWeapon.BengaalsVuur => $"🎆 {by} steekt bengaals vuur af{pending}",
+            DerbyWeapon.Wissel => $"🔁 {by} vraagt een wissel aan: nieuwe vraag voor iedereen",
+            DerbyWeapon.Trump => $"🟨 {by} zet de Trump booster in{pending}"
+                                 + (e.Effect is > 0 ? $": tegenstanders −{e.Effect} punten" : ""),
+            DerbyWeapon.Gokchinees => $"🎲 {by} gokt dubbel of niks{pending}"
+                                      + (e.Effect switch { > 0 => $": gewonnen, +{e.Effect} punten", < 0 => $": verloren, {e.Effect} punten", _ => "" }),
+            DerbyWeapon.PropereHanden => $"🧤 {by} steelt de helft van de punten van {(e.TargetIsMe ? "jou" : e.Target)}{pending}"
+                                         + (e.Effect is > 0 ? $": {(e.TargetIsMe ? "jij verliest" : "buit")} {e.Effect} punten" : ""),
+            DerbyWeapon.Verlenging => $"⏱️ {by} krijgt verlenging: +{DerbyRules.ExtensionSeconds} seconden{pending}",
+            _ => "",
+        };
+    }
+}

@@ -35,6 +35,8 @@ public static class MatchEndpoints
             svc.GuessAsync(UserId(user), id, req.Guess));
         matches.MapPost("/{id:int}/giveup", (int id, ClaimsPrincipal user, MatchService svc) =>
             svc.GiveUpAsync(UserId(user), id));
+        matches.MapPost("/{id:int}/weapon", (int id, UseWeaponRequest req, ClaimsPrincipal user, MatchService svc) =>
+            svc.UseWeaponAsync(UserId(user), id, req.Target));
 
         var online = app.MapGroup("/api/online").RequireAuthorization();
         online.MapGet("/stats", (ClaimsPrincipal user, OnlineService svc) => svc.GetStatsAsync(UserId(user)));

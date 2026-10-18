@@ -138,6 +138,9 @@ public class Match
 
     /// <summary>Gekozen vraagtypes: één type of een mix (leeg = "Wie ben ik?", zoals de oudere tafels).</summary>
     public List<QuestionType> Types { get; set; } = [];
+
+    /// <summary>Derby mode: elke speler krijgt bij de aftrap een wapen (zie <see cref="DerbyRules"/>).</summary>
+    public bool Derby { get; set; }
     public List<MatchPlayer> Players { get; set; } = [];
     public List<MatchQuestion> Questions { get; set; } = [];
 }
@@ -154,6 +157,16 @@ public class MatchPlayer
     public DateTime? LeftAt { get; set; }
     public int Score { get; set; }
     public int? Rank { get; set; }
+
+    // Derby: één wapen per speler, één keer in te zetten.
+    public DerbyWeapon? Weapon { get; set; }
+    public DateTime? WeaponUsedAt { get; set; }
+    /// <summary>De vraag waarop het wapen effect heeft (klaargezet: de volgende vraag).</summary>
+    public int? WeaponQuestion { get; set; }
+    /// <summary>Rode kaart: wie ze kreeg.</summary>
+    public string? WeaponTargetUserId { get; set; }
+    /// <summary>Wat het wapen anderen kostte of jezelf opleverde in punten, voor het derby-rapport.</summary>
+    public int WeaponEffect { get; set; }
 }
 
 public class MatchQuestion
@@ -186,6 +199,15 @@ public class MatchQuestion
     public DateTime? StartsAt { get; set; }
     public DateTime? EndedAt { get; set; }
     public List<MatchAnswer> Answers { get; set; } = [];
+
+    // Derby: wapens op deze vraag (elk maximaal één keer per vraag).
+    /// <summary>Trump booster: het antwoord van deze speler wordt het juiste.</summary>
+    public string? TrumpUserId { get; set; }
+    /// <summary>Bengaals vuur: wie het afstak en wanneer (klaargezet = vanaf de start van de vraag).</summary>
+    public string? FlareUserId { get; set; }
+    public DateTime? FlareAt { get; set; }
+    /// <summary>Wissel: wie de vraag liet vervangen.</summary>
+    public string? SwapUserId { get; set; }
 }
 
 public class MatchAnswer
@@ -211,6 +233,14 @@ public class MatchAnswer
     /// <summary>Volgorde van de juiste antwoorden, ingevuld als de vraag afloopt.</summary>
     public int? Position { get; set; }
     public int Bonus { get; set; }
+    /// <summary>Derby: rode kaart gekregen van deze speler (halve punten voor deze vraag).</summary>
+    public string? RedCardFromUserId { get; set; }
+    /// <summary>Derby (propere handen): deze speler steelt de helft van de punten van deze vraag.</summary>
+    public string? StolenByUserId { get; set; }
+    /// <summary>Derby (gokchinees): dubbel of niks op deze vraag.</summary>
+    public bool Gamble { get; set; }
+    /// <summary>Derby (verlenging): extra seconden voor deze speler bij deze vraag.</summary>
+    public int ExtraSeconds { get; set; }
 }
 
 // ---------- Specials ----------
