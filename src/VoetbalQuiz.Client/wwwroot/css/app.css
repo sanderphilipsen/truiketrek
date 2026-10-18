@@ -368,47 +368,21 @@ select { font: inherit; padding: 8px; border-radius: 8px; border: 1.5px solid #c
 
 /* ---------- Online lobby ---------- */
 .seat-picker { display: flex; gap: 6px; flex-wrap: wrap; }
+/* Plaatsen en aantal vragen. Alles zelf vastleggen: anders kleurt iOS de cijfers blauw en zet het padding erbij. */
 .seat-picker button {
-    width: 42px; height: 42px;
-    border-radius: 10px;
-    border: 1.5px solid #cfd8d2;
-    background: #fff;
-    font-weight: 800;
-    font-size: 1rem;
-    cursor: pointer;
-}
-.seat-picker button.active { background: var(--pitch-2); border-color: var(--pitch-2); color: #fff; }
-
-/* Aantal vragen van een tafel: − 10 + */
-.count-stepper { display: flex; align-items: center; gap: 6px; }
-/* Alles zelf vastleggen: anders kleurt iOS de tekens blauw en staan ze scheef door de standaard-padding. */
-.count-stepper button {
     -webkit-appearance: none; appearance: none;
-    flex: 0 0 auto;
     display: grid; place-items: center;
     width: 42px; height: 42px; padding: 0;
     border-radius: 10px;
     border: 1.5px solid #cfd8d2;
     background: #fff;
     color: var(--text);
-    font-family: inherit; font-weight: 800; font-size: 1.3rem; line-height: 1;
+    font-family: inherit; font-weight: 800; font-size: 1rem; line-height: 1;
     cursor: pointer;
     touch-action: manipulation;
 }
-.count-stepper button:not(:disabled):active { background: var(--pitch-2); border-color: var(--pitch-2); color: #fff; }
-.count-stepper button:disabled { opacity: .4; cursor: default; }
-.count-stepper input {
-    -webkit-appearance: none; appearance: none;
-    flex: 0 0 auto;
-    width: 64px; height: 42px; padding: 0;
-    text-align: center;
-    color: var(--text);
-    font-family: inherit; font-weight: 800; font-size: 1rem;
-    -moz-appearance: textfield;
-}
-.count-stepper input::-webkit-outer-spin-button,
-.count-stepper input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-.count-stepper small { margin-left: 4px; }
+.seat-picker button.active { background: var(--pitch-2); border-color: var(--pitch-2); color: #fff; }
+.seat-picker button:disabled { opacity: .35; cursor: default; }
 
 /* Vraagtype van een tafel: één type, of met "Mix" meerdere. */
 .type-picker { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 6px; }
@@ -1207,9 +1181,11 @@ button.choice:active { transform: scale(.97); }
 /* ---------- Derby ---------- */
 .derby-toggle {
     display: flex; align-items: center; gap: 10px; width: 100%; text-align: left;
-    background: #fff; border: 1.5px dashed #d9a3a3; border-radius: 12px; padding: 10px 12px; color: inherit; font: inherit; cursor: pointer;
+    background: #fff; border: 1.5px solid #f1c6c6; border-radius: 12px; padding: 10px 12px; color: inherit; font: inherit; cursor: pointer;
+    -webkit-appearance: none; appearance: none;
 }
-.derby-toggle .derby-flame { font-size: 1.5rem; filter: grayscale(1); transition: filter .2s; }
+/* Ook uit in kleur, zodat het uitnodigt; enkel het schuifje toont dat het uit staat. */
+.derby-toggle .derby-flame { font-size: 1.5rem; }
 .derby-toggle .derby-text { flex: 1; display: flex; flex-direction: column; }
 .derby-toggle .derby-text small { color: var(--muted); font-size: .78rem; }
 .derby-toggle .switch { flex: none; width: 40px; height: 22px; border-radius: 999px; background: #d5ddd8; position: relative; transition: background .2s; }
@@ -1218,7 +1194,6 @@ button.choice:active { transform: scale(.97); }
 }
 .derby-toggle .derby-text .derby-note { color: #9a6b00; margin-top: 2px; }
 .derby-toggle.active { border-style: solid; border-color: var(--fail); background: #fff3f3; }
-.derby-toggle.active .derby-flame { filter: none; }
 .derby-toggle.active .switch { background: var(--fail); }
 .derby-toggle.active .switch::after { transform: translateX(18px); }
 

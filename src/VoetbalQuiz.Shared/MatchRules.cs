@@ -11,6 +11,9 @@ public static class MatchRules
     public const int MinQuestions = 3;
     public const int MaxQuestions = 30;
 
+    /// <summary>De keuzes in het formulier (de server aanvaardt alles van <see cref="MinQuestions"/> tot <see cref="MaxQuestions"/>).</summary>
+    public static readonly int[] QuestionChoices = [5, 10, 15, 20, 30];
+
     /// <summary>Binnen de grenzen, en minstens één vraag per gekozen type (anders valt een type uit de mix).</summary>
     public static int ClampQuestions(int? questions, int types = 1) =>
         Math.Clamp(questions ?? DefaultQuestions, MinQuestionsFor(types), MaxQuestions);

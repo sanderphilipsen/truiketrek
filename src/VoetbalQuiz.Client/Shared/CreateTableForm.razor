@@ -45,12 +45,14 @@
     </div>
     <div>
         <div class="field-label">Aantal vragen</div>
-        <div class="count-stepper">
-            <button type="button" aria-label="Minder vragen" disabled="@(Questions <= MinQuestions)" @onclick="() => Step(-1)">−</button>
-            <input type="number" min="@MinQuestions" max="@MatchRules.MaxQuestions" aria-label="Aantal vragen"
-                   value="@Questions" @onchange="SetQuestions" />
-            <button type="button" aria-label="Meer vragen" disabled="@(Questions >= MatchRules.MaxQuestions)" @onclick="() => Step(1)">+</button>
-            <small class="muted">@MinQuestions tot @MatchRules.MaxQuestions@(_chosen.Count > MatchRules.MinQuestions ? " (min. één per type)" : "")</small>
+        <div class="seat-picker">
+            @foreach (var n in MatchRules.QuestionChoices)
+            {
+                var count = n;
+                <button type="button" class="@(Questions == count ? "active" : "")" aria-pressed="@(Questions == count)"
+                        disabled="@(count < MinQuestions)" title="@(count < MinQuestions ? "Minstens één vraag per gekozen type" : null)"
+                        @onclick="() => _questions = count">@count</button>
+            }
         </div>
     </div>
     <button type="button" class="derby-toggle @(_derby ? "active" : "")" aria-pressed="@(_derby ? "true" : "false")" @onclick="() => _derby = !_derby">
@@ -95,14 +97,10 @@
 
     private int _questions = MatchRules.DefaultQuestions;
 
-    /// <summary>Wat er echt gespeeld wordt: minstens één vraag per gekozen type.</summary>
-    private int Questions => MatchRules.ClampQuestions(_questions, _chosen.Count);
+    /// <summary>Wat er echt gespeeld wordt: minstens één vraag per gekozen type, dus zo nodig de eerste keuze die groot genoeg is.</summary>
+    private int Questions => _questions >= MinQuestions ? _questions
+        : MatchRules.QuestionChoices.FirstOrDefault(n => n >= MinQuestions, MatchRules.MaxQuestions);
     private int MinQuestions => MatchRules.MinQuestionsFor(_chosen.Count);
-
-    private void Step(int delta) => _questions = MatchRules.ClampQuestions(Questions + delta, _chosen.Count);
-
-    private void SetQuestions(ChangeEventArgs e) =>
-        _questions = int.TryParse(e.Value?.ToString(), out var n) ? MatchRules.ClampQuestions(n, _chosen.Count) : _questions;
 
     protected override async Task OnInitializedAsync()
     {
