@@ -157,7 +157,7 @@ Pas een JSON-bestand aan in `src/VoetbalQuiz.Server/Data/players/` (of voeg een 
 
 - `answers`: extra aanvaarde antwoorden naast de volledige naam (achternaam, bijnaam).
 - `era`: `modern` of `classic`. Er komen maximaal 2 klassiekers per dag in de challenge.
-- `difficulty`: 1 = iedereen kent hem, 3 = echte kenner. Een challenge loopt van makkelijk naar moeilijk.
+- `difficulty`: 1 = iedereen kent het, 2 = makkelijk, 3 = voetbalfan, 4 = moeilijk, 5 = echte kenner. Een challenge loopt van makkelijk naar moeilijk; het beginscherm toont het gemiddelde als 0–5 sterren.
 
 Bij een nieuwe dag worden 10 spelers gekozen die nog het minst gevraagd zijn. De dag wisselt om middernacht Belgische tijd.
 

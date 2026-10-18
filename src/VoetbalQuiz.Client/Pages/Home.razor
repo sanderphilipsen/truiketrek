@@ -58,6 +58,7 @@
         <div>
             <b>@sp.Name</b>
             <small>@(sp.Answered == 0 ? "Speciale editie, vandaag te spelen!" : sp.Answered < GameRules.QuestionsPerDay ? $"{sp.Answered}/{GameRules.QuestionsPerDay} gespeeld" : $"Gespeeld: {sp.MyPoints} punten")</small>
+            <DifficultyStars Value="sp.Difficulty" />
         </div>
         <span class="btn small primary">@(sp.Answered == 0 ? "Spelen" : "Open")</span>
     </a>
@@ -68,7 +69,11 @@
         <div>
             <div class="date">@(_daily is null ? "" : DutchDates.DayMonth(_daily.Date))</div>
             <h2>📅 Daily challenge</h2>
-            @if (_daily is not null) { <div class="type-banner small">Vandaag: @QuestionTypes.DayLabel(_daily)</div> }
+            @if (_daily is not null)
+            {
+                <div class="type-banner small">Vandaag: @QuestionTypes.DayLabel(_daily)</div>
+                <DifficultyStars Value="_daily.Difficulty" />
+            }
         </div>
         @if (_daily is not null)
         {

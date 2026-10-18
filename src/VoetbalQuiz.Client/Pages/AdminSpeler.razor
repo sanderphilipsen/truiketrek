@@ -59,9 +59,7 @@
                         </label>
                         <label>Moeilijkheid
                             <select @bind="_difficulty" @bind:after="Touch">
-                                <option value="1">★ Iedereen kent hem</option>
-                                <option value="2">★★ Voetbalfan</option>
-                                <option value="3">★★★ Echte kenner</option>
+                                @foreach (var (value, label) in Difficulty.Levels) { <option value="@value">@Difficulty.Stars(value) @label</option> }
                             </select>
                         </label>
                     </div>
@@ -197,7 +195,7 @@
     private PlayerEdit? _original;
     private string _name = "", _answers = "", _country = "", _competition = "", _era = "modern", _newSource = "";
     private string? _note;
-    private int _difficulty = 2;
+    private int _difficulty = Difficulty.Default;
     private string[] _hints = new string[GameRules.HintCount];
     private List<string> _sources = [];
     private HashSet<string> _tags = [];
@@ -211,7 +209,7 @@
         _hints = Enumerable.Repeat("", GameRules.HintCount).ToArray();
         if (Id == 0)
         {
-            (_original, _name, _answers, _country, _competition, _era, _difficulty, _note) = (null, "", "", "", "", "modern", 2, null);
+            (_original, _name, _answers, _country, _competition, _era, _difficulty, _note) = (null, "", "", "", "", "modern", Difficulty.Default, null);
             (_sources, _tags) = ([], []);
             _loaded = true;
             return;

@@ -18,7 +18,7 @@
     "when": "Zomer 2019", "fee": "€126 miljoen",
     "from": "Benfica", "to": "Atlético Madrid",
     "extra": "Portugees toptalent van amper 19 jaar",
-    "difficulty": 2, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Jo%C3%A3o_F%C3%A9lix"], "tags": []
+    "difficulty": 3, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Jo%C3%A3o_F%C3%A9lix"], "tags": []
   },
   {
     "answer": "Antoine Griezmann", "aliases": ["Griezmann"],
@@ -39,7 +39,7 @@
     "when": "Zomer 2012", "fee": "Ongeveer €40 miljoen",
     "from": "Lille", "to": "Chelsea",
     "extra": "Belgische dribbelaar die twee jaar op rij uitgeroepen werd tot beste speler van de Franse competitie",
-    "difficulty": 2, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Eden_Hazard"], "tags": ["rode-duivels"]
+    "difficulty": 3, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Eden_Hazard"], "tags": ["rode-duivels"]
   },
   {
     "answer": "Romelu Lukaku", "aliases": ["Lukaku"],
@@ -74,14 +74,14 @@
     "when": "Deadline day, september 2013", "fee": "£42,5 miljoen, toen een clubrecord",
     "from": "Real Madrid", "to": "Arsenal",
     "extra": "Duitse spelmaker en wereldkampioen van 2014",
-    "difficulty": 2, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Mesut_%C3%96zil"], "tags": []
+    "difficulty": 3, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Mesut_%C3%96zil"], "tags": []
   },
   {
     "answer": "Fernando Torres", "aliases": ["Torres"],
     "when": "Deadline day, januari 2011", "fee": "£50 miljoen, toen een Brits record",
     "from": "Liverpool", "to": "Chelsea",
     "extra": "Spaanse spits, bijgenaamd El Niño",
-    "difficulty": 2, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Fernando_Torres"], "tags": ["champions-league"]
+    "difficulty": 3, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Fernando_Torres"], "tags": ["champions-league"]
   },
   {
     "answer": "Cristiano Ronaldo", "aliases": ["Ronaldo", "CR7"],
@@ -109,21 +109,21 @@
     "when": "Zomer 2001", "fee": "Ruim €70 miljoen, toen een wereldrecord",
     "from": "Juventus", "to": "Real Madrid",
     "extra": "Franse wereldkampioen van 1998",
-    "difficulty": 2, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Zin%C3%A9dine_Zidane"], "tags": ["champions-league", "legende"]
+    "difficulty": 3, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Zin%C3%A9dine_Zidane"], "tags": ["champions-league", "legende"]
   },
   {
     "answer": "Luís Figo", "aliases": ["Figo", "Luis Figo"],
     "when": "Zomer 2000", "fee": "Ongeveer €60 miljoen, de afkoopclausule",
     "from": "FC Barcelona", "to": "Real Madrid",
     "extra": "Portugese flankaanvaller; bij zijn terugkeer in Camp Nou vloog er een varkenskop het veld op",
-    "difficulty": 2, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Lu%C3%ADs_Figo"], "tags": ["champions-league", "legende"]
+    "difficulty": 3, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Lu%C3%ADs_Figo"], "tags": ["champions-league", "legende"]
   },
   {
     "answer": "Diego Maradona", "aliases": ["Maradona"],
     "when": "Zomer 1984", "fee": "Een wereldrecord",
     "from": "FC Barcelona", "to": "Napoli",
     "extra": "Argentijnse nummer 10 die Napoli zijn eerste landstitel bezorgde",
-    "difficulty": 2, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Diego_Maradona"], "tags": ["legende"]
+    "difficulty": 3, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Diego_Maradona"], "tags": ["legende"]
   },
   {
     "answer": "Paul Pogba", "aliases": ["Pogba"],
@@ -158,14 +158,14 @@
     "when": "Zomer 2023", "fee": "£105 miljoen, een clubrecord voor Arsenal",
     "from": "West Ham United", "to": "Arsenal",
     "extra": "Engelse controleur die net de Conference League had gewonnen als aanvoerder",
-    "difficulty": 2, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Declan_Rice"], "tags": []
+    "difficulty": 3, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Declan_Rice"], "tags": []
   },
   {
     "answer": "Enzo Fernández", "aliases": ["Enzo Fernandez", "Enzo"],
     "when": "Deadline day, januari 2023", "fee": "Ongeveer €121 miljoen",
     "from": "Benfica", "to": "Chelsea",
     "extra": "Argentijnse middenvelder, net uitgeroepen tot beste jonge speler van het WK",
-    "difficulty": 2, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Enzo_Fern%C3%A1ndez"], "tags": []
+    "difficulty": 3, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Enzo_Fern%C3%A1ndez"], "tags": []
   },
   {
     "answer": "Lionel Messi", "aliases": ["Messi"],
@@ -186,34 +186,34 @@
     "when": "Zomer 2009", "fee": "Ongeveer €46 miljoen plus Samuel Eto'o in de ruil",
     "from": "Inter", "to": "FC Barcelona",
     "extra": "Zweedse spits die het na één seizoen bij Barça al voor bekeken hield",
-    "difficulty": 2, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Zlatan_Ibrahimovi%C4%87"], "tags": []
+    "difficulty": 3, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Zlatan_Ibrahimovi%C4%87"], "tags": []
   },
   {
     "answer": "Youri Tielemans", "aliases": ["Tielemans"],
     "when": "Zomer 2017", "fee": "Ongeveer €25 miljoen",
     "from": "Anderlecht", "to": "AS Monaco",
     "extra": "Belgisch middenveldtalent, al op zijn 16de prof in het Astridpark",
-    "difficulty": 2, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Youri_Tielemans"], "tags": ["rode-duivels", "anderlecht"]
+    "difficulty": 3, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Youri_Tielemans"], "tags": ["rode-duivels", "anderlecht"]
   },
   {
     "answer": "Axel Witsel", "aliases": ["Witsel"],
     "when": "Zomer 2012", "fee": "€40 miljoen",
     "from": "Benfica", "to": "Zenit Sint-Petersburg",
     "extra": "Belgische middenvelder met een opvallend kapsel, opgeleid bij Standard",
-    "difficulty": 2, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Axel_Witsel"], "tags": ["rode-duivels", "standard"]
+    "difficulty": 3, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Axel_Witsel"], "tags": ["rode-duivels", "standard"]
   },
   {
     "answer": "Jérémy Doku", "aliases": ["Doku"],
     "when": "Zomer 2023", "fee": "Ongeveer €60 miljoen",
     "from": "Stade Rennais", "to": "Manchester City",
     "extra": "Explosieve Belgische dribbelaar, doorgebroken bij Anderlecht",
-    "difficulty": 2, "status": "review", "sources": ["https://en.wikipedia.org/wiki/J%C3%A9r%C3%A9my_Doku"], "tags": ["rode-duivels", "anderlecht"]
+    "difficulty": 3, "status": "review", "sources": ["https://en.wikipedia.org/wiki/J%C3%A9r%C3%A9my_Doku"], "tags": ["rode-duivels", "anderlecht"]
   },
   {
     "answer": "Vincent Kompany", "aliases": ["Kompany", "Vince"],
     "when": "Zomer 2008", "fee": "Ongeveer £6 miljoen",
     "from": "Hamburger SV", "to": "Manchester City",
     "extra": "Brusselse verdediger die later kapitein en kampioen werd in Manchester",
-    "difficulty": 2, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Vincent_Kompany"], "tags": ["rode-duivels", "anderlecht"]
+    "difficulty": 3, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Vincent_Kompany"], "tags": ["rode-duivels", "anderlecht"]
   }
 ]

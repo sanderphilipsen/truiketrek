@@ -17,6 +17,8 @@ $rows = foreach ($f in $files) {
         'Moeil 1' = @($items | Where-Object difficulty -eq 1).Count
         'Moeil 2' = @($items | Where-Object difficulty -eq 2).Count
         'Moeil 3' = @($items | Where-Object difficulty -eq 3).Count
+        'Moeil 4' = @($items | Where-Object difficulty -eq 4).Count
+        'Moeil 5' = @($items | Where-Object difficulty -eq 5).Count
     }
 }
 if ($Tag) { "Enkel items met tag '$Tag'" }

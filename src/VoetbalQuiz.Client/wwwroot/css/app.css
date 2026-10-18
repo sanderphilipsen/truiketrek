@@ -541,6 +541,13 @@ select { font: inherit; padding: 8px; border-radius: 8px; border: 1.5px solid #c
 .special-card > div { flex: 1; display: flex; flex-direction: column; }
 .special-card small { color: var(--muted); }
 .special-icon { font-size: 2.2rem; }
+
+/* Moeilijkheid van de daily of een special: 0–5 sterren, halve sterren door de volle laag af te knippen. */
+.difficulty-stars { position: relative; display: inline-block; font-size: .95rem; line-height: 1; letter-spacing: 1px; white-space: nowrap; }
+.difficulty-stars .ds-empty { color: var(--muted); opacity: .35; }
+.difficulty-stars .ds-full { position: absolute; inset: 0 auto 0 0; overflow: hidden; color: var(--accent); text-shadow: 0 0 1px rgba(0, 0, 0, .45); }
+.home-daily .difficulty-stars { display: block; width: max-content; margin: 0 0 8px; }
+.special-card .difficulty-stars { margin-top: 2px; }
 .special-hero .special-icon { font-size: 3rem; }
 
 /* ---------- Badges & bekers ---------- */

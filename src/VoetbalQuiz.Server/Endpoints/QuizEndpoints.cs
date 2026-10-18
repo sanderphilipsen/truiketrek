@@ -18,7 +18,7 @@ public static class QuizEndpoints
 
         // Specials: dezelfde vragenflow, met een eigen reeks en klassement.
         var specials = app.MapGroup("/api/specials").RequireAuthorization().AddEndpointFilter(HandleQuizErrors);
-        specials.MapGet("/", (ClaimsPrincipal user, ResultsService results) => results.GetSpecialsAsync(UserId(user)));
+        specials.MapGet("/", (ClaimsPrincipal user, QuizService quiz) => quiz.GetSpecialsAsync(UserId(user)));
         specials.MapGet("/{id:int}", (int id, ClaimsPrincipal user, QuizService quiz) => quiz.GetOverviewAsync(UserId(user), id));
         specials.MapPost("/{id:int}/questions/{number:int}/start", (int id, int number, ClaimsPrincipal user, QuizService quiz) => quiz.StartAsync(UserId(user), number, id));
         specials.MapGet("/{id:int}/questions/{number:int}", (int id, int number, ClaimsPrincipal user, QuizService quiz) => quiz.GetStateAsync(UserId(user), number, id));

@@ -73,7 +73,7 @@ public class QuestionSeeder(QuizDbContext db, IWebHostEnvironment env, ILogger<Q
                 }
 
                 item.Data = data;
-                item.Difficulty = Math.Clamp(meta.Difficulty ?? 2, 1, 3);
+                item.Difficulty = Difficulty.Clamp(meta.Difficulty);
                 item.Status = meta.Status?.ToLowerInvariant() switch
                 {
                     "approved" => PlayerStatus.Approved,

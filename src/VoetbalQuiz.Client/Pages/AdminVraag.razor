@@ -133,7 +133,7 @@
 
                     <label>Moeilijkheid
                         <select @bind="_difficulty" @bind:after="Touch">
-                            <option value="1">★ Makkelijk</option><option value="2">★★ Voetbalfan</option><option value="3">★★★ Kenner</option>
+                            @foreach (var (value, label) in Difficulty.Levels) { <option value="@value">@Difficulty.Stars(value) @label</option> }
                         </select>
                     </label>
                 </section>
@@ -200,7 +200,7 @@
     private QuestionType _type = QuestionType.Snelvuur;
     private string _text = "", _answer = "", _aliases = "", _explanation = "", _lines = "", _kind = "speler", _newSource = "";
     private string? _note;
-    private int _difficulty = 2, _correct, _year = 2010, _number = 10;
+    private int _difficulty = Difficulty.Default, _correct, _year = 2010, _number = 10;
     private string _when = "", _fee = "", _from = "", _to = "", _extra = "", _position = "", _country = "", _club = "", _avatar = Avatars.All[0].Id;
     private List<string> _options = ["", "", "", ""];
     private string[] _positions = new string[11], _names = new string[11], _nameAliases = new string[11];

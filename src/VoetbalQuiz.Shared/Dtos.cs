@@ -23,7 +23,7 @@ public record RewardSummary(LevelInfo Before, LevelInfo After, List<XpPart> Gain
 public enum QuestionStatus { NotStarted, InProgress, Answered }
 
 public record DailyOverview(DateOnly Date, int TotalPoints, List<QuestionSummary> Questions, DayWinner? LastWinner,
-    QuestionType Type = QuestionType.WieBenIk, int MaxPoints = 1000, List<QuestionType>? Types = null)
+    QuestionType Type = QuestionType.WieBenIk, int MaxPoints = 1000, List<QuestionType>? Types = null, double Difficulty = 0)
 {
     /// <summary>Een dag met meer dan één vraagtype.</summary>
     [System.Text.Json.Serialization.JsonIgnore] public bool IsMix => Types is { Count: > 1 };

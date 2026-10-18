@@ -13,7 +13,7 @@
   {
     "event": "Ajax wint op Wembley zijn eerste Europacup I tegen Panathinaikos.",
     "year": 1971,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1971_European_Cup_final"
@@ -26,7 +26,7 @@
   {
     "event": "België wordt derde op het EK in eigen land na winst tegen Hongarije.",
     "year": 1972,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_1972"
@@ -39,7 +39,7 @@
   {
     "event": "West-Duitsland klopt Nederland in de WK-finale in München.",
     "year": 1974,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1974_FIFA_World_Cup_final"
@@ -50,7 +50,7 @@
   {
     "event": "Anderlecht wint de Europacup II met 4-2 tegen West Ham in de Heizel.",
     "year": 1976,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1976_European_Cup_Winners'_Cup_final"
@@ -61,7 +61,7 @@
   {
     "event": "Antonín Panenka beslist de EK-finale met een gestifte penalty.",
     "year": 1976,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_1976_final"
@@ -72,7 +72,7 @@
   {
     "event": "Club Brugge verliest de Europacup I-finale op Wembley van Liverpool.",
     "year": 1978,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1978_European_Cup_final"
@@ -85,7 +85,7 @@
   {
     "event": "Mario Kempes leidt gastland Argentinië naar de wereldtitel.",
     "year": 1978,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1978_FIFA_World_Cup_final"
@@ -96,7 +96,7 @@
   {
     "event": "België verliest de EK-finale in Rome met 2-1 van West-Duitsland.",
     "year": 1980,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_1980_final"
@@ -109,7 +109,7 @@
   {
     "event": "Erwin Vandenbergh bezorgt België een zege tegen titelverdediger Argentinië in de WK-opener.",
     "year": 1982,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1982_FIFA_World_Cup_Group_3"
@@ -123,7 +123,7 @@
   {
     "event": "Paolo Rossi en Italië worden wereldkampioen in Madrid.",
     "year": 1982,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1982_FIFA_World_Cup_final"
@@ -134,7 +134,7 @@
   {
     "event": "Anderlecht wint de UEFA Cup na een finale tegen Benfica.",
     "year": 1983,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1983_UEFA_Cup_final"
@@ -145,7 +145,7 @@
   {
     "event": "Michel Platini scoort een hattrick in Frankrijks 5-0 tegen België op het EK.",
     "year": 1984,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_1984"
@@ -171,7 +171,7 @@
   {
     "event": "België wint een WK-kwartfinale na strafschoppen tegen Spanje.",
     "year": 1986,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_knockout_stage"
@@ -185,7 +185,7 @@
   {
     "event": "België wint na verlengingen met 4-3 van de Sovjet-Unie in León.",
     "year": 1986,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_knockout_stage"
@@ -209,7 +209,7 @@
   {
     "event": "KV Mechelen wint de Europacup II tegen Ajax in Straatsburg.",
     "year": 1988,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1988_European_Cup_Winners'_Cup_final"
@@ -231,7 +231,7 @@
   {
     "event": "West-Duitsland wordt wereldkampioen na een penalty van Brehme in Rome.",
     "year": 1990,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1990_FIFA_World_Cup_final"
@@ -242,7 +242,7 @@
   {
     "event": "David Platt beslist met een volley in de 119e minuut de achtste finale tegen België.",
     "year": 1990,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1990_FIFA_World_Cup_knockout_stage"
@@ -256,7 +256,7 @@
   {
     "event": "Invaller Denemarken wint verrassend het EK in Zweden.",
     "year": 1992,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_1992_final"
@@ -267,7 +267,7 @@
   {
     "event": "Olympique Marseille wint de eerste Champions League-finale tegen AC Milan.",
     "year": 1993,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1993_UEFA_Champions_League_final"
@@ -280,7 +280,7 @@
   {
     "event": "Philippe Albert scoort de enige goal tegen Nederland op het WK in Orlando.",
     "year": 1994,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1994_FIFA_World_Cup_Group_F"
@@ -294,7 +294,7 @@
   {
     "event": "Roberto Baggio mist de beslissende penalty in de WK-finale tegen Brazilië.",
     "year": 1994,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1994_FIFA_World_Cup_final"
@@ -305,7 +305,7 @@
   {
     "event": "Het Bosman-arrest maakt spelers transfervrij na hun contract.",
     "year": 1995,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Bosman_ruling"
@@ -316,7 +316,7 @@
   {
     "event": "Oliver Bierhoff beslist de EK-finale op Wembley met een golden goal.",
     "year": 1996,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_1996_final"
@@ -338,7 +338,7 @@
   {
     "event": "Manchester United wint de treble met twee late goals in Camp Nou.",
     "year": 1999,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1999_UEFA_Champions_League_final"
@@ -351,7 +351,7 @@
   {
     "event": "Racing Genk wordt voor het eerst landskampioen.",
     "year": 1999,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1998%E2%80%9399_Belgian_First_Division"
@@ -362,7 +362,7 @@
   {
     "event": "Bart Goor en Émile Mpenza scoren in de openingsmatch van het thuis-EK tegen Zweden.",
     "year": 2000,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2000"
@@ -375,7 +375,7 @@
   {
     "event": "Een kopgoal van Marc Wilmots tegen Brazilië wordt afgekeurd op het WK.",
     "year": 2002,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_knockout_stage"
@@ -400,7 +400,7 @@
   {
     "event": "David Beckham ruilt Manchester United in voor Real Madrid.",
     "year": 2003,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/David_Beckham"
@@ -446,7 +446,7 @@
   {
     "event": "Club Brugge wordt kampioen en moet daarna elf jaar wachten op een nieuwe titel.",
     "year": 2005,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2004%E2%80%9305_Belgian_First_Division",
@@ -469,7 +469,7 @@
   {
     "event": "Juventus degradeert naar de Serie B door het Calciopoli-schandaal.",
     "year": 2006,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Calciopoli"
@@ -480,7 +480,7 @@
   {
     "event": "AC Milan neemt in Athene revanche op Liverpool in de CL-finale.",
     "year": 2007,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2007_UEFA_Champions_League_final"
@@ -493,7 +493,7 @@
   {
     "event": "Standard wordt landskampioen, voor het eerst in 25 jaar.",
     "year": 2008,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2007%E2%80%9308_Belgian_First_Division"
@@ -504,7 +504,7 @@
   {
     "event": "Fernando Torres bezorgt Spanje de Europese titel in Wenen.",
     "year": 2008,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2008_final"
@@ -515,7 +515,7 @@
   {
     "event": "Eden Hazard maakt als 17-jarige zijn debuut bij de Rode Duivels.",
     "year": 2008,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Eden_Hazard"
@@ -528,7 +528,7 @@
   {
     "event": "John Terry glijdt uit: Manchester United wint de CL-finale in Moskou.",
     "year": 2008,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2008_UEFA_Champions_League_final"
@@ -552,7 +552,7 @@
   {
     "event": "Standard verlengt zijn titel na een beslissende dubbele testmatch tegen Anderlecht.",
     "year": 2009,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2008%E2%80%9309_Belgian_First_Division"
@@ -563,7 +563,7 @@
   {
     "event": "Barcelona klopt Manchester United in de CL-finale in Rome.",
     "year": 2009,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2009_UEFA_Champions_League_final"
@@ -587,7 +587,7 @@
   {
     "event": "De eerste Belgische competitie met play-offs wordt afgewerkt.",
     "year": 2010,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2009%E2%80%9310_Belgian_Pro_League"
@@ -598,7 +598,7 @@
   {
     "event": "Inter van José Mourinho pakt de treble.",
     "year": 2010,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2010_UEFA_Champions_League_final"
@@ -611,7 +611,7 @@
   {
     "event": "Barcelona verslaat Manchester United in de CL-finale op Wembley.",
     "year": 2011,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2011_UEFA_Champions_League_final"
@@ -624,7 +624,7 @@
   {
     "event": "KRC Genk met Courtois en De Bruyne wordt landskampioen.",
     "year": 2011,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2010%E2%80%9311_Belgian_Pro_League"
@@ -646,7 +646,7 @@
   {
     "event": "Chelsea wint de Champions League na penalty's in München.",
     "year": 2012,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2012_UEFA_Champions_League_final"
@@ -659,7 +659,7 @@
   {
     "event": "Lionel Messi scoort 91 goals in één kalenderjaar.",
     "year": 2012,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Lionel_Messi"
@@ -670,7 +670,7 @@
   {
     "event": "Bayern verslaat Dortmund in een Duitse CL-finale op Wembley.",
     "year": 2013,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2013_UEFA_Champions_League_final"
@@ -683,7 +683,7 @@
   {
     "event": "Twee goals van Lukaku in Zagreb leveren België een WK-ticket op.",
     "year": 2013,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_qualification_%E2%80%93_UEFA_Group_A"
@@ -707,7 +707,7 @@
   {
     "event": "Gareth Bale verhuist voor een recordbedrag van Tottenham naar Real Madrid.",
     "year": 2013,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Gareth_Bale"
@@ -729,7 +729,7 @@
   {
     "event": "Luis Suárez bijt Giorgio Chiellini op het WK.",
     "year": 2014,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Luis_Su%C3%A1rez_(Uruguayan_footballer)"
@@ -740,7 +740,7 @@
   {
     "event": "Divock Origi scoort laat de winning goal tegen Rusland op het WK.",
     "year": 2014,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_Group_H"
@@ -754,7 +754,7 @@
   {
     "event": "De Bruyne en Lukaku scoren in de verlengingen van de WK-achtste finale tegen de VS.",
     "year": 2014,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_knockout_stage"
@@ -768,7 +768,7 @@
   {
     "event": "Een late kopbal van Sergio Ramos leidt in Lissabon 'La Décima' van Real Madrid in.",
     "year": 2014,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2014_UEFA_Champions_League_final"
@@ -792,7 +792,7 @@
   {
     "event": "België staat voor het eerst op nummer één van de FIFA-ranking.",
     "year": 2015,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_national_football_team"
@@ -805,7 +805,7 @@
   {
     "event": "Jürgen Klopp wordt manager van Liverpool.",
     "year": 2015,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/J%C3%BCrgen_Klopp"
@@ -827,7 +827,7 @@
   {
     "event": "Hal Robson-Kanu scoort in de 3-1-zege van Wales tegen België in de EK-kwartfinale.",
     "year": 2016,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2016_knockout_stage"
@@ -840,7 +840,7 @@
   {
     "event": "Portugal wint het EK na een finale tegen gastland Frankrijk.",
     "year": 2016,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2016_final"
@@ -851,7 +851,7 @@
   {
     "event": "België walst in de achtste finale van het EK met 4-0 over Hongarije.",
     "year": 2016,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2016_knockout_phase"
@@ -864,7 +864,7 @@
   {
     "event": "Club Brugge wordt voor het eerst in elf jaar landskampioen.",
     "year": 2016,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2015%E2%80%9316_Belgian_Pro_League",
@@ -876,7 +876,7 @@
   {
     "event": "Roberto Martínez volgt Marc Wilmots op als bondscoach.",
     "year": 2016,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Roberto_Mart%C3%ADnez"
@@ -900,7 +900,7 @@
   {
     "event": "AS Monaco met een tienerende Mbappé wordt Frans kampioen.",
     "year": 2017,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2016%E2%80%9317_Ligue_1"
@@ -911,7 +911,7 @@
   {
     "event": "Thomas Meunier en Eden Hazard scoren in de WK-troostfinale tegen Engeland.",
     "year": 2018,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"
@@ -925,7 +925,7 @@
   {
     "event": "Manchester City wordt kampioen met een recordtotaal van 100 punten.",
     "year": 2018,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2017%E2%80%9318_Premier_League"
@@ -936,7 +936,7 @@
   {
     "event": "Nacer Chadli scoort in de slotseconden de 3-2 tegen Japan.",
     "year": 2018,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"
@@ -984,7 +984,7 @@
   {
     "event": "Club Brugge wordt kampioen nadat de competitie stopt door corona.",
     "year": 2020,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2019%E2%80%9320_Belgian_First_Division_A"
@@ -995,7 +995,7 @@
   {
     "event": "Bayern wint de Champions League in Lissabon met een goal van Coman tegen PSG.",
     "year": 2020,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2020_UEFA_Champions_League_final"
@@ -1030,7 +1030,7 @@
   {
     "event": "Thorgan Hazard schakelt titelverdediger Portugal uit op het uitgestelde EK.",
     "year": 2021,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2020_knockout_stage"
@@ -1043,7 +1043,7 @@
   {
     "event": "De Super League wordt aangekondigd, maar bijna alle clubs haken meteen af na fanprotest.",
     "year": 2021,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/European_Super_League"
@@ -1054,7 +1054,7 @@
   {
     "event": "Robert Lewandowski breekt met 41 Bundesligagoals het record van Gerd Müller.",
     "year": 2021,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Robert_Lewandowski"
@@ -1076,7 +1076,7 @@
   {
     "event": "Courtois is man van de match in de CL-finale tegen Liverpool.",
     "year": 2022,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2022_UEFA_Champions_League_final"
@@ -1090,7 +1090,7 @@
   {
     "event": "Marokko verslaat België met 2-0 op het WK in Qatar.",
     "year": 2022,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_Group_F"
@@ -1104,7 +1104,7 @@
   {
     "event": "Karim Benzema wint de Ballon d'Or.",
     "year": 2022,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2022_Ballon_d'Or"
@@ -1128,7 +1128,7 @@
   {
     "event": "Royal Antwerp wordt kampioen, voor het eerst in 66 jaar.",
     "year": 2023,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2022%E2%80%9323_Belgian_Pro_League"
@@ -1139,7 +1139,7 @@
   {
     "event": "Domenico Tedesco wordt aangesteld als bondscoach van België.",
     "year": 2023,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Domenico_Tedesco"
@@ -1152,7 +1152,7 @@
   {
     "event": "België – Zweden wordt bij de rust gestaakt na een terreuraanslag in Brussel.",
     "year": 2023,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2023_Brussels_shooting"
@@ -1176,7 +1176,7 @@
   {
     "event": "Napoli wordt voor het eerst sinds het Maradona-tijdperk kampioen.",
     "year": 2023,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2022%E2%80%9323_Serie_A"
@@ -1244,7 +1244,7 @@
   {
     "event": "Union Saint-Gilloise wordt kampioen na 90 jaar wachten.",
     "year": 2025,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Royale_Union_Saint-Gilloise"
@@ -1255,7 +1255,7 @@
   {
     "event": "Rudi Garcia volgt Domenico Tedesco op als bondscoach.",
     "year": 2025,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Rudi_Garcia"
@@ -1268,7 +1268,7 @@
   {
     "event": "Met 7-0 tegen Liechtenstein plaatst België zich ongeslagen voor het WK in Noord-Amerika.",
     "year": 2025,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_qualification_%E2%80%93_UEFA_Group_J",
@@ -1317,7 +1317,7 @@
   {
     "event": "Barbados scoort bewust in eigen doel tegen Grenada om via een golden goal die telde voor twee de volgende ronde van de Caraïbische Cup te halen.",
     "year": 1994,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/1994_Caribbean_Cup"
@@ -1329,7 +1329,7 @@
   {
     "event": "West-Duitsland en Oostenrijk spelen na een vroege goal bijna zonder tegenstand naar de beide gewenste 1-0; Algerije is uitgeschakeld (de 'Schande van Gijón').",
     "year": 1982,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Disgrace_of_Gij%C3%B3n"
@@ -1341,7 +1341,7 @@
   {
     "event": "Doelman Jimmy Glass scoort in de allerlaatste seconden voor Carlisle United en behoedt zijn club voor degradatie uit de Football League.",
     "year": 1999,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Jimmy_Glass"
@@ -1353,7 +1353,7 @@
   {
     "event": "De Champions League-derby AC Milan–Inter wordt gestaakt nadat doelman Dida door een fakkel geraakt wordt.",
     "year": 2005,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://www.rferl.org/a/1058456.html",
@@ -1367,7 +1367,7 @@
   {
     "event": "Op het WK in Zuid-Afrika staan de halfbroers Kevin-Prince en Jérôme Boateng voor het eerst tegenover elkaar op een WK (Ghana–Duitsland, 0-1).",
     "year": 2010,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/J%C3%A9r%C3%B4me_Boateng"
@@ -1379,7 +1379,7 @@
   {
     "event": "Paolo Maldini, zoon van Cesare, speelt na 25 jaar zijn laatste wedstrijd voor AC Milan (2-0 tegen Fiorentina).",
     "year": 2009,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Paolo_Maldini"
@@ -1392,7 +1392,7 @@
   {
     "event": "Kasper Schmeichel wordt met Leicester City Engels kampioen, net als zijn vader Peter ooit met Manchester United.",
     "year": 2016,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Kasper_Schmeichel"
@@ -1404,7 +1404,7 @@
   {
     "event": "Pippo Inzaghi scoort twee keer in de Champions League-finale in Athene tegen Liverpool; zijn broer Simone speelde toen bij Lazio.",
     "year": 2007,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Filippo_Inzaghi",
@@ -1418,7 +1418,7 @@
   {
     "event": "Stefan Kießling scoort een 'spookgoal': de bal gaat via een gat in het zijnet binnen en de goal telt toch.",
     "year": 2013,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Phantom_goal"
@@ -1442,7 +1442,7 @@
   {
     "event": "Frank Lampard ziet zijn doelpunt tegen Duitsland op het WK ten onrechte afgekeurd, hoewel de bal duidelijk over de lijn was.",
     "year": 2010,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_knockout_stage#England_vs_Germany"
@@ -1454,7 +1454,7 @@
   {
     "event": "Horror voor AC Milan in Istanbul: de Rossoneri leiden met 3-0 aan de rust, maar Liverpool komt terug en wint na strafschoppen de Champions League.",
     "year": 2005,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/2005_UEFA_Champions_League_final"
@@ -1479,7 +1479,7 @@
   {
     "event": "Liverpool wint net voor Kerst in Doha het WK voor clubs na verlengingen tegen Flamengo.",
     "year": 2019,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/2019_FIFA_Club_World_Cup_final"
@@ -1491,7 +1491,7 @@
   {
     "event": "Real Madrid wint met 4-1 van Al Ain en pakt in december voor het derde jaar op rij het WK voor clubs.",
     "year": 2018,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_Club_World_Cup_final"
@@ -1504,7 +1504,7 @@
   {
     "event": "Manchester City wint twee dagen voor Kerst in Jeddah met 4-0 van Fluminense het WK voor clubs.",
     "year": 2023,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/2023_FIFA_Club_World_Cup_final"
@@ -1516,7 +1516,7 @@
   {
     "event": "Voetballegende Pelé overlijdt op 29 december, enkele dagen voor het nieuwe jaar.",
     "year": 2022,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Pel%C3%A9"
@@ -1529,7 +1529,7 @@
   {
     "event": "Op nieuwjaarsdag wordt Virgil van Dijk officieel speler van Liverpool, de duurste verdediger ooit.",
     "year": 2018,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Virgil_van_Dijk",
@@ -1542,7 +1542,7 @@
   {
     "event": "Chelsea betaalt in de wintermercato 50 miljoen pond voor Fernando Torres, toen een Brits transferrecord.",
     "year": 2011,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Fernando_Torres"
@@ -1554,7 +1554,7 @@
   {
     "event": "Franz Beckenbauer, 'Der Kaiser', overlijdt in de eerste dagen van het nieuwe jaar.",
     "year": 2024,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Franz_Beckenbauer"
@@ -1567,7 +1567,7 @@
   {
     "event": "Het Bosman-arrest van het Europees Hof van Justitie maakt spelers vrij na afloop van hun contract, waardoor 'cadeautjes' van gratis transfers mogelijk worden.",
     "year": 1995,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Bosman_ruling"
@@ -1579,7 +1579,7 @@
   {
     "event": "Spanje, het land van de Sint, wint in Wenen met 1-0 van Duitsland het EK en pakt zijn eerste grote titel sinds 1964.",
     "year": 2008,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2008_final"
@@ -1603,7 +1603,7 @@
   {
     "event": "Royal Antwerp (rood-wit) wint de Beker van België met 1-0 tegen Club Brugge, dankzij een doelpunt van Lior Refaelov.",
     "year": 2020,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Royal_Antwerp_F.C.",
@@ -1616,7 +1616,7 @@
   {
     "event": "Argentinië wordt in eigen land wereldkampioen na een 3-1 zege in de verlengingen tegen Nederland.",
     "year": 1978,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/1978_FIFA_World_Cup_final"
@@ -1628,7 +1628,7 @@
   {
     "event": "Kameroen verrast titelverdediger Argentinië in de openingswedstrijd van het WK in Milaan.",
     "year": 1990,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/1990_FIFA_World_Cup"
@@ -1640,7 +1640,7 @@
   {
     "event": "Luis Suárez stopt met zijn hand een bal op de doellijn in de WK-kwartfinale tegen Ghana.",
     "year": 2010,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_knockout_stage"
@@ -1652,7 +1652,7 @@
   {
     "event": "Titelverdediger Duitsland wordt in de groepsfase van het WK uitgeschakeld na een 0-2 nederlaag tegen Zuid-Korea.",
     "year": 2018,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_Group_F"
@@ -1664,7 +1664,7 @@
   {
     "event": "Saoedi-Arabië verslaat Argentinië met 2-1 in de groepsfase van het WK.",
     "year": 2022,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_Group_C"
@@ -1676,7 +1676,7 @@
   {
     "event": "Anderlecht verliest als titelverdediger de Europacup II-finale in Amsterdam van Hamburger SV.",
     "year": 1977,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/1977_European_Cup_Winners%27_Cup_final"
@@ -1688,7 +1688,7 @@
   {
     "event": "Anderlecht wint in Parijs met 4-0 van Austria Wenen de Europacup II.",
     "year": 1978,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/1978_European_Cup_Winners%27_Cup_final"
@@ -1700,7 +1700,7 @@
   {
     "event": "Anderlecht pakt over twee wedstrijden de Europese Supercup tegen Liverpool.",
     "year": 1978,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/1978_European_Super_Cup"
@@ -1712,7 +1712,7 @@
   {
     "event": "Anderlecht verliest de UEFA Cup-finale na strafschoppen van Tottenham.",
     "year": 1984,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/1984_UEFA_Cup_final"
@@ -1724,7 +1724,7 @@
   {
     "event": "Franky Vercauteren wordt in zijn eerste volledige seizoen als hoofdtrainer van Anderlecht landskampioen, na een beslissing op de laatste speeldag.",
     "year": 2006,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Franky_Vercauteren",
@@ -1737,7 +1737,7 @@
   {
     "event": "Anderlecht prolongeert onder Franky Vercauteren zijn landstitel, één speeldag voor het einde.",
     "year": 2007,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/2006%E2%80%9307_Belgian_First_Division",

@@ -23,7 +23,7 @@ public class Player
     public string Country { get; set; } = "";
     public string Competition { get; set; } = "";
     public string Era { get; set; } = "modern";
-    public int Difficulty { get; set; } = 2;
+    public int Difficulty { get; set; } = VoetbalQuiz.Shared.Difficulty.Default;
     public List<string> Hints { get; set; } = [];
 
     /// <summary>Enkel goedgekeurde spelers komen in de quiz.</summary>
@@ -246,7 +246,7 @@ public class QuizItem
     /// <summary>Unieke sleutel om de JSON-seed te koppelen (bv. de vraagtekst of het antwoord).</summary>
     public required string Key { get; set; }
     public required string Data { get; set; }
-    public int Difficulty { get; set; } = 2;
+    public int Difficulty { get; set; } = VoetbalQuiz.Shared.Difficulty.Default;
     public PlayerStatus Status { get; set; } = PlayerStatus.Review;
     public List<string> Sources { get; set; } = [];
     public List<string> Tags { get; set; } = [];

@@ -75,7 +75,7 @@ public class PlayerSeeder(QuizDbContext db, IWebHostEnvironment env, ILogger<Pla
                 player.Country = item.Country ?? "";
                 player.Competition = item.Competition ?? "";
                 player.Era = item.Era ?? "modern";
-                player.Difficulty = Math.Clamp(item.Difficulty ?? 2, 1, 3);
+                player.Difficulty = Difficulty.Clamp(item.Difficulty);
                 player.Hints = item.Hints;
                 player.Status = item.Status?.ToLowerInvariant() switch
                 {

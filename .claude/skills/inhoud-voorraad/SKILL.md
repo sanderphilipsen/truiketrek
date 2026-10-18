@@ -21,7 +21,7 @@ pwsh -NoProfile -File .claude/skills/inhoud-voorraad/voorraad.ps1 -Tag rode-duiv
 
 - Enkel **approved** items komen in de quiz. Veel **review** betekent: laat `inhoud-controleur` eerst nakijken voor je nieuwe inhoud laat schrijven.
 - Vergelijk met wat nodig is: `GameRules.QuestionsPerDay` en `QuestionTypes.Mix` in `src/VoetbalQuiz.Shared/QuestionTypes.cs` bepalen hoeveel vragen per type een daily of special vraagt. Een type waarvan minder dan ~4 weken voorraad goedgekeurd is, is een tekort.
-- Let op de spreiding van moeilijkheid: een type met bijna enkel moeilijkheid 3 is te zwaar voor de daily.
+- Let op de spreiding van moeilijkheid: een type met bijna enkel moeilijkheid 4–5 is te zwaar voor de daily.
 - Het script telt de JSON-bestanden, niet de database. Items die in het admin-paneel aangepast of afgekeurd werden, kunnen afwijken; de echte stand per type staat in Admin → Planning.
 
 ## Rapport

@@ -35,7 +35,7 @@
       { "name": "Romelu Lukaku", "aliases": ["Lukaku"], "position": "A" },
       { "name": "Eden Hazard", "aliases": ["Hazard"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"],
     "tags": ["wk", "rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -55,7 +55,7 @@
       { "name": "Eden Hazard", "aliases": ["Hazard"], "position": "A" },
       { "name": "Romelu Lukaku", "aliases": ["Lukaku"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2016_knockout_stage"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -75,7 +75,7 @@
       { "name": "Eden Hazard", "aliases": ["Hazard"], "position": "A" },
       { "name": "Romelu Lukaku", "aliases": [], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2016_knockout_stage"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -95,7 +95,7 @@
       { "name": "Eden Hazard", "aliases": ["Hazard"], "position": "A" },
       { "name": "Divock Origi", "aliases": ["Origi"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_knockout_stage"],
     "tags": ["wk", "rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -115,7 +115,7 @@
       { "name": "Eden Hazard", "aliases": [], "position": "A" },
       { "name": "Romelu Lukaku", "aliases": ["Lukaku"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2020_knockout_stage"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -135,7 +135,7 @@
       { "name": "Emmanuel Dennis", "aliases": ["Dennis", "Emmanuel Bonaventure Dennis"], "position": "A" },
       { "name": "Percy Tau", "aliases": ["Tau"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/557144", "https://sporza.be/nl/sport/voetbal/~3248214/"],
     "tags": ["champions-league"], "checkedAt": "2026-10-17"
   },
@@ -175,7 +175,7 @@
       { "name": "Thomas Müller", "aliases": ["Müller", "Muller", "Thomas Muller"], "position": "A" },
       { "name": "Miroslav Klose", "aliases": ["Klose"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_final"],
     "tags": ["wk"], "checkedAt": "2026-10-17"
   },
@@ -195,7 +195,7 @@
       { "name": "Pedro", "aliases": ["Pedro Rodríguez", "Pedro Rodriguez"], "position": "A" },
       { "name": "David Villa", "aliases": ["Villa"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_final"],
     "tags": ["wk"], "checkedAt": "2026-10-17"
   },
@@ -235,7 +235,7 @@
       { "name": "Harry Kewell", "aliases": ["Kewell"], "position": "A" },
       { "name": "Milan Baroš", "aliases": ["Baroš", "Baros", "Milan Baros"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2005_UEFA_Champions_League_final"],
     "tags": ["champions-league"], "checkedAt": "2026-10-17"
   },
@@ -315,7 +315,7 @@
       { "name": "Karim Benzema", "aliases": ["Benzema"], "position": "A" },
       { "name": "Cristiano Ronaldo", "aliases": ["Ronaldo", "CR7"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2014_UEFA_Champions_League_final"],
     "tags": ["champions-league"], "checkedAt": "2026-10-17"
   },
@@ -335,7 +335,7 @@
       { "name": "François Van der Elst", "aliases": ["Van der Elst", "Francois Van der Elst"], "position": "A" },
       { "name": "Jan Ceulemans", "aliases": ["Ceulemans"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_1980_final"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -355,7 +355,7 @@
       { "name": "Nico Claesen", "aliases": ["Claesen"], "position": "A" },
       { "name": "Daniel Veyt", "aliases": ["Veyt"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_knockout_stage"],
     "tags": ["wk", "rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -375,7 +375,7 @@
       { "name": "Marc Degryse", "aliases": ["Degryse"], "position": "A" },
       { "name": "Jan Ceulemans", "aliases": ["Ceulemans"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1990_FIFA_World_Cup_knockout_stage"],
     "tags": ["wk", "rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -395,7 +395,7 @@
       { "name": "Gert Verheyen", "aliases": ["Verheyen"], "position": "A" },
       { "name": "Marc Wilmots", "aliases": ["Wilmots"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_knockout_stage"],
     "tags": ["wk", "rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -415,7 +415,7 @@
       { "name": "Eden Hazard", "aliases": ["Hazard"], "position": "A" },
       { "name": "Divock Origi", "aliases": ["Origi"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_knockout_stage"],
     "tags": ["wk", "rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -435,7 +435,7 @@
       { "name": "Romelu Lukaku", "aliases": ["Lukaku"], "position": "A" },
       { "name": "Eden Hazard", "aliases": ["Hazard"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"],
     "tags": ["wk", "rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -455,7 +455,7 @@
       { "name": "Romelu Lukaku", "aliases": ["Lukaku"], "position": "A" },
       { "name": "Eden Hazard", "aliases": ["Hazard"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"],
     "tags": ["wk", "rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -475,7 +475,7 @@
       { "name": "Jérémy Doku", "aliases": ["Doku", "Jeremy Doku"], "position": "A" },
       { "name": "Romelu Lukaku", "aliases": ["Lukaku"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2020_knockout_stage"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -495,7 +495,7 @@
       { "name": "François Van der Elst", "aliases": ["Van der Elst", "Francois Van der Elst"], "position": "A" },
       { "name": "Rob Rensenbrink", "aliases": ["Rensenbrink"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1976_European_Cup_Winners%27_Cup_final"],
     "tags": ["anderlecht"], "checkedAt": "2026-10-17"
   },
@@ -515,7 +515,7 @@
       { "name": "Jan Simoen", "aliases": ["Simoen"], "position": "A" },
       { "name": "Jan Sørensen", "aliases": ["Sørensen", "Sorensen", "Jan Sorensen"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1978_European_Cup_final"],
     "tags": [], "checkedAt": "2026-10-17"
   },
@@ -535,7 +535,7 @@
       { "name": "Simon Tahamata", "aliases": ["Tahamata"], "position": "A" },
       { "name": "Benny Wendt", "aliases": ["Wendt"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1982_European_Cup_Winners%27_Cup_final"],
     "tags": [], "checkedAt": "2026-10-17"
   },
@@ -555,7 +555,7 @@
       { "name": "Eli Ohana", "aliases": ["Ohana"], "position": "A" },
       { "name": "Piet den Boer", "aliases": ["Den Boer"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1988_European_Cup_Winners%27_Cup_final"],
     "tags": [], "checkedAt": "2026-10-17"
   },
@@ -595,7 +595,7 @@
       { "name": "David Silva", "aliases": [], "position": "M" },
       { "name": "Fernando Torres", "aliases": ["Torres"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2008_final"],
     "tags": [], "checkedAt": "2026-10-17"
   },
@@ -615,7 +615,7 @@
       { "name": "Wayne Rooney", "aliases": ["Rooney"], "position": "A" },
       { "name": "Carlos Tevez", "aliases": ["Tevez", "Tévez", "Carlos Tévez"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2008_UEFA_Champions_League_final"],
     "tags": ["champions-league"], "checkedAt": "2026-10-17"
   },
@@ -635,7 +635,7 @@
       { "name": "Diego Milito", "aliases": ["Milito"], "position": "A" },
       { "name": "Goran Pandev", "aliases": ["Pandev"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2010_UEFA_Champions_League_final"],
     "tags": ["champions-league"], "checkedAt": "2026-10-17"
   },
@@ -655,7 +655,7 @@
       { "name": "Ryan Bertrand", "aliases": ["Bertrand"], "position": "A" },
       { "name": "Didier Drogba", "aliases": ["Drogba"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2012_UEFA_Champions_League_final"],
     "tags": ["champions-league"], "checkedAt": "2026-10-17"
   },
@@ -675,7 +675,7 @@
       { "name": "Robin van Persie", "aliases": ["Van Persie"], "position": "A" },
       { "name": "Arjen Robben", "aliases": ["Robben"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_Group_B"],
     "tags": ["wk"], "checkedAt": "2026-10-17"
   },
@@ -695,7 +695,7 @@
       { "name": "Thomas Müller", "aliases": ["Müller", "Muller", "Thomas Muller"], "position": "A" },
       { "name": "Miroslav Klose", "aliases": ["Klose"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Brazil_v_Germany_(2014_FIFA_World_Cup)"],
     "tags": ["wk"], "checkedAt": "2026-10-17"
   },
@@ -715,7 +715,7 @@
       { "name": "Nani", "aliases": [], "position": "A" },
       { "name": "Cristiano Ronaldo", "aliases": ["Ronaldo", "CR7"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2016_final"],
     "tags": [], "checkedAt": "2026-10-17"
   },
@@ -735,7 +735,7 @@
       { "name": "Luis Suárez", "aliases": ["Suárez", "Suarez", "Luis Suarez"], "position": "A" },
       { "name": "Neymar", "aliases": ["Neymar Jr"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/FC_Barcelona_6%E2%80%931_Paris_Saint-Germain_FC", "https://africa.espn.com/football/match/_/gameId/469090"],
     "tags": ["champions-league"], "checkedAt": "2026-10-17"
   },
@@ -755,7 +755,7 @@
       { "name": "Divock Origi", "aliases": ["Origi"], "position": "A" },
       { "name": "Sadio Mané", "aliases": ["Mané", "Mane", "Sadio Mane"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://africa.espn.com/football/match/_/gameId/538699/barcelona-liverpool", "https://www.coachesvoice.com/?p=16109"],
     "tags": ["champions-league"], "checkedAt": "2026-10-17"
   },
@@ -815,7 +815,7 @@
       { "name": "Andy Najar", "aliases": ["Najar"], "position": "A" },
       { "name": "Aleksandar Mitrović", "aliases": ["Mitrović", "Mitrovic"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2015_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2014-2015/kalender/finale/club-brugge/anderlecht"],
     "tags": ["rode-duivels", "anderlecht"], "checkedAt": "2026-10-17"
   },
@@ -835,7 +835,7 @@
       { "name": "Ivan Santini", "aliases": ["Santini"], "position": "A" },
       { "name": "Edmilson Junior", "aliases": ["Edmilson"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2016_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2015-2016/kalender/finale/club-brugge/standard"],
     "tags": [], "checkedAt": "2026-10-17"
   },
@@ -855,7 +855,7 @@
       { "name": "Paul-José M'Poku", "aliases": ["M'Poku", "Mpoku"], "position": "A" },
       { "name": "Renaud Emond", "aliases": ["Emond"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2018_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2017-2018/kalender/finale/krc-genk/standard"],
     "tags": [], "checkedAt": "2026-10-17"
   },
@@ -875,7 +875,7 @@
       { "name": "Giorgi Kvilitaia", "aliases": ["Kvilitaia"], "position": "A" },
       { "name": "Jean-Luc Dompé", "aliases": ["Dompé", "Dompe"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2019_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2018-2019/kalender/finale/kaa-gent/kv-mechelen"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -895,7 +895,7 @@
       { "name": "Charles De Ketelaere", "aliases": ["De Ketelaere", "CDK"], "position": "A" },
       { "name": "David Okereke", "aliases": ["Okereke"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2020_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2019-2020/kalender/finale/club-brugge/antwerp", "https://sporza.be/nl/matches/voetbal/croky-cup/2019-2020/finale/01/club-brugge-antwerp-underdog-antwerp-houdt-club-brugge-van-dubbel-in-bekerfinale~1566819600928/"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -915,7 +915,7 @@
       { "name": "Paul Onuachu", "aliases": ["Onuachu"], "position": "A" },
       { "name": "Théo Bongonda", "aliases": ["Bongonda"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2021_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2020-2021/kalender/finale/standard/krc-genk"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -935,7 +935,7 @@
       { "name": "Roman Bezus", "aliases": ["Bezus"], "position": "A" },
       { "name": "Tarik Tissoudali", "aliases": ["Tissoudali"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2022_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2021-2022/kalender/finale/kaa-gent/anderlecht"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -955,7 +955,7 @@
       { "name": "Arbnor Muja", "aliases": ["Muja"], "position": "A" },
       { "name": "Vincent Janssen", "aliases": ["Janssen"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2023_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2022-2023/kalender/finale/kv-mechelen/antwerp"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -975,7 +975,7 @@
       { "name": "Mohamed Amoura", "aliases": ["Amoura"], "position": "A" },
       { "name": "Gustaf Nilsson", "aliases": ["Nilsson"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2024_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2023-2024/kalender/finale/union-sg/antwerp"],
     "tags": [], "checkedAt": "2026-10-17"
   },
@@ -995,7 +995,7 @@
       { "name": "Ferran Jutglà", "aliases": ["Jutglà", "Jutgla"], "position": "A" },
       { "name": "Romeo Vermant", "aliases": ["Vermant"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2025_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2024-2025/kalender/finale/club-brugge/anderlecht"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -1015,7 +1015,7 @@
       { "name": "Mihajlo Cvetković", "aliases": ["Cvetković", "Cvetkovic"], "position": "A" },
       { "name": "Tristan Degreef", "aliases": ["Degreef"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2026_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2025-2026/kalender/finale/union-sg/anderlecht"],
     "tags": ["rode-duivels", "anderlecht"], "checkedAt": "2026-10-17"
   },
@@ -1035,7 +1035,7 @@
       { "name": "Milan Jovanović", "aliases": ["Jovanović", "Jovanovic"], "position": "A" },
       { "name": "Dieumerci Mbokani", "aliases": ["Mbokani"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://www.voetbalkrant.com/belgie/jupiler-pro-league/2007-2008/kalender/speeldag-31/standard/anderlecht/opstellingen", "https://www.espn.com/soccer/lineups/_/gameId/239946"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -1055,7 +1055,7 @@
       { "name": "Jonathan Legear", "aliases": ["Legear"], "position": "A" },
       { "name": "Romelu Lukaku", "aliases": ["Lukaku"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/286821", "https://www.voetbalkrant.com/belgie/jupiler-pro-league/2009-2010/kalender/speeldag-22/standard/anderlecht/opstellingen"],
     "tags": ["rode-duivels", "anderlecht"], "checkedAt": "2026-10-17"
   },
@@ -1075,7 +1075,7 @@
       { "name": "Marvin Ogunjimi", "aliases": ["Ogunjimi"], "position": "A" },
       { "name": "Jelle Vossen", "aliases": ["Vossen"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://www.voetbalkrant.com/belgie/play-off-1/2010-2011/kalender/speeldag-10/krc-genk/standard/opstellingen", "https://www.maxifoot.fr/match/racing-genk-standard-liege-20110517.htm"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -1095,7 +1095,7 @@
       { "name": "Milan Jovanović", "aliases": ["Jovanović", "Jovanovic"], "position": "M" },
       { "name": "Dieumerci Mbokani", "aliases": ["Mbokani"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://www.voetbalkrant.com/belgie/play-off-1/2011-2012/kalender/speeldag-8/anderlecht/club-brugge/opstellingen", "https://www.rtbf.be/article/retro-po1-6-mai-2012-le-penalty-du-31e-titre-d-anderlecht-10504427"],
     "tags": ["rode-duivels", "anderlecht"], "checkedAt": "2026-10-17"
   },
@@ -1115,7 +1115,7 @@
       { "name": "Andrés Álvarez", "aliases": ["Álvarez", "Alvarez"], "position": "A" },
       { "name": "Gohi Bi Cyriac", "aliases": ["Cyriac"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://www.voetbalkrant.com/belgie/jupiler-pro-league/2014-2015/kalender/speeldag-23/standard/anderlecht/opstellingen", "https://www.maxifoot.fr/match/standard-liege-anderlecht-20150125.htm"],
     "tags": ["rode-duivels", "anderlecht"], "checkedAt": "2026-10-17"
   },
@@ -1135,7 +1135,7 @@
       { "name": "Benito Raman", "aliases": ["Raman"], "position": "A" },
       { "name": "Moses Simon", "aliases": ["Simon"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://www.voetbalkrant.com/belgie/play-off-1/2014-2015/kalender/speeldag-9/kaa-gent/standard/opstellingen", "https://www.maxifoot.fr/match/gantoise-standard-liege-20150521.htm"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -1155,7 +1155,7 @@
       { "name": "José Izquierdo", "aliases": ["Izquierdo"], "position": "A" },
       { "name": "Abdoulay Diaby", "aliases": ["Diaby"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/448449", "https://www.voetbalkrant.com/belgie/play-off-1/2015-2016/kalender/speeldag-8/club-brugge/anderlecht/opstellingen"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -1175,7 +1175,7 @@
       { "name": "Wesley", "aliases": [], "position": "A" },
       { "name": "Abdoulay Diaby", "aliases": ["Diaby"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/509021", "https://www.fcupdate.nl/voetbalcompetities/belgie/pro-league/programma-uitslagen/2017-2018/club-brugge-anderlecht-06-05/opstellingen"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -1195,7 +1195,7 @@
       { "name": "Leandro Trossard", "aliases": ["Trossard"], "position": "A" },
       { "name": "Mbwana Samatta", "aliases": ["Samatta"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/538764", "https://www.fcupdate.nl/voetbalcompetities/belgie/pro-league/programma-uitslagen/2018-2019/anderlecht-genk-16-05/opstellingen"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -1215,7 +1215,7 @@
       { "name": "Noa Lang", "aliases": ["Lang"], "position": "A" },
       { "name": "Bas Dost", "aliases": ["Dost"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/601480", "https://www.fcupdate.nl/voetbalcompetities/belgie/pro-league/programma-uitslagen/2020-2021/club-brugge-antwerp-16-05/opstellingen"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -1235,7 +1235,7 @@
       { "name": "Michael Frey", "aliases": ["Frey"], "position": "A" },
       { "name": "Mbwana Samatta", "aliases": ["Samatta"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/634227", "https://www.fcupdate.nl/voetbalcompetities/belgie/pro-league/programma-uitslagen/2021-2022/antwerp-club-brugge-15-05/opstellingen"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -1255,7 +1255,7 @@
       { "name": "Vincent Janssen", "aliases": ["Janssen"], "position": "A" },
       { "name": "Michel-Ange Balikwisha", "aliases": ["Balikwisha"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/668606", "https://www.fcupdate.nl/voetbalcompetities/belgie/pro-league/programma-uitslagen/2022-2023/genk-antwerp-04-06/opstellingen"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
   },
@@ -1275,7 +1275,7 @@
       { "name": "Mohammed Fuseini", "aliases": ["Fuseini"], "position": "A" },
       { "name": "Franjo Ivanović", "aliases": ["Ivanović", "Ivanovic"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/734564", "https://www.voetbalkrant.com/belgie/play-off-1/2024-2025/kalender/speeldag-10/union-sg/kaa-gent/opstellingen"],
     "tags": [], "checkedAt": "2026-10-17"
   },
@@ -1315,7 +1315,7 @@
       { "name": "Mario Balotelli", "aliases": ["Balotelli", "Super Mario"], "position": "A" },
       { "name": "Sergio Agüero", "aliases": ["Agüero", "Aguero", "Kun Agüero"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Manchester_United_F.C._1%E2%80%936_Manchester_City_F.C.", "https://espndeportes.espn.com/futbol/partido/_/juegoId/317936"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-18"
   },
@@ -1335,7 +1335,7 @@
       { "name": "Wayne Rooney", "aliases": ["Rooney"], "position": "A" },
       { "name": "Danny Welbeck", "aliases": ["Welbeck"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Manchester_United_F.C._8%E2%80%932_Arsenal_F.C."],
     "tags": [], "checkedAt": "2026-10-18"
   },
@@ -1355,7 +1355,7 @@
       { "name": "Darwin Núñez", "aliases": ["Núñez", "Nunez"], "position": "A" },
       { "name": "Cody Gakpo", "aliases": ["Gakpo"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://www.espn.com/soccer/match/_/gameId/638074", "https://www.espn.com/soccer/lineups/_/gameId/638074"],
     "tags": [], "checkedAt": "2026-10-18"
   },
@@ -1375,7 +1375,7 @@
       { "name": "Dennis Bergkamp", "aliases": ["Bergkamp"], "position": "A" },
       { "name": "Thierry Henry", "aliases": ["Henry"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://spursodyssey.com/0304/ar250404.html", "https://spursodyssey.com/review0304/rev35.html", "https://www.onlinegooner.com/articles/view/3651"],
     "tags": ["legende"], "checkedAt": "2026-10-18"
   },
@@ -1395,7 +1395,7 @@
       { "name": "Raheem Sterling", "aliases": ["Sterling"], "position": "A" },
       { "name": "Sergio Agüero", "aliases": ["Agüero", "Aguero", "Kun Agüero"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://espndeportes.espn.com/futbol/partido/_/juegoId/513474", "https://www.fbref.com/en/matches/7c779d41/Manchester-City-Leicester-City-May-6-2019-Premier-League", "https://www.statmuse.com/fc/match/5-6-2019-mci-vs-lei-10496"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-18"
   },
@@ -1435,7 +1435,7 @@
       { "name": "Ivan Perišić", "aliases": ["Perišić", "Perisic"], "position": "A" },
       { "name": "Bas Dost", "aliases": ["Dost"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://www.tntsports.co.uk/football/bundesliga/2014-2015/live-vfl-wolfsburg-bayern-munich_mtc706840/live-lineup.shtml", "https://fcbayern.com/de/spiele/profis/bundesliga/2014-2015/vfl-wolfsburg-fc-bayern-muenchen-30-01-2015/aufstellung", "https://www.espn.com/soccer/report/_/gameId/396838"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-18"
   },
@@ -1455,7 +1455,7 @@
       { "name": "Jonas Hofmann", "aliases": ["Hofmann"], "position": "A" },
       { "name": "Victor Boniface", "aliases": ["Boniface"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://global.espn.com/football/lineups/_/gameId/677837", "https://www.fcupdate.nl/voetbalcompetities/duitsland/bundesliga/programma-uitslagen/2023-2024/bayer-leverkusen-bremen-14-04/opstellingen"],
     "tags": [], "checkedAt": "2026-10-18"
   },
@@ -1475,7 +1475,7 @@
       { "name": "Kevin Großkreutz", "aliases": ["Großkreutz", "Grosskreutz", "Grosskreuz"], "position": "M" },
       { "name": "Robert Lewandowski", "aliases": ["Lewandowski", "Lewy"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://www.bundesliga.com/en/bundesliga/news/watch-2011-12-klassiker-borussia-dortmund-bayern-munich-lewandowski-robben-10799", "https://www.espn.com/soccer/match/_/gameId/320773/bayern-munich-borussia-dortmund", "https://www.sportschau.de/live-und-ergebnisse/fussball/deutschland-bundesliga/ma377014/borussia-dortmund_bayern-muenchen/taktische-aufstellung"],
     "tags": [], "checkedAt": "2026-10-18"
   },
@@ -1495,7 +1495,7 @@
       { "name": "Yevhen Konoplyanka", "aliases": ["Konoplyanka", "Konoplianka"], "position": "A" },
       { "name": "Guido Burgstaller", "aliases": ["Burgstaller"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://www.tntsports.co.uk/football/bundesliga/2017-2018/live-borussia-dortmund-fc-schalke-04_mtc956731/live-lineup.shtml", "https://datencenter.dfb.de/datencenter/bundesliga/2017-2018/13-spieltag/borussia-dortmund-fc-schalke-04-2247794", "https://www.skysports.com/football/b-dortmund-vs-schalke/teams/377622"],
     "tags": ["curiosa"], "checkedAt": "2026-10-18"
   },
@@ -1515,7 +1515,7 @@
       { "name": "Karim Adeyemi", "aliases": ["Adeyemi"], "position": "A" },
       { "name": "Sébastien Haller", "aliases": ["Haller", "Sebastien Haller"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://www.bundesliga.com/en/bundesliga/matchday/2022-2023/34/borussia-dortmund-vs-1-fsv-mainz-05/lineup", "https://espndeportes.espn.com/futbol/partido/_/juegoId/638737"],
     "tags": ["oranje"], "checkedAt": "2026-10-18"
   },
@@ -1555,7 +1555,7 @@
       { "name": "Raúl", "aliases": ["Raul", "Raúl González", "Raul Gonzalez"], "position": "A" },
       { "name": "Gonzalo Higuaín", "aliases": ["Higuaín", "Higuain", "Pipita"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/252775", "https://www.goal.com/en-ae/news/player-ratings-real-madrid-2-6-barcelona/blt73cb725e1afc4e8d"],
     "tags": ["legende", "oranje"], "checkedAt": "2026-10-18"
   },
@@ -1575,7 +1575,7 @@
       { "name": "Karim Benzema", "aliases": ["Benzema"], "position": "A" },
       { "name": "Cristiano Ronaldo", "aliases": ["Ronaldo", "CR7"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/433859", "https://africa.espn.com/football/match/_/gameId/433859", "https://www.footmercato.net/live/1325433697652417709-real-madrid-vs-barcelone"],
     "tags": [], "checkedAt": "2026-10-18"
   },
@@ -1595,7 +1595,7 @@
       { "name": "Gareth Bale", "aliases": ["Bale"], "position": "A" },
       { "name": "Karim Benzema", "aliases": ["Benzema"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/521827", "https://www.mykhel.com/football/la-liga-barcelona-vs-real-madrid-lineup-1009406/"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-18"
   },
@@ -1615,7 +1615,7 @@
       { "name": "Diego Costa", "aliases": ["Costa"], "position": "A" },
       { "name": "David Villa", "aliases": ["Villa", "El Guaje"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Barcelona_1%E2%80%931_Atl%C3%A9tico_Madrid_(May_2014)"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-18"
   },
@@ -1635,7 +1635,7 @@
       { "name": "Lionel Messi", "aliases": ["Messi", "Leo Messi"], "position": "A" },
       { "name": "Samuel Eto'o", "aliases": ["Eto'o", "Etoo", "Eto o"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://www.fcbarcelona.es/es/noticias/1899174/15-anos-de-un-clasico-historico", "https://www.footmercato.net/live/276278081405223733-real-madrid-vs-barcelone"],
     "tags": ["legende", "oranje"], "checkedAt": "2026-10-18"
   },
@@ -1655,7 +1655,7 @@
       { "name": "Rafael Leão", "aliases": ["Leao", "Leão"], "position": "A" },
       { "name": "Olivier Giroud", "aliases": ["Giroud"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://www.acmilan.com/it/news/articoli/serie-a/2022-05-22/sassuolo-milan-le-formazioni-ufficiali", "https://www.goal.com/it/notizie/sassuolo-milan-0-3-leao-e-giroud-scudetto-rossoneri-campioni-d-italia/blt041b5779c6d52ca8"],
     "tags": ["rode-duivels"], "checkedAt": "2026-10-18"
   },
@@ -1675,7 +1675,7 @@
       { "name": "Andriy Shevchenko", "aliases": ["Shevchenko", "Sheva"], "position": "A" },
       { "name": "Gianni Comandini", "aliases": ["Comandini"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://www.tuttomercatoweb.com/accadde-oggi/11-maggio-2001-a-milano-quella-data-non-la-scorda-piu-nessuno-il-derby-finisce-0-6-1827403"],
     "tags": ["curiosa"], "checkedAt": "2026-10-18"
   },
@@ -1695,7 +1695,7 @@
       { "name": "Victor Osimhen", "aliases": ["Osimhen"], "position": "A" },
       { "name": "Khvicha Kvaratskhelia", "aliases": ["Kvaratskhelia", "Kvara"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://www.sportface.it/calcio/serie-a/formazioni-ufficiali-udinese-napoli-serie-a-2022-2023/2157825", "https://www.napolike.it/udinese-napoli-convocati-ufficiali-in-vista-del-match-2023", "https://www.fantacalcio.it/serie-a/calendario/33/2022-23/udinese-napoli/11984"],
     "tags": [], "checkedAt": "2026-10-18"
   },
@@ -1715,7 +1715,7 @@
       { "name": "Samuel Eto'o", "aliases": ["Eto'o", "Etoo"], "position": "A" },
       { "name": "Diego Milito", "aliases": ["Milito", "El Principe", "Principe"], "position": "A" }
     ],
-    "difficulty": 2, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://www.inter.it/it/notizie/2020-05-16-10-momenti-indimenticabili-siena-inter-0-1-2010-triplete", "https://www.inter.it/it/notizie/2019-05-16-on-this-day-siena-seconda-tappa-verso-il-triplete", "https://www.calcioblog.it/post/12767/siena-inter-del-16-maggio-2010", "https://storiainter.com/Notes/Stagione0910/Campionato0910/Siena%20-%20Inter%200910.htm"],
     "tags": ["oranje"], "checkedAt": "2026-10-18"
   },
@@ -1735,7 +1735,7 @@
       { "name": "Bruno Giordano", "aliases": ["Giordano"], "position": "A" },
       { "name": "Andrea Carnevale", "aliases": ["Carnevale"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://www.90min.com/es/posts/34-anos-del-primer-scudetto-de-napoli-el-xi-titular-que-lo-logro-de-la-mano-de-maradona", "https://www.napolimagazine.com/in-evidenza/articolo/oggi-avvenne-10-maggio-1987-napoli-fiorentina-1-1-e-fu-scudetto-ecco-i-dettagli"],
     "tags": ["legende"], "checkedAt": "2026-10-18"
   },
@@ -1755,7 +1755,7 @@
       { "name": "Simone Inzaghi", "aliases": ["Inzaghi", "Simone"], "position": "A" },
       { "name": "Marcelo Salas", "aliases": ["Salas", "El Matador"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved",
+    "difficulty": 5, "status": "approved",
     "sources": ["https://laziostories.com/post/lazio-reggina-2000", "https://www.laziowiki.org/wiki/Domenica_14_maggio_2000_%E2%80%93_Roma,_stadio_Olimpico_%E2%80%93_Lazio-Reggina_3-0"],
     "tags": [], "checkedAt": "2026-10-18"
   },
@@ -1775,7 +1775,7 @@
       { "name": "Benny Nielsen", "aliases": ["Nielsen"], "position": "A" },
       { "name": "Rob Rensenbrink", "aliases": ["Rensenbrink"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved", "checkedAt": "2026-10-18",
+    "difficulty": 5, "status": "approved", "checkedAt": "2026-10-18",
     "sources": ["https://en.wikipedia.org/wiki/1978_European_Cup_Winners%27_Cup_final"],
     "tags": ["anderlecht"]
   },
@@ -1795,7 +1795,7 @@
       { "name": "Erwin Vandenbergh", "aliases": ["Vandenbergh"], "position": "A" },
       { "name": "Kenneth Brylle", "aliases": ["Brylle"], "position": "A" }
     ],
-    "difficulty": 3, "status": "approved", "checkedAt": "2026-10-18",
+    "difficulty": 5, "status": "approved", "checkedAt": "2026-10-18",
     "sources": ["https://en.wikipedia.org/wiki/1983_UEFA_Cup_final"],
     "tags": ["anderlecht"]
   }

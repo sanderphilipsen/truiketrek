@@ -317,7 +317,25 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
         var types = challenge.Questions.Select(q => q.Type).Distinct().Order().ToList();
         return new DailyOverview(challenge.Date, attempts.Values.Sum(a => a.Points), questions, lastWinner,
             types.Count == 1 ? types[0] : QuestionType.WieBenIk,
-            challenge.Questions.Sum(q => QuestionTypes.Get(q.Type).MaxPoints), types);
+            challenge.Questions.Sum(q => QuestionTypes.Get(q.Type).MaxPoints), types, DifficultyOf(challenge));
+    }
+
+    /// <summary>Gemiddelde moeilijkheid van een reeks (0–5 sterren); een counter telt als het gemiddelde van zijn spelers.</summary>
+    private static double DifficultyOf(DailyChallenge challenge) => Difficulty.Average(challenge.Questions.Select(q =>
+        q.Player?.Difficulty ?? q.QuizItem?.Difficulty
+        ?? (q.CounterPlayers.Count > 0 ? q.CounterPlayers.Average(p => p.Difficulty) : Difficulty.Default)));
+
+    /// <summary>De specials (zie <see cref="ResultsService.GetSpecialsAsync"/>), met de moeilijkheid van de lopende.</summary>
+    public async Task<List<SpecialSummary>> GetSpecialsAsync(string userId)
+    {
+        var specials = await results.GetSpecialsAsync(userId);
+        for (var i = 0; i < specials.Count; i++)
+        {
+            if (!specials[i].IsActive) continue;
+            try { specials[i] = specials[i] with { Difficulty = DifficultyOf(await GetOrCreateSpecialChallengeAsync(specials[i].Id)) }; }
+            catch (QuizException) { } // nog te weinig vragen: dan geen sterren
+        }
+        return specials;
     }
 
     // ---------- Één vraag spelen ----------

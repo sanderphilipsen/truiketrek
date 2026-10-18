@@ -158,7 +158,7 @@ public record SpecialAdminItem(
 /// <summary>Een special zoals spelers hem zien.</summary>
 public record SpecialSummary(
     int Id, string Name, string Icon, string Description, DateOnly StartDate, DateOnly EndDate,
-    bool IsActive, bool IsUpcoming, int? MyPoints, int Answered, string? WinnerName, string? Theme = null)
+    bool IsActive, bool IsUpcoming, int? MyPoints, int Answered, string? WinnerName, string? Theme = null, double Difficulty = 0)
 {
     /// <summary>De affiche van het sjabloon (bv. Anderlecht – Club Brugge), of null.</summary>
     [System.Text.Json.Serialization.JsonIgnore] public Affiche? Affiche => SpecialTemplates.Find(Theme)?.Affiche;

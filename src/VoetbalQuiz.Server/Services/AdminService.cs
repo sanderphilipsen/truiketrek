@@ -62,7 +62,7 @@ public class AdminService(QuizDbContext db, QuizService quiz)
         player.Country = clean.Country;
         player.Competition = clean.Competition;
         player.Era = clean.Era is "classic" ? "classic" : "modern";
-        player.Difficulty = Math.Clamp(clean.Difficulty, 1, 3);
+        player.Difficulty = Difficulty.Clamp(clean.Difficulty);
         player.Hints = clean.Hints;
         player.Sources = clean.Sources;
         player.Tags = clean.Tags.Where(t => PlayerTags.All.Any(x => x.Key == t)).Distinct().ToList();
@@ -236,7 +236,7 @@ public class AdminService(QuizDbContext db, QuizService quiz)
 
         item.Key = key;
         item.Data = edit.Data;
-        item.Difficulty = Math.Clamp(edit.Difficulty, 1, 3);
+        item.Difficulty = Difficulty.Clamp(edit.Difficulty);
         item.Sources = sources;
         item.Tags = edit.Tags.Where(t => PlayerTags.All.Any(x => x.Key == t)).Distinct().ToList();
         item.Status = edit.Status;

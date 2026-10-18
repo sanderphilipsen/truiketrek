@@ -1,0 +1,15 @@
+@* Moeilijkheid van een reeks als 0–5 sterren, met halve sterren (het gemiddelde van alle vragen). *@
+@if (Value > 0)
+{
+    <span class="difficulty-stars" role="img" aria-label="@Label" title="@Label">
+        <span class="ds-empty" aria-hidden="true">★★★★★</span>
+        <span class="ds-full" aria-hidden="true" style="width: @Percent%">★★★★★</span>
+    </span>
+}
+
+@code {
+    [Parameter] public double Value { get; set; }
+
+    private string Percent => (Value / Difficulty.Max * 100).ToString("0.#", System.Globalization.CultureInfo.InvariantCulture);
+    private string Label => $"Moeilijkheid: {Value:0.#} van {Difficulty.Max} sterren";
+}

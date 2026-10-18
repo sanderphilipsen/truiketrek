@@ -89,6 +89,21 @@ public sealed class SpecialAndProgressTests : IDisposable
     }
 
     [Fact]
+    public async Task Daily_and_active_special_show_their_average_difficulty()
+    {
+        foreach (var p in _db.Players) p.Difficulty = p.Tags.Contains("halloween") ? 5 : 1;
+        await _db.SaveChangesAsync();
+        var id = await HalloweenAsync();
+
+        var special = Assert.Single(await _quiz.GetSpecialsAsync(_me), s => s.Id == id);
+        Assert.Equal(5, special.Difficulty);
+        Assert.Equal(5, (await _quiz.GetOverviewAsync(_me, id)).Difficulty);
+
+        var daily = await _quiz.GetOverviewAsync(_me);
+        Assert.InRange(daily.Difficulty, 1, 5);
+    }
+
+    [Fact]
     public async Task Special_needs_enough_players_and_is_only_playable_in_its_window()
     {
         await Assert.ThrowsAsync<QuizException>(() => _admin.SaveSpecialAsync(

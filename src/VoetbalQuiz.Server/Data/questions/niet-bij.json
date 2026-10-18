@@ -9,7 +9,7 @@
     ],
     "odd": 3,
     "explanation": "Vanaken (2018, 2019, 2024), Mignolet (2022) en Witsel (2008) wonnen de Gouden Schoen; De Bruyne nooit.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://nl.wikipedia.org/wiki/Gouden_Schoen_(België)"
@@ -47,7 +47,7 @@
     ],
     "odd": 2,
     "explanation": "Mertens (Panama), Januzaj (Engeland) en Meunier (troostfinale) scoorden op het WK 2018; Carrasco niet.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_Group_G",
@@ -69,7 +69,7 @@
     ],
     "odd": 1,
     "explanation": "Waseige (1999–2002), Anthuenis (2002–2005) en Advocaat (2009–2010) waren bondscoach; Gerets weigerde in 2009 een aanbod van de bond en werd het nooit.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://nl.wikipedia.org/wiki/Belgisch_voetbalelftal_(mannen)",
@@ -90,7 +90,7 @@
     ],
     "odd": 0,
     "explanation": "Pfaff, Gerets en Scifo zaten in de WK-selectie van 1986; Preud'homme niet (de doelmannen waren Pfaff, Munaron en Bodart).",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_squads"
@@ -111,7 +111,7 @@
     ],
     "odd": 2,
     "explanation": "Pfaff (1982, 1986), Preud'homme (1990, 1994) en De Vlieger (2002) keepten op een WK; Stijnen (30 caps, 2006–2009) speelde nooit een eindtoernooi.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup",
@@ -134,7 +134,7 @@
     ],
     "odd": 3,
     "explanation": "Ajax, Porto en Celtic (1967) wonnen de beker met de grote oren; Arsenal nooit.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
@@ -172,7 +172,7 @@
     ],
     "odd": 1,
     "explanation": "België speelde het EK 1984, 2000 (co-organisator) en 2016; voor het EK 2012 plaatste het zich niet.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_at_the_UEFA_European_Championship"
@@ -229,7 +229,7 @@
     ],
     "odd": 3,
     "explanation": "Standard, Seraing en Eupen liggen in de provincie Luik; Charleroi ligt in Henegouwen.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/K.A.S._Eupen",
@@ -248,7 +248,7 @@
     ],
     "odd": 2,
     "explanation": "In groep H speelde België tegen Japan (2-2), Tunesië (1-1) en Rusland (3-2); Brazilië was de tegenstander in de 1/8 finale.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_Group_H",
@@ -270,7 +270,7 @@
     ],
     "odd": 3,
     "explanation": "Gent, Genk en Westerlo (2001) wonnen de beker; Kortrijk verloor enkel de finale van 2012.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals"
@@ -288,7 +288,7 @@
     ],
     "odd": 3,
     "explanation": "Guardiola, Luis Enrique en Xavi waren hoofdtrainer van Barça; Mourinho was er enkel assistent.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/José_Mourinho",
@@ -325,7 +325,7 @@
     ],
     "odd": 3,
     "explanation": "Vertonghen, Alderweireld en Vermaelen kwamen uit de Ajax-school; Kompany speelde nooit bij Ajax.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Thomas_Vermaelen",
@@ -346,7 +346,7 @@
     ],
     "odd": 3,
     "explanation": "Mertens, Lukaku (2024) en De Bruyne (2025) speelden bij Napoli; Hazard nooit.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Dries_Mertens",
@@ -367,7 +367,7 @@
     ],
     "odd": 3,
     "explanation": "Kompany speelde bij Anderlecht, HSV en City; Burnley trainde hij enkel.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Vincent_Kompany"
@@ -387,7 +387,7 @@
     ],
     "odd": 3,
     "explanation": "Vertonghen, Chadli en Fellaini scoorden zelfs op het WK 2018; Nainggolan werd niet geselecteerd.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
@@ -408,7 +408,7 @@
     ],
     "odd": 3,
     "explanation": "Mbappé (2018, 2022), Zidane (1998, 2006) en Messi (2022) scoorden in een WK-finale; Cristiano Ronaldo speelde er nooit een.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals"
@@ -426,7 +426,7 @@
     ],
     "odd": 3,
     "explanation": "Leicester (2016), Blackburn (1995) en Liverpool (2020) wonnen de Premier League; Tottenham nooit.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_English_football_champions"
@@ -444,7 +444,7 @@
     ],
     "odd": 3,
     "explanation": "Wolfsburg (2009), Stuttgart en Leverkusen (2024) wonnen de Bundesliga; Schalke nooit (enkel titels van vóór 1963).",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_German_football_champions"
@@ -481,7 +481,7 @@
     ],
     "odd": 3,
     "explanation": "Preud'homme, Leko en Clement trainden Club Brugge; Vanhaezebrouck nooit.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Hein_Vanhaezebrouck",
@@ -500,7 +500,7 @@
     ],
     "odd": 3,
     "explanation": "Courtois (Real), Origi (Liverpool) en De Bruyne (City 2023) wonnen de CL; Kompany nooit.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Vincent_Kompany",
@@ -522,7 +522,7 @@
     ],
     "odd": 3,
     "explanation": "Kompany (2004), Praet (2014) en Mbokani (2012) wonnen bij Anderlecht; Witsel won bij Standard (2008).",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://nl.wikipedia.org/wiki/Gouden_Schoen_(België)"
@@ -560,7 +560,7 @@
     ],
     "odd": 3,
     "explanation": "Vanaken, De Ketelaere en Mignolet speelden bij Club Brugge; Defour nooit.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Steven_Defour"
@@ -578,7 +578,7 @@
     ],
     "odd": 3,
     "explanation": "Witsel, Defour en Fellaini speelden bij Standard; De Bruyne nooit.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Axel_Witsel",
@@ -598,7 +598,7 @@
     ],
     "odd": 3,
     "explanation": "De Bruyne, Courtois en Koulibaly speelden bij Genk; Witsel nooit.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Kalidou_Koulibaly",
@@ -617,7 +617,7 @@
     ],
     "odd": 3,
     "explanation": "Götze, Müller en Lahm werden wereldkampioen in 2014; Ballack speelde toen niet meer.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_squads"
@@ -635,7 +635,7 @@
     ],
     "odd": 3,
     "explanation": "Iniesta, Xavi en Casillas werden wereldkampioen; Raúl werd niet geselecteerd.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
@@ -653,7 +653,7 @@
     ],
     "odd": 3,
     "explanation": "Sevilla, Chelsea en Atlético wonnen de UEFA Cup/Europa League; Manchester City nooit.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_UEFA_Cup_and_Europa_League_finals"
@@ -671,7 +671,7 @@
     ],
     "odd": 3,
     "explanation": "Lukaku, Nainggolan en Ibrahimović speelden bij Inter; Mertens nooit.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Radja_Nainggolan",
@@ -709,7 +709,7 @@
     ],
     "odd": 3,
     "explanation": "Club Brugge (1976, 1978), Anderlecht en KV Mechelen (1988) speelden een Europese finale; Genk nooit.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1978_European_Cup_final",
@@ -750,7 +750,7 @@
     ],
     "odd": 3,
     "explanation": "Origi, Mignolet en Benteke speelden bij Liverpool; Mirallas speelde wel bij Everton.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Kevin_Mirallas",
@@ -787,7 +787,7 @@
     ],
     "odd": 3,
     "explanation": "Lier, Westerlo en Mechelen liggen in de provincie Antwerpen; Leuven in Vlaams-Brabant.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Oud-Heverlee_Leuven",
@@ -806,7 +806,7 @@
     ],
     "odd": 3,
     "explanation": "Kompany, Vanhaezebrouck en Riemer trainden Anderlecht; Clement nooit.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_R.S.C._Anderlecht_managers"
@@ -824,7 +824,7 @@
     ],
     "odd": 3,
     "explanation": "Mbappé, Falcao en Tielemans speelden bij Monaco; Fellaini nooit.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Youri_Tielemans",
@@ -843,7 +843,7 @@
     ],
     "odd": 3,
     "explanation": "België speelde tegen Panama, Tunesië en Japan; niet tegen Uruguay.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_Group_G",
@@ -865,7 +865,7 @@
     ],
     "odd": 3,
     "explanation": "Hazard (Chelsea), De Bruyne en Kompany (City) werden Engels kampioen; Lukaku nooit.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Romelu_Lukaku"
@@ -885,7 +885,7 @@
     ],
     "odd": 1,
     "explanation": "In de groep speelde België tegen Algerije, Rusland en Zuid-Korea; de VS was de tegenstander in de 1/8 finale.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"
@@ -906,7 +906,7 @@
     ],
     "odd": 2,
     "explanation": "België speelde in de groep tegen Canada (1-0), Marokko (0-2) en Kroatië (0-0); niet tegen Japan.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"
@@ -927,7 +927,7 @@
     ],
     "odd": 3,
     "explanation": "In de groep speelde België tegen Italië, Ierland en Zweden; Hongarije was de tegenstander in de 1/8 finale (4-0).",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_at_the_UEFA_European_Championship"
@@ -947,7 +947,7 @@
     ],
     "odd": 0,
     "explanation": "Fellaini (Algerije), Origi (Rusland) en Vertonghen (Zuid-Korea) scoorden op het WK 2014; Eden Hazard niet.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"
@@ -968,7 +968,7 @@
     ],
     "odd": 1,
     "explanation": "Meunier (Rusland), Thorgan Hazard (Denemarken, Portugal) en Lukaku scoorden op EK 2020; Eden Hazard niet.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_at_the_UEFA_European_Championship"
@@ -988,7 +988,7 @@
     ],
     "odd": 2,
     "explanation": "De goals waren van Alderweireld, Batshuayi, Eden Hazard en Carrasco; Lukaku scoorde niet.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_at_the_UEFA_European_Championship"
@@ -1008,7 +1008,7 @@
     ],
     "odd": 0,
     "explanation": "België speelde het WK 1982, 1998 en 2002; voor het WK 2006 plaatste het zich niet.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"
@@ -1029,7 +1029,7 @@
     ],
     "odd": 2,
     "explanation": "Thys (1982, 1986, 1990), Leekens (1998) en Waseige (2002) waren bondscoach op een WK; Vandereycken (2006–2009) haalde geen WK.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup",
@@ -1051,7 +1051,7 @@
     ],
     "odd": 1,
     "explanation": "Ceulemans, Gerets en Pfaff stonden in de basis van de finale tegen West-Duitsland; Scifo (geboren 1966) debuteerde pas later.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_1980_final"
@@ -1071,7 +1071,7 @@
     ],
     "odd": 2,
     "explanation": "Vertonghen, Fellaini en Chadli scoorden de drie Belgische goals; Lukaku niet.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"
@@ -1092,7 +1092,7 @@
     ],
     "odd": 1,
     "explanation": "De Bruyne (2012–2014), Courtois (2011–2018) en Lukaku (2011–2014, 2021–2024) stonden onder contract bij Chelsea; Alderweireld speelde in Engeland voor Southampton en Tottenham.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
@@ -1115,7 +1115,7 @@
     ],
     "odd": 2,
     "explanation": "Fellaini (2013–2019), Lukaku (2017–2019) en Januzaj (2013–2017) speelden voor Manchester United; Hazard speelde voor Lille, Chelsea en Real Madrid.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Marouane_Fellaini",
@@ -1138,7 +1138,7 @@
     ],
     "odd": 0,
     "explanation": "Mirallas (2012–2019), Fellaini (2008–2013) en Onana (2022–2024) speelden voor Everton; Benteke speelde in Engeland voor Aston Villa, Liverpool en Crystal Palace.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Christian_Benteke",
@@ -1161,7 +1161,7 @@
     ],
     "odd": 2,
     "explanation": "Courtois (2011–2014, huur), Carrasco (2015–2018, 2020–2023) en Witsel (2022–2025) speelden voor Atlético; Mertens niet.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Thibaut_Courtois",
@@ -1184,7 +1184,7 @@
     ],
     "odd": 3,
     "explanation": "Witsel (2018–2022), Thorgan Hazard (2019–2023) en Meunier (2020–2024) speelden voor Dortmund; Tielemans nooit.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Axel_Witsel",
@@ -1207,7 +1207,7 @@
     ],
     "odd": 0,
     "explanation": "De Bruyne (2014–2015), Origi (2017–2018, huur) en Perišić (2013–2015) speelden voor Wolfsburg; Mertens nooit.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Dries_Mertens",
@@ -1230,7 +1230,7 @@
     ],
     "odd": 1,
     "explanation": "Tielemans (2023–2026), Benteke (2012–2015) en Onana (sinds 2024) speelden voor Aston Villa; Trossard speelde in Engeland voor Brighton en Arsenal.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Youri_Tielemans",
@@ -1253,7 +1253,7 @@
     ],
     "odd": 2,
     "explanation": "Tielemans (2019–2023), Praet (2019–2024) en Castagne (2020–2023) speelden voor Leicester; De Bruyne nooit.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Youri_Tielemans",
@@ -1276,7 +1276,7 @@
     ],
     "odd": 0,
     "explanation": "Hazard (2007–2012), Origi (2012–2015) en Jonathan David (2020–2025) speelden voor Lille; Lukaku nooit.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Romelu_Lukaku",
@@ -1299,7 +1299,7 @@
     ],
     "odd": 1,
     "explanation": "Kompany (2006–2008), Van Buyten (2004–2006) en Onana (2020–2021) speelden voor HSV; Witsel nooit.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Vincent_Kompany",
@@ -1322,7 +1322,7 @@
     ],
     "odd": 2,
     "explanation": "De Ketelaere (2022–2024), Origi (2022–2025) en Kaká (2003–2009, 2013–2014) speelden voor AC Milan; Lukaku speelde in Milaan voor Inter.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Charles_De_Ketelaere",
@@ -1345,7 +1345,7 @@
     ],
     "odd": 3,
     "explanation": "Van Buyten (2006–2014), Perišić (2019–2020, huur) en Coutinho (2019–2020, huur) speelden voor Bayern; De Bruyne nooit.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Daniel_Van_Buyten",
@@ -1366,7 +1366,7 @@
     ],
     "odd": 1,
     "explanation": "Pogba (2012–2016, 2022–2024), Higuaín (2016–2020) en Pirlo (2011–2015) speelden voor Juventus; Nainggolan speelde in Italië o.a. voor Cagliari, AS Roma en Inter.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Paul_Pogba",
@@ -1387,7 +1387,7 @@
     ],
     "odd": 2,
     "explanation": "Napoli (4x), Lazio (2x) en Sampdoria (1991) werden landskampioen van Italië; Atalanta nooit.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Italian_football_champions"
@@ -1405,7 +1405,7 @@
     ],
     "odd": 1,
     "explanation": "Valencia (6x), Deportivo La Coruña (2000) en Real Sociedad (2x) wonnen de Spaanse titel; Villarreal werd hooguit tweede.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Spanish_football_champions"
@@ -1423,7 +1423,7 @@
     ],
     "odd": 2,
     "explanation": "Lille (o.a. 2011, 2021), Montpellier (2012) en Lens (1998) werden Frans kampioen; Rennes nooit.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_French_football_champions"
@@ -1459,7 +1459,7 @@
     ],
     "odd": 2,
     "explanation": "Boussoufa (2006, 2010), Jovanović (2009) en Mbokani (2012) wonnen de Gouden Schoen; Mitrović nooit.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://nl.wikipedia.org/wiki/Gouden_Schoen_(Belgi%C3%AB)"
@@ -1479,7 +1479,7 @@
     ],
     "odd": 2,
     "explanation": "Perišić (2010–11), Mitrović (2014–15) en Onuachu (2020–21) werden topschutter; Vossen nooit.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgian_Pro_League_top_scorers"
@@ -1497,7 +1497,7 @@
     ],
     "odd": 1,
     "explanation": "Mechelen (2019), Zulte Waregem (2017) en Lokeren (2012, 2014) wonnen de beker na 2010; Anderlecht won hem voor het laatst in 2008.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgian_Cup",
@@ -1516,7 +1516,7 @@
     ],
     "odd": 1,
     "explanation": "Preud'homme (2008–2010), Sollied (o.a. 2007–2008) en Thorup (2018–2020) trainden Gent; Clement nooit.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Philippe_Clement",
@@ -1537,7 +1537,7 @@
     ],
     "odd": 3,
     "explanation": "Vercauteren (2009–2011), Vanhaezebrouck (2009) en Mazzù (2019) trainden Genk; Preud'homme nooit.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Franky_Vercauteren",
@@ -1558,7 +1558,7 @@
     ],
     "odd": 0,
     "explanation": "Bölöni (2008–2010), Preud'homme (o.a. 2006–2008) en Leko (2024–2025) trainden Standard; Vanhaezebrouck nooit.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Hein_Vanhaezebrouck",
@@ -1579,7 +1579,7 @@
     ],
     "odd": 2,
     "explanation": "België zat op EK 2000 in groep B met Zweden, Italië en Turkije.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2000_Group_B"
@@ -1599,7 +1599,7 @@
     ],
     "odd": 1,
     "explanation": "België zat op EK 2020 in groep B met Denemarken, Finland en Rusland.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2020_Group_B"
@@ -1619,7 +1619,7 @@
     ],
     "odd": 2,
     "explanation": "België zat op EK 2024 in groep E met Roemenië, Oekraïne en Slowakije; Frankrijk was pas de tegenstander in de 1/8 finale.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2024_Group_E"
@@ -1639,7 +1639,7 @@
     ],
     "odd": 1,
     "explanation": "België zat op het WK 1986 in groep B met Mexico, Paraguay en Irak; Spanje was de tegenstander in de kwartfinale.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_Group_B"
@@ -1660,7 +1660,7 @@
     ],
     "odd": 2,
     "explanation": "België zat op het WK 1990 in groep E met Zuid-Korea, Uruguay en Spanje; Engeland was de tegenstander in de 1/8 finale.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1990_FIFA_World_Cup_Group_E"
@@ -1681,7 +1681,7 @@
     ],
     "odd": 1,
     "explanation": "Eden Hazard (2), Lukaku (2) en Batshuayi scoorden tegen Tunesië; Mertens scoorde wel tegen Panama, niet tegen Tunesië.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_Group_G"
@@ -1702,7 +1702,7 @@
     ],
     "odd": 2,
     "explanation": "Wigan (2005–2013), Blackpool (2010–11) en Luton (2023–24) speelden in de Premier League; Millwall speelde enkel in 1988–1990 op het hoogste niveau, vóór de Premier League bestond.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Premier_League_clubs",
@@ -1721,7 +1721,7 @@
     ],
     "odd": 2,
     "explanation": "Howard (2012), Begović (2013) en Alisson (2021) scoorden in de Premier League; Petr Čech nooit.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_goalkeepers_who_have_scored_in_the_Premier_League"
@@ -1740,7 +1740,7 @@
     ],
     "odd": 1,
     "explanation": "Monzón (1990), Zidane (2006) en Heitinga (2010) werden uitgesloten in een WK-finale; Materazzi lokte de rode kaart van Zidane uit maar kreeg er zelf geen.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://www.wionews.com/sports/fifa-world-cup-5-players-who-were-shown-red-card-in-final-143274",
@@ -1760,7 +1760,7 @@
     ],
     "odd": 2,
     "explanation": "Costinha, Boulahrouz, Deco en Giovanni van Bronckhorst kregen een tweede gele kaart en dus rood; Maniche (de doelpuntenmaker) kreeg alleen geel.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Battle_of_Nuremberg_(2006_FIFA_World_Cup)"
@@ -1779,7 +1779,7 @@
     ],
     "odd": 3,
     "explanation": "Schmeichel (Aston Villa, 2001), Friedel (Blackburn, 2004) en Robinson (Tottenham, 2007) scoorden in de Premier League; Van der Sar staat niet op de lijst.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_goalkeepers_who_have_scored_in_the_Premier_League"
@@ -1820,7 +1820,7 @@
     ],
     "odd": 2,
     "explanation": "De Hazards, Lukaku's en Mpenza's speelden allemaal voor België; Kevin-Prince Boateng koos voor Ghana en Jérôme voor Duitsland.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/J%C3%A9r%C3%B4me_Boateng",
@@ -1843,7 +1843,7 @@
     ],
     "odd": 1,
     "explanation": "Alf-Inge Haaland, Peter Schmeichel en Johan Cruijff waren profvoetballers; de vader van Cristiano Ronaldo werkte als tuinman en was onderhoudsman bij een amateurclub.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Cristiano_Ronaldo",
@@ -1865,7 +1865,7 @@
     ],
     "odd": 3,
     "explanation": "Cesare Maldini, Frank Lampard senior en Son Woong-jung waren profvoetballers; de vader van Ronaldo was tuinman en onderhoudsman bij een amateurclub.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Cristiano_Ronaldo",
@@ -1887,7 +1887,7 @@
     ],
     "odd": 2,
     "explanation": "Fellaini, Lukaku en Januzaj speelden allemaal voor Manchester United; Kompany speelde bij Hamburg en Manchester City, nooit bij United.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Marouane_Fellaini",
@@ -1910,7 +1910,7 @@
     ],
     "odd": 2,
     "explanation": "Juventus, Newcastle United en Udinese spelen in zwart-wit; Fiorentina speelt in paars.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Juventus_F.C.",
@@ -1932,7 +1932,7 @@
     ],
     "odd": 3,
     "explanation": "Müller, Klose, Kroos (2), Khedira en Schürrle (2) scoorden; Götze kwam erin maar scoorde niet (hij deed dat wel in de finale).",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Brazil_v_Germany_(2014_FIFA_World_Cup)"
@@ -1951,7 +1951,7 @@
     ],
     "odd": 2,
     "explanation": "Guttmann trainde Benfica (1959–62, 1965–66), Porto (1958–59, 1973–74) en AC Milan (1953–55), maar nooit Real Madrid.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/B%C3%A9la_Guttmann"
@@ -1971,7 +1971,7 @@
     ],
     "odd": 2,
     "explanation": "Mac Allister (1998), Aurier (1992) en Salas (1974) zijn op 24 december geboren; Lloris op 26 december 1986.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/December_24",
@@ -1991,7 +1991,7 @@
     ],
     "odd": 3,
     "explanation": "Lloris (1986), Ramsey (1990) en Feghouli (1989) zijn op 26 december geboren; Mac Allister op 24 december 1998.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/December_24",
@@ -2011,7 +2011,7 @@
     ],
     "odd": 2,
     "explanation": "Barcelona won de finale op 20 december 2015, Liverpool op 21 december 2019 en Manchester City op 22 december 2023; Chelsea won het toernooi pas op 12 februari 2022.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/FIFA_Club_World_Cup"
@@ -2030,7 +2030,7 @@
     ],
     "odd": 2,
     "explanation": "In Engeland wordt op Boxing Day en tussen Kerst en Nieuwjaar gespeeld; de Bundesliga, Eredivisie en Ligue 1 hebben een winterstop rond de jaarwisseling.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Boxing_Day#Sport"
@@ -2049,7 +2049,7 @@
     ],
     "odd": 1,
     "explanation": "Bruce (1960), Coupet (1972) en Gordon (1982) zijn op 31 december geboren; Šuker op 1 januari 1968.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/December_31",
@@ -2069,7 +2069,7 @@
     ],
     "odd": 3,
     "explanation": "Guerrero (1984), Wilshere (1992) en Šuker (1968) zijn op 1 januari geboren; Coupet op 31 december 1972.",
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Paolo_Guerrero",
@@ -2091,7 +2091,7 @@
     ],
     "odd": 0,
     "explanation": "Van Dijk (2018), Torres (2011) en Coutinho (2018) tekenden in januari; Neymar ging in augustus 2017 naar PSG.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Virgil_van_Dijk",
@@ -2113,7 +2113,7 @@
     ],
     "odd": 2,
     "explanation": "Pelé overleed op 29 december 2022, Beckenbauer op 7 januari 2024 en Eusébio op 5 januari 2014; Maradona op 25 november 2020.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Pel%C3%A9",
@@ -2158,7 +2158,7 @@
     ],
     "odd": 2,
     "explanation": "Courtois (Atlético, Real), Hazard (Real) en Januzaj (Real Sociedad) speelden in Spanje; De Bruyne speelde in Duitsland, Engeland en Italië.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Thibaut_Courtois",
@@ -2181,7 +2181,7 @@
     ],
     "odd": 2,
     "explanation": "Cruijff, Koeman en Rijkaard speelden voor Barcelona; Van Basten speelde bij Ajax en AC Milan.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Johan_Cruyff",
@@ -2244,7 +2244,7 @@
     ],
     "odd": 3,
     "explanation": "Klose (2006), Kane (2018) en Mbappé (2022 en 2026) werden topschutter van een WK; Messi won wel de Gouden Bal, maar nooit de Gouden Schoen.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_top_goalscorers",
@@ -2283,7 +2283,7 @@
     ],
     "odd": 3,
     "explanation": "Italië (1934), Engeland (1966) en Frankrijk (1998) werden wereldkampioen als gastland; Brazilië verloor in 1950 de beslissende match tegen Uruguay en werd in 2014 vierde.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/FIFA_World_Cup",
@@ -2303,7 +2303,7 @@
     ],
     "odd": 2,
     "explanation": "Zabivaka (2018) is een wolf, Zayu (2026) een jaguar en Fuleco (2014) een gordeldier; een olifant was nooit WK-mascotte.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Maple,_Zayu_and_Clutch",

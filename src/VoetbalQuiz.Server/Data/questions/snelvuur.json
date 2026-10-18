@@ -43,7 +43,7 @@
       "Toby Alderweireld"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://nl.wikipedia.org/wiki/Gouden_Schoen_(België)"
@@ -98,7 +98,7 @@
       "KRC Genk"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals"
@@ -115,7 +115,7 @@
       "Nacer Chadli"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"
@@ -135,7 +135,7 @@
       "Toby Alderweireld"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_national_football_team"
@@ -154,7 +154,7 @@
       "Kevin De Bruyne"
     ],
     "correct": 2,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"
@@ -174,7 +174,7 @@
       "Fernandinho (eigen doelpunt)"
     ],
     "correct": 3,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"
@@ -194,7 +194,7 @@
       "Romelu Lukaku"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage",
@@ -215,7 +215,7 @@
       "Italië"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_national_football_team",
@@ -235,7 +235,7 @@
       "Zwitserland"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_national_football_team",
@@ -255,7 +255,7 @@
       "Georges Leekens"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"
@@ -275,7 +275,7 @@
       "Paraguay"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_knockout_stage"
@@ -295,7 +295,7 @@
       "Jan Ceulemans"
     ],
     "correct": 2,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_knockout_stage"
@@ -315,7 +315,7 @@
       "René Vandereycken"
     ],
     "correct": 3,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_1980_final"
@@ -334,7 +334,7 @@
       "KV Oostende"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Sint-Truidense_V.V."
@@ -351,7 +351,7 @@
       "1985"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions",
@@ -369,7 +369,7 @@
       "AS Roma"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://supersport.com/football/uefa-champions-league/news/d9850882-0cca-4a9a-89c8-10af5e65162b/club-brugge-knock-atalanta-out-of-champions-league"
@@ -388,7 +388,7 @@
       "Ipswich Town"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Vincent_Kompany"
@@ -407,7 +407,7 @@
       "Vincent Kompany"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"
@@ -427,7 +427,7 @@
       "Georges Leekens"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions",
@@ -445,7 +445,7 @@
       "KRC Genk"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://nl.wikipedia.org/wiki/Gouden_Schoen_(België)"
@@ -465,7 +465,7 @@
       "Guy Thys"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup",
@@ -486,7 +486,7 @@
       "Eintracht Frankfurt"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2019_UEFA_Europa_League_final"
@@ -505,7 +505,7 @@
       "Standard"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1988_European_Cup_Winners'_Cup_final"
@@ -522,7 +522,7 @@
       "Spanje"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_knockout_stage",
@@ -543,7 +543,7 @@
       "Spanje"
     ],
     "correct": 2,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_1980_final"
@@ -562,7 +562,7 @@
       "Lazio"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Axel_Witsel"
@@ -581,7 +581,7 @@
       "Matz Sels"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Yashin_Trophy"
@@ -600,7 +600,7 @@
       "Leicester City"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Charles_De_Ketelaere"
@@ -619,7 +619,7 @@
       "Union SG"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals"
@@ -636,7 +636,7 @@
       "Beerschot"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://nl.wikipedia.org/wiki/Gouden_Schoen_(België)"
@@ -656,7 +656,7 @@
       "Wouter Vrancken"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions",
@@ -674,7 +674,7 @@
       "Bayern München"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2005_UEFA_Champions_League_final"
@@ -812,7 +812,7 @@
       "Thierry Henry"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Premier_League_records_and_statistics"
@@ -848,7 +848,7 @@
       "Manchester United"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2012_UEFA_Champions_League_final"
@@ -884,7 +884,7 @@
       "Manchester United"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2015_UEFA_Champions_League_final"
@@ -903,7 +903,7 @@
       "Karl-Heinz Rummenigge"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Robert_Lewandowski"
@@ -920,7 +920,7 @@
       "Andrea Pirlo"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2006_FIFA_World_Cup_final"
@@ -937,7 +937,7 @@
       "VfL Wolfsburg"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2013_UEFA_Champions_League_final"
@@ -973,7 +973,7 @@
       "Bryne"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Erling_Haaland"
@@ -990,7 +990,7 @@
       "Maurizio Sarri"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2022–23_SSC_Napoli_season"
@@ -1026,7 +1026,7 @@
       "Finidi George"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1995_UEFA_Champions_League_final"
@@ -1045,7 +1045,7 @@
       "Bernardo Silva"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2023_UEFA_Champions_League_final"
@@ -1134,7 +1134,7 @@
       "Berti Vogts"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2004_final"
@@ -1151,7 +1151,7 @@
       "Real Madrid"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2004_UEFA_Champions_League_final"
@@ -1170,7 +1170,7 @@
       "Cristiano Ronaldo"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2008_UEFA_Champions_League_final"
@@ -1189,7 +1189,7 @@
       "Sevilla"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2004_UEFA_Cup_final"
@@ -1206,7 +1206,7 @@
       "Real Sociedad"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2025_UEFA_Europa_League_final"
@@ -1223,7 +1223,7 @@
       "Olympiacos"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2022_UEFA_Europa_Conference_League_final"
@@ -1240,7 +1240,7 @@
       "Elf"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Italian_football_champions"
@@ -1257,7 +1257,7 @@
       "Lille"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2016–17_AS_Monaco_FC_season"
@@ -1274,7 +1274,7 @@
       "Mario Götze"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Robert_Lewandowski"
@@ -1291,7 +1291,7 @@
       "Émile Mpenza"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_Group_H",
@@ -1312,7 +1312,7 @@
       "Chris Waddle"
     ],
     "correct": 2,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://www.fifa.com/news/platt-s-perfect-moment-breaks-belgian-hearts-2923004",
@@ -1333,7 +1333,7 @@
       "Duitsland"
     ],
     "correct": 3,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"
@@ -1353,7 +1353,7 @@
       "Robert Waseige"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"
@@ -1373,7 +1373,7 @@
       "Sergio Agüero"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_knockout_stage"
@@ -1393,7 +1393,7 @@
       "Eden Hazard"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_knockout_stage"
@@ -1413,7 +1413,7 @@
       "Divock Origi"
     ],
     "correct": 3,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"
@@ -1433,7 +1433,7 @@
       "Wales"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_at_the_UEFA_European_Championship"
@@ -1452,7 +1452,7 @@
       "Leandro Trossard"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"
@@ -1472,7 +1472,7 @@
       "Eden Hazard"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_at_the_UEFA_European_Championship"
@@ -1491,7 +1491,7 @@
       "Jan Vertonghen"
     ],
     "correct": 3,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_at_the_UEFA_European_Championship"
@@ -1510,7 +1510,7 @@
       "Frankrijk"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_at_the_UEFA_European_Championship"
@@ -1529,7 +1529,7 @@
       "Finland"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Jan_Vertonghen"
@@ -1548,7 +1548,7 @@
       "Dick Advocaat"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_national_football_team"
@@ -1567,7 +1567,7 @@
       "Derde"
     ],
     "correct": 3,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_at_the_UEFA_European_Championship"
@@ -1586,7 +1586,7 @@
       "Eden Hazard"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_qualification_%E2%80%93_UEFA_Group_A"
@@ -1605,7 +1605,7 @@
       "Dries Mertens"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_Group_G"
@@ -1625,7 +1625,7 @@
       "Hans Vanaken"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://www.ajc.com/sports/2026/07/belgium-beats-us-4-1-to-reach-world-cup-quarterfinals/",
@@ -1647,7 +1647,7 @@
       "Spanje"
     ],
     "correct": 3,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://worldcupranking.com/blog/world-cup-2026-match-98-spain-vs-belgium/",
@@ -1669,7 +1669,7 @@
       "Roberto Martínez"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://sporza.be/nl/2026/07/21/rode-duivels-hebben-nieuwe-bondscoach-nederlander-mark-van-bommel-volgt-rudi-garcia-op-tot-en-met-ek-2028~1784658390861/",
@@ -1708,7 +1708,7 @@
       "KVC Westerlo"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgian_Cup"
@@ -1725,7 +1725,7 @@
       "KAA Gent"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://nl.wikipedia.org/wiki/Beker_van_Belgi%C3%AB_(voetbal)"
@@ -1759,7 +1759,7 @@
       "KAA Gent"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgian_Cup"
@@ -1776,7 +1776,7 @@
       "Hugo Cuypers"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgian_Pro_League_top_scorers"
@@ -1793,7 +1793,7 @@
       "Aleksandar Mitrović"
     ],
     "correct": 2,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgian_Pro_League_top_scorers"
@@ -1810,7 +1810,7 @@
       "KAA Gent"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgian_Pro_League_top_scorers"
@@ -1827,7 +1827,7 @@
       "Raphael Onyedika"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://nl.wikipedia.org/wiki/Gouden_Schoen_(Belgi%C3%AB)"
@@ -1846,7 +1846,7 @@
       "Ritchie De Laet"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://nl.wikipedia.org/wiki/Gouden_Schoen_(Belgi%C3%AB)"
@@ -1865,7 +1865,7 @@
       "Hans Vanaken"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://nl.wikipedia.org/wiki/Gouden_Schoen_(Belgi%C3%AB)",
@@ -1903,7 +1903,7 @@
       "Alexander Blessin"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/S%C3%A9bastien_Pocognoli",
@@ -1922,7 +1922,7 @@
       "Franky Vercauteren"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Mark_van_Bommel",
@@ -1941,7 +1941,7 @@
       "Romelu Lukaku"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"
@@ -1961,7 +1961,7 @@
       "Branko Strupar"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2000_Group_B"
@@ -1980,7 +1980,7 @@
       "Kaká"
     ],
     "correct": 2,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_knockout_stage"
@@ -2000,7 +2000,7 @@
       "Franky Vercauteren"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Belgium_national_football_team_managers"
@@ -2019,7 +2019,7 @@
       "Thierry Henry"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Belgium_national_football_team_managers"
@@ -2038,7 +2038,7 @@
       "Kevin De Bruyne"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_Group_G"
@@ -2058,7 +2058,7 @@
       "Juventus"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Romelu_Lukaku",
@@ -2098,7 +2098,7 @@
       "Liverpool"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals",
@@ -2172,7 +2172,7 @@
       "Spanje"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://www.oneindia.com/international/video-dog-comes-out-of-nowhere-to-save-a-goal-in-a-football-match-in-argentina-2818973.html",
@@ -2209,7 +2209,7 @@
       "Het was een wedstrijd tussen jeugdploegen"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/AS_Adema"
@@ -2227,7 +2227,7 @@
       "Vier"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Josip_%C5%A0imuni%C4%87"
@@ -2245,7 +2245,7 @@
       "Mick McCarthy"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Chris_Nicholl"
@@ -2263,7 +2263,7 @@
       "Arrigo Sacchi"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Paolo_Maldini",
@@ -2302,7 +2302,7 @@
       "Ghana"
     ],
     "correct": 3,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/J%C3%A9r%C3%B4me_Boateng",
@@ -2359,7 +2359,7 @@
       "Wesley Sonck"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Mbo_Mpenza",
@@ -2379,7 +2379,7 @@
       "Thomas Müller"
     ],
     "correct": 2,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Phantom_goal",
@@ -2398,7 +2398,7 @@
       "Benfica"
     ],
     "correct": 3,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/B%C3%A9la_Guttmann"
@@ -2417,7 +2417,7 @@
       "Trabzonspor"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Galatasaray_S.K._(football)",
@@ -2436,7 +2436,7 @@
       "Duitsland"
     ],
     "correct": 3,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_knockout_stage#England_vs_Germany",
@@ -2455,7 +2455,7 @@
       "Patrick Kluivert"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Marco_van_Basten",
@@ -2475,7 +2475,7 @@
       "Eden Hazard"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Marouane_Fellaini"
@@ -2530,7 +2530,7 @@
       "Norwich City"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/1963%E2%80%9364_in_English_football",
@@ -2549,7 +2549,7 @@
       "Hugo Lloris"
     ],
     "correct": 3,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Hugo_Lloris",
@@ -2568,7 +2568,7 @@
       "Gérson"
     ],
     "correct": 2,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Jairzinho",
@@ -2588,7 +2588,7 @@
       "Nicolás Castillo"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Marcelo_Salas",
@@ -2607,7 +2607,7 @@
       "Goran Vlaović"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Davor_%C5%A0uker",
@@ -2626,7 +2626,7 @@
       "Paolo Guerrero"
     ],
     "correct": 3,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Paolo_Guerrero",
@@ -2645,7 +2645,7 @@
       "Ross Barkley"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Jack_Wilshere"
@@ -2681,7 +2681,7 @@
       "Toby Alderweireld"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Virgil_van_Dijk",
@@ -2720,7 +2720,7 @@
       "Atlético Madrid"
     ],
     "correct": 3,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/2013%E2%80%9314_La_Liga",
@@ -2739,7 +2739,7 @@
       "Charleroi"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Jean-Marc_Bosman",
@@ -2813,7 +2813,7 @@
       "Adrián"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_UEFA_Champions_League_final",
@@ -2851,7 +2851,7 @@
       "Ronaldo Nazário"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_top_goalscorers",
@@ -2888,7 +2888,7 @@
       "Thierry Henry"
     ],
     "correct": 2,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Just_Fontaine",
@@ -2908,7 +2908,7 @@
       "Helmut Haller"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/1966_FIFA_World_Cup_final",
@@ -2928,7 +2928,7 @@
       "Fevernova"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Jabulani"
@@ -2946,7 +2946,7 @@
       "Lionel Scaloni"
     ],
     "correct": 3,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/Lionel_Scaloni",
@@ -2965,7 +2965,7 @@
       "Mikel Oyarzabal"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_final",
@@ -2984,7 +2984,7 @@
       "Rob Rensenbrink"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://nl.wikipedia.org/wiki/Frank_Vercauteren"
@@ -3002,7 +3002,7 @@
       "Eintracht Frankfurt"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/1977_European_Cup_Winners%27_Cup_final"
@@ -3020,7 +3020,7 @@
       "Austria Wenen"
     ],
     "correct": 3,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/1978_European_Cup_Winners%27_Cup_final"
@@ -3038,7 +3038,7 @@
       "Johnny Dusbaba"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/1978_European_Cup_Winners%27_Cup_final",
@@ -3057,7 +3057,7 @@
       "Georges Heylens"
     ],
     "correct": 2,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/1978_European_Cup_Winners%27_Cup_final",
@@ -3076,7 +3076,7 @@
       "Aston Villa"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/1978_European_Super_Cup"
@@ -3094,7 +3094,7 @@
       "Tottenham Hotspur"
     ],
     "correct": 3,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/1984_UEFA_Cup_final"
@@ -3112,7 +3112,7 @@
       "Olympique Marseille"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 5,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://nl.wikipedia.org/wiki/Frank_Vercauteren"
@@ -3131,7 +3131,7 @@
       "KV Kortrijk"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://nl.wikipedia.org/wiki/Frank_Vercauteren",
@@ -3150,7 +3150,7 @@
       "Franky Vercauteren"
     ],
     "correct": 3,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe",

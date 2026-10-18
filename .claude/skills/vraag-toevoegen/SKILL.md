@@ -20,7 +20,7 @@ Voor veel vragen of veel opzoekwerk: laat de agent `speler-redacteur` schrijven 
    pwsh -NoProfile -c "Get-Content src/VoetbalQuiz.Server/Data/questions/<bestand>.json -Raw | ConvertFrom-Json | Out-Null"
    ```
 
-Elk item heeft naast de inhoud ook: `difficulty` (1–3), `status`, `sources` (URL's), `tags` (zie `speler-toevoegen` voor de lijst) en optioneel `checkedAt`.
+Elk item heeft naast de inhoud ook: `difficulty` (1–5, zie `speler-toevoegen`), `status`, `sources` (URL's), `tags` (zie `speler-toevoegen` voor de lijst) en optioneel `checkedAt`.
 
 ## Formaat per type
 
