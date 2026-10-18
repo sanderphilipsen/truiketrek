@@ -55,6 +55,18 @@ public static class QuestionTypes
         return mix.Where(m => m.Value > 0).ToDictionary(m => m.Key, m => m.Value);
     }
 
+    /// <summary>
+    /// Een mix met een vast aantal vragen (een online tafel): om beurten één vraag per type,
+    /// zonder puntenplafond want online telt niet voor de daglimiet.
+    /// </summary>
+    public static Dictionary<QuestionType, int> Mix(IEnumerable<QuestionType> types, int questions)
+    {
+        var list = types.Distinct().ToList();
+        if (list.Count == 0) list = [QuestionType.WieBenIk];
+        return list.Select((t, i) => (t, n: questions / list.Count + (i < questions % list.Count ? 1 : 0)))
+            .Where(x => x.n > 0).ToDictionary(x => x.t, x => x.n);
+    }
+
     public const int DayMaxPoints = 1000;
     /// <summary>
     /// Wat een dag werkelijk wordt: de geplande types zonder de uitgeschakelde. Blijft er niets over

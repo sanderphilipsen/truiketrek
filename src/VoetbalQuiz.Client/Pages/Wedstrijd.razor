@@ -4,11 +4,15 @@
 @inject ApiClient Api
 @inject RealtimeClient Realtime
 @inject NavigationManager Nav
+@inject IJSRuntime JS
 
 <PageTitle>@(_state?.Name ?? "Wedstrijd") – Truitje Trek</PageTitle>
 
+@* Weggaan tijdens een wedstrijd = de tafel verlaten (en je punten kwijt): eerst bevestigen. *@
+<NavigationLock OnBeforeInternalNavigation="OnLeavingPageAsync" ConfirmExternalNavigation="@InGame" />
+
 <div class="question-head">
-    <a href="online" class="back">‹ Lobby</a>
+    <a href="online" class="back">@(InGame ? "‹ Verlaten" : "‹ Lobby")</a>
     @if (_state is { Phase: MatchPhase.Question or MatchPhase.Reveal or MatchPhase.Countdown })
     {
         <span>
@@ -251,6 +255,10 @@ else
                 <div class="trophy">🏆</div>
                 <h1>@(winner?.IsMe == true ? "Jij wint!" : $"{winner?.UserName} wint!")</h1>
                 <div class="muted">@_state.Name</div>
+                @if (_state.Players.Count(p => !p.Left) < MatchRules.StayersForWin)
+                {
+                    <small class="muted">Iedereen anders vertrok: dit telt niet als zege voor je rating, reeks of badges.</small>
+                }
             </section>
             <Standings Players="_state.Players" />
             @if (_state.Derby?.Report is { Count: > 0 } report)
@@ -441,6 +449,33 @@ else
         };
     private Task StartAsync() => ApplyAsync(() => Api.StartMatchAsync(Id), busy: true);
     private Task JoinAsync() => ApplyAsync(() => Api.JoinMatchAsync(Id), busy: true);
+
+    private bool _left;
+
+    /// <summary>Je speelt mee aan een lopende wedstrijd: weggaan kost je punten.</summary>
+    private bool InGame => !_left && _state is { Status: MatchStatus.Running, IAmIn: true };
+
+    private async Task OnLeavingPageAsync(LocationChangingContext context)
+    {
+        if (!InGame) return;
+        var sure = await JS.InvokeAsync<bool>("confirm",
+            "Als je de wedstrijd verlaat, verlies je al je punten en eindig je onderaan. Toch verlaten?");
+        if (!sure)
+        {
+            context.PreventNavigation();
+            return;
+        }
+        try
+        {
+            await Api.LeaveMatchAsync(Id);
+            _left = true;
+        }
+        catch (ApiException ex)
+        {
+            _error = ex.Message;
+            context.PreventNavigation();
+        }
+    }
 
     private async Task LeaveAsync()
     {

@@ -7,7 +7,8 @@ namespace VoetbalQuiz.Server.Services;
 /// <summary>Klassementen en statistieken van online wedstrijden, apart van de daily.</summary>
 public class OnlineService(QuizDbContext db, ResultsService results)
 {
-    private record PlayerResult(string UserId, string UserName, int Score, int Rank, int FirstCorrect);
+    /// <summary>Won: eerste, en de wedstrijd telt als zege (zie <see cref="MatchRules.StayersForWin"/>).</summary>
+    private record PlayerResult(string UserId, string UserName, int Score, int Rank, int FirstCorrect, bool Won);
 
     private record FinishedMatch(int Id, DateTime FinishedAt, List<PlayerResult> Players);
 
@@ -23,13 +24,14 @@ public class OnlineService(QuizDbContext db, ResultsService results)
                 UserName = p.User.UserName!,
                 p.Score,
                 Rank = p.Rank ?? 99,
+                Counts = p.Match.Players.Count(o => o.LeftAt == null) >= MatchRules.StayersForWin,
                 FirstCorrect = db.MatchAnswers.Count(a => a.MatchQuestion.MatchId == p.MatchId && a.UserId == p.UserId && a.Position == 1),
             })
             .ToListAsync();
 
         return rows.GroupBy(r => r.MatchId)
             .Select(g => new FinishedMatch(g.Key, g.First().FinishedAt,
-                g.Select(r => new PlayerResult(r.UserId, r.UserName, r.Score, r.Rank, r.FirstCorrect)).ToList()))
+                g.Select(r => new PlayerResult(r.UserId, r.UserName, r.Score, r.Rank, r.FirstCorrect, r.Rank == 1 && r.Counts)).ToList()))
             .OrderBy(m => m.FinishedAt)
             .ToList();
     }
@@ -62,9 +64,12 @@ public class OnlineService(QuizDbContext db, ResultsService results)
 
             foreach (var p in players)
             {
+                // Als enige overgebleven: geen zege, dus ook geen rating erbij en de reeks blijft staan.
+                // Wie vertrok, verliest wel gewoon.
+                if (p.Rank == 1 && !p.Won) continue;
                 rating[p.UserId] += deltas[p.UserId];
                 best[p.UserId] = Math.Max(best.GetValueOrDefault(p.UserId, MatchRules.StartRating), rating[p.UserId]);
-                streak[p.UserId] = p.Rank == 1 ? streak.GetValueOrDefault(p.UserId) + 1 : 0;
+                streak[p.UserId] = p.Won ? streak.GetValueOrDefault(p.UserId) + 1 : 0;
                 longest[p.UserId] = Math.Max(longest.GetValueOrDefault(p.UserId), streak[p.UserId]);
             }
         }
@@ -82,7 +87,7 @@ public class OnlineService(QuizDbContext db, ResultsService results)
 
         var entries = all
             .Select(g => (Id: g.Key, Name: g.First().UserName, Rating: (int)Math.Round(rating.GetValueOrDefault(g.Key, MatchRules.StartRating)),
-                Played: g.Count(), Wins: g.Count(p => p.Rank == 1)))
+                Played: g.Count(), Wins: g.Count(p => p.Won)))
             .OrderByDescending(x => x.Rating).ThenByDescending(x => x.Wins)
             .Select((x, i) => new RatingEntry(i + 1, x.Name, cards.GetValueOrDefault(x.Id)?.AvatarId, cards.GetValueOrDefault(x.Id)?.Level ?? 1,
                 x.Rating, x.Played, x.Wins, Percent(x.Wins, x.Played), x.Id == userId))
@@ -109,7 +114,7 @@ public class OnlineService(QuizDbContext db, ResultsService results)
 
         if (byUser.Count > 0)
         {
-            var wins = byUser.Select(kv => (User: kv.Key, Wins: kv.Value.Count(p => p.Rank == 1))).MaxBy(x => x.Wins);
+            var wins = byUser.Select(kv => (User: kv.Key, Wins: kv.Value.Count(p => p.Won))).MaxBy(x => x.Wins);
             if (wins.Wins > 0) Add("🏅", "Meeste wedstrijdzeges", "Vaakst eerste aan tafel", wins.User, $"{wins.Wins}×");
 
             var top = rating.MaxBy(kv => kv.Value);
@@ -125,7 +130,7 @@ public class OnlineService(QuizDbContext db, ResultsService results)
             if (unbeaten.Value >= 2) Add("🔥", "Onklopbaar", "Langste reeks gewonnen wedstrijden", unbeaten.Key, $"{unbeaten.Value} op rij");
 
             var winRate = byUser.Where(kv => kv.Value.Count >= 5)
-                .Select(kv => (User: kv.Key, Pct: Percent(kv.Value.Count(p => p.Rank == 1), kv.Value.Count)))
+                .Select(kv => (User: kv.Key, Pct: Percent(kv.Value.Count(p => p.Won), kv.Value.Count)))
                 .OrderByDescending(x => x.Pct).FirstOrDefault();
             if (winRate.User is not null) Add("📈", "Winnaarsmentaliteit", "Hoogste winstpercentage (min. 5 wedstrijden)", winRate.User, $"{winRate.Pct}%");
 
@@ -136,7 +141,7 @@ public class OnlineService(QuizDbContext db, ResultsService results)
         var mine = byUser.GetValueOrDefault(userId) ?? [];
         var me = new OnlineMyStats(
             mine.Count,
-            mine.Count(p => p.Rank == 1),
+            mine.Count(p => p.Won),
             (int)Math.Round(rating.GetValueOrDefault(userId, MatchRules.StartRating)),
             (int)Math.Round(best.GetValueOrDefault(userId, MatchRules.StartRating)),
             mine.Sum(p => p.FirstCorrect),

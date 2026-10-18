@@ -539,6 +539,9 @@ namespace VoetbalQuiz.Server.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("QuestionCount")
+                        .HasColumnType("integer");
+
                     b.Property<int>("Seats")
                         .HasColumnType("integer");
 

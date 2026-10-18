@@ -20,7 +20,7 @@ public class MatchService(
 
     private record LobbyRow(
         int Id, string Name, string HostName, string? HostAvatar, int Seats, MatchStatus Status,
-        DateTime CreatedAt, DateTime? FinishedAt, int Players, bool IAmIn, bool Played, List<QuestionType> Types, bool Derby);
+        DateTime CreatedAt, DateTime? FinishedAt, int Players, bool IAmIn, bool Played, List<QuestionType> Types, bool Derby, int Questions);
 
     public async Task<LobbyOverview> GetLobbyAsync(string userId)
     {
@@ -35,11 +35,12 @@ public class MatchService(
                 m.Players.Any(p => p.UserId == userId && p.LeftAt == null),
                 m.Players.Any(p => p.UserId == userId),
                 m.Types,
-                m.Derby))
+                m.Derby,
+                m.QuestionCount))
             .ToListAsync();
 
         static MatchSummary Summary(LobbyRow m) =>
-            new(m.Id, m.Name, m.HostName, m.HostAvatar, m.Seats, m.Players, m.Status, m.IAmIn, m.CreatedAt, TypesOf(m.Types), m.Derby);
+            new(m.Id, m.Name, m.HostName, m.HostAvatar, m.Seats, m.Players, m.Status, m.IAmIn, m.CreatedAt, TypesOf(m.Types), m.Derby, m.Questions);
 
         return new LobbyOverview(
             matches.Where(m => m.Status == MatchStatus.Lobby && !m.IAmIn && m.Players < m.Seats).Select(m => Summary(m)).ToList(),
@@ -56,7 +57,8 @@ public class MatchService(
         var active = await quiz.ActiveTypesAsync();
         if (types.Any(t => !active.Contains(t)))
             throw new QuizException("Dat vraagtype staat momenteel uit. Kies een ander type.");
-        if (await quiz.BuildOnlineAsync(types) is null)
+        var count = MatchRules.ClampQuestions(req.Questions, types.Count);
+        if (await quiz.BuildOnlineAsync(types, count) is null)
             throw new QuizException("Er zijn nog niet genoeg vragen voor deze keuze. Kies een ander type of een mix.");
 
         var match = new Match
@@ -66,6 +68,7 @@ public class MatchService(
             Seats = Math.Clamp(req.Seats, MatchRules.MinSeats, MatchRules.MaxSeats),
             Types = types,
             Derby = req.Derby,
+            QuestionCount = count,
             CreatedAt = Now,
             Players = [new MatchPlayer { UserId = userId, JoinedAt = Now }],
         };
@@ -96,9 +99,22 @@ public class MatchService(
             if (match.HostUserId == userId) match.Status = MatchStatus.Cancelled; // organisator weg = tafel weg
             else match.Players.Remove(me);
         }
-        else if (match.Status == MatchStatus.Running)
+        else if (match.Status == MatchStatus.Running && me.LeftAt is null)
         {
+            // Wie een lopende wedstrijd verlaat, verliest al zijn punten en eindigt onder wie bleef.
             me.LeftAt = Now;
+            me.Score = 0;
+            // Wie weg is, kan niemand meer schaden: wapens die nog niet afgerekend zijn, vervallen.
+            foreach (var q in match.Questions.Where(q => q.EndedAt == null))
+            {
+                if (q.TrumpUserId == userId) q.TrumpUserId = null;
+                if (q.FlareUserId == userId) (q.FlareUserId, q.FlareAt) = (null, null);
+                foreach (var a in q.Answers)
+                {
+                    if (a.RedCardFromUserId == userId) a.RedCardFromUserId = null;
+                    if (a.StolenByUserId == userId) a.StolenByUserId = null;
+                }
+            }
         }
         await SaveAndNotifyAsync(match);
     }
@@ -116,7 +132,7 @@ public class MatchService(
         if (types.Count == 0) throw new QuizException("Het gekozen vraagtype staat intussen uit. Maak een nieuwe tafel.");
 
         // Willekeurige vragen, maar niets uit de daily van vandaag (anders verklap je die).
-        var questions = await quiz.BuildOnlineAsync(types)
+        var questions = await quiz.BuildOnlineAsync(types, match.QuestionCount)
             ?? throw new QuizException("Er zijn nog niet genoeg vragen voor deze keuze.");
 
         var number = 1;
@@ -677,13 +693,18 @@ public class MatchService(
             answer.SpeedPoints = QuestionEngine.PointsWhenStopped(daily, AsAttempt(answer.UserId, answer));
         ApplyTrump(match, question);
 
+        // Wie vertrok, telt niet meer mee: geen positie (die gaat naar wie bleef) en geen punten.
+        var left = match.Players.Where(p => p.LeftAt != null).Select(p => p.UserId).ToHashSet();
         var position = 1;
-        foreach (var answer in question.Answers.Where(a => a.Correct).OrderBy(a => a.AnsweredAt))
+        foreach (var answer in question.Answers.Where(a => a.Correct && !left.Contains(a.UserId)).OrderBy(a => a.AnsweredAt))
         {
             answer.Position = position;
             answer.Bonus = MatchRules.BonusFor(position);
             position++;
         }
+        // Ook niets om te stelen bij een vertrekker.
+        foreach (var answer in question.Answers.Where(a => left.Contains(a.UserId)))
+            (answer.SpeedPoints, answer.Bonus) = (0, 0);
         ApplyRedCards(match, question);
         var losers = ApplyGambles(match, question);
         var steals = ApplySteals(match, question);
@@ -698,15 +719,27 @@ public class MatchService(
             loser.Score -= penalty;
             loser.WeaponEffect = -penalty;
         }
+        foreach (var player in match.Players.Where(p => left.Contains(p.UserId)))
+            player.Score = 0;
     }
 
+    /// <summary>
+    /// Eindstand: wie bleef, volgens de punten (gelijk = zelfde plaats). Daaronder wie vertrok, met 0 punten:
+    /// wie het langst bleef het hoogst. Blijft er één speler over, dan wint die dus zowiezo.
+    /// </summary>
     private void Finish(Match match)
     {
         match.Status = MatchStatus.Finished;
         match.FinishedAt = Now;
-        var ordered = match.Players.OrderByDescending(p => p.Score).ToList();
-        for (var i = 0; i < ordered.Count; i++)
-            ordered[i].Rank = i > 0 && ordered[i - 1].Score == ordered[i].Score ? ordered[i - 1].Rank : i + 1;
+        var stayed = match.Players.Where(p => p.LeftAt == null).OrderByDescending(p => p.Score).ToList();
+        for (var i = 0; i < stayed.Count; i++)
+            stayed[i].Rank = i > 0 && stayed[i - 1].Score == stayed[i].Score ? stayed[i - 1].Rank : i + 1;
+        var rank = stayed.Count;
+        foreach (var p in match.Players.Where(p => p.LeftAt != null).OrderByDescending(p => p.LeftAt))
+        {
+            p.Rank = ++rank;
+            p.Score = 0; // ook als het vertrek samenviel met het afsluiten van een vraag
+        }
     }
 
     // ---------- Toestand ----------
@@ -761,7 +794,7 @@ public class MatchService(
 
         // Eerst wie juist was (in volgorde van aankomst), daarna wie deelpunten haalde.
         var reveal = phase is MatchPhase.Reveal && question is not null
-            ? question.Answers.Where(a => a.SpeedPoints + a.Bonus > 0)
+            ? question.Answers.Where(a => a.SpeedPoints + a.Bonus > 0 && match.Players.Any(p => p.UserId == a.UserId && p.LeftAt == null))
                 .OrderBy(a => a.Position ?? int.MaxValue).ThenByDescending(a => a.SpeedPoints)
                 .Select(a => new RevealEntry(a.User.UserName!, cards.GetValueOrDefault(a.UserId)?.AvatarId,
                     a.Position ?? 0, a.SpeedPoints + a.Bonus, a.Bonus, a.UserId == userId))
@@ -785,7 +818,7 @@ public class MatchService(
             answerLabel,
             reveal,
             types,
-            match.Questions.Count > 0 ? match.Questions.Count : QuestionTypes.Mix(types).Values.Sum(),
+            match.Questions.Count > 0 ? match.Questions.Count : match.QuestionCount,
             question?.Type ?? types[0],
             limit,
             view,

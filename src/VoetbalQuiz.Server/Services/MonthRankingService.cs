@@ -71,16 +71,23 @@ public class MonthRankingService(QuizDbContext db, ResultsService results)
         var toUtc = fromUtc.AddMonths(1);
         var matchRows = await db.MatchPlayers
             .Where(p => p.Match.Status == MatchStatus.Finished && p.Match.FinishedAt >= fromUtc && p.Match.FinishedAt < toUtc)
-            .Select(p => new { p.MatchId, p.UserId, Rank = p.Rank ?? 99 })
-            .ToListAsync();
-        var online = matchRows.GroupBy(r => r.MatchId)
-            .SelectMany(match => match.Select(p => new
+            .Select(p => new
             {
-                p.UserId,
-                Won = p.Rank == 1,
-                Points = MonthRules.OnlinePoints(match.Count(o => o.UserId != p.UserId && o.Rank > p.Rank)
-                                                 + 0.5 * match.Count(o => o.UserId != p.UserId && o.Rank == p.Rank)),
-            }))
+                p.MatchId, p.UserId, Rank = p.Rank ?? 99,
+                Counts = p.Match.Players.Count(o => o.LeftAt == null) >= MatchRules.StayersForWin,
+            })
+            .ToListAsync();
+        // Als enige overgebleven: geen zege en geen punten (zie MatchRules.StayersForWin).
+        var online = matchRows.GroupBy(r => r.MatchId)
+            .SelectMany(match => match.Select(p => p.Rank == 1 && !p.Counts
+                ? new { p.UserId, Won = false, Points = 0 }
+                : new
+                {
+                    p.UserId,
+                    Won = p.Rank == 1,
+                    Points = MonthRules.OnlinePoints(match.Count(o => o.UserId != p.UserId && o.Rank > p.Rank)
+                                                     + 0.5 * match.Count(o => o.UserId != p.UserId && o.Rank == p.Rank)),
+                }))
             .GroupBy(x => x.UserId)
             .ToDictionary(g => g.Key, g => (
                 Points: g.OrderByDescending(x => x.Points).Take(MonthRules.OnlineBestMatches).Sum(x => x.Points),

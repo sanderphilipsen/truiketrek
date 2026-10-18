@@ -223,11 +223,11 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
 
     /// <summary>Stelt een reeks samen volgens <see cref="QuestionTypes.Mix"/>; null als een type te weinig vragen heeft.</summary>
     private async Task<List<DailyQuestion>?> BuildMixAsync(
-        List<QuestionType> types, string? tag, List<Player>? playerPool = null, HashSet<int>? excludeItems = null)
+        List<QuestionType> types, string? tag, List<Player>? playerPool = null, HashSet<int>? excludeItems = null, int? questions = null)
     {
         var all = new List<DailyQuestion>();
         var usedPlayers = new HashSet<int>();
-        foreach (var (type, count) in QuestionTypes.Mix(types))
+        foreach (var (type, count) in questions is { } n ? QuestionTypes.Mix(types, n) : QuestionTypes.Mix(types))
         {
             var part = await BuildAsync(type, count, tag, QuestionTypes.Get(type).FromPlayers ? playerPool : null, usedPlayers, excludeItems);
             if (part is null) return null;
@@ -248,13 +248,14 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
     }
 
     /// <summary>
-    /// De vragen van een online tafel volgens <see cref="QuestionTypes.Mix"/>, of null als een type te weinig vragen heeft.
+    /// De vragen van een online tafel (zoveel als de organisator koos, om beurten per type),
+    /// of null als een type te weinig vragen heeft.
     /// Willekeurig gekozen en nooit iets uit de daily van vandaag (anders verklap je die).
     /// </summary>
-    public async Task<List<DailyQuestion>?> BuildOnlineAsync(List<QuestionType> types)
+    public async Task<List<DailyQuestion>?> BuildOnlineAsync(List<QuestionType> types, int questions)
     {
         var (pool, dailyItems) = await OnlinePoolAsync();
-        return await BuildMixAsync(types, null, pool, dailyItems);
+        return await BuildMixAsync(types, null, pool, dailyItems, questions);
     }
 
     /// <summary>

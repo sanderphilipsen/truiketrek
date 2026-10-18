@@ -65,7 +65,7 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
         var matches = await db.MatchPlayers
             .Where(p => p.Match.Status == MatchStatus.Finished)
             .GroupBy(p => p.UserId)
-            .Select(g => new { UserId = g.Key, Played = g.Count(), Won = g.Count(p => p.Rank == 1) })
+            .Select(g => new { UserId = g.Key, Played = g.Count(), Won = g.Count(p => p.Rank == 1 && p.Match.Players.Count(o => o.LeftAt == null) >= MatchRules.StayersForWin) })
             .ToDictionaryAsync(x => x.UserId);
 
         var sizes = await ChallengeSizesAsync();

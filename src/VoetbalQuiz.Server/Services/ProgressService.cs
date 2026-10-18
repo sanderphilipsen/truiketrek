@@ -189,16 +189,19 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
 
         var challengeWins = await db.DailyChallenges.Where(c => c.WinnerUserId == userId)
             .Select(c => c.SpecialEventId != null).ToListAsync();
+        // Een zege telt enkel als er genoeg spelers bleven; een grote tafel = 4 spelers die bleven.
         var bigTableWins = await db.MatchPlayers.CountAsync(p => p.UserId == userId && p.Rank == 1
-            && p.Match.Status == MatchStatus.Finished && p.Match.Players.Count >= 4);
+            && p.Match.Status == MatchStatus.Finished && p.Match.Players.Count(o => o.LeftAt == null) >= 4);
         var matches = await db.MatchPlayers.Where(p => p.UserId == userId && p.Match.Status == MatchStatus.Finished)
             .OrderBy(p => p.Match.FinishedAt)
-            .Select(p => p.Rank).ToListAsync();
+            .Select(p => new { p.Rank, Counts = p.Match.Players.Count(o => o.LeftAt == null) >= MatchRules.StayersForWin })
+            .ToListAsync();
         var goldenBalls = await goldenBall.WonByAsync(userId);
         int winStreak = 0, wins = 0;
-        foreach (var rank in matches)
+        foreach (var m in matches)
         {
-            wins = rank == 1 ? wins + 1 : 0;
+            if (m.Rank == 1 && !m.Counts) continue; // als enige over: geen zege, reeks blijft staan
+            wins = m.Rank == 1 ? wins + 1 : 0;
             winStreak = Math.Max(winStreak, wins);
         }
 
@@ -213,7 +216,7 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
             hours.Any(h => h < 5),
             hours.Any(h => h is >= 5 and < 7),
             matches.Count,
-            matches.Count(r => r == 1),
+            matches.Count(m => m.Rank == 1 && m.Counts),
             attempts.Where(a => a.Special).Select(a => a.DailyChallengeId).Distinct().Count(),
             challengeWins.Count(special => special),
             (await results.LevelOfAsync(userId)).Level,

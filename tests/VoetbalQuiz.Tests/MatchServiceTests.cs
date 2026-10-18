@@ -140,7 +140,7 @@ public sealed class MatchServiceTests : IDisposable
     public async Task Full_match_ends_with_ranking_rating_and_xp()
     {
         var id = await StartedMatchAsync(_guest, _third);
-        for (var n = 1; n <= MatchRules.Questions; n++)
+        for (var n = 1; n <= MatchRules.DefaultQuestions; n++)
         {
             var answer = await CurrentAnswerAsync(id);
             await _matches.GuessAsync(_host, id, answer);
@@ -179,6 +179,105 @@ public sealed class MatchServiceTests : IDisposable
         await _matches.GuessAsync(_host, id, await CurrentAnswerAsync(id));
         await Tick(0.1);
         Assert.Equal(MatchPhase.Reveal, (await _matches.GetStateAsync(_host, id)).Phase);
+    }
+
+    /// <summary>Speelt de vragen af: de host antwoordt juist (als hij er nog is), de rest laat de tijd lopen.</summary>
+    private async Task PlayOutAsync(int id)
+    {
+        for (var guard = 0; guard < 100 && (await _matches.GetStateAsync(_host, id)).Phase != MatchPhase.Finished; guard++)
+        {
+            var state = await _matches.GetStateAsync(_host, id);
+            if (state.Phase == MatchPhase.Question && state.IAmIn && !state.MyDone)
+                await _matches.GuessAsync(_host, id, await CurrentAnswerAsync(id));
+            await Tick(GameRules.TimeLimitSeconds + 1);
+            await Tick(MatchRules.RevealSeconds);
+        }
+    }
+
+    [Fact]
+    public async Task Host_chooses_the_number_of_questions()
+    {
+        var id = await _matches.CreateAsync(_host, "host", new CreateMatchRequest(null, 4, Questions: 4));
+        Assert.Equal(4, Assert.Single((await _matches.GetLobbyAsync(_guest)).Open).Questions);
+        await _matches.JoinAsync(_guest, id);
+        await _matches.StartAsync(_host, id);
+        Assert.Equal(4, (await _matches.GetStateAsync(_host, id)).TotalQuestions);
+
+        // Buiten de grenzen wordt het afgerond naar het minimum of maximum.
+        var few = await _matches.CreateAsync(_guest, "gast", new CreateMatchRequest(null, 4, Questions: 1));
+        Assert.Equal(MatchRules.MinQuestions, (await _matches.GetStateAsync(_guest, few)).TotalQuestions);
+    }
+
+    [Fact]
+    public void Mix_with_a_count_spreads_the_questions_over_the_types()
+    {
+        var mix = QuestionTypes.Mix([QuestionType.WieBenIk, QuestionType.Snelvuur, QuestionType.Opstelling], 7);
+        Assert.Equal(7, mix.Values.Sum());
+        Assert.Equal([3, 2, 2], mix.Values);
+
+        // Minstens één vraag per gekozen type.
+        Assert.Equal(5, MatchRules.ClampQuestions(3, types: 5));
+    }
+
+    [Fact]
+    public async Task Leaving_a_running_match_costs_all_points_and_ranks_you_last()
+    {
+        var id = await _matches.CreateAsync(_host, "host", new CreateMatchRequest(null, 4, Questions: 3));
+        await _matches.JoinAsync(_guest, id);
+        await _matches.JoinAsync(_third, id);
+        await _matches.StartAsync(_host, id);
+        await Tick(MatchRules.CountdownSeconds);
+
+        await _matches.GuessAsync(_host, id, await CurrentAnswerAsync(id));
+        await Tick(GameRules.TimeLimitSeconds + 1);
+        Assert.True((await _matches.GetStateAsync(_host, id)).Players.Single(p => p.IsMe).Score > 0);
+
+        await _matches.LeaveAsync(_host, id);
+        Assert.Equal(0, (await _matches.GetStateAsync(_guest, id)).Players.Single(p => p.UserName == "host").Score);
+
+        await PlayOutAsync(id);
+        var final = await _matches.GetStateAsync(_guest, id);
+        Assert.Equal(MatchPhase.Finished, final.Phase);
+        Assert.Equal(3, final.Players.Single(p => p.UserName == "host").Rank);
+        Assert.All(final.Players.Where(p => p.UserName != "host"), p => Assert.Equal(1, p.Rank));
+    }
+
+    [Fact]
+    public async Task Last_player_left_wins_and_leavers_rank_by_who_stayed_longest()
+    {
+        var id = await _matches.CreateAsync(_host, "host", new CreateMatchRequest(null, 4, Questions: 3));
+        await _matches.JoinAsync(_guest, id);
+        await _matches.JoinAsync(_third, id);
+        await _matches.StartAsync(_host, id);
+        await Tick(MatchRules.CountdownSeconds);
+
+        // Gast en derde scoren op vraag 1; de host niet.
+        var answer = await CurrentAnswerAsync(id);
+        await _matches.GuessAsync(_guest, id, answer);
+        await _matches.GuessAsync(_third, id, answer);
+        await Tick(GameRules.TimeLimitSeconds + 1);
+
+        await _matches.LeaveAsync(_guest, id);
+        _clock.Advance(TimeSpan.FromSeconds(1));
+        await _matches.LeaveAsync(_third, id);
+
+        // De host speelt alleen verder en wint zowiezo, ook al had hij minder punten.
+        Assert.Equal(MatchStatus.Running, (await _matches.GetStateAsync(_host, id)).Status);
+        await PlayOutAsync(id);
+        var final = await _matches.GetStateAsync(_host, id);
+        Assert.Equal(MatchPhase.Finished, final.Phase);
+        Assert.Equal(["host", "derde", "gast"], final.Players.OrderBy(p => p.Rank).Select(p => p.UserName));
+        Assert.Equal([1, 2, 3], final.Players.OrderBy(p => p.Rank).Select(p => p.Rank!.Value));
+
+        // Maar als enige overgebleven telt het niet als zege: geen rating erbij, geen zege, geen winst-XP.
+        // Wie vertrok, verliest wel rating.
+        var board = await _online.GetRatingLeaderboardAsync(_host);
+        var host = board.Entries.Single(e => e.UserName == "host");
+        Assert.Equal((MatchRules.StartRating, 0), (host.Value, host.Wins));
+        Assert.True(board.Entries.Single(e => e.UserName == "gast").Value < MatchRules.StartRating);
+        Assert.True(board.Entries.Single(e => e.UserName == "derde").Value <= MatchRules.StartRating); // verliest van host, wint van gast
+        Assert.Equal(0, (await _online.GetStatsAsync(_host)).Me.Wins);
+        Assert.Equal(Levels.XpPerMatch, (await _results.LevelOfAsync(_host)).Xp);
     }
 
     [Fact]

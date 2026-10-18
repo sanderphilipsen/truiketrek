@@ -5,13 +5,17 @@ public enum MatchStatus { Lobby, Running, Finished, Cancelled }
 /// <summary>Waar een lopende wedstrijd zich bevindt.</summary>
 public enum MatchPhase { Lobby, Countdown, Question, Reveal, Finished, Cancelled }
 
-/// <summary>Types: één vraagtype of een mix (leeg = "Wie ben ik?"). Enkel types die aan staan.</summary>
-public record CreateMatchRequest(string? Name, int Seats, List<QuestionType>? Types = null, bool Derby = false);
+/// <summary>
+/// Types: één vraagtype of een mix (leeg = "Wie ben ik?"). Enkel types die aan staan.
+/// Questions: aantal vragen (null = <see cref="MatchRules.DefaultQuestions"/>).
+/// </summary>
+public record CreateMatchRequest(string? Name, int Seats, List<QuestionType>? Types = null, bool Derby = false, int? Questions = null);
 
 /// <summary>Een tafel zoals die in de lobby verschijnt.</summary>
 public record MatchSummary(
     int Id, string Name, string HostName, string? HostAvatarId, int Seats, int Players,
-    MatchStatus Status, bool IAmIn, DateTime CreatedAt, List<QuestionType>? Types = null, bool Derby = false);
+    MatchStatus Status, bool IAmIn, DateTime CreatedAt, List<QuestionType>? Types = null, bool Derby = false,
+    int Questions = MatchRules.DefaultQuestions);
 
 /// <summary>Derby: een wapen inzetten. Target: de gebruikersnaam van wie een rode kaart krijgt.</summary>
 public record UseWeaponRequest(string? Target);

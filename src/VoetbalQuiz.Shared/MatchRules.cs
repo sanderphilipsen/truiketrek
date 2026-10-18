@@ -6,8 +6,25 @@ namespace VoetbalQuiz.Shared;
 /// </summary>
 public static class MatchRules
 {
-    public const int Questions = 10;
+    /// <summary>Aantal vragen dat de organisator kan kiezen (de punten tellen niet voor de daglimiet).</summary>
+    public const int DefaultQuestions = 10;
+    public const int MinQuestions = 3;
+    public const int MaxQuestions = 30;
+
+    /// <summary>Binnen de grenzen, en minstens één vraag per gekozen type (anders valt een type uit de mix).</summary>
+    public static int ClampQuestions(int? questions, int types = 1) =>
+        Math.Clamp(questions ?? DefaultQuestions, MinQuestionsFor(types), MaxQuestions);
+
+    public static int MinQuestionsFor(int types) => Math.Clamp(types, MinQuestions, MaxQuestions);
+
     public const int MinSeats = 2;
+
+    /// <summary>
+    /// Een zege telt (Elo, reeksen, badges, XP, maandklassement) pas als er minstens zoveel spelers tot het einde bleven.
+    /// Wie als enige overblijft wint wel aan tafel, maar dat telt nergens als zege: anders win je gratis door
+    /// de anderen te laten vertrekken.
+    /// </summary>
+    public const int StayersForWin = 2;
     public const int MaxSeats = 8;
 
     /// <summary>Aftellen voor de eerste vraag.</summary>

@@ -379,6 +379,28 @@ select { font: inherit; padding: 8px; border-radius: 8px; border: 1.5px solid #c
 }
 .seat-picker button.active { background: var(--pitch-2); border-color: var(--pitch-2); color: #fff; }
 
+/* Aantal vragen van een tafel: − 10 + */
+.count-stepper { display: flex; align-items: center; gap: 6px; }
+.count-stepper button {
+    width: 42px; height: 42px;
+    border-radius: 10px;
+    border: 1.5px solid #cfd8d2;
+    background: #fff;
+    font-weight: 800;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.count-stepper button:disabled { opacity: .4; cursor: default; }
+.count-stepper input {
+    width: 64px; height: 42px;
+    text-align: center;
+    font-weight: 800; font-size: 1rem;
+    -moz-appearance: textfield;
+}
+.count-stepper input::-webkit-outer-spin-button,
+.count-stepper input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.count-stepper small { margin-left: 4px; }
+
 /* Vraagtype van een tafel: één type, of met "Mix" meerdere. */
 .type-picker { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 6px; }
 .type-picker button {

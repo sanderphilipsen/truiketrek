@@ -26,7 +26,7 @@ else
                     <div class="table-info">
                         <b>@m.Name</b>
                         <small>@(m.Status == MatchStatus.Running ? "🔴 Bezig" : $"{m.Players}/{m.Seats} spelers · wacht op start")</small>
-                        <small class="table-type">@QuestionTypes.Label(m.Types)@if (m.Derby) { <span class="derby-badge">🔥 Derby</span> }</small>
+                        <small class="table-type">@QuestionTypes.Label(m.Types) · @m.Questions vragen@if (m.Derby) { <span class="derby-badge">🔥 Derby</span> }</small>
                     </div>
                     <span class="btn small primary">@(m.Status == MatchStatus.Running ? "Verder" : "Open")</span>
                 </a>
@@ -49,7 +49,7 @@ else
                     <div class="table-info">
                         <b>@m.Name</b>
                         <small>@m.HostName · @m.Players/@m.Seats spelers</small>
-                        <small class="table-type">@QuestionTypes.Label(m.Types)@if (m.Derby) { <span class="derby-badge">🔥 Derby</span> }</small>
+                        <small class="table-type">@QuestionTypes.Label(m.Types) · @m.Questions vragen@if (m.Derby) { <span class="derby-badge">🔥 Derby</span> }</small>
                         <div class="seats">
                             @for (var i = 0; i < m.Seats; i++)
                             {

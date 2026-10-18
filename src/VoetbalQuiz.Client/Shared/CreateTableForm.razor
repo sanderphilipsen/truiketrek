@@ -1,4 +1,4 @@
-@* Een online tafel aanmaken: naam (optioneel), aantal plaatsen en het vraagtype (één type of een mix van de types die aan staan). *@
+@* Een online tafel aanmaken: naam (optioneel), aantal plaatsen, het vraagtype (één type of een mix van de types die aan staan) en het aantal vragen. *@
 @inject ApiClient Api
 @inject NavigationManager Nav
 
@@ -43,6 +43,16 @@
             <small class="type-summary @(MixIncomplete ? "warn" : "")">@Summary</small>
         }
     </div>
+    <div>
+        <div class="field-label">Aantal vragen</div>
+        <div class="count-stepper">
+            <button type="button" aria-label="Minder vragen" disabled="@(Questions <= MinQuestions)" @onclick="() => Step(-1)">−</button>
+            <input type="number" min="@MinQuestions" max="@MatchRules.MaxQuestions" aria-label="Aantal vragen"
+                   value="@Questions" @onchange="SetQuestions" />
+            <button type="button" aria-label="Meer vragen" disabled="@(Questions >= MatchRules.MaxQuestions)" @onclick="() => Step(1)">+</button>
+            <small class="muted">@MinQuestions tot @MatchRules.MaxQuestions@(_chosen.Count > MatchRules.MinQuestions ? " (min. één per type)" : "")</small>
+        </div>
+    </div>
     <button type="button" class="derby-toggle @(_derby ? "active" : "")" aria-pressed="@(_derby ? "true" : "false")" @onclick="() => _derby = !_derby">
         <span class="derby-flame">🔥</span>
         <span class="derby-text">
@@ -79,11 +89,20 @@
     {
         0 => "Kies een vraagtype.",
         _ when MixIncomplete => "Kies minstens twee types voor een mix.",
-        1 => $"{QuestionTypes.Get(_chosen[0]).HowTo} {Count} vragen.",
-        _ => $"{QuestionTypes.Label(_chosen)}: de vragen wisselen om beurten van type. {Count} vragen.",
+        1 => QuestionTypes.Get(_chosen[0]).HowTo,
+        _ => $"{QuestionTypes.Label(_chosen)}: de vragen wisselen om beurten van type.",
     };
 
-    private int Count => QuestionTypes.Mix(_chosen).Values.Sum();
+    private int _questions = MatchRules.DefaultQuestions;
+
+    /// <summary>Wat er echt gespeeld wordt: minstens één vraag per gekozen type.</summary>
+    private int Questions => MatchRules.ClampQuestions(_questions, _chosen.Count);
+    private int MinQuestions => MatchRules.MinQuestionsFor(_chosen.Count);
+
+    private void Step(int delta) => _questions = MatchRules.ClampQuestions(Questions + delta, _chosen.Count);
+
+    private void SetQuestions(ChangeEventArgs e) =>
+        _questions = int.TryParse(e.Value?.ToString(), out var n) ? MatchRules.ClampQuestions(n, _chosen.Count) : _questions;
 
     protected override async Task OnInitializedAsync()
     {
@@ -117,7 +136,7 @@
         _error = null;
         try
         {
-            var id = await Api.CreateMatchAsync(new CreateMatchRequest(_name, _seats, [.. _chosen], _derby));
+            var id = await Api.CreateMatchAsync(new CreateMatchRequest(_name, _seats, [.. _chosen], _derby, Questions));
             Nav.NavigateTo($"online/{id}");
         }
         catch (ApiException ex) { _error = ex.Message; }

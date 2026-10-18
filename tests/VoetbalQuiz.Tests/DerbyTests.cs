@@ -267,6 +267,45 @@ public sealed class DerbyTests : IDisposable
     }
 
     [Fact]
+    public async Task Weapons_of_a_player_who_left_no_longer_hurt_anyone()
+    {
+        var id = await AtQuestionTwoAsync();
+        Give(id, _host, DerbyWeapon.PropereHanden);
+        Give(id, _third, DerbyWeapon.RodeKaart);
+        await _matches.UseWeaponAsync(_host, id, "gast");
+        await _matches.UseWeaponAsync(_third, id, "gast");
+
+        // Wie de gast bestal en rood gaf, vertrekt.
+        await _matches.LeaveAsync(_host, id);
+        await _matches.LeaveAsync(_third, id);
+
+        var (q, _) = await CurrentAsync(id);
+        await _matches.GuessAsync(_guest, id, q.Correct.ToString()); // 100 + 50 bonus, niets ervan kwijt
+        await Tick(QuestionRules.SnelvuurSeconds + 1);
+
+        var reveal = await _matches.GetStateAsync(_guest, id);
+        Assert.Equal(150, reveal.Players.Single(p => p.UserName == "gast").Score);
+        Assert.All(reveal.Players.Where(p => p.Left), p => Assert.Equal(0, p.Score));
+    }
+
+    [Fact]
+    public async Task Stealing_from_a_player_who_left_gives_nothing()
+    {
+        var id = await AtQuestionTwoAsync();
+        Give(id, _host, DerbyWeapon.PropereHanden);
+        await _matches.UseWeaponAsync(_host, id, "gast");
+
+        var (q, _) = await CurrentAsync(id);
+        await _matches.GuessAsync(_guest, id, q.Correct.ToString());
+        await _matches.LeaveAsync(_guest, id);
+        await Tick(QuestionRules.SnelvuurSeconds + 1);
+
+        var reveal = await _matches.GetStateAsync(_host, id);
+        Assert.Equal(0, reveal.Players.Single(p => p.UserName == "host").Score);
+        Assert.Empty(reveal.Reveal);
+    }
+
+    [Fact]
     public async Task Gokchinees_doubles_your_points_after_seeing_the_question()
     {
         var id = await AtQuestionTwoAsync();
@@ -399,13 +438,13 @@ public sealed class DerbyTests : IDisposable
     {
         var id = await AtQuestionTwoAsync();
         Give(id, _host, DerbyWeapon.BengaalsVuur);
-        for (var n = 2; n < MatchRules.Questions; n++)
+        for (var n = 2; n < MatchRules.DefaultQuestions; n++)
         {
             await Tick(QuestionRules.SnelvuurSeconds + 1);
             await Tick(MatchRules.RevealSeconds);
         }
         var last = await _matches.GetStateAsync(_host, id);
-        Assert.Equal(MatchRules.Questions, last.CurrentNumber);
+        Assert.Equal(MatchRules.DefaultQuestions, last.CurrentNumber);
         Assert.True(last.Derby!.Ceasefire);
         await Assert.ThrowsAsync<QuizException>(() => _matches.UseWeaponAsync(_host, id, null));
     }
@@ -453,7 +492,7 @@ public sealed class DerbyTests : IDisposable
         var id = await AtQuestionTwoAsync();
         Give(id, _host, DerbyWeapon.RodeKaart);
         await _matches.UseWeaponAsync(_host, id, "gast");
-        for (var n = 2; n <= MatchRules.Questions; n++)
+        for (var n = 2; n <= MatchRules.DefaultQuestions; n++)
         {
             await Tick(QuestionRules.SnelvuurSeconds + 1);
             await Tick(MatchRules.RevealSeconds);

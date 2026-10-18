@@ -141,6 +141,9 @@ public class Match
 
     /// <summary>Derby mode: elke speler krijgt bij de aftrap een wapen (zie <see cref="DerbyRules"/>).</summary>
     public bool Derby { get; set; }
+
+    /// <summary>Hoeveel vragen de organisator koos (zie <see cref="MatchRules.ClampQuestions"/>).</summary>
+    public int QuestionCount { get; set; } = MatchRules.DefaultQuestions;
     public List<MatchPlayer> Players { get; set; } = [];
     public List<MatchQuestion> Questions { get; set; } = [];
 }
