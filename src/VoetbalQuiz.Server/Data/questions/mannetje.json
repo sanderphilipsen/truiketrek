@@ -1,0 +1,538 @@
+[
+  {
+    "answer": "Kevin De Bruyne",
+    "aliases": [
+      "De Bruyne",
+      "KDB"
+    ],
+    "avatar": "debruyne",
+    "clues": [
+      "Rode Duivel en jarenlang de motor van Manchester City",
+      "Ik ben geboren in Drongen"
+    ],
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne"
+    ],
+    "tags": [
+      "rode-duivels"
+    ]
+  },
+  {
+    "answer": "Eden Hazard",
+    "aliases": [
+      "Hazard"
+    ],
+    "avatar": "hazard",
+    "clues": [
+      "Ik won twee keer de Europa League met Chelsea",
+      "Mijn broer Thorgan speelde ook bij de Rode Duivels"
+    ],
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Eden_Hazard"
+    ],
+    "tags": [
+      "rode-duivels"
+    ]
+  },
+  {
+    "answer": "Romelu Lukaku",
+    "aliases": [
+      "Lukaku"
+    ],
+    "avatar": "lukaku",
+    "clues": [
+      "Recordschutter van de Rode Duivels",
+      "Ik debuteerde als 16-jarige bij Anderlecht"
+    ],
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht"
+    ]
+  },
+  {
+    "answer": "Thibaut Courtois",
+    "aliases": [
+      "Courtois"
+    ],
+    "avatar": "courtois",
+    "clues": [
+      "Doelman die een Champions League-finale won met Real Madrid",
+      "Ik ben afkomstig uit Bree en brak door bij Genk"
+    ],
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Thibaut_Courtois"
+    ],
+    "tags": [
+      "rode-duivels"
+    ]
+  },
+  {
+    "answer": "Vincent Kompany",
+    "aliases": [
+      "Kompany"
+    ],
+    "avatar": "kompany",
+    "clues": [
+      "Jarenlang aanvoerder van Manchester City",
+      "Later trainer van Burnley en Bayern München"
+    ],
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Vincent_Kompany"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht"
+    ]
+  },
+  {
+    "answer": "Axel Witsel",
+    "aliases": [
+      "Witsel"
+    ],
+    "avatar": "witsel",
+    "clues": [
+      "Opgeleid bij Standard, later in Dortmund en Madrid",
+      "Mijn haar valt altijd op"
+    ],
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Axel_Witsel"
+    ],
+    "tags": [
+      "rode-duivels",
+      "standard"
+    ]
+  },
+  {
+    "answer": "Marouane Fellaini",
+    "aliases": [
+      "Fellaini"
+    ],
+    "avatar": "fellaini",
+    "clues": [
+      "Kopbalspecialist van Everton en Manchester United",
+      "Ik kopte de aansluitingstreffer tegen Japan op het WK 2018"
+    ],
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Marouane_Fellaini"
+    ],
+    "tags": [
+      "rode-duivels",
+      "standard"
+    ]
+  },
+  {
+    "answer": "Dries Mertens",
+    "aliases": [
+      "Mertens"
+    ],
+    "avatar": "mertens",
+    "clues": [
+      "Kleine aanvaller met een grote reputatie in Napels",
+      "Ik speelde eerder bij Gent, Utrecht en PSV"
+    ],
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dries_Mertens"
+    ],
+    "tags": [
+      "rode-duivels"
+    ]
+  },
+  {
+    "answer": "Jan Vertonghen",
+    "aliases": [
+      "Vertonghen"
+    ],
+    "avatar": "vertonghen",
+    "clues": [
+      "Verdediger met de meeste interlands voor België",
+      "Opgeleid bij Ajax, jarenlang bij Tottenham"
+    ],
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jan_Vertonghen"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht"
+    ]
+  },
+  {
+    "answer": "Jérémy Doku",
+    "aliases": [
+      "Doku"
+    ],
+    "avatar": "doku",
+    "clues": [
+      "Explosieve dribbelaar van Manchester City",
+      "Opgeleid bij Anderlecht"
+    ],
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/J%C3%A9r%C3%A9my_Doku"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht"
+    ]
+  },
+  {
+    "answer": "Youri Tielemans",
+    "aliases": [
+      "Tielemans"
+    ],
+    "avatar": "tielemans",
+    "clues": [
+      "Mijn knal besliste de FA Cup-finale van 2021",
+      "Opgeleid bij Anderlecht"
+    ],
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Youri_Tielemans"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht"
+    ]
+  },
+  {
+    "answer": "Enzo Scifo",
+    "aliases": [
+      "Scifo"
+    ],
+    "avatar": "scifo",
+    "clues": [
+      "Technische middenvelder van het WK 1986",
+      "Van Italiaanse afkomst, opgegroeid in La Louvière"
+    ],
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Enzo_Scifo"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "legende"
+    ]
+  },
+  {
+    "answer": "Jan Ceulemans",
+    "aliases": [
+      "Ceulemans"
+    ],
+    "avatar": "ceulemans",
+    "clues": [
+      "Aanvoerder van de Rode Duivels in Mexico 1986",
+      "Clubicoon van Club Brugge"
+    ],
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jan_Ceulemans"
+    ],
+    "tags": [
+      "rode-duivels",
+      "club-brugge",
+      "legende"
+    ]
+  },
+  {
+    "answer": "Michel Preud'homme",
+    "aliases": [
+      "Preud'homme",
+      "Preudhomme"
+    ],
+    "avatar": "preudhomme",
+    "clues": [
+      "Beste doelman van het WK 1994",
+      "Later trainer van Standard, Gent en Club Brugge"
+    ],
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Michel_Preud%27homme"
+    ],
+    "tags": [
+      "rode-duivels",
+      "standard",
+      "legende"
+    ]
+  },
+  {
+    "answer": "Lionel Messi",
+    "aliases": [
+      "Messi"
+    ],
+    "avatar": "messi",
+    "clues": [
+      "Recordwinnaar van de Ballon d'Or",
+      "Wereldkampioen in 2022"
+    ],
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lionel_Messi"
+    ],
+    "tags": [
+      "champions-league"
+    ]
+  },
+  {
+    "answer": "Cristiano Ronaldo",
+    "aliases": [
+      "Ronaldo",
+      "CR7"
+    ],
+    "avatar": "ronaldo",
+    "clues": [
+      "Topschutter aller tijden in de Champions League",
+      "Recordinternational van Portugal"
+    ],
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Cristiano_Ronaldo"
+    ],
+    "tags": [
+      "champions-league"
+    ]
+  },
+  {
+    "answer": "Kylian Mbappé",
+    "aliases": [
+      "Mbappe"
+    ],
+    "avatar": "mbappe",
+    "clues": [
+      "Als tiener wereldkampioen in 2018",
+      "Hattrick in de WK-finale van 2022"
+    ],
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kylian_Mbapp%C3%A9"
+    ],
+    "tags": []
+  },
+  {
+    "answer": "Erling Haaland",
+    "aliases": [
+      "Haaland"
+    ],
+    "avatar": "haaland",
+    "clues": [
+      "Noorse spits die doorbrak bij Salzburg en Dortmund",
+      "Mijn vader speelde ook in de Premier League"
+    ],
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Erling_Haaland"
+    ],
+    "tags": [
+      "champions-league"
+    ]
+  },
+  {
+    "answer": "Mohamed Salah",
+    "aliases": [
+      "Salah",
+      "Mo Salah"
+    ],
+    "avatar": "salah",
+    "clues": [
+      "Linksvoetige aanvaller van Liverpool",
+      "Ik speelde eerder bij Basel, Chelsea, Fiorentina en Roma"
+    ],
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mohamed_Salah"
+    ],
+    "tags": [
+      "champions-league"
+    ]
+  },
+  {
+    "answer": "Virgil van Dijk",
+    "aliases": [
+      "Van Dijk"
+    ],
+    "avatar": "vandijk",
+    "clues": [
+      "Centrale verdediger en aanvoerder van Liverpool",
+      "Tweede bij de Ballon d'Or van 2019"
+    ],
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Virgil_van_Dijk"
+    ],
+    "tags": [
+      "oranje",
+      "champions-league"
+    ]
+  },
+  {
+    "answer": "Zinédine Zidane",
+    "aliases": [
+      "Zidane",
+      "Zizou"
+    ],
+    "avatar": "zidane",
+    "clues": [
+      "Twee kopgoals in de WK-finale van 1998",
+      "Als trainer won ik drie Champions Leagues op rij"
+    ],
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Zin%C3%A9dine_Zidane"
+    ],
+    "tags": [
+      "legende",
+      "champions-league"
+    ]
+  },
+  {
+    "answer": "Ronaldinho",
+    "aliases": [
+      "Ronaldinho Gaucho"
+    ],
+    "avatar": "ronaldinho",
+    "clues": [
+      "Braziliaanse tovenaar met een brede glimlach",
+      "Ballon d'Or-winnaar in 2005"
+    ],
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ronaldinho"
+    ],
+    "tags": [
+      "legende",
+      "champions-league"
+    ]
+  },
+  {
+    "answer": "Neymar",
+    "aliases": [
+      "Neymar Jr",
+      "Neymar Junior"
+    ],
+    "avatar": "neymar",
+    "clues": [
+      "Braziliaanse dribbelaar, opgeleid bij Santos",
+      "De duurste transfer ooit"
+    ],
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Neymar"
+    ],
+    "tags": [
+      "champions-league"
+    ]
+  },
+  {
+    "answer": "Diego Maradona",
+    "aliases": [
+      "Maradona"
+    ],
+    "avatar": "maradona",
+    "clues": [
+      "Wereldkampioen in 1986, met de Hand van God",
+      "Legende van Napoli"
+    ],
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Diego_Maradona"
+    ],
+    "tags": [
+      "legende"
+    ]
+  },
+  {
+    "answer": "Johan Cruijff",
+    "aliases": [
+      "Cruijff",
+      "Cruyff"
+    ],
+    "avatar": "cruijff",
+    "clues": [
+      "Totaalvoetballer van Ajax en Oranje",
+      "Later trainer van het Dream Team van Barcelona"
+    ],
+    "difficulty": 1,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Johan_Cruyff"
+    ],
+    "tags": [
+      "legende",
+      "oranje",
+      "champions-league"
+    ]
+  },
+  {
+    "answer": "Andrea Pirlo",
+    "aliases": [
+      "Pirlo"
+    ],
+    "avatar": "pirlo",
+    "clues": [
+      "Regisseur met een baard en een gevaarlijke vrije trap",
+      "Wereldkampioen in 2006"
+    ],
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Andrea_Pirlo"
+    ],
+    "tags": [
+      "champions-league"
+    ]
+  },
+  {
+    "answer": "Edgar Davids",
+    "aliases": [
+      "Davids"
+    ],
+    "avatar": "davids",
+    "clues": [
+      "Nederlandse middenvelder met een sportbril",
+      "Bijgenaamd de pitbull"
+    ],
+    "difficulty": 2,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Edgar_Davids"
+    ],
+    "tags": [
+      "oranje"
+    ]
+  }
+]

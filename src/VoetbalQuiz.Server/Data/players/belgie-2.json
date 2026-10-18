@@ -1,0 +1,831 @@
+[
+  {
+    "name": "Nacer Chadli",
+    "answers": [
+      "Chadli"
+    ],
+    "country": "België",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1989 in Luik geboren en heb Marokkaanse roots.",
+      "Ik speelde ooit één oefenmatch voor Marokko voor ik voor België koos.",
+      "Ik speelde in Nederland bij AGOVV en Twente en daarna bij Tottenham.",
+      "Ik kwam ook uit voor West Brom, Monaco en Anderlecht.",
+      "Ik rondde in de blessuretijd de razendsnelle counter af tegen Japan op het WK 2018."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Nacer_Chadli"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Kevin Mirallas",
+    "answers": [
+      "Mirallas"
+    ],
+    "country": "België",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1987 in Luik geboren.",
+      "Ik ben een snelle aanvaller die zowel op de flank als in de spits speelde.",
+      "Ik speelde in Frankrijk bij Lille en Saint-Étienne.",
+      "Bij Olympiakos werd ik topschutter van de Griekse competitie.",
+      "Ik speelde daarna verschillende seizoenen voor Everton."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_Mirallas"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Thorgan Hazard",
+    "answers": [
+      "Thorgan"
+    ],
+    "country": "België",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1993 in La Louvière geboren en mijn broers voetballen ook.",
+      "Ik ben een aanvallende middenvelder en flankspeler met een goede voorzet.",
+      "Chelsea leende me uit aan Zulte Waregem, waar ik de Gouden Schoen won.",
+      "Ik maakte furore in Duitsland bij Borussia Mönchengladbach.",
+      "Met Borussia Dortmund won ik in 2021 de Duitse beker."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Thorgan_Hazard",
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
+    ],
+    "tags": [
+      "rode-duivels",
+      "gouden-schoen"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Mbark Boussoufa",
+    "answers": [
+      "Boussoufa"
+    ],
+    "country": "Marokko",
+    "competition": "Jupiler Pro League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1984 in Amsterdam geboren.",
+      "Ik ben een kleine, technische aanvallende middenvelder.",
+      "Ik doorliep de jeugd van Ajax en speelde ook in de jeugd van Chelsea.",
+      "Na KAA Gent werd ik een sterkhouder bij Anderlecht en won ik twee keer de Gouden Schoen.",
+      "Ik vertrok naar Anzhi in Dagestan en was international voor Marokko."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mbark_Boussoufa",
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
+    ],
+    "tags": [
+      "gouden-schoen",
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Milan Jovanović",
+    "answers": [
+      "Jovanović",
+      "Jovanovic",
+      "Jova"
+    ],
+    "country": "Servië",
+    "competition": "Jupiler Pro League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1981 in Bajina Bašta in Servië geboren.",
+      "Ik ben een aanvaller die vooral op de flank speelde.",
+      "Met Standard werd ik twee keer op rij kampioen.",
+      "Op het WK 2010 scoorde ik de enige goal tegen Duitsland.",
+      "Ik trok transfervrij naar Liverpool en keerde daarna terug naar België bij Anderlecht."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Milan_Jovanovi%C4%87_(footballer,_born_1981)",
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
+    ],
+    "tags": [
+      "gouden-schoen",
+      "anderlecht",
+      "standard"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Aleksandar Mitrović",
+    "answers": [
+      "Mitrović",
+      "Mitrovic",
+      "Mitro"
+    ],
+    "country": "Servië",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1994 in Smederevo geboren.",
+      "Ik ben een fysieke spits die in mijn carrière meerdere rode kaarten kreeg.",
+      "Ik kwam van Partizan Belgrado naar Anderlecht en werd er kampioen.",
+      "Bij Fulham scoorde ik 43 keer in één Championship-seizoen.",
+      "Ik ben de all-time topschutter van Servië en trok naar Al-Hilal."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Aleksandar_Mitrovi%C4%87"
+    ],
+    "tags": [
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Dieumerci Mbokani",
+    "answers": [
+      "Mbokani"
+    ],
+    "country": "DR Congo",
+    "competition": "Jupiler Pro League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1985 in Kinshasa geboren.",
+      "Ik ben een spits en werd ook kampioen in Oekraïne met Dynamo Kiev.",
+      "Met DR Congo won ik brons op de Afrika Cup van 2015 en werd ik er topschutter.",
+      "Ik werd kampioen met Standard en Anderlecht en won in 2012 de Gouden Schoen.",
+      "Met Antwerp won ik in 2020 de Beker van België en werd ik topschutter van de competitie."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dieumerci_Mbokani",
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
+    ],
+    "tags": [
+      "gouden-schoen",
+      "anderlecht",
+      "standard"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Jelle Vossen",
+    "answers": [
+      "Vossen"
+    ],
+    "country": "België",
+    "competition": "Jupiler Pro League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1989 in Bilzen geboren.",
+      "Ik ben een spits met een neus voor doelpunten en een goede kopbal.",
+      "Ik werd kampioen met Genk in 2011 en maakte er heel veel goals.",
+      "Ik probeerde het in Engeland bij Burnley en Middlesbrough.",
+      "Ik scoorde later ook voor Club Brugge en Zulte Waregem en kreeg enkele caps bij de Rode Duivels."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jelle_Vossen"
+    ],
+    "tags": [
+      "rode-duivels",
+      "club-brugge"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Ruud Vormer",
+    "answers": [
+      "Vormer"
+    ],
+    "country": "Nederland",
+    "competition": "Jupiler Pro League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1988 in Hoorn geboren.",
+      "Ik ben een onvermoeibare middenvelder met veel inzet.",
+      "Ik speelde in Nederland bij AZ, Roda JC en Feyenoord.",
+      "Bij Club Brugge werd ik kapitein en won ik meerdere landstitels.",
+      "In 2017 won ik als Nederlander de Gouden Schoen."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ruud_Vormer",
+      "https://www.fcupdate.nl/voetbalnieuws/2021/06/belangrijke-vormer-blijft-betrokken-bij-club-brugge-project",
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
+    ],
+    "tags": [
+      "gouden-schoen",
+      "club-brugge",
+      "oranje"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Silvio Proto",
+    "answers": [
+      "Proto"
+    ],
+    "country": "België",
+    "competition": "Jupiler Pro League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1983 in Charleroi geboren.",
+      "Ik ben een doelman met sterke reflexen.",
+      "Met La Louvière won ik in 2003 de Beker van België.",
+      "Ik stond jarenlang onder de lat bij Anderlecht en werd er meermaals kampioen.",
+      "Na KV Oostende speelde ik nog voor Olympiakos en Lazio Roma."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Silvio_Proto"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Lior Refaelov",
+    "answers": [
+      "Refaelov"
+    ],
+    "country": "Israël",
+    "competition": "Jupiler Pro League",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1986 in Or Akiva in Israël geboren.",
+      "Ik ben een creatieve aanvallende middenvelder met een goede trap.",
+      "Ik begon mijn carrière bij Maccabi Haifa.",
+      "Bij Club Brugge won ik onder meer de landstitel van 2016.",
+      "Ik speelde daarna ook voor Antwerp en Anderlecht en ben Israëlisch international."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lior_Refaelov",
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
+    ],
+    "tags": [
+      "gouden-schoen",
+      "anderlecht",
+      "club-brugge"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Ivan Leko",
+    "answers": [
+      "Leko"
+    ],
+    "country": "Kroatië",
+    "competition": "Jupiler Pro League",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1978 in Split geboren.",
+      "Als speler was ik een middenvelder die uitkwam voor Hajduk Split en Málaga.",
+      "Ik speelde in België voor Club Brugge, Germinal Beerschot en Lokeren.",
+      "Als trainer begon ik bij OH Leuven en Sint-Truiden.",
+      "Als coach van Club Brugge werd ik kampioen in 2018 en later trainde ik Antwerp."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ivan_Leko"
+    ],
+    "tags": [
+      "club-brugge"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "José Izquierdo",
+    "answers": [
+      "Izquierdo"
+    ],
+    "country": "Colombia",
+    "competition": "Jupiler Pro League",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1992 in Pereira geboren.",
+      "Ik ben een snelle linkerflankaanvaller.",
+      "Ik kwam van Once Caldas naar Europa.",
+      "Met Club Brugge werd ik kampioen in 2016.",
+      "In 2017 trok ik naar Brighton voor hun allereerste Premier League-seizoen."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jos%C3%A9_Izquierdo_(footballer,_born_1992)",
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
+    ],
+    "tags": [
+      "gouden-schoen",
+      "club-brugge"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Wesley Moraes",
+    "answers": [
+      "Wesley",
+      "Moraes"
+    ],
+    "country": "Brazilië",
+    "competition": "Jupiler Pro League",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1996 in Brazilië geboren.",
+      "Ik ben een grote, fysiek sterke spits.",
+      "Ik kwam naar Europa via Trenčín in Slowakije.",
+      "Bij Club Brugge speelde ik drie seizoenen in de spits.",
+      "Aston Villa betaalde in 2019 een clubrecord voor mij, maar een knieblessure remde me af."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Wesley_Moraes"
+    ],
+    "tags": [
+      "club-brugge"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Sofiane Hanni",
+    "answers": [
+      "Hanni"
+    ],
+    "country": "Algerije",
+    "competition": "Jupiler Pro League",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1990 in Frankrijk geboren en heb Algerijnse roots.",
+      "Ik ben een aanvallende middenvelder met een goede trap.",
+      "Ik maakte furore in België bij KV Mechelen.",
+      "Met Anderlecht werd ik kampioen in 2017.",
+      "Daarna trok ik naar Spartak Moskou en speelde ik voor Algerije."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sofiane_Hanni"
+    ],
+    "tags": [
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Lucas Biglia",
+    "answers": [
+      "Biglia"
+    ],
+    "country": "Argentinië",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1986 in Argentinië geboren.",
+      "Ik ben een rustige, verdedigende middenvelder die het spel verdeelt.",
+      "Ik kwam van Independiente naar Anderlecht en werd er kapitein.",
+      "Bij Lazio was ik eveneens kapitein, daarna speelde ik voor AC Milan.",
+      "Met Argentinië speelde ik de WK-finale van 2014 tegen Duitsland."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lucas_Biglia"
+    ],
+    "tags": [
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Mehdi Carcela",
+    "answers": [
+      "Carcela"
+    ],
+    "country": "Marokko",
+    "competition": "Jupiler Pro League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1989 in Luik geboren.",
+      "Ik ben een technische, dribbelvaardige aanvaller.",
+      "Ik kwam uit de jeugd van Standard en keerde er meermaals terug.",
+      "Ik speelde ook voor Anzhi, Benfica, Granada en Olympiakos.",
+      "Ik speelde twee interlands voor België maar koos daarna voor Marokko."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mehdi_Carcela"
+    ],
+    "tags": [
+      "rode-duivels",
+      "standard"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Igor de Camargo",
+    "answers": [
+      "De Camargo",
+      "Camargo"
+    ],
+    "country": "België",
+    "competition": "Jupiler Pro League",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1983 in Brazilië geboren en kwam als tiener naar België.",
+      "Ik ben een spits die werkt voor het team en sterk is met het hoofd.",
+      "Met Standard werd ik twee keer kampioen.",
+      "Ik speelde in Duitsland voor Borussia Mönchengladbach en Hoffenheim.",
+      "Ondanks mijn Braziliaanse afkomst speelde ik voor de Rode Duivels."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Igor_de_Camargo"
+    ],
+    "tags": [
+      "rode-duivels",
+      "standard"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Jelle Van Damme",
+    "answers": [
+      "Van Damme"
+    ],
+    "country": "België",
+    "competition": "Jupiler Pro League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1983 in Lokeren geboren.",
+      "Ik ben een stevige verdediger die links achterin en centraal speelde.",
+      "Ik speelde bij Ajax, Southampton, Anderlecht en Wolverhampton.",
+      "Bij mijn debuut voor Standard in 2011 droeg ik meteen de kapiteinsband.",
+      "Na Standard trok ik in 2016 naar LA Galaxy in de Amerikaanse MLS."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jelle_Van_Damme"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "standard"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Matías Suárez",
+    "answers": [
+      "Matías Suárez",
+      "Matias Suarez"
+    ],
+    "country": "Argentinië",
+    "competition": "Jupiler Pro League",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1988 in La Falda in Argentinië geboren.",
+      "Na mijn jaren in Europa speelde ik in Argentinië nog voor River Plate.",
+      "Ik begon mijn carrière bij Belgrano in Córdoba.",
+      "Ik speelde jarenlang voor Anderlecht en werd er meermaals kampioen.",
+      "In 2011 won ik als speler van Anderlecht de Gouden Schoen."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mat%C3%ADas_Su%C3%A1rez",
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
+    ],
+    "tags": [
+      "gouden-schoen",
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Sven Kums",
+    "answers": [
+      "Kums"
+    ],
+    "country": "België",
+    "competition": "Jupiler Pro League",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1988 in Asse geboren en ben een middenvelder.",
+      "Ik speelde bij Lierse, Kortrijk en Heerenveen.",
+      "Met KAA Gent werd ik in 2015 voor het eerst kampioen in de clubgeschiedenis.",
+      "Ik won in 2015 de Gouden Schoen.",
+      "Watford kocht me maar leende me meteen uit aan Udinese; later speelde ik voor Anderlecht."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sven_Kums",
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
+    ],
+    "tags": [
+      "gouden-schoen",
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Anthony Vanden Borre",
+    "answers": [
+      "Vanden Borre",
+      "Vandenborre"
+    ],
+    "country": "België",
+    "competition": "Jupiler Pro League",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1987 in Congo geboren.",
+      "Ik ben een rechtsachter met veel talent en een wisselvallige carrière.",
+      "Ik debuteerde al op mijn zestiende bij Anderlecht.",
+      "Ik speelde in Italië voor Fiorentina en Genoa en in Engeland voor Portsmouth.",
+      "Na Genk keerde ik terug naar Anderlecht en zat ik in de WK-selectie van 2014."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Anthony_Vanden_Borre"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Ivan Perišić",
+    "answers": [
+      "Perišić",
+      "Perisic"
+    ],
+    "country": "Kroatië",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1989 in Split geboren.",
+      "Ik ben een tweebenige flankspeler die met links en rechts scoort.",
+      "Bij Club Brugge werd ik topschutter van de Belgische competitie.",
+      "Ik won de Bundesliga met Dortmund en de Champions League met Bayern.",
+      "Ik scoorde voor Kroatië in de WK-finale van 2018 tegen Frankrijk."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ivan_Peri%C5%A1i%C4%87"
+    ],
+    "tags": [
+      "champions-league",
+      "club-brugge"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Carlos Bacca",
+    "answers": [
+      "Bacca"
+    ],
+    "country": "Colombia",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1986 in Colombia geboren en werkte ooit als hulpje van een buschauffeur.",
+      "Ik ben een beweeglijke spits met een sterke afwerking.",
+      "Ik kwam van Junior Barranquilla naar Club Brugge.",
+      "In Brugge werd ik topschutter van de Belgische competitie.",
+      "Met Sevilla won ik twee keer de Europa League en scoorde ik twee keer in de finale van 2015."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Carlos_Bacca"
+    ],
+    "tags": [
+      "club-brugge"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Kalidou Koulibaly",
+    "answers": [
+      "Koulibaly"
+    ],
+    "country": "Senegal",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1991 in Frankrijk geboren uit Senegalese ouders.",
+      "Ik ben een kolossale centrale verdediger.",
+      "Na FC Metz speelde ik twee seizoenen voor Racing Genk.",
+      "Bij Napoli werd ik een van de beste verdedigers van Europa.",
+      "Als kapitein van Senegal won ik de Afrika Cup en ik speelde later voor Chelsea."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kalidou_Koulibaly"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Wilfred Ndidi",
+    "answers": [
+      "Ndidi"
+    ],
+    "country": "Nigeria",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1996 in Lagos geboren.",
+      "Ik ben een verdedigende middenvelder die ontzettend veel ballen recupereert.",
+      "Ik kwam als jonge speler naar Racing Genk.",
+      "In januari 2017 trok ik naar de toenmalige Engelse kampioen Leicester City.",
+      "Met Leicester won ik in 2021 de FA Cup."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Wilfred_Ndidi"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Leon Bailey",
+    "answers": [
+      "Bailey"
+    ],
+    "country": "Jamaica",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1997 in Kingston geboren.",
+      "Ik ben een snelle flankaanvaller.",
+      "Ik brak door in Europa bij Racing Genk.",
+      "In 2017 trok ik naar Bayer Leverkusen.",
+      "Daarna speelde ik voor Aston Villa en kom ik uit voor Jamaica."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Leon_Bailey"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Mbwana Samatta",
+    "answers": [
+      "Samatta"
+    ],
+    "country": "Tanzania",
+    "competition": "Jupiler Pro League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1992 in Dar es Salaam geboren.",
+      "Met TP Mazembe won ik de Afrikaanse Champions League.",
+      "Bij Racing Genk werd ik een goalgetter en kampioen in 2019.",
+      "Ik scoorde voor Genk op Anfield in de Champions League.",
+      "Ik werd de eerste Tanzaniaan in de Premier League, bij Aston Villa."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mbwana_Samatta",
+      "https://www.thecitizen.co.tz/tanzania/sports/samatta-regales-in-anfield-goal-2696352"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Paul Onuachu",
+    "answers": [
+      "Onuachu"
+    ],
+    "country": "Nigeria",
+    "competition": "Jupiler Pro League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1994 in Nigeria geboren.",
+      "Ik ben een spits van ruim twee meter lang.",
+      "Ik speelde eerst jarenlang in Denemarken bij FC Midtjylland.",
+      "Bij Racing Genk werd ik topschutter van de Pro League.",
+      "Daarna trok ik naar Southampton en naar Trabzonspor."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Paul_Onuachu",
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
+    ],
+    "tags": [
+      "gouden-schoen"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Deniz Undav",
+    "answers": [
+      "Undav"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1996 in Duitsland geboren en speelde lang in de lagere reeksen.",
+      "Ik ben een spits met veel techniek en een goede neus voor de goal.",
+      "Met Union Sint-Gillis promoveerde ik in 2021 naar de hoogste klasse.",
+      "Brighton kocht me, maar liet me nog een seizoen bij Union.",
+      "Bij VfB Stuttgart scoorde ik er op los en werd ik Duits international."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Deniz_Undav"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Victor Boniface",
+    "answers": [
+      "Boniface"
+    ],
+    "country": "Nigeria",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 2000 in Nigeria geboren.",
+      "Ik ben een fysiek sterke en technische spits.",
+      "Ik speelde in Noorwegen bij Bodø/Glimt.",
+      "Met Union Sint-Gillis maakte ik indruk in de Europa League.",
+      "Met Bayer Leverkusen won ik in 2024 ongeslagen de Duitse titel en de beker."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Victor_Boniface"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Teddy Teuma",
+    "answers": [
+      "Teuma"
+    ],
+    "country": "Malta",
+    "competition": "Jupiler Pro League",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1993 in Toulon geboren maar speel voor Malta.",
+      "Ik ben een middenvelder en mocht pas vanaf 2020 voor Malta uitkomen.",
+      "Ik speelde lang in de lagere Franse reeksen, onder meer bij Red Star.",
+      "Ik werd kapitein van Union Sint-Gillis, dat in 2021 promoveerde.",
+      "Na mijn jaren in Brussel trok ik naar Stade de Reims."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Teddy_Teuma",
+      "https://sporza.be/nl/2022/10/13/sterkhouder-teddy-teuma-verlengt-tot-2025-bij-union~1665657536797/"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  }
+]

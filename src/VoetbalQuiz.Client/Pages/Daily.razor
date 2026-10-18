@@ -1,0 +1,87 @@
+@page "/daily"
+@attribute [Authorize]
+@inject ApiClient Api
+@inject AuthState Auth
+
+<PageTitle>Daily challenge – Truitje Trek</PageTitle>
+
+@if (_error is not null)
+{
+    <p class="error">@_error</p>
+}
+else if (_overview is null)
+{
+    <div class="center-msg">Laden…</div>
+}
+else
+{
+    var answered = _overview.Questions.Count(q => q.Status == QuestionStatus.Answered);
+    var next = _overview.Questions.FirstOrDefault(q => q.Status != QuestionStatus.Answered);
+
+    @if (_overview.LastWinner is { } w)
+    {
+        <div class="winner-banner @(w.IsMe ? "me" : "")">
+            <Avatar Id="@w.AvatarId" Size="36" />
+            <span>🏆 @(w.IsMe ? "Jij was" : w.UserName + " was") dagwinnaar op @DutchDates.DayMonth(w.Date) met <b>@w.Points</b> punten</span>
+        </div>
+    }
+
+    <section class="card hero">
+        <div class="date">@DutchDates.DayMonth(_overview.Date)</div>
+        <h1>Daily challenge</h1>
+        <div class="type-banner">@QuestionTypes.DayLabel(_overview)</div>
+        <div class="score-big">@_overview.TotalPoints <small>punten</small></div>
+        <div class="muted">@answered / @_overview.Questions.Count vragen gespeeld · max. @_overview.MaxPoints punten</div>
+
+        @if (next is not null)
+        {
+            <a class="btn primary big" href="vraag/@next.Number">
+                @(answered == 0 ? "Start de challenge" : $"Verder met vraag {next.Number}")
+            </a>
+            @if (answered == 0)
+            {
+                <p class="rules">@QuestionTypes.DayHowTo(_overview)</p>
+            }
+        }
+        else
+        {
+            <p class="done">Klaar voor vandaag! Morgen een nieuwe challenge.</p>
+            <a class="btn" href="klassement">Bekijk het klassement</a>
+            <RewardPopup Kicker="Daily voltooid!" />
+        }
+    </section>
+
+    <ol class="question-list">
+        @foreach (var q in _overview.Questions)
+        {
+            <li class="@CssFor(q)">
+                <span class="num">@q.Number</span>
+                <span class="name">@(q.PlayerName ?? (q.Status == QuestionStatus.NotStarted ? "?" : "bezig…"))</span>
+                <span class="pts">@(q.Points is { } p ? $"{p}" : "")</span>
+            </li>
+        }
+    </ol>
+}
+
+@code {
+    private DailyOverview? _overview;
+    private string? _error;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            _overview = await Api.GetDailyAsync();
+            await Auth.RefreshAsync(); // level kan gestegen zijn
+        }
+        catch (ApiException ex) { _error = ex.Message; }
+    }
+
+    private static string CssFor(QuestionSummary q) => q switch
+    {
+        { Correct: true } => "ok",
+        { Correct: false } => "fail",
+        { Status: QuestionStatus.NotStarted } => "todo",
+        _ => "busy",
+    };
+}

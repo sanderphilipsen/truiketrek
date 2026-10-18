@@ -1,0 +1,174 @@
+@* Beloningspopup na een daily, special of online wedstrijd: de XP telt op, de levelbalk loopt vol
+   (met een level-up als je over de streep gaat) en nieuwe badges klappen één voor één open.
+   De server bepaalt wat er nieuw is; zonder nieuws verschijnt er niets. *@
+@implements IDisposable
+@inject ApiClient Api
+@inject AuthState Auth
+
+@if (_reward is { } r && _open)
+{
+    <div class="reward-backdrop" @onclick="SkipOrClose">
+        <div class="reward-card" role="dialog" aria-label="Beloning" @onclick:stopPropagation="true">
+            @if (_burst > 0)
+            {
+                <div class="confetti" @key="@($"confetti-{_burst}")" aria-hidden="true">
+                    @foreach (var c in _confetti)
+                    {
+                        <i style="left:@(c.Left)%;background:@c.Color;animation-delay:@(c.Delay)ms;animation-duration:@(c.Duration)ms;--drift:@(c.Drift)px"></i>
+                    }
+                </div>
+            }
+
+            <div class="reward-kicker">@Kicker</div>
+
+            @if (r.GainedXp > 0)
+            {
+                <div class="reward-xp">+@_shownXp <small>XP</small></div>
+                <ul class="reward-parts">
+                    @for (var i = 0; i < r.Gained.Count; i++)
+                    {
+                        var part = r.Gained[i];
+                        <li style="animation-delay:@(250 + i * 140)ms"><span>@part.Label</span><b>+@part.Xp</b></li>
+                    }
+                </ul>
+
+                var level = Levels.For(r.Before.Xp + _shownXp);
+                <div class="reward-level @(_levelUps > 0 ? "up" : "")">
+                    <div class="reward-level-row">
+                        <span class="reward-level-num" @key="level.Level">@level.Level</span>
+                        <span><b>Level @level.Level</b><small>@level.Title</small></span>
+                        <small class="reward-level-xp">@level.XpIntoLevel / @level.XpForNextLevel XP</small>
+                    </div>
+                    <div class="reward-bar"><span style="width:@Pct(level)"></span></div>
+                </div>
+
+                @if (_levelUps > 0)
+                {
+                    <div class="reward-levelup" @key="@($"levelup-{_levelUps}")">⬆️ Level up! @if (level.Title != r.Before.Title) { <span>Je bent nu <b>@level.Title</b></span> } else { <span>Welkom op <b>level @level.Level</b></span> }</div>
+                }
+            }
+
+            @if (_showBadges && r.NewBadges.Count > 0)
+            {
+                <div class="reward-badges-title">@(r.NewBadges.Count == 1 ? "Nieuwe badge!" : $"{r.NewBadges.Count} nieuwe badges!")</div>
+                <div class="reward-badges">
+                    @for (var i = 0; i < r.NewBadges.Count; i++)
+                    {
+                        var b = r.NewBadges[i];
+                        <div class="reward-badge tier-@b.Tier.ToString().ToLowerInvariant()" style="--d:@(i * 350)ms">
+                            <div class="badge-icon">@b.Icon</div>
+                            <b>@b.Name</b>
+                            <small>@b.Description</small>
+                        </div>
+                    }
+                </div>
+            }
+
+            <button class="btn primary big" @onclick="SkipOrClose">@(_done ? "Top!" : "Overslaan")</button>
+        </div>
+    </div>
+}
+
+@code {
+    /// <summary>Hoe lang we wachten voor de popup verschijnt (bv. om eerst de eindstand te tonen).</summary>
+    [Parameter] public int DelayMs { get; set; } = 500;
+
+    /// <summary>De titel bovenaan de popup, bv. "Daily voltooid!".</summary>
+    [Parameter] public string Kicker { get; set; } = "Mooi gespeeld!";
+
+    private record Piece(int Left, string Color, int Delay, int Duration, int Drift);
+    private static readonly string[] Colors = ["#f5c400", "#1f9d55", "#ffffff", "#d64545", "#3b82f6", "#e2b100"];
+
+    private RewardSummary? _reward;
+    private bool _open, _showBadges, _done;
+    private int _shownXp, _levelUps, _burst;
+    private List<Piece> _confetti = [];
+    private readonly CancellationTokenSource _cts = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await Task.Delay(DelayMs, _cts.Token);
+            var reward = await Api.ClaimRewardAsync();
+            if (!reward.HasNews) return;
+
+            _reward = reward;
+            _open = true;
+            _ = Auth.RefreshAsync(); // level in de kop bijwerken
+            await PlayAsync(reward, _cts.Token);
+        }
+        catch (OperationCanceledException) { }
+        catch (ApiException) { } // een beloning is leuk, maar mag het spel nooit blokkeren
+    }
+
+    private async Task PlayAsync(RewardSummary r, CancellationToken token)
+    {
+        StateHasChanged();
+        if (r.GainedXp > 0)
+        {
+            await Task.Delay(600, token);
+
+            // Optellen met een vertraging naar het einde toe; langer als je meerdere levels stijgt.
+            var levels = r.After.Level - r.Before.Level;
+            var duration = Math.Min(1200 + levels * 700, 3500);
+            var start = DateTime.UtcNow;
+            var level = r.Before.Level;
+            while (_shownXp < r.GainedXp)
+            {
+                await Task.Delay(30, token);
+                var t = Math.Min(1, (DateTime.UtcNow - start).TotalMilliseconds / duration);
+                _shownXp = (int)Math.Round(r.GainedXp * (1 - Math.Pow(1 - t, 3)));
+
+                var now = Levels.For(r.Before.Xp + _shownXp).Level;
+                if (now > level)
+                {
+                    level = now;
+                    _levelUps++;
+                    Burst();
+                }
+                StateHasChanged();
+            }
+        }
+
+        if (r.NewBadges.Count > 0)
+        {
+            await Task.Delay(400, token);
+            _showBadges = true;
+            Burst();
+            StateHasChanged();
+            await Task.Delay(350 * r.NewBadges.Count + 300, token);
+        }
+
+        _done = true;
+        StateHasChanged();
+    }
+
+    /// <summary>Eerste tik: meteen naar het eindbeeld. Tweede tik: sluiten.</summary>
+    private void SkipOrClose()
+    {
+        if (_done || _reward is null)
+        {
+            _open = false;
+            return;
+        }
+        _cts.Cancel();
+        _shownXp = _reward.GainedXp;
+        _levelUps = _reward.After.Level - _reward.Before.Level;
+        _showBadges = true;
+        _done = true;
+    }
+
+    private void Burst()
+    {
+        var rnd = new Random();
+        _confetti = Enumerable.Range(0, 36).Select(_ => new Piece(
+            rnd.Next(0, 100), Colors[rnd.Next(Colors.Length)], rnd.Next(0, 400), rnd.Next(1400, 2400), rnd.Next(-60, 60))).ToList();
+        _burst++;
+    }
+
+    private static string Pct(LevelInfo level) =>
+        QuestionDisplay.Percent(level.XpForNextLevel == 0 ? 0 : (double)level.XpIntoLevel / level.XpForNextLevel);
+
+    public void Dispose() => _cts.Cancel();
+}

@@ -1,0 +1,73 @@
+@* Het antwoord na afloop van een vraag, voor elk vraagtype: alle tips, de juiste optie, het jaartal of de volledige opstelling.
+   Gebruikt door de daily (Question.razor) en de online tafels (Wedstrijd.razor). *@
+
+@switch (Type)
+{
+    case QuestionType.WieBenIk:
+    case QuestionType.Carriere:
+    case QuestionType.Wissel:
+    case QuestionType.Rugnummer:
+    case QuestionType.Mannetje:
+    case QuestionType.Kluts:
+    case QuestionType.Counter:
+        @if (Type == QuestionType.Mannetje && View?.Avatar is { } avatar)
+        {
+            <div class="mannetje"><Avatar Id="@avatar" Size="140" /></div>
+        }
+        <ol class="hints">
+            @for (var i = 0; i < Result.AllHints.Count; i++)
+            {
+                <li class="hint" @key="i"><span class="hint-num">@(i + 1)</span><span>@Result.AllHints[i]</span></li>
+            }
+        </ol>
+        break;
+
+    case QuestionType.Snelvuur:
+    case QuestionType.NietBij:
+        <p class="prompt">@View?.Prompt</p>
+        <div class="choices">
+            @for (var i = 0; i < (View?.Options?.Count ?? 0); i++)
+            {
+                var css = i == Result.CorrectIndex ? "right" : i == Result.MyChoice ? "wrong" : "";
+                <div class="choice @css">@View!.Options![i]</div>
+            }
+        </div>
+        @if (Result.MyChoice is null) { <p class="center light-text">Niet op tijd gekozen.</p> }
+        break;
+
+    case QuestionType.Jaar:
+        <p class="prompt">@View?.Prompt</p>
+        <div class="year-result">
+            <div><small>Jouw jaar</small><b>@(Result.MyYear?.ToString() ?? "–")</b></div>
+            <div><small>Juist</small><b>@Result.CorrectYear</b></div>
+        </div>
+        break;
+
+    case QuestionType.Emoji:
+        <div class="emoji-big">@View?.Prompt</div>
+        break;
+
+    case QuestionType.Opstelling:
+        <Lineup Slots="Result.FullLineup ?? []" Found="FoundNames()" />
+        break;
+}
+
+@code {
+    [Parameter, EditorRequired] public QuestionType Type { get; set; }
+    [Parameter, EditorRequired] public AnswerResult Result { get; set; } = null!;
+    [Parameter] public QuestionView? View { get; set; }
+
+    /// <summary>Opstelling: de plaatsen die jij invulde (de rest wordt als gemist getoond).</summary>
+    private HashSet<int> FoundNames() =>
+        View?.Lineup?.Select((s, i) => (s, i)).Where(x => x.s.IsBlank && x.s.Name is not null).Select(x => x.i).ToHashSet() ?? [];
+
+    /// <summary>Titel boven het antwoord: "Juist!", "Dichtbij!", de naam van de speler, …</summary>
+    public static string Title(QuestionType type, AnswerResult r) => type switch
+    {
+        QuestionType.Snelvuur or QuestionType.NietBij => r.Correct ? "Juist!" : $"Het was: {r.PlayerName}",
+        QuestionType.Jaar => r.Correct ? "Exact juist!" : r.Points > 0 ? "Dichtbij!" : $"Het was {r.CorrectYear}",
+        QuestionType.Opstelling => r.PlayerName,
+        QuestionType.Counter => "Counter",
+        _ => r.PlayerName,
+    };
+}

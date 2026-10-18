@@ -1,0 +1,454 @@
+[
+  {
+    "name": "Robert Lewandowski",
+    "answers": [
+      "Lewandowski",
+      "Lewy"
+    ],
+    "country": "Polen",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1988 geboren in Warschau, als zoon van een judoka en een volleybalster.",
+      "Mijn doorbraak kwam bij Lech Poznań, waarna Borussia Dortmund me haalde.",
+      "In 2013 scoorde ik vier keer tegen Real Madrid in de halve finale van de Champions League.",
+      "Als invaller scoorde ik in 2015 vijf goals in negen minuten tegen Wolfsburg.",
+      "Met 41 goals in 2020-21 verbrak ik het Bundesliga-record van een legendarische Bayern-spits."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Robert_Lewandowski",
+      "https://pl.wikipedia.org/wiki/Robert_Lewandowski"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Thomas Müller",
+    "answers": [
+      "Müller",
+      "Muller",
+      "Thomas Müller",
+      "Thomas Muller"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1989 geboren in Weilheim, in Beieren.",
+      "Ik ben niet bijzonder snel of technisch, maar vind altijd de vrije ruimte.",
+      "Ik noemde mezelf een 'Raumdeuter', iemand die ruimtes leest.",
+      "Op het WK 2010 werd ik topschutter en beste jonge speler.",
+      "Ik speelde een recordaantal wedstrijden voor Bayern München, waar ik nummer 25 droeg."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Thomas_M%C3%BCller",
+      "https://www.bundesliga.com/en/bundesliga/news/bayern-munich-s-thomas-muller-to-wear-germany-no-25-shirt-euro-2020-16013",
+      "https://thesefootballtimes.co/thomas-muller-the-first-and-possible-last-ramdeuter/"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Manuel Neuer",
+    "answers": [
+      "Neuer"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1986 geboren in Gelsenkirchen.",
+      "Ik groeide op in de jeugd van Schalke 04, waar ik ook doorbrak.",
+      "Bij mijn transfer in 2011 werd ik door sommige fans van mijn nieuwe club vijandig onthaald.",
+      "Ik ben bekend als 'sweeper-keeper' die ver buiten zijn doel komt.",
+      "In 2014 werd ik wereldkampioen en won ik de Gouden Handschoen als beste doelman."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Manuel_Neuer"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Arjen Robben",
+    "answers": [
+      "Robben"
+    ],
+    "country": "Nederland",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1984 geboren in Bedum, in de provincie Groningen.",
+      "Via FC Groningen en PSV trok ik naar Chelsea en Real Madrid.",
+      "Iedereen wist dat ik van rechts naar binnen zou snijden om met links te trappen, toch lukte het.",
+      "In de WK-finale van 2010 miste ik een grote kans oog in oog met Casillas.",
+      "In 2013 scoorde ik op Wembley de winnende goal in de Champions League-finale tegen Dortmund."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Arjen_Robben"
+    ],
+    "tags": [
+      "champions-league",
+      "oranje"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Franck Ribéry",
+    "answers": [
+      "Ribéry",
+      "Ribery"
+    ],
+    "country": "Frankrijk",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1983 geboren in Boulogne-sur-Mer.",
+      "De littekens in mijn gezicht hou ik over aan een auto-ongeluk toen ik twee was.",
+      "Ik speelde onder meer voor Galatasaray en Marseille voor ik in 2007 naar Duitsland trok.",
+      "In 2013 eindigde ik derde bij de Gouden Bal, na het winnen van de treble.",
+      "Met Arjen Robben vormde ik het vleugelduo 'Robbery' bij Bayern München."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Franck_Rib%C3%A9ry"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Marco Reus",
+    "answers": [
+      "Reus"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1989 geboren in Dortmund.",
+      "Als jeugdspeler werd ik door de club van mijn hart weggestuurd omdat ik fysiek te zwak werd geacht.",
+      "Via Rot Weiss Ahlen en Borussia Mönchengladbach maakte ik naam.",
+      "Door een blessure vlak voor het toernooi miste ik het gewonnen WK van 2014.",
+      "In 2012 keerde ik terug naar Borussia Dortmund, waar ik aanvoerder en clubicoon werd."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Marco_Reus",
+      "https://de.wikipedia.org/wiki/Marco_Reus"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Bastian Schweinsteiger",
+    "answers": [
+      "Schweinsteiger",
+      "Schweini",
+      "Basti"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1984 geboren in Kolbermoor, in Beieren.",
+      "Als kind was ik ook een talentvolle skiër.",
+      "In de Champions League-finale van 2012 tegen Chelsea miste ik een strafschop.",
+      "In de WK-finale van 2014 bleef ik met een bebloed gezicht doorvechten tegen Argentinië.",
+      "Na jaren bij Bayern trok ik in 2015 naar Manchester United; ik trouwde met tennisster Ana Ivanović."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Bastian_Schweinsteiger",
+      "https://gulfnews.com/amp/story/sport%2Ffootball%2Ffifa-world-cup-2014-battered-bastian-schweinsteiger-hails-fans-support-1.1359608"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Philipp Lahm",
+    "answers": [
+      "Lahm"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1983 geboren in München.",
+      "Ik ben klein van gestalte en speelde zowel links- als rechtsachter.",
+      "Ik werd uitgeleend aan VfB Stuttgart voor ik doorbrak bij Bayern.",
+      "Op het WK 2006 scoorde ik het openingsdoelpunt van het toernooi.",
+      "Als aanvoerder hief ik in 2014 de wereldbeker in Rio de Janeiro."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Philipp_Lahm",
+      "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_final"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Toni Kroos",
+    "answers": [
+      "Kroos"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in januari 1990 geboren in Greifswald, in de toenmalige DDR.",
+      "Ik was een rustige middenvelder met een bijna foutloze passing.",
+      "Bayern leende me een tijd uit aan Bayer Leverkusen.",
+      "Op het WK 2014 scoorde ik twee keer binnen enkele minuten tijdens de 7-1 tegen Brazilië.",
+      "Bij Real Madrid won ik vijf keer de Champions League, en ik stopte na EK 2024."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Toni_Kroos"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Mario Götze",
+    "answers": [
+      "Götze",
+      "Gotze"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1992 geboren in Memmingen, in Beieren.",
+      "Ik brak als tiener door bij Borussia Dortmund en won er twee titels.",
+      "Mijn overstap naar Bayern raakte in 2013 bekend, vlak voor de halve finale van de Champions League.",
+      "Later kampte ik met een stofwisselingsziekte die mijn spieren aantastte.",
+      "In de verlenging van de WK-finale van 2014 scoorde ik het winnende doelpunt tegen Argentinië."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mario_G%C3%B6tze",
+      "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_final"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Pierre-Emerick Aubameyang",
+    "answers": [
+      "Aubameyang",
+      "Auba"
+    ],
+    "country": "Gabon",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1989 geboren in Laval, in Frankrijk.",
+      "Ik kwam uit de jeugd van AC Milan, maar brak door bij Saint-Étienne.",
+      "Ik vierde goals graag spectaculair, onder meer met een Spider-Man-masker.",
+      "In 2017 werd ik topschutter van de Bundesliga met 31 doelpunten voor Dortmund.",
+      "Ik koos voor het land van mijn vader, Gabon, en werd later aanvoerder van Arsenal."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pierre-Emerick_Aubameyang"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Jadon Sancho",
+    "answers": [
+      "Sancho"
+    ],
+    "country": "Engeland",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 2000 geboren in Camberwell, in Zuid-Londen.",
+      "Ik doorliep de jeugd van Watford en Manchester City.",
+      "In 2017 waagde ik als tiener de sprong naar Borussia Dortmund.",
+      "In 2021 betaalde Manchester United een fortuin om me terug naar Engeland te halen.",
+      "In de finale van EK 2020 viel ik pas in de 120e minuut in en miste ik in de shoot-out."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jadon_Sancho"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Florian Wirtz",
+    "answers": [
+      "Wirtz"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 2003 geboren in Pulheim, vlak bij Keulen.",
+      "Ik kom uit de jeugdopleiding van 1. FC Köln.",
+      "In 2022 scheurde ik mijn kruisband, waardoor ik maanden aan de kant stond.",
+      "In 2024 werd ik ongeslagen kampioen met Leverkusen, met een hattrick in de titelmatch.",
+      "In 2025 vertrok ik voor een clubrecordbedrag van zo'n 100 miljoen pond naar Liverpool."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Florian_Wirtz"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Jamal Musiala",
+    "answers": [
+      "Musiala"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 2003 geboren in Stuttgart, met een Duitse moeder en een Nigeriaans-Britse vader.",
+      "Als kind verhuisde ik naar Engeland en speelde ik in de jeugd van Chelsea.",
+      "Ik koos uiteindelijk voor Duitsland, hoewel ik jeugdinterlands voor Engeland speelde.",
+      "Op het WK voor clubs in 2025 brak ik mijn kuitbeen en enkel bij een botsing met de doelman van PSG.",
+      "Bij Bayern München brak ik door als dribbelende spelmaker met rugnummer 42, later kreeg ik nummer 10."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jamal_Musiala"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Joshua Kimmich",
+    "answers": [
+      "Kimmich"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1995 geboren in Rottweil.",
+      "Ik kom uit de jeugd van VfB Stuttgart en speelde daarna bij RB Leipzig.",
+      "Bij Bayern werd ik soms noodgedwongen als centrale verdediger uitgespeeld.",
+      "Na het afscheid van Philipp Lahm nam ik bij Bayern zijn plaats als rechtsachter over.",
+      "Bij Bayern München groeide ik uit tot veelzijdige leider op het middenveld."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Joshua_Kimmich"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Mats Hummels",
+    "answers": [
+      "Hummels"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1988 geboren in Bergisch Gladbach.",
+      "Mijn vader was jeugdcoördinator bij Bayern, waar ik ook in de jeugd speelde.",
+      "Bij Borussia Dortmund werd ik twee keer kampioen onder Jürgen Klopp.",
+      "Op het WK 2014 kopte ik in de kwartfinale tegen Frankrijk het enige doelpunt van de match.",
+      "Ik wisselde meerdere keren tussen Dortmund en Bayern en sloot af bij AS Roma."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mats_Hummels"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Shinji Kagawa",
+    "answers": [
+      "Kagawa"
+    ],
+    "country": "Japan",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1989 geboren in Kobe.",
+      "Ik brak door bij Cerezo Osaka.",
+      "In 2010 haalde Dortmund me voor een spotprijs, en ik werd er twee keer landskampioen.",
+      "In 2012 trok ik naar Manchester United onder Sir Alex Ferguson.",
+      "Als eerste Aziaat scoorde ik een hattrick in de Premier League, tegen Norwich."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Shinji_Kagawa"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Miroslav Klose",
+    "answers": [
+      "Klose",
+      "Miro"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1978 geboren in Opole, in Polen.",
+      "Voor mijn profcarrière volgde ik een opleiding tot timmerman.",
+      "Ik speelde voor Kaiserslautern, Werder Bremen, Bayern München en Lazio.",
+      "Ik vierde mijn goals vaak met een salto.",
+      "Met 16 doelpunten was ik twaalf jaar lang topscorer aller tijden op wereldkampioenschappen."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Miroslav_Klose"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  }
+]

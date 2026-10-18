@@ -1,0 +1,178 @@
+@page "/vraag/{Number:int}"
+@page "/special/{SpecialId:int}/vraag/{Number:int}"
+@attribute [Authorize]
+@implements IDisposable
+@inject ApiClient Api
+
+<PageTitle>Vraag @Number – Truitje Trek</PageTitle>
+
+<div class="question-head">
+    <a href="@OverviewUrl" class="back">‹ Overzicht</a>
+    <span>
+        @if (_state is not null) { <span class="type-tag">@Info.Icon @Info.Name</span> }
+        Vraag <b>@Number</b> / @_total
+    </span>
+</div>
+
+@if (_error is not null)
+{
+    <p class="error">@_error</p>
+    <a class="btn" href="@OverviewUrl">Terug naar overzicht</a>
+}
+else if (_state is null)
+{
+    <div class="center-msg">Laden…</div>
+}
+else if (_state.Result is { } result)
+{
+    @* ---------- Na afloop ---------- *@
+    <div class="result @(result.Correct || result.Points > 0 ? "ok" : "fail")">
+        <div class="result-icon">@(result.Correct ? "⚽" : result.Points > 0 ? "👍" : "❌")</div>
+        <div class="result-shout">@Commentary.ForResult(result.Correct, result.Points, _state.View?.MaxPoints ?? 100, Number)</div>
+        <div class="result-name">@QuestionAnswer.Title(_state.Type, result)</div>
+        <div class="result-points">+@result.Points punten</div>
+        @if (result.WrongGuesses > 0)
+        {
+            <div class="muted">@result.WrongGuesses foute @(result.WrongGuesses == 1 ? "poging" : "pogingen")</div>
+        }
+        @if (result.Explanation is not null)
+        {
+            <p class="explanation @(_state.Type is QuestionType.Emoji or QuestionType.NietBij ? "" : "plain")">@result.Explanation</p>
+        }
+    </div>
+
+    <QuestionAnswer Type="_state.Type" Result="result" View="_state.View" />
+
+    @if (Number < _total)
+    {
+        <a class="btn primary big" href="@QuestionUrl(Number + 1)">Volgende vraag ›</a>
+    }
+    else
+    {
+        <a class="btn primary big" href="@OverviewUrl">Bekijk je score</a>
+    }
+}
+else
+{
+    @* ---------- Tijdens de vraag ---------- *@
+    <div class="stake">
+        <div class="stake-row">
+            <div>
+                <span class="stake-points">@QuestionDisplay.PointsNow(_state.Type, _state.View, LocalElapsed, _state.WrongGuesses, _state.TimeLimit)</span>
+                <span class="stake-label">@QuestionDisplay.PointsLabel(_state.Type)</span>
+            </div>
+            <div class="clock @(SecondsLeft <= 3 ? "urgent" : "")">@Math.Ceiling(SecondsLeft)s</div>
+        </div>
+        <div class="timebar"><div style="width:@QuestionDisplay.Percent(LocalElapsed / _state.TimeLimit)"></div></div>
+    </div>
+
+    <QuestionPlay @key="Number" Type="_state.Type" View="_state.View" Hints="_state.Hints" Busy="_busy" Send="PlayAsync" />
+
+    <div class="actions">
+        <button class="linkish" @onclick="GiveUpAsync" disabled="@_busy">
+            @(_state.Type == QuestionType.Opstelling ? "Ik ben klaar" : _state.Type == QuestionType.Counter ? "Ik stop" : "Ik pas")
+        </button>
+    </div>
+}
+
+@code {
+    [Parameter] public int Number { get; set; }
+
+    /// <summary>Ingevuld als je een special speelt; anders is het de daily.</summary>
+    [Parameter] public int? SpecialId { get; set; }
+
+    private string OverviewUrl => SpecialId is { } id ? $"special/{id}" : "daily";
+    private string QuestionUrl(int n) => SpecialId is { } id ? $"special/{id}/vraag/{n}" : $"vraag/{n}";
+
+    private QuestionState? _state;
+    private int _total = GameRules.QuestionsPerDay;
+    private string? _error;
+    private bool _busy;
+
+    // Lokale klok, gelijkgezet met de server bij elk antwoord van de API.
+    private DateTime _syncedAt;
+    private double _syncedElapsed;
+    private DateTime _lastRefresh;
+    private PeriodicTimer? _timer;
+    private CancellationTokenSource _cts = new();
+
+    private QuestionTypeInfo Info => QuestionTypes.Get(_state?.Type ?? QuestionType.WieBenIk);
+    private double LocalElapsed => _syncedElapsed + (DateTime.UtcNow - _syncedAt).TotalSeconds;
+    private double SecondsLeft => Math.Max(0, (_state?.TimeLimit ?? 30) - LocalElapsed);
+
+    protected override async Task OnParametersSetAsync()
+    {
+        // Bij "Volgende vraag" hergebruikt Blazor deze component met een nieuw nummer.
+        (_state, _error) = (null, null);
+        try { _total = (await Api.GetDailyAsync(SpecialId)).Questions.Count; } catch (ApiException) { }
+        await RunAsync(() => Api.StartAsync(Number, SpecialId));
+        StartTimer();
+    }
+
+    private void StartTimer()
+    {
+        _cts.Cancel();
+        _cts = new CancellationTokenSource();
+        _timer?.Dispose();
+        _timer = new PeriodicTimer(TimeSpan.FromMilliseconds(100));
+        _ = TickAsync(_timer, _cts.Token);
+    }
+
+    private async Task TickAsync(PeriodicTimer timer, CancellationToken token)
+    {
+        try
+        {
+            while (await timer.WaitForNextTickAsync(token))
+            {
+                if (_state is not { Status: QuestionStatus.InProgress }) continue;
+
+                // Tijd voor een nieuwe tip/club, of is de tijd om? Dan vragen we de server de echte toestand.
+                var needsRefresh = QuestionDisplay.MoreHintsDue(_state.Type, _state.View, _state.Hints.Count, LocalElapsed, _state.TimeLimit)
+                                   || LocalElapsed > _state.TimeLimit + GameRules.LatencyGraceSeconds;
+
+                if (needsRefresh && !_busy && DateTime.UtcNow - _lastRefresh > TimeSpan.FromMilliseconds(500))
+                {
+                    _lastRefresh = DateTime.UtcNow;
+                    await RunAsync(() => Api.GetQuestionAsync(Number, SpecialId));
+                }
+                StateHasChanged();
+            }
+        }
+        catch (OperationCanceledException) { }
+    }
+
+    private async Task<QuestionPlay.Feedback?> PlayAsync(string guess)
+    {
+        await RunAsync(() => Api.GuessAsync(Number, guess, SpecialId), busy: true);
+        return _state is null ? null : new(_state.LastWrongGuess, _state.View, _state.Result is not null);
+    }
+
+    private Task GiveUpAsync() => RunAsync(() => Api.GiveUpAsync(Number, SpecialId), busy: true);
+
+    private async Task RunAsync(Func<Task<QuestionState>> call, bool busy = false)
+    {
+        if (busy) _busy = true;
+        try
+        {
+            var state = await call();
+            _syncedAt = DateTime.UtcNow;
+            _syncedElapsed = state.ElapsedSeconds;
+            _state = state;
+        }
+        catch (ApiException ex)
+        {
+            _error = ex.Message;
+        }
+        finally
+        {
+            _busy = false;
+            StateHasChanged();
+        }
+    }
+
+    public void Dispose()
+    {
+        _cts.Cancel();
+        _timer?.Dispose();
+    }
+}

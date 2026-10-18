@@ -1,0 +1,249 @@
+@* Een vraag tijdens het spelen, voor elk vraagtype: de opgave, de invoer (typen, kiezen of een jaartal) en de tips.
+   Gebruikt door de daily (Question.razor) en de online tafels (Wedstrijd.razor). Geef een @key per vraag mee. *@
+@inject IJSRuntime JS
+
+@switch (Type)
+{
+    case QuestionType.Snelvuur:
+    case QuestionType.NietBij:
+        <p class="prompt big">@View?.Prompt</p>
+        <div class="choices">
+            @for (var i = 0; i < (View?.Options?.Count ?? 0); i++)
+            {
+                var index = i;
+                <button class="choice" @onclick="() => SendAsync(index.ToString())" disabled="@(Busy || ReadOnly)">@View!.Options![i]</button>
+            }
+        </div>
+        break;
+
+    case QuestionType.Jaar:
+        <p class="prompt big">@View?.Prompt</p>
+        @if (!ReadOnly)
+        {
+            <div class="year-picker">
+                <button class="btn" @onclick="() => SetYear(_year - 1)">−</button>
+                @* Typen, schuiven en −/+ werken allemaal; ze blijven met elkaar in sync. *@
+                <input @ref="_yearInput" class="year-value" type="text" inputmode="numeric" maxlength="4" value="@_yearText"
+                       @oninput="YearTyped" @onkeydown="YearKey" aria-label="Jaartal" />
+                <button class="btn" @onclick="() => SetYear(_year + 1)">+</button>
+            </div>
+            <input type="range" class="year-slider" min="@QuestionRules.MinYear" max="@QuestionRules.MaxYear" value="@_year"
+                   @oninput="e => SetYear(int.Parse(e.Value!.ToString()!))" />
+            <div class="year-scale"><span>@QuestionRules.MinYear</span><span>@QuestionRules.MaxYear</span></div>
+            <button class="btn primary big" @onclick="ConfirmYearAsync" disabled="@(Busy || !YearValid)">
+                @(YearValid ? $"Bevestig {_year}" : $"Kies een jaar tussen {QuestionRules.MinYear} en {QuestionRules.MaxYear}")
+            </button>
+        }
+        break;
+
+    default:
+        @* Getypte types: Wie ben ik?, Carrièrepad, Emoji, Opstelling, Wissel, Rugnummer, Mannetje, Kluts en Counter *@
+        @if (Type == QuestionType.Emoji)
+        {
+            <div class="emoji-big">@View?.Prompt</div>
+            <p class="center light-text">@View?.Note</p>
+        }
+        else if (Type == QuestionType.Opstelling)
+        {
+            <p class="prompt">@View?.Prompt</p>
+        }
+        else if (Type is QuestionType.Carriere or QuestionType.Wissel)
+        {
+            <p class="center light-text">@View?.Prompt</p>
+        }
+        else if (Type == QuestionType.Rugnummer)
+        {
+            <div class="shirt-big" aria-label="Rugnummer @View?.Shirt"><span>@View?.Shirt</span></div>
+            <p class="center light-text">@View?.Prompt</p>
+        }
+        else if (Type == QuestionType.Mannetje && View?.Avatar is { } avatar)
+        {
+            @* Stap 1: donker silhouet, stap 2: wazig in kleur, daarna scherp. *@
+            <div class="mannetje step-@View.Step"><Avatar Id="@avatar" Size="160" /></div>
+            <p class="center light-text">@View.Prompt</p>
+        }
+        else if (Type == QuestionType.Kluts)
+        {
+            <div class="kluts">
+                @foreach (var word in View?.Letters ?? [])
+                {
+                    <div class="kluts-word">
+                        @foreach (var tile in word)
+                        {
+                            <span class="tile @(tile.Fixed ? "fixed" : "")">@tile.Letter</span>
+                        }
+                    </div>
+                }
+            </div>
+            <p class="center light-text">Om de @QuestionRules.CarriereClubSeconds seconden valt er per woord een letter juist.</p>
+        }
+        else if (Type == QuestionType.Counter)
+        {
+            <div class="counter-card">
+                <small>@View?.Note</small>
+                <p>@(View?.Prompt ?? "Alle spelers gepasseerd!")</p>
+            </div>
+        }
+
+        @if (!ReadOnly)
+        {
+            <form class="answer" @onsubmit="TypeAsync">
+                <input @ref="_input" @bind="_guess" @bind:event="oninput"
+                       placeholder="@Placeholder"
+                       autocomplete="off" autocapitalize="words" spellcheck="false" enterkeyhint="send" />
+                <button class="btn primary" disabled="@Busy">OK</button>
+            </form>
+
+            @if (Type == QuestionType.Counter)
+            {
+                <button class="btn skip" @onclick="SkipAsync" disabled="@Busy">Doorspelen ⏭</button>
+            }
+
+            @if (_goal is not null)
+            {
+                <div class="goal" @key="_goal">⚽ @_goal</div>
+            }
+            @if (_wrongGuess is not null)
+            {
+                <div class="wrong" @key="_wrongKey">❌ @Commentary.Pick(Commentary.Wrong, _wrongKey) “@_wrongGuess” is fout@(Type == QuestionType.Counter ? "" : $" (−{GameRules.WrongGuessPenalty})")</div>
+            }
+            @if (_notInLineup is not null)
+            {
+                <div class="wrong" @key="_notInLineup">🛡️ @Commentary.Pick(Commentary.Blocked, _notInLineup.Length) “@_notInLineup” staat niet (meer) op een open plaats</div>
+            }
+        }
+
+        @if (Type == QuestionType.Opstelling)
+        {
+            <Lineup Slots="View?.Lineup ?? []" />
+        }
+        else
+        {
+            @* Nieuwste tip/club bovenaan, zodat hij zichtbaar blijft boven het toetsenbord. *@
+            <ol class="hints">
+                @for (var i = Hints.Count - 1; i >= 0; i--)
+                {
+                    <li class="hint @(i == Hints.Count - 1 ? "newest" : "")" @key="i">
+                        <span class="hint-num">@(i + 1)</span>
+                        <span>@Hints[i]</span>
+                    </li>
+                }
+            </ol>
+        }
+        break;
+}
+
+@code {
+    /// <summary>Wat de pagina na een poging teruggeeft, zodat we de juiste reactie tonen.</summary>
+    public record Feedback(string? WrongGuess, QuestionView? View, bool Finished);
+
+    [Parameter, EditorRequired] public QuestionType Type { get; set; }
+    [Parameter] public QuestionView? View { get; set; }
+    [Parameter] public List<string> Hints { get; set; } = [];
+    [Parameter] public bool Busy { get; set; }
+
+    /// <summary>Enkel kijken (bv. een toeschouwer aan een online tafel).</summary>
+    [Parameter] public bool ReadOnly { get; set; }
+
+    /// <summary>Stuurt een poging (een naam, een optie "0".."3" of een jaartal); null als het mislukte.</summary>
+    [Parameter, EditorRequired] public Func<string, Task<Feedback?>> Send { get; set; } = null!;
+
+    private string _guess = "";
+    private string? _wrongGuess, _notInLineup, _goal;
+
+    /// <summary>Telt mee bij elke reactie, zodat de voetbaluitroep afwisselt ("Voorlangs!", "Naast!", …).</summary>
+    private int _wrongKey;
+
+    private ElementReference _input;
+
+    private string Placeholder => Type switch
+    {
+        QuestionType.Opstelling => "Typ een naam…",
+        QuestionType.Wissel => "Wie maakte de transfer?",
+        QuestionType.Rugnummer => "Wie droeg dit shirt?",
+        QuestionType.Mannetje => "Wie is dit mannetje?",
+        QuestionType.Kluts => "Ontwar de naam…",
+        QuestionType.Counter => "Typ snel een naam…",
+        _ => "Wie ben ik?",
+    };
+
+    private int _year = 2010;
+    private string _yearText = "2010";
+    private ElementReference _yearInput;
+
+    private bool YearValid => int.TryParse(_yearText, out var y) && y is >= QuestionRules.MinYear and <= QuestionRules.MaxYear;
+
+    private void SetYear(int year)
+    {
+        _year = Math.Clamp(year, QuestionRules.MinYear, QuestionRules.MaxYear);
+        _yearText = _year.ToString();
+    }
+
+    /// <summary>Tijdens het typen (bv. "19", "198") laten we de tekst staan; de slider volgt zodra het een geldig jaar is.</summary>
+    private void YearTyped(ChangeEventArgs e)
+    {
+        _yearText = new string((e.Value?.ToString() ?? "").Where(char.IsDigit).Take(4).ToArray());
+        if (YearValid) _year = int.Parse(_yearText);
+    }
+
+    private async Task YearKey(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter") await ConfirmYearAsync();
+    }
+
+    private Task ConfirmYearAsync() => YearValid && !Busy ? SendAsync(_yearText) : Task.CompletedTask;
+
+    private async Task SendAsync(string guess) => await Send(guess);
+
+    private async Task TypeAsync()
+    {
+        if (string.IsNullOrWhiteSpace(_guess) || Busy) return;
+        var guess = _guess;
+        var foundBefore = QuestionDisplay.LineupFound(View);
+        var counterBefore = View?.Found ?? 0;
+        (_goal, _wrongGuess) = (null, null);
+
+        var feedback = await Send(guess);
+        if (feedback is null) return;
+        if (feedback.WrongGuess is { } wrong)
+        {
+            _wrongGuess = wrong;
+            _wrongKey++;
+            _guess = "";
+        }
+        else if (Type == QuestionType.Counter)
+        {
+            // Bij een counter kost een foute naam niets: we tonen het enkel.
+            var hit = (feedback.View?.Found ?? 0) > counterBefore;
+            if (hit) _goal = Commentary.Pick(Commentary.Goal, ++_wrongKey);
+            else if (!feedback.Finished) (_wrongGuess, _wrongKey) = (guess, _wrongKey + 1);
+            _guess = "";
+        }
+        else if (Type == QuestionType.Opstelling)
+        {
+            // Bij een opstelling is een naam die niet past geen fout, maar we tonen het wel.
+            _notInLineup = QuestionDisplay.LineupFound(feedback.View) > foundBefore || feedback.Finished ? null : guess;
+            _guess = "";
+        }
+    }
+
+    /// <summary>Counter: deze speler overslaan en naar de volgende.</summary>
+    private async Task SkipAsync()
+    {
+        (_goal, _wrongGuess, _guess) = (null, null, "");
+        await Send(QuestionRules.CounterSkip);
+        try { await _input.FocusAsync(); } catch { /* al weg */ }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender || ReadOnly || Type is QuestionType.Snelvuur or QuestionType.NietBij) return;
+        try
+        {
+            // Bij het jaartal meteen kunnen typen: het veld krijgt de focus en de tekst is geselecteerd.
+            if (Type == QuestionType.Jaar) await JS.InvokeVoidAsync("selectField", _yearInput);
+            else await _input.FocusAsync();
+        }
+        catch { /* element nog niet zichtbaar */ }
+    }
+}

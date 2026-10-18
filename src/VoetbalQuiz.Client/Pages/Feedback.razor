@@ -1,0 +1,86 @@
+@page "/feedback"
+@attribute [Authorize]
+@inject ApiClient Api
+
+<PageTitle>Feedback – Truitje Trek</PageTitle>
+
+<section class="card">
+    <h1>Bug of idee?</h1>
+    <p class="muted">Iets werkt niet, of je hebt een goed idee? Laat het hier weten.</p>
+
+    <div class="tabs light">
+        <button class="@(_type == FeedbackType.Bug ? "active" : "")" @onclick="() => _type = FeedbackType.Bug">🐞 Bug melden</button>
+        <button class="@(_type == FeedbackType.Feature ? "active" : "")" @onclick="() => _type = FeedbackType.Feature">💡 Feature request</button>
+    </div>
+
+    <form class="stack" @onsubmit="SubmitAsync">
+        <label>Titel
+            <input @bind="_title" maxlength="120" required
+                   placeholder="@(_type == FeedbackType.Bug ? "Bv. de timer loopt niet verder" : "Bv. een quiz over het WK")" />
+        </label>
+        <label>@(_type == FeedbackType.Bug ? "Wat gebeurde er, en wat had je verwacht?" : "Beschrijf je idee")
+            <textarea @bind="_description" rows="5" maxlength="4000" required></textarea>
+        </label>
+        @if (_formError is not null) { <p class="error">@_formError</p> }
+        @if (_sent) { <p class="success">Bedankt! Je melding is verstuurd.</p> }
+        <button class="btn primary" disabled="@_busy">Versturen</button>
+    </form>
+</section>
+
+@if (_overview is { Items.Count: > 0 })
+{
+    <h2 class="section-title">@(_overview.IsAdmin ? "Alle meldingen (admin)" : "Jouw meldingen")</h2>
+    <div class="feedback-list">
+        @foreach (var item in _overview.Items)
+        {
+            <article class="card feedback-item">
+                <div class="feedback-head">
+                    <span>@(item.Type == FeedbackType.Bug ? "🐞" : "💡") <b>@item.Title</b></span>
+                    <span class="status status-@item.Status.ToString().ToLowerInvariant()">@item.Status</span>
+                </div>
+                <p class="feedback-text">@item.Description</p>
+                <small class="muted">@item.UserName · @item.CreatedAt.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</small>
+                @if (item.Reply is not null)
+                {
+                    <p class="reply">💬 @item.Reply</p>
+                }
+                @if (_overview.IsAdmin)
+                {
+                    <AdminFeedback Item="item" OnSaved="LoadAsync" />
+                }
+            </article>
+        }
+    </div>
+}
+
+@code {
+    private FeedbackType _type = FeedbackType.Bug;
+    private string _title = "", _description = "";
+    private string? _formError;
+    private bool _busy, _sent;
+    private FeedbackOverview? _overview;
+
+    protected override Task OnInitializedAsync() => LoadAsync();
+
+    private async Task LoadAsync()
+    {
+        try { _overview = await Api.GetFeedbackAsync(); }
+        catch (ApiException) { /* lijst is niet essentieel */ }
+    }
+
+    private async Task SubmitAsync()
+    {
+        _busy = true;
+        _formError = null;
+        _sent = false;
+        try
+        {
+            await Api.SendFeedbackAsync(new FeedbackRequest(_type, _title, _description));
+            _sent = true;
+            _title = _description = "";
+            await LoadAsync();
+        }
+        catch (ApiException ex) { _formError = ex.Message; }
+        finally { _busy = false; }
+    }
+}

@@ -1,0 +1,195 @@
+@page "/admin/planning"
+@attribute [Authorize]
+@inject ApiClient Api
+@inject AuthState Auth
+
+<PageTitle>Planning – Admin</PageTitle>
+
+<AdminGuard>
+    @if (_error is not null) { <p class="error">@_error</p> }
+    @if (_overview is null)
+    {
+        <div class="center-msg">Laden…</div>
+    }
+    else
+    {
+        <section class="card stack">
+            <h2>Weekplanning van de daily</h2>
+            <p class="muted">
+                Kies per weekdag één vraagtype of een <b>🎲 mix</b>. Een mix verdeelt de vragen om beurten over de gekozen types
+                (max. 1000 punten, een opstelling telt voor twee). Een wijziging geldt vanaf de eerstvolgende dag die nog niet gestart is.
+            </p>
+            <div class="week">
+                @foreach (var day in _days)
+                {
+                    var d = day;
+                    var actual = QuestionTypes.ResolveDay(d.Planned, _disabled);
+                    var changed = !actual.SequenceEqual(d.Planned.Distinct().Order());
+                    <div class="week-day @(d.Day == DateTime.Today.DayOfWeek ? "today" : "") @(d.IsMix ? "mix" : "")">
+                        <b>@QuestionTypes.DayName(d.Day)@(d.Day == DateTime.Today.DayOfWeek ? " (vandaag)" : "")</b>
+                        <select value="@(d.IsMix ? MixValue : d.Type.ToString())" @onchange="e => Change(d.Day, e.Value?.ToString())">
+                            @foreach (var t in QuestionTypes.All)
+                            {
+                                <option value="@t.Type">@t.Icon @t.Name@(_disabled.Contains(t.Type) ? " (uit)" : "")</option>
+                            }
+                            <option value="@MixValue">🎲 Mix van types…</option>
+                        </select>
+                        @if (d.IsMix)
+                        {
+                            <div class="mix-chips">
+                                @foreach (var t in QuestionTypes.All)
+                                {
+                                    var type = t.Type;
+                                    <button type="button" class="mix-chip @(d.Mix!.Contains(type) ? "on" : "") @(_disabled.Contains(type) ? "off" : "")"
+                                            title="@t.Name" @onclick="() => ToggleMix(d.Day, type)">@t.Icon</button>
+                                }
+                            </div>
+                        }
+                        <small class="muted day-result">
+                            @if (changed)
+                            {
+                                <span class="warn">⚠️ Uitgeschakeld type: wordt </span>
+                            }
+                            @MixLabel(actual)
+                        </small>
+                    </div>
+                }
+            </div>
+            @if (_saved) { <p class="success">Planning opgeslagen.</p> }
+            <button class="btn primary" @onclick="SaveAsync" disabled="@(!_dirty || _busy)">💾 Planning opslaan</button>
+        </section>
+
+        <section class="card">
+            <h2>Vraagtypes aan of uit</h2>
+            <p class="muted">
+                Een type dat uit staat, komt niet meer in de daily en specials, en kan je niet kiezen voor een online tafel.
+                Een dag met enkel dat type wordt een mix van de types die nog aan staan. De vragen zelf blijven bewaard.
+            </p>
+            <div class="type-toggles">
+                @foreach (var t in QuestionTypes.All)
+                {
+                    var type = t.Type;
+                    var on = !_disabled.Contains(type);
+                    <label class="type-toggle @(on ? "" : "is-off")">
+                        <span class="tt-icon">@t.Icon</span>
+                        <span class="tt-name">@t.Name<small>@(on ? "Aan" : "Uitgeschakeld")</small></span>
+                        <input type="checkbox" class="toggle" checked="@on" disabled="@_busy"
+                               @onchange="e => SetEnabledAsync(type, e.Value is true)" />
+                    </label>
+                }
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Voorraad per vraagtype</h2>
+            <p class="muted">Hoeveel goedgekeurde vragen er nog nooit gebruikt zijn, en hoeveel weken je daarmee toekomt met de planning hierboven.</p>
+            <div class="stock-list">
+                @foreach (var s in _overview.Stock)
+                {
+                    var info = QuestionTypes.Get(s.Type);
+                    var perWeek = Weekly().GetValueOrDefault(s.Type);
+                    var weeks = perWeek == 0 ? (int?)null : s.NeverUsed / perWeek;
+                    <a class="stock-row" href="@(QuestionTypes.Get(s.Type).FromPlayers ? "admin/spelers" : $"admin/vragen?type={s.Type}")">
+                        <span class="stock-name">@info.Icon @info.Name</span>
+                        <span><b>@s.Approved</b> goedgekeurd@(s.Review > 0 ? $" · {s.Review} te keuren" : "")</span>
+                        <span>@s.NeverUsed nog nooit gebruikt@(perWeek > 0 ? $" · {perWeek}/week" : "")</span>
+                        <span class="pill @(_disabled.Contains(s.Type) ? "past" : weeks is null ? "past" : weeks < 4 ? "review" : "active")">
+                            @(_disabled.Contains(s.Type) ? "uit" : weeks is null ? "niet ingepland" : weeks == 0 ? "op!" : $"±{weeks} weken")
+                        </span>
+                    </a>
+                }
+            </div>
+            <small class="muted">Is een type op, dan komen de langst niet gebruikte vragen terug. Zijn er helemaal te weinig, dan wordt het die dag "Wie ben ik?".</small>
+        </section>
+    }
+</AdminGuard>
+
+@code {
+    private const string MixValue = "mix";
+
+    private ScheduleOverview? _overview;
+    private List<ScheduleDay> _days = [];
+    private HashSet<QuestionType> _disabled = [];
+    private bool _dirty, _busy, _saved;
+    private string? _error;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Auth.User?.IsAdmin != true) return;
+        try { await LoadAsync(); }
+        catch (ApiException ex) { _error = ex.Message; }
+    }
+
+    private async Task LoadAsync()
+    {
+        _overview = await Api.GetScheduleAsync();
+        _days = [.. _overview.Days];
+        _disabled = [.. _overview.Disabled ?? []];
+    }
+
+    private void Change(DayOfWeek day, string? value)
+    {
+        var i = _days.FindIndex(d => d.Day == day);
+        if (value == MixValue)
+        {
+            // Begin de mix met het huidige type en het volgende, zodat het meteen een echte mix is.
+            var current = _days[i].Type;
+            var next = QuestionTypes.All[(QuestionTypes.All.FindIndex(t => t.Type == current) + 1) % QuestionTypes.All.Count].Type;
+            _days[i] = _days[i] with { Mix = [current, next] };
+        }
+        else if (Enum.TryParse<QuestionType>(value, out var type))
+        {
+            _days[i] = _days[i] with { Type = type, Mix = null };
+        }
+        (_dirty, _saved) = (true, false);
+    }
+
+    private void ToggleMix(DayOfWeek day, QuestionType type)
+    {
+        var i = _days.FindIndex(d => d.Day == day);
+        var mix = _days[i].Mix!.ToList();
+        if (!mix.Remove(type)) mix.Add(type);
+        // Minder dan twee types is geen mix meer: dan wordt het gewoon dat ene type.
+        _days[i] = mix.Count >= 2
+            ? _days[i] with { Mix = [.. mix.Order()] }
+            : _days[i] with { Type = mix.Count == 1 ? mix[0] : _days[i].Type, Mix = null };
+        (_dirty, _saved) = (true, false);
+    }
+
+    private Dictionary<QuestionType, int> Weekly() =>
+        _days.SelectMany(d => QuestionTypes.Mix(QuestionTypes.ResolveDay(d.Planned, _disabled)))
+            .GroupBy(m => m.Key).ToDictionary(g => g.Key, g => g.Sum(m => m.Value));
+
+    private static string MixLabel(List<QuestionType> types)
+    {
+        if (types.Count == 1) return $"{QuestionTypes.Get(types[0]).PerDay} vragen";
+        var mix = QuestionTypes.Mix(types);
+        return $"Mix: {string.Join(" · ", mix.Select(m => $"{m.Value}× {QuestionTypes.Get(m.Key).Icon}"))}";
+    }
+
+    private async Task SetEnabledAsync(QuestionType type, bool enabled)
+    {
+        _busy = true;
+        _error = null;
+        try
+        {
+            await Api.SetTypeEnabledAsync(type, enabled);
+            if (enabled) _disabled.Remove(type); else _disabled.Add(type);
+        }
+        catch (ApiException ex) { _error = ex.Message; }
+        finally { _busy = false; }
+    }
+
+    private async Task SaveAsync()
+    {
+        _busy = true;
+        try
+        {
+            await Api.SaveScheduleAsync(_days);
+            await LoadAsync();
+            (_dirty, _saved) = (false, true);
+        }
+        catch (ApiException ex) { _error = ex.Message; }
+        finally { _busy = false; }
+    }
+}

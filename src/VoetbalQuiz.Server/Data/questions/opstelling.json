@@ -1,0 +1,1282 @@
+[
+  {
+    "title": "Brazilië – België, kwartfinale WK 2018 (1-2)",
+    "team": "België",
+    "players": [
+      { "name": "Thibaut Courtois", "aliases": ["Courtois"], "position": "K" },
+      { "name": "Toby Alderweireld", "aliases": ["Alderweireld"], "position": "V" },
+      { "name": "Vincent Kompany", "aliases": ["Kompany"], "position": "V" },
+      { "name": "Jan Vertonghen", "aliases": ["Vertonghen"], "position": "V" },
+      { "name": "Thomas Meunier", "aliases": ["Meunier"], "position": "M" },
+      { "name": "Marouane Fellaini", "aliases": ["Fellaini"], "position": "M" },
+      { "name": "Axel Witsel", "aliases": ["Witsel"], "position": "M" },
+      { "name": "Nacer Chadli", "aliases": ["Chadli"], "position": "M" },
+      { "name": "Kevin De Bruyne", "aliases": ["De Bruyne", "KDB"], "position": "A" },
+      { "name": "Romelu Lukaku", "aliases": ["Lukaku"], "position": "A" },
+      { "name": "Eden Hazard", "aliases": ["Hazard"], "position": "A" }
+    ],
+    "difficulty": 1, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "België – Japan, achtste finale WK 2018 (3-2)",
+    "team": "België",
+    "players": [
+      { "name": "Thibaut Courtois", "aliases": ["Courtois"], "position": "K" },
+      { "name": "Toby Alderweireld", "aliases": ["Alderweireld"], "position": "V" },
+      { "name": "Vincent Kompany", "aliases": ["Kompany"], "position": "V" },
+      { "name": "Jan Vertonghen", "aliases": ["Vertonghen"], "position": "V" },
+      { "name": "Thomas Meunier", "aliases": ["Meunier"], "position": "M" },
+      { "name": "Kevin De Bruyne", "aliases": ["De Bruyne", "KDB"], "position": "M" },
+      { "name": "Axel Witsel", "aliases": ["Witsel"], "position": "M" },
+      { "name": "Yannick Carrasco", "aliases": ["Carrasco", "Yannick Ferreira Carrasco"], "position": "M" },
+      { "name": "Dries Mertens", "aliases": ["Mertens"], "position": "A" },
+      { "name": "Romelu Lukaku", "aliases": ["Lukaku"], "position": "A" },
+      { "name": "Eden Hazard", "aliases": ["Hazard"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "België – Hongarije, achtste finale EK 2016 (4-0)",
+    "team": "België",
+    "players": [
+      { "name": "Thibaut Courtois", "aliases": ["Courtois"], "position": "K" },
+      { "name": "Thomas Meunier", "aliases": ["Meunier"], "position": "V" },
+      { "name": "Toby Alderweireld", "aliases": ["Alderweireld"], "position": "V" },
+      { "name": "Thomas Vermaelen", "aliases": ["Vermaelen"], "position": "V" },
+      { "name": "Jan Vertonghen", "aliases": ["Vertonghen"], "position": "V" },
+      { "name": "Radja Nainggolan", "aliases": ["Nainggolan"], "position": "M" },
+      { "name": "Axel Witsel", "aliases": ["Witsel"], "position": "M" },
+      { "name": "Kevin De Bruyne", "aliases": ["De Bruyne", "KDB"], "position": "M" },
+      { "name": "Dries Mertens", "aliases": ["Mertens"], "position": "A" },
+      { "name": "Eden Hazard", "aliases": ["Hazard"], "position": "A" },
+      { "name": "Romelu Lukaku", "aliases": ["Lukaku"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2016_knockout_stage"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Wales – België, kwartfinale EK 2016 (3-1)",
+    "team": "België",
+    "players": [
+      { "name": "Thibaut Courtois", "aliases": ["Courtois"], "position": "K" },
+      { "name": "Thomas Meunier", "aliases": ["Meunier"], "position": "V" },
+      { "name": "Toby Alderweireld", "aliases": ["Alderweireld"], "position": "V" },
+      { "name": "Jason Denayer", "aliases": ["Denayer"], "position": "V" },
+      { "name": "Jordan Lukaku", "aliases": [], "position": "V" },
+      { "name": "Radja Nainggolan", "aliases": ["Nainggolan"], "position": "M" },
+      { "name": "Axel Witsel", "aliases": ["Witsel"], "position": "M" },
+      { "name": "Kevin De Bruyne", "aliases": ["De Bruyne", "KDB"], "position": "M" },
+      { "name": "Yannick Carrasco", "aliases": ["Carrasco", "Yannick Ferreira Carrasco"], "position": "A" },
+      { "name": "Eden Hazard", "aliases": ["Hazard"], "position": "A" },
+      { "name": "Romelu Lukaku", "aliases": [], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2016_knockout_stage"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "België – Verenigde Staten, achtste finale WK 2014 (2-1 n.v.)",
+    "team": "België",
+    "players": [
+      { "name": "Thibaut Courtois", "aliases": ["Courtois"], "position": "K" },
+      { "name": "Toby Alderweireld", "aliases": ["Alderweireld"], "position": "V" },
+      { "name": "Daniel Van Buyten", "aliases": ["Van Buyten"], "position": "V" },
+      { "name": "Vincent Kompany", "aliases": ["Kompany"], "position": "V" },
+      { "name": "Jan Vertonghen", "aliases": ["Vertonghen"], "position": "V" },
+      { "name": "Axel Witsel", "aliases": ["Witsel"], "position": "M" },
+      { "name": "Marouane Fellaini", "aliases": ["Fellaini"], "position": "M" },
+      { "name": "Kevin De Bruyne", "aliases": ["De Bruyne", "KDB"], "position": "M" },
+      { "name": "Dries Mertens", "aliases": ["Mertens"], "position": "A" },
+      { "name": "Eden Hazard", "aliases": ["Hazard"], "position": "A" },
+      { "name": "Divock Origi", "aliases": ["Origi"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_knockout_stage"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "België – Portugal, achtste finale EK 2020 (1-0)",
+    "team": "België",
+    "players": [
+      { "name": "Thibaut Courtois", "aliases": ["Courtois"], "position": "K" },
+      { "name": "Toby Alderweireld", "aliases": ["Alderweireld"], "position": "V" },
+      { "name": "Jan Vertonghen", "aliases": ["Vertonghen"], "position": "V" },
+      { "name": "Thomas Vermaelen", "aliases": ["Vermaelen"], "position": "V" },
+      { "name": "Thomas Meunier", "aliases": ["Meunier"], "position": "M" },
+      { "name": "Youri Tielemans", "aliases": ["Tielemans"], "position": "M" },
+      { "name": "Axel Witsel", "aliases": ["Witsel"], "position": "M" },
+      { "name": "Thorgan Hazard", "aliases": [], "position": "M" },
+      { "name": "Kevin De Bruyne", "aliases": ["De Bruyne", "KDB"], "position": "A" },
+      { "name": "Eden Hazard", "aliases": [], "position": "A" },
+      { "name": "Romelu Lukaku", "aliases": ["Lukaku"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2020_knockout_stage"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Real Madrid – Club Brugge, Champions League-groepsfase 2019 (2-2)",
+    "team": "Club Brugge",
+    "players": [
+      { "name": "Simon Mignolet", "aliases": ["Mignolet"], "position": "K" },
+      { "name": "Clinton Mata", "aliases": ["Mata"], "position": "V" },
+      { "name": "Brandon Mechele", "aliases": ["Mechele"], "position": "V" },
+      { "name": "Simon Deli", "aliases": ["Deli"], "position": "V" },
+      { "name": "Eduard Sobol", "aliases": ["Sobol"], "position": "V" },
+      { "name": "Mats Rits", "aliases": ["Rits"], "position": "M" },
+      { "name": "Ruud Vormer", "aliases": ["Vormer"], "position": "M" },
+      { "name": "Hans Vanaken", "aliases": ["Vanaken"], "position": "M" },
+      { "name": "Krépin Diatta", "aliases": ["Diatta", "Krepin Diatta"], "position": "M" },
+      { "name": "Emmanuel Dennis", "aliases": ["Dennis", "Emmanuel Bonaventure Dennis"], "position": "A" },
+      { "name": "Percy Tau", "aliases": ["Tau"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://www.espn.com/soccer/lineups/_/gameId/557144", "https://sporza.be/nl/sport/voetbal/~3248214/"],
+    "tags": ["champions-league"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Frankrijk – Kroatië, finale WK 2018 (4-2)",
+    "team": "Frankrijk",
+    "players": [
+      { "name": "Hugo Lloris", "aliases": ["Lloris"], "position": "K" },
+      { "name": "Benjamin Pavard", "aliases": ["Pavard"], "position": "V" },
+      { "name": "Raphaël Varane", "aliases": ["Varane", "Raphael Varane"], "position": "V" },
+      { "name": "Samuel Umtiti", "aliases": ["Umtiti"], "position": "V" },
+      { "name": "Lucas Hernández", "aliases": ["Lucas Hernandez", "Hernandez", "Hernández"], "position": "V" },
+      { "name": "Paul Pogba", "aliases": ["Pogba"], "position": "M" },
+      { "name": "N'Golo Kanté", "aliases": ["Kanté", "Kante", "N'Golo Kante"], "position": "M" },
+      { "name": "Blaise Matuidi", "aliases": ["Matuidi"], "position": "M" },
+      { "name": "Antoine Griezmann", "aliases": ["Griezmann"], "position": "M" },
+      { "name": "Kylian Mbappé", "aliases": ["Mbappé", "Mbappe", "Kylian Mbappe"], "position": "A" },
+      { "name": "Olivier Giroud", "aliases": ["Giroud"], "position": "A" }
+    ],
+    "difficulty": 1, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_final"],
+    "tags": [], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Duitsland – Argentinië, finale WK 2014 (1-0 n.v.)",
+    "team": "Duitsland",
+    "players": [
+      { "name": "Manuel Neuer", "aliases": ["Neuer"], "position": "K" },
+      { "name": "Philipp Lahm", "aliases": ["Lahm"], "position": "V" },
+      { "name": "Jérôme Boateng", "aliases": ["Boateng", "Jerome Boateng"], "position": "V" },
+      { "name": "Mats Hummels", "aliases": ["Hummels"], "position": "V" },
+      { "name": "Benedikt Höwedes", "aliases": ["Höwedes", "Howedes", "Hoewedes"], "position": "V" },
+      { "name": "Christoph Kramer", "aliases": ["Kramer"], "position": "M" },
+      { "name": "Bastian Schweinsteiger", "aliases": ["Schweinsteiger"], "position": "M" },
+      { "name": "Toni Kroos", "aliases": ["Kroos"], "position": "M" },
+      { "name": "Mesut Özil", "aliases": ["Özil", "Ozil", "Mesut Ozil"], "position": "M" },
+      { "name": "Thomas Müller", "aliases": ["Müller", "Muller", "Thomas Muller"], "position": "A" },
+      { "name": "Miroslav Klose", "aliases": ["Klose"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_final"],
+    "tags": [], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Nederland – Spanje, finale WK 2010 (0-1 n.v.)",
+    "team": "Spanje",
+    "players": [
+      { "name": "Iker Casillas", "aliases": ["Casillas"], "position": "K" },
+      { "name": "Sergio Ramos", "aliases": ["Ramos"], "position": "V" },
+      { "name": "Gerard Piqué", "aliases": ["Piqué", "Pique", "Gerard Pique"], "position": "V" },
+      { "name": "Carles Puyol", "aliases": ["Puyol"], "position": "V" },
+      { "name": "Joan Capdevila", "aliases": ["Capdevila"], "position": "V" },
+      { "name": "Sergio Busquets", "aliases": ["Busquets"], "position": "M" },
+      { "name": "Xabi Alonso", "aliases": ["Alonso"], "position": "M" },
+      { "name": "Xavi", "aliases": ["Xavi Hernández", "Xavi Hernandez"], "position": "M" },
+      { "name": "Andrés Iniesta", "aliases": ["Iniesta", "Andres Iniesta"], "position": "M" },
+      { "name": "Pedro", "aliases": ["Pedro Rodríguez", "Pedro Rodriguez"], "position": "A" },
+      { "name": "David Villa", "aliases": ["Villa"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_final"],
+    "tags": [], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Argentinië – Frankrijk, finale WK 2022 (3-3, 4-2 n.s.)",
+    "team": "Argentinië",
+    "players": [
+      { "name": "Emiliano Martínez", "aliases": ["Emiliano Martinez", "Dibu Martínez", "Dibu Martinez"], "position": "K" },
+      { "name": "Nahuel Molina", "aliases": ["Molina"], "position": "V" },
+      { "name": "Cristian Romero", "aliases": ["Romero", "Cuti Romero"], "position": "V" },
+      { "name": "Nicolás Otamendi", "aliases": ["Otamendi", "Nicolas Otamendi"], "position": "V" },
+      { "name": "Nicolás Tagliafico", "aliases": ["Tagliafico", "Nicolas Tagliafico"], "position": "V" },
+      { "name": "Enzo Fernández", "aliases": ["Enzo Fernandez"], "position": "M" },
+      { "name": "Alexis Mac Allister", "aliases": ["Mac Allister", "MacAllister"], "position": "M" },
+      { "name": "Rodrigo De Paul", "aliases": ["De Paul"], "position": "M" },
+      { "name": "Lionel Messi", "aliases": ["Messi"], "position": "A" },
+      { "name": "Julián Álvarez", "aliases": ["Julian Alvarez", "Álvarez", "Alvarez"], "position": "A" },
+      { "name": "Ángel Di María", "aliases": ["Di María", "Di Maria", "Angel Di Maria"], "position": "A" }
+    ],
+    "difficulty": 1, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_final"],
+    "tags": [], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "AC Milan – Liverpool, finale Champions League 2005 (3-3, 2-3 n.s.)",
+    "team": "Liverpool",
+    "players": [
+      { "name": "Jerzy Dudek", "aliases": ["Dudek"], "position": "K" },
+      { "name": "Steve Finnan", "aliases": ["Finnan"], "position": "V" },
+      { "name": "Jamie Carragher", "aliases": ["Carragher"], "position": "V" },
+      { "name": "Sami Hyypiä", "aliases": ["Hyypiä", "Hyypia", "Sami Hyypia"], "position": "V" },
+      { "name": "Djimi Traoré", "aliases": ["Traoré", "Traore", "Djimi Traore"], "position": "V" },
+      { "name": "Xabi Alonso", "aliases": ["Alonso"], "position": "M" },
+      { "name": "Luis García", "aliases": ["Luis Garcia"], "position": "M" },
+      { "name": "Steven Gerrard", "aliases": ["Gerrard"], "position": "M" },
+      { "name": "John Arne Riise", "aliases": ["Riise"], "position": "M" },
+      { "name": "Harry Kewell", "aliases": ["Kewell"], "position": "A" },
+      { "name": "Milan Baroš", "aliases": ["Baroš", "Baros", "Milan Baros"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2005_UEFA_Champions_League_final"],
+    "tags": ["champions-league"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "FC Barcelona – Manchester United, finale Champions League 2011 (3-1)",
+    "team": "FC Barcelona",
+    "players": [
+      { "name": "Víctor Valdés", "aliases": ["Valdés", "Valdes", "Victor Valdes"], "position": "K" },
+      { "name": "Dani Alves", "aliases": ["Alves", "Daniel Alves"], "position": "V" },
+      { "name": "Javier Mascherano", "aliases": ["Mascherano"], "position": "V" },
+      { "name": "Gerard Piqué", "aliases": ["Piqué", "Pique", "Gerard Pique"], "position": "V" },
+      { "name": "Eric Abidal", "aliases": ["Abidal", "Éric Abidal"], "position": "V" },
+      { "name": "Sergio Busquets", "aliases": ["Busquets"], "position": "M" },
+      { "name": "Xavi", "aliases": ["Xavi Hernández", "Xavi Hernandez"], "position": "M" },
+      { "name": "Andrés Iniesta", "aliases": ["Iniesta", "Andres Iniesta"], "position": "M" },
+      { "name": "David Villa", "aliases": ["Villa"], "position": "A" },
+      { "name": "Lionel Messi", "aliases": ["Messi"], "position": "A" },
+      { "name": "Pedro", "aliases": ["Pedro Rodríguez", "Pedro Rodriguez"], "position": "A" }
+    ],
+    "difficulty": 1, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2011_UEFA_Champions_League_final"],
+    "tags": ["champions-league"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Manchester City – Inter, finale Champions League 2023 (1-0)",
+    "team": "Manchester City",
+    "players": [
+      { "name": "Ederson", "aliases": ["Ederson Moraes"], "position": "K" },
+      { "name": "Manuel Akanji", "aliases": ["Akanji"], "position": "V" },
+      { "name": "Rúben Dias", "aliases": ["Ruben Dias", "Dias"], "position": "V" },
+      { "name": "Nathan Aké", "aliases": ["Aké", "Ake", "Nathan Ake"], "position": "V" },
+      { "name": "John Stones", "aliases": ["Stones"], "position": "M" },
+      { "name": "Rodri", "aliases": ["Rodrigo Hernández", "Rodrigo Hernandez"], "position": "M" },
+      { "name": "Bernardo Silva", "aliases": ["Bernardo"], "position": "M" },
+      { "name": "Kevin De Bruyne", "aliases": ["De Bruyne", "KDB"], "position": "M" },
+      { "name": "İlkay Gündoğan", "aliases": ["Gündoğan", "Gundogan", "Ilkay Gundogan", "Gündogan"], "position": "M" },
+      { "name": "Jack Grealish", "aliases": ["Grealish"], "position": "A" },
+      { "name": "Erling Haaland", "aliases": ["Haaland"], "position": "A" }
+    ],
+    "difficulty": 1, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2023_UEFA_Champions_League_final"],
+    "tags": ["champions-league", "rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Tottenham – Liverpool, finale Champions League 2019 (0-2)",
+    "team": "Liverpool",
+    "players": [
+      { "name": "Alisson", "aliases": ["Alisson Becker"], "position": "K" },
+      { "name": "Trent Alexander-Arnold", "aliases": ["Alexander-Arnold", "Alexander Arnold"], "position": "V" },
+      { "name": "Joël Matip", "aliases": ["Matip", "Joel Matip"], "position": "V" },
+      { "name": "Virgil van Dijk", "aliases": ["Van Dijk"], "position": "V" },
+      { "name": "Andy Robertson", "aliases": ["Robertson"], "position": "V" },
+      { "name": "Jordan Henderson", "aliases": ["Henderson"], "position": "M" },
+      { "name": "Fabinho", "aliases": [], "position": "M" },
+      { "name": "Georginio Wijnaldum", "aliases": ["Wijnaldum"], "position": "M" },
+      { "name": "Mohamed Salah", "aliases": ["Salah"], "position": "A" },
+      { "name": "Roberto Firmino", "aliases": ["Firmino"], "position": "A" },
+      { "name": "Sadio Mané", "aliases": ["Mané", "Mane", "Sadio Mane"], "position": "A" }
+    ],
+    "difficulty": 1, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2019_UEFA_Champions_League_final"],
+    "tags": ["champions-league"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Real Madrid – Atlético Madrid, finale Champions League 2014 (4-1 n.v.)",
+    "team": "Real Madrid",
+    "players": [
+      { "name": "Iker Casillas", "aliases": ["Casillas"], "position": "K" },
+      { "name": "Dani Carvajal", "aliases": ["Carvajal", "Daniel Carvajal"], "position": "V" },
+      { "name": "Raphaël Varane", "aliases": ["Varane", "Raphael Varane"], "position": "V" },
+      { "name": "Sergio Ramos", "aliases": ["Ramos"], "position": "V" },
+      { "name": "Fábio Coentrão", "aliases": ["Coentrão", "Coentrao", "Fabio Coentrao"], "position": "V" },
+      { "name": "Luka Modrić", "aliases": ["Modrić", "Modric", "Luka Modric"], "position": "M" },
+      { "name": "Sami Khedira", "aliases": ["Khedira"], "position": "M" },
+      { "name": "Ángel Di María", "aliases": ["Di María", "Di Maria", "Angel Di Maria"], "position": "M" },
+      { "name": "Gareth Bale", "aliases": ["Bale"], "position": "A" },
+      { "name": "Karim Benzema", "aliases": ["Benzema"], "position": "A" },
+      { "name": "Cristiano Ronaldo", "aliases": ["Ronaldo", "CR7"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2014_UEFA_Champions_League_final"],
+    "tags": ["champions-league"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "België – West-Duitsland, finale EK 1980 (1-2)",
+    "team": "België",
+    "players": [
+      { "name": "Jean-Marie Pfaff", "aliases": ["Pfaff"], "position": "K" },
+      { "name": "Eric Gerets", "aliases": ["Gerets"], "position": "V" },
+      { "name": "Walter Meeuws", "aliases": ["Meeuws"], "position": "V" },
+      { "name": "Luc Millecamps", "aliases": ["Millecamps"], "position": "V" },
+      { "name": "Michel Renquin", "aliases": ["Renquin"], "position": "V" },
+      { "name": "Julien Cools", "aliases": ["Cools"], "position": "M" },
+      { "name": "Wilfried Van Moer", "aliases": ["Van Moer"], "position": "M" },
+      { "name": "René Vandereycken", "aliases": ["Vandereycken", "Rene Vandereycken"], "position": "M" },
+      { "name": "Raymond Mommens", "aliases": ["Mommens"], "position": "M" },
+      { "name": "François Van der Elst", "aliases": ["Van der Elst", "Francois Van der Elst"], "position": "A" },
+      { "name": "Jan Ceulemans", "aliases": ["Ceulemans"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_1980_final"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Argentinië – België, halve finale WK 1986 (2-0)",
+    "team": "België",
+    "players": [
+      { "name": "Jean-Marie Pfaff", "aliases": ["Pfaff"], "position": "K" },
+      { "name": "Stéphane Demol", "aliases": ["Demol", "Stephane Demol"], "position": "V" },
+      { "name": "Eric Gerets", "aliases": ["Gerets"], "position": "V" },
+      { "name": "Georges Grün", "aliases": ["Grün", "Grun", "Georges Grun"], "position": "V" },
+      { "name": "Michel Renquin", "aliases": ["Renquin"], "position": "V" },
+      { "name": "Patrick Vervoort", "aliases": ["Vervoort"], "position": "V" },
+      { "name": "Enzo Scifo", "aliases": ["Scifo"], "position": "M" },
+      { "name": "Jan Ceulemans", "aliases": ["Ceulemans"], "position": "M" },
+      { "name": "Franky Vercauteren", "aliases": ["Vercauteren"], "position": "M" },
+      { "name": "Nico Claesen", "aliases": ["Claesen"], "position": "A" },
+      { "name": "Daniel Veyt", "aliases": ["Veyt"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_knockout_stage"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Engeland – België, achtste finale WK 1990 (1-0 n.v.)",
+    "team": "België",
+    "players": [
+      { "name": "Michel Preud'homme", "aliases": ["Preud'homme", "Preudhomme"], "position": "K" },
+      { "name": "Eric Gerets", "aliases": ["Gerets"], "position": "V" },
+      { "name": "Stéphane Demol", "aliases": ["Demol", "Stephane Demol"], "position": "V" },
+      { "name": "Georges Grün", "aliases": ["Grün", "Grun", "Georges Grun"], "position": "V" },
+      { "name": "Michel De Wolf", "aliases": ["De Wolf"], "position": "V" },
+      { "name": "Lei Clijsters", "aliases": ["Clijsters"], "position": "M" },
+      { "name": "Franky Van der Elst", "aliases": ["Van der Elst"], "position": "M" },
+      { "name": "Enzo Scifo", "aliases": ["Scifo"], "position": "M" },
+      { "name": "Bruno Versavel", "aliases": ["Versavel"], "position": "M" },
+      { "name": "Marc Degryse", "aliases": ["Degryse"], "position": "A" },
+      { "name": "Jan Ceulemans", "aliases": ["Ceulemans"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/1990_FIFA_World_Cup_knockout_stage"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Brazilië – België, achtste finale WK 2002 (2-0)",
+    "team": "België",
+    "players": [
+      { "name": "Geert De Vlieger", "aliases": ["De Vlieger"], "position": "K" },
+      { "name": "Jacky Peeters", "aliases": ["Peeters"], "position": "V" },
+      { "name": "Daniel Van Buyten", "aliases": ["Van Buyten"], "position": "V" },
+      { "name": "Timmy Simons", "aliases": ["Simons"], "position": "V" },
+      { "name": "Nico Van Kerckhoven", "aliases": ["Van Kerckhoven"], "position": "V" },
+      { "name": "Mbo Mpenza", "aliases": ["Mpenza", "Mbo"], "position": "M" },
+      { "name": "Yves Vanderhaeghe", "aliases": ["Vanderhaeghe"], "position": "M" },
+      { "name": "Johan Walem", "aliases": ["Walem"], "position": "M" },
+      { "name": "Bart Goor", "aliases": ["Goor"], "position": "M" },
+      { "name": "Gert Verheyen", "aliases": ["Verheyen"], "position": "A" },
+      { "name": "Marc Wilmots", "aliases": ["Wilmots"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_knockout_stage"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Argentinië – België, kwartfinale WK 2014 (1-0)",
+    "team": "België",
+    "players": [
+      { "name": "Thibaut Courtois", "aliases": ["Courtois"], "position": "K" },
+      { "name": "Toby Alderweireld", "aliases": ["Alderweireld"], "position": "V" },
+      { "name": "Daniel Van Buyten", "aliases": ["Van Buyten"], "position": "V" },
+      { "name": "Vincent Kompany", "aliases": ["Kompany"], "position": "V" },
+      { "name": "Jan Vertonghen", "aliases": ["Vertonghen"], "position": "V" },
+      { "name": "Axel Witsel", "aliases": ["Witsel"], "position": "M" },
+      { "name": "Marouane Fellaini", "aliases": ["Fellaini"], "position": "M" },
+      { "name": "Kevin De Bruyne", "aliases": ["De Bruyne", "KDB"], "position": "M" },
+      { "name": "Kevin Mirallas", "aliases": ["Mirallas"], "position": "A" },
+      { "name": "Eden Hazard", "aliases": ["Hazard"], "position": "A" },
+      { "name": "Divock Origi", "aliases": ["Origi"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_knockout_stage"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Frankrijk – België, halve finale WK 2018 (1-0)",
+    "team": "België",
+    "players": [
+      { "name": "Thibaut Courtois", "aliases": ["Courtois"], "position": "K" },
+      { "name": "Toby Alderweireld", "aliases": ["Alderweireld"], "position": "V" },
+      { "name": "Vincent Kompany", "aliases": ["Kompany"], "position": "V" },
+      { "name": "Jan Vertonghen", "aliases": ["Vertonghen"], "position": "V" },
+      { "name": "Axel Witsel", "aliases": ["Witsel"], "position": "M" },
+      { "name": "Mousa Dembélé", "aliases": ["Dembélé", "Dembele", "Moussa Dembélé", "Mousa Dembele"], "position": "M" },
+      { "name": "Marouane Fellaini", "aliases": ["Fellaini"], "position": "M" },
+      { "name": "Nacer Chadli", "aliases": ["Chadli"], "position": "M" },
+      { "name": "Kevin De Bruyne", "aliases": ["De Bruyne", "KDB"], "position": "M" },
+      { "name": "Romelu Lukaku", "aliases": ["Lukaku"], "position": "A" },
+      { "name": "Eden Hazard", "aliases": ["Hazard"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "België – Engeland, troostfinale WK 2018 (2-0)",
+    "team": "België",
+    "players": [
+      { "name": "Thibaut Courtois", "aliases": ["Courtois"], "position": "K" },
+      { "name": "Toby Alderweireld", "aliases": ["Alderweireld"], "position": "V" },
+      { "name": "Vincent Kompany", "aliases": ["Kompany"], "position": "V" },
+      { "name": "Jan Vertonghen", "aliases": ["Vertonghen"], "position": "V" },
+      { "name": "Thomas Meunier", "aliases": ["Meunier"], "position": "M" },
+      { "name": "Youri Tielemans", "aliases": ["Tielemans"], "position": "M" },
+      { "name": "Axel Witsel", "aliases": ["Witsel"], "position": "M" },
+      { "name": "Nacer Chadli", "aliases": ["Chadli"], "position": "M" },
+      { "name": "Kevin De Bruyne", "aliases": ["De Bruyne", "KDB"], "position": "A" },
+      { "name": "Romelu Lukaku", "aliases": ["Lukaku"], "position": "A" },
+      { "name": "Eden Hazard", "aliases": ["Hazard"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "België – Italië, kwartfinale EK 2020 (1-2)",
+    "team": "België",
+    "players": [
+      { "name": "Thibaut Courtois", "aliases": ["Courtois"], "position": "K" },
+      { "name": "Toby Alderweireld", "aliases": ["Alderweireld"], "position": "V" },
+      { "name": "Thomas Vermaelen", "aliases": ["Vermaelen"], "position": "V" },
+      { "name": "Jan Vertonghen", "aliases": ["Vertonghen"], "position": "V" },
+      { "name": "Thomas Meunier", "aliases": ["Meunier"], "position": "M" },
+      { "name": "Axel Witsel", "aliases": ["Witsel"], "position": "M" },
+      { "name": "Youri Tielemans", "aliases": ["Tielemans"], "position": "M" },
+      { "name": "Thorgan Hazard", "aliases": ["Hazard"], "position": "M" },
+      { "name": "Kevin De Bruyne", "aliases": ["De Bruyne", "KDB"], "position": "M" },
+      { "name": "Jérémy Doku", "aliases": ["Doku", "Jeremy Doku"], "position": "A" },
+      { "name": "Romelu Lukaku", "aliases": ["Lukaku"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2020_knockout_stage"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Anderlecht – West Ham United, finale Europacup II 1976 (4-2)",
+    "team": "Anderlecht",
+    "players": [
+      { "name": "Jan Ruiter", "aliases": ["Ruiter"], "position": "K" },
+      { "name": "Michel Lomme", "aliases": ["Lomme"], "position": "V" },
+      { "name": "Hugo Broos", "aliases": ["Broos"], "position": "V" },
+      { "name": "Gilbert Van Binst", "aliases": ["Van Binst"], "position": "V" },
+      { "name": "Jean Thissen", "aliases": ["Thissen"], "position": "V" },
+      { "name": "Jean Dockx", "aliases": ["Dockx"], "position": "M" },
+      { "name": "Arie Haan", "aliases": ["Haan"], "position": "M" },
+      { "name": "Peter Ressel", "aliases": ["Ressel"], "position": "M" },
+      { "name": "Ludo Coeck", "aliases": ["Coeck"], "position": "M" },
+      { "name": "François Van der Elst", "aliases": ["Van der Elst", "Francois Van der Elst"], "position": "A" },
+      { "name": "Rob Rensenbrink", "aliases": ["Rensenbrink"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/1976_European_Cup_Winners%27_Cup_final"],
+    "tags": [], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Club Brugge – Liverpool, finale Europacup I 1978 (0-1)",
+    "team": "Club Brugge",
+    "players": [
+      { "name": "Birger Jensen", "aliases": ["Jensen"], "position": "K" },
+      { "name": "Fons Bastijns", "aliases": ["Bastijns"], "position": "V" },
+      { "name": "Georges Leekens", "aliases": ["Leekens"], "position": "V" },
+      { "name": "Eduard Krieger", "aliases": ["Krieger"], "position": "V" },
+      { "name": "Gino Maes", "aliases": ["Maes"], "position": "V" },
+      { "name": "Julien Cools", "aliases": ["Cools"], "position": "M" },
+      { "name": "René Vandereycken", "aliases": ["Vandereycken", "Rene Vandereycken"], "position": "M" },
+      { "name": "Lajos Kű", "aliases": ["Kű", "Ku", "Lajos Ku"], "position": "M" },
+      { "name": "Daniël De Cubber", "aliases": ["De Cubber", "Daniel De Cubber"], "position": "M" },
+      { "name": "Jan Simoen", "aliases": ["Simoen"], "position": "A" },
+      { "name": "Jan Sørensen", "aliases": ["Sørensen", "Sorensen", "Jan Sorensen"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/1978_European_Cup_final"],
+    "tags": [], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "FC Barcelona – Standard, finale Europacup II 1982 (2-1)",
+    "team": "Standard",
+    "players": [
+      { "name": "Michel Preud'homme", "aliases": ["Preud'homme", "Preudhomme"], "position": "K" },
+      { "name": "Eric Gerets", "aliases": ["Gerets"], "position": "V" },
+      { "name": "Gerard Plessers", "aliases": ["Plessers"], "position": "V" },
+      { "name": "Theo Poel", "aliases": ["Poel"], "position": "V" },
+      { "name": "Walter Meeuws", "aliases": ["Meeuws"], "position": "V" },
+      { "name": "Guy Vandersmissen", "aliases": ["Vandersmissen"], "position": "M" },
+      { "name": "Jos Daerden", "aliases": ["Daerden"], "position": "M" },
+      { "name": "Arie Haan", "aliases": ["Haan"], "position": "M" },
+      { "name": "René Botteron", "aliases": ["Botteron", "Rene Botteron"], "position": "M" },
+      { "name": "Simon Tahamata", "aliases": ["Tahamata"], "position": "A" },
+      { "name": "Benny Wendt", "aliases": ["Wendt"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/1982_European_Cup_Winners%27_Cup_final"],
+    "tags": [], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "KV Mechelen – Ajax, finale Europacup II 1988 (1-0)",
+    "team": "KV Mechelen",
+    "players": [
+      { "name": "Michel Preud'homme", "aliases": ["Preud'homme", "Preudhomme"], "position": "K" },
+      { "name": "Koen Sanders", "aliases": ["Sanders"], "position": "V" },
+      { "name": "Lei Clijsters", "aliases": ["Clijsters"], "position": "V" },
+      { "name": "Graeme Rutjes", "aliases": ["Rutjes"], "position": "V" },
+      { "name": "Geert Deferm", "aliases": ["Deferm"], "position": "V" },
+      { "name": "Wim Hofkens", "aliases": ["Hofkens"], "position": "M" },
+      { "name": "Marc Emmers", "aliases": ["Emmers"], "position": "M" },
+      { "name": "Erwin Koeman", "aliases": ["Koeman"], "position": "M" },
+      { "name": "Pascal De Wilde", "aliases": ["De Wilde"], "position": "A" },
+      { "name": "Eli Ohana", "aliases": ["Ohana"], "position": "A" },
+      { "name": "Piet den Boer", "aliases": ["Den Boer"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/1988_European_Cup_Winners%27_Cup_final"],
+    "tags": [], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Italië – Frankrijk, finale WK 2006 (1-1, 5-3 n.s.)",
+    "team": "Italië",
+    "players": [
+      { "name": "Gianluigi Buffon", "aliases": ["Buffon"], "position": "K" },
+      { "name": "Gianluca Zambrotta", "aliases": ["Zambrotta"], "position": "V" },
+      { "name": "Fabio Cannavaro", "aliases": ["Cannavaro"], "position": "V" },
+      { "name": "Marco Materazzi", "aliases": ["Materazzi"], "position": "V" },
+      { "name": "Fabio Grosso", "aliases": ["Grosso"], "position": "V" },
+      { "name": "Mauro Camoranesi", "aliases": ["Camoranesi"], "position": "M" },
+      { "name": "Gennaro Gattuso", "aliases": ["Gattuso"], "position": "M" },
+      { "name": "Andrea Pirlo", "aliases": ["Pirlo"], "position": "M" },
+      { "name": "Simone Perrotta", "aliases": ["Perrotta"], "position": "M" },
+      { "name": "Francesco Totti", "aliases": ["Totti"], "position": "M" },
+      { "name": "Luca Toni", "aliases": ["Toni"], "position": "A" }
+    ],
+    "difficulty": 1, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2006_FIFA_World_Cup_final"],
+    "tags": [], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Duitsland – Spanje, finale EK 2008 (0-1)",
+    "team": "Spanje",
+    "players": [
+      { "name": "Iker Casillas", "aliases": ["Casillas"], "position": "K" },
+      { "name": "Sergio Ramos", "aliases": ["Ramos"], "position": "V" },
+      { "name": "Carlos Marchena", "aliases": ["Marchena"], "position": "V" },
+      { "name": "Carles Puyol", "aliases": ["Puyol"], "position": "V" },
+      { "name": "Joan Capdevila", "aliases": ["Capdevila"], "position": "V" },
+      { "name": "Marcos Senna", "aliases": ["Senna"], "position": "M" },
+      { "name": "Andrés Iniesta", "aliases": ["Iniesta", "Andres Iniesta"], "position": "M" },
+      { "name": "Xavi", "aliases": ["Xavi Hernández", "Xavi Hernandez"], "position": "M" },
+      { "name": "Cesc Fàbregas", "aliases": ["Fàbregas", "Fabregas", "Cesc Fabregas", "Cesc"], "position": "M" },
+      { "name": "David Silva", "aliases": [], "position": "M" },
+      { "name": "Fernando Torres", "aliases": ["Torres"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2008_final"],
+    "tags": [], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Manchester United – Chelsea, finale Champions League 2008 (1-1, 6-5 n.s.)",
+    "team": "Manchester United",
+    "players": [
+      { "name": "Edwin van der Sar", "aliases": ["Van der Sar"], "position": "K" },
+      { "name": "Wes Brown", "aliases": [], "position": "V" },
+      { "name": "Rio Ferdinand", "aliases": ["Ferdinand"], "position": "V" },
+      { "name": "Nemanja Vidić", "aliases": ["Vidić", "Vidic", "Nemanja Vidic"], "position": "V" },
+      { "name": "Patrice Evra", "aliases": ["Evra"], "position": "V" },
+      { "name": "Owen Hargreaves", "aliases": ["Hargreaves"], "position": "M" },
+      { "name": "Paul Scholes", "aliases": ["Scholes"], "position": "M" },
+      { "name": "Michael Carrick", "aliases": ["Carrick"], "position": "M" },
+      { "name": "Cristiano Ronaldo", "aliases": ["Ronaldo", "CR7"], "position": "M" },
+      { "name": "Wayne Rooney", "aliases": ["Rooney"], "position": "A" },
+      { "name": "Carlos Tevez", "aliases": ["Tevez", "Tévez", "Carlos Tévez"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2008_UEFA_Champions_League_final"],
+    "tags": ["champions-league"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Bayern München – Inter, finale Champions League 2010 (0-2)",
+    "team": "Inter",
+    "players": [
+      { "name": "Júlio César", "aliases": ["Julio Cesar"], "position": "K" },
+      { "name": "Maicon", "aliases": [], "position": "V" },
+      { "name": "Lúcio", "aliases": ["Lucio"], "position": "V" },
+      { "name": "Walter Samuel", "aliases": ["Samuel"], "position": "V" },
+      { "name": "Cristian Chivu", "aliases": ["Chivu"], "position": "V" },
+      { "name": "Javier Zanetti", "aliases": ["Zanetti"], "position": "M" },
+      { "name": "Esteban Cambiasso", "aliases": ["Cambiasso"], "position": "M" },
+      { "name": "Wesley Sneijder", "aliases": ["Sneijder"], "position": "M" },
+      { "name": "Samuel Eto'o", "aliases": ["Eto'o", "Etoo", "Samuel Etoo"], "position": "A" },
+      { "name": "Diego Milito", "aliases": ["Milito"], "position": "A" },
+      { "name": "Goran Pandev", "aliases": ["Pandev"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2010_UEFA_Champions_League_final"],
+    "tags": ["champions-league"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Bayern München – Chelsea, finale Champions League 2012 (1-1, 3-4 n.s.)",
+    "team": "Chelsea",
+    "players": [
+      { "name": "Petr Čech", "aliases": ["Čech", "Cech", "Petr Cech"], "position": "K" },
+      { "name": "José Bosingwa", "aliases": ["Bosingwa", "Jose Bosingwa"], "position": "V" },
+      { "name": "David Luiz", "aliases": [], "position": "V" },
+      { "name": "Gary Cahill", "aliases": ["Cahill"], "position": "V" },
+      { "name": "Ashley Cole", "aliases": [], "position": "V" },
+      { "name": "John Obi Mikel", "aliases": ["Mikel", "Mikel John Obi"], "position": "M" },
+      { "name": "Frank Lampard", "aliases": ["Lampard"], "position": "M" },
+      { "name": "Juan Mata", "aliases": ["Mata"], "position": "M" },
+      { "name": "Salomon Kalou", "aliases": ["Kalou"], "position": "A" },
+      { "name": "Ryan Bertrand", "aliases": ["Bertrand"], "position": "A" },
+      { "name": "Didier Drogba", "aliases": ["Drogba"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2012_UEFA_Champions_League_final"],
+    "tags": ["champions-league"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Spanje – Nederland, groepsfase WK 2014 (1-5)",
+    "team": "Nederland",
+    "players": [
+      { "name": "Jasper Cillessen", "aliases": ["Cillessen"], "position": "K" },
+      { "name": "Ron Vlaar", "aliases": ["Vlaar"], "position": "V" },
+      { "name": "Stefan de Vrij", "aliases": ["De Vrij"], "position": "V" },
+      { "name": "Bruno Martins Indi", "aliases": ["Martins Indi"], "position": "V" },
+      { "name": "Daryl Janmaat", "aliases": ["Janmaat"], "position": "V" },
+      { "name": "Daley Blind", "aliases": ["Blind"], "position": "V" },
+      { "name": "Jonathan de Guzmán", "aliases": ["De Guzmán", "De Guzman", "Jonathan de Guzman"], "position": "M" },
+      { "name": "Nigel de Jong", "aliases": ["De Jong"], "position": "M" },
+      { "name": "Wesley Sneijder", "aliases": ["Sneijder"], "position": "M" },
+      { "name": "Robin van Persie", "aliases": ["Van Persie"], "position": "A" },
+      { "name": "Arjen Robben", "aliases": ["Robben"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_Group_B"],
+    "tags": [], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Brazilië – Duitsland, halve finale WK 2014 (1-7)",
+    "team": "Duitsland",
+    "players": [
+      { "name": "Manuel Neuer", "aliases": ["Neuer"], "position": "K" },
+      { "name": "Philipp Lahm", "aliases": ["Lahm"], "position": "V" },
+      { "name": "Jérôme Boateng", "aliases": ["Boateng", "Jerome Boateng"], "position": "V" },
+      { "name": "Mats Hummels", "aliases": ["Hummels"], "position": "V" },
+      { "name": "Benedikt Höwedes", "aliases": ["Höwedes", "Howedes", "Hoewedes"], "position": "V" },
+      { "name": "Sami Khedira", "aliases": ["Khedira"], "position": "M" },
+      { "name": "Bastian Schweinsteiger", "aliases": ["Schweinsteiger"], "position": "M" },
+      { "name": "Toni Kroos", "aliases": ["Kroos"], "position": "M" },
+      { "name": "Mesut Özil", "aliases": ["Özil", "Ozil", "Mesut Ozil"], "position": "M" },
+      { "name": "Thomas Müller", "aliases": ["Müller", "Muller", "Thomas Muller"], "position": "A" },
+      { "name": "Miroslav Klose", "aliases": ["Klose"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/Brazil_v_Germany_(2014_FIFA_World_Cup)"],
+    "tags": [], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Portugal – Frankrijk, finale EK 2016 (1-0 n.v.)",
+    "team": "Portugal",
+    "players": [
+      { "name": "Rui Patrício", "aliases": ["Rui Patricio", "Patrício", "Patricio"], "position": "K" },
+      { "name": "Cédric Soares", "aliases": ["Cédric", "Cedric", "Cedric Soares"], "position": "V" },
+      { "name": "Pepe", "aliases": [], "position": "V" },
+      { "name": "José Fonte", "aliases": ["Fonte", "Jose Fonte"], "position": "V" },
+      { "name": "Raphaël Guerreiro", "aliases": ["Guerreiro", "Raphael Guerreiro"], "position": "V" },
+      { "name": "William Carvalho", "aliases": [], "position": "M" },
+      { "name": "Renato Sanches", "aliases": ["Sanches"], "position": "M" },
+      { "name": "Adrien Silva", "aliases": ["Adrien"], "position": "M" },
+      { "name": "João Mário", "aliases": ["Joao Mario"], "position": "M" },
+      { "name": "Nani", "aliases": [], "position": "A" },
+      { "name": "Cristiano Ronaldo", "aliases": ["Ronaldo", "CR7"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2016_final"],
+    "tags": [], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "FC Barcelona – Paris Saint-Germain, achtste finale Champions League 2017 (6-1)",
+    "team": "FC Barcelona",
+    "players": [
+      { "name": "Marc-André ter Stegen", "aliases": ["Ter Stegen", "Marc-Andre ter Stegen"], "position": "K" },
+      { "name": "Javier Mascherano", "aliases": ["Mascherano"], "position": "V" },
+      { "name": "Gerard Piqué", "aliases": ["Piqué", "Pique", "Gerard Pique"], "position": "V" },
+      { "name": "Samuel Umtiti", "aliases": ["Umtiti"], "position": "V" },
+      { "name": "Sergio Busquets", "aliases": ["Busquets"], "position": "M" },
+      { "name": "Ivan Rakitić", "aliases": ["Rakitić", "Rakitic", "Ivan Rakitic"], "position": "M" },
+      { "name": "Andrés Iniesta", "aliases": ["Iniesta", "Andres Iniesta"], "position": "M" },
+      { "name": "Lionel Messi", "aliases": ["Messi"], "position": "M" },
+      { "name": "Rafinha", "aliases": ["Rafinha Alcântara", "Rafinha Alcantara"], "position": "A" },
+      { "name": "Luis Suárez", "aliases": ["Suárez", "Suarez", "Luis Suarez"], "position": "A" },
+      { "name": "Neymar", "aliases": ["Neymar Jr"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/FC_Barcelona_6%E2%80%931_Paris_Saint-Germain_FC", "https://africa.espn.com/football/match/_/gameId/469090"],
+    "tags": ["champions-league"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Liverpool – FC Barcelona, halve finale Champions League 2019 (4-0)",
+    "team": "Liverpool",
+    "players": [
+      { "name": "Alisson", "aliases": ["Alisson Becker"], "position": "K" },
+      { "name": "Trent Alexander-Arnold", "aliases": ["Alexander-Arnold", "Alexander Arnold"], "position": "V" },
+      { "name": "Joël Matip", "aliases": ["Matip", "Joel Matip"], "position": "V" },
+      { "name": "Virgil van Dijk", "aliases": ["Van Dijk"], "position": "V" },
+      { "name": "Andy Robertson", "aliases": ["Robertson"], "position": "V" },
+      { "name": "Fabinho", "aliases": [], "position": "M" },
+      { "name": "Jordan Henderson", "aliases": ["Henderson"], "position": "M" },
+      { "name": "James Milner", "aliases": ["Milner"], "position": "M" },
+      { "name": "Xherdan Shaqiri", "aliases": ["Shaqiri"], "position": "A" },
+      { "name": "Divock Origi", "aliases": ["Origi"], "position": "A" },
+      { "name": "Sadio Mané", "aliases": ["Mané", "Mane", "Sadio Mane"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://africa.espn.com/football/match/_/gameId/538699/barcelona-liverpool", "https://www.coachesvoice.com/?p=16109"],
+    "tags": ["champions-league"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Liverpool – Real Madrid, finale Champions League 2022 (0-1)",
+    "team": "Real Madrid",
+    "players": [
+      { "name": "Thibaut Courtois", "aliases": ["Courtois"], "position": "K" },
+      { "name": "Dani Carvajal", "aliases": ["Carvajal", "Daniel Carvajal"], "position": "V" },
+      { "name": "Éder Militão", "aliases": ["Militão", "Militao", "Eder Militao"], "position": "V" },
+      { "name": "David Alaba", "aliases": ["Alaba"], "position": "V" },
+      { "name": "Ferland Mendy", "aliases": ["Mendy"], "position": "V" },
+      { "name": "Luka Modrić", "aliases": ["Modrić", "Modric", "Luka Modric"], "position": "M" },
+      { "name": "Casemiro", "aliases": [], "position": "M" },
+      { "name": "Toni Kroos", "aliases": ["Kroos"], "position": "M" },
+      { "name": "Federico Valverde", "aliases": ["Valverde"], "position": "A" },
+      { "name": "Karim Benzema", "aliases": ["Benzema"], "position": "A" },
+      { "name": "Vinícius Júnior", "aliases": ["Vinícius", "Vinicius", "Vinicius Junior", "Vini Jr"], "position": "A" }
+    ],
+    "difficulty": 1, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2022_UEFA_Champions_League_final"],
+    "tags": ["champions-league", "rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Spanje – Engeland, finale EK 2024 (2-1)",
+    "team": "Spanje",
+    "players": [
+      { "name": "Unai Simón", "aliases": ["Unai Simon", "Simón", "Simon"], "position": "K" },
+      { "name": "Dani Carvajal", "aliases": ["Carvajal", "Daniel Carvajal"], "position": "V" },
+      { "name": "Robin Le Normand", "aliases": ["Le Normand"], "position": "V" },
+      { "name": "Aymeric Laporte", "aliases": ["Laporte"], "position": "V" },
+      { "name": "Marc Cucurella", "aliases": ["Cucurella"], "position": "V" },
+      { "name": "Rodri", "aliases": ["Rodrigo Hernández", "Rodrigo Hernandez"], "position": "M" },
+      { "name": "Fabián Ruiz", "aliases": ["Fabian Ruiz", "Fabián"], "position": "M" },
+      { "name": "Dani Olmo", "aliases": ["Olmo"], "position": "M" },
+      { "name": "Lamine Yamal", "aliases": ["Yamal"], "position": "A" },
+      { "name": "Nico Williams", "aliases": [], "position": "A" },
+      { "name": "Álvaro Morata", "aliases": ["Morata", "Alvaro Morata"], "position": "A" }
+    ],
+    "difficulty": 1, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2024_final"],
+    "tags": [], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Bekerfinale 2015: Club Brugge – Anderlecht (2-1)",
+    "team": "Anderlecht",
+    "players": [
+      { "name": "Silvio Proto", "aliases": ["Proto"], "position": "K" },
+      { "name": "Leander Dendoncker", "aliases": ["Dendoncker"], "position": "V" },
+      { "name": "Rolando", "aliases": [], "position": "V" },
+      { "name": "Olivier Deschacht", "aliases": ["Deschacht"], "position": "V" },
+      { "name": "Fabrice N'Sakala", "aliases": ["N'Sakala", "Nsakala"], "position": "V" },
+      { "name": "Steven Defour", "aliases": ["Defour"], "position": "M" },
+      { "name": "Dennis Praet", "aliases": ["Praet"], "position": "M" },
+      { "name": "Marko Marin", "aliases": ["Marin"], "position": "M" },
+      { "name": "Maxime Colin", "aliases": ["Colin"], "position": "A" },
+      { "name": "Andy Najar", "aliases": ["Najar"], "position": "A" },
+      { "name": "Aleksandar Mitrović", "aliases": ["Mitrović", "Mitrovic"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2015_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2014-2015/kalender/finale/club-brugge/anderlecht"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Bekerfinale 2016: Club Brugge – Standard (1-2)",
+    "team": "Standard",
+    "players": [
+      { "name": "Víctor Valdés", "aliases": ["Valdés", "Valdes"], "position": "K" },
+      { "name": "Collins Fai", "aliases": ["Fai"], "position": "V" },
+      { "name": "Alexander Scholz", "aliases": ["Scholz"], "position": "V" },
+      { "name": "Miloš Kosanović", "aliases": ["Kosanović", "Kosanovic"], "position": "V" },
+      { "name": "Darwin Andrade", "aliases": ["Andrade"], "position": "V" },
+      { "name": "Giannis Maniatis", "aliases": ["Maniatis"], "position": "M" },
+      { "name": "Mathieu Dossevi", "aliases": ["Dossevi"], "position": "M" },
+      { "name": "Adrien Trebel", "aliases": ["Trebel"], "position": "M" },
+      { "name": "Jean-Luc Dompé", "aliases": ["Dompé", "Dompe"], "position": "A" },
+      { "name": "Ivan Santini", "aliases": ["Santini"], "position": "A" },
+      { "name": "Edmilson Junior", "aliases": ["Edmilson"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2016_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2015-2016/kalender/finale/club-brugge/standard"],
+    "tags": [], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Croky Cup-finale 2018: Genk – Standard (0-1 n.v.)",
+    "team": "Standard",
+    "players": [
+      { "name": "Jean-François Gillet", "aliases": ["Gillet"], "position": "K" },
+      { "name": "Luis Pedro Cavanda", "aliases": ["Cavanda"], "position": "V" },
+      { "name": "Christian Luyindama", "aliases": ["Luyindama"], "position": "V" },
+      { "name": "Georgios Koutroumbis", "aliases": ["Koutroumbis"], "position": "V" },
+      { "name": "Collins Fai", "aliases": ["Fai"], "position": "V" },
+      { "name": "Gojko Cimirot", "aliases": ["Cimirot"], "position": "M" },
+      { "name": "Răzvan Marin", "aliases": ["Marin"], "position": "M" },
+      { "name": "Mehdi Carcela", "aliases": ["Carcela"], "position": "M" },
+      { "name": "Edmilson Junior", "aliases": ["Edmilson"], "position": "A" },
+      { "name": "Paul-José M'Poku", "aliases": ["M'Poku", "Mpoku"], "position": "A" },
+      { "name": "Renaud Emond", "aliases": ["Emond"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2018_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2017-2018/kalender/finale/krc-genk/standard"],
+    "tags": [], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Croky Cup-finale 2019: Gent – KV Mechelen (1-2)",
+    "team": "Gent",
+    "players": [
+      { "name": "Thomas Kaminski", "aliases": ["Kaminski"], "position": "K" },
+      { "name": "Arnaud Souquet", "aliases": ["Souquet"], "position": "V" },
+      { "name": "Dylan Bronn", "aliases": ["Bronn"], "position": "V" },
+      { "name": "Timothy Derijck", "aliases": ["Derijck"], "position": "V" },
+      { "name": "Nana Asare", "aliases": ["Asare"], "position": "V" },
+      { "name": "Birger Verstraete", "aliases": ["Verstraete"], "position": "M" },
+      { "name": "Vadis Odjidja-Ofoe", "aliases": ["Odjidja-Ofoe", "Odjidja", "Vadis"], "position": "M" },
+      { "name": "Jonathan David", "aliases": ["David"], "position": "M" },
+      { "name": "Alexander Sørloth", "aliases": ["Sørloth", "Sorloth"], "position": "A" },
+      { "name": "Giorgi Kvilitaia", "aliases": ["Kvilitaia"], "position": "A" },
+      { "name": "Jean-Luc Dompé", "aliases": ["Dompé", "Dompe"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2019_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2018-2019/kalender/finale/kaa-gent/kv-mechelen"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Croky Cup-finale 2020: Club Brugge – Antwerp (0-1)",
+    "team": "Club Brugge",
+    "players": [
+      { "name": "Simon Mignolet", "aliases": ["Mignolet"], "position": "K" },
+      { "name": "Clinton Mata", "aliases": ["Mata"], "position": "V" },
+      { "name": "Brandon Mechele", "aliases": ["Mechele"], "position": "V" },
+      { "name": "Simon Deli", "aliases": ["Deli"], "position": "V" },
+      { "name": "Eduard Sobol", "aliases": ["Sobol"], "position": "V" },
+      { "name": "Éder Balanta", "aliases": ["Balanta"], "position": "M" },
+      { "name": "Ruud Vormer", "aliases": ["Vormer"], "position": "M" },
+      { "name": "Hans Vanaken", "aliases": ["Vanaken"], "position": "M" },
+      { "name": "Krépin Diatta", "aliases": ["Diatta"], "position": "A" },
+      { "name": "Charles De Ketelaere", "aliases": ["De Ketelaere", "CDK"], "position": "A" },
+      { "name": "David Okereke", "aliases": ["Okereke"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2020_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2019-2020/kalender/finale/club-brugge/antwerp", "https://sporza.be/nl/matches/voetbal/croky-cup/2019-2020/finale/01/club-brugge-antwerp-underdog-antwerp-houdt-club-brugge-van-dubbel-in-bekerfinale~1566819600928/"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Croky Cup-finale 2021: Standard – Genk (1-2)",
+    "team": "KRC Genk",
+    "players": [
+      { "name": "Maarten Vandevoordt", "aliases": ["Vandevoordt"], "position": "K" },
+      { "name": "Daniel Muñoz", "aliases": ["Muñoz", "Munoz"], "position": "V" },
+      { "name": "Carlos Cuesta", "aliases": ["Cuesta"], "position": "V" },
+      { "name": "Jhon Lucumí", "aliases": ["Lucumí", "Lucumi"], "position": "V" },
+      { "name": "Gerardo Arteaga", "aliases": ["Arteaga"], "position": "V" },
+      { "name": "Bryan Heynen", "aliases": ["Heynen"], "position": "M" },
+      { "name": "Patrik Hrošovský", "aliases": ["Hrošovský", "Hrosovsky"], "position": "M" },
+      { "name": "Kristian Thorstvedt", "aliases": ["Thorstvedt"], "position": "M" },
+      { "name": "Junya Ito", "aliases": ["Ito"], "position": "A" },
+      { "name": "Paul Onuachu", "aliases": ["Onuachu"], "position": "A" },
+      { "name": "Théo Bongonda", "aliases": ["Bongonda"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2021_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2020-2021/kalender/finale/standard/krc-genk"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Croky Cup-finale 2022: Gent – Anderlecht (0-0, 4-3 n.s.)",
+    "team": "Gent",
+    "players": [
+      { "name": "Davy Roef", "aliases": ["Roef"], "position": "K" },
+      { "name": "Jordan Torunarigha", "aliases": ["Torunarigha"], "position": "V" },
+      { "name": "Michael Ngadeu-Ngadjui", "aliases": ["Ngadeu-Ngadjui", "Ngadeu"], "position": "V" },
+      { "name": "Joseph Okumu", "aliases": ["Okumu"], "position": "V" },
+      { "name": "Matisse Samoise", "aliases": ["Samoise"], "position": "M" },
+      { "name": "Sven Kums", "aliases": ["Kums"], "position": "M" },
+      { "name": "Vadis Odjidja-Ofoe", "aliases": ["Odjidja-Ofoe", "Odjidja", "Vadis"], "position": "M" },
+      { "name": "Julien De Sart", "aliases": ["De Sart"], "position": "M" },
+      { "name": "Alessio Castro-Montes", "aliases": ["Castro-Montes"], "position": "M" },
+      { "name": "Roman Bezus", "aliases": ["Bezus"], "position": "A" },
+      { "name": "Tarik Tissoudali", "aliases": ["Tissoudali"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2022_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2021-2022/kalender/finale/kaa-gent/anderlecht"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Croky Cup-finale 2023: KV Mechelen – Antwerp (0-2)",
+    "team": "Antwerp",
+    "players": [
+      { "name": "Jean Butez", "aliases": ["Butez"], "position": "K" },
+      { "name": "Ritchie De Laet", "aliases": ["De Laet"], "position": "V" },
+      { "name": "Willian Pacho", "aliases": ["Pacho"], "position": "V" },
+      { "name": "Toby Alderweireld", "aliases": ["Alderweireld"], "position": "V" },
+      { "name": "Jelle Bataille", "aliases": ["Bataille"], "position": "V" },
+      { "name": "Arthur Vermeeren", "aliases": ["Vermeeren"], "position": "M" },
+      { "name": "Calvin Stengs", "aliases": ["Stengs"], "position": "M" },
+      { "name": "Jurgen Ekkelenkamp", "aliases": ["Ekkelenkamp"], "position": "M" },
+      { "name": "Gyrano Kerk", "aliases": ["Kerk"], "position": "A" },
+      { "name": "Arbnor Muja", "aliases": ["Muja"], "position": "A" },
+      { "name": "Vincent Janssen", "aliases": ["Janssen"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2023_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2022-2023/kalender/finale/kv-mechelen/antwerp"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Croky Cup-finale 2024: Union – Antwerp (1-0)",
+    "team": "Union SG",
+    "players": [
+      { "name": "Anthony Moris", "aliases": ["Moris"], "position": "K" },
+      { "name": "Kevin Mac Allister", "aliases": ["Mac Allister"], "position": "V" },
+      { "name": "Christian Burgess", "aliases": ["Burgess"], "position": "V" },
+      { "name": "Koki Machida", "aliases": ["Machida"], "position": "V" },
+      { "name": "Alessio Castro-Montes", "aliases": ["Castro-Montes"], "position": "M" },
+      { "name": "Charles Vanhoutte", "aliases": ["Vanhoutte"], "position": "M" },
+      { "name": "Cameron Puertas", "aliases": ["Puertas"], "position": "M" },
+      { "name": "Mathias Rasmussen", "aliases": ["Rasmussen"], "position": "M" },
+      { "name": "Loïc Lapoussin", "aliases": ["Lapoussin"], "position": "M" },
+      { "name": "Mohamed Amoura", "aliases": ["Amoura"], "position": "A" },
+      { "name": "Gustaf Nilsson", "aliases": ["Nilsson"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2024_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2023-2024/kalender/finale/union-sg/antwerp"],
+    "tags": [], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Croky Cup-finale 2025: Club Brugge – Anderlecht (2-1)",
+    "team": "Club Brugge",
+    "players": [
+      { "name": "Nordin Jackers", "aliases": ["Jackers"], "position": "K" },
+      { "name": "Hugo Siquet", "aliases": ["Siquet"], "position": "V" },
+      { "name": "Joel Ordóñez", "aliases": ["Ordóñez", "Ordonez"], "position": "V" },
+      { "name": "Brandon Mechele", "aliases": ["Mechele"], "position": "V" },
+      { "name": "Maxim De Cuyper", "aliases": ["De Cuyper"], "position": "V" },
+      { "name": "Raphael Onyedika", "aliases": ["Onyedika"], "position": "M" },
+      { "name": "Ardon Jashari", "aliases": ["Jashari"], "position": "M" },
+      { "name": "Hans Vanaken", "aliases": ["Vanaken"], "position": "M" },
+      { "name": "Christos Tzolis", "aliases": ["Tzolis"], "position": "A" },
+      { "name": "Ferran Jutglà", "aliases": ["Jutglà", "Jutgla"], "position": "A" },
+      { "name": "Romeo Vermant", "aliases": ["Vermant"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2025_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2024-2025/kalender/finale/club-brugge/anderlecht"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Croky Cup-finale 2026: Union – Anderlecht (3-1 n.v.)",
+    "team": "Anderlecht",
+    "players": [
+      { "name": "Colin Coosemans", "aliases": ["Coosemans"], "position": "K" },
+      { "name": "Ilay Camara", "aliases": ["Camara"], "position": "V" },
+      { "name": "Lucas Hey", "aliases": ["Hey"], "position": "V" },
+      { "name": "Moussa Diarra", "aliases": ["Diarra"], "position": "V" },
+      { "name": "Ali Maamar", "aliases": ["Maamar"], "position": "V" },
+      { "name": "Marco Kana", "aliases": ["Kana"], "position": "M" },
+      { "name": "Nathan Saliba", "aliases": ["Saliba"], "position": "M" },
+      { "name": "Nathan De Cat", "aliases": ["De Cat"], "position": "M" },
+      { "name": "Thorgan Hazard", "aliases": ["Hazard"], "position": "M" },
+      { "name": "Mihajlo Cvetković", "aliases": ["Cvetković", "Cvetkovic"], "position": "A" },
+      { "name": "Tristan Degreef", "aliases": ["Degreef"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2026_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2025-2026/kalender/finale/union-sg/anderlecht"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Standard – Anderlecht, titelmatch 2008 (2-0)",
+    "team": "Standard",
+    "players": [
+      { "name": "Rorys Aragón", "aliases": ["Aragón", "Aragon"], "position": "K" },
+      { "name": "Marcos Camozzato", "aliases": ["Camozzato"], "position": "V" },
+      { "name": "Oguchi Onyewu", "aliases": ["Onyewu"], "position": "V" },
+      { "name": "Mohamed Sarr", "aliases": ["Sarr"], "position": "V" },
+      { "name": "Dante", "aliases": [], "position": "V" },
+      { "name": "Réginal Goreux", "aliases": ["Goreux"], "position": "M" },
+      { "name": "Marouane Fellaini", "aliases": ["Fellaini"], "position": "M" },
+      { "name": "Steven Defour", "aliases": ["Defour"], "position": "M" },
+      { "name": "Axel Witsel", "aliases": ["Witsel"], "position": "M" },
+      { "name": "Milan Jovanović", "aliases": ["Jovanović", "Jovanovic"], "position": "A" },
+      { "name": "Dieumerci Mbokani", "aliases": ["Mbokani"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://www.voetbalkrant.com/belgie/jupiler-pro-league/2007-2008/kalender/speeldag-31/standard/anderlecht/opstellingen", "https://www.espn.com/soccer/lineups/_/gameId/239946"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Standard – Anderlecht, Clasico januari 2010 (0-4)",
+    "team": "Anderlecht",
+    "players": [
+      { "name": "Silvio Proto", "aliases": ["Proto"], "position": "K" },
+      { "name": "Olivier Deschacht", "aliases": ["Deschacht"], "position": "V" },
+      { "name": "Roland Juhász", "aliases": ["Juhász", "Juhasz"], "position": "V" },
+      { "name": "Ondřej Mazuch", "aliases": ["Mazuch"], "position": "V" },
+      { "name": "Jelle Van Damme", "aliases": ["Van Damme"], "position": "V" },
+      { "name": "Lucas Biglia", "aliases": ["Biglia"], "position": "M" },
+      { "name": "Guillaume Gillet", "aliases": ["Gillet"], "position": "M" },
+      { "name": "Cheikhou Kouyaté", "aliases": ["Kouyaté", "Kouyate"], "position": "M" },
+      { "name": "Mbark Boussoufa", "aliases": ["Boussoufa"], "position": "M" },
+      { "name": "Jonathan Legear", "aliases": ["Legear"], "position": "A" },
+      { "name": "Romelu Lukaku", "aliases": ["Lukaku"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://www.espn.com/soccer/lineups/_/gameId/286821", "https://www.voetbalkrant.com/belgie/jupiler-pro-league/2009-2010/kalender/speeldag-22/standard/anderlecht/opstellingen"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Genk – Standard, titelmatch play-off I 2011 (1-1)",
+    "team": "KRC Genk",
+    "players": [
+      { "name": "Thibaut Courtois", "aliases": ["Courtois"], "position": "K" },
+      { "name": "Anele Ngcongca", "aliases": ["Ngcongca", "Anele"], "position": "V" },
+      { "name": "Eric Matoukou", "aliases": ["Matoukou"], "position": "V" },
+      { "name": "Torben Joneleit", "aliases": ["Joneleit"], "position": "V" },
+      { "name": "Chris Mavinga", "aliases": ["Mavinga"], "position": "V" },
+      { "name": "Anthony Vanden Borre", "aliases": ["Vanden Borre"], "position": "M" },
+      { "name": "Dániel Tőzsér", "aliases": ["Tőzsér", "Tözsér", "Tozser"], "position": "M" },
+      { "name": "David Hubert", "aliases": ["Hubert"], "position": "M" },
+      { "name": "Kevin De Bruyne", "aliases": ["De Bruyne", "KDB"], "position": "M" },
+      { "name": "Marvin Ogunjimi", "aliases": ["Ogunjimi"], "position": "A" },
+      { "name": "Jelle Vossen", "aliases": ["Vossen"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://www.voetbalkrant.com/belgie/play-off-1/2010-2011/kalender/speeldag-10/krc-genk/standard/opstellingen", "https://www.maxifoot.fr/match/racing-genk-standard-liege-20110517.htm"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Anderlecht – Club Brugge, titelmatch play-off I 2012 (1-1)",
+    "team": "Anderlecht",
+    "players": [
+      { "name": "Silvio Proto", "aliases": ["Proto"], "position": "K" },
+      { "name": "Denis Odoi", "aliases": ["Odoi"], "position": "V" },
+      { "name": "Cheikhou Kouyaté", "aliases": ["Kouyaté", "Kouyate"], "position": "V" },
+      { "name": "Roland Juhász", "aliases": ["Juhász", "Juhasz"], "position": "V" },
+      { "name": "Behrang Safari", "aliases": ["Safari"], "position": "V" },
+      { "name": "Lucas Biglia", "aliases": ["Biglia"], "position": "M" },
+      { "name": "Sacha Kljestan", "aliases": ["Kljestan"], "position": "M" },
+      { "name": "Guillaume Gillet", "aliases": ["Gillet"], "position": "M" },
+      { "name": "Kanu", "aliases": [], "position": "M" },
+      { "name": "Milan Jovanović", "aliases": ["Jovanović", "Jovanovic"], "position": "M" },
+      { "name": "Dieumerci Mbokani", "aliases": ["Mbokani"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://www.voetbalkrant.com/belgie/play-off-1/2011-2012/kalender/speeldag-8/anderlecht/club-brugge/opstellingen", "https://www.rtbf.be/article/retro-po1-6-mai-2012-le-penalty-du-31e-titre-d-anderlecht-10504427"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Standard – Anderlecht, Clasico januari 2015 (2-0)",
+    "team": "Anderlecht",
+    "players": [
+      { "name": "Silvio Proto", "aliases": ["Proto"], "position": "K" },
+      { "name": "Maxime Colin", "aliases": ["Colin"], "position": "V" },
+      { "name": "Michaël Heylen", "aliases": ["Heylen"], "position": "V" },
+      { "name": "Olivier Deschacht", "aliases": ["Deschacht"], "position": "V" },
+      { "name": "Fabrice N'Sakala", "aliases": ["N'Sakala", "Nsakala"], "position": "V" },
+      { "name": "Leander Dendoncker", "aliases": ["Dendoncker"], "position": "M" },
+      { "name": "Steven Defour", "aliases": ["Defour"], "position": "M" },
+      { "name": "Youri Tielemans", "aliases": ["Tielemans"], "position": "M" },
+      { "name": "Andy Najar", "aliases": ["Najar"], "position": "A" },
+      { "name": "Andrés Álvarez", "aliases": ["Álvarez", "Alvarez"], "position": "A" },
+      { "name": "Gohi Bi Cyriac", "aliases": ["Cyriac"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://www.voetbalkrant.com/belgie/jupiler-pro-league/2014-2015/kalender/speeldag-23/standard/anderlecht/opstellingen", "https://www.maxifoot.fr/match/standard-liege-anderlecht-20150125.htm"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Gent – Standard, play-off I 2015 (2-0)",
+    "team": "Gent",
+    "players": [
+      { "name": "Matz Sels", "aliases": ["Sels"], "position": "K" },
+      { "name": "Rafinha", "aliases": [], "position": "V" },
+      { "name": "Lasse Nielsen", "aliases": ["Nielsen"], "position": "V" },
+      { "name": "Rami Gershon", "aliases": ["Gershon"], "position": "V" },
+      { "name": "Nana Asare", "aliases": ["Asare"], "position": "M" },
+      { "name": "Renato Neto", "aliases": ["Neto"], "position": "M" },
+      { "name": "Sven Kums", "aliases": ["Kums"], "position": "M" },
+      { "name": "Brecht Dejaegere", "aliases": ["Dejaegere"], "position": "M" },
+      { "name": "Danijel Milićević", "aliases": ["Milićević", "Milicevic"], "position": "M" },
+      { "name": "Benito Raman", "aliases": ["Raman"], "position": "A" },
+      { "name": "Moses Simon", "aliases": ["Simon"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://www.voetbalkrant.com/belgie/play-off-1/2014-2015/kalender/speeldag-9/kaa-gent/standard/opstellingen", "https://www.maxifoot.fr/match/gantoise-standard-liege-20150521.htm"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Club Brugge – Anderlecht, titelmatch play-off I 2016 (4-0)",
+    "team": "Club Brugge",
+    "players": [
+      { "name": "Ludovic Butelle", "aliases": ["Butelle"], "position": "K" },
+      { "name": "Thomas Meunier", "aliases": ["Meunier"], "position": "V" },
+      { "name": "Björn Engels", "aliases": ["Engels"], "position": "V" },
+      { "name": "Stefano Denswil", "aliases": ["Denswil"], "position": "V" },
+      { "name": "Laurens De Bock", "aliases": ["De Bock"], "position": "V" },
+      { "name": "Claudemir", "aliases": [], "position": "M" },
+      { "name": "Timmy Simons", "aliases": ["Simons"], "position": "M" },
+      { "name": "Ruud Vormer", "aliases": ["Vormer"], "position": "M" },
+      { "name": "Hans Vanaken", "aliases": ["Vanaken"], "position": "M" },
+      { "name": "José Izquierdo", "aliases": ["Izquierdo"], "position": "A" },
+      { "name": "Abdoulay Diaby", "aliases": ["Diaby"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://www.espn.com/soccer/lineups/_/gameId/448449", "https://www.voetbalkrant.com/belgie/play-off-1/2015-2016/kalender/speeldag-8/club-brugge/anderlecht/opstellingen"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Club Brugge – Anderlecht, play-off I 2018 (1-2)",
+    "team": "Club Brugge",
+    "players": [
+      { "name": "Vladimir Gabulov", "aliases": ["Gabulov"], "position": "K" },
+      { "name": "Dion Cools", "aliases": ["Cools"], "position": "V" },
+      { "name": "Benoît Poulain", "aliases": ["Poulain"], "position": "V" },
+      { "name": "Brandon Mechele", "aliases": ["Mechele"], "position": "V" },
+      { "name": "Stefano Denswil", "aliases": ["Denswil"], "position": "V" },
+      { "name": "Marvelous Nakamba", "aliases": ["Nakamba"], "position": "M" },
+      { "name": "Ruud Vormer", "aliases": ["Vormer"], "position": "M" },
+      { "name": "Hans Vanaken", "aliases": ["Vanaken"], "position": "M" },
+      { "name": "Krépin Diatta", "aliases": ["Diatta"], "position": "A" },
+      { "name": "Wesley", "aliases": [], "position": "A" },
+      { "name": "Abdoulay Diaby", "aliases": ["Diaby"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://www.espn.com/soccer/lineups/_/gameId/509021", "https://www.fcupdate.nl/voetbalcompetities/belgie/pro-league/programma-uitslagen/2017-2018/club-brugge-anderlecht-06-05/opstellingen"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Anderlecht – Genk, play-off I 2019 (1-1)",
+    "team": "KRC Genk",
+    "players": [
+      { "name": "Danny Vukovic", "aliases": ["Vukovic"], "position": "K" },
+      { "name": "Joakim Mæhle", "aliases": ["Mæhle", "Maehle"], "position": "V" },
+      { "name": "Sébastien Dewaest", "aliases": ["Dewaest"], "position": "V" },
+      { "name": "Jhon Lucumí", "aliases": ["Lucumí", "Lucumi"], "position": "V" },
+      { "name": "Jere Uronen", "aliases": ["Uronen"], "position": "V" },
+      { "name": "Sander Berge", "aliases": ["Berge"], "position": "M" },
+      { "name": "Bryan Heynen", "aliases": ["Heynen"], "position": "M" },
+      { "name": "Ruslan Malinovskyi", "aliases": ["Malinovskyi"], "position": "M" },
+      { "name": "Junya Ito", "aliases": ["Ito"], "position": "A" },
+      { "name": "Leandro Trossard", "aliases": ["Trossard"], "position": "A" },
+      { "name": "Mbwana Samatta", "aliases": ["Samatta"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://www.espn.com/soccer/lineups/_/gameId/538764", "https://www.fcupdate.nl/voetbalcompetities/belgie/pro-league/programma-uitslagen/2018-2019/anderlecht-genk-16-05/opstellingen"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Club Brugge – Antwerp, play-off I 2021 (2-1)",
+    "team": "Club Brugge",
+    "players": [
+      { "name": "Simon Mignolet", "aliases": ["Mignolet"], "position": "K" },
+      { "name": "Clinton Mata", "aliases": ["Mata"], "position": "V" },
+      { "name": "Brandon Mechele", "aliases": ["Mechele"], "position": "V" },
+      { "name": "Odilon Kossounou", "aliases": ["Kossounou"], "position": "V" },
+      { "name": "Eduard Sobol", "aliases": ["Sobol"], "position": "V" },
+      { "name": "Mats Rits", "aliases": ["Rits"], "position": "M" },
+      { "name": "Éder Balanta", "aliases": ["Balanta"], "position": "M" },
+      { "name": "Ruud Vormer", "aliases": ["Vormer"], "position": "M" },
+      { "name": "Charles De Ketelaere", "aliases": ["De Ketelaere", "CDK"], "position": "A" },
+      { "name": "Noa Lang", "aliases": ["Lang"], "position": "A" },
+      { "name": "Bas Dost", "aliases": ["Dost"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://www.espn.com/soccer/lineups/_/gameId/601480", "https://www.fcupdate.nl/voetbalcompetities/belgie/pro-league/programma-uitslagen/2020-2021/club-brugge-antwerp-16-05/opstellingen"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Antwerp – Club Brugge, play-off I 2022 (1-3)",
+    "team": "Antwerp",
+    "players": [
+      { "name": "Jean Butez", "aliases": ["Butez"], "position": "K" },
+      { "name": "Abdoulaye Seck", "aliases": ["Seck"], "position": "V" },
+      { "name": "Willian Pacho", "aliases": ["Pacho"], "position": "V" },
+      { "name": "Dinis Almeida", "aliases": ["Almeida"], "position": "V" },
+      { "name": "Ritchie De Laet", "aliases": ["De Laet"], "position": "M" },
+      { "name": "Faris Haroun", "aliases": ["Haroun"], "position": "M" },
+      { "name": "Radja Nainggolan", "aliases": ["Nainggolan"], "position": "M" },
+      { "name": "Pieter-Jan Dwomoh", "aliases": ["Dwomoh"], "position": "M" },
+      { "name": "Koji Miyoshi", "aliases": ["Miyoshi"], "position": "M" },
+      { "name": "Michael Frey", "aliases": ["Frey"], "position": "A" },
+      { "name": "Mbwana Samatta", "aliases": ["Samatta"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://www.espn.com/soccer/lineups/_/gameId/634227", "https://www.fcupdate.nl/voetbalcompetities/belgie/pro-league/programma-uitslagen/2021-2022/antwerp-club-brugge-15-05/opstellingen"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Genk – Antwerp, titelmatch play-off I 2023 (2-2)",
+    "team": "Antwerp",
+    "players": [
+      { "name": "Jean Butez", "aliases": ["Butez"], "position": "K" },
+      { "name": "Jelle Bataille", "aliases": ["Bataille"], "position": "V" },
+      { "name": "Toby Alderweireld", "aliases": ["Alderweireld"], "position": "V" },
+      { "name": "Willian Pacho", "aliases": ["Pacho"], "position": "V" },
+      { "name": "Gastón Ávila", "aliases": ["Ávila", "Avila"], "position": "V" },
+      { "name": "Mandela Keita", "aliases": ["Keita"], "position": "M" },
+      { "name": "Arthur Vermeeren", "aliases": ["Vermeeren"], "position": "M" },
+      { "name": "Jurgen Ekkelenkamp", "aliases": ["Ekkelenkamp"], "position": "M" },
+      { "name": "Gyrano Kerk", "aliases": ["Kerk"], "position": "A" },
+      { "name": "Vincent Janssen", "aliases": ["Janssen"], "position": "A" },
+      { "name": "Michel-Ange Balikwisha", "aliases": ["Balikwisha"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://www.espn.com/soccer/lineups/_/gameId/668606", "https://www.fcupdate.nl/voetbalcompetities/belgie/pro-league/programma-uitslagen/2022-2023/genk-antwerp-04-06/opstellingen"],
+    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+  },
+  {
+    "title": "Union – Gent, titelmatch play-off I 2025 (3-1)",
+    "team": "Union SG",
+    "players": [
+      { "name": "Anthony Moris", "aliases": ["Moris"], "position": "K" },
+      { "name": "Ross Sykes", "aliases": ["Sykes"], "position": "V" },
+      { "name": "Christian Burgess", "aliases": ["Burgess"], "position": "V" },
+      { "name": "Koki Machida", "aliases": ["Machida"], "position": "V" },
+      { "name": "Anan Khalaili", "aliases": ["Khalaili"], "position": "M" },
+      { "name": "Noah Sadiki", "aliases": ["Sadiki"], "position": "M" },
+      { "name": "Charles Vanhoutte", "aliases": ["Vanhoutte"], "position": "M" },
+      { "name": "Ousseynou Niang", "aliases": ["Niang"], "position": "M" },
+      { "name": "Anouar Ait El Hadj", "aliases": ["Ait El Hadj"], "position": "M" },
+      { "name": "Mohammed Fuseini", "aliases": ["Fuseini"], "position": "A" },
+      { "name": "Franjo Ivanović", "aliases": ["Ivanović", "Ivanovic"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://www.espn.com/soccer/lineups/_/gameId/734564", "https://www.voetbalkrant.com/belgie/play-off-1/2024-2025/kalender/speeldag-10/union-sg/kaa-gent/opstellingen"],
+    "tags": [], "checkedAt": "2026-10-17"
+  }
+]

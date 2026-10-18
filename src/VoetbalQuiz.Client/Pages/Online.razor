@@ -1,0 +1,24 @@
+@page "/online"
+@attribute [Authorize]
+
+<PageTitle>Online – Truitje Trek</PageTitle>
+
+<section class="card">
+    <h1>⚔️ Online spelen</h1>
+    <p class="muted">
+        Maak een tafel en speel live tegen je vrienden. Kies één vraagtype of een mix. Wie het eerst juist is, krijgt een bonus
+        (+@MatchRules.PositionBonus[0], +@MatchRules.PositionBonus[1], +@MatchRules.PositionBonus[2]).
+    </p>
+    <CreateTableForm UserName="@_me" />
+</section>
+
+<OpenTables ShowRecent="true" />
+
+@code {
+    private string? _me;
+
+    [CascadingParameter] private Task<AuthenticationState>? AuthTask { get; set; }
+
+    protected override async Task OnInitializedAsync() =>
+        _me = AuthTask is null ? null : (await AuthTask).User.Identity?.Name;
+}

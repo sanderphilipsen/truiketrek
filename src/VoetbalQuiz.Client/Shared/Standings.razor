@@ -1,0 +1,21 @@
+@* Stand van een wedstrijd: tussenstand of eindstand. *@
+<ol class="board">
+    @{ var rank = 0; var prevScore = int.MinValue; var i = 0; }
+    @foreach (var p in Players.OrderBy(p => p.Rank ?? int.MaxValue).ThenByDescending(p => p.Score))
+    {
+        i++;
+        if (p.Score != prevScore) rank = i;
+        prevScore = p.Score;
+        var shown = p.Rank ?? rank;
+        <li class="@(p.IsMe ? "me" : "") @(p.Left ? "left" : "")">
+            <span class="rank">@(shown switch { 1 => "🥇", 2 => "🥈", 3 => "🥉", _ => shown.ToString() })</span>
+            <Avatar Id="@p.AvatarId" Size="36" />
+            <span class="player"><b>@p.UserName <span class="lvl">Lv @p.Level</span></b>@if (p.Left) {<small>verlaten</small>}</span>
+            <span class="pts">@p.Score</span>
+        </li>
+    }
+</ol>
+
+@code {
+    [Parameter, EditorRequired] public List<MatchPlayerState> Players { get; set; } = [];
+}

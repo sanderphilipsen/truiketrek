@@ -1,0 +1,22 @@
+@* Rijen van een klassement; een naam opent het spelersprofiel (met head-to-head). *@
+<ol class="board">
+    @foreach (var e in Entries)
+    {
+        <li class="@(e.IsMe ? "me" : "")">
+            <span class="rank">@Medal(e.Rank)</span>
+            <Avatar Id="@e.AvatarId" Size="38" />
+            <a class="player" href="speler/@Uri.EscapeDataString(e.UserName)">
+                <b>@e.UserName <span class="lvl">Lv @e.Level</span></b>
+                <small>@e.CorrectAnswers juist @(ShowDays ? $"· {e.DaysPlayed} {(e.DaysPlayed == 1 ? "dag" : "dagen")}" : "")@(e.DaysWon > 0 ? $" · {e.DaysWon}× 🏆" : "")</small>
+            </a>
+            <span class="pts">@e.Points</span>
+        </li>
+    }
+</ol>
+
+@code {
+    [Parameter, EditorRequired] public List<LeaderboardEntry> Entries { get; set; } = [];
+    [Parameter] public bool ShowDays { get; set; }
+
+    private static string Medal(int rank) => rank switch { 1 => "🥇", 2 => "🥈", 3 => "🥉", _ => rank.ToString() };
+}

@@ -1,0 +1,67 @@
+@page "/admin/feedback"
+@attribute [Authorize]
+@inject ApiClient Api
+@inject AuthState Auth
+
+<PageTitle>Feedback – Admin</PageTitle>
+
+<AdminGuard>
+    <div class="toolbar">
+        <div class="segmented">
+            <button class="@(_filter == "open" ? "on" : "")" @onclick='() => _filter = "open"'>Open <small>@Count(true)</small></button>
+            <button class="@(_filter == "done" ? "on" : "")" @onclick='() => _filter = "done"'>Afgehandeld <small>@Count(false)</small></button>
+            <button class="@(_filter == "all" ? "on" : "")" @onclick='() => _filter = "all"'>Alle</button>
+        </div>
+    </div>
+
+    @if (_overview is null)
+    {
+        <div class="center-msg">Laden…</div>
+    }
+    else
+    {
+        var items = _overview.Items.Where(Show).ToList();
+        @if (items.Count == 0)
+        {
+            <div class="card center muted">Niets in deze lijst. 🎉</div>
+        }
+        <div class="feedback-list">
+            @foreach (var item in items)
+            {
+                <article class="card feedback-item">
+                    <div class="feedback-head">
+                        <span>@(item.Type == FeedbackType.Bug ? "🐞" : "💡") <b>@item.Title</b></span>
+                        <span class="status status-@item.Status.ToString().ToLowerInvariant()">@item.Status</span>
+                    </div>
+                    <p class="feedback-text">@item.Description</p>
+                    <small class="muted">@item.UserName · @item.CreatedAt.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</small>
+                    <AdminFeedback Item="item" OnSaved="LoadAsync" />
+                </article>
+            }
+        </div>
+    }
+</AdminGuard>
+
+@code {
+    private FeedbackOverview? _overview;
+    private string _filter = "open";
+
+    protected override Task OnInitializedAsync() => Auth.User?.IsAdmin == true ? LoadAsync() : Task.CompletedTask;
+
+    private async Task LoadAsync()
+    {
+        try { _overview = await Api.GetFeedbackAsync(); }
+        catch (ApiException) { _overview = new FeedbackOverview(true, []); }
+    }
+
+    private static bool IsOpen(FeedbackItem i) => i.Status is FeedbackStatus.Nieuw or FeedbackStatus.Bekeken or FeedbackStatus.Gepland;
+
+    private bool Show(FeedbackItem i) => _filter switch
+    {
+        "open" => IsOpen(i),
+        "done" => !IsOpen(i),
+        _ => true,
+    };
+
+    private int Count(bool open) => _overview?.Items.Count(i => IsOpen(i) == open) ?? 0;
+}

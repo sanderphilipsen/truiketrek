@@ -1,0 +1,37 @@
+@* Prijzenkast (bekers per seizoen en specials) en badges van een speler. *@
+<h2 class="section-title">🏆 Prijzenkast</h2>
+@if (Profile.Trophies.Count == 0)
+{
+    <div class="card center muted">Nog geen bekers. Eindig in de top 3 van een maand of win een special!</div>
+}
+else
+{
+    <div class="trophies">
+        @foreach (var t in Profile.Trophies)
+        {
+            <div class="trophy-item place-@t.Place">
+                <div class="trophy-icon">@(t.Place switch { 1 => "🏆", 2 => "🥈", _ => "🥉" })</div>
+                <b>@(t.Kind switch { TrophyKind.Month => "Maand", TrophyKind.Daily => "Daily", TrophyKind.Online => "Online", _ => "Special" })</b>
+                <small class="cap">@t.Season</small>
+                <small>@t.Points pnt</small>
+            </div>
+        }
+    </div>
+}
+
+<h2 class="section-title">🎖️ Badges <small class="light-text">@Profile.Badges.Count(b => b.Earned)/@Profile.Badges.Count</small></h2>
+<div class="badges">
+    @foreach (var b in Profile.Badges)
+    {
+        <div class="badge @(b.Earned ? "earned" : "") tier-@b.Tier.ToString().ToLowerInvariant()" title="@b.Description">
+            <div class="badge-icon">@b.Icon</div>
+            <b>@b.Name</b>
+            <small>@b.Description</small>
+            @if (!b.Earned && b.Progress is not null) { <small class="progress">@b.Progress</small> }
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter, EditorRequired] public PublicProfile Profile { get; set; } = null!;
+}

@@ -1,0 +1,107 @@
+namespace VoetbalQuiz.Shared;
+
+// Account
+public record RegisterRequest(string UserName, string Email, string Password);
+public record LoginRequest(string UserNameOrEmail, string Password);
+public record UserInfo(string UserName, string Email, string? AvatarId, int Level, bool IsAdmin = false);
+public record ChangePasswordRequest(string CurrentPassword, string NewPassword);
+public record SetAvatarRequest(string AvatarId);
+
+public record ProfileInfo(
+    string UserName, string Email, string? AvatarId, DateOnly MemberSince,
+    LevelInfo Level, List<XpPart> XpBreakdown);
+public record ErrorResponse(string Message);
+
+/// <summary>Wat je bijkreeg sinds de vorige beloningspopup (na een daily, special of online wedstrijd).</summary>
+public record RewardSummary(LevelInfo Before, LevelInfo After, List<XpPart> Gained, List<BadgeState> NewBadges)
+{
+    [System.Text.Json.Serialization.JsonIgnore] public int GainedXp => Gained.Sum(p => p.Xp);
+    [System.Text.Json.Serialization.JsonIgnore] public bool HasNews => GainedXp > 0 || NewBadges.Count > 0;
+}
+
+// Daily challenge
+public enum QuestionStatus { NotStarted, InProgress, Answered }
+
+public record DailyOverview(DateOnly Date, int TotalPoints, List<QuestionSummary> Questions, DayWinner? LastWinner,
+    QuestionType Type = QuestionType.WieBenIk, int MaxPoints = 1000, List<QuestionType>? Types = null)
+{
+    /// <summary>Een dag met meer dan één vraagtype.</summary>
+    [System.Text.Json.Serialization.JsonIgnore] public bool IsMix => Types is { Count: > 1 };
+}
+
+public record DayWinner(DateOnly Date, string UserName, string? AvatarId, int Points, bool IsMe);
+
+public record QuestionSummary(
+    int Number,
+    QuestionStatus Status,
+    int? Points,
+    bool? Correct,
+    string? PlayerName);
+
+/// <summary>Huidige toestand van één vraag zoals de server die ziet.</summary>
+public record QuestionState(
+    int Number,
+    QuestionStatus Status,
+    List<string> Hints,
+    double ElapsedSeconds,
+    int WrongGuesses,
+    string? LastWrongGuess,
+    AnswerResult? Result,
+    QuestionType Type = QuestionType.WieBenIk,
+    double TimeLimit = 30,
+    QuestionView? View = null);
+
+/// <summary>Wat er van een vraag zichtbaar is, afhankelijk van het type (Hints in QuestionState voor tips en clubs).</summary>
+public record QuestionView(
+    string? Prompt = null,
+    List<string>? Options = null,
+    List<LineupSlot>? Lineup = null,
+    int MaxPoints = 100,
+    string? Note = null,
+    // Types die stap voor stap onthullen: de huidige stap (1..Steps).
+    int Step = 0,
+    int Steps = 0,
+    // Mannetje: de avatar zoals hij nu getoond mag worden (als code, zonder naam).
+    string? Avatar = null,
+    // Kluts in de zestien: de letters per woord.
+    List<List<LetterTile>>? Letters = null,
+    // Rugnummer: het nummer op het shirt.
+    int? Shirt = null,
+    // Counter: al gevonden en het totaal aantal spelers.
+    int Found = 0,
+    int Total = 0);
+
+public record AnswerRequest(string Guess);
+
+public record AnswerResult(
+    bool Correct,
+    int Points,
+    string PlayerName,
+    int WrongGuesses,
+    List<string> AllHints,
+    string? Explanation = null,
+    int? CorrectIndex = null,
+    int? MyChoice = null,
+    int? CorrectYear = null,
+    int? MyYear = null,
+    List<LineupSlot>? FullLineup = null);
+
+// Leaderboard
+public record LeaderboardEntry(
+    int Rank, string UserName, string? AvatarId, int Level, int Points,
+    int DaysPlayed, int CorrectAnswers, int DaysWon, bool IsMe);
+public record Leaderboard(string Title, string? Note, List<LeaderboardEntry> Entries);
+
+// Statistieken
+public record StatsOverview(MyStats Me, List<StatCard> HallOfFame, List<MonthChampion> MonthChampions, List<HardQuestion> Hardest);
+
+public record MyStats(
+    int DaysPlayed, int DaysWon, int BestDay, int AverageDay, int CorrectPercent,
+    int FirstHintHits, int CurrentStreak, int LongestStreak);
+
+/// <summary>Eén record in de eregalerij, bv. "Meeste dagzeges".</summary>
+public record StatCard(string Icon, string Title, string Caption, string UserName, string? AvatarId, string Value, bool IsMe);
+
+public record MonthChampion(string Month, string UserName, string? AvatarId, int Points, bool IsMe);
+
+public record HardQuestion(string PlayerName, int CorrectPercent, int Attempts);

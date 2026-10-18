@@ -1,0 +1,19 @@
+@* Vier antwoordopties met een keuzerondje voor het juiste antwoord. *@
+<div class="field-label">Antwoordopties <small class="muted">(duid aan: @Label)</small></div>
+@for (var i = 0; i < Options.Count; i++)
+{
+    var index = i;
+    <div class="option-edit @(Correct == index ? "on" : "")">
+        <input type="radio" name="correct" checked="@(Correct == index)" @onchange="() => CorrectChanged.InvokeAsync(index)" />
+        <input value="@Options[index]" @oninput="e => { Options[index] = e.Value?.ToString() ?? string.Empty; OnChange.InvokeAsync(); }"
+               placeholder="Optie @(index + 1)" />
+    </div>
+}
+
+@code {
+    [Parameter, EditorRequired] public List<string> Options { get; set; } = [];
+    [Parameter] public int Correct { get; set; }
+    [Parameter] public EventCallback<int> CorrectChanged { get; set; }
+    [Parameter] public EventCallback OnChange { get; set; }
+    [Parameter] public string Label { get; set; } = "juist";
+}

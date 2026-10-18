@@ -1,0 +1,308 @@
+@page "/admin/spelers/{Id:int}"
+@page "/admin/speler/{Id:int}"
+@attribute [Authorize]
+@inject ApiClient Api
+@inject AuthState Auth
+@inject AdminState State
+@inject NavigationManager Nav
+
+<PageTitle>@(Id == 0 ? "Nieuwe speler" : _name) – Admin</PageTitle>
+
+<AdminGuard>
+    <div class="editor-top">
+        <a href="admin/spelers" class="back">‹ Terug naar de lijst</a>
+        @if (Id != 0 && State.LastListIds.Contains(Id))
+        {
+            var i = State.LastListIds.IndexOf(Id);
+            <span class="pager">
+                @if (i > 0) { <a href="admin/spelers/@State.LastListIds[i - 1]">‹ Vorige</a> }
+                <span class="muted">@(i + 1) / @State.LastListIds.Count</span>
+                @if (i < State.LastListIds.Count - 1) { <a href="admin/spelers/@State.LastListIds[i + 1]">Volgende ›</a> }
+            </span>
+        }
+    </div>
+
+    @if (_loadError is not null)
+    {
+        <p class="error">@_loadError</p>
+    }
+    else if (_loaded)
+    {
+        var checks = Checks();
+        var canApprove = checks.All(c => c.Ok || !c.NeededForApproval);
+        var status = _original?.Status ?? PlayerStatus.Review;
+
+        <div class="editor">
+            <div class="editor-main">
+                <section class="card stack">
+                    <h2>Basis</h2>
+                    <label>Naam van de speler
+                        <input @bind="_name" @bind:event="oninput" @bind:after="Touch" placeholder="Bv. Kevin De Bruyne" />
+                    </label>
+                    <label>Ook goed als antwoord
+                        <input @bind="_answers" @bind:after="Touch" placeholder="Bv. De Bruyne, KDB" />
+                        <small class="muted">Komma's ertussen. Enkel namen die niet dubbelzinnig zijn (dus niet "Hazard" voor Eden).</small>
+                    </label>
+                    <div class="row-2">
+                        <label>Land <input @bind="_country" @bind:after="Touch" placeholder="België" /></label>
+                        <label>Bekend van (competitie)
+                            <input @bind="_competition" @bind:after="Touch" list="competitions" placeholder="Jupiler Pro League" />
+                        </label>
+                    </div>
+                    <datalist id="competitions">
+                        <option value="Jupiler Pro League" /><option value="Premier League" /><option value="LaLiga" />
+                        <option value="Serie A" /><option value="Bundesliga" /><option value="Ligue 1" /><option value="Eredivisie" />
+                    </datalist>
+                    <div class="row-2">
+                        <label>Tijdperk
+                            <select @bind="_era" @bind:after="Touch"><option value="modern">Modern (na 2005)</option><option value="classic">Klassieker (voor 2005)</option></select>
+                        </label>
+                        <label>Moeilijkheid
+                            <select @bind="_difficulty" @bind:after="Touch">
+                                <option value="1">★ Iedereen kent hem</option>
+                                <option value="2">★★ Voetbalfan</option>
+                                <option value="3">★★★ Echte kenner</option>
+                            </select>
+                        </label>
+                    </div>
+                </section>
+
+                <section class="card stack">
+                    <h2>Tips</h2>
+                    <p class="muted">In de ik-vorm. Tip 1 is moeilijk, tip 5 verklapt het bijna. Noem nooit (een deel van) de naam.</p>
+                    @for (var i = 0; i < GameRules.HintCount; i++)
+                    {
+                        var index = i;
+                        <div class="hint-edit">
+                            <span class="hint-num">@(index + 1)</span>
+                            <div class="grow">
+                                <textarea rows="2" @bind="_hints[index]" @bind:event="oninput" @bind:after="Touch" maxlength="160"
+                                          placeholder="@HintPlaceholder(index)"></textarea>
+                                <small class="counter @(_hints[index].Length > 140 ? "warn" : "")">@_hints[index].Length/160</small>
+                            </div>
+                        </div>
+                    }
+                </section>
+
+                <section class="card stack">
+                    <h2>Bronnen</h2>
+                    <p class="muted">Waar heb je de tips gecontroleerd? Minstens één bron is nodig om goed te keuren.</p>
+                    @if (_sources.Count > 0)
+                    {
+                        <ul class="source-list">
+                            @foreach (var s in _sources.ToList())
+                            {
+                                <li>
+                                    <a href="@s" target="_blank" rel="noopener">@Short(s)</a>
+                                    <button class="linkish" title="Verwijderen" @onclick="() => { _sources.Remove(s); Touch(); }">✕</button>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    <div class="add-source">
+                        <input @bind="_newSource" @bind:event="oninput" placeholder="Plak een link (https://…)" @onkeydown="SourceKey" />
+                        <button class="btn" @onclick="AddSource" disabled="@(!IsUrl(_newSource))">Toevoegen</button>
+                    </div>
+                    @if (!string.IsNullOrWhiteSpace(_name))
+                    {
+                        <div class="source-links">
+                            Opzoeken:
+                            <a href="@($"https://nl.wikipedia.org/w/index.php?search={Uri.EscapeDataString(_name)}")" target="_blank" rel="noopener">Wikipedia NL ↗</a>
+                            <a href="@($"https://en.wikipedia.org/w/index.php?search={Uri.EscapeDataString(_name)}")" target="_blank" rel="noopener">Wikipedia EN ↗</a>
+                            <a href="@($"https://www.transfermarkt.be/schnellsuche/ergebnis/schnellsuche?query={Uri.EscapeDataString(_name)}")" target="_blank" rel="noopener">Transfermarkt ↗</a>
+                        </div>
+                    }
+                </section>
+
+                <section class="card stack">
+                    <h2>Thema's</h2>
+                    <p class="muted">Bepaalt in welke specials deze speler kan voorkomen.</p>
+                    <div class="tag-toggle">
+                        @foreach (var (key, label) in PlayerTags.All)
+                        {
+                            var k = key;
+                            <button class="@(_tags.Contains(k) ? "on" : "")" title="@label" @onclick="() => ToggleTag(k)">
+                                @AdminSpelers.TagChip(k)
+                            </button>
+                        }
+                    </div>
+                    <label>Notitie <small class="muted">(bv. wat nog gecontroleerd moet worden)</small>
+                        <input @bind="_note" @bind:after="Touch" />
+                    </label>
+                </section>
+            </div>
+
+            <aside class="editor-side">
+                <section class="card stack sticky">
+                    <div class="side-status">
+                        <span class="pill @AdminSpelers.StatusCss(status)">@AdminSpelers.StatusLabel(status)</span>
+                        @if (_dirty) { <span class="unsaved">● Niet opgeslagen</span> }
+                    </div>
+                    @if (_original is not null)
+                    {
+                        <small class="muted">
+                            @_original.TimesUsed× gevraagd
+                            @if (_original.CheckedAt is { } c) { <span> · gecontroleerd @c.ToString("dd/MM/yyyy")</span> }
+                            @if (_original.UpdatedBy is not null) { <span> · door @_original.UpdatedBy</span> }
+                        </small>
+                    }
+
+                    <ul class="checklist">
+                        @foreach (var c in checks)
+                        {
+                            <li class="@(c.Ok ? "ok" : c.NeededForApproval ? "todo" : "info")">@(c.Ok ? "✓" : c.NeededForApproval ? "✗" : "•") @c.Text</li>
+                        }
+                    </ul>
+
+                    @if (_error is not null) { <p class="error">@_error</p> }
+                    @if (_message is not null) { <p class="success">@_message</p> }
+
+                    <button class="btn primary" @onclick="() => SaveAsync(status)" disabled="@_busy">💾 Opslaan</button>
+                    @if (status != PlayerStatus.Approved)
+                    {
+                        <button class="btn approve" @onclick="() => SaveAsync(PlayerStatus.Approved)" disabled="@(_busy || !canApprove)"
+                                title="@(canApprove ? "" : "Los eerst de punten met ✗ op")">✅ Opslaan en goedkeuren</button>
+                    }
+                    @if (status != PlayerStatus.Review)
+                    {
+                        <button class="btn" @onclick="() => SaveAsync(PlayerStatus.Review)" disabled="@_busy">↩ Terug naar te keuren</button>
+                    }
+                    @if (status != PlayerStatus.Rejected)
+                    {
+                        <button class="btn danger" @onclick="() => SaveAsync(PlayerStatus.Rejected)" disabled="@_busy">⛔ Afwijzen</button>
+                    }
+                    <small class="muted">Enkel goedgekeurde spelers komen in de quiz.</small>
+                </section>
+
+                <section class="card preview">
+                    <h3>Zo ziet de vraag eruit</h3>
+                    <ol class="hints">
+                        @for (var i = 0; i < GameRules.HintCount; i++)
+                        {
+                            <li class="hint"><span class="hint-num">@(i + 1)</span><span>@(string.IsNullOrWhiteSpace(_hints[i]) ? "…" : _hints[i])</span></li>
+                        }
+                    </ol>
+                    <p class="center"><b>@(string.IsNullOrWhiteSpace(_name) ? "?" : _name)</b></p>
+                </section>
+            </aside>
+        </div>
+    }
+</AdminGuard>
+
+@code {
+    [Parameter] public int Id { get; set; }
+
+    private record Check(bool Ok, string Text, bool NeededForApproval);
+
+    private PlayerEdit? _original;
+    private string _name = "", _answers = "", _country = "", _competition = "", _era = "modern", _newSource = "";
+    private string? _note;
+    private int _difficulty = 2;
+    private string[] _hints = new string[GameRules.HintCount];
+    private List<string> _sources = [];
+    private HashSet<string> _tags = [];
+    private bool _loaded, _busy, _dirty;
+    private string? _error, _loadError, _message;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Auth.User?.IsAdmin != true) return;
+        (_error, _message, _dirty, _loaded) = (null, null, false, false);
+        _hints = Enumerable.Repeat("", GameRules.HintCount).ToArray();
+        if (Id == 0)
+        {
+            (_original, _name, _answers, _country, _competition, _era, _difficulty, _note) = (null, "", "", "", "", "modern", 2, null);
+            (_sources, _tags) = ([], []);
+            _loaded = true;
+            return;
+        }
+        try
+        {
+            var p = _original = await Api.GetAdminPlayerAsync(Id);
+            (_name, _answers, _country, _competition, _era, _difficulty, _note) =
+                (p.Name, string.Join(", ", p.Answers), p.Country, p.Competition, p.Era, p.Difficulty, p.ReviewNote);
+            for (var i = 0; i < Math.Min(p.Hints.Count, GameRules.HintCount); i++) _hints[i] = p.Hints[i];
+            _sources = [.. p.Sources];
+            _tags = [.. p.Tags];
+            _loaded = true;
+        }
+        catch (ApiException ex) { _loadError = ex.Message; }
+    }
+
+    private void Touch()
+    {
+        _dirty = true;
+        _message = null;
+    }
+
+    private PlayerEdit Current(PlayerStatus status) => new(
+        Id, _name,
+        _answers.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToList(),
+        _country, _competition, _era, _difficulty, [.. _hints], [.. _sources], [.. _tags], status, _note, null, null, 0);
+
+    /// <summary>Wat er nog moet gebeuren, live terwijl je typt.</summary>
+    private List<Check> Checks()
+    {
+        var problems = PlayerValidation.Problems(Current(PlayerStatus.Approved), forApproval: true);
+        return
+        [
+            new(!string.IsNullOrWhiteSpace(_name), "Naam ingevuld", true),
+            new(_hints.All(h => !string.IsNullOrWhiteSpace(h)), $"Alle {GameRules.HintCount} tips ingevuld", true),
+            new(!problems.Any(p => p.Contains("verklapt")), "Geen tip verklapt de naam", true),
+            new(!problems.Any(p => p.Contains("te lang")), "Tips zijn niet te lang", true),
+            new(_sources.Count > 0, "Minstens één bron", true),
+            new(_tags.Count > 0, "Thema's gekozen (optioneel)", false),
+        ];
+    }
+
+    private void ToggleTag(string key)
+    {
+        if (!_tags.Remove(key)) _tags.Add(key);
+        Touch();
+    }
+
+    private static bool IsUrl(string s) => Uri.TryCreate(s?.Trim(), UriKind.Absolute, out var u) && u.Scheme is "http" or "https";
+
+    private void AddSource()
+    {
+        if (!IsUrl(_newSource)) return;
+        if (!_sources.Contains(_newSource.Trim())) _sources.Add(_newSource.Trim());
+        _newSource = "";
+        Touch();
+    }
+
+    private void SourceKey(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter") AddSource();
+    }
+
+    private static string Short(string url) =>
+        Uri.TryCreate(url, UriKind.Absolute, out var u) ? u.Host.Replace("www.", "") + Uri.UnescapeDataString(u.AbsolutePath) : url;
+
+    private static string HintPlaceholder(int i) => i switch
+    {
+        0 => "Moeilijk: geboortejaar/-streek, positie, een weetje…",
+        4 => "Bijna weggevend: bekend moment, bijnaam, club + nummer…",
+        _ => "",
+    };
+
+    private async Task SaveAsync(PlayerStatus status)
+    {
+        (_busy, _error, _message) = (true, null, null);
+        try
+        {
+            var id = await Api.SaveAdminPlayerAsync(Current(status));
+            _dirty = false;
+            _message = status switch
+            {
+                PlayerStatus.Approved => "Opgeslagen en goedgekeurd: deze speler kan nu in de quiz komen.",
+                PlayerStatus.Rejected => "Opgeslagen als afgewezen.",
+                _ => "Opgeslagen.",
+            };
+            if (Id == 0) Nav.NavigateTo($"admin/spelers/{id}");
+            else _original = await Api.GetAdminPlayerAsync(id);
+        }
+        catch (ApiException ex) { _error = ex.Message; }
+        finally { _busy = false; }
+    }
+}

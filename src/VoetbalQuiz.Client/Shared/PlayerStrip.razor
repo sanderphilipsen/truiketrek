@@ -1,0 +1,19 @@
+@* Compacte rij met alle spelers aan tafel, hun score en of ze al geantwoord hebben. *@
+<div class="player-strip">
+    @foreach (var p in Players.Where(p => !p.Left))
+    {
+        <div class="strip-player @(p.IsMe ? "me" : "")">
+            <div class="strip-avatar">
+                <Avatar Id="@p.AvatarId" Size="40" />
+                @if (ShowAnswered && p.AnsweredCurrent) { <span class="check">✓</span> }
+            </div>
+            <small>@p.UserName</small>
+            <b>@p.Score</b>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter, EditorRequired] public List<MatchPlayerState> Players { get; set; } = [];
+    [Parameter] public bool ShowAnswered { get; set; }
+}

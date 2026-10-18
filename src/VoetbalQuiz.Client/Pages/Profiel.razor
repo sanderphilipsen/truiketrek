@@ -1,0 +1,231 @@
+@page "/profiel"
+@attribute [Authorize]
+@inject ApiClient Api
+@inject AuthState Auth
+@inject NavigationManager Nav
+
+<PageTitle>Profiel – Truitje Trek</PageTitle>
+
+@if (_error is not null)
+{
+    <p class="error">@_error</p>
+}
+else if (_profile is null)
+{
+    <div class="center-msg">Laden…</div>
+}
+else
+{
+    var lvl = _profile.Level;
+
+    <div class="profile-layout">
+        @* ---------- Links: wie je bent ---------- *@
+        <aside class="profile-side">
+            <section class="card profile-hero">
+                <button class="hero-avatar" title="Avatar wijzigen" @onclick="() => _tab = ProfileTab.Avatar">
+                    <Avatar Id="@_profile.AvatarId" Size="96" />
+                    <span class="hero-edit">✏️</span>
+                </button>
+                <div class="hero-main">
+                    <h1>@_profile.UserName</h1>
+                    <div class="level-line"><span class="lvl big">Level @lvl.Level</span> @lvl.Title</div>
+                    <div class="xpbar"><div style="width:@Percent(lvl.XpIntoLevel, lvl.XpForNextLevel)"></div></div>
+                    <small class="muted">@lvl.XpIntoLevel / @lvl.XpForNextLevel XP tot level @(lvl.Level + 1)</small>
+                </div>
+            </section>
+
+            @if (_public is not null)
+            {
+                <div class="my-stats profile-stats">
+                    <div><b>@_public.DaysPlayed</b><small>dagen gespeeld</small></div>
+                    <div><b>@_public.DaysWon</b><small>dagzeges</small></div>
+                    <div><b>@_public.BestDay</b><small>beste dag</small></div>
+                    <div><b>@_public.Rating</b><small>online rating</small></div>
+                </div>
+
+                var earned = _public.Badges.Where(b => b.Earned).ToList();
+                <a class="card badge-teaser" href="badges">
+                    <div class="teaser-text">
+                        <b>🎖️ @earned.Count/@_public.Badges.Count badges</b>
+                        <small class="muted">🏆 @_public.Trophies.Count @(_public.Trophies.Count == 1 ? "beker" : "bekers") · @(earned.Count == 0 ? "bekijk wat je kan verdienen" : "bekijk ze allemaal")</small>
+                        @if (earned.Count > 0)
+                        {
+                            <div class="teaser-icons">
+                                @foreach (var b in earned.Take(6))
+                                {
+                                    <span title="@b.Name">@b.Icon</span>
+                                }
+                            </div>
+                        }
+                    </div>
+                    <span class="teaser-go">›</span>
+                </a>
+            }
+        </aside>
+
+        @* ---------- Rechts: wat je kan aanpassen ---------- *@
+        <div class="profile-main">
+            <div class="tabs profile-tabs">
+                <button class="@(_tab == ProfileTab.Avatar ? "active" : "")" @onclick="() => _tab = ProfileTab.Avatar">🎨 Avatar</button>
+                <button class="@(_tab == ProfileTab.Level ? "active" : "")" @onclick="() => _tab = ProfileTab.Level">⭐ Level</button>
+                <button class="@(_tab == ProfileTab.Account ? "active" : "")" @onclick="() => _tab = ProfileTab.Account">🔒 Account</button>
+            </div>
+
+            @switch (_tab)
+            {
+                case ProfileTab.Avatar:
+                    <section class="card">
+                        <div class="tabs light">
+                            <button class="@(_build ? "" : "active")" @onclick="() => _build = false">⚽ Voetballer kiezen</button>
+                            <button class="@(_build ? "active" : "")" @onclick="() => _build = true">🎨 Zelf maken</button>
+                        </div>
+                        @if (_avatarSaved)
+                        {
+                            <p class="success">Je avatar is opgeslagen.</p>
+                        }
+                        @if (_build)
+                        {
+                            <p class="muted">Begin van je huidige avatar of druk op 🎲, en pas alles aan naar je eigen smaak.</p>
+                            <AvatarBuilder Start="@Avatars.Get(_profile.AvatarId)" OnSave="PickAsync" Saving="_saving" />
+                        }
+                        else
+                        {
+                            <div class="avatar-grid">
+                                @foreach (var a in Avatars.All)
+                                {
+                                    <button class="avatar-option @(a.Id == _profile.AvatarId ? "selected" : "")" @onclick="() => PickAsync(a.Id)" disabled="@_saving" title="@a.Name">
+                                        <Avatar Id="@a.Id" Size="60" />
+                                        <small>@a.Name</small>
+                                    </button>
+                                }
+                            </div>
+                        }
+                    </section>
+                    break;
+
+                case ProfileTab.Level:
+                    <section class="card xp-card">
+                        <div class="xp-total">
+                            <span class="lvl big">Level @lvl.Level</span>
+                            <b>@lvl.Xp XP</b>
+                            <small class="muted">in totaal verdiend</small>
+                        </div>
+                        <table class="xp-table">
+                            @foreach (var part in _profile.XpBreakdown)
+                            {
+                                <tr><td>@part.Label</td><td>@part.Xp XP</td></tr>
+                            }
+                        </table>
+                        <h3>Hoe verdien je XP?</h3>
+                        <ul class="xp-rules">
+                            <li><b>+@Levels.XpPerQuestion</b> per gespeelde vraag</li>
+                            <li><b>+1</b> per @Levels.CorrectPointsPerXp punten bij een juist antwoord</li>
+                            <li><b>+@Levels.XpPerCompletedDay</b> voor een volledige dag</li>
+                            <li><b>+@Levels.XpPerPerfectDay</b> voor 10 op 10</li>
+                            <li><b>+@Levels.XpPerDayWon</b> per dagzege</li>
+                        </ul>
+                        <small class="muted">Elk level vraagt 100 XP meer dan het vorige. Er is geen maximum.</small>
+                    </section>
+                    break;
+
+                default:
+                    <section class="card">
+                        <h3 class="card-title">Wachtwoord wijzigen</h3>
+                        <form class="stack" @onsubmit="ChangePasswordAsync">
+                            <label>Huidig wachtwoord
+                                <input type="password" @bind="_current" autocomplete="current-password" required />
+                            </label>
+                            <div class="form-row">
+                                <label>Nieuw wachtwoord
+                                    <input type="password" @bind="_new" autocomplete="new-password" minlength="6" required />
+                                </label>
+                                <label>Herhaal nieuw wachtwoord
+                                    <input type="password" @bind="_repeat" autocomplete="new-password" minlength="6" required />
+                                </label>
+                            </div>
+                            @if (_pwError is not null) { <p class="error">@_pwError</p> }
+                            @if (_pwOk) { <p class="success">Je wachtwoord is gewijzigd.</p> }
+                            <button class="btn primary" disabled="@_saving">Wachtwoord opslaan</button>
+                        </form>
+                    </section>
+
+                    <section class="card menu-list">
+                        @if (Auth.User?.IsAdmin == true)
+                        {
+                            <a href="admin"><span>⚙️</span>Admin-paneel<i>›</i></a>
+                        }
+                        <a href="feedback"><span>🐞</span>Bug of idee melden<i>›</i></a>
+                        <button @onclick="LogoutAsync"><span>🚪</span>Afmelden<i>›</i></button>
+                    </section>
+
+                    <p class="member-since">Lid sinds @DutchDates.DayMonth(_profile.MemberSince) @_profile.MemberSince.Year · @_profile.Email</p>
+                    break;
+            }
+        </div>
+    </div>
+}
+
+@code {
+    private enum ProfileTab { Avatar, Level, Account }
+
+    private ProfileInfo? _profile;
+    private PublicProfile? _public;
+    private string? _error, _pwError;
+    private string _current = "", _new = "", _repeat = "";
+    private bool _saving, _pwOk, _build, _avatarSaved;
+    private ProfileTab _tab = ProfileTab.Avatar;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            _profile = await Api.GetProfileAsync();
+            _public = await Api.GetPlayerProfileAsync(_profile.UserName);
+        }
+        catch (ApiException ex) { _error = ex.Message; }
+    }
+
+    private async Task PickAsync(string id)
+    {
+        _saving = true;
+        _avatarSaved = false;
+        try
+        {
+            await Auth.SetAvatarAsync(id);
+            _avatarSaved = true;
+            _profile = _profile! with { AvatarId = id };
+        }
+        catch (ApiException ex) { _error = ex.Message; }
+        finally { _saving = false; }
+    }
+
+    private async Task ChangePasswordAsync()
+    {
+        _pwError = null;
+        _pwOk = false;
+        if (_new != _repeat)
+        {
+            _pwError = "De nieuwe wachtwoorden zijn niet gelijk.";
+            return;
+        }
+
+        _saving = true;
+        try
+        {
+            await Api.ChangePasswordAsync(new ChangePasswordRequest(_current, _new));
+            _pwOk = true;
+            _current = _new = _repeat = "";
+        }
+        catch (ApiException ex) { _pwError = ex.Message; }
+        finally { _saving = false; }
+    }
+
+    private async Task LogoutAsync()
+    {
+        await Auth.LogoutAsync();
+        Nav.NavigateTo("login");
+    }
+
+    private static string Percent(int part, int total) =>
+        (total == 0 ? 0 : Math.Clamp(100.0 * part / total, 0, 100)).ToString("0.#", System.Globalization.CultureInfo.InvariantCulture) + "%";
+}

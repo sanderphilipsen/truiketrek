@@ -1,0 +1,11 @@
+@* Een wedstrijdaffiche voor een derby-special: thuisploeg links, bezoekers rechts, elk in hun kleur. *@
+<div class="affiche @(Big ? "big" : "")" style="--home:@Affiche.HomeColor; --away:@Affiche.AwayColor">
+    <span class="affiche-team home">@Affiche.Home</span>
+    <span class="affiche-vs">VS</span>
+    <span class="affiche-team away">@Affiche.Away</span>
+</div>
+
+@code {
+    [Parameter, EditorRequired] public Affiche Affiche { get; set; } = null!;
+    [Parameter] public bool Big { get; set; }
+}

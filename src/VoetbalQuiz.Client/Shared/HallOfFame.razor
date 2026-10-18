@@ -1,0 +1,28 @@
+@* Eregalerij: één kaart per record. *@
+@if (Cards.Count == 0)
+{
+    <div class="card center muted">@EmptyText</div>
+}
+else
+{
+    <div class="hall">
+        @foreach (var card in Cards)
+        {
+            <div class="record @(card.IsMe ? "me" : "")">
+                <div class="record-icon">@card.Icon</div>
+                <Avatar Id="@card.AvatarId" Size="38" />
+                <div class="record-body">
+                    <div class="record-title">@card.Title</div>
+                    <div class="record-who">@card.UserName</div>
+                    <small>@card.Caption</small>
+                </div>
+                <div class="record-value">@card.Value</div>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    [Parameter, EditorRequired] public List<StatCard> Cards { get; set; } = [];
+    [Parameter] public string EmptyText { get; set; } = "Nog geen records.";
+}

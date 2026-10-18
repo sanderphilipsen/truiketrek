@@ -1,0 +1,68 @@
+@page "/admin/specials"
+@attribute [Authorize]
+@inject ApiClient Api
+@inject AuthState Auth
+
+<PageTitle>Specials – Admin</PageTitle>
+
+<AdminGuard>
+    <div class="toolbar">
+        <p class="muted grow light-text">Plan themadagen met eigen vragen en een eigen klassement.</p>
+        <a class="btn primary" href="admin/specials/0">+ Special plannen</a>
+    </div>
+
+    @if (_error is not null)
+    {
+        <p class="error">@_error</p>
+    }
+    else if (_specials is null)
+    {
+        <div class="center-msg">Laden…</div>
+    }
+    else if (_specials.Count == 0)
+    {
+        <div class="card center">
+            <p class="muted">Nog geen specials. Plan er een, bijvoorbeeld voor Halloween of de avond van de Gouden Schoen.</p>
+            <a class="btn primary" href="admin/specials/0">+ Eerste special plannen</a>
+        </div>
+    }
+    else
+    {
+        var today = DateOnly.FromDateTime(DateTime.Today);
+        foreach (var (title, items) in new[]
+        {
+            ("Nu actief", _specials.Where(s => s.StartDate <= today && today <= s.EndDate).OrderBy(s => s.EndDate).ToList()),
+            ("Gepland", _specials.Where(s => s.StartDate > today).OrderBy(s => s.StartDate).ToList()),
+            ("Afgelopen", _specials.Where(s => s.EndDate < today).OrderByDescending(s => s.StartDate).ToList()),
+        })
+        {
+            if (items.Count == 0) continue;
+            <h2 class="section-title">@title</h2>
+            <div class="admin-list">
+                @foreach (var s in items)
+                {
+                    <a class="admin-row-card" href="admin/specials/@s.Id">
+                        <span class="table-icon">@s.Icon</span>
+                        <div class="table-info">
+                            <b>@s.Name</b>
+                            <small>@SpecialStatus.Period(s) · @s.PoolSize spelers in de pool · @s.Participants deelnemer(s)</small>
+                        </div>
+                        <SpecialStatus Item="s" />
+                    </a>
+                }
+            </div>
+        }
+    }
+</AdminGuard>
+
+@code {
+    private List<SpecialAdminItem>? _specials;
+    private string? _error;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Auth.User?.IsAdmin != true) return;
+        try { _specials = await Api.GetAdminSpecialsAsync(); }
+        catch (ApiException ex) { _error = ex.Message; }
+    }
+}

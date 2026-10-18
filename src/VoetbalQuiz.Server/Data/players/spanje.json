@@ -1,0 +1,557 @@
+[
+  {
+    "name": "Lionel Messi",
+    "answers": [
+      "Messi",
+      "Leo Messi",
+      "La Pulga"
+    ],
+    "country": "Argentinië",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1987 geboren in Rosario, een grote stad aan de rivier de Paraná.",
+      "Als kind kreeg ik groeihormonen omdat ik te klein bleef voor mijn leeftijd.",
+      "Op mijn dertiende verhuisde ik naar Spanje om in de jeugdopleiding van een topclub te spelen.",
+      "In 2012 scoorde ik 91 doelpunten in één kalenderjaar, een record.",
+      "Ik won acht Ballons d'Or en werd in 2022 als aanvoerder wereldkampioen met Argentinië."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lionel_Messi"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Xavi",
+    "answers": [
+      "Xavi Hernández",
+      "Xavi Hernandez"
+    ],
+    "country": "Spanje",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1980 geboren in Terrassa, een stad in de buurt van Barcelona.",
+      "Ik was een centrale middenvelder die bekendstond om zijn eindeloze korte passes.",
+      "Na mijn spelerscarrière in Spanje speelde ik nog enkele jaren bij Al Sadd in Qatar.",
+      "Tussen 2021 en 2024 was ik hoofdtrainer van de club waar ik als speler alles won.",
+      "Samen met Iniesta was ik het brein van Barça en Spanje, kampioen in 2008, 2010 en 2012."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Xavi_(footballer,_born_1980)"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Andrés Iniesta",
+    "answers": [
+      "Iniesta"
+    ],
+    "country": "Spanje",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1984 geboren in een klein dorp in de regio Castilla-La Mancha.",
+      "Ik was een technisch middenvelder die zelden de bal verloor.",
+      "Als twaalfjarige verhuisde ik naar La Masia, de jeugdopleiding van mijn grote club.",
+      "Samen met Xavi vormde ik jarenlang het hart van het middenveld van Barcelona.",
+      "Ik scoorde het winnende doelpunt in de WK-finale van 2010 tegen Nederland."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Andr%C3%A9s_Iniesta"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Carles Puyol",
+    "answers": [
+      "Puyol"
+    ],
+    "country": "Spanje",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1978 geboren in La Pobla de Segur, een dorp in de Catalaanse Pyreneeën.",
+      "Ik was een onverzettelijke centrale verdediger die zich in elke bal gooide.",
+      "Ik speelde mijn hele profcarrière bij één club en was er tien jaar aanvoerder.",
+      "Mijn lange, wilde haardos maakte me onmiddellijk herkenbaar op het veld.",
+      "Mijn kopbal tegen Duitsland in de halve finale van het WK 2010 bracht Spanje naar de finale."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Carles_Puyol"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Sergio Ramos",
+    "answers": [
+      "Ramos"
+    ],
+    "country": "Spanje",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1986 geboren in Camas, een stadje vlak bij Sevilla.",
+      "Ik was een verdediger die verrassend vaak scoorde met het hoofd.",
+      "Ik verzamelde meer rode kaarten in LaLiga dan wie ook: een record.",
+      "Na zestien seizoenen in Madrid trok ik in 2021 naar Paris Saint-Germain.",
+      "In de Champions League-finale van 2014 kopte ik in blessuretijd de gelijkmaker tegen Atlético."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sergio_Ramos"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Iker Casillas",
+    "answers": [
+      "Casillas",
+      "San Iker"
+    ],
+    "country": "Spanje",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1981 geboren in Móstoles, in de regio Madrid.",
+      "Ik stond al als tiener in doel bij de grootste club van mijn regio.",
+      "Ik sloot mijn carrière af bij FC Porto, waar ik in 2019 een hartaanval kreeg.",
+      "Ik won drie grote toernooien op rij met mijn land: EK 2008, WK 2010 en EK 2012.",
+      "Als aanvoerder tilde ik in 2010 de wereldbeker op, na cruciale reddingen tegen Robben."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Iker_Casillas"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Karim Benzema",
+    "answers": [
+      "Benzema"
+    ],
+    "country": "Frankrijk",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1987 geboren in Lyon, in een gezin met Algerijnse roots.",
+      "Ik brak door bij Olympique Lyon, waar ik meerdere landstitels won.",
+      "Na een schandaal in 2015 werd ik meer dan vijf jaar niet geselecteerd voor Frankrijk.",
+      "In 2009 verhuisde ik naar Madrid, waar ik lang in de schaduw van een Portugese ster speelde.",
+      "In 2022 won ik de Ballon d'Or als spits en aanvoerder van Real Madrid."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Karim_Benzema"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Antoine Griezmann",
+    "answers": [
+      "Griezmann",
+      "Grizi"
+    ],
+    "country": "Frankrijk",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1991 geboren in Mâcon, in de Bourgogne.",
+      "Franse clubs vonden me als tiener te klein, dus vertrok ik naar Baskenland.",
+      "Ik brak door bij Real Sociedad en speelde later twee seizoenen bij Barcelona.",
+      "Ik werd topschutter van het EK 2016 en wereldkampioen in 2018.",
+      "Bij Atlético Madrid droeg ik nummer 7 en juichte ik met een dansje op 'Hotline Bling'."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Antoine_Griezmann",
+      "https://es.soccerway.com/noticias/futbol-laliga-ea-sports-el-atletico-de-madrid-le-da-el-7-de-joao-felix-a-antoine-griezmann/W66awN4N"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "David Villa",
+    "answers": [
+      "Villa",
+      "El Guaje"
+    ],
+    "country": "Spanje",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1981 geboren in Asturië, als zoon van een mijnwerker.",
+      "Ik begon bij Sporting Gijón en speelde daarna voor Real Zaragoza.",
+      "Mijn beste jaren beleefde ik als spits van Valencia, vanaf 2005.",
+      "Ik won de landstitel met zowel Barcelona als Atlético Madrid.",
+      "Met 59 doelpunten ben ik de topschutter aller tijden van het Spaanse nationale elftal."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/David_Villa"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Sergio Busquets",
+    "answers": [
+      "Busquets"
+    ],
+    "country": "Spanje",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1988 geboren in Sabadell, in Catalonië.",
+      "Mijn vader was doelman bij dezelfde club waar ik later zou uitblinken.",
+      "Onder Pep Guardiola speelde ik eerst in het B-elftal, in 2008 volgde mijn debuut in de A-kern.",
+      "Als verdedigende middenvelder was ik met nummer 5 de stofzuiger achter Xavi en Iniesta.",
+      "In 2023 volgde ik Messi naar Inter Miami, na vijftien jaar in het eerste elftal van Barça."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sergio_Busquets"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Luka Modrić",
+    "answers": [
+      "Modrić",
+      "Modric"
+    ],
+    "country": "Kroatië",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1985 geboren in Zadar en groeide tijdens de oorlog op in een hotel voor vluchtelingen.",
+      "Ik brak door bij Dinamo Zagreb en speelde daarna vier seizoenen bij Tottenham.",
+      "Bij Real Madrid droeg ik later nummer 10 en won ik zes keer de Champions League.",
+      "Als aanvoerder leidde ik mijn land naar de WK-finale van 2018.",
+      "In 2018 doorbrak ik de hegemonie van Messi en Ronaldo door de Ballon d'Or te winnen."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Luka_Modri%C4%87"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Neymar",
+    "answers": [
+      "Neymar Jr",
+      "Neymar Júnior"
+    ],
+    "country": "Brazilië",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1992 geboren in Mogi das Cruzes, in de staat São Paulo.",
+      "Ik brak door bij Santos, de club van Pelé.",
+      "In 2017 werd ik voor 222 miljoen euro de duurste speler ooit bij mijn overstap naar Parijs.",
+      "Ik ben topschutter aller tijden van de Seleção, voor Pelé.",
+      "Bij Barcelona vormde ik met Messi en Suárez het gevreesde trio MSN."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Neymar"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Lamine Yamal",
+    "answers": [
+      "Yamal",
+      "Lamine"
+    ],
+    "country": "Spanje",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in juli 2007 geboren in Catalonië, met een Marokkaanse vader en een Equatoriaal-Guinese moeder.",
+      "Mijn roots liggen in de wijk Rocafonda in Mataró; ik juich met de postcode 304.",
+      "Als baby werd ik voor een fotoshoot in bad gezet door een jonge Messi.",
+      "Ik ben een linksvoetige rechtsbuiten uit de jeugdopleiding La Masia.",
+      "Op het EK 2024 scoorde ik als zestienjarige een wereldgoal tegen Frankrijk in de halve finale."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lamine_Yamal"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Pedri",
+    "answers": [
+      "Pedri González",
+      "Pedro González"
+    ],
+    "country": "Spanje",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 2002 geboren in Bajamar, op Tenerife, en groeide op in Tegueste.",
+      "Ik maakte mijn profdebuut bij UD Las Palmas.",
+      "Ik ben een fijnbesnaarde middenvelder die vaak met Iniesta wordt vergeleken.",
+      "In 2020 maakte ik als tiener de overstap naar Barcelona.",
+      "In 2021 won ik zowel de Golden Boy als de Kopa Trophy voor beste jonge speler."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pedri"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Vinícius Júnior",
+    "answers": [
+      "Vinícius",
+      "Vinicius",
+      "Vini",
+      "Vini Jr",
+      "Vinicius Junior"
+    ],
+    "country": "Brazilië",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 2000 geboren in São Gonçalo, in de staat Rio de Janeiro.",
+      "Ik brak door bij Flamengo en tekende als zestienjarige bij een Europese grootmacht.",
+      "Ik ben een snelle linksbuiten die bekendstaat om zijn dribbels.",
+      "Ik voer al jaren een luide strijd tegen racisme in de Spaanse stadions.",
+      "Ik scoorde het enige doelpunt in de Champions League-finale van 2022 tegen Liverpool."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Vin%C3%ADcius_J%C3%BAnior"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Jude Bellingham",
+    "answers": [
+      "Bellingham"
+    ],
+    "country": "Engeland",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 2003 geboren in Stourbridge, in de Engelse Midlands.",
+      "Mijn eerste club trok mijn rugnummer 22 terug toen ik pas zeventien was.",
+      "Ik speelde drie seizoenen bij Borussia Dortmund voor mijn grote transfer naar Spanje.",
+      "In de Champions League-finale van 2024 gaf ik een assist tegen mijn vroegere Duitse club.",
+      "Mijn omhaal in blessuretijd tegen Slowakije redde Engeland op het EK 2024."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jude_Bellingham"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Jan Oblak",
+    "answers": [
+      "Oblak"
+    ],
+    "country": "Slovenië",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1993 geboren in Škofja Loka; mijn zus is een bekende basketbalspeelster.",
+      "Als zeventienjarige verhuisde ik naar Portugal om bij Benfica te spelen.",
+      "Ik ben een rijzige doelman die bekendstaat om zijn kalmte en reflexen.",
+      "In 2014 trok ik voor 16 miljoen euro naar de Spaanse hoofdstad.",
+      "Als Sloveense doelman van Atlético Madrid won ik een record van zes Zamora-trofeeën."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jan_Oblak"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Koke",
+    "answers": [
+      "Jorge Resurrección"
+    ],
+    "country": "Spanje",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1992 geboren in Madrid.",
+      "Ik ben een middenvelder met een uitstekende pass en veel loopvermogen.",
+      "Ik doorliep de volledige jeugdopleiding van mijn club en bleef er mijn hele carrière.",
+      "Onder Diego Simeone won ik in 2014 en 2021 de Spaanse landstitel.",
+      "Als aanvoerder van Atlético Madrid ben ik de speler met de meeste wedstrijden in de clubgeschiedenis."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Koke_(footballer,_born_1992)"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Gerard Piqué",
+    "answers": [
+      "Piqué",
+      "Pique"
+    ],
+    "country": "Spanje",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1987 geboren in Barcelona; mijn grootvader was vicevoorzitter van de club.",
+      "Als tiener vertrok ik naar Manchester United, maar in 2008 keerde ik terug naar huis.",
+      "Ik was een lange centrale verdediger die graag de bal uitverdedigde.",
+      "Ik won het WK 2010 en het EK 2012 met Spanje.",
+      "Ik had jarenlang een relatie met Shakira en richtte later de Kings League op."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gerard_Piqu%C3%A9"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Marcelo",
+    "answers": [
+      "Marcelo Vieira"
+    ],
+    "country": "Brazilië",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1988 geboren in Rio de Janeiro.",
+      "Ik brak door bij Fluminense en trok in januari 2007 naar Europa.",
+      "Landgenoot Roberto Carlos noemde me zijn erfgenaam als linksachter.",
+      "Na het vertrek van Sergio Ramos werd ik in 2021 aanvoerder van mijn club.",
+      "Met mijn grote krullenbos won ik vijf keer de Champions League als linksachter van Real Madrid."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Marcelo_(footballer,_born_1988)"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Radamel Falcao",
+    "answers": [
+      "Falcao",
+      "El Tigre"
+    ],
+    "country": "Colombia",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1986 geboren in Santa Marta, aan de Colombiaanse Caribische kust.",
+      "Ik brak door bij River Plate in Argentinië.",
+      "Met FC Porto won ik in 2011 de Europa League met een recordaantal van 17 doelpunten.",
+      "Een zware knieblessure kostte me het WK 2014.",
+      "Ze noemden me 'El Tigre'; bij Atlético scoorde ik een hattrick in de Europese Supercup tegen Chelsea."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Radamel_Falcao"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Jordi Alba",
+    "answers": [
+      "Alba"
+    ],
+    "country": "Spanje",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1989 geboren in L'Hospitalet de Llobregat, vlak bij Barcelona.",
+      "Als tiener werd ik bij La Masia weggestuurd omdat ik te klein zou zijn.",
+      "Via Cornellà en Valencia groeide ik van linksbuiten uit tot linksachter.",
+      "In de finale van het EK 2012 scoorde ik tegen Italië.",
+      "Bij Barça vormde ik op links een blind begrip met Messi, die ik in 2023 volgde naar Inter Miami."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jordi_Alba"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  }
+]

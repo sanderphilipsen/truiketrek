@@ -1,0 +1,1699 @@
+[
+  {
+    "prompt": "Wie won nooit de Gouden Schoen?",
+    "options": [
+      "Hans Vanaken",
+      "Simon Mignolet",
+      "Axel Witsel",
+      "Kevin De Bruyne"
+    ],
+    "odd": 3,
+    "explanation": "Vanaken (2018, 2019, 2024), Mignolet (2022) en Witsel (2008) wonnen de Gouden Schoen; De Bruyne nooit.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Gouden_Schoen_(België)"
+    ],
+    "tags": [
+      "gouden-schoen"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Welke club werd nooit Belgisch landskampioen?",
+    "options": [
+      "Anderlecht",
+      "KRC Genk",
+      "KAA Gent",
+      "Zulte Waregem"
+    ],
+    "odd": 3,
+    "explanation": "Anderlecht, Genk en Gent (2015) werden kampioen; Zulte Waregem nooit.",
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie scoorde niet voor België op het WK 2018?",
+    "options": [
+      "Dries Mertens",
+      "Adnan Januzaj",
+      "Yannick Carrasco",
+      "Thomas Meunier"
+    ],
+    "odd": 2,
+    "explanation": "Mertens (Panama), Januzaj (Engeland) en Meunier (troostfinale) scoorden op het WK 2018; Carrasco niet.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_Group_G",
+      "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie van deze vier was nooit bondscoach van de Rode Duivels?",
+    "options": [
+      "Robert Waseige",
+      "Eric Gerets",
+      "Aimé Anthuenis",
+      "Dick Advocaat"
+    ],
+    "odd": 1,
+    "explanation": "Waseige (1999–2002), Anthuenis (2002–2004) en Advocaat (2009–2010) waren bondscoach; Gerets weigerde in 2009 een aanbod van de bond en werd het nooit.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Belgisch_voetbalelftal_(mannen)",
+      "https://en.wikipedia.org/wiki/Eric_Gerets"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie zat niet in de Belgische WK-selectie van 1986?",
+    "options": [
+      "Michel Preud'homme",
+      "Jean-Marie Pfaff",
+      "Eric Gerets",
+      "Enzo Scifo"
+    ],
+    "odd": 0,
+    "explanation": "Pfaff, Gerets en Scifo zaten in de WK-selectie van 1986; Preud'homme niet (de doelmannen waren Pfaff, Munaron en Bodart).",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_squads"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie stond nooit in doel voor België op een WK?",
+    "options": [
+      "Jean-Marie Pfaff",
+      "Michel Preud'homme",
+      "Stijn Stijnen",
+      "Geert De Vlieger"
+    ],
+    "odd": 2,
+    "explanation": "Pfaff (1982, 1986), Preud'homme (1990, 1994) en De Vlieger (2002) keepten op een WK; Stijnen (30 caps, 2006–2009) speelde nooit een eindtoernooi.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup",
+      "https://en.wikipedia.org/wiki/Geert_De_Vlieger",
+      "https://en.wikipedia.org/wiki/Stijn_Stijnen"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Welke club won nooit de Europacup I / Champions League?",
+    "options": [
+      "Ajax",
+      "FC Porto",
+      "Celtic",
+      "Arsenal"
+    ],
+    "odd": 3,
+    "explanation": "Ajax, Porto en Celtic (1967) wonnen de beker met de grote oren; Arsenal nooit.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Welk land werd nooit wereldkampioen?",
+    "options": [
+      "Brazilië",
+      "Spanje",
+      "Engeland",
+      "Nederland"
+    ],
+    "odd": 3,
+    "explanation": "Brazilië, Spanje (2010) en Engeland (1966) werden wereldkampioen; Nederland nooit.",
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Op welk EK was België niet van de partij?",
+    "options": [
+      "EK 1984",
+      "EK 2012",
+      "EK 2000",
+      "EK 2016"
+    ],
+    "odd": 1,
+    "explanation": "België speelde het EK 1984, 2000 (co-organisator) en 2016; voor het EK 2012 plaatste het zich niet.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgium_at_the_UEFA_European_Championship"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie won nooit de Ballon d'Or?",
+    "options": [
+      "Luka Modrić",
+      "Karim Benzema",
+      "Rodri",
+      "Robert Lewandowski"
+    ],
+    "odd": 3,
+    "explanation": "Modrić (2018), Benzema (2022) en Rodri (2024) wonnen de Ballon d'Or; Lewandowski nooit.",
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ballon_d%27Or"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Welke club komt niet uit Brussel?",
+    "options": [
+      "Anderlecht",
+      "Union SG",
+      "RWDM",
+      "Beerschot"
+    ],
+    "odd": 3,
+    "explanation": "Anderlecht, Union en RWDM zijn Brusselse clubs; Beerschot komt uit Antwerpen.",
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/K_Beerschot_VA",
+      "https://en.wikipedia.org/wiki/RWDM_Brussels"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Welke club komt niet uit de provincie Luik?",
+    "options": [
+      "Standard",
+      "RFC Seraing",
+      "KAS Eupen",
+      "Sporting Charleroi"
+    ],
+    "odd": 3,
+    "explanation": "Standard, Seraing en Eupen liggen in de provincie Luik; Charleroi ligt in Henegouwen.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/K.A.S._Eupen",
+      "https://en.wikipedia.org/wiki/R._Charleroi_S.C."
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Welk land was geen groepstegenstander van België op het WK 2002?",
+    "options": [
+      "Japan",
+      "Rusland",
+      "Brazilië",
+      "Tunesië"
+    ],
+    "odd": 2,
+    "explanation": "In groep H speelde België tegen Japan (2-2), Tunesië (1-1) en Rusland (3-2); Brazilië was de tegenstander in de 1/8 finale.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_Group_H",
+      "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Welke club won nooit de Beker van België?",
+    "options": [
+      "KAA Gent",
+      "KRC Genk",
+      "KVC Westerlo",
+      "KV Kortrijk"
+    ],
+    "odd": 3,
+    "explanation": "Gent, Genk en Westerlo (2001) wonnen de beker; Kortrijk verloor enkel de finale van 2012.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie was nooit hoofdtrainer van FC Barcelona?",
+    "options": [
+      "Pep Guardiola",
+      "Luis Enrique",
+      "Xavi",
+      "José Mourinho"
+    ],
+    "odd": 3,
+    "explanation": "Guardiola, Luis Enrique en Xavi waren hoofdtrainer van Barça; Mourinho was er enkel assistent.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/José_Mourinho",
+      "https://en.wikipedia.org/wiki/List_of_FC_Barcelona_managers"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie speelde nooit voor Real Madrid?",
+    "options": [
+      "Eden Hazard",
+      "Thibaut Courtois",
+      "Cristiano Ronaldo",
+      "Lionel Messi"
+    ],
+    "odd": 3,
+    "explanation": "Hazard, Courtois en Ronaldo speelden bij Real Madrid; Messi nooit.",
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lionel_Messi"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie speelde nooit voor Ajax?",
+    "options": [
+      "Jan Vertonghen",
+      "Toby Alderweireld",
+      "Thomas Vermaelen",
+      "Vincent Kompany"
+    ],
+    "odd": 3,
+    "explanation": "Vertonghen, Alderweireld en Vermaelen kwamen uit de Ajax-school; Kompany speelde nooit bij Ajax.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Thomas_Vermaelen",
+      "https://en.wikipedia.org/wiki/Vincent_Kompany"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie speelde nooit voor Napoli?",
+    "options": [
+      "Dries Mertens",
+      "Romelu Lukaku",
+      "Kevin De Bruyne",
+      "Eden Hazard"
+    ],
+    "odd": 3,
+    "explanation": "Mertens, Lukaku (2024) en De Bruyne (2025) speelden bij Napoli; Hazard nooit.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dries_Mertens",
+      "https://africa.espn.com/football/story/_/id/45331440/kevin-de-bruyne-joins-napoli-free-transfer-man-city-exit"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Bij welke club speelde Vincent Kompany nooit?",
+    "options": [
+      "Anderlecht",
+      "Hamburger SV",
+      "Manchester City",
+      "Burnley"
+    ],
+    "odd": 3,
+    "explanation": "Kompany speelde bij Anderlecht, HSV en City; Burnley trainde hij enkel.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Vincent_Kompany"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie zat niet in de Belgische WK-selectie van 2018?",
+    "options": [
+      "Jan Vertonghen",
+      "Nacer Chadli",
+      "Marouane Fellaini",
+      "Radja Nainggolan"
+    ],
+    "odd": 3,
+    "explanation": "Vertonghen, Chadli en Fellaini scoorden zelfs op het WK 2018; Nainggolan werd niet geselecteerd.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie scoorde nooit in een WK-finale?",
+    "options": [
+      "Kylian Mbappé",
+      "Zinedine Zidane",
+      "Lionel Messi",
+      "Cristiano Ronaldo"
+    ],
+    "odd": 3,
+    "explanation": "Mbappé (2018, 2022), Zidane (1998, 2006) en Messi (2022) scoorden in een WK-finale; Cristiano Ronaldo speelde er nooit een.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Welke club werd nooit kampioen in de Premier League?",
+    "options": [
+      "Leicester City",
+      "Blackburn Rovers",
+      "Liverpool",
+      "Tottenham"
+    ],
+    "odd": 3,
+    "explanation": "Leicester (2016), Blackburn (1995) en Liverpool (2020) wonnen de Premier League; Tottenham nooit.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_English_football_champions"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Welke club werd nooit Bundesliga-kampioen?",
+    "options": [
+      "VfL Wolfsburg",
+      "VfB Stuttgart",
+      "Bayer Leverkusen",
+      "Schalke 04"
+    ],
+    "odd": 3,
+    "explanation": "Wolfsburg (2009), Stuttgart en Leverkusen (2024) wonnen de Bundesliga; Schalke nooit (enkel titels van vóór 1963).",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_German_football_champions"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Welke club komt niet uit de regio Madrid?",
+    "options": [
+      "Atlético Madrid",
+      "Rayo Vallecano",
+      "Getafe",
+      "Villarreal"
+    ],
+    "odd": 3,
+    "explanation": "Atlético, Rayo en Getafe komen uit de regio Madrid; Villarreal ligt in Valencia.",
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Villarreal_CF",
+      "https://en.wikipedia.org/wiki/Getafe_CF"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie was nooit trainer van Club Brugge?",
+    "options": [
+      "Michel Preud'homme",
+      "Ivan Leko",
+      "Philippe Clement",
+      "Hein Vanhaezebrouck"
+    ],
+    "odd": 3,
+    "explanation": "Preud'homme, Leko en Clement trainden Club Brugge; Vanhaezebrouck nooit.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Hein_Vanhaezebrouck",
+      "https://olympia.clubbrugge.be/en/timeline/2010"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Welke Belg won nooit de Champions League?",
+    "options": [
+      "Thibaut Courtois",
+      "Divock Origi",
+      "Kevin De Bruyne",
+      "Vincent Kompany"
+    ],
+    "odd": 3,
+    "explanation": "Courtois (Real), Origi (Liverpool) en De Bruyne (City 2023) wonnen de CL; Kompany nooit.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Vincent_Kompany",
+      "https://en.wikipedia.org/wiki/2023_UEFA_Champions_League_final"
+    ],
+    "tags": [
+      "champions-league",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie won de Gouden Schoen niet bij Anderlecht?",
+    "options": [
+      "Vincent Kompany",
+      "Dennis Praet",
+      "Dieumerci Mbokani",
+      "Axel Witsel"
+    ],
+    "odd": 3,
+    "explanation": "Kompany (2004), Praet (2014) en Mbokani (2012) wonnen bij Anderlecht; Witsel won bij Standard (2008).",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Gouden_Schoen_(België)"
+    ],
+    "tags": [
+      "gouden-schoen"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Welk stadion ligt niet in Engeland?",
+    "options": [
+      "Anfield",
+      "Old Trafford",
+      "Celtic Park",
+      "Emirates Stadium"
+    ],
+    "odd": 2,
+    "explanation": "Anfield, Old Trafford en Emirates liggen in Engeland; Celtic Park ligt in Glasgow, Schotland.",
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Celtic_Park"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie speelde nooit voor Club Brugge?",
+    "options": [
+      "Hans Vanaken",
+      "Charles De Ketelaere",
+      "Simon Mignolet",
+      "Steven Defour"
+    ],
+    "odd": 3,
+    "explanation": "Vanaken, De Ketelaere en Mignolet speelden bij Club Brugge; Defour nooit.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Steven_Defour"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie speelde nooit voor Standard?",
+    "options": [
+      "Axel Witsel",
+      "Steven Defour",
+      "Marouane Fellaini",
+      "Kevin De Bruyne"
+    ],
+    "odd": 3,
+    "explanation": "Witsel, Defour en Fellaini speelden bij Standard; De Bruyne nooit.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Axel_Witsel",
+      "https://en.wikipedia.org/wiki/Steven_Defour",
+      "https://en.wikipedia.org/wiki/Marouane_Fellaini"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie speelde nooit voor KRC Genk?",
+    "options": [
+      "Kevin De Bruyne",
+      "Thibaut Courtois",
+      "Kalidou Koulibaly",
+      "Axel Witsel"
+    ],
+    "odd": 3,
+    "explanation": "De Bruyne, Courtois en Koulibaly speelden bij Genk; Witsel nooit.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kalidou_Koulibaly",
+      "https://en.wikipedia.org/wiki/Axel_Witsel"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie hoorde niet bij de Duitse wereldkampioenen van 2014?",
+    "options": [
+      "Mario Götze",
+      "Thomas Müller",
+      "Philipp Lahm",
+      "Michael Ballack"
+    ],
+    "odd": 3,
+    "explanation": "Götze, Müller en Lahm werden wereldkampioen in 2014; Ballack speelde toen niet meer.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_squads"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie hoorde niet bij de Spaanse wereldkampioenen van 2010?",
+    "options": [
+      "Andrés Iniesta",
+      "Xavi",
+      "Iker Casillas",
+      "Raúl"
+    ],
+    "odd": 3,
+    "explanation": "Iniesta, Xavi en Casillas werden wereldkampioen; Raúl werd niet geselecteerd.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_squads"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Welke club won nooit de UEFA Cup of Europa League?",
+    "options": [
+      "Sevilla",
+      "Chelsea",
+      "Atlético Madrid",
+      "Manchester City"
+    ],
+    "odd": 3,
+    "explanation": "Sevilla, Chelsea en Atlético wonnen de UEFA Cup/Europa League; Manchester City nooit.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_UEFA_Cup_and_Europa_League_finals"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie speelde nooit voor Inter?",
+    "options": [
+      "Romelu Lukaku",
+      "Radja Nainggolan",
+      "Zlatan Ibrahimović",
+      "Dries Mertens"
+    ],
+    "odd": 3,
+    "explanation": "Lukaku, Nainggolan en Ibrahimović speelden bij Inter; Mertens nooit.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Radja_Nainggolan",
+      "https://en.wikipedia.org/wiki/Dries_Mertens"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie speelde nooit voor Paris Saint-Germain?",
+    "options": [
+      "Thomas Meunier",
+      "Kylian Mbappé",
+      "Neymar",
+      "Jan Vertonghen"
+    ],
+    "odd": 3,
+    "explanation": "Meunier, Mbappé en Neymar speelden bij PSG; Vertonghen nooit.",
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Thomas_Meunier",
+      "https://en.wikipedia.org/wiki/Jan_Vertonghen"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Welke Belgische club speelde nooit een Europese bekerfinale?",
+    "options": [
+      "Club Brugge",
+      "Anderlecht",
+      "KV Mechelen",
+      "KRC Genk"
+    ],
+    "odd": 3,
+    "explanation": "Club Brugge (1976, 1978), Anderlecht en KV Mechelen (1988) speelden een Europese finale; Genk nooit.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1978_European_Cup_final",
+      "https://en.wikipedia.org/wiki/1982_European_Cup_Winners%27_Cup_final",
+      "https://en.wikipedia.org/wiki/Club_Brugge_KV_in_European_football",
+      "https://en.wikipedia.org/wiki/1988_European_Cup_Winners'_Cup_final"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Welke trainer won nooit de Champions League?",
+    "options": [
+      "Carlo Ancelotti",
+      "Pep Guardiola",
+      "Jürgen Klopp",
+      "Arsène Wenger"
+    ],
+    "odd": 3,
+    "explanation": "Ancelotti, Guardiola en Klopp wonnen de CL; Wenger verloor de finale van 2006.",
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_UEFA_Champions_League_winning_managers"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie speelde nooit voor Liverpool?",
+    "options": [
+      "Divock Origi",
+      "Simon Mignolet",
+      "Christian Benteke",
+      "Kevin Mirallas"
+    ],
+    "odd": 3,
+    "explanation": "Origi, Mignolet en Benteke speelden bij Liverpool; Mirallas speelde wel bij Everton.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_Mirallas",
+      "https://en.wikipedia.org/wiki/Christian_Benteke"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie speelde nooit voor Tottenham?",
+    "options": [
+      "Jan Vertonghen",
+      "Toby Alderweireld",
+      "Mousa Dembélé",
+      "Vincent Kompany"
+    ],
+    "odd": 3,
+    "explanation": "Vertonghen, Alderweireld en Mousa Dembélé speelden bij Spurs; Kompany nooit.",
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mousa_Dembélé_(Belgian_footballer)"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Welke club komt niet uit de provincie Antwerpen?",
+    "options": [
+      "Lierse",
+      "KVC Westerlo",
+      "KV Mechelen",
+      "OH Leuven"
+    ],
+    "odd": 3,
+    "explanation": "Lier, Westerlo en Mechelen liggen in de provincie Antwerpen; Leuven in Vlaams-Brabant.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Oud-Heverlee_Leuven",
+      "https://en.wikipedia.org/wiki/K.V._Mechelen"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie was nooit hoofdtrainer van Anderlecht?",
+    "options": [
+      "Vincent Kompany",
+      "Hein Vanhaezebrouck",
+      "Brian Riemer",
+      "Philippe Clement"
+    ],
+    "odd": 3,
+    "explanation": "Kompany, Vanhaezebrouck en Riemer trainden Anderlecht; Clement nooit.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_R.S.C._Anderlecht_managers"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie speelde nooit voor AS Monaco?",
+    "options": [
+      "Kylian Mbappé",
+      "Radamel Falcao",
+      "Youri Tielemans",
+      "Marouane Fellaini"
+    ],
+    "odd": 3,
+    "explanation": "Mbappé, Falcao en Tielemans speelden bij Monaco; Fellaini nooit.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Youri_Tielemans",
+      "https://en.wikipedia.org/wiki/Marouane_Fellaini"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Tegen wie speelde België niet op het WK 2018?",
+    "options": [
+      "Panama",
+      "Tunesië",
+      "Japan",
+      "Uruguay"
+    ],
+    "odd": 3,
+    "explanation": "België speelde tegen Panama, Tunesië en Japan; niet tegen Uruguay.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_Group_G",
+      "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Welke Rode Duivel werd nooit kampioen in de Premier League?",
+    "options": [
+      "Eden Hazard",
+      "Kevin De Bruyne",
+      "Vincent Kompany",
+      "Romelu Lukaku"
+    ],
+    "odd": 3,
+    "explanation": "Hazard (Chelsea), De Bruyne en Kompany (City) werden Engels kampioen; Lukaku nooit.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Welk land was geen groepstegenstander van België op het WK 2014?",
+    "options": [
+      "Algerije",
+      "Verenigde Staten",
+      "Rusland",
+      "Zuid-Korea"
+    ],
+    "odd": 1,
+    "explanation": "In de groep speelde België tegen Algerije, Rusland en Zuid-Korea; de VS was de tegenstander in de 1/8 finale.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Welk land was geen groepstegenstander van België op het WK 2022?",
+    "options": [
+      "Canada",
+      "Marokko",
+      "Japan",
+      "Kroatië"
+    ],
+    "odd": 2,
+    "explanation": "België speelde in de groep tegen Canada (1-0), Marokko (0-2) en Kroatië (0-0); niet tegen Japan.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Welk land was geen groepstegenstander van België op EK 2016?",
+    "options": [
+      "Italië",
+      "Ierland",
+      "Zweden",
+      "Hongarije"
+    ],
+    "odd": 3,
+    "explanation": "In de groep speelde België tegen Italië, Ierland en Zweden; Hongarije was de tegenstander in de 1/8 finale (4-0).",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgium_at_the_UEFA_European_Championship"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie scoorde niet voor België op het WK 2014?",
+    "options": [
+      "Eden Hazard",
+      "Marouane Fellaini",
+      "Divock Origi",
+      "Jan Vertonghen"
+    ],
+    "odd": 0,
+    "explanation": "Fellaini (Algerije), Origi (Rusland) en Vertonghen (Zuid-Korea) scoorden op het WK 2014; Eden Hazard niet.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie scoorde niet voor België op EK 2020?",
+    "options": [
+      "Thomas Meunier",
+      "Eden Hazard",
+      "Thorgan Hazard",
+      "Romelu Lukaku"
+    ],
+    "odd": 1,
+    "explanation": "Meunier (Rusland), Thorgan Hazard (Denemarken, Portugal) en Lukaku scoorden op EK 2020; Eden Hazard niet.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgium_at_the_UEFA_European_Championship"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie scoorde niet in België-Hongarije (4-0) op EK 2016?",
+    "options": [
+      "Toby Alderweireld",
+      "Michy Batshuayi",
+      "Romelu Lukaku",
+      "Yannick Carrasco"
+    ],
+    "odd": 2,
+    "explanation": "De goals waren van Alderweireld, Batshuayi, Eden Hazard en Carrasco; Lukaku scoorde niet.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgium_at_the_UEFA_European_Championship"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Op welk WK was België niet van de partij?",
+    "options": [
+      "WK 2006",
+      "WK 1982",
+      "WK 1998",
+      "WK 2002"
+    ],
+    "odd": 0,
+    "explanation": "België speelde het WK 1982, 1998 en 2002; voor het WK 2006 plaatste het zich niet.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie leidde België nooit als bondscoach op een WK?",
+    "options": [
+      "Guy Thys",
+      "Georges Leekens",
+      "René Vandereycken",
+      "Robert Waseige"
+    ],
+    "odd": 2,
+    "explanation": "Thys (1982, 1986, 1990), Leekens (1998) en Waseige (2002) waren bondscoach op een WK; Vandereycken (2006–2009) haalde geen WK.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup",
+      "https://nl.wikipedia.org/wiki/Belgisch_voetbalelftal_(mannen)"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie speelde niet in de EK-finale van 1980?",
+    "options": [
+      "Jan Ceulemans",
+      "Enzo Scifo",
+      "Eric Gerets",
+      "Jean-Marie Pfaff"
+    ],
+    "odd": 1,
+    "explanation": "Ceulemans, Gerets en Pfaff stonden in de basis van de finale tegen West-Duitsland; Scifo (geboren 1966) debuteerde pas later.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Euro_1980_final"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie scoorde niet in de 3-2 tegen Japan op het WK 2018?",
+    "options": [
+      "Jan Vertonghen",
+      "Marouane Fellaini",
+      "Romelu Lukaku",
+      "Nacer Chadli"
+    ],
+    "odd": 2,
+    "explanation": "Vertonghen, Fellaini en Chadli scoorden de drie Belgische goals; Lukaku niet.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "prompt": "Wie speelde nooit voor Chelsea?",
+    "options": [
+      "Kevin De Bruyne",
+      "Toby Alderweireld",
+      "Thibaut Courtois",
+      "Romelu Lukaku"
+    ],
+    "odd": 1,
+    "explanation": "De Bruyne (2012–2014), Courtois (2011–2018) en Lukaku (2011–2014, 2021–2024) stonden onder contract bij Chelsea; Alderweireld speelde in Engeland voor Southampton en Tottenham.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
+      "https://en.wikipedia.org/wiki/Toby_Alderweireld",
+      "https://en.wikipedia.org/wiki/Thibaut_Courtois",
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Wie speelde nooit voor Manchester United?",
+    "options": [
+      "Marouane Fellaini",
+      "Romelu Lukaku",
+      "Eden Hazard",
+      "Adnan Januzaj"
+    ],
+    "odd": 2,
+    "explanation": "Fellaini (2013–2019), Lukaku (2017–2019) en Januzaj (2013–2017) speelden voor Manchester United; Hazard speelde voor Lille, Chelsea en Real Madrid.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Marouane_Fellaini",
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku",
+      "https://en.wikipedia.org/wiki/Eden_Hazard",
+      "https://en.wikipedia.org/wiki/Adnan_Januzaj"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Wie speelde nooit voor Everton?",
+    "options": [
+      "Christian Benteke",
+      "Kevin Mirallas",
+      "Marouane Fellaini",
+      "Amadou Onana"
+    ],
+    "odd": 0,
+    "explanation": "Mirallas (2012–2019), Fellaini (2008–2013) en Onana (2022–2024) speelden voor Everton; Benteke speelde in Engeland voor Aston Villa, Liverpool en Crystal Palace.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Christian_Benteke",
+      "https://en.wikipedia.org/wiki/Kevin_Mirallas",
+      "https://en.wikipedia.org/wiki/Marouane_Fellaini",
+      "https://en.wikipedia.org/wiki/Amadou_Onana"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Wie speelde nooit voor Atlético Madrid?",
+    "options": [
+      "Thibaut Courtois",
+      "Yannick Carrasco",
+      "Dries Mertens",
+      "Axel Witsel"
+    ],
+    "odd": 2,
+    "explanation": "Courtois (2011–2014, huur), Carrasco (2015–2018, 2020–2023) en Witsel (2022–2025) speelden voor Atlético; Mertens niet.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Thibaut_Courtois",
+      "https://en.wikipedia.org/wiki/Yannick_Carrasco",
+      "https://en.wikipedia.org/wiki/Dries_Mertens",
+      "https://en.wikipedia.org/wiki/Axel_Witsel"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Wie speelde nooit voor Borussia Dortmund?",
+    "options": [
+      "Axel Witsel",
+      "Thorgan Hazard",
+      "Thomas Meunier",
+      "Youri Tielemans"
+    ],
+    "odd": 3,
+    "explanation": "Witsel (2018–2022), Thorgan Hazard (2019–2023) en Meunier (2020–2024) speelden voor Dortmund; Tielemans nooit.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Axel_Witsel",
+      "https://en.wikipedia.org/wiki/Thorgan_Hazard",
+      "https://en.wikipedia.org/wiki/Thomas_Meunier",
+      "https://en.wikipedia.org/wiki/Youri_Tielemans"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Wie speelde nooit voor VfL Wolfsburg?",
+    "options": [
+      "Dries Mertens",
+      "Kevin De Bruyne",
+      "Divock Origi",
+      "Ivan Perišić"
+    ],
+    "odd": 0,
+    "explanation": "De Bruyne (2014–2015), Origi (2017–2018, huur) en Perišić (2013–2015) speelden voor Wolfsburg; Mertens nooit.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dries_Mertens",
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
+      "https://en.wikipedia.org/wiki/Divock_Origi",
+      "https://en.wikipedia.org/wiki/Ivan_Peri%C5%A1i%C4%87"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Wie speelde nooit voor Aston Villa?",
+    "options": [
+      "Youri Tielemans",
+      "Leandro Trossard",
+      "Christian Benteke",
+      "Amadou Onana"
+    ],
+    "odd": 1,
+    "explanation": "Tielemans (2023–2026), Benteke (2012–2015) en Onana (sinds 2024) speelden voor Aston Villa; Trossard speelde in Engeland voor Brighton en Arsenal.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Youri_Tielemans",
+      "https://en.wikipedia.org/wiki/Leandro_Trossard",
+      "https://en.wikipedia.org/wiki/Christian_Benteke",
+      "https://en.wikipedia.org/wiki/Amadou_Onana"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Wie speelde nooit voor Leicester City?",
+    "options": [
+      "Youri Tielemans",
+      "Dennis Praet",
+      "Kevin De Bruyne",
+      "Timothy Castagne"
+    ],
+    "odd": 2,
+    "explanation": "Tielemans (2019–2023), Praet (2019–2024) en Castagne (2020–2023) speelden voor Leicester; De Bruyne nooit.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Youri_Tielemans",
+      "https://en.wikipedia.org/wiki/Dennis_Praet",
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
+      "https://en.wikipedia.org/wiki/Timothy_Castagne"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Wie speelde nooit voor Lille?",
+    "options": [
+      "Romelu Lukaku",
+      "Eden Hazard",
+      "Divock Origi",
+      "Jonathan David"
+    ],
+    "odd": 0,
+    "explanation": "Hazard (2007–2012), Origi (2012–2015) en Jonathan David (2020–2025) speelden voor Lille; Lukaku nooit.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku",
+      "https://en.wikipedia.org/wiki/Eden_Hazard",
+      "https://en.wikipedia.org/wiki/Divock_Origi",
+      "https://en.wikipedia.org/wiki/Jonathan_David"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Wie speelde nooit voor Hamburger SV?",
+    "options": [
+      "Vincent Kompany",
+      "Axel Witsel",
+      "Daniel Van Buyten",
+      "Amadou Onana"
+    ],
+    "odd": 1,
+    "explanation": "Kompany (2006–2008), Van Buyten (2004–2006) en Onana (2020–2021) speelden voor HSV; Witsel nooit.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Vincent_Kompany",
+      "https://en.wikipedia.org/wiki/Axel_Witsel",
+      "https://en.wikipedia.org/wiki/Daniel_Van_Buyten",
+      "https://en.wikipedia.org/wiki/Amadou_Onana"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Wie speelde nooit voor AC Milan?",
+    "options": [
+      "Charles De Ketelaere",
+      "Divock Origi",
+      "Romelu Lukaku",
+      "Kaká"
+    ],
+    "odd": 2,
+    "explanation": "De Ketelaere (2022–2024), Origi (2022–2025) en Kaká (2003–2009, 2013–2014) speelden voor AC Milan; Lukaku speelde in Milaan voor Inter.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Charles_De_Ketelaere",
+      "https://en.wikipedia.org/wiki/Divock_Origi",
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku",
+      "https://en.wikipedia.org/wiki/Kak%C3%A1"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Wie speelde nooit voor Bayern München?",
+    "options": [
+      "Daniel Van Buyten",
+      "Ivan Perišić",
+      "Philippe Coutinho",
+      "Kevin De Bruyne"
+    ],
+    "odd": 3,
+    "explanation": "Van Buyten (2006–2014), Perišić (2019–2020, huur) en Coutinho (2019–2020, huur) speelden voor Bayern; De Bruyne nooit.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Daniel_Van_Buyten",
+      "https://en.wikipedia.org/wiki/Ivan_Peri%C5%A1i%C4%87",
+      "https://en.wikipedia.org/wiki/Philippe_Coutinho",
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Wie speelde nooit voor Juventus?",
+    "options": [
+      "Paul Pogba",
+      "Radja Nainggolan",
+      "Gonzalo Higuaín",
+      "Andrea Pirlo"
+    ],
+    "odd": 1,
+    "explanation": "Pogba (2012–2016, 2022–2024), Higuaín (2016–2020) en Pirlo (2011–2015) speelden voor Juventus; Nainggolan speelde in Italië o.a. voor Cagliari, AS Roma en Inter.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Paul_Pogba",
+      "https://en.wikipedia.org/wiki/Radja_Nainggolan",
+      "https://en.wikipedia.org/wiki/Gonzalo_Higua%C3%ADn",
+      "https://en.wikipedia.org/wiki/Andrea_Pirlo"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Welke club werd nooit Italiaans kampioen?",
+    "options": [
+      "Napoli",
+      "Lazio",
+      "Atalanta",
+      "Sampdoria"
+    ],
+    "odd": 2,
+    "explanation": "Napoli (4x), Lazio (2x) en Sampdoria (1991) werden landskampioen van Italië; Atalanta nooit.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Italian_football_champions"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Welke club werd nooit Spaans kampioen?",
+    "options": [
+      "Valencia",
+      "Villarreal",
+      "Deportivo La Coruña",
+      "Real Sociedad"
+    ],
+    "odd": 1,
+    "explanation": "Valencia (6x), Deportivo La Coruña (2000) en Real Sociedad (2x) wonnen de Spaanse titel; Villarreal werd hooguit tweede.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Spanish_football_champions"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Welke club werd nooit Frans kampioen?",
+    "options": [
+      "Lille",
+      "Montpellier",
+      "Stade Rennais",
+      "RC Lens"
+    ],
+    "odd": 2,
+    "explanation": "Lille (o.a. 2011, 2021), Montpellier (2012) en Lens (1998) werden Frans kampioen; Rennes nooit.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_French_football_champions"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Welk land won nooit het EK?",
+    "options": [
+      "Denemarken",
+      "Kroatië",
+      "Griekenland",
+      "Portugal"
+    ],
+    "odd": 1,
+    "explanation": "Denemarken (1992), Griekenland (2004) en Portugal (2016) wonnen het EK; Kroatië nooit.",
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_European_Championship"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Welke buitenlander won nooit de Gouden Schoen?",
+    "options": [
+      "Mbark Boussoufa",
+      "Milan Jovanović",
+      "Aleksandar Mitrović",
+      "Dieumerci Mbokani"
+    ],
+    "odd": 2,
+    "explanation": "Boussoufa (2006, 2010), Jovanović (2009) en Mbokani (2012) wonnen de Gouden Schoen; Mitrović nooit.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Gouden_Schoen_(Belgi%C3%AB)"
+    ],
+    "tags": [
+      "gouden-schoen"
+    ],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Wie werd nooit topschutter van de Belgische hoogste klasse?",
+    "options": [
+      "Ivan Perišić",
+      "Aleksandar Mitrović",
+      "Jelle Vossen",
+      "Paul Onuachu"
+    ],
+    "odd": 2,
+    "explanation": "Perišić (2010–11), Mitrović (2014–15) en Onuachu (2020–21) werden topschutter; Vossen nooit.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgian_Pro_League_top_scorers"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Welke club won sinds 2010 geen Beker van België?",
+    "options": [
+      "KV Mechelen",
+      "Anderlecht",
+      "Zulte Waregem",
+      "KSC Lokeren"
+    ],
+    "odd": 1,
+    "explanation": "Mechelen (2019), Zulte Waregem (2017) en Lokeren (2012, 2014) wonnen de beker na 2010; Anderlecht won hem voor het laatst in 2008.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgian_Cup",
+      "https://nl.wikipedia.org/wiki/Beker_van_Belgi%C3%AB_(voetbal)"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Wie was nooit hoofdtrainer van KAA Gent?",
+    "options": [
+      "Michel Preud'homme",
+      "Philippe Clement",
+      "Trond Sollied",
+      "Jess Thorup"
+    ],
+    "odd": 1,
+    "explanation": "Preud'homme (2008–2010), Sollied (o.a. 2007–2008) en Thorup (2018–2020) trainden Gent; Clement nooit.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Philippe_Clement",
+      "https://en.wikipedia.org/wiki/Michel_Preud%27homme",
+      "https://en.wikipedia.org/wiki/Trond_Sollied",
+      "https://en.wikipedia.org/wiki/Jess_Thorup"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Wie was nooit hoofdtrainer van KRC Genk?",
+    "options": [
+      "Franky Vercauteren",
+      "Hein Vanhaezebrouck",
+      "Felice Mazzù",
+      "Michel Preud'homme"
+    ],
+    "odd": 3,
+    "explanation": "Vercauteren (2009–2011), Vanhaezebrouck (2009) en Mazzù (2019) trainden Genk; Preud'homme nooit.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Franky_Vercauteren",
+      "https://en.wikipedia.org/wiki/Hein_Vanhaezebrouck",
+      "https://en.wikipedia.org/wiki/Felice_Mazz%C3%B9",
+      "https://en.wikipedia.org/wiki/Michel_Preud%27homme"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Wie was nooit hoofdtrainer van Standard?",
+    "options": [
+      "Hein Vanhaezebrouck",
+      "László Bölöni",
+      "Michel Preud'homme",
+      "Ivan Leko"
+    ],
+    "odd": 0,
+    "explanation": "Bölöni (2008–2010), Preud'homme (o.a. 2006–2008) en Leko (2024–2025) trainden Standard; Vanhaezebrouck nooit.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Hein_Vanhaezebrouck",
+      "https://en.wikipedia.org/wiki/L%C3%A1szl%C3%B3_B%C3%B6l%C3%B6ni",
+      "https://en.wikipedia.org/wiki/Michel_Preud%27homme",
+      "https://en.wikipedia.org/wiki/Ivan_Leko"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Welk land was geen groepstegenstander van België op EK 2000?",
+    "options": [
+      "Zweden",
+      "Italië",
+      "Noorwegen",
+      "Turkije"
+    ],
+    "odd": 2,
+    "explanation": "België zat op EK 2000 in groep B met Zweden, Italië en Turkije.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Euro_2000_Group_B"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Welk land was geen groepstegenstander van België op EK 2020?",
+    "options": [
+      "Denemarken",
+      "Wales",
+      "Finland",
+      "Rusland"
+    ],
+    "odd": 1,
+    "explanation": "België zat op EK 2020 in groep B met Denemarken, Finland en Rusland.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Euro_2020_Group_B"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Welk land was geen groepstegenstander van België op EK 2024?",
+    "options": [
+      "Roemenië",
+      "Oekraïne",
+      "Frankrijk",
+      "Slowakije"
+    ],
+    "odd": 2,
+    "explanation": "België zat op EK 2024 in groep E met Roemenië, Oekraïne en Slowakije; Frankrijk was pas de tegenstander in de 1/8 finale.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Euro_2024_Group_E"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Welk land was geen groepstegenstander van België op het WK 1986?",
+    "options": [
+      "Irak",
+      "Spanje",
+      "Mexico",
+      "Paraguay"
+    ],
+    "odd": 1,
+    "explanation": "België zat op het WK 1986 in groep B met Mexico, Paraguay en Irak; Spanje was de tegenstander in de kwartfinale.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_Group_B"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Welk land was geen groepstegenstander van België op het WK 1990?",
+    "options": [
+      "Uruguay",
+      "Zuid-Korea",
+      "Engeland",
+      "Spanje"
+    ],
+    "odd": 2,
+    "explanation": "België zat op het WK 1990 in groep E met Zuid-Korea, Uruguay en Spanje; Engeland was de tegenstander in de 1/8 finale.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1990_FIFA_World_Cup_Group_E"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Wie scoorde niet in België-Tunesië (5-2) op het WK 2018?",
+    "options": [
+      "Eden Hazard",
+      "Dries Mertens",
+      "Romelu Lukaku",
+      "Michy Batshuayi"
+    ],
+    "odd": 1,
+    "explanation": "Eden Hazard (2), Lukaku (2) en Batshuayi scoorden tegen Tunesië; Mertens scoorde wel tegen Panama, niet tegen Tunesië.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_Group_G"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-18"
+  },
+  {
+    "prompt": "Welke club speelde nooit in de Premier League?",
+    "options": [
+      "Wigan Athletic",
+      "Blackpool",
+      "Millwall",
+      "Luton Town"
+    ],
+    "odd": 2,
+    "explanation": "Wigan (2005–2013), Blackpool (2010–11) en Luton (2023–24) speelden in de Premier League; Millwall speelde enkel in 1988–1990 op het hoogste niveau, vóór de Premier League bestond.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Premier_League_clubs",
+      "https://en.wikipedia.org/wiki/Millwall_F.C."
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-18"
+  }
+]

@@ -1,0 +1,316 @@
+@page "/online/{Id:int}"
+@attribute [Authorize]
+@implements IAsyncDisposable
+@inject ApiClient Api
+@inject RealtimeClient Realtime
+@inject NavigationManager Nav
+
+<PageTitle>@(_state?.Name ?? "Wedstrijd") – Truitje Trek</PageTitle>
+
+<div class="question-head">
+    <a href="online" class="back">‹ Lobby</a>
+    @if (_state is { Phase: MatchPhase.Question or MatchPhase.Reveal or MatchPhase.Countdown })
+    {
+        <span>
+            @if (_state.Phase != MatchPhase.Countdown)
+            {
+                <span class="type-tag">@QuestionTypes.Get(_state.Type).Icon @QuestionTypes.Get(_state.Type).Name</span>
+            }
+            Vraag <b>@Math.Max(1, _state.CurrentNumber)</b> / @_state.TotalQuestions
+        </span>
+    }
+</div>
+
+@if (_error is not null)
+{
+    <p class="error">@_error</p>
+}
+
+@if (_state is null)
+{
+    <div class="center-msg">Laden…</div>
+}
+else
+{
+    switch (_state.Phase)
+    {
+        case MatchPhase.Lobby:
+            <section class="card">
+                <h1>@_state.Name</h1>
+                <p class="muted">@_state.Players.Count / @_state.Seats spelers aan tafel</p>
+                <p><b>@QuestionTypes.Label(_state.Types)</b> <span class="muted">· @_state.TotalQuestions vragen</span></p>
+                <ul class="match-players">
+                    @foreach (var p in _state.Players)
+                    {
+                        <li>
+                            <Avatar Id="@p.AvatarId" Size="40" />
+                            <span><b>@p.UserName</b> <span class="lvl">Lv @p.Level</span></span>
+                            @if (p.IsHost) { <span class="tag">organisator</span> }
+                        </li>
+                    }
+                    @for (var i = _state.Players.Count; i < _state.Seats; i++)
+                    {
+                        <li class="empty-seat"><span class="seat"></span> Vrije plaats</li>
+                    }
+                </ul>
+
+                @if (_state.IsHost)
+                {
+                    <button class="btn primary big" @onclick="StartAsync"
+                            disabled="@(_busy || _state.Players.Count < MatchRules.MinSeats)">
+                        @(_state.Players.Count < MatchRules.MinSeats ? "Wachten op spelers…" : "Start de wedstrijd")
+                    </button>
+                }
+                else if (_state.IAmIn)
+                {
+                    <p class="center muted">Wachten tot de organisator start…</p>
+                }
+                else if (_state.Players.Count < _state.Seats)
+                {
+                    <button class="btn primary big" @onclick="JoinAsync" disabled="@_busy">Aanschuiven</button>
+                }
+
+                @if (_state.IAmIn)
+                {
+                    <button class="linkish center-block" @onclick="LeaveAsync">
+                        @(_state.IsHost ? "Tafel opheffen" : "Tafel verlaten")
+                    </button>
+                }
+            </section>
+            break;
+
+        case MatchPhase.Countdown:
+            <div class="countdown">
+                <div>Klaar?</div>
+                <div class="countdown-number">@Math.Max(1, Math.Ceiling(-LocalElapsed))</div>
+            </div>
+            <PlayerStrip Players="_state.Players" />
+            break;
+
+        case MatchPhase.Question:
+            <PlayerStrip Players="_state.Players" ShowAnswered="true" />
+
+            <div class="stake">
+                <div class="stake-row">
+                    <div>
+                        <span class="stake-points">@(_state.MyDone ? "✓" : QuestionDisplay.PointsNow(_state.Type, _state.View, LocalElapsed, _state.MyWrongGuesses, _state.TimeLimit))</span>
+                        <span class="stake-label">@(_state.MyDone ? "klaar" : $"{QuestionDisplay.PointsLabel(_state.Type)} + positiebonus")</span>
+                    </div>
+                    <div class="clock @(SecondsLeft <= 5 ? "urgent" : "")">@Math.Ceiling(SecondsLeft)s</div>
+                </div>
+                <div class="timebar"><div style="width:@QuestionDisplay.Percent(LocalElapsed / _state.TimeLimit)"></div></div>
+            </div>
+
+            @if (_state.MyCorrect)
+            {
+                <div class="result ok small">✅ Juist! Wachten op de anderen…</div>
+            }
+            else if (_state.MyDone && _state.MyPoints > 0)
+            {
+                <div class="result ok small">👍 +@_state.MyPoints punten. Wachten op de anderen…</div>
+            }
+            else if (_state.MyDone)
+            {
+                <div class="result fail small">@(IsChoice(_state.Type) ? "❌ Mis!" : "Je paste.") Wachten op de anderen…</div>
+            }
+
+            <QuestionPlay @key="_state.CurrentNumber" Type="_state.Type" View="_state.View" Hints="_state.Hints" Busy="_busy"
+                          ReadOnly="@(!_state.IAmIn || _state.MyDone)" Send="PlayAsync" />
+
+            @if (_state.IAmIn && !_state.MyDone)
+            {
+                <div class="actions">
+                    <button class="linkish" @onclick="GiveUpAsync" disabled="@_busy">
+                        @(_state.Type == QuestionType.Opstelling ? "Ik ben klaar" : _state.Type == QuestionType.Counter ? "Ik stop" : "Ik pas")
+                    </button>
+                </div>
+            }
+            break;
+
+        case MatchPhase.Reveal:
+            <div class="result @(_state.Reveal.Any(r => r.IsMe) ? "ok" : "fail")">
+                <div class="muted">Het was…</div>
+                <div class="result-name">@_state.RevealedPlayer</div>
+                @if (_state.Result?.Explanation is { } explanation && _state.Type is QuestionType.Emoji or QuestionType.NietBij)
+                {
+                    <p class="explanation">@explanation</p>
+                }
+            </div>
+
+            @if (_state.Result is { } result)
+            {
+                <QuestionAnswer Type="_state.Type" Result="result" View="_state.View" />
+            }
+
+            @if (_state.Reveal.Count == 0)
+            {
+                <div class="card center muted">Niemand scoorde.</div>
+            }
+            else
+            {
+                <ol class="board">
+                    @foreach (var r in _state.Reveal)
+                    {
+                        <li class="@(r.IsMe ? "me" : "")">
+                            <span class="rank">@Medal(r.Position)</span>
+                            <Avatar Id="@r.AvatarId" Size="36" />
+                            <span class="player"><b>@r.UserName</b>@if (r.Bonus > 0) {<small>+@r.Bonus positiebonus</small>}</span>
+                            <span class="pts">+@r.Points</span>
+                        </li>
+                    }
+                </ol>
+            }
+
+            <h2 class="section-title">Tussenstand</h2>
+            <Standings Players="_state.Players" />
+            <p class="center light-text">
+                @(_state.CurrentNumber < _state.TotalQuestions
+                    ? $"Volgende vraag over {Math.Max(0, Math.Ceiling(MatchRules.RevealSeconds - LocalElapsed))} s"
+                    : "Eindstand komt eraan…")
+            </p>
+            break;
+
+        case MatchPhase.Finished:
+            var winner = _state.Players.FirstOrDefault(p => p.Rank == 1);
+            <section class="card center podium-card">
+                <div class="trophy">🏆</div>
+                <h1>@(winner?.IsMe == true ? "Jij wint!" : $"{winner?.UserName} wint!")</h1>
+                <div class="muted">@_state.Name</div>
+            </section>
+            <Standings Players="_state.Players" />
+            <a class="btn primary big" href="online">Terug naar de lobby</a>
+            @* Eerst even de eindstand laten zien. *@
+            <RewardPopup DelayMs="2500" Kicker="@(winner?.IsMe == true ? "Wat een zege!" : "Wedstrijd gespeeld!")" />
+            break;
+
+        case MatchPhase.Cancelled:
+            <div class="card center">
+                <h1>Tafel opgeheven</h1>
+                <p class="muted">Deze wedstrijd gaat niet (meer) door.</p>
+                <a class="btn primary" href="online">Naar de lobby</a>
+            </div>
+            break;
+    }
+}
+
+@code {
+    [Parameter] public int Id { get; set; }
+
+    private MatchState? _state;
+    private string? _error;
+    private bool _busy;
+
+    // Lokale klok, gelijkgezet met de server bij elke nieuwe toestand.
+    private DateTime _syncedAt;
+    private double _syncedElapsed;
+    private DateTime _lastRefresh;
+    private PeriodicTimer? _timer;
+    private readonly CancellationTokenSource _cts = new();
+
+    private double LocalElapsed => _syncedElapsed + (DateTime.UtcNow - _syncedAt).TotalSeconds;
+    private double SecondsLeft => Math.Max(0, (_state?.TimeLimit ?? GameRules.TimeLimitSeconds) - LocalElapsed);
+
+    /// <summary>Types waar je één keer kiest: een foute keuze is meteen "mis".</summary>
+    private static bool IsChoice(QuestionType type) => type is QuestionType.Snelvuur or QuestionType.NietBij or QuestionType.Jaar;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Realtime.MatchChanged += OnMatchChanged;
+        await LoadAsync();
+        try { await Realtime.WatchMatchAsync(Id); }
+        catch { _error = "Live verbinding mislukt. Ververs de pagina."; }
+
+        _timer = new PeriodicTimer(TimeSpan.FromMilliseconds(200));
+        _ = TickAsync(_timer, _cts.Token);
+    }
+
+    private async Task OnMatchChanged(int id)
+    {
+        if (id != Id) return;
+        await LoadAsync();
+    }
+
+    private async Task LoadAsync() => await ApplyAsync(() => Api.GetMatchAsync(Id));
+
+    private async Task ApplyAsync(Func<Task<MatchState>> call, bool busy = false)
+    {
+        if (busy) _busy = true;
+        try
+        {
+            var state = await call();
+            _syncedAt = DateTime.UtcNow;
+            _syncedElapsed = state.PhaseElapsedSeconds;
+            _state = state;
+            _error = null;
+        }
+        catch (ApiException ex) { _error = ex.Message; }
+        finally
+        {
+            _busy = false;
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+
+    /// <summary>Hertekent de klok en haalt nieuwe tips op als hun tijd gekomen is.</summary>
+    private async Task TickAsync(PeriodicTimer timer, CancellationToken token)
+    {
+        try
+        {
+            while (await timer.WaitForNextTickAsync(token))
+            {
+                if (_state is null) continue;
+
+                var due = _state.Phase switch
+                {
+                    MatchPhase.Countdown => LocalElapsed >= 0,
+                    MatchPhase.Question => QuestionDisplay.MoreHintsDue(_state.Type, _state.View, _state.Hints.Count, LocalElapsed, _state.TimeLimit)
+                                           || LocalElapsed > _state.TimeLimit + 1,
+                    MatchPhase.Reveal => LocalElapsed > MatchRules.RevealSeconds + 1,
+                    _ => false,
+                };
+                // Normaal komt er een seintje van de server; dit is het vangnet.
+                if (due && !_busy && DateTime.UtcNow - _lastRefresh > TimeSpan.FromMilliseconds(700))
+                {
+                    _lastRefresh = DateTime.UtcNow;
+                    await LoadAsync();
+                }
+                else if (_state.Phase is MatchPhase.Countdown or MatchPhase.Question or MatchPhase.Reveal)
+                {
+                    await InvokeAsync(StateHasChanged);
+                }
+            }
+        }
+        catch (OperationCanceledException) { }
+    }
+
+    private async Task<QuestionPlay.Feedback?> PlayAsync(string guess)
+    {
+        await ApplyAsync(() => Api.MatchGuessAsync(Id, guess), busy: true);
+        return _state is null ? null : new(_state.MyLastWrongGuess, _state.View, _state.MyDone);
+    }
+
+    private Task GiveUpAsync() => ApplyAsync(() => Api.MatchGiveUpAsync(Id), busy: true);
+    private Task StartAsync() => ApplyAsync(() => Api.StartMatchAsync(Id), busy: true);
+    private Task JoinAsync() => ApplyAsync(() => Api.JoinMatchAsync(Id), busy: true);
+
+    private async Task LeaveAsync()
+    {
+        try
+        {
+            await Api.LeaveMatchAsync(Id);
+            Nav.NavigateTo("online");
+        }
+        catch (ApiException ex) { _error = ex.Message; }
+    }
+
+    /// <summary>Position 0: deelpunten zonder juist antwoord (jaar, opstelling, counter).</summary>
+    private static string Medal(int rank) => rank switch { 0 => "👍", 1 => "🥇", 2 => "🥈", 3 => "🥉", _ => rank.ToString() };
+
+    public async ValueTask DisposeAsync()
+    {
+        _cts.Cancel();
+        _timer?.Dispose();
+        Realtime.MatchChanged -= OnMatchChanged;
+        try { await Realtime.UnwatchMatchAsync(Id); } catch { /* verbinding al weg */ }
+    }
+}

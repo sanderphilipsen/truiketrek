@@ -1,0 +1,736 @@
+[
+  {
+    "name": "Gianluigi Buffon",
+    "answers": [
+      "Buffon",
+      "Gigi Buffon"
+    ],
+    "country": "Italië",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1978 geboren in Carrara, een stad bekend om zijn marmer.",
+      "Als zeventienjarige debuteerde ik in de Serie A bij Parma.",
+      "In 2001 werd ik de duurste doelman ooit bij mijn overstap naar Turijn.",
+      "Toen mijn club in 2006 naar de Serie B werd verwezen, bleef ik trouw.",
+      "Als doelman met de bijnaam 'Superman' werd ik in 2006 wereldkampioen met Italië."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gianluigi_Buffon"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Francesco Totti",
+    "answers": [
+      "Totti",
+      "Er Pupone"
+    ],
+    "country": "Italië",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1976 geboren in Rome.",
+      "Ik speelde mijn volledige profcarrière, 25 seizoenen lang, bij één club.",
+      "Op het EK 2000 nam ik een brutale gestifte penalty in de strafschoppenreeks tegen Nederland.",
+      "In 2001 won ik de enige landstitel uit mijn carrière en in 2006 werd ik wereldkampioen.",
+      "Als nummer 10 en aanvoerder van AS Roma noemden ze me 'Er Pupone'."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Francesco_Totti"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Andrea Pirlo",
+    "answers": [
+      "Pirlo",
+      "L'Architetto"
+    ],
+    "country": "Italië",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1979 geboren in de provincie Brescia en debuteerde ook bij die club.",
+      "Ik was een diepliggende spelmaker die het spel dicteerde met lange passes.",
+      "Met AC Milan won ik twee keer de Champions League, in 2003 en 2007.",
+      "In 2011 vertrok ik transfervrij naar Juventus, waar ik vier titels op rij won.",
+      "Ploegmaats noemden me 'de Architect'; op het EK 2012 verschalkte ik Engeland met een panenka."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Andrea_Pirlo"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Alessandro Del Piero",
+    "answers": [
+      "Del Piero",
+      "Pinturicchio",
+      "ADP"
+    ],
+    "country": "Italië",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1974 geboren in Conegliano, in de regio Veneto.",
+      "Ik begon bij Padova voor ik op jonge leeftijd naar een Turijnse topclub trok.",
+      "Ik bleef mijn club trouw toen die in 2006 naar de Serie B werd verwezen.",
+      "In de halve finale van het WK 2006 scoorde ik de 2-0 tegen gastland Duitsland.",
+      "Gianni Agnelli noemde me 'Pinturicchio'; ik ben topschutter aller tijden van Juventus."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Alessandro_Del_Piero"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Zlatan Ibrahimović",
+    "answers": [
+      "Ibrahimović",
+      "Ibrahimovic",
+      "Zlatan",
+      "Ibra"
+    ],
+    "country": "Zweden",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1981 geboren in Malmö, met een Bosnische vader en een Kroatische moeder.",
+      "Naast voetbal deed ik als jongere aan taekwondo, wat je nog zag aan mijn acrobatische doelpunten.",
+      "Ik speelde voor Ajax, Juventus, Inter, Barcelona, Milan, PSG en Manchester United.",
+      "In 2012 scoorde ik met een omhaal van ruim dertig meter tegen Engeland, goed voor de Puskás Award.",
+      "Ik spreek graag over mezelf in de derde persoon en ben recordschutter van Zweden."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Zlatan_Ibrahimovi%C4%87",
+      "https://en.wikipedia.org/wiki/List_of_international_goals_scored_by_Zlatan_Ibrahimovi%C4%87",
+      "https://www.funkidslive.com/sport/5-facts-probably-didnt-know-zlatan-ibrahimovic/"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Kaká",
+    "answers": [
+      "Kaka",
+      "Ricardo Kaká"
+    ],
+    "country": "Brazilië",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1982 geboren in Gama, in het Federaal District rond Brasília.",
+      "Op mijn achttiende brak ik een wervel bij een ongeluk in een zwembad.",
+      "Ik brak door bij São Paulo en trok in 2003 naar Italië.",
+      "In 2009 verhuisde ik voor 67 miljoen euro naar Real Madrid.",
+      "In 2007 won ik de Champions League en de Ballon d'Or als spelmaker van AC Milan."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kak%C3%A1"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Gonzalo Higuaín",
+    "answers": [
+      "Higuaín",
+      "Higuain",
+      "Pipita",
+      "El Pipita"
+    ],
+    "country": "Argentinië",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1987 in Frankrijk geboren, toen mijn vader daar voetbalde.",
+      "Ik brak door bij River Plate en speelde daarna zes en een half jaar bij Real Madrid.",
+      "In de WK-finale van 2014 miste ik een grote kans tegen Duitsland.",
+      "In 2016 maakte ik een omstreden transfer van 90 miljoen euro naar Juventus.",
+      "Bij Napoli scoorde ik 36 goals in één Serie A-seizoen, toen een record."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gonzalo_Higua%C3%ADn"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Giorgio Chiellini",
+    "answers": [
+      "Chiellini"
+    ],
+    "country": "Italië",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1984 geboren in Pisa en heb een tweelingbroer.",
+      "Ik begon als linksachter maar werd een keiharde centrale verdediger.",
+      "Met Juventus won ik negen landstitels op rij.",
+      "Op het WK 2014 werd ik in mijn schouder gebeten door Luis Suárez.",
+      "Als aanvoerder van Italië won ik EURO 2020 op Wembley tegen Engeland."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Giorgio_Chiellini"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Edin Džeko",
+    "answers": [
+      "Džeko",
+      "Dzeko"
+    ],
+    "country": "Bosnië-Herzegovina",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1986 geboren in Sarajevo en groeide op tijdens de oorlog.",
+      "Ik ben een rijzige spits die ook uitblonk als aangever.",
+      "Met Wolfsburg werd ik in 2009 Duits kampioen.",
+      "Met Manchester City won ik in 2012 de Engelse titel na een legendarische slotdag.",
+      "Ik ben recordschutter van Bosnië en werd met AS Roma topschutter van de Serie A."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Edin_D%C5%BEeko"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Victor Osimhen",
+    "answers": [
+      "Osimhen"
+    ],
+    "country": "Nigeria",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1998 geboren in Lagos en verkocht als kind zakjes water in het verkeer.",
+      "Op het WK onder 17 van 2015 werd ik topschutter met tien doelpunten.",
+      "Voor mijn doorbraak in Frankrijk scoorde ik op uitleenbasis vlot bij Sporting Charleroi.",
+      "Na één seizoen bij Lille trok ik voor een clubrecordbedrag naar Italië.",
+      "Met mijn zwarte gezichtsmasker werd ik in 2023 topschutter en kampioen met Napoli."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Victor_Osimhen"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Lautaro Martínez",
+    "answers": [
+      "Lautaro",
+      "El Toro"
+    ],
+    "country": "Argentinië",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1997 geboren in Bahía Blanca, in Argentinië.",
+      "Ik brak door bij Racing Club en trok in 2018 naar Milaan.",
+      "Ik werd wereldkampioen in 2022 en topschutter van de Copa América 2024.",
+      "Ik ben een gedrongen, strijdlustige spits die zijn ploeg als aanvoerder leidt.",
+      "Ze noemen me 'El Toro'; als kapitein van Inter werd ik in 2024 kampioen van Italië."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lautaro_Mart%C3%ADnez"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Nicolò Barella",
+    "answers": [
+      "Barella"
+    ],
+    "country": "Italië",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1997 geboren in Cagliari, op het eiland Sardinië.",
+      "Ik doorliep de jeugdreeksen van de club uit mijn geboortestad.",
+      "Ik ben een energieke box-to-box middenvelder met een enorm loopvermogen.",
+      "In 2021 won ik het EK met Italië.",
+      "Met nummer 23 werd ik het kloppend hart van het middenveld van Inter."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Nicol%C3%B2_Barella"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Paulo Dybala",
+    "answers": [
+      "Dybala",
+      "La Joya"
+    ],
+    "country": "Argentinië",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1993 geboren in Laguna Larga en verloor mijn vader toen ik vijftien was.",
+      "Ik ben een Argentijnse aanvaller met Poolse roots: mijn grootvader kwam uit Polen.",
+      "Na Instituto en Palermo speelde ik zeven seizoenen bij Juventus.",
+      "In de WK-finale van 2022 benutte ik mijn penalty in de strafschoppenreeks.",
+      "Ze noemen me 'La Joya' en ik juich met een masker-gebaar, als een gladiator."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Paulo_Dybala",
+      "https://www.gazetaesportiva.com/futebol/com-cabeca-no-lugar-dybala-relembra-dificuldade-apos-morte-do-pai/"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Wesley Sneijder",
+    "answers": [
+      "Sneijder"
+    ],
+    "country": "Nederland",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1984 geboren in Utrecht.",
+      "Ik brak door bij Ajax en trok in 2007 naar Real Madrid.",
+      "Met 134 interlands ben ik recordinternational van Nederland.",
+      "Ik was een spelmaker die met beide voeten kon uithalen van ver.",
+      "In 2010 won ik de treble met Inter en haalde ik met Oranje de WK-finale."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Wesley_Sneijder"
+    ],
+    "tags": [
+      "champions-league",
+      "oranje"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Khvicha Kvaratskhelia",
+    "answers": [
+      "Kvaratskhelia",
+      "Kvara",
+      "Kvaradona"
+    ],
+    "country": "Georgië",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 2001 geboren in Tbilisi.",
+      "Ik speelde in Rusland voor Lokomotiv Moskou en Rubin Kazan voor ik in 2022 naar Italië trok.",
+      "Ik ben een dribbelende linksbuiten die graag naar binnen snijdt op mijn rechtervoet.",
+      "In mijn eerste seizoen werd ik kampioen en beste speler van de Serie A.",
+      "Napoli-fans gaven me een bijnaam die verwijst naar Maradona."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Khvicha_Kvaratskhelia"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Fabio Cannavaro",
+    "answers": [
+      "Cannavaro"
+    ],
+    "country": "Italië",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1973 geboren in Napels en was ballenjongen bij Napoli, de club van mijn idool Maradona.",
+      "Mijn jongere broer was ook profvoetballer en verdediger.",
+      "Met Parma won ik in 1999 de UEFA Cup.",
+      "Ik was een kleine centrale verdediger met een sterk luchtspel.",
+      "Als aanvoerder won ik in 2006 het WK en als verdediger de Ballon d'Or."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Fabio_Cannavaro"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Kylian Mbappé",
+    "answers": [
+      "Mbappé",
+      "Mbappe",
+      "Kylian"
+    ],
+    "country": "Frankrijk",
+    "competition": "Ligue 1",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1998 geboren in Parijs en groeide op in Bondy.",
+      "Mijn vader was trainer en mijn moeder speelde handbal.",
+      "In 2017 werd ik kampioen met AS Monaco als tiener.",
+      "Ik scoorde als negentienjarige in de WK-finale van 2018.",
+      "Ik maakte een hattrick in de WK-finale van 2022 tegen Argentinië, en verloor toch."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kylian_Mbapp%C3%A9"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Edinson Cavani",
+    "answers": [
+      "Cavani",
+      "El Matador"
+    ],
+    "country": "Uruguay",
+    "competition": "Ligue 1",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1987 geboren in Salto, in Uruguay.",
+      "In 2013 werd ik met 29 doelpunten topschutter van de Serie A.",
+      "Na Palermo werd ik een doelpuntenmachine bij Napoli.",
+      "Ik juich door te mikken alsof ik een geweer of een pijl en boog vasthoud.",
+      "Ze noemen me 'El Matador'; in 2018 werd ik topschutter aller tijden van PSG."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Edinson_Cavani"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Thiago Silva",
+    "answers": [
+      "O Monstro"
+    ],
+    "country": "Brazilië",
+    "competition": "Ligue 1",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1984 geboren in Rio de Janeiro.",
+      "In Moskou overleefde ik een zware tuberculose die bijna mijn carrière beëindigde.",
+      "Na Fluminense en AC Milan trok ik in 2012 naar Parijs.",
+      "Ik was een centrale verdediger en de langst dienende aanvoerder van PSG.",
+      "Ze noemden me 'O Monstro'; met Chelsea won ik in 2021 de Champions League."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Thiago_Silva"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Hatem Ben Arfa",
+    "answers": [
+      "Ben Arfa"
+    ],
+    "country": "Frankrijk",
+    "competition": "Ligue 1",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1987 geboren in Clamart, met een Tunesische vader.",
+      "Als kind was ik te zien in een documentaire over het opleidingscentrum Clairefontaine.",
+      "Ik speelde voor Lyon, Marseille, Newcastle en PSG.",
+      "Ik was een geniale dribbelaar, maar ook een moeilijk karakter.",
+      "Bij OGC Nice scoorde ik in 2015-16 zeventien keer, onder meer na een solo tegen Caen."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Hatem_Ben_Arfa"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Dimitri Payet",
+    "answers": [
+      "Payet"
+    ],
+    "country": "Frankrijk",
+    "competition": "Ligue 1",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1987 geboren op het eiland Réunion.",
+      "Ik speelde in Frankrijk voor Nantes, Saint-Étienne en Lille.",
+      "Tussen twee periodes in Marseille speelde ik in de Premier League voor West Ham.",
+      "In de finale van de Europa League 2018 verliet ik in tranen het veld met een blessure.",
+      "In de openingsmatch van EURO 2016 scoorde ik in de 89e minuut de winnende goal tegen Roemenië."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dimitri_Payet"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Alexandre Lacazette",
+    "answers": [
+      "Lacazette"
+    ],
+    "country": "Frankrijk",
+    "competition": "Ligue 1",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1991 geboren in Lyon.",
+      "Ik ben een spits die sterk is in combinatiespel en met beide voeten kan afwerken.",
+      "Ik doorliep de jeugdopleiding van de club uit mijn geboortestad.",
+      "In 2017 trok ik naar Arsenal, waar ik vijf seizoenen bleef.",
+      "In 2015 werd ik met 27 goals topschutter van de Ligue 1 met Olympique Lyon."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Alexandre_Lacazette"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Juninho Pernambucano",
+    "answers": [
+      "Juninho"
+    ],
+    "country": "Brazilië",
+    "competition": "Ligue 1",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1975 geboren in Recife, in het noordoosten van Brazilië.",
+      "Ik speelde in Brazilië lang voor Vasco da Gama.",
+      "Ik was een middenvelder die bekendstond om zijn fladderende knuckleball-trappen.",
+      "Ik scoorde tientallen doelpunten rechtstreeks uit een vrije trap.",
+      "Met Olympique Lyon won ik tussen 2002 en 2008 zeven landstitels op rij."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Juninho_Pernambucano"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "André-Pierre Gignac",
+    "answers": [
+      "Gignac"
+    ],
+    "country": "Frankrijk",
+    "competition": "Ligue 1",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1985 geboren in Martigues, in het zuiden van Frankrijk.",
+      "Ik debuteerde als prof bij FC Lorient.",
+      "In 2009 werd ik topschutter van de Ligue 1 met Toulouse.",
+      "Na mijn periode bij Marseille werd ik topschutter aller tijden van Tigres in Mexico.",
+      "In de laatste minuut van de reguliere speeltijd van de EK-finale 2016 tegen Portugal raakte ik de paal."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Andr%C3%A9-Pierre_Gignac"
+    ],
+    "tags": [
+      "sinterklaas"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Marquinhos",
+    "answers": [
+      "Marcos Aoás Corrêa"
+    ],
+    "country": "Brazilië",
+    "competition": "Ligue 1",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1994 geboren in São Paulo.",
+      "Ik brak door bij Corinthians en speelde één seizoen bij AS Roma.",
+      "Ik ben een centrale verdediger die ook op het middenveld kan spelen.",
+      "In 2013 trok ik naar Parijs, waar ik clubrecordhouder werd qua aantal wedstrijden.",
+      "Als aanvoerder van PSG tilde ik in 2025 en 2026 de Champions League omhoog."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Marquinhos"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Marco Verratti",
+    "answers": [
+      "Verratti"
+    ],
+    "country": "Italië",
+    "competition": "Ligue 1",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1992 geboren in Pescara, aan de Adriatische kust.",
+      "Onder Zdeněk Zeman werd ik in 2012 kampioen van de Serie B met mijn jeugdclub.",
+      "Ik ben een kleine middenvelder die bijna nooit de bal verliest onder druk.",
+      "In 2021 won ik het EK met Italië.",
+      "Ik ging rechtstreeks van Pescara naar PSG en speelde nooit in de Serie A."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Marco_Verratti"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Yoann Gourcuff",
+    "answers": [
+      "Gourcuff"
+    ],
+    "country": "Frankrijk",
+    "competition": "Ligue 1",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1986 geboren in Bretagne; mijn vader was trainer van Lorient.",
+      "Ik brak door bij Stade Rennais en trok daarna naar AC Milan.",
+      "Ik was een begaafde spelmaker, maar blessures remden mijn carrière sterk af.",
+      "Na een transfer van 22 miljoen euro naar Lyon kon ik de verwachtingen nooit inlossen.",
+      "Bij Bordeaux werd ik in 2009 kampioen en Speler van het Jaar, vaak vergeleken met Zidane."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Yoann_Gourcuff"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Mathieu Valbuena",
+    "answers": [
+      "Valbuena",
+      "Petit Vélo"
+    ],
+    "country": "Frankrijk",
+    "competition": "Ligue 1",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1984 geboren in een Frans dorp met dezelfde naam als een bekende Belgische stad.",
+      "Ik werd als jeugdspeler weggestuurd bij Bordeaux en speelde daarna bij amateurclubs als Libourne.",
+      "Ik was een kleine, snelle aanvallende middenvelder.",
+      "Later speelde ik nog voor Dynamo Moskou, Lyon en Olympiakos.",
+      "Ze noemden me 'Petit Vélo'; jarenlang was ik de dribbelaar van Olympique Marseille."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mathieu_Valbuena"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Steve Mandanda",
+    "answers": [
+      "Mandanda"
+    ],
+    "country": "Frankrijk",
+    "competition": "Ligue 1",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1985 geboren in Kinshasa; ook mijn broers werden doelman.",
+      "Ik ben een product van de jeugdopleiding van Le Havre.",
+      "Ik was een rustige keeper die in twee periodes het doel van mijn grote club verdedigde.",
+      "In 2018 werd ik wereldkampioen als reservedoelman achter Lloris.",
+      "Ik ben de speler met de meeste wedstrijden ooit voor Olympique Marseille."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Steve_Mandanda",
+      "https://www.fotmob.com/fi/news/196p63lrzty7g13mh2gd5v31w5/Marseille-legend-Mandanda-departs-after-record-613-games-for-Ligue-1-giants"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Achraf Hakimi",
+    "answers": [
+      "Hakimi"
+    ],
+    "country": "Marokko",
+    "competition": "Ligue 1",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1998 geboren in Madrid en groeide op in Getafe, als zoon van Marokkaanse ouders.",
+      "Ik doorliep de jeugdopleiding van Real Madrid.",
+      "Twee seizoenen op huurbasis bij Borussia Dortmund maakten van mij een gevreesde vleugelback.",
+      "Met Inter werd ik in 2021 kampioen van Italië, daarna trok ik naar Parijs.",
+      "Op het WK 2022 schoot ik Marokko met een panenka voorbij Spanje."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Achraf_Hakimi"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  }
+]

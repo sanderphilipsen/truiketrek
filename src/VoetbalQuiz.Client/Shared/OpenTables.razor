@@ -1,0 +1,133 @@
+@* Jouw tafels en de open tafels, live bijgewerkt via SignalR. *@
+@implements IAsyncDisposable
+@inject ApiClient Api
+@inject RealtimeClient Realtime
+@inject NavigationManager Nav
+
+@if (_error is not null)
+{
+    <p class="error">@_error</p>
+}
+
+@if (_lobby is null)
+{
+    <div class="center-msg">Laden…</div>
+}
+else
+{
+    @if (_lobby.Mine.Count > 0)
+    {
+        <h2 class="section-title">Jouw tafels</h2>
+        <div class="tables">
+            @foreach (var m in _lobby.Mine)
+            {
+                <a class="table-card mine" href="online/@m.Id">
+                    <Avatar Id="@m.HostAvatarId" Size="40" />
+                    <div class="table-info">
+                        <b>@m.Name</b>
+                        <small>@(m.Status == MatchStatus.Running ? "🔴 Bezig" : $"{m.Players}/{m.Seats} spelers · wacht op start")</small>
+                        <small class="table-type">@QuestionTypes.Label(m.Types)</small>
+                    </div>
+                    <span class="btn small primary">@(m.Status == MatchStatus.Running ? "Verder" : "Open")</span>
+                </a>
+            }
+        </div>
+    }
+
+    <h2 class="section-title">Open tafels</h2>
+    @if (_lobby.Open.Count == 0)
+    {
+        <div class="card center muted">Er zijn geen open tafels. Maak er zelf een!</div>
+    }
+    else
+    {
+        <div class="tables">
+            @foreach (var m in _lobby.Open)
+            {
+                <div class="table-card">
+                    <Avatar Id="@m.HostAvatarId" Size="40" />
+                    <div class="table-info">
+                        <b>@m.Name</b>
+                        <small>@m.HostName · @m.Players/@m.Seats spelers</small>
+                        <small class="table-type">@QuestionTypes.Label(m.Types)</small>
+                        <div class="seats">
+                            @for (var i = 0; i < m.Seats; i++)
+                            {
+                                <span class="seat @(i < m.Players ? "taken" : "")"></span>
+                            }
+                        </div>
+                    </div>
+                    <button class="btn small primary" @onclick="() => JoinAsync(m.Id)" disabled="@_busy">Join</button>
+                </div>
+            }
+        </div>
+    }
+
+    @if (ShowRecent && _lobby.RecentlyFinished.Count > 0)
+    {
+        <h2 class="section-title">Recent gespeeld</h2>
+        <div class="tables">
+            @foreach (var m in _lobby.RecentlyFinished)
+            {
+                <a class="table-card done" href="online/@m.Id">
+                    <span class="table-icon">🏁</span>
+                    <div class="table-info">
+                        <b>@m.Name</b>
+                        <small>@m.HostName · @m.Players spelers</small>
+                    </div>
+                    <span class="muted">Uitslag ›</span>
+                </a>
+            }
+        </div>
+    }
+}
+
+@code {
+    [Parameter] public bool ShowRecent { get; set; }
+
+    private LobbyOverview? _lobby;
+    private bool _busy;
+    private string? _error;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Realtime.LobbyChanged += OnLobbyChanged;
+        await LoadAsync();
+        try { await Realtime.WatchLobbyAsync(); }
+        catch { _error = "Live updates zijn niet beschikbaar. Ververs de pagina om nieuwe tafels te zien."; }
+    }
+
+    private async Task OnLobbyChanged()
+    {
+        await LoadAsync();
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private async Task LoadAsync()
+    {
+        try { _lobby = await Api.GetLobbyAsync(); }
+        catch (ApiException ex) { _error = ex.Message; }
+    }
+
+    private async Task JoinAsync(int id)
+    {
+        _busy = true;
+        try
+        {
+            await Api.JoinMatchAsync(id);
+            Nav.NavigateTo($"online/{id}");
+        }
+        catch (ApiException ex)
+        {
+            _error = ex.Message;
+            await LoadAsync();
+        }
+        finally { _busy = false; }
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        Realtime.LobbyChanged -= OnLobbyChanged;
+        try { await Realtime.UnwatchLobbyAsync(); } catch { /* verbinding al weg */ }
+    }
+}

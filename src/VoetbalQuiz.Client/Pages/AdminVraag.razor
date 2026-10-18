@@ -1,0 +1,387 @@
+@page "/admin/vragen/{Id:int}"
+@attribute [Authorize]
+@inject ApiClient Api
+@inject AuthState Auth
+@inject NavigationManager Nav
+
+<PageTitle>Vraag bewerken – Admin</PageTitle>
+
+<AdminGuard>
+    <div class="editor-top"><a href="admin/vragen?type=@_type" class="back">‹ Terug naar de vragenbank</a></div>
+
+    @if (_loadError is not null)
+    {
+        <p class="error">@_loadError</p>
+    }
+    else if (_loaded)
+    {
+        var info = QuestionTypes.Get(_type);
+        var status = _original?.Status ?? PlayerStatus.Review;
+        var complete = Missing().Count == 0;
+
+        <div class="editor">
+            <div class="editor-main">
+                <section class="card stack">
+                    <h2>@info.Icon @info.Name</h2>
+                    <p class="muted">@info.HowTo</p>
+
+                    @switch (_type)
+                    {
+                        case QuestionType.Snelvuur:
+                            <label>Vraag <input @bind="_text" @bind:event="oninput" @bind:after="Touch" placeholder="Bv. Bij welke club won De Bruyne de titel in 2011?" /></label>
+                            <OptionsEditor Options="_options" Correct="_correct" CorrectChanged="SetCorrect" Label="Juist antwoord" OnChange="Touch" />
+                            break;
+
+                        case QuestionType.NietBij:
+                            <label>Vraag <input @bind="_text" @bind:event="oninput" @bind:after="Touch" placeholder="Bv. Wie werd nooit kampioen met Club Brugge?" /></label>
+                            <OptionsEditor Options="_options" Correct="_correct" CorrectChanged="SetCorrect" Label="Hoort er niet bij" OnChange="Touch" />
+                            <label>Uitleg (na afloop getoond) <input @bind="_explanation" @bind:after="Touch" /></label>
+                            break;
+
+                        case QuestionType.Jaar:
+                            <label>Gebeurtenis (zonder jaartal) <textarea rows="2" @bind="_text" @bind:event="oninput" @bind:after="Touch"></textarea></label>
+                            <label>Jaar <input type="number" min="@QuestionRules.MinYear" max="@QuestionRules.MaxYear" @bind="_year" @bind:after="Touch" /></label>
+                            break;
+
+                        case QuestionType.Carriere:
+                            <label>Speler <input @bind="_answer" @bind:event="oninput" @bind:after="Touch" placeholder="Bv. Kevin De Bruyne" /></label>
+                            <label>Ook goed als antwoord <input @bind="_aliases" @bind:after="Touch" placeholder="Bv. De Bruyne, KDB" /></label>
+                            <label>Clubs, in volgorde (één per lijn, met jaartallen)
+                                <textarea rows="7" @bind="_lines" @bind:event="oninput" @bind:after="Touch" placeholder="KRC Genk (2008–2012)&#10;Chelsea (2012–2014)"></textarea>
+                            </label>
+                            break;
+
+                        case QuestionType.Emoji:
+                            <label>Emoji's <input class="emoji-input" @bind="_text" @bind:event="oninput" @bind:after="Touch" placeholder="🇧🇪👑🧤" /></label>
+                            <div class="row-2">
+                                <label>Antwoord <input @bind="_answer" @bind:event="oninput" @bind:after="Touch" /></label>
+                                <label>Soort
+                                    <select @bind="_kind" @bind:after="Touch"><option value="speler">Speler</option><option value="club">Club</option></select>
+                                </label>
+                            </div>
+                            <label>Ook goed als antwoord <input @bind="_aliases" @bind:after="Touch" /></label>
+                            <label>Uitleg per emoji (na afloop getoond) <input @bind="_explanation" @bind:after="Touch" /></label>
+                            break;
+
+                        case QuestionType.Opstelling:
+                            <div class="row-2">
+                                <label>Wedstrijd <input @bind="_text" @bind:event="oninput" @bind:after="Touch" placeholder="België – Brazilië, WK 2018 (2-1)" /></label>
+                                <label>Ploeg <input @bind="_answer" @bind:after="Touch" placeholder="België" /></label>
+                            </div>
+                            <div class="field-label">Basiself (positie K = keeper, V = verdediger, M = middenvelder, A = aanvaller)</div>
+                            @for (var i = 0; i < 11; i++)
+                            {
+                                var index = i;
+                                <div class="lineup-edit">
+                                    <select @bind="_positions[index]" @bind:after="Touch"><option>K</option><option>V</option><option>M</option><option>A</option></select>
+                                    <input @bind="_names[index]" @bind:event="oninput" @bind:after="Touch" placeholder="Naam" />
+                                    <input @bind="_nameAliases[index]" @bind:after="Touch" placeholder="Ook goed (bv. achternaam)" />
+                                </div>
+                            }
+                            break;
+
+                        case QuestionType.Wissel:
+                            <div class="row-2">
+                                <label>Speler <input @bind="_answer" @bind:event="oninput" @bind:after="Touch" placeholder="Bv. Eden Hazard" /></label>
+                                <label>Ook goed als antwoord <input @bind="_aliases" @bind:after="Touch" placeholder="Bv. Hazard" /></label>
+                            </div>
+                            <p class="muted">De feiten verschijnen in deze volgorde, één per stap.</p>
+                            <label>1. Wanneer <input @bind="_when" @bind:event="oninput" @bind:after="Touch" placeholder="Zomer 2019" /></label>
+                            <label>2. Bedrag <input @bind="_fee" @bind:event="oninput" @bind:after="Touch" placeholder="Ruim €100 miljoen" /></label>
+                            <div class="row-2">
+                                <label>3. Van <input @bind="_from" @bind:event="oninput" @bind:after="Touch" placeholder="Chelsea" /></label>
+                                <label>4. Naar <input @bind="_to" @bind:event="oninput" @bind:after="Touch" placeholder="Real Madrid" /></label>
+                            </div>
+                            <label>5. Extra tip (zonder naam) <input @bind="_extra" @bind:event="oninput" @bind:after="Touch" /></label>
+                            break;
+
+                        case QuestionType.Rugnummer:
+                            <div class="row-2">
+                                <label>Speler <input @bind="_answer" @bind:event="oninput" @bind:after="Touch" placeholder="Bv. Kevin De Bruyne" /></label>
+                                <label>Ook goed als antwoord <input @bind="_aliases" @bind:after="Touch" placeholder="Bv. De Bruyne, KDB" /></label>
+                            </div>
+                            <div class="row-2">
+                                <label>Rugnummer <input type="number" min="1" max="99" @bind="_number" @bind:after="Touch" /></label>
+                                <label>Positie <input @bind="_position" @bind:event="oninput" @bind:after="Touch" placeholder="Middenvelder" /></label>
+                            </div>
+                            <div class="row-2">
+                                <label>Land <input @bind="_country" @bind:event="oninput" @bind:after="Touch" placeholder="België" /></label>
+                                <label>Club (met jaartallen) <input @bind="_club" @bind:event="oninput" @bind:after="Touch" placeholder="Manchester City (2015–2025)" /></label>
+                            </div>
+                            <label>Extra tip (zonder naam) <input @bind="_extra" @bind:event="oninput" @bind:after="Touch" /></label>
+                            break;
+
+                        case QuestionType.Mannetje:
+                            <div class="row-2">
+                                <label>Speler <input @bind="_answer" @bind:event="oninput" @bind:after="Touch" /></label>
+                                <label>Ook goed als antwoord <input @bind="_aliases" @bind:after="Touch" /></label>
+                            </div>
+                            <div class="row-icon">
+                                <Avatar Id="@_avatar" Size="64" />
+                                <label class="grow">Avatar
+                                    <select @bind="_avatar" @bind:after="Touch">
+                                        @if (!Avatars.All.Any(a => a.Id == _avatar)) { <option value="@_avatar">Eigen avatar (@_avatar)</option> }
+                                        @foreach (var a in Avatars.All) { <option value="@a.Id">@a.Name</option> }
+                                    </select>
+                                </label>
+                            </div>
+                            <label>Tips na het mannetje (één per lijn, minstens 2, zonder naam)
+                                <textarea rows="3" @bind="_lines" @bind:event="oninput" @bind:after="Touch"></textarea>
+                            </label>
+                            break;
+                    }
+
+                    <label>Moeilijkheid
+                        <select @bind="_difficulty" @bind:after="Touch">
+                            <option value="1">★ Makkelijk</option><option value="2">★★ Voetbalfan</option><option value="3">★★★ Kenner</option>
+                        </select>
+                    </label>
+                </section>
+
+                <section class="card stack">
+                    <h2>Bronnen en thema's</h2>
+                    @if (_sources.Count > 0)
+                    {
+                        <ul class="source-list">
+                            @foreach (var s in _sources.ToList())
+                            {
+                                <li><a href="@s" target="_blank" rel="noopener">@s</a>
+                                    <button class="linkish" @onclick="() => { _sources.Remove(s); Touch(); }">✕</button></li>
+                            }
+                        </ul>
+                    }
+                    <div class="add-source">
+                        <input @bind="_newSource" @bind:event="oninput" placeholder="Plak een link (https://…)" />
+                        <button class="btn" @onclick="AddSource" disabled="@(!Uri.TryCreate(_newSource.Trim(), UriKind.Absolute, out _))">Toevoegen</button>
+                    </div>
+                    <div class="tag-toggle">
+                        @foreach (var (key, label) in PlayerTags.All)
+                        {
+                            var k = key;
+                            <button class="@(_tags.Contains(k) ? "on" : "")" title="@label" @onclick="() => ToggleTag(k)">@AdminSpelers.TagChip(k)</button>
+                        }
+                    </div>
+                    <label>Notitie <input @bind="_note" @bind:after="Touch" /></label>
+                </section>
+            </div>
+
+            <aside class="editor-side">
+                <section class="card stack sticky">
+                    <div class="side-status">
+                        <span class="pill @AdminSpelers.StatusCss(status)">@AdminSpelers.StatusLabel(status)</span>
+                        @if (_dirty) { <span class="unsaved">● Niet opgeslagen</span> }
+                    </div>
+                    @if (_original is not null) { <small class="muted">@_original.TimesUsed× gevraagd</small> }
+                    <ul class="checklist">
+                        <li class="@(complete ? "ok" : "todo")">@(complete ? "✓ Inhoud volledig" : "✗ " + string.Join(" ", Missing()))</li>
+                        <li class="@(_sources.Count > 0 ? "ok" : "todo")">@(_sources.Count > 0 ? "✓" : "✗") Minstens één bron</li>
+                    </ul>
+                    @if (_error is not null) { <p class="error">@_error</p> }
+                    @if (_message is not null) { <p class="success">@_message</p> }
+                    <button class="btn primary" @onclick="() => SaveAsync(status)" disabled="@(_busy || !complete)">💾 Opslaan</button>
+                    @if (status != PlayerStatus.Approved)
+                    {
+                        <button class="btn approve" @onclick="() => SaveAsync(PlayerStatus.Approved)" disabled="@(_busy || !complete || _sources.Count == 0)">✅ Opslaan en goedkeuren</button>
+                    }
+                    @if (status != PlayerStatus.Rejected && Id != 0)
+                    {
+                        <button class="btn danger" @onclick="() => SaveAsync(PlayerStatus.Rejected)" disabled="@_busy">⛔ Afwijzen</button>
+                    }
+                </section>
+            </aside>
+        </div>
+    }
+</AdminGuard>
+
+@code {
+    [Parameter] public int Id { get; set; }
+
+    private QuizItemEdit? _original;
+    private QuestionType _type = QuestionType.Snelvuur;
+    private string _text = "", _answer = "", _aliases = "", _explanation = "", _lines = "", _kind = "speler", _newSource = "";
+    private string? _note;
+    private int _difficulty = 2, _correct, _year = 2010, _number = 10;
+    private string _when = "", _fee = "", _from = "", _to = "", _extra = "", _position = "", _country = "", _club = "", _avatar = Avatars.All[0].Id;
+    private List<string> _options = ["", "", "", ""];
+    private string[] _positions = new string[11], _names = new string[11], _nameAliases = new string[11];
+    private List<string> _sources = [];
+    private HashSet<string> _tags = [];
+    private bool _loaded, _busy, _dirty;
+    private string? _error, _loadError, _message;
+
+    private static readonly string[] DefaultPositions = ["K", "V", "V", "V", "V", "M", "M", "M", "A", "A", "A"];
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Auth.User?.IsAdmin != true) return;
+        (_error, _message, _dirty, _loaded) = (null, null, false, false);
+        _positions = [.. DefaultPositions];
+        _names = Enumerable.Repeat("", 11).ToArray();
+        _nameAliases = Enumerable.Repeat("", 11).ToArray();
+        try
+        {
+            if (Id == 0)
+            {
+                var type = System.Web.HttpUtility.ParseQueryString(Nav.ToAbsoluteUri(Nav.Uri).Query)["type"];
+                _type = Enum.TryParse<QuestionType>(type, out var t) && !QuestionTypes.Get(t).FromPlayers ? t : QuestionType.Snelvuur;
+                _original = null;
+            }
+            else
+            {
+                var q = _original = await Api.GetQuizItemAsync(Id);
+                _type = q.Type;
+                (_difficulty, _note) = (q.Difficulty, q.ReviewNote);
+                _sources = [.. q.Sources];
+                _tags = [.. q.Tags];
+                Load(q.Data);
+            }
+            _loaded = true;
+        }
+        catch (ApiException ex) { _loadError = ex.Message; }
+    }
+
+    private static readonly System.Text.Json.JsonSerializerOptions Json = new(System.Text.Json.JsonSerializerDefaults.Web);
+
+    private void Load(string data)
+    {
+        switch (_type)
+        {
+            case QuestionType.Snelvuur:
+                var s = System.Text.Json.JsonSerializer.Deserialize<SnelvuurData>(data, Json)!;
+                (_text, _options, _correct) = (s.Question, [.. s.Options], s.Correct);
+                break;
+            case QuestionType.NietBij:
+                var n = System.Text.Json.JsonSerializer.Deserialize<NietBijData>(data, Json)!;
+                (_text, _options, _correct, _explanation) = (n.Prompt, [.. n.Options], n.Odd, n.Explanation);
+                break;
+            case QuestionType.Jaar:
+                var j = System.Text.Json.JsonSerializer.Deserialize<JaarData>(data, Json)!;
+                (_text, _year) = (j.Event, j.Year);
+                break;
+            case QuestionType.Carriere:
+                var c = System.Text.Json.JsonSerializer.Deserialize<CarriereData>(data, Json)!;
+                (_answer, _aliases, _lines) = (c.Answer, string.Join(", ", c.Aliases), string.Join("\n", c.Clubs));
+                break;
+            case QuestionType.Emoji:
+                var e = System.Text.Json.JsonSerializer.Deserialize<EmojiData>(data, Json)!;
+                (_text, _answer, _aliases, _kind, _explanation) = (e.Emojis, e.Answer, string.Join(", ", e.Aliases), e.Kind, e.Explanation);
+                break;
+            case QuestionType.Opstelling:
+                var o = System.Text.Json.JsonSerializer.Deserialize<OpstellingData>(data, Json)!;
+                (_text, _answer) = (o.Title, o.Team);
+                for (var i = 0; i < Math.Min(11, o.Players.Count); i++)
+                    (_positions[i], _names[i], _nameAliases[i]) = (o.Players[i].Position, o.Players[i].Name, string.Join(", ", o.Players[i].Aliases));
+                break;
+            case QuestionType.Wissel:
+                var w = System.Text.Json.JsonSerializer.Deserialize<WisselData>(data, Json)!;
+                (_answer, _aliases, _when, _fee, _from, _to, _extra) = (w.Answer, string.Join(", ", w.Aliases), w.When, w.Fee, w.From, w.To, w.Extra);
+                break;
+            case QuestionType.Rugnummer:
+                var r = System.Text.Json.JsonSerializer.Deserialize<RugnummerData>(data, Json)!;
+                (_answer, _aliases, _number, _position, _country, _club, _extra) = (r.Answer, string.Join(", ", r.Aliases), r.Number, r.Position, r.Country, r.Club, r.Extra);
+                break;
+            case QuestionType.Mannetje:
+                var m = System.Text.Json.JsonSerializer.Deserialize<MannetjeData>(data, Json)!;
+                (_answer, _aliases, _avatar, _lines) = (m.Answer, string.Join(", ", m.Aliases), m.Avatar, string.Join("\n", m.Clues));
+                break;
+        }
+    }
+
+    private static List<string> Split(string s, char sep) =>
+        s.Split(sep, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToList();
+
+    private string Data() => _type switch
+    {
+        QuestionType.Snelvuur => Serialize(new SnelvuurData(_text.Trim(), _options.Select(o => o.Trim()).ToList(), _correct)),
+        QuestionType.NietBij => Serialize(new NietBijData(_text.Trim(), _options.Select(o => o.Trim()).ToList(), _correct, _explanation.Trim())),
+        QuestionType.Jaar => Serialize(new JaarData(_text.Trim(), _year)),
+        QuestionType.Carriere => Serialize(new CarriereData(_answer.Trim(), Split(_aliases, ','), Split(_lines, '\n'))),
+        QuestionType.Emoji => Serialize(new EmojiData(_text.Trim(), _answer.Trim(), Split(_aliases, ','), _kind, _explanation.Trim())),
+        QuestionType.Opstelling => Serialize(new OpstellingData(_text.Trim(), _answer.Trim(),
+            Enumerable.Range(0, 11).Select(i => new LineupPlayer(_names[i].Trim(), Split(_nameAliases[i], ','), _positions[i])).ToList())),
+        QuestionType.Wissel => Serialize(new WisselData(_answer.Trim(), Split(_aliases, ','), _when.Trim(), _fee.Trim(), _from.Trim(), _to.Trim(), _extra.Trim())),
+        QuestionType.Rugnummer => Serialize(new RugnummerData(_answer.Trim(), Split(_aliases, ','), _number, _position.Trim(), _country.Trim(), _club.Trim(), _extra.Trim())),
+        QuestionType.Mannetje => Serialize(new MannetjeData(_answer.Trim(), Split(_aliases, ','), _avatar, Split(_lines, '\n'))),
+        _ => "{}",
+    };
+
+    private static string Serialize<T>(T value) => System.Text.Json.JsonSerializer.Serialize(value, Json);
+
+    /// <summary>Wat er nog ontbreekt (de server controleert dit nog eens).</summary>
+    private List<string> Missing()
+    {
+        var missing = new List<string>();
+        switch (_type)
+        {
+            case QuestionType.Snelvuur or QuestionType.NietBij:
+                if (string.IsNullOrWhiteSpace(_text)) missing.Add("Vraag ontbreekt.");
+                if (_options.Any(string.IsNullOrWhiteSpace)) missing.Add("Vul alle 4 opties in.");
+                break;
+            case QuestionType.Jaar:
+                if (string.IsNullOrWhiteSpace(_text)) missing.Add("Gebeurtenis ontbreekt.");
+                if (_text.Contains(_year.ToString())) missing.Add("Het jaartal staat in de tekst.");
+                break;
+            case QuestionType.Carriere:
+                if (string.IsNullOrWhiteSpace(_answer)) missing.Add("Speler ontbreekt.");
+                if (Split(_lines, '\n').Count < 3) missing.Add("Minstens 3 clubs.");
+                break;
+            case QuestionType.Emoji:
+                if (string.IsNullOrWhiteSpace(_text) || string.IsNullOrWhiteSpace(_answer)) missing.Add("Emoji's en antwoord invullen.");
+                break;
+            case QuestionType.Opstelling:
+                if (string.IsNullOrWhiteSpace(_text)) missing.Add("Titel ontbreekt.");
+                if (_names.Any(string.IsNullOrWhiteSpace)) missing.Add("Vul alle 11 spelers in.");
+                break;
+            case QuestionType.Wissel:
+                if (new[] { _answer, _when, _fee, _from, _to, _extra }.Any(string.IsNullOrWhiteSpace)) missing.Add("Vul alle velden in.");
+                break;
+            case QuestionType.Rugnummer:
+                if (new[] { _answer, _position, _country, _club, _extra }.Any(string.IsNullOrWhiteSpace)) missing.Add("Vul alle velden in.");
+                if (_number is < 1 or > 99) missing.Add("Rugnummer tussen 1 en 99.");
+                break;
+            case QuestionType.Mannetje:
+                if (string.IsNullOrWhiteSpace(_answer)) missing.Add("Speler ontbreekt.");
+                if (Split(_lines, '\n').Count < 2) missing.Add("Minstens 2 tips.");
+                break;
+        }
+        return missing;
+    }
+
+    private void Touch() => (_dirty, _message) = (true, null);
+
+    private void SetCorrect(int i)
+    {
+        _correct = i;
+        Touch();
+    }
+
+    private void ToggleTag(string key)
+    {
+        if (!_tags.Remove(key)) _tags.Add(key);
+        Touch();
+    }
+
+    private void AddSource()
+    {
+        var url = _newSource.Trim();
+        if (!Uri.TryCreate(url, UriKind.Absolute, out _)) return;
+        if (!_sources.Contains(url)) _sources.Add(url);
+        _newSource = "";
+        Touch();
+    }
+
+    private async Task SaveAsync(PlayerStatus status)
+    {
+        (_busy, _error, _message) = (true, null, null);
+        try
+        {
+            var id = await Api.SaveQuizItemAsync(new QuizItemEdit(Id, _type, Data(), _difficulty, [.. _sources], [.. _tags], status, _note, null, null, 0));
+            _dirty = false;
+            _message = status == PlayerStatus.Approved ? "Opgeslagen en goedgekeurd." : "Opgeslagen.";
+            if (Id == 0) Nav.NavigateTo($"admin/vragen/{id}");
+            else _original = await Api.GetQuizItemAsync(id);
+        }
+        catch (ApiException ex) { _error = ex.Message; }
+        finally { _busy = false; }
+    }
+}

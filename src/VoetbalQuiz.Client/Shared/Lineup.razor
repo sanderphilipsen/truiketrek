@@ -1,0 +1,25 @@
+@* Een opstelling op een veld: aanvallers bovenaan, keeper onderaan. *@
+<div class="pitch">
+    @foreach (var line in new[] { "A", "M", "V", "K" })
+    {
+        var row = Slots.Select((s, i) => (s, i)).Where(x => x.s.Position == line).ToList();
+        if (row.Count == 0) continue;
+        <div class="pitch-row">
+            @foreach (var (slot, i) in row)
+            {
+                var css = !slot.IsBlank ? "given" : Found is null ? (slot.Name is null ? "open" : "found") : (Found.Contains(i) ? "found" : "missed");
+                <div class="pitch-player @css">
+                    <span class="shirt">@(slot.IsBlank && slot.Name is null ? "?" : "")</span>
+                    <small>@(slot.Name ?? "…")</small>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter, EditorRequired] public List<LineupSlot> Slots { get; set; } = [];
+
+    /// <summary>Na afloop: welke open plaatsen je gevonden had (de rest wordt als gemist getoond).</summary>
+    [Parameter] public HashSet<int>? Found { get; set; }
+}

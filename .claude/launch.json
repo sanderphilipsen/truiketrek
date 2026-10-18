@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "voetbalquiz",
+      "runtimeExecutable": "dotnet",
+      "runtimeArgs": ["run", "--project", "src/VoetbalQuiz.Server", "--launch-profile", "http", "--no-launch-browser"],
+      "port": 5174
+    },
+    {
+      "name": "voetbalquiz-release",
+      "runtimeExecutable": "pwsh",
+      "runtimeArgs": ["-NoProfile", "-Command", "$env:ASPNETCORE_ENVIRONMENT='Development'; $env:ASPNETCORE_URLS='http://localhost:5176'; $env:ConnectionStrings__Quiz=((Get-Content src/VoetbalQuiz.Server/appsettings.Development.json | ConvertFrom-Json).ConnectionStrings.Quiz -replace 'Database=voetbalquiz;','Database=voetbalquiz_preview;'); dotnet run --project src/VoetbalQuiz.Server -c Release --no-launch-profile"],
+      "port": 5176
+    }
+  ]
+}

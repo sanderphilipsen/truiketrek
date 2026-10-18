@@ -1,0 +1,114 @@
+@page "/statistieken"
+@attribute [Authorize]
+@inject ApiClient Api
+
+<PageTitle>Statistieken – Truitje Trek</PageTitle>
+
+<div class="mode-switch">
+    <button class="@(_online ? "" : "active")" @onclick="() => _online = false">📅 Daily</button>
+    <button class="@(_online ? "active" : "")" @onclick="ShowOnlineAsync">⚔️ Online</button>
+</div>
+
+@if (_error is not null)
+{
+    <p class="error">@_error</p>
+}
+else if (_online)
+{
+    @if (_onlineStats is null)
+    {
+        <div class="center-msg">Laden…</div>
+    }
+    else
+    {
+        var o = _onlineStats.Me;
+        <h2 class="section-title">Jouw online cijfers</h2>
+        <div class="my-stats">
+            <div><b>@o.Played</b><small>wedstrijden</small></div>
+            <div><b>@o.Wins</b><small>gewonnen</small></div>
+            <div><b>@o.Rating</b><small>rating</small></div>
+            <div><b>@o.BestRating</b><small>beste rating</small></div>
+            <div><b>@(o.Played == 0 ? 0 : (int)Math.Round(100.0 * o.Wins / o.Played))%</b><small>winst</small></div>
+            <div><b>@o.FirstCorrect</b><small>keer als 1e juist</small></div>
+            <div><b>@o.BestScore</b><small>beste score</small></div>
+            <div><b>@(o.Played - o.Wins)</b><small>verloren</small></div>
+        </div>
+
+        <h2 class="section-title">Online eregalerij</h2>
+        <HallOfFame Cards="_onlineStats.HallOfFame" EmptyText="Nog geen online wedstrijden gespeeld. Maak een tafel!" />
+    }
+}
+else if (_stats is null)
+{
+    <div class="center-msg">Laden…</div>
+}
+else
+{
+    var me = _stats.Me;
+
+    <h2 class="section-title">Jouw cijfers</h2>
+    <div class="my-stats">
+        <div><b>@me.DaysPlayed</b><small>dagen gespeeld</small></div>
+        <div><b>@me.DaysWon</b><small>dagzeges</small></div>
+        <div><b>@me.BestDay</b><small>beste dag</small></div>
+        <div><b>@me.AverageDay</b><small>gemiddeld per dag</small></div>
+        <div><b>@me.CorrectPercent%</b><small>juist geraden</small></div>
+        <div><b>@me.FirstHintHits</b><small>bij de 1e tip</small></div>
+        <div><b>@me.CurrentStreak</b><small>dagen op rij</small></div>
+        <div><b>@me.LongestStreak</b><small>langste reeks</small></div>
+    </div>
+
+    <h2 class="section-title">Eregalerij</h2>
+    <HallOfFame Cards="_stats.HallOfFame" EmptyText="Nog geen records. Speel een paar dagen en kom terug!" />
+
+    @if (_stats.MonthChampions.Count > 0)
+    {
+        <h2 class="section-title">Maandkampioenen</h2>
+        <ol class="board">
+            @foreach (var m in _stats.MonthChampions)
+            {
+                <li class="@(m.IsMe ? "me" : "")">
+                    <span class="rank">🏆</span>
+                    <Avatar Id="@m.AvatarId" Size="38" />
+                    <span class="player"><b>@m.UserName</b><small class="cap">@m.Month</small></span>
+                    <span class="pts">@m.Points</span>
+                </li>
+            }
+        </ol>
+    }
+
+    @if (_stats.Hardest.Count > 0)
+    {
+        <h2 class="section-title">Moeilijkste spelers</h2>
+        <ol class="board">
+            @foreach (var h in _stats.Hardest)
+            {
+                <li>
+                    <span class="rank">🤯</span>
+                    <span class="player"><b>@h.PlayerName</b><small>@h.Attempts keer gevraagd</small></span>
+                    <span class="pts">@h.CorrectPercent%</span>
+                </li>
+            }
+        </ol>
+    }
+}
+
+@code {
+    private StatsOverview? _stats;
+    private OnlineStats? _onlineStats;
+    private bool _online;
+    private string? _error;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try { _stats = await Api.GetStatsAsync(); }
+        catch (ApiException ex) { _error = ex.Message; }
+    }
+
+    private async Task ShowOnlineAsync()
+    {
+        _online = true;
+        try { _onlineStats ??= await Api.GetOnlineStatsAsync(); }
+        catch (ApiException ex) { _error = ex.Message; }
+    }
+}

@@ -1,0 +1,84 @@
+@page "/special/{Id:int}"
+@attribute [Authorize]
+@inject ApiClient Api
+
+<PageTitle>Special – Truitje Trek</PageTitle>
+
+@if (_error is not null)
+{
+    <p class="error">@_error</p>
+    <a class="btn" href="">Naar de startpagina</a>
+}
+else if (_overview is null || _info is null)
+{
+    <div class="center-msg">Laden…</div>
+}
+else
+{
+    var answered = _overview.Questions.Count(q => q.Status == QuestionStatus.Answered);
+    var next = _overview.Questions.FirstOrDefault(q => q.Status != QuestionStatus.Answered);
+
+    <section class="card hero special-hero">
+        @if (_info.Affiche is { } affiche)
+        {
+            <AfficheBanner Affiche="affiche" Big="true" />
+        }
+        <div class="special-icon">@_info.Icon</div>
+        <h1>@_info.Name</h1>
+        <p class="muted">@_info.Description</p>
+        <div class="muted">@Period(_info)</div>
+        <div class="score-big">@_overview.TotalPoints <small>punten</small></div>
+        <div class="muted">@answered / @GameRules.QuestionsPerDay vragen gespeeld</div>
+
+        @if (next is not null && _info.IsActive)
+        {
+            <a class="btn primary big" href="special/@Id/vraag/@next.Number">
+                @(answered == 0 ? "Start de special" : $"Verder met vraag {next.Number}")
+            </a>
+        }
+        else if (next is null)
+        {
+            <p class="done">Klaar! Bekijk hieronder hoe je het deed.</p>
+            <RewardPopup Kicker="@($"{_info.Name} voltooid!")" />
+        }
+        else
+        {
+            <p class="muted">Deze special is afgelopen.</p>
+        }
+    </section>
+
+    <ol class="question-list">
+        @foreach (var q in _overview.Questions)
+        {
+            <li class="@(q.Correct == true ? "ok" : q.Correct == false ? "fail" : q.Status == QuestionStatus.NotStarted ? "todo" : "busy")">
+                <span class="num">@q.Number</span>
+                <span class="name">@(q.PlayerName ?? (q.Status == QuestionStatus.NotStarted ? "?" : "bezig…"))</span>
+                <span class="pts">@(q.Points is { } p ? $"{p}" : "")</span>
+            </li>
+        }
+    </ol>
+
+    <p class="board-note">Je score telt mee in het maandklassement; de top 3 van deze special krijgt een podiumbonus.</p>
+}
+
+@code {
+    [Parameter] public int Id { get; set; }
+
+    private SpecialSummary? _info;
+    private DailyOverview? _overview;
+    private string? _error;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        try
+        {
+            _info = (await Api.GetSpecialsAsync()).FirstOrDefault(s => s.Id == Id)
+                    ?? throw new ApiException("Deze special is niet (meer) beschikbaar.");
+            _overview = await Api.GetDailyAsync(Id);
+        }
+        catch (ApiException ex) { _error = ex.Message; }
+    }
+
+    public static string Period(SpecialSummary s) =>
+        s.StartDate == s.EndDate ? DutchDates.DayMonth(s.StartDate) : $"{DutchDates.DayMonth(s.StartDate)} – {DutchDates.DayMonth(s.EndDate)}";
+}

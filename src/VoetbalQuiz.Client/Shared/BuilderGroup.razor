@@ -1,0 +1,9 @@
+<div class="builder-group">
+    <div class="builder-title">@Title</div>
+    <div class="builder-options">@ChildContent</div>
+</div>
+
+@code {
+    [Parameter, EditorRequired] public string Title { get; set; } = "";
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+}

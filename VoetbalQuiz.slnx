@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/VoetbalQuiz.Client/VoetbalQuiz.Client.csproj" />
+    <Project Path="src/VoetbalQuiz.Server/VoetbalQuiz.Server.csproj" />
+    <Project Path="src/VoetbalQuiz.Shared/VoetbalQuiz.Shared.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/VoetbalQuiz.Tests/VoetbalQuiz.Tests.csproj" />
+  </Folder>
+</Solution>

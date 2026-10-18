@@ -1,0 +1,15 @@
+@* Status van een special: actief, gepland of afgelopen. *@
+@{
+    var today = DateOnly.FromDateTime(DateTime.Today);
+    var (label, css) = Item.StartDate > today ? ("Gepland", "planned")
+        : Item.EndDate < today ? ("Afgelopen", "past")
+        : ("Nu actief", "active");
+}
+<span class="pill @css">@label</span>
+
+@code {
+    [Parameter, EditorRequired] public SpecialAdminItem Item { get; set; } = null!;
+
+    public static string Period(SpecialAdminItem s) =>
+        s.StartDate == s.EndDate ? DutchDates.DayMonth(s.StartDate) : $"{DutchDates.DayMonth(s.StartDate)} – {DutchDates.DayMonth(s.EndDate)}";
+}

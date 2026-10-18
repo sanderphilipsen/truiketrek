@@ -1,0 +1,878 @@
+[
+  {
+    "name": "Eden Hazard",
+    "answers": [
+      "Eden"
+    ],
+    "country": "België",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1991 geboren in La Louvière, in een echte voetbalfamilie.",
+      "Ik was een kleine, explosieve dribbelaar die graag vanop links naar binnen trok.",
+      "Bij Lille werd ik als tiener prof en won ik de dubbel in 2011.",
+      "Met twee goals in de Europa League-finale van 2019 nam ik afscheid van Chelsea.",
+      "Als kapitein van de Rode Duivels won ik brons op het WK van 2018 en trok ik naar Real Madrid."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Eden_Hazard"
+    ],
+    "tags": [
+      "champions-league",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Kevin De Bruyne",
+    "answers": [
+      "De Bruyne",
+      "KDB"
+    ],
+    "country": "België",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1991 geboren in Drongen, vlak bij Gent.",
+      "Ik ben een middenvelder die bekendstaat om zijn messcherpe passes en assists.",
+      "Ik werd kampioen met Genk in 2011 en kreeg weinig kansen bij Chelsea.",
+      "Bij Wolfsburg brak ik helemaal door en werd ik Speler van het Jaar in Duitsland.",
+      "Met Manchester City won ik in 2023 de treble, met de Champions League als kroon."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne"
+    ],
+    "tags": [
+      "champions-league",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Romelu Lukaku",
+    "answers": [
+      "Lukaku",
+      "Big Rom"
+    ],
+    "country": "België",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1993 in Antwerpen geboren en mijn vader speelde voor het nationale team van Zaïre.",
+      "Ik ben een fysiek sterke spits met een linkse trap.",
+      "Op mijn zestiende debuteerde ik bij Anderlecht en werd ik meteen topschutter.",
+      "Ik speelde in Engeland voor Chelsea, West Brom, Everton en Manchester United.",
+      "Ik ben de all-time topschutter van de Rode Duivels en werd kampioen met Inter in 2021."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Thibaut Courtois",
+    "answers": [
+      "Courtois"
+    ],
+    "country": "België",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1992 geboren in Bree, in Limburg.",
+      "Ik ben een doelman van zo'n twee meter lang.",
+      "Als tiener werd ik kampioen met Genk en daarna verhuurde Chelsea me aan Atlético Madrid.",
+      "Op het WK van 2018 won ik de Gouden Handschoen als beste keeper.",
+      "In de Champions League-finale van 2022 tegen Liverpool was ik de grote held van Real Madrid."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Thibaut_Courtois"
+    ],
+    "tags": [
+      "champions-league",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Vincent Kompany",
+    "answers": [
+      "Kompany",
+      "Vince"
+    ],
+    "country": "België",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1986 in Brussel geboren en mijn vader kwam uit Congo.",
+      "Ik speelde als centrale verdediger en stond bekend om mijn leiderschap.",
+      "Ik kwam als tiener door bij Anderlecht en trok later naar Hamburg.",
+      "Bij Manchester City werd ik kapitein en won ik meerdere landstitels.",
+      "Mijn knal van buiten de zestien tegen Leicester in 2019 bracht City dichter bij de titel."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Vincent_Kompany",
+      "https://nl.wikipedia.org/wiki/Belgische_Gouden_Schoen"
+    ],
+    "tags": [
+      "gouden-schoen",
+      "rode-duivels",
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Jan Vertonghen",
+    "answers": [
+      "Vertonghen"
+    ],
+    "country": "België",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1987 geboren in Sint-Niklaas.",
+      "Ik ben een linksvoetige verdediger die centraal en op de flank kon spelen.",
+      "Ik werd kapitein van Ajax en won er meerdere landstitels.",
+      "Bij Tottenham vormde ik jarenlang een Belgisch duo achteraan en speelde ik de CL-finale van 2019.",
+      "Ik ben de recordinternational van de Rode Duivels en sloot af bij Anderlecht."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jan_Vertonghen",
+      "https://en.wikipedia.org/wiki/2019_UEFA_Champions_League_final"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Toby Alderweireld",
+    "answers": [
+      "Alderweireld"
+    ],
+    "country": "België",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1989 geboren in Wilrijk, bij Antwerpen.",
+      "Ik ben een centrale verdediger met een sterke lange bal.",
+      "Ik vertrok als jeugdspeler naar Ajax en speelde later kort voor Atlético Madrid.",
+      "Na een huurperiode bij Southampton speelde ik jarenlang voor Tottenham.",
+      "Mijn goal in de 94e minuut tegen Genk bezorgde Antwerp in 2023 de landstitel."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Toby_Alderweireld",
+      "https://nl.wikipedia.org/wiki/Toby_Alderweireld",
+      "https://nl.wikipedia.org/wiki/Belgische_Gouden_Schoen"
+    ],
+    "tags": [
+      "gouden-schoen",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Axel Witsel",
+    "answers": [
+      "Witsel"
+    ],
+    "country": "België",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1989 in Luik geboren en mijn vader komt van Martinique.",
+      "Ik ben een rustige controlerende middenvelder, herkenbaar aan mijn grote haardos.",
+      "Met Standard werd ik twee keer kampioen voor ik naar Benfica trok.",
+      "Ik speelde ook in Rusland bij Zenit en in China bij Tianjin.",
+      "Na Borussia Dortmund speelde ik bij Atlético Madrid zelfs als centrale verdediger."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Axel_Witsel",
+      "https://nl.wikipedia.org/wiki/Belgische_Gouden_Schoen"
+    ],
+    "tags": [
+      "gouden-schoen",
+      "rode-duivels",
+      "standard"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Dries Mertens",
+    "answers": [
+      "Mertens",
+      "Ciro"
+    ],
+    "country": "België",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1987 in Leuven geboren en werd als jeugdspeler te klein bevonden.",
+      "Ik ben een kleine, snelle aanvaller die vaak vanop links of als valse negen speelde.",
+      "Ik maakte de omweg via AGOVV, Utrecht en PSV.",
+      "In Napels werd ik door de fans op handen gedragen en kreeg ik een bijnaam.",
+      "Ik ben de all-time topschutter van Napoli en vertrok daarna naar Galatasaray."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dries_Mertens"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Marouane Fellaini",
+    "answers": [
+      "Fellaini"
+    ],
+    "country": "België",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1987 in Etterbeek geboren in een Marokkaans gezin.",
+      "Ik ben een lange middenvelder, gevreesd om mijn kopkracht en mijn ellebogen.",
+      "Ik werd kampioen met Standard in 2008 en trok toen naar Everton.",
+      "In 2013 volgde ik David Moyes naar Manchester United.",
+      "Mijn afrokapsel was legendarisch en mijn kopbal tegen Japan op het WK 2018 was cruciaal."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Marouane_Fellaini",
+      "https://www.aljazeera.com/sports/2018/7/2/last-gasp-belgium-beat-japan-to-set-up-brazil-quarter-final"
+    ],
+    "tags": [
+      "rode-duivels",
+      "standard"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Mousa Dembélé",
+    "answers": [
+      "Mousa"
+    ],
+    "country": "België",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1987 in Antwerpen geboren en heb Malinese roots.",
+      "Ik begon als aanvallende speler maar werd een middenvelder die de bal haast nooit verloor.",
+      "Ik speelde bij Germinal Beerschot, Willem II en werd kampioen met AZ.",
+      "Via Fulham kwam ik bij Tottenham, waar Pochettino me een genie noemde.",
+      "Na mijn jaren in Londen sloot ik mijn carrière af bij Guangzhou in China."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mousa_Demb%C3%A9l%C3%A9_(Belgian_footballer)"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Thomas Vermaelen",
+    "answers": [
+      "Vermaelen",
+      "Verminator"
+    ],
+    "country": "België",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1985 in Kapellen geboren.",
+      "Ik ben een linksvoetige verdediger die ook geregeld scoorde.",
+      "Ik ging als jongen naar Ajax en werd er later kapitein.",
+      "Bij Arsenal was ik eveneens kapitein voor ik naar Barcelona vertrok.",
+      "Ik sloot af in Japan bij Vissel Kobe en werd daarna assistent bij de Rode Duivels."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Thomas_Vermaelen"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Yannick Carrasco",
+    "answers": [
+      "Carrasco"
+    ],
+    "country": "België",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1993 in België geboren, als zoon van een Portugese vader en een Spaanse moeder.",
+      "Ik ben een snelle dribbelaar die zowel als flankaanvaller als wingback speelde.",
+      "Ik genoot mijn opleiding bij Genk en werd prof bij AS Monaco.",
+      "Ik scoorde voor Atlético Madrid in de Champions League-finale van 2016 tegen Real.",
+      "Ik verraste velen door een tijd in China bij Dalian te gaan spelen."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Yannick_Carrasco"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Youri Tielemans",
+    "answers": [
+      "Tielemans"
+    ],
+    "country": "België",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1997 geboren in Sint-Pieters-Leeuw.",
+      "Ik ben een technische middenvelder met een harde trap van afstand.",
+      "Op mijn zestiende debuteerde ik al in het eerste elftal van Anderlecht.",
+      "Na een passage bij Monaco trok ik naar Leicester City.",
+      "Mijn wereldgoal besliste de FA Cup-finale van 2021 tegen Chelsea."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Youri_Tielemans"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Jérémy Doku",
+    "answers": [
+      "Doku"
+    ],
+    "country": "België",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 2002 in Antwerpen geboren en heb Ghanese roots.",
+      "Ik ben een razendsnelle flankspeler die graag één tegen één gaat.",
+      "Ik debuteerde als tiener bij Anderlecht.",
+      "Ik maakte de stap naar Rennes in Frankrijk.",
+      "In 2023 trok ik voor veel geld naar Manchester City."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/J%C3%A9r%C3%A9my_Doku"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Loïs Openda",
+    "answers": [
+      "Openda"
+    ],
+    "country": "België",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 2000 in Luik geboren.",
+      "Ik ben een supersnelle spits die graag in de diepte loopt.",
+      "Ik werd opgeleid bij Club Brugge en werd daarna verhuurd aan Vitesse.",
+      "Bij Lens scoorde ik er in mijn enige seizoen op los.",
+      "In 2023 trok ik voor veel geld naar RB Leipzig."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lo%C3%AFs_Openda"
+    ],
+    "tags": [
+      "rode-duivels",
+      "club-brugge"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Leandro Trossard",
+    "answers": [
+      "Trossard"
+    ],
+    "country": "België",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1994 in Maasmechelen geboren.",
+      "Ik ben een veelzijdige aanvaller die links, rechts en centraal kan spelen.",
+      "Genk leende me uit aan onder meer Lommel en OH Leuven voor ik doorbrak.",
+      "Bij Brighton scoorde ik een hattrick op Anfield tegen Liverpool.",
+      "In januari 2023 trok ik naar Arsenal."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Leandro_Trossard"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Michy Batshuayi",
+    "answers": [
+      "Batshuayi",
+      "Michy",
+      "Batsman"
+    ],
+    "country": "België",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1993 in Brussel geboren en heb Congolese roots.",
+      "Ik ben een spits met een bijnaam die een woordspeling is op een bekende superheld.",
+      "Ik brak door bij Standard en trok daarna naar Marseille.",
+      "Mijn goal tegen West Brom in 2017 bezorgde Chelsea de landstitel.",
+      "Ik speelde later in Turkije voor zowel Fenerbahçe als Galatasaray."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Michy_Batshuayi"
+    ],
+    "tags": [
+      "rode-duivels",
+      "standard"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Divock Origi",
+    "answers": [
+      "Origi"
+    ],
+    "country": "België",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1995 in Oostende geboren en mijn vader is een Keniaanse ex-voetballer.",
+      "Ik ben een spits die vooral uitblonk in de grote momenten.",
+      "Op mijn negentiende scoorde ik op het WK 2014 tegen Rusland.",
+      "Ik maakte twee goals in de legendarische 4-0 tegen Barcelona in 2019.",
+      "In de Champions League-finale van 2019 tegen Tottenham besliste ik de match voor Liverpool."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Divock_Origi",
+      "https://en.wikipedia.org/wiki/2019_UEFA_Champions_League_final"
+    ],
+    "tags": [
+      "champions-league",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Adnan Januzaj",
+    "answers": [
+      "Januzaj"
+    ],
+    "country": "België",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1995 in Brussel geboren en heb Kosovaars-Albanese roots.",
+      "Ik ben een linksvoetige flankspeler met veel techniek.",
+      "Ik trok als jeugdspeler van Anderlecht naar Manchester United.",
+      "In 2013 scoorde ik twee keer tegen Sunderland en was ik even de nieuwe sensatie op Old Trafford.",
+      "Op het WK 2018 scoorde ik de enige goal in de groepsmatch tegen Engeland."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Adnan_Januzaj"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Christian Benteke",
+    "answers": [
+      "Benteke"
+    ],
+    "country": "België",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1990 in Kinshasa geboren en groeide op in Luik.",
+      "Ik ben een sterke spits die vooral gevaarlijk was in de lucht.",
+      "Ik speelde bij Genk, Standard, Kortrijk en Mechelen voor ik naar Aston Villa trok.",
+      "Na Liverpool speelde ik lang voor Crystal Palace en later in de MLS.",
+      "Ik scoorde na amper acht seconden tegen Gibraltar, een record in WK-kwalificaties."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Christian_Benteke"
+    ],
+    "tags": [
+      "rode-duivels",
+      "standard"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Simon Mignolet",
+    "answers": [
+      "Mignolet"
+    ],
+    "country": "België",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1988 geboren in Sint-Truiden.",
+      "Ik ben een doelman die bekendstaat om zijn rust en reflexen.",
+      "Ik debuteerde bij STVV en trok daarna naar Sunderland.",
+      "Bij mijn debuut voor Liverpool stopte ik meteen een strafschop tegen Stoke.",
+      "Na Engeland keerde ik terug naar België en werd ik meermaals kampioen met Club Brugge."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Simon_Mignolet",
+      "https://nl.wikipedia.org/wiki/Belgische_Gouden_Schoen"
+    ],
+    "tags": [
+      "gouden-schoen",
+      "rode-duivels",
+      "club-brugge"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Radja Nainggolan",
+    "answers": [
+      "Nainggolan",
+      "Ninja"
+    ],
+    "country": "België",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1988 in Antwerpen geboren en mijn vader komt uit Indonesië.",
+      "Ik ben een box-to-box middenvelder vol energie en met een harde trap.",
+      "Ik trok als tiener naar Italië en speelde bij Piacenza en Cagliari.",
+      "Bij AS Roma werd ik een publiekslieveling, later speelde ik ook voor Inter.",
+      "In Italië kreeg ik de bijnaam 'Il Ninja'."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Radja_Nainggolan"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Thomas Meunier",
+    "answers": [
+      "Meunier"
+    ],
+    "country": "België",
+    "competition": "Ligue 1",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1991 geboren in de provincie Luxemburg.",
+      "Ik speelde eerst als aanvaller, maar werd omgeschoold tot rechtsachter.",
+      "Via Virton kwam ik bij Club Brugge terecht.",
+      "In 2016 trok ik naar Paris Saint-Germain en later naar Borussia Dortmund.",
+      "Ik scoorde al na vier minuten in de match om brons tegen Engeland op het WK 2018."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Thomas_Meunier",
+      "https://www.aljazeera.com/sports/2018/7/14/world-cup-2018-belgium-beat-england-to-take-third-spot"
+    ],
+    "tags": [
+      "rode-duivels",
+      "club-brugge"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Timothy Castagne",
+    "answers": [
+      "Castagne"
+    ],
+    "country": "België",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1995 in Aarlen geboren.",
+      "Ik ben een verdediger die als back of wingback speelt.",
+      "Ik brak door bij Genk en trok daarna naar Atalanta in Italië.",
+      "Met Leicester City won ik in 2021 de FA Cup.",
+      "Op het EK 2021 brak ik mijn oogkas in de openingsmatch tegen Rusland."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Timothy_Castagne"
+    ],
+    "tags": [
+      "rode-duivels",
+      "sinterklaas"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Amadou Onana",
+    "answers": [],
+    "country": "België",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 2001 in Dakar geboren en groeide deels op in Brussel.",
+      "Ik ben een rijzige, fysieke middenvelder.",
+      "Ik speelde in Duitsland bij Hamburg en daarna bij Lille.",
+      "Everton betaalde in 2022 veel geld voor mij, later trok ik naar Aston Villa.",
+      "Ik deel mijn familienaam met een Kameroense doelman van Manchester United."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Amadou_Onana"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Charles De Ketelaere",
+    "answers": [
+      "De Ketelaere",
+      "CDK"
+    ],
+    "country": "België",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 2001 in Brugge geboren.",
+      "Als jongen moest ik kiezen tussen tennis en voetbal.",
+      "Ik ben een rijzige, technische aanvaller die ook in de spits kan spelen.",
+      "Ik werd kampioen met Club Brugge en trok in 2022 naar AC Milan.",
+      "Bij Atalanta bloeide ik open en won ik in 2024 de Europa League."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Charles_De_Ketelaere"
+    ],
+    "tags": [
+      "rode-duivels",
+      "club-brugge"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Dodi Lukebakio",
+    "answers": [
+      "Lukebakio"
+    ],
+    "country": "België",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1997 geboren in Asse.",
+      "Ik ben een flankaanvaller die meestal op rechts speelt.",
+      "Ik kwam uit de jeugd van Anderlecht en speelde daarna in Engeland bij Watford.",
+      "Als huurling van Fortuna Düsseldorf scoorde ik een hattrick in München tegen Bayern.",
+      "Na Hertha Berlin trok ik in 2023 naar Sevilla."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dodi_Lukebakio",
+      "https://www.eurosport.co.uk/football/bundesliga/2018-2019/dusseldorf-stun-bayern-with-stoppage-time-equaliser_sto7024742/story.shtml"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Arthur Theate",
+    "answers": [
+      "Theate"
+    ],
+    "country": "België",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 2000 in de provincie Luik geboren.",
+      "Ik ben een verdediger, centraal of als linksachter.",
+      "Ik maakte mijn doorbraak in de Pro League bij KV Oostende.",
+      "Daarna speelde ik in Italië bij Bologna en in Frankrijk bij Rennes.",
+      "Ik trok vervolgens naar Eintracht Frankfurt in de Bundesliga."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Arthur_Theate"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Wout Faes",
+    "answers": [
+      "Faes"
+    ],
+    "country": "België",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1998 in Mol geboren.",
+      "Ik ben een stevige centrale verdediger.",
+      "Ik speelde bij Anderlecht, KV Oostende en Stade de Reims.",
+      "In 2022 trok ik naar Leicester City.",
+      "Op Anfield maakte ik eind 2022 twee eigen doelpunten in één wedstrijd tegen Liverpool."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Wout_Faes",
+      "https://www.espn.com/soccer/report/_/gameId/637995"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Hans Vanaken",
+    "answers": [
+      "Vanaken"
+    ],
+    "country": "België",
+    "competition": "Jupiler Pro League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1992 in Neerpelt geboren en mijn vader was ook voetballer.",
+      "Ik ben een lange, elegante spelmaker met een goede neus voor doelpunten.",
+      "Ik speelde bij Lommel en Lokeren voor ik naar Brugge verhuisde.",
+      "Ik won drie keer de Gouden Schoen, onder meer in 2018 en 2019.",
+      "Met nummer 20 werd ik een clubicoon van Club Brugge en won ik meerdere titels."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Hans_Vanaken",
+      "https://nl.wikipedia.org/wiki/Hans_Vanaken",
+      "https://nl.wikipedia.org/wiki/Belgische_Gouden_Schoen"
+    ],
+    "tags": [
+      "gouden-schoen",
+      "rode-duivels",
+      "club-brugge"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Steven Defour",
+    "answers": [
+      "Defour"
+    ],
+    "country": "België",
+    "competition": "Jupiler Pro League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1988 in Mechelen geboren.",
+      "Ik ben een strijdvaardige middenvelder die al jong de kapiteinsband droeg.",
+      "Als jonge kapitein van Standard won ik de landstitel.",
+      "Na een periode bij FC Porto koos ik voor aartsrivaal Anderlecht.",
+      "Als speler van Anderlecht kreeg ik bij Standard een spandoek met mijn afgehakte hoofd te zien."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Steven_Defour",
+      "https://nl.wikipedia.org/wiki/Belgische_Gouden_Schoen"
+    ],
+    "tags": [
+      "gouden-schoen",
+      "rode-duivels",
+      "anderlecht",
+      "standard"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Daniel Van Buyten",
+    "answers": [
+      "Van Buyten",
+      "Big Dan"
+    ],
+    "country": "België",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1978 in Chimay geboren en mijn vader was worstelaar.",
+      "Ik ben een rijzige centrale verdediger, sterk in de lucht.",
+      "Ik speelde bij Charleroi, Standard, Marseille en Hamburg.",
+      "Bij Bayern München won ik in 2013 de Champions League.",
+      "Op het WK 2014 speelde ik elke minuut tot de kwartfinale tegen Argentinië, daarna stopte ik."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Daniel_Van_Buyten"
+    ],
+    "tags": [
+      "champions-league",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-17"
+  }
+]

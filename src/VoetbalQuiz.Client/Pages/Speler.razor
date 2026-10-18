@@ -1,0 +1,74 @@
+@page "/speler/{UserName}"
+@attribute [Authorize]
+@inject ApiClient Api
+
+<PageTitle>@UserName – Truitje Trek</PageTitle>
+
+@if (_error is not null)
+{
+    <p class="error">@_error</p>
+}
+else if (_p is null)
+{
+    <div class="center-msg">Laden…</div>
+}
+else
+{
+    <section class="card profile-head">
+        <Avatar Id="@_p.AvatarId" Size="96" />
+        <div>
+            <h1>@_p.UserName</h1>
+            <div class="level-line"><span class="lvl big">Level @_p.Level.Level</span> @_p.Level.Title</div>
+            <small class="muted">Speelt mee sinds @DutchDates.DayMonth(_p.MemberSince) @_p.MemberSince.Year</small>
+        </div>
+    </section>
+
+    <div class="my-stats">
+        <div><b>@_p.DaysPlayed</b><small>dagen gespeeld</small></div>
+        <div><b>@_p.DaysWon</b><small>dagzeges</small></div>
+        <div><b>@_p.BestDay</b><small>beste dag</small></div>
+        <div><b>@_p.Rating</b><small>online rating</small></div>
+    </div>
+
+    @if (_p.VersusMe is { } h)
+    {
+        <h2 class="section-title">⚔️ Jij tegen @_p.UserName</h2>
+        <section class="card h2h">
+            <div class="h2h-row">
+                <span class="h2h-label">Daily</span>
+                <span class="h2h-score"><b>@h.MyDailyWins</b> – <b>@h.TheirDailyWins</b></span>
+                <small class="muted">@h.DailyDaysTogether samen gespeelde dagen@(h.DailyDraws > 0 ? $", {h.DailyDraws}× gelijk" : "")</small>
+            </div>
+            <div class="h2h-row">
+                <span class="h2h-label">Online</span>
+                <span class="h2h-score"><b>@h.MyMatchWins</b> – <b>@h.TheirMatchWins</b></span>
+                <small class="muted">@h.MatchesTogether wedstrijden aan dezelfde tafel</small>
+            </div>
+            <p class="center h2h-verdict">@Verdict(h)</p>
+        </section>
+    }
+
+    <BadgesAndTrophies Profile="_p" />
+}
+
+@code {
+    [Parameter] public string UserName { get; set; } = "";
+
+    private PublicProfile? _p;
+    private string? _error;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        _p = null;
+        try { _p = await Api.GetPlayerProfileAsync(UserName); }
+        catch (ApiException ex) { _error = ex.Message; }
+    }
+
+    private string Verdict(HeadToHead h)
+    {
+        var mine = h.MyDailyWins + h.MyMatchWins;
+        var theirs = h.TheirDailyWins + h.TheirMatchWins;
+        if (mine + theirs == 0) return "Nog geen onderlinge duels. Tijd voor een tafel!";
+        return mine > theirs ? "😎 Jij hebt de bovenhand." : mine < theirs ? $"😬 {UserName} is (voorlopig) sterker." : "🤝 Perfect in evenwicht.";
+    }
+}

@@ -1,0 +1,322 @@
+@page "/admin/specials/{Id:int}"
+@page "/admin/special/{Id:int}"
+@attribute [Authorize]
+@inject ApiClient Api
+@inject AuthState Auth
+@inject NavigationManager Nav
+
+<PageTitle>Special – Admin</PageTitle>
+
+<AdminGuard>
+    <div class="editor-top"><a href="admin/specials" class="back">‹ Terug naar specials</a></div>
+
+    @if (_loadError is not null)
+    {
+        <p class="error">@_loadError</p>
+    }
+    else if (_all is not null)
+    {
+        var pool = Pool().ToList();
+        var whoSlots = PlayerSlots;
+        var enough = whoSlots == 0 || pool.Count >= whoSlots;
+
+        <div class="editor">
+            <div class="editor-main">
+                @if (Id == 0)
+                {
+                    <section class="card stack">
+                        <h2>1. Kies een thema</h2>
+                        <div class="template-grid">
+                            @foreach (var t in SpecialTemplates.All)
+                            {
+                                <button class="template @(_theme == t.Theme ? "on" : "")" @onclick="() => ApplyTemplate(t)">
+                                    <span>@t.Icon</span><small>@t.Name</small>
+                                </button>
+                            }
+                        </div>
+                    </section>
+                }
+
+                <section class="card stack">
+                    <h2>@(Id == 0 ? "2. " : "")Wat zien de spelers?</h2>
+                    @if (_locked)
+                    {
+                        <p class="note">🔒 Deze special wordt al gespeeld. Enkel naam, icoon, beschrijving en einddatum kunnen nog wijzigen.</p>
+                    }
+                    <div class="row-icon">
+                        <label>Icoon <input @bind="_icon" maxlength="8" class="icon-input" /></label>
+                        <label class="grow">Naam <input @bind="_name" @bind:event="oninput" /></label>
+                    </div>
+                    <label>Beschrijving <textarea rows="2" @bind="_description" @bind:event="oninput"></textarea></label>
+                </section>
+
+                <section class="card stack">
+                    <h2>@(Id == 0 ? "3. " : "")Wanneer?</h2>
+                    <div class="row-2">
+                        <label>Vrijgeven op <input type="date" value="@_start.ToString("yyyy-MM-dd")" disabled="@_locked"
+                                                   @onchange="e => SetStart(e.Value?.ToString())" /></label>
+                        <label>Speelbaar tot en met <input type="date" value="@_end.ToString("yyyy-MM-dd")"
+                                                           @onchange="e => SetEnd(e.Value?.ToString())" /></label>
+                    </div>
+                    @if (!_locked)
+                    {
+                        <div class="quick-dates">
+                            <button class="chip-btn" @onclick="() => SetDays(Today, 0)">Vandaag</button>
+                            <button class="chip-btn" @onclick="() => SetDays(Today.AddDays(1), 0)">Morgen</button>
+                            <button class="chip-btn" @onclick="() => SetDays(_start, 0)">1 dag</button>
+                            <button class="chip-btn" @onclick="() => SetDays(_start, 2)">3 dagen</button>
+                            <button class="chip-btn" @onclick="() => SetDays(_start, 6)">Een week</button>
+                        </div>
+                    }
+                    <small class="muted">@Summary()</small>
+                </section>
+
+                <section class="card stack">
+                    <h2>@(Id == 0 ? "4. " : "")Welke vraagtypes?</h2>
+                    <p class="muted">De vragen worden om beurten over de gekozen types verdeeld (max. @GameRules.QuestionsPerDay vragen en 1000 punten; een opstelling telt voor twee). Vragen met het thema van de special krijgen voorrang. Een type dat in Planning uitgeschakeld is, wordt overgeslagen.</p>
+                    <div class="tag-toggle">
+                        @foreach (var t in QuestionTypes.All)
+                        {
+                            var type = t.Type;
+                            <button class="@(_types.Contains(type) ? "on" : "")" disabled="@_locked" @onclick="() => ToggleType(type)">@t.Icon @t.Name</button>
+                        }
+                    </div>
+                    <small class="muted">Verdeling: @Mix()</small>
+                </section>
+
+                <section class="card stack">
+                    <h2>@(Id == 0 ? "5. " : "")Welke spelers? <small class="muted">(voor wie ben ik, kluts en counter; meerdere thema's mag, bv. voor een derby)</small></h2>
+                    <div class="segmented">
+                        <button class="@(_manual ? "" : "on")" @onclick="() => _manual = false" disabled="@_locked">Alle spelers van een thema</button>
+                        <button class="@(_manual ? "on" : "")" @onclick="StartManual" disabled="@_locked">Zelf kiezen</button>
+                    </div>
+
+                    @if (!_manual)
+                    {
+                        <div class="tag-toggle">
+                            @foreach (var (key, label) in PlayerTags.All)
+                            {
+                                var k = key;
+                                var count = _all.Count(p => p.Status == PlayerStatus.Approved && p.Tags.Contains(k));
+                                <button class="@(_tags.Contains(k) ? "on" : "")" disabled="@_locked" title="@label" @onclick="() => ToggleTag(k)">
+                                    @AdminSpelers.TagChip(k) <small>(@count)</small>
+                                </button>
+                            }
+                        </div>
+                        <small class="muted">Elke speler van het thema kan voorkomen; iedereen krijgt dezelfde @GameRules.QuestionsPerDay willekeurig gekozen vragen.</small>
+                    }
+                    else
+                    {
+                        @if (_picked.Count > 0)
+                        {
+                            <div class="picked">
+                                @foreach (var p in _all.Where(p => _picked.Contains(p.Id)).OrderBy(p => p.Name))
+                                {
+                                    var id = p.Id;
+                                    <span class="chip removable">@p.Name <button disabled="@_locked" @onclick="() => _picked.Remove(id)">✕</button></span>
+                                }
+                            </div>
+                        }
+                        <div class="toolbar">
+                            <input class="grow" type="search" @bind="_filter" @bind:event="oninput" placeholder="🔍 Zoek spelers om toe te voegen…" disabled="@_locked" />
+                            <select @onchange="e => AddTag(e.Value?.ToString())" disabled="@_locked">
+                                <option value="">+ Voeg een heel thema toe…</option>
+                                @foreach (var (key, label) in PlayerTags.All) { <option value="@key">@label</option> }
+                            </select>
+                        </div>
+                        @if (_filter.Length > 0)
+                        {
+                            <div class="pick-list">
+                                @foreach (var p in _all.Where(p => p.Status == PlayerStatus.Approved && !_picked.Contains(p.Id)
+                                                                   && p.Name.Contains(_filter, StringComparison.OrdinalIgnoreCase)).Take(20))
+                                {
+                                    var id = p.Id;
+                                    <button class="pick-row" @onclick="() => _picked.Add(id)">+ @p.Name <small class="muted">@p.Country</small></button>
+                                }
+                            </div>
+                        }
+                    }
+                </section>
+            </div>
+
+            <aside class="editor-side">
+                <section class="card stack sticky">
+                    <div class="special-preview">
+                        <span class="special-icon">@_icon</span>
+                        <div><b>@_name</b><small>@_description</small></div>
+                    </div>
+                    <ul class="checklist">
+                        <li class="@(string.IsNullOrWhiteSpace(_name) ? "todo" : "ok")">@(string.IsNullOrWhiteSpace(_name) ? "✗" : "✓") Naam ingevuld</li>
+                        <li class="@(_end >= _start ? "ok" : "todo")">@(_end >= _start ? "✓" : "✗") Datum klopt</li>
+                        <li class="@(enough ? "ok" : "todo")">@(enough ? "✓" : "✗") @(whoSlots == 0 ? "Geen spelersvragen" : $"{pool.Count} spelers in de pool (min. {whoSlots})")</li>
+                        <li class="@(_types.Count > 0 ? "ok" : "todo")">@(_types.Count > 0 ? "✓" : "✗") Minstens één vraagtype</li>
+                    </ul>
+                    @if (_error is not null) { <p class="error">@_error</p> }
+                    @if (_saved) { <p class="success">Opgeslagen. De special verschijnt op @DutchDates.DayMonth(_start) op de homepagina.</p> }
+                    <button class="btn primary" @onclick="SaveAsync" disabled="@(_busy || !enough || _types.Count == 0 || string.IsNullOrWhiteSpace(_name))">💾 Opslaan</button>
+                    @if (Id != 0 && !_locked)
+                    {
+                        <button class="btn danger" @onclick="DeleteAsync" disabled="@_busy">🗑 Verwijderen</button>
+                    }
+                </section>
+
+                <section class="card">
+                    <h3>Pool (@pool.Count)</h3>
+                    @if (pool.Count == 0)
+                    {
+                        <p class="muted">Nog geen spelers gekozen.</p>
+                    }
+                    else
+                    {
+                        <ul class="pool-list">
+                            @foreach (var p in pool.OrderBy(p => p.Name)) { <li>@p.Name</li> }
+                        </ul>
+                    }
+                </section>
+            </aside>
+        </div>
+    }
+</AdminGuard>
+
+@code {
+    [Parameter] public int Id { get; set; }
+
+    private List<PlayerListItem>? _all;
+    private string _theme = "custom", _name = "", _icon = "✨", _description = "", _filter = "";
+    private HashSet<string> _tags = [];
+    private DateOnly _start, _end;
+    private bool _manual, _locked, _busy, _saved;
+    private HashSet<int> _picked = [];
+    private string? _error, _loadError;
+
+    private static DateOnly Today => DateOnly.FromDateTime(DateTime.Today);
+    private HashSet<QuestionType> _types = [];
+
+    /// <summary>Zelfde verdeling als de server (QuestionTypes.Mix): om beurten, max. 10 vragen en 1000 punten.</summary>
+    private Dictionary<QuestionType, int> MixCounts() =>
+        _types.Count == 0 ? [] : QuestionTypes.Mix(QuestionTypes.All.Select(x => x.Type).Where(_types.Contains));
+
+    /// <summary>Hoeveel spelers de pool minstens nodig heeft: per spelerstype (een counter vraagt er 10 per vraag).</summary>
+    private int PlayerSlots => MixCounts().Where(m => QuestionTypes.Get(m.Key).FromPlayers)
+        .Select(m => m.Value * (m.Key == QuestionType.Counter ? QuestionRules.CounterPlayers : 1)).DefaultIfEmpty(0).Max();
+
+    private void ToggleTag(string key)
+    {
+        if (!_tags.Remove(key)) _tags.Add(key);
+    }
+
+    private string Mix() => _types.Count == 0 ? "kies minstens één type"
+        : string.Join(", ", MixCounts().Select(kv => $"{kv.Value}× {QuestionTypes.Get(kv.Key).Icon} {QuestionTypes.Get(kv.Key).Name}"));
+
+    private void ToggleType(QuestionType type)
+    {
+        if (!_types.Remove(type)) _types.Add(type);
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Auth.User?.IsAdmin != true) return;
+        try
+        {
+            _all = await Api.GetAdminPlayersAsync(null, null, null);
+            if (Id == 0)
+            {
+                var theme = System.Web.HttpUtility.ParseQueryString(Nav.ToAbsoluteUri(Nav.Uri).Query)["theme"];
+                ApplyTemplate(SpecialTemplates.All.FirstOrDefault(t => t.Theme == theme) ?? SpecialTemplates.All[0]);
+                return;
+            }
+            var s = await Api.GetAdminSpecialAsync(Id);
+            _locked = (await Api.GetAdminSpecialsAsync()).FirstOrDefault(x => x.Id == Id)?.Locked == true;
+            (_theme, _name, _icon, _description, _start, _end, _tags) = (s.Theme, s.Name, s.Icon, s.Description, s.StartDate, s.EndDate, [.. PlayerTags.Split(s.Tag)]);
+            _types = s.Types is { Count: > 0 } types ? [.. types] : [QuestionType.WieBenIk];
+            _picked = [.. s.PlayerIds];
+            _manual = _picked.Count > 0;
+        }
+        catch (ApiException ex) { _loadError = ex.Message; }
+    }
+
+    private void ApplyTemplate(SpecialTemplate t)
+    {
+        _theme = t.Theme;
+        _name = t.Name;
+        _icon = t.Icon;
+        _description = t.Description;
+        _tags = [.. PlayerTags.Split(t.Tag)];
+        _manual = t.Tag is null;
+        // De types van het sjabloon; anders alle vraagtypes, behalve de lange opstelling.
+        _types = [.. t.Types ?? QuestionTypes.All.Select(x => x.Type).Where(x => x != QuestionType.Opstelling)];
+        var date = t.Month is { } m && t.Day is { } d ? NextDate(m, d) : Today;
+        (_start, _end) = (date, date);
+    }
+
+    private static DateOnly NextDate(int month, int day)
+    {
+        var date = new DateOnly(Today.Year, month, day);
+        return date < Today ? date.AddYears(1) : date;
+    }
+
+    private void SetStart(string? value)
+    {
+        if (!DateOnly.TryParse(value, out var d)) return;
+        var length = _end.DayNumber - _start.DayNumber;
+        _start = d;
+        _end = d.AddDays(Math.Max(0, length));
+    }
+
+    private void SetEnd(string? value)
+    {
+        if (DateOnly.TryParse(value, out var d)) _end = d;
+    }
+
+    private void SetDays(DateOnly start, int extraDays) => (_start, _end) = (start, start.AddDays(extraDays));
+
+    private string Summary()
+    {
+        var days = _end.DayNumber - _start.DayNumber + 1;
+        return days <= 1
+            ? $"Eén dag: {DutchDates.DayMonth(_start)}."
+            : $"{days} dagen: van {DutchDates.DayMonth(_start)} tot en met {DutchDates.DayMonth(_end)}.";
+    }
+
+    private void StartManual()
+    {
+        // Overschakelen naar zelf kiezen: begin met de spelers van het gekozen thema.
+        if (_picked.Count == 0) foreach (var tag in _tags) AddTag(tag);
+        _manual = true;
+    }
+
+    private void AddTag(string? tag)
+    {
+        if (string.IsNullOrEmpty(tag)) return;
+        foreach (var p in _all!.Where(p => p.Status == PlayerStatus.Approved && p.Tags.Contains(tag))) _picked.Add(p.Id);
+    }
+
+    private IEnumerable<PlayerListItem> Pool() => _manual
+        ? _all!.Where(p => _picked.Contains(p.Id))
+        : _all!.Where(p => p.Status != PlayerStatus.Rejected && p.Tags.Any(_tags.Contains));
+
+    private async Task SaveAsync()
+    {
+        (_busy, _error, _saved) = (true, null, false);
+        try
+        {
+            var edit = new SpecialEdit(Id, _theme, _name, _icon, _description, _start, _end,
+                _manual ? null : PlayerTags.Join(_tags), _manual ? [.. _picked] : [], [.. QuestionTypes.All.Select(x => x.Type).Where(_types.Contains)]);
+            var id = await Api.SaveAdminSpecialAsync(edit);
+            _saved = true;
+            if (Id == 0) Nav.NavigateTo($"admin/specials/{id}");
+        }
+        catch (ApiException ex) { _error = ex.Message; }
+        finally { _busy = false; }
+    }
+
+    private async Task DeleteAsync()
+    {
+        try
+        {
+            await Api.DeleteAdminSpecialAsync(Id);
+            Nav.NavigateTo("admin/specials");
+        }
+        catch (ApiException ex) { _error = ex.Message; }
+    }
+}

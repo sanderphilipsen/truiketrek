@@ -1,0 +1,757 @@
+[
+  {
+    "name": "Enzo Scifo",
+    "answers": [
+      "Scifo"
+    ],
+    "country": "België",
+    "competition": "Jupiler Pro League",
+    "era": "classic",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1966 geboren in La Louvière, als zoon van Siciliaanse ouders.",
+      "Ik was een technisch begaafde spelmaker die als tiener al opviel bij Anderlecht.",
+      "In het buitenland speelde ik onder meer voor Inter, Bordeaux, Torino en AS Monaco.",
+      "Ik speelde vier wereldkampioenschappen met de Rode Duivels, van 1986 tot 1998.",
+      "In 1984 won ik de Gouden Schoen; ze noemden me 'de kleine Pelé'."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Enzo_Scifo",
+      "https://nl.wikipedia.org/wiki/Belgische_Gouden_Schoen"
+    ],
+    "tags": [
+      "gouden-schoen",
+      "rode-duivels",
+      "anderlecht",
+      "legende"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Jan Ceulemans",
+    "answers": [
+      "Ceulemans"
+    ],
+    "country": "België",
+    "competition": "Jupiler Pro League",
+    "era": "classic",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1957 geboren in Lier en debuteerde bij de club uit mijn stad.",
+      "Ik was een grote, sterke aanvallende middenvelder met een goede kopbal.",
+      "Ik weigerde een transfer naar AC Milan en bleef trouw aan mijn Belgische club.",
+      "Vanaf 1978 speelde ik voor Club Brugge en later werd ik trainer van onder meer Westerlo.",
+      "Als aanvoerder van de Rode Duivels haalde ik de halve finale van het WK 1986 in Mexico."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Jan_Ceulemans",
+      "https://nl.wikipedia.org/wiki/Belgische_Gouden_Schoen"
+    ],
+    "tags": [
+      "gouden-schoen",
+      "rode-duivels",
+      "club-brugge",
+      "legende"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Michel Preud'homme",
+    "answers": [
+      "Preud'homme",
+      "Preudhomme"
+    ],
+    "country": "België",
+    "competition": "Jupiler Pro League",
+    "era": "classic",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1959 geboren in Ougrée, in de provincie Luik.",
+      "Ik begon mijn carrière als doelman bij Standard.",
+      "Met KV Mechelen won ik in 1988 de Europese Beker voor Bekerwinnaars.",
+      "Als trainer werd ik later landskampioen met Standard, Club Brugge en het Saoedische Al-Shabab.",
+      "Op het WK 1994 werd ik verkozen tot beste doelman van het toernooi."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Michel_Preud%27homme",
+      "https://nl.wikipedia.org/wiki/Belgische_Gouden_Schoen"
+    ],
+    "tags": [
+      "gouden-schoen",
+      "rode-duivels",
+      "standard",
+      "legende"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Marc Wilmots",
+    "answers": [
+      "Wilmots"
+    ],
+    "country": "België",
+    "competition": "Bundesliga",
+    "era": "classic",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1969 geboren in Waals-Brabant.",
+      "Ik speelde in België voor Sint-Truiden, KV Mechelen en Standard.",
+      "Met Schalke 04 won ik in 1997 de UEFA Cup en scoorde ik de beslissende strafschop.",
+      "Na mijn spelersloopbaan zetelde ik een tijdje in de Belgische Senaat.",
+      "In Duitsland noemden ze me 'das Kampfschwein'; later werd ik bondscoach van de Rode Duivels."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Marc_Wilmots"
+    ],
+    "tags": [
+      "rode-duivels",
+      "standard",
+      "legende"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Émile Mpenza",
+    "answers": [
+      "Mpenza",
+      "Emile Mpenza"
+    ],
+    "country": "België",
+    "competition": "Jupiler Pro League",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1978 geboren in Zellik, in een gezin met Congolese roots.",
+      "Ik was een razendsnelle spits die verdedigers het leven zuur maakte.",
+      "Ik speelde later voor Standard, Schalke 04, Hamburger SV en Manchester City.",
+      "Op EURO 2000 scoorde ik in de openingsmatch tegen Zweden.",
+      "Samen met mijn broer vormde ik een gevreesd duo bij Excelsior Moeskroen."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/%C3%89mile_Mpenza"
+    ],
+    "tags": [
+      "rode-duivels",
+      "standard",
+      "legende"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Luc Nilis",
+    "answers": [
+      "Nilis"
+    ],
+    "country": "België",
+    "competition": "Eredivisie",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1967 geboren in Hasselt en debuteerde als profvoetballer bij Winterslag.",
+      "Ik was een technische spits die bekendstond om zijn spectaculaire doelpunten.",
+      "Met Anderlecht werd ik meerdere keren landskampioen.",
+      "In Eindhoven vormde ik een fantastisch aanvalsduo met de jonge Ronaldo.",
+      "Bij Aston Villa brak ik in 2000 mijn been, wat het einde van mijn carrière betekende."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Luc_Nilis"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "legende"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Franky Van der Elst",
+    "answers": [
+      "Van der Elst"
+    ],
+    "country": "België",
+    "competition": "Jupiler Pro League",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1961 geboren in Ninove.",
+      "Ik begon mijn carrière bij RWD Molenbeek.",
+      "Ik was een onvermoeibare verdedigende middenvelder, de waterdrager van mijn ploeg.",
+      "Ik speelde vier wereldkampioenschappen met de Rode Duivels.",
+      "Ik speelde zowat vijftien jaar bij Club Brugge en won er meerdere landstitels."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Franky_Van_der_Elst",
+      "https://nl.wikipedia.org/wiki/Belgische_Gouden_Schoen"
+    ],
+    "tags": [
+      "gouden-schoen",
+      "rode-duivels",
+      "club-brugge",
+      "legende"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Paul Van Himst",
+    "answers": [
+      "Van Himst"
+    ],
+    "country": "België",
+    "competition": "Jupiler Pro League",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1943 geboren in Sint-Pieters-Leeuw.",
+      "Al op mijn zestiende speelde ik in het eerste elftal van Anderlecht.",
+      "Ik won vier keer de Gouden Schoen.",
+      "In 1995 kreeg ik de Gouden Schoen van de Eeuw als beste Belgische voetballer.",
+      "Als bondscoach leidde ik de Rode Duivels op het WK 1994 in de Verenigde Staten."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Paul_Van_Himst",
+      "https://nl.wikipedia.org/wiki/Belgische_Gouden_Schoen"
+    ],
+    "tags": [
+      "gouden-schoen",
+      "rode-duivels",
+      "anderlecht",
+      "legende"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Eric Gerets",
+    "answers": [
+      "Gerets"
+    ],
+    "country": "België",
+    "competition": "Eredivisie",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1954 geboren in Limburg en begon mijn profcarrière bij Standard.",
+      "Ik was een harde, onverzettelijke rechtsachter en een geboren leider.",
+      "Na de omkoopzaak Standard-Waterschei werd ik een jaar geschorst.",
+      "Als trainer werd ik onder meer kampioen met Lierse, Club Brugge, PSV en Galatasaray.",
+      "Ze noemden me 'de Leeuw van Rekem'; in 1988 won ik de Europacup I met PSV."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Eric_Gerets",
+      "https://nl.wikipedia.org/wiki/Belgische_Gouden_Schoen"
+    ],
+    "tags": [
+      "champions-league",
+      "gouden-schoen",
+      "rode-duivels",
+      "standard",
+      "legende"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Jean-Marie Pfaff",
+    "answers": [
+      "Pfaff"
+    ],
+    "country": "België",
+    "competition": "Bundesliga",
+    "era": "classic",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1953 geboren in Lebbeke, waar mijn ouders toen met hun woonwagen stonden.",
+      "Met SK Beveren werd ik in 1979 landskampioen.",
+      "Als doelman trok ik in 1982 naar Bayern München.",
+      "Op het WK 1986 haalde ik met de Rode Duivels de halve finale.",
+      "Na mijn carrière werd mijn gezin bekend dankzij een realityreeks op VTM."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Jean-Marie_Pfaff",
+      "https://nl.wikipedia.org/wiki/Belgische_Gouden_Schoen"
+    ],
+    "tags": [
+      "gouden-schoen",
+      "rode-duivels",
+      "legende"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Philippe Albert",
+    "answers": [
+      "Albert"
+    ],
+    "country": "België",
+    "competition": "Premier League",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1967 geboren in Bouillon, in de Ardennen.",
+      "Ik speelde in België voor Charleroi, KV Mechelen en Anderlecht.",
+      "Ik was een lange, aanvallend ingestelde centrale verdediger.",
+      "Op het WK 1994 scoorde ik tegen zowel Nederland als Duitsland.",
+      "Bij Newcastle scoorde ik in 1996 een prachtige stift in een 5-0 zege tegen Manchester United."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Philippe_Albert",
+      "https://en.wikipedia.org/wiki/Philippe_Albert",
+      "https://nl.wikipedia.org/wiki/Belgische_Gouden_Schoen"
+    ],
+    "tags": [
+      "gouden-schoen",
+      "rode-duivels",
+      "anderlecht",
+      "legende"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Wesley Sonck",
+    "answers": [
+      "Sonck"
+    ],
+    "country": "België",
+    "competition": "Jupiler Pro League",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1978 geboren in Ninove.",
+      "Ik begon mijn carrière bij RWD Molenbeek en speelde daarna in Ekeren.",
+      "Ik was een kleine, beweeglijke spits met een neus voor doelpunten.",
+      "Op het WK 2002 scoorde ik voor de Rode Duivels tegen Rusland.",
+      "Met Racing Genk werd ik in 2002 kampioen en topschutter; later trok ik naar Ajax."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Wesley_Sonck",
+      "https://en.wikipedia.org/wiki/Wesley_Sonck",
+      "https://nl.wikipedia.org/wiki/Belgische_Gouden_Schoen"
+    ],
+    "tags": [
+      "gouden-schoen",
+      "rode-duivels",
+      "club-brugge",
+      "legende"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Zinédine Zidane",
+    "answers": [
+      "Zidane",
+      "Zizou"
+    ],
+    "country": "Frankrijk",
+    "competition": "LaLiga",
+    "era": "classic",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1972 geboren in Marseille, als zoon van Algerijnse ouders.",
+      "Ik begon mijn carrière bij AS Cannes en speelde daarna voor Bordeaux en Juventus.",
+      "In de Champions League-finale van 2002 scoorde ik met een fenomenale volley.",
+      "Als trainer won ik drie keer op rij de Champions League met Real Madrid.",
+      "Ik kopte twee keer raak in de WK-finale van 1998 en gaf in 2006 een kopstoot aan Materazzi."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Zin%C3%A9dine_Zidane"
+    ],
+    "tags": [
+      "champions-league",
+      "legende"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Ronaldo Nazário",
+    "answers": [
+      "R9",
+      "Il Fenomeno",
+      "O Fenômeno",
+      "Ronaldo Nazario"
+    ],
+    "country": "Brazilië",
+    "competition": "LaLiga",
+    "era": "classic",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1976 geboren in Rio de Janeiro.",
+      "Als tiener trok ik van Cruzeiro naar PSV Eindhoven.",
+      "Ik speelde voor Barcelona, Inter, Real Madrid en AC Milan.",
+      "Zware knieblessures kostten me jaren van mijn carrière.",
+      "Ze noemden me 'Il Fenomeno'; ik scoorde twee keer in de WK-finale van 2002 tegen Duitsland."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Ronaldo_(Braziliaans_voetballer)"
+    ],
+    "tags": [
+      "legende"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Diego Maradona",
+    "answers": [
+      "Maradona",
+      "El Pibe de Oro"
+    ],
+    "country": "Argentinië",
+    "competition": "Serie A",
+    "era": "classic",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1960 geboren in de provincie Buenos Aires en groeide op in een arme wijk.",
+      "Ik debuteerde als tiener bij Argentinos Juniors en speelde later voor Boca Juniors.",
+      "Na twee seizoenen bij Barcelona werd ik een god in Napels.",
+      "Met Napoli won ik twee landstitels en de UEFA Cup.",
+      "In 1986 scoorde ik tegen Engeland met 'de hand van God' en daarna het doelpunt van de eeuw."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Diego_Maradona"
+    ],
+    "tags": [
+      "legende"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Johan Cruijff",
+    "answers": [
+      "Cruijff",
+      "Cruyff",
+      "Johan Cruyff"
+    ],
+    "country": "Nederland",
+    "competition": "Eredivisie",
+    "era": "classic",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1947 geboren in Amsterdam en groeide op in Betondorp, vlak bij stadion De Meer.",
+      "Na de dood van mijn vader ging mijn moeder poetsen bij de club waar ik doorbrak.",
+      "Ik won drie keer op rij de Europacup I met Ajax.",
+      "Als trainer bouwde ik bij Barcelona het 'Dream Team' dat in 1992 Europa veroverde.",
+      "Ik droeg nummer 14 en mijn beroemde draai tegen Zweden op het WK 1974 kreeg mijn naam."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Johan_Cruijff",
+      "https://en.wikipedia.org/wiki/Johan_Cruyff",
+      "https://en.wikipedia.org/wiki/Cruyff_turn"
+    ],
+    "tags": [
+      "champions-league",
+      "legende",
+      "oranje"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Marco van Basten",
+    "answers": [
+      "Van Basten"
+    ],
+    "country": "Nederland",
+    "competition": "Serie A",
+    "era": "classic",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1964 geboren in Utrecht.",
+      "Ik brak door bij Ajax als opvolger van Johan Cruijff.",
+      "Een slepende enkelblessure maakte vroegtijdig een einde aan mijn carrière.",
+      "Bij AC Milan vormde ik een Nederlands trio met Gullit en Rijkaard en won ik drie Ballons d'Or.",
+      "Mijn volley in de EK-finale van 1988 tegen de Sovjet-Unie is legendarisch."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Marco_van_Basten",
+      "https://en.wikipedia.org/wiki/Marco_van_Basten"
+    ],
+    "tags": [
+      "champions-league",
+      "halloween",
+      "legende",
+      "oranje"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Roberto Baggio",
+    "answers": [
+      "Baggio",
+      "Il Divin Codino"
+    ],
+    "country": "Italië",
+    "competition": "Serie A",
+    "era": "classic",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1967 geboren in Caldogno, bij Vicenza.",
+      "Ik ben een praktiserend boeddhist.",
+      "Mijn transfer van Fiorentina naar Juventus in 1990 leidde tot rellen in Firenze.",
+      "In 1993 won ik de Ballon d'Or.",
+      "Met mijn paardenstaartje miste ik de beslissende strafschop in de WK-finale van 1994."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Roberto_Baggio",
+      "https://en.wikipedia.org/wiki/Roberto_Baggio"
+    ],
+    "tags": [
+      "legende"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Paolo Maldini",
+    "answers": [
+      "Maldini"
+    ],
+    "country": "Italië",
+    "competition": "Serie A",
+    "era": "classic",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1968 geboren in Milaan.",
+      "Mijn vader was ook aanvoerder van de club waar ik mijn hele carrière speelde.",
+      "Ik was een elegante linksachter en later centrale verdediger.",
+      "Ik won vijf keer de Europacup I of Champions League.",
+      "Ik speelde 25 jaar bij AC Milan en mijn rugnummer 3 werd er teruggetrokken."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Paolo_Maldini",
+      "https://en.wikipedia.org/wiki/Paolo_Maldini"
+    ],
+    "tags": [
+      "champions-league",
+      "legende"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Luís Figo",
+    "answers": [
+      "Figo"
+    ],
+    "country": "Portugal",
+    "competition": "LaLiga",
+    "era": "classic",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1972 geboren in de regio Lissabon.",
+      "Ik brak door bij Sporting Lissabon.",
+      "In 2000 won ik de Ballon d'Or.",
+      "Ik sloot mijn carrière af bij Inter.",
+      "Na mijn overstap van Barcelona naar Real Madrid gooiden Barça-fans een varkenskop naar me."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Lu%C3%ADs_Figo"
+    ],
+    "tags": [
+      "champions-league",
+      "legende"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Ronaldinho",
+    "answers": [
+      "Dinho",
+      "Ronaldinho Gaúcho"
+    ],
+    "country": "Brazilië",
+    "competition": "LaLiga",
+    "era": "classic",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1980 geboren in Porto Alegre en brak door bij Grêmio.",
+      "Mijn eerste Europese club was Paris Saint-Germain.",
+      "Op het WK 2002 verraste ik doelman Seaman met een vrije trap van ver.",
+      "In 2005 won ik de Ballon d'Or als speler van Barcelona.",
+      "Met mijn brede glimlach kreeg ik in 2005 een staande ovatie van de fans van Real Madrid."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Ronaldinho",
+      "https://en.wikipedia.org/wiki/Ronaldinho"
+    ],
+    "tags": [
+      "champions-league",
+      "legende"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Dennis Bergkamp",
+    "answers": [
+      "Bergkamp"
+    ],
+    "country": "Nederland",
+    "competition": "Premier League",
+    "era": "classic",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1969 geboren in Amsterdam en ben vernoemd naar een Schotse spits.",
+      "Ik brak door bij Ajax en speelde daarna twee seizoenen bij Inter.",
+      "Ik was een tweede spits met een fluwelen eerste aanraking.",
+      "Mijn doelpunt tegen Argentinië op het WK 1998 is iconisch.",
+      "Door mijn vliegangst noemden ze me bij Arsenal 'The Non-Flying Dutchman'."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dennis_Bergkamp"
+    ],
+    "tags": [
+      "legende",
+      "oranje"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "David Beckham",
+    "answers": [
+      "Beckham",
+      "Becks"
+    ],
+    "country": "Engeland",
+    "competition": "Premier League",
+    "era": "classic",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1975 geboren in Leytonstone, in Oost-Londen.",
+      "Ik maakte deel uit van de beroemde 'Class of '92'.",
+      "Op het WK 1998 kreeg ik een rode kaart tegen Argentinië.",
+      "Ik speelde later voor Real Madrid, LA Galaxy, AC Milan en PSG.",
+      "Ik droeg nummer 7 bij Manchester United en trouwde met 'Posh' van de Spice Girls."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/David_Beckham"
+    ],
+    "tags": [
+      "champions-league",
+      "legende"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Eric Cantona",
+    "answers": [
+      "Cantona",
+      "King Eric"
+    ],
+    "country": "Frankrijk",
+    "competition": "Premier League",
+    "era": "classic",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1966 geboren in Marseille.",
+      "Ik werd in 1992 kampioen van Engeland met Leeds United.",
+      "Na mijn carrière werd ik acteur.",
+      "In 1995 gaf ik een kungfutrap aan een supporter van Crystal Palace.",
+      "Met opgezette kraag en nummer 7 noemden ze me 'The King' van Manchester United."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Eric_Cantona"
+    ],
+    "tags": [
+      "legende"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Raúl",
+    "answers": [
+      "Raúl González",
+      "Raul"
+    ],
+    "country": "Spanje",
+    "competition": "LaLiga",
+    "era": "classic",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1977 geboren in Madrid.",
+      "Ik speelde in de jeugd van Atlético, tot de voorzitter er de jeugdopleiding ophief.",
+      "Ik won drie keer de Champions League en speelde later voor Schalke 04.",
+      "Ik was een slimme spits die vaak op het juiste moment opdook.",
+      "Als nummer 7 en aanvoerder van Real Madrid vierde ik mijn goals door mijn trouwring te kussen."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ra%C3%BAl_(footballer)"
+    ],
+    "tags": [
+      "champions-league",
+      "legende"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Andriy Shevchenko",
+    "answers": [
+      "Shevchenko",
+      "Sjevtsjenko",
+      "Sheva"
+    ],
+    "country": "Oekraïne",
+    "competition": "Serie A",
+    "era": "classic",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1976 geboren in Oekraïne; na de ramp van Tsjernobyl werd ik als jongen tijdelijk uit Kiev geëvacueerd.",
+      "Ik brak door bij Dynamo Kiev onder de legendarische trainer Lobanovsky.",
+      "In 2006 trok ik voor veel geld naar Chelsea.",
+      "Als bondscoach haalde ik met Oekraïne de kwartfinale van EURO 2020.",
+      "Ik won de Ballon d'Or in 2004 en benutte de beslissende penalty in de CL-finale van 2003."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Andriy_Shevchenko"
+    ],
+    "tags": [
+      "champions-league",
+      "legende"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Gabriel Batistuta",
+    "answers": [
+      "Batistuta",
+      "Batigol"
+    ],
+    "country": "Argentinië",
+    "competition": "Serie A",
+    "era": "classic",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1969 geboren in de Argentijnse provincie Santa Fe en groeide op in Reconquista.",
+      "Ik speelde in Argentinië voor Newell's Old Boys, River Plate en Boca Juniors.",
+      "Ik was een spits met lange haren en een snoeiharde trap.",
+      "Ik bleef mijn club trouw toen die naar de Serie B degradeerde, en kreeg er een standbeeld.",
+      "Na negen jaar Fiorentina werd ik in 2001 eindelijk kampioen met AS Roma."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gabriel_Batistuta"
+    ],
+    "tags": [
+      "legende"
+    ],
+    "checkedAt": "2026-10-17"
+  }
+]

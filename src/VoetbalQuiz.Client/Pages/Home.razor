@@ -1,0 +1,124 @@
+@page "/"
+@attribute [Authorize]
+@inject ApiClient Api
+@inject AuthState Auth
+
+<PageTitle>Truitje Trek – Voetbalquiz</PageTitle>
+
+<section class="home-hello">
+    <Avatar Id="@Auth.User?.AvatarId" Size="56" />
+    <div>
+        <h1>Hoi @Auth.User?.UserName 👋</h1>
+        <span class="lvl">Level @Auth.User?.Level</span>
+    </div>
+</section>
+
+@if (_daily?.LastWinner is { } w)
+{
+    <div class="winner-banner @(w.IsMe ? "me" : "")">
+        <Avatar Id="@w.AvatarId" Size="36" />
+        <span>🏆 @(w.IsMe ? "Jij was" : w.UserName + " was") dagwinnaar op @DutchDates.DayMonth(w.Date) met <b>@w.Points</b> punten</span>
+    </div>
+}
+
+@foreach (var sp in _specials.Where(s => s.IsActive))
+{
+    @if (sp.Affiche is { } affiche)
+    {
+        <a class="affiche-link" href="special/@sp.Id"><AfficheBanner Affiche="affiche" /></a>
+    }
+    <a class="card special-card @(sp.Affiche is null ? "" : "with-affiche")" href="special/@sp.Id">
+        <span class="special-icon">@sp.Icon</span>
+        <div>
+            <b>@sp.Name</b>
+            <small>@(sp.Answered == 0 ? "Speciale editie, vandaag te spelen!" : sp.Answered < GameRules.QuestionsPerDay ? $"{sp.Answered}/{GameRules.QuestionsPerDay} gespeeld" : $"Gespeeld: {sp.MyPoints} punten")</small>
+        </div>
+        <span class="btn small primary">@(sp.Answered == 0 ? "Spelen" : "Open")</span>
+    </a>
+}
+
+<section class="card home-daily">
+    <div class="home-card-head">
+        <div>
+            <div class="date">@(_daily is null ? "" : DutchDates.DayMonth(_daily.Date))</div>
+            <h2>📅 Daily challenge</h2>
+            @if (_daily is not null) { <div class="type-banner small">Vandaag: @QuestionTypes.DayLabel(_daily)</div> }
+        </div>
+        @if (_daily is not null)
+        {
+            <div class="home-score"><b>@_daily.TotalPoints</b><small>punten</small></div>
+        }
+    </div>
+
+    @if (_daily is null)
+    {
+        <p class="muted">@(_error ?? "Laden…")</p>
+    }
+    else
+    {
+        var answered = _daily.Questions.Count(q => q.Status == QuestionStatus.Answered);
+        var next = _daily.Questions.FirstOrDefault(q => q.Status != QuestionStatus.Answered);
+
+        <div class="progress-dots">
+            @foreach (var q in _daily.Questions)
+            {
+                <span class="dot @(q.Correct == true ? "ok" : q.Correct == false ? "fail" : "")"></span>
+            }
+        </div>
+
+        @if (next is null)
+        {
+            <p class="done">Klaar voor vandaag! @answered/@_daily.Questions.Count gespeeld.</p>
+            <a class="btn" href="daily">Bekijk je dag</a>
+        }
+        else
+        {
+            <p class="muted">@(answered == 0 ? QuestionTypes.DayHowTo(_daily) : $"{answered}/{_daily.Questions.Count} gespeeld, ga verder!")</p>
+            <a class="btn primary big" href="vraag/@next.Number">
+                @(answered == 0 ? "Start de daily" : $"Verder met vraag {next.Number}")
+            </a>
+            <a class="card-link" href="daily">Bekijk het overzicht van vandaag ›</a>
+        }
+    }
+</section>
+
+<section class="card">
+    <div class="home-card-head">
+        <h2>⚔️ Nieuwe online tafel</h2>
+        <a class="card-link" href="online">Lobby & rating ›</a>
+    </div>
+    <CreateTableForm UserName="@Auth.User?.UserName" />
+</section>
+
+<OpenTables />
+
+@if (_specials.Any(s => s.IsUpcoming))
+{
+    <h2 class="section-title">Binnenkort</h2>
+    <div class="tables">
+        @foreach (var sp in _specials.Where(s => s.IsUpcoming))
+        {
+            <div class="table-card">
+                <span class="table-icon">@sp.Icon</span>
+                <div class="table-info"><b>@sp.Name</b><small>@Special.Period(sp)</small></div>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    private DailyOverview? _daily;
+    private List<SpecialSummary> _specials = [];
+    private string? _error;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            _daily = await Api.GetDailyAsync();
+            _specials = await Api.GetSpecialsAsync();
+            await Auth.RefreshAsync(); // level kan gestegen zijn
+        }
+        catch (ApiException ex) { _error = ex.Message; }
+    }
+}

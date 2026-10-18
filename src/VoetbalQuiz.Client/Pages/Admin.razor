@@ -1,0 +1,105 @@
+@page "/admin"
+@attribute [Authorize]
+@inject ApiClient Api
+@inject AuthState Auth
+@inject AdminState State
+
+<PageTitle>Admin – Truitje Trek</PageTitle>
+
+<AdminGuard>
+    @if (_error is not null)
+    {
+        <p class="error">@_error</p>
+    }
+    else if (_d is null)
+    {
+        <div class="center-msg">Laden…</div>
+    }
+    else
+    {
+        <div class="dash-grid">
+            <a class="dash-card @(_d.Players.Review > 0 ? "attention" : "")" href="admin/spelers" @onclick="() => State.Status = PlayerStatus.Review">
+                <span class="dash-icon">🕵️</span>
+                <b>@_d.Players.Review</b>
+                <span>spelers te keuren</span>
+                <small>@(_d.Players.Review == 0 ? "Alles is nagekeken 👍" : "Controleer de tips met een bron en keur goed")</small>
+            </a>
+            <a class="dash-card" href="admin/spelers" @onclick="() => State.Status = null">
+                <span class="dash-icon">✅</span>
+                <b>@_d.Players.Approved</b>
+                <span>spelers in de quiz</span>
+                <small>Nog ±@_d.DailyDaysLeft dagen tot een speler voor het eerst terugkomt</small>
+            </a>
+            <a class="dash-card @(_d.NewFeedback > 0 ? "attention" : "")" href="admin/feedback">
+                <span class="dash-icon">🐞</span>
+                <b>@_d.NewFeedback</b>
+                <span>nieuwe meldingen</span>
+                <small>@_d.OpenFeedback nog open in totaal</small>
+            </a>
+            <a class="dash-card" href="admin/specials">
+                <span class="dash-icon">✨</span>
+                <b>@(_d.ActiveSpecials.Count + _d.UpcomingSpecials.Count)</b>
+                <span>specials actief of gepland</span>
+                <small>@(_d.UpcomingSpecials.FirstOrDefault() is { } next ? $"Volgende: {next.Name} op {next.StartDate:dd/MM}" : "Nog niets gepland")</small>
+            </a>
+        </div>
+
+        <div class="dash-actions">
+            <a class="btn primary" href="admin/spelers/0">+ Speler toevoegen</a>
+            <a class="btn primary" href="admin/specials/0">+ Special plannen</a>
+        </div>
+
+        <section class="card">
+            <h2>Spelers per thema</h2>
+            <p class="muted">Een special heeft minstens @GameRules.QuestionsPerDay goedgekeurde spelers nodig binnen zijn thema.</p>
+            <div class="tag-bars">
+                @foreach (var (key, label) in PlayerTags.All)
+                {
+                    var count = _d.TagCounts.GetValueOrDefault(key);
+                    <a class="tag-bar" href="admin/spelers" @onclick="() => FilterTag(key)">
+                        <span class="tag-name">@label</span>
+                        <span class="tag-meter"><span style="width:@Percent(count)"></span></span>
+                        <b class="@(count < GameRules.QuestionsPerDay ? "low" : "")">@count</b>
+                    </a>
+                }
+            </div>
+        </section>
+
+        @if (_d.ActiveSpecials.Count > 0 || _d.UpcomingSpecials.Count > 0)
+        {
+            <section class="card">
+                <h2>Specials</h2>
+                <div class="admin-list">
+                    @foreach (var s in _d.ActiveSpecials.Concat(_d.UpcomingSpecials))
+                    {
+                        <a class="admin-row-card plain" href="admin/specials/@s.Id">
+                            <span class="table-icon">@s.Icon</span>
+                            <div class="table-info"><b>@s.Name</b><small>@SpecialStatus.Period(s)</small></div>
+                            <SpecialStatus Item="s" />
+                        </a>
+                    }
+                </div>
+            </section>
+        }
+    }
+</AdminGuard>
+
+@code {
+    private AdminDashboard? _d;
+    private string? _error;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Auth.User?.IsAdmin != true) return;
+        try { _d = await Api.GetAdminDashboardAsync(); }
+        catch (ApiException ex) { _error = ex.Message; }
+    }
+
+    private void FilterTag(string key) => (State.Tag, State.Status) = (key, null);
+
+    private string Percent(int count)
+    {
+        var max = Math.Max(GameRules.QuestionsPerDay * 3, _d!.TagCounts.Values.DefaultIfEmpty(0).Max());
+        return (100.0 * count / max).ToString("0", System.Globalization.CultureInfo.InvariantCulture) + "%";
+    }
+}

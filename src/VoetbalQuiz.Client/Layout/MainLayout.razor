@@ -1,0 +1,48 @@
+﻿@inherits LayoutComponentBase
+@inject AuthState Auth
+@inject NavigationManager Nav
+
+@* Het admin-paneel gebruikt de volle breedte van een groot scherm. *@
+<div class="app @(IsAdminPage ? "wide" : IsRankingPage || IsProfilePage ? "medium" : "")">
+    <header class="topbar">
+        <a href="" class="brand"><img src="logo.svg" alt="" class="logo" /> Truitje Trek</a>
+        <AuthorizeView>
+            <Authorized>
+                @if (Auth.User?.IsAdmin == true)
+                {
+                    <a href="admin" class="admin-link" title="Admin">⚙️</a>
+                }
+                <a href="profiel" class="who">
+                    <span>@context.User.Identity?.Name</span>
+                    <span class="lvl">Lv @Auth.User?.Level</span>
+                    <Avatar Id="@Auth.User?.AvatarId" Size="34" />
+                </a>
+            </Authorized>
+        </AuthorizeView>
+    </header>
+
+    <main class="content">
+        @Body
+    </main>
+
+    <AuthorizeView>
+        <Authorized>
+            <nav class="tabbar">
+                <NavLink href="" Match="NavLinkMatch.All"><span>🏠</span>Home</NavLink>
+                <NavLink href="klassement"><span>🏆</span>Klassement</NavLink>
+                <NavLink href="badges"><span>🎖️</span>Badges</NavLink>
+                <NavLink href="statistieken"><span>📊</span>Stats</NavLink>
+                <NavLink href="profiel"><span>👤</span>Profiel</NavLink>
+            </nav>
+        </Authorized>
+    </AuthorizeView>
+</div>
+
+@code {
+    // Het maandklassement heeft kolommen nodig: op een groot scherm wat breder dan de gsm-kolom.
+    private bool IsRankingPage => Nav.ToBaseRelativePath(Nav.Uri).StartsWith("klassement", StringComparison.OrdinalIgnoreCase);
+
+    private bool IsProfilePage => Nav.ToBaseRelativePath(Nav.Uri).StartsWith("profiel", StringComparison.OrdinalIgnoreCase);
+
+    private bool IsAdminPage => Nav.ToBaseRelativePath(Nav.Uri).StartsWith("admin", StringComparison.OrdinalIgnoreCase);
+}

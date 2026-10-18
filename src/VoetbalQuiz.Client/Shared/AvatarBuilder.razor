@@ -1,0 +1,208 @@
+@* Zelf een avatar samenstellen. Elke keuze toont een mini-voorbeeld met de huidige avatar. *@
+
+<div class="builder">
+    <div class="builder-preview">
+        <Avatar Def="_draft" Size="130" />
+        <div class="builder-preview-actions">
+            <button type="button" class="btn small" @onclick="Randomize">🎲 Willekeurig</button>
+            <button type="button" class="btn small primary" @onclick="SaveAsync" disabled="@Saving">Opslaan</button>
+        </div>
+    </div>
+
+    <BuilderGroup Title="Huidskleur">
+        @for (var i = 0; i < Avatars.Skins.Length; i++)
+        {
+            var v = i;
+            <button type="button" class="swatch @(_draft.Skin == v ? "on" : "")" style="background:@Avatars.Skins[v]"
+                    aria-label="Huidskleur @(v + 1)" @onclick="() => _draft = _draft with { Skin = v }"></button>
+        }
+    </BuilderGroup>
+
+    <BuilderGroup Title="Kapsel">
+        @foreach (var style in Enum.GetValues<HairStyle>())
+        {
+            <button type="button" class="mini @(_draft.Style == style ? "on" : "")" title="@HairName(style)"
+                    @onclick="() => _draft = _draft with { Style = style }">
+                <Avatar Def="_draft with { Style = style }" Size="46" />
+                <small>@HairName(style)</small>
+            </button>
+        }
+    </BuilderGroup>
+
+    <BuilderGroup Title="Haarkleur">
+        @for (var i = 0; i < Avatars.HairColors.Length; i++)
+        {
+            var v = i;
+            <button type="button" class="swatch @(_draft.HairColor == v ? "on" : "")" style="background:@Avatars.HairColors[v]"
+                    aria-label="Haarkleur @(v + 1)" @onclick="() => _draft = _draft with { HairColor = v }"></button>
+        }
+    </BuilderGroup>
+
+    <BuilderGroup Title="Gezichtsbeharing">
+        @foreach (var facial in Enum.GetValues<FacialHair>())
+        {
+            <button type="button" class="mini @(_draft.Facial == facial ? "on" : "")"
+                    @onclick="() => _draft = _draft with { Facial = facial }">
+                <Avatar Def="_draft with { Facial = facial }" Size="46" />
+                <small>@FacialName(facial)</small>
+            </button>
+        }
+    </BuilderGroup>
+
+    <BuilderGroup Title="Shirtkleur">
+        @for (var i = 0; i < Avatars.Colors.Length; i++)
+        {
+            var v = i;
+            <button type="button" class="swatch @(_draft.Shirt == v ? "on" : "")" style="background:@Avatars.Colors[v]"
+                    aria-label="Shirtkleur @(v + 1)" @onclick="() => _draft = _draft with { Shirt = v }"></button>
+        }
+    </BuilderGroup>
+
+    <BuilderGroup Title="Tweede kleur (nummer, kraag, patroon)">
+        @for (var i = 0; i < Avatars.Colors.Length; i++)
+        {
+            var v = i;
+            <button type="button" class="swatch @(_draft.Accent == v ? "on" : "")" style="background:@Avatars.Colors[v]"
+                    aria-label="Accentkleur @(v + 1)" @onclick="() => _draft = _draft with { Accent = v }"></button>
+        }
+    </BuilderGroup>
+
+    <BuilderGroup Title="Patroon">
+        @foreach (var pattern in Enum.GetValues<ShirtPattern>())
+        {
+            <button type="button" class="mini @(_draft.Pattern == pattern ? "on" : "")"
+                    @onclick="() => _draft = _draft with { Pattern = pattern }">
+                <Avatar Def="_draft with { Pattern = pattern }" Size="46" />
+                <small>@PatternName(pattern)</small>
+            </button>
+        }
+    </BuilderGroup>
+
+    <BuilderGroup Title="Rugnummer">
+        <div class="number-picker">
+            <button type="button" class="btn small" @onclick="() => SetNumber(_draft.Number - 1)">−</button>
+            <input type="number" min="0" max="99" value="@_draft.Number"
+                   @onchange="e => SetNumber(int.TryParse(e.Value?.ToString(), out var n) ? n : 0)" />
+            <button type="button" class="btn small" @onclick="() => SetNumber(_draft.Number + 1)">+</button>
+            <small class="muted">0 = geen nummer</small>
+        </div>
+    </BuilderGroup>
+
+    <BuilderGroup Title="Bril">
+        @foreach (var glasses in Enum.GetValues<Glasses>())
+        {
+            <button type="button" class="mini @(_draft.Glasses == glasses ? "on" : "")"
+                    @onclick="() => _draft = _draft with { Glasses = glasses }">
+                <Avatar Def="_draft with { Glasses = glasses }" Size="46" />
+                <small>@GlassesName(glasses)</small>
+            </button>
+        }
+    </BuilderGroup>
+
+    <BuilderGroup Title="Oorbel">
+        @foreach (var earring in Enum.GetValues<Earring>())
+        {
+            <button type="button" class="mini @(_draft.Earring == earring ? "on" : "")"
+                    @onclick="() => _draft = _draft with { Earring = earring }">
+                <Avatar Def="_draft with { Earring = earring }" Size="46" />
+                <small>@EarringName(earring)</small>
+            </button>
+        }
+    </BuilderGroup>
+
+    <BuilderGroup Title="Haarband">
+        <button type="button" class="swatch none @(_draft.Headband < 0 ? "on" : "")" aria-label="Geen haarband"
+                @onclick="() => _draft = _draft with { Headband = -1 }">✕</button>
+        @for (var i = 0; i < Avatars.Colors.Length; i++)
+        {
+            var v = i;
+            <button type="button" class="swatch @(_draft.Headband == v ? "on" : "")" style="background:@Avatars.Colors[v]"
+                    aria-label="Haarband @(v + 1)" @onclick="() => _draft = _draft with { Headband = v }"></button>
+        }
+    </BuilderGroup>
+
+    <button type="button" class="btn primary big" @onclick="SaveAsync" disabled="@Saving">Opslaan als mijn avatar</button>
+</div>
+
+@code {
+    /// <summary>Waarmee de bouwer begint: je huidige avatar (ook een voetballer kan je zo aanpassen).</summary>
+    [Parameter, EditorRequired] public AvatarDef Start { get; set; } = Avatars.Default;
+    [Parameter] public EventCallback<string> OnSave { get; set; }
+    [Parameter] public bool Saving { get; set; }
+
+    private AvatarDef _draft = Avatars.Default;
+    private AvatarDef? _started;
+
+    protected override void OnParametersSet()
+    {
+        // Op waarde vergelijken: een zelfgemaakte avatar wordt bij elke render opnieuw ingelezen.
+        if (_started != Start)
+        {
+            _started = Start;
+            _draft = Start;
+        }
+    }
+
+    private void Randomize() => _draft = Avatars.Random(Random.Shared);
+
+    private void SetNumber(int n) => _draft = _draft with { Number = Math.Clamp(n, 0, 99) };
+
+    private Task SaveAsync() => OnSave.InvokeAsync(Avatars.Encode(_draft));
+
+    private static string HairName(HairStyle s) => s switch
+    {
+        HairStyle.Bald => "Kaal",
+        HairStyle.Buzz => "Gemillimeterd",
+        HairStyle.Short => "Kort",
+        HairStyle.Slick => "Gekamd",
+        HairStyle.Curly => "Krullen",
+        HairStyle.Afro => "Afro",
+        HairStyle.BigAfro => "Grote afro",
+        HairStyle.Long => "Lang",
+        HairStyle.Bun => "Knotje",
+        HairStyle.Mohawk => "Hanenkam",
+        HairStyle.Dreads => "Dreadlocks",
+        _ => s.ToString(),
+    };
+
+    private static string FacialName(FacialHair f) => f switch
+    {
+        FacialHair.None => "Geen",
+        FacialHair.Stubble => "Stoppels",
+        FacialHair.Moustache => "Snor",
+        FacialHair.Goatee => "Sik",
+        FacialHair.Beard => "Baard",
+        _ => f.ToString(),
+    };
+
+    private static string PatternName(ShirtPattern p) => p switch
+    {
+        ShirtPattern.Plain => "Effen",
+        ShirtPattern.Stripes => "Strepen",
+        ShirtPattern.Hoops => "Banen",
+        ShirtPattern.Halves => "Gedeeld",
+        ShirtPattern.Sash => "Sjerp",
+        _ => p.ToString(),
+    };
+
+    private static string EarringName(Earring e) => e switch
+    {
+        Earring.None => "Geen",
+        Earring.GoldStud => "Gouden knopje",
+        Earring.SilverStud => "Zilveren knopje",
+        Earring.Diamond => "Diamantje",
+        Earring.GoldHoop => "Gouden ring",
+        Earring.SilverHoop => "Zilveren ring",
+        _ => e.ToString(),
+    };
+
+    private static string GlassesName(Glasses g) => g switch
+    {
+        Glasses.None => "Geen",
+        Glasses.Round => "Rond",
+        Glasses.Square => "Vierkant",
+        Glasses.Sunglasses => "Zonnebril",
+        Glasses.Sport => "Sportbril",
+        _ => g.ToString(),
+    };
+}

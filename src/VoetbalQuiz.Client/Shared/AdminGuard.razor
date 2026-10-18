@@ -1,0 +1,16 @@
+@* Toont de inhoud enkel aan admins. *@
+@inject AuthState Auth
+
+@if (Auth.User?.IsAdmin == true)
+{
+    <AdminNav />
+    @ChildContent
+}
+else
+{
+    <div class="card center muted">Deze pagina is enkel voor admins.</div>
+}
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+}

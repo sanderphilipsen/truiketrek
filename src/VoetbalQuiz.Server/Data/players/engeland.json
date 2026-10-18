@@ -1,0 +1,899 @@
+[
+  {
+    "name": "Steven Gerrard",
+    "answers": [
+      "Gerrard"
+    ],
+    "country": "Engeland",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1980 geboren in Whiston, vlak bij een grote havenstad.",
+      "Ik was een box-to-box middenvelder met een harde trap van ver.",
+      "Bijna mijn hele carrière bleef ik trouw aan één club, waar ik jarenlang kapitein was.",
+      "In 2005 leidde ik de comeback van 3-0 achter tegen AC Milan in Istanbul.",
+      "Mijn uitglijder tegen Chelsea in 2014 kostte Liverpool misschien de titel."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Steven_Gerrard"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Frank Lampard",
+    "answers": [
+      "Lampard",
+      "Super Frank"
+    ],
+    "country": "Engeland",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1978 geboren in Romford, in het oosten van Londen.",
+      "Mijn vader speelde ook voor West Ham, en mijn oom was er trainer toen ik doorbrak.",
+      "Als middenvelder scoorde ik opvallend veel, vaak met late loopacties in de zestien.",
+      "Op het WK 2010 tegen Duitsland ging mijn schot ver over de lijn, maar de goal werd afgekeurd.",
+      "Met meer dan 200 goals ben ik topscorer aller tijden van Chelsea, waar ik nummer 8 droeg."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Frank_Lampard",
+      "https://www.sportskeeda.com/football/8-famous-players-donned-number-8-jersey/4"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Wayne Rooney",
+    "answers": [
+      "Rooney",
+      "Wazza"
+    ],
+    "country": "Engeland",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1985 geboren in Croxteth, een arbeiderswijk in Liverpool.",
+      "Ik groeide op als supporter van Everton, de club waar ik ook debuteerde.",
+      "Als zestienjarige maakte ik een prachtgoal die een einde maakte aan Arsenals lange ongeslagen reeks.",
+      "In 2011 scoorde ik een onvergetelijke omhaal in de derby tegen Manchester City.",
+      "Ik werd topscorer aller tijden van Manchester United en een tijd lang ook van Engeland."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Wayne_Rooney"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Cristiano Ronaldo",
+    "answers": [
+      "Ronaldo",
+      "CR7"
+    ],
+    "country": "Portugal",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1985 geboren in Funchal, op het eiland Madeira.",
+      "Als tiener verhuisde ik naar Lissabon om in de jeugd van Sporting te spelen.",
+      "In 2003 haalde Sir Alex Ferguson me naar Engeland na een indrukwekkende oefenmatch tegen zijn team.",
+      "In 2008 kopte ik raak in de Champions League-finale in Moskou en won ik mijn eerste Gouden Bal.",
+      "Bij Manchester United erfde ik in 2003 het rugnummer 7, dat eerder van David Beckham was."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Cristiano_Ronaldo",
+      "https://en.wikipedia.org/wiki/2008_UEFA_Champions_League_final"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Didier Drogba",
+    "answers": [
+      "Drogba"
+    ],
+    "country": "Ivoorkust",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1978 geboren in Abidjan, maar werd als vijfjarige naar Frankrijk gestuurd.",
+      "Ik brak pas laat door, via Le Mans, Guingamp en Marseille.",
+      "Na de WK-kwalificatie in 2005 riep ik live voor de camera op tot vrede in mijn thuisland.",
+      "In 2004 betaalde José Mourinho's Chelsea een recordbedrag voor mij aan Marseille.",
+      "In de Champions League-finale van 2012 in München kopte ik gelijk en trapte ik de winnende strafschop."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Didier_Drogba",
+      "https://en.wikipedia.org/wiki/2012_UEFA_Champions_League_final"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Sergio Agüero",
+    "answers": [
+      "Agüero",
+      "Aguero",
+      "Kun Agüero",
+      "Kun"
+    ],
+    "country": "Argentinië",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1988 geboren in Argentinië en debuteerde al op mijn vijftiende in de hoogste klasse.",
+      "Mijn bijnaam kreeg ik als kind, naar een figuurtje uit een Japanse tekenfilm.",
+      "Via Independiente en Atlético Madrid kwam ik in 2011 in Manchester terecht.",
+      "Ik was een tijdlang getrouwd met een dochter van Diego Maradona.",
+      "In blessuretijd tegen QPR in 2012 scoorde ik het doelpunt dat City de titel bezorgde."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sergio_Ag%C3%BCero"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Mohamed Salah",
+    "answers": [
+      "Salah",
+      "Mo Salah"
+    ],
+    "country": "Egypte",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1992 geboren in Nagrig, een dorp in de Nijldelta.",
+      "Als tiener reisde ik urenlang naar de trainingen van mijn club in Caïro en miste ik vaak school.",
+      "Bij Chelsea kreeg ik weinig kansen, waarna ik openbloeide bij Fiorentina en AS Roma.",
+      "In de Champions League-finale van 2018 moest ik geblesseerd naar de kant na een duel met Sergio Ramos.",
+      "Op Anfield noemen ze me de Egyptische Koning; in mijn eerste seizoen scoorde ik 32 competitiegoals."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mohamed_Salah"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Harry Kane",
+    "answers": [
+      "Kane"
+    ],
+    "country": "Engeland",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1993 geboren in Oost-Londen en groeide op in Walthamstow en Chingford.",
+      "Als jonge spits werd ik uitgeleend aan onder meer Leyton Orient, Millwall, Norwich en Leicester.",
+      "Ik werd meermaals topschutter van de Premier League, maar won in Engeland nooit een grote prijs.",
+      "Op het WK 2022 miste ik een cruciale strafschop in de kwartfinale tegen Frankrijk.",
+      "Ik ben topscorer aller tijden van Tottenham en van het Engelse nationale elftal."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Harry_Kane"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Erling Haaland",
+    "answers": [
+      "Haaland"
+    ],
+    "country": "Noorwegen",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 2000 geboren in Leeds, waar mijn vader toen voetbalde.",
+      "Op het WK onder 20 scoorde ik negen keer in één wedstrijd tegen Honduras.",
+      "Via Molde en Red Bull Salzburg trok ik naar Borussia Dortmund.",
+      "In 2022 kwam ik naar Manchester City, waar mijn vader ooit ook speelde.",
+      "In mijn eerste Premier League-seizoen scoorde ik een record van 36 goals en won ik de treble."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Erling_Haaland",
+      "https://en.wikipedia.org/wiki/Alf-Inge_H%C3%A5land"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Robin van Persie",
+    "answers": [
+      "Van Persie",
+      "RVP"
+    ],
+    "country": "Nederland",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in augustus 1983 geboren in Rotterdam.",
+      "Ik brak door bij Feyenoord en won er in 2002 de UEFA Cup.",
+      "In 2004 haalde Arsène Wenger me naar Londen, waar ik later aanvoerder werd.",
+      "In 2012 maakte ik de omstreden overstap naar Manchester United en werd ik meteen kampioen.",
+      "Op het WK 2014 scoorde ik met een spectaculaire duikkopbal tegen Spanje."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Robin_van_Persie",
+      "https://nl.wikipedia.org/wiki/Robin_van_Persie"
+    ],
+    "tags": [
+      "oranje"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Luis Suárez",
+    "answers": [
+      "Suárez",
+      "Suarez"
+    ],
+    "country": "Uruguay",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1987 geboren in Salto en groeide op in Montevideo.",
+      "Mijn Europese avontuur begon in Nederland, bij Groningen en daarna bij Ajax.",
+      "Op het WK 2010 hield ik tegen Ghana een bal met de hand van de doellijn.",
+      "Bij Liverpool scoorde ik 31 competitiegoals in 2013-14; een seizoen eerder beet ik Branislav Ivanović.",
+      "Later vormde ik bij Barcelona de MSN-aanval met Messi en Neymar."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Luis_Su%C3%A1rez_(footballer,_born_1987)"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Gareth Bale",
+    "answers": [
+      "Bale"
+    ],
+    "country": "Wales",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1989 geboren in Cardiff.",
+      "Ik begon als linksachter in de jeugd van Southampton.",
+      "In 2010 scoorde ik een hattrick in San Siro tegen Inter Milaan.",
+      "In 2013 verkocht Tottenham mij voor een recordbedrag aan Real Madrid.",
+      "In de Champions League-finale van 2018 tegen Liverpool scoorde ik met een fenomenale omhaal."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gareth_Bale"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Cesc Fàbregas",
+    "answers": [
+      "Fàbregas",
+      "Fabregas",
+      "Cesc"
+    ],
+    "country": "Spanje",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1987 geboren in Arenys de Mar, aan de Catalaanse kust.",
+      "Ik doorliep de jeugdopleiding van Barcelona, samen met Messi en Piqué.",
+      "Op mijn zestiende vertrok ik naar Londen, waar ik later aanvoerder van Arsenal werd.",
+      "In de WK-finale van 2010 gaf ik de assist voor de winnende goal van Iniesta.",
+      "Na mijn terugkeer naar Barcelona werd ik met Chelsea nog twee keer Engels kampioen."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Cesc_F%C3%A0bregas"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Thierry Henry",
+    "answers": [
+      "Henry",
+      "Titi"
+    ],
+    "country": "Frankrijk",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1977 geboren in Les Ulis, een voorstad van Parijs.",
+      "Bij Monaco brak ik door als vleugelspeler onder Arsène Wenger.",
+      "Na een moeilijk jaar bij Juventus werd ik in Londen omgevormd tot spits.",
+      "Ik was de ster van de 'Invincibles', die in 2003-04 ongeslagen kampioen werden.",
+      "Ik ben topscorer aller tijden van Arsenal, en er staat een standbeeld van mij aan het Emirates."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Thierry_Henry",
+      "https://www.vanguardngr.com/2011/12/henry-stunned-by-arsenal-statue-tribute/amp/"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Jamie Vardy",
+    "answers": [
+      "Vardy"
+    ],
+    "country": "Engeland",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1987 geboren in Sheffield en werd als tiener weggestuurd door Sheffield Wednesday.",
+      "Jarenlang speelde ik amateurvoetbal en werkte ik overdag als technicus die medische spalken maakte.",
+      "Via Stocksbridge Park Steels, Halifax en Fleetwood klom ik op naar de Premier League.",
+      "In 2015 scoorde ik in elf opeenvolgende Premier League-wedstrijden, een record.",
+      "In 2016 werd ik met Leicester City sensationeel kampioen van Engeland."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jamie_Vardy"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "N'Golo Kanté",
+    "answers": [
+      "Kanté",
+      "Kante"
+    ],
+    "country": "Frankrijk",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1991 geboren in Parijs, als zoon van Malinese ouders.",
+      "Ik ben klein van gestalte, maar lijk overal tegelijk op het veld te zijn.",
+      "Via Boulogne en Caen kwam ik in 2015 in Engeland terecht.",
+      "Ik werd twee jaar na elkaar Engels kampioen, met twee verschillende clubs.",
+      "In 2018 werd ik wereldkampioen en in 2021 won ik de Champions League met Chelsea."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/N%27Golo_Kant%C3%A9"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Riyad Mahrez",
+    "answers": [
+      "Mahrez"
+    ],
+    "country": "Algerije",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1991 geboren in Clichy, bij Parijs, en speelde in de jeugd van Sarcelles.",
+      "Ik ben een linksvoetige rechtsbuiten die graag naar binnen snijdt.",
+      "Via Le Havre kwam ik in 2014 voor een klein bedrag naar Engeland.",
+      "In 2016 werd ik verkozen tot speler van het jaar in Engeland, na een sensationele titel met Leicester.",
+      "In 2019 won ik de Afrika Cup, na mijn beslissende vrije trap in de halve finale."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Riyad_Mahrez"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Son Heung-min",
+    "answers": [
+      "Son",
+      "Heung-min",
+      "Sonny"
+    ],
+    "country": "Zuid-Korea",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1992 geboren in Chuncheon; mijn vader was zelf profvoetballer en later trainer.",
+      "Als tiener verhuisde ik naar Duitsland, waar ik speelde voor Hamburg en Leverkusen.",
+      "In 2018 won ik goud op de Aziatische Spelen, wat me vrijstelling van legerdienst opleverde.",
+      "Voor mijn solo van eigen helft tegen Burnley kreeg ik de Puskás Award.",
+      "Bij Tottenham vormde ik een gevaarlijk duo met Harry Kane en werd ik in 2022 gedeeld topschutter."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Son_Heung-min"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Bukayo Saka",
+    "answers": [
+      "Saka"
+    ],
+    "country": "Engeland",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 2001 geboren in Londen, als zoon van Nigeriaanse ouders.",
+      "Ik kom uit Hale End, de jeugdacademie van mijn club.",
+      "Ik werd eerst vaak als linksachter gebruikt, maar maakte furore op de rechterflank.",
+      "In de finale van EK 2020 miste ik de beslissende strafschop tegen Italië.",
+      "Bij Arsenal werd ik een publiekslieveling met rugnummer 7."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Bukayo_Saka"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Virgil van Dijk",
+    "answers": [
+      "Van Dijk",
+      "VVD"
+    ],
+    "country": "Nederland",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1991 geboren in Breda.",
+      "Als tiener verdiende ik bij als afwasser.",
+      "Via Groningen, Celtic en Southampton maakte ik naam als centrale verdediger.",
+      "In 2018 werd ik de duurste verdediger ter wereld met mijn transfer naar Liverpool.",
+      "In 2019 eindigde ik tweede bij de Gouden Bal, na winst in de Champions League."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Virgil_van_Dijk"
+    ],
+    "tags": [
+      "champions-league",
+      "oranje"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Marcus Rashford",
+    "answers": [
+      "Rashford"
+    ],
+    "country": "Engeland",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1997 geboren in Manchester en groeide onder meer op in Wythenshawe.",
+      "Bij mijn debuut in 2016 scoorde ik twee keer tegen FC Midtjylland.",
+      "Tijdens de coronacrisis voerde ik campagne voor gratis schoolmaaltijden voor kinderen.",
+      "In de finale van EK 2020 tegen Italië miste ik een strafschop in de shoot-out.",
+      "Ik kom uit de eigen jeugd van Manchester United en droeg er rugnummer 10."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Marcus_Rashford"
+    ],
+    "tags": [
+      "halloween"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "John Terry",
+    "answers": [
+      "Terry",
+      "JT"
+    ],
+    "country": "Engeland",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1980 geboren in Barking, in het oosten van Londen.",
+      "Als centrale verdediger gooide ik me met alles wat ik had voor elke bal.",
+      "Ik was jarenlang aanvoerder van Chelsea en van Engeland.",
+      "In de Champions League-finale van 2008 gleed ik uit bij mijn beslissende strafschop.",
+      "In 2012 was ik geschorst voor de finale in München, maar vierde ik in volledig tenue mee."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/John_Terry",
+      "https://en.wikipedia.org/wiki/2012_UEFA_Champions_League_final"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Rio Ferdinand",
+    "answers": [
+      "Ferdinand",
+      "Rio"
+    ],
+    "country": "Engeland",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1978 geboren in Londen en groeide op in Peckham.",
+      "Ik brak door bij West Ham en werd daarna een recordaankoop van Leeds United.",
+      "Mijn broer werd ook profvoetballer en centrale verdediger, onder meer bij West Ham.",
+      "In 2003 werd ik acht maanden geschorst omdat ik een dopingcontrole had gemist.",
+      "Bij Manchester United vormde ik een ijzersterk centraal duo met Nemanja Vidić."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Rio_Ferdinand"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Paul Scholes",
+    "answers": [
+      "Scholes"
+    ],
+    "country": "Engeland",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1974 geboren in Salford en speel met astma.",
+      "Ik maakte deel uit van de beroemde 'Class of '92'.",
+      "Door een schorsing miste ik de Champions League-finale van 1999.",
+      "In 2012 kwam ik verrassend terug uit pensioen bij mijn enige club.",
+      "Door mijn rode haar noemden ze me op Old Trafford de 'Ginger Prince'."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Paul_Scholes",
+      "https://en.wikipedia.org/wiki/The_Ginger_Prince"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Carlos Tevez",
+    "answers": [
+      "Tevez",
+      "Carlitos"
+    ],
+    "country": "Argentinië",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1984 geboren in Fuerte Apache, een beruchte wijk van Buenos Aires.",
+      "Het litteken in mijn nek komt van een ongeluk met kokend water toen ik klein was.",
+      "Via Boca Juniors en Corinthians kwam ik bij West Ham, dat ik in 2007 van degradatie redde.",
+      "Ik speelde voor beide clubs uit Manchester, wat veel kwaad bloed zette.",
+      "In 2011 weigerde ik volgens Roberto Mancini in te vallen tegen Bayern München."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Carlos_Tevez"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Fernando Torres",
+    "answers": [
+      "Torres",
+      "El Niño",
+      "El Nino"
+    ],
+    "country": "Spanje",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1984 geboren in Fuenlabrada, vlak bij Madrid.",
+      "Op mijn negentiende werd ik al aanvoerder van Atlético Madrid.",
+      "In de finale van EK 2008 scoorde ik het enige doelpunt tegen Duitsland.",
+      "In 2011 verhuisde ik voor 50 miljoen pond van Liverpool naar Chelsea.",
+      "Door mijn jongensachtige uiterlijk kreeg ik de bijnaam 'het kind'."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Fernando_Torres"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "David Silva",
+    "answers": [
+      "David Silva",
+      "Merlin",
+      "El Mago"
+    ],
+    "country": "Spanje",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1986 geboren in Arguineguín, op Gran Canaria.",
+      "Ik ben een kleine, linksvoetige spelmaker met een fluwelen techniek.",
+      "Na uitleenbeurten aan Eibar en Celta Vigo brak ik door bij Valencia.",
+      "Met Spanje won ik twee EK's en het WK van 2010.",
+      "Bij Manchester City noemden ze me 'Merlin', en aan het stadion staat een standbeeld van mij."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/David_Silva"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Bruno Fernandes",
+    "answers": [
+      "Fernandes",
+      "Bruno Fernandes"
+    ],
+    "country": "Portugal",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1994 geboren in Maia, vlak bij Porto.",
+      "Als tiener vertrok ik naar Italië, waar ik speelde voor Novara, Udinese en Sampdoria.",
+      "Bij Sporting Lissabon werd ik een scorende middenvelder en aanvoerder.",
+      "Ik ben bekend om mijn huppelende aanloop bij strafschoppen.",
+      "In januari 2020 kwam ik naar Manchester United, waar ik later aanvoerder werd."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Bruno_Fernandes",
+      "https://www.manutd.com/en/news/detail/bruno-fernandes-the-story-of-his-career-so-far",
+      "https://www.eurosport.co.uk/football/premier-league/2020-2021/should-bruno-fernandes-penalty-technique-be-banned-ian-wright-questions-man-utd-takers-jump_sto8004009/story.shtml"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Martin Ødegaard",
+    "answers": [
+      "Ødegaard",
+      "Odegaard"
+    ],
+    "country": "Noorwegen",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1998 geboren in Drammen, en mijn vader was ook voetballer.",
+      "Op mijn vijftiende werd ik de jongste international ooit van mijn land.",
+      "In 2015 tekende ik als tiener bij Real Madrid.",
+      "Ik werd uitgeleend aan Heerenveen, Vitesse en Real Sociedad.",
+      "Bij Arsenal werd ik aanvoerder en spelmaker in het team van Mikel Arteta."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Martin_%C3%98degaard"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Cole Palmer",
+    "answers": [
+      "Palmer",
+      "Cold Palmer"
+    ],
+    "country": "Engeland",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 2002 geboren in Wythenshawe, Manchester.",
+      "Ik kom uit de jeugdopleiding van Manchester City.",
+      "In 2023 maakte ik de overstap naar Chelsea en ontplofte ik meteen.",
+      "In de finale van EK 2024 scoorde ik de gelijkmaker tegen Spanje.",
+      "Mijn bijnaam verwijst naar mijn koelbloedigheid; bij goals kruis ik mijn armen en wrijf ik over mijn schouders."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Cole_Palmer"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Petr Čech",
+    "answers": [
+      "Čech",
+      "Cech"
+    ],
+    "country": "Tsjechië",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1982 geboren in Pilsen.",
+      "Via Sparta Praag en Rennes kwam ik in 2004 naar Londen.",
+      "In 2006 liep ik een schedelbreuk op na een botsing in een match tegen Reading.",
+      "Sindsdien stond ik altijd met een beschermende helm in doel.",
+      "Na Chelsea keepte ik nog voor Arsenal, en na mijn carrière werd ik ijshockeydoelman."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Petr_%C4%8Cech"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Nemanja Vidić",
+    "answers": [
+      "Vidić",
+      "Vidic"
+    ],
+    "country": "Servië",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1981 geboren in Užice, in het toenmalige Joegoslavië.",
+      "Ik speelde voor Rode Ster Belgrado en Spartak Moskou.",
+      "In januari 2006 haalde Sir Alex Ferguson me naar Manchester.",
+      "Ik was een keiharde centrale verdediger en vormde een duo met Rio Ferdinand.",
+      "Na jaren als aanvoerder van Manchester United vertrok ik in 2014 naar Inter."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Nemanja_Vidi%C4%87"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Yaya Touré",
+    "answers": [
+      "Yaya",
+      "Yaya Touré",
+      "Yaya Toure"
+    ],
+    "country": "Ivoorkust",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1983 geboren in Bouaké, in Ivoorkust.",
+      "Mijn eerste Europese club was KSK Beveren, in België.",
+      "Ook mijn oudere broer speelde jarenlang in de Premier League en was zelfs mijn ploegmaat bij City.",
+      "Ik won de Champions League met Barcelona voor ik in 2010 naar Manchester verhuisde.",
+      "Ik werd vier keer Afrikaans voetballer van het jaar en won drie titels met City."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Yaya_Tour%C3%A9"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Ryan Giggs",
+    "answers": [
+      "Giggs"
+    ],
+    "country": "Wales",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1973 geboren in Cardiff en verhuisde als kind naar Salford.",
+      "Ik was een snelle linksbuiten die later centraal op het middenveld speelde.",
+      "Ik speelde mijn hele profcarrière voor één club en won dertien landstitels.",
+      "In 1999 scoorde ik in de FA Cup-halve finale een legendarische solo tegen Arsenal en zwierde ik mijn shirt rond.",
+      "Ik speelde de meeste wedstrijden ooit voor Manchester United."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ryan_Giggs"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Dimitar Berbatov",
+    "answers": [
+      "Berbatov",
+      "Berba"
+    ],
+    "country": "Bulgarije",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1981 geboren in Blagoevgrad.",
+      "Ik brak door bij CSKA Sofia en speelde in 2002 de Champions League-finale met Leverkusen.",
+      "Ik stond bekend om mijn elegante balcontrole en lome speelstijl.",
+      "Na Tottenham trok ik in 2008 naar Manchester United.",
+      "In 2010 scoorde ik vijf keer in één wedstrijd tegen Blackburn Rovers."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dimitar_Berbatov"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-17"
+  }
+]

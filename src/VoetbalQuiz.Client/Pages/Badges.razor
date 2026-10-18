@@ -1,0 +1,43 @@
+@page "/badges"
+@attribute [Authorize]
+@inject ApiClient Api
+@inject AuthState Auth
+
+<PageTitle>Badges – Truitje Trek</PageTitle>
+
+<h1 class="page-title">🎖️ Mijn badges</h1>
+
+@if (_error is not null)
+{
+    <p class="error">@_error</p>
+}
+else if (_p is null)
+{
+    <div class="center-msg">Laden…</div>
+}
+else
+{
+    var earned = _p.Badges.Count(b => b.Earned);
+    <section class="card badge-summary">
+        <div class="badge-meter"><span style="width:@(earned * 100 / Math.Max(1, _p.Badges.Count))%"></span></div>
+        <p class="center"><b>@earned</b> van de <b>@_p.Badges.Count</b> badges verdiend · @_p.Trophies.Count @(_p.Trophies.Count == 1 ? "beker" : "bekers")</p>
+    </section>
+
+    <BadgesAndTrophies Profile="_p" />
+}
+
+@code {
+    private PublicProfile? _p;
+    private string? _error;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var state = await Auth.GetAuthenticationStateAsync();
+            var name = state.User.Identity?.Name ?? throw new ApiException("Je bent niet aangemeld.");
+            _p = await Api.GetPlayerProfileAsync(name);
+        }
+        catch (ApiException ex) { _error = ex.Message; }
+    }
+}

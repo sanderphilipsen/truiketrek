@@ -1,0 +1,38 @@
+@inject ApiClient Api
+
+<div class="admin-row">
+    <select @bind="_status">
+        @foreach (var s in Enum.GetValues<FeedbackStatus>())
+        {
+            <option value="@s">@s</option>
+        }
+    </select>
+    <input @bind="_reply" placeholder="Antwoord (optioneel)" />
+    <button class="btn" @onclick="SaveAsync" disabled="@_busy">Opslaan</button>
+</div>
+
+@code {
+    [Parameter, EditorRequired] public FeedbackItem Item { get; set; } = null!;
+    [Parameter] public EventCallback OnSaved { get; set; }
+
+    private FeedbackStatus _status;
+    private string? _reply;
+    private bool _busy;
+
+    protected override void OnParametersSet()
+    {
+        _status = Item.Status;
+        _reply = Item.Reply;
+    }
+
+    private async Task SaveAsync()
+    {
+        _busy = true;
+        try
+        {
+            await Api.UpdateFeedbackAsync(Item.Id, new FeedbackUpdate(_status, _reply));
+            await OnSaved.InvokeAsync();
+        }
+        finally { _busy = false; }
+    }
+}

@@ -1,0 +1,108 @@
+@page "/admin/vragen"
+@attribute [Authorize]
+@inject ApiClient Api
+@inject AuthState Auth
+@inject NavigationManager Nav
+
+<PageTitle>Vragenbank – Admin</PageTitle>
+
+<AdminGuard>
+    <div class="type-tabs">
+        @foreach (var t in QuestionTypes.All.Where(t => !t.FromPlayers))
+        {
+            var type = t.Type;
+            <button class="@(_type == type ? "on" : "")" @onclick="() => TypeAsync(type)">@t.Icon @t.Name</button>
+        }
+    </div>
+    <p class="muted light-text">"Wie ben ik?"-vragen zijn spelers: die beheer je bij <a href="admin/spelers" class="light-link">Spelers</a>.</p>
+
+    <div class="toolbar">
+        <div class="segmented">
+            <button class="@(_status is null ? "on" : "")" @onclick="() => StatusAsync(null)">Alle</button>
+            <button class="@(_status == PlayerStatus.Review ? "on" : "")" @onclick="() => StatusAsync(PlayerStatus.Review)">Te keuren</button>
+            <button class="@(_status == PlayerStatus.Approved ? "on" : "")" @onclick="() => StatusAsync(PlayerStatus.Approved)">Goedgekeurd</button>
+            <button class="@(_status == PlayerStatus.Rejected ? "on" : "")" @onclick="() => StatusAsync(PlayerStatus.Rejected)">Afgewezen</button>
+        </div>
+        <input class="grow" type="search" value="@_search" placeholder="🔍 Zoek…" @oninput="e => SearchAsync(e.Value?.ToString())" />
+        <a class="btn primary" href="admin/vragen/0?type=@_type">+ Vraag toevoegen</a>
+    </div>
+
+    @if (_items is null)
+    {
+        <div class="center-msg">Laden…</div>
+    }
+    else if (_items.Count == 0)
+    {
+        <div class="card center">
+            <p class="muted">Nog geen vragen van dit type met deze filters.</p>
+            <a class="btn primary" href="admin/vragen/0?type=@_type">+ Eerste vraag toevoegen</a>
+        </div>
+    }
+    else
+    {
+        <p class="list-count">@_items.Count vragen</p>
+        <div class="player-table">
+            <div class="pt-row q-row pt-head"><span>Vraag</span><span>Antwoord</span><span>Status</span><span>Gevraagd</span></div>
+            @foreach (var q in _items)
+            {
+                <a class="pt-row q-row" href="admin/vragen/@q.Id">
+                    <span class="pt-name">
+                        <b>@q.Label</b>
+                        @if (q.ReviewNote is not null) { <small class="note">⚠️ @q.ReviewNote</small> }
+                    </span>
+                    <span class="pt-meta">@q.Answer</span>
+                    <span><span class="pill @AdminSpelers.StatusCss(q.Status)">@AdminSpelers.StatusLabel(q.Status)</span></span>
+                    <span class="pt-meta">@(q.LastUsed is { } d ? $"{q.TimesUsed}× · {d:dd/MM}" : "nog nooit")</span>
+                </a>
+            }
+        </div>
+    }
+</AdminGuard>
+
+@code {
+    private QuestionType _type = QuestionType.Snelvuur;
+    private PlayerStatus? _status;
+    private string _search = "";
+    private List<QuizItemListItem>? _items;
+    private CancellationTokenSource? _delay;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Auth.User?.IsAdmin != true) return;
+        var query = System.Web.HttpUtility.ParseQueryString(Nav.ToAbsoluteUri(Nav.Uri).Query);
+        if (Enum.TryParse<QuestionType>(query["type"], out var t) && !QuestionTypes.Get(t).FromPlayers) _type = t;
+        await LoadAsync();
+    }
+
+    private async Task LoadAsync()
+    {
+        try { _items = await Api.GetQuizItemsAsync(_type, _status, _search); }
+        catch (ApiException) { _items = []; }
+    }
+
+    private async Task TypeAsync(QuestionType type)
+    {
+        _type = type;
+        _items = null;
+        await LoadAsync();
+    }
+
+    private async Task StatusAsync(PlayerStatus? status)
+    {
+        _status = status;
+        await LoadAsync();
+    }
+
+    private async Task SearchAsync(string? text)
+    {
+        _search = text ?? "";
+        _delay?.Cancel();
+        _delay = new CancellationTokenSource();
+        try
+        {
+            await Task.Delay(250, _delay.Token);
+            await LoadAsync();
+        }
+        catch (TaskCanceledException) { }
+    }
+}
