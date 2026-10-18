@@ -8,8 +8,9 @@
 {
     @if (!flare.ByMe)
     {
-        <div class="derby-smoke" style="--since:@Secs(flare.Since)" aria-hidden="true">
-            @for (var i = 0; i < 9; i++)
+        @* De rook komt uit de fakkel van het mannetje rechtsonder en blijft aanvoeren zolang het vuur brandt. *@
+        <div class="derby-smoke" style="--since:@Start(flare);--life:@Secs(DerbyRules.FlareSeconds)" aria-hidden="true">
+            @for (var i = 0; i < 10; i++)
             {
                 <span class="puff p@(i)"></span>
             }
@@ -24,9 +25,10 @@
 @if (Flare is not null || Trump is not null)
 {
     <div class="derby-corner" aria-hidden="true">
+        @* Het vuur staat altijd helemaal rechts (CSS order): de rook komt uit zijn fakkel. *@
         @if (Flare is { } f)
         {
-            <figure class="derby-figure flare-fan" style="--since:@Secs(f.Since)">
+            <figure class="derby-figure flare-fan" style="--since:@Start(f)">
                 <svg viewBox="0 0 120 170" width="96" height="136">
                     <defs>
                         <radialGradient id="flare-glow">
@@ -109,7 +111,7 @@
 
 @if (RedCardOnMe is { } card)
 {
-    <div class="derby-redcard" style="--since:@Secs(card.Since)" role="alert">
+    <div class="derby-redcard" style="--since:@Start(card)" role="alert">
         <div class="rc-card"></div>
         <div class="rc-text"><b>ROOD!</b> @card.By geeft je een rode kaart: halve punten voor deze vraag.</div>
     </div>
@@ -138,4 +140,25 @@
         : null;
 
     private static string Secs(double s) => $"{Math.Max(0, s).ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)}s";
+
+    /// <summary>
+    /// Hoe ver een animatie al was toen ze op het scherm kwam. Eén keer vastgelegd per effect: een CSS-animatie
+    /// loopt zelf verder, dus bij elke nieuwe toestand de delay bijwerken zou ze dubbel zo snel laten lopen.
+    /// </summary>
+    private readonly Dictionary<string, string> _starts = [];
+
+    private string Start(DerbyEvent e)
+    {
+        var key = Key(e);
+        if (!_starts.TryGetValue(key, out var start)) _starts[key] = start = Secs(LocalSince(e));
+        return start;
+    }
+
+    private static string Key(DerbyEvent e) => $"{e.Weapon}|{e.By}|{e.Target}";
+
+    protected override void OnParametersSet()
+    {
+        var current = Derby.Events.Select(Key).ToHashSet();
+        foreach (var gone in _starts.Keys.Where(k => !current.Contains(k)).ToList()) _starts.Remove(gone);
+    }
 }

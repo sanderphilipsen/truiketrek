@@ -14,15 +14,15 @@ public static class DerbyRules
     public static readonly List<DerbyWeaponInfo> All =
     [
         new(DerbyWeapon.RodeKaart, "Rode kaart", "🟥", "Kies een tegenstander: die krijgt maar de helft van zijn punten voor deze vraag."),
-        new(DerbyWeapon.BengaalsVuur, "Bengaals vuur", "🎆", "Rode rook trekt over het scherm van je tegenstanders: even zien ze niets."),
+        new(DerbyWeapon.BengaalsVuur, "Bengaals vuur", "🎆", "Steek het af: rode rook trekt over het scherm van al je tegenstanders en ze zien een hele tijd niets."),
         new(DerbyWeapon.Wissel, "Wissel", "🔁", "Iedereen krijgt een nieuwe vraag van hetzelfde type, met een volle timer."),
-        new(DerbyWeapon.Trump, "Trump booster", "🟨", "Jouw antwoord wordt het juiste. Wie het echte antwoord gaf, heeft het fout."),
+        new(DerbyWeapon.Trump, "Trump booster", "🟨", "Jouw antwoord wordt het juiste. Wie het echte antwoord gaf, heeft het fout. Enkel bij Snelvuur, Wie hoort er niet bij en Raad het jaar."),
     ];
 
     public static DerbyWeaponInfo Get(DerbyWeapon weapon) => All.First(w => w.Weapon == weapon);
 
-    /// <summary>Hoe lang de rook van het bengaals vuur het scherm onleesbaar maakt.</summary>
-    public const double FlareSeconds = 6;
+    /// <summary>Hoe lang het bengaals vuur brandt en de rook het scherm van de anderen onleesbaar maakt (tot de vraag afloopt).</summary>
+    public const double FlareSeconds = 12;
 
     /// <summary>Aftellen met het wisselbord voor de nieuwe vraag begint.</summary>
     public const double SwapCountdownSeconds = 3;

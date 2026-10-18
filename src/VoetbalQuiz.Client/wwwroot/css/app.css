@@ -1178,6 +1178,7 @@ button.choice:active { transform: scale(.97); }
 .derby-toggle .switch::after {
     content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; transition: transform .2s;
 }
+.derby-toggle .derby-text .derby-note { color: #9a6b00; margin-top: 2px; }
 .derby-toggle.active { border-style: solid; border-color: var(--fail); background: #fff3f3; }
 .derby-toggle.active .derby-flame { filter: none; }
 .derby-toggle.active .switch { background: var(--fail); }
@@ -1266,6 +1267,7 @@ button.choice:active { transform: scale(.97); }
 }
 @keyframes figure-in { from { transform: translateY(120%); } }
 
+.flare-fan { order: 2; } /* altijd helemaal rechts: daar komt de rook uit */
 .flare-fan svg { animation: fan-bounce .5s ease-in-out infinite alternate; }
 .flare-fan .flare-fire { transform-origin: 96px 22px; animation: flare-flicker .12s steps(2) infinite alternate; }
 .flare-fan .flare-sparks circle { animation: spark .9s ease-out infinite; }
@@ -1291,32 +1293,34 @@ button.choice:active { transform: scale(.97); }
 @keyframes thumb-pump { to { transform: translateY(-5px) rotate(-6deg); } }
 @keyframes bubble-pop { 0%, 60%, 100% { transform: scale(1); } 70% { transform: scale(1.18) rotate(-4deg); } }
 
-/* Rode rook van het bengaals vuur: 6 seconden, loopt synchroon via een negatieve delay */
+/* Rode rook van het bengaals vuur. Ze komt uit de fakkel van het mannetje rechtsonder (--fx/--fy),
+   wolkjes blijven aanvoeren zolang het vuur brandt (--life), en alles loopt synchroon via een negatieve delay. */
 .derby-smoke {
+    --fx: 28px; --fy: calc(env(safe-area-inset-bottom) + 200px);
     position: fixed; inset: 0; z-index: 40; pointer-events: none; overflow: hidden;
-    backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px);
-    background: rgba(150, 10, 20, .35);
-    animation: smoke-life 6s linear both; animation-delay: calc(var(--since) * -1);
+    backdrop-filter: blur(9px); -webkit-backdrop-filter: blur(9px);
+    background: radial-gradient(circle at calc(100% - var(--fx)) calc(100% - var(--fy)), rgba(200, 15, 30, .9), rgba(150, 10, 20, .75) 60%);
+    animation: smoke-life var(--life) linear both; animation-delay: calc(var(--since) * -1);
 }
 .derby-smoke .puff {
-    position: absolute; right: -30vmax; bottom: -30vmax; width: 70vmax; height: 70vmax; border-radius: 50%;
-    background: radial-gradient(circle, rgba(225, 30, 45, .95) 0%, rgba(190, 20, 35, .8) 40%, rgba(160, 10, 25, 0) 70%);
-    animation: puff-drift 6s ease-out both; animation-delay: calc(var(--d) - var(--since));
+    position: absolute; right: calc(var(--fx) - 35vmax); bottom: calc(var(--fy) - 35vmax); width: 70vmax; height: 70vmax; border-radius: 50%;
+    background: radial-gradient(circle, rgba(235, 40, 55, .95) 0%, rgba(195, 20, 35, .85) 38%, rgba(160, 10, 25, 0) 68%);
+    animation: puff-rise 3.2s ease-out infinite; animation-delay: calc(var(--d) - var(--since));
 }
-.derby-smoke .p0 { --d: 0s; --x: -40vw; --y: -30vh; }
-.derby-smoke .p1 { --d: .2s; --x: -70vw; --y: -55vh; }
-.derby-smoke .p2 { --d: .4s; --x: -95vw; --y: -80vh; }
-.derby-smoke .p3 { --d: .6s; --x: -55vw; --y: -95vh; }
-.derby-smoke .p4 { --d: .8s; --x: -110vw; --y: -40vh; }
-.derby-smoke .p5 { --d: 1s; --x: -30vw; --y: -70vh; }
-.derby-smoke .p6 { --d: 1.2s; --x: -85vw; --y: -15vh; }
-.derby-smoke .p7 { --d: 1.4s; --x: -120vw; --y: -100vh; }
-.derby-smoke .p8 { --d: 1.6s; --x: -60vw; --y: -60vh; }
-@keyframes smoke-life { 0% { opacity: 0; } 8% { opacity: 1; } 72% { opacity: 1; } 100% { opacity: 0; } }
-@keyframes puff-drift {
-    from { transform: translate(0, 0) scale(.3); opacity: 0; }
-    15% { opacity: 1; }
-    to { transform: translate(var(--x), var(--y)) scale(1.4); opacity: .9; }
+.derby-smoke .p0 { --d: 0s; --x: -30vw; --y: -45vh; }
+.derby-smoke .p1 { --d: .32s; --x: -70vw; --y: -35vh; }
+.derby-smoke .p2 { --d: .64s; --x: -45vw; --y: -80vh; }
+.derby-smoke .p3 { --d: .96s; --x: -95vw; --y: -70vh; }
+.derby-smoke .p4 { --d: 1.28s; --x: -15vw; --y: -90vh; }
+.derby-smoke .p5 { --d: 1.6s; --x: -85vw; --y: -20vh; }
+.derby-smoke .p6 { --d: 1.92s; --x: -60vw; --y: -100vh; }
+.derby-smoke .p7 { --d: 2.24s; --x: -110vw; --y: -95vh; }
+.derby-smoke .p8 { --d: 2.56s; --x: -40vw; --y: -15vh; }
+.derby-smoke .p9 { --d: 2.88s; --x: -100vw; --y: -45vh; }
+@keyframes smoke-life { 0% { opacity: 0; } 5% { opacity: 1; } 88% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes puff-rise {
+    from { transform: translate(0, 0) scale(.04); opacity: 1; }
+    to { transform: translate(var(--x), var(--y)) scale(1.5); opacity: .85; }
 }
 
 .derby-toast {

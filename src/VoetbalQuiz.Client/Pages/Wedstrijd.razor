@@ -47,7 +47,14 @@ else
                         <ul>
                             @foreach (var w in DerbyRules.All)
                             {
-                                <li>@w.Icon <b>@w.Name</b>: @w.HowTo</li>
+                                @if (w.Weapon == DerbyWeapon.Trump && !_state.Types.Any(DerbyRules.TrumpWorksOn))
+                                {
+                                    <li class="muted">@w.Icon <s>@w.Name</s>: zit niet in deze derby, want er zijn geen vragen met antwoordopties of een jaartal.</li>
+                                }
+                                else
+                                {
+                                    <li>@w.Icon <b>@w.Name</b>: @w.HowTo</li>
+                                }
                             }
                         </ul>
                         <small class="muted">Op de eerste en de laatste vraag geldt wapenstilstand.</small>
@@ -329,6 +336,8 @@ else
             _syncedAt = DateTime.UtcNow;
             _syncedElapsed = state.PhaseElapsedSeconds;
             _state = state;
+            // Een doelwit kiezen hoort enkel bij een rode kaart die nog niet gebruikt is.
+            if (state.Derby is not { MyWeapon: DerbyWeapon.RodeKaart, MyWeaponUsed: false }) _picking = false;
             _error = null;
         }
         catch (ApiException ex) { _error = ex.Message; }
