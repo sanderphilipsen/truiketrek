@@ -25,6 +25,10 @@ async function onInstall(event) {
         .filter(asset => !offlineAssetsExclude.some(pattern => pattern.test(asset.url)))
         .map(asset => new Request(asset.url, { integrity: asset.hash, cache: 'no-cache' }));
     await caches.open(cacheName).then(cache => cache.addAll(assetsRequests));
+
+    // Niet wachten tot alle tabbladen dicht zijn: anders blijven spelers na een deploy
+    // oude bestanden uit de vorige cache krijgen. index.html toont dan een herlaadmelding.
+    await self.skipWaiting();
 }
 
 async function onActivate(event) {
@@ -35,6 +39,9 @@ async function onActivate(event) {
     await Promise.all(cacheKeys
         .filter(key => key.startsWith(cacheNamePrefix) && key !== cacheName)
         .map(key => caches.delete(key)));
+
+    // Ook open tabbladen meteen door de nieuwe versie laten bedienen.
+    await self.clients.claim();
 }
 
 async function onFetch(event) {

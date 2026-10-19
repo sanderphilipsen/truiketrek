@@ -72,6 +72,11 @@ app.MapMatchEndpoints();
 app.MapAdminEndpoints();
 app.MapProfileEndpoints();
 app.MapHub<MatchHub>("/hubs/match");
-app.MapFallbackToFile("index.html");
+// index.html altijd opnieuw laten valideren: zonder Cache-Control houdt een browser na een deploy
+// een oude versie vast die naar verdwenen framework-bestanden verwijst, en start de app niet meer.
+app.MapFallbackToFile("index.html", new StaticFileOptions
+{
+    OnPrepareResponse = ctx => ctx.Context.Response.Headers.CacheControl = "no-cache"
+});
 
 app.Run();

@@ -37,7 +37,29 @@
     </div>
     <!-- Geen #[.{fingerprint}]: bij publish wordt index.html niet herschreven en zou de placeholder letterlijk blijven staan. -->
     <script src="_framework/blazor.webassembly.js"></script>
-    <script>navigator.serviceWorker.register('service-worker.js', { updateViaCache: 'none' });</script>
+    <div id="update-banner" hidden>
+        Er is een nieuwe versie van Truitje Trek.
+        <a href="." class="reload">Herladen</a>
+    </div>
+    <script>
+        if ('serviceWorker' in navigator) {
+            const startedAt = Date.now();
+            const hadController = !!navigator.serviceWorker.controller;
+            navigator.serviceWorker.register('service-worker.js', { updateViaCache: 'none' }).then(reg => {
+                // Een app die op de gsm openblijft, kijkt bij terugkeren of er een nieuwe versie is.
+                document.addEventListener('visibilitychange', () => {
+                    if (document.visibilityState === 'visible') reg.update().catch(() => { });
+                });
+            });
+            // Een nieuwe service worker neemt het meteen over (skipWaiting). Net na het opstarten
+            // herladen we vanzelf; midden in een spel tonen we liever een melding.
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
+                if (!hadController) return;
+                if (Date.now() - startedAt < 10000) location.reload();
+                else document.getElementById('update-banner').hidden = false;
+            });
+        }
+    </script>
 </body>
 
 </html>
