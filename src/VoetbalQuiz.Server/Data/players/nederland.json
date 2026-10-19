@@ -92,5 +92,139 @@
     ],
     "tags": ["oranje", "wk"],
     "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Patrick Kluivert",
+    "answers": [
+      "Kluivert"
+    ],
+    "country": "Nederland",
+    "competition": "LaLiga",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1976 geboren in Amsterdam, met een vader uit Suriname.",
+      "Ik ben een spits en speelde onder meer voor Milan, Newcastle, Valencia en PSV.",
+      "Op het WK 1998 kreeg ik in de groepswedstrijd tegen België rood na een incident met Lorenzo Staelens.",
+      "Ik won in 2000 samen met Savo Milošević de topscorerstitel op het EK in Nederland en België.",
+      "Als 18-jarige invaller scoorde ik in 1995 het winnende doelpunt voor Ajax in de Champions League-finale tegen AC Milan."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Patrick_Kluivert"
+    ],
+    "tags": [
+      "oranje",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Frank Rijkaard",
+    "answers": [
+      "Rijkaard"
+    ],
+    "country": "Nederland",
+    "competition": "Serie A",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1962 geboren in Amsterdam.",
+      "Ik was een verdedigende middenvelder met veel overzicht en kracht.",
+      "Op het WK 1990 werd ik uitgesloten na een spuugincident in een wedstrijd tegen West-Duitsland.",
+      "Ik won met AC Milan twee keer de Europacup I en in 1995 met Ajax de Champions League, in mijn laatste match voor die club.",
+      "Als trainer won ik in 2006 met FC Barcelona de Champions League tegen Arsenal."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Frank_Rijkaard"
+    ],
+    "tags": [
+      "oranje",
+      "legende",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Ronald Koeman",
+    "answers": [
+      "Koeman"
+    ],
+    "country": "Nederland",
+    "competition": "LaLiga",
+    "era": "classic",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1963 geboren in Zaandam.",
+      "Ik was een verdediger met een bijzonder hard schot, bekend om mijn vrije trappen en strafschoppen.",
+      "In 1988 won ik de Europacup I met PSV en datzelfde jaar het EK met Oranje.",
+      "Met Barcelona won ik in 1991, 1992, 1993 en 1994 de landstitel.",
+      "In 1992 won ik op Wembley de Europacup I met een vrije trap tegen Sampdoria."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ronald_Koeman"
+    ],
+    "tags": [
+      "oranje",
+      "legende",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Clarence Seedorf",
+    "answers": [
+      "Seedorf"
+    ],
+    "country": "Nederland",
+    "competition": "Serie A",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1976 geboren in Paramaribo, Suriname.",
+      "Ik ben een middenvelder en spreek vloeiend Italiaans, naast vijf andere talen.",
+      "Ik brak als tiener door bij Ajax, waar ik in 1995 de Champions League won.",
+      "Ik speelde voor Sampdoria, Real Madrid, Inter, AC Milan en Botafogo.",
+      "Ik ben de enige speler die de Champions League won met drie verschillende clubs."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Clarence_Seedorf"
+    ],
+    "tags": [
+      "oranje",
+      "legende",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Ruud van Nistelrooy",
+    "answers": [
+      "Van Nistelrooy",
+      "Nistelrooy"
+    ],
+    "country": "Nederland",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1976 geboren in Oss.",
+      "Ik speelde bij Den Bosch en Heerenveen voordat ik doorbrak bij PSV.",
+      "Bij PSV werd ik twee keer topscorer van de Eredivisie.",
+      "Bij Manchester United scoorde ik in tien opeenvolgende competitiewedstrijden, een Premier League-record dat tot 2015 stand hield.",
+      "In 2003 miste ik in blessuretijd een strafschop tegen Arsenal in de 'Battle of Old Trafford'."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ruud_van_Nistelrooy"
+    ],
+    "tags": [
+      "oranje",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
   }
 ]

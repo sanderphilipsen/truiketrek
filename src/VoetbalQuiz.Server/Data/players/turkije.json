@@ -1,0 +1,326 @@
+[
+  {
+    "name": "Hakan Şükür",
+    "answers": [
+      "Şükür",
+      "Sukur"
+    ],
+    "country": "Turkije",
+    "competition": "Süper Lig",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik ben een spits die in de jaren negentig een nationale ster werd in mijn land.",
+      "Ik speelde ook in Italië en Engeland, bij Torino, Inter, Parma en Blackburn Rovers.",
+      "Met mijn grote club won ik in 2000 de UEFA Cup na strafschoppen tegen Arsenal.",
+      "Ik ben met 51 doelpunten topschutter aller tijden van mijn land en met 249 goals ook van de Süper Lig.",
+      "Op het WK 2002 scoorde ik na 10,8 seconden het snelste doelpunt uit de WK-geschiedenis."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Hakan_%C5%9E%C3%BCk%C3%BCr",
+      "https://en.wikipedia.org/wiki/S%C3%BCper_Lig"
+    ],
+    "tags": [
+      "turkije",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Rüştü Reçber",
+    "answers": [
+      "Rüştü",
+      "Reçber",
+      "Rustu",
+      "Recber"
+    ],
+    "country": "Turkije",
+    "competition": "Süper Lig",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik ben een doelman met lang haar en zwarte strepen onder mijn ogen.",
+      "Ik begon mijn loopbaan als aanvaller voor ik tussen de palen ging staan.",
+      "Ik speelde bij Fenerbahçe en Beşiktaş, en in 2003-04 bij Barcelona, waar Víctor Valdés mij voor bleef.",
+      "Op het WK 2002 werd ik opgenomen in het All-Star Team van het toernooi.",
+      "Ik speelde 120 interlands, het record van mijn land, en stopte op het EK 2008 een strafschop tegen Kroatië."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/R%C3%BC%C5%9Ft%C3%BC_Re%C3%A7ber"
+    ],
+    "tags": [
+      "turkije",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Arda Turan",
+    "answers": [
+      "Turan"
+    ],
+    "country": "Turkije",
+    "competition": "La Liga",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik ben een middenvelder, geboren in 1987 in Istanbul.",
+      "In 2009 werd ik aanvoerder van Galatasaray.",
+      "In 2011 trok ik naar Atlético Madrid, waar ik in 2014 kampioen werd en de Champions League-finale verloor.",
+      "Bij Barcelona moest ik door een transferban tot januari 2016 wachten op mijn debuut.",
+      "Op het EK 2008 scoorde ik in de slotseconden tegen Zwitserland en maakte ik tegen Tsjechië het eerste doelpunt van de Turkse comeback."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Arda_Turan"
+    ],
+    "tags": [
+      "turkije"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Hakan Çalhanoğlu",
+    "answers": [
+      "Çalhanoğlu",
+      "Calhanoglu"
+    ],
+    "country": "Turkije",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1994 in Duitsland geboren, als zoon van Turkse ouders.",
+      "Ik brak door bij Karlsruher SC en speelde daarna voor Hamburger SV en Bayer Leverkusen.",
+      "Bij AC Milan droeg ik rugnummer 10.",
+      "In 2021 stapte ik transfervrij over naar de stadsrivaal van die club.",
+      "Ik won met Inter de Serie A in 2023-24 en ben sinds 2022 aanvoerder van Turkije, bekend om mijn vrije trappen."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Hakan_%C3%87alhano%C4%9Flu"
+    ],
+    "tags": [
+      "turkije",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Arda Güler",
+    "answers": [
+      "Güler",
+      "Guler"
+    ],
+    "country": "Turkije",
+    "competition": "La Liga",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik ben een aanvallende middenvelder, geboren in 2005 in Ankara.",
+      "Bij Fenerbahçe kreeg ik als jongeling al rugnummer 10.",
+      "In 2023 won ik de Turkse beker en trok ik via een afkoopclausule van 17,5 miljoen euro naar Real Madrid.",
+      "In 2024 won ik als eerste Turkse speler ooit de Champions League.",
+      "Op het EK 2024 scoorde ik bij mijn debuut tegen Georgië, als eerste tiener sinds Cristiano Ronaldo in 2004."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Arda_G%C3%BCler"
+    ],
+    "tags": [
+      "turkije",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Kenan Yıldız",
+    "answers": [
+      "Yıldız",
+      "Yildiz"
+    ],
+    "country": "Turkije",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 2005 geboren in Regensburg, met een Turkse vader en een Duitse moeder.",
+      "Bayern München leidde me op vanaf mijn zevende, maar ik vertrok transfervrij.",
+      "In 2022 tekende ik bij Juventus en in 2024 won ik daar de Coppa Italia.",
+      "Sinds augustus 2024 draag ik bij die club rugnummer 10.",
+      "In 2025 werd ik op 20-jarige leeftijd de jongste speler ooit die Juventus aanvoerde."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kenan_Y%C4%B1ld%C4%B1z"
+    ],
+    "tags": [
+      "turkije"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Emre Belözoğlu",
+    "answers": [
+      "Emre",
+      "Belözoğlu",
+      "Belozoglu"
+    ],
+    "country": "Turkije",
+    "competition": "Süper Lig",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik ben een linkspotige spelmaker, geboren in 1980 in Istanbul.",
+      "Ik debuteerde op 16 jaar, won vier keer op rij de landstitel en in 2000 de UEFA Cup.",
+      "Ik speelde voor Inter, Newcastle United en Atlético Madrid.",
+      "Na mijn buitenlandse avonturen keerde ik terug naar Turkije, waar ik mijn loopbaan in 2020 beëindigde bij Fenerbahçe.",
+      "Ik speelde 101 interlands, werd derde op het WK 2002 en stond op de FIFA 100-lijst."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Emre_Bel%C3%B6zo%C4%9Flu"
+    ],
+    "tags": [
+      "turkije",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Nihat Kahveci",
+    "answers": [
+      "Nihat",
+      "Kahveci"
+    ],
+    "country": "Turkije",
+    "competition": "La Liga",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik ben een spits, geboren in 1979 in Istanbul.",
+      "Ik begon bij Beşiktaş en trok in 2002 voor zo'n 5 miljoen euro naar Spanje.",
+      "Bij Real Sociedad scoorde ik in 2002-03 maar liefst 23 competitiegoals en werd ik beste buitenlander van de competitie.",
+      "Met Villarreal werd ik in 2008 vicekampioen van Spanje.",
+      "Op het EK 2008 maakte ik twee late goals tegen Tsjechië om een 0-2 achterstand om te zetten in 3-2."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Nihat_Kahveci"
+    ],
+    "tags": [
+      "turkije",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Tuncay Şanlı",
+    "answers": [
+      "Tuncay",
+      "Şanlı",
+      "Sanli"
+    ],
+    "country": "Turkije",
+    "competition": "Premier League",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik ben een aanvaller, geboren in 1982 in Sakarya.",
+      "Ik speelde bij Fenerbahçe, waar ik drie landstitels pakte.",
+      "In 2004 scoorde ik in de Champions League een hattrick tegen Manchester United.",
+      "In Engeland speelde ik voor Middlesbrough, Stoke City en Bolton Wanderers.",
+      "Ik werd met Turkije derde op de Confederations Cup 2003 en op het EK 2008."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Tuncay_%C5%9Eanl%C4%B1"
+    ],
+    "tags": [
+      "turkije",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Hamit Altıntop",
+    "answers": [
+      "Altıntop",
+      "Altintop",
+      "Hamit"
+    ],
+    "country": "Turkije",
+    "competition": "Bundesliga",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik ben een middenvelder, geboren in 1982 in Gelsenkirchen, met een identieke tweelingbroer die ook prof werd.",
+      "Ik werd opgeleid in Duitsland en speelde bij Schalke 04 voor ik naar München trok.",
+      "In 2010 verloor ik met Bayern München de Champions League-finale.",
+      "In 2010 won ik de Puskás Award voor een volley tegen Kazachstan.",
+      "Op het EK 2008 kwam ik in het Team van het Toernooi; later speelde ik nog voor Real Madrid en Galatasaray."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Hamit_Alt%C4%B1ntop"
+    ],
+    "tags": [
+      "turkije",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Burak Yılmaz",
+    "answers": [
+      "Yılmaz",
+      "Yilmaz"
+    ],
+    "country": "Turkije",
+    "competition": "Süper Lig",
+    "era": "modern",
+    "difficulty": 4,
+    "hints": [
+      "Ik ben een spits, de zoon van een doelman, geboren in 1985 in Antalya.",
+      "Ik speelde voor Beşiktaş, Fenerbahçe, Trabzonspor en Galatasaray, met een uitstap naar Beijing Guoan.",
+      "Ik werd topschutter van de Süper Lig, in 2011-12 met Trabzonspor en in 2012-13 met Galatasaray.",
+      "In 2021 werd ik met Lille kampioen van Frankrijk.",
+      "Ik ben met 31 doelpunten de tweede topschutter aller tijden van Turkije."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Burak_Y%C4%B1lmaz"
+    ],
+    "tags": [
+      "turkije"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Merih Demiral",
+    "answers": [
+      "Demiral"
+    ],
+    "country": "Turkije",
+    "competition": "Saudi Pro League",
+    "era": "modern",
+    "difficulty": 4,
+    "hints": [
+      "Ik ben een centrale verdediger, geboren in 1998 in Karamürsel.",
+      "Als tiener ruilde ik de jeugd van Fenerbahçe in voor Portugal.",
+      "In 2019 werd ik de eerste Turk ooit bij Juventus, waar ik de Serie A won.",
+      "Ik speelde ook voor Atalanta en trok in 2023 naar Saoedi-Arabië.",
+      "Op het EK 2024 scoorde ik twee keer tegen Oostenrijk, het eerste na 57 seconden, maar kreeg een schorsing voor mijn wolvengroet."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Merih_Demiral"
+    ],
+    "tags": [
+      "turkije"
+    ],
+    "checkedAt": "2026-10-19"
+  }
+]

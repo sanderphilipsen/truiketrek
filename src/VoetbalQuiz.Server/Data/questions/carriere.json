@@ -21,7 +21,8 @@
     ],
     "tags": [
       "rode-duivels",
-      "lukaku"
+      "lukaku",
+      "turkije"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -44,7 +45,9 @@
       "https://en.wikipedia.org/wiki/Dries_Mertens"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "turkije",
+      "oranje"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -156,7 +159,8 @@
       "https://en.wikipedia.org/wiki/Thibaut_Courtois"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "spanje"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -228,7 +232,9 @@
       "https://en.wikipedia.org/wiki/Michy_Batshuayi"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "turkije",
+      "spanje"
     ],
     "checkedAt": "2026-10-18"
   },
@@ -278,7 +284,8 @@
       "https://en.wikipedia.org/wiki/Divock_Origi"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "frankrijk"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -300,7 +307,8 @@
       "https://en.wikipedia.org/wiki/Youri_Tielemans"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "frankrijk"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -324,7 +332,8 @@
       "https://en.wikipedia.org/wiki/Leandro_Trossard"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "turkije"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -347,7 +356,8 @@
       "https://en.wikipedia.org/wiki/Thomas_Vermaelen"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "spanje"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -517,7 +527,8 @@
       "https://en.wikipedia.org/wiki/Thomas_Meunier"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "frankrijk"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -588,7 +599,8 @@
       "https://en.wikipedia.org/wiki/Marc_Wilmots"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "duitsland"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -724,7 +736,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Arjen_Robben"
     ],
-    "tags": [],
+    "tags": ["oranje"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -745,7 +757,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Wesley_Sneijder"
     ],
-    "tags": [],
+    "tags": ["turkije", "oranje"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -766,7 +778,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Thierry_Henry"
     ],
-    "tags": [],
+    "tags": ["frankrijk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -834,7 +846,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Fernando_Torres"
     ],
-    "tags": [],
+    "tags": ["spanje"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -878,7 +890,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Ruud_van_Nistelrooy"
     ],
-    "tags": [],
+    "tags": ["oranje"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -902,7 +914,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Klaas-Jan_Huntelaar"
     ],
-    "tags": [],
+    "tags": ["oranje"],
     "checkedAt": "2026-10-18"
   },
   {
@@ -955,7 +967,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Edin_D%C5%BEeko"
     ],
-    "tags": [],
+    "tags": ["turkije"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1003,7 +1015,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Olivier_Giroud"
     ],
-    "tags": [],
+    "tags": ["frankrijk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1087,7 +1099,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Victor_Osimhen"
     ],
-    "tags": [],
+    "tags": ["turkije"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1207,7 +1219,8 @@
       "https://en.wikipedia.org/wiki/Adnan_Januzaj"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "spanje"
     ],
     "checkedAt": "2026-10-18"
   },
@@ -1569,7 +1582,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Ruud_Vormer"
     ],
-    "tags": [],
+    "tags": ["oranje"],
     "checkedAt": "2026-10-18"
   },
   {
@@ -1613,7 +1626,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Cristiano_Ronaldo"
     ],
-    "tags": [],
+    "tags": ["portugal"],
     "checkedAt": "2026-10-18"
   },
   {
@@ -1675,7 +1688,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Paul_Pogba"
     ],
-    "tags": [],
+    "tags": ["frankrijk"],
     "checkedAt": "2026-10-18"
   },
   {
@@ -1715,7 +1728,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Antoine_Griezmann"
     ],
-    "tags": [],
+    "tags": ["frankrijk"],
     "checkedAt": "2026-10-18"
   },
   {
@@ -1780,7 +1793,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Hakim_Ziyech"
     ],
-    "tags": [],
+    "tags": ["turkije"],
     "checkedAt": "2026-10-18"
   },
   {
@@ -1803,7 +1816,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/N%27Golo_Kant%C3%A9"
     ],
-    "tags": [],
+    "tags": ["frankrijk"],
     "checkedAt": "2026-10-18"
   },
   {
@@ -1866,7 +1879,9 @@
       "https://en.wikipedia.org/wiki/Eden_Hazard"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "frankrijk",
+      "spanje"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1904,7 +1919,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Kylian_Mbapp%C3%A9"
     ],
-    "tags": [],
+    "tags": ["frankrijk"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -1996,7 +2011,7 @@
       "https://www.tsn.ca/soccer/article/al-hilal-benzema-agree-to-terminate-contract-after-six-months/",
       "https://en.wikipedia.org/wiki/Karim_Benzema"
     ],
-    "tags": [],
+    "tags": ["frankrijk", "spanje"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2060,7 +2075,8 @@
       "https://en.wikipedia.org/wiki/Zinedine_Zidane"
     ],
     "tags": [
-      "legende"
+      "legende",
+      "frankrijk"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -2219,7 +2235,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Ivan_Rakiti%C4%87"
     ],
-    "tags": [],
+    "tags": ["spanje"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2292,7 +2308,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Radamel_Falcao"
     ],
-    "tags": [],
+    "tags": ["turkije"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2314,7 +2330,8 @@
     "tags": [
       "rode-duivels",
       "anderlecht",
-      "legende"
+      "legende",
+      "oranje"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -2465,7 +2482,8 @@
     "tags": [
       "rode-duivels",
       "legende",
-      "pfaff"
+      "pfaff",
+      "turkije"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -2489,7 +2507,8 @@
     "tags": [
       "rode-duivels",
       "standard",
-      "legende"
+      "legende",
+      "oranje"
     ],
     "checkedAt": "2026-10-19"
   }

@@ -22,7 +22,8 @@
     "tags": [
       "rode-duivels",
       "lukaku",
-      "de-bruyne"
+      "de-bruyne",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -49,7 +50,8 @@
     "tags": [
       "rode-duivels",
       "lukaku",
-      "de-bruyne"
+      "de-bruyne",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -79,7 +81,8 @@
       "rode-duivels",
       "gouden-schoen",
       "lukaku",
-      "de-bruyne"
+      "de-bruyne",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -223,7 +226,8 @@
     ],
     "tags": [
       "rode-duivels",
-      "club-brugge"
+      "club-brugge",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -280,7 +284,8 @@
       "beker-van-belgie",
       "rode-duivels",
       "anderlecht",
-      "deschacht"
+      "deschacht",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -494,7 +499,8 @@
     ],
     "tags": [
       "rode-duivels",
-      "standard"
+      "standard",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -522,7 +528,8 @@
       "rode-duivels",
       "anderlecht",
       "standard",
-      "deschacht"
+      "deschacht",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -578,7 +585,8 @@
     ],
     "tags": [
       "gouden-schoen",
-      "anderlecht"
+      "anderlecht",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -606,7 +614,8 @@
     "tags": [
       "rode-duivels",
       "anderlecht",
-      "deschacht"
+      "deschacht",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -804,7 +813,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Deniz_Undav"
     ],
-    "tags": [],
+    "tags": ["duitsland"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -874,7 +883,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Dedryck_Boyata"
     ],
-    "tags": ["rode-duivels", "wk", "club-brugge", "lukaku"],
+    "tags": ["rode-duivels", "wk", "club-brugge", "lukaku", "belgie"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -897,7 +906,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Leander_Dendoncker"
     ],
-    "tags": ["rode-duivels", "anderlecht", "wk", "deschacht"],
+    "tags": ["rode-duivels", "anderlecht", "wk", "deschacht", "belgie"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -924,7 +933,8 @@
     "tags": [
       "club-brugge",
       "rode-duivels",
-      "stijnen"
+      "stijnen",
+      "belgie"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -952,7 +962,8 @@
     "tags": [
       "anderlecht",
       "rode-duivels",
-      "deschacht"
+      "deschacht",
+      "belgie"
     ],
     "checkedAt": "2026-10-19"
   }

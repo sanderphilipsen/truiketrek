@@ -7,7 +7,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/1970_FIFA_World_Cup_final"
     ],
-    "tags": ["wk", "pele"],
+    "tags": ["wk", "pele", "italie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -19,7 +19,8 @@
       "https://en.wikipedia.org/wiki/1971_European_Cup_final"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "oranje"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -44,7 +45,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/1974_FIFA_World_Cup_final"
     ],
-    "tags": ["wk"],
+    "tags": ["wk", "oranje", "duitsland"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -55,7 +56,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/1976_European_Cup_Winners'_Cup_final"
     ],
-    "tags": ["anderlecht"],
+    "tags": ["anderlecht", "belgie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -78,7 +79,8 @@
       "https://en.wikipedia.org/wiki/1978_European_Cup_final"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -103,7 +105,8 @@
     ],
     "tags": [
       "rode-duivels",
-      "pfaff"
+      "pfaff",
+      "duitsland"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -130,7 +133,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/1982_FIFA_World_Cup_final"
     ],
-    "tags": ["wk"],
+    "tags": ["wk", "italie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -141,7 +144,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/1983_UEFA_Cup_final"
     ],
-    "tags": ["anderlecht"],
+    "tags": ["anderlecht", "portugal", "belgie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -153,7 +156,8 @@
       "https://en.wikipedia.org/wiki/UEFA_Euro_1984"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "frankrijk"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -166,7 +170,8 @@
       "https://en.wikipedia.org/wiki/Heysel_Stadium_disaster"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "italie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -181,7 +186,8 @@
     "tags": [
       "wk",
       "rode-duivels",
-      "pfaff"
+      "pfaff",
+      "spanje"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -218,7 +224,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/1988_European_Cup_Winners'_Cup_final"
     ],
-    "tags": [],
+    "tags": ["oranje", "belgie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -229,7 +235,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_1988_final"
     ],
-    "tags": [],
+    "tags": ["oranje"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -240,7 +246,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/1990_FIFA_World_Cup_final"
     ],
-    "tags": ["wk"],
+    "tags": ["wk", "duitsland"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -277,7 +283,9 @@
       "https://en.wikipedia.org/wiki/1993_UEFA_Champions_League_final"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "frankrijk",
+      "italie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -291,7 +299,8 @@
     ],
     "tags": [
       "wk",
-      "rode-duivels"
+      "rode-duivels",
+      "oranje"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -303,7 +312,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/1994_FIFA_World_Cup_final"
     ],
-    "tags": ["wk"],
+    "tags": ["wk", "italie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -336,7 +345,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/1998_FIFA_World_Cup_final"
     ],
-    "tags": ["wk"],
+    "tags": ["wk", "frankrijk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -360,7 +369,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/1998%E2%80%9399_Belgian_First_Division"
     ],
-    "tags": [],
+    "tags": ["belgie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -398,7 +407,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_final"
     ],
-    "tags": ["wk"],
+    "tags": ["wk", "duitsland"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -409,7 +418,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/David_Beckham"
     ],
-    "tags": [],
+    "tags": ["spanje"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -420,7 +429,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2004_final"
     ],
-    "tags": [],
+    "tags": ["portugal"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -443,7 +452,8 @@
       "https://en.wikipedia.org/wiki/2005_UEFA_Champions_League_final"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "italie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -456,7 +466,7 @@
       "https://en.wikipedia.org/wiki/2004%E2%80%9305_Belgian_First_Division",
       "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
     ],
-    "tags": [],
+    "tags": ["belgie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -467,7 +477,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2006_FIFA_World_Cup_final"
     ],
-    "tags": ["wk"],
+    "tags": ["wk", "frankrijk", "italie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -478,7 +488,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Calciopoli"
     ],
-    "tags": [],
+    "tags": ["italie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -490,7 +500,8 @@
       "https://en.wikipedia.org/wiki/2007_UEFA_Champions_League_final"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "italie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -502,7 +513,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2007%E2%80%9308_Belgian_First_Division"
     ],
-    "tags": [],
+    "tags": ["belgie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -513,7 +524,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2008_final"
     ],
-    "tags": [],
+    "tags": ["spanje"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -550,7 +561,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Cristiano_Ronaldo"
     ],
-    "tags": [],
+    "tags": ["portugal", "spanje"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -561,7 +572,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2008%E2%80%9309_Belgian_First_Division"
     ],
-    "tags": ["anderlecht"],
+    "tags": ["anderlecht", "belgie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -574,7 +585,8 @@
     ],
     "tags": [
       "champions-league",
-      "messi"
+      "messi",
+      "spanje"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -586,7 +598,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_final"
     ],
-    "tags": ["wk"],
+    "tags": ["wk", "spanje"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -597,7 +609,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2009%E2%80%9310_Belgian_Pro_League"
     ],
-    "tags": [],
+    "tags": ["belgie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -609,7 +621,8 @@
       "https://en.wikipedia.org/wiki/2010_UEFA_Champions_League_final"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "italie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -623,7 +636,8 @@
     ],
     "tags": [
       "champions-league",
-      "messi"
+      "messi",
+      "spanje"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -635,7 +649,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2010%E2%80%9311_Belgian_Pro_League"
     ],
-    "tags": ["de-bruyne"],
+    "tags": ["de-bruyne", "belgie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -682,7 +696,8 @@
       "https://en.wikipedia.org/wiki/2013_UEFA_Champions_League_final"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "duitsland"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -719,7 +734,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Gareth_Bale"
     ],
-    "tags": [],
+    "tags": ["spanje"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -730,7 +745,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Brazil_v_Germany_(2014_FIFA_World_Cup)"
     ],
-    "tags": ["wk"],
+    "tags": ["wk", "duitsland"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -782,7 +797,8 @@
       "https://en.wikipedia.org/wiki/2014_UEFA_Champions_League_final"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "spanje"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -794,7 +810,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2014%E2%80%9315_Belgian_Pro_League"
     ],
-    "tags": [],
+    "tags": ["belgie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -854,7 +870,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2016_final"
     ],
-    "tags": [],
+    "tags": ["frankrijk", "portugal"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -880,7 +896,7 @@
       "https://en.wikipedia.org/wiki/2015%E2%80%9316_Belgian_Pro_League",
       "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
     ],
-    "tags": [],
+    "tags": ["belgie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -904,7 +920,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Neymar"
     ],
-    "tags": [],
+    "tags": ["frankrijk", "spanje"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -915,7 +931,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2016%E2%80%9317_Ligue_1"
     ],
-    "tags": [],
+    "tags": ["frankrijk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -964,7 +980,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Cristiano_Ronaldo"
     ],
-    "tags": [],
+    "tags": ["portugal", "italie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -976,7 +992,8 @@
       "https://en.wikipedia.org/wiki/Eden_Hazard"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "spanje"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -999,7 +1016,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2019%E2%80%9320_Belgian_First_Division_A"
     ],
-    "tags": [],
+    "tags": ["belgie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1011,7 +1028,9 @@
       "https://en.wikipedia.org/wiki/2020_UEFA_Champions_League_final"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "frankrijk",
+      "duitsland"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1023,7 +1042,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2020_final"
     ],
-    "tags": [],
+    "tags": ["italie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1034,7 +1053,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Lionel_Messi"
     ],
-    "tags": ["messi"],
+    "tags": ["messi", "frankrijk", "spanje"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1046,7 +1065,8 @@
       "https://en.wikipedia.org/wiki/UEFA_Euro_2020_knockout_stage"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "portugal"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1069,7 +1089,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Robert_Lewandowski"
     ],
-    "tags": [],
+    "tags": ["duitsland"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1080,7 +1100,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_final"
     ],
-    "tags": ["wk", "messi"],
+    "tags": ["wk", "messi", "frankrijk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1093,7 +1113,8 @@
     ],
     "tags": [
       "champions-league",
-      "rode-duivels"
+      "rode-duivels",
+      "spanje"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1120,7 +1141,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2022_Ballon_d'Or"
     ],
-    "tags": [],
+    "tags": ["ballon-dor"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1133,7 +1154,8 @@
     ],
     "tags": [
       "champions-league",
-      "de-bruyne"
+      "de-bruyne",
+      "italie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1145,7 +1167,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2022%E2%80%9323_Belgian_Pro_League"
     ],
-    "tags": [],
+    "tags": ["belgie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1193,7 +1215,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2022%E2%80%9323_Serie_A"
     ],
-    "tags": ["maradona"],
+    "tags": ["maradona", "italie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1204,7 +1226,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Harry_Kane"
     ],
-    "tags": [],
+    "tags": ["duitsland"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1216,7 +1238,8 @@
       "https://en.wikipedia.org/wiki/Vincent_Kompany"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "duitsland"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1228,7 +1251,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2024_final"
     ],
-    "tags": [],
+    "tags": ["duitsland", "spanje"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1239,7 +1262,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2023%E2%80%9324_Bundesliga"
     ],
-    "tags": [],
+    "tags": ["duitsland"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1250,7 +1273,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Kylian_Mbapp%C3%A9"
     ],
-    "tags": [],
+    "tags": ["frankrijk", "spanje"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1261,7 +1284,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Royale_Union_Saint-Gilloise"
     ],
-    "tags": [],
+    "tags": ["belgie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1300,7 +1323,9 @@
       "https://en.wikipedia.org/wiki/2025_UEFA_Champions_League_final"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "frankrijk",
+      "italie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1348,7 +1373,8 @@
       "https://en.wikipedia.org/wiki/Disgrace_of_Gij%C3%B3n"
     ],
     "tags": [
-      "curiosa"
+      "curiosa",
+      "duitsland"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1376,7 +1402,8 @@
     ],
     "tags": [
       "curiosa",
-      "champions-league"
+      "champions-league",
+      "italie"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1389,7 +1416,8 @@
       "https://en.wikipedia.org/wiki/J%C3%A9r%C3%B4me_Boateng"
     ],
     "tags": [
-      "familie"
+      "familie",
+      "duitsland"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1403,7 +1431,8 @@
     ],
     "tags": [
       "familie",
-      "legende"
+      "legende",
+      "italie"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1431,7 +1460,8 @@
     ],
     "tags": [
       "familie",
-      "champions-league"
+      "champions-league",
+      "italie"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1457,7 +1487,8 @@
       "https://en.wikipedia.org/wiki/Brazil_v_Germany_(2014_FIFA_World_Cup)"
     ],
     "tags": [
-      "halloween"
+      "halloween",
+      "duitsland"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1470,7 +1501,8 @@
       "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_knockout_stage#England_vs_Germany"
     ],
     "tags": [
-      "halloween"
+      "halloween",
+      "duitsland"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1498,7 +1530,8 @@
     ],
     "tags": [
       "kerst",
-      "messi"
+      "messi",
+      "frankrijk"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1525,7 +1558,8 @@
     ],
     "tags": [
       "kerst",
-      "champions-league"
+      "champions-league",
+      "spanje"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1594,7 +1628,8 @@
     ],
     "tags": [
       "nieuwjaar",
-      "legende"
+      "legende",
+      "duitsland"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1620,7 +1655,9 @@
       "https://en.wikipedia.org/wiki/UEFA_Euro_2008_final"
     ],
     "tags": [
-      "sinterklaas"
+      "sinterklaas",
+      "duitsland",
+      "spanje"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1633,7 +1670,9 @@
       "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_final"
     ],
     "tags": [
-      "sinterklaas"
+      "sinterklaas",
+      "oranje",
+      "spanje"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1648,7 +1687,8 @@
     ],
     "tags": [
       "beker-van-belgie",
-      "sinterklaas"
+      "sinterklaas",
+      "belgie"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1661,7 +1701,8 @@
       "https://en.wikipedia.org/wiki/1978_FIFA_World_Cup_final"
     ],
     "tags": [
-      "wk"
+      "wk",
+      "oranje"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1701,7 +1742,8 @@
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_Group_F"
     ],
     "tags": [
-      "wk"
+      "wk",
+      "duitsland"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1728,7 +1770,9 @@
       "https://en.wikipedia.org/wiki/1977_European_Cup_Winners%27_Cup_final"
     ],
     "tags": [
-      "anderlecht"
+      "anderlecht",
+      "duitsland",
+      "belgie"
     ]
   },
   {
@@ -1740,7 +1784,8 @@
       "https://en.wikipedia.org/wiki/1978_European_Cup_Winners%27_Cup_final"
     ],
     "tags": [
-      "anderlecht"
+      "anderlecht",
+      "belgie"
     ]
   },
   {
@@ -1752,7 +1797,8 @@
       "https://en.wikipedia.org/wiki/1978_European_Super_Cup"
     ],
     "tags": [
-      "anderlecht"
+      "anderlecht",
+      "belgie"
     ]
   },
   {
@@ -1764,7 +1810,8 @@
       "https://en.wikipedia.org/wiki/1984_UEFA_Cup_final"
     ],
     "tags": [
-      "anderlecht"
+      "anderlecht",
+      "belgie"
     ]
   },
   {
@@ -1778,7 +1825,8 @@
     ],
     "tags": [
       "anderlecht",
-      "deschacht"
+      "deschacht",
+      "belgie"
     ]
   },
   {
@@ -1792,7 +1840,8 @@
     ],
     "tags": [
       "anderlecht",
-      "deschacht"
+      "deschacht",
+      "belgie"
     ]
   },
   {
@@ -1805,7 +1854,8 @@
       "https://en.wikipedia.org/wiki/2019_Belgian_Cup_final"
     ],
     "tags": [
-      "beker-van-belgie"
+      "beker-van-belgie",
+      "belgie"
     ]
   },
   {
@@ -1818,7 +1868,8 @@
       "https://en.wikipedia.org/wiki/2017_Belgian_Cup_final"
     ],
     "tags": [
-      "beker-van-belgie"
+      "beker-van-belgie",
+      "belgie"
     ]
   },
   {
@@ -1831,7 +1882,8 @@
       "https://en.wikipedia.org/wiki/2024_Belgian_Cup_final"
     ],
     "tags": [
-      "beker-van-belgie"
+      "beker-van-belgie",
+      "belgie"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1846,7 +1898,8 @@
     ],
     "tags": [
       "beker-van-belgie",
-      "anderlecht"
+      "anderlecht",
+      "belgie"
     ]
   },
   {
@@ -1859,7 +1912,8 @@
     ],
     "tags": [
       "beker-van-belgie",
-      "standard"
+      "standard",
+      "belgie"
     ]
   },
   {
@@ -1874,7 +1928,8 @@
     "tags": [
       "beker-van-belgie",
       "club-brugge",
-      "anderlecht"
+      "anderlecht",
+      "belgie"
     ]
   },
   {
@@ -1970,7 +2025,8 @@
       "https://en.wikipedia.org/wiki/Jorge_Mendes"
     ],
     "tags": [
-      "curiosa"
+      "curiosa",
+      "portugal"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -2318,7 +2374,8 @@
       "https://nl.wikipedia.org/wiki/Jean-Marie_Pfaff"
     ],
     "tags": [
-      "pfaff"
+      "pfaff",
+      "belgie"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -2332,7 +2389,8 @@
       "https://nl.wikipedia.org/wiki/Jean-Marie_Pfaff"
     ],
     "tags": [
-      "pfaff"
+      "pfaff",
+      "duitsland"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -2346,7 +2404,8 @@
       "https://nl.wikipedia.org/wiki/Jean-Marie_Pfaff"
     ],
     "tags": [
-      "pfaff"
+      "pfaff",
+      "duitsland"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -2360,7 +2419,9 @@
     ],
     "tags": [
       "pfaff",
-      "champions-league"
+      "champions-league",
+      "portugal",
+      "duitsland"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -2448,7 +2509,8 @@
     ],
     "tags": [
       "lukaku",
-      "rode-duivels"
+      "rode-duivels",
+      "italie"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -2476,7 +2538,8 @@
     ],
     "tags": [
       "lukaku",
-      "rode-duivels"
+      "rode-duivels",
+      "italie"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -2555,7 +2618,8 @@
       "https://en.wikipedia.org/wiki/2022_Finalissima"
     ],
     "tags": [
-      "messi"
+      "messi",
+      "italie"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -2568,7 +2632,8 @@
       "https://en.wikipedia.org/wiki/Lionel_Messi"
     ],
     "tags": [
-      "messi"
+      "messi",
+      "ballon-dor"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -2595,7 +2660,8 @@
     ],
     "tags": [
       "maradona",
-      "legende"
+      "legende",
+      "italie"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -2624,7 +2690,8 @@
     ],
     "tags": [
       "maradona",
-      "legende"
+      "legende",
+      "italie"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -2638,7 +2705,9 @@
       "https://en.wikipedia.org/wiki/Diego_Maradona"
     ],
     "tags": [
-      "maradona"
+      "maradona",
+      "italie",
+      "duitsland"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -2652,7 +2721,8 @@
     ],
     "tags": [
       "maradona",
-      "wk"
+      "wk",
+      "italie"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -2724,7 +2794,8 @@
     ],
     "tags": [
       "de-bruyne",
-      "rode-duivels"
+      "rode-duivels",
+      "duitsland"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -2739,7 +2810,8 @@
     ],
     "tags": [
       "de-bruyne",
-      "rode-duivels"
+      "rode-duivels",
+      "duitsland"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -2769,7 +2841,801 @@
     ],
     "tags": [
       "de-bruyne",
+      "rode-duivels",
+      "italie"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Johan Cruijff wint zijn derde Ballon d'Or.",
+    "year": 1974,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ballon_d%27Or"
+    ],
+    "tags": [
+      "ballon-dor",
+      "oranje"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Marco van Basten wint zijn derde Ballon d'Or.",
+    "year": 1992,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ballon_d%27Or"
+    ],
+    "tags": [
+      "ballon-dor",
+      "oranje"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "George Weah wordt als eerste Afrikaan winnaar van de Ballon d'Or.",
+    "year": 1995,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ballon_d%27Or",
+      "https://en.wikipedia.org/wiki/George_Weah"
+    ],
+    "tags": [
+      "ballon-dor"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Cristiano Ronaldo wint zijn eerste Ballon d'Or als speler van Manchester United.",
+    "year": 2008,
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ballon_d%27Or"
+    ],
+    "tags": [
+      "ballon-dor"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Lionel Messi wint zijn eerste Ballon d'Or.",
+    "year": 2009,
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ballon_d%27Or"
+    ],
+    "tags": [
+      "ballon-dor",
+      "messi"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Ada Hegerberg wint de allereerste Ballon d'Or Féminin.",
+    "year": 2018,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ballon_d%27Or_F%C3%A9minin"
+    ],
+    "tags": [
+      "ballon-dor"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "De Ballon d'Or wordt voor het eerst niet uitgereikt, door de coronapandemie.",
+    "year": 2020,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ballon_d%27Or"
+    ],
+    "tags": [
+      "ballon-dor"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Kevin De Bruyne eindigt als derde bij de Ballon d'Or.",
+    "year": 2022,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2022_Ballon_d%27Or"
+    ],
+    "tags": [
+      "ballon-dor",
       "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Rodri wint de Ballon d'Or.",
+    "year": 2024,
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2024_Ballon_d%27Or"
+    ],
+    "tags": [
+      "ballon-dor"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Frankrijk verslaat Kroatië met 4-2 in Moskou en wordt voor de tweede keer wereldkampioen.",
+    "year": 2018,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_final"
+    ],
+    "tags": [
+      "frankrijk",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Een golden goal beslist de EK-finale tegen Italië in Rotterdam, nadat Frankrijk in de blessuretijd gelijkmaakte.",
+    "year": 2000,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Euro_2000_final"
+    ],
+    "tags": [
+      "frankrijk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Thierry Henry controleert twee keer met de hand, waarna Gallas in de WK-barrage tegen Ierland de beslissende goal maakt.",
+    "year": 2009,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Thierry_Henry"
+    ],
+    "tags": [
+      "frankrijk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Frankrijk wordt op het WK in Zuid-Afrika allerlaatste in zijn groep, na het wegsturen van Anelka en een boycot van de training door de spelers.",
+    "year": 2010,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_Group_A"
+    ],
+    "tags": [
+      "frankrijk",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Lille met Eden Hazard pakt de dubbel: de landstitel en de Coupe de France.",
+    "year": 2011,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Eden_Hazard"
+    ],
+    "tags": [
+      "frankrijk",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "België leidt in de halve finale van de Nations League in Turijn met 2-0, maar verliest met 3-2 van Frankrijk.",
+    "year": 2021,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2021_UEFA_Nations_League_Finals"
+    ],
+    "tags": [
+      "frankrijk",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "PSG wint voor de tweede keer op rij de Champions League, na strafschoppen in de finale in Boedapest.",
+    "year": 2026,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2026_UEFA_Champions_League_final"
+    ],
+    "tags": [
+      "frankrijk",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "FC Porto van Mourinho wint de Champions League na een 3-0 tegen Monaco in Gelsenkirchen.",
+    "year": 2004,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2004_UEFA_Champions_League_final",
+      "https://en.wikipedia.org/wiki/Jos%C3%A9_Mourinho"
+    ],
+    "tags": [
+      "portugal",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "FC Porto van Mourinho wint de UEFA Cup na een finale tegen Celtic.",
+    "year": 2003,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jos%C3%A9_Mourinho"
+    ],
+    "tags": [
+      "portugal"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Portugal wint in eigen land de allereerste Nations League, met een 1-0 tegen Nederland in Porto.",
+    "year": 2019,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2019_UEFA_Nations_League_Finals"
+    ],
+    "tags": [
+      "portugal"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Portugal wint in München na strafschoppen de Nations League-finale tegen Spanje.",
+    "year": 2025,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2025_UEFA_Nations_League_final"
+    ],
+    "tags": [
+      "portugal"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Sporting CP wordt voor het eerst sinds 2002 opnieuw kampioen van Portugal.",
+    "year": 2021,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Primeira_Liga",
+      "https://en.wikipedia.org/wiki/Ricardo_Quaresma"
+    ],
+    "tags": [
+      "portugal"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Pepe wordt op 41-jarige leeftijd de oudste speler ooit op een EK.",
+    "year": 2024,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pepe_(footballer,_born_1983)"
+    ],
+    "tags": [
+      "portugal"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Turkije wint in Zuid-Korea de troostfinale van het WK met 3-2 en wordt derde; Hakan Şükür scoort na amper 11 seconden.",
+    "year": 2002,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Turkey_national_football_team",
+      "https://en.wikipedia.org/wiki/Hakan_%C5%9E%C3%BCk%C3%BCr"
+    ],
+    "tags": [
+      "turkije",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Galatasaray wint als eerste Turkse club een Europese prijs: de UEFA Cup, na strafschoppen tegen Arsenal in Kopenhagen.",
+    "year": 2000,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2000_UEFA_Cup_final",
+      "https://en.wikipedia.org/wiki/Hakan_%C5%9E%C3%BCk%C3%BCr"
+    ],
+    "tags": [
+      "turkije"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Mede-gastland België verliest op het EK in Brussel met 0-2 van Turkije en valt na de groepsfase af; doelman Filip De Wilde krijgt rood.",
+    "year": 2000,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Euro_2000_Group_B"
+    ],
+    "tags": [
+      "turkije",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Na een 0-2 achterstand wint Turkije op het EK in Genève met 3-2 van Tsjechië, met twee late goals van Nihat Kahveci.",
+    "year": 2008,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Euro_2008_Group_A",
+      "https://en.wikipedia.org/wiki/Nihat_Kahveci"
+    ],
+    "tags": [
+      "turkije"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Turkije wint in Istanbul met 3-2 van België, ondanks twee goals van Daniel Van Buyten.",
+    "year": 2010,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Euro_2012_qualifying_Group_A"
+    ],
+    "tags": [
+      "turkije",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Fenerbahçe verslaat Galatasaray met 6-0 in het Şükrü Saracoğlu-stadion, de grootste uitslag in de Süper Lig-geschiedenis van de derby.",
+    "year": 2002,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Intercontinental_Derby"
+    ],
+    "tags": [
+      "turkije"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Dries Mertens verlaat Napoli en tekent transfervrij bij Galatasaray.",
+    "year": 2022,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dries_Mertens"
+    ],
+    "tags": [
+      "turkije",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "De 19-jarige Arda Güler scoort bij zijn EK-debuut tegen Georgië en Turkije wint met 3-1.",
+    "year": 2024,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Arda_G%C3%BCler"
+    ],
+    "tags": [
+      "turkije"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Feyenoord wordt de eerste Nederlandse club die de Europacup I wint, met 2-1 na verlenging tegen Celtic in Milaan.",
+    "year": 1970,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1970_European_Cup_final"
+    ],
+    "tags": [
+      "oranje",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "PSV wint in Stuttgart na strafschoppen de Europacup I-finale tegen Benfica.",
+    "year": 1988,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1988_European_Cup_final"
+    ],
+    "tags": [
+      "oranje",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "De 18-jarige invaller Patrick Kluivert beslist in Wenen de Champions League-finale voor Ajax tegen AC Milan.",
+    "year": 1995,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1995_UEFA_Champions_League_final"
+    ],
+    "tags": [
+      "oranje",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Op het EK in eigen land mist Oranje in de halve finale tegen Italië twee strafschoppen in de reguliere speeltijd en verliest daarna ook de strafschoppenreeks.",
+    "year": 2000,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Euro_2000_knockout_stage",
+      "https://en.wikipedia.org/wiki/UEFA_Euro_2000"
+    ],
+    "tags": [
+      "oranje"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Feyenoord wint in eigen stadion De Kuip de UEFA Cup tegen Borussia Dortmund.",
+    "year": 2002,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2001%E2%80%9302_UEFA_Cup"
+    ],
+    "tags": [
+      "oranje"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Francesco Totti speelt na 25 seizoenen zijn laatste wedstrijd voor AS Roma, een 3-2-zege tegen Genoa.",
+    "year": 2017,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Francesco_Totti"
+    ],
+    "tags": [
+      "italie"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Italië mist voor het eerst sinds 1958 het WK, na een play-off tegen Zweden.",
+    "year": 2017,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_qualification_(UEFA)"
+    ],
+    "tags": [
+      "italie",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "AC Milan klopt Juventus na strafschoppen in een Italiaanse Champions League-finale op Old Trafford.",
+    "year": 2003,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
+    ],
+    "tags": [
+      "italie",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Juventus wint in Rome na strafschoppen tegen Ajax de Champions League.",
+    "year": 1996,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
+    ],
+    "tags": [
+      "italie",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Dries Mertens wordt met een goal tegen Inter de topschutter aller tijden van Napoli.",
+    "year": 2020,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dries_Mertens"
+    ],
+    "tags": [
+      "italie",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Inter wordt kampioen en stopt de reeks van negen titels op rij van Juventus.",
+    "year": 2021,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Serie_A_champions"
+    ],
+    "tags": [
+      "italie"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Italië wint op het EK in Lyon met 2-0 van België.",
+    "year": 2016,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Euro_2016_Group_E"
+    ],
+    "tags": [
+      "italie",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Italië schakelt België in München uit in de kwartfinale van het uitgestelde EK.",
+    "year": 2021,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Euro_2020_knockout_stage"
+    ],
+    "tags": [
+      "italie",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "West-Duitsland wint in het Heizelstadion in Brussel de EK-finale met 3-0 van de Sovjet-Unie, met twee goals van Gerd Müller.",
+    "year": 1972,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Euro_1972_final"
+    ],
+    "tags": [
+      "duitsland"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Jürgen Sparwasser bezorgt Oost-Duitsland in Hamburg een 1-0 zege op West-Duitsland op het WK.",
+    "year": 1974,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/East_Germany_national_football_team"
+    ],
+    "tags": [
+      "duitsland",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Oost-Duitsland speelt zijn allerlaatste interland en wint in Brussel met 2-0 van België, met twee goals van Matthias Sammer.",
+    "year": 1990,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/East_Germany_national_football_team",
+      "https://en.wikipedia.org/wiki/Matthias_Sammer"
+    ],
+    "tags": [
+      "duitsland",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Lars Ricken lobt Peruzzi enkele seconden na zijn invalbeurt en Borussia Dortmund wint in München de Champions League tegen Juventus.",
+    "year": 1997,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1997_UEFA_Champions_League_final"
+    ],
+    "tags": [
+      "duitsland",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Schalke viert al de landstitel, maar Bayern pakt hem toch nog af met een late gelijkmaker van Patrik Andersson in Hamburg.",
+    "year": 2001,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2000–01_Bundesliga"
+    ],
+    "tags": [
+      "duitsland"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Jamal Musiala scoort in de 89e minuut tegen Keulen en geeft Bayern de elfde titel op rij, terwijl Dortmund thuis tegen Mainz gelijkspeelt.",
+    "year": 2023,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2022–23_Bundesliga"
+    ],
+    "tags": [
+      "duitsland"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Royal Antwerp verliest op Wembley de finale van de Europacup II van Parma.",
+    "year": 1993,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1993_European_Cup_Winners%27_Cup_final"
+    ],
+    "tags": [
+      "belgie"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Standard verliest in het Camp Nou de finale van de Europacup II van FC Barcelona.",
+    "year": 1982,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1982_European_Cup_Winners%27_Cup_final"
+    ],
+    "tags": [
+      "belgie",
+      "standard"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Club Brugge verliest de UEFA Cup-finale over twee wedstrijden van Liverpool, met 4-3 op aggregaat.",
+    "year": 1976,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1976_UEFA_Cup_final"
+    ],
+    "tags": [
+      "belgie",
+      "club-brugge"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Een jaar na zijn Europacup II-zege wordt KV Mechelen landskampioen, de voorlopig laatste titel van de club.",
+    "year": 1989,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions",
+      "https://en.wikipedia.org/wiki/1988_European_Cup_Winners%27_Cup_final"
+    ],
+    "tags": [
+      "belgie"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Barcelona maakt op het Bernabéu gehakt van Real Madrid met 2-6.",
+    "year": 2009,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/El_Cl%C3%A1sico"
+    ],
+    "tags": [
+      "spanje"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Barcelona maakt in de Champions League een 4-0 achterstand goed tegen PSG en wint de terugmatch met 6-1.",
+    "year": 2017,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Champions_League_knockout_phase"
+    ],
+    "tags": [
+      "spanje",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Spanje klopt Italië met 4-0 in de EK-finale in Kiev.",
+    "year": 2012,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Euro_2012_final"
+    ],
+    "tags": [
+      "spanje"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Villarreal wint de Europa League na een strafschoppenreeks van 11-10 tegen Manchester United.",
+    "year": 2021,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2021_UEFA_Europa_League_final"
+    ],
+    "tags": [
+      "spanje"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Spanje wordt wereldkampioen op het WK in de VS, Canada en Mexico, na een verlenging in de finale tegen Argentinië.",
+    "year": 2026,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_final"
+    ],
+    "tags": [
+      "spanje",
+      "wk"
     ],
     "checkedAt": "2026-10-19"
   }

@@ -25,7 +25,8 @@
       "rode-duivels",
       "anderlecht",
       "legende",
-      "pfaff"
+      "pfaff",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -55,7 +56,8 @@
       "rode-duivels",
       "club-brugge",
       "legende",
-      "pfaff"
+      "pfaff",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -85,7 +87,8 @@
       "gouden-schoen",
       "rode-duivels",
       "standard",
-      "legende"
+      "legende",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -112,7 +115,8 @@
     "tags": [
       "rode-duivels",
       "standard",
-      "legende"
+      "legende",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -141,7 +145,8 @@
       "familie",
       "rode-duivels",
       "standard",
-      "legende"
+      "legende",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -168,7 +173,8 @@
     "tags": [
       "rode-duivels",
       "anderlecht",
-      "legende"
+      "legende",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -198,7 +204,8 @@
       "rode-duivels",
       "club-brugge",
       "legende",
-      "pfaff"
+      "pfaff",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -227,7 +234,8 @@
       "gouden-schoen",
       "rode-duivels",
       "anderlecht",
-      "legende"
+      "legende",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -258,7 +266,8 @@
       "rode-duivels",
       "standard",
       "legende",
-      "pfaff"
+      "pfaff",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -287,7 +296,8 @@
       "gouden-schoen",
       "rode-duivels",
       "legende",
-      "pfaff"
+      "pfaff",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -317,7 +327,8 @@
       "gouden-schoen",
       "rode-duivels",
       "anderlecht",
-      "legende"
+      "legende",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -347,7 +358,8 @@
       "gouden-schoen",
       "rode-duivels",
       "club-brugge",
-      "legende"
+      "legende",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -376,7 +388,9 @@
       "wk",
       "familie",
       "champions-league",
-      "legende"
+      "legende",
+      "ballon-dor",
+      "frankrijk"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -405,7 +419,8 @@
     ],
     "tags": [
       "wk",
-      "legende"
+      "legende",
+      "ballon-dor"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -466,7 +481,8 @@
       "familie",
       "champions-league",
       "legende",
-      "oranje"
+      "oranje",
+      "ballon-dor"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -495,7 +511,8 @@
       "champions-league",
       "halloween",
       "legende",
-      "oranje"
+      "oranje",
+      "ballon-dor"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -522,7 +539,9 @@
       "https://en.wikipedia.org/wiki/Roberto_Baggio"
     ],
     "tags": [
-      "legende"
+      "legende",
+      "ballon-dor",
+      "italie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -550,7 +569,8 @@
     "tags": [
       "familie",
       "champions-league",
-      "legende"
+      "legende",
+      "italie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -576,7 +596,9 @@
     ],
     "tags": [
       "champions-league",
-      "legende"
+      "legende",
+      "ballon-dor",
+      "portugal"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -607,7 +629,8 @@
       "familie",
       "champions-league",
       "legende",
-      "messi"
+      "messi",
+      "ballon-dor"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -687,7 +710,8 @@
     ],
     "tags": [
       "familie",
-      "legende"
+      "legende",
+      "frankrijk"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -714,7 +738,8 @@
     ],
     "tags": [
       "champions-league",
-      "legende"
+      "legende",
+      "spanje"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -742,7 +767,8 @@
     ],
     "tags": [
       "champions-league",
-      "legende"
+      "legende",
+      "ballon-dor"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -831,7 +857,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Ludo_Coeck"
     ],
-    "tags": ["legende", "anderlecht", "rode-duivels", "wk", "pfaff"]
+    "tags": ["legende", "anderlecht", "rode-duivels", "wk", "pfaff", "belgie"]
   },
   {
     "name": "Jean Dockx",
@@ -852,7 +878,7 @@
       "https://en.wikipedia.org/wiki/Jean_Dockx",
       "https://en.wikipedia.org/wiki/Franky_Vercauteren"
     ],
-    "tags": ["legende", "anderlecht", "rode-duivels"]
+    "tags": ["legende", "anderlecht", "rode-duivels", "belgie"]
   },
   {
     "name": "Gilbert Van Binst",
@@ -872,7 +898,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Gilbert_Van_Binst"
     ],
-    "tags": ["legende", "anderlecht", "rode-duivels"]
+    "tags": ["legende", "anderlecht", "rode-duivels", "belgie"]
   },
   {
     "name": "Hugo Broos",
@@ -892,7 +918,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Hugo_Broos"
     ],
-    "tags": ["legende", "anderlecht", "club-brugge", "rode-duivels", "wk"]
+    "tags": ["legende", "anderlecht", "club-brugge", "rode-duivels", "wk", "belgie"]
   },
   {
     "name": "Franz Beckenbauer",
@@ -915,7 +941,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Franz_Beckenbauer"
     ],
-    "tags": ["legende", "wk", "champions-league", "pele"],
+    "tags": ["legende", "wk", "champions-league", "pele", "ballon-dor", "duitsland"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -1189,7 +1215,9 @@
     "tags": [
       "pfaff",
       "wk",
-      "legende"
+      "legende",
+      "ballon-dor",
+      "duitsland"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1217,7 +1245,9 @@
     "tags": [
       "pfaff",
       "wk",
-      "legende"
+      "legende",
+      "ballon-dor",
+      "duitsland"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1244,7 +1274,8 @@
     "tags": [
       "pfaff",
       "wk",
-      "legende"
+      "legende",
+      "duitsland"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1272,7 +1303,8 @@
     "tags": [
       "pfaff",
       "wk",
-      "legende"
+      "legende",
+      "duitsland"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1299,7 +1331,8 @@
     "tags": [
       "pfaff",
       "wk",
-      "legende"
+      "legende",
+      "duitsland"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1327,7 +1360,8 @@
       "pfaff",
       "wk",
       "rode-duivels",
-      "legende"
+      "legende",
+      "belgie"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1467,7 +1501,8 @@
     ],
     "tags": [
       "maradona",
-      "legende"
+      "legende",
+      "italie"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1495,7 +1530,8 @@
       "maradona",
       "wk",
       "champions-league",
-      "legende"
+      "legende",
+      "italie"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1522,7 +1558,8 @@
     ],
     "tags": [
       "maradona",
-      "legende"
+      "legende",
+      "duitsland"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1580,6 +1617,624 @@
       "maradona",
       "wk",
       "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Michel Platini",
+    "answers": [
+      "Platini"
+    ],
+    "country": "Frankrijk",
+    "competition": "Serie A",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1955 geboren in Jœuf, in het noordoosten van Frankrijk.",
+      "Ik was een spelmaker die uitblonk in vrije trappen en strafschoppen.",
+      "Ik speelde voor Nancy en Saint-Étienne voor ik naar Turijn trok.",
+      "In 1984 voerde ik Frankrijk als aanvoerder naar de Europese titel en werd ik met negen goals topschutter.",
+      "Ik won drie Ballons d'Or op rij, van 1983 tot 1985, en werd later voorzitter van de UEFA."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Michel_Platini"
+    ],
+    "tags": [
+      "ballon-dor",
+      "legende",
+      "champions-league",
+      "frankrijk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Ruud Gullit",
+    "answers": [
+      "Gullit"
+    ],
+    "country": "Nederland",
+    "competition": "Serie A",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1962 geboren in Amsterdam.",
+      "Ik speelde voor Haarlem, Feyenoord en PSV voor ik wereldnieuws maakte met een transfer.",
+      "In 1987 trok ik voor een toenmalig wereldrecordbedrag naar AC Milan.",
+      "Als aanvoerder van Oranje won ik in 1988 het EK en kopte ik de 1-0 binnen in de finale tegen de Sovjet-Unie.",
+      "Ik won in 1987 de Ballon d'Or en droeg hem op aan Nelson Mandela."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ruud_Gullit"
+    ],
+    "tags": [
+      "ballon-dor",
+      "legende",
+      "oranje",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "George Weah",
+    "answers": [
+      "Weah"
+    ],
+    "country": "Liberia",
+    "competition": "Serie A",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1966 geboren in Monrovia.",
+      "Na mijn voetbalcarrière stapte ik in de politiek.",
+      "Ik speelde voor Monaco, Paris Saint-Germain en AC Milan.",
+      "Tegen Verona liep ik na een hoekschop vanaf mijn eigen strafschopgebied over het hele veld naar een doelpunt.",
+      "In 1995 won ik als eerste Afrikaan de Ballon d'Or en in 2018 werd ik president van mijn land."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/George_Weah"
+    ],
+    "tags": [
+      "ballon-dor",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Hristo Stoitsjkov",
+    "answers": [
+      "Stoitsjkov",
+      "Stoichkov",
+      "Stoichkov Hristo"
+    ],
+    "country": "Bulgarije",
+    "competition": "LaLiga",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik werd in 1966 geboren in Plovdiv.",
+      "Bij CSKA Sofia kreeg ik na een vechtpartij in een bekerfinale een levenslange schorsing, die uiteindelijk één jaar werd.",
+      "Bij Barcelona speelde ik in het Dream Team en won ik in 1992 de Europacup I tegen Sampdoria.",
+      "Op het WK 1994 deelde ik de Gouden Schoen met Oleg Salenko en haalde ik met mijn land de halve finale.",
+      "In 1994 won ik de Ballon d'Or en later werd ik bondscoach van mijn land."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Hristo_Stoichkov"
+    ],
+    "tags": [
+      "ballon-dor",
+      "legende",
+      "wk",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Jean-Pierre Papin",
+    "answers": [
+      "Papin"
+    ],
+    "country": "Frankrijk",
+    "competition": "Ligue 1",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik werd in 1963 geboren in Boulogne-sur-Mer.",
+      "Ik stond bekend om mijn krachtige volleys en omhalen.",
+      "Ik speelde in 1985-86 voor Club Brugge en won de Belgische beker.",
+      "Met Marseille werd ik vier jaar op rij kampioen en verloor ik in 1991 de Europacup I-finale na strafschoppen.",
+      "In 1991 won ik de Ballon d'Or, voor ik naar AC Milan trok."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jean-Pierre_Papin"
+    ],
+    "tags": [
+      "ballon-dor",
+      "legende",
+      "club-brugge",
+      "frankrijk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Matthias Sammer",
+    "answers": [
+      "Sammer"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik werd in 1967 geboren in Dresden, in het toenmalige Oost-Duitsland.",
+      "Ik speelde eerst voor het nationale elftal van de DDR.",
+      "Ik speelde voor Dynamo Dresden, Stuttgart, Inter en Dortmund.",
+      "In 1996 werd ik Europees kampioen met Duitsland, als libero, en uitgeroepen tot beste speler van het toernooi.",
+      "Ik won in 1996 als verdediger de Ballon d'Or en in 1997 de Champions League; een knieblessure maakte in 1998 een einde aan mijn carrière."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Matthias_Sammer"
+    ],
+    "tags": [
+      "ballon-dor",
+      "legende",
+      "champions-league",
+      "duitsland"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Rivaldo",
+    "answers": [
+      "Rivaldo Vítor Borba Ferreira"
+    ],
+    "country": "Brazilië",
+    "competition": "LaLiga",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1972 geboren in Recife.",
+      "Ik was een linksbenige aanvaller met een bijzonder schot.",
+      "Na Deportivo La Coruña speelde ik vijf seizoenen voor Barcelona.",
+      "In 2001 scoorde ik tegen Valencia een hattrick, met een omhaal in de laatste minuut die Barcelona naar de Champions League bracht.",
+      "In 1999 won ik de Ballon d'Or en in 2002 werd ik wereldkampioen met Brazilië."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Rivaldo"
+    ],
+    "tags": [
+      "ballon-dor",
+      "legende",
+      "wk",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Michael Owen",
+    "answers": [
+      "Owen"
+    ],
+    "country": "Engeland",
+    "competition": "Premier League",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1979 geboren in Chester.",
+      "Ik was een razendsnelle spits die al als tiener doorbrak.",
+      "Op het WK 1998 dribbelde ik vanaf de middenlijn naar een doelpunt tegen Argentinië.",
+      "In 2001 won ik met Liverpool de UEFA Cup, de FA Cup en de League Cup, en in de FA Cup-finale tegen Arsenal scoorde ik tweemaal.",
+      "In 2001 won ik de Ballon d'Or; later speelde ik nog voor Real Madrid, Newcastle en Manchester United."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Michael_Owen"
+    ],
+    "tags": [
+      "ballon-dor",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Pavel Nedvěd",
+    "answers": [
+      "Nedvěd",
+      "Nedved"
+    ],
+    "country": "Tsjechië",
+    "competition": "Serie A",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik werd in 1972 geboren in Cheb, in het toenmalige Tsjecho-Slowakije.",
+      "In Italië noemden ze mij 'Furia Ceca', de Tsjechische furie.",
+      "Ik speelde voor Sparta Praag en Lazio, waarmee ik de laatste Europacup II won.",
+      "In 2003 kreeg ik in de halve finale van de Champions League een gele kaart, waardoor ik de finale miste.",
+      "In 2003 won ik de Ballon d'Or; later werd ik vicevoorzitter van Juventus."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pavel_Nedv%C4%9Bd"
+    ],
+    "tags": [
+      "ballon-dor",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Eusébio",
+    "answers": [
+      "Eusebio",
+      "Eusébio da Silva Ferreira"
+    ],
+    "country": "Portugal",
+    "competition": "Primeira Liga",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik werd in 1942 geboren in Mozambique, toen nog een Portugese kolonie.",
+      "Men noemde mij de 'Zwarte Panter' of de 'Zwarte Parel'.",
+      "Bijna heel mijn carrière speelde ik voor Benfica, waarmee ik in 1962 de Europacup I won met twee goals in de finale tegen Real Madrid.",
+      "Op het WK 1966 werd ik met negen goals topschutter en haalde ik met Portugal de derde plaats.",
+      "In 1965 won ik de Ballon d'Or en in 1968 was ik de eerste winnaar van de Gouden Schoen."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Eus%C3%A9bio"
+    ],
+    "tags": [
+      "ballon-dor",
+      "legende",
+      "wk",
+      "champions-league",
+      "portugal"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Alfredo Di Stéfano",
+    "answers": [
+      "Di Stéfano",
+      "Di Stefano",
+      "Saeta Rubia"
+    ],
+    "country": "Spanje",
+    "competition": "LaLiga",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik werd in 1926 geboren in Buenos Aires.",
+      "Ik speelde voor het nationale elftal van Argentinië en later voor dat van Spanje.",
+      "In Colombia speelde ik voor Millonarios voor ik naar Madrid trok.",
+      "In 1963 werd ik in Caracas ontvoerd en een paar dagen later ongedeerd vrijgelaten.",
+      "Met Real Madrid won ik vijf Europacups op rij en twee keer de Ballon d'Or, in 1957 en 1959."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Alfredo_Di_St%C3%A9fano"
+    ],
+    "tags": [
+      "ballon-dor",
+      "legende",
+      "champions-league",
+      "spanje"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "George Best",
+    "answers": [
+      "Best"
+    ],
+    "country": "Noord-Ierland",
+    "competition": "Premier League",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1946 geboren in Belfast.",
+      "Ik was een dribbelaar die ook naast het veld voor veel krantenkoppen zorgde.",
+      "Een Portugese krant noemde mij na een schitterende wedstrijd in Lissabon in 1966 'de vijfde Beatle'.",
+      "In 1968 scoorde ik in de verlenging van de Europacup I-finale op Wembley tegen Benfica, na een dribbel langs de doelman.",
+      "In 1968 won ik de Ballon d'Or met Manchester United, maar ik speelde nooit op een WK."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/George_Best"
+    ],
+    "tags": [
+      "ballon-dor",
+      "legende",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Bobby Charlton",
+    "answers": [
+      "Charlton",
+      "Sir Bobby Charlton"
+    ],
+    "country": "Engeland",
+    "competition": "Premier League",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1937 geboren in Ashington, in het noordoosten van Engeland.",
+      "Ik overleefde in 1958 een vliegramp met mijn ploeg.",
+      "Bijna heel mijn carrière speelde ik voor Manchester United.",
+      "In 1966 werd ik wereldkampioen op eigen bodem, met twee goals in de halve finale tegen Portugal.",
+      "Ik won in 1966 de Ballon d'Or en was lang recordhouder qua doelpunten voor Engeland en voor mijn club."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Bobby_Charlton"
+    ],
+    "tags": [
+      "ballon-dor",
+      "legende",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Kevin Keegan",
+    "answers": [
+      "Keegan"
+    ],
+    "country": "Engeland",
+    "competition": "Premier League",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik werd in 1951 geboren in Armthorpe, in Yorkshire.",
+      "Ik begon bij Scunthorpe United en trok in 1971 naar een grotere club.",
+      "In 1977 won ik de Europacup I in mijn laatste seizoen bij Liverpool.",
+      "Bij Hamburg liet ik een permanent zetten, wat een trend werd.",
+      "Ik won de Ballon d'Or in 1978 en 1979 en werd later trainer van Newcastle en van Engeland."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_Keegan"
+    ],
+    "tags": [
+      "ballon-dor",
+      "legende",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Gerd Müller",
+    "answers": [
+      "Gerd",
+      "Gerd Muller",
+      "Der Bomber"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik werd in 1945 geboren in Nördlingen, in Beieren.",
+      "Ik was niet groot, maar wel een geboren doelpuntenmaker.",
+      "Bijna heel mijn carrière speelde ik voor Bayern München, waarvoor ik 365 Bundesliga-goals scoorde.",
+      "In 1972 werd ik Europees kampioen en topschutter van het EK met vier goals.",
+      "In 1970 won ik de Ballon d'Or en in 1974 scoorde ik het winnende doelpunt in de WK-finale tegen Nederland."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gerd_M%C3%BCller"
+    ],
+    "tags": [
+      "ballon-dor",
+      "legende",
+      "wk",
+      "duitsland"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Lev Yashin",
+    "answers": [
+      "Yashin",
+      "Jasjin",
+      "Zwarte Spin"
+    ],
+    "country": "Rusland",
+    "competition": "Sovjet-competitie",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik werd in 1929 geboren in Moskou.",
+      "Ik speelde mijn hele profcarrière voor één club, Dinamo Moskou, en won ook een beker als ijshockeydoelman.",
+      "Ik droeg altijd donkere kleren en kreeg daardoor mijn bijnaam.",
+      "In 1960 won ik met de Sovjet-Unie het eerste EK.",
+      "Ik stopte meer dan 150 strafschoppen en in 1963 won ik als enige doelman ooit de Ballon d'Or."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lev_Yashin"
+    ],
+    "tags": [
+      "ballon-dor",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Rui Costa",
+    "answers": [
+      "Costa"
+    ],
+    "country": "Portugal",
+    "competition": "Serie A",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1972 geboren in Amadora, vlak bij Lissabon.",
+      "Ik was een klassieke nummer 10: een speelmaker met veel techniek.",
+      "Ik speelde zeven seizoenen bij Fiorentina, van 1994 tot 2001.",
+      "Op het EK 2000 gaf ik twee assists bij de 3-2-comeback tegen Engeland, en op het EK 2004 verloor ik de finale van Griekenland.",
+      "Ik won in 2003 de Champions League met AC Milan en werd later voorzitter van Benfica."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Rui_Costa"
+    ],
+    "tags": [
+      "portugal",
+      "legende",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Deco",
+    "answers": [
+      "Anderson Luís de Souza"
+    ],
+    "country": "Portugal",
+    "competition": "LaLiga",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1977 geboren in São Bernardo do Campo, in Brazilië.",
+      "Ik ben een middenvelder en een speelmaker met veel overzicht.",
+      "In 2002 kreeg ik de Portugese nationaliteit en op het EK 2004 haalde ik met mijn nieuwe land de finale.",
+      "Ik speelde vier jaar voor Barcelona en later twee jaar voor Chelsea.",
+      "Ik won de Champions League met twee clubs: in 2004 met Porto en in 2006 met Barcelona."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Deco",
+      "https://en.wikipedia.org/wiki/2004_UEFA_Champions_League_final"
+    ],
+    "tags": [
+      "portugal",
+      "legende",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Paolo Rossi",
+    "answers": [
+      "Rossi",
+      "Pablito"
+    ],
+    "country": "Italië",
+    "competition": "Serie A",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1956 geboren in Prato, in Toscane.",
+      "Een gokschandaal kostte me twee jaar schorsing, waardoor ik het EK 1980 miste.",
+      "Op het WK 1978 scoorde ik drie keer en won ik de Zilveren Bal.",
+      "In 1982 scoorde ik een hattrick tegen Brazilië in een 3-2-zege.",
+      "Op het WK 1982 werd ik topschutter en beste speler, en dat jaar won ik ook de Ballon d'Or."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Paolo_Rossi",
+      "https://en.wikipedia.org/wiki/1982_FIFA_World_Cup_Group_C"
+    ],
+    "tags": [
+      "italie",
+      "legende",
+      "ballon-dor",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Oliver Kahn",
+    "answers": [
+      "Kahn",
+      "Der Titan"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "classic",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1969 geboren in Karlsruhe en stond al als kind in doel bij de plaatselijke club.",
+      "De Duitse pers gaf me een bijnaam uit de Griekse mythologie, om mijn felle blik en mijn onverzettelijke karakter.",
+      "Veertien jaar lang, van 1994 tot 2008, stond ik in doel bij Bayern München.",
+      "In 2001 stopte ik drie strafschoppen in de shoot-out van de Champions League-finale tegen Valencia.",
+      "Op het WK 2002 won ik als enige doelman ooit de Gouden Bal, al verloor ik de finale na een fout van mij bij de 0-1."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Oliver_Kahn"
+    ],
+    "tags": [
+      "duitsland",
+      "legende",
+      "champions-league",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Jürgen Klinsmann",
+    "answers": [
+      "Klinsmann",
+      "Klinsi"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "classic",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1964 geboren in Göppingen, als zoon van een bakker.",
+      "Als spits speelde ik bij onder meer clubs in Duitsland, Italië, Frankrijk en Engeland.",
+      "Bij Tottenham vierde ik mijn eerste goal met een duikeling, als grap over mijn reputatie dat ik me makkelijk liet vallen.",
+      "In 1990 werd ik met West-Duitsland wereldkampioen, en in 1996 ook Europees kampioen.",
+      "Later was ik bondscoach van Duitsland tijdens het thuis-WK van 2006, en daarna van de Verenigde Staten."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/J%C3%BCrgen_Klinsmann"
+    ],
+    "tags": [
+      "duitsland",
+      "legende",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Fernando Hierro",
+    "answers": [
+      "Hierro"
+    ],
+    "country": "Spanje",
+    "competition": "LaLiga",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik ben geboren in 1968 in Vélez-Málaga, in Andalusië.",
+      "Ik was een verdediger die ook als libero en verdedigende middenvelder speelde, en toch veel doelpunten maakte.",
+      "Ik speelde veertien jaar voor één Spaanse topclub, waar ik vijf keer landskampioen werd.",
+      "Ik sloot mijn carrière in 2005 af in Engeland, bij Bolton Wanderers.",
+      "Ik won drie keer de Champions League en was in 2018 bondscoach van Spanje op het WK."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Fernando_Hierro"
+    ],
+    "tags": [
+      "spanje",
+      "legende",
+      "champions-league"
     ],
     "checkedAt": "2026-10-19"
   }

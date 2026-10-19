@@ -104,7 +104,9 @@
       "https://en.wikipedia.org/wiki/2008_UEFA_Champions_League_final"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "ballon-dor",
+      "portugal"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -339,7 +341,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Cesc_F%C3%A0bregas"
     ],
-    "tags": ["messi"],
+    "tags": ["messi", "spanje"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -366,7 +368,8 @@
     ],
     "tags": [
       "champions-league",
-      "messi"
+      "messi",
+      "frankrijk"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -417,7 +420,8 @@
     "tags": [
       "wk",
       "champions-league",
-      "lukaku"
+      "lukaku",
+      "frankrijk"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -682,7 +686,8 @@
     "tags": [
       "champions-league",
       "lukaku",
-      "de-bruyne"
+      "de-bruyne",
+      "spanje"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -708,7 +713,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/David_Silva"
     ],
-    "tags": ["de-bruyne"],
+    "tags": ["de-bruyne", "spanje"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -734,7 +739,7 @@
       "https://www.manutd.com/en/news/detail/bruno-fernandes-the-story-of-his-career-so-far",
       "https://www.eurosport.co.uk/football/premier-league/2020-2021/should-bruno-fernandes-penalty-technique-be-banned-ian-wright-questions-man-utd-takers-jump_sto8004009/story.shtml"
     ],
-    "tags": [],
+    "tags": ["portugal"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -918,5 +923,110 @@
     ],
     "tags": [],
     "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Bernardo Silva",
+    "answers": [
+      "Bernardo"
+    ],
+    "country": "Portugal",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1994 geboren in Lissabon.",
+      "Ik ben een technisch begaafde aanvallende middenvelder die zowel op de flank als centraal speelt.",
+      "Ik kom uit de jeugdopleiding van Benfica en werd in 2017 kampioen van Frankrijk met Monaco.",
+      "Met mijn land won ik in 2019 en in 2025 de Nations League.",
+      "Met Manchester City won ik zes keer de Premier League en in 2023 de Champions League."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Bernardo_Silva"
+    ],
+    "tags": [
+      "portugal",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Rúben Dias",
+    "answers": [
+      "Ruben Dias",
+      "Dias"
+    ],
+    "country": "Portugal",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1997 geboren in Amadora, vlak bij Lissabon.",
+      "Ik ben een centrale verdediger en leid de defensie van mijn team.",
+      "Ik kom uit de jeugd van Benfica en werd in 2019 met hen kampioen van Portugal.",
+      "In 2020 trok ik voor ruim 60 miljoen euro naar Manchester City, waarbij Nicolás Otamendi de andere kant uitging.",
+      "In 2021 won ik de prijs voor Speler van het Jaar van de Engelse voetbaljournalisten, en met mijn land won ik twee keer de Nations League."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/R%C3%BAben_Dias"
+    ],
+    "tags": [
+      "portugal"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Nani",
+    "answers": [
+      "Luis Nani",
+      "Luís Carlos Almeida da Cunha"
+    ],
+    "country": "Portugal",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1986 geboren in Amadora, bij Lissabon, in een gezin met Kaapverdische roots.",
+      "Ik ben een flankaanvaller met veel dribbels en een stevig schot.",
+      "Ik kom uit de jeugd van Sporting en trok in 2007 naar Engeland.",
+      "Met mijn Engelse club won ik vier keer de landstitel; in de Champions League-finale van 2008 scoorde ik na mijn invalbeurt een strafschop in de reeks tegen Chelsea.",
+      "Op het EK 2016 scoorde ik tegen Hongarije en Wales en werd ik met mijn land Europees kampioen."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Nani_(footballer)"
+    ],
+    "tags": [
+      "portugal",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "João Cancelo",
+    "answers": [
+      "Cancelo",
+      "Joao Cancelo"
+    ],
+    "country": "Portugal",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1994 geboren in Barreiro, in Portugal.",
+      "Ik ben een back die zowel rechts als links kan spelen en graag opschuift.",
+      "Ik werd in 2014 met Benfica kampioen en trok daarna naar Valencia.",
+      "Ik speelde ook voor Inter, Juventus (waar ik in 2019 kampioen werd), Bayern München en Barcelona.",
+      "Met Manchester City won ik drie keer de Premier League, en met mijn land in 2019 de Nations League in eigen land."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jo%C3%A3o_Cancelo"
+    ],
+    "tags": [
+      "portugal"
+    ],
+    "checkedAt": "2026-10-19"
   }
 ]

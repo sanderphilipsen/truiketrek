@@ -15,7 +15,7 @@
       "Als kind kreeg ik groeihormonen omdat ik te klein bleef voor mijn leeftijd.",
       "Op mijn dertiende verhuisde ik naar Spanje om in de jeugdopleiding van een topclub te spelen.",
       "In 2012 scoorde ik 91 doelpunten in één kalenderjaar, een record.",
-      "Ik won acht Ballons d'Or en werd in 2022 als aanvoerder wereldkampioen met Argentinië."
+      "Ik won acht Ballons d'Or (tot en met 2025) en werd in 2022 als aanvoerder wereldkampioen met Argentinië."
     ],
     "status": "approved",
     "sources": [
@@ -24,7 +24,8 @@
     "tags": [
       "wk",
       "champions-league",
-      "messi"
+      "messi",
+      "ballon-dor"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -52,7 +53,8 @@
     "tags": [
       "wk",
       "champions-league",
-      "messi"
+      "messi",
+      "spanje"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -79,7 +81,8 @@
     "tags": [
       "wk",
       "champions-league",
-      "messi"
+      "messi",
+      "spanje"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -106,7 +109,8 @@
     "tags": [
       "wk",
       "champions-league",
-      "messi"
+      "messi",
+      "spanje"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -133,7 +137,8 @@
     "tags": [
       "wk",
       "champions-league",
-      "messi"
+      "messi",
+      "spanje"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -160,7 +165,8 @@
     ],
     "tags": [
       "wk",
-      "champions-league"
+      "champions-league",
+      "spanje"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -185,7 +191,9 @@
       "https://en.wikipedia.org/wiki/Karim_Benzema"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "ballon-dor",
+      "frankrijk"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -211,7 +219,7 @@
       "https://en.wikipedia.org/wiki/Antoine_Griezmann",
       "https://es.soccerway.com/noticias/futbol-laliga-ea-sports-el-atletico-de-madrid-le-da-el-7-de-joao-felix-a-antoine-griezmann/W66awN4N"
     ],
-    "tags": ["wk", "messi"],
+    "tags": ["wk", "messi", "frankrijk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -238,7 +246,8 @@
     "tags": [
       "wk",
       "champions-league",
-      "messi"
+      "messi",
+      "spanje"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -266,7 +275,8 @@
       "wk",
       "familie",
       "champions-league",
-      "messi"
+      "messi",
+      "spanje"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -292,7 +302,8 @@
       "https://en.wikipedia.org/wiki/Luka_Modri%C4%87"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "ballon-dor"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -344,7 +355,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Lamine_Yamal"
     ],
-    "tags": [],
+    "tags": ["spanje"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -368,7 +379,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Pedri"
     ],
-    "tags": ["messi"],
+    "tags": ["messi", "spanje"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -469,7 +480,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Koke_(footballer,_born_1992)"
     ],
-    "tags": [],
+    "tags": ["spanje"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -496,7 +507,8 @@
     "tags": [
       "wk",
       "champions-league",
-      "messi"
+      "messi",
+      "spanje"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -571,7 +583,8 @@
     ],
     "tags": [
       "champions-league",
-      "messi"
+      "messi",
+      "spanje"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -595,7 +608,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Rodri_(footballer,_born_1996)"
     ],
-    "tags": ["champions-league", "de-bruyne"],
+    "tags": ["champions-league", "de-bruyne", "ballon-dor", "spanje"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -618,7 +631,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Dani_Carvajal"
     ],
-    "tags": ["champions-league"],
+    "tags": ["champions-league", "spanje"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -642,7 +655,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Isco"
     ],
-    "tags": ["champions-league"],
+    "tags": ["champions-league", "spanje"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -665,7 +678,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/%C3%81lvaro_Morata"
     ],
-    "tags": [],
+    "tags": ["spanje"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -688,7 +701,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Nico_Williams"
     ],
-    "tags": [],
+    "tags": ["spanje"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -713,7 +726,115 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Thiago_Alc%C3%A2ntara"
     ],
-    "tags": ["champions-league", "messi"],
+    "tags": ["champions-league", "messi", "spanje"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Mikel Oyarzabal",
+    "answers": [
+      "Oyarzabal"
+    ],
+    "country": "Spanje",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik ben geboren in 1997 in Eibar, in het Baskenland.",
+      "Ik ben een aanvaller die bekendstaat om mijn koele strafschoppen.",
+      "Ik speel al heel mijn loopbaan voor een club uit San Sebastián, waar ik aanvoerder werd.",
+      "In 2021 scoorde ik van op de stip het enige doelpunt in de bekerfinale tegen Athletic Bilbao.",
+      "Ik besliste in 2024 de EK-finale tegen Engeland en scoorde vijf keer op het WK 2026, waar Spanje wereldkampioen werd."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mikel_Oyarzabal"
+    ],
+    "tags": [
+      "spanje",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Dani Olmo",
+    "answers": [
+      "Olmo"
+    ],
+    "country": "Spanje",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik ben geboren in 1998 in Terrassa, vlak bij Barcelona.",
+      "Ik ben een creatieve aanvallende middenvelder met een goed schot.",
+      "Als tiener verliet ik de jeugdopleiding van een Catalaanse topclub voor een club in Kroatië.",
+      "Daarna speelde ik vier seizoenen in Duitsland, tot ik in 2024 terugkeerde naar de club waar ik opgeleid werd.",
+      "Op het EK 2024 deelde ik met vijf anderen de Gouden Schoen en werd ik met Spanje Europees kampioen."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dani_Olmo"
+    ],
+    "tags": [
+      "spanje",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Xabi Alonso",
+    "answers": [
+      "Alonso",
+      "Xabier Alonso"
+    ],
+    "country": "Spanje",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik ben geboren in 1981 in Tolosa, in het Baskenland.",
+      "Ik was een diepliggende middenvelder die bekendstond om mijn lange, precieze passes.",
+      "Ik speelde voor Real Sociedad, Liverpool en Real Madrid en sloot mijn carrière af bij Bayern München.",
+      "Ik won de Champions League met twee verschillende clubs, in 2005 en in 2014.",
+      "Ik won twee EK's en het WK 2010 met Spanje, en werd als trainer in 2024 ongeslagen kampioen met Leverkusen."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Xabi_Alonso"
+    ],
+    "tags": [
+      "spanje",
+      "wk",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Unai Simón",
+    "answers": [
+      "Simón",
+      "Simon",
+      "Unai Simon"
+    ],
+    "country": "Spanje",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 4,
+    "hints": [
+      "Ik ben geboren in 1997 in Vitoria-Gasteiz, in het Baskenland.",
+      "Ik ben een doelman en werd opgeleid bij een Baskische club uit Bilbao.",
+      "Op het EK 2020 liet ik tegen Kroatië een terugspeelbal van Pedri in eigen doel glippen.",
+      "In 2024 werd ik Europees kampioen en won ik de Zamora-trofee als beste doelman in La Liga.",
+      "Op het WK 2026 won ik de Gouden Handschoen en kreeg ik maar één tegendoelpunt, in de kwartfinale tegen België."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Unai_Sim%C3%B3n"
+    ],
+    "tags": [
+      "spanje",
+      "wk"
+    ],
     "checkedAt": "2026-10-19"
   }
 ]

@@ -23,7 +23,8 @@
       "rode-duivels",
       "gouden-schoen",
       "club-brugge",
-      "stijnen"
+      "stijnen",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -106,7 +107,8 @@
       "familie",
       "gouden-schoen",
       "standard",
-      "legende"
+      "legende",
+      "portugal"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -134,7 +136,8 @@
       "rode-duivels",
       "gouden-schoen",
       "anderlecht",
-      "de-bruyne"
+      "de-bruyne",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -163,7 +166,8 @@
       "gouden-schoen",
       "anderlecht",
       "club-brugge",
-      "legende"
+      "legende",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -218,7 +222,8 @@
       "rode-duivels",
       "gouden-schoen",
       "anderlecht",
-      "legende"
+      "legende",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -247,7 +252,8 @@
       "gouden-schoen",
       "anderlecht",
       "club-brugge",
-      "legende"
+      "legende",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -277,7 +283,8 @@
       "gouden-schoen",
       "anderlecht",
       "legende",
-      "pfaff"
+      "pfaff",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -306,7 +313,8 @@
       "gouden-schoen",
       "anderlecht",
       "legende",
-      "pfaff"
+      "pfaff",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -389,7 +397,8 @@
     ],
     "tags": [
       "wk",
-      "kerst"
+      "kerst",
+      "frankrijk"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -621,7 +630,8 @@
     "tags": [
       "kerst",
       "champions-league",
-      "legende"
+      "legende",
+      "duitsland"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -648,7 +658,8 @@
     ],
     "tags": [
       "kerst",
-      "legende"
+      "legende",
+      "turkije"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -706,7 +717,8 @@
       "wk",
       "familie",
       "nieuwjaar",
-      "legende"
+      "legende",
+      "frankrijk"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -837,7 +849,8 @@
       "https://en.wikipedia.org/wiki/Gr%C3%A9gory_Coupet"
     ],
     "tags": [
-      "nieuwjaar"
+      "nieuwjaar",
+      "frankrijk"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -887,7 +900,8 @@
       "https://en.wikipedia.org/wiki/Gianluca_Scamacca"
     ],
     "tags": [
-      "nieuwjaar"
+      "nieuwjaar",
+      "italie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -963,7 +977,8 @@
       "https://en.wikipedia.org/wiki/Mahmoud_Dahoud"
     ],
     "tags": [
-      "nieuwjaar"
+      "nieuwjaar",
+      "duitsland"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -992,7 +1007,8 @@
       "wk",
       "familie",
       "halloween",
-      "legende"
+      "legende",
+      "duitsland"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1072,7 +1088,8 @@
     ],
     "tags": [
       "halloween",
-      "champions-league"
+      "champions-league",
+      "spanje"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1099,7 +1116,8 @@
       "https://en.wikipedia.org/wiki/Sim%C3%A3o_Sabrosa"
     ],
     "tags": [
-      "halloween"
+      "halloween",
+      "portugal"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1127,7 +1145,8 @@
     ],
     "tags": [
       "halloween",
-      "messi"
+      "messi",
+      "spanje"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1154,7 +1173,8 @@
     "tags": [
       "beker-van-belgie",
       "halloween",
-      "rode-duivels"
+      "rode-duivels",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1208,7 +1228,8 @@
     ],
     "tags": [
       "halloween",
-      "legende"
+      "legende",
+      "turkije"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1285,7 +1306,8 @@
     ],
     "tags": [
       "sinterklaas",
-      "lukaku"
+      "lukaku",
+      "frankrijk"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1311,7 +1333,8 @@
       "https://en.wikipedia.org/wiki/Randal_Kolo_Muani"
     ],
     "tags": [
-      "sinterklaas"
+      "sinterklaas",
+      "frankrijk"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1387,7 +1410,8 @@
       "https://en.wikipedia.org/wiki/Davide_Calabria"
     ],
     "tags": [
-      "sinterklaas"
+      "sinterklaas",
+      "italie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1414,7 +1438,8 @@
     "tags": [
       "familie",
       "sinterklaas",
-      "legende"
+      "legende",
+      "duitsland"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1441,7 +1466,8 @@
     "tags": [
       "beker-van-belgie",
       "sinterklaas",
-      "standard"
+      "standard",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1468,7 +1494,8 @@
     "tags": [
       "beker-van-belgie",
       "sinterklaas",
-      "rode-duivels"
+      "rode-duivels",
+      "belgie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1493,7 +1520,8 @@
       "https://en.wikipedia.org/wiki/Federico_Balzaretti"
     ],
     "tags": [
-      "sinterklaas"
+      "sinterklaas",
+      "italie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1574,7 +1602,113 @@
     ],
     "tags": [
       "club-brugge",
-      "de-bruyne"
+      "de-bruyne",
+      "oranje"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Pepe",
+    "answers": [
+      "Kepler Laverán de Lima Ferreira",
+      "Kepler"
+    ],
+    "country": "Portugal",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1983 geboren in Brazilië, maar speelde later voor een Europees land.",
+      "Ik ben een centrale verdediger die soms ook als verdedigende middenvelder speelde.",
+      "Ik speelde voor Marítimo, Beşiktaş en twee periodes voor Porto.",
+      "Met Real Madrid won ik drie keer de Champions League, en in 2016 werd ik Europees kampioen met mijn land.",
+      "Op het EK 2024 werd ik op 41-jarige leeftijd de oudste speler ooit op een EK."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pepe_(footballer,_born_1983)"
+    ],
+    "tags": [
+      "portugal",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Ricardo Carvalho",
+    "answers": [
+      "Carvalho"
+    ],
+    "country": "Portugal",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 4,
+    "hints": [
+      "Ik werd in 1978 geboren in Amarante, in Portugal.",
+      "Ik ben een centrale verdediger.",
+      "Ik was basisspeler op het EK 2004, dat mijn land in eigen huis in de finale tegen Griekenland verloor.",
+      "Na mijn tijd in Engeland speelde ik voor Real Madrid en later voor Monaco.",
+      "Ik won in 2004 met Porto de Champions League, volgde mijn trainer naar Chelsea en werd daar drie keer kampioen."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ricardo_Carvalho"
+    ],
+    "tags": [
+      "portugal",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Ricardo Quaresma",
+    "answers": [
+      "Quaresma"
+    ],
+    "country": "Portugal",
+    "competition": "Süper Lig",
+    "era": "modern",
+    "difficulty": 4,
+    "hints": [
+      "Ik werd in 1983 geboren in Lissabon en ben een flankaanvaller.",
+      "Mijn handelsmerk is een schot met de buitenkant van de rechtervoet, een 'trivela'.",
+      "Ik won in 2002 met Sporting de dubbel en speelde later voor Barcelona, Porto en Inter.",
+      "Ik werd twee keer kampioen van Turkije met Beşiktaş en maakte in 2010 deel uit van de Champions League-winnende selectie van Inter.",
+      "Op het EK 2016 scoorde ik in de 117e minuut het enige doelpunt tegen Kroatië en viel ik in de finale vroeg in voor een geblesseerde ploegmaat."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ricardo_Quaresma"
+    ],
+    "tags": [
+      "portugal"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Rafael Leão",
+    "answers": [
+      "Leão",
+      "Leao",
+      "Rafael Leao"
+    ],
+    "country": "Portugal",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1999 geboren in Seixal, in Portugal.",
+      "Ik ben een lange, snelle linksbuiten met veel dribbels.",
+      "Ik kom uit de jeugd van Sporting en speelde een jaar voor Lille.",
+      "In 2021-22 won ik met AC Milan de landstitel en werd ik uitgeroepen tot MVP van de Serie A.",
+      "Ik scoorde in een Serie A-wedstrijd na zes seconden, het snelste doelpunt uit de geschiedenis van de competitie."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Rafael_Le%C3%A3o"
+    ],
+    "tags": [
+      "portugal"
     ],
     "checkedAt": "2026-10-19"
   }

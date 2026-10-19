@@ -53,7 +53,8 @@
     ],
     "tags": [
       "wk",
-      "champions-league"
+      "champions-league",
+      "duitsland"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -79,7 +80,8 @@
     ],
     "tags": [
       "wk",
-      "champions-league"
+      "champions-league",
+      "duitsland"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -131,7 +133,8 @@
       "https://en.wikipedia.org/wiki/Franck_Rib%C3%A9ry"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "frankrijk"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -156,7 +159,7 @@
       "https://en.wikipedia.org/wiki/Marco_Reus",
       "https://de.wikipedia.org/wiki/Marco_Reus"
     ],
-    "tags": [],
+    "tags": ["duitsland"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -184,7 +187,8 @@
     ],
     "tags": [
       "wk",
-      "champions-league"
+      "champions-league",
+      "duitsland"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -211,7 +215,8 @@
     ],
     "tags": [
       "wk",
-      "champions-league"
+      "champions-league",
+      "duitsland"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -238,7 +243,8 @@
     "tags": [
       "wk",
       "familie",
-      "champions-league"
+      "champions-league",
+      "duitsland"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -264,7 +270,7 @@
       "https://en.wikipedia.org/wiki/Mario_G%C3%B6tze",
       "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_final"
     ],
-    "tags": ["wk"],
+    "tags": ["wk", "duitsland"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -334,7 +340,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Florian_Wirtz"
     ],
-    "tags": [],
+    "tags": ["duitsland"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -358,7 +364,8 @@
       "https://en.wikipedia.org/wiki/Jamal_Musiala"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "duitsland"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -383,7 +390,8 @@
       "https://en.wikipedia.org/wiki/Joshua_Kimmich"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "duitsland"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -407,7 +415,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Mats_Hummels"
     ],
-    "tags": ["wk"],
+    "tags": ["wk", "duitsland"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -454,7 +462,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Miroslav_Klose"
     ],
-    "tags": ["wk"],
+    "tags": ["wk", "duitsland"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -478,7 +486,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Mesut_%C3%96zil"
     ],
-    "tags": ["wk"],
+    "tags": ["wk", "duitsland"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -502,7 +510,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Leroy_San%C3%A9"
     ],
-    "tags": ["champions-league", "de-bruyne"],
+    "tags": ["champions-league", "de-bruyne", "duitsland"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -527,7 +535,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/%C4%B0lkay_G%C3%BCndo%C4%9Fan"
     ],
-    "tags": ["champions-league", "de-bruyne"],
+    "tags": ["champions-league", "de-bruyne", "duitsland"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -550,7 +558,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Kai_Havertz"
     ],
-    "tags": ["champions-league", "lukaku"],
+    "tags": ["champions-league", "lukaku", "duitsland"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -574,7 +582,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Antonio_R%C3%BCdiger"
     ],
-    "tags": ["champions-league", "lukaku"],
+    "tags": ["champions-league", "lukaku", "duitsland"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -597,7 +605,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Serge_Gnabry"
     ],
-    "tags": ["champions-league"],
+    "tags": ["champions-league", "duitsland"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -623,7 +631,61 @@
     ],
     "tags": [
       "wk",
-      "de-bruyne"
+      "de-bruyne",
+      "duitsland"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Michael Ballack",
+    "answers": [
+      "Ballack"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1976 geboren in Oost-Duitsland en groeide op in Chemnitz.",
+      "Ik was een middenvelder die vaak laat in de zestienmeter opdook, bij Kaiserslautern, Leverkusen, Bayern en Chelsea.",
+      "In 2002 werd ik met mijn club in drie competities tweede, onder meer in de Champions League-finale tegen Real Madrid.",
+      "Ik miste de WK-finale van 2002 door een schorsing en verloor in 2008 als aanvoerder de EK-finale tegen Spanje.",
+      "Een tackle van Kevin-Prince Boateng in de FA Cup-finale van 2010 kostte me het WK in Zuid-Afrika."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Michael_Ballack"
+    ],
+    "tags": [
+      "duitsland",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Lukas Podolski",
+    "answers": [
+      "Podolski",
+      "Poldi"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1985 geboren in Polen en groeide op in Duitsland.",
+      "Ik ben een spits met een bijzonder harde linkerbeen.",
+      "Ik speelde voor Keulen, Bayern, Arsenal en Inter, en later ook in Turkije en Japan.",
+      "Op het WK 2006 werd ik uitgeroepen tot beste jonge speler van het toernooi.",
+      "In 2014 werd ik wereldkampioen; ik scoorde 49 keer in 130 interlands voor Duitsland."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lukas_Podolski"
+    ],
+    "tags": [
+      "duitsland",
+      "wk"
     ],
     "checkedAt": "2026-10-19"
   }

@@ -137,7 +137,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/557144", "https://sporza.be/nl/sport/voetbal/~3248214/"],
-    "tags": ["champions-league"], "checkedAt": "2026-10-17"
+    "tags": ["champions-league", "belgie", "spanje"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Frankrijk – Kroatië, finale WK 2018 (4-2)",
@@ -157,7 +157,7 @@
     ],
     "difficulty": 1, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_final"],
-    "tags": ["wk"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "frankrijk"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Duitsland – Argentinië, finale WK 2014 (1-0 n.v.)",
@@ -177,7 +177,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_final"],
-    "tags": ["wk", "messi"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "messi", "duitsland"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Nederland – Spanje, finale WK 2010 (0-1 n.v.)",
@@ -197,7 +197,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_final"],
-    "tags": ["wk"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "oranje", "spanje"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Argentinië – Frankrijk, finale WK 2022 (3-3, 4-2 n.s.)",
@@ -217,7 +217,7 @@
     ],
     "difficulty": 1, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_final"],
-    "tags": ["wk", "messi"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "messi", "frankrijk"], "checkedAt": "2026-10-17"
   },
   {
     "title": "AC Milan – Liverpool, finale Champions League 2005 (3-3, 2-3 n.s.)",
@@ -237,7 +237,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2005_UEFA_Champions_League_final"],
-    "tags": ["champions-league"], "checkedAt": "2026-10-17"
+    "tags": ["champions-league", "italie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "FC Barcelona – Manchester United, finale Champions League 2011 (3-1)",
@@ -257,7 +257,7 @@
     ],
     "difficulty": 1, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2011_UEFA_Champions_League_final"],
-    "tags": ["champions-league", "messi"], "checkedAt": "2026-10-17"
+    "tags": ["champions-league", "messi", "spanje"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Manchester City – Inter, finale Champions League 2023 (1-0)",
@@ -277,7 +277,7 @@
     ],
     "difficulty": 1, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2023_UEFA_Champions_League_final"],
-    "tags": ["champions-league", "rode-duivels", "de-bruyne"], "checkedAt": "2026-10-17"
+    "tags": ["champions-league", "rode-duivels", "de-bruyne", "italie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Tottenham – Liverpool, finale Champions League 2019 (0-2)",
@@ -317,7 +317,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2014_UEFA_Champions_League_final"],
-    "tags": ["champions-league"], "checkedAt": "2026-10-17"
+    "tags": ["champions-league", "spanje"], "checkedAt": "2026-10-17"
   },
   {
     "title": "België – West-Duitsland, finale EK 1980 (1-2)",
@@ -337,7 +337,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_1980_final"],
-    "tags": ["rode-duivels", "pfaff"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "pfaff", "duitsland"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Argentinië – België, halve finale WK 1986 (2-0)",
@@ -437,7 +437,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"],
-    "tags": ["wk", "rode-duivels", "lukaku", "de-bruyne"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "rode-duivels", "lukaku", "de-bruyne", "frankrijk"], "checkedAt": "2026-10-17"
   },
   {
     "title": "België – Engeland, troostfinale WK 2018 (2-0)",
@@ -477,7 +477,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2020_knockout_stage"],
-    "tags": ["rode-duivels", "lukaku", "de-bruyne"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "lukaku", "de-bruyne", "italie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Anderlecht – West Ham United, finale Europacup II 1976 (4-2)",
@@ -497,7 +497,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1976_European_Cup_Winners%27_Cup_final"],
-    "tags": ["anderlecht"], "checkedAt": "2026-10-17"
+    "tags": ["anderlecht", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Club Brugge – Liverpool, finale Europacup I 1978 (0-1)",
@@ -517,7 +517,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1978_European_Cup_final"],
-    "tags": [], "checkedAt": "2026-10-17"
+    "tags": ["belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "FC Barcelona – Standard, finale Europacup II 1982 (2-1)",
@@ -537,7 +537,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1982_European_Cup_Winners%27_Cup_final"],
-    "tags": [], "checkedAt": "2026-10-17"
+    "tags": ["belgie", "spanje"], "checkedAt": "2026-10-17"
   },
   {
     "title": "KV Mechelen – Ajax, finale Europacup II 1988 (1-0)",
@@ -550,14 +550,14 @@
       { "name": "Geert Deferm", "aliases": ["Deferm"], "position": "V" },
       { "name": "Wim Hofkens", "aliases": ["Hofkens"], "position": "M" },
       { "name": "Marc Emmers", "aliases": ["Emmers"], "position": "M" },
-      { "name": "Erwin Koeman", "aliases": ["Koeman"], "position": "M" },
+      { "name": "Erwin Koeman", "aliases": ["E. Koeman", "Erwin Koeman"], "position": "M" },
       { "name": "Pascal De Wilde", "aliases": ["De Wilde"], "position": "A" },
       { "name": "Eli Ohana", "aliases": ["Ohana"], "position": "A" },
       { "name": "Piet den Boer", "aliases": ["Den Boer"], "position": "A" }
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1988_European_Cup_Winners%27_Cup_final"],
-    "tags": [], "checkedAt": "2026-10-17"
+    "tags": ["oranje", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Italië – Frankrijk, finale WK 2006 (1-1, 5-3 n.s.)",
@@ -577,7 +577,7 @@
     ],
     "difficulty": 1, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2006_FIFA_World_Cup_final"],
-    "tags": ["wk"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "frankrijk", "italie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Duitsland – Spanje, finale EK 2008 (0-1)",
@@ -597,7 +597,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2008_final"],
-    "tags": [], "checkedAt": "2026-10-17"
+    "tags": ["duitsland", "spanje"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Manchester United – Chelsea, finale Champions League 2008 (1-1, 6-5 n.s.)",
@@ -637,7 +637,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2010_UEFA_Champions_League_final"],
-    "tags": ["champions-league"], "checkedAt": "2026-10-17"
+    "tags": ["champions-league", "italie", "duitsland"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Bayern München – Chelsea, finale Champions League 2012 (1-1, 3-4 n.s.)",
@@ -657,7 +657,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2012_UEFA_Champions_League_final"],
-    "tags": ["champions-league"], "checkedAt": "2026-10-17"
+    "tags": ["champions-league", "duitsland"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Spanje – Nederland, groepsfase WK 2014 (1-5)",
@@ -677,7 +677,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_Group_B"],
-    "tags": ["wk"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "oranje", "spanje"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Brazilië – Duitsland, halve finale WK 2014 (1-7)",
@@ -697,7 +697,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Brazil_v_Germany_(2014_FIFA_World_Cup)"],
-    "tags": ["wk"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "duitsland"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Portugal – Frankrijk, finale EK 2016 (1-0 n.v.)",
@@ -717,7 +717,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2016_final"],
-    "tags": [], "checkedAt": "2026-10-17"
+    "tags": ["frankrijk", "portugal"], "checkedAt": "2026-10-17"
   },
   {
     "title": "FC Barcelona – Paris Saint-Germain, achtste finale Champions League 2017 (6-1)",
@@ -737,7 +737,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/FC_Barcelona_6%E2%80%931_Paris_Saint-Germain_FC", "https://africa.espn.com/football/match/_/gameId/469090"],
-    "tags": ["champions-league", "messi"], "checkedAt": "2026-10-17"
+    "tags": ["champions-league", "messi", "frankrijk", "spanje"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Liverpool – FC Barcelona, halve finale Champions League 2019 (4-0)",
@@ -757,7 +757,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://africa.espn.com/football/match/_/gameId/538699/barcelona-liverpool", "https://www.coachesvoice.com/?p=16109"],
-    "tags": ["champions-league", "messi"], "checkedAt": "2026-10-17"
+    "tags": ["champions-league", "messi", "spanje"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Liverpool – Real Madrid, finale Champions League 2022 (0-1)",
@@ -777,7 +777,7 @@
     ],
     "difficulty": 1, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2022_UEFA_Champions_League_final"],
-    "tags": ["champions-league", "rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["champions-league", "rode-duivels", "spanje"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Spanje – Engeland, finale EK 2024 (2-1)",
@@ -797,7 +797,7 @@
     ],
     "difficulty": 1, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2024_final"],
-    "tags": [], "checkedAt": "2026-10-17"
+    "tags": ["spanje"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Bekerfinale 2015: Club Brugge – Anderlecht (2-1)",
@@ -817,7 +817,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2015_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2014-2015/kalender/finale/club-brugge/anderlecht"],
-    "tags": ["rode-duivels", "anderlecht", "beker-van-belgie", "deschacht"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "anderlecht", "beker-van-belgie", "deschacht", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Bekerfinale 2016: Club Brugge – Standard (1-2)",
@@ -837,7 +837,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2016_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2015-2016/kalender/finale/club-brugge/standard"],
-    "tags": ["beker-van-belgie"], "checkedAt": "2026-10-17"
+    "tags": ["beker-van-belgie", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Croky Cup-finale 2018: Genk – Standard (0-1 n.v.)",
@@ -857,7 +857,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2018_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2017-2018/kalender/finale/krc-genk/standard"],
-    "tags": ["beker-van-belgie"], "checkedAt": "2026-10-17"
+    "tags": ["beker-van-belgie", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Croky Cup-finale 2019: Gent – KV Mechelen (1-2)",
@@ -877,7 +877,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2019_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2018-2019/kalender/finale/kaa-gent/kv-mechelen"],
-    "tags": ["rode-duivels", "beker-van-belgie"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "beker-van-belgie", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Croky Cup-finale 2020: Club Brugge – Antwerp (0-1)",
@@ -897,7 +897,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2020_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2019-2020/kalender/finale/club-brugge/antwerp", "https://sporza.be/nl/matches/voetbal/croky-cup/2019-2020/finale/01/club-brugge-antwerp-underdog-antwerp-houdt-club-brugge-van-dubbel-in-bekerfinale~1566819600928/"],
-    "tags": ["rode-duivels", "beker-van-belgie"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "beker-van-belgie", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Croky Cup-finale 2021: Standard – Genk (1-2)",
@@ -917,7 +917,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2021_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2020-2021/kalender/finale/standard/krc-genk"],
-    "tags": ["rode-duivels", "beker-van-belgie"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "beker-van-belgie", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Croky Cup-finale 2022: Gent – Anderlecht (0-0, 4-3 n.s.)",
@@ -937,7 +937,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2022_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2021-2022/kalender/finale/kaa-gent/anderlecht"],
-    "tags": ["rode-duivels", "beker-van-belgie"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "beker-van-belgie", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Croky Cup-finale 2023: KV Mechelen – Antwerp (0-2)",
@@ -957,7 +957,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2023_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2022-2023/kalender/finale/kv-mechelen/antwerp"],
-    "tags": ["rode-duivels", "beker-van-belgie"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "beker-van-belgie", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Croky Cup-finale 2024: Union – Antwerp (1-0)",
@@ -977,7 +977,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2024_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2023-2024/kalender/finale/union-sg/antwerp"],
-    "tags": ["beker-van-belgie"], "checkedAt": "2026-10-17"
+    "tags": ["beker-van-belgie", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Croky Cup-finale 2025: Club Brugge – Anderlecht (2-1)",
@@ -997,7 +997,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2025_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2024-2025/kalender/finale/club-brugge/anderlecht"],
-    "tags": ["rode-duivels", "beker-van-belgie"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "beker-van-belgie", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Croky Cup-finale 2026: Union – Anderlecht (3-1 n.v.)",
@@ -1017,7 +1017,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2026_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2025-2026/kalender/finale/union-sg/anderlecht"],
-    "tags": ["rode-duivels", "anderlecht", "beker-van-belgie"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "anderlecht", "beker-van-belgie", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Standard – Anderlecht, titelmatch 2008 (2-0)",
@@ -1037,7 +1037,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://www.voetbalkrant.com/belgie/jupiler-pro-league/2007-2008/kalender/speeldag-31/standard/anderlecht/opstellingen", "https://www.espn.com/soccer/lineups/_/gameId/239946"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Standard – Anderlecht, Clasico januari 2010 (0-4)",
@@ -1057,7 +1057,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/286821", "https://www.voetbalkrant.com/belgie/jupiler-pro-league/2009-2010/kalender/speeldag-22/standard/anderlecht/opstellingen"],
-    "tags": ["rode-duivels", "anderlecht", "deschacht", "lukaku"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "anderlecht", "deschacht", "lukaku", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Genk – Standard, titelmatch play-off I 2011 (1-1)",
@@ -1077,7 +1077,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://www.voetbalkrant.com/belgie/play-off-1/2010-2011/kalender/speeldag-10/krc-genk/standard/opstellingen", "https://www.maxifoot.fr/match/racing-genk-standard-liege-20110517.htm"],
-    "tags": ["rode-duivels", "de-bruyne"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "de-bruyne", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Anderlecht – Club Brugge, titelmatch play-off I 2012 (1-1)",
@@ -1097,7 +1097,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://www.voetbalkrant.com/belgie/play-off-1/2011-2012/kalender/speeldag-8/anderlecht/club-brugge/opstellingen", "https://www.rtbf.be/article/retro-po1-6-mai-2012-le-penalty-du-31e-titre-d-anderlecht-10504427"],
-    "tags": ["rode-duivels", "anderlecht"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "anderlecht", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Standard – Anderlecht, Clasico januari 2015 (2-0)",
@@ -1117,7 +1117,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://www.voetbalkrant.com/belgie/jupiler-pro-league/2014-2015/kalender/speeldag-23/standard/anderlecht/opstellingen", "https://www.maxifoot.fr/match/standard-liege-anderlecht-20150125.htm"],
-    "tags": ["rode-duivels", "anderlecht", "deschacht"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "anderlecht", "deschacht", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Gent – Standard, play-off I 2015 (2-0)",
@@ -1137,7 +1137,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://www.voetbalkrant.com/belgie/play-off-1/2014-2015/kalender/speeldag-9/kaa-gent/standard/opstellingen", "https://www.maxifoot.fr/match/gantoise-standard-liege-20150521.htm"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Club Brugge – Anderlecht, titelmatch play-off I 2016 (4-0)",
@@ -1157,7 +1157,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/448449", "https://www.voetbalkrant.com/belgie/play-off-1/2015-2016/kalender/speeldag-8/club-brugge/anderlecht/opstellingen"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Club Brugge – Anderlecht, play-off I 2018 (1-2)",
@@ -1177,7 +1177,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/509021", "https://www.fcupdate.nl/voetbalcompetities/belgie/pro-league/programma-uitslagen/2017-2018/club-brugge-anderlecht-06-05/opstellingen"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Anderlecht – Genk, play-off I 2019 (1-1)",
@@ -1197,7 +1197,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/538764", "https://www.fcupdate.nl/voetbalcompetities/belgie/pro-league/programma-uitslagen/2018-2019/anderlecht-genk-16-05/opstellingen"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Club Brugge – Antwerp, play-off I 2021 (2-1)",
@@ -1217,7 +1217,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/601480", "https://www.fcupdate.nl/voetbalcompetities/belgie/pro-league/programma-uitslagen/2020-2021/club-brugge-antwerp-16-05/opstellingen"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Antwerp – Club Brugge, play-off I 2022 (1-3)",
@@ -1237,7 +1237,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/634227", "https://www.fcupdate.nl/voetbalcompetities/belgie/pro-league/programma-uitslagen/2021-2022/antwerp-club-brugge-15-05/opstellingen"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Genk – Antwerp, titelmatch play-off I 2023 (2-2)",
@@ -1257,7 +1257,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/668606", "https://www.fcupdate.nl/voetbalcompetities/belgie/pro-league/programma-uitslagen/2022-2023/genk-antwerp-04-06/opstellingen"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Union – Gent, titelmatch play-off I 2025 (3-1)",
@@ -1277,7 +1277,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/734564", "https://www.voetbalkrant.com/belgie/play-off-1/2024-2025/kalender/speeldag-10/union-sg/kaa-gent/opstellingen"],
-    "tags": [], "checkedAt": "2026-10-17"
+    "tags": ["belgie"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Manchester City – QPR, Premier League 2011-12 (3-2)",
@@ -1417,7 +1417,7 @@
     ],
     "difficulty": 1, "status": "approved",
     "sources": ["https://www.tntsports.co.uk/football/bundesliga/2015-2016/live-bayern-munich-vfl-wolfsburg_mtc788343/live-lineup.shtml", "https://www.espn.com/soccer/match/_/gameId/427078/vfl-wolfsburg-bayern-munich"],
-    "tags": ["curiosa"], "checkedAt": "2026-10-18"
+    "tags": ["curiosa", "duitsland"], "checkedAt": "2026-10-18"
   },
   {
     "title": "VfL Wolfsburg – Bayern München, Bundesliga 2014-15 (4-1)",
@@ -1437,7 +1437,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://www.tntsports.co.uk/football/bundesliga/2014-2015/live-vfl-wolfsburg-bayern-munich_mtc706840/live-lineup.shtml", "https://fcbayern.com/de/spiele/profis/bundesliga/2014-2015/vfl-wolfsburg-fc-bayern-muenchen-30-01-2015/aufstellung", "https://www.espn.com/soccer/report/_/gameId/396838"],
-    "tags": ["rode-duivels", "de-bruyne"], "checkedAt": "2026-10-18"
+    "tags": ["rode-duivels", "de-bruyne", "duitsland"], "checkedAt": "2026-10-18"
   },
   {
     "title": "Bayer Leverkusen – Werder Bremen, Bundesliga 2023-24 (5-0)",
@@ -1457,7 +1457,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://global.espn.com/football/lineups/_/gameId/677837", "https://www.fcupdate.nl/voetbalcompetities/duitsland/bundesliga/programma-uitslagen/2023-2024/bayer-leverkusen-bremen-14-04/opstellingen"],
-    "tags": [], "checkedAt": "2026-10-18"
+    "tags": ["duitsland"], "checkedAt": "2026-10-18"
   },
   {
     "title": "Borussia Dortmund – Bayern München, Bundesliga 2011-12 (1-0)",
@@ -1477,7 +1477,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://www.bundesliga.com/en/bundesliga/news/watch-2011-12-klassiker-borussia-dortmund-bayern-munich-lewandowski-robben-10799", "https://www.espn.com/soccer/match/_/gameId/320773/bayern-munich-borussia-dortmund", "https://www.sportschau.de/live-und-ergebnisse/fussball/deutschland-bundesliga/ma377014/borussia-dortmund_bayern-muenchen/taktische-aufstellung"],
-    "tags": [], "checkedAt": "2026-10-18"
+    "tags": ["duitsland"], "checkedAt": "2026-10-18"
   },
   {
     "title": "Borussia Dortmund – Schalke 04, Bundesliga 2017-18 (4-4)",
@@ -1497,7 +1497,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://www.tntsports.co.uk/football/bundesliga/2017-2018/live-borussia-dortmund-fc-schalke-04_mtc956731/live-lineup.shtml", "https://datencenter.dfb.de/datencenter/bundesliga/2017-2018/13-spieltag/borussia-dortmund-fc-schalke-04-2247794", "https://www.skysports.com/football/b-dortmund-vs-schalke/teams/377622"],
-    "tags": ["curiosa"], "checkedAt": "2026-10-18"
+    "tags": ["curiosa", "duitsland"], "checkedAt": "2026-10-18"
   },
   {
     "title": "Borussia Dortmund – Mainz 05, Bundesliga 2022-23 (2-2)",
@@ -1517,7 +1517,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://www.bundesliga.com/en/bundesliga/matchday/2022-2023/34/borussia-dortmund-vs-1-fsv-mainz-05/lineup", "https://espndeportes.espn.com/futbol/partido/_/juegoId/638737"],
-    "tags": ["oranje"], "checkedAt": "2026-10-18"
+    "tags": ["duitsland"], "checkedAt": "2026-10-18"
   },
   {
     "title": "FC Barcelona – Real Madrid, La Liga 2010-11 (5-0)",
@@ -1537,7 +1537,7 @@
     ],
     "difficulty": 1, "status": "approved",
     "sources": ["https://africa.espn.com/football/match/_/gameId/301858", "https://www.espn.com/soccer/lineups/_/gameId/301858"],
-    "tags": ["legende", "messi"], "checkedAt": "2026-10-18"
+    "tags": ["legende", "messi", "spanje"], "checkedAt": "2026-10-18"
   },
   {
     "title": "Real Madrid – FC Barcelona, La Liga 2008-09 (2-6)",
@@ -1557,7 +1557,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/252775", "https://www.goal.com/en-ae/news/player-ratings-real-madrid-2-6-barcelona/blt73cb725e1afc4e8d"],
-    "tags": ["legende", "oranje"], "checkedAt": "2026-10-18"
+    "tags": ["legende", "spanje"], "checkedAt": "2026-10-18"
   },
   {
     "title": "Real Madrid – FC Barcelona, La Liga 2015-16 (0-4)",
@@ -1577,7 +1577,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/433859", "https://africa.espn.com/football/match/_/gameId/433859", "https://www.footmercato.net/live/1325433697652417709-real-madrid-vs-barcelone"],
-    "tags": [], "checkedAt": "2026-10-18"
+    "tags": ["spanje"], "checkedAt": "2026-10-18"
   },
   {
     "title": "FC Barcelona – Real Madrid, La Liga 2018-19 (5-1)",
@@ -1597,7 +1597,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/521827", "https://www.mykhel.com/football/la-liga-barcelona-vs-real-madrid-lineup-1009406/"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-18"
+    "tags": ["rode-duivels", "spanje"], "checkedAt": "2026-10-18"
   },
   {
     "title": "FC Barcelona – Atlético Madrid, La Liga 2013-14 (1-1)",
@@ -1617,7 +1617,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Barcelona_1%E2%80%931_Atl%C3%A9tico_Madrid_(May_2014)"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-18"
+    "tags": ["rode-duivels", "spanje"], "checkedAt": "2026-10-18"
   },
   {
     "title": "Real Madrid – FC Barcelona, La Liga 2005-06 (0-3)",
@@ -1637,7 +1637,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://www.fcbarcelona.es/es/noticias/1899174/15-anos-de-un-clasico-historico", "https://www.footmercato.net/live/276278081405223733-real-madrid-vs-barcelone"],
-    "tags": ["legende", "oranje", "messi"], "checkedAt": "2026-10-18"
+    "tags": ["legende", "messi", "spanje"], "checkedAt": "2026-10-18"
   },
   {
     "title": "Sassuolo – AC Milan, Serie A 2021-22 (0-3)",
@@ -1657,7 +1657,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://www.acmilan.com/it/news/articoli/serie-a/2022-05-22/sassuolo-milan-le-formazioni-ufficiali", "https://www.goal.com/it/notizie/sassuolo-milan-0-3-leao-e-giroud-scudetto-rossoneri-campioni-d-italia/blt041b5779c6d52ca8"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-18"
+    "tags": ["rode-duivels", "italie"], "checkedAt": "2026-10-18"
   },
   {
     "title": "Inter – AC Milan, Serie A 2000-01 (0-6)",
@@ -1677,7 +1677,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://www.tuttomercatoweb.com/accadde-oggi/11-maggio-2001-a-milano-quella-data-non-la-scorda-piu-nessuno-il-derby-finisce-0-6-1827403"],
-    "tags": ["curiosa"], "checkedAt": "2026-10-18"
+    "tags": ["curiosa", "italie"], "checkedAt": "2026-10-18"
   },
   {
     "title": "Udinese – Napoli, Serie A 2022-23 (1-1)",
@@ -1697,7 +1697,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://www.sportface.it/calcio/serie-a/formazioni-ufficiali-udinese-napoli-serie-a-2022-2023/2157825", "https://www.napolike.it/udinese-napoli-convocati-ufficiali-in-vista-del-match-2023", "https://www.fantacalcio.it/serie-a/calendario/33/2022-23/udinese-napoli/11984"],
-    "tags": [], "checkedAt": "2026-10-18"
+    "tags": ["italie"], "checkedAt": "2026-10-18"
   },
   {
     "title": "Siena – Inter, Serie A 2009-10 (0-1)",
@@ -1717,7 +1717,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://www.inter.it/it/notizie/2020-05-16-10-momenti-indimenticabili-siena-inter-0-1-2010-triplete", "https://www.inter.it/it/notizie/2019-05-16-on-this-day-siena-seconda-tappa-verso-il-triplete", "https://www.calcioblog.it/post/12767/siena-inter-del-16-maggio-2010", "https://storiainter.com/Notes/Stagione0910/Campionato0910/Siena%20-%20Inter%200910.htm"],
-    "tags": ["oranje"], "checkedAt": "2026-10-18"
+    "tags": ["italie"], "checkedAt": "2026-10-18"
   },
   {
     "title": "Napoli – Fiorentina, Serie A 1986-87 (1-1)",
@@ -1737,7 +1737,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://www.90min.com/es/posts/34-anos-del-primer-scudetto-de-napoli-el-xi-titular-que-lo-logro-de-la-mano-de-maradona", "https://www.napolimagazine.com/in-evidenza/articolo/oggi-avvenne-10-maggio-1987-napoli-fiorentina-1-1-e-fu-scudetto-ecco-i-dettagli"],
-    "tags": ["legende", "maradona"], "checkedAt": "2026-10-18"
+    "tags": ["legende", "maradona", "italie"], "checkedAt": "2026-10-18"
   },
   {
     "title": "Lazio – Reggina, Serie A 1999-2000 (3-0)",
@@ -1757,7 +1757,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://laziostories.com/post/lazio-reggina-2000", "https://www.laziowiki.org/wiki/Domenica_14_maggio_2000_%E2%80%93_Roma,_stadio_Olimpico_%E2%80%93_Lazio-Reggina_3-0"],
-    "tags": [], "checkedAt": "2026-10-18"
+    "tags": ["italie"], "checkedAt": "2026-10-18"
   },
   {
     "title": "Anderlecht – Austria Wenen, finale Europacup II 1978 (4-0)",
@@ -1777,7 +1777,7 @@
     ],
     "difficulty": 5, "status": "approved", "checkedAt": "2026-10-18",
     "sources": ["https://en.wikipedia.org/wiki/1978_European_Cup_Winners%27_Cup_final"],
-    "tags": ["anderlecht"]
+    "tags": ["anderlecht", "belgie"]
   },
   {
     "title": "Anderlecht – Benfica, heenmatch finale UEFA Cup 1983 (1-0)",
@@ -1797,7 +1797,7 @@
     ],
     "difficulty": 5, "status": "approved", "checkedAt": "2026-10-18",
     "sources": ["https://en.wikipedia.org/wiki/1983_UEFA_Cup_final"],
-    "tags": ["anderlecht"]
+    "tags": ["anderlecht", "portugal", "belgie"]
   },
   {
     "title": "Spanje – Italië, finale EK 2012 (4-0)",
@@ -1817,7 +1817,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2012_Final"],
-    "tags": [],
+    "tags": ["italie", "spanje"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -1838,7 +1838,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1998_FIFA_World_Cup_final"],
-    "tags": ["wk"],
+    "tags": ["wk", "frankrijk"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -1859,7 +1859,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_final"],
-    "tags": ["wk"],
+    "tags": ["wk", "duitsland"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -1880,7 +1880,7 @@
     ],
     "difficulty": 2, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2020_final"],
-    "tags": [],
+    "tags": ["italie"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -1901,7 +1901,7 @@
     ],
     "difficulty": 1, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2018_UEFA_Champions_League_final"],
-    "tags": ["champions-league"],
+    "tags": ["champions-league", "spanje"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -1922,7 +1922,7 @@
     ],
     "difficulty": 1, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2025_UEFA_Champions_League_final"],
-    "tags": ["champions-league"],
+    "tags": ["champions-league", "frankrijk", "italie"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -1943,7 +1943,7 @@
     ],
     "difficulty": 1, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2020_UEFA_Champions_League_final"],
-    "tags": ["champions-league"],
+    "tags": ["champions-league", "frankrijk", "duitsland"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -1985,7 +1985,7 @@
     ],
     "difficulty": 1, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2024_UEFA_Champions_League_final"],
-    "tags": ["champions-league", "rode-duivels"],
+    "tags": ["champions-league", "rode-duivels", "duitsland", "spanje"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2027,7 +2027,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2017_UEFA_Champions_League_final"],
-    "tags": ["champions-league"],
+    "tags": ["champions-league", "italie", "spanje"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2048,7 +2048,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2009_UEFA_Champions_League_final"],
-    "tags": ["champions-league", "messi"],
+    "tags": ["champions-league", "messi", "spanje"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2069,7 +2069,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2015_UEFA_Champions_League_final"],
-    "tags": ["champions-league", "messi"],
+    "tags": ["champions-league", "messi", "italie", "spanje"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2090,7 +2090,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2013_UEFA_Champions_League_final"],
-    "tags": ["champions-league"],
+    "tags": ["champions-league", "duitsland"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2111,7 +2111,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1999_UEFA_Champions_League_final"],
-    "tags": ["champions-league"],
+    "tags": ["champions-league", "duitsland"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2405,7 +2405,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1994_FIFA_World_Cup_Group_F"],
-    "tags": ["wk", "rode-duivels"],
+    "tags": ["wk", "rode-duivels", "oranje"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2447,7 +2447,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2008_Belgian_Cup_final"],
-    "tags": ["anderlecht", "beker-van-belgie", "deschacht"],
+    "tags": ["anderlecht", "beker-van-belgie", "deschacht", "belgie"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2468,7 +2468,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2014_Belgian_Super_Cup"],
-    "tags": ["anderlecht", "deschacht"],
+    "tags": ["anderlecht", "deschacht", "belgie"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2489,7 +2489,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2006_Belgian_Super_Cup"],
-    "tags": ["anderlecht", "deschacht"],
+    "tags": ["anderlecht", "deschacht", "belgie"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2510,7 +2510,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1970_FIFA_World_Cup_final"],
-    "tags": ["pele", "wk", "legende"],
+    "tags": ["pele", "wk", "legende", "italie"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2573,7 +2573,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_knockout_stage"],
-    "tags": ["pfaff", "wk", "rode-duivels"],
+    "tags": ["pfaff", "wk", "rode-duivels", "spanje"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2594,7 +2594,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1987_European_Cup_final"],
-    "tags": ["pfaff", "champions-league"],
+    "tags": ["pfaff", "champions-league", "duitsland"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2636,7 +2636,7 @@
     ],
     "difficulty": 2, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_final"],
-    "tags": ["wk", "messi"],
+    "tags": ["wk", "messi", "spanje"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2699,7 +2699,7 @@
     ],
     "difficulty": 4, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2022_Finalissima"],
-    "tags": ["messi"],
+    "tags": ["messi", "italie"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2762,7 +2762,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1990_FIFA_World_Cup_knockout_stage"],
-    "tags": ["maradona", "wk"],
+    "tags": ["maradona", "wk", "italie"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2783,7 +2783,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1990_FIFA_World_Cup_final"],
-    "tags": ["maradona", "wk"],
+    "tags": ["maradona", "wk", "duitsland"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2804,7 +2804,7 @@
     ],
     "difficulty": 4, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2015_DFB-Pokal_final"],
-    "tags": ["de-bruyne"],
+    "tags": ["de-bruyne", "duitsland"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2825,7 +2825,7 @@
     ],
     "difficulty": 4, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2016_Group_E"],
-    "tags": ["rode-duivels", "de-bruyne"],
+    "tags": ["rode-duivels", "de-bruyne", "italie"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2847,6 +2847,635 @@
     "difficulty": 4, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2016_Group_E"],
     "tags": ["rode-duivels", "de-bruyne"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Frankrijk – Italië, finale EK 2000 (2-1 n.v., golden goal)",
+    "team": "Frankrijk",
+    "players": [
+      { "name": "Fabien Barthez", "aliases": ["Barthez"], "position": "K" },
+      { "name": "Lilian Thuram", "aliases": ["Thuram"], "position": "V" },
+      { "name": "Marcel Desailly", "aliases": ["Desailly"], "position": "V" },
+      { "name": "Laurent Blanc", "aliases": ["Blanc"], "position": "V" },
+      { "name": "Bixente Lizarazu", "aliases": ["Lizarazu"], "position": "V" },
+      { "name": "Patrick Vieira", "aliases": ["Vieira"], "position": "M" },
+      { "name": "Didier Deschamps", "aliases": ["Deschamps"], "position": "M" },
+      { "name": "Youri Djorkaeff", "aliases": ["Djorkaeff"], "position": "M" },
+      { "name": "Zinedine Zidane", "aliases": ["Zidane", "Zizou", "Zinédine Zidane"], "position": "M" },
+      { "name": "Thierry Henry", "aliases": ["Henry", "Titi"], "position": "A" },
+      { "name": "Christophe Dugarry", "aliases": ["Dugarry"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2000_final"],
+    "tags": ["frankrijk"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Frankrijk – Spanje, finale EK 1984 (2-0)",
+    "team": "Frankrijk",
+    "players": [
+      { "name": "Joël Bats", "aliases": ["Bats", "Joel Bats"], "position": "K" },
+      { "name": "Patrick Battiston", "aliases": ["Battiston"], "position": "V" },
+      { "name": "Maxime Bossis", "aliases": ["Bossis"], "position": "V" },
+      { "name": "Yvon Le Roux", "aliases": ["Le Roux", "Leroux"], "position": "V" },
+      { "name": "Jean-François Domergue", "aliases": ["Domergue", "Jean-Francois Domergue"], "position": "V" },
+      { "name": "Luis Fernandez", "aliases": ["Fernandez", "Luis Fernández", "Fernández"], "position": "M" },
+      { "name": "Alain Giresse", "aliases": ["Giresse"], "position": "M" },
+      { "name": "Jean Tigana", "aliases": ["Tigana"], "position": "M" },
+      { "name": "Michel Platini", "aliases": ["Platini"], "position": "M" },
+      { "name": "Bernard Lacombe", "aliases": ["Lacombe"], "position": "A" },
+      { "name": "Bruno Bellone", "aliases": ["Bellone"], "position": "A" }
+    ],
+    "difficulty": 5, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_1984_final"],
+    "tags": ["frankrijk", "legende"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Olympique Marseille – AC Milan, finale Champions League 1993 (1-0)",
+    "team": "Olympique Marseille",
+    "players": [
+      { "name": "Fabien Barthez", "aliases": ["Barthez"], "position": "K" },
+      { "name": "Jocelyn Angloma", "aliases": ["Angloma"], "position": "V" },
+      { "name": "Éric Di Meco", "aliases": ["Di Meco", "Eric Di Meco", "Dimeco"], "position": "V" },
+      { "name": "Basile Boli", "aliases": ["Boli"], "position": "V" },
+      { "name": "Marcel Desailly", "aliases": ["Desailly"], "position": "V" },
+      { "name": "Franck Sauzée", "aliases": ["Sauzée", "Sauzee", "Franck Sauzee"], "position": "M" },
+      { "name": "Jean-Jacques Eydelie", "aliases": ["Eydelie"], "position": "M" },
+      { "name": "Didier Deschamps", "aliases": ["Deschamps"], "position": "M" },
+      { "name": "Abedi Pele", "aliases": ["Abedi Pelé", "Abedi"], "position": "M" },
+      { "name": "Rudi Völler", "aliases": ["Völler", "Voller", "Rudi Voller"], "position": "A" },
+      { "name": "Alen Bokšić", "aliases": ["Boksic", "Bokšić", "Alen Boksic"], "position": "A" }
+    ],
+    "difficulty": 5, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/1993_UEFA_Champions_League_final"],
+    "tags": ["frankrijk", "champions-league"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Paris Saint-Germain – Arsenal, finale Champions League 2026 (1-1, 4-3 n.s.)",
+    "team": "Paris Saint-Germain",
+    "players": [
+      { "name": "Matvey Safonov", "aliases": ["Safonov"], "position": "K" },
+      { "name": "Achraf Hakimi", "aliases": ["Hakimi"], "position": "V" },
+      { "name": "Marquinhos", "aliases": [], "position": "V" },
+      { "name": "Willian Pacho", "aliases": ["Pacho"], "position": "V" },
+      { "name": "Nuno Mendes", "aliases": ["Mendes"], "position": "V" },
+      { "name": "João Neves", "aliases": ["Neves", "Joao Neves"], "position": "M" },
+      { "name": "Vitinha", "aliases": [], "position": "M" },
+      { "name": "Fabián Ruiz", "aliases": ["Fabian Ruiz", "Fabián", "Fabian", "Ruiz"], "position": "M" },
+      { "name": "Désiré Doué", "aliases": ["Doué", "Doue", "Desire Doue"], "position": "A" },
+      { "name": "Ousmane Dembélé", "aliases": ["Dembélé", "Dembele", "Ousmane Dembele"], "position": "A" },
+      { "name": "Khvicha Kvaratskhelia", "aliases": ["Kvaratskhelia", "Kvara"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2026_UEFA_Champions_League_final"],
+    "tags": ["frankrijk", "champions-league"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Monaco – FC Porto, finale Champions League 2004 (0-3)",
+    "team": "FC Porto",
+    "players": [
+      { "name": "Vítor Baía", "aliases": ["Baía", "Baia", "Vitor Baia"], "position": "K" },
+      { "name": "Paulo Ferreira", "aliases": ["Ferreira"], "position": "V" },
+      { "name": "Jorge Costa", "aliases": ["Costa"], "position": "V" },
+      { "name": "Ricardo Carvalho", "aliases": ["Carvalho"], "position": "V" },
+      { "name": "Nuno Valente", "aliases": ["Valente"], "position": "V" },
+      { "name": "Costinha", "aliases": [], "position": "M" },
+      { "name": "Pedro Mendes", "aliases": ["Mendes"], "position": "M" },
+      { "name": "Maniche", "aliases": [], "position": "M" },
+      { "name": "Deco", "aliases": [], "position": "M" },
+      { "name": "Carlos Alberto", "aliases": [], "position": "A" },
+      { "name": "Derlei", "aliases": [], "position": "A" }
+    ],
+    "difficulty": 5, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2004_UEFA_Champions_League_final"],
+    "tags": ["portugal", "champions-league"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Portugal – Nederland, finale Nations League 2019 (1-0)",
+    "team": "Portugal",
+    "players": [
+      { "name": "Rui Patrício", "aliases": ["Rui Patricio", "Patrício", "Patricio"], "position": "K" },
+      { "name": "Nélson Semedo", "aliases": ["Semedo", "Nelson Semedo"], "position": "V" },
+      { "name": "Rúben Dias", "aliases": ["Ruben Dias", "Dias"], "position": "V" },
+      { "name": "José Fonte", "aliases": ["Fonte", "Jose Fonte"], "position": "V" },
+      { "name": "Raphaël Guerreiro", "aliases": ["Guerreiro", "Raphael Guerreiro"], "position": "V" },
+      { "name": "Danilo Pereira", "aliases": ["Danilo"], "position": "M" },
+      { "name": "William Carvalho", "aliases": [], "position": "M" },
+      { "name": "Bruno Fernandes", "aliases": ["Fernandes"], "position": "M" },
+      { "name": "Bernardo Silva", "aliases": ["Bernardo"], "position": "A" },
+      { "name": "Cristiano Ronaldo", "aliases": ["Ronaldo", "CR7"], "position": "A" },
+      { "name": "Gonçalo Guedes", "aliases": ["Guedes", "Goncalo Guedes"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2019_UEFA_Nations_League_Finals"],
+    "tags": ["portugal"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Spanje – Portugal, finale Nations League 2025 (2-2 n.v., Portugal wint na strafschoppen)",
+    "team": "Portugal",
+    "players": [
+      { "name": "Diogo Costa", "aliases": ["Costa"], "position": "K" },
+      { "name": "João Neves", "aliases": ["Neves", "Joao Neves"], "position": "V" },
+      { "name": "Rúben Dias", "aliases": ["Ruben Dias", "Dias"], "position": "V" },
+      { "name": "Gonçalo Inácio", "aliases": ["Inácio", "Inacio", "Goncalo Inacio"], "position": "V" },
+      { "name": "Nuno Mendes", "aliases": ["Mendes"], "position": "V" },
+      { "name": "Bernardo Silva", "aliases": ["Bernardo"], "position": "M" },
+      { "name": "Vitinha", "aliases": [], "position": "M" },
+      { "name": "Bruno Fernandes", "aliases": ["Fernandes"], "position": "M" },
+      { "name": "Pedro Neto", "aliases": ["Neto"], "position": "A" },
+      { "name": "Francisco Conceição", "aliases": ["Conceição", "Conceicao", "Francisco Conceicao"], "position": "A" },
+      { "name": "Cristiano Ronaldo", "aliases": ["Ronaldo", "CR7"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2025_UEFA_Nations_League_final"],
+    "tags": ["portugal"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Turkije – België, groepsfase EK 2000 (2-0)",
+    "team": "Turkije",
+    "players": [
+      { "name": "Rüştü Reçber", "aliases": ["Rüştü", "Reçber", "Rustu", "Recber"], "position": "K" },
+      { "name": "Alpay Özalan", "aliases": ["Alpay", "Özalan", "Ozalan"], "position": "V" },
+      { "name": "Ogün Temizkanoğlu", "aliases": ["Ogün", "Ogun", "Temizkanoğlu", "Temizkanoglu"], "position": "V" },
+      { "name": "Fatih Akyel", "aliases": ["Akyel"], "position": "V" },
+      { "name": "Suat Kaya", "aliases": ["Suat", "Kaya"], "position": "M" },
+      { "name": "Tayfun Korkut", "aliases": ["Tayfun", "Korkut"], "position": "M" },
+      { "name": "Abdullah Ercan", "aliases": ["Abdullah", "Ercan"], "position": "M" },
+      { "name": "Okan Buruk", "aliases": ["Okan", "Buruk"], "position": "M" },
+      { "name": "Tugay Kerimoğlu", "aliases": ["Tugay", "Kerimoğlu", "Kerimoglu"], "position": "M" },
+      { "name": "Arif Erdem", "aliases": ["Arif", "Erdem"], "position": "A" },
+      { "name": "Hakan Şükür", "aliases": ["Şükür", "Sukur", "Hakan Sukur"], "position": "A" }
+    ],
+    "difficulty": 5, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2000_Group_B"],
+    "tags": ["turkije", "rode-duivels"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Senegal – Turkije, kwartfinale WK 2002 (0-1 na verlenging)",
+    "team": "Turkije",
+    "players": [
+      { "name": "Rüştü Reçber", "aliases": ["Rüştü", "Reçber", "Rustu", "Recber"], "position": "K" },
+      { "name": "Fatih Akyel", "aliases": ["Akyel"], "position": "V" },
+      { "name": "Alpay Özalan", "aliases": ["Alpay", "Özalan", "Ozalan"], "position": "V" },
+      { "name": "Bülent Korkmaz", "aliases": ["Bülent", "Bulent", "Korkmaz"], "position": "V" },
+      { "name": "Ergün Penbe", "aliases": ["Ergün", "Ergun", "Penbe"], "position": "V" },
+      { "name": "Ümit Davala", "aliases": ["Ümit", "Umit", "Davala"], "position": "M" },
+      { "name": "Tugay Kerimoğlu", "aliases": ["Tugay", "Kerimoğlu", "Kerimoglu"], "position": "M" },
+      { "name": "Emre Belözoğlu", "aliases": ["Emre", "Belözoğlu", "Belozoglu"], "position": "M" },
+      { "name": "Yıldıray Baştürk", "aliases": ["Baştürk", "Basturk", "Yildiray"], "position": "M" },
+      { "name": "Hasan Şaş", "aliases": ["Şaş", "Sas", "Hasan Sas"], "position": "M" },
+      { "name": "Hakan Şükür", "aliases": ["Şükür", "Sukur", "Hakan Sukur"], "position": "A" }
+    ],
+    "difficulty": 5, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_knockout_stage"],
+    "tags": ["turkije", "wk"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Turkije – Tsjechië, groepsfase EK 2008 (3-2)",
+    "team": "Turkije",
+    "players": [
+      { "name": "Volkan Demirel", "aliases": ["Volkan", "Demirel"], "position": "K" },
+      { "name": "Hamit Altıntop", "aliases": ["Hamit", "Altıntop", "Altintop"], "position": "V" },
+      { "name": "Emre Güngör", "aliases": ["Güngör", "Gungor", "Emre Gungor"], "position": "V" },
+      { "name": "Servet Çetin", "aliases": ["Servet", "Çetin", "Cetin"], "position": "V" },
+      { "name": "Hakan Balta", "aliases": ["Balta"], "position": "V" },
+      { "name": "Mehmet Topal", "aliases": ["Topal"], "position": "M" },
+      { "name": "Mehmet Aurélio", "aliases": ["Aurélio", "Aurelio"], "position": "M" },
+      { "name": "Arda Turan", "aliases": ["Turan", "Arda"], "position": "M" },
+      { "name": "Tuncay Şanlı", "aliases": ["Tuncay", "Şanlı", "Sanli"], "position": "M" },
+      { "name": "Nihat Kahveci", "aliases": ["Nihat", "Kahveci"], "position": "A" },
+      { "name": "Semih Şentürk", "aliases": ["Semih", "Şentürk", "Senturk"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2008_Group_A"],
+    "tags": ["turkije"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Kroatië – Turkije, kwartfinale EK 2008 (1-1 n.v., Turkije wint met 3-1 na strafschoppen)",
+    "team": "Turkije",
+    "players": [
+      { "name": "Rüştü Reçber", "aliases": ["Rüştü", "Reçber", "Rustu", "Recber"], "position": "K" },
+      { "name": "Hamit Altıntop", "aliases": ["Hamit", "Altıntop", "Altintop"], "position": "V" },
+      { "name": "Gökhan Zan", "aliases": ["Gökhan", "Gokhan", "Zan"], "position": "V" },
+      { "name": "Emre Aşık", "aliases": ["Aşık", "Asik", "Emre Asik"], "position": "V" },
+      { "name": "Hakan Balta", "aliases": ["Balta"], "position": "V" },
+      { "name": "Mehmet Topal", "aliases": ["Topal"], "position": "M" },
+      { "name": "Sabri Sarıoğlu", "aliases": ["Sabri", "Sarıoğlu", "Sarioglu"], "position": "M" },
+      { "name": "Tuncay Şanlı", "aliases": ["Tuncay", "Şanlı", "Sanli"], "position": "M" },
+      { "name": "Arda Turan", "aliases": ["Turan", "Arda"], "position": "M" },
+      { "name": "Colin Kazim-Richards", "aliases": ["Kazim-Richards", "Kazim", "Colin Kazim", "Richards"], "position": "A" },
+      { "name": "Nihat Kahveci", "aliases": ["Nihat", "Kahveci"], "position": "A" }
+    ],
+    "difficulty": 4, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2008_knockout_stage"],
+    "tags": ["turkije"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Nederland – Sovjet-Unie, finale EK 1988 (2-0)",
+    "team": "Nederland",
+    "players": [
+      { "name": "Hans van Breukelen", "aliases": ["Van Breukelen"], "position": "K" },
+      { "name": "Berry van Aerle", "aliases": ["Van Aerle"], "position": "V" },
+      { "name": "Frank Rijkaard", "aliases": ["Rijkaard"], "position": "V" },
+      { "name": "Ronald Koeman", "aliases": ["R. Koeman", "Ronald Koeman"], "position": "V" },
+      { "name": "Adri van Tiggelen", "aliases": ["Van Tiggelen"], "position": "V" },
+      { "name": "Gerald Vanenburg", "aliases": ["Vanenburg"], "position": "M" },
+      { "name": "Jan Wouters", "aliases": ["Wouters"], "position": "M" },
+      { "name": "Arnold Mühren", "aliases": ["Mühren", "Muhren", "Arnold Muhren"], "position": "M" },
+      { "name": "Erwin Koeman", "aliases": ["E. Koeman", "Erwin Koeman"], "position": "M" },
+      { "name": "Ruud Gullit", "aliases": ["Gullit"], "position": "A" },
+      { "name": "Marco van Basten", "aliases": ["Van Basten"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_1988_final"],
+    "tags": ["oranje", "legende"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "West-Duitsland – Nederland, finale WK 1974 (2-1)",
+    "team": "Nederland",
+    "players": [
+      { "name": "Jan Jongbloed", "aliases": ["Jongbloed"], "position": "K" },
+      { "name": "Wim Suurbier", "aliases": ["Suurbier"], "position": "V" },
+      { "name": "Wim Rijsbergen", "aliases": ["Rijsbergen"], "position": "V" },
+      { "name": "Arie Haan", "aliases": ["Haan"], "position": "V" },
+      { "name": "Ruud Krol", "aliases": ["Krol"], "position": "V" },
+      { "name": "Wim Jansen", "aliases": ["Jansen"], "position": "M" },
+      { "name": "Johan Neeskens", "aliases": ["Neeskens"], "position": "M" },
+      { "name": "Willem van Hanegem", "aliases": ["Van Hanegem", "Wim van Hanegem"], "position": "M" },
+      { "name": "Johnny Rep", "aliases": ["Rep"], "position": "A" },
+      { "name": "Johan Cruijff", "aliases": ["Cruijff", "Cruyff", "Johan Cruyff"], "position": "A" },
+      { "name": "Rob Rensenbrink", "aliases": ["Rensenbrink"], "position": "A" }
+    ],
+    "difficulty": 4, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/1974_FIFA_World_Cup_final"],
+    "tags": ["oranje", "wk", "legende"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Ajax – AC Milan, finale Champions League 1995 (1-0)",
+    "team": "Ajax",
+    "players": [
+      { "name": "Edwin van der Sar", "aliases": ["Van der Sar"], "position": "K" },
+      { "name": "Michael Reiziger", "aliases": ["Reiziger"], "position": "V" },
+      { "name": "Danny Blind", "aliases": ["Blind"], "position": "V" },
+      { "name": "Frank de Boer", "aliases": ["F. de Boer", "Frank de Boer"], "position": "V" },
+      { "name": "Frank Rijkaard", "aliases": ["Rijkaard"], "position": "M" },
+      { "name": "Clarence Seedorf", "aliases": ["Seedorf"], "position": "M" },
+      { "name": "Edgar Davids", "aliases": ["Davids"], "position": "M" },
+      { "name": "Jari Litmanen", "aliases": ["Litmanen"], "position": "M" },
+      { "name": "Finidi George", "aliases": ["Finidi"], "position": "A" },
+      { "name": "Ronald de Boer", "aliases": ["R. de Boer", "Ronald de Boer"], "position": "A" },
+      { "name": "Marc Overmars", "aliases": ["Overmars"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/1995_UEFA_Champions_League_final"],
+    "tags": ["oranje", "champions-league"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Nederland – Italië, halve finale EK 2000 (0-0, 1-3 n.s.)",
+    "team": "Nederland",
+    "players": [
+      { "name": "Edwin van der Sar", "aliases": ["Van der Sar"], "position": "K" },
+      { "name": "Paul Bosvelt", "aliases": ["Bosvelt"], "position": "V" },
+      { "name": "Jaap Stam", "aliases": ["Stam"], "position": "V" },
+      { "name": "Frank de Boer", "aliases": ["De Boer"], "position": "V" },
+      { "name": "Giovanni van Bronckhorst", "aliases": ["Van Bronckhorst", "Gio van Bronckhorst"], "position": "V" },
+      { "name": "Marc Overmars", "aliases": ["Overmars"], "position": "M" },
+      { "name": "Philip Cocu", "aliases": ["Cocu"], "position": "M" },
+      { "name": "Edgar Davids", "aliases": ["Davids"], "position": "M" },
+      { "name": "Boudewijn Zenden", "aliases": ["Zenden"], "position": "M" },
+      { "name": "Patrick Kluivert", "aliases": ["Kluivert"], "position": "A" },
+      { "name": "Dennis Bergkamp", "aliases": ["Bergkamp"], "position": "A" }
+    ],
+    "difficulty": 4, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2000_knockout_stage"],
+    "tags": ["oranje"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Nederland – Spanje, finale WK 2010 (0-1 n.v.), basiself Oranje",
+    "team": "Nederland",
+    "players": [
+      { "name": "Maarten Stekelenburg", "aliases": ["Stekelenburg"], "position": "K" },
+      { "name": "Gregory van der Wiel", "aliases": ["Van der Wiel"], "position": "V" },
+      { "name": "John Heitinga", "aliases": ["Heitinga"], "position": "V" },
+      { "name": "Joris Mathijsen", "aliases": ["Mathijsen"], "position": "V" },
+      { "name": "Giovanni van Bronckhorst", "aliases": ["Van Bronckhorst", "Gio van Bronckhorst"], "position": "V" },
+      { "name": "Mark van Bommel", "aliases": ["Van Bommel"], "position": "M" },
+      { "name": "Nigel de Jong", "aliases": ["De Jong"], "position": "M" },
+      { "name": "Wesley Sneijder", "aliases": ["Sneijder"], "position": "M" },
+      { "name": "Arjen Robben", "aliases": ["Robben"], "position": "A" },
+      { "name": "Dirk Kuyt", "aliases": ["Kuyt"], "position": "A" },
+      { "name": "Robin van Persie", "aliases": ["Van Persie"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_final"],
+    "tags": ["oranje", "wk"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Italië – Spanje, halve finale EK 2020 (1-1, 4-2 n.s.)",
+    "team": "Italië",
+    "players": [
+      { "name": "Gianluigi Donnarumma", "aliases": ["Donnarumma", "Gigio"], "position": "K" },
+      { "name": "Giovanni Di Lorenzo", "aliases": ["Di Lorenzo"], "position": "V" },
+      { "name": "Leonardo Bonucci", "aliases": ["Bonucci"], "position": "V" },
+      { "name": "Giorgio Chiellini", "aliases": ["Chiellini"], "position": "V" },
+      { "name": "Emerson Palmieri", "aliases": ["Emerson", "Emerson Palmieri"], "position": "V" },
+      { "name": "Jorginho", "aliases": ["Jorginho"], "position": "M" },
+      { "name": "Nicolò Barella", "aliases": ["Barella"], "position": "M" },
+      { "name": "Marco Verratti", "aliases": ["Verratti"], "position": "M" },
+      { "name": "Federico Chiesa", "aliases": ["Chiesa"], "position": "A" },
+      { "name": "Lorenzo Insigne", "aliases": ["Insigne"], "position": "A" },
+      { "name": "Ciro Immobile", "aliases": ["Immobile"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "rejected",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2020_knockout_stage"],
+    "tags": ["italie"]
+  },
+  {
+    "title": "Italië – West-Duitsland, finale WK 1982 (3-1)",
+    "team": "Italië",
+    "players": [
+      { "name": "Dino Zoff", "aliases": ["Zoff"], "position": "K" },
+      { "name": "Gaetano Scirea", "aliases": ["Scirea"], "position": "V" },
+      { "name": "Giuseppe Bergomi", "aliases": ["Bergomi"], "position": "V" },
+      { "name": "Claudio Gentile", "aliases": ["Gentile"], "position": "V" },
+      { "name": "Fulvio Collovati", "aliases": ["Collovati"], "position": "V" },
+      { "name": "Antonio Cabrini", "aliases": ["Cabrini"], "position": "V" },
+      { "name": "Gabriele Oriali", "aliases": ["Oriali"], "position": "M" },
+      { "name": "Marco Tardelli", "aliases": ["Tardelli"], "position": "M" },
+      { "name": "Bruno Conti", "aliases": ["Conti"], "position": "A" },
+      { "name": "Francesco Graziani", "aliases": ["Graziani", "Ciccio Graziani"], "position": "A" },
+      { "name": "Paolo Rossi", "aliases": ["Rossi", "Pablito"], "position": "A" }
+    ],
+    "difficulty": 4, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/1982_FIFA_World_Cup_final"],
+    "tags": ["italie", "wk"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Italië – Brazilië, tweede groepsfase WK 1982 (3-2)",
+    "team": "Italië",
+    "players": [
+      { "name": "Dino Zoff", "aliases": ["Zoff"], "position": "K" },
+      { "name": "Gaetano Scirea", "aliases": ["Scirea"], "position": "V" },
+      { "name": "Claudio Gentile", "aliases": ["Gentile"], "position": "V" },
+      { "name": "Fulvio Collovati", "aliases": ["Collovati"], "position": "V" },
+      { "name": "Antonio Cabrini", "aliases": ["Cabrini"], "position": "V" },
+      { "name": "Giancarlo Antognoni", "aliases": ["Antognoni"], "position": "M" },
+      { "name": "Gabriele Oriali", "aliases": ["Oriali"], "position": "M" },
+      { "name": "Marco Tardelli", "aliases": ["Tardelli"], "position": "M" },
+      { "name": "Bruno Conti", "aliases": ["Conti"], "position": "A" },
+      { "name": "Francesco Graziani", "aliases": ["Graziani", "Ciccio Graziani"], "position": "A" },
+      { "name": "Paolo Rossi", "aliases": ["Rossi", "Pablito"], "position": "A" }
+    ],
+    "difficulty": 4, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/1982_FIFA_World_Cup_Group_C"],
+    "tags": ["italie", "wk"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Nederland – West-Duitsland, finale WK 1974 (1-2)",
+    "team": "West-Duitsland",
+    "players": [
+      { "name": "Sepp Maier", "aliases": ["Maier"], "position": "K" },
+      { "name": "Franz Beckenbauer", "aliases": ["Beckenbauer"], "position": "V" },
+      { "name": "Berti Vogts", "aliases": ["Vogts"], "position": "V" },
+      { "name": "Hans-Georg Schwarzenbeck", "aliases": ["Schwarzenbeck"], "position": "V" },
+      { "name": "Paul Breitner", "aliases": ["Breitner"], "position": "V" },
+      { "name": "Rainer Bonhof", "aliases": ["Bonhof"], "position": "M" },
+      { "name": "Wolfgang Overath", "aliases": ["Overath"], "position": "M" },
+      { "name": "Uli Hoeneß", "aliases": ["Hoeneß", "Hoeness", "Uli Hoeness"], "position": "M" },
+      { "name": "Jürgen Grabowski", "aliases": ["Grabowski"], "position": "A" },
+      { "name": "Bernd Hölzenbein", "aliases": ["Hölzenbein", "Holzenbein"], "position": "A" },
+      { "name": "Gerd Müller", "aliases": ["Müller", "Muller", "Gerd Muller"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/1974_FIFA_World_Cup_final"],
+    "tags": ["duitsland", "wk"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Duitsland – Tsjechië, finale EK 1996 (2-1 n.v., golden goal)",
+    "team": "Duitsland",
+    "players": [
+      { "name": "Andreas Köpke", "aliases": ["Köpke", "Kopke"], "position": "K" },
+      { "name": "Matthias Sammer", "aliases": ["Sammer"], "position": "V" },
+      { "name": "Markus Babbel", "aliases": ["Babbel"], "position": "V" },
+      { "name": "Thomas Helmer", "aliases": ["Helmer"], "position": "V" },
+      { "name": "Thomas Strunz", "aliases": ["Strunz"], "position": "M" },
+      { "name": "Christian Ziege", "aliases": ["Ziege"], "position": "M" },
+      { "name": "Dieter Eilts", "aliases": ["Eilts"], "position": "M" },
+      { "name": "Mehmet Scholl", "aliases": ["Scholl"], "position": "M" },
+      { "name": "Thomas Häßler", "aliases": ["Häßler", "Hassler", "Häßler", "Hassler"], "position": "M" },
+      { "name": "Jürgen Klinsmann", "aliases": ["Klinsmann"], "position": "A" },
+      { "name": "Stefan Kuntz", "aliases": ["Kuntz"], "position": "A" }
+    ],
+    "difficulty": 5, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_1996_final"],
+    "tags": ["duitsland"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Borussia Dortmund – Juventus, finale Champions League 1997 (3-1)",
+    "team": "Borussia Dortmund",
+    "players": [
+      { "name": "Stefan Klos", "aliases": ["Klos"], "position": "K" },
+      { "name": "Matthias Sammer", "aliases": ["Sammer"], "position": "V" },
+      { "name": "Jürgen Kohler", "aliases": ["Kohler"], "position": "V" },
+      { "name": "Martin Kree", "aliases": ["Kree"], "position": "V" },
+      { "name": "Stefan Reuter", "aliases": ["Reuter"], "position": "V" },
+      { "name": "Jörg Heinrich", "aliases": ["Heinrich"], "position": "M" },
+      { "name": "Paul Lambert", "aliases": ["Lambert"], "position": "M" },
+      { "name": "Paulo Sousa", "aliases": ["Sousa"], "position": "M" },
+      { "name": "Andreas Möller", "aliases": ["Möller", "Moller"], "position": "M" },
+      { "name": "Karl-Heinz Riedle", "aliases": ["Riedle"], "position": "A" },
+      { "name": "Stéphane Chapuisat", "aliases": ["Chapuisat", "Stephane Chapuisat"], "position": "A" }
+    ],
+    "difficulty": 5, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/1997_UEFA_Champions_League_final"],
+    "tags": ["duitsland", "champions-league"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Duitsland – Denemarken, achtste finale EK 2024 (2-0)",
+    "team": "Duitsland",
+    "players": [
+      { "name": "Manuel Neuer", "aliases": ["Neuer"], "position": "K" },
+      { "name": "Joshua Kimmich", "aliases": ["Kimmich"], "position": "V" },
+      { "name": "Antonio Rüdiger", "aliases": ["Rüdiger", "Rudiger"], "position": "V" },
+      { "name": "Nico Schlotterbeck", "aliases": ["Schlotterbeck"], "position": "V" },
+      { "name": "David Raum", "aliases": ["Raum"], "position": "V" },
+      { "name": "Robert Andrich", "aliases": ["Andrich"], "position": "M" },
+      { "name": "Toni Kroos", "aliases": ["Kroos"], "position": "M" },
+      { "name": "Leroy Sané", "aliases": ["Sané", "Sane"], "position": "M" },
+      { "name": "İlkay Gündoğan", "aliases": ["Gündoğan", "Gundogan", "Ilkay Gundogan"], "position": "M" },
+      { "name": "Jamal Musiala", "aliases": ["Musiala"], "position": "M" },
+      { "name": "Kai Havertz", "aliases": ["Havertz"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2024_knockout_stage"],
+    "tags": ["duitsland"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Hamburger SV – Anderlecht, finale Europacup II 1977 (2-0)",
+    "team": "Anderlecht",
+    "players": [
+      { "name": "Jan Ruiter", "aliases": ["Ruiter"], "position": "K" },
+      { "name": "Gilbert Van Binst", "aliases": ["Van Binst"], "position": "V" },
+      { "name": "Hugo Broos", "aliases": ["Broos"], "position": "V" },
+      { "name": "Erwin Vandendaele", "aliases": ["Vandendaele"], "position": "V" },
+      { "name": "Jean Thissen", "aliases": ["Thissen"], "position": "V" },
+      { "name": "Jean Dockx", "aliases": ["Dockx"], "position": "M" },
+      { "name": "Arie Haan", "aliases": ["Haan"], "position": "M" },
+      { "name": "Peter Ressel", "aliases": ["Ressel"], "position": "M" },
+      { "name": "Ludo Coeck", "aliases": ["Coeck"], "position": "M" },
+      { "name": "François Van der Elst", "aliases": ["Van der Elst", "Francois Van der Elst"], "position": "A" },
+      { "name": "Rob Rensenbrink", "aliases": ["Rensenbrink"], "position": "A" }
+    ],
+    "difficulty": 5, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/1977_European_Cup_Winners%27_Cup_final"],
+    "tags": ["belgie", "anderlecht"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Sampdoria – Anderlecht, finale Europacup II 1990 (2-0 n.v.)",
+    "team": "Anderlecht",
+    "players": [
+      { "name": "Filip De Wilde", "aliases": ["De Wilde"], "position": "K" },
+      { "name": "Georges Grün", "aliases": ["Grün", "Grun", "Georges Grun"], "position": "V" },
+      { "name": "Guy Marchoul", "aliases": ["Marchoul"], "position": "V" },
+      { "name": "Stephen Keshi", "aliases": ["Keshi"], "position": "V" },
+      { "name": "Wim Kooiman", "aliases": ["Kooiman"], "position": "V" },
+      { "name": "Charly Musonda", "aliases": ["Musonda"], "position": "M" },
+      { "name": "Patrick Vervoort", "aliases": ["Vervoort"], "position": "M" },
+      { "name": "Arnór Guðjohnsen", "aliases": ["Guðjohnsen", "Gudjohnsen", "Arnor Gudjohnsen"], "position": "M" },
+      { "name": "Milan Janković", "aliases": ["Janković", "Jankovic", "Milan Jankovic"], "position": "M" },
+      { "name": "Marc Degryse", "aliases": ["Degryse"], "position": "A" },
+      { "name": "Marc Van Der Linden", "aliases": ["Van Der Linden", "Van der Linden"], "position": "A" }
+    ],
+    "difficulty": 5, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/1990_European_Cup_Winners%27_Cup_final"],
+    "tags": ["belgie", "anderlecht"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Parma – Royal Antwerp, finale Europacup II 1993 (3-1)",
+    "team": "Royal Antwerp",
+    "players": [
+      { "name": "Stevan Stojanović", "aliases": ["Stojanović", "Stojanovic", "Stevan Stojanovic"], "position": "K" },
+      { "name": "Rudi Taeymans", "aliases": ["Taeymans"], "position": "V" },
+      { "name": "Nico Broeckaert", "aliases": ["Broeckaert"], "position": "V" },
+      { "name": "Rudi Smidts", "aliases": ["Smidts"], "position": "V" },
+      { "name": "Wim Kiekens", "aliases": ["Kiekens"], "position": "V" },
+      { "name": "Didier Segers", "aliases": ["Segers"], "position": "V" },
+      { "name": "Ronny Van Rethy", "aliases": ["Van Rethy"], "position": "M" },
+      { "name": "Dragan Jakovljević", "aliases": ["Jakovljević", "Jakovljevic", "Dragan Jakovljevic"], "position": "M" },
+      { "name": "Hans-Peter Lehnhoff", "aliases": ["Lehnhoff"], "position": "M" },
+      { "name": "Francis Severeyns", "aliases": ["Severeyns"], "position": "A" },
+      { "name": "Alexandre Czerniatynski", "aliases": ["Czerniatynski", "Alex Czerniatynski"], "position": "A" }
+    ],
+    "difficulty": 5, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/1993_European_Cup_Winners%27_Cup_final"],
+    "tags": ["belgie"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Liverpool – Club Brugge, heenmatch finale UEFA Cup 1976 (3-2)",
+    "team": "Club Brugge",
+    "players": [
+      { "name": "Birger Jensen", "aliases": ["Jensen"], "position": "K" },
+      { "name": "Fons Bastijns", "aliases": ["Bastijns"], "position": "V" },
+      { "name": "Eddie Krieger", "aliases": ["Krieger", "Eduard Krieger"], "position": "V" },
+      { "name": "Georges Leekens", "aliases": ["Leekens"], "position": "V" },
+      { "name": "Jos Volders", "aliases": ["Volders"], "position": "V" },
+      { "name": "Julien Cools", "aliases": ["Cools"], "position": "M" },
+      { "name": "René Vandereycken", "aliases": ["Vandereycken", "Rene Vandereycken"], "position": "M" },
+      { "name": "Daniël De Cubber", "aliases": ["De Cubber", "Daniel De Cubber"], "position": "M" },
+      { "name": "Roger Van Gool", "aliases": ["Van Gool"], "position": "A" },
+      { "name": "Raoul Lambert", "aliases": ["Lambert"], "position": "A" },
+      { "name": "Ulrik le Fevre", "aliases": ["le Fevre", "Le Fevre", "Lefevre"], "position": "A" }
+    ],
+    "difficulty": 5, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/1976_UEFA_Cup_final"],
+    "tags": ["belgie", "club-brugge"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Spanje – België, kwartfinale WK 2026 (2-1)",
+    "team": "België",
+    "players": [
+      { "name": "Thibaut Courtois", "aliases": ["Courtois"], "position": "K" },
+      { "name": "Timothy Castagne", "aliases": ["Castagne"], "position": "V" },
+      { "name": "Brandon Mechele", "aliases": ["Mechele"], "position": "V" },
+      { "name": "Nathan Ngoy", "aliases": ["Ngoy"], "position": "V" },
+      { "name": "Maxim De Cuyper", "aliases": ["De Cuyper"], "position": "V" },
+      { "name": "Kevin De Bruyne", "aliases": ["De Bruyne", "KDB"], "position": "M" },
+      { "name": "Hans Vanaken", "aliases": ["Vanaken"], "position": "M" },
+      { "name": "Nicolas Raskin", "aliases": ["Raskin"], "position": "M" },
+      { "name": "Leandro Trossard", "aliases": ["Trossard"], "position": "A" },
+      { "name": "Charles De Ketelaere", "aliases": ["De Ketelaere", "CDK"], "position": "A" },
+      { "name": "Jérémy Doku", "aliases": ["Doku", "Jeremy Doku"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://wtop.com/sports/2026/07/belgium-captain-youri-tielemans-injured-in-warmups-scratched-for-quarterfinal-against-spain/", "https://www.voetbalzone.nl/nieuws/bepalende-speler-belgie-valt-uit-in-warming-up-voor-kwartfinale-tegen-spanje/blt68c69fd65aa38d41", "https://www.aljazeera.com/amp/sports/liveblog/2026/7/10/spain-vs-belgium-live-fifa-world-cup-2026-quarterfinal", "https://worldcupranking.com/blog/world-cup-2026-match-98-spain-vs-belgium/"],
+    "tags": ["spanje", "wk", "rode-duivels"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Spanje – Argentinië, finale WK 2026 (1-0 n.v.): de Spaanse basis",
+    "team": "Spanje",
+    "players": [
+      { "name": "Unai Simón", "aliases": ["Simón", "Simon", "Unai Simon"], "position": "K" },
+      { "name": "Pedro Porro", "aliases": ["Porro"], "position": "V" },
+      { "name": "Pau Cubarsí", "aliases": ["Cubarsí", "Cubarsi", "Pau Cubarsi"], "position": "V" },
+      { "name": "Aymeric Laporte", "aliases": ["Laporte"], "position": "V" },
+      { "name": "Marc Cucurella", "aliases": ["Cucurella"], "position": "V" },
+      { "name": "Rodri", "aliases": ["Rodrigo Hernández", "Rodrigo Hernandez"], "position": "M" },
+      { "name": "Dani Olmo", "aliases": ["Olmo"], "position": "M" },
+      { "name": "Fabián Ruiz", "aliases": ["Fabian Ruiz", "Ruiz"], "position": "M" },
+      { "name": "Lamine Yamal", "aliases": ["Yamal", "Lamine"], "position": "A" },
+      { "name": "Mikel Oyarzabal", "aliases": ["Oyarzabal"], "position": "A" },
+      { "name": "Álex Baena", "aliases": ["Alex Baena", "Baena"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_final"],
+    "tags": ["spanje", "wk"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Spanje – Duitsland, kwartfinale EK 2024 (2-1 n.v.)",
+    "team": "Spanje",
+    "players": [
+      { "name": "Unai Simón", "aliases": ["Simón", "Simon", "Unai Simon"], "position": "K" },
+      { "name": "Dani Carvajal", "aliases": ["Carvajal"], "position": "V" },
+      { "name": "Robin Le Normand", "aliases": ["Le Normand", "Normand"], "position": "V" },
+      { "name": "Aymeric Laporte", "aliases": ["Laporte"], "position": "V" },
+      { "name": "Marc Cucurella", "aliases": ["Cucurella"], "position": "V" },
+      { "name": "Rodri", "aliases": ["Rodrigo Hernández", "Rodrigo Hernandez"], "position": "M" },
+      { "name": "Fabián Ruiz", "aliases": ["Fabian Ruiz", "Ruiz"], "position": "M" },
+      { "name": "Pedri", "aliases": ["Pedri González", "Pedri Gonzalez"], "position": "M" },
+      { "name": "Lamine Yamal", "aliases": ["Yamal", "Lamine"], "position": "A" },
+      { "name": "Álvaro Morata", "aliases": ["Alvaro Morata", "Morata"], "position": "A" },
+      { "name": "Nico Williams", "aliases": ["Williams", "Nico"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2024_knockout_phase"],
+    "tags": ["spanje"],
     "checkedAt": "2026-10-19"
   }
 ]

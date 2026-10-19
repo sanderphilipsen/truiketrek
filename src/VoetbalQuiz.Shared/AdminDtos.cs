@@ -29,6 +29,7 @@ public static class PlayerTags
     [
         ("champions-league", "Champions League-winnaar"),
         ("gouden-schoen", "Gouden Schoen-winnaar"),
+        ("ballon-dor", "Ballon d'Or-winnaar"),
         ("rode-duivels", "Rode Duivel"),
         ("kerst", "Geboren rond Kerstmis (24–26/12)"),
         ("nieuwjaar", "Geboren op oudjaar/nieuwjaar"),
@@ -53,6 +54,14 @@ public static class PlayerTags
         ("deschacht", "Deschacht-special"),
         ("stijnen", "Stijnen-special"),
         ("propere-handen", "Propere Handen-special"),
+        // Feestdagspecials per land (Nederland gebruikt "oranje").
+        ("belgie", "Belgisch voetbal"),
+        ("frankrijk", "Frans voetbal"),
+        ("spanje", "Spaans voetbal"),
+        ("italie", "Italiaans voetbal"),
+        ("duitsland", "Duits voetbal"),
+        ("turkije", "Turks voetbal"),
+        ("portugal", "Portugees voetbal"),
     ];
 
     /// <summary>Een special kan meerdere thema's combineren, bv. "anderlecht,club-brugge" voor de topper.</summary>
@@ -157,6 +166,9 @@ public static class SpecialTemplates
             "halloween", 10, 31, ThemedRounds),
         new("sinterklaas", "Sinterklaas Special", "🎁", "Cadeaugoals, Spaans voetbal en voetballers die rond Sinterklaas jarig zijn.", "sinterklaas", 12, 6, ThemedRounds),
         new("gouden-schoen", "Gouden Schoen Special", "👟", "Op de avond van de Gouden Schoen: alle winnaars.", "gouden-schoen", null, null),
+        new("ballon-dor", "Ballon d'Or Special", "🏅", "Op de avond van de Gouden Bal: de winnaars van Matthews tot Dembélé en de geschiedenis van de prijs.",
+            "ballon-dor", null, null,
+            [QuestionType.WieBenIk, QuestionType.Kluts, QuestionType.Counter, QuestionType.Snelvuur, QuestionType.Jaar, QuestionType.NietBij]),
         new("wk", "WK Special", "🌍", "Van Mexico '70 tot Noord-Amerika 2026: finales, helden en drama op het wereldkampioenschap.", "wk", null, null,
             [.. ThemedRounds, QuestionType.Opstelling]),
         new("vaderdag", "Vaderdag Special", "👨‍👦", "Vaders, zonen en broers: de grootste voetbalfamilies.", "familie", null, null, ThemedRounds),
@@ -177,6 +189,17 @@ public static class SpecialTemplates
             "stijnen", 4, 7, [QuestionType.WieBenIk, QuestionType.Kluts, QuestionType.Counter, QuestionType.Snelvuur, QuestionType.Jaar, QuestionType.NietBij]),
         new("propere-handen", "Propere Handen Special", "⚖️", "Op 10 oktober 2018 begon het grootste gerechtelijk onderzoek naar het Belgische profvoetbal.",
             "propere-handen", 10, 10, [QuestionType.Snelvuur, QuestionType.Jaar, QuestionType.NietBij]),
+
+        // Nationale feestdagen: de spelers van dat land en vragen over zijn voetbal.
+        new("feestdag-belgie", "Nationale Feestdag: België", "🇧🇪", "21 juli: de Rode Duivels, onze competitie en de grote Europese avonden van onze clubs.",
+            "belgie,rode-duivels", 7, 21, PersonRounds),
+        new("feestdag-frankrijk", "Quatorze Juillet: Frankrijk", "🇫🇷", "14 juli: Les Bleus, de Ligue 1 en de Franse wereldtitels.", "frankrijk", 7, 14, PersonRounds),
+        new("feestdag-spanje", "Fiesta Nacional: Spanje", "🇪🇸", "12 oktober: La Roja, La Liga en de gouden jaren van het Spaanse voetbal.", "spanje", 10, 12, PersonRounds),
+        new("feestdag-italie", "Festa della Repubblica: Italië", "🇮🇹", "2 juni: de Azzurri, de Serie A en vier wereldtitels.", "italie", 6, 2, PersonRounds),
+        new("feestdag-duitsland", "Tag der Deutschen Einheit: Duitsland", "🇩🇪", "3 oktober: de Mannschaft, de Bundesliga en vier wereldtitels.", "duitsland", 10, 3, PersonRounds),
+        new("feestdag-nederland", "Koningsdag: Nederland", "🇳🇱", "27 april: Oranje, de Eredivisie en het totaalvoetbal van onze noorderburen.", "oranje", 4, 27, PersonRounds),
+        new("feestdag-turkije", "Dag van de Republiek: Turkije", "🇹🇷", "29 oktober: de Turkse nationale ploeg, de Süper Lig en de Istanbul-derby's.", "turkije", 10, 29, PersonRounds),
+        new("feestdag-portugal", "Dia de Portugal", "🇵🇹", "10 juni: de Seleção, Benfica, Porto en Sporting, en natuurlijk Cristiano Ronaldo.", "portugal", 6, 10, PersonRounds),
 
         new("custom", "Eigen special", "✨", "", null, null, null),
     ];

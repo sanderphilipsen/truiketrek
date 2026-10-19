@@ -20,7 +20,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Gianluigi_Buffon"
     ],
-    "tags": ["wk"],
+    "tags": ["wk", "italie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -44,7 +44,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Francesco_Totti"
     ],
-    "tags": [],
+    "tags": ["italie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -70,7 +70,8 @@
     ],
     "tags": [
       "wk",
-      "champions-league"
+      "champions-league",
+      "italie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -97,7 +98,8 @@
       "https://en.wikipedia.org/wiki/Alessandro_Del_Piero"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "italie"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -153,7 +155,8 @@
     "tags": [
       "wk",
       "familie",
-      "champions-league"
+      "champions-league",
+      "ballon-dor"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -203,7 +206,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Giorgio_Chiellini"
     ],
-    "tags": [],
+    "tags": ["italie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -297,7 +300,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Nicol%C3%B2_Barella"
     ],
-    "tags": ["lukaku"],
+    "tags": ["lukaku", "italie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -401,7 +404,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Fabio_Cannavaro"
     ],
-    "tags": ["wk", "familie"],
+    "tags": ["wk", "familie", "ballon-dor", "italie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -426,7 +429,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Kylian_Mbapp%C3%A9"
     ],
-    "tags": ["wk", "familie", "messi"],
+    "tags": ["wk", "familie", "messi", "frankrijk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -498,7 +501,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Hatem_Ben_Arfa"
     ],
-    "tags": [],
+    "tags": ["frankrijk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -521,7 +524,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Dimitri_Payet"
     ],
-    "tags": [],
+    "tags": ["frankrijk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -544,7 +547,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Alexandre_Lacazette"
     ],
-    "tags": [],
+    "tags": ["frankrijk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -591,7 +594,8 @@
       "https://en.wikipedia.org/wiki/Andr%C3%A9-Pierre_Gignac"
     ],
     "tags": [
-      "sinterklaas"
+      "sinterklaas",
+      "frankrijk"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -641,7 +645,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Marco_Verratti"
     ],
-    "tags": ["messi"],
+    "tags": ["messi", "italie"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -664,7 +668,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Yoann_Gourcuff"
     ],
-    "tags": ["familie"],
+    "tags": ["familie", "frankrijk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -688,7 +692,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Mathieu_Valbuena"
     ],
-    "tags": [],
+    "tags": ["frankrijk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -712,7 +716,7 @@
       "https://en.wikipedia.org/wiki/Steve_Mandanda",
       "https://www.fotmob.com/fi/news/196p63lrzty7g13mh2gd5v31w5/Marseille-legend-Mandanda-departs-after-record-613-games-for-Ligue-1-giants"
     ],
-    "tags": ["familie"],
+    "tags": ["familie", "frankrijk"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -762,7 +766,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Paul_Pogba"
     ],
-    "tags": ["wk", "lukaku"],
+    "tags": ["wk", "lukaku", "frankrijk"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -786,7 +790,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Ousmane_Demb%C3%A9l%C3%A9"
     ],
-    "tags": ["wk", "champions-league", "messi"],
+    "tags": ["wk", "champions-league", "messi", "ballon-dor", "frankrijk"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -809,7 +813,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Olivier_Giroud"
     ],
-    "tags": ["wk", "champions-league"],
+    "tags": ["wk", "champions-league", "frankrijk"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -833,7 +837,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Gianluigi_Donnarumma"
     ],
-    "tags": ["champions-league", "messi"],
+    "tags": ["champions-league", "messi", "italie"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -858,7 +862,252 @@
     ],
     "tags": [
       "legende",
-      "pele"
+      "pele",
+      "italie"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Patrick Vieira",
+    "answers": [
+      "Vieira"
+    ],
+    "country": "Frankrijk",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1976 geboren in Senegal en speelde later voor Frankrijk.",
+      "Ik ben een lange, fysiek sterke middenvelder die duels won en het spel opbouwde.",
+      "Ik begon bij Cannes en speelde daarna kort bij AC Milan.",
+      "Bij Arsenal won ik drie landstitels en vier FA Cups, onder meer in het ongeslagen seizoen 2003-04.",
+      "In de WK-finale van 1998 gaf ik als invaller de assist voor de derde Franse goal."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Patrick_Vieira"
+    ],
+    "tags": [
+      "frankrijk",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Didier Deschamps",
+    "answers": [
+      "Deschamps",
+      "DD"
+    ],
+    "country": "Frankrijk",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1968 geboren in Bayonne, in het zuidwesten van Frankrijk.",
+      "Als speler kreeg ik de bijnaam 'de waterdrager', omdat ik vooral het werk voor de sterren opknapte.",
+      "Ik won de Champions League in 1993 met Marseille en in 1996 met Juventus.",
+      "Als aanvoerder tilde ik de wereldbeker van 1998 en de Europese beker van 2000 op.",
+      "Later werd ik bondscoach: in 2018 won ik het WK, in 2022 verloor ik de finale na strafschoppen."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Didier_Deschamps"
+    ],
+    "tags": [
+      "frankrijk",
+      "wk",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Marcel Desailly",
+    "answers": [
+      "Desailly",
+      "The Rock"
+    ],
+    "country": "Frankrijk",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1968 geboren in Accra, de hoofdstad van Ghana.",
+      "Ik ben een verdediger die ook als verdedigende middenvelder speelde.",
+      "Ik won de Champions League in twee opeenvolgende jaren, met twee verschillende clubs: Marseille en AC Milan.",
+      "Bij Chelsea won ik in 2000 de FA Cup; ik speelde er zes seizoenen.",
+      "In de WK-finale van 1998 kreeg ik een rode kaart tegen Brazilië, maar Frankrijk won toch met 3-0."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Marcel_Desailly"
+    ],
+    "tags": [
+      "frankrijk",
+      "wk",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Raphaël Varane",
+    "answers": [
+      "Varane",
+      "Raphael Varane"
+    ],
+    "country": "Frankrijk",
+    "competition": "La Liga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik ben een centrale verdediger, geboren in 1993 in het noorden van Frankrijk.",
+      "Ik maakte op mijn zeventiende mijn profdebuut bij Lens.",
+      "Bij Real Madrid won ik vier keer de Champions League.",
+      "Op het WK 2018 kopte ik Frankrijk in de kwartfinale tegen Uruguay op voorsprong, en ik werd wereldkampioen.",
+      "Ik trok daarna naar Manchester United en stopte in 2024 na een knieblessure bij Como met voetballen."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Rapha%C3%ABl_Varane"
+    ],
+    "tags": [
+      "frankrijk",
+      "wk",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Fabien Barthez",
+    "answers": [
+      "Barthez"
+    ],
+    "country": "Frankrijk",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1971 geboren in Lavelanet, in de Ariège.",
+      "Ik ben een doelman met een gladgeschoren hoofd; in Frankrijk heette ik 'de goddelijke kale'.",
+      "Mijn ploegmaat Laurent Blanc kuste mijn kale hoofd voor elke match, als geluksritueel.",
+      "Ik won de Champions League met Marseille in 1993 en speelde later vier seizoenen bij Manchester United.",
+      "In 1998 won ik het WK in eigen land en werd ik uitgeroepen tot beste doelman van het toernooi."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Fabien_Barthez"
+    ],
+    "tags": [
+      "frankrijk",
+      "wk",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Gennaro Gattuso",
+    "answers": [
+      "Gattuso",
+      "Ringhio"
+    ],
+    "country": "Italië",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1978 geboren in Calabrië, helemaal in het zuiden van Italië.",
+      "Als jonge speler trok ik naar Schotland, naar Glasgow.",
+      "Ik ben een defensieve middenvelder die vooral bekendstaat om zijn keiharde tackles en werklust.",
+      "Bij AC Milan won ik twee keer de Champions League, in 2003 en 2007.",
+      "In 2006 werd ik wereldkampioen, en mijn bijnaam betekent 'gegrom'."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gennaro_Gattuso"
+    ],
+    "tags": [
+      "italie",
+      "champions-league",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Alessandro Nesta",
+    "answers": [
+      "Nesta",
+      "Sandro Nesta"
+    ],
+    "country": "Italië",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1976 geboren in Rome.",
+      "Ik kwam als jongen van negen in de jeugd van een Romeinse club terecht en speelde er later mijn eerste profjaren.",
+      "In 2000 werd ik met Lazio landskampioen.",
+      "Op het EK 2000 haalde ik met Italië de finale en kwam ik in de ploeg van het toernooi.",
+      "Als verdediger van AC Milan won ik twee keer de Champions League, maar op het WK 2006 miste ik het grootste deel door een blessure."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Alessandro_Nesta"
+    ],
+    "tags": [
+      "italie",
+      "champions-league",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Leonardo Bonucci",
+    "answers": [
+      "Bonucci"
+    ],
+    "country": "Italië",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1987 geboren in Viterbo, ten noorden van Rome.",
+      "Ik kwam in 2005 in de jeugd van Inter terecht, maar speelde daarna ook bij Treviso, Pisa en Bari.",
+      "Bij Juventus vormde ik met Barzagli en Chiellini een driemansverdediging die 'BBC' werd genoemd.",
+      "In 2017 trok ik voor een jaar naar AC Milan, tot ik in 2018 terugkeerde naar Turijn.",
+      "In de EK-finale van 2021 maakte ik op Wembley de gelijkmaker tegen Engeland."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Leonardo_Bonucci"
+    ],
+    "tags": [
+      "italie"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Ciro Immobile",
+    "answers": [
+      "Immobile"
+    ],
+    "country": "Italië",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1990 geboren in Torre Annunziata, vlak bij Napels.",
+      "In 2011-12 werd ik met 28 goals topschutter in de Serie B, toen mijn club promoveerde.",
+      "Ik probeerde mijn geluk in het buitenland, bij Dortmund en Sevilla.",
+      "In 2019-20 scoorde ik 36 keer in de Serie A, evenveel als het record van Higuaín, en won ik de Gouden Schoen van Europa.",
+      "Ik speelde van 2016 tot 2024 voor Lazio en stond in de basis van de EK-winnaars van 2021."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ciro_Immobile"
+    ],
+    "tags": [
+      "italie",
+      "gouden-schoen"
     ],
     "checkedAt": "2026-10-19"
   }
