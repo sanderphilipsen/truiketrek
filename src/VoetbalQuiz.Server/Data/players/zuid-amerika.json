@@ -1,0 +1,101 @@
+[
+  {
+    "name": "Ángel Di María",
+    "answers": [
+      "Di María",
+      "Di Maria",
+      "Fideo"
+    ],
+    "country": "Argentinië",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1988 geboren in Rosario, net als een andere beroemde landgenoot.",
+      "Ik ben een snelle vleugelspeler met een scherpe voorzet.",
+      "Ik won in 2008 de Olympische gouden medaille met Argentinië.",
+      "In 2014 won ik de Champions League met Real Madrid.",
+      "In 2021 scoorde ik het winnende doelpunt in de Copa América-finale tegen Brazilië en in 2022 scoorde ik in de WK-finale."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/%C3%81ngel_Di_Mar%C3%ADa"
+    ],
+    "tags": ["wk", "champions-league"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Federico Valverde",
+    "answers": [
+      "Valverde",
+      "Fede Valverde"
+    ],
+    "country": "Uruguay",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik ben een middenvelder, geboren in 1998 in Montevideo.",
+      "Als kind groeide ik uit tot een belofte bij Peñarol.",
+      "Op het WK 2022 in Qatar speelde ik voor mijn land.",
+      "Ik kwam in 2016 bij Real Madrid terecht en werd uitgeleend aan Deportivo La Coruña.",
+      "Met Real Madrid won ik de Champions League in 2022 en in 2024."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Federico_Valverde"
+    ],
+    "tags": ["champions-league"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Julián Álvarez",
+    "answers": [
+      "Álvarez",
+      "Alvarez",
+      "Julian Alvarez"
+    ],
+    "country": "Argentinië",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik ben een spits, geboren in 2000 in het dorp Calchín in Argentinië.",
+      "Ik groeide op bij River Plate.",
+      "In 2022 trok ik naar Manchester City en in 2024 naar Madrid.",
+      "In 2023 won ik met City de treble.",
+      "Op het WK 2022 scoorde ik vier keer en werd ik wereldkampioen."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Juli%C3%A1n_%C3%81lvarez"
+    ],
+    "tags": ["wk", "champions-league"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Luis Díaz",
+    "answers": [
+      "Díaz",
+      "Diaz",
+      "Lucho"
+    ],
+    "country": "Colombia",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik ben een vleugelspeler, geboren in 1997 in Barrancas, een dorp in het noorden van Colombia.",
+      "Ik behoor tot het inheemse volk van de Wayuu.",
+      "Ik werd tweemaal landskampioen van Portugal met Porto.",
+      "In 2022 maakte ik de overstap naar Liverpool, waar ik in 2025 de Premier League won.",
+      "In 2025 trok ik naar de Duitse recordkampioen."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Luis_D%C3%ADaz_(footballer,_born_1997)"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  }
+]

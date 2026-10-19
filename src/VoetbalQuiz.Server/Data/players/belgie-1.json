@@ -876,5 +876,51 @@
       "rode-duivels"
     ],
     "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Zeno Debast",
+    "answers": [
+      "Debast"
+    ],
+    "country": "België",
+    "competition": "Primeira Liga",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik ben een verdediger en werd in 2003 geboren in Halle.",
+      "Ik doorliep de jeugd van Anderlecht en debuteerde als zeventienjarige in het eerste elftal.",
+      "In 2024 trok ik naar Lissabon, naar een club met een leeuw in het embleem.",
+      "In 2025 won ik met die club zowel de landstitel als de beker.",
+      "Ik zat in de selectie van de Rode Duivels voor het WK 2022 en het EK 2024."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Zeno_Debast"
+    ],
+    "tags": ["rode-duivels", "anderlecht"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Alexis Saelemaekers",
+    "answers": [
+      "Saelemaekers"
+    ],
+    "country": "België",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1999 geboren in Sint-Agatha-Berchem, bij Brussel.",
+      "Ik ben een flankspeler die zowel aanvallend als verdedigend inzetbaar is.",
+      "Ik groeide uit tot een vaste waarde bij Anderlecht en trok in 2020 naar Italië.",
+      "Met een Milanese topclub werd ik in 2022 landskampioen.",
+      "In 2026 zat ik in de selectie van de Rode Duivels voor het WK in Noord-Amerika."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Alexis_Saelemaekers"
+    ],
+    "tags": ["rode-duivels", "anderlecht"],
+    "checkedAt": "2026-10-19"
   }
 ]

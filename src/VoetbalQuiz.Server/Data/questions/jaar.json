@@ -1318,43 +1318,46 @@
     "event": "Barbados scoort bewust in eigen doel tegen Grenada om via een golden goal die telde voor twee de volgende ronde van de Caraïbische Cup te halen.",
     "year": 1994,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1994_Caribbean_Cup"
     ],
     "tags": [
       "curiosa"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "West-Duitsland en Oostenrijk spelen na een vroege goal bijna zonder tegenstand naar de beide gewenste 1-0; Algerije is uitgeschakeld (de 'Schande van Gijón').",
     "year": 1982,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Disgrace_of_Gij%C3%B3n"
     ],
     "tags": [
       "curiosa"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Doelman Jimmy Glass scoort in de allerlaatste seconden voor Carlisle United en behoedt zijn club voor degradatie uit de Football League.",
     "year": 1999,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Jimmy_Glass"
     ],
     "tags": [
       "curiosa"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "De Champions League-derby AC Milan–Inter wordt gestaakt nadat doelman Dida door een fakkel geraakt wordt.",
     "year": 2005,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://www.rferl.org/a/1058456.html",
       "https://www.beinsports.com/en-mena/football/uefa-champions-league/articles/this-day-in-sport-milan-derby-abandoned"
@@ -1362,50 +1365,54 @@
     "tags": [
       "curiosa",
       "champions-league"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Op het WK in Zuid-Afrika staan de halfbroers Kevin-Prince en Jérôme Boateng voor het eerst tegenover elkaar op een WK (Ghana–Duitsland, 0-1).",
     "year": 2010,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/J%C3%A9r%C3%B4me_Boateng"
     ],
     "tags": [
       "familie"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Paolo Maldini, zoon van Cesare, speelt na 25 jaar zijn laatste wedstrijd voor AC Milan (2-0 tegen Fiorentina).",
     "year": 2009,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Paolo_Maldini"
     ],
     "tags": [
       "familie",
       "legende"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Kasper Schmeichel wordt met Leicester City Engels kampioen, net als zijn vader Peter ooit met Manchester United.",
     "year": 2016,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Kasper_Schmeichel"
     ],
     "tags": [
       "familie"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Pippo Inzaghi scoort twee keer in de Champions League-finale in Athene tegen Liverpool; zijn broer Simone speelde toen bij Lazio.",
     "year": 2007,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Filippo_Inzaghi",
       "https://en.wikipedia.org/wiki/Simone_Inzaghi"
@@ -1413,198 +1420,214 @@
     "tags": [
       "familie",
       "champions-league"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Stefan Kießling scoort een 'spookgoal': de bal gaat via een gat in het zijnet binnen en de goal telt toch.",
     "year": 2013,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Phantom_goal"
     ],
     "tags": [
       "halloween"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Duitsland bezorgt Brazilië in de WK-halve finale in Belo Horizonte een horrornederlaag van 7-1.",
     "year": 2014,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Brazil_v_Germany_(2014_FIFA_World_Cup)"
     ],
     "tags": [
       "halloween"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Frank Lampard ziet zijn doelpunt tegen Duitsland op het WK ten onrechte afgekeurd, hoewel de bal duidelijk over de lijn was.",
     "year": 2010,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_knockout_stage#England_vs_Germany"
     ],
     "tags": [
       "halloween"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Horror voor AC Milan in Istanbul: de Rossoneri leiden met 3-0 aan de rust, maar Liverpool komt terug en wint na strafschoppen de Champions League.",
     "year": 2005,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2005_UEFA_Champions_League_final"
     ],
     "tags": [
       "halloween",
       "champions-league"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Argentinië wint na strafschoppen de WK-finale tegen Frankrijk, een week voor Kerst.",
     "year": 2022,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_final"
     ],
     "tags": [
       "kerst"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Liverpool wint net voor Kerst in Doha het WK voor clubs na verlengingen tegen Flamengo.",
     "year": 2019,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2019_FIFA_Club_World_Cup_final"
     ],
     "tags": [
       "kerst"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Real Madrid wint met 4-1 van Al Ain en pakt in december voor het derde jaar op rij het WK voor clubs.",
     "year": 2018,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_Club_World_Cup_final"
     ],
     "tags": [
       "kerst",
       "champions-league"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
-    "event": "Manchester City wint twee dagen voor Kerst in Jeddah met 4-0 van Fluminense het WK voor clubs.",
+    "event": "Manchester City wint drie dagen voor Kerst in Jeddah met 4-0 van Fluminense het WK voor clubs.",
     "year": 2023,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2023_FIFA_Club_World_Cup_final"
     ],
     "tags": [
       "kerst"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Voetballegende Pelé overlijdt op 29 december, enkele dagen voor het nieuwe jaar.",
     "year": 2022,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Pel%C3%A9"
     ],
     "tags": [
       "nieuwjaar",
       "legende"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Op nieuwjaarsdag wordt Virgil van Dijk officieel speler van Liverpool, de duurste verdediger ooit.",
     "year": 2018,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Virgil_van_Dijk",
       "https://www.thescore.com/news/1455040"
     ],
     "tags": [
       "nieuwjaar"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Chelsea betaalt in de wintermercato 50 miljoen pond voor Fernando Torres, toen een Brits transferrecord.",
     "year": 2011,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Fernando_Torres"
     ],
     "tags": [
       "nieuwjaar"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Franz Beckenbauer, 'Der Kaiser', overlijdt in de eerste dagen van het nieuwe jaar.",
     "year": 2024,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Franz_Beckenbauer"
     ],
     "tags": [
       "nieuwjaar",
       "legende"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Het Bosman-arrest van het Europees Hof van Justitie maakt spelers vrij na afloop van hun contract, waardoor 'cadeautjes' van gratis transfers mogelijk worden.",
     "year": 1995,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Bosman_ruling"
     ],
     "tags": [
       "sinterklaas"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Spanje, het land van de Sint, wint in Wenen met 1-0 van Duitsland het EK en pakt zijn eerste grote titel sinds 1964.",
     "year": 2008,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2008_final"
     ],
     "tags": [
       "sinterklaas"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Spanje wordt voor het eerst wereldkampioen na een 1-0 tegen Nederland in de verlenging, met een doelpunt van Andrés Iniesta.",
     "year": 2010,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_final"
     ],
     "tags": [
       "sinterklaas"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Royal Antwerp (rood-wit) wint de Beker van België met 1-0 tegen Club Brugge, dankzij een doelpunt van Lior Refaelov.",
     "year": 2020,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Royal_Antwerp_F.C.",
       "https://en.wikipedia.org/wiki/2020_Belgian_Cup_final"
@@ -1612,67 +1635,73 @@
     "tags": [
       "beker-van-belgie",
       "sinterklaas"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Argentinië wordt in eigen land wereldkampioen na een 3-1 zege in de verlengingen tegen Nederland.",
     "year": 1978,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1978_FIFA_World_Cup_final"
     ],
     "tags": [
       "wk"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Kameroen verrast titelverdediger Argentinië in de openingswedstrijd van het WK in Milaan.",
     "year": 1990,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1990_FIFA_World_Cup"
     ],
     "tags": [
       "wk"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Luis Suárez stopt met zijn hand een bal op de doellijn in de WK-kwartfinale tegen Ghana.",
     "year": 2010,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_knockout_stage"
     ],
     "tags": [
       "wk"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Titelverdediger Duitsland wordt in de groepsfase van het WK uitgeschakeld na een 0-2 nederlaag tegen Zuid-Korea.",
     "year": 2018,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_Group_F"
     ],
     "tags": [
       "wk"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Saoedi-Arabië verslaat Argentinië met 2-1 in de groepsfase van het WK.",
     "year": 2022,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_Group_C"
     ],
     "tags": [
       "wk"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "Anderlecht verliest als titelverdediger de Europacup II-finale in Amsterdam van Hamburger SV.",
@@ -1778,14 +1807,15 @@
     "event": "Union Saint-Gilloise wint de Beker van België met 1-0 tegen Antwerp, de eerste beker van de Brusselaars in 110 jaar.",
     "year": 2024,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals",
       "https://en.wikipedia.org/wiki/2024_Belgian_Cup_final"
     ],
     "tags": [
       "beker-van-belgie"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "event": "AA Gent wint de bekerfinale tegen Anderlecht na een 0-0 pas in de strafschoppenreeks.",
@@ -1828,5 +1858,114 @@
       "club-brugge",
       "anderlecht"
     ]
+  },
+  {
+    "event": "Paul Pogba keert terug naar Manchester United in een wereldrecordtransfer van 105 miljoen euro.",
+    "year": 2016,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mino_Raiola"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "De Russische zakenman Roman Abramovich neemt Chelsea over.",
+    "year": 2003,
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Roman_Abramovich",
+      "https://en.wikipedia.org/wiki/Pini_Zahavi"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Zeven FIFA-functionarissen worden in een hotel in Zürich opgepakt in het zogenaamde FIFAgate.",
+    "year": 2015,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2015_FIFA_corruption_case"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Superagent Mino Raiola overlijdt op 54-jarige leeftijd in Milaan.",
+    "year": 2022,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mino_Raiola"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "184 agenten doen huiszoekingen bij meerdere Belgische clubs en makelaars in het gerechtelijk onderzoek 'Propere Handen'.",
+    "year": 2018,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Operatie_Propere_Handen",
+      "https://www.lachambre.be/doc/flwb/Pdf/55/1716/55K1716001.pdf"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "De kamer van inbeschuldigingstelling keurt een minnelijke schikking goed waarmee tien verdachten in het voetbaldossier Propere Handen aan een proces ontsnappen.",
+    "year": 2022,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://www.vrt.be/vrtnws/nl/2022/12/22/tien-belgische-voetbalbonzen-ontsnappen-definitief-aan-vervolgin/",
+      "https://www.vrt.be/vrtnws/nl/2022/12/01/tien-verdachten-in-voetbaldossier-propere-handne-kunnen-vervol/",
+      "https://nl.wikipedia.org/wiki/Operatie_Propere_Handen"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Jorge Mendes richt in Portugal het spelersagentschap Gestifute op.",
+    "year": 1996,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jorge_Mendes"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Op de wedstrijd tussen Sint-Truiden en La Louvière wordt massaal ingezet, volgens Sporza voor 600.000 euro, een wedstrijd die later in de omkoopzaak rond zakenman Zheyun Ye opduikt.",
+    "year": 2005,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ye_Zheyun",
+      "https://sporza.be/nl/2025/10/29/600000-euro-inzet-op-stvv-la-louviere-20-jaar-geleden-ging-de-gokchinees-zheyun-ye-als-een-parasiet-door-het-belgische-voetbal~1761751474910/"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
   }
 ]

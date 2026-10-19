@@ -1,0 +1,96 @@
+[
+  {
+    "name": "Frenkie de Jong",
+    "answers": [
+      "De Jong",
+      "Frenkie"
+    ],
+    "country": "Nederland",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1997 geboren in Gorinchem en groeide op in Arkel, een dorp in Zuid-Holland.",
+      "Ik ben een middenvelder die bekendstaat om mijn elegante dribbel onder druk.",
+      "Ik begon bij Willem II en brak door bij Ajax, waar ik in 2019 de dubbel won.",
+      "In 2019 trok ik voor meer dan zeventig miljoen euro naar Barcelona.",
+      "Met Oranje haalde ik de kwartfinale van het WK 2022."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Frenkie_de_Jong"
+    ],
+    "tags": ["oranje"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Memphis Depay",
+    "answers": [
+      "Depay",
+      "Memphis"
+    ],
+    "country": "Nederland",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1994 geboren in Moordrecht, bij Rotterdam.",
+      "Ik ben een aanvaller die opvalt door mijn tatoeages, juwelen en stijl.",
+      "In 2015 werd ik topscorer van de Eredivisie met PSV.",
+      "Bij Manchester United kreeg ik het rugnummer 7, maar het werd geen succes.",
+      "Ik speelde later bij Lyon, Barcelona en Atlético Madrid, en tegenwoordig in Brazilië."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Memphis_Depay"
+    ],
+    "tags": ["oranje"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Edgar Davids",
+    "answers": [
+      "Davids"
+    ],
+    "country": "Nederland",
+    "competition": "Serie A",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1973 geboren in Paramaribo, de hoofdstad van Suriname.",
+      "Ik droeg een beschermbril door een oogaandoening.",
+      "Mijn bijnaam was een hondenras dat bekendstaat om zijn bijt.",
+      "In 1995 won ik de Champions League met Ajax en later speelde ik bij Milan, Juventus en Barcelona.",
+      "Met Oranje haalde ik de halve finale van het WK 1998 en het EK 2000."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Edgar_Davids"
+    ],
+    "tags": ["oranje", "champions-league", "legende"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Dirk Kuyt",
+    "answers": [
+      "Kuyt"
+    ],
+    "country": "Nederland",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1980 geboren in Katwijk aan Zee.",
+      "Ik ben een aanvaller die vooral bekendstond om mijn werklust en teamspirit.",
+      "In 2005 werd ik topscorer van de Eredivisie met Feyenoord.",
+      "Ik speelde zes seizoenen bij Liverpool en haalde in 2007 de finale van de Champions League.",
+      "In 2010 haalde ik met Oranje de WK-finale en in 2017 sloot ik mijn loopbaan af met de landstitel."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dirk_Kuyt"
+    ],
+    "tags": ["oranje", "wk"],
+    "checkedAt": "2026-10-19"
+  }
+]

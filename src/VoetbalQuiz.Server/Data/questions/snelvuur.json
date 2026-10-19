@@ -1626,7 +1626,7 @@
     ],
     "correct": 2,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://www.ajc.com/sports/2026/07/belgium-beats-us-4-1-to-reach-world-cup-quarterfinals/",
       "https://www.voetbalprimeur.nl/nieuws/2109251/belgie-overtuigt-en-schakelt-vs-uit-dankzij-de-ketelaere.html"
@@ -1635,8 +1635,7 @@
       "wk",
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-17",
-    "reviewNote": "Over het WK 2026: bronnen spraken elkaar tegen bij een andere agent. Controleer zelf voor je goedkeurt."
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Welk land schakelde België uit in de kwartfinale van WK 2026?",
@@ -1648,7 +1647,7 @@
     ],
     "correct": 3,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://worldcupranking.com/blog/world-cup-2026-match-98-spain-vs-belgium/",
       "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"
@@ -1657,8 +1656,7 @@
       "wk",
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-17",
-    "reviewNote": "Over het WK 2026: bronnen spraken elkaar tegen bij een andere agent. Controleer zelf voor je goedkeurt."
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Wie was bondscoach van België op het WK 2026?",
@@ -1670,7 +1668,7 @@
     ],
     "correct": 0,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://sporza.be/nl/2026/07/21/rode-duivels-hebben-nieuwe-bondscoach-nederlander-mark-van-bommel-volgt-rudi-garcia-op-tot-en-met-ek-2028~1784658390861/",
       "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"
@@ -1679,8 +1677,7 @@
       "wk",
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-17",
-    "reviewNote": "Over het WK 2026: bronnen spraken elkaar tegen bij een andere agent. Controleer zelf voor je goedkeurt."
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Wie won de Beker van België in 2026?",
@@ -2146,7 +2143,7 @@
     "checkedAt": "2026-10-18"
   },
   {
-    "question": "Welk voorwerp lichtte het schot van Darren Bent in Sunderland–Liverpool (1-0, 2009) af naar doel?",
+    "question": "Welk voorwerp deed het schot van Darren Bent in Sunderland–Liverpool (1-0, 2009) afbuigen, waarna de bal in doel belandde?",
     "options": [
       "Een hoekvlag",
       "Een hond",
@@ -2154,14 +2151,15 @@
       "Een paraplu"
     ],
     "correct": 2,
-    "difficulty": 1,
-    "status": "review",
+    "difficulty": 3,
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Sunderland_A.F.C._1–0_Liverpool_F.C._(2009)"
     ],
     "tags": [
       "curiosa"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "In welk land redde een zwerfhond een doelpunt op de doellijn in een wedstrijd uit de derde klasse?",
@@ -2173,14 +2171,15 @@
     ],
     "correct": 0,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://www.oneindia.com/international/video-dog-comes-out-of-nowhere-to-save-a-goal-in-a-football-match-in-argentina-2818973.html",
       "https://gulfnews.com/sport/football/watch-doggo-maradona-pesky-pooch-save-a-goal-in-argentina-1.1544017230717"
     ],
     "tags": [
       "curiosa"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Welke Colombiaanse doelman redde in 1995 op Wembley met een 'schorpioenschop'?",
@@ -2191,14 +2190,15 @@
       "René Higuita"
     ],
     "correct": 3,
-    "difficulty": 1,
-    "status": "review",
+    "difficulty": 3,
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Ren%C3%A9_Higuita"
     ],
     "tags": [
       "curiosa"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Waarom won AS Adema in 2002 met 149-0 van SO l'Emyrne?",
@@ -2210,13 +2210,14 @@
     ],
     "correct": 1,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/AS_Adema"
     ],
     "tags": [
       "curiosa"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Hoeveel gele kaarten kreeg Josip Šimunić van scheidsrechter Graham Poll in Kroatië–Australië op het WK 2006?",
@@ -2228,13 +2229,14 @@
     ],
     "correct": 2,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Josip_%C5%A0imuni%C4%87"
     ],
     "tags": [
       "curiosa"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Welke verdediger scoorde in 1976 alle vier de goals in Aston Villa–Leicester City (2-2), twee ervan in eigen doel?",
@@ -2246,16 +2248,17 @@
     ],
     "correct": 0,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Chris_Nicholl"
     ],
     "tags": [
       "curiosa"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
-    "question": "Wie was de vader van AC Milan-icoon Paolo Maldini en trainde hem ook bij Italië?",
+    "question": "Wie was de vader van AC Milan-icoon Paolo en trainde hem ook bij Italië?",
     "options": [
       "Franco Baresi",
       "Cesare Maldini",
@@ -2264,7 +2267,7 @@
     ],
     "correct": 1,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Paolo_Maldini",
       "https://en.wikipedia.org/wiki/Cesare_Maldini"
@@ -2272,10 +2275,11 @@
     "tags": [
       "familie",
       "legende"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
-    "question": "Welke Franse wereldkampioen van 1998 is de vader van voetballers Marcus en Khéphren Thuram?",
+    "question": "Welke Franse wereldkampioen van 1998 is de vader van voetballers Marcus en Khéphren?",
     "options": [
       "Marcel Desailly",
       "Lilian Thuram",
@@ -2283,15 +2287,16 @@
       "Didier Deschamps"
     ],
     "correct": 1,
-    "difficulty": 1,
-    "status": "review",
+    "difficulty": 2,
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Lilian_Thuram",
       "https://en.wikipedia.org/wiki/Marcus_Thuram"
     ],
     "tags": [
       "familie"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Voor welk land speelde Kevin-Prince Boateng op het WK 2010, tegen zijn halfbroer Jérôme in het shirt van Duitsland?",
@@ -2303,14 +2308,15 @@
     ],
     "correct": 3,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/J%C3%A9r%C3%B4me_Boateng",
       "https://en.wikipedia.org/wiki/Kevin-Prince_Boateng"
     ],
     "tags": [
       "familie"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Met welke club werd Kasper Schmeichel in 2016 Engels kampioen, net als zijn vader Peter ooit met Manchester United?",
@@ -2322,14 +2328,15 @@
     ],
     "correct": 0,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Kasper_Schmeichel",
       "https://en.wikipedia.org/wiki/Peter_Schmeichel"
     ],
     "tags": [
       "familie"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Bij welke club speelden de broers Gary en Phil Neville samen in de jaren negentig?",
@@ -2341,17 +2348,18 @@
     ],
     "correct": 2,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Gary_Neville",
       "https://en.wikipedia.org/wiki/Phil_Neville"
     ],
     "tags": [
       "familie"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
-    "question": "Welke broer van Émile Mpenza speelde net als hij voor de Rode Duivels?",
+    "question": "Welke broer van Rode Duivel Émile speelde ook voor België?",
     "options": [
       "Bart Goor",
       "Mbo Mpenza",
@@ -2360,7 +2368,7 @@
     ],
     "correct": 1,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Mbo_Mpenza",
       "https://en.wikipedia.org/wiki/%C3%89mile_Mpenza"
@@ -2368,7 +2376,8 @@
     "tags": [
       "familie",
       "rode-duivels"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Welke Leverkusen-spits kreeg in 2013 een 'spookdoelpunt' tegen Hoffenheim, na een bal door het zijnet?",
@@ -2380,14 +2389,15 @@
     ],
     "correct": 2,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Phantom_goal",
       "https://en.wikipedia.org/wiki/Stefan_Kie%C3%9Fling"
     ],
     "tags": [
       "halloween"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Welke club zou door 'de vloek van Béla Guttmann' al decennia geen Europacup I meer winnen?",
@@ -2399,14 +2409,15 @@
     ],
     "correct": 3,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/B%C3%A9la_Guttmann"
     ],
     "tags": [
       "halloween",
       "champions-league"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Welke Turkse club verwelkomt bezoekers met het spandoek 'Welcome to Hell'?",
@@ -2418,14 +2429,15 @@
     ],
     "correct": 0,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Galatasaray_S.K._(football)",
       "https://en.wikipedia.org/wiki/Galatasaray_S.K._(football)#Supporters"
     ],
     "tags": [
       "halloween"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Tegen welk land werd op het WK 2010 een legitiem doelpunt van Frank Lampard ten onrechte afgekeurd?",
@@ -2437,14 +2449,15 @@
     ],
     "correct": 3,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_knockout_stage#England_vs_Germany",
       "https://en.wikipedia.org/wiki/Phantom_goal"
     ],
     "tags": [
       "halloween"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Welke Nederlandse spits werd op Halloween (31 oktober) 1964 geboren?",
@@ -2456,7 +2469,7 @@
     ],
     "correct": 1,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Marco_van_Basten",
       "https://skysports.com/football/news/2835682/birthdays-october-31"
@@ -2464,7 +2477,8 @@
     "tags": [
       "halloween",
       "legende"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Welke Belg ruilde in 2013 Everton in voor de 'Red Devils' van Manchester United?",
@@ -2476,14 +2490,15 @@
     ],
     "correct": 0,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Marouane_Fellaini"
     ],
     "tags": [
       "halloween",
       "rode-duivels"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Op welke datum wordt in Engeland Boxing Day gespeeld, met traditioneel een volledige voetbalspeelronde?",
@@ -2495,13 +2510,14 @@
     ],
     "correct": 2,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Boxing_Day"
     ],
     "tags": [
       "kerst"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Tegen welk leger zouden Britse soldaten tijdens het kerstbestand van 1914 voetbal hebben gespeeld?",
@@ -2513,13 +2529,14 @@
     ],
     "correct": 1,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Christmas_truce"
     ],
     "tags": [
       "kerst"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Fulham won op Boxing Day 1963 met 10-1. Van welke club?",
@@ -2531,14 +2548,15 @@
     ],
     "correct": 0,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1963%E2%80%9364_in_English_football",
       "https://www.goal.com/en/news/boxing-day-1963-remembering-english-football-s-christmas-goal-fest/blt7bd455c37f64df66"
     ],
     "tags": [
       "kerst"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Welke Franse doelman, geboren op tweede kerstdag 1986, was aanvoerder van Frankrijk bij de WK-winst in 2018?",
@@ -2550,14 +2568,15 @@
     ],
     "correct": 3,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Hugo_Lloris",
       "https://en.wikipedia.org/wiki/December_26"
     ],
     "tags": [
       "kerst"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Welke Braziliaan, geboren op eerste kerstdag 1944, scoorde in elke wedstrijd van het WK 1970?",
@@ -2569,7 +2588,7 @@
     ],
     "correct": 2,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Jairzinho",
       "https://en.wikipedia.org/wiki/December_25"
@@ -2577,7 +2596,8 @@
     "tags": [
       "kerst",
       "legende"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Welke Chileense spits, geboren op kerstavond 1974, speelde bij Lazio en Juventus?",
@@ -2589,14 +2609,15 @@
     ],
     "correct": 1,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Marcelo_Salas",
       "https://en.wikipedia.org/wiki/December_24"
     ],
     "tags": [
       "kerst"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Welke Kroaat, geboren op nieuwjaarsdag 1968, werd topschutter van het WK 1998?",
@@ -2608,14 +2629,15 @@
     ],
     "correct": 1,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Davor_%C5%A0uker",
       "https://en.wikipedia.org/wiki/1998_FIFA_World_Cup"
     ],
     "tags": [
       "nieuwjaar"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Welke Peruaanse spits, geboren op nieuwjaarsdag 1984, scoorde in 2012 het winnende doelpunt voor Corinthians in de finale van het WK voor clubs?",
@@ -2627,14 +2649,15 @@
     ],
     "correct": 3,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Paolo_Guerrero",
       "https://en.wikipedia.org/wiki/2012_FIFA_Club_World_Cup_final"
     ],
     "tags": [
       "nieuwjaar"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Welke Engelse middenvelder, geboren op nieuwjaarsdag 1992, kwam uit de jeugd van Arsenal?",
@@ -2646,13 +2669,14 @@
     ],
     "correct": 0,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Jack_Wilshere"
     ],
     "tags": [
       "nieuwjaar"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Op welke datum opent in Engeland en België de wintermercato doorgaans?",
@@ -2663,14 +2687,15 @@
       "31 januari"
     ],
     "correct": 1,
-    "difficulty": 1,
-    "status": "review",
+    "difficulty": 2,
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Transfer_window"
     ],
     "tags": [
       "nieuwjaar"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Welke verdediger werd op 1 januari 2018 officieel speler van Liverpool, voor een toenmalig wereldrecord voor verdedigers?",
@@ -2682,14 +2707,15 @@
     ],
     "correct": 2,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Virgil_van_Dijk",
       "https://www.thescore.com/news/1455040"
     ],
     "tags": [
       "nieuwjaar"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Welke Schotse trainer, geboren op oudejaarsdag 1941, won 13 Premier League-titels met Manchester United?",
@@ -2701,7 +2727,7 @@
     ],
     "correct": 1,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Alex_Ferguson",
       "https://en.wikipedia.org/wiki/December_31"
@@ -2709,7 +2735,8 @@
     "tags": [
       "nieuwjaar",
       "legende"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Welke Spaanse club in rood-wit gestreepte shirts werd in 2014 landskampioen?",
@@ -2721,17 +2748,18 @@
     ],
     "correct": 3,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2013%E2%80%9314_La_Liga",
       "https://en.wikipedia.org/wiki/Atl%C3%A9tico_Madrid"
     ],
     "tags": [
       "sinterklaas"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
-    "question": "Voor welke Luikse club speelde Jean-Marc Bosman, wiens arrest uit 1995 transfers na afloop van een contract veranderde?",
+    "question": "Bij welke Luikse club liep het contract van Jean-Marc Bosman in 1990 af, waarna zijn zaak leidde tot het arrest van 1995?",
     "options": [
       "RFC Luik",
       "Standard Luik",
@@ -2740,14 +2768,15 @@
     ],
     "correct": 0,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Jean-Marc_Bosman",
       "https://en.wikipedia.org/wiki/Bosman_ruling"
     ],
     "tags": [
       "sinterklaas"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Welke Rode Duivel verhuisde in 2018 van Chelsea naar Real Madrid?",
@@ -2759,14 +2788,15 @@
     ],
     "correct": 2,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Thibaut_Courtois"
     ],
     "tags": [
       "sinterklaas",
       "rode-duivels"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Welke Franse sterspeler stapte in 2024 als 'cadeau' gratis over van PSG naar Real Madrid?",
@@ -2778,13 +2808,14 @@
     ],
     "correct": 0,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Kylian_Mbapp%C3%A9"
     ],
     "tags": [
       "sinterklaas"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Welke Antwerpse club speelt in rood-wit en heet 'The Great Old'?",
@@ -2796,13 +2827,14 @@
     ],
     "correct": 1,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Royal_Antwerp_F.C."
     ],
     "tags": [
       "sinterklaas"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Welke Liverpool-doelman schonk Real Madrid in de Champions League-finale van 2018 twee doelpunten door blunders?",
@@ -2814,7 +2846,7 @@
     ],
     "correct": 2,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_UEFA_Champions_League_final",
       "https://en.wikipedia.org/wiki/Loris_Karius"
@@ -2822,7 +2854,8 @@
     "tags": [
       "sinterklaas",
       "champions-league"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Welk land organiseerde in 1930 het eerste WK en won het ook?",
@@ -2834,16 +2867,17 @@
     ],
     "correct": 1,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1930_FIFA_World_Cup"
     ],
     "tags": [
       "wk"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
-    "question": "Wie scoorde na het WK 2026 de meeste goals ooit op WK's?",
+    "question": "Wie heeft na het WK 2026 de meeste WK-goals ooit gescoord?",
     "options": [
       "Kylian Mbappé",
       "Lionel Messi",
@@ -2852,14 +2886,15 @@
     ],
     "correct": 0,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_top_goalscorers",
       "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup"
     ],
     "tags": [
       "wk"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Welk land werd in 1978 in eigen land wereldkampioen?",
@@ -2871,13 +2906,14 @@
     ],
     "correct": 3,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1978_FIFA_World_Cup_final"
     ],
     "tags": [
       "wk"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Welke Fransman scoorde 13 goals op één WK, in 1958?",
@@ -2889,7 +2925,7 @@
     ],
     "correct": 2,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Just_Fontaine",
       "https://en.wikipedia.org/wiki/1958_FIFA_World_Cup"
@@ -2897,7 +2933,8 @@
     "tags": [
       "wk",
       "legende"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Wie scoorde een hattrick in de WK-finale van 1966?",
@@ -2909,7 +2946,7 @@
     ],
     "correct": 1,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1966_FIFA_World_Cup_final",
       "https://en.wikipedia.org/wiki/Geoff_Hurst"
@@ -2917,7 +2954,8 @@
     "tags": [
       "wk",
       "legende"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Hoe heette de officiële wedstrijdbal van het WK 2010?",
@@ -2929,13 +2967,14 @@
     ],
     "correct": 2,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Jabulani"
     ],
     "tags": [
       "wk"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Wie was bondscoach van Argentinië bij de WK-zege van 2022?",
@@ -2947,14 +2986,15 @@
     ],
     "correct": 3,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Lionel_Scaloni",
       "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_final"
     ],
     "tags": [
       "wk"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Wie scoorde het enige doelpunt in de WK-finale van 2026?",
@@ -2966,14 +3006,15 @@
     ],
     "correct": 0,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_final",
       "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup"
     ],
     "tags": [
       "wk"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "question": "Wie kreeg bij Anderlecht de bijnaam 'de Prins van het Astridpark'?",
@@ -3160,5 +3201,1350 @@
       "anderlecht",
       "gouden-schoen"
     ]
+  },
+  {
+    "question": "Hoe heette de officiële wedstrijdbal van het WK 2006 in Duitsland?",
+    "options": [
+      "Fevernova",
+      "Teamgeist",
+      "Tricolore",
+      "Brazuca"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Adidas_Telstar"
+    ],
+    "tags": [
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Hoe heette de officiële wedstrijdbal van het WK 2014 in Brazilië?",
+    "options": [
+      "Jabulani",
+      "Telstar 18",
+      "Fevernova",
+      "Brazuca"
+    ],
+    "correct": 3,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Adidas_Telstar"
+    ],
+    "tags": [
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Hoe heet de officiële wedstrijdbal van het WK 2026?",
+    "options": [
+      "Al Rihla",
+      "Tango 26",
+      "Trionda",
+      "Telstar 26"
+    ],
+    "correct": 2,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/FIFA_World_Cup_official_match_balls",
+      "https://en.wikipedia.org/wiki/Adidas_Telstar"
+    ],
+    "tags": [
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Hoe heette de officiële wedstrijdbal van het WK 2002 in Zuid-Korea en Japan?",
+    "options": [
+      "Fevernova",
+      "Questra",
+      "Tricolore",
+      "Etrusco Unico"
+    ],
+    "correct": 0,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/FIFA_World_Cup_official_match_balls",
+      "https://en.wikipedia.org/wiki/Adidas_Telstar"
+    ],
+    "tags": [
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Hoe heette de bal van het WK 1986 in Mexico, de eerste volledig synthetische WK-bal?",
+    "options": [
+      "Telstar",
+      "Tango España",
+      "Azteca",
+      "Questra"
+    ],
+    "correct": 2,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/FIFA_World_Cup_official_match_balls",
+      "https://en.wikipedia.org/wiki/Adidas_Telstar"
+    ],
+    "tags": [
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welk dier is Zakumi, de mascotte van het WK 2010 in Zuid-Afrika?",
+    "options": [
+      "Een leeuw",
+      "Een olifant",
+      "Een luipaard",
+      "Een zebra"
+    ],
+    "correct": 2,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_official_mascots"
+    ],
+    "tags": [
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welk dier is Fuleco, de mascotte van het WK 2014 in Brazilië?",
+    "options": [
+      "Een jaguar",
+      "Een gordeldier",
+      "Een papegaai",
+      "Een luiaard"
+    ],
+    "correct": 1,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_official_mascots"
+    ],
+    "tags": [
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Wat stelt La'eeb, de mascotte van het WK 2022 in Qatar, voor?",
+    "options": [
+      "Een kameel",
+      "Een valk",
+      "Een parel",
+      "Een zwevend traditioneel hoofddeksel"
+    ],
+    "correct": 3,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_official_mascots"
+    ],
+    "tags": [
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke twee landen organiseerden samen het WK 2002?",
+    "options": [
+      "Japan en China",
+      "Zuid-Korea en Japan",
+      "Zuid-Korea en China",
+      "Japan en Thailand"
+    ],
+    "correct": 1,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/FIFA_World_Cup",
+      "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup"
+    ],
+    "tags": [
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "In welke stad werd de WK-finale van 2002 gespeeld?",
+    "options": [
+      "Tokio",
+      "Seoel",
+      "Osaka",
+      "Yokohama"
+    ],
+    "correct": 3,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup"
+    ],
+    "tags": [
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Met hoeveel landen werd het WK 2026 gespeeld?",
+    "options": [
+      "32",
+      "40",
+      "48",
+      "64"
+    ],
+    "correct": 2,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/FIFA_World_Cup"
+    ],
+    "tags": [
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke drie landen zijn de hoofdgastlanden van het WK 2030?",
+    "options": [
+      "Spanje, Frankrijk en Marokko",
+      "Portugal, Spanje en Algerije",
+      "Marokko, Egypte en Spanje",
+      "Spanje, Portugal en Marokko"
+    ],
+    "correct": 3,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2030_FIFA_World_Cup"
+    ],
+    "tags": [
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "In welk stadion wordt de finale van EK 2028 gespeeld?",
+    "options": [
+      "Hampden Park",
+      "Wembley",
+      "Principality Stadium",
+      "Aviva Stadium"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Euro_2028"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "In welk stadion werd de WK-finale van 2022 gespeeld?",
+    "options": [
+      "Al Bayt Stadium",
+      "Khalifa International Stadium",
+      "Lusail Stadium",
+      "Education City Stadium"
+    ],
+    "correct": 2,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup"
+    ],
+    "tags": [
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke club heeft 'The Toffees' als bijnaam?",
+    "options": [
+      "Everton",
+      "Burnley",
+      "Wolverhampton",
+      "Leicester City"
+    ],
+    "correct": 0,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Everton_F.C."
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke Italiaanse club wordt 'I Bianconeri' genoemd?",
+    "options": [
+      "AC Milan",
+      "Inter",
+      "Juventus",
+      "Napoli"
+    ],
+    "correct": 2,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Juventus_F.C."
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke club speelt zijn thuiswedstrijden op Anfield?",
+    "options": [
+      "Everton",
+      "Liverpool",
+      "Manchester United",
+      "Leeds United"
+    ],
+    "correct": 1,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Anfield"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke club speelt in het Signal Iduna Park?",
+    "options": [
+      "Borussia Dortmund",
+      "Schalke 04",
+      "Bayer Leverkusen",
+      "Eintracht Frankfurt"
+    ],
+    "correct": 0,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Signal_Iduna_Park"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke bijnaam heeft het stadion Old Trafford?",
+    "options": [
+      "The Cauldron",
+      "The Theatre of Dreams",
+      "The Kop",
+      "The Stadium of Light"
+    ],
+    "correct": 1,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Old_Trafford"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke twee clubs spelen in Glasgow de 'Old Firm'?",
+    "options": [
+      "Hearts en Hibernian",
+      "Celtic en Rangers",
+      "Aberdeen en Dundee United",
+      "Celtic en Aberdeen"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Old_Firm"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welk tijdschrift is de organisator van de Ballon d'Or?",
+    "options": [
+      "France Football",
+      "L'Équipe",
+      "Kicker",
+      "Marca"
+    ],
+    "correct": 0,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ballon_d%27Or"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke club won in 2026 de Conference League?",
+    "options": [
+      "Fiorentina",
+      "Chelsea",
+      "Rayo Vallecano",
+      "Crystal Palace"
+    ],
+    "correct": 3,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Europa_Conference_League",
+      "https://en.wikipedia.org/wiki/2026_UEFA_Conference_League_final"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Op welk continent wordt de Copa Libertadores gespeeld?",
+    "options": [
+      "Afrika",
+      "Zuid-Amerika",
+      "Azië",
+      "Noord-Amerika"
+    ],
+    "correct": 1,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Copa_Libertadores"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Hoe breed is een officieel voetbaldoel?",
+    "options": [
+      "6,50 meter",
+      "7,32 meter",
+      "7,80 meter",
+      "8,20 meter"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Football_pitch"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "In welk jaar werd de terugspeelregel voor doelmannen ingevoerd?",
+    "options": [
+      "1986",
+      "1988",
+      "1992",
+      "1996"
+    ],
+    "correct": 2,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Laws_of_the_Game_(association_football)"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Op welk WK werd voor het eerst gebruikgemaakt van de videoref (VAR)?",
+    "options": [
+      "WK 2010",
+      "WK 2014",
+      "WK 2018",
+      "WK 2022"
+    ],
+    "correct": 2,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Video_assistant_referee"
+    ],
+    "tags": [
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Hoe heette de afgeschafte regel waarbij het eerste doelpunt in de verlenging de wedstrijd beslist?",
+    "options": [
+      "Silver goal",
+      "Bronze goal",
+      "Golden goal",
+      "Platinum goal"
+    ],
+    "correct": 2,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Laws_of_the_Game_(association_football)",
+      "https://en.wikipedia.org/wiki/UEFA_Euro_2000"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "In welk jaar werd de strafschop ingevoerd?",
+    "options": [
+      "1863",
+      "1891",
+      "1912",
+      "1925"
+    ],
+    "correct": 1,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Laws_of_the_Game_(association_football)"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "In welke stad is het hoofdkwartier van de FIFA gevestigd?",
+    "options": [
+      "Genève",
+      "Bern",
+      "Zürich",
+      "Lausanne"
+    ],
+    "correct": 2,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/FIFA"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "In welke Zwitserse stad is het hoofdkwartier van de UEFA gevestigd?",
+    "options": [
+      "Lausanne",
+      "Genève",
+      "Zürich",
+      "Nyon"
+    ],
+    "correct": 3,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke twee clubs delen het Jan Breydelstadion?",
+    "options": [
+      "Club Brugge en KV Oostende",
+      "Cercle Brugge en Zulte Waregem",
+      "Club Brugge en Cercle Brugge",
+      "Club Brugge en KV Kortrijk"
+    ],
+    "correct": 2,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_football_stadiums_in_Belgium",
+      "https://en.wikipedia.org/wiki/Cercle_Brugge_K.S.V."
+    ],
+    "tags": [
+      "club-brugge"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke club speelt zijn thuiswedstrijden in het Lotto Park?",
+    "options": [
+      "Anderlecht",
+      "Union SG",
+      "Standard Luik",
+      "KV Mechelen"
+    ],
+    "correct": 0,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/R.S.C._Anderlecht"
+    ],
+    "tags": [
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke club speelt in het Stade Joseph Marien in Vorst?",
+    "options": [
+      "Anderlecht",
+      "RWDM",
+      "Union SG",
+      "Cercle Brugge"
+    ],
+    "correct": 2,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Royale_Union_Saint-Gilloise",
+      "https://en.wikipedia.org/wiki/List_of_football_stadiums_in_Belgium"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Hoe wordt het Stade Maurice Dufrasne van Standard Luik in de volksmond genoemd?",
+    "options": [
+      "Sclessin",
+      "Mambourg",
+      "Kehrweg",
+      "Tivoli"
+    ],
+    "correct": 0,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Standard_Li%C3%A8ge"
+    ],
+    "tags": [
+      "standard"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke club speelt op de Bosuil in Deurne?",
+    "options": [
+      "Beerschot",
+      "Lierse",
+      "Royal Antwerp",
+      "Berchem Sport"
+    ],
+    "correct": 2,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Royal_Antwerp_F.C."
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke club speelt in de Cegeka Arena?",
+    "options": [
+      "KRC Genk",
+      "KV Mechelen",
+      "Sint-Truiden",
+      "Lommel SK"
+    ],
+    "correct": 0,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/K.R.C._Genk",
+      "https://en.wikipedia.org/wiki/List_of_football_stadiums_in_Belgium"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke club speelt in 'Het Kuipje'?",
+    "options": [
+      "Lommel SK",
+      "KV Kortrijk",
+      "Zulte Waregem",
+      "KVC Westerlo"
+    ],
+    "correct": 3,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_football_stadiums_in_Belgium"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke Belgische club heeft 'Les Rouches' als bijnaam?",
+    "options": [
+      "Sporting Charleroi",
+      "RWDM",
+      "Standard Luik",
+      "Eupen"
+    ],
+    "correct": 2,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Standard_Li%C3%A8ge"
+    ],
+    "tags": [
+      "standard"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke club wordt 'Blauw-Zwart' genoemd?",
+    "options": [
+      "KRC Genk",
+      "Club Brugge",
+      "KAA Gent",
+      "Cercle Brugge"
+    ],
+    "correct": 1,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Club_Brugge_KV"
+    ],
+    "tags": [
+      "club-brugge"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke Belgische club wordt 'de Buffalo's' genoemd?",
+    "options": [
+      "KV Kortrijk",
+      "KRC Genk",
+      "KV Mechelen",
+      "KAA Gent"
+    ],
+    "correct": 3,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/K.A.A._Gent"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke club heeft 'De Smurfen' als bijnaam?",
+    "options": [
+      "Club Brugge",
+      "KRC Genk",
+      "OH Leuven",
+      "KAA Gent"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/K.R.C._Genk"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke Belgische club heeft stamnummer 1?",
+    "options": [
+      "Royal Antwerp",
+      "Beerschot",
+      "Club Brugge",
+      "Standard Luik"
+    ],
+    "correct": 0,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://sporza.be/nl/2025/06/06/van-antwerp-tot-lierse-ontdek-de-eerste-30-stamnummers-in-het-belgische-voetbal~1749213584899/",
+      "https://en.wikipedia.org/wiki/Royal_Antwerp_F.C."
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke Belgische club heeft stamnummer 3?",
+    "options": [
+      "Daring Brussel",
+      "Club Brugge",
+      "KAA Gent",
+      "Union Sint-Gillis"
+    ],
+    "correct": 1,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://sporza.be/nl/2025/06/06/van-antwerp-tot-lierse-ontdek-de-eerste-30-stamnummers-in-het-belgische-voetbal~1749213584899/"
+    ],
+    "tags": [
+      "club-brugge"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "In welk jaar fuseerden Waterschei en Winterslag tot KRC Genk?",
+    "options": [
+      "1978",
+      "1983",
+      "1988",
+      "1993"
+    ],
+    "correct": 2,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/K.R.C._Genk"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Hoeveel competitiewedstrijden op rij bleef Union tussen 1933 en 1935 ongeslagen?",
+    "options": [
+      "40",
+      "50",
+      "60",
+      "75"
+    ],
+    "correct": 2,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Royale_Union_Saint-Gilloise"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Tegen welke Nederlandse club won KV Mechelen in 1988 de Europese Supercup?",
+    "options": [
+      "Ajax",
+      "PSV",
+      "Feyenoord",
+      "FC Twente"
+    ],
+    "correct": 1,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/K.V._Mechelen"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke Vlaamse krant organiseert de Gouden Schoen?",
+    "options": [
+      "De Standaard",
+      "Het Nieuwsblad",
+      "Het Laatste Nieuws",
+      "Gazet van Antwerpen"
+    ],
+    "correct": 2,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
+    ],
+    "tags": [
+      "gouden-schoen"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke biermerk is naamsponsor van de hoogste Belgische voetbalklasse?",
+    "options": [
+      "Maes",
+      "Jupiler",
+      "Stella Artois",
+      "Duvel"
+    ],
+    "correct": 1,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgian_Pro_League"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke twee landen organiseerden samen EK 2000?",
+    "options": [
+      "Nederland en Duitsland",
+      "België en Nederland",
+      "België en Frankrijk",
+      "België en Luxemburg"
+    ],
+    "correct": 1,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Euro_2000"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "In welk stadion werd de finale van EK 2000 gespeeld?",
+    "options": [
+      "Amsterdam ArenA",
+      "Koning Boudewijnstadion",
+      "De Kuip",
+      "Philips Stadion"
+    ],
+    "correct": 2,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Euro_2000"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welk beroep oefenden Bart Vertenten en Sébastien Delferière uit in het Belgische profvoetbal?",
+    "options": [
+      "Scheidsrechter",
+      "Spelersmakelaar",
+      "Clubvoorzitter",
+      "Bondscoach"
+    ],
+    "correct": 0,
+    "difficulty": 3,
+    "status": "rejected",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Operatie_Propere_Handen",
+      "https://en.wikipedia.org/wiki/2017%E2%80%932019_Belgian_football_fraud_scandal"
+    ],
+    "tags": [
+      "curiosa"
+    ]
+  },
+  {
+    "question": "Onder welke codenaam startte in 2018 het gerechtelijk onderzoek naar het Belgische voetbal dat later 'Propere Handen' ging heten?",
+    "options": [
+      "Operatie Offside",
+      "Operatie Zero",
+      "Operatie Blanco",
+      "Operatie Rood Karton"
+    ],
+    "correct": 1,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://www.vrt.be/vrtnws/nl/2026/09/10/zaak-propere-handen-33-verdachten-voor-ki/",
+      "https://nl.wikipedia.org/wiki/Operatie_Propere_Handen",
+      "https://en.wikipedia.org/wiki/2017%E2%80%932019_Belgian_football_fraud_scandal"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Hoeveel huiszoekingen deden 184 agenten op 10 oktober 2018 in België in het onderzoek Propere Handen?",
+    "options": [
+      "24",
+      "34",
+      "44",
+      "54"
+    ],
+    "correct": 2,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Operatie_Propere_Handen",
+      "https://www.lachambre.be/doc/flwb/Pdf/55/1716/55K1716001.pdf",
+      "https://en.wikipedia.org/wiki/2017%E2%80%932019_Belgian_football_fraud_scandal"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke status kreeg makelaar Dejan Veljković als eerste in België, in ruil voor strafvermindering en informatie voor justitie?",
+    "options": [
+      "Klokkenluider",
+      "Spijtoptant",
+      "Getuige-deskundige",
+      "Burgerlijke partij"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Operatie_Propere_Handen",
+      "https://en.wikipedia.org/wiki/2017%E2%80%932019_Belgian_football_fraud_scandal",
+      "https://www.voetbalnieuws.be/news/923014/eindelijk-proces-propere-handen-nog-33-verdachten-over"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Hoe heet de regeling waarmee verdachten in Propere Handen tegen betaling van een geldsom aan strafvervolging konden ontsnappen?",
+    "options": [
+      "Probatieopschorting",
+      "Elektronisch toezicht",
+      "Minnelijke schikking",
+      "Voorwaardelijke invrijheidstelling"
+    ],
+    "correct": 2,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://www.vrt.be/vrtnws/nl/2022/12/01/tien-verdachten-in-voetbaldossier-propere-handne-kunnen-vervol/",
+      "https://www.vrt.be/vrtnws/nl/2022/12/22/tien-belgische-voetbalbonzen-ontsnappen-definitief-aan-vervolgin/",
+      "https://nl.wikipedia.org/wiki/Operatie_Propere_Handen"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welk Belgisch rechtscollege beslist of de verdachten in Propere Handen worden doorverwezen naar de correctionele rechtbank?",
+    "options": [
+      "Hof van Cassatie",
+      "Kamer van inbeschuldigingstelling",
+      "Raad van State",
+      "Grondwettelijk Hof"
+    ],
+    "correct": 1,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://www.voetbalnieuws.be/news/923014/eindelijk-proces-propere-handen-nog-33-verdachten-over",
+      "https://www.voetbalbelgie.be/artikel/propere-handen-beslissing-wie-van-de-57-verdachten-voor-de-rechter"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke club zag in juli 2019 een degradatie door het BAS vernietigd, maar bleef wel uitgesloten van Europees voetbal en de beker?",
+    "options": [
+      "Cercle Brugge",
+      "KV Mechelen",
+      "OH Leuven",
+      "KVC Westerlo"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2017%E2%80%932019_Belgian_football_fraud_scandal",
+      "https://nl.wikipedia.org/wiki/Operatie_Propere_Handen"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Uit welk land kwam zakenman Zheyun Ye, de centrale figuur in de Belgische omkoopzaak van 2005 rond wedstrijden van onder meer Lierse en La Louvière?",
+    "options": [
+      "Japan",
+      "China",
+      "Zuid-Korea",
+      "Singapore"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ye_Zheyun",
+      "https://sporza.be/nl/2025/10/29/600000-euro-inzet-op-stvv-la-louviere-20-jaar-geleden-ging-de-gokchinees-zheyun-ye-als-een-parasiet-door-het-belgische-voetbal~1761751474910/"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke makelaar vertegenwoordigde onder anderen Zlatan Ibrahimović, Paul Pogba en Erling Haaland?",
+    "options": [
+      "Pini Zahavi",
+      "Rob Jansen",
+      "Jorge Mendes",
+      "Mino Raiola"
+    ],
+    "correct": 3,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mino_Raiola"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Hoeveel miljoen euro bedroeg de wereldrecordtransfer van Paul Pogba naar Manchester United in 2016, een deal van makelaar Mino Raiola?",
+    "options": [
+      "89",
+      "105",
+      "120",
+      "222"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mino_Raiola"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "In welke Nederlandse stad groeide makelaar Mino Raiola op en werkte hij in de pizzeria's van zijn familie?",
+    "options": [
+      "Rotterdam",
+      "Utrecht",
+      "Haarlem",
+      "Eindhoven"
+    ],
+    "correct": 2,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mino_Raiola"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke Portugese superagent staat bekend als zaakwaarnemer van Cristiano Ronaldo en José Mourinho?",
+    "options": [
+      "Jorge Mendes",
+      "Mino Raiola",
+      "Pini Zahavi",
+      "Rafaela Pimenta"
+    ],
+    "correct": 0,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jorge_Mendes"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Hoe heet het agentschap dat Jorge Mendes in 1996 oprichtte?",
+    "options": [
+      "Stellar Group",
+      "Sports Promotions",
+      "Base Soccer",
+      "Gestifute"
+    ],
+    "correct": 3,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jorge_Mendes"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke makelaar speelde een sleutelrol in de overname van Chelsea door Roman Abramovich in 2003?",
+    "options": [
+      "Mino Raiola",
+      "Jorge Mendes",
+      "Pini Zahavi",
+      "Rafaela Pimenta"
+    ],
+    "correct": 2,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pini_Zahavi"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke Braziliaanse makelaar nam na het overlijden van Mino Raiola in 2022 zijn klanten over, onder wie Erling Haaland?",
+    "options": [
+      "Rafaela Pimenta",
+      "Jorge Mendes",
+      "Pini Zahavi",
+      "Rob Jansen"
+    ],
+    "correct": 0,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Rafaela_Pimenta"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "In welk Zwitsers hotel werden op 27 mei 2015 zeven FIFA-functionarissen opgepakt in het zogenaamde FIFAgate?",
+    "options": [
+      "Hotel Widder",
+      "The Dolder Grand",
+      "Baur au Lac",
+      "Park Hyatt"
+    ],
+    "correct": 2,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2015_FIFA_corruption_case"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke club kreeg na Calciopoli de Italiaanse titel van 2005–06 toegewezen?",
+    "options": [
+      "AS Roma",
+      "Napoli",
+      "Sampdoria",
+      "Inter"
+    ],
+    "correct": 3,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Calciopoli"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke Zwitser volgde in 2016 Sepp Blatter op als FIFA-voorzitter?",
+    "options": [
+      "Gianni Infantino",
+      "Aleksander Čeferin",
+      "João Havelange",
+      "Lennart Johansson"
+    ],
+    "correct": 0,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2015_FIFA_corruption_case",
+      "https://en.wikipedia.org/wiki/Gianni_Infantino"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke mediamagnaat en Italiaans premier was van 1986 tot 2017 eigenaar van AC Milan?",
+    "options": [
+      "Massimo Moratti",
+      "Silvio Berlusconi",
+      "Florentino Pérez",
+      "Roman Abramovich"
+    ],
+    "correct": 1,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Silvio_Berlusconi"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke Italiaanse scheidsrechter met het kale hoofd floot de WK-finale van 2002?",
+    "options": [
+      "Howard Webb",
+      "Pierluigi Collina",
+      "Markus Merk",
+      "Anders Frisk"
+    ],
+    "correct": 1,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pierluigi_Collina"
+    ],
+    "tags": [
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke Zwitser was van 1998 tot 2015 FIFA-voorzitter?",
+    "options": [
+      "João Havelange",
+      "Stanley Rous",
+      "Gianni Infantino",
+      "Sepp Blatter"
+    ],
+    "correct": 3,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sepp_Blatter",
+      "https://en.wikipedia.org/wiki/2015_FIFA_corruption_case"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke Sloveense advocaat is sinds 2016 voorzitter van de UEFA?",
+    "options": [
+      "Lennart Johansson",
+      "Jacques Georges",
+      "Aleksander Čeferin",
+      "Gerhard Aigner"
+    ],
+    "correct": 2,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Aleksander_%C4%8Ceferin"
+    ],
+    "tags": [
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
   }
 ]

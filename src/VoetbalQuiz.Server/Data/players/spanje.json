@@ -564,5 +564,146 @@
       "champions-league"
     ],
     "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Rodri",
+    "answers": [
+      "Rodrigo Hernández"
+    ],
+    "country": "Spanje",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik ben een verdedigende middenvelder, geboren in 1996 in Madrid.",
+      "Ik speelde voor Villarreal en Atlético Madrid voor ik naar Engeland trok.",
+      "In 2023 scoorde ik het enige doelpunt in de Champions League-finale tegen Inter.",
+      "In 2024 werd ik Europees kampioen en uitgeroepen tot beste speler van het EK.",
+      "In 2024 won ik de Gouden Bal en in 2026 trok ik naar Barcelona."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Rodri_(footballer,_born_1996)"
+    ],
+    "tags": ["champions-league"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Dani Carvajal",
+    "answers": [
+      "Carvajal"
+    ],
+    "country": "Spanje",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik ben een rechtsback, geboren in 1992 in Leganés, bij Madrid.",
+      "Ik doorliep de jeugd van een Madrileense topclub en leerde het vak één seizoen bij een Duitse club.",
+      "Ik won zes keer de Champions League, voor het eerst in 2014.",
+      "Van 2013 tot 2026 was ik vaste waarde bij Real Madrid.",
+      "In 2024 werd ik Europees kampioen met Spanje."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dani_Carvajal"
+    ],
+    "tags": ["champions-league"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Isco",
+    "answers": [
+      "Isco Alarcón",
+      "Alarcon"
+    ],
+    "country": "Spanje",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1992 geboren in Benalmádena, een kuststad in Andalusië.",
+      "Ik ben een technisch begaafde aanvallende middenvelder.",
+      "Met Málaga haalde ik in 2013 de kwartfinale van de Champions League.",
+      "Daarna trok ik naar Real Madrid, waar ik meerdere keren de Champions League won.",
+      "Later speelde ik nog voor Sevilla en Real Betis."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Isco"
+    ],
+    "tags": ["champions-league"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Álvaro Morata",
+    "answers": [
+      "Morata"
+    ],
+    "country": "Spanje",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik ben een spits, geboren in 1992 in Madrid.",
+      "Ik brak door bij Real Madrid, maar vond mijn eerste echte succes in Turijn.",
+      "Bij Juventus werd ik twee keer landskampioen.",
+      "Ik speelde ook voor Chelsea, Atlético Madrid, AC Milan en Como.",
+      "Ik was kapitein van Spanje toen we in 2024 het EK wonnen."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/%C3%81lvaro_Morata"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Nico Williams",
+    "answers": [
+      "Nico"
+    ],
+    "country": "Spanje",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik ben een flankspeler, geboren in 2002 in Pamplona.",
+      "Mijn ouders komen uit Ghana.",
+      "Mijn grote broer is ook profvoetballer en speelt in dezelfde ploeg als ik.",
+      "Ik speel voor een Baskische club die enkel spelers uit de streek opstelt.",
+      "In de finale van het EK 2024 scoorde ik tegen Engeland."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Nico_Williams"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Thiago Alcántara",
+    "answers": [
+      "Thiago",
+      "Alcántara",
+      "Alcantara"
+    ],
+    "country": "Spanje",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 4,
+    "hints": [
+      "Ik werd in 1991 geboren in Italië, maar ik speel voor Spanje.",
+      "Mijn vader werd in 1994 wereldkampioen met Brazilië.",
+      "Mijn broer was ook voetballer, maar hij koos voor Brazilië.",
+      "Ik kwam uit de jeugd van Barcelona en trok in 2013 naar Beieren.",
+      "In 2020 won ik met Bayern München de Champions League en later speelde ik nog bij Liverpool."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Thiago_Alc%C3%A2ntara"
+    ],
+    "tags": ["champions-league"],
+    "checkedAt": "2026-10-19"
   }
 ]

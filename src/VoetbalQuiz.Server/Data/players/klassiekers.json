@@ -885,5 +885,53 @@
       "https://en.wikipedia.org/wiki/Hugo_Broos"
     ],
     "tags": ["legende", "anderlecht", "club-brugge", "rode-duivels", "wk"]
+  },
+  {
+    "name": "Franz Beckenbauer",
+    "answers": [
+      "Beckenbauer",
+      "Der Kaiser"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1945 geboren in München.",
+      "Ik herdefinieerde de positie van libero.",
+      "Met Bayern München won ik drie Europacups op rij, van 1974 tot 1976.",
+      "Ik won de Gouden Bal in 1972 en 1976.",
+      "Ik werd wereldkampioen als speler in 1974 en als trainer in 1990."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Franz_Beckenbauer"
+    ],
+    "tags": ["legende", "wk", "champions-league"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Pelé",
+    "answers": [
+      "Pele",
+      "Edson Arantes do Nascimento"
+    ],
+    "country": "Brazilië",
+    "competition": "Campeonato Brasileiro",
+    "era": "classic",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1940 geboren in Três Corações, in Brazilië.",
+      "Ik debuteerde als tiener bij Santos.",
+      "Op het WK 1958 scoorde ik als zeventienjarige in de finale tegen Zweden.",
+      "Ik won drie wereldtitels: in 1958, 1962 en 1970.",
+      "Ik sloot mijn carrière af in de Verenigde Staten bij New York Cosmos."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pel%C3%A9"
+    ],
+    "tags": ["legende", "wk"],
+    "checkedAt": "2026-10-19"
   }
 ]

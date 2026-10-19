@@ -1722,13 +1722,14 @@
     "odd": 2,
     "explanation": "Howard (2012), Begović (2013) en Alisson (2021) scoorden in de Premier League; Petr Čech nooit.",
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_goalkeepers_who_have_scored_in_the_Premier_League"
     ],
     "tags": [
       "curiosa"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Wie kreeg nooit een rode kaart in een WK-finale?",
@@ -1741,14 +1742,15 @@
     "odd": 1,
     "explanation": "Monzón (1990), Zidane (2006) en Heitinga (2010) werden uitgesloten in een WK-finale; Materazzi lokte de rode kaart van Zidane uit maar kreeg er zelf geen.",
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://www.wionews.com/sports/fifa-world-cup-5-players-who-were-shown-red-card-in-final-143274",
       "https://www.goal.com/en/news/most-red-cards-in-world-cup-history/blte958c8e99f134336"
     ],
     "tags": [
       "curiosa"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Wie kreeg geen rode kaart in de 'Slag van Neurenberg' (Portugal–Nederland, WK 2006)?",
@@ -1761,13 +1763,14 @@
     "odd": 2,
     "explanation": "Costinha, Boulahrouz, Deco en Giovanni van Bronckhorst kregen een tweede gele kaart en dus rood; Maniche (de doelpuntenmaker) kreeg alleen geel.",
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Battle_of_Nuremberg_(2006_FIFA_World_Cup)"
     ],
     "tags": [
       "curiosa"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Welke van deze doelmannen scoorde nooit voor zijn club in de Premier League?",
@@ -1780,13 +1783,14 @@
     "odd": 3,
     "explanation": "Schmeichel (Aston Villa, 2001), Friedel (Blackburn, 2004) en Robinson (Tottenham, 2007) scoorden in de Premier League; Van der Sar staat niet op de lijst.",
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_goalkeepers_who_have_scored_in_the_Premier_League"
     ],
     "tags": [
       "curiosa"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Welk duo zijn geen broers?",
@@ -1799,7 +1803,7 @@
     "odd": 2,
     "explanation": "Gary en Phil Neville, Filippo en Simone Inzaghi en Kolo en Yaya Touré zijn broers; Peter en Kasper Schmeichel zijn vader en zoon.",
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Gary_Neville",
       "https://en.wikipedia.org/wiki/Filippo_Inzaghi",
@@ -1808,10 +1812,11 @@
     ],
     "tags": [
       "familie"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
-    "prompt": "Welke broers speelden nooit voor hetzelfde land?",
+    "prompt": "Welke broers speelden nooit voor dezelfde nationale A-ploeg?",
     "options": [
       "Eden en Thorgan Hazard",
       "Romelu en Jordan Lukaku",
@@ -1819,9 +1824,9 @@
       "Émile en Mbo Mpenza"
     ],
     "odd": 2,
-    "explanation": "De Hazards, Lukaku's en Mpenza's speelden allemaal voor België; Kevin-Prince Boateng koos voor Ghana en Jérôme voor Duitsland.",
+    "explanation": "De Hazards, Lukaku's en Mpenza's speelden allemaal in de A-ploeg van België; Kevin-Prince Boateng koos voor Ghana en Jérôme voor Duitsland.",
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/J%C3%A9r%C3%B4me_Boateng",
       "https://en.wikipedia.org/wiki/Thorgan_Hazard",
@@ -1831,7 +1836,8 @@
     "tags": [
       "familie",
       "rode-duivels"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Wiens vader was nooit profvoetballer?",
@@ -1844,7 +1850,7 @@
     "odd": 1,
     "explanation": "Alf-Inge Haaland, Peter Schmeichel en Johan Cruijff waren profvoetballers; de vader van Cristiano Ronaldo werkte als tuinman en was onderhoudsman bij een amateurclub.",
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Cristiano_Ronaldo",
       "https://en.wikipedia.org/wiki/Erling_Haaland",
@@ -1853,7 +1859,8 @@
     ],
     "tags": [
       "familie"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Welke speler heeft geen vader die ook profvoetballer was?",
@@ -1866,7 +1873,7 @@
     "odd": 3,
     "explanation": "Cesare Maldini, Frank Lampard senior en Son Woong-jung waren profvoetballers; de vader van Ronaldo was tuinman en onderhoudsman bij een amateurclub.",
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Cristiano_Ronaldo",
       "https://en.wikipedia.org/wiki/Cesare_Maldini",
@@ -1875,7 +1882,8 @@
     ],
     "tags": [
       "familie"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Wie speelde nooit voor de 'Red Devils' van Manchester United?",
@@ -1888,7 +1896,7 @@
     "odd": 2,
     "explanation": "Fellaini, Lukaku en Januzaj speelden allemaal voor Manchester United; Kompany speelde bij Hamburg en Manchester City, nooit bij United.",
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Marouane_Fellaini",
       "https://en.wikipedia.org/wiki/Romelu_Lukaku",
@@ -1898,7 +1906,8 @@
     "tags": [
       "halloween",
       "rode-duivels"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Welke club speelt traditioneel niet in zwart-witte shirts (zwarte kat-kleuren)?",
@@ -1911,7 +1920,7 @@
     "odd": 2,
     "explanation": "Juventus, Newcastle United en Udinese spelen in zwart-wit; Fiorentina speelt in paars.",
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Juventus_F.C.",
       "https://en.wikipedia.org/wiki/Newcastle_United_F.C.",
@@ -1920,7 +1929,8 @@
     ],
     "tags": [
       "halloween"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Wie scoorde niet voor Duitsland in de 7-1 tegen Brazilië in 2014?",
@@ -1933,13 +1943,14 @@
     "odd": 3,
     "explanation": "Müller, Klose, Kroos (2), Khedira en Schürrle (2) scoorden; Götze kwam erin maar scoorde niet (hij deed dat wel in de finale).",
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Brazil_v_Germany_(2014_FIFA_World_Cup)"
     ],
     "tags": [
       "halloween"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Voor welke club was Béla Guttmann, van de beruchte vloek, nooit trainer?",
@@ -1952,14 +1963,15 @@
     "odd": 2,
     "explanation": "Guttmann trainde Benfica (1959–62, 1965–66), Porto (1958–59, 1973–74) en AC Milan (1953–55), maar nooit Real Madrid.",
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/B%C3%A9la_Guttmann"
     ],
     "tags": [
       "halloween",
       "champions-league"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Wie werd niet op kerstavond (24 december) geboren?",
@@ -1972,14 +1984,15 @@
     "odd": 2,
     "explanation": "Mac Allister (1998), Aurier (1992) en Salas (1974) zijn op 24 december geboren; Lloris op 26 december 1986.",
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/December_24",
       "https://en.wikipedia.org/wiki/December_26"
     ],
     "tags": [
       "kerst"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Wie werd niet op tweede kerstdag (26 december) geboren?",
@@ -1992,14 +2005,15 @@
     "odd": 3,
     "explanation": "Lloris (1986), Ramsey (1990) en Feghouli (1989) zijn op 26 december geboren; Mac Allister op 24 december 1998.",
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/December_24",
       "https://en.wikipedia.org/wiki/December_26"
     ],
     "tags": [
       "kerst"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Welke club won het WK voor clubs niet in de weken voor Kerst?",
@@ -2012,13 +2026,14 @@
     "odd": 2,
     "explanation": "Barcelona won de finale op 20 december 2015, Liverpool op 21 december 2019 en Manchester City op 22 december 2023; Chelsea won het toernooi pas op 12 februari 2022.",
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/FIFA_Club_World_Cup"
     ],
     "tags": [
       "kerst"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Welke competitie speelt traditioneel doorheen de kerstperiode, zonder winterstop?",
@@ -2031,13 +2046,14 @@
     "odd": 2,
     "explanation": "In Engeland wordt op Boxing Day en tussen Kerst en Nieuwjaar gespeeld; de Bundesliga, Eredivisie en Ligue 1 hebben een winterstop rond de jaarwisseling.",
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Boxing_Day#Sport"
     ],
     "tags": [
       "kerst"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Wie werd niet op oudejaarsdag (31 december) geboren?",
@@ -2050,14 +2066,15 @@
     "odd": 1,
     "explanation": "Bruce (1960), Coupet (1972) en Gordon (1982) zijn op 31 december geboren; Šuker op 1 januari 1968.",
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/December_31",
       "https://en.wikipedia.org/wiki/Davor_%C5%A0uker"
     ],
     "tags": [
       "nieuwjaar"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Wie werd niet op nieuwjaarsdag (1 januari) geboren?",
@@ -2070,7 +2087,7 @@
     "odd": 3,
     "explanation": "Guerrero (1984), Wilshere (1992) en Šuker (1968) zijn op 1 januari geboren; Coupet op 31 december 1972.",
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Paolo_Guerrero",
       "https://en.wikipedia.org/wiki/Jack_Wilshere",
@@ -2079,7 +2096,8 @@
     ],
     "tags": [
       "nieuwjaar"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Wie verhuisde niet tijdens een wintermercato (januari)?",
@@ -2092,7 +2110,7 @@
     "odd": 0,
     "explanation": "Van Dijk (2018), Torres (2011) en Coutinho (2018) tekenden in januari; Neymar ging in augustus 2017 naar PSG.",
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Virgil_van_Dijk",
       "https://en.wikipedia.org/wiki/Fernando_Torres",
@@ -2101,7 +2119,8 @@
     ],
     "tags": [
       "nieuwjaar"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Welke legende overleed niet in december of januari?",
@@ -2114,7 +2133,7 @@
     "odd": 2,
     "explanation": "Pelé overleed op 29 december 2022, Beckenbauer op 7 januari 2024 en Eusébio op 5 januari 2014; Maradona op 25 november 2020.",
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Pel%C3%A9",
       "https://en.wikipedia.org/wiki/Franz_Beckenbauer",
@@ -2124,7 +2143,8 @@
     "tags": [
       "nieuwjaar",
       "legende"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Welke club speelt traditioneel niet in rood-wit (de kleuren van de mijter)?",
@@ -2137,7 +2157,7 @@
     "odd": 2,
     "explanation": "Antwerp, Atlético Madrid en Feyenoord spelen in rood-wit; Club Brugge speelt in blauw-zwart.",
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Royal_Antwerp_F.C.",
       "https://en.wikipedia.org/wiki/Atl%C3%A9tico_Madrid",
@@ -2146,7 +2166,8 @@
     ],
     "tags": [
       "sinterklaas"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Welke Rode Duivel speelde nooit in Spanje, het land van de Sint?",
@@ -2159,7 +2180,7 @@
     "odd": 2,
     "explanation": "Courtois (Atlético, Real), Hazard (Real) en Januzaj (Real Sociedad) speelden in Spanje; De Bruyne speelde in Duitsland, Engeland en Italië.",
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Thibaut_Courtois",
       "https://en.wikipedia.org/wiki/Eden_Hazard",
@@ -2169,7 +2190,8 @@
     "tags": [
       "sinterklaas",
       "rode-duivels"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Welke Nederlander speelde nooit voor FC Barcelona?",
@@ -2177,22 +2199,24 @@
       "Johan Cruijff",
       "Ronald Koeman",
       "Marco van Basten",
-      "Frank Rijkaard"
+      "Patrick Kluivert"
     ],
     "odd": 2,
-    "explanation": "Cruijff, Koeman en Rijkaard speelden voor Barcelona; Van Basten speelde bij Ajax en AC Milan.",
+    "explanation": "Cruijff, Koeman en Kluivert speelden voor Barcelona; Van Basten speelde bij Ajax en AC Milan.",
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Johan_Cruyff",
       "https://en.wikipedia.org/wiki/Ronald_Koeman",
+      "https://en.wikipedia.org/wiki/Patrick_Kluivert",
       "https://en.wikipedia.org/wiki/Frank_Rijkaard",
       "https://en.wikipedia.org/wiki/Marco_van_Basten"
     ],
     "tags": [
       "sinterklaas",
       "legende"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Welke Spaanse club heeft geen 'Real' (koninklijk) in zijn naam?",
@@ -2205,13 +2229,14 @@
     "odd": 2,
     "explanation": "Real Madrid, Real Sociedad en Real Betis dragen 'Real' in hun naam; Atlético Madrid niet.",
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/La_Liga"
     ],
     "tags": [
       "sinterklaas"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Wie werd nooit wereldkampioen als speler?",
@@ -2224,7 +2249,7 @@
     "odd": 2,
     "explanation": "Pelé (1958, 1962, 1970), Beckenbauer (1974) en Maradona (1986) werden wereldkampioen; Cruijff verloor de finale van 1974 en werd het nooit.",
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/FIFA_World_Cup",
       "https://en.wikipedia.org/wiki/Johan_Cruyff"
@@ -2232,7 +2257,8 @@
     "tags": [
       "wk",
       "legende"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Wie won nooit de Gouden Schoen van een WK?",
@@ -2245,14 +2271,15 @@
     "odd": 3,
     "explanation": "Klose (2006), Kane (2018) en Mbappé (2022 en 2026) werden topschutter van een WK; Messi won wel de Gouden Bal, maar nooit de Gouden Schoen.",
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_top_goalscorers",
       "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup"
     ],
     "tags": [
       "wk"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Welk land organiseerde nooit een WK?",
@@ -2265,13 +2292,14 @@
     "odd": 2,
     "explanation": "Duitsland (1974, 2006), Mexico (1970, 1986) en Zweden (1958) waren gastland; Nederland nooit.",
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/FIFA_World_Cup"
     ],
     "tags": [
       "wk"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Welk land won het WK nooit in eigen land?",
@@ -2284,14 +2312,15 @@
     "odd": 3,
     "explanation": "Italië (1934), Engeland (1966) en Frankrijk (1998) werden wereldkampioen als gastland; Brazilië verloor in 1950 de beslissende match tegen Uruguay en werd in 2014 vierde.",
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/FIFA_World_Cup",
       "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup"
     ],
     "tags": [
       "wk"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
   },
   {
     "prompt": "Welk dier was nooit mascotte van een WK?",
@@ -2304,7 +2333,7 @@
     "odd": 2,
     "explanation": "Zabivaka (2018) is een wolf, Zayu (2026) een jaguar en Fuleco (2014) een gordeldier; een olifant was nooit WK-mascotte.",
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Maple,_Zayu_and_Clutch",
       "https://en.wikipedia.org/wiki/Fuleco",
@@ -2312,6 +2341,457 @@
     ],
     "tags": [
       "wk"
-    ]
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "prompt": "Welk stadion ligt niet in Wallonië?",
+    "options": [
+      "Stade Maurice Dufrasne",
+      "Bosuilstadion",
+      "Stade du Pairay",
+      "Stade du Pays de Charleroi"
+    ],
+    "odd": 1,
+    "explanation": "Het Maurice Dufrasnestadion (Standard, Luik), het Stade du Pairay (Seraing) en het Stade du Pays de Charleroi liggen in Wallonië; het Bosuilstadion van Antwerp ligt in Deurne (Antwerpen).",
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Standard_Luik",
+      "https://en.wikipedia.org/wiki/R.F.C._Seraing_(1904)",
+      "https://nl.wikipedia.org/wiki/Sporting_Charleroi",
+      "https://en.wikipedia.org/wiki/Royal_Antwerp_F.C."
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "prompt": "Welke bijnaam hoort niet bij een Belgische club?",
+    "options": [
+      "Buffalo's",
+      "Zebra's",
+      "Toffees",
+      "Rouches"
+    ],
+    "odd": 2,
+    "explanation": "Buffalo's (KAA Gent), Zebra's (Sporting Charleroi) en Rouches (Standard) zijn bijnamen van Belgische clubs; de Toffees is Everton.",
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/K.A.A._Gent",
+      "https://nl.wikipedia.org/wiki/Sporting_Charleroi",
+      "https://nl.wikipedia.org/wiki/Standard_Luik",
+      "https://en.wikipedia.org/wiki/Everton_F.C."
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "prompt": "Welke club speelt traditioneel niet in blauw?",
+    "options": [
+      "KAA Gent",
+      "Anderlecht",
+      "KRC Genk",
+      "Club Brugge"
+    ],
+    "odd": 1,
+    "explanation": "Gent en Genk spelen in blauw-wit en Club Brugge in blauw-zwart; Anderlecht speelt in paars-wit.",
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/K.A.A._Gent",
+      "https://en.wikipedia.org/wiki/K.R.C._Genk",
+      "https://en.wikipedia.org/wiki/Club_Brugge_KV",
+      "https://en.wikipedia.org/wiki/R.S.C._Anderlecht"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "prompt": "Welke club speelde nooit in de groepsfase van de Champions League?",
+    "options": [
+      "Club Brugge",
+      "KRC Genk",
+      "Zulte Waregem",
+      "KAA Gent"
+    ],
+    "odd": 2,
+    "explanation": "Club Brugge (o.a. 1992–93), Genk (2002–03, 2011–12, 2019–20) en Gent (2015–16) speelden in de groepsfase; Zulte Waregem strandde in 2013 in de derde voorronde tegen PSV.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Club_Brugge_KV_in_European_football",
+      "https://en.wikipedia.org/wiki/K.R.C._Genk",
+      "https://en.wikipedia.org/wiki/K.A.A._Gent",
+      "https://en.wikipedia.org/wiki/S.V._Zulte_Waregem"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "prompt": "Wie won nooit de Belgische landstitel als hoofdtrainer?",
+    "options": [
+      "Philippe Clement",
+      "Michel Preud'homme",
+      "Vincent Kompany",
+      "Hein Vanhaezebrouck"
+    ],
+    "odd": 2,
+    "explanation": "Clement (Genk 2019, Club Brugge 2020 en 2021), Preud'homme (Standard 2008, Club Brugge 2016) en Vanhaezebrouck (Gent 2015) werden kampioen; Kompany won met Anderlecht geen prijzen.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Philippe_Clement",
+      "https://en.wikipedia.org/wiki/Michel_Preud%27homme",
+      "https://en.wikipedia.org/wiki/Hein_Vanhaezebrouck",
+      "https://en.wikipedia.org/wiki/Vincent_Kompany"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "prompt": "Welke stad was geen speelstad van het EK 2000?",
+    "options": [
+      "Brugge",
+      "Luik",
+      "Antwerpen",
+      "Charleroi"
+    ],
+    "odd": 2,
+    "explanation": "In België werd gespeeld in Brussel, Brugge (Jan Breydel), Luik (Maurice Dufrasne) en Charleroi (Stade du Pays de Charleroi); Antwerpen was geen speelstad.",
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Euro_2000"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "prompt": "Welke club komt niet uit de provincie Oost-Vlaanderen?",
+    "options": [
+      "KAA Gent",
+      "KSC Lokeren",
+      "SK Beveren",
+      "Cercle Brugge"
+    ],
+    "odd": 3,
+    "explanation": "Gent, Lokeren en Beveren liggen in Oost-Vlaanderen; Cercle Brugge speelt in Brugge, in West-Vlaanderen.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Cercle_Brugge_K.S.V.",
+      "https://en.wikipedia.org/wiki/K.S.C._Lokeren_Oost-Vlaanderen",
+      "https://en.wikipedia.org/wiki/K.S.K._Beveren",
+      "https://en.wikipedia.org/wiki/S.V._Zulte_Waregem",
+      "https://en.wikipedia.org/wiki/K.A.A._Gent"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "prompt": "Welke club leverde nooit een winnaar van de Gouden Schoen?",
+    "options": [
+      "SK Beveren",
+      "Lierse SK",
+      "KV Kortrijk",
+      "Zulte Waregem"
+    ],
+    "odd": 2,
+    "explanation": "Beveren (Pfaff 1978, Janssens 1979), Lierse (o.a. Van Brandt 1955, Vandenbergh 1981) en Zulte Waregem (Thorgan Hazard 2013) hadden een winnaar; Kortrijk nooit.",
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Gouden_Schoen_(Belgi%C3%AB)"
+    ],
+    "tags": [
+      "gouden-schoen"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "prompt": "Welke bal was nooit een WK-bal?",
+    "options": [
+      "Questra",
+      "Roteiro",
+      "Tricolore",
+      "Fevernova"
+    ],
+    "odd": 1,
+    "explanation": "Questra (1994), Tricolore (1998) en Fevernova (2002) waren WK-ballen; de Roteiro was de bal van het EK 2004.",
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_official_match_balls",
+      "https://en.wikipedia.org/wiki/UEFA_European_Championship_official_match_balls"
+    ],
+    "tags": [
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "prompt": "Welk stadion ligt niet in Londen?",
+    "options": [
+      "Selhurst Park",
+      "The Valley",
+      "Carrow Road",
+      "Loftus Road"
+    ],
+    "odd": 2,
+    "explanation": "Selhurst Park (Crystal Palace), The Valley (Charlton) en Loftus Road (QPR) liggen in Londen; Carrow Road, het stadion van Norwich City, ligt in Norwich.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_football_stadiums_in_England"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "prompt": "Welke stad organiseerde nooit een finale van de Europacup I / Champions League?",
+    "options": [
+      "Glasgow",
+      "Manchester",
+      "Liverpool",
+      "Cardiff"
+    ],
+    "odd": 2,
+    "explanation": "Glasgow (Hampden Park, o.a. 1960, 1976, 2002), Manchester (Old Trafford, 2003) en Cardiff (2017) organiseerden een finale; Liverpool nooit.",
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
+    ],
+    "tags": [
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "prompt": "Welke club speelt in 2026-27 niet in de Premier League?",
+    "options": [
+      "Brentford",
+      "Coventry City",
+      "Hull City",
+      "West Ham"
+    ],
+    "odd": 3,
+    "explanation": "Brentford blijft in de Premier League en Coventry City en Hull City promoveerden; West Ham degradeerde naar de Championship.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2026%E2%80%9327_Premier_League",
+      "https://www.nbcnewyork.com/news/sports/soccer/premier-league-teams-2026-27/"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "prompt": "Welke derby is geen stadsderby?",
+    "options": [
+      "Old Firm",
+      "Merseyside derby",
+      "El Clásico",
+      "Derby della Madonnina"
+    ],
+    "odd": 2,
+    "explanation": "De Old Firm (Glasgow), de Merseyside derby (Liverpool) en de Derby della Madonnina (Milaan) worden binnen één stad gespeeld; El Clásico is Real Madrid tegen Barcelona.",
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Old_Firm",
+      "https://en.wikipedia.org/wiki/Merseyside_derby",
+      "https://en.wikipedia.org/wiki/Derby_della_Madonnina",
+      "https://en.wikipedia.org/wiki/El_Cl%C3%A1sico"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "prompt": "Welke bijnaam hoort niet bij een Engelse club?",
+    "options": [
+      "Magpies",
+      "Hammers",
+      "Merengues",
+      "Foxes"
+    ],
+    "odd": 2,
+    "explanation": "Magpies (Newcastle United), Hammers (West Ham United) en Foxes (Leicester City) zijn Engelse clubs; de Merengues is Real Madrid.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Newcastle_United_F.C.",
+      "https://en.wikipedia.org/wiki/West_Ham_United_F.C.",
+      "https://en.wikipedia.org/wiki/Leicester_City_F.C.",
+      "https://en.wikipedia.org/wiki/Real_Madrid_CF"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "prompt": "Welke bekercompetitie wordt niet door UEFA georganiseerd?",
+    "options": [
+      "Conference League",
+      "Champions League",
+      "Copa Libertadores",
+      "Europa League"
+    ],
+    "odd": 2,
+    "explanation": "De Conference League, Champions League en Europa League zijn UEFA-competities; de Copa Libertadores wordt georganiseerd door CONMEBOL.",
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Europa_Conference_League",
+      "https://en.wikipedia.org/wiki/Copa_Libertadores",
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "prompt": "Welk land won nooit de Copa América?",
+    "options": [
+      "Colombia",
+      "Ecuador",
+      "Peru",
+      "Bolivië"
+    ],
+    "odd": 1,
+    "explanation": "Colombia (2001), Peru (1939) en Bolivië (1963) wonnen de Copa América; Ecuador nooit.",
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Copa_Am%C3%A9rica"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "prompt": "Welk land won nooit de Afrika Cup?",
+    "options": [
+      "Algerije",
+      "Zambia",
+      "Mali",
+      "Tunesië"
+    ],
+    "odd": 2,
+    "explanation": "Algerije (1990, 2019), Zambia (2012) en Tunesië (2004) wonnen de Afrika Cup; Mali haalde enkel de finale van 1972.",
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Africa_Cup_of_Nations"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "prompt": "Welke stad was geen speelstad van het WK 2026?",
+    "options": [
+      "Seattle",
+      "Chicago",
+      "Toronto",
+      "Monterrey"
+    ],
+    "odd": 1,
+    "explanation": "Seattle, Toronto en Monterrey waren speelsteden van het WK 2026; Chicago (Soldier Field) haakte tijdens de kandidatuurfase af.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup"
+    ],
+    "tags": [
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "prompt": "Welk stadion hoort niet bij een Nederlandse club?",
+    "options": [
+      "De Kuip",
+      "Stade Pierre-Mauroy",
+      "Philips Stadion",
+      "De Grolsch Veste"
+    ],
+    "odd": 1,
+    "explanation": "De Kuip (Feyenoord), het Philips Stadion (PSV) en De Grolsch Veste (FC Twente) liggen in Nederland; het Stade Pierre-Mauroy is het stadion van Lille.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/De_Kuip",
+      "https://en.wikipedia.org/wiki/Philips_Stadion",
+      "https://en.wikipedia.org/wiki/FC_Twente",
+      "https://en.wikipedia.org/wiki/Stade_Pierre-Mauroy"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "prompt": "Welke bondscoach werd nooit wereldkampioen als trainer?",
+    "options": [
+      "Joachim Löw",
+      "Didier Deschamps",
+      "Louis van Gaal",
+      "Lionel Scaloni"
+    ],
+    "odd": 2,
+    "explanation": "Löw (2014), Deschamps (2018) en Scaloni (2022) leidden hun land naar de wereldtitel; Van Gaal werd in 2014 met Nederland derde.",
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Joachim_L%C3%B6w",
+      "https://en.wikipedia.org/wiki/Didier_Deschamps",
+      "https://en.wikipedia.org/wiki/Lionel_Scaloni",
+      "https://en.wikipedia.org/wiki/Louis_van_Gaal"
+    ],
+    "tags": [
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "prompt": "Welke prijs wordt niet uitgereikt door France Football?",
+    "options": [
+      "Kopa Trophy",
+      "Golden Boy",
+      "Yashin Trophy",
+      "Gerd Müller Trophy"
+    ],
+    "odd": 1,
+    "explanation": "De Kopa Trophy, de Yashin Trophy en de Gerd Müller Trophy worden uitgereikt door France Football bij de Ballon d'Or; de Golden Boy komt van de Italiaanse krant Tuttosport.",
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kopa_Trophy",
+      "https://en.wikipedia.org/wiki/Yashin_Trophy",
+      "https://en.wikipedia.org/wiki/Gerd_M%C3%BCller_Trophy",
+      "https://en.wikipedia.org/wiki/Golden_Boy_(award)"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "prompt": "Welke stad organiseerde nooit een WK-finale?",
+    "options": [
+      "Johannesburg",
+      "Moskou",
+      "Barcelona",
+      "Rio de Janeiro"
+    ],
+    "odd": 2,
+    "explanation": "Johannesburg (2010), Moskou (2018) en Rio de Janeiro (1950, 2014) organiseerden een WK-finale; Barcelona nooit.",
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals"
+    ],
+    "tags": [
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
   }
 ]

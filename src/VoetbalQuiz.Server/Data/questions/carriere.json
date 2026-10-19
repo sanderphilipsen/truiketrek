@@ -1847,5 +1847,647 @@
       "rode-duivels",
       "legende"
     ]
+  },
+  {
+    "answer": "Eden Hazard",
+    "aliases": [
+      "Hazard"
+    ],
+    "clubs": [
+      "Lille (2007–2012)",
+      "Chelsea (2012–2019)",
+      "Real Madrid (2019–2023)"
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Eden_Hazard"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Lionel Messi",
+    "aliases": [
+      "Messi"
+    ],
+    "clubs": [
+      "FC Barcelona (2004–2021)",
+      "Paris Saint-Germain (2021–2023)",
+      "Inter Miami (2023–)"
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lionel_Messi"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Kylian Mbappé",
+    "aliases": [
+      "Mbappé",
+      "Mbappe"
+    ],
+    "clubs": [
+      "AS Monaco (2015–2017)",
+      "Paris Saint-Germain (2017–2024)",
+      "Real Madrid (2024–)"
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kylian_Mbapp%C3%A9"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Zlatan Ibrahimović",
+    "aliases": [
+      "Ibrahimović",
+      "Ibrahimovic",
+      "Zlatan"
+    ],
+    "clubs": [
+      "Malmö FF (1999–2001)",
+      "Ajax (2001–2004)",
+      "Juventus (2004–2006)",
+      "Inter (2006–2009)",
+      "FC Barcelona (2009–2011)",
+      "AC Milan (2010–2011, huur)",
+      "AC Milan (2011–2012)",
+      "Paris Saint-Germain (2012–2016)",
+      "Manchester United (2016–2018)",
+      "LA Galaxy (2018–2019)",
+      "AC Milan (2020–2023)"
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Zlatan_Ibrahimovi%C4%87"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Wayne Rooney",
+    "aliases": [
+      "Rooney"
+    ],
+    "clubs": [
+      "Everton (2002–2004)",
+      "Manchester United (2004–2017)",
+      "Everton (2017–2018)",
+      "D.C. United (2018–2019)",
+      "Derby County (2020–2021)"
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Wayne_Rooney"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Ronaldinho",
+    "aliases": [
+      "Ronaldinho Gaúcho",
+      "Ronaldinho Gaucho"
+    ],
+    "clubs": [
+      "Grêmio (1998–2001)",
+      "Paris Saint-Germain (2001–2003)",
+      "FC Barcelona (2003–2008)",
+      "AC Milan (2008–2011)",
+      "Flamengo (2011–2012)",
+      "Atlético Mineiro (2012–2014)",
+      "Querétaro (2014–2015)",
+      "Fluminense (2015)"
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ronaldinho"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Karim Benzema",
+    "aliases": [
+      "Benzema"
+    ],
+    "clubs": [
+      "Olympique Lyon (2004–2009)",
+      "Real Madrid (2009–2023)",
+      "Al-Ittihad (2023–2026)",
+      "Al-Hilal (2026)"
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://www.tsn.ca/soccer/article/al-hilal-benzema-agree-to-terminate-contract-after-six-months/",
+      "https://en.wikipedia.org/wiki/Karim_Benzema"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Luka Modrić",
+    "aliases": [
+      "Modrić",
+      "Modric"
+    ],
+    "clubs": [
+      "Dinamo Zagreb (2003–2008)",
+      "Zrinjski Mostar (2003–2004, huur)",
+      "Inter Zaprešić (2004–2005, huur)",
+      "Tottenham Hotspur (2008–2012)",
+      "Real Madrid (2012–2025)",
+      "AC Milan (2025–)"
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Luka_Modri%C4%87"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Sergio Agüero",
+    "aliases": [
+      "Agüero",
+      "Aguero",
+      "Kun Agüero"
+    ],
+    "clubs": [
+      "Independiente (2003–2006)",
+      "Atlético Madrid (2006–2011)",
+      "Manchester City (2011–2021)",
+      "FC Barcelona (2021)"
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sergio_Ag%C3%BCero"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Zinedine Zidane",
+    "aliases": [
+      "Zidane",
+      "Zizou"
+    ],
+    "clubs": [
+      "AS Cannes (1989–1992)",
+      "Bordeaux (1992–1996)",
+      "Juventus (1996–2001)",
+      "Real Madrid (2001–2006)"
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Zinedine_Zidane"
+    ],
+    "tags": [
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Gianluigi Buffon",
+    "aliases": [
+      "Buffon",
+      "Gigi Buffon"
+    ],
+    "clubs": [
+      "Parma (1995–2001)",
+      "Juventus (2001–2018)",
+      "Paris Saint-Germain (2018–2019)",
+      "Juventus (2019–2021)",
+      "Parma (2021–2023)"
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gianluigi_Buffon"
+    ],
+    "tags": [
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Jérémy Doku",
+    "aliases": [
+      "Doku",
+      "Jeremy Doku"
+    ],
+    "clubs": [
+      "Anderlecht (2018–2020)",
+      "Rennes (2020–2023)",
+      "Manchester City (2023–)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/J%C3%A9r%C3%A9my_Doku"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Charles De Ketelaere",
+    "aliases": [
+      "De Ketelaere",
+      "CDK"
+    ],
+    "clubs": [
+      "Club Brugge (2019–2022)",
+      "AC Milan (2022–2024)",
+      "Atalanta (2023–2024, huur)",
+      "Atalanta (2024–)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Charles_De_Ketelaere"
+    ],
+    "tags": [
+      "rode-duivels",
+      "club-brugge"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Lois Openda",
+    "aliases": [
+      "Openda",
+      "Loïs Openda"
+    ],
+    "clubs": [
+      "Club Brugge (2018–2022)",
+      "Vitesse (2020–2022, huur)",
+      "RC Lens (2022–2023)",
+      "RB Leipzig (2023–2026)",
+      "Juventus (2025–2026)",
+      "Olympique Lyon (2026–, huur)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://www.beinsports.com/en-us/soccer/serie-a/articles/openda-joins-lyon-on-loan-after-juventus-struggles-2026-07-28",
+      "https://en.wikipedia.org/wiki/Lois_Openda"
+    ],
+    "tags": [
+      "rode-duivels",
+      "club-brugge"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Johan Bakayoko",
+    "aliases": [
+      "Bakayoko"
+    ],
+    "clubs": [
+      "Jong PSV (2020–2022)",
+      "PSV (2022–2025)",
+      "RB Leipzig (2025–)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Johan_Bakayoko"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Roméo Lavia",
+    "aliases": [
+      "Lavia",
+      "Romeo Lavia"
+    ],
+    "clubs": [
+      "Manchester City (2021–2022)",
+      "Southampton (2022–2023)",
+      "Chelsea (2023–)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Romeo_Lavia"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Ivan Rakitić",
+    "aliases": [
+      "Rakitić",
+      "Rakitic"
+    ],
+    "clubs": [
+      "FC Basel (2005–2007)",
+      "Schalke 04 (2007–2011)",
+      "Sevilla (2011–2014)",
+      "FC Barcelona (2014–2020)",
+      "Sevilla (2020–2024)",
+      "Al-Shabab (2024)",
+      "Hajduk Split (2024–2025)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ivan_Rakiti%C4%87"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Mario Mandžukić",
+    "aliases": [
+      "Mandžukić",
+      "Mandzukic",
+      "Mandukic"
+    ],
+    "clubs": [
+      "NK Zagreb (2005–2007)",
+      "Dinamo Zagreb (2007–2010)",
+      "VfL Wolfsburg (2010–2012)",
+      "Bayern München (2012–2014)",
+      "Atlético Madrid (2014–2015)",
+      "Juventus (2015–2019)",
+      "Al-Duhail (2019–2020)",
+      "AC Milan (2021)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mario_Mand%C5%BEuki%C4%87"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Dimitar Berbatov",
+    "aliases": [
+      "Berbatov"
+    ],
+    "clubs": [
+      "CSKA Sofia (1998–2001)",
+      "Bayer Leverkusen (2001–2006)",
+      "Tottenham Hotspur (2006–2008)",
+      "Manchester United (2008–2012)",
+      "Fulham (2012–2014)",
+      "AS Monaco (2014–2015)",
+      "PAOK (2015–2016)",
+      "Kerala Blasters (2017–2018)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dimitar_Berbatov"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Radamel Falcao",
+    "aliases": [
+      "Falcao"
+    ],
+    "clubs": [
+      "River Plate (2004–2009)",
+      "FC Porto (2009–2011)",
+      "Atlético Madrid (2011–2013)",
+      "AS Monaco (2013–2019)",
+      "Manchester United (2014–2015, huur)",
+      "Chelsea (2015–2016, huur)",
+      "Galatasaray (2019–2021)",
+      "Rayo Vallecano (2021–2024)",
+      "Millonarios (2024–2025)",
+      "Millonarios (2026)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Radamel_Falcao"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Luc Nilis",
+    "aliases": [
+      "Nilis"
+    ],
+    "clubs": [
+      "Winterslag (1984–1986)",
+      "Anderlecht (1986–1994)",
+      "PSV (1994–2000)",
+      "Aston Villa (2000–2001)"
+    ],
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Luc_Nilis"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Jan Koller",
+    "aliases": [
+      "Koller"
+    ],
+    "clubs": [
+      "Sparta Praag (1994–1996)",
+      "Lokeren (1996–1999)",
+      "Anderlecht (1999–2001)",
+      "Borussia Dortmund (2001–2006)",
+      "AS Monaco (2006–2008)",
+      "1. FC Nürnberg (2008)",
+      "Krylja Sovetov (2008–2009)",
+      "AS Cannes (2009–2011)"
+    ],
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jan_Koller"
+    ],
+    "tags": [
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Émile Mpenza",
+    "aliases": [
+      "Mpenza",
+      "Emile Mpenza"
+    ],
+    "clubs": [
+      "KV Kortrijk (1995–1996)",
+      "Mouscron (1996–1997)",
+      "Standard (1997–1999)",
+      "Schalke 04 (2000–2003)",
+      "Standard (2003–2004)",
+      "Hamburger SV (2004–2006)",
+      "Al-Rayyan (2006–2007)",
+      "Manchester City (2007–2008)",
+      "Plymouth Argyle (2008–2009)",
+      "FC Sion (2009–2010)",
+      "Neftchi Bakoe (2010–2012)"
+    ],
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/%C3%89mile_Mpenza"
+    ],
+    "tags": [
+      "rode-duivels",
+      "standard"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Marc Degryse",
+    "aliases": [
+      "Degryse"
+    ],
+    "clubs": [
+      "Club Brugge (1983–1989)",
+      "Anderlecht (1989–1995)",
+      "Sheffield Wednesday (1995–1996)",
+      "PSV (1996–1998)",
+      "KAA Gent (1998–1999)",
+      "Germinal Beerschot (1999–2002)"
+    ],
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Marc_Degryse"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "club-brugge"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Gert Verheyen",
+    "aliases": [
+      "Verheyen"
+    ],
+    "clubs": [
+      "Lierse (1986–1988)",
+      "Anderlecht (1988–1992)",
+      "Club Brugge (1992–2006)"
+    ],
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gert_Verheyen"
+    ],
+    "tags": [
+      "rode-duivels",
+      "club-brugge"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Bart Goor",
+    "aliases": [
+      "Goor"
+    ],
+    "clubs": [
+      "Verbroedering Geel (1991–1996)",
+      "KRC Genk (1996–1997)",
+      "Anderlecht (1997–2001)",
+      "Hertha BSC (2001–2004)",
+      "Feyenoord (2004–2005)",
+      "Anderlecht (2005–2008)",
+      "Germinal Beerschot (2009–2011)",
+      "KVC Westerlo (2011–2013)",
+      "Dessel Sport (2013–2014)"
+    ],
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Bart_Goor"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Jean-Marie Pfaff",
+    "aliases": [
+      "Pfaff"
+    ],
+    "clubs": [
+      "KSK Beveren (1972–1982)",
+      "Bayern München (1982–1988)",
+      "Lierse (1988–1989)",
+      "Trabzonspor (1989–1990)"
+    ],
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jean-Marie_Pfaff"
+    ],
+    "tags": [
+      "rode-duivels",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Eric Gerets",
+    "aliases": [
+      "Gerets",
+      "Erik Gerets"
+    ],
+    "clubs": [
+      "Standard (1971–1983)",
+      "AC Milan (1983–1984)",
+      "MVV Maastricht (1984–1985)",
+      "PSV (1985–1992)"
+    ],
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Eric_Gerets"
+    ],
+    "tags": [
+      "rode-duivels",
+      "standard",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
   }
 ]

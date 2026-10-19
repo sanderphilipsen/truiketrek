@@ -456,5 +456,148 @@
     ],
     "tags": ["wk"],
     "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Mesut Özil",
+    "answers": [
+      "Özil",
+      "Ozil"
+    ],
+    "country": "Duitsland",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik werd in 1988 geboren in Gelsenkirchen, in een Turks gezin.",
+      "Ik ben een creatieve middenvelder met een prachtige linkervoet die vooral veel assists gaf.",
+      "Ik speelde bij Werder Bremen en Real Madrid voor ik in 2013 naar Londen trok.",
+      "In 2014 werd ik wereldkampioen met Duitsland.",
+      "In 2018 stopte ik bij de nationale ploeg na ophef over een foto met president Erdoğan."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mesut_%C3%96zil"
+    ],
+    "tags": ["wk"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Leroy Sané",
+    "answers": [
+      "Sané",
+      "Sane"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1996 geboren in Essen; mijn moeder won brons op de Olympische Spelen als gymnaste.",
+      "Mijn vader is een Senegalese oud-profvoetballer.",
+      "Ik ben een razendsnelle vleugelspeler met een geweldige linkervoet.",
+      "Ik brak door bij Schalke 04 en werd daarna landskampioen met Manchester City.",
+      "In 2020 trok ik naar Bayern München en in 2025 naar Istanboel."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Leroy_San%C3%A9"
+    ],
+    "tags": ["champions-league"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "İlkay Gündoğan",
+    "answers": [
+      "Gündoğan",
+      "Gundogan",
+      "Ilkay Gundogan"
+    ],
+    "country": "Duitsland",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1990 geboren in Gelsenkirchen, in een gezin met Turkse roots.",
+      "Ik ben een middenvelder die bekendstaat om mijn kalmte en balbehandeling.",
+      "In 2013 verloor ik met Borussia Dortmund de Champions League-finale in Wembley tegen een Duitse rivaal.",
+      "In 2023 was ik aanvoerder van Manchester City in het jaar van de treble.",
+      "Ik was kapitein van Duitsland op het EK 2024 in eigen land."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/%C4%B0lkay_G%C3%BCndo%C4%9Fan"
+    ],
+    "tags": ["champions-league"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Kai Havertz",
+    "answers": [
+      "Havertz"
+    ],
+    "country": "Duitsland",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1999 geboren in Aken en ben een aanvallende middenvelder of spits.",
+      "Ik debuteerde als zeventienjarige bij Bayer Leverkusen.",
+      "In 2020 verhuisde ik voor meer dan zestig miljoen pond naar Londen.",
+      "In de Champions League-finale van 2021 scoorde ik het winnende doelpunt tegen Manchester City.",
+      "In 2023 stapte ik over naar de Londense rivaal."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kai_Havertz"
+    ],
+    "tags": ["champions-league"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Antonio Rüdiger",
+    "answers": [
+      "Rüdiger",
+      "Rudiger"
+    ],
+    "country": "Duitsland",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik ben een centrale verdediger, geboren in 1993 in Berlijn.",
+      "Mijn moeder komt uit Sierra Leone.",
+      "Ik speelde voor AS Roma voor ik in 2017 naar Londen trok.",
+      "Met Chelsea won ik in 2021 de Champions League.",
+      "In 2024 won ik de Champions League opnieuw, nu met Real Madrid."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Antonio_R%C3%BCdiger"
+    ],
+    "tags": ["champions-league"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Serge Gnabry",
+    "answers": [
+      "Gnabry"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1995 geboren in Stuttgart; mijn vader komt uit Ivoorkust.",
+      "Ik ben een snelle aanvaller die vooral op de flank speelt.",
+      "Als tiener verliet ik Duitsland voor een Engelse topclub, waar ik amper speelde.",
+      "In 2019 scoorde ik vier keer in één Champions League-wedstrijd op bezoek bij Tottenham.",
+      "In 2020 won ik met Bayern München de Champions League."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Serge_Gnabry"
+    ],
+    "tags": ["champions-league"],
+    "checkedAt": "2026-10-19"
   }
 ]

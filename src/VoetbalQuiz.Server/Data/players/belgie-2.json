@@ -830,5 +830,51 @@
     ],
     "tags": [],
     "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Dedryck Boyata",
+    "answers": [
+      "Boyata"
+    ],
+    "country": "België",
+    "competition": "Jupiler Pro League",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik ben een verdediger en werd in 1990 geboren in Ukkel.",
+      "Mijn vader was ook profvoetballer, een Congolees die in België speelde.",
+      "Ik kwam via de jeugd van Manchester City bij het eerste elftal.",
+      "Bij Celtic werd ik vier keer op rij kampioen van Schotland.",
+      "Ik won brons op het WK 2018 met de Rode Duivels en werd in 2024 nog landskampioen met Club Brugge."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dedryck_Boyata"
+    ],
+    "tags": ["rode-duivels", "wk", "club-brugge"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Leander Dendoncker",
+    "answers": [
+      "Dendoncker"
+    ],
+    "country": "België",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1995 geboren in Passendale, in West-Vlaanderen.",
+      "Ik ben een verdedigende middenvelder die ook als centrale verdediger kan spelen.",
+      "In 2017 werd ik landskampioen met Anderlecht.",
+      "Ik speelde jarenlang in de Premier League, eerst bij Wolverhampton en daarna bij Aston Villa.",
+      "Ik won brons op het WK 2018 met de Rode Duivels."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Leander_Dendoncker"
+    ],
+    "tags": ["rode-duivels", "anderlecht", "wk"],
+    "checkedAt": "2026-10-19"
   }
 ]

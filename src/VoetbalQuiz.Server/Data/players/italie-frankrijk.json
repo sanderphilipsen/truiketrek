@@ -737,5 +737,99 @@
       "champions-league"
     ],
     "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Paul Pogba",
+    "answers": [
+      "Pogba"
+    ],
+    "country": "Frankrijk",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik ben een middenvelder, geboren in 1993 bij Parijs; mijn ouders komen uit Guinee.",
+      "Ik ben bekend om mijn opvallende kapsels en dansjes na een doelpunt.",
+      "Ik vertrok als tiener bij een Engelse topclub en brak door in Turijn.",
+      "In 2016 keerde ik terug naar Engeland voor een wereldrecordbedrag.",
+      "In 2018 werd ik wereldkampioen met Frankrijk en scoorde ik in de finale tegen Kroatië."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Paul_Pogba"
+    ],
+    "tags": ["wk"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Ousmane Dembélé",
+    "answers": [
+      "Dembélé",
+      "Dembele"
+    ],
+    "country": "Frankrijk",
+    "competition": "Ligue 1",
+    "era": "modern",
+    "difficulty": 1,
+    "hints": [
+      "Ik ben een aanvaller, geboren in 1997 in Vernon, in Normandië.",
+      "Ik kan met beide voeten even goed schieten.",
+      "Ik brak door bij Rennes en Borussia Dortmund.",
+      "In 2017 trok ik voor meer dan honderd miljoen euro naar Barcelona.",
+      "In 2025 won ik de Gouden Bal en de Champions League met Paris Saint-Germain."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ousmane_Demb%C3%A9l%C3%A9"
+    ],
+    "tags": ["wk", "champions-league"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Olivier Giroud",
+    "answers": [
+      "Giroud"
+    ],
+    "country": "Frankrijk",
+    "competition": "Ligue 1",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik ben een spits, geboren in 1986 in Chambéry, aan de voet van de Alpen.",
+      "In 2012 deelde ik de topscorerstitel in de Franse competitie en werd ik kampioen met Montpellier.",
+      "Ik speelde vele jaren in Londen, bij twee clubs, en won er de FA Cup.",
+      "In 2018 werd ik wereldkampioen en in 2021 won ik de Champions League met Chelsea.",
+      "In 2022 werd ik recordscorer van Frankrijk, voorbij een legendarische Arsenal-spits."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Olivier_Giroud"
+    ],
+    "tags": ["wk", "champions-league"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Gianluigi Donnarumma",
+    "answers": [
+      "Donnarumma",
+      "Gigio"
+    ],
+    "country": "Italië",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik ben een doelman, geboren in 1999 in de buurt van Napels.",
+      "Ik debuteerde al als zestienjarige bij AC Milan.",
+      "In 2021 werd ik uitgeroepen tot beste speler van het EK, als eerste doelman ooit.",
+      "Ik stopte in de EK-finale twee strafschoppen tegen Engeland.",
+      "In 2025 won ik met Paris Saint-Germain de Champions League en trok ik daarna naar Manchester City."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gianluigi_Donnarumma"
+    ],
+    "tags": ["champions-league"],
+    "checkedAt": "2026-10-19"
   }
 ]
