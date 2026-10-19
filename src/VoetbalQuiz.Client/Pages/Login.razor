@@ -38,6 +38,15 @@
         <button class="btn primary" disabled="@_busy">@(_register ? "Registreren" : "Aanmelden")</button>
     </form>
 
+    @if (!_register)
+    {
+        <button class="linkish switch" @onclick="() => _forgot = !_forgot" aria-expanded="@(_forgot ? "true" : "false")">Wachtwoord vergeten?</button>
+        @if (_forgot)
+        {
+            <p class="muted" role="status">Contacteer de beheerder van de app. Die geeft je een tijdelijk wachtwoord, waarmee je je aanmeldt en daarna in Profiel zelf een nieuw wachtwoord kiest.</p>
+        }
+    }
+
     <button class="linkish switch" @onclick="Toggle">
         @(_register ? "Al een account? Meld je aan" : "Nog geen account? Registreer je")
     </button>
@@ -55,10 +64,12 @@
     private string _userName = "", _email = "", _password = "";
     private string? _error;
     private bool _busy;
+    private bool _forgot;
 
     private void Toggle()
     {
         _register = !_register;
+        _forgot = false;
         _error = null;
     }
 

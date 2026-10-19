@@ -6,6 +6,8 @@ public record LoginRequest(string UserNameOrEmail, string Password);
 public record UserInfo(string UserName, string Email, string? AvatarId, int Level, bool IsAdmin = false);
 public record ChangePasswordRequest(string CurrentPassword, string NewPassword);
 public record SetAvatarRequest(string AvatarId);
+public record ResetPasswordRequest(string UserName);
+public record ResetPasswordResult(string UserName, string TemporaryPassword);
 
 public record ProfileInfo(
     string UserName, string Email, string? AvatarId, DateOnly MemberSince,

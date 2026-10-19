@@ -44,6 +44,18 @@ public static class AdminEndpoints
         admin.MapPost("/questions", async (QuizItemEdit edit, ClaimsPrincipal user, AdminService svc) =>
             new { Id = await svc.SaveQuizItemAsync(edit, user.Identity!.Name!) });
 
+        // Accounts: een admin zet een tijdelijk wachtwoord voor wie het zijne vergeten is.
+        admin.MapPost("/users/reset-password", async (ResetPasswordRequest req, ClaimsPrincipal user,
+            PasswordResetService svc, ILogger<PasswordResetService> log) =>
+        {
+            var result = await svc.ResetAsync(req.UserName);
+            if (result is null)
+                return Results.NotFound(new ErrorResponse("Er bestaat geen gebruiker met die naam."));
+
+            log.LogInformation("Wachtwoord van {User} gereset door {Admin}", result.UserName, user.Identity!.Name);
+            return Results.Ok(result);
+        });
+
         // Specials
         admin.MapGet("/specials", (AdminService svc) => svc.SpecialsAsync());
         admin.MapGet("/specials/{id:int}", (int id, AdminService svc) => svc.GetSpecialAsync(id));

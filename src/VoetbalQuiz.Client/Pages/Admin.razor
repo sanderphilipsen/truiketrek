@@ -3,6 +3,7 @@
 @inject ApiClient Api
 @inject AuthState Auth
 @inject AdminState State
+@inject IJSRuntime JS
 
 <PageTitle>Admin – Truitje Trek</PageTitle>
 
@@ -81,12 +82,50 @@
                 </div>
             </section>
         }
+
+        <section class="card">
+            <h2>Wachtwoord resetten</h2>
+            <p class="muted">Voor wie zijn wachtwoord vergeten is. Je krijgt één keer een tijdelijk wachtwoord te zien: geef het door, de speler kiest daarna zelf een nieuw in Profiel.</p>
+            <form class="stack" @onsubmit="ResetPasswordAsync">
+                <label>Gebruikersnaam
+                    <input @bind="_resetName" autocomplete="off" required />
+                </label>
+                @if (_resetError is not null) { <p class="error" role="alert">@_resetError</p> }
+                @if (_reset is not null)
+                {
+                    <p class="success" role="status">
+                        Tijdelijk wachtwoord voor <b>@_reset.UserName</b>: <code>@_reset.TemporaryPassword</code>
+                    </p>
+                    <button type="button" class="btn small" @onclick="CopyPasswordAsync">@(_copied ? "Gekopieerd" : "Kopieer wachtwoord")</button>
+                    @if (_copyFailed) { <p class="muted">Kopiëren lukt hier niet: selecteer het wachtwoord hierboven.</p> }
+                }
+                <button class="btn primary" disabled="@_resetting">Wachtwoord resetten</button>
+            </form>
+        </section>
     }
 </AdminGuard>
 
 @code {
     private AdminDashboard? _d;
     private string? _error;
+    private string _resetName = "";
+    private ResetPasswordResult? _reset;
+    private string? _resetError;
+    private bool _resetting, _copied, _copyFailed;
+
+    private async Task CopyPasswordAsync()
+    {
+        _copied = await JS.InvokeAsync<bool>("truitje.copy", _reset!.TemporaryPassword);
+        _copyFailed = !_copied;
+    }
+
+    private async Task ResetPasswordAsync()
+    {
+        (_reset, _resetError, _resetting, _copied, _copyFailed) = (null, null, true, false, false);
+        try { _reset = await Api.ResetUserPasswordAsync(_resetName); _resetName = ""; }
+        catch (ApiException ex) { _resetError = ex.Message; }
+        finally { _resetting = false; }
+    }
 
     protected override async Task OnInitializedAsync()
     {
