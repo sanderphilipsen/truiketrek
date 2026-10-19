@@ -1,4 +1,4 @@
-@* Jouw tafels en de open tafels, live bijgewerkt via SignalR. *@
+@* Jouw partijtjes en de open partijtjes, live bijgewerkt via SignalR. *@
 @implements IAsyncDisposable
 @inject ApiClient Api
 @inject RealtimeClient Realtime
@@ -17,7 +17,7 @@ else
 {
     @if (ShowMine && _lobby.Mine.Count > 0)
     {
-        <h2 class="section-title">Jouw tafels</h2>
+        <h2 class="section-title">Jouw partijtjes</h2>
         <div class="tables">
             @foreach (var m in _lobby.Mine)
             {
@@ -39,10 +39,10 @@ else
         </div>
     }
 
-    <h2 class="section-title">Open tafels</h2>
+    <h2 class="section-title">Open partijtjes</h2>
     @if (_lobby.Open.Count == 0)
     {
-        <div class="card center muted">Geen open tafels.</div>
+        <div class="card center muted">Geen open partijtjes.</div>
     }
     else
     {
@@ -95,10 +95,10 @@ else
 @code {
     [Parameter] public bool ShowRecent { get; set; }
 
-    /// <summary>"Jouw tafels" tonen. Home zet dit uit en toont je tafel als banner bovenaan (via OnLoaded).</summary>
+    /// <summary>"Jouw partijtjes" tonen. Home zet dit uit en toont je partijtje als banner bovenaan (via OnLoaded).</summary>
     [Parameter] public bool ShowMine { get; set; } = true;
 
-    /// <summary>Na elke (live) lading van de lobby, bv. voor de tafel-banner op Home.</summary>
+    /// <summary>Na elke (live) lading van de lobby, bv. voor de banner op Home.</summary>
     [Parameter] public EventCallback<LobbyOverview> OnLoaded { get; set; }
 
     private LobbyOverview? _lobby;
@@ -110,7 +110,7 @@ else
         Realtime.LobbyChanged += OnLobbyChanged;
         await LoadAsync();
         try { await Realtime.WatchLobbyAsync(); }
-        catch { _error = "Live updates zijn niet beschikbaar. Ververs de pagina om nieuwe tafels te zien."; }
+        catch { _error = "Live updates zijn niet beschikbaar. Ververs de pagina om nieuwe partijtjes te zien."; }
     }
 
     private async Task OnLobbyChanged()

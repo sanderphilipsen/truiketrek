@@ -35,6 +35,20 @@
         <a href="." class="reload">Herladen</a>
         <span class="dismiss">🗙</span>
     </div>
+    <script>
+        // Kleine hulpjes voor Blazor (JS-interop).
+        window.truitje = {
+            shareCaps: () => ({ share: !!navigator.share, touch: matchMedia('(pointer: coarse)').matches }),
+            share: async data => {
+                try { await navigator.share(data); return 'ok'; }
+                catch (e) { return e && e.name === 'AbortError' ? 'cancel' : 'error'; }
+            },
+            copy: async text => {
+                try { await navigator.clipboard.writeText(text); return true; }
+                catch { return false; }
+            },
+        };
+    </script>
     <!-- Geen #[.{fingerprint}]: bij publish wordt index.html niet herschreven en zou de placeholder letterlijk blijven staan. -->
     <script src="_framework/blazor.webassembly.js"></script>
     <div id="update-banner" hidden>

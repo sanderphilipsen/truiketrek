@@ -36,7 +36,7 @@ public sealed class MonthRankingTests : IDisposable
     {
         _db.Matches.Add(new Match
         {
-            Name = "Tafel", HostUserId = players[0].UserId, Seats = players.Length, Status = MatchStatus.Finished,
+            Name = "Partijtje", HostUserId = players[0].UserId, Seats = players.Length, Status = MatchStatus.Finished,
             CreatedAt = _clock.GetUtcNow().UtcDateTime, FinishedAt = _clock.GetUtcNow().UtcDateTime,
             Players = [.. players.Select(p => new MatchPlayer { UserId = p.UserId, Rank = p.Rank, JoinedAt = _clock.GetUtcNow().UtcDateTime })],
         });

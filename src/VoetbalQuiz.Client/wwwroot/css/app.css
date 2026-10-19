@@ -409,7 +409,7 @@ select { font: inherit; padding: 8px; border-radius: 8px; border: 1.5px solid #c
 .seat-picker button.active { background: var(--pitch-2); border-color: var(--pitch-2); color: #fff; }
 .seat-picker button:disabled { opacity: .35; cursor: default; }
 
-/* Vraagtype van een tafel: één type, of met "Mix" meerdere. */
+/* Vraagtype van een partijtje: één type, of met "Mix" meerdere. */
 .type-picker { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 6px; }
 .type-picker button {
     display: flex; align-items: center; gap: 6px;
@@ -437,7 +437,7 @@ select { font: inherit; padding: 8px; border-radius: 8px; border: 1.5px solid #c
     color: inherit;
 }
 .table-card.mine { outline: 3px solid var(--accent); }
-/* Home: je zit aan een tafel, met één tik terug naar je lobby of lopende wedstrijd. */
+/* Home: je speelt mee in een partijtje, met één tik terug naar je lobby of lopende wedstrijd. */
 .tafel-banner {
     display: flex; align-items: center; gap: 12px;
     min-height: 56px; padding: 12px 14px; margin-bottom: 12px;
@@ -462,6 +462,10 @@ select { font: inherit; padding: 8px; border-radius: 8px; border: 1.5px solid #c
 .match-players li { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #eef2ef; }
 .match-players .empty-seat { color: var(--muted); }
 .match-players .empty-seat .seat { width: 40px; height: 40px; border-style: dashed; }
+.share-label { margin: 16px 0 6px; color: var(--muted); font-size: .9rem; text-align: center; }
+.share-row { display: flex; gap: 8px; }
+.share-row .btn { flex: 1 1 0; min-width: 0; padding-left: 8px; padding-right: 8px; white-space: nowrap; }
+.share-link { width: 100%; margin-top: 8px; padding: 10px; border: 1px solid #cfd8d2; border-radius: 10px; font: inherit; font-size: .9rem; }
 
 .countdown { text-align: center; color: #fff; padding: 40px 0 24px; font-weight: 700; }
 .countdown-number { font-size: 6rem; font-weight: 900; color: var(--accent); line-height: 1; animation: pop .9s ease-out infinite; }

@@ -44,6 +44,13 @@
 </section>
 
 @code {
+    /// <summary>Waar je na het aanmelden heen gaat, bv. een gedeeld partijtje (online/12).</summary>
+    [SupplyParameterFromQuery(Name = "terug")] public string? Terug { get; set; }
+
+    /// <summary>Enkel een pad binnen de app, nooit een andere site.</summary>
+    private static string SafeReturn(string? path) =>
+        path is { Length: > 0 } && !path.StartsWith('/') && !path.Contains(':') && !path.Contains('\\') ? path : "";
+
     private bool _register;
     private string _userName = "", _email = "", _password = "";
     private string? _error;
@@ -63,7 +70,7 @@
         {
             if (_register) await Auth.RegisterAsync(new RegisterRequest(_userName, _email, _password));
             else await Auth.LoginAsync(new LoginRequest(_userName, _password));
-            Nav.NavigateTo("");
+            Nav.NavigateTo(SafeReturn(Terug));
         }
         catch (ApiException ex)
         {

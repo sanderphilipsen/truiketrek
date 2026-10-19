@@ -11,7 +11,7 @@ public static class MatchEndpoints
         var matches = app.MapGroup("/api/matches").RequireAuthorization().AddEndpointFilter(QuizEndpoints.HandleQuizErrors);
 
         matches.MapGet("/", (ClaimsPrincipal user, MatchService svc) => svc.GetLobbyAsync(UserId(user)));
-        // Enkel de types die aan staan kan je kiezen voor een tafel.
+        // Enkel de types die aan staan kan je kiezen voor een partijtje.
         matches.MapGet("/types", (QuizService quiz) => quiz.ActiveTypesAsync());
         matches.MapPost("/", async (CreateMatchRequest req, ClaimsPrincipal user, MatchService svc) =>
             new { Id = await svc.CreateAsync(UserId(user), user.Identity!.Name!, req) });

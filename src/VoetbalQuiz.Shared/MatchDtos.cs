@@ -11,7 +11,7 @@ public enum MatchPhase { Lobby, Countdown, Question, Reveal, Finished, Cancelled
 /// </summary>
 public record CreateMatchRequest(string? Name, int Seats, List<QuestionType>? Types = null, bool Derby = false, int? Questions = null);
 
-/// <summary>Een tafel zoals die in de lobby verschijnt.</summary>
+/// <summary>Een partijtje zoals het in de lobby verschijnt.</summary>
 public record MatchSummary(
     int Id, string Name, string HostName, string? HostAvatarId, int Seats, int Players,
     MatchStatus Status, bool IAmIn, DateTime CreatedAt, List<QuestionType>? Types = null, bool Derby = false,
@@ -83,7 +83,7 @@ public record MatchState(
     // Na afloop van de vraag: het juiste antwoord en jouw keuze.
     AnswerResult? Result = null,
     int MyPoints = 0,
-    // Derby mode (null bij een gewone tafel).
+    // Derby mode (null bij een gewoon partijtje).
     DerbyState? Derby = null);
 
 // Online klassement & statistieken

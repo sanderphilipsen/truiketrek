@@ -3,7 +3,7 @@ using VoetbalQuiz.Shared;
 namespace VoetbalQuiz.Client.Shared;
 
 /// <summary>
-/// Wat de daily en de online tafels allebei tonen tijdens een vraag: de punten die je nu kan verdienen
+/// Wat de daily en de online partijtjes allebei tonen tijdens een vraag: de punten die je nu kan verdienen
 /// en wanneer er een nieuwe tip of stap aankomt. De server rekent de punten zelf na.
 /// </summary>
 public static class QuestionDisplay

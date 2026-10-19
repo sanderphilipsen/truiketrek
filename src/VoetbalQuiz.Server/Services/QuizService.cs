@@ -240,7 +240,7 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
 
     // ---------- Online ----------
 
-    /// <summary>De types die nu aan staan: enkel die kan je kiezen voor een online tafel.</summary>
+    /// <summary>De types die nu aan staan: enkel die kan je kiezen voor een online partijtje.</summary>
     public async Task<List<QuestionType>> ActiveTypesAsync()
     {
         var disabled = await DisabledTypesAsync();
@@ -248,7 +248,7 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
     }
 
     /// <summary>
-    /// De vragen van een online tafel (zoveel als de organisator koos, om beurten per type),
+    /// De vragen van een online partijtje (zoveel als de organisator koos, om beurten per type),
     /// of null als een type te weinig vragen heeft.
     /// Willekeurig gekozen en nooit iets uit de daily van vandaag (anders verklap je die).
     /// </summary>
@@ -259,13 +259,13 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
     }
 
     /// <summary>
-    /// Derby-wissel: één nieuwe vraag van dit type, niet uit de daily van vandaag en (zo mogelijk) nog niet aan tafel gebruikt.
+    /// Derby-wissel: één nieuwe vraag van dit type, niet uit de daily van vandaag en (zo mogelijk) nog niet in het partijtje gebruikt.
     /// Null als er geen vraag meer over is.
     /// </summary>
     public async Task<DailyQuestion?> BuildReplacementAsync(QuestionType type, IEnumerable<int> usedPlayers, IEnumerable<int> usedItems)
     {
         var (pool, dailyItems) = await OnlinePoolAsync();
-        // Geen terugval op spelers die al aan tafel waren: liever geen wissel dan een vraag die iedereen al zag.
+        // Geen terugval op spelers die al in het partijtje zaten: liever geen wissel dan een vraag die iedereen al zag.
         var used = usedPlayers.ToHashSet();
         var part = await BuildAsync(type, 1, null, QuestionTypes.Get(type).FromPlayers ? pool.Where(p => !used.Contains(p.Id)).ToList() : null,
             used, [.. dailyItems, .. usedItems]);

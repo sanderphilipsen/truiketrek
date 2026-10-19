@@ -1,5 +1,5 @@
 @* Een vraag tijdens het spelen, voor elk vraagtype: de opgave, de invoer (typen, kiezen of een jaartal) en de tips.
-   Gebruikt door de daily (Question.razor) en de online tafels (Wedstrijd.razor). Geef een @key per vraag mee. *@
+   Gebruikt door de daily (Question.razor) en de online partijtjes (Wedstrijd.razor). Geef een @key per vraag mee. *@
 
 @switch (Type)
 {
@@ -145,7 +145,7 @@
     [Parameter] public List<string> Hints { get; set; } = [];
     [Parameter] public bool Busy { get; set; }
 
-    /// <summary>Enkel kijken (bv. een toeschouwer aan een online tafel).</summary>
+    /// <summary>Enkel kijken (bv. een toeschouwer bij een online partijtje).</summary>
     [Parameter] public bool ReadOnly { get; set; }
 
     /// <summary>Stuurt een poging (een naam, een optie "0".."3" of een jaartal); null als het mislukte.</summary>

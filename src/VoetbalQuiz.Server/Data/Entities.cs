@@ -142,7 +142,7 @@ public class Match
     public DateTime? StartedAt { get; set; }
     public DateTime? FinishedAt { get; set; }
 
-    /// <summary>Gekozen vraagtypes: één type of een mix (leeg = "Wie ben ik?", zoals de oudere tafels).</summary>
+    /// <summary>Gekozen vraagtypes: één type of een mix (leeg = "Wie ben ik?", zoals de oudere partijtjes).</summary>
     public List<QuestionType> Types { get; set; } = [];
 
     /// <summary>Derby mode: elke speler krijgt bij de aftrap een wapen (zie <see cref="DerbyRules"/>).</summary>
@@ -194,7 +194,7 @@ public class MatchQuestion
     public int? QuizItemId { get; set; }
     public QuizItem? QuizItem { get; set; }
 
-    /// <summary>Opstelling: welke plaatsen ingevuld moeten worden. Voor iedereen aan tafel dezelfde.</summary>
+    /// <summary>Opstelling: welke plaatsen ingevuld moeten worden. Voor iedereen in het partijtje dezelfde.</summary>
     public List<int> Blanks { get; set; } = [];
 
     /// <summary>Counter: de spelers (ids), in de volgorde waarin ze verschijnen.</summary>

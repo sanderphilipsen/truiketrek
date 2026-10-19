@@ -37,7 +37,7 @@ public class OnlineService(QuizDbContext db, ResultsService results)
     }
 
     /// <summary>
-    /// Elo voor meerdere spelers: elke wedstrijd telt als een duel tussen elk paar spelers aan tafel.
+    /// Elo voor meerdere spelers: elke wedstrijd telt als een duel tussen elk paar spelers in het partijtje.
     /// We rekenen alles opnieuw uit vanaf de eerste wedstrijd, dus de rating is altijd consistent.
     /// </summary>
     private static (Dictionary<string, double> Current, Dictionary<string, double> Best, Dictionary<string, int> LongestWinStreak)
@@ -115,7 +115,7 @@ public class OnlineService(QuizDbContext db, ResultsService results)
         if (byUser.Count > 0)
         {
             var wins = byUser.Select(kv => (User: kv.Key, Wins: kv.Value.Count(p => p.Won))).MaxBy(x => x.Wins);
-            if (wins.Wins > 0) Add("🏅", "Meeste wedstrijdzeges", "Vaakst eerste aan tafel", wins.User, $"{wins.Wins}×");
+            if (wins.Wins > 0) Add("🏅", "Meeste wedstrijdzeges", "Vaakst eerste in een partijtje", wins.User, $"{wins.Wins}×");
 
             var top = rating.MaxBy(kv => kv.Value);
             Add("📊", "Hoogste rating", "Sterkste online speler", top.Key, $"{Math.Round(top.Value)}");
@@ -135,7 +135,7 @@ public class OnlineService(QuizDbContext db, ResultsService results)
             if (winRate.User is not null) Add("📈", "Winnaarsmentaliteit", "Hoogste winstpercentage (min. 5 wedstrijden)", winRate.User, $"{winRate.Pct}%");
 
             var busiest = byUser.MaxBy(kv => kv.Value.Count);
-            Add("🎮", "Tafelvaste", "Meeste online wedstrijden gespeeld", busiest.Key, $"{busiest.Value.Count}");
+            Add("🎮", "Vaste waarde", "Meeste online wedstrijden gespeeld", busiest.Key, $"{busiest.Value.Count}");
         }
 
         var mine = byUser.GetValueOrDefault(userId) ?? [];

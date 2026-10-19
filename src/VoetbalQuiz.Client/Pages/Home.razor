@@ -18,11 +18,11 @@
 
 @foreach (var t in _myTables)
 {
-    @* Je zit aan een tafel: meteen terug naar je lobby of je lopende wedstrijd. *@
+    @* Je speelt mee in een partijtje: meteen terug naar je lobby of je lopende wedstrijd. *@
     <a class="tafel-banner" href="online/@t.Id">
         <span class="tafel-banner-icon" aria-hidden="true">@(t.Status == MatchStatus.Running ? "🔴" : "⚔️")</span>
         <span class="tafel-banner-text">
-            <b>@(t.Status == MatchStatus.Running ? "Je wedstrijd is bezig" : $"Je tafel wacht ({t.Players}/{t.Seats})")</b>
+            <b>@(t.Status == MatchStatus.Running ? "Je wedstrijd is bezig" : $"Je partijtje wacht ({t.Players}/{t.Seats})")</b>
             <small>@t.Name</small>
         </span>
         <span class="tafel-banner-go">@(t.Status == MatchStatus.Running ? "Verder" : "Open") ›</span>
@@ -129,7 +129,7 @@
     <CreateTableForm UserName="@Auth.User?.UserName" Collapsible="true" />
 </section>
 
-@* Jouw tafels staan als banner bovenaan; hier enkel de open tafels om bij aan te schuiven. *@
+@* Jouw partijtjes staan als banner bovenaan; hier enkel de open partijtjes om aan mee te doen. *@
 <OpenTables ShowMine="false" OnLoaded="l => _myTables = l.Mine" />
 
 @if (_specials.Any(s => s.IsUpcoming))

@@ -14,7 +14,7 @@ Een mobiele quiz-app (Blazor WebAssembly PWA) om met vrienden te spelen. Elke da
 - **Dagwinnaar:** na middernacht wordt de winnaar van de dag vastgelegd. Bij gelijke stand wint wie meer juist had, dan wie minder fout gokte, dan wie het eerst klaar was. De dagwinnaar krijgt **+50 punten** in het maandklassement (`DailyWinnerBonus`).
 - **Statistieken:** je eigen cijfers, een eregalerij met records (meeste dagzeges, hoogste dagscore, eeuwige tweede, snelste vinger, scherpschutter, …), alle Gouden Ballen en de moeilijkste spelers.
 
-- **Home:** start de daily, zie je voortgang, maak een online tafel of schuif aan bij een open tafel. Het daily-overzicht staat op `/daily`.
+- **Home:** start de daily, zie je voortgang, maak een online partijtje of doe mee met een open partijtje. Het daily-overzicht staat op `/daily`.
 - **Menu onderaan:** Home, Klassement, Badges, Stats en Profiel. De daily en online spelen start je vanaf Home.
 - **Profiel:** links je level, cijfers en badges; rechts de tabbladen Avatar, Level (XP-overzicht) en Account (wachtwoord, feedback, afmelden). Avatar kiezen: een bekende voetballer, of **zelf samenstellen**. Je kiest huidskleur, kapsel, haarkleur, gezichtsbeharing, shirtkleuren, patroon, rugnummer, bril en haarband. Je kan ook vertrekken van een voetballer en die aanpassen. Een zelfgemaakte avatar wordt als korte code opgeslagen (`c1:…`) met enkel waarden uit vaste paletten ([Avatars.cs](src/VoetbalQuiz.Shared/Avatars.cs)). De avatars zijn getekend (SVG), geen foto's.
 - **Levels:** XP voor elke gespeelde vraag (+10), voor juiste antwoorden (punten / 5), voor een volledige dag (+50), voor 10 op 10 (+50) en per dagzege (+100). Elk level vraagt 100 XP meer dan het vorige en er is geen maximum. Titels gaan van Jeugdspeler tot Legende ([Levels.cs](src/VoetbalQuiz.Shared/Levels.cs)).
@@ -83,17 +83,17 @@ Er zijn twee klassementen:
 
 ### Badges, seizoenen en head-to-head
 
-- **57 badges** (brons, zilver, goud): regelmaat (7 dagen op rij, volle week), snelheid, per vraagtype (Historicus, Scout, Bondscoach, Emoji-expert, …), thema's (Rode Duivels-fan, Champions League-kenner), online (Tafelkoning, Volle tafel, Elo-meester), Gouden Bal (Zilveren Bal, Titelverdediger, Gouden hattrick, Messi-niveau), lange adem (Seizoenkaart, IJzeren man, GOAT) en karakter (Clean sheet, Doorzetter, Op de valreep). Bekijk ze via **🎖️ Badges** in het menu, met je voortgang per badge.
+- **57 badges** (brons, zilver, goud): regelmaat (7 dagen op rij, volle week), snelheid, per vraagtype (Historicus, Scout, Bondscoach, Emoji-expert, …), thema's (Rode Duivels-fan, Champions League-kenner), online (Partijtjeskoning, Vol partijtje, Elo-meester), Gouden Bal (Zilveren Bal, Titelverdediger, Gouden hattrick, Messi-niveau), lange adem (Seizoenkaart, IJzeren man, GOAT) en karakter (Clean sheet, Doorzetter, Op de valreep). Bekijk ze via **🎖️ Badges** in het menu, met je voortgang per badge.
 - **Seizoenen:** elke maand is een seizoen. De top 3 van het daily- en het online maandklassement krijgt een beker in de prijzenkast.
 - **Spelersprofiel:** tik op een naam in een klassement. Je ziet hun badges en bekers, en **jij tegen hen**: onderlinge daily-dagen en online wedstrijden.
 
 ### Online mode
 
-- Maak een tafel (naam + 2 tot 8 plaatsen) en kies een **vraagtype**, of met 🎲 **Mix** meerdere types. Enkel de types die aan staan in Admin → Planning kan je kiezen. Anderen zien de tafel (met het type) live in de lobby en kunnen aanschuiven. De organisator start.
+- Maak een partijtje (naam + 2 tot 8 plaatsen) en kies een **vraagtype**, of met 🎲 **Mix** meerdere types. Enkel de types die aan staan in Admin → Planning kan je kiezen. Anderen zien het partijtje (met het type) live in de lobby en kunnen meedoen. De organisator start.
 - De vragen, tijden en punten zijn dezelfde als in de daily (`QuestionEngine`); een mix volgt dezelfde verdeling (`QuestionTypes.Mix`, bv. 5 vragen bij enkel opstellingen). Bovenop je punten komt een **positiebonus** voor wie het eerst juist is: 1e +50, 2e +30, 3e +15 ([MatchRules.cs](src/VoetbalQuiz.Shared/MatchRules.cs)). Deelpunten (een jaartal er net naast, een half ingevulde opstelling of counter) tellen ook, maar zonder bonus.
 - Een vraag stopt zodra iedereen klaar is (juist, gepast of een keuze gemaakt). Daarna zie je 6 seconden het antwoord en de volgorde.
 - Spelers en vragen uit de daily van vandaag komen niet voor, zodat online spelen de daily niet verklapt. Online kiest willekeurig en verstoort de rotatie van de daily niet.
-- Wordt een type uitgeschakeld voor de tafel start, dan valt het uit de mix; blijft er niets over, dan kan de tafel niet starten.
+- Wordt een type uitgeschakeld voor het partijtje start, dan valt het uit de mix; blijft er niets over, dan kan het partijtje niet starten.
 - Live updates gaan via SignalR (`/hubs/match`). De klok en de punten zitten op de server; `MatchEngine` zet de wedstrijden elke 250 ms verder.
 - Het online klassement staat los van de daily: een **Elo-rating** (iedereen start op 1000) en een maandklassement. In de stats staan online records: meeste zeges, hoogste rating, snelste schutter, onklopbaar, … Een wedstrijd levert ook XP op (+25, winst +75).
 

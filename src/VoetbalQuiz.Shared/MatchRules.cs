@@ -24,7 +24,7 @@ public static class MatchRules
 
     /// <summary>
     /// Een zege telt (Elo, reeksen, badges, XP, maandklassement) pas als er minstens zoveel spelers tot het einde bleven.
-    /// Wie als enige overblijft wint wel aan tafel, maar dat telt nergens als zege: anders win je gratis door
+    /// Wie als enige overblijft wint het partijtje wel, maar dat telt nergens als zege: anders win je gratis door
     /// de anderen te laten vertrekken.
     /// </summary>
     public const int StayersForWin = 2;
@@ -36,7 +36,7 @@ public static class MatchRules
     /// <summary>Hoe lang het antwoord en de tussenstand getoond worden na een vraag.</summary>
     public const double RevealSeconds = 6;
 
-    /// <summary>Een tafel in de lobby die niet start, verdwijnt na deze tijd.</summary>
+    /// <summary>Een partijtje in de lobby dat niet start, verdwijnt na deze tijd.</summary>
     public static readonly TimeSpan LobbyTimeout = TimeSpan.FromHours(2);
 
     /// <summary>Bonus voor de 1e, 2e en 3e die juist antwoordt.</summary>

@@ -1,5 +1,10 @@
 @inject NavigationManager Nav
 
 @code {
-    protected override void OnInitialized() => Nav.NavigateTo("login", replace: true);
+    // Onthoud waar je naartoe wou (bv. een gedeeld partijtje), zodat je daar na het aanmelden terechtkomt.
+    protected override void OnInitialized()
+    {
+        var back = Nav.ToBaseRelativePath(Nav.Uri);
+        Nav.NavigateTo(back.Length == 0 ? "login" : $"login?terug={Uri.EscapeDataString(back)}", replace: true);
+    }
 }

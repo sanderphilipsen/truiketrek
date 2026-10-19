@@ -35,7 +35,7 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
         new("dagkoning", "🏅", "Dagkoning", "Win 10 keer de daily", BadgeTier.Goud, f => f.DaysWon, 10),
         new("online-debuut", "⚔️", "Online debuut", "Speel een online wedstrijd uit", BadgeTier.Brons, f => f.MatchesPlayed, 1),
         new("eerste-zege", "🥇", "Eerste zege", "Win een online wedstrijd", BadgeTier.Brons, f => f.MatchesWon, 1),
-        new("tafelkampioen", "🏆", "Tafelkampioen", "Win 10 online wedstrijden", BadgeTier.Goud, f => f.MatchesWon, 10),
+        new("tafelkampioen", "🏆", "Partijtjeskampioen", "Win 10 online wedstrijden", BadgeTier.Goud, f => f.MatchesWon, 10),
         new("feestganger", "✨", "Feestganger", "Speel een special", BadgeTier.Brons, f => f.SpecialsPlayed, 1),
         new("specialist", "🎉", "Specialist", "Win een special", BadgeTier.Goud, f => f.SpecialsWon, 1),
         new("seizoenskampioen", "⚽", "Gouden Bal", "Win de Gouden Bal: word nummer 1 van een maand", BadgeTier.Goud, f => f.GoldenBalls, 1),
@@ -74,8 +74,8 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
         // Online
         new("vaste-gast", "🪑", "Vaste gast", "Speel 25 online wedstrijden", BadgeTier.Zilver, f => f.MatchesPlayed, 25),
         new("online-veteraan", "🎖️", "Online veteraan", "Speel 100 online wedstrijden", BadgeTier.Goud, f => f.MatchesPlayed, 100),
-        new("tafelkoning", "🤴", "Tafelkoning", "Win 3 online wedstrijden op rij", BadgeTier.Goud, f => f.OnlineWinStreak, 3),
-        new("volle-tafel", "🍽️", "Volle tafel", "Win een online wedstrijd tegen minstens 3 tegenstanders", BadgeTier.Zilver, f => f.BigTableWins, 1),
+        new("tafelkoning", "🤴", "Partijtjeskoning", "Win 3 online wedstrijden op rij", BadgeTier.Goud, f => f.OnlineWinStreak, 3),
+        new("volle-tafel", "👥", "Vol partijtje", "Win een online wedstrijd tegen minstens 3 tegenstanders", BadgeTier.Zilver, f => f.BigTableWins, 1),
         new("elo-meester", "📈", "Elo-meester", "Bereik een online rating van 1200", BadgeTier.Goud, f => f.Rating, 1200),
 
         // Lange adem
@@ -189,7 +189,7 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
 
         var challengeWins = await db.DailyChallenges.Where(c => c.WinnerUserId == userId)
             .Select(c => c.SpecialEventId != null).ToListAsync();
-        // Een zege telt enkel als er genoeg spelers bleven; een grote tafel = 4 spelers die bleven.
+        // Een zege telt enkel als er genoeg spelers bleven; een groot partijtje = 4 spelers die bleven.
         var bigTableWins = await db.MatchPlayers.CountAsync(p => p.UserId == userId && p.Rank == 1
             && p.Match.Status == MatchStatus.Finished && p.Match.Players.Count(o => o.LeftAt == null) >= 4);
         var matches = await db.MatchPlayers.Where(p => p.UserId == userId && p.Match.Status == MatchStatus.Finished)
@@ -326,7 +326,7 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
             .Select(g => (Me: g.Single(t => t.UserId == me).Points, Other: g.Single(t => t.UserId == other).Points))
             .ToList();
 
-        // Online: wedstrijden aan dezelfde tafel, wie eindigde hoger?
+        // Online: wedstrijden in hetzelfde partijtje, wie eindigde hoger?
         var ranks = await db.MatchPlayers
             .Where(p => (p.UserId == me || p.UserId == other) && p.Match.Status == MatchStatus.Finished)
             .Select(p => new { p.MatchId, p.UserId, p.Rank })

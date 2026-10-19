@@ -42,7 +42,7 @@ else
             <div class="h2h-row">
                 <span class="h2h-label">Online</span>
                 <span class="h2h-score"><b>@h.MyMatchWins</b> – <b>@h.TheirMatchWins</b></span>
-                <small class="muted">@h.MatchesTogether wedstrijden aan dezelfde tafel</small>
+                <small class="muted">@h.MatchesTogether wedstrijden in hetzelfde partijtje</small>
             </div>
             <p class="center h2h-verdict">@Verdict(h)</p>
         </section>
@@ -68,7 +68,7 @@ else
     {
         var mine = h.MyDailyWins + h.MyMatchWins;
         var theirs = h.TheirDailyWins + h.TheirMatchWins;
-        if (mine + theirs == 0) return "Nog geen onderlinge duels. Tijd voor een tafel!";
+        if (mine + theirs == 0) return "Nog geen onderlinge duels. Tijd voor een partijtje!";
         return mine > theirs ? "😎 Jij hebt de bovenhand." : mine < theirs ? $"😬 {UserName} is (voorlopig) sterker." : "🤝 Perfect in evenwicht.";
     }
 }

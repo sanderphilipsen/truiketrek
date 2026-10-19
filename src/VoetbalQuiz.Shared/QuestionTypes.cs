@@ -56,7 +56,7 @@ public static class QuestionTypes
     }
 
     /// <summary>
-    /// Een mix met een vast aantal vragen (een online tafel): om beurten één vraag per type,
+    /// Een mix met een vast aantal vragen (een online partijtje): om beurten één vraag per type,
     /// zonder puntenplafond want online telt niet voor de daglimiet.
     /// </summary>
     public static Dictionary<QuestionType, int> Mix(IEnumerable<QuestionType> types, int questions)
@@ -85,7 +85,7 @@ public static class QuestionTypes
     public static string DayLabel(DailyOverview day) =>
         day.IsMix ? $"🎲 Mix {Icons(day.Types!)}" : $"{Get(day.Type).Icon} {Get(day.Type).Name}";
 
-    /// <summary>Zelfde label voor een lijst types (bv. van een online tafel); leeg = "Wie ben ik?".</summary>
+    /// <summary>Zelfde label voor een lijst types (bv. van een online partijtje); leeg = "Wie ben ik?".</summary>
     public static string Label(IReadOnlyCollection<QuestionType>? types) => types switch
     {
         { Count: > 1 } => $"🎲 Mix {Icons(types)}",

@@ -1,0 +1,63 @@
+@* Een partijtje delen: het deelmenu van de gsm als dat er is, anders WhatsApp, Messenger en kopiëren. *@
+@inject NavigationManager Nav
+@inject IJSRuntime JS
+
+<div class="share">
+    @if (_fallback)
+    {
+        <p class="share-label">Nodig vrienden uit</p>
+        <div class="share-row">
+            <a class="btn small" href="@($"https://wa.me/?text={Uri.EscapeDataString($"{Text} {Link}")}")" target="_blank" rel="noopener">WhatsApp</a>
+            @if (_touch)
+            {
+                <a class="btn small" href="@($"fb-messenger://share/?link={Uri.EscapeDataString(Link)}")">Messenger</a>
+            }
+            <button class="btn small" @onclick="CopyAsync">@(_copied ? "Gekopieerd" : "Kopieer link")</button>
+        </div>
+        @if (_copyFailed)
+        {
+            <input class="share-link" readonly value="@Link" aria-label="Link naar het partijtje" onfocus="this.select()" />
+        }
+    }
+    else
+    {
+        <button class="btn big share-btn" @onclick="ShareAsync">Nodig vrienden uit</button>
+    }
+</div>
+
+@code {
+    [Parameter, EditorRequired] public int Id { get; set; }
+    [Parameter, EditorRequired] public string Name { get; set; } = "";
+
+    private bool _fallback, _touch, _copied, _copyFailed;
+
+    private string Link => $"{Nav.BaseUri}online/{Id}";
+    private string Text => $"Doe mee met mijn partijtje \"{Name}\" in Truitje Trek:";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender) return;
+        var caps = await JS.InvokeAsync<ShareCaps>("truitje.shareCaps");
+        _touch = caps.Touch;
+        if (!caps.Share)
+        {
+            _fallback = true;
+            StateHasChanged();
+        }
+    }
+
+    private async Task ShareAsync()
+    {
+        // "cancel": de speler sloot het deelmenu; "error": delen lukt hier niet, dan de losse knoppen.
+        var result = await JS.InvokeAsync<string>("truitje.share", new { title = "Truitje Trek", text = Text, url = Link });
+        if (result == "error") _fallback = true;
+    }
+
+    private async Task CopyAsync()
+    {
+        _copied = await JS.InvokeAsync<bool>("truitje.copy", Link);
+        _copyFailed = !_copied;
+    }
+
+    private record ShareCaps(bool Share, bool Touch);
+}

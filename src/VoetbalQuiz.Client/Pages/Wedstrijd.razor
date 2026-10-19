@@ -8,7 +8,7 @@
 
 <PageTitle>@(_state?.Name ?? "Wedstrijd") – Truitje Trek</PageTitle>
 
-@* Weggaan tijdens een wedstrijd = de tafel verlaten (en je punten kwijt): eerst bevestigen. *@
+@* Weggaan tijdens een wedstrijd = het partijtje verlaten (en je punten kwijt): eerst bevestigen. *@
 <NavigationLock OnBeforeInternalNavigation="OnLeavingPageAsync" ConfirmExternalNavigation="@InGame" />
 
 <div class="question-head">
@@ -41,7 +41,7 @@ else
         case MatchPhase.Lobby:
             <section class="card">
                 <h1>@_state.Name</h1>
-                <p class="muted">@_state.Players.Count / @_state.Seats spelers aan tafel</p>
+                <p class="muted">@_state.Players.Count / @_state.Seats spelers in het partijtje</p>
                 <p><b>@QuestionTypes.Label(_state.Types)</b> <span class="muted">· @_state.TotalQuestions vragen</span></p>
                 @if (_state.Derby is not null)
                 {
@@ -95,10 +95,15 @@ else
                     <button class="btn primary big" @onclick="JoinAsync" disabled="@_busy">Aanschuiven</button>
                 }
 
+                @if (_state.IAmIn && _state.Players.Count < _state.Seats)
+                {
+                    <TafelDelen Id="Id" Name="@_state.Name" />
+                }
+
                 @if (_state.IAmIn)
                 {
                     <button class="linkish center-block" @onclick="LeaveAsync">
-                        @(_state.IsHost ? "Tafel opheffen" : "Tafel verlaten")
+                        @(_state.IsHost ? "Partijtje opheffen" : "Partijtje verlaten")
                     </button>
                 }
             </section>
@@ -310,7 +315,7 @@ else
 
         case MatchPhase.Cancelled:
             <div class="card center">
-                <h1>Tafel opgeheven</h1>
+                <h1>Partijtje opgeheven</h1>
                 <p class="muted">Deze wedstrijd gaat niet (meer) door.</p>
                 <a class="btn primary" href="online">Naar de lobby</a>
             </div>

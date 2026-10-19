@@ -5,10 +5,10 @@ using VoetbalQuiz.Shared;
 namespace VoetbalQuiz.Server.Services;
 
 /// <summary>
-/// Online wedstrijden: tafels aanmaken, joinen, starten en antwoorden.
+/// Online wedstrijden: partijtjes aanmaken, joinen, starten en antwoorden.
 /// De organisator kiest een vraagtype of een mix; wat per type verschilt, doet <see cref="QuestionEngine"/> (net als in de daily).
 /// De overgangen in de tijd (vraag afsluiten, volgende vraag, einde) doet <see cref="MatchEngine"/>.
-/// Een derby-tafel heeft daarbovenop wapens (zie <see cref="DerbyRules"/>).
+/// Een derby-partijtje heeft daarbovenop wapens (zie <see cref="DerbyRules"/>).
 /// </summary>
 public class MatchService(
     QuizDbContext db, TimeProvider clock, ResultsService results, QuizService quiz, IMatchNotifier notifier, Random? random = null)
@@ -50,7 +50,7 @@ public class MatchService(
 
     public async Task<int> CreateAsync(string userId, string userName, CreateMatchRequest req)
     {
-        var name = string.IsNullOrWhiteSpace(req.Name) ? $"Tafel van {userName}" : req.Name.Trim();
+        var name = string.IsNullOrWhiteSpace(req.Name) ? $"Partijtje van {userName}" : req.Name.Trim();
         if (name.Length > 40) name = name[..40];
 
         var types = TypesOf(req.Types);
@@ -83,7 +83,7 @@ public class MatchService(
         var match = await LoadAsync(matchId);
         if (match.Players.Any(p => p.UserId == userId)) return;
         if (match.Status != MatchStatus.Lobby) throw new QuizException("Deze wedstrijd is al begonnen.");
-        if (match.Players.Count >= match.Seats) throw new QuizException("Deze tafel is vol.");
+        if (match.Players.Count >= match.Seats) throw new QuizException("Dit partijtje is vol.");
 
         match.Players.Add(new MatchPlayer { UserId = userId, JoinedAt = Now });
         await SaveAndNotifyAsync(match);
@@ -92,11 +92,11 @@ public class MatchService(
     public async Task LeaveAsync(string userId, int matchId)
     {
         var match = await LoadAsync(matchId);
-        var me = match.Players.SingleOrDefault(p => p.UserId == userId) ?? throw new QuizException("Je zit niet aan deze tafel.");
+        var me = match.Players.SingleOrDefault(p => p.UserId == userId) ?? throw new QuizException("Je speelt niet mee in dit partijtje.");
 
         if (match.Status == MatchStatus.Lobby)
         {
-            if (match.HostUserId == userId) match.Status = MatchStatus.Cancelled; // organisator weg = tafel weg
+            if (match.HostUserId == userId) match.Status = MatchStatus.Cancelled; // organisator weg = partijtje weg
             else match.Players.Remove(me);
         }
         else if (match.Status == MatchStatus.Running && me.LeftAt is null)
@@ -129,7 +129,7 @@ public class MatchService(
         // Werd een type intussen uitgeschakeld, dan valt het weg; de rest van de mix blijft.
         var active = await quiz.ActiveTypesAsync();
         var types = TypesOf(match.Types).Where(active.Contains).ToList();
-        if (types.Count == 0) throw new QuizException("Het gekozen vraagtype staat intussen uit. Maak een nieuwe tafel.");
+        if (types.Count == 0) throw new QuizException("Het gekozen vraagtype staat intussen uit. Maak een nieuw partijtje.");
 
         // Willekeurige vragen, maar niets uit de daily van vandaag (anders verklap je die).
         var questions = await quiz.BuildOnlineAsync(types, match.QuestionCount)
@@ -149,7 +149,7 @@ public class MatchService(
 
         if (match.Derby)
         {
-            // Elke speler één wapen; Trump enkel als er keuzevragen aan tafel komen.
+            // Elke speler één wapen; Trump enkel als er keuzevragen in het partijtje komen.
             var players = match.Players.OrderBy(p => p.JoinedAt).ToList();
             var armed = questions.Skip(1).SkipLast(1); // de eerste en de laatste vraag: wapenstilstand
             var weapons = DerbyRules.Deal(players.Count, armed.Any(q => DerbyRules.TrumpWorksOn(q.Type)), _random);
@@ -162,7 +162,7 @@ public class MatchService(
         await SaveAndNotifyAsync(match);
     }
 
-    /// <summary>De types van een tafel; leeg (oudere tafels) = "Wie ben ik?".</summary>
+    /// <summary>De types van een partijtje; leeg (oudere partijtjes) = "Wie ben ik?".</summary>
     private static List<QuestionType> TypesOf(List<QuestionType>? types) =>
         types is { Count: > 0 } ? [.. types.Distinct().Order()] : [QuestionType.WieBenIk];
 
@@ -285,7 +285,7 @@ public class MatchService(
         var match = await LoadAsync(matchId);
         if (!match.Derby) throw new QuizException("Dit is geen derby.");
         var me = match.Players.SingleOrDefault(p => p.UserId == userId && p.LeftAt == null)
-            ?? throw new QuizException("Je zit niet aan deze tafel.");
+            ?? throw new QuizException("Je speelt niet mee in dit partijtje.");
         if (me.Weapon is not { } weapon) throw new QuizException("Je hebt geen wapen.");
 
         var targetPlayer = DerbyRules.NeedsTarget(weapon)

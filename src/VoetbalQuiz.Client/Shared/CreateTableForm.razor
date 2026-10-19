@@ -1,17 +1,17 @@
-@* Een online tafel aanmaken: naam (optioneel), aantal plaatsen, het vraagtype (één type of een mix van de types die aan staan) en het aantal vragen. *@
+@* Een online partijtje aanmaken: naam (optioneel), aantal plaatsen, het vraagtype (één type of een mix van de types die aan staan) en het aantal vragen. *@
 @inject ApiClient Api
 @inject NavigationManager Nav
 
 @if (Collapsible && !_open)
 {
     @* Meedoen is vaker nodig dan aanmaken: het lange formulier klapt pas open als je erom vraagt. *@
-    <button type="button" class="btn big tafel-new" aria-expanded="false" @onclick="() => _open = true">＋ Nieuwe tafel maken</button>
+    <button type="button" class="btn big tafel-new" aria-expanded="false" @onclick="() => _open = true">＋ Nieuw partijtje</button>
 }
 else
 {
 <form class="stack" @onsubmit="CreateAsync">
     <label><span>Naam <span class="optional">(optioneel)</span></span>
-        <input @bind="_name" maxlength="40" placeholder="Tafel van @UserName" />
+        <input @bind="_name" maxlength="40" placeholder="Partijtje van @UserName" />
     </label>
     <div>
         <div class="field-label">Aantal plaatsen</div>
@@ -75,14 +75,14 @@ else
         <span class="switch" aria-hidden="true"></span>
     </button>
     @if (_error is not null) { <p class="error" role="alert">@_error</p> }
-    <button class="btn primary" disabled="@(_busy || _active is null || _chosen.Count == 0 || MixIncomplete)">Tafel aanmaken</button>
+    <button class="btn primary" disabled="@(_busy || _active is null || _chosen.Count == 0 || MixIncomplete)">Partijtje aanmaken</button>
 </form>
 }
 
 @code {
     [Parameter] public string? UserName { get; set; }
 
-    /// <summary>Formulier standaard ingeklapt achter de knop "Nieuwe tafel maken".</summary>
+    /// <summary>Formulier standaard ingeklapt achter de knop "Nieuw partijtje".</summary>
     [Parameter] public bool Collapsible { get; set; }
 
     private bool _open;

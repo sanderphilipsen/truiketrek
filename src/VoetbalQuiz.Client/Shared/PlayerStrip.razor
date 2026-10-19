@@ -1,4 +1,4 @@
-@* Compacte rij met alle spelers aan tafel, hun score en of ze al geantwoord hebben.
+@* Compacte rij met alle spelers in het partijtje, hun score en of ze al geantwoord hebben.
    Derby: kaartjes bij wie rood kreeg of omgekocht is, en bij het kiezen van een doelwit worden de tegenstanders aantikbaar. *@
 <div class="player-strip @(Picking ? "picking" : "")">
     @foreach (var p in Players.Where(p => !p.Left))

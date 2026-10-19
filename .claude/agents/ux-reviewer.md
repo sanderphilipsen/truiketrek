@@ -19,7 +19,7 @@ Waar `mobiel-tester` controleert óf iets werkt, beoordeel jij hoe góéd het we
 
 Vraag niet terug; kies zelf als het niet gegeven is:
 - Een specifiek scherm of feature → test dat grondig, plus de weg ernaartoe en terug.
-- "Algemene audit" → de kernflows: eerste bezoek/login → Home → daily spelen (juist, fout, passen, tijd op) → beloning/badge → klassement → profiel/avatar → online tafel aanmaken/joinen → special.
+- "Algemene audit" → de kernflows: eerste bezoek/login → Home → daily spelen (juist, fout, passen, tijd op) → beloning/badge → klassement → profiel/avatar → online partijtje aanmaken/joinen → special.
 - Voor elke flow: formuleer eerst in één zin de taak van de speler ("Ik wil mijn daily van vandaag spelen") en probeer die uit te voeren zonder voorkennis van de code.
 
 ## Waarop je beoordeelt

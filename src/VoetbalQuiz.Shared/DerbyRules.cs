@@ -6,7 +6,7 @@ public enum DerbyWeapon { RodeKaart, BengaalsVuur, Wissel, Trump, Gokchinees, Ve
 public record DerbyWeaponInfo(DerbyWeapon Weapon, string Name, string Icon, string HowTo);
 
 /// <summary>
-/// Regels voor de derby mode van een online tafel. Zowel de server (beslist) als de client (toont de knop) gebruiken ze.
+/// Regels voor de derby mode van een online partijtje. Zowel de server (beslist) als de client (toont de knop) gebruiken ze.
 /// Een wapen kan je inzetten tijdens een vraag, of klaarzetten tijdens het aftellen of de tussenstand: dan gaat het af bij de volgende vraag.
 /// </summary>
 public static class DerbyRules
@@ -74,7 +74,7 @@ public static class DerbyRules
 
     /// <summary>
     /// Deelt de wapens uit: alle wapens worden geschud en om de beurt uitgedeeld, zodat er pas dubbels zijn
-    /// als er meer spelers dan wapens zijn. Zonder keuzevragen aan tafel valt Trump weg.
+    /// als er meer spelers dan wapens zijn. Zonder keuzevragen in het partijtje valt Trump weg.
     /// </summary>
     public static List<DerbyWeapon> Deal(int players, bool trumpPossible, Random random)
     {

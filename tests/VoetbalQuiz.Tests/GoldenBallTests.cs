@@ -41,7 +41,7 @@ public sealed class GoldenBallTests : IDisposable
         var now = _clock.GetUtcNow().UtcDateTime;
         _db.Matches.Add(new Match
         {
-            Name = "Tafel", HostUserId = players[0].UserId, Seats = players.Length, Status = MatchStatus.Finished,
+            Name = "Partijtje", HostUserId = players[0].UserId, Seats = players.Length, Status = MatchStatus.Finished,
             CreatedAt = now, FinishedAt = now,
             Players = [.. players.Select(p => new MatchPlayer { UserId = p.UserId, Rank = p.Rank, JoinedAt = now })],
         });
