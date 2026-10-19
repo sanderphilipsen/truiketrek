@@ -6,12 +6,12 @@
 
 @if (_error is not null)
 {
-    <p class="error">@_error</p>
+    <p class="error" role="alert">@_error</p>
     <a class="btn" href="">Naar de startpagina</a>
 }
 else if (_overview is null || _info is null)
 {
-    <div class="center-msg">Laden…</div>
+    <div class="center-msg"><Spinner /></div>
 }
 else
 {

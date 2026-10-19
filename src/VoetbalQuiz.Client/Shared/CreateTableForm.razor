@@ -2,6 +2,13 @@
 @inject ApiClient Api
 @inject NavigationManager Nav
 
+@if (Collapsible && !_open)
+{
+    @* Meedoen is vaker nodig dan aanmaken: het lange formulier klapt pas open als je erom vraagt. *@
+    <button type="button" class="btn big tafel-new" aria-expanded="false" @onclick="() => _open = true">＋ Nieuwe tafel maken</button>
+}
+else
+{
 <form class="stack" @onsubmit="CreateAsync">
     <label><span>Naam van je tafel <span class="optional">(optioneel)</span></span>
         <input @bind="_name" maxlength="40" placeholder="Tafel van @UserName" />
@@ -12,7 +19,7 @@
             @for (var n = MatchRules.MinSeats; n <= MatchRules.MaxSeats; n++)
             {
                 var seats = n;
-                <button type="button" class="@(_seats == seats ? "active" : "")" @onclick="() => _seats = seats">@seats</button>
+                <button type="button" class="@(_seats == seats ? "active" : "")" aria-pressed="@(_seats == seats ? "true" : "false")" @onclick="() => _seats = seats">@seats</button>
             }
         </div>
     </div>
@@ -20,7 +27,7 @@
         <div class="field-label">Vraagtype</div>
         @if (_active is null)
         {
-            <p class="muted">Laden…</p>
+            <p class="muted"><Spinner Small="true" /></p>
         }
         else
         {
@@ -29,13 +36,13 @@
                 {
                     var type = t.Type;
                     <button type="button" class="@(_chosen.Contains(type) ? "active" : "")" title="@t.HowTo"
-                            aria-pressed="@_chosen.Contains(type)" @onclick="() => Pick(type)">
+                            aria-pressed="@(_chosen.Contains(type) ? "true" : "false")" @onclick="() => Pick(type)">
                         <span class="tp-icon">@t.Icon</span> @t.Name
                     </button>
                 }
                 @if (_active.Count > 1)
                 {
-                    <button type="button" class="mix @(_mix ? "active" : "")" aria-pressed="@_mix" @onclick="ToggleMix">
+                    <button type="button" class="mix @(_mix ? "active" : "")" aria-pressed="@(_mix ? "true" : "false")" @onclick="ToggleMix">
                         <span class="tp-icon">🎲</span> Mix
                     </button>
                 }
@@ -49,7 +56,7 @@
             @foreach (var n in MatchRules.QuestionChoices)
             {
                 var count = n;
-                <button type="button" class="@(Questions == count ? "active" : "")" aria-pressed="@(Questions == count)"
+                <button type="button" class="@(Questions == count ? "active" : "")" aria-pressed="@(Questions == count ? "true" : "false")"
                         disabled="@(count < MinQuestions)" title="@(count < MinQuestions ? "Minstens één vraag per gekozen type" : null)"
                         @onclick="() => _questions = count">@count</button>
             }
@@ -67,12 +74,18 @@
         </span>
         <span class="switch" aria-hidden="true"></span>
     </button>
-    @if (_error is not null) { <p class="error">@_error</p> }
+    @if (_error is not null) { <p class="error" role="alert">@_error</p> }
     <button class="btn primary" disabled="@(_busy || _active is null || _chosen.Count == 0 || MixIncomplete)">Tafel aanmaken</button>
 </form>
+}
 
 @code {
     [Parameter] public string? UserName { get; set; }
+
+    /// <summary>Formulier standaard ingeklapt achter de knop "Nieuwe tafel maken".</summary>
+    [Parameter] public bool Collapsible { get; set; }
+
+    private bool _open;
 
     private string _name = "";
     private int _seats = 4;

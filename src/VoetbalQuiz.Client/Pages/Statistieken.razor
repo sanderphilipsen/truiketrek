@@ -6,19 +6,19 @@
 <PageTitle>Statistieken – Truitje Trek</PageTitle>
 
 <div class="mode-switch">
-    <button class="@(_online ? "" : "active")" @onclick="() => _online = false">📅 Daily</button>
-    <button class="@(_online ? "active" : "")" @onclick="ShowOnlineAsync">⚔️ Online</button>
+    <button class="@(_online ? "" : "active")" aria-pressed="@(_online ? "false" : "true")" @onclick="() => _online = false">📅 Daily</button>
+    <button class="@(_online ? "active" : "")" aria-pressed="@(_online ? "true" : "false")" @onclick="ShowOnlineAsync">⚔️ Online</button>
 </div>
 
 @if (_error is not null)
 {
-    <p class="error">@_error</p>
+    <p class="error" role="alert">@_error</p>
 }
 else if (_online)
 {
     @if (_onlineStats is null)
     {
-        <div class="center-msg">Laden…</div>
+        <div class="center-msg"><Spinner /></div>
     }
     else
     {
@@ -41,7 +41,7 @@ else if (_online)
 }
 else if (_stats is null)
 {
-    <div class="center-msg">Laden…</div>
+    <div class="center-msg"><Spinner /></div>
 }
 else
 {

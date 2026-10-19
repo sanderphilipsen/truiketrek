@@ -15,24 +15,24 @@
     <a href="online" class="back">@(InGame ? "‹ Verlaten" : "‹ Lobby")</a>
     @if (_state is { Phase: MatchPhase.Question or MatchPhase.Reveal or MatchPhase.Countdown })
     {
-        <span>
+        <h1 class="question-title">
             @if (_state.Phase != MatchPhase.Countdown)
             {
                 <span class="type-tag">@QuestionTypes.Get(_state.Type).Icon @QuestionTypes.Get(_state.Type).Name</span>
             }
             Vraag <b>@Math.Max(1, _state.CurrentNumber)</b> / @_state.TotalQuestions
-        </span>
+        </h1>
     }
 </div>
 
 @if (_error is not null)
 {
-    <p class="error">@_error</p>
+    <p class="error" role="alert">@_error</p>
 }
 
 @if (_state is null)
 {
-    <div class="center-msg">Laden…</div>
+    <div class="center-msg"><Spinner /></div>
 }
 else
 {
@@ -157,23 +157,27 @@ else
                         <span class="stake-points">@(_state.MyDone ? "✓" : QuestionDisplay.PointsNow(_state.Type, _state.View, LocalElapsed, _state.MyWrongGuesses, _state.TimeLimit))</span>
                         <span class="stake-label">@(_state.MyDone ? "klaar" : $"{QuestionDisplay.PointsLabel(_state.Type)} + positiebonus")</span>
                     </div>
-                    <div class="clock @(SecondsLeft <= 5 ? "urgent" : "")">@Math.Ceiling(SecondsLeft)s</div>
+                    <div class="clock @(SecondsLeft <= 5 ? "urgent" : "")" role="timer">@Math.Ceiling(SecondsLeft)s</div>
+                    <span class="sr-only" aria-live="polite">@QuestionDisplay.ClockAnnouncement(SecondsLeft)</span>
                 </div>
                 <div class="timebar"><div style="width:@QuestionDisplay.Percent(LocalElapsed / _state.TimeLimit)"></div></div>
             </div>
 
-            @if (_state.MyCorrect)
-            {
-                <div class="result ok small">✅ Juist! Wachten op de anderen…</div>
-            }
-            else if (_state.MyDone && _state.MyPoints > 0)
-            {
-                <div class="result ok small">👍 +@_state.MyPoints punten. Wachten op de anderen…</div>
-            }
-            else if (_state.MyDone)
-            {
-                <div class="result fail small">@(IsChoice(_state.Type) ? "❌ Mis!" : "Je paste.") Wachten op de anderen…</div>
-            }
+            @* Altijd aanwezig, zodat schermlezers je resultaat voorlezen zodra het verschijnt. *@
+            <div role="status" aria-live="polite">
+                @if (_state.MyCorrect)
+                {
+                    <div class="result ok small">✅ Juist! Wachten op de anderen…</div>
+                }
+                else if (_state.MyDone && _state.MyPoints > 0)
+                {
+                    <div class="result ok small">👍 +@_state.MyPoints punten. Wachten op de anderen…</div>
+                }
+                else if (_state.MyDone)
+                {
+                    <div class="result fail small">@(IsChoice(_state.Type) ? "❌ Mis!" : "Je paste.") Wachten op de anderen…</div>
+                }
+            </div>
 
             <QuestionPlay @key="_state.CurrentNumber" Type="_state.Type" View="_state.View" Hints="_state.Hints" Busy="_busy"
                           ReadOnly="@(!_state.IAmIn || _state.MyDone)" Send="PlayAsync" />
@@ -189,13 +193,33 @@ else
             break;
 
         case MatchPhase.Reveal:
-            <div class="result @(_state.Reveal.Any(r => r.IsMe) ? "ok" : "fail")">
+            @* Het tussenscherm duurt maar enkele seconden: jouw resultaat, je plaats en de aftelling staan bovenaan,
+               de lange tiplijst klapt in onderaan. *@
+            var mine = _state.Reveal.FirstOrDefault(r => r.IsMe);
+            var revealLeft = Math.Max(0, MatchRules.RevealSeconds - LocalElapsed);
+            <div class="result reveal-head @(mine is not null ? "ok" : "fail")">
                 <div class="muted">Het was…</div>
                 <div class="result-name">@_state.RevealedPlayer</div>
+                @if (_state.IAmIn)
+                {
+                    <div class="reveal-me" role="status">
+                        <span>@(mine is null ? "Jij: geen punten" : $"Jij +{mine.Points}")</span>
+                        @if (MyPlace is { } place)
+                        {
+                            <span>Plaats @place van @_state.Players.Count</span>
+                        }
+                    </div>
+                }
                 @if (_state.Result?.Explanation is { } explanation && _state.Type is QuestionType.Emoji or QuestionType.NietBij)
                 {
                     <p class="explanation">@explanation</p>
                 }
+                <div class="reveal-next">
+                    @(_state.CurrentNumber < _state.TotalQuestions
+                        ? $"Volgende vraag over {Math.Ceiling(revealLeft)} s"
+                        : "Eindstand komt eraan…")
+                </div>
+                <div class="timebar" aria-hidden="true"><div style="width:@QuestionDisplay.Percent(revealLeft / MatchRules.RevealSeconds)"></div></div>
             </div>
 
             @if (_state.Derby?.TrumpOfficial is { } official)
@@ -204,11 +228,6 @@ else
                     <div>📢 <b>Officieel:</b> @official</div>
                     <div class="muted">Eigenlijk: @_state.Derby.TrumpActual</div>
                 </div>
-            }
-
-            @if (_state.Result is { } result)
-            {
-                <QuestionAnswer Type="_state.Type" Result="result" View="_state.View" />
             }
 
             @if (_state.Derby is { } revealDerby)
@@ -242,11 +261,14 @@ else
 
             <h2 class="section-title">Tussenstand</h2>
             <Standings Players="_state.Players" />
-            <p class="center light-text">
-                @(_state.CurrentNumber < _state.TotalQuestions
-                    ? $"Volgende vraag over {Math.Max(0, Math.Ceiling(MatchRules.RevealSeconds - LocalElapsed))} s"
-                    : "Eindstand komt eraan…")
-            </p>
+
+            @if (_state.Result is { } result)
+            {
+                <details class="reveal-tips">
+                    <summary>@AnswerLabel(_state.Type)</summary>
+                    <QuestionAnswer Type="_state.Type" Result="result" View="_state.View" />
+                </details>
+            }
             break;
 
         case MatchPhase.Finished:
@@ -486,6 +508,21 @@ else
         }
         catch (ApiException ex) { _error = ex.Message; }
     }
+
+    /// <summary>Jouw plaats in de tussenstand (gedeeld bij gelijke score), zoals Standings ze toont.</summary>
+    private int? MyPlace => _state?.Players.FirstOrDefault(p => p.IsMe) is { } me
+        ? me.Rank ?? 1 + _state.Players.Count(p => !p.Left && p.Score > me.Score)
+        : null;
+
+    /// <summary>Opschrift van het ingeklapte antwoord onder de tussenstand.</summary>
+    private static string AnswerLabel(QuestionType type) => type switch
+    {
+        QuestionType.Snelvuur or QuestionType.NietBij => "Bekijk de antwoorden",
+        QuestionType.Jaar => "Bekijk het juiste jaar",
+        QuestionType.Emoji => "Bekijk de emoji",
+        QuestionType.Opstelling => "Bekijk de volledige opstelling",
+        _ => "Bekijk alle tips",
+    };
 
     /// <summary>Position 0: deelpunten zonder juist antwoord (jaar, opstelling, counter).</summary>
     private static string Medal(int rank) => rank switch { 0 => "👍", 1 => "🥇", 2 => "🥈", 3 => "🥉", _ => rank.ToString() };

@@ -8,11 +8,11 @@
 
 @if (_error is not null)
 {
-    <p class="error">@_error</p>
+    <p class="error" role="alert">@_error</p>
 }
 else if (_profile is null)
 {
-    <div class="center-msg">Laden…</div>
+    <div class="center-msg"><Spinner /></div>
 }
 else
 {
@@ -66,9 +66,9 @@ else
         @* ---------- Rechts: wat je kan aanpassen ---------- *@
         <div class="profile-main">
             <div class="tabs profile-tabs">
-                <button class="@(_tab == ProfileTab.Avatar ? "active" : "")" @onclick="() => _tab = ProfileTab.Avatar">🎨 Avatar</button>
-                <button class="@(_tab == ProfileTab.Level ? "active" : "")" @onclick="() => _tab = ProfileTab.Level">⭐ Level</button>
-                <button class="@(_tab == ProfileTab.Account ? "active" : "")" @onclick="() => _tab = ProfileTab.Account">🔒 Account</button>
+                <button class="@(_tab == ProfileTab.Avatar ? "active" : "")" aria-pressed="@(_tab == ProfileTab.Avatar ? "true" : "false")" @onclick="() => _tab = ProfileTab.Avatar">🎨 Avatar</button>
+                <button class="@(_tab == ProfileTab.Level ? "active" : "")" aria-pressed="@(_tab == ProfileTab.Level ? "true" : "false")" @onclick="() => _tab = ProfileTab.Level">⭐ Level</button>
+                <button class="@(_tab == ProfileTab.Account ? "active" : "")" aria-pressed="@(_tab == ProfileTab.Account ? "true" : "false")" @onclick="() => _tab = ProfileTab.Account">🔒 Account</button>
             </div>
 
             @switch (_tab)
@@ -76,12 +76,12 @@ else
                 case ProfileTab.Avatar:
                     <section class="card">
                         <div class="tabs light">
-                            <button class="@(_build ? "" : "active")" @onclick="() => _build = false">⚽ Voetballer kiezen</button>
-                            <button class="@(_build ? "active" : "")" @onclick="() => _build = true">🎨 Zelf maken</button>
+                            <button class="@(_build ? "" : "active")" aria-pressed="@(_build ? "false" : "true")" @onclick="() => _build = false">⚽ Voetballer kiezen</button>
+                            <button class="@(_build ? "active" : "")" aria-pressed="@(_build ? "true" : "false")" @onclick="() => _build = true">🎨 Zelf maken</button>
                         </div>
                         @if (_avatarSaved)
                         {
-                            <p class="success">Je avatar is opgeslagen.</p>
+                            <p class="success" role="status">Je avatar is opgeslagen.</p>
                         }
                         @if (_build)
                         {
@@ -143,8 +143,8 @@ else
                                     <input type="password" @bind="_repeat" autocomplete="new-password" minlength="6" required />
                                 </label>
                             </div>
-                            @if (_pwError is not null) { <p class="error">@_pwError</p> }
-                            @if (_pwOk) { <p class="success">Je wachtwoord is gewijzigd.</p> }
+                            @if (_pwError is not null) { <p class="error" role="alert">@_pwError</p> }
+                            @if (_pwOk) { <p class="success" role="status">Je wachtwoord is gewijzigd.</p> }
                             <button class="btn primary" disabled="@_saving">Wachtwoord opslaan</button>
                         </form>
                     </section>

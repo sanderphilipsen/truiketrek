@@ -21,6 +21,18 @@ public static class QuestionDisplay
         _ => "",
     };
 
+    /// <summary>
+    /// Tekst voor een (verborgen) aria-live-regio bij de klok: schermlezers lezen de klok niet elke seconde voor,
+    /// enkel als hij onder de 10 en onder de 3 seconden zakt.
+    /// </summary>
+    public static string ClockAnnouncement(double secondsLeft) => secondsLeft switch
+    {
+        <= 0 => "",
+        <= 3 => "Laatste 3 seconden",
+        <= 10 => "Nog minder dan 10 seconden",
+        _ => "",
+    };
+
     public static string PointsLabel(QuestionType type) => type switch
     {
         QuestionType.Jaar => "punten bij het exacte jaar",

@@ -10,10 +10,24 @@
 <section class="home-hello">
     <Avatar Id="@Auth.User?.AvatarId" User="@Auth.User?.UserName" Size="56" />
     <div>
-        <h1>Hoi @Auth.User?.UserName 👋</h1>
+        @* Een lange naam (tot 20 tekens) mag breken, maar het zwaaiende handje blijft bij de naam. *@
+        <h1>Hoi @Auth.User?.UserName&nbsp;<span aria-hidden="true">👋</span></h1>
         <span class="lvl">Level @Auth.User?.Level</span>
     </div>
 </section>
+
+@foreach (var t in _myTables)
+{
+    @* Je zit aan een tafel: meteen terug naar je lobby of je lopende wedstrijd. *@
+    <a class="tafel-banner" href="online/@t.Id">
+        <span class="tafel-banner-icon" aria-hidden="true">@(t.Status == MatchStatus.Running ? "🔴" : "⚔️")</span>
+        <span class="tafel-banner-text">
+            <b>@(t.Status == MatchStatus.Running ? "Je wedstrijd is bezig" : $"Je tafel wacht ({t.Players}/{t.Seats})")</b>
+            <small>@t.Name</small>
+        </span>
+        <span class="tafel-banner-go">@(t.Status == MatchStatus.Running ? "Verder" : "Open") ›</span>
+    </a>
+}
 
 @if (GoldenBall.Overview is { Announce: true, Holders.Count: > 0 } gb)
 {
@@ -83,7 +97,7 @@
 
     @if (_daily is null)
     {
-        <p class="muted">@(_error ?? "Laden…")</p>
+        <p class="muted">@if (_error is null) { <Spinner Small="true" /> } else { @_error }</p>
     }
     else
     {
@@ -115,13 +129,14 @@
 
 <section class="card">
     <div class="home-card-head">
-        <h2>⚔️ Nieuwe online tafel</h2>
+        <h2>⚔️ Online spelen</h2>
         <a class="card-link" href="online">Lobby & rating ›</a>
     </div>
-    <CreateTableForm UserName="@Auth.User?.UserName" />
+    <CreateTableForm UserName="@Auth.User?.UserName" Collapsible="true" />
 </section>
 
-<OpenTables />
+@* Jouw tafels staan als banner bovenaan; hier enkel de open tafels om bij aan te schuiven. *@
+<OpenTables ShowMine="false" OnLoaded="l => _myTables = l.Mine" />
 
 @if (_specials.Any(s => s.IsUpcoming))
 {
@@ -140,6 +155,7 @@
 @code {
     private DailyOverview? _daily;
     private List<SpecialSummary> _specials = [];
+    private List<MatchSummary> _myTables = [];
     private string? _error;
 
     protected override async Task OnInitializedAsync()

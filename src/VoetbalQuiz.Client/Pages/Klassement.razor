@@ -5,20 +5,20 @@
 <PageTitle>Klassement – Truitje Trek</PageTitle>
 
 <div class="tabs">
-    <button class="@(_monthly ? "" : "active")" @onclick="() => ShowAsync(false)">📅 Vandaag</button>
-    <button class="@(_monthly ? "active" : "")" @onclick="() => ShowAsync(true)">🏆 Maand</button>
+    <button class="@(_monthly ? "" : "active")" aria-pressed="@(_monthly ? "false" : "true")" @onclick="() => ShowAsync(false)">📅 Vandaag</button>
+    <button class="@(_monthly ? "active" : "")" aria-pressed="@(_monthly ? "true" : "false")" @onclick="() => ShowAsync(true)">🏆 Maand</button>
 </div>
 
 @if (_error is not null)
 {
-    <p class="error">@_error</p>
+    <p class="error" role="alert">@_error</p>
 }
 else if (!_monthly)
 {
     @* ---------- Dagklassement: enkel de daily van vandaag ---------- *@
     @if (_today is null)
     {
-        <div class="center-msg">Laden…</div>
+        <div class="center-msg"><Spinner /></div>
     }
     else if (_today.Entries.Count == 0)
     {
@@ -34,14 +34,14 @@ else
 {
     @* ---------- Maandklassement: daily + specials + online ---------- *@
     <div class="month-nav">
-        <button class="linkish" @onclick="() => MoveMonthAsync(-1)">‹</button>
+        <button class="linkish" aria-label="Vorige maand" @onclick="() => MoveMonthAsync(-1)">‹</button>
         <span>@DutchDates.MonthYear(_year, _month)</span>
-        <button class="linkish" @onclick="() => MoveMonthAsync(1)" disabled="@IsCurrentMonth">›</button>
+        <button class="linkish" aria-label="Volgende maand" @onclick="() => MoveMonthAsync(1)" disabled="@IsCurrentMonth">›</button>
     </div>
 
     @if (_ranking is null)
     {
-        <div class="center-msg">Laden…</div>
+        <div class="center-msg"><Spinner /></div>
     }
     else if (_ranking.Entries.Count == 0)
     {

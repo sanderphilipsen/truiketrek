@@ -1,6 +1,5 @@
 @* Een vraag tijdens het spelen, voor elk vraagtype: de opgave, de invoer (typen, kiezen of een jaartal) en de tips.
    Gebruikt door de daily (Question.razor) en de online tafels (Wedstrijd.razor). Geef een @key per vraag mee. *@
-@inject IJSRuntime JS
 
 @switch (Type)
 {
@@ -23,8 +22,9 @@
             <div class="year-picker">
                 <button class="btn" @onclick="() => SetYear(_year - 1)">−</button>
                 @* Typen, schuiven en −/+ werken allemaal; ze blijven met elkaar in sync. *@
-                <input @ref="_yearInput" class="year-value" type="text" inputmode="numeric" maxlength="4" value="@_yearText"
-                       @oninput="YearTyped" @onkeydown="YearKey" aria-label="Jaartal" />
+                @* Tik je in het veld, dan is het jaartal meteen geselecteerd en typ je er zo overheen. *@
+                <input class="year-value" type="text" inputmode="numeric" maxlength="4" value="@_yearText" enterkeyhint="send"
+                       onfocus="this.select()" @oninput="YearTyped" @onkeydown="YearKey" aria-label="Jaartal" />
                 <button class="btn" @onclick="() => SetYear(_year + 1)">+</button>
             </div>
             <input type="range" class="year-slider" min="@QuestionRules.MinYear" max="@QuestionRules.MaxYear" value="@_year"
@@ -89,7 +89,7 @@
         {
             <form class="answer" @onsubmit="TypeAsync">
                 <input @ref="_input" @bind="_guess" @bind:event="oninput"
-                       placeholder="@Placeholder"
+                       placeholder="@Placeholder" aria-label="Jouw antwoord"
                        autocomplete="off" autocapitalize="words" spellcheck="false" enterkeyhint="send" />
                 <button class="btn primary" disabled="@Busy">OK</button>
             </form>
@@ -99,18 +99,21 @@
                 <button class="btn skip" @onclick="SkipAsync" disabled="@Busy">Doorspelen ⏭</button>
             }
 
-            @if (_goal is not null)
-            {
-                <div class="goal" @key="_goal">⚽ @_goal</div>
-            }
-            @if (_wrongGuess is not null)
-            {
-                <div class="wrong" @key="_wrongKey">❌ @Commentary.Pick(Commentary.Wrong, _wrongKey) “@_wrongGuess” is fout@(Type == QuestionType.Counter ? "" : $" (−{GameRules.WrongGuessPenalty})")</div>
-            }
-            @if (_notInLineup is not null)
-            {
-                <div class="wrong" @key="_notInLineup">🛡️ @Commentary.Pick(Commentary.Blocked, _notInLineup.Length) “@_notInLineup” staat niet (meer) op een open plaats</div>
-            }
+            @* Altijd aanwezig, zodat schermlezers elke nieuwe reactie ("Naast! … is fout") voorlezen. *@
+            <div class="play-feedback" role="status" aria-live="polite">
+                @if (_goal is not null)
+                {
+                    <div class="goal" @key="_goal">⚽ @_goal</div>
+                }
+                @if (_wrongGuess is not null)
+                {
+                    <div class="wrong" @key="_wrongKey">❌ @Commentary.Pick(Commentary.Wrong, _wrongKey) “@_wrongGuess” is fout@(Type == QuestionType.Counter ? "" : $" (−{GameRules.WrongGuessPenalty})")</div>
+                }
+                @if (_notInLineup is not null)
+                {
+                    <div class="wrong" @key="_notInLineup">🛡️ @Commentary.Pick(Commentary.Blocked, _notInLineup.Length) “@_notInLineup” staat niet (meer) op een open plaats</div>
+                }
+            </div>
         }
 
         @if (Type == QuestionType.Opstelling)
@@ -169,7 +172,6 @@
 
     private int _year = 2010;
     private string _yearText = "2010";
-    private ElementReference _yearInput;
 
     private bool YearValid => int.TryParse(_yearText, out var y) && y is >= QuestionRules.MinYear and <= QuestionRules.MaxYear;
 
@@ -235,15 +237,6 @@
         try { await _input.FocusAsync(); } catch { /* al weg */ }
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (!firstRender || ReadOnly || Type is QuestionType.Snelvuur or QuestionType.NietBij) return;
-        try
-        {
-            // Bij het jaartal meteen kunnen typen: het veld krijgt de focus en de tekst is geselecteerd.
-            if (Type == QuestionType.Jaar) await JS.InvokeVoidAsync("selectField", _yearInput);
-            else await _input.FocusAsync();
-        }
-        catch { /* element nog niet zichtbaar */ }
-    }
+    // Bewust geen automatische focus bij het openen van een vraag: op de gsm springt dan meteen het toetsenbord open
+    // en schuift de vraag uit beeld. Het toetsenbord verschijnt pas als de speler zelf in het tekstvak tikt.
 }

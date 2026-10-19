@@ -9,8 +9,8 @@
     <p class="muted">Iets werkt niet, of je hebt een goed idee? Laat het hier weten.</p>
 
     <div class="tabs light">
-        <button class="@(_type == FeedbackType.Bug ? "active" : "")" @onclick="() => _type = FeedbackType.Bug">🐞 Bug melden</button>
-        <button class="@(_type == FeedbackType.Feature ? "active" : "")" @onclick="() => _type = FeedbackType.Feature">💡 Feature request</button>
+        <button class="@(_type == FeedbackType.Bug ? "active" : "")" aria-pressed="@(_type == FeedbackType.Bug ? "true" : "false")" @onclick="() => _type = FeedbackType.Bug">🐞 Bug melden</button>
+        <button class="@(_type == FeedbackType.Feature ? "active" : "")" aria-pressed="@(_type == FeedbackType.Feature ? "true" : "false")" @onclick="() => _type = FeedbackType.Feature">💡 Feature request</button>
     </div>
 
     <form class="stack" @onsubmit="SubmitAsync">
@@ -21,8 +21,8 @@
         <label>@(_type == FeedbackType.Bug ? "Wat gebeurde er, en wat had je verwacht?" : "Beschrijf je idee")
             <textarea @bind="_description" rows="5" maxlength="4000" required></textarea>
         </label>
-        @if (_formError is not null) { <p class="error">@_formError</p> }
-        @if (_sent) { <p class="success">Bedankt! Je melding is verstuurd.</p> }
+        @if (_formError is not null) { <p class="error" role="alert">@_formError</p> }
+        @if (_sent) { <p class="success" role="status">Bedankt! Je melding is verstuurd.</p> }
         <button class="btn primary" disabled="@_busy">Versturen</button>
     </form>
 </section>

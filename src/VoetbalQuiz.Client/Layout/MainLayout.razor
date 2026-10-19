@@ -14,8 +14,9 @@
                 {
                     <a href="admin" class="admin-link" title="Admin">⚙️</a>
                 }
-                <a href="profiel" class="who">
-                    <span>@context.User.Identity?.Name</span>
+                @* Lange namen (tot 20 tekens) worden afgekapt; op een smalle gsm valt de naam weg, hij staat al in de begroeting. *@
+                <a href="profiel" class="who" aria-label="Jouw profiel: @context.User.Identity?.Name, level @Auth.User?.Level">
+                    <span class="who-name">@context.User.Identity?.Name</span>
                     <span class="lvl">Lv @Auth.User?.Level</span>
                     <Avatar Id="@Auth.User?.AvatarId" User="@Auth.User?.UserName" Size="34" />
                 </a>

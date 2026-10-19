@@ -6,16 +6,16 @@
 
 @if (_error is not null)
 {
-    <p class="error">@_error</p>
+    <p class="error" role="alert">@_error</p>
 }
 
 @if (_lobby is null)
 {
-    <div class="center-msg">Laden…</div>
+    <div class="center-msg"><Spinner /></div>
 }
 else
 {
-    @if (_lobby.Mine.Count > 0)
+    @if (ShowMine && _lobby.Mine.Count > 0)
     {
         <h2 class="section-title">Jouw tafels</h2>
         <div class="tables">
@@ -26,7 +26,12 @@ else
                     <div class="table-info">
                         <b>@m.Name</b>
                         <small>@(m.Status == MatchStatus.Running ? "🔴 Bezig" : $"{m.Players}/{m.Seats} spelers · wacht op start")</small>
-                        <small class="table-type">@QuestionTypes.Label(m.Types) · @m.Questions vragen@if (m.Derby) { <span class="derby-badge">🔥 Derby</span> }</small>
+                        <small class="table-type">@QuestionTypes.Label(m.Types) · @(m.Questions) vragen
+                            @if (m.Derby)
+                            {
+                                <span class="derby-badge">🔥 Derby</span>
+                            }
+                        </small>
                     </div>
                     <span class="btn small primary">@(m.Status == MatchStatus.Running ? "Verder" : "Open")</span>
                 </a>
@@ -49,8 +54,13 @@ else
                     <div class="table-info">
                         <b>@m.Name</b>
                         <small>@m.HostName · @m.Players/@m.Seats spelers</small>
-                        <small class="table-type">@QuestionTypes.Label(m.Types) · @m.Questions vragen@if (m.Derby) { <span class="derby-badge">🔥 Derby</span> }</small>
-                        <div class="seats">
+                        <small class="table-type">@QuestionTypes.Label(m.Types) · @(m.Questions) vragen
+                            @if (m.Derby)
+                            {
+                                <span class="derby-badge">🔥 Derby</span>
+                            }
+                        </small>
+                        <div class="seats" aria-hidden="true">
                             @for (var i = 0; i < m.Seats; i++)
                             {
                                 <span class="seat @(i < m.Players ? "taken" : "")"></span>
@@ -85,6 +95,12 @@ else
 @code {
     [Parameter] public bool ShowRecent { get; set; }
 
+    /// <summary>"Jouw tafels" tonen. Home zet dit uit en toont je tafel als banner bovenaan (via OnLoaded).</summary>
+    [Parameter] public bool ShowMine { get; set; } = true;
+
+    /// <summary>Na elke (live) lading van de lobby, bv. voor de tafel-banner op Home.</summary>
+    [Parameter] public EventCallback<LobbyOverview> OnLoaded { get; set; }
+
     private LobbyOverview? _lobby;
     private bool _busy;
     private string? _error;
@@ -105,7 +121,11 @@ else
 
     private async Task LoadAsync()
     {
-        try { _lobby = await Api.GetLobbyAsync(); }
+        try
+        {
+            _lobby = await Api.GetLobbyAsync();
+            await OnLoaded.InvokeAsync(_lobby);
+        }
         catch (ApiException ex) { _error = ex.Message; }
     }
 

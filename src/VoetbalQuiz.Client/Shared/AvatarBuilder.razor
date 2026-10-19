@@ -13,7 +13,7 @@
         @for (var i = 0; i < Avatars.Skins.Length; i++)
         {
             var v = i;
-            <button type="button" class="swatch @(_draft.Skin == v ? "on" : "")" style="background:@Avatars.Skins[v]"
+            <button type="button" class="swatch @(_draft.Skin == v ? "on" : "")" aria-pressed="@(_draft.Skin == v ? "true" : "false")" style="background:@Avatars.Skins[v]"
                     aria-label="Huidskleur @(v + 1)" @onclick="() => _draft = _draft with { Skin = v }"></button>
         }
     </BuilderGroup>
@@ -21,7 +21,7 @@
     <BuilderGroup Title="Kapsel">
         @foreach (var style in Enum.GetValues<HairStyle>())
         {
-            <button type="button" class="mini @(_draft.Style == style ? "on" : "")" title="@HairName(style)"
+            <button type="button" class="mini @(_draft.Style == style ? "on" : "")" aria-pressed="@(_draft.Style == style ? "true" : "false")" title="@HairName(style)"
                     @onclick="() => _draft = _draft with { Style = style }">
                 <Avatar Def="_draft with { Style = style }" Size="46" />
                 <small>@HairName(style)</small>
@@ -33,7 +33,7 @@
         @for (var i = 0; i < Avatars.HairColors.Length; i++)
         {
             var v = i;
-            <button type="button" class="swatch @(_draft.HairColor == v ? "on" : "")" style="background:@Avatars.HairColors[v]"
+            <button type="button" class="swatch @(_draft.HairColor == v ? "on" : "")" aria-pressed="@(_draft.HairColor == v ? "true" : "false")" style="background:@Avatars.HairColors[v]"
                     aria-label="Haarkleur @(v + 1)" @onclick="() => _draft = _draft with { HairColor = v }"></button>
         }
     </BuilderGroup>
@@ -41,7 +41,7 @@
     <BuilderGroup Title="Gezichtsbeharing">
         @foreach (var facial in Enum.GetValues<FacialHair>())
         {
-            <button type="button" class="mini @(_draft.Facial == facial ? "on" : "")"
+            <button type="button" class="mini @(_draft.Facial == facial ? "on" : "")" aria-pressed="@(_draft.Facial == facial ? "true" : "false")"
                     @onclick="() => _draft = _draft with { Facial = facial }">
                 <Avatar Def="_draft with { Facial = facial }" Size="46" />
                 <small>@FacialName(facial)</small>
@@ -53,7 +53,7 @@
         @for (var i = 0; i < Avatars.Colors.Length; i++)
         {
             var v = i;
-            <button type="button" class="swatch @(_draft.Shirt == v ? "on" : "")" style="background:@Avatars.Colors[v]"
+            <button type="button" class="swatch @(_draft.Shirt == v ? "on" : "")" aria-pressed="@(_draft.Shirt == v ? "true" : "false")" style="background:@Avatars.Colors[v]"
                     aria-label="Shirtkleur @(v + 1)" @onclick="() => _draft = _draft with { Shirt = v }"></button>
         }
     </BuilderGroup>
@@ -62,7 +62,7 @@
         @for (var i = 0; i < Avatars.Colors.Length; i++)
         {
             var v = i;
-            <button type="button" class="swatch @(_draft.Accent == v ? "on" : "")" style="background:@Avatars.Colors[v]"
+            <button type="button" class="swatch @(_draft.Accent == v ? "on" : "")" aria-pressed="@(_draft.Accent == v ? "true" : "false")" style="background:@Avatars.Colors[v]"
                     aria-label="Accentkleur @(v + 1)" @onclick="() => _draft = _draft with { Accent = v }"></button>
         }
     </BuilderGroup>
@@ -70,7 +70,7 @@
     <BuilderGroup Title="Patroon">
         @foreach (var pattern in Enum.GetValues<ShirtPattern>())
         {
-            <button type="button" class="mini @(_draft.Pattern == pattern ? "on" : "")"
+            <button type="button" class="mini @(_draft.Pattern == pattern ? "on" : "")" aria-pressed="@(_draft.Pattern == pattern ? "true" : "false")"
                     @onclick="() => _draft = _draft with { Pattern = pattern }">
                 <Avatar Def="_draft with { Pattern = pattern }" Size="46" />
                 <small>@PatternName(pattern)</small>
@@ -91,7 +91,7 @@
     <BuilderGroup Title="Bril">
         @foreach (var glasses in Enum.GetValues<Glasses>())
         {
-            <button type="button" class="mini @(_draft.Glasses == glasses ? "on" : "")"
+            <button type="button" class="mini @(_draft.Glasses == glasses ? "on" : "")" aria-pressed="@(_draft.Glasses == glasses ? "true" : "false")"
                     @onclick="() => _draft = _draft with { Glasses = glasses }">
                 <Avatar Def="_draft with { Glasses = glasses }" Size="46" />
                 <small>@GlassesName(glasses)</small>
@@ -102,7 +102,7 @@
     <BuilderGroup Title="Oorbel">
         @foreach (var earring in Enum.GetValues<Earring>())
         {
-            <button type="button" class="mini @(_draft.Earring == earring ? "on" : "")"
+            <button type="button" class="mini @(_draft.Earring == earring ? "on" : "")" aria-pressed="@(_draft.Earring == earring ? "true" : "false")"
                     @onclick="() => _draft = _draft with { Earring = earring }">
                 <Avatar Def="_draft with { Earring = earring }" Size="46" />
                 <small>@EarringName(earring)</small>
@@ -111,12 +111,12 @@
     </BuilderGroup>
 
     <BuilderGroup Title="Haarband">
-        <button type="button" class="swatch none @(_draft.Headband < 0 ? "on" : "")" aria-label="Geen haarband"
+        <button type="button" class="swatch none @(_draft.Headband < 0 ? "on" : "")" aria-pressed="@(_draft.Headband < 0 ? "true" : "false")" aria-label="Geen haarband"
                 @onclick="() => _draft = _draft with { Headband = -1 }">✕</button>
         @for (var i = 0; i < Avatars.Colors.Length; i++)
         {
             var v = i;
-            <button type="button" class="swatch @(_draft.Headband == v ? "on" : "")" style="background:@Avatars.Colors[v]"
+            <button type="button" class="swatch @(_draft.Headband == v ? "on" : "")" aria-pressed="@(_draft.Headband == v ? "true" : "false")" style="background:@Avatars.Colors[v]"
                     aria-label="Haarband @(v + 1)" @onclick="() => _draft = _draft with { Headband = v }"></button>
         }
     </BuilderGroup>
