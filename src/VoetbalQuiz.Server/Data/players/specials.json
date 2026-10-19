@@ -22,7 +22,8 @@
     "tags": [
       "rode-duivels",
       "gouden-schoen",
-      "club-brugge"
+      "club-brugge",
+      "stijnen"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -132,7 +133,8 @@
     "tags": [
       "rode-duivels",
       "gouden-schoen",
-      "anderlecht"
+      "anderlecht",
+      "de-bruyne"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -274,7 +276,8 @@
       "rode-duivels",
       "gouden-schoen",
       "anderlecht",
-      "legende"
+      "legende",
+      "pfaff"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -302,7 +305,8 @@
       "rode-duivels",
       "gouden-schoen",
       "anderlecht",
-      "legende"
+      "legende",
+      "pfaff"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -358,7 +362,8 @@
     "tags": [
       "wk",
       "familie",
-      "kerst"
+      "kerst",
+      "messi"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -672,7 +677,8 @@
       "wk",
       "nieuwjaar",
       "champions-league",
-      "legende"
+      "legende",
+      "maradona"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -780,7 +786,8 @@
     ],
     "tags": [
       "wk",
-      "nieuwjaar"
+      "nieuwjaar",
+      "messi"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1119,7 +1126,8 @@
       "https://en.wikipedia.org/wiki/Ansu_Fati"
     ],
     "tags": [
-      "halloween"
+      "halloween",
+      "messi"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1250,7 +1258,8 @@
       "https://en.wikipedia.org/wiki/Ross_Barkley"
     ],
     "tags": [
-      "sinterklaas"
+      "sinterklaas",
+      "lukaku"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1275,7 +1284,8 @@
       "https://en.wikipedia.org/wiki/Anthony_Martial"
     ],
     "tags": [
-      "sinterklaas"
+      "sinterklaas",
+      "lukaku"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1486,5 +1496,86 @@
       "sinterklaas"
     ],
     "checkedAt": "2026-10-17"
+  },
+  {
+    "name": "Samuel Eto'o",
+    "answers": [
+      "Eto'o",
+      "Etoo",
+      "Eto'o Fils"
+    ],
+    "country": "Kameroen",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1981 geboren in Douala en speelde als spits.",
+      "Op mijn negentiende won ik olympisch goud in Sydney.",
+      "Ik won twee keer de Africa Cup en werd vier keer uitgeroepen tot Afrikaans Voetballer van het Jaar.",
+      "Met 56 doelpunten ben ik recordscorer van mijn land en later werd ik voorzitter van de nationale voetbalbond.",
+      "In 2009 won ik met Barcelona de treble en een jaar later opnieuw met Inter, als eerste speler ooit."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Samuel_Eto%27o"
+    ],
+    "tags": [
+      "messi",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Scott McTominay",
+    "answers": [
+      "McTominay",
+      "Scotty McTominay"
+    ],
+    "country": "Schotland",
+    "competition": "Serie A",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1996 geboren in Lancaster, maar ik speel niet voor Engeland.",
+      "Ik ben een middenvelder die graag opduikt in de zestien om te scoren.",
+      "Ik doorliep de jeugd van Manchester United en bleef er tot 2024.",
+      "In 2024 trok ik voor zo'n 25 miljoen pond naar Napoli, waar ik meteen kampioen werd en Speler van het Jaar in de Serie A.",
+      "In november 2025 trapte ik Schotland met een omhaal tegen Denemarken naar het eerste WK sinds 1998."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Scott_McTominay"
+    ],
+    "tags": [
+      "wk",
+      "de-bruyne"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Bas Dost",
+    "answers": [
+      "Dost"
+    ],
+    "country": "Nederland",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 4,
+    "hints": [
+      "Ik ben een spits die in 1989 in Deventer werd geboren.",
+      "In 2012 werd ik topschutter van de Eredivisie met 32 goals in 34 wedstrijden voor Heerenveen.",
+      "In 2015 scoorde ik vier keer in één Bundesliga-wedstrijd, een 5-4-zege bij Leverkusen.",
+      "In 2016-17 maakte ik 34 competitiegoals in 31 wedstrijden voor Sporting Lissabon.",
+      "Na twee landstitels met Club Brugge zakte ik in 2023 als speler van NEC in elkaar met een hartstilstand."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Bas_Dost"
+    ],
+    "tags": [
+      "club-brugge",
+      "de-bruyne"
+    ],
+    "checkedAt": "2026-10-19"
   }
 ]

@@ -20,7 +20,8 @@
       "https://en.wikipedia.org/wiki/Romelu_Lukaku"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "lukaku"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1181,7 +1182,8 @@
       "https://en.wikipedia.org/wiki/Kevin_De_Bruyne"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "de-bruyne"
     ],
     "checkedAt": "2026-10-18"
   },
@@ -1883,7 +1885,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Lionel_Messi"
     ],
-    "tags": [],
+    "tags": ["messi"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2462,7 +2464,8 @@
     ],
     "tags": [
       "rode-duivels",
-      "legende"
+      "legende",
+      "pfaff"
     ],
     "checkedAt": "2026-10-19"
   },

@@ -502,7 +502,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Leroy_San%C3%A9"
     ],
-    "tags": ["champions-league"],
+    "tags": ["champions-league", "de-bruyne"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -527,7 +527,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/%C4%B0lkay_G%C3%BCndo%C4%9Fan"
     ],
-    "tags": ["champions-league"],
+    "tags": ["champions-league", "de-bruyne"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -550,7 +550,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Kai_Havertz"
     ],
-    "tags": ["champions-league"],
+    "tags": ["champions-league", "lukaku"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -574,7 +574,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Antonio_R%C3%BCdiger"
     ],
-    "tags": ["champions-league"],
+    "tags": ["champions-league", "lukaku"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -598,6 +598,33 @@
       "https://en.wikipedia.org/wiki/Serge_Gnabry"
     ],
     "tags": ["champions-league"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "André Schürrle",
+    "answers": [
+      "Schürrle",
+      "Schurrle"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1990 geboren in Ludwigshafen.",
+      "Ik was een snelle aanvaller die zowel op de flank als in de spits kon spelen.",
+      "Via Mainz en Leverkusen trok ik in 2013 naar Chelsea, waar ik in het seizoen 2014-15 de Premier League en de League Cup won.",
+      "In 2015 trok ik voor zo'n 22 miljoen pond naar Wolfsburg en won ik meteen de Duitse beker.",
+      "In de WK-finale van 2014 gaf ik de voorzet waaruit Mario Götze in de verlenging het winnende doelpunt maakte."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Andr%C3%A9_Sch%C3%BCrrle"
+    ],
+    "tags": [
+      "wk",
+      "de-bruyne"
+    ],
     "checkedAt": "2026-10-19"
   }
 ]

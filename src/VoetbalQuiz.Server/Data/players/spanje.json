@@ -23,7 +23,8 @@
     ],
     "tags": [
       "wk",
-      "champions-league"
+      "champions-league",
+      "messi"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -50,7 +51,8 @@
     ],
     "tags": [
       "wk",
-      "champions-league"
+      "champions-league",
+      "messi"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -76,7 +78,8 @@
     ],
     "tags": [
       "wk",
-      "champions-league"
+      "champions-league",
+      "messi"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -102,7 +105,8 @@
     ],
     "tags": [
       "wk",
-      "champions-league"
+      "champions-league",
+      "messi"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -128,7 +132,8 @@
     ],
     "tags": [
       "wk",
-      "champions-league"
+      "champions-league",
+      "messi"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -206,7 +211,7 @@
       "https://en.wikipedia.org/wiki/Antoine_Griezmann",
       "https://es.soccerway.com/noticias/futbol-laliga-ea-sports-el-atletico-de-madrid-le-da-el-7-de-joao-felix-a-antoine-griezmann/W66awN4N"
     ],
-    "tags": ["wk"],
+    "tags": ["wk", "messi"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -232,7 +237,8 @@
     ],
     "tags": [
       "wk",
-      "champions-league"
+      "champions-league",
+      "messi"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -259,7 +265,8 @@
     "tags": [
       "wk",
       "familie",
-      "champions-league"
+      "champions-league",
+      "messi"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -311,7 +318,8 @@
       "https://en.wikipedia.org/wiki/Neymar"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "messi"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -360,7 +368,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Pedri"
     ],
-    "tags": [],
+    "tags": ["messi"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -487,7 +495,8 @@
     ],
     "tags": [
       "wk",
-      "champions-league"
+      "champions-league",
+      "messi"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -561,7 +570,8 @@
       "https://en.wikipedia.org/wiki/Jordi_Alba"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "messi"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -585,7 +595,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Rodri_(footballer,_born_1996)"
     ],
-    "tags": ["champions-league"],
+    "tags": ["champions-league", "de-bruyne"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -703,7 +713,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Thiago_Alc%C3%A2ntara"
     ],
-    "tags": ["champions-league"],
+    "tags": ["champions-league", "messi"],
     "checkedAt": "2026-10-19"
   }
 ]

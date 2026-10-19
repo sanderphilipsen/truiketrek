@@ -262,7 +262,8 @@
     ],
     "tags": [
       "wk",
-      "rode-duivels"
+      "rode-duivels",
+      "pfaff"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -282,7 +283,8 @@
     ],
     "tags": [
       "wk",
-      "rode-duivels"
+      "rode-duivels",
+      "pfaff"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -302,7 +304,8 @@
     ],
     "tags": [
       "wk",
-      "rode-duivels"
+      "rode-duivels",
+      "pfaff"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -321,7 +324,8 @@
       "https://en.wikipedia.org/wiki/UEFA_Euro_1980_final"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "pfaff"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -414,7 +418,8 @@
     ],
     "tags": [
       "wk",
-      "rode-duivels"
+      "rode-duivels",
+      "de-bruyne"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -530,7 +535,9 @@
     ],
     "tags": [
       "wk",
-      "rode-duivels"
+      "rode-duivels",
+      "pfaff",
+      "maradona"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -549,7 +556,8 @@
       "https://en.wikipedia.org/wiki/UEFA_Euro_1980_final"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "pfaff"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -732,7 +740,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_final"
     ],
-    "tags": ["wk"],
+    "tags": ["wk", "messi"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -961,7 +969,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Lionel_Messi"
     ],
-    "tags": [],
+    "tags": ["messi"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1400,7 +1408,8 @@
     ],
     "tags": [
       "wk",
-      "rode-duivels"
+      "rode-duivels",
+      "de-bruyne"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1592,7 +1601,8 @@
       "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_qualification_%E2%80%93_UEFA_Group_A"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "lukaku"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -2062,7 +2072,8 @@
       "https://en.wikipedia.org/wiki/List_of_Italian_football_champions"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "lukaku"
     ],
     "checkedAt": "2026-10-18"
   },
@@ -2595,7 +2606,8 @@
     ],
     "tags": [
       "kerst",
-      "legende"
+      "legende",
+      "pele"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -2892,7 +2904,8 @@
       "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup"
     ],
     "tags": [
-      "wk"
+      "wk",
+      "messi"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -4152,7 +4165,8 @@
       "https://en.wikipedia.org/wiki/2017%E2%80%932019_Belgian_football_fraud_scandal"
     ],
     "tags": [
-      "curiosa"
+      "curiosa",
+      "propere-handen"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -4173,7 +4187,8 @@
       "https://en.wikipedia.org/wiki/2017%E2%80%932019_Belgian_football_fraud_scandal"
     ],
     "tags": [
-      "curiosa"
+      "curiosa",
+      "propere-handen"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -4194,7 +4209,8 @@
       "https://www.voetbalnieuws.be/news/923014/eindelijk-proces-propere-handen-nog-33-verdachten-over"
     ],
     "tags": [
-      "curiosa"
+      "curiosa",
+      "propere-handen"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -4215,7 +4231,8 @@
       "https://nl.wikipedia.org/wiki/Operatie_Propere_Handen"
     ],
     "tags": [
-      "curiosa"
+      "curiosa",
+      "propere-handen"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -4235,7 +4252,8 @@
       "https://www.voetbalbelgie.be/artikel/propere-handen-beslissing-wie-van-de-57-verdachten-voor-de-rechter"
     ],
     "tags": [
-      "curiosa"
+      "curiosa",
+      "propere-handen"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -4255,7 +4273,8 @@
       "https://nl.wikipedia.org/wiki/Operatie_Propere_Handen"
     ],
     "tags": [
-      "curiosa"
+      "curiosa",
+      "propere-handen"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -4544,6 +4563,1727 @@
     ],
     "tags": [
       "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "In welke stad is doelman Stijn Stijnen geboren?",
+    "options": [
+      "Genk",
+      "Brugge",
+      "Hasselt",
+      "Antwerpen"
+    ],
+    "correct": 2,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Stijn_Stijnen",
+      "https://nl.wikipedia.org/wiki/Stijn_Stijnen"
+    ],
+    "tags": [
+      "stijnen",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Bij welke club was Stijn Stijnen van 2000 tot 2011 doelman?",
+    "options": [
+      "Club Brugge",
+      "Beerschot",
+      "Anderlecht",
+      "Standard"
+    ],
+    "correct": 0,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Stijn_Stijnen",
+      "https://nl.wikipedia.org/wiki/Stijn_Stijnen"
+    ],
+    "tags": [
+      "stijnen",
+      "club-brugge"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Naar welke club trok Stijn Stijnen in 2011 na zijn vertrek bij Club Brugge?",
+    "options": [
+      "KV Mechelen",
+      "Lokeren",
+      "Beerschot",
+      "KRC Genk"
+    ],
+    "correct": 2,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Stijn_Stijnen",
+      "https://nl.wikipedia.org/wiki/Stijn_Stijnen"
+    ],
+    "tags": [
+      "stijnen",
+      "club-brugge"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Hoeveel interlands speelde Stijn Stijnen voor de Rode Duivels?",
+    "options": [
+      "12",
+      "18",
+      "41",
+      "30"
+    ],
+    "correct": 3,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Stijn_Stijnen",
+      "https://nl.wikipedia.org/wiki/Stijn_Stijnen"
+    ],
+    "tags": [
+      "stijnen",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Tegen welk land debuteerde Stijn Stijnen in mei 2006 bij de Rode Duivels?",
+    "options": [
+      "Saoedi-Arabië",
+      "Portugal",
+      "Marokko",
+      "Luxemburg"
+    ],
+    "correct": 0,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Stijn_Stijnen",
+      "https://nl.wikipedia.org/wiki/Stijn_Stijnen"
+    ],
+    "tags": [
+      "stijnen",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke club trainde Stijn Stijnen van 2018 tot 2026?",
+    "options": [
+      "Patro Eisden",
+      "KSV Roeselare",
+      "Lommel",
+      "KV Oostende"
+    ],
+    "correct": 0,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Stijn_Stijnen",
+      "https://nl.wikipedia.org/wiki/Stijn_Stijnen"
+    ],
+    "tags": [
+      "stijnen"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke titel won Stijn Stijnen in 2023 als trainer van Patro Eisden?",
+    "options": [
+      "Beker van België",
+      "Tweede klasse amateurs",
+      "Challenger Pro League",
+      "Eerste Nationale"
+    ],
+    "correct": 3,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Stijn_Stijnen",
+      "https://nl.wikipedia.org/wiki/Stijn_Stijnen",
+      "https://en.wikipedia.org/wiki/Patro_Eisden_Maasmechelen"
+    ],
+    "tags": [
+      "stijnen"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Op welke positie speelde Olivier Deschacht vooral?",
+    "options": [
+      "Spits",
+      "Linksachter",
+      "Doelman",
+      "Aanvallende middenvelder"
+    ],
+    "correct": 1,
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Olivier_Deschacht"
+    ],
+    "tags": [
+      "anderlecht",
+      "deschacht"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Naar welke club trok Olivier Deschacht in 2018 na zeventien seizoenen bij Anderlecht?",
+    "options": [
+      "KV Kortrijk",
+      "KSC Lokeren",
+      "Zulte Waregem",
+      "KV Mechelen"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Olivier_Deschacht",
+      "https://nl.wikipedia.org/wiki/Olivier_Deschacht"
+    ],
+    "tags": [
+      "anderlecht",
+      "deschacht"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Bij welke club sloot Olivier Deschacht in 2021 zijn spelerscarrière af?",
+    "options": [
+      "Zulte Waregem",
+      "Lokeren",
+      "Cercle Brugge",
+      "Anderlecht"
+    ],
+    "correct": 0,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Olivier_Deschacht",
+      "https://nl.wikipedia.org/wiki/Olivier_Deschacht"
+    ],
+    "tags": [
+      "deschacht"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Hoeveel interlands speelde Olivier Deschacht voor de Rode Duivels?",
+    "options": [
+      "8",
+      "20",
+      "36",
+      "55"
+    ],
+    "correct": 1,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Olivier_Deschacht",
+      "https://nl.wikipedia.org/wiki/Olivier_Deschacht"
+    ],
+    "tags": [
+      "rode-duivels",
+      "deschacht"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Tegen welk land debuteerde Olivier Deschacht in 2003 bij de Rode Duivels?",
+    "options": [
+      "Frankrijk",
+      "Nederland",
+      "Polen",
+      "Wales"
+    ],
+    "correct": 2,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Olivier_Deschacht"
+    ],
+    "tags": [
+      "rode-duivels",
+      "deschacht"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Onder welke trainer debuteerde Olivier Deschacht in 2001 in het eerste elftal van Anderlecht?",
+    "options": [
+      "Franky Vercauteren",
+      "Ariel Jacobs",
+      "Aimé Anthuenis",
+      "Hugo Broos"
+    ],
+    "correct": 2,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Olivier_Deschacht"
+    ],
+    "tags": [
+      "anderlecht",
+      "deschacht"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Tegen welke club won Anderlecht in 2014 de Belgische Supercup, met Olivier Deschacht als aanvoerder?",
+    "options": [
+      "Club Brugge",
+      "KAA Gent",
+      "Standard",
+      "Lokeren"
+    ],
+    "correct": 3,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2014_Belgian_Super_Cup",
+      "https://en.wikipedia.org/wiki/Olivier_Deschacht"
+    ],
+    "tags": [
+      "anderlecht",
+      "deschacht"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke functie kreeg Olivier Deschacht in oktober 2021 bij de Belgische U21?",
+    "options": [
+      "Bondscoach van de U21",
+      "Assistent-trainer van de U21",
+      "Technisch directeur",
+      "Fysieke trainer van de U19"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Olivier_Deschacht"
+    ],
+    "tags": [
+      "rode-duivels",
+      "deschacht"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Tegen welk land scoorde Pelé twee keer in de WK-finale van 1958?",
+    "options": [
+      "West-Duitsland",
+      "Zweden",
+      "Frankrijk",
+      "Italië"
+    ],
+    "correct": 1,
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1958_FIFA_World_Cup_final",
+      "https://en.wikipedia.org/wiki/Pel%C3%A9"
+    ],
+    "tags": [
+      "pele",
+      "wk",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Bij welke Amerikaanse club sloot Pelé in 1977 zijn loopbaan af?",
+    "options": [
+      "Los Angeles Aztecs",
+      "Tampa Bay Rowdies",
+      "New York Cosmos",
+      "Chicago Sting"
+    ],
+    "correct": 2,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pel%C3%A9"
+    ],
+    "tags": [
+      "pele",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welk rugnummer kreeg Pelé op het WK 1958 van FIFA toegewezen?",
+    "options": [
+      "10",
+      "9",
+      "11",
+      "7"
+    ],
+    "correct": 0,
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pel%C3%A9"
+    ],
+    "tags": [
+      "pele",
+      "wk",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke acteur speelde de doelman Robert Hatch in de film Escape to Victory, met Pelé in de cast?",
+    "options": [
+      "Arnold Schwarzenegger",
+      "Bruce Willis",
+      "Mel Gibson",
+      "Sylvester Stallone"
+    ],
+    "correct": 3,
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Escape_to_Victory"
+    ],
+    "tags": [
+      "pele",
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Wie was aanvoerder van Brazilië in de WK-finale van 1970 en maakte de 4-1 tegen Italië?",
+    "options": [
+      "Jairzinho",
+      "Carlos Alberto",
+      "Rivellino",
+      "Gérson"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1970_FIFA_World_Cup_final",
+      "https://en.wikipedia.org/wiki/Carlos_Alberto_Torres"
+    ],
+    "tags": [
+      "pele",
+      "wk",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Tegen welke club scoorde Pelé in 1969 in het Maracanã zijn 1000ste doelpunt, een strafschop?",
+    "options": [
+      "Vasco da Gama",
+      "Flamengo",
+      "Fluminense",
+      "Botafogo"
+    ],
+    "correct": 0,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pel%C3%A9"
+    ],
+    "tags": [
+      "pele",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke Duitse verdediger tekende in 1977 bij New York Cosmos, het jaar van Pelé's afscheid?",
+    "options": [
+      "Berti Vogts",
+      "Gerd Müller",
+      "Franz Beckenbauer",
+      "Paul Breitner"
+    ],
+    "correct": 2,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/New_York_Cosmos_(1970%E2%80%931985)",
+      "https://en.wikipedia.org/wiki/Pel%C3%A9"
+    ],
+    "tags": [
+      "pele",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke Italiaan, geboren in Carrara en opgegroeid in Wales, speelde bij Lazio en samen met Pelé bij de Cosmos?",
+    "options": [
+      "Roberto Boninsegna",
+      "Gigi Riva",
+      "Paolo Rossi",
+      "Giorgio Chinaglia"
+    ],
+    "correct": 3,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Giorgio_Chinaglia",
+      "https://en.wikipedia.org/wiki/New_York_Cosmos_(1970%E2%80%931985)"
+    ],
+    "tags": [
+      "pele",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welk vogeltje is 'Garrincha', de bijnaam van Pelé's ploegmaat bij Brazilië?",
+    "options": [
+      "Kolibrie",
+      "Winterkoning",
+      "Mus",
+      "Valk"
+    ],
+    "correct": 1,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Garrincha"
+    ],
+    "tags": [
+      "pele",
+      "legende",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Met welke rechtsbuiten verloor Brazilië nooit als hij samen met Pelé speelde?",
+    "options": [
+      "Garrincha",
+      "Jairzinho",
+      "Rivellino",
+      "Vavá"
+    ],
+    "correct": 0,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Garrincha"
+    ],
+    "tags": [
+      "pele",
+      "legende",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Wie scoorde in de WK-finale van 1970 de 2-1 voor Brazilië tegen Italië?",
+    "options": [
+      "Rivellino",
+      "Tostão",
+      "Gérson",
+      "Clodoaldo"
+    ],
+    "correct": 2,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1970_FIFA_World_Cup_final"
+    ],
+    "tags": [
+      "pele",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Hoeveel doelpunten scoorde Pelé voor Brazilië, een record dat Neymar in 2023 verbrak?",
+    "options": [
+      "62",
+      "77",
+      "92",
+      "101"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pel%C3%A9"
+    ],
+    "tags": [
+      "pele",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Mehdi Bayat, broer van makelaar Mogi Bayat, is gedelegeerd bestuurder van welke club?",
+    "options": [
+      "KRC Genk",
+      "Sporting Charleroi",
+      "KV Kortrijk",
+      "Standard Luik"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://www.vrt.be/vrtnws/nl/2026/09/10/zaak-propere-handen-33-verdachten-voor-ki/",
+      "https://en.wikipedia.org/wiki/Mogi_Bayat"
+    ],
+    "tags": [
+      "propere-handen",
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Bij welke club was Ivan Leko trainer toen hij op 10 oktober 2018 voor verhoor werd meegenomen in Propere Handen?",
+    "options": [
+      "Standard Luik",
+      "Club Brugge",
+      "KRC Genk",
+      "RSC Anderlecht"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Operatie_Propere_Handen",
+      "https://en.wikipedia.org/wiki/Ivan_Leko"
+    ],
+    "tags": [
+      "propere-handen",
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke functie had Herman Van Holsbeeck van 2003 tot 2018 bij RSC Anderlecht?",
+    "options": [
+      "Hoofdtrainer",
+      "Voorzitter",
+      "Manager",
+      "Perschef"
+    ],
+    "correct": 2,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Herman_Van_Holsbeeck",
+      "https://nl.wikipedia.org/wiki/Operatie_Propere_Handen"
+    ],
+    "tags": [
+      "propere-handen",
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Voor hoeveel verdachten vorderde het federaal parket in 2022 een doorverwijzing naar de correctionele rechtbank in Propere Handen?",
+    "options": [
+      "33",
+      "47",
+      "57",
+      "73"
+    ],
+    "correct": 2,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Operatie_Propere_Handen",
+      "https://www.vrt.be/vrtnws/nl/2026/09/10/zaak-propere-handen-33-verdachten-voor-ki/"
+    ],
+    "tags": [
+      "propere-handen",
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Hoeveel verdachten in Propere Handen moesten volgens VRT NWS in september 2026 nog voor de kamer van inbeschuldigingstelling verschijnen?",
+    "options": [
+      "13",
+      "23",
+      "33",
+      "43"
+    ],
+    "correct": 2,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://www.vrt.be/vrtnws/nl/2026/09/10/zaak-propere-handen-33-verdachten-voor-ki/",
+      "https://www.voetbalnieuws.be/news/923014/eindelijk-proces-propere-handen-nog-33-verdachten-over"
+    ],
+    "tags": [
+      "propere-handen",
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Hoeveel verdachten in Propere Handen hadden tot september 2026 een minnelijke schikking met het parket gesloten?",
+    "options": [
+      "12",
+      "17",
+      "22",
+      "27"
+    ],
+    "correct": 2,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://www.vrt.be/vrtnws/nl/2026/09/10/zaak-propere-handen-33-verdachten-voor-ki/",
+      "https://www.voetbalkrant.com/nieuws/2026-10-16/waarom-ligt-het-dossier-propere-handen-nu-weer-stil-advocaat-mogi-bayat-is-de-reden"
+    ],
+    "tags": [
+      "propere-handen",
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welk bedrag brachten de minnelijke schikkingen in Propere Handen volgens berichtgeving van september 2026 samen minstens op aan boetes, verbeurdverklaringen en achterstallige belastingen?",
+    "options": [
+      "Ruim 16 miljoen euro",
+      "Ruim 160.000 euro",
+      "Ruim 160 miljoen euro",
+      "Ruim 1,6 miljoen euro"
+    ],
+    "correct": 3,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://www.vrt.be/vrtnws/nl/2026/09/10/zaak-propere-handen-33-verdachten-voor-ki/",
+      "https://www.voetbalkrant.com/nieuws/2026-10-16/waarom-ligt-het-dossier-propere-handen-nu-weer-stil-advocaat-mogi-bayat-is-de-reden"
+    ],
+    "tags": [
+      "propere-handen",
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "In welk VRT-programma vertelde makelaar Dejan Veljković in 2021 dat er naar eigen zeggen ongeveer 30 miljoen euro aan zwart geld door zijn handen was gegaan?",
+    "options": [
+      "Koppen",
+      "Terzake",
+      "Pano",
+      "De Afspraak"
+    ],
+    "correct": 2,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://www.vrt.be/vrtnws/nl/2026/09/10/zaak-propere-handen-33-verdachten-voor-ki/",
+      "https://www.vrt.be/vrtnws/nl/2021/12/03/pano-operatie-zero-matchfixing/"
+    ],
+    "tags": [
+      "propere-handen",
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welk verzoek legde op 10 september 2026 de zitting van de kamer van inbeschuldigingstelling in Propere Handen stil?",
+    "options": [
+      "Een verzoek tot hoger beroep",
+      "Een wrakingsverzoek tegen de voorzitter",
+      "Een klacht bij de Raad van State",
+      "Een verzoek tot verjaring"
+    ],
+    "correct": 1,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://www.vrt.be/vrtnws/nl/2026/09/10/zaak-propere-handen-33-verdachten-voor-ki/",
+      "https://www.voetbalprimeur.be/nieuws/2134109/zaak-propere-handen-stilgelegd-na-wraking-van-voorzitter.html"
+    ],
+    "tags": [
+      "propere-handen",
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Waarvoor staat de afkorting BAS, het orgaan dat in 2019 de zaak rond KV Mechelen behandelde?",
+    "options": [
+      "Belgisch Arbitragehof voor de Sport",
+      "Belgische Atletiek- en Sportbond",
+      "Bond van Arbiters en Scheidsrechters",
+      "Beroepscommissie voor Amateursport"
+    ],
+    "correct": 0,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2017%E2%80%932019_Belgian_football_fraud_scandal",
+      "https://nl.wikipedia.org/wiki/KV_Mechelen"
+    ],
+    "tags": [
+      "propere-handen",
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Tegen welke club speelde KV Mechelen op 11 maart 2018 de competitiewedstrijd die later in het vizier van bond en justitie kwam?",
+    "options": [
+      "Zulte Waregem",
+      "KV Oostende",
+      "Sint-Truiden",
+      "Waasland-Beveren"
+    ],
+    "correct": 3,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/KV_Mechelen",
+      "https://en.wikipedia.org/wiki/2017%E2%80%932019_Belgian_football_fraud_scandal"
+    ],
+    "tags": [
+      "propere-handen",
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke minister van Justitie voerde de wet op de spijtoptanten in, waarop makelaar Dejan Veljković in 2018 als eerste een beroep deed?",
+    "options": [
+      "Annemie Turtelboom",
+      "Koen Geens",
+      "Jo Vandeurzen",
+      "Vincent Van Quickenborne"
+    ],
+    "correct": 1,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://www.vrt.be/vrtnws/nl/2018/11/20/veljkovic/"
+    ],
+    "tags": [
+      "propere-handen",
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Voor welke Duitse club speelde doelman Jean-Marie Pfaff van 1982 tot 1988?",
+    "options": [
+      "Borussia Dortmund",
+      "Bayern München",
+      "Hamburger SV",
+      "Schalke 04"
+    ],
+    "correct": 1,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jean-Marie_Pfaff",
+      "https://nl.wikipedia.org/wiki/Jean-Marie_Pfaff"
+    ],
+    "tags": [
+      "pfaff",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Met welke club werd Jean-Marie Pfaff in 1979 landskampioen?",
+    "options": [
+      "Lokeren",
+      "Waterschei",
+      "Lierse",
+      "SK Beveren"
+    ],
+    "correct": 3,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jean-Marie_Pfaff",
+      "https://en.wikipedia.org/wiki/K.S.K._Beveren"
+    ],
+    "tags": [
+      "pfaff"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Bij welke Turkse club sloot Jean-Marie Pfaff in 1990 zijn spelerscarrière af?",
+    "options": [
+      "Galatasaray",
+      "Trabzonspor",
+      "Fenerbahçe",
+      "Beşiktaş"
+    ],
+    "correct": 1,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jean-Marie_Pfaff",
+      "https://nl.wikipedia.org/wiki/Jean-Marie_Pfaff"
+    ],
+    "tags": [
+      "pfaff"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Op welke zender liep de realityreeks 'De Pfaffs' over het gezin van de ex-doelman?",
+    "options": [
+      "VRT Eén",
+      "Kanaal 2",
+      "VTM",
+      "Vier"
+    ],
+    "correct": 2,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/De_Pfaffs",
+      "https://nl.wikipedia.org/wiki/Jean-Marie_Pfaff"
+    ],
+    "tags": [
+      "pfaff",
+      "familie"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke Portugese club versloeg Bayern München in de Europacup I-finale van 1987, met Pfaff in doel?",
+    "options": [
+      "FC Porto",
+      "Benfica",
+      "Sporting Lissabon",
+      "Boavista"
+    ],
+    "correct": 0,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1987_European_Cup_final",
+      "https://nl.wikipedia.org/wiki/Jean-Marie_Pfaff"
+    ],
+    "tags": [
+      "pfaff",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke bijnaam gaven Mexicaanse fans aan Pfaff op het WK 1986?",
+    "options": [
+      "El Pulpo",
+      "El Muro",
+      "El Gato",
+      "El Simpático"
+    ],
+    "correct": 3,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jean-Marie_Pfaff"
+    ],
+    "tags": [
+      "pfaff",
+      "wk",
+      "rode-duivels",
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Hoeveel interlands speelde Pfaff voor de Rode Duivels?",
+    "options": [
+      "82",
+      "95",
+      "64",
+      "48"
+    ],
+    "correct": 2,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jean-Marie_Pfaff"
+    ],
+    "tags": [
+      "pfaff",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Wie werd in 1987 de eerste doelman van het jaar volgens de IFFHS?",
+    "options": [
+      "Jean-Marie Pfaff",
+      "Peter Shilton",
+      "Walter Zenga",
+      "Michel Preud'homme"
+    ],
+    "correct": 0,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jean-Marie_Pfaff",
+      "https://nl.wikipedia.org/wiki/Jean-Marie_Pfaff"
+    ],
+    "tags": [
+      "pfaff",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke Beveren-speler won de Gouden Schoen van 1978?",
+    "options": [
+      "Julien Cools",
+      "Jean-Marie Pfaff",
+      "Jan Ceulemans",
+      "Erwin Vandenbergh"
+    ],
+    "correct": 1,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Gouden_Schoen_(België)",
+      "https://nl.wikipedia.org/wiki/Jean-Marie_Pfaff"
+    ],
+    "tags": [
+      "pfaff",
+      "gouden-schoen"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Bij welke club maakte Lukaku als zestienjarige zijn profdebuut?",
+    "options": [
+      "Lierse",
+      "Club Brugge",
+      "Anderlecht",
+      "Genk"
+    ],
+    "correct": 2,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+    ],
+    "tags": [
+      "lukaku",
+      "rode-duivels",
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Voor welke club scoorde Lukaku in 2013 een hattrick in een 5-5 tegen Manchester United?",
+    "options": [
+      "Everton",
+      "West Bromwich Albion",
+      "Chelsea",
+      "Stoke City"
+    ],
+    "correct": 1,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+    ],
+    "tags": [
+      "lukaku",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke club betaalde in 2014 een clubrecord van 28 miljoen pond voor Lukaku?",
+    "options": [
+      "West Bromwich Albion",
+      "Liverpool",
+      "Manchester United",
+      "Everton"
+    ],
+    "correct": 3,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+    ],
+    "tags": [
+      "lukaku",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welk rugnummer droeg Lukaku tijdens zijn tweede periode bij Inter, in 2022-23?",
+    "options": [
+      "19",
+      "99",
+      "90",
+      "29"
+    ],
+    "correct": 2,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku",
+      "https://en.wikipedia.org/wiki/2022%E2%80%9323_Inter_Milan_season"
+    ],
+    "tags": [
+      "lukaku",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Bij welke club speelde Lukaku in 2023-24 op huurbasis?",
+    "options": [
+      "AS Roma",
+      "Lazio",
+      "Juventus",
+      "Fiorentina"
+    ],
+    "correct": 0,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+    ],
+    "tags": [
+      "lukaku",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Voor welk Afrikaans land speelde Lukaku's vader Roger als international?",
+    "options": [
+      "Kameroen",
+      "Zaïre",
+      "Ivoorkust",
+      "Senegal"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+    ],
+    "tags": [
+      "lukaku",
+      "rode-duivels",
+      "familie"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke club betaalde in 2017 ongeveer 75 miljoen pond voor Lukaku?",
+    "options": [
+      "Chelsea",
+      "Arsenal",
+      "Tottenham",
+      "Manchester United"
+    ],
+    "correct": 3,
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+    ],
+    "tags": [
+      "lukaku",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Hoeveel keer won Messi tussen 2009 en 2023 de Ballon d'Or?",
+    "options": [
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "correct": 2,
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lionel_Messi"
+    ],
+    "tags": [
+      "messi"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "In welke stad werd Messi geboren?",
+    "options": [
+      "Buenos Aires",
+      "Rosario",
+      "Córdoba",
+      "Mendoza"
+    ],
+    "correct": 1,
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lionel_Messi"
+    ],
+    "tags": [
+      "messi"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Bij welke jeugdclub speelde Messi voor hij naar Barcelona verhuisde?",
+    "options": [
+      "Newell's Old Boys",
+      "Boca Juniors",
+      "River Plate",
+      "Rosario Central"
+    ],
+    "correct": 0,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lionel_Messi"
+    ],
+    "tags": [
+      "messi"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Op wat schreef Carles Rexach in 2000 het eerste Barcelona-contract van Messi?",
+    "options": [
+      "Een bierviltje",
+      "Een krantenpagina",
+      "Een hotelbriefpapier",
+      "Een servet"
+    ],
+    "correct": 3,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lionel_Messi"
+    ],
+    "tags": [
+      "messi"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Hoeveel keer won Messi de Champions League met Barcelona?",
+    "options": [
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lionel_Messi"
+    ],
+    "tags": [
+      "messi",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Wie scoorde de winnende goal in de Copa América-finale van 2024 tegen Colombia?",
+    "options": [
+      "Lionel Messi",
+      "Julián Álvarez",
+      "Lautaro Martínez",
+      "Ángel Di María"
+    ],
+    "correct": 2,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2024_Copa_Am%C3%A9rica_final"
+    ],
+    "tags": [
+      "messi"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Tegen welk land won Argentinië in 2022 de Finalissima met 3-0?",
+    "options": [
+      "Engeland",
+      "Frankrijk",
+      "Brazilië",
+      "Italië"
+    ],
+    "correct": 3,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2022_Finalissima"
+    ],
+    "tags": [
+      "messi"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Hoeveel doelpunten scoorde Messi in totaal voor Barcelona?",
+    "options": [
+      "672",
+      "572",
+      "722",
+      "612"
+    ],
+    "correct": 0,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lionel_Messi"
+    ],
+    "tags": [
+      "messi"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Naar welke club verhuisde Maradona in 1984 voor een wereldrecordbedrag?",
+    "options": [
+      "Juventus",
+      "AC Milan",
+      "Napoli",
+      "AS Roma"
+    ],
+    "correct": 2,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Diego_Maradona"
+    ],
+    "tags": [
+      "maradona",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke Engelse doelman werd gepasseerd bij zowel de 'Hand van God' als het 'doelpunt van de eeuw'?",
+    "options": [
+      "Ray Clemence",
+      "Peter Shilton",
+      "David Seaman",
+      "Joe Corrigan"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Argentina_v_England_(1986_FIFA_World_Cup)"
+    ],
+    "tags": [
+      "maradona",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Tegen welke Duitse club won Napoli in 1989 de UEFA Cup-finale?",
+    "options": [
+      "Bayern München",
+      "Werder Bremen",
+      "Hamburger SV",
+      "VfB Stuttgart"
+    ],
+    "correct": 3,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/S.S.C._Napoli",
+      "https://en.wikipedia.org/wiki/Diego_Maradona"
+    ],
+    "tags": [
+      "maradona",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Wie scoorde de winnende goal voor Argentinië in de WK-finale van 1986 (3-2)?",
+    "options": [
+      "Jorge Valdano",
+      "Diego Maradona",
+      "Jorge Burruchaga",
+      "José Luis Brown"
+    ],
+    "correct": 2,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_final"
+    ],
+    "tags": [
+      "maradona",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Wie scoorde het enige doelpunt in Brazilië–Argentinië in de achtste finale van het WK 1990?",
+    "options": [
+      "Gustavo Dezotti",
+      "Claudio Caniggia",
+      "Jorge Burruchaga",
+      "Diego Maradona"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1990_FIFA_World_Cup_knockout_stage"
+    ],
+    "tags": [
+      "maradona",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke Argentijnse doelman stopte op het WK 1990 penalty's tegen Joegoslavië en Italië?",
+    "options": [
+      "Nery Pumpido",
+      "Ubaldo Fillol",
+      "Sergio Goycochea",
+      "Carlos Roa"
+    ],
+    "correct": 2,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sergio_Goycochea"
+    ],
+    "tags": [
+      "maradona",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Wie was bondscoach van Argentinië bij de wereldtitel van 1986?",
+    "options": [
+      "César Luis Menotti",
+      "Carlos Bilardo",
+      "Alfio Basile",
+      "Daniel Passarella"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_final"
+    ],
+    "tags": [
+      "maradona",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke Engelsman scoorde in de kwartfinale tegen Argentinië en werd topschutter van het WK 1986?",
+    "options": [
+      "Peter Beardsley",
+      "Gary Lineker",
+      "Glenn Hoddle",
+      "Steve Hodge"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup",
+      "https://en.wikipedia.org/wiki/Argentina_v_England_(1986_FIFA_World_Cup)"
+    ],
+    "tags": [
+      "maradona",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke Braziliaanse spits vormde bij Napoli met Maradona en Giordano het trio 'Ma-Gi-Ca'?",
+    "options": [
+      "Zico",
+      "Careca",
+      "Romário",
+      "Müller"
+    ],
+    "correct": 1,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Careca"
+    ],
+    "tags": [
+      "maradona",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Met welke club won Kevin De Bruyne in 2023 de Champions League?",
+    "options": [
+      "Chelsea",
+      "Manchester City",
+      "VfL Wolfsburg",
+      "Napoli"
+    ],
+    "correct": 1,
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne"
+    ],
+    "tags": [
+      "de-bruyne",
+      "champions-league",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Naar welke Duitse club verhuisde De Bruyne in 2014 vanuit Chelsea?",
+    "options": [
+      "Bayern München",
+      "Borussia Dortmund",
+      "VfL Wolfsburg",
+      "Werder Bremen"
+    ],
+    "correct": 2,
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
+      "https://nl.wikipedia.org/wiki/Kevin_De_Bruyne"
+    ],
+    "tags": [
+      "de-bruyne",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke trofee won De Bruyne in 2015 met Wolfsburg?",
+    "options": [
+      "De Duitse beker (DFB-Pokal)",
+      "De Duitse landstitel",
+      "De Europa League",
+      "De Champions League"
+    ],
+    "correct": 0,
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
+      "https://en.wikipedia.org/wiki/2015_DFB-Pokal_final"
+    ],
+    "tags": [
+      "de-bruyne",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Hoe kwam De Bruyne in 2025 bij Napoli terecht?",
+    "options": [
+      "Transfervrij",
+      "Voor 55 miljoen euro",
+      "Via een huurdeal",
+      "Via een ruil met Manchester City"
+    ],
+    "correct": 0,
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
+      "https://nl.wikipedia.org/wiki/Kevin_De_Bruyne"
+    ],
+    "tags": [
+      "de-bruyne",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welke trainer liet De Bruyne bij Chelsea nauwelijks spelen?",
+    "options": [
+      "Antonio Conte",
+      "Carlo Ancelotti",
+      "Roberto Di Matteo",
+      "José Mourinho"
+    ],
+    "correct": 3,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Kevin_De_Bruyne"
+    ],
+    "tags": [
+      "de-bruyne",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Aan welke Duitse club werd De Bruyne in 2012-13 door Chelsea uitgeleend?",
+    "options": [
+      "Werder Bremen",
+      "Schalke 04",
+      "Hamburger SV",
+      "Bayer Leverkusen"
+    ],
+    "correct": 0,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne"
+    ],
+    "tags": [
+      "de-bruyne",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welk record van Thierry Henry evenaarde De Bruyne in 2019-20?",
+    "options": [
+      "Meeste assists in één Premier League-seizoen",
+      "Meeste assists in één Champions League-seizoen",
+      "Meeste doelpunten in één Premier League-seizoen",
+      "Snelste hattrick in de Premier League"
+    ],
+    "correct": 0,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne"
+    ],
+    "tags": [
+      "de-bruyne",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Hoeveel Premier League-titels won De Bruyne met Manchester City?",
+    "options": [
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "correct": 2,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne"
+    ],
+    "tags": [
+      "de-bruyne",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "In welke Gentse deelgemeente werd De Bruyne geboren?",
+    "options": [
+      "Sint-Amandsberg",
+      "Gentbrugge",
+      "Zwijnaarde",
+      "Drongen"
+    ],
+    "correct": 3,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
+      "https://nl.wikipedia.org/wiki/Kevin_De_Bruyne"
+    ],
+    "tags": [
+      "de-bruyne",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Bij welke club speelde De Bruyne in de jeugd, voor hij naar Genk trok?",
+    "options": [
+      "KAA Gent",
+      "Club Brugge",
+      "Anderlecht",
+      "Standard"
+    ],
+    "correct": 0,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne"
+    ],
+    "tags": [
+      "de-bruyne",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welk rugnummer draagt De Bruyne bij Napoli?",
+    "options": [
+      "7",
+      "10",
+      "11",
+      "17"
+    ],
+    "correct": 2,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
+      "https://en.wikipedia.org/wiki/2025%E2%80%9326_SSC_Napoli_season"
+    ],
+    "tags": [
+      "de-bruyne",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Tegen welk land debuteerde De Bruyne in 2010 bij de Rode Duivels?",
+    "options": [
+      "Zweden",
+      "Luxemburg",
+      "Finland",
+      "Estland"
+    ],
+    "correct": 2,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
+      "https://nl.wikipedia.org/wiki/Kevin_De_Bruyne"
+    ],
+    "tags": [
+      "de-bruyne",
+      "rode-duivels"
     ],
     "checkedAt": "2026-10-19"
   }

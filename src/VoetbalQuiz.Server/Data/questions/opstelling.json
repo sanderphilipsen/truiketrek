@@ -17,7 +17,7 @@
     ],
     "difficulty": 1, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"],
-    "tags": ["wk", "rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "rode-duivels", "lukaku", "de-bruyne"], "checkedAt": "2026-10-17"
   },
   {
     "title": "België – Japan, achtste finale WK 2018 (3-2)",
@@ -37,7 +37,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"],
-    "tags": ["wk", "rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "rode-duivels", "lukaku", "de-bruyne"], "checkedAt": "2026-10-17"
   },
   {
     "title": "België – Hongarije, achtste finale EK 2016 (4-0)",
@@ -57,7 +57,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2016_knockout_stage"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "lukaku", "de-bruyne"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Wales – België, kwartfinale EK 2016 (3-1)",
@@ -77,7 +77,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2016_knockout_stage"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "lukaku", "de-bruyne"], "checkedAt": "2026-10-17"
   },
   {
     "title": "België – Verenigde Staten, achtste finale WK 2014 (2-1 n.v.)",
@@ -97,7 +97,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_knockout_stage"],
-    "tags": ["wk", "rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "rode-duivels", "de-bruyne"], "checkedAt": "2026-10-17"
   },
   {
     "title": "België – Portugal, achtste finale EK 2020 (1-0)",
@@ -117,7 +117,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2020_knockout_stage"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "lukaku", "de-bruyne"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Real Madrid – Club Brugge, Champions League-groepsfase 2019 (2-2)",
@@ -177,7 +177,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_final"],
-    "tags": ["wk"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "messi"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Nederland – Spanje, finale WK 2010 (0-1 n.v.)",
@@ -217,7 +217,7 @@
     ],
     "difficulty": 1, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_final"],
-    "tags": ["wk"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "messi"], "checkedAt": "2026-10-17"
   },
   {
     "title": "AC Milan – Liverpool, finale Champions League 2005 (3-3, 2-3 n.s.)",
@@ -257,7 +257,7 @@
     ],
     "difficulty": 1, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2011_UEFA_Champions_League_final"],
-    "tags": ["champions-league"], "checkedAt": "2026-10-17"
+    "tags": ["champions-league", "messi"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Manchester City – Inter, finale Champions League 2023 (1-0)",
@@ -277,7 +277,7 @@
     ],
     "difficulty": 1, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2023_UEFA_Champions_League_final"],
-    "tags": ["champions-league", "rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["champions-league", "rode-duivels", "de-bruyne"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Tottenham – Liverpool, finale Champions League 2019 (0-2)",
@@ -337,7 +337,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_1980_final"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "pfaff"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Argentinië – België, halve finale WK 1986 (2-0)",
@@ -357,7 +357,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_knockout_stage"],
-    "tags": ["wk", "rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "rode-duivels", "pfaff"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Engeland – België, achtste finale WK 1990 (1-0 n.v.)",
@@ -417,7 +417,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_knockout_stage"],
-    "tags": ["wk", "rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "rode-duivels", "messi", "de-bruyne"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Frankrijk – België, halve finale WK 2018 (1-0)",
@@ -437,7 +437,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"],
-    "tags": ["wk", "rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "rode-duivels", "lukaku", "de-bruyne"], "checkedAt": "2026-10-17"
   },
   {
     "title": "België – Engeland, troostfinale WK 2018 (2-0)",
@@ -457,7 +457,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"],
-    "tags": ["wk", "rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["wk", "rode-duivels", "lukaku", "de-bruyne"], "checkedAt": "2026-10-17"
   },
   {
     "title": "België – Italië, kwartfinale EK 2020 (1-2)",
@@ -477,7 +477,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2020_knockout_stage"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "lukaku", "de-bruyne"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Anderlecht – West Ham United, finale Europacup II 1976 (4-2)",
@@ -737,7 +737,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/FC_Barcelona_6%E2%80%931_Paris_Saint-Germain_FC", "https://africa.espn.com/football/match/_/gameId/469090"],
-    "tags": ["champions-league"], "checkedAt": "2026-10-17"
+    "tags": ["champions-league", "messi"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Liverpool – FC Barcelona, halve finale Champions League 2019 (4-0)",
@@ -757,7 +757,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://africa.espn.com/football/match/_/gameId/538699/barcelona-liverpool", "https://www.coachesvoice.com/?p=16109"],
-    "tags": ["champions-league"], "checkedAt": "2026-10-17"
+    "tags": ["champions-league", "messi"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Liverpool – Real Madrid, finale Champions League 2022 (0-1)",
@@ -817,7 +817,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2015_Belgian_Cup_final", "https://www.voetbalkrant.com/belgie/beker-van-belgie/2014-2015/kalender/finale/club-brugge/anderlecht"],
-    "tags": ["rode-duivels", "anderlecht", "beker-van-belgie"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "anderlecht", "beker-van-belgie", "deschacht"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Bekerfinale 2016: Club Brugge – Standard (1-2)",
@@ -1057,7 +1057,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://www.espn.com/soccer/lineups/_/gameId/286821", "https://www.voetbalkrant.com/belgie/jupiler-pro-league/2009-2010/kalender/speeldag-22/standard/anderlecht/opstellingen"],
-    "tags": ["rode-duivels", "anderlecht"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "anderlecht", "deschacht", "lukaku"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Genk – Standard, titelmatch play-off I 2011 (1-1)",
@@ -1077,7 +1077,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://www.voetbalkrant.com/belgie/play-off-1/2010-2011/kalender/speeldag-10/krc-genk/standard/opstellingen", "https://www.maxifoot.fr/match/racing-genk-standard-liege-20110517.htm"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "de-bruyne"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Anderlecht – Club Brugge, titelmatch play-off I 2012 (1-1)",
@@ -1117,7 +1117,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://www.voetbalkrant.com/belgie/jupiler-pro-league/2014-2015/kalender/speeldag-23/standard/anderlecht/opstellingen", "https://www.maxifoot.fr/match/standard-liege-anderlecht-20150125.htm"],
-    "tags": ["rode-duivels", "anderlecht"], "checkedAt": "2026-10-17"
+    "tags": ["rode-duivels", "anderlecht", "deschacht"], "checkedAt": "2026-10-17"
   },
   {
     "title": "Gent – Standard, play-off I 2015 (2-0)",
@@ -1437,7 +1437,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://www.tntsports.co.uk/football/bundesliga/2014-2015/live-vfl-wolfsburg-bayern-munich_mtc706840/live-lineup.shtml", "https://fcbayern.com/de/spiele/profis/bundesliga/2014-2015/vfl-wolfsburg-fc-bayern-muenchen-30-01-2015/aufstellung", "https://www.espn.com/soccer/report/_/gameId/396838"],
-    "tags": ["rode-duivels"], "checkedAt": "2026-10-18"
+    "tags": ["rode-duivels", "de-bruyne"], "checkedAt": "2026-10-18"
   },
   {
     "title": "Bayer Leverkusen – Werder Bremen, Bundesliga 2023-24 (5-0)",
@@ -1537,7 +1537,7 @@
     ],
     "difficulty": 1, "status": "approved",
     "sources": ["https://africa.espn.com/football/match/_/gameId/301858", "https://www.espn.com/soccer/lineups/_/gameId/301858"],
-    "tags": ["legende"], "checkedAt": "2026-10-18"
+    "tags": ["legende", "messi"], "checkedAt": "2026-10-18"
   },
   {
     "title": "Real Madrid – FC Barcelona, La Liga 2008-09 (2-6)",
@@ -1637,7 +1637,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://www.fcbarcelona.es/es/noticias/1899174/15-anos-de-un-clasico-historico", "https://www.footmercato.net/live/276278081405223733-real-madrid-vs-barcelone"],
-    "tags": ["legende", "oranje"], "checkedAt": "2026-10-18"
+    "tags": ["legende", "oranje", "messi"], "checkedAt": "2026-10-18"
   },
   {
     "title": "Sassuolo – AC Milan, Serie A 2021-22 (0-3)",
@@ -1737,7 +1737,7 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://www.90min.com/es/posts/34-anos-del-primer-scudetto-de-napoli-el-xi-titular-que-lo-logro-de-la-mano-de-maradona", "https://www.napolimagazine.com/in-evidenza/articolo/oggi-avvenne-10-maggio-1987-napoli-fiorentina-1-1-e-fu-scudetto-ecco-i-dettagli"],
-    "tags": ["legende"], "checkedAt": "2026-10-18"
+    "tags": ["legende", "maradona"], "checkedAt": "2026-10-18"
   },
   {
     "title": "Lazio – Reggina, Serie A 1999-2000 (3-0)",
@@ -2006,7 +2006,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_Group_G"],
-    "tags": ["wk", "rode-duivels"],
+    "tags": ["wk", "rode-duivels", "lukaku", "de-bruyne"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2048,7 +2048,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2009_UEFA_Champions_League_final"],
-    "tags": ["champions-league"],
+    "tags": ["champions-league", "messi"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2069,7 +2069,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2015_UEFA_Champions_League_final"],
-    "tags": ["champions-league"],
+    "tags": ["champions-league", "messi"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2132,7 +2132,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_Group_F"],
-    "tags": ["wk", "rode-duivels"],
+    "tags": ["wk", "rode-duivels", "de-bruyne"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2153,7 +2153,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_Group_F"],
-    "tags": ["wk", "rode-duivels"],
+    "tags": ["wk", "rode-duivels", "de-bruyne"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2174,7 +2174,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_Group_F"],
-    "tags": ["wk", "rode-duivels"],
+    "tags": ["wk", "rode-duivels", "de-bruyne"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2195,7 +2195,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2024_Group_E"],
-    "tags": ["rode-duivels"],
+    "tags": ["rode-duivels", "lukaku", "de-bruyne"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2216,7 +2216,7 @@
     ],
     "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_Group_H"],
-    "tags": ["wk", "rode-duivels"],
+    "tags": ["wk", "rode-duivels", "lukaku", "de-bruyne"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2237,7 +2237,7 @@
     ],
     "difficulty": 4, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2020_Group_B"],
-    "tags": ["rode-duivels"],
+    "tags": ["rode-duivels", "lukaku"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2258,7 +2258,7 @@
     ],
     "difficulty": 4, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2020_Group_B"],
-    "tags": ["rode-duivels"],
+    "tags": ["rode-duivels", "lukaku", "de-bruyne"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2279,7 +2279,7 @@
     ],
     "difficulty": 4, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2024_Group_E"],
-    "tags": ["rode-duivels"],
+    "tags": ["rode-duivels", "lukaku", "de-bruyne"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2300,7 +2300,7 @@
     ],
     "difficulty": 4, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2024_Group_E"],
-    "tags": ["rode-duivels"],
+    "tags": ["rode-duivels", "lukaku", "de-bruyne"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2321,7 +2321,7 @@
     ],
     "difficulty": 4, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_Group_H"],
-    "tags": ["wk", "rode-duivels"],
+    "tags": ["wk", "rode-duivels", "lukaku", "de-bruyne"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -2426,7 +2426,427 @@
     ],
     "difficulty": 5, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_knockout_stage"],
-    "tags": ["wk", "rode-duivels"],
+    "tags": ["wk", "rode-duivels", "pfaff"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Bekerfinale 2008: Gent – Anderlecht (2-3)",
+    "team": "Anderlecht",
+    "players": [
+      { "name": "Silvio Proto", "aliases": ["Proto"], "position": "K" },
+      { "name": "Marcin Wasilewski", "aliases": ["Wasilewski"], "position": "V" },
+      { "name": "Nicolás Pareja", "aliases": ["Pareja"], "position": "V" },
+      { "name": "Jelle Van Damme", "aliases": ["Van Damme"], "position": "V" },
+      { "name": "Olivier Deschacht", "aliases": ["Deschacht"], "position": "V" },
+      { "name": "Lucas Biglia", "aliases": ["Biglia"], "position": "M" },
+      { "name": "Guillaume Gillet", "aliases": ["Gillet"], "position": "M" },
+      { "name": "Jan Polák", "aliases": ["Polák", "Polak"], "position": "M" },
+      { "name": "Stanislav Vlček", "aliases": ["Vlček", "Vlcek"], "position": "A" },
+      { "name": "Mbark Boussoufa", "aliases": ["Boussoufa"], "position": "A" },
+      { "name": "Nicolás Frutos", "aliases": ["Frutos"], "position": "A" }
+    ],
+    "difficulty": 5, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2008_Belgian_Cup_final"],
+    "tags": ["anderlecht", "beker-van-belgie", "deschacht"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Belgische Supercup 2014: Anderlecht – Lokeren (2-1)",
+    "team": "Anderlecht",
+    "players": [
+      { "name": "Thomas Kaminski", "aliases": ["Kaminski"], "position": "K" },
+      { "name": "Fabrice N'Sakala", "aliases": ["N'Sakala", "Nsakala"], "position": "V" },
+      { "name": "Chancel Mbemba", "aliases": ["Mbemba"], "position": "V" },
+      { "name": "Bram Nuytinck", "aliases": ["Nuytinck"], "position": "V" },
+      { "name": "Olivier Deschacht", "aliases": ["Deschacht"], "position": "V" },
+      { "name": "Frank Acheampong", "aliases": ["Acheampong"], "position": "M" },
+      { "name": "Youri Tielemans", "aliases": ["Tielemans"], "position": "M" },
+      { "name": "Luka Milivojević", "aliases": ["Milivojević", "Milivojevic"], "position": "M" },
+      { "name": "Dennis Praet", "aliases": ["Praet"], "position": "M" },
+      { "name": "Gohi Bi Cyriac", "aliases": ["Cyriac", "Gohi"], "position": "A" },
+      { "name": "Aleksandar Mitrović", "aliases": ["Mitrović", "Mitrovic"], "position": "A" }
+    ],
+    "difficulty": 5, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2014_Belgian_Super_Cup"],
+    "tags": ["anderlecht", "deschacht"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Belgische Supercup 2006 (replay): Anderlecht – Zulte Waregem (3-1)",
+    "team": "Anderlecht",
+    "players": [
+      { "name": "Davy Schollen", "aliases": ["Schollen"], "position": "K" },
+      { "name": "Mark De Man", "aliases": ["De Man"], "position": "V" },
+      { "name": "Roland Juhász", "aliases": ["Juhász", "Juhasz"], "position": "V" },
+      { "name": "Olivier Deschacht", "aliases": ["Deschacht"], "position": "V" },
+      { "name": "Jelle Van Damme", "aliases": ["Van Damme"], "position": "V" },
+      { "name": "Cristian Leiva", "aliases": ["Leiva"], "position": "M" },
+      { "name": "Lucas Biglia", "aliases": ["Biglia"], "position": "M" },
+      { "name": "Bart Goor", "aliases": ["Goor"], "position": "M" },
+      { "name": "Oladapo Olufemi", "aliases": ["Olufemi"], "position": "A" },
+      { "name": "Ahmed Hassan", "aliases": ["Hassan"], "position": "A" },
+      { "name": "Roland Lamah", "aliases": ["Lamah"], "position": "A" }
+    ],
+    "difficulty": 5, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2006_Belgian_Super_Cup"],
+    "tags": ["anderlecht", "deschacht"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Brazilië – Italië, finale WK 1970 (4-1)",
+    "team": "Brazilië",
+    "players": [
+      { "name": "Félix", "aliases": ["Felix"], "position": "K" },
+      { "name": "Carlos Alberto", "aliases": ["Carlos Alberto Torres"], "position": "V" },
+      { "name": "Brito", "aliases": [], "position": "V" },
+      { "name": "Piazza", "aliases": ["Wilson Piazza"], "position": "V" },
+      { "name": "Everaldo", "aliases": [], "position": "V" },
+      { "name": "Clodoaldo", "aliases": [], "position": "M" },
+      { "name": "Gérson", "aliases": ["Gerson"], "position": "M" },
+      { "name": "Rivellino", "aliases": ["Rivelino"], "position": "M" },
+      { "name": "Jairzinho", "aliases": ["Jair"], "position": "A" },
+      { "name": "Pelé", "aliases": ["Pele"], "position": "A" },
+      { "name": "Tostão", "aliases": ["Tostao"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/1970_FIFA_World_Cup_final"],
+    "tags": ["pele", "wk", "legende"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Brazilië – Zweden, finale WK 1958 (5-2)",
+    "team": "Brazilië",
+    "players": [
+      { "name": "Gilmar", "aliases": [], "position": "K" },
+      { "name": "Djalma Santos", "aliases": ["Djalma"], "position": "V" },
+      { "name": "Bellini", "aliases": ["Hilderaldo Bellini"], "position": "V" },
+      { "name": "Orlando", "aliases": [], "position": "V" },
+      { "name": "Nílton Santos", "aliases": ["Nilton Santos"], "position": "V" },
+      { "name": "Zito", "aliases": [], "position": "M" },
+      { "name": "Didi", "aliases": [], "position": "M" },
+      { "name": "Garrincha", "aliases": [], "position": "A" },
+      { "name": "Vavá", "aliases": ["Vava"], "position": "A" },
+      { "name": "Pelé", "aliases": ["Pele"], "position": "A" },
+      { "name": "Zagallo", "aliases": ["Mário Zagallo", "Mario Zagallo"], "position": "A" }
+    ],
+    "difficulty": 4, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/1958_FIFA_World_Cup_final"],
+    "tags": ["pele", "wk", "legende"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Argentinië – België, groepsfase WK 1982 (0-1)",
+    "team": "België",
+    "players": [
+      { "name": "Jean-Marie Pfaff", "aliases": ["Pfaff"], "position": "K" },
+      { "name": "Maurits De Schrijver", "aliases": ["De Schrijver"], "position": "V" },
+      { "name": "Eric Gerets", "aliases": ["Gerets", "Erik Gerets"], "position": "V" },
+      { "name": "Luc Millecamps", "aliases": ["Millecamps"], "position": "V" },
+      { "name": "Marc Baecke", "aliases": ["Baecke"], "position": "V" },
+      { "name": "Ludo Coeck", "aliases": ["Coeck"], "position": "M" },
+      { "name": "Franky Vercauteren", "aliases": ["Vercauteren", "Frank Vercauteren"], "position": "M" },
+      { "name": "Guy Vandersmissen", "aliases": ["Vandersmissen"], "position": "M" },
+      { "name": "Alexandre Czerniatynski", "aliases": ["Czerniatynski"], "position": "A" },
+      { "name": "Erwin Vandenbergh", "aliases": ["Vandenbergh"], "position": "A" },
+      { "name": "Jan Ceulemans", "aliases": ["Ceulemans"], "position": "A" }
+    ],
+    "difficulty": 5, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/1982_FIFA_World_Cup_Group_3"],
+    "tags": ["pfaff", "wk", "rode-duivels"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Spanje – België, kwartfinale WK 1986 (1-1, 4-5 n.s.)",
+    "team": "België",
+    "players": [
+      { "name": "Jean-Marie Pfaff", "aliases": ["Pfaff"], "position": "K" },
+      { "name": "Eric Gerets", "aliases": ["Gerets", "Erik Gerets"], "position": "V" },
+      { "name": "Michel Renquin", "aliases": ["Renquin"], "position": "V" },
+      { "name": "Georges Grün", "aliases": ["Grün", "Grun", "Georges Grun"], "position": "V" },
+      { "name": "Stéphane Demol", "aliases": ["Demol", "Stephane Demol"], "position": "V" },
+      { "name": "Patrick Vervoort", "aliases": ["Vervoort"], "position": "M" },
+      { "name": "Franky Vercauteren", "aliases": ["Vercauteren", "Frank Vercauteren"], "position": "M" },
+      { "name": "Enzo Scifo", "aliases": ["Scifo"], "position": "M" },
+      { "name": "Jan Ceulemans", "aliases": ["Ceulemans"], "position": "M" },
+      { "name": "Daniel Veyt", "aliases": ["Veyt"], "position": "A" },
+      { "name": "Nico Claesen", "aliases": ["Claesen"], "position": "A" }
+    ],
+    "difficulty": 5, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_knockout_stage"],
+    "tags": ["pfaff", "wk", "rode-duivels"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Bayern München – FC Porto, finale Europacup I 1987 (1-2)",
+    "team": "Bayern München",
+    "players": [
+      { "name": "Jean-Marie Pfaff", "aliases": ["Pfaff"], "position": "K" },
+      { "name": "Helmut Winklhofer", "aliases": ["Winklhofer"], "position": "V" },
+      { "name": "Hans Pflügler", "aliases": ["Pflügler", "Pfluegler", "Pflugler"], "position": "V" },
+      { "name": "Norbert Eder", "aliases": ["Eder"], "position": "V" },
+      { "name": "Norbert Nachtweih", "aliases": ["Nachtweih"], "position": "V" },
+      { "name": "Andreas Brehme", "aliases": ["Brehme"], "position": "M" },
+      { "name": "Hansi Flick", "aliases": ["Flick", "Hans-Dieter Flick"], "position": "M" },
+      { "name": "Lothar Matthäus", "aliases": ["Matthäus", "Matthaus", "Lothar Matthaus"], "position": "M" },
+      { "name": "Dieter Hoeneß", "aliases": ["Hoeneß", "Hoeness", "Dieter Hoeness"], "position": "A" },
+      { "name": "Michael Rummenigge", "aliases": ["Rummenigge"], "position": "A" },
+      { "name": "Ludwig Kögl", "aliases": ["Kögl", "Kogl", "Ludwig Kogl"], "position": "A" }
+    ],
+    "difficulty": 5, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/1987_European_Cup_final"],
+    "tags": ["pfaff", "champions-league"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "België – Panama, groepsfase WK 2018 (3-0)",
+    "team": "België",
+    "players": [
+      { "name": "Thibaut Courtois", "aliases": ["Courtois"], "position": "K" },
+      { "name": "Toby Alderweireld", "aliases": ["Alderweireld"], "position": "V" },
+      { "name": "Dedryck Boyata", "aliases": ["Boyata"], "position": "V" },
+      { "name": "Jan Vertonghen", "aliases": ["Vertonghen"], "position": "V" },
+      { "name": "Thomas Meunier", "aliases": ["Meunier"], "position": "M" },
+      { "name": "Kevin De Bruyne", "aliases": ["De Bruyne", "KDB"], "position": "M" },
+      { "name": "Axel Witsel", "aliases": ["Witsel"], "position": "M" },
+      { "name": "Yannick Carrasco", "aliases": ["Carrasco", "Yannick Ferreira Carrasco"], "position": "M" },
+      { "name": "Dries Mertens", "aliases": ["Mertens"], "position": "A" },
+      { "name": "Romelu Lukaku", "aliases": ["Lukaku"], "position": "A" },
+      { "name": "Eden Hazard", "aliases": ["Hazard"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_Group_G"],
+    "tags": ["lukaku", "wk", "rode-duivels", "de-bruyne"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Spanje – Argentinië, finale WK 2026 (1-0 n.v.)",
+    "team": "Argentinië",
+    "players": [
+      { "name": "Emiliano Martínez", "aliases": ["Emiliano Martinez", "Dibu Martínez", "Dibu Martinez"], "position": "K" },
+      { "name": "Gonzalo Montiel", "aliases": ["Montiel"], "position": "V" },
+      { "name": "Cristian Romero", "aliases": ["Romero", "Cuti Romero"], "position": "V" },
+      { "name": "Lisandro Martínez", "aliases": ["Lisandro Martinez", "Licha Martínez"], "position": "V" },
+      { "name": "Nicolás Tagliafico", "aliases": ["Tagliafico", "Nicolas Tagliafico"], "position": "V" },
+      { "name": "Rodrigo De Paul", "aliases": ["De Paul"], "position": "M" },
+      { "name": "Enzo Fernández", "aliases": ["Enzo Fernandez"], "position": "M" },
+      { "name": "Alexis Mac Allister", "aliases": ["Mac Allister", "MacAllister"], "position": "M" },
+      { "name": "Nicolás González", "aliases": ["Nicolas Gonzalez", "Nico González"], "position": "A" },
+      { "name": "Lionel Messi", "aliases": ["Messi", "Leo Messi"], "position": "A" },
+      { "name": "Julián Álvarez", "aliases": ["Julian Alvarez", "Álvarez", "Alvarez"], "position": "A" }
+    ],
+    "difficulty": 2, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_final"],
+    "tags": ["wk", "messi"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Brazilië – Argentinië, finale Copa América 2021 (0-1)",
+    "team": "Argentinië",
+    "players": [
+      { "name": "Emiliano Martínez", "aliases": ["Emiliano Martinez", "Dibu Martínez", "Dibu Martinez"], "position": "K" },
+      { "name": "Gonzalo Montiel", "aliases": ["Montiel"], "position": "V" },
+      { "name": "Cristian Romero", "aliases": ["Romero", "Cuti Romero"], "position": "V" },
+      { "name": "Nicolás Otamendi", "aliases": ["Otamendi", "Nicolas Otamendi"], "position": "V" },
+      { "name": "Marcos Acuña", "aliases": ["Acuña", "Marcos Acuna", "Acuna"], "position": "V" },
+      { "name": "Rodrigo De Paul", "aliases": ["De Paul"], "position": "M" },
+      { "name": "Leandro Paredes", "aliases": ["Paredes"], "position": "M" },
+      { "name": "Giovani Lo Celso", "aliases": ["Lo Celso"], "position": "M" },
+      { "name": "Lionel Messi", "aliases": ["Messi", "Leo Messi"], "position": "A" },
+      { "name": "Lautaro Martínez", "aliases": ["Lautaro Martinez", "Lautaro"], "position": "A" },
+      { "name": "Ángel Di María", "aliases": ["Di María", "Di Maria", "Angel Di Maria"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2021_Copa_Am%C3%A9rica_final"],
+    "tags": ["messi"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Argentinië – Colombia, finale Copa América 2024 (1-0 n.v.)",
+    "team": "Argentinië",
+    "players": [
+      { "name": "Emiliano Martínez", "aliases": ["Emiliano Martinez", "Dibu Martínez", "Dibu Martinez"], "position": "K" },
+      { "name": "Gonzalo Montiel", "aliases": ["Montiel"], "position": "V" },
+      { "name": "Cristian Romero", "aliases": ["Romero", "Cuti Romero"], "position": "V" },
+      { "name": "Lisandro Martínez", "aliases": ["Lisandro Martinez", "Licha Martínez"], "position": "V" },
+      { "name": "Nicolás Tagliafico", "aliases": ["Tagliafico", "Nicolas Tagliafico"], "position": "V" },
+      { "name": "Rodrigo De Paul", "aliases": ["De Paul"], "position": "M" },
+      { "name": "Enzo Fernández", "aliases": ["Enzo Fernandez"], "position": "M" },
+      { "name": "Alexis Mac Allister", "aliases": ["Mac Allister", "MacAllister"], "position": "M" },
+      { "name": "Ángel Di María", "aliases": ["Di María", "Di Maria", "Angel Di Maria"], "position": "A" },
+      { "name": "Lionel Messi", "aliases": ["Messi", "Leo Messi"], "position": "A" },
+      { "name": "Julián Álvarez", "aliases": ["Julian Alvarez", "Álvarez", "Alvarez"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2024_Copa_Am%C3%A9rica_final"],
+    "tags": ["messi"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Italië – Argentinië, Finalissima 2022 (0-3)",
+    "team": "Argentinië",
+    "players": [
+      { "name": "Emiliano Martínez", "aliases": ["Emiliano Martinez", "Dibu Martínez", "Dibu Martinez"], "position": "K" },
+      { "name": "Nahuel Molina", "aliases": ["Molina"], "position": "V" },
+      { "name": "Cristian Romero", "aliases": ["Romero", "Cuti Romero"], "position": "V" },
+      { "name": "Nicolás Otamendi", "aliases": ["Otamendi", "Nicolas Otamendi"], "position": "V" },
+      { "name": "Nicolás Tagliafico", "aliases": ["Tagliafico", "Nicolas Tagliafico"], "position": "V" },
+      { "name": "Guido Rodríguez", "aliases": ["Guido Rodriguez"], "position": "M" },
+      { "name": "Giovani Lo Celso", "aliases": ["Lo Celso"], "position": "M" },
+      { "name": "Rodrigo De Paul", "aliases": ["De Paul"], "position": "M" },
+      { "name": "Lionel Messi", "aliases": ["Messi", "Leo Messi"], "position": "A" },
+      { "name": "Lautaro Martínez", "aliases": ["Lautaro Martinez", "Lautaro"], "position": "A" },
+      { "name": "Ángel Di María", "aliases": ["Di María", "Di Maria", "Angel Di Maria"], "position": "A" }
+    ],
+    "difficulty": 4, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2022_Finalissima"],
+    "tags": ["messi"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Argentinië – Saoedi-Arabië, groepsfase WK 2022 (1-2)",
+    "team": "Argentinië",
+    "players": [
+      { "name": "Emiliano Martínez", "aliases": ["Emiliano Martinez", "Dibu Martínez", "Dibu Martinez"], "position": "K" },
+      { "name": "Nahuel Molina", "aliases": ["Molina"], "position": "V" },
+      { "name": "Cristian Romero", "aliases": ["Romero", "Cuti Romero"], "position": "V" },
+      { "name": "Nicolás Otamendi", "aliases": ["Otamendi", "Nicolas Otamendi"], "position": "V" },
+      { "name": "Nicolás Tagliafico", "aliases": ["Tagliafico", "Nicolas Tagliafico"], "position": "V" },
+      { "name": "Rodrigo De Paul", "aliases": ["De Paul"], "position": "M" },
+      { "name": "Leandro Paredes", "aliases": ["Paredes"], "position": "M" },
+      { "name": "Ángel Di María", "aliases": ["Di María", "Di Maria", "Angel Di Maria"], "position": "M" },
+      { "name": "Papu Gómez", "aliases": ["Papu Gomez", "Alejandro Gómez", "Alejandro Gomez", "Gómez", "Gomez"], "position": "M" },
+      { "name": "Lionel Messi", "aliases": ["Messi", "Leo Messi"], "position": "A" },
+      { "name": "Lautaro Martínez", "aliases": ["Lautaro Martinez", "Lautaro"], "position": "A" }
+    ],
+    "difficulty": 3, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_Group_C"],
+    "tags": ["wk", "messi"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Argentinië – Engeland, kwartfinale WK 1986 (2-1)",
+    "team": "Argentinië",
+    "players": [
+      { "name": "Nery Pumpido", "aliases": ["Pumpido"], "position": "K" },
+      { "name": "José Luis Brown", "aliases": ["Brown", "Jose Luis Brown"], "position": "V" },
+      { "name": "José Luis Cuciuffo", "aliases": ["Cuciuffo", "Jose Luis Cuciuffo"], "position": "V" },
+      { "name": "Oscar Ruggeri", "aliases": ["Ruggeri"], "position": "V" },
+      { "name": "Ricardo Giusti", "aliases": ["Giusti"], "position": "M" },
+      { "name": "Julio Olarticoechea", "aliases": ["Olarticoechea"], "position": "M" },
+      { "name": "Sergio Batista", "aliases": ["Batista"], "position": "M" },
+      { "name": "Héctor Enrique", "aliases": ["Enrique", "Hector Enrique"], "position": "M" },
+      { "name": "Jorge Burruchaga", "aliases": ["Burruchaga", "Burru"], "position": "M" },
+      { "name": "Diego Maradona", "aliases": ["Maradona", "Diego Armando Maradona", "El Pibe de Oro"], "position": "A" },
+      { "name": "Jorge Valdano", "aliases": ["Valdano"], "position": "A" }
+    ],
+    "difficulty": 4, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/Argentina_v_England_(1986_FIFA_World_Cup)"],
+    "tags": ["maradona", "wk"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Italië – Argentinië, halve finale WK 1990 (1-1, 3-4 n.s.)",
+    "team": "Argentinië",
+    "players": [
+      { "name": "Sergio Goycochea", "aliases": ["Goycochea", "El Vasco"], "position": "K" },
+      { "name": "Oscar Ruggeri", "aliases": ["Ruggeri"], "position": "V" },
+      { "name": "Juan Simón", "aliases": ["Simón", "Simon", "Juan Simon"], "position": "V" },
+      { "name": "José Serrizuela", "aliases": ["Serrizuela", "Jose Serrizuela"], "position": "V" },
+      { "name": "José Basualdo", "aliases": ["Basualdo", "Jose Basualdo"], "position": "M" },
+      { "name": "Ricardo Giusti", "aliases": ["Giusti"], "position": "M" },
+      { "name": "Julio Olarticoechea", "aliases": ["Olarticoechea"], "position": "M" },
+      { "name": "Jorge Burruchaga", "aliases": ["Burruchaga", "Burru"], "position": "M" },
+      { "name": "Gabriel Calderón", "aliases": ["Calderón", "Calderon", "Gabriel Calderon"], "position": "M" },
+      { "name": "Claudio Caniggia", "aliases": ["Caniggia", "El Hijo del Viento"], "position": "A" },
+      { "name": "Diego Maradona", "aliases": ["Maradona", "Diego Armando Maradona", "El Pibe de Oro"], "position": "A" }
+    ],
+    "difficulty": 5, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/1990_FIFA_World_Cup_knockout_stage"],
+    "tags": ["maradona", "wk"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "West-Duitsland – Argentinië, finale WK 1990 (1-0)",
+    "team": "Argentinië",
+    "players": [
+      { "name": "Sergio Goycochea", "aliases": ["Goycochea", "El Vasco"], "position": "K" },
+      { "name": "Juan Simón", "aliases": ["Simón", "Simon", "Juan Simon"], "position": "V" },
+      { "name": "José Serrizuela", "aliases": ["Serrizuela", "Jose Serrizuela"], "position": "V" },
+      { "name": "Oscar Ruggeri", "aliases": ["Ruggeri"], "position": "V" },
+      { "name": "José Basualdo", "aliases": ["Basualdo", "Jose Basualdo"], "position": "M" },
+      { "name": "Roberto Sensini", "aliases": ["Sensini"], "position": "M" },
+      { "name": "Néstor Lorenzo", "aliases": ["Lorenzo", "Nestor Lorenzo"], "position": "M" },
+      { "name": "Jorge Burruchaga", "aliases": ["Burruchaga", "Burru"], "position": "M" },
+      { "name": "Pedro Troglio", "aliases": ["Troglio"], "position": "M" },
+      { "name": "Diego Maradona", "aliases": ["Maradona", "Diego Armando Maradona", "El Pibe de Oro"], "position": "A" },
+      { "name": "Gustavo Dezotti", "aliases": ["Dezotti"], "position": "A" }
+    ],
+    "difficulty": 5, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/1990_FIFA_World_Cup_final"],
+    "tags": ["maradona", "wk"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Borussia Dortmund – VfL Wolfsburg, finale DFB-Pokal 2015 (1-3)",
+    "team": "VfL Wolfsburg",
+    "players": [
+      { "name": "Diego Benaglio", "aliases": ["Benaglio"], "position": "K" },
+      { "name": "Vieirinha", "aliases": [], "position": "V" },
+      { "name": "Timm Klose", "aliases": ["Klose"], "position": "V" },
+      { "name": "Naldo", "aliases": [], "position": "V" },
+      { "name": "Ricardo Rodríguez", "aliases": ["Rodríguez", "Rodriguez", "Ricardo Rodriguez"], "position": "V" },
+      { "name": "Maximilian Arnold", "aliases": ["Arnold", "Max Arnold"], "position": "M" },
+      { "name": "Luiz Gustavo", "aliases": ["Gustavo"], "position": "M" },
+      { "name": "Daniel Caligiuri", "aliases": ["Caligiuri"], "position": "M" },
+      { "name": "Kevin De Bruyne", "aliases": ["De Bruyne", "KDB"], "position": "M" },
+      { "name": "Ivan Perišić", "aliases": ["Perišić", "Perisic", "Ivan Perisic"], "position": "A" },
+      { "name": "Bas Dost", "aliases": ["Dost"], "position": "A" }
+    ],
+    "difficulty": 4, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2015_DFB-Pokal_final"],
+    "tags": ["de-bruyne"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "Italië – België, groepsfase EK 2016 (2-0)",
+    "team": "België",
+    "players": [
+      { "name": "Thibaut Courtois", "aliases": ["Courtois"], "position": "K" },
+      { "name": "Laurent Ciman", "aliases": ["Ciman"], "position": "V" },
+      { "name": "Toby Alderweireld", "aliases": ["Alderweireld"], "position": "V" },
+      { "name": "Thomas Vermaelen", "aliases": ["Vermaelen"], "position": "V" },
+      { "name": "Jan Vertonghen", "aliases": ["Vertonghen"], "position": "V" },
+      { "name": "Radja Nainggolan", "aliases": ["Nainggolan"], "position": "M" },
+      { "name": "Axel Witsel", "aliases": ["Witsel"], "position": "M" },
+      { "name": "Kevin De Bruyne", "aliases": ["De Bruyne", "KDB"], "position": "M" },
+      { "name": "Marouane Fellaini", "aliases": ["Fellaini"], "position": "M" },
+      { "name": "Eden Hazard", "aliases": ["Hazard"], "position": "A" },
+      { "name": "Romelu Lukaku", "aliases": ["Lukaku"], "position": "A" }
+    ],
+    "difficulty": 4, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2016_Group_E"],
+    "tags": ["rode-duivels", "de-bruyne"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "title": "België – Ierland, groepsfase EK 2016 (3-0)",
+    "team": "België",
+    "players": [
+      { "name": "Thibaut Courtois", "aliases": ["Courtois"], "position": "K" },
+      { "name": "Thomas Meunier", "aliases": ["Meunier"], "position": "V" },
+      { "name": "Toby Alderweireld", "aliases": ["Alderweireld"], "position": "V" },
+      { "name": "Thomas Vermaelen", "aliases": ["Vermaelen"], "position": "V" },
+      { "name": "Jan Vertonghen", "aliases": ["Vertonghen"], "position": "V" },
+      { "name": "Axel Witsel", "aliases": ["Witsel"], "position": "M" },
+      { "name": "Mousa Dembélé", "aliases": ["Dembélé", "Dembele", "Mousa Dembele"], "position": "M" },
+      { "name": "Yannick Carrasco", "aliases": ["Carrasco", "Yannick Ferreira Carrasco"], "position": "M" },
+      { "name": "Kevin De Bruyne", "aliases": ["De Bruyne", "KDB"], "position": "M" },
+      { "name": "Eden Hazard", "aliases": ["Hazard"], "position": "A" },
+      { "name": "Romelu Lukaku", "aliases": ["Lukaku"], "position": "A" }
+    ],
+    "difficulty": 4, "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2016_Group_E"],
+    "tags": ["rode-duivels", "de-bruyne"],
     "checkedAt": "2026-10-19"
   }
 ]

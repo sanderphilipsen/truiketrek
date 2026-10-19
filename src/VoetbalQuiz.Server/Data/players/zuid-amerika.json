@@ -21,7 +21,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/%C3%81ngel_Di_Mar%C3%ADa"
     ],
-    "tags": ["wk", "champions-league"],
+    "tags": ["wk", "champions-league", "messi"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -70,7 +70,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Juli%C3%A1n_%C3%81lvarez"
     ],
-    "tags": ["wk", "champions-league"],
+    "tags": ["wk", "champions-league", "messi", "de-bruyne"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -96,6 +96,173 @@
       "https://en.wikipedia.org/wiki/Luis_D%C3%ADaz_(footballer,_born_1997)"
     ],
     "tags": [],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Emiliano Martínez",
+    "answers": [
+      "Martínez",
+      "Dibu Martínez",
+      "Dibu"
+    ],
+    "country": "Argentinië",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik ben doelman en werd in 1992 geboren in Mar del Plata.",
+      "Als tiener trok ik naar Londen, waar ik jarenlang werd uitgeleend aan clubs in lagere reeksen.",
+      "In 2020 won ik de FA Cup met Arsenal en trok ik daarna naar Birmingham.",
+      "In 2021 stopte ik drie strafschoppen in de Copa América-halve finale tegen Colombia.",
+      "In de WK-finale van 2022 stopte ik in de strafschoppenreeks tegen Frankrijk de strafschop van Coman en werd ik beste doelman van het toernooi."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Emiliano_Mart%C3%ADnez"
+    ],
+    "tags": [
+      "messi",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Enzo Fernández",
+    "answers": [
+      "Fernández",
+      "Fernandez",
+      "Enzo"
+    ],
+    "country": "Argentinië",
+    "competition": "Premier League",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 2001 geboren in een voorstad van Buenos Aires en speel op het middenveld.",
+      "In 2021 werd ik landskampioen met River Plate; in 2022 trok ik naar Benfica, waar ik in 2023 de titel won.",
+      "In januari 2023 verhuisde ik voor zo'n 121 miljoen euro, een Brits record, van Benfica naar Londen.",
+      "In 2024 won ik de Copa América na een 1-0 zege in de finale tegen Colombia.",
+      "Op het WK 2022 werd ik wereldkampioen en uitgeroepen tot beste jonge speler van het toernooi."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Enzo_Fern%C3%A1ndez"
+    ],
+    "tags": [
+      "messi",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Rodrigo De Paul",
+    "answers": [
+      "De Paul",
+      "Depaul"
+    ],
+    "country": "Argentinië",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1994 geboren in Sarandí, een voorstad van Buenos Aires, en speel op het middenveld.",
+      "Ik begon bij Racing Club en trok in 2014 naar Valencia.",
+      "Bij Udinese groeide ik uit tot aanvoerder, voor ik in 2021 naar Madrid verhuisde.",
+      "Ik won de Copa América in 2021 en 2024 en in 2022 ook de Finalissima.",
+      "Ik stond in de basis van de WK-finale van 2022 en trok in 2025 naar Inter Miami."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Rodrigo_De_Paul"
+    ],
+    "tags": [
+      "messi",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Javier Mascherano",
+    "answers": [
+      "Mascherano",
+      "El Jefecito"
+    ],
+    "country": "Argentinië",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1984 geboren in San Lorenzo, in de provincie Santa Fe, en begon als verdedigende middenvelder.",
+      "Ik won in 2004 en 2008 olympisch goud, als eerste Argentijnse sporter met twee gouden medailles.",
+      "Ik speelde in Engeland bij West Ham en Liverpool, waar ik in 2007 een Champions League-finale verloor.",
+      "Bij Barcelona werd ik vanaf 2010 centrale verdediger en won ik vijf landstitels en twee Champions Leagues.",
+      "Met 147 interlands sta ik tweede in de Argentijnse ranglijst, achter Messi, en later werd ik trainer van Inter Miami."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Javier_Mascherano"
+    ],
+    "tags": [
+      "messi",
+      "champions-league",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Dani Alves",
+    "answers": [
+      "Alves",
+      "Daniel Alves"
+    ],
+    "country": "Brazilië",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1983 geboren in Juazeiro, in het noordoosten van Brazilië, en speelde als rechtsback.",
+      "Bij Sevilla won ik tweemaal de UEFA Cup.",
+      "Ik speelde acht seizoenen bij Barcelona en keerde in 2021 nog eens terug.",
+      "Ik won 43 prijzen, een van de grootste trofeeënlijsten uit de voetbalgeschiedenis.",
+      "In 2021 werd ik op 38-jarige leeftijd de oudste medaillewinnaar in het olympisch voetbal, met goud voor Brazilië."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dani_Alves"
+    ],
+    "tags": [
+      "messi",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Diego Simeone",
+    "answers": [
+      "Simeone",
+      "El Cholo",
+      "Cholo"
+    ],
+    "country": "Argentinië",
+    "competition": "LaLiga",
+    "era": "modern",
+    "difficulty": 2,
+    "hints": [
+      "Ik werd in 1970 geboren in Buenos Aires.",
+      "Als middenvelder was ik een ijzervreter en ik werd de eerste Argentijn met honderd interlands.",
+      "Ik speelde onder meer voor Sevilla, Inter en Lazio, en tweemaal voor Atlético Madrid.",
+      "Op het WK 1998 kreeg een Engelse ster rood na een trap tegen mij; later gaf ik toe dat ik wat had overdreven.",
+      "Als trainer won ik met Atlético Madrid in 2014 en 2021 de landstitel."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Diego_Simeone"
+    ],
+    "tags": [
+      "maradona",
+      "wk",
+      "champions-league"
+    ],
     "checkedAt": "2026-10-19"
   }
 ]

@@ -2,9 +2,9 @@
   { "answer": "Cristiano Ronaldo", "aliases": ["Ronaldo", "CR7"], "number": 7, "position": "Aanvaller", "country": "Portugal", "club": "Manchester United (2003–2009)",
     "extra": "Ik kreeg het nummer van een Engelse aanvoerder die naar Real Madrid vertrok", "difficulty": 1, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Cristiano_Ronaldo"], "tags": [] },
   { "answer": "Lionel Messi", "aliases": ["Messi"], "number": 10, "position": "Aanvaller", "country": "Argentinië", "club": "FC Barcelona (2008–2021)",
-    "extra": "Ik nam het nummer over van Ronaldinho", "difficulty": 1, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Lionel_Messi"], "tags": ["champions-league"] },
+    "extra": "Ik nam het nummer over van Ronaldinho", "difficulty": 1, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Lionel_Messi"], "tags": ["champions-league", "messi"] },
   { "answer": "Kevin De Bruyne", "aliases": ["De Bruyne", "KDB"], "number": 17, "position": "Middenvelder", "country": "België", "club": "Manchester City (2015–2025)",
-    "extra": "Mijn assists waren in Engeland even beroemd als mijn rode haar", "difficulty": 1, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Kevin_De_Bruyne"], "tags": ["rode-duivels"] },
+    "extra": "Mijn assists waren in Engeland even beroemd als mijn rode haar", "difficulty": 1, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Kevin_De_Bruyne"], "tags": ["rode-duivels", "de-bruyne"] },
   { "answer": "Eden Hazard", "aliases": ["Hazard"], "number": 7, "position": "Aanvaller", "country": "België", "club": "Real Madrid (2019–2023)",
     "extra": "Blessures verpestten mijn droomtransfer", "difficulty": 1, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Eden_Hazard"], "tags": ["rode-duivels"] },
   { "answer": "Thibaut Courtois", "aliases": ["Courtois"], "number": 13, "position": "Doelman", "country": "België", "club": "Chelsea (2014–2018)",
@@ -58,5 +58,5 @@
   { "answer": "Dennis Bergkamp", "aliases": ["Bergkamp"], "number": 10, "position": "Aanvaller", "country": "Nederland", "club": "Arsenal (1995–2006)",
     "extra": "Door mijn vliegangst reisde ik niet mee naar verre uitwedstrijden", "difficulty": 3, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Dennis_Bergkamp"], "tags": ["legende", "oranje"] },
   { "answer": "Diego Maradona", "aliases": ["Maradona"], "number": 10, "position": "Aanvallende middenvelder", "country": "Argentinië", "club": "Napoli (1984–1991)",
-    "extra": "Mijn club hing het nummer later voorgoed op", "difficulty": 1, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Diego_Maradona"], "tags": ["legende"] }
+    "extra": "Mijn club hing het nummer later voorgoed op", "difficulty": 1, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Diego_Maradona"], "tags": ["legende", "maradona"] }
 ]

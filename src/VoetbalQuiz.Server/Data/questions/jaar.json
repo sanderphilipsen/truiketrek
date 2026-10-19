@@ -7,7 +7,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/1970_FIFA_World_Cup_final"
     ],
-    "tags": ["wk"],
+    "tags": ["wk", "pele"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -102,7 +102,8 @@
       "https://en.wikipedia.org/wiki/UEFA_Euro_1980_final"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "pfaff"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -116,7 +117,8 @@
     ],
     "tags": [
       "wk",
-      "rode-duivels"
+      "rode-duivels",
+      "pfaff"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -178,7 +180,8 @@
     ],
     "tags": [
       "wk",
-      "rode-duivels"
+      "rode-duivels",
+      "pfaff"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -191,7 +194,8 @@
       "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_knockout_stage"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "pfaff"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -203,7 +207,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Argentina_v_England_(1986_FIFA_World_Cup)"
     ],
-    "tags": ["wk"],
+    "tags": ["wk", "maradona"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -569,7 +573,8 @@
       "https://en.wikipedia.org/wiki/2009_UEFA_Champions_League_final"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "messi"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -617,7 +622,8 @@
       "https://en.wikipedia.org/wiki/2011_UEFA_Champions_League_final"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "messi"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -629,7 +635,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2010%E2%80%9311_Belgian_Pro_League"
     ],
-    "tags": [],
+    "tags": ["de-bruyne"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -664,7 +670,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Lionel_Messi"
     ],
-    "tags": [],
+    "tags": ["messi"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -689,7 +695,8 @@
       "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_qualification_%E2%80%93_UEFA_Group_A"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "lukaku"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -761,7 +768,8 @@
     ],
     "tags": [
       "wk",
-      "rode-duivels"
+      "rode-duivels",
+      "de-bruyne"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -833,7 +841,8 @@
       "https://en.wikipedia.org/wiki/UEFA_Euro_2016_knockout_stage"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "de-bruyne"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -857,7 +866,8 @@
       "https://en.wikipedia.org/wiki/UEFA_Euro_2016_knockout_phase"
     ],
     "tags": [
-      "rode-duivels"
+      "rode-duivels",
+      "de-bruyne"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -930,7 +940,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2017%E2%80%9318_Premier_League"
     ],
-    "tags": [],
+    "tags": ["de-bruyne"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1024,7 +1034,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Lionel_Messi"
     ],
-    "tags": [],
+    "tags": ["messi"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1070,7 +1080,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_final"
     ],
-    "tags": ["wk"],
+    "tags": ["wk", "messi"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1097,7 +1107,8 @@
     ],
     "tags": [
       "wk",
-      "rode-duivels"
+      "rode-duivels",
+      "de-bruyne"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1121,7 +1132,8 @@
       "https://en.wikipedia.org/wiki/2023_UEFA_Champions_League_final"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "de-bruyne"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -1170,7 +1182,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Lionel_Messi"
     ],
-    "tags": [],
+    "tags": ["messi"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1181,7 +1193,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2022%E2%80%9323_Serie_A"
     ],
-    "tags": [],
+    "tags": ["maradona"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1485,7 +1497,8 @@
       "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_final"
     ],
     "tags": [
-      "kerst"
+      "kerst",
+      "messi"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1539,7 +1552,8 @@
     ],
     "tags": [
       "nieuwjaar",
-      "legende"
+      "legende",
+      "pele"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1660,7 +1674,8 @@
       "https://en.wikipedia.org/wiki/1990_FIFA_World_Cup"
     ],
     "tags": [
-      "wk"
+      "wk",
+      "maradona"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1699,7 +1714,8 @@
       "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_Group_C"
     ],
     "tags": [
-      "wk"
+      "wk",
+      "messi"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1761,7 +1777,8 @@
       "https://en.wikipedia.org/wiki/2005%E2%80%9306_Belgian_First_Division"
     ],
     "tags": [
-      "anderlecht"
+      "anderlecht",
+      "deschacht"
     ]
   },
   {
@@ -1774,7 +1791,8 @@
       "https://en.wikipedia.org/wiki/Franky_Vercauteren"
     ],
     "tags": [
-      "anderlecht"
+      "anderlecht",
+      "deschacht"
     ]
   },
   {
@@ -1922,7 +1940,8 @@
       "https://www.lachambre.be/doc/flwb/Pdf/55/1716/55K1716001.pdf"
     ],
     "tags": [
-      "curiosa"
+      "curiosa",
+      "propere-handen"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1937,7 +1956,8 @@
       "https://nl.wikipedia.org/wiki/Operatie_Propere_Handen"
     ],
     "tags": [
-      "curiosa"
+      "curiosa",
+      "propere-handen"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1965,6 +1985,791 @@
     ],
     "tags": [
       "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Stijn Stijnen debuteert in eerste klasse voor Club Brugge, met een 0-3 overwinning op bezoek bij Genk.",
+    "year": 2003,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Stijn_Stijnen"
+    ],
+    "tags": [
+      "stijnen",
+      "club-brugge"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Stijn Stijnen speelt zijn eerste interland voor de Rode Duivels, een vriendschappelijke wedstrijd tegen Saoedi-Arabië.",
+    "year": 2006,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Stijn_Stijnen",
+      "https://en.wikipedia.org/wiki/Steven_Defour"
+    ],
+    "tags": [
+      "stijnen",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Stijn Stijnen stopt als international van de Rode Duivels.",
+    "year": 2009,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Stijn_Stijnen",
+      "https://nl.wikipedia.org/wiki/Stijn_Stijnen"
+    ],
+    "tags": [
+      "stijnen",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Beerschot AC, de laatste club van doelman Stijn Stijnen, wordt failliet verklaard.",
+    "year": 2013,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Beerschot_AC",
+      "https://en.wikipedia.org/wiki/Stijn_Stijnen"
+    ],
+    "tags": [
+      "stijnen"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Patro Eisden onder trainer Stijn Stijnen wint Eerste Nationale en promoveert naar de Challenger Pro League.",
+    "year": 2023,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Stijn_Stijnen",
+      "https://en.wikipedia.org/wiki/Patro_Eisden_Maasmechelen"
+    ],
+    "tags": [
+      "stijnen"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Olivier Deschacht debuteert onder Aimé Anthuenis in het eerste elftal van Anderlecht.",
+    "year": 2001,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Olivier_Deschacht"
+    ],
+    "tags": [
+      "anderlecht",
+      "deschacht"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Olivier Deschacht speelt zijn eerste interland voor de Rode Duivels, een 3-1-zege tegen Polen.",
+    "year": 2003,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Olivier_Deschacht"
+    ],
+    "tags": [
+      "rode-duivels",
+      "deschacht"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Anderlecht wint de bekerfinale met 3-2 van Gent in het Koning Boudewijnstadion, met Olivier Deschacht in de basis.",
+    "year": 2008,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2008_Belgian_Cup_final",
+      "https://en.wikipedia.org/wiki/Olivier_Deschacht"
+    ],
+    "tags": [
+      "anderlecht",
+      "beker-van-belgie",
+      "deschacht"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Anderlecht wordt voor het derde jaar op rij landskampioen.",
+    "year": 2014,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Olivier_Deschacht",
+      "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
+    ],
+    "tags": [
+      "anderlecht",
+      "deschacht"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Anderlecht wordt onder René Weiler landskampioen na de play-offs.",
+    "year": 2017,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2016%E2%80%9317_R.S.C._Anderlecht_season",
+      "https://en.wikipedia.org/wiki/Olivier_Deschacht"
+    ],
+    "tags": [
+      "anderlecht",
+      "deschacht"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Olivier Deschacht, recordspeler van Anderlecht, maakt bekend dat hij na het seizoen met voetballen stopt.",
+    "year": 2021,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Olivier_Deschacht"
+    ],
+    "tags": [
+      "anderlecht",
+      "deschacht"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Na negentien seizoenen neemt Pelé afscheid van Santos.",
+    "year": 1974,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pel%C3%A9"
+    ],
+    "tags": [
+      "pele",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Pelé komt uit zijn pensioen en tekent bij New York Cosmos.",
+    "year": 1975,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pel%C3%A9",
+      "https://en.wikipedia.org/wiki/New_York_Cosmos_(1970%E2%80%931985)"
+    ],
+    "tags": [
+      "pele",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Pelé neemt in Giants Stadium afscheid in een wedstrijd tussen de Cosmos en Santos.",
+    "year": 1977,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pel%C3%A9"
+    ],
+    "tags": [
+      "pele",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Pelé speelt mee in de film Escape to Victory, samen met Sylvester Stallone, Michael Caine en Bobby Moore.",
+    "year": 1981,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Escape_to_Victory"
+    ],
+    "tags": [
+      "pele",
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Pelé wordt de eerste minister van Sport van Brazilië.",
+    "year": 1995,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pel%C3%A9"
+    ],
+    "tags": [
+      "pele",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Het IOC kiest Pelé tot Atleet van de Eeuw.",
+    "year": 1999,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pel%C3%A9"
+    ],
+    "tags": [
+      "pele",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "België keurt de wet goed die spijtoptanten mogelijk maakt, een regeling die kort daarna voor het eerst wordt toegepast in het voetbaldossier Propere Handen.",
+    "year": 2018,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://www.vrt.be/vrtnws/nl/2018/11/20/veljkovic/",
+      "https://en.wikipedia.org/wiki/2017%E2%80%932019_Belgian_football_fraud_scandal"
+    ],
+    "tags": [
+      "propere-handen",
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "De Belgische voetbalbond schorst de scheidsrechters Bart Vertenten en Sébastien Delferière met onmiddellijke ingang, de dag na de huiszoekingen in 'Propere Handen'.",
+    "year": 2018,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://sporza.be/nl/2018/10/11/refs-vertenten-en-delferiere-worden-geschorst/",
+      "https://en.wikipedia.org/wiki/S%C3%A9bastien_Delferi%C3%A8re"
+    ],
+    "tags": [
+      "propere-handen",
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Het BAS vernietigt de degradatie van KV Mechelen, maar de club blijft een seizoen uitgesloten van Europees voetbal en de beker.",
+    "year": 2019,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2017%E2%80%932019_Belgian_football_fraud_scandal",
+      "https://nl.wikipedia.org/wiki/KV_Mechelen"
+    ],
+    "tags": [
+      "propere-handen",
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "De kamer van inbeschuldigingstelling keurt het akkoord goed waarmee makelaar Dejan Veljković de eerste spijtoptant van België wordt.",
+    "year": 2021,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Operatie_Propere_Handen",
+      "https://sporza.be/nl/2021/10/28/makelaar-veljkovic-weet-op-25-november-meer-over-status-spijtopt~1635411468213/"
+    ],
+    "tags": [
+      "propere-handen",
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Een wrakingsverzoek tegen de voorzitter van de kamer van inbeschuldigingstelling legt de behandeling van het dossier Propere Handen stil.",
+    "year": 2026,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://www.vrt.be/vrtnws/nl/2026/09/10/zaak-propere-handen-33-verdachten-voor-ki/",
+      "https://www.voetbalprimeur.be/nieuws/2134109/zaak-propere-handen-stilgelegd-na-wraking-van-voorzitter.html"
+    ],
+    "tags": [
+      "propere-handen",
+      "curiosa"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "SK Beveren wordt voor het eerst in zijn geschiedenis landskampioen, met Jean-Marie Pfaff in doel.",
+    "year": 1979,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/K.S.K._Beveren",
+      "https://nl.wikipedia.org/wiki/Jean-Marie_Pfaff"
+    ],
+    "tags": [
+      "pfaff"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Doelman Jean-Marie Pfaff verlaat SK Beveren voor Bayern München.",
+    "year": 1982,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jean-Marie_Pfaff",
+      "https://nl.wikipedia.org/wiki/Jean-Marie_Pfaff"
+    ],
+    "tags": [
+      "pfaff"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Bayern München wordt met Pfaff in doel de eerste van drie opeenvolgende keren landskampioen van Duitsland.",
+    "year": 1985,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jean-Marie_Pfaff",
+      "https://nl.wikipedia.org/wiki/Jean-Marie_Pfaff"
+    ],
+    "tags": [
+      "pfaff"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Bayern München verliest in Wenen met 1-2 de Europacup I-finale van FC Porto, na twee late goals van Madjer en Juary.",
+    "year": 1987,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1987_European_Cup_final"
+    ],
+    "tags": [
+      "pfaff",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "De realityreeks 'De Pfaffs' over het gezin van de ex-doelman start op VTM.",
+    "year": 2002,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/De_Pfaffs",
+      "https://nl.wikipedia.org/wiki/Jean-Marie_Pfaff"
+    ],
+    "tags": [
+      "pfaff",
+      "familie"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Lukaku maakt als zestienjarige zijn profdebuut voor Anderlecht, als invaller tegen Standard.",
+    "year": 2009,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+    ],
+    "tags": [
+      "lukaku",
+      "rode-duivels",
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Chelsea haalt de achttienjarige Lukaku weg bij Anderlecht.",
+    "year": 2011,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+    ],
+    "tags": [
+      "lukaku",
+      "rode-duivels",
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Lukaku scoort een hattrick voor West Bromwich Albion in een 5-5-spektakel tegen Manchester United.",
+    "year": 2013,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+    ],
+    "tags": [
+      "lukaku",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Lukaku wordt in Brugge met een kopbal tegen Japan de recordschutter van de Rode Duivels.",
+    "year": 2017,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://www.beinsports.com/en-mena/articles/belgium-1-japan-0-lukaku-breaks-scoring-rec-1",
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+    ],
+    "tags": [
+      "lukaku",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Inter betaalt een clubrecord van 80 miljoen euro voor Lukaku.",
+    "year": 2019,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+    ],
+    "tags": [
+      "lukaku",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Chelsea haalt Lukaku terug voor een clubrecord van 97,5 miljoen pond.",
+    "year": 2021,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+    ],
+    "tags": [
+      "lukaku",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Lukaku scoort de tweede goal tegen Cagliari die Napoli de Italiaanse titel bezorgt.",
+    "year": 2025,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+    ],
+    "tags": [
+      "lukaku",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Barcelona-directeur Carles Rexach schrijft het eerste contract van de 13-jarige Lionel Messi op een servet.",
+    "year": 2000,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lionel_Messi"
+    ],
+    "tags": [
+      "messi"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Lionel Messi maakt als 17-jarige zijn officiële debuut voor FC Barcelona in La Liga.",
+    "year": 2004,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lionel_Messi"
+    ],
+    "tags": [
+      "messi"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Lionel Messi scoort zijn eerste officiële doelpunt voor FC Barcelona.",
+    "year": 2005,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lionel_Messi"
+    ],
+    "tags": [
+      "messi"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Lionel Messi wint met Argentinië olympisch goud in Peking.",
+    "year": 2008,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lionel_Messi"
+    ],
+    "tags": [
+      "messi"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Argentinië verslaat Brazilië in de Copa América-finale en Messi wint zijn eerste prijs met de A-ploeg.",
+    "year": 2021,
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2021_Copa_Am%C3%A9rica_final",
+      "https://en.wikipedia.org/wiki/Lionel_Messi"
+    ],
+    "tags": [
+      "messi"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Argentinië klopt Italië met 3-0 in de Finalissima op Wembley.",
+    "year": 2022,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2022_Finalissima"
+    ],
+    "tags": [
+      "messi"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Lionel Messi wint de Ballon d'Or voor de achtste keer.",
+    "year": 2023,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lionel_Messi"
+    ],
+    "tags": [
+      "messi"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Inter Miami wint met Messi de Leagues Cup, de eerste prijs uit de clubgeschiedenis.",
+    "year": 2023,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lionel_Messi"
+    ],
+    "tags": [
+      "messi"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Maradona verhuist voor een wereldrecordbedrag van Barcelona naar Napoli.",
+    "year": 1984,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Diego_Maradona"
+    ],
+    "tags": [
+      "maradona",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Maradona wint met Argentinië het wereldkampioenschap voor spelers onder de 20 in Japan.",
+    "year": 1979,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Diego_Maradona"
+    ],
+    "tags": [
+      "maradona",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Napoli wint zijn allereerste landstitel, met Maradona als grote ster.",
+    "year": 1987,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/S.S.C._Napoli",
+      "https://en.wikipedia.org/wiki/Diego_Maradona"
+    ],
+    "tags": [
+      "maradona",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Napoli wint de UEFA Cup na een finale tegen VfB Stuttgart.",
+    "year": 1989,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/S.S.C._Napoli",
+      "https://en.wikipedia.org/wiki/Diego_Maradona"
+    ],
+    "tags": [
+      "maradona"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Argentinië schakelt gastland Italië na strafschoppen uit in Napels, de stad van Maradona.",
+    "year": 1990,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1990_FIFA_World_Cup_knockout_stage"
+    ],
+    "tags": [
+      "maradona",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Maradona wordt op het WK in de Verenigde Staten naar huis gestuurd na een positieve dopingtest.",
+    "year": 1994,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Diego_Maradona"
+    ],
+    "tags": [
+      "maradona",
+      "wk"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Maradona wint met FC Barcelona de Copa del Rey-finale tegen Real Madrid.",
+    "year": 1983,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Diego_Maradona"
+    ],
+    "tags": [
+      "maradona"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "De Bruyne maakt zijn debuut bij de Rode Duivels, in Finland.",
+    "year": 2010,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
+      "https://nl.wikipedia.org/wiki/Kevin_De_Bruyne"
+    ],
+    "tags": [
+      "de-bruyne",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Chelsea haalt De Bruyne weg bij Genk, maar leent hem meteen terug.",
+    "year": 2012,
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
+      "https://nl.wikipedia.org/wiki/Kevin_De_Bruyne"
+    ],
+    "tags": [
+      "de-bruyne",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Wolfsburg met De Bruyne wint in Berlijn de Duitse beker tegen Dortmund.",
+    "year": 2015,
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2015_DFB-Pokal_final",
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne"
+    ],
+    "tags": [
+      "de-bruyne",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Manchester City haalt De Bruyne voor een clubrecord weg bij Wolfsburg.",
+    "year": 2015,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
+      "https://nl.wikipedia.org/wiki/Kevin_De_Bruyne"
+    ],
+    "tags": [
+      "de-bruyne",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "De Bruyne loopt in de Champions League-finale tegen Chelsea een gebroken neus en oogkas op.",
+    "year": 2021,
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne"
+    ],
+    "tags": [
+      "de-bruyne",
+      "champions-league",
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "De Bruyne tekent transfervrij bij Napoli, na tien seizoenen bij Manchester City.",
+    "year": 2025,
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
+      "https://nl.wikipedia.org/wiki/Kevin_De_Bruyne"
+    ],
+    "tags": [
+      "de-bruyne",
+      "rode-duivels"
     ],
     "checkedAt": "2026-10-19"
   }

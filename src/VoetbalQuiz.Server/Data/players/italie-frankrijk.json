@@ -126,7 +126,7 @@
       "https://en.wikipedia.org/wiki/List_of_international_goals_scored_by_Zlatan_Ibrahimovi%C4%87",
       "https://www.funkidslive.com/sport/5-facts-probably-didnt-know-zlatan-ibrahimovic/"
     ],
-    "tags": [],
+    "tags": ["lukaku", "messi"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -180,7 +180,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Gonzalo_Higua%C3%ADn"
     ],
-    "tags": ["familie"],
+    "tags": ["familie", "messi"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -227,7 +227,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Edin_D%C5%BEeko"
     ],
-    "tags": [],
+    "tags": ["lukaku"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -274,7 +274,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Lautaro_Mart%C3%ADnez"
     ],
-    "tags": ["wk"],
+    "tags": ["wk", "lukaku", "messi"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -297,7 +297,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Nicol%C3%B2_Barella"
     ],
-    "tags": [],
+    "tags": ["lukaku"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -322,7 +322,7 @@
       "https://en.wikipedia.org/wiki/Paulo_Dybala",
       "https://www.gazetaesportiva.com/futebol/com-cabeca-no-lugar-dybala-relembra-dificuldade-apos-morte-do-pai/"
     ],
-    "tags": ["wk"],
+    "tags": ["wk", "lukaku", "messi"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -376,7 +376,8 @@
     ],
     "tags": [
       "familie",
-      "champions-league"
+      "champions-league",
+      "lukaku"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -425,7 +426,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Kylian_Mbapp%C3%A9"
     ],
-    "tags": ["wk", "familie"],
+    "tags": ["wk", "familie", "messi"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -615,7 +616,8 @@
       "https://en.wikipedia.org/wiki/Marquinhos"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "messi"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -639,7 +641,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Marco_Verratti"
     ],
-    "tags": [],
+    "tags": ["messi"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -734,7 +736,9 @@
       "https://en.wikipedia.org/wiki/Achraf_Hakimi"
     ],
     "tags": [
-      "champions-league"
+      "champions-league",
+      "lukaku",
+      "messi"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -758,7 +762,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Paul_Pogba"
     ],
-    "tags": ["wk"],
+    "tags": ["wk", "lukaku"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -782,7 +786,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Ousmane_Demb%C3%A9l%C3%A9"
     ],
-    "tags": ["wk", "champions-league"],
+    "tags": ["wk", "champions-league", "messi"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -829,7 +833,33 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Gianluigi_Donnarumma"
     ],
-    "tags": ["champions-league"],
+    "tags": ["champions-league", "messi"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Giorgio Chinaglia",
+    "answers": [
+      "Chinaglia"
+    ],
+    "country": "Italië",
+    "competition": "Serie A",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik werd in 1947 geboren in Carrara, maar groeide op in Wales.",
+      "Ik begon mijn profcarrière bij Swansea Town.",
+      "In 1974 werd ik met Lazio kampioen en topschutter van de Serie A met 24 doelpunten.",
+      "Ik speelde 14 keer voor Italië, onder meer op het WK 1974.",
+      "In de Verenigde Staten speelde ik bij New York Cosmos en werd ik met 193 goals de topschutter aller tijden van de NASL."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Giorgio_Chinaglia"
+    ],
+    "tags": [
+      "legende",
+      "pele"
+    ],
     "checkedAt": "2026-10-19"
   }
 ]

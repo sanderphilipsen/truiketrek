@@ -24,7 +24,8 @@
       "gouden-schoen",
       "rode-duivels",
       "anderlecht",
-      "legende"
+      "legende",
+      "pfaff"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -53,7 +54,8 @@
       "gouden-schoen",
       "rode-duivels",
       "club-brugge",
-      "legende"
+      "legende",
+      "pfaff"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -195,7 +197,8 @@
       "gouden-schoen",
       "rode-duivels",
       "club-brugge",
-      "legende"
+      "legende",
+      "pfaff"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -254,7 +257,8 @@
       "gouden-schoen",
       "rode-duivels",
       "standard",
-      "legende"
+      "legende",
+      "pfaff"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -282,7 +286,8 @@
     "tags": [
       "gouden-schoen",
       "rode-duivels",
-      "legende"
+      "legende",
+      "pfaff"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -428,7 +433,8 @@
     "tags": [
       "wk",
       "familie",
-      "legende"
+      "legende",
+      "maradona"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -600,7 +606,8 @@
       "wk",
       "familie",
       "champions-league",
-      "legende"
+      "legende",
+      "messi"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -761,7 +768,8 @@
       "https://en.wikipedia.org/wiki/Gabriel_Batistuta"
     ],
     "tags": [
-      "legende"
+      "legende",
+      "maradona"
     ],
     "checkedAt": "2026-10-17"
   },
@@ -823,7 +831,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Ludo_Coeck"
     ],
-    "tags": ["legende", "anderlecht", "rode-duivels", "wk"]
+    "tags": ["legende", "anderlecht", "rode-duivels", "wk", "pfaff"]
   },
   {
     "name": "Jean Dockx",
@@ -907,7 +915,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Franz_Beckenbauer"
     ],
-    "tags": ["legende", "wk", "champions-league"],
+    "tags": ["legende", "wk", "champions-league", "pele"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -931,7 +939,648 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Pel%C3%A9"
     ],
-    "tags": ["legende", "wk"],
+    "tags": ["legende", "wk", "pele"],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Garrincha",
+    "answers": [
+      "Manuel Francisco dos Santos"
+    ],
+    "country": "Brazilië",
+    "competition": "Campeonato Brasileiro",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1933 geboren in het dorpje Pau Grande, bij Rio de Janeiro.",
+      "Ik was een rechtsbuiten met een rechterbeen dat ongeveer zes centimeter korter was dan mijn linker.",
+      "Mijn bijnaam is het Portugese woord voor een klein vogeltje en kwam van mijn zus.",
+      "Ik speelde van 1953 tot 1965 voor Botafogo.",
+      "Brazilië verloor nooit als ik samen met Pelé speelde, en ik won de wereldtitels van 1958 en 1962."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Garrincha"
+    ],
+    "tags": [
+      "legende",
+      "wk",
+      "pele"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Jairzinho",
+    "answers": [
+      "Jair",
+      "Jair Ventura Filho"
+    ],
+    "country": "Brazilië",
+    "competition": "Campeonato Brasileiro",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik werd in 1944 geboren in de buurt van Rio de Janeiro.",
+      "Ik was een rechtsbuiten en kreeg de bijnaam 'de Orkaan' omdat mijn shirt schudde als ik langs de lijn raasde.",
+      "Ik speelde twaalf jaar voor Botafogo en daarna kort voor Marseille.",
+      "Op het WK 1970 scoorde ik in elke wedstrijd van Brazilië.",
+      "In de finale maakte ik de 3-1 tegen Italië; later ontdekte ik de veertienjarige Ronaldo."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jairzinho"
+    ],
+    "tags": [
+      "legende",
+      "wk",
+      "pele"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Roberto Rivellino",
+    "answers": [
+      "Rivellino",
+      "Rivelino"
+    ],
+    "country": "Brazilië",
+    "competition": "Campeonato Brasileiro",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik werd op nieuwjaarsdag 1946 geboren in São Paulo.",
+      "Ik was een middenvelder met een opvallende snor.",
+      "Bij Corinthians noemden ze me de 'Koning van het Park'.",
+      "Ik speelde later voor Fluminense en voor Al-Hilal in Saoedi-Arabië.",
+      "In 1970 werd ik wereldkampioen en ik scoorde op dat WK met een kromme vrije trap tegen Tsjecho-Slowakije."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Roberto_Rivellino"
+    ],
+    "tags": [
+      "legende",
+      "wk",
+      "pele"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Tostão",
+    "answers": [
+      "Tostao",
+      "Eduardo Gonçalves de Andrade"
+    ],
+    "country": "Brazilië",
+    "competition": "Campeonato Brasileiro",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik werd in 1947 geboren in Belo Horizonte.",
+      "Mijn bijnaam betekent 'muntstukje'.",
+      "Ik scoorde 249 keer voor Cruzeiro.",
+      "Na een bal in mijn gezicht in 1969 kreeg ik een netvliesloslating en stopte ik al jong met voetballen.",
+      "Ik won het WK 1970 als spits van Brazilië en werd later arts en tv-analist."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Tost%C3%A3o"
+    ],
+    "tags": [
+      "legende",
+      "wk",
+      "pele"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Carlos Alberto Torres",
+    "answers": [
+      "Carlos Alberto",
+      "Torres"
+    ],
+    "country": "Brazilië",
+    "competition": "Campeonato Brasileiro",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1944 geboren in Rio de Janeiro en speelde als rechtsachter.",
+      "Ik begon bij Fluminense en speelde acht seizoenen voor Santos.",
+      "Later speelde ik in de Verenigde Staten bij New York Cosmos, waar ik herenigd werd met mijn oude ploegmaat.",
+      "Als trainer won ik in 1983 de landstitel met Flamengo.",
+      "Ik was aanvoerder van Brazilië op het WK 1970 en maakte in de finale tegen Italië de 4-1."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Carlos_Alberto_Torres"
+    ],
+    "tags": [
+      "legende",
+      "wk",
+      "pele"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Mário Zagallo",
+    "answers": [
+      "Zagallo",
+      "Mario Zagallo"
+    ],
+    "country": "Brazilië",
+    "competition": "Campeonato Brasileiro",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik werd in 1931 geboren in Atalaia, in het noordoosten van Brazilië.",
+      "Als speler was ik een linksbuiten bij Flamengo en Botafogo en noemden ze me het 'miertje'.",
+      "Ik werd als speler wereldkampioen in 1958 en 1962.",
+      "Als bondscoach van Brazilië verloor ik de WK-finale van 1998.",
+      "Ik was de eerste die het WK won als speler én als bondscoach, in 1970."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mario_Zagallo"
+    ],
+    "tags": [
+      "legende",
+      "wk",
+      "pele"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Gérson",
+    "answers": [
+      "Gerson",
+      "Gérson de Oliveira Nunes"
+    ],
+    "country": "Brazilië",
+    "competition": "Campeonato Brasileiro",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik werd in 1941 geboren in Niterói, in Brazilië.",
+      "Mijn bijnaam betekent 'gouden linkervoetje'.",
+      "Ik speelde voor Flamengo, Botafogo, São Paulo en Fluminense.",
+      "Op school kreeg ik de bijnaam 'papegaai', die ik mijn hele leven hield.",
+      "Ik won het WK 1970 en maakte in de finale tegen Italië de 2-1."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/G%C3%A9rson_de_Oliveira_Nunes"
+    ],
+    "tags": [
+      "legende",
+      "wk",
+      "pele"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Johan Neeskens",
+    "answers": [
+      "Neeskens"
+    ],
+    "country": "Nederland",
+    "competition": "Eredivisie",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1951 geboren in Heemstede en was een middenvelder.",
+      "Met Ajax won ik drie keer op rij de Europacup I, van 1971 tot 1973.",
+      "Van 1974 tot 1979 speelde ik bij Barcelona en won ik de Beker der Bekerwinnaars.",
+      "Daarna speelde ik bij New York Cosmos en won ik twee keer de NASL (1980 en 1982).",
+      "In de WK-finale van 1974 scoorde ik na twee minuten een strafschop tegen West-Duitsland."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Johan_Neeskens"
+    ],
+    "tags": [
+      "legende",
+      "wk",
+      "champions-league",
+      "oranje"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Lothar Matthäus",
+    "answers": [
+      "Matthäus",
+      "Matthaus"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "classic",
+    "difficulty": 2,
+    "hints": [
+      "Ik ben een Duitse middenvelder die in 1961 werd geboren.",
+      "Ik speelde voor Borussia Mönchengladbach, Bayern München en Inter.",
+      "Ik speelde vijf WK's, van 1982 tot en met 1998.",
+      "In 1990 won ik de Ballon d'Or.",
+      "Met 150 interlands ben ik recordinternational van Duitsland, en ik was aanvoerder bij de WK-winst van 1990."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lothar_Matth%C3%A4us"
+    ],
+    "tags": [
+      "pfaff",
+      "wk",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Karl-Heinz Rummenigge",
+    "answers": [
+      "Rummenigge",
+      "Karl Heinz Rummenigge"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik ben een Duitse spits die in 1955 werd geboren in Lippstadt.",
+      "Ik speelde tien jaar voor Bayern München, daarna voor Inter en Servette.",
+      "In 1980 werd ik Europees kampioen na een finale tegen België.",
+      "Ik won de Ballon d'Or in 1980 en 1981.",
+      "Als aanvoerder verloor ik de WK-finales van 1982 en 1986, en later werd ik voorzitter van de directie van Bayern."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Karl-Heinz_Rummenigge"
+    ],
+    "tags": [
+      "pfaff",
+      "wk",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Andreas Brehme",
+    "answers": [
+      "Brehme"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1960 geboren in Hamburg.",
+      "Ik kon met beide voeten schieten; zelfs Franz Beckenbauer wist niet of ik links- of rechtsvoetig was.",
+      "Ik speelde voor Kaiserslautern, Bayern München, Inter en Real Zaragoza.",
+      "Met Inter won ik in 1989 de Serie A en in 1991 de UEFA Cup.",
+      "In de WK-finale van 1990 scoorde ik de enige goal, uit een strafschop tegen Argentinië."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Andreas_Brehme"
+    ],
+    "tags": [
+      "pfaff",
+      "wk",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Klaus Augenthaler",
+    "answers": [
+      "Augenthaler",
+      "Auge"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik werd in 1957 geboren in Fürstenzell, in Beieren.",
+      "Ik begon als verdediger en was later libero.",
+      "Mijn hele spelerscarrière speelde ik bij één club, van 1976 tot 1991, en vanaf 1984 was ik er aanvoerder.",
+      "In 1989 scoorde ik vanaf de middenlijn tegen Eintracht Frankfurt, goed voor het Doelpunt van het Jaar.",
+      "Ik won het WK 1990 met West-Duitsland en trainde later onder meer Leverkusen en Wolfsburg."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Klaus_Augenthaler"
+    ],
+    "tags": [
+      "pfaff",
+      "wk",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Paul Breitner",
+    "answers": [
+      "Breitner"
+    ],
+    "country": "Duitsland",
+    "competition": "Bundesliga",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1951 geboren in Kolbermoor, in Beieren.",
+      "Ik was een middenvelder en linksback.",
+      "Ik speelde twee periodes voor Bayern München en ook voor Real Madrid en Eintracht Braunschweig.",
+      "Door mijn lange haar noemde de pers mij 'Der Afro', en ik werd een maoïst genoemd omdat ik Maos Rode Boekje bij had.",
+      "Ik scoorde in de WK-finales van 1974 en 1982, en werd in 1972 Europees kampioen."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Paul_Breitner"
+    ],
+    "tags": [
+      "pfaff",
+      "wk",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Nico Claesen",
+    "answers": [
+      "Claesen"
+    ],
+    "country": "België",
+    "competition": "Jupiler Pro League",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1962 geboren in Maasmechelen.",
+      "Ik ben een spits en brak door bij Seraing.",
+      "In 1983-84 werd ik met 27 goals topschutter van de Belgische hoogste klasse.",
+      "Via Stuttgart en Standard belandde ik in 1986 bij Tottenham, waar ik in 1987 de FA Cup-finale verloor.",
+      "Op het WK 1986 scoorde ik drie keer voor de Rode Duivels, die vierde werden."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Nico_Claesen"
+    ],
+    "tags": [
+      "pfaff",
+      "wk",
+      "rode-duivels",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Claudio Caniggia",
+    "answers": [
+      "Caniggia",
+      "El Hijo del Viento"
+    ],
+    "country": "Argentinië",
+    "competition": "Serie A",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1967 geboren in Henderson, in de provincie Buenos Aires.",
+      "Mijn lange blonde haren waren mijn handelsmerk en mijn bijnaam had te maken met mijn snelheid.",
+      "Ik speelde onder meer voor Atalanta, Roma, Benfica en Boca Juniors, en ook bij de Schotse Rangers.",
+      "Op het WK 1990 scoorde ik de winnende goal tegen Brazilië na een loepzuivere pass van mijn kapitein.",
+      "Op datzelfde WK maakte ik de gelijkmaker tegen gastland Italië, maar de finale miste ik door een schorsing."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Claudio_Caniggia",
+      "https://en.wikipedia.org/wiki/1990_FIFA_World_Cup_knockout_stage"
+    ],
+    "tags": [
+      "maradona",
+      "wk",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Jorge Burruchaga",
+    "answers": [
+      "Burruchaga",
+      "Burru"
+    ],
+    "country": "Argentinië",
+    "competition": "Ligue 1",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik werd in 1962 geboren in Gualeguay, in de Argentijnse provincie Entre Ríos.",
+      "Met Independiente won ik in 1984 de Copa Libertadores.",
+      "Daarna speelde ik zeven seizoenen bij het Franse Nantes.",
+      "Op het WK 2018 was ik algemeen manager van de Argentijnse nationale ploeg.",
+      "In de WK-finale van 1986 scoorde ik het winnende doelpunt tegen West-Duitsland."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jorge_Burruchaga",
+      "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_final"
+    ],
+    "tags": [
+      "maradona",
+      "wk",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Jorge Valdano",
+    "answers": [
+      "Valdano"
+    ],
+    "country": "Argentinië",
+    "competition": "LaLiga",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1955 geboren in Las Parejas, in de provincie Santa Fe.",
+      "Als aanvaller was ik goed, maar als schrijver en analist werd ik 'de filosoof van het voetbal' genoemd.",
+      "Bij Real Madrid won ik in de jaren tachtig twee landstitels en twee keer de UEFA Cup.",
+      "Als trainer leidde ik Real Madrid in 1995 naar de landstitel.",
+      "Op het WK 1986 scoorde ik vier keer, waaronder het tweede doelpunt van mijn land in de finale tegen West-Duitsland."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jorge_Valdano",
+      "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_final"
+    ],
+    "tags": [
+      "maradona",
+      "wk",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Careca",
+    "answers": [
+      "Antônio de Oliveira Filho",
+      "Antonio de Oliveira Filho"
+    ],
+    "country": "Brazilië",
+    "competition": "Serie A",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1960 geboren in Araraquara, in de Braziliaanse deelstaat São Paulo.",
+      "Ik begon bij Guarani en won in 1978, mijn eerste seizoen, meteen de Braziliaanse landstitel.",
+      "Op het WK 1986 scoorde ik vijf keer en deelde ik de tweede plaats in het topschuttersklassement.",
+      "Op het einde van mijn carrière trok ik naar Japan, waar ik bij Kashiwa Reysol speelde.",
+      "Bij Napoli won ik in 1989 de UEFA Cup en in 1990 de landstitel, naast een Argentijnse wereldster."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Careca"
+    ],
+    "tags": [
+      "maradona",
+      "wk",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Gianfranco Zola",
+    "answers": [
+      "Zola"
+    ],
+    "country": "Italië",
+    "competition": "Premier League",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1966 geboren in Oliena, op het eiland Sardinië.",
+      "Ik was klein van gestalte maar stond bekend om mijn techniek en mijn vrije trappen.",
+      "Bij Napoli was ik de dauphin van een Argentijnse legende en won ik in 1990 de landstitel.",
+      "Met Parma won ik in 1995 de UEFA Cup.",
+      "Bij Chelsea werd ik in 1997 Voetballer van het Jaar in Engeland en later uitgeroepen tot de beste speler uit de clubgeschiedenis."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gianfranco_Zola"
+    ],
+    "tags": [
+      "maradona",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Ciro Ferrara",
+    "answers": [
+      "Ferrara"
+    ],
+    "country": "Italië",
+    "competition": "Serie A",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik werd in 1967 geboren in Napels.",
+      "Als verdediger speelde ik tien jaar voor de club uit mijn geboortestad.",
+      "Op het WK 1990 in eigen land werd ik met Italië derde.",
+      "Met Juventus won ik in 1996 de Champions League.",
+      "In 2009 werd ik hoofdtrainer van Juventus, maar in januari 2010 werd ik al ontslagen."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ciro_Ferrara"
+    ],
+    "tags": [
+      "maradona",
+      "wk",
+      "champions-league",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Bernd Schuster",
+    "answers": [
+      "Schuster",
+      "Der blonde Engel"
+    ],
+    "country": "Duitsland",
+    "competition": "LaLiga",
+    "era": "classic",
+    "difficulty": 3,
+    "hints": [
+      "Ik werd in 1959 geboren in Augsburg.",
+      "Ik werd in 1980 Europees kampioen met West-Duitsland, maar stopte op mijn 24ste met interlands na ruzies met de bond.",
+      "Door mijn haar en elegante spel kreeg ik een hemelse bijnaam.",
+      "Ik speelde acht seizoenen bij Barcelona en won er in 1985 de landstitel.",
+      "Als trainer won ik in 2008 de landstitel met Real Madrid."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Bernd_Schuster"
+    ],
+    "tags": [
+      "maradona",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Sergio Goycochea",
+    "answers": [
+      "Goycochea",
+      "El Vasco",
+      "Goyco"
+    ],
+    "country": "Argentinië",
+    "competition": "Primera División",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik werd in 1963 geboren in Zárate, in de provincie Buenos Aires.",
+      "Als doelman speelde ik voor River Plate, Millonarios en Racing Club, en enkele maanden voor het Franse Brest.",
+      "Ik won de Copa América in 1991 en 1993 en werd in 1993 uitgeroepen tot beste speler van het toernooi.",
+      "Op het WK 1990 viel ik in voor mijn geblesseerde collega en bleef ik de rest van het toernooi in doel staan.",
+      "Op datzelfde WK stopte ik penalty's in de shoot-outs tegen Joegoslavië en gastland Italië."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sergio_Goycochea"
+    ],
+    "tags": [
+      "maradona",
+      "wk",
+      "legende"
+    ],
+    "checkedAt": "2026-10-19"
+  },
+  {
+    "name": "Daniel Passarella",
+    "answers": [
+      "Passarella",
+      "El Gran Capitán"
+    ],
+    "country": "Argentinië",
+    "competition": "Serie A",
+    "era": "classic",
+    "difficulty": 4,
+    "hints": [
+      "Ik werd in 1953 geboren in Chacabuco, in de provincie Buenos Aires.",
+      "Als verdediger scoorde ik meer dan 130 goals, lang een record voor een verdediger.",
+      "Ik speelde voor River Plate, Fiorentina en Inter, en later was ik van 2009 tot 2013 president van River Plate.",
+      "In 1978 mocht ik als eerste Argentijn de wereldbeker in ontvangst nemen.",
+      "In 1986 werd ik opnieuw wereldkampioen, al miste ik door ziekte het hele toernooi."
+    ],
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Daniel_Passarella"
+    ],
+    "tags": [
+      "maradona",
+      "wk",
+      "legende"
+    ],
     "checkedAt": "2026-10-19"
   }
 ]

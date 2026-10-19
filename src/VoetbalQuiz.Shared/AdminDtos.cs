@@ -43,6 +43,16 @@ public static class PlayerTags
         ("familie", "Voetbalfamilie (vader/zoon, broers)"),
         ("curiosa", "Curiosa en blunders (1 april)"),
         ("beker-van-belgie", "Beker van België (Croky Cup)"),
+        // Persoonsspecials: de hoofdfiguur, de vragen over hem en zijn ploegmaats.
+        ("maradona", "Maradona-special"),
+        ("pele", "Pelé-special"),
+        ("messi", "Messi-special"),
+        ("pfaff", "Pfaff-special"),
+        ("lukaku", "Lukaku-special"),
+        ("de-bruyne", "De Bruyne-special"),
+        ("deschacht", "Deschacht-special"),
+        ("stijnen", "Stijnen-special"),
+        ("propere-handen", "Propere Handen-special"),
     ];
 
     /// <summary>Een special kan meerdere thema's combineren, bv. "anderlecht,club-brugge" voor de topper.</summary>
@@ -110,6 +120,13 @@ public static class SpecialTemplates
     private static readonly List<QuestionType> ThemedRounds =
         [QuestionType.WieBenIk, QuestionType.Kluts, QuestionType.Snelvuur, QuestionType.NietBij, QuestionType.Jaar, QuestionType.Emoji];
 
+    /// <summary>Persoonsspecials: de ploegmaats in de spelersrondes, de vragen over de hoofdfiguur in de andere types.</summary>
+    private static readonly List<QuestionType> PersonRounds =
+    [
+        QuestionType.WieBenIk, QuestionType.Kluts, QuestionType.Counter,
+        QuestionType.Snelvuur, QuestionType.Jaar, QuestionType.NietBij, QuestionType.Opstelling,
+    ];
+
     public static readonly List<SpecialTemplate> All =
     [
         // Affiches
@@ -145,6 +162,22 @@ public static class SpecialTemplates
         new("vaderdag", "Vaderdag Special", "👨‍👦", "Vaders, zonen en broers: de grootste voetbalfamilies.", "familie", null, null, ThemedRounds),
         new("1-april", "1 april Special", "🤡", "Geen grap: de gekste momenten, blunders en curiosa uit de voetbalgeschiedenis.", "curiosa", 4, 1,
             [QuestionType.Snelvuur, QuestionType.NietBij, QuestionType.Jaar, QuestionType.Emoji]),
+
+        // Persoonsspecials op de verjaardag: vragen over de hoofdfiguur, plus zijn ploegmaats voor de spelersrondes.
+        new("maradona", "Maradona Special", "🔟", "El Pibe de Oro: de Hand van God, Napoli en de ploegmaats van Diego.",
+            "maradona", 10, 30, [.. PersonRounds, QuestionType.Emoji]),
+        new("pele", "Pelé Special", "👑", "O Rei: drie wereldtitels, Santos, de Cosmos en de ploegmaats van de Koning.",
+            "pele", 10, 23, [.. PersonRounds, QuestionType.Emoji]),
+        new("messi", "Messi Special", "🐐", "Van het servetcontract bij Barcelona tot de wereldtitel: alles over Lionel Messi.", "messi", 6, 24, PersonRounds),
+        new("pfaff", "Pfaff Special", "🧤", "Beveren, Bayern, Mexico '86 en 'De Pfaffs': een quiz rond Jean-Marie Pfaff.", "pfaff", 12, 4, PersonRounds),
+        new("lukaku", "Lukaku Special", "💪", "De recordschutter van de Rode Duivels: zijn goals, zijn clubs en zijn ploegmaats.", "lukaku", 5, 13, PersonRounds),
+        new("de-bruyne", "De Bruyne Special", "🎯", "Van Genk tot Napoli: alles over Kevin De Bruyne en zijn ploegmaats.", "de-bruyne", 6, 28, PersonRounds),
+        new("deschacht", "Deschacht Special", "💜", "Meer dan 600 wedstrijden voor Anderlecht: een quiz rond Olivier Deschacht.", "deschacht", 2, 16, PersonRounds),
+        new("stijnen", "Stijnen Special", "🛡️", "Doelman van Club Brugge en de Rode Duivels, later trainer van Patro Eisden: Stijn Stijnen.",
+            "stijnen", 4, 7, [QuestionType.WieBenIk, QuestionType.Kluts, QuestionType.Counter, QuestionType.Snelvuur, QuestionType.Jaar, QuestionType.NietBij]),
+        new("propere-handen", "Propere Handen Special", "⚖️", "Op 10 oktober 2018 begon het grootste gerechtelijk onderzoek naar het Belgische profvoetbal.",
+            "propere-handen", 10, 10, [QuestionType.Snelvuur, QuestionType.Jaar, QuestionType.NietBij]),
+
         new("custom", "Eigen special", "✨", "", null, null, null),
     ];
 

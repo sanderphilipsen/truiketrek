@@ -53,7 +53,7 @@
     "when": "Zomer 2015", "fee": "Ongeveer €75 miljoen",
     "from": "VfL Wolfsburg", "to": "Manchester City",
     "extra": "Belgische middenvelder die eerder bij Chelsea weinig kansen kreeg",
-    "difficulty": 1, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Kevin_De_Bruyne"], "tags": ["rode-duivels"]
+    "difficulty": 1, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Kevin_De_Bruyne"], "tags": ["rode-duivels", "de-bruyne"]
   },
   {
     "answer": "Thibaut Courtois", "aliases": ["Courtois"],
@@ -123,7 +123,7 @@
     "when": "Zomer 1984", "fee": "Ongeveer £6,9 miljoen, toen een wereldrecord",
     "from": "FC Barcelona", "to": "Napoli",
     "extra": "Argentijnse nummer 10 die Napoli zijn eerste landstitel bezorgde",
-    "difficulty": 3, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Diego_Maradona"], "tags": ["legende"]
+    "difficulty": 3, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Diego_Maradona"], "tags": ["legende", "maradona"]
   },
   {
     "answer": "Paul Pogba", "aliases": ["Pogba"],
@@ -172,7 +172,7 @@
     "when": "Zomer 2021", "fee": "Transfervrij, na 21 jaar bij dezelfde club",
     "from": "FC Barcelona", "to": "Paris Saint-Germain",
     "extra": "Argentijn met een recordaantal Ballons d'Or",
-    "difficulty": 1, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Lionel_Messi"], "tags": ["champions-league"]
+    "difficulty": 1, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Lionel_Messi"], "tags": ["champions-league", "messi"]
   },
   {
     "answer": "Kylian Mbappé", "aliases": ["Mbappe"],
