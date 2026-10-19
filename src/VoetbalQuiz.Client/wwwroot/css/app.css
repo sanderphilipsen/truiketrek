@@ -154,7 +154,6 @@ input:focus { border-color: var(--pitch-2); box-shadow: 0 0 0 3px rgba(15, 81, 5
 .hero .date::first-letter { text-transform: uppercase; }
 .score-big { font-size: 3rem; font-weight: 900; line-height: 1; margin: 8px 0 4px; }
 .score-big small { font-size: 1rem; font-weight: 600; color: var(--muted); }
-.rules { text-align: left; font-size: .9rem; color: var(--muted); margin: 16px 0 0; line-height: 1.45; }
 .done { font-weight: 700; color: var(--ok-text); }
 
 .question-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }

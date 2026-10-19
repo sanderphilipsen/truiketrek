@@ -28,12 +28,8 @@ else
         @if (next is not null)
         {
             <a class="btn primary big" href="vraag/@next.Number">
-                @(answered == 0 ? "Start de challenge" : $"Verder met vraag {next.Number}")
+                @(answered == 0 ? "Start de daily" : $"Verder met vraag {next.Number}")
             </a>
-            @if (answered == 0)
-            {
-                <p class="rules">@QuestionTypes.DayHowTo(_overview)</p>
-            }
         }
         else
         {

@@ -93,9 +93,6 @@ public static class QuestionTypes
         _ => Label([QuestionType.WieBenIk]),
     };
 
-    public static string DayHowTo(DailyOverview day) =>
-        day.IsMix ? "Een mix van vraagtypes. Bij elke vraag zie je wat je moet doen." : Get(day.Type).HowTo;
-
     /// <summary>Standaard weekplanning (aanpasbaar in het admin-paneel).</summary>
     public static QuestionType DefaultFor(DayOfWeek day) => day switch
     {
