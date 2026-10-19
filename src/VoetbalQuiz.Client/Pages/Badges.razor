@@ -5,7 +5,7 @@
 
 <PageTitle>Badges – Truitje Trek</PageTitle>
 
-<h1 class="page-title">🎖️ Mijn badges</h1>
+<h1 class="page-title">Badges</h1>
 
 @if (_error is not null)
 {
@@ -20,7 +20,7 @@ else
     var earned = _p.Badges.Count(b => b.Earned);
     <section class="card badge-summary">
         <div class="badge-meter"><span style="width:@(earned * 100 / Math.Max(1, _p.Badges.Count))%"></span></div>
-        <p class="center"><b>@earned</b> van de <b>@_p.Badges.Count</b> badges verdiend · @_p.Trophies.Count @(_p.Trophies.Count == 1 ? "beker" : "bekers")</p>
+        <p class="center"><b>@earned</b> / @_p.Badges.Count · @_p.Trophies.Count @(_p.Trophies.Count == 1 ? "beker" : "bekers")</p>
     </section>
 
     <BadgesAndTrophies Profile="_p" />

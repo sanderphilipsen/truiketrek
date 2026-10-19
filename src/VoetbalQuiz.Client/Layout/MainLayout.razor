@@ -5,7 +5,7 @@
 @implements IDisposable
 
 @* Het admin-paneel gebruikt de volle breedte van een groot scherm. *@
-<div class="app @(IsAdminPage ? "wide" : IsRankingPage || IsProfilePage ? "medium" : "")">
+<div class="app @(IsAdminPage ? "wide" : IsProfilePage ? "medium" : "")">
     <header class="topbar">
         <a href="" class="brand"><img src="logo.svg" alt="" class="logo" /> Truitje Trek</a>
         <AuthorizeView>
@@ -59,9 +59,6 @@
     }
 
     public void Dispose() => Auth.AuthenticationStateChanged -= OnAuthChanged;
-
-    // Het maandklassement heeft kolommen nodig: op een groot scherm wat breder dan de gsm-kolom.
-    private bool IsRankingPage => Nav.ToBaseRelativePath(Nav.Uri).StartsWith("klassement", StringComparison.OrdinalIgnoreCase);
 
     private bool IsProfilePage => Nav.ToBaseRelativePath(Nav.Uri).StartsWith("profiel", StringComparison.OrdinalIgnoreCase);
 

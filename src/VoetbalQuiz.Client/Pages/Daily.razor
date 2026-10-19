@@ -18,20 +18,12 @@ else
     var answered = _overview.Questions.Count(q => q.Status == QuestionStatus.Answered);
     var next = _overview.Questions.FirstOrDefault(q => q.Status != QuestionStatus.Answered);
 
-    @if (_overview.LastWinner is { } w)
-    {
-        <div class="winner-banner @(w.IsMe ? "me" : "")">
-            <Avatar Id="@w.AvatarId" User="@w.UserName" Size="36" />
-            <span>🏆 @(w.IsMe ? "Jij was" : w.UserName + " was") dagwinnaar op @DutchDates.DayMonth(w.Date) met <b>@w.Points</b> punten</span>
-        </div>
-    }
-
     <section class="card hero">
         <div class="date">@DutchDates.DayMonth(_overview.Date)</div>
         <h1>Daily challenge</h1>
         <div class="type-banner">@QuestionTypes.DayLabel(_overview)</div>
         <div class="score-big">@_overview.TotalPoints <small>punten</small></div>
-        <div class="muted">@answered / @_overview.Questions.Count vragen gespeeld · max. @_overview.MaxPoints punten</div>
+        <div class="muted">@answered / @_overview.Questions.Count gespeeld</div>
 
         @if (next is not null)
         {
@@ -45,8 +37,8 @@ else
         }
         else
         {
-            <p class="done">Klaar voor vandaag! Morgen een nieuwe challenge.</p>
-            <a class="btn" href="klassement">Bekijk het klassement</a>
+            <p class="done">Klaar voor vandaag.</p>
+            <a class="btn" href="klassement">Klassement</a>
             <RewardPopup Kicker="Daily voltooid!" />
         }
     </section>

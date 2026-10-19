@@ -38,7 +38,7 @@ else
         }
         else if (next is null)
         {
-            <p class="done">Klaar! Bekijk hieronder hoe je het deed.</p>
+            <p class="done">Klaar.</p>
             <RewardPopup Kicker="@($"{_info.Name} voltooid!")" />
         }
         else
@@ -58,7 +58,6 @@ else
         }
     </ol>
 
-    <p class="board-note">Je score telt mee in het maandklassement; de top 3 van deze special krijgt een podiumbonus.</p>
 }
 
 @code {

@@ -10,7 +10,7 @@
 else
 {
 <form class="stack" @onsubmit="CreateAsync">
-    <label><span>Naam van je tafel <span class="optional">(optioneel)</span></span>
+    <label><span>Naam <span class="optional">(optioneel)</span></span>
         <input @bind="_name" maxlength="40" placeholder="Tafel van @UserName" />
     </label>
     <div>
@@ -66,10 +66,10 @@ else
         <span class="derby-flame">🔥</span>
         <span class="derby-text">
             <b>Derby</b>
-            <small>Iedereen krijgt bij de aftrap één geheim wapen: @string.Join(" ", DerbyRules.All.Select(w => w.Icon))</small>
+            <small>Elk een geheim wapen @string.Join(" ", DerbyRules.All.Select(w => w.Icon))</small>
             @if (_derby && !_chosen.Any(DerbyRules.TrumpWorksOn))
             {
-                <small class="derby-note">🟨 De Trump booster zit er enkel in met Snelvuur, Wie hoort er niet bij of Raad het jaar.</small>
+                <small class="derby-note">🟨 Trump booster enkel bij Snelvuur, Wie hoort er niet bij of Raad het jaar.</small>
             }
         </span>
         <span class="switch" aria-hidden="true"></span>
@@ -105,7 +105,7 @@ else
         0 => "Kies een vraagtype.",
         _ when MixIncomplete => "Kies minstens twee types voor een mix.",
         1 => QuestionTypes.Get(_chosen[0]).HowTo,
-        _ => $"{QuestionTypes.Label(_chosen)}: de vragen wisselen om beurten van type.",
+        _ => QuestionTypes.Label(_chosen),
     };
 
     private int _questions = MatchRules.DefaultQuestions;

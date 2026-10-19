@@ -45,20 +45,11 @@
                 </a>
             }
         </div>
-        <p>@(gb.Holders.Any(h => h.IsMe)
-            ? "Proficiat! Je krijgt een ster op je shirt en draagt de hele maand de gouden rand."
-            : gb.Holders.Count > 1
-                ? "Gedeelde eerste plaats: allebei een ster op het shirt en de hele maand de gouden rand."
-                : "Een ster op het shirt en de hele maand de gouden rand. Wie pakt de volgende?")</p>
+        @if (gb.Holders.Any(h => h.IsMe))
+        {
+            <p>Proficiat! Een ster op je shirt.</p>
+        }
     </section>
-}
-
-@if (_daily?.LastWinner is { } w)
-{
-    <div class="winner-banner @(w.IsMe ? "me" : "")">
-        <Avatar Id="@w.AvatarId" User="@w.UserName" Size="36" />
-        <span>🏆 @(w.IsMe ? "Jij was" : w.UserName + " was") dagwinnaar op @DutchDates.DayMonth(w.Date) met <b>@w.Points</b> punten</span>
-    </div>
 }
 
 @foreach (var sp in _specials.Where(s => s.IsActive))
@@ -71,7 +62,7 @@
         <span class="special-icon">@sp.Icon</span>
         <div>
             <b>@sp.Name</b>
-            <small>@(sp.Answered == 0 ? "Speciale editie, vandaag te spelen!" : sp.Answered < GameRules.QuestionsPerDay ? $"{sp.Answered}/{GameRules.QuestionsPerDay} gespeeld" : $"Gespeeld: {sp.MyPoints} punten")</small>
+            <small>@(sp.Answered == 0 ? "Vandaag te spelen" : sp.Answered < GameRules.QuestionsPerDay ? $"{sp.Answered}/{GameRules.QuestionsPerDay} gespeeld" : $"{sp.MyPoints} punten")</small>
             <DifficultyStars Value="sp.Difficulty" />
         </div>
         <span class="btn small primary">@(sp.Answered == 0 ? "Spelen" : "Open")</span>
@@ -82,10 +73,10 @@
     <div class="home-card-head">
         <div>
             <div class="date">@(_daily is null ? "" : DutchDates.DayMonth(_daily.Date))</div>
-            <h2>📅 Daily challenge</h2>
+            <h2>Daily challenge</h2>
             @if (_daily is not null)
             {
-                <div class="type-banner small">Vandaag: @QuestionTypes.DayLabel(_daily)</div>
+                <div class="type-banner small">@QuestionTypes.DayLabel(_daily)</div>
                 <DifficultyStars Value="_daily.Difficulty" />
             }
         </div>
@@ -113,24 +104,27 @@
 
         @if (next is null)
         {
-            <p class="done">Klaar voor vandaag! @answered/@_daily.Questions.Count gespeeld.</p>
+            <p class="done">Klaar voor vandaag.</p>
             <a class="btn" href="daily">Bekijk je dag</a>
         }
         else
         {
-            <p class="muted">@(answered == 0 ? QuestionTypes.DayHowTo(_daily) : $"{answered}/{_daily.Questions.Count} gespeeld, ga verder!")</p>
+            @if (answered == 0)
+            {
+                <p class="muted">@QuestionTypes.DayHowTo(_daily)</p>
+            }
             <a class="btn primary big" href="vraag/@next.Number">
                 @(answered == 0 ? "Start de daily" : $"Verder met vraag {next.Number}")
             </a>
-            <a class="card-link" href="daily">Bekijk het overzicht van vandaag ›</a>
+            <a class="card-link" href="daily">Overzicht ›</a>
         }
     }
 </section>
 
 <section class="card">
     <div class="home-card-head">
-        <h2>⚔️ Online spelen</h2>
-        <a class="card-link" href="online">Lobby & rating ›</a>
+        <h2>Online spelen</h2>
+        <a class="card-link" href="online">Lobby ›</a>
     </div>
     <CreateTableForm UserName="@Auth.User?.UserName" Collapsible="true" />
 </section>

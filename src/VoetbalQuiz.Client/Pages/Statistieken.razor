@@ -6,8 +6,8 @@
 <PageTitle>Statistieken – Truitje Trek</PageTitle>
 
 <div class="mode-switch">
-    <button class="@(_online ? "" : "active")" aria-pressed="@(_online ? "false" : "true")" @onclick="() => _online = false">📅 Daily</button>
-    <button class="@(_online ? "active" : "")" aria-pressed="@(_online ? "true" : "false")" @onclick="ShowOnlineAsync">⚔️ Online</button>
+    <button class="@(_online ? "" : "active")" aria-pressed="@(_online ? "false" : "true")" @onclick="() => _online = false">Daily</button>
+    <button class="@(_online ? "active" : "")" aria-pressed="@(_online ? "true" : "false")" @onclick="ShowOnlineAsync">Online</button>
 </div>
 
 @if (_error is not null)
@@ -23,20 +23,16 @@ else if (_online)
     else
     {
         var o = _onlineStats.Me;
-        <h2 class="section-title">Jouw online cijfers</h2>
+        <h2 class="section-title">Jouw cijfers</h2>
         <div class="my-stats">
             <div><b>@o.Played</b><small>wedstrijden</small></div>
             <div><b>@o.Wins</b><small>gewonnen</small></div>
             <div><b>@o.Rating</b><small>rating</small></div>
-            <div><b>@o.BestRating</b><small>beste rating</small></div>
             <div><b>@(o.Played == 0 ? 0 : (int)Math.Round(100.0 * o.Wins / o.Played))%</b><small>winst</small></div>
-            <div><b>@o.FirstCorrect</b><small>keer als 1e juist</small></div>
-            <div><b>@o.BestScore</b><small>beste score</small></div>
-            <div><b>@(o.Played - o.Wins)</b><small>verloren</small></div>
         </div>
 
-        <h2 class="section-title">Online eregalerij</h2>
-        <HallOfFame Cards="_onlineStats.HallOfFame" EmptyText="Nog geen online wedstrijden gespeeld. Maak een tafel!" />
+        <h2 class="section-title">Eregalerij</h2>
+        <HallOfFame Cards="_onlineStats.HallOfFame" EmptyText="Nog geen wedstrijden gespeeld." />
     }
 }
 else if (_stats is null)
@@ -50,22 +46,17 @@ else
     <h2 class="section-title">Jouw cijfers</h2>
     <div class="my-stats">
         <div><b>@me.DaysPlayed</b><small>dagen gespeeld</small></div>
-        <div><b>@me.DaysWon</b><small>dagzeges</small></div>
         <div><b>@me.BestDay</b><small>beste dag</small></div>
-        <div><b>@me.AverageDay</b><small>gemiddeld per dag</small></div>
         <div><b>@me.CorrectPercent%</b><small>juist geraden</small></div>
-        <div><b>@me.FirstHintHits</b><small>bij de 1e tip</small></div>
         <div><b>@me.CurrentStreak</b><small>dagen op rij</small></div>
-        <div><b>@me.LongestStreak</b><small>langste reeks</small></div>
     </div>
 
     <h2 class="section-title">Eregalerij</h2>
-    <HallOfFame Cards="_stats.HallOfFame" EmptyText="Nog geen records. Speel een paar dagen en kom terug!" />
+    <HallOfFame Cards="_stats.HallOfFame" EmptyText="Nog geen records." />
 
     @if (GoldenBall.Overview is { History.Count: > 0 } gb)
     {
-        <h2 class="section-title">⚽ Gouden Ballen</h2>
-        <p class="muted light">@gb.Explanation</p>
+        <h2 class="section-title">Gouden Ballen</h2>
         <ol class="board">
             @foreach (var m in gb.History)
             {

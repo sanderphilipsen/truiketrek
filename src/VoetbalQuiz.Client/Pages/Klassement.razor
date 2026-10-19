@@ -5,8 +5,8 @@
 <PageTitle>Klassement – Truitje Trek</PageTitle>
 
 <div class="tabs">
-    <button class="@(_monthly ? "" : "active")" aria-pressed="@(_monthly ? "false" : "true")" @onclick="() => ShowAsync(false)">📅 Vandaag</button>
-    <button class="@(_monthly ? "active" : "")" aria-pressed="@(_monthly ? "true" : "false")" @onclick="() => ShowAsync(true)">🏆 Maand</button>
+    <button class="@(_monthly ? "" : "active")" aria-pressed="@(_monthly ? "false" : "true")" @onclick="() => ShowAsync(false)">Vandaag</button>
+    <button class="@(_monthly ? "active" : "")" aria-pressed="@(_monthly ? "true" : "false")" @onclick="() => ShowAsync(true)">Maand</button>
 </div>
 
 @if (_error is not null)
@@ -22,17 +22,16 @@ else if (!_monthly)
     }
     else if (_today.Entries.Count == 0)
     {
-        <div class="card center muted">Nog niemand speelde de daily van vandaag. Wees de eerste!</div>
+        <div class="card center muted">Nog niemand gespeeld vandaag.</div>
     }
     else
     {
-        <p class="board-note">Enkel de daily van vandaag. @_today.Note</p>
-        <LeaderboardList Entries="_today.Entries" />
+        <LeaderboardList Entries="@_today.Entries.Select(e => new LeaderboardList.Row(e.Rank, e.UserName, e.AvatarId, e.Points, e.IsMe)).ToList()" />
     }
 }
 else
 {
-    @* ---------- Maandklassement: daily + specials + online ---------- *@
+    @* ---------- Maandklassement: enkel het totaal (daily + specials + online + bonussen) ---------- *@
     <div class="month-nav">
         <button class="linkish" aria-label="Vorige maand" @onclick="() => MoveMonthAsync(-1)">‹</button>
         <span>@DutchDates.MonthYear(_year, _month)</span>
@@ -45,51 +44,11 @@ else
     }
     else if (_ranking.Entries.Count == 0)
     {
-        <div class="card center muted">Nog niemand speelde in deze maand.</div>
+        <div class="card center muted">Nog niemand gespeeld deze maand.</div>
     }
     else
     {
-        <div class="month-table">
-            <div class="mt-row mt-head">
-                <span>#</span><span>Speler</span>
-                <span title="Som van je daily-scores">📅 Daily</span>
-                <span title="Som van je special-scores">✨ Specials</span>
-                <span title="Online: punten per wedstrijd volgens je eindplaats (beste @MonthRules.OnlineBestMatches)">⚔️ Online</span>
-                <span title="Podiumbonussen: top 3 van een daily of special">🏅 Bonus</span>
-                <span>Totaal</span>
-            </div>
-            @foreach (var e in _ranking.Entries)
-            {
-                <a class="mt-row @(e.IsMe ? "me" : "")" href="speler/@Uri.EscapeDataString(e.UserName)">
-                    <span class="mt-rank">@Medal(e.Rank)</span>
-                    <span class="mt-player">
-                        <Avatar Id="@e.AvatarId" User="@e.UserName" Size="34" />
-                        <span>
-                            <b>@e.UserName</b> <span class="lvl">Lv @e.Level</span>
-                            <small>@Details(e)</small>
-                        </span>
-                    </span>
-                    <span class="mt-num" data-label="📅 Daily">@e.Daily</span>
-                    <span class="mt-num" data-label="✨ Specials">@e.Specials</span>
-                    <span class="mt-num" data-label="⚔️ Online">@e.Online</span>
-                    <span class="mt-num" data-label="🏅 Bonus">@e.Bonus</span>
-                    <span class="mt-total">@e.Total</span>
-                </a>
-            }
-        </div>
-
-        <details class="card how">
-            <summary>Hoe wordt het maandklassement berekend?</summary>
-            <ul>
-                <li><b>📅 Daily:</b> al je daily-scores van de maand tellen volledig mee (max. 1000 per dag).</li>
-                <li><b>✨ Specials:</b> je score van elke special telt volledig mee.</li>
-                <li><b>⚔️ Online:</b> per wedstrijd @MonthRules.OnlineBase punten + @MonthRules.OnlinePerOpponent per tegenstander die je achter je liet
-                    (gedeelde plaats telt half). Enkel je @MonthRules.OnlineBestMatches beste wedstrijden van de maand tellen.</li>
-                <li><b>🏅 Bonus:</b> de top 3 van elke daily en elke special krijgt +@MonthRules.PodiumBonus[0] / +@MonthRules.PodiumBonus[1] / +@MonthRules.PodiumBonus[2]
-                    (toegekend zodra die dag of special afgelopen is).</li>
-                <li>De top 3 van de maand krijgt een beker in de prijzenkast.</li>
-            </ul>
-        </details>
+        <LeaderboardList Entries="@_ranking.Entries.Select(e => new LeaderboardList.Row(e.Rank, e.UserName, e.AvatarId, e.Total, e.IsMe)).ToList()" />
     }
 }
 
@@ -135,15 +94,4 @@ else
         }
         catch (ApiException ex) { _error = ex.Message; }
     }
-
-    private static string Details(MonthEntry e)
-    {
-        var parts = new List<string> { $"{e.DaysPlayed} {(e.DaysPlayed == 1 ? "dag" : "dagen")}" };
-        if (e.SpecialsPlayed > 0) parts.Add($"{e.SpecialsPlayed} special{(e.SpecialsPlayed == 1 ? "" : "s")}");
-        if (e.Matches > 0) parts.Add($"{e.MatchesWon}/{e.Matches} online gewonnen");
-        if (e.DaysWon > 0) parts.Add($"{e.DaysWon}× dagwinnaar");
-        return string.Join(" · ", parts);
-    }
-
-    private static string Medal(int rank) => rank switch { 1 => "🥇", 2 => "🥈", 3 => "🥉", _ => rank.ToString() };
 }
