@@ -11,6 +11,8 @@ public static class QuizEndpoints
         var daily = app.MapGroup("/api/daily").RequireAuthorization().AddEndpointFilter(HandleQuizErrors);
 
         daily.MapGet("/", (ClaimsPrincipal user, QuizService quiz) => quiz.GetOverviewAsync(UserId(user)));
+        // Home: je plaats in het klassement van vandaag en die bij je vorige bezoek (POST, want het bezoek wordt onthouden).
+        daily.MapPost("/rank", (ClaimsPrincipal user, QuizService quiz) => quiz.VisitDailyRankAsync(UserId(user)));
         daily.MapPost("/questions/{number:int}/start", (int number, ClaimsPrincipal user, QuizService quiz) => quiz.StartAsync(UserId(user), number));
         daily.MapGet("/questions/{number:int}", (int number, ClaimsPrincipal user, QuizService quiz) => quiz.GetStateAsync(UserId(user), number));
         daily.MapPost("/questions/{number:int}/guess", (int number, AnswerRequest req, ClaimsPrincipal user, QuizService quiz) => quiz.GuessAsync(UserId(user), number, req.Guess));

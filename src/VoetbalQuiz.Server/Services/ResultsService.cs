@@ -165,12 +165,32 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
             .Select(c => new { c.Id, SpecialId = c.SpecialEventId!.Value })
             .ToDictionaryAsync(c => c.SpecialId, c => c.Id);
 
+        // Hoeveel vragen een reeks telt: de echte reeks als ze al bestaat, anders wat de mix van de special zou worden.
+        var challengeIds = mineBySpecial.Values.ToList();
+        var sizes = await db.DailyQuestions.Where(q => challengeIds.Contains(q.DailyChallengeId))
+            .GroupBy(q => q.DailyChallengeId).Select(g => new { g.Key, Count = g.Count() })
+            .ToDictionaryAsync(x => x.Key, x => x.Count);
+        var disabled = (await db.DisabledQuestionTypes.Select(d => d.Type).ToListAsync()).ToHashSet();
+        // Een geopende vraag telt als begonnen, ook als ze nog niet beantwoord is.
+        var started = (await db.Attempts.Where(a => a.UserId == userId && challengeIds.Contains(a.DailyQuestion.DailyChallengeId))
+            .Select(a => a.DailyQuestion.DailyChallengeId).Distinct().ToListAsync()).ToHashSet();
+
         return specials.Select(s =>
         {
-            var played = mineBySpecial.TryGetValue(s.Id, out var cid) ? mine.FirstOrDefault(g => g.Key == cid)?.ToList() : null;
+            var hasChallenge = mineBySpecial.TryGetValue(s.Id, out var cid);
+            var played = hasChallenge ? mine.FirstOrDefault(g => g.Key == cid)?.ToList() : null;
+            var active = s.StartDate <= today && today <= s.EndDate;
+            var count = hasChallenge && sizes.TryGetValue(cid, out var size)
+                ? size
+                : QuestionTypes.Mix(QuizService.ResolveSpecialTypes(s.Types, disabled)).Values.Sum();
             return new SpecialSummary(s.Id, s.Name, s.Icon, s.Description, s.StartDate, s.EndDate,
-                s.StartDate <= today && today <= s.EndDate, s.StartDate > today,
-                played?.Sum(r => r.Points), played?.Count ?? 0, challenges.GetValueOrDefault(s.Id), s.Theme);
+                active, s.StartDate > today,
+                played?.Sum(r => r.Points), played?.Count ?? 0, challenges.GetValueOrDefault(s.Id), s.Theme,
+                StartsToday: s.StartDate == today,
+                DaysLeft: active ? s.EndDate.DayNumber - today.DayNumber : 0,
+                QuestionCount: count,
+                Started: hasChallenge && started.Contains(cid),
+                StartsIn: s.StartDate > today ? s.StartDate.DayNumber - today.DayNumber : 0);
         }).ToList();
     }
 
@@ -227,6 +247,32 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
         var entries = ranked.Select((t, i) => new LeaderboardEntry(
             i + 1, t.UserName, cards[t.UserId].AvatarId, cards[t.UserId].Level, t.Points, 1, t.Correct, 0, t.UserId == userId)).ToList();
         return new Leaderboard("Vandaag", $"Top 3 van de dag krijgt +{MonthRules.PodiumBonus[0]} / +{MonthRules.PodiumBonus[1]} / +{MonthRules.PodiumBonus[2]} in het maandklassement.", entries);
+    }
+
+    /// <summary>
+    /// Je plaats in het klassement van vandaag (dezelfde volgorde als <see cref="GetDailyLeaderboardAsync"/>) en je plaats
+    /// bij je vorige bezoek aan Home. Dit bezoek wordt meteen onthouden, zodat "▲ N plaatsen" maar één keer oplicht.
+    /// Gebruik <see cref="QuizService.VisitDailyRankAsync"/>: die sluit eerst de verlopen vragen af.
+    /// </summary>
+    public async Task<DailyRank> VisitDailyRankAsync(string userId)
+    {
+        var today = Today;
+        var ranked = RankDay(DayTotals(await RowsAsync(a => a.DailyQuestion.DailyChallenge.Date == today)));
+        var index = ranked.FindIndex(t => t.UserId == userId);
+        int? rank = index < 0 ? null : index + 1;
+
+        var seen = await db.Users.Where(u => u.Id == userId)
+            .Select(u => new { u.HomeRank, u.HomeRankDate })
+            .SingleAsync();
+        var previous = seen.HomeRankDate == today ? seen.HomeRank : null;
+
+        // Rechtstreeks bijwerken: geen botsing met de ConcurrencyStamp van Identity als er tegelijk iets anders aan de gebruiker wijzigt.
+        if (seen.HomeRankDate != today || seen.HomeRank != rank)
+            await db.Users.Where(u => u.Id == userId).ExecuteUpdateAsync(set => set
+                .SetProperty(u => u.HomeRank, rank)
+                .SetProperty(u => u.HomeRankDate, today));
+
+        return new DailyRank(today, rank, ranked.Count, previous);
     }
 
     // ---------- Statistieken ----------

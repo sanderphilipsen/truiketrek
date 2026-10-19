@@ -29,6 +29,19 @@ public record DailyOverview(DateOnly Date, int TotalPoints, List<QuestionSummary
     [System.Text.Json.Serialization.JsonIgnore] public bool IsMix => Types is { Count: > 1 };
 }
 
+/// <summary>
+/// Jouw plaats in het klassement van vandaag (de daily), berekend op de server.
+/// Date: de quizdag (Belgische datum) waarvoor de plaats geldt; Home toont ze enkel als die gelijk is aan de daily die het toont.
+/// Rank is null zolang je vandaag nog geen vraag beantwoordde; Players is het aantal spelers in dat klassement.
+/// PreviousRank: je plaats bij je vorige bezoek aan Home vandaag (null bij het eerste bezoek of als je toen nog niet meespeelde).
+/// </summary>
+public record DailyRank(DateOnly Date, int? Rank, int Players, int? PreviousRank)
+{
+    /// <summary>Zoveel plaatsen gestegen sinds je vorige bezoek (0 als je gelijk bleef, zakte of toen nog niet meespeelde).</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public int RisenBy => Rank is { } now && PreviousRank is { } before && before > now ? before - now : 0;
+}
+
 public record DayWinner(DateOnly Date, string UserName, string? AvatarId, int Points, bool IsMe);
 
 public record QuestionSummary(

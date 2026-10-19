@@ -13,6 +13,13 @@ public class AppUser : IdentityUser
 
     /// <summary>Badges die de speler al zag in de beloningspopup. Null = nog nooit.</summary>
     public List<string>? SeenBadges { get; set; }
+
+    /// <summary>
+    /// Je plaats in het klassement van vandaag bij je vorige bezoek aan Home, zodat Home "▲ 3 plaatsen" kan tonen.
+    /// Geldt enkel voor de dag in <see cref="HomeRankDate"/> (Belgische datum); null = toen nog niet in het klassement.
+    /// </summary>
+    public int? HomeRank { get; set; }
+    public DateOnly? HomeRankDate { get; set; }
 }
 
 public class Player

@@ -33,6 +33,9 @@ public static class Levels
     public static int Xp(XpInput input) => Breakdown(input).Sum(p => p.Xp);
 
     /// <summary>Totale XP die nodig is om <paramref name="level"/> te bereiken.</summary>
+    /// <summary>Nieuwe speler: nog op level 1 (een volledige daily brengt je al naar level 2). Home toont dan "Zo werkt het".</summary>
+    public static bool IsNewcomer(int level) => level <= 1;
+
     public static int XpForLevel(int level) => 50 * level * (level - 1);
 
     public static LevelInfo For(int xp)

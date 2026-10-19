@@ -11,7 +11,26 @@
 
 @if (_lobby is null)
 {
-    <div class="center-msg"><Spinner /></div>
+    @if (_loadError is not null)
+    {
+        <p class="error" role="alert">@_loadError</p>
+        <button type="button" class="btn small tables-retry" @onclick="RetryAsync" disabled="@_busy">Opnieuw proberen</button>
+    }
+    else if (Compact)
+    {
+        @* Vaste hoogte terwijl de lobby laadt, zodat Home niet verspringt. *@
+        <div class="tables tables-skeleton" aria-busy="true">
+            <span class="sr-only" role="status">Partijtjes laden…</span>
+            <div class="table-card skeleton-card" aria-hidden="true">
+                <span class="skeleton skeleton-circle"></span>
+                <span class="skeleton-lines"><span class="skeleton skeleton-line"></span><span class="skeleton skeleton-line short"></span></span>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="center-msg"><Spinner /></div>
+    }
 }
 else
 {
@@ -39,15 +58,22 @@ else
         </div>
     }
 
-    <h2 class="section-title">Open partijtjes</h2>
+    @if (!Compact)
+    {
+        <h2 class="section-title">Open partijtjes</h2>
+    }
     @if (_lobby.Open.Count == 0)
     {
-        <div class="card center muted">Geen open partijtjes.</div>
+        <div class="card center tables-empty">
+            <span class="tables-empty-icon" aria-hidden="true">🏟️</span>
+            <p>Nog geen open partijtjes. Maak er zelf een en daag je maten uit!</p>
+        </div>
     }
     else
     {
+        var shown = Max is { } max ? _lobby.Open.Take(max).ToList() : _lobby.Open;
         <div class="tables">
-            @foreach (var m in _lobby.Open)
+            @foreach (var m in shown)
             {
                 <div class="table-card">
                     <Avatar Id="@m.HostAvatarId" User="@m.HostName" Size="40" />
@@ -67,10 +93,17 @@ else
                             }
                         </div>
                     </div>
-                    <button class="btn small primary" @onclick="() => JoinAsync(m.Id)" disabled="@_busy">Join</button>
+                    @* Op Home is de daily de hoofdactie: meedoen krijgt daar een gewone knop. *@
+                    <button class="btn small @(Compact ? "" : "primary")" @onclick="() => JoinAsync(m.Id)" disabled="@_busy"
+                            aria-label="Doe mee met @m.Name">Doe mee</button>
                 </div>
             }
         </div>
+        @if (shown.Count < _lobby.Open.Count)
+        {
+            var more = _lobby.Open.Count - shown.Count;
+            <a class="card-link light" href="online">Nog @more open @(more == 1 ? "partijtje" : "partijtjes") <span aria-hidden="true">›</span></a>
+        }
     }
 
     @if (ShowRecent && _lobby.RecentlyFinished.Count > 0)
@@ -98,11 +131,21 @@ else
     /// <summary>"Jouw partijtjes" tonen. Home zet dit uit en toont je partijtje als banner bovenaan (via OnLoaded).</summary>
     [Parameter] public bool ShowMine { get; set; } = true;
 
+    /// <summary>Hoogstens zoveel open partijtjes tonen (Home: 3); de rest staat in de lobby.</summary>
+    [Parameter] public int? Max { get; set; }
+
+    /// <summary>
+    /// Compact blok voor Home: geen eigen kop (Home zet er een sectiekop boven), een skeleton tijdens het laden
+    /// en een gewone (niet-gele) knop om mee te doen, zodat de daily de enige hoofdknop blijft.
+    /// </summary>
+    [Parameter] public bool Compact { get; set; }
+
     /// <summary>Na elke (live) lading van de lobby, bv. voor de banner op Home.</summary>
     [Parameter] public EventCallback<LobbyOverview> OnLoaded { get; set; }
 
     private LobbyOverview? _lobby;
     private bool _busy;
+    private string? _loadError;
     private string? _error;
 
     protected override async Task OnInitializedAsync()
@@ -110,7 +153,7 @@ else
         Realtime.LobbyChanged += OnLobbyChanged;
         await LoadAsync();
         try { await Realtime.WatchLobbyAsync(); }
-        catch { _error = "Live updates zijn niet beschikbaar. Ververs de pagina om nieuwe partijtjes te zien."; }
+        catch { _error ??= "Live updates zijn niet beschikbaar. Ververs de pagina om nieuwe partijtjes te zien."; }
     }
 
     private async Task OnLobbyChanged()
@@ -124,9 +167,21 @@ else
         try
         {
             _lobby = await Api.GetLobbyAsync();
+            _loadError = null;
             await OnLoaded.InvokeAsync(_lobby);
         }
-        catch (ApiException ex) { _error = ex.Message; }
+        catch (Exception ex) when (ex is ApiException or HttpRequestException)
+        {
+            // Lukt een live herlading niet, dan blijft de vorige lijst staan.
+            if (_lobby is null) _loadError = ex is ApiException api ? api.Message : "De partijtjes konden niet geladen worden. Controleer je verbinding.";
+        }
+    }
+
+    private async Task RetryAsync()
+    {
+        _busy = true;
+        await LoadAsync();
+        _busy = false;
     }
 
     private async Task JoinAsync(int id)

@@ -180,6 +180,12 @@ namespace VoetbalQuiz.Server.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
 
+                    b.Property<int?>("HomeRank")
+                        .HasColumnType("integer");
+
+                    b.Property<DateOnly?>("HomeRankDate")
+                        .HasColumnType("date");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean");
 

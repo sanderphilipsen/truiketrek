@@ -18,6 +18,8 @@ public class ApiClient(HttpClient http)
     private static string Quiz(int? specialId) => specialId is { } id ? $"api/specials/{id}" : "api/daily";
 
     public Task<DailyOverview> GetDailyAsync(int? specialId = null) => GetAsync<DailyOverview>(Quiz(specialId));
+    /// <summary>Je plaats van vandaag en die bij je vorige bezoek; de server onthoudt dit bezoek (enkel Home roept dit op).</summary>
+    public Task<DailyRank> VisitDailyRankAsync() => PostAsync<DailyRank>("api/daily/rank", null);
     public Task<QuestionState> StartAsync(int number, int? specialId = null) =>
         PostAsync<QuestionState>($"{Quiz(specialId)}/questions/{number}/start", null);
     public Task<QuestionState> GetQuestionAsync(int number, int? specialId = null) =>

@@ -215,11 +215,21 @@ public record SpecialAdminItem(
     int Id, string Theme, string Name, string Icon, DateOnly StartDate, DateOnly EndDate, string? Tag,
     int PoolSize, bool Locked, int Participants, List<QuestionType>? Types = null);
 
-/// <summary>Een special zoals spelers hem zien.</summary>
+/// <summary>
+/// Een special zoals spelers hem zien. StartsToday: vandaag (Belgische datum, bepaald door de server) is de startdag,
+/// dan staat hij op Home bovenaan. DaysLeft: bij een lopende special het aantal dagen na vandaag (0 = enkel nog vandaag).
+/// QuestionCount: zoveel vragen telt de reeks (een mix met opstelling of counter heeft er minder dan 10).
+/// Started: je opende al minstens één vraag, ook als die nog niet beantwoord is.
+/// StartsIn: bij een komende special het aantal dagen tot de start (1 = morgen).
+/// </summary>
 public record SpecialSummary(
     int Id, string Name, string Icon, string Description, DateOnly StartDate, DateOnly EndDate,
-    bool IsActive, bool IsUpcoming, int? MyPoints, int Answered, string? WinnerName, string? Theme = null, double Difficulty = 0)
+    bool IsActive, bool IsUpcoming, int? MyPoints, int Answered, string? WinnerName, string? Theme = null, double Difficulty = 0,
+    bool StartsToday = false, int DaysLeft = 0, int QuestionCount = 0, bool Started = false, int StartsIn = 0)
 {
+    /// <summary>Alle vragen van de reeks beantwoord.</summary>
+    [System.Text.Json.Serialization.JsonIgnore] public bool Finished => QuestionCount > 0 && Answered >= QuestionCount;
+
     /// <summary>De affiche van het sjabloon (bv. Anderlecht – Club Brugge), of null.</summary>
     [System.Text.Json.Serialization.JsonIgnore] public Affiche? Affiche => SpecialTemplates.Find(Theme)?.Affiche;
 }

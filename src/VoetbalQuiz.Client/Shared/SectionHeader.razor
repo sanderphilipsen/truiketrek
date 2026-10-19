@@ -1,0 +1,40 @@
+@* Kop van een blok: titel (en ondertitel) links, "Alles ›" rechts met een tikvlak van minstens 44 px.
+   Wit op het veld; binnen een .card neemt de kop de donkere tekstkleur over. *@
+<div class="section-head">
+    <div class="section-head-text">
+        @if (Level == 1)
+        {
+            <h1 class="section-head-title" id="@Id">@Title</h1>
+        }
+        else
+        {
+            <h2 class="section-head-title" id="@Id">@Title</h2>
+        }
+        @if (Subtitle is not null)
+        {
+            <p class="section-head-sub">@Subtitle</p>
+        }
+    </div>
+    @if (Href is not null)
+    {
+        <a class="section-head-link" href="@Href" aria-label="@(LinkLabel ?? $"{LinkText}: {Title}")">@LinkText <span aria-hidden="true">›</span></a>
+    }
+</div>
+
+@code {
+    /// <summary>Id van de kop, voor aria-labelledby op de sectie.</summary>
+    [Parameter] public string? Id { get; set; }
+
+    [Parameter, EditorRequired] public string Title { get; set; } = "";
+    [Parameter] public string? Subtitle { get; set; }
+
+    /// <summary>Waar "Alles ›" naartoe gaat; zonder adres geen link.</summary>
+    [Parameter] public string? Href { get; set; }
+    [Parameter] public string LinkText { get; set; } = "Alles";
+
+    /// <summary>Wat een schermlezer voorleest voor de link (standaard "Alles: titel").</summary>
+    [Parameter] public string? LinkLabel { get; set; }
+
+    /// <summary>Kopniveau: 2 (standaard) of 1 voor de hoofdtitel van een pagina.</summary>
+    [Parameter] public int Level { get; set; } = 2;
+}

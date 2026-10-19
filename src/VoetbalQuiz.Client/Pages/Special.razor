@@ -28,12 +28,12 @@ else
         <p class="muted">@_info.Description</p>
         <div class="muted">@Period(_info)</div>
         <div class="score-big">@_overview.TotalPoints <small>punten</small></div>
-        <div class="muted">@answered / @GameRules.QuestionsPerDay vragen gespeeld</div>
+        <div class="muted">@answered / @_overview.Questions.Count vragen gespeeld</div>
 
         @if (next is not null && _info.IsActive)
         {
             <a class="btn primary big" href="special/@Id/vraag/@next.Number">
-                @(answered == 0 ? "Start de special" : $"Verder met vraag {next.Number}")
+                @(_overview.Questions.All(q => q.Status == QuestionStatus.NotStarted) ? "Start de special" : $"Verder met vraag {next.Number}")
             </a>
         }
         else if (next is null)

@@ -214,10 +214,13 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
     }
 
     /// <summary>De types van een special, zonder de uitgeschakelde (staan ze allemaal uit, dan toch de gekozen types).</summary>
-    public async Task<List<QuestionType>> SpecialTypesAsync(SpecialEvent special)
+    public async Task<List<QuestionType>> SpecialTypesAsync(SpecialEvent special) =>
+        ResolveSpecialTypes(special.Types, await DisabledTypesAsync());
+
+    public static List<QuestionType> ResolveSpecialTypes(List<QuestionType> types, ICollection<QuestionType> disabled)
     {
-        List<QuestionType> chosen = special.Types.Count > 0 ? special.Types : [QuestionType.WieBenIk];
-        var enabled = Enabled(chosen, await DisabledTypesAsync());
+        List<QuestionType> chosen = types.Count > 0 ? types : [QuestionType.WieBenIk];
+        var enabled = Enabled(chosen, disabled);
         return enabled.Count > 0 ? enabled : chosen.Distinct().ToList();
     }
 
@@ -354,10 +357,45 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
         for (var i = 0; i < specials.Count; i++)
         {
             if (!specials[i].IsActive) continue;
-            try { specials[i] = specials[i] with { Difficulty = DifficultyOf(await GetOrCreateSpecialChallengeAsync(specials[i].Id)) }; }
+            try
+            {
+                var challenge = await GetOrCreateSpecialChallengeAsync(specials[i].Id);
+                specials[i] = specials[i] with { Difficulty = DifficultyOf(challenge), QuestionCount = challenge.Questions.Count };
+            }
             catch (QuizException) { } // nog te weinig vragen: dan geen sterren
         }
         return specials;
+    }
+
+    // ---------- Klassementspositie voor Home ----------
+
+    /// <summary>
+    /// Je plaats van vandaag (zie <see cref="ResultsService.VisitDailyRankAsync"/>). Eerst worden de verlopen vragen van
+    /// iedereen in de daily van vandaag afgesloten: anders telt een vraag waarvan de tijd om is nog niet mee, omdat
+    /// ze pas lui afgesloten wordt bij het volgende overzicht, en zou er een te lage plaats onthouden worden.
+    /// </summary>
+    public async Task<DailyRank> VisitDailyRankAsync(string userId)
+    {
+        await CloseExpiredTodayAsync();
+        return await results.VisitDailyRankAsync(userId);
+    }
+
+    /// <summary>Sluit alle vragen van de daily van vandaag af waarvan de tijd om is (voor alle spelers).</summary>
+    public async Task CloseExpiredTodayAsync()
+    {
+        var today = Today;
+        var open = await db.Attempts
+            .Where(a => a.AnsweredAt == null && a.DailyQuestion.DailyChallenge.SpecialEventId == null
+                        && a.DailyQuestion.DailyChallenge.Date == today)
+            .ToListAsync();
+        if (open.Count == 0) return;
+
+        var challenge = await LoadChallengeAsync(c => c.Date == today && c.SpecialEventId == null);
+        if (challenge is null) return;
+        var questions = challenge.Questions.ToDictionary(q => q.Id);
+        foreach (var attempt in open)
+            if (questions.TryGetValue(attempt.DailyQuestionId, out var question)) CloseIfExpired(question, attempt);
+        await SaveAsync();
     }
 
     // ---------- Één vraag spelen ----------

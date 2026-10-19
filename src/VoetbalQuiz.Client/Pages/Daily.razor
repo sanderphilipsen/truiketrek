@@ -28,7 +28,7 @@ else
         @if (next is not null)
         {
             <a class="btn primary big" href="vraag/@next.Number">
-                @(answered == 0 ? "Start de daily" : $"Verder met vraag {next.Number}")
+                @(_overview.Questions.All(q => q.Status == QuestionStatus.NotStarted) ? "Start de daily" : $"Verder met vraag {next.Number}")
             </a>
         }
         else

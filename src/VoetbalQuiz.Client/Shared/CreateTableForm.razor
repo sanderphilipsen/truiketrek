@@ -9,7 +9,7 @@
 }
 else
 {
-<form class="stack" @onsubmit="CreateAsync">
+<form class="stack @(Card ? "card tafel-form" : "")" @onsubmit="CreateAsync">
     <label><span>Naam <span class="optional">(optioneel)</span></span>
         <input @bind="_name" maxlength="40" placeholder="Partijtje van @UserName" />
     </label>
@@ -75,7 +75,7 @@ else
         <span class="switch" aria-hidden="true"></span>
     </button>
     @if (_error is not null) { <p class="error" role="alert">@_error</p> }
-    <button class="btn primary" disabled="@(_busy || _active is null || _chosen.Count == 0 || MixIncomplete)">Partijtje aanmaken</button>
+    <button class="btn primary tafel-submit" disabled="@(_busy || _active is null || _chosen.Count == 0 || MixIncomplete)">Partijtje aanmaken</button>
 </form>
 }
 
@@ -84,6 +84,9 @@ else
 
     /// <summary>Formulier standaard ingeklapt achter de knop "Nieuw partijtje".</summary>
     [Parameter] public bool Collapsible { get; set; }
+
+    /// <summary>Het formulier in een eigen witte kaart (Home: het staat daar op het groene veld).</summary>
+    [Parameter] public bool Card { get; set; }
 
     private bool _open;
 

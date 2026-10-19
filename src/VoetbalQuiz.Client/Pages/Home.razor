@@ -3,18 +3,13 @@
 @inject ApiClient Api
 @inject AuthState Auth
 @inject GoldenBallState GoldenBall
+@inject IJSRuntime JS
 @implements IDisposable
 
 <PageTitle>Truitje Trek – Voetbalquiz</PageTitle>
 
-<section class="home-hello">
-    <Avatar Id="@Auth.User?.AvatarId" User="@Auth.User?.UserName" Size="56" />
-    <div>
-        @* Een lange naam (tot 20 tekens) mag breken, maar het zwaaiende handje blijft bij de naam. *@
-        <h1>Hoi @Auth.User?.UserName&nbsp;<span aria-hidden="true">👋</span></h1>
-        <span class="lvl">Level @Auth.User?.Level</span>
-    </div>
-</section>
+@* Naam, level en avatar staan al in de topbar: hier enkel één rustige regel. *@
+<h1 class="home-hello">Hoi @Auth.User?.UserName&nbsp;<span aria-hidden="true">👋</span></h1>
 
 @foreach (var t in _myTables)
 {
@@ -29,137 +24,360 @@
     </a>
 }
 
+@if (ShowIntro)
+{
+    <section class="card home-intro" aria-labelledby="intro-title">
+        <h2 id="intro-title">Zo werkt het</h2>
+        <ul>
+            <li><span aria-hidden="true">⚽</span> Elke dag nieuwe vragen. Hoe minder tips je nodig hebt, hoe meer punten.</li>
+            <li><span aria-hidden="true">🟨</span> Een foute gok kost @GameRules.WrongGuessPenalty punten. Even nadenken loont dus.</li>
+            <li><span aria-hidden="true">🏆</span> De beste van de dag pakt de dagzege, en elke maand gaat er een Gouden Bal naar de top.</li>
+        </ul>
+        <button type="button" class="btn small" @onclick="HideIntroAsync">Begrepen</button>
+    </section>
+}
+
+@if (!TopReady)
+{
+    @* Daily en specials verschijnen samen: zo schuift het kaartje "Nieuw vandaag" de daily nooit opzij nadat die al te zien was. *@
+    <div class="card home-daily home-loading" aria-busy="true">
+        <div class="skeleton-lines" aria-hidden="true">
+            <span class="skeleton skeleton-line short"></span>
+            <span class="skeleton skeleton-line"></span>
+            <span class="skeleton skeleton-dots"></span>
+            <span class="skeleton skeleton-button"></span>
+        </div>
+        <span class="sr-only" role="status">Daily laden…</span>
+    </div>
+}
+else
+{
+    @if (HeroSpecial is { } hero)
+    {
+        @* Startdag van een special: het kaartje "Nieuw vandaag" staat boven de daily. *@
+        @SpecialCard(hero, isNew: true)
+    }
+    @DailyCard()
+}
+
+@code {
+    private RenderFragment DailyCard() => @<section class="card home-daily" aria-labelledby="daily-title">
+    <SectionHeader Id="daily-title" Title="Daily challenge" Href="daily" LinkLabel="Alle vragen van vandaag" />
+
+    @if (_daily is null)
+    {
+        <div class="block-error" role="alert">
+            <p>@_dailyError</p>
+            <button type="button" class="btn small" @onclick="RetryDailyAsync" disabled="@_retryingDaily">Opnieuw proberen</button>
+        </div>
+    }
+    else
+    {
+        var answered = _daily.Questions.Count(q => q.Status == QuestionStatus.Answered);
+        var correct = _daily.Questions.Count(q => q.Correct == true);
+        var started = _daily.Questions.Any(q => q.Status != QuestionStatus.NotStarted);
+        var next = _daily.Questions.FirstOrDefault(q => q.Status != QuestionStatus.Answered);
+        // Eén gele hoofdknop: de daily, tot die klaar is en er nog een special open staat (dan "Speel" in het special-kaartje).
+        var buttonClass = SpecialIsMain ? "btn big" : "btn primary big";
+
+        <div class="home-card-head">
+            <div>
+                <div class="date">@DutchDates.DayMonth(_daily.Date)</div>
+                <div class="type-banner small">@QuestionTypes.DayLabel(_daily)</div>
+                <DifficultyStars Value="_daily.Difficulty" />
+            </div>
+            <div class="home-score" aria-live="polite"><b>@_daily.TotalPoints</b><small>punten</small></div>
+        </div>
+
+        <ol class="progress-dots" role="img" aria-label="@ProgressLabel(answered, correct, _daily.Questions.Count)">
+            @foreach (var q in _daily.Questions)
+            {
+                <li class="dot @(q.Correct == true ? "ok" : q.Correct == false ? "fail" : q.Status == QuestionStatus.InProgress ? "now" : "")" aria-hidden="true">
+                    @(q.Correct == true ? "✓" : q.Correct == false ? "✗" : "")
+                </li>
+            }
+        </ol>
+
+        @if (_rank is { Rank: { } place } rank && rank.Date == _daily.Date)
+        {
+            <p class="home-rank" aria-live="polite">
+                @(next is null ? "Je staat voorlopig" : "Je staat nu") <b>@place@DutchDates.OrdinalSuffix(place)</b> van @rank.Players
+                @if (rank.RisenBy > 0)
+                {
+                    <span class="rank-up"><span aria-hidden="true">▲</span><span class="sr-only">gestegen met</span> @rank.RisenBy @(rank.RisenBy == 1 ? "plaats" : "plaatsen")</span>
+                }
+            </p>
+        }
+
+        @if (next is null)
+        {
+            <p class="done"><span aria-hidden="true">✓</span> Klaar voor vandaag. Morgen nieuwe vragen!</p>
+            <a class="@buttonClass" href="klassement">Bekijk het klassement</a>
+        }
+        else
+        {
+            <a class="@buttonClass" href="vraag/@next.Number">
+                @(started ? $"Verder met vraag {next.Number}" : "Start de daily")
+            </a>
+        }
+    }
+</section>;
+}
+
 @if (GoldenBall.Overview is { Announce: true, Holders.Count: > 0 } gb)
 {
-    @* Eerste dag van de maand: de Gouden Bal van vorige maand voor iedereen op het dashboard. *@
-    <section class="golden-ball-card @(gb.Holders.Any(h => h.IsMe) ? "me" : "")">
-        <div class="gb-ball" aria-hidden="true">⚽</div>
-        <div class="gb-title">@gb.Holders[0].Title</div>
+    @* Aankondigingsdag: de Gouden Bal van vorige maand als compacte strook die openklapt. *@
+    var mine = gb.Holders.Any(h => h.IsMe);
+    <details class="gb-strip @(mine ? "me" : "")">
+        <summary>
+            <span class="gb-strip-ball" aria-hidden="true">⚽</span>
+            <span class="gb-strip-text">
+                <b>@gb.Holders[0].Title</b>
+                <small>@(mine ? "Jij wint de Gouden Bal!" : string.Join(" & ", gb.Holders.Select(h => h.UserName)))</small>
+            </span>
+            <span class="gb-strip-chevron" aria-hidden="true">›</span>
+        </summary>
         <div class="gb-winners">
             @foreach (var h in gb.Holders)
             {
                 <a class="gb-winner" href="speler/@Uri.EscapeDataString(h.UserName)">
-                    <Avatar Id="@h.AvatarId" User="@h.UserName" Size="76" />
+                    <Avatar Id="@h.AvatarId" User="@h.UserName" Size="64" />
                     <b>@(h.IsMe ? "Jij!" : h.UserName)</b>
                     <small>@h.Points maandpunten · @StarsText(GoldenBall.StarsOf(h.UserName))</small>
                 </a>
             }
         </div>
-        @if (gb.Holders.Any(h => h.IsMe))
+        @if (mine)
         {
             <p>Proficiat! Een ster op je shirt.</p>
         }
+    </details>
+}
+
+@if (_specialsError is not null)
+{
+    <div class="block-error home-special-error" role="alert">
+        <p>@_specialsError</p>
+        <button type="button" class="btn small" @onclick="RetrySpecialsAsync" disabled="@_retryingSpecials">Opnieuw proberen</button>
+    </div>
+}
+else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id)
+{
+    @* Er loopt hooguit één special tegelijk: een kaart over de volle breedte, zonder eigen kop. *@
+    @SpecialCard(active, isNew: false)
+}
+
+<section class="home-online" aria-labelledby="online-title">
+    <SectionHeader Id="online-title" Title="Online spelen" Subtitle="Speel live tegen je maten." Href="online" LinkLabel="Alle partijtjes in de lobby" />
+    @* Jouw partijtjes staan als banner bovenaan; hier enkel (maximaal 3) open partijtjes om aan mee te doen. *@
+    <OpenTables ShowMine="false" Max="3" Compact="true" OnLoaded="l => _myTables = l.Mine" />
+    <CreateTableForm UserName="@Auth.User?.UserName" Collapsible="true" Card="true" />
+</section>
+
+@if (UpcomingSpecials.Count > 0)
+{
+    @* De eerstvolgende drie specials als kaartjes in een veegrij; nog niets om op te tikken. *@
+    <section class="home-soon" aria-labelledby="soon-title">
+        <SectionHeader Id="soon-title" Title="Binnenkort" />
+        <ul class="special-rail @(UpcomingSpecials.Count <= 2 ? "fits" : "")">
+            @foreach (var sp in UpcomingSpecials)
+            {
+                <li>
+                    <div class="special-chip soon">
+                        <span class="special-chip-icon" aria-hidden="true">@sp.Icon</span>
+                        <b>@sp.Name</b>
+                        <small class="special-chip-when">@StartsInText(sp)</small>
+                        <small>@DutchDates.DayMonth(sp.StartDate)</small>
+                    </div>
+                </li>
+            }
+        </ul>
     </section>
 }
 
-@foreach (var sp in _specials.Where(s => s.IsActive))
-{
-    @if (sp.Affiche is { } affiche)
-    {
-        <a class="affiche-link" href="special/@sp.Id"><AfficheBanner Affiche="affiche" /></a>
-    }
-    <a class="card special-card @(sp.Affiche is null ? "" : "with-affiche")" href="special/@sp.Id">
-        <span class="special-icon">@sp.Icon</span>
-        <div>
-            <b>@sp.Name</b>
-            <small>@(sp.Answered == 0 ? "Vandaag te spelen" : sp.Answered < GameRules.QuestionsPerDay ? $"{sp.Answered}/{GameRules.QuestionsPerDay} gespeeld" : $"{sp.MyPoints} punten")</small>
-            <DifficultyStars Value="sp.Difficulty" />
-        </div>
-        <span class="btn small primary">@(sp.Answered == 0 ? "Spelen" : "Open")</span>
-    </a>
-}
-
-<section class="card home-daily">
-    <div class="home-card-head">
-        <div>
-            <div class="date">@(_daily is null ? "" : DutchDates.DayMonth(_daily.Date))</div>
-            <h2>Daily challenge</h2>
-            @if (_daily is not null)
-            {
-                <div class="type-banner small">@QuestionTypes.DayLabel(_daily)</div>
-                <DifficultyStars Value="_daily.Difficulty" />
-            }
-        </div>
-        @if (_daily is not null)
-        {
-            <div class="home-score"><b>@_daily.TotalPoints</b><small>punten</small></div>
-        }
-    </div>
-
-    @if (_daily is null)
-    {
-        <p class="muted">@if (_error is null) { <Spinner Small="true" /> } else { @_error }</p>
-    }
-    else
-    {
-        var answered = _daily.Questions.Count(q => q.Status == QuestionStatus.Answered);
-        var next = _daily.Questions.FirstOrDefault(q => q.Status != QuestionStatus.Answered);
-
-        <div class="progress-dots">
-            @foreach (var q in _daily.Questions)
-            {
-                <span class="dot @(q.Correct == true ? "ok" : q.Correct == false ? "fail" : "")"></span>
-            }
-        </div>
-
-        @if (next is null)
-        {
-            <p class="done">Klaar voor vandaag.</p>
-            <a class="btn" href="daily">Bekijk je dag</a>
-        }
-        else
-        {
-            <a class="btn primary big" href="vraag/@next.Number">
-                @(answered == 0 ? "Start de daily" : $"Verder met vraag {next.Number}")
-            </a>
-            <a class="card-link" href="daily">Overzicht ›</a>
-        }
-    }
-</section>
-
-<section class="card">
-    <div class="home-card-head">
-        <h2>Online spelen</h2>
-        <a class="card-link" href="online">Lobby ›</a>
-    </div>
-    <CreateTableForm UserName="@Auth.User?.UserName" Collapsible="true" />
-</section>
-
-@* Jouw partijtjes staan als banner bovenaan; hier enkel de open partijtjes om aan mee te doen. *@
-<OpenTables ShowMine="false" OnLoaded="l => _myTables = l.Mine" />
-
-@if (_specials.Any(s => s.IsUpcoming))
-{
-    <h2 class="section-title">Binnenkort</h2>
-    <div class="tables">
-        @foreach (var sp in _specials.Where(s => s.IsUpcoming))
-        {
-            <div class="table-card">
-                <span class="table-icon">@sp.Icon</span>
-                <div class="table-info"><b>@sp.Name</b><small>@Special.Period(sp)</small></div>
-            </div>
-        }
-    </div>
-}
-
 @code {
+    private const string IntroHiddenKey = "tt-intro-hidden";
+
     private DailyOverview? _daily;
-    private List<SpecialSummary> _specials = [];
+    private string? _dailyError;
+    private bool _retryingDaily;
+    private List<SpecialSummary>? _specials;
+    private string? _specialsError;
+    private bool _retryingSpecials;
+    private DailyRank? _rank;
     private List<MatchSummary> _myTables = [];
-    private string? _error;
+    private bool _introHidden = true; // pas tonen als zeker is dat de speler ze niet weggeklikt heeft
 
     protected override async Task OnInitializedAsync()
     {
         GoldenBall.Changed += Redraw;
+        // Elk blok laadt apart: een fout of trage server raakt enkel dat blok.
+        await Task.WhenAll(
+            LoadDailyAsync(),
+            LoadSpecialsAsync(),
+            LoadRankAsync(),
+            LoadIntroAsync(),
+            RefreshUserAsync(),
+            GoldenBall.EnsureLoadedAsync()); // nieuwe dag: misschien een nieuwe Gouden Bal
+    }
+
+    private async Task LoadDailyAsync()
+    {
         try
         {
             _daily = await Api.GetDailyAsync();
-            _specials = await Api.GetSpecialsAsync();
-            await Auth.RefreshAsync(); // level kan gestegen zijn
-            await GoldenBall.EnsureLoadedAsync(); // nieuwe dag: misschien een nieuwe Gouden Bal
+            _dailyError = null;
+            if (_daily.Questions.Count > 0 && _daily.Questions.All(q => q.Status == QuestionStatus.Answered))
+                await RememberIntroHiddenAsync(); // eerste daily gespeeld: de uitleg is niet meer nodig
         }
-        catch (ApiException ex) { _error = ex.Message; }
+        catch (Exception ex) when (ex is ApiException or HttpRequestException)
+        {
+            _dailyError = ex is ApiException api ? api.Message : "De daily kon niet geladen worden. Controleer je verbinding.";
+        }
+        StateHasChanged();
     }
+
+    private async Task LoadSpecialsAsync()
+    {
+        try
+        {
+            _specials = await Api.GetSpecialsAsync();
+            _specialsError = null;
+        }
+        catch (Exception ex) when (ex is ApiException or HttpRequestException)
+        {
+            _specialsError = ex is ApiException api ? api.Message : "De specials konden niet geladen worden.";
+        }
+        StateHasChanged();
+    }
+
+    /// <summary>De plaats is een extraatje: lukt het niet, dan tonen we ze gewoon niet.</summary>
+    private async Task LoadRankAsync()
+    {
+        try { _rank = await Api.VisitDailyRankAsync(); }
+        catch (Exception ex) when (ex is ApiException or HttpRequestException) { _rank = null; }
+        StateHasChanged();
+    }
+
+    private async Task RefreshUserAsync()
+    {
+        try { await Auth.RefreshAsync(); } // level kan gestegen zijn
+        catch (Exception ex) when (ex is ApiException or HttpRequestException) { }
+        StateHasChanged();
+    }
+
+    private async Task RetryDailyAsync()
+    {
+        _retryingDaily = true;
+        await LoadDailyAsync();
+        if (_rank is null) await LoadRankAsync();
+        _retryingDaily = false;
+    }
+
+    private async Task RetrySpecialsAsync()
+    {
+        _retryingSpecials = true;
+        _specialsError = null;
+        _specials = null;
+        await LoadSpecialsAsync();
+        _retryingSpecials = false;
+    }
+
+    // ---------- "Zo werkt het" ----------
+
+    /// <summary>
+    /// Enkel voor nieuwe spelers (level 1, want één volledige daily brengt je al naar level 2), zolang de uitleg
+    /// niet weggeklikt is en de daily van vandaag nog niet klaar is.
+    /// </summary>
+    private bool ShowIntro => !_introHidden && Auth.User is { } user && Levels.IsNewcomer(user.Level)
+                              && _daily?.Questions.All(q => q.Status == QuestionStatus.Answered) != true;
+
+    private async Task LoadIntroAsync()
+    {
+        try { _introHidden = await JS.InvokeAsync<string?>("localStorage.getItem", IntroHiddenKey) == "1"; }
+        catch (Exception) { _introHidden = false; } // privévenster of geblokkeerde opslag: dan toch tonen
+    }
+
+    private async Task HideIntroAsync()
+    {
+        _introHidden = true;
+        await RememberIntroHiddenAsync();
+    }
+
+    private async Task RememberIntroHiddenAsync()
+    {
+        try { await JS.InvokeVoidAsync("localStorage.setItem", IntroHiddenKey, "1"); }
+        catch (Exception) { } // niet bewaard: dan verschijnt ze een volgende keer opnieuw, niet erg
+    }
+
+    // ---------- Specials ----------
+
+    /// <summary>Vandaag gestart en nog niet uitgespeeld: de blikvanger bovenaan (de server bepaalt de Belgische dag).</summary>
+    private SpecialSummary? HeroSpecial => _specials?.FirstOrDefault(s => s.IsActive && s.StartsToday && !Finished(s));
+
+    /// <summary>De lopende special: er loopt er hooguit één tegelijk.</summary>
+    private SpecialSummary? ActiveSpecial => _specials?.FirstOrDefault(s => s.IsActive);
+
+    /// <summary>De lopende special als je hem nog niet uitspeelde: de volgende stap na de daily.</summary>
+    private SpecialSummary? NextSpecial => ActiveSpecial is { Finished: false } s ? s : null;
+
+    /// <summary>Daily en specials zijn binnen (of gefaald): pas dan tonen we het bovenste deel, zodat niets meer verspringt.</summary>
+    private bool TopReady => (_daily is not null || _dailyError is not null) && (_specials is not null || _specialsError is not null);
+
+    /// <summary>De daily is klaar en de special staat nog open: dan is "Speel" in het special-kaartje de gele hoofdknop.</summary>
+    private bool SpecialIsMain => NextSpecial is not null && _daily is { Questions.Count: > 0 } d
+                                  && d.Questions.All(q => q.Status == QuestionStatus.Answered);
+
+    /// <summary>
+    /// Het special-kaartje met een knop "Speel": bovenaan op de startdag ("Nieuw vandaag"), anders onder de daily.
+    /// De knop is donkergroen, of geel als hij de hoofdactie is (zie <see cref="SpecialIsMain"/>).
+    /// </summary>
+    private RenderFragment SpecialCard(SpecialSummary sp, bool isNew) =>
+        @<section class="home-special @(isNew ? "is-new" : "")" aria-labelledby="special-title-@sp.Id">
+            @if (sp.Affiche is { } affiche)
+            {
+                <a class="affiche-link" href="special/@sp.Id" tabindex="-1" aria-hidden="true"><AfficheBanner Affiche="affiche" /></a>
+            }
+            <div class="card special-card home-special-card @(sp.Affiche is null ? "" : "with-affiche") @(sp.Finished ? "done" : "")">
+                <span class="special-icon" aria-hidden="true">@sp.Icon</span>
+                <div>
+                    <small class="special-kicker">@(isNew ? "Nieuw vandaag" : "Special")</small>
+                    <h2 id="special-title-@sp.Id" class="home-special-name">@sp.Name</h2>
+                    <small>@SpecialMeta(sp)</small>
+                    <DifficultyStars Value="sp.Difficulty" />
+                </div>
+                @if (sp.Finished)
+                {
+                    <a class="btn small home-special-play done" href="special/@sp.Id" aria-label="Bekijk @sp.Name">Bekijk</a>
+                }
+                else
+                {
+                    <a class="btn small home-special-play @(SpecialIsMain ? "primary" : "")" href="special/@sp.Id" aria-label="Speel @sp.Name">Speel</a>
+                }
+            </div>
+        </section>;
+
+    /// <summary>Binnenkort: enkel de eerstvolgende drie.</summary>
+    private List<SpecialSummary> UpcomingSpecials =>
+        _specials?.Where(s => s.IsUpcoming).OrderBy(s => s.StartDate).Take(3).ToList() ?? [];
+
+    private static string StartsInText(SpecialSummary s) => s.StartsIn switch
+    {
+        <= 1 => "Morgen",
+        var d => $"Over {d} dagen",
+    };
+
+    private static bool Finished(SpecialSummary s) => s.Finished;
+
+    private static string SpecialMeta(SpecialSummary s) =>
+        Finished(s) ? $"✓ {s.MyPoints} punten"
+        : s.Answered > 0 ? $"{s.Answered}/{s.QuestionCount} gespeeld"
+        : s.DaysLeft switch { 0 => "Laatste dag", 1 => "Nog 1 dag", var d => $"Nog {d} dagen" };
+
+    // ---------- Daily ----------
+
+    private static string ProgressLabel(int answered, int correct, int total) =>
+        answered == 0 ? $"Nog geen van de {total} vragen gespeeld" : $"{answered} van {total} gespeeld: {correct} juist, {answered - correct} fout";
 
     private void Redraw() => InvokeAsync(StateHasChanged);
 

@@ -30,12 +30,12 @@
 
     <AuthorizeView>
         <Authorized>
-            <nav class="tabbar">
-                <NavLink href="" Match="NavLinkMatch.All"><span>🏠</span>Home</NavLink>
-                <NavLink href="klassement"><span>🏆</span>Klassement</NavLink>
-                <NavLink href="badges"><span>🎖️</span>Badges</NavLink>
-                <NavLink href="statistieken"><span>📊</span>Stats</NavLink>
-                <NavLink href="profiel"><span>👤</span>Profiel</NavLink>
+            <nav class="tabbar" aria-label="Hoofdmenu">
+                <NavLink href="" Match="NavLinkMatch.All" aria-current="@Current("")"><span aria-hidden="true">🏠</span>Home</NavLink>
+                <NavLink href="klassement" aria-current="@Current("klassement")"><span aria-hidden="true">🏆</span>Klassement</NavLink>
+                <NavLink href="badges" aria-current="@Current("badges")"><span aria-hidden="true">🎖️</span>Badges</NavLink>
+                <NavLink href="statistieken" aria-current="@Current("statistieken")"><span aria-hidden="true">📊</span>Stats</NavLink>
+                <NavLink href="profiel" aria-current="@Current("profiel")"><span aria-hidden="true">👤</span>Profiel</NavLink>
             </nav>
         </Authorized>
     </AuthorizeView>
@@ -46,6 +46,7 @@
     protected override async Task OnInitializedAsync()
     {
         Auth.AuthenticationStateChanged += OnAuthChanged;
+        Nav.LocationChanged += OnLocationChanged; // aria-current van de tabbar bijwerken
         await Auth.GetAuthenticationStateAsync();
         await LoadGoldenBallAsync();
     }
@@ -58,7 +59,21 @@
         else await GoldenBall.EnsureLoadedAsync();
     }
 
-    public void Dispose() => Auth.AuthenticationStateChanged -= OnAuthChanged;
+    private void OnLocationChanged(object? sender, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs e) => StateHasChanged();
+
+    /// <summary>"page" voor het tabblad van de huidige pagina (ook op een subpagina, bv. profiel/...), anders niets.</summary>
+    private string? Current(string tab)
+    {
+        var path = Nav.ToBaseRelativePath(Nav.Uri).Split('?', '#')[0];
+        var match = tab == "" ? path == "" : path.Equals(tab, StringComparison.OrdinalIgnoreCase) || path.StartsWith(tab + "/", StringComparison.OrdinalIgnoreCase);
+        return match ? "page" : null;
+    }
+
+    public void Dispose()
+    {
+        Auth.AuthenticationStateChanged -= OnAuthChanged;
+        Nav.LocationChanged -= OnLocationChanged;
+    }
 
     private bool IsProfilePage => Nav.ToBaseRelativePath(Nav.Uri).StartsWith("profiel", StringComparison.OrdinalIgnoreCase);
 
