@@ -22,6 +22,12 @@ public static class GameRules
 
     public const int LastChancePoints = 50;
 
+    /// <summary>
+    /// Zoveel pogingen mag je per vraag doen (ook bij een opstelling of counter, waar fout gokken niets kost);
+    /// daarna stopt de vraag. Een mens haalt dit niet, een script dat namen afvuurt wel.
+    /// </summary>
+    public const int MaxGuessesPerQuestion = 40;
+
     /// <summary>Totale tijd per vraag (30 seconden).</summary>
     public static double TimeLimitSeconds => HintCount * HintIntervalSeconds + LastChanceSeconds;
 

@@ -255,6 +255,10 @@ namespace VoetbalQuiz.Server.Data.Migrations
                         .IsRequired()
                         .HasColumnType("integer[]");
 
+                    b.Property<int>("Guesses")
+                        .IsConcurrencyToken()
+                        .HasColumnType("integer");
+
                     b.Property<string>("LastGuess")
                         .HasColumnType("text");
 

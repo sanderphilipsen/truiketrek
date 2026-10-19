@@ -54,6 +54,7 @@ public class QuizDbContext(DbContextOptions<QuizDbContext> options) : IdentityDb
         builder.Entity<MatchQuestion>().Property(q => q.Type).HasConversion<string>();
         builder.Entity<MatchAnswer>().HasIndex(a => new { a.MatchQuestionId, a.UserId }).IsUnique();
         builder.Entity<Attempt>().HasIndex(a => new { a.UserId, a.DailyQuestionId }).IsUnique();
+        builder.Entity<Attempt>().Property(a => a.Guesses).IsConcurrencyToken();
         builder.Entity<GoldenBall>().HasIndex(g => new { g.Year, g.Month, g.UserId }).IsUnique();
         builder.Entity<GoldenBallMonth>().HasIndex(m => new { m.Year, m.Month }).IsUnique();
     }

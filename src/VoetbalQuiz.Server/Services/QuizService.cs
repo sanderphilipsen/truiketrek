@@ -334,7 +334,7 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
                 status == QuestionStatus.Answered ? QuestionEngine.AnswerLabel(q) : null);
         }).ToList();
 
-        await db.SaveChangesAsync();
+        await SaveAsync();
         var lastWinner = specialId is null ? await results.GetLastWinnerAsync(userId) : null;
         var types = challenge.Questions.Select(q => q.Type).Distinct().Order().ToList();
         return new DailyOverview(challenge.Date, attempts.Values.Sum(a => a.Points), questions, lastWinner,
@@ -407,6 +407,7 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
 
         if (attempt.AnsweredAt is null && !string.IsNullOrEmpty(trimmed))
         {
+            attempt.Guesses++;
             attempt.LastGuess = trimmed;
             var outcome = QuestionEngine.Guess(question, attempt, trimmed, Seconds(attempt.StartedAt, Now));
             if (outcome.Wrong)
@@ -420,7 +421,13 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
                 attempt.AnsweredAt = Now;
                 attempt.Correct = outcome.Correct;
             }
-            await db.SaveChangesAsync();
+            else if (attempt.Guesses >= GameRules.MaxGuessesPerQuestion)
+            {
+                attempt.AnsweredAt = Now;
+                attempt.Correct = false;
+                attempt.Points = QuestionEngine.PointsWhenStopped(question, attempt);
+            }
+            if (!await SaveAsync()) lastWrong = null;
         }
         return await StateAsync(question, attempt, lastWrong);
     }
@@ -433,18 +440,37 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
 
         if (attempt.AnsweredAt is null)
         {
+            attempt.Guesses++;
             attempt.AnsweredAt = Now;
             attempt.Correct = false;
             attempt.Points = QuestionEngine.PointsWhenStopped(question, attempt);
-            await db.SaveChangesAsync();
+            await SaveAsync();
         }
         return await StateAsync(question, attempt);
+    }
+
+    /// <summary>
+    /// Bewaart de pogingen. Kwam er tegelijk een ander verzoek voor dezelfde vraag binnen (dubbele tik, of een script
+    /// dat gokken afvuurt), dan telt enkel dat andere: deze wijziging vervalt en we lezen de poging opnieuw in.
+    /// </summary>
+    private async Task<bool> SaveAsync()
+    {
+        try
+        {
+            await db.SaveChangesAsync();
+            return true;
+        }
+        catch (DbUpdateConcurrencyException ex)
+        {
+            foreach (var entry in ex.Entries) await entry.ReloadAsync();
+            return false;
+        }
     }
 
     private async Task<QuestionState> StateAsync(DailyQuestion question, Attempt attempt, string? lastWrong = null)
     {
         CloseIfExpired(question, attempt);
-        await db.SaveChangesAsync();
+        await SaveAsync();
 
         var status = StatusOf(attempt);
         var limit = QuestionEngine.TimeLimit(question);

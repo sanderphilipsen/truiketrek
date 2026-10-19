@@ -143,6 +143,46 @@ public sealed class QuestionTypeTests : IDisposable
     }
 
     [Fact]
+    public async Task Opstelling_stops_after_the_maximum_number_of_guesses()
+    {
+        await PlanTodayAsync(QuestionType.Opstelling);
+        var q = await FirstQuestionAsync();
+        var data = QuestionEngine.Parse<OpstellingData>(q.QuizItem!.Data);
+
+        await _quiz.StartAsync(_me, 1);
+        await _quiz.GuessAsync(_me, 1, data.Players[q.Blanks[0]].Name);
+        // Een script dat namen afvuurt: fout gokken kost niets, maar het aantal pogingen is begrensd.
+        QuestionState state = null!;
+        for (var i = 1; i < GameRules.MaxGuessesPerQuestion; i++) state = await _quiz.GuessAsync(_me, 1, $"Gok {i}");
+        Assert.Equal(QuestionStatus.Answered, state.Status);
+        Assert.Equal(QuestionRules.OpstellingPoints(1, QuestionRules.OpstellingBlanks), state.Result!.Points);
+
+        var after = await _quiz.GuessAsync(_me, 1, data.Players[q.Blanks[1]].Name);
+        Assert.Equal(state.Result.Points, after.Result!.Points);
+    }
+
+    [Fact]
+    public async Task Guesses_sent_at_the_same_time_count_only_once()
+    {
+        await PlanTodayAsync(QuestionType.Emoji);
+        var answer = QuestionEngine.Parse<EmojiData>((await FirstQuestionAsync()).QuizItem!.Data).Answer;
+        await _quiz.StartAsync(_me, 1);
+
+        // Een tweede verzoek dat tegelijk binnenkomt werkt met een oudere kopie van de poging.
+        using var other = new QuizDbContext(new DbContextOptionsBuilder<QuizDbContext>().UseSqlite(_connection).Options);
+        var stale = new QuizService(other, _clock, new ResultsService(other, _clock, new MemoryCache(new MemoryCacheOptions())));
+        await stale.GetStateAsync(_me, 1);
+
+        await _quiz.GuessAsync(_me, 1, "Iemand");
+        var lost = await stale.GuessAsync(_me, 1, "Iemand Anders");
+        Assert.Equal(1, lost.WrongGuesses); // de tweede gok vervalt in plaats van de straf te omzeilen
+        Assert.Null(lost.LastWrongGuess);
+
+        var right = await _quiz.GuessAsync(_me, 1, answer);
+        Assert.Equal(100 - GameRules.WrongGuessPenalty, right.Result!.Points);
+    }
+
+    [Fact]
     public async Task Emoji_allows_retries_with_penalty()
     {
         await PlanTodayAsync(QuestionType.Emoji);

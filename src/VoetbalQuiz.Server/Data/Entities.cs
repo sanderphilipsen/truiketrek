@@ -99,6 +99,12 @@ public class Attempt
     public bool Correct { get; set; }
     public int Points { get; set; }
 
+    /// <summary>
+    /// Alle pogingen (juist, fout of overgeslagen), begrensd door <see cref="GameRules.MaxGuessesPerQuestion"/>.
+    /// Ook het concurrency token: van gokken die tegelijk binnenkomen telt er maar één.
+    /// </summary>
+    public int Guesses { get; set; }
+
     /// <summary>Meerkeuze/niet-bij: gekozen optie. Jaar: gekozen jaartal.</summary>
     public int? Choice { get; set; }
 
