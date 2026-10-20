@@ -9,25 +9,53 @@ public class ApiException(string message) : Exception(message);
 /// <summary>Getypeerde toegang tot de server-API. De login-cookie gaat automatisch mee (zelfde domein).</summary>
 public class ApiClient(HttpClient http)
 {
-    public Task<UserInfo?> MeAsync() => GetOrNullAsync<UserInfo>("api/account/me");
+    /// <summary>
+    /// Wie er aangemeld is, of null bij 401. Andere fouten (bv. een 503 terwijl de server na een deploy
+    /// opstart) gooien een uitzondering: dat zegt niets over de aanmelding.
+    /// </summary>
+    public async Task<UserInfo?> MeAsync()
+    {
+        var response = await http.GetAsync("api/account/me");
+        if (response.StatusCode == HttpStatusCode.Unauthorized) return null;
+        response.EnsureSuccessStatusCode();
+        return await response.Content.ReadFromJsonAsync<UserInfo>();
+    }
     public Task<UserInfo> LoginAsync(LoginRequest req) => PostAsync<UserInfo>("api/account/login", req);
     public Task<UserInfo> RegisterAsync(RegisterRequest req) => PostAsync<UserInfo>("api/account/register", req);
     public Task LogoutAsync() => http.PostAsync("api/account/logout", null);
 
-    // Daily en specials gebruiken dezelfde vragenflow; een special heeft enkel een ander adres.
-    private static string Quiz(int? specialId) => specialId is { } id ? $"api/specials/{id}" : "api/daily";
+    // Daily, specials en training gebruiken dezelfde vragenflow; enkel het adres verschilt.
+    public static string Quiz(int? specialId) => specialId is { } id ? $"api/specials/{id}" : "api/daily";
+    public static string TrainingRun(int runId) => $"api/training/runs/{runId}";
 
-    public Task<DailyOverview> GetDailyAsync(int? specialId = null) => GetAsync<DailyOverview>(Quiz(specialId));
+    public Task<DailyOverview> GetDailyAsync(int? specialId = null) => GetOverviewAsync(Quiz(specialId));
     /// <summary>Je plaats van vandaag en die bij je vorige bezoek; de server onthoudt dit bezoek (enkel Home roept dit op).</summary>
     public Task<DailyRank> VisitDailyRankAsync() => PostAsync<DailyRank>("api/daily/rank", null);
-    public Task<QuestionState> StartAsync(int number, int? specialId = null) =>
-        PostAsync<QuestionState>($"{Quiz(specialId)}/questions/{number}/start", null);
-    public Task<QuestionState> GetQuestionAsync(int number, int? specialId = null) =>
-        GetAsync<QuestionState>($"{Quiz(specialId)}/questions/{number}");
-    public Task<QuestionState> GuessAsync(int number, string guess, int? specialId = null) =>
-        PostAsync<QuestionState>($"{Quiz(specialId)}/questions/{number}/guess", new AnswerRequest(guess));
-    public Task<QuestionState> GiveUpAsync(int number, int? specialId = null) =>
-        PostAsync<QuestionState>($"{Quiz(specialId)}/questions/{number}/giveup", null);
+
+    /// <summary>Overzicht van een reeks; <paramref name="quiz"/> is <see cref="Quiz"/> of <see cref="TrainingRun"/>.</summary>
+    public Task<DailyOverview> GetOverviewAsync(string quiz) => GetAsync<DailyOverview>(quiz);
+    public Task<QuestionState> StartAsync(string quiz, int number) =>
+        PostAsync<QuestionState>($"{quiz}/questions/{number}/start", null);
+    public Task<QuestionState> GetQuestionAsync(string quiz, int number) =>
+        GetAsync<QuestionState>($"{quiz}/questions/{number}");
+    public Task<QuestionState> GuessAsync(string quiz, int number, string guess) =>
+        PostAsync<QuestionState>($"{quiz}/questions/{number}/guess", new AnswerRequest(guess));
+    public Task<QuestionState> GiveUpAsync(string quiz, int number) =>
+        PostAsync<QuestionState>($"{quiz}/questions/{number}/giveup", null);
+
+    // Training: oude dailies opnieuw spelen (telt nergens mee)
+    /// <summary>Zonder maand: de maand van de laatste daily die je kan trainen (bepaald door de server, in Belgische tijd).</summary>
+    public Task<TrainingArchive> GetTrainingArchiveAsync(int? year = null, int? month = null) =>
+        GetAsync<TrainingArchive>(year is { } y && month is { } m ? $"api/training/archive/{y}/{m}" : "api/training/archive");
+    public Task<TrainingDayDetail> GetTrainingDayAsync(DateOnly date) => GetAsync<TrainingDayDetail>($"api/training/days/{date:yyyy-MM-dd}");
+    public Task<TrainingRunInfo> StartTrainingRunAsync(DateOnly date) =>
+        PostAsync<TrainingRunInfo>($"api/training/days/{date:yyyy-MM-dd}/runs", null);
+    public Task<TrainingDayDetail> GetTrainingSpecialAsync(int specialId) => GetAsync<TrainingDayDetail>($"api/training/specials/{specialId}");
+    public Task<TrainingRunInfo> StartTrainingSpecialRunAsync(int specialId) =>
+        PostAsync<TrainingRunInfo>($"api/training/specials/{specialId}/runs", null);
+    /// <summary>"Opnieuw spelen": een nieuwe run op dezelfde daily of special als deze run.</summary>
+    public Task<TrainingRunInfo> StartTrainingAgainAsync(int runId) => PostAsync<TrainingRunInfo>($"{TrainingRun(runId)}/again", null);
+    public Task<TrainingSummary> GetTrainingSummaryAsync(int runId) => GetAsync<TrainingSummary>($"{TrainingRun(runId)}/summary");
 
     // Specials
     public Task<List<SpecialSummary>> GetSpecialsAsync() => GetAsync<List<SpecialSummary>>("api/specials");
@@ -75,6 +103,7 @@ public class ApiClient(HttpClient http)
     private record CreatedId(int Id);
 
     public Task<Leaderboard> GetTodayLeaderboardAsync() => GetAsync<Leaderboard>("api/leaderboard/today");
+    public Task<Leaderboard> GetSpecialLeaderboardAsync(int specialId) => GetAsync<Leaderboard>($"api/leaderboard/special/{specialId}");
     public Task<MonthRanking> GetMonthRankingAsync(int year, int month) => GetAsync<MonthRanking>($"api/leaderboard/month/{year}/{month}");
 
     public Task<ProfileInfo> GetProfileAsync() => GetAsync<ProfileInfo>("api/account/profile");
@@ -104,12 +133,6 @@ public class ApiClient(HttpClient http)
 
     public Task<StatsOverview> GetStatsAsync() => GetAsync<StatsOverview>("api/stats");
     public Task<GoldenBallOverview> GetGoldenBallAsync() => GetAsync<GoldenBallOverview>("api/gouden-bal");
-
-    private async Task<T?> GetOrNullAsync<T>(string url) where T : class
-    {
-        var response = await http.GetAsync(url);
-        return response.IsSuccessStatusCode ? await response.Content.ReadFromJsonAsync<T>() : null;
-    }
 
     private async Task<T> GetAsync<T>(string url) => await ReadAsync<T>(await http.GetAsync(url));
 

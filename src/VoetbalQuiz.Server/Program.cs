@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using VoetbalQuiz.Server.Data;
@@ -8,6 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<QuizDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("Quiz")));
+
+// De sleutels die de aanmeldcookie versleutelen staan in de database. Anders kan een deploy of herstart
+// op Azure een nieuwe sleutelring opleveren en moet iedereen opnieuw aanmelden.
+builder.Services.AddDataProtection()
+    .SetApplicationName("VoetbalQuiz")
+    .PersistKeysToDbContext<QuizDbContext>();
 
 builder.Services.AddAuthorization();
 builder.Services.AddIdentityApiEndpoints<AppUser>(options =>
@@ -32,6 +39,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 builder.Services.AddSingleton(TimeProvider.System);
 builder.Services.AddScoped<QuizService>();
+builder.Services.AddScoped<TrainingService>();
 builder.Services.AddScoped<ResultsService>();
 builder.Services.AddScoped<MatchService>();
 builder.Services.AddScoped<OnlineService>();
@@ -68,6 +76,7 @@ app.UseAuthorization();
 app.MapStaticAssets();
 app.MapAccountEndpoints();
 app.MapQuizEndpoints();
+app.MapTrainingEndpoints();
 app.MapFeedbackEndpoints();
 app.MapMatchEndpoints();
 app.MapAdminEndpoints();

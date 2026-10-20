@@ -23,6 +23,25 @@ namespace VoetbalQuiz.Server.Data.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("Microsoft.AspNetCore.DataProtection.EntityFrameworkCore.DataProtectionKey", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("FriendlyName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Xml")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DataProtectionKeys");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -932,6 +951,93 @@ namespace VoetbalQuiz.Server.Data.Migrations
                     b.ToTable("SpecialEvents");
                 });
 
+            modelBuilder.Entity("VoetbalQuiz.Server.Data.TrainingAttempt", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("AnsweredAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int?>("Choice")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("Correct")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("DailyQuestionId")
+                        .HasColumnType("integer");
+
+                    b.PrimitiveCollection<List<int>>("Found")
+                        .IsRequired()
+                        .HasColumnType("integer[]");
+
+                    b.Property<int>("Guesses")
+                        .IsConcurrencyToken()
+                        .HasColumnType("integer");
+
+                    b.Property<string>("LastGuess")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Points")
+                        .HasColumnType("integer");
+
+                    b.PrimitiveCollection<List<int>>("Skipped")
+                        .IsRequired()
+                        .HasColumnType("integer[]");
+
+                    b.Property<DateTime>("StartedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("TrainingRunId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("WrongGuesses")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DailyQuestionId");
+
+                    b.HasIndex("TrainingRunId", "DailyQuestionId")
+                        .IsUnique();
+
+                    b.ToTable("TrainingAttempts");
+                });
+
+            modelBuilder.Entity("VoetbalQuiz.Server.Data.TrainingRun", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("DailyChallengeId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime?>("FinishedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("StartedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DailyChallengeId");
+
+                    b.HasIndex("UserId", "DailyChallengeId");
+
+                    b.ToTable("TrainingRuns");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -1135,6 +1241,44 @@ namespace VoetbalQuiz.Server.Data.Migrations
                     b.Navigation("QuizItem");
                 });
 
+            modelBuilder.Entity("VoetbalQuiz.Server.Data.TrainingAttempt", b =>
+                {
+                    b.HasOne("VoetbalQuiz.Server.Data.DailyQuestion", "DailyQuestion")
+                        .WithMany()
+                        .HasForeignKey("DailyQuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VoetbalQuiz.Server.Data.TrainingRun", "TrainingRun")
+                        .WithMany("Attempts")
+                        .HasForeignKey("TrainingRunId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DailyQuestion");
+
+                    b.Navigation("TrainingRun");
+                });
+
+            modelBuilder.Entity("VoetbalQuiz.Server.Data.TrainingRun", b =>
+                {
+                    b.HasOne("VoetbalQuiz.Server.Data.DailyChallenge", "DailyChallenge")
+                        .WithMany()
+                        .HasForeignKey("DailyChallengeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VoetbalQuiz.Server.Data.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DailyChallenge");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("VoetbalQuiz.Server.Data.DailyChallenge", b =>
                 {
                     b.Navigation("Questions");
@@ -1150,6 +1294,11 @@ namespace VoetbalQuiz.Server.Data.Migrations
             modelBuilder.Entity("VoetbalQuiz.Server.Data.MatchQuestion", b =>
                 {
                     b.Navigation("Answers");
+                });
+
+            modelBuilder.Entity("VoetbalQuiz.Server.Data.TrainingRun", b =>
+                {
+                    b.Navigation("Attempts");
                 });
 #pragma warning restore 612, 618
         }

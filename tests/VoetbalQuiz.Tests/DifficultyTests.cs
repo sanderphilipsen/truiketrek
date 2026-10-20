@@ -25,6 +25,15 @@ public class DifficultyTests
     public void Clamp_keeps_difficulty_between_one_and_five(int? value, int expected) =>
         Assert.Equal(expected, Difficulty.Clamp(value));
 
+    [Theory]
+    [InlineData(10, new[] { 1, 2, 2, 3, 3, 3, 3, 4, 4, 5 })]
+    [InlineData(5, new[] { 1, 2, 3, 4, 5 })]
+    [InlineData(6, new[] { 1, 2, 3, 3, 4, 5 })]
+    [InlineData(2, new[] { 3, 3 })]
+    [InlineData(0, new int[0])]
+    public void Plan_has_one_warm_up_one_closer_and_mostly_three_stars(int questions, int[] expected) =>
+        Assert.Equal(expected, Difficulty.Plan(questions));
+
     [Fact]
     public void Stars_shows_five_positions() => Assert.Equal("★★★★☆", Difficulty.Stars(4));
 

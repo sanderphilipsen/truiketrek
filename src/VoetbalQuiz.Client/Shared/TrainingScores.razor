@@ -1,0 +1,44 @@
+@* Al je scores op één daily: je echte poging (op de dag zelf) en elke poging in de academie, nieuwste eerst. *@
+<ol class="board training-scores">
+    @if (Real is not null)
+    {
+        <li class="real">
+            <span class="rank" aria-hidden="true">⚽</span>
+            <span class="player">
+                <b>Echt</b>
+                <small>@Real.Rank@DutchDates.OrdinalSuffix(Real.Rank) van @Real.Players · @Real.Correct / @Questions juist</small>
+            </span>
+            <span class="pts">@Real.Points</span>
+        </li>
+    }
+    @foreach (var run in Runs)
+    {
+        <li class="@(run.Id == Current ? "me" : "") @(run.Finished ? "" : "left")">
+            <span class="rank" aria-hidden="true">🎓</span>
+            <span class="player">
+                <b>
+                    Poging @(Runs.Count - Runs.IndexOf(run))
+                    @if (run.IsBest) { <span class="training-best">beste</span> }
+                    @if (run.Id == Current) { <span class="training-best now">zonet</span> }
+                </b>
+                <small>@When(run.StartedAt) · @(run.Finished ? $"{run.Correct} / {Questions} juist" : "niet afgewerkt")</small>
+            </span>
+            <span class="pts">@run.Points</span>
+        </li>
+    }
+</ol>
+
+@code {
+    [Parameter] public RealResult? Real { get; set; }
+    [Parameter, EditorRequired] public List<TrainingRunInfo> Runs { get; set; } = [];
+    [Parameter] public int Questions { get; set; }
+
+    /// <summary>De run die je net speelde (gemarkeerd).</summary>
+    [Parameter] public int? Current { get; set; }
+
+    private static string When(DateTime utc)
+    {
+        var local = utc.ToLocalTime();
+        return $"{DutchDates.DayMonth(DateOnly.FromDateTime(local))}, {local:HH:mm}";
+    }
+}

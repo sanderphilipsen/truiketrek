@@ -19,6 +19,27 @@ public static class Difficulty
     /// <summary>"★★★☆☆" voor 3.</summary>
     public static string Stars(int difficulty) => new string('★', Clamp(difficulty)) + new string('☆', Max - Clamp(difficulty));
 
+    /// <summary>
+    /// De moeilijkheden van een reeks (daily of special): precies één opwarmer van 1 ster en één uitsmijter van 5 sterren,
+    /// de rest 2, 3 en 4 sterren in de verhouding 1:3:1. Bij minder dan 3 vragen enkel het midden.
+    /// Bv. 10 vragen: 1, 2, 2, 3, 3, 3, 3, 4, 4, 5.
+    /// </summary>
+    public static List<int> Plan(int questions)
+    {
+        if (questions <= 0) return [];
+        var extremes = questions >= 3;
+        var middle = extremes ? questions - 2 : questions;
+        var side = (int)Math.Round(middle / 5.0, MidpointRounding.AwayFromZero);
+        return
+        [
+            .. extremes ? [Min] : Array.Empty<int>(),
+            .. Enumerable.Repeat(2, side),
+            .. Enumerable.Repeat(3, middle - 2 * side),
+            .. Enumerable.Repeat(4, side),
+            .. extremes ? [Max] : Array.Empty<int>(),
+        ];
+    }
+
     /// <summary>Het gemiddelde van een reeks, afgerond op een halve ster; 0 als de reeks leeg is.</summary>
     public static double Average(IEnumerable<double> difficulties)
     {

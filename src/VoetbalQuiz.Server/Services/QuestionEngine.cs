@@ -52,7 +52,7 @@ public static class QuestionEngine
     };
 
     /// <summary>Wat de speler nu ziet. Nooit het antwoord: dat komt pas in <see cref="Result"/>.</summary>
-    public static (List<string> Hints, QuestionView View) Visible(DailyQuestion q, Attempt a, double elapsed)
+    public static (List<string> Hints, QuestionView View) Visible(DailyQuestion q, AttemptState a, double elapsed)
     {
         switch (q.Type)
         {
@@ -189,7 +189,7 @@ public static class QuestionEngine
     }
 
     /// <summary>Counter: de speler die aan de beurt is (nog niet geraden of overgeslagen), of -1 als ze allemaal gepasseerd zijn.</summary>
-    public static int CounterCurrent(DailyQuestion q, Attempt a) =>
+    public static int CounterCurrent(DailyQuestion q, AttemptState a) =>
         Enumerable.Range(0, q.CounterPlayers.Count).FirstOrDefault(i => !a.Found.Contains(i) && !a.Skipped.Contains(i), -1);
 
     /// <summary>Counter: de duidelijkste tip (de laatste) van een speler.</summary>
@@ -198,7 +198,7 @@ public static class QuestionEngine
     public record Outcome(bool Done, bool Correct, int Points, bool Wrong);
 
     /// <summary>Beoordeelt een poging. Getypte types mogen opnieuw proberen; keuzetypes zijn meteen klaar.</summary>
-    public static Outcome Guess(DailyQuestion q, Attempt a, string guess, double elapsed)
+    public static Outcome Guess(DailyQuestion q, AttemptState a, string guess, double elapsed)
     {
         switch (q.Type)
         {
@@ -319,13 +319,13 @@ public static class QuestionEngine
     }
 
     /// <summary>Een getypte naam bij een type dat stap voor stap onthult (wissel, rugnummer, mannetje, kluts).</summary>
-    private static Outcome Typed(string guess, string answer, IEnumerable<string> aliases, double elapsed, Attempt a) =>
+    private static Outcome Typed(string guess, string answer, IEnumerable<string> aliases, double elapsed, AttemptState a) =>
         AnswerMatcher.IsMatch(guess, answer, aliases)
             ? new(true, true, QuestionRules.RevealPointsAt(elapsed, QuestionRules.RevealSteps, a.WrongGuesses), false)
             : new(false, false, 0, true);
 
     /// <summary>Punten als de tijd om is of de speler stopt: een opstelling en een counter geven deelpunten.</summary>
-    public static int PointsWhenStopped(DailyQuestion q, Attempt a) => q.Type switch
+    public static int PointsWhenStopped(DailyQuestion q, AttemptState a) => q.Type switch
     {
         QuestionType.Opstelling => QuestionRules.OpstellingPoints(a.Found.Count, q.Blanks.Count),
         QuestionType.Counter => QuestionRules.CounterPoints(a.Found.Count),
@@ -333,7 +333,7 @@ public static class QuestionEngine
     };
 
     /// <summary>Wat er na afloop getoond wordt: het juiste antwoord en de uitleg.</summary>
-    public static AnswerResult Result(DailyQuestion q, Attempt a)
+    public static AnswerResult Result(DailyQuestion q, AttemptState a)
     {
         var baseResult = new AnswerResult(a.Correct, a.Points, AnswerLabel(q), a.WrongGuesses, []);
         return q.Type switch

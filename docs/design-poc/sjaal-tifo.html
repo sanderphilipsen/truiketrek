@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Truitje Trek Sjaal en Tifo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Silkscreen:wght@400;700&family=Archivo:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* POC "Sjaal & tifo": de supporterskant. Kop en knoppen zijn gebreide sjaals,
+   en je dag is een tifo: elke juiste vraag kleurt een kolom kartonnetjes in. Mis je er een, dan blijft er een gat. */
+:root {
+    --claret: #7a1631;
+    --claret-d: #521021;
+    --sky: #8fc6e8;
+    --cream: #fff4e0;
+    --gold: #f2c230;
+    --ink: #1a1012;
+    --board: #b9ab95;
+    --head: "Anton", Impact, sans-serif;
+    --knit: "Silkscreen", monospace;
+    --sans: "Archivo", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #241417; color: var(--cream); font-family: var(--sans); padding: 32px 16px 64px; }
+.intro { max-width: 1240px; margin: 0 auto 28px; display: flex; flex-wrap: wrap; gap: 8px 32px; align-items: baseline; }
+.intro h1 { font-family: var(--head); font-weight: 400; font-size: 46px; margin: 0; color: var(--sky); text-transform: uppercase; }
+.intro p { margin: 0; font-size: 17px; opacity: .75; max-width: 60ch; }
+.rail { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; max-width: 1240px; margin: 0 auto; }
+.screen-wrap { display: flex; flex-direction: column; gap: 10px; }
+.screen-label { opacity: .55; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
+
+.phone {
+    width: 375px; height: 780px; max-width: calc(100vw - 32px);
+    background: var(--cream); color: var(--ink);
+    border-radius: 28px; overflow: hidden; display: flex; flex-direction: column; position: relative;
+}
+.body { flex: 1; display: flex; flex-direction: column; padding: 0 16px; min-height: 0; }
+
+/* Gebreide sjaal: steekjes via een herhalend patroon, rand met franjes */
+.scarf {
+    position: relative; color: var(--cream); text-align: center;
+    background:
+        repeating-linear-gradient(90deg, rgba(0,0,0,.12) 0 2px, transparent 2px 6px),
+        linear-gradient(var(--sky) 0 10px, var(--claret) 10px calc(100% - 10px), var(--sky) calc(100% - 10px));
+    padding: 18px 10px 16px;
+}
+.scarf.top { padding-top: 40px; }
+.scarf b { font-family: var(--knit); font-weight: 700; font-size: 26px; letter-spacing: 3px; display: block; line-height: 1; }
+.scarf small { font-family: var(--knit); font-size: 12px; letter-spacing: 2px; display: block; margin-top: 6px; color: var(--sky); }
+.scarf.fringe::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -12px; height: 12px;
+    background: repeating-linear-gradient(90deg, var(--sky) 0 3px, transparent 3px 8px);
+}
+
+.kick { font-weight: 700; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #8a6f72; }
+.today { margin-top: 28px; display: flex; justify-content: space-between; align-items: flex-end; }
+.today h2 { font-family: var(--head); font-weight: 400; font-size: 46px; text-transform: uppercase; margin: 2px 0 0; line-height: .95; color: var(--claret); }
+.today .pts { text-align: right; }
+.today .pts b { font-family: var(--head); font-weight: 400; font-size: 46px; line-height: .95; display: block; }
+
+/* De tifo: 10 kolommen = 10 vragen */
+.tribune { margin-top: 14px; background: #3b2a2d; padding: 8px; border-radius: 4px; }
+.tifo { display: grid; grid-template-columns: repeat(10, 1fr); gap: 2px; }
+.tifo i { aspect-ratio: 1; background: var(--board); border-radius: 1px; }
+.tifo i.hole { background: #2a1d1f; }
+.tifo i.next { background: #cbbfac; box-shadow: inset 0 0 0 1px var(--gold); }
+.tribune .lbl { display: flex; justify-content: space-between; color: #cbb; font-family: var(--knit); font-size: 11px; margin-top: 6px; }
+
+.scarf-btn {
+    margin-top: 20px; display: block; text-decoration: none; position: relative; transform: rotate(-1.5deg);
+    box-shadow: 0 4px 0 var(--claret-d);
+}
+.scarf-btn b { font-size: 24px; }
+
+.chips { display: flex; gap: 8px; margin-top: 24px; }
+.chip { flex: 1; text-decoration: none; color: var(--ink); border: 2px solid var(--ink); padding: 8px 10px; border-radius: 4px; font-weight: 700; font-size: 14px; line-height: 1.2; }
+.chip small { display: block; font-weight: 500; color: #8a6f72; font-size: 12px; }
+.chip.derby { background: var(--gold); }
+
+.tabbar { margin-top: auto; display: flex; background: var(--ink); }
+.tabbar a { flex: 1; text-align: center; padding: 14px 0 22px; text-decoration: none; color: rgba(255,244,224,.5); font-family: var(--knit); font-size: 13px; }
+.tabbar a.on { color: var(--sky); box-shadow: inset 0 3px 0 var(--sky); }
+
+/* ---------- Vraag ---------- */
+.q-meta { display: flex; justify-content: space-between; align-items: center; margin-top: 26px; }
+.clock { font-family: var(--head); font-size: 40px; color: var(--claret); line-height: 1; }
+.tips { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; counter-reset: t; }
+.tips li { border-left: 8px solid var(--claret); background: #fff; padding: 10px 12px; font-size: 17px; line-height: 1.3; box-shadow: 0 2px 0 rgba(0,0,0,.08); }
+.tips li:nth-child(2) { border-left-color: var(--sky); }
+.tips li.locked { background: transparent; border-left-color: var(--board); box-shadow: none; color: #8a6f72; font-family: var(--knit); font-size: 12px; }
+.answer { margin-top: auto; margin-bottom: 18px; }
+.answer input { width: 100%; height: 60px; border: 3px solid var(--ink); border-radius: 4px; background: #fff; padding: 0 14px; font-family: var(--head); font-size: 28px; text-transform: uppercase; outline: none; }
+.answer .row { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; }
+.answer button { border: 0; background: var(--claret); color: var(--cream); font-family: var(--knit); font-weight: 700; font-size: 18px; padding: 14px 22px; letter-spacing: 2px; box-shadow: 0 4px 0 var(--claret-d); }
+
+/* ---------- Resultaat ---------- */
+.roar { margin-top: 36px; text-align: center; font-family: var(--head); font-size: 110px; line-height: .9; color: var(--claret); text-transform: uppercase; }
+.was { text-align: center; margin-top: 8px; }
+.was b { display: block; font-family: var(--head); font-weight: 400; font-size: 32px; text-transform: uppercase; }
+.flip i.fresh { animation: flip .5s calc(var(--d) * 60ms) both; }
+@keyframes flip { from { transform: rotateX(90deg); background: var(--board); } }
+@media (prefers-reduced-motion: reduce) { .flip i.fresh { animation: none; } }
+.res-btn { margin-top: auto; margin-bottom: 22px; }
+</style>
+</head>
+<body>
+<header class="intro">
+    <h1>Sjaal &amp; tifo</h1>
+    <p>De supporterskant. Kop en knoppen zijn gebreide sjaals, en je dag is een tifo: elke juiste vraag kleurt een kolom kartonnetjes in. Mis je er een, dan blijft er een gat.</p>
+</header>
+
+<main class="rail">
+    <section class="screen-wrap">
+        <span class="screen-label">01 · Home</span>
+        <div class="phone">
+            <div class="scarf top fringe"><b>TRUITJE TREK</b><small>MA 19 OKT</small></div>
+            <div class="body">
+                <div class="today">
+                    <div><div class="kick">Vandaag</div><h2>Wie ben ik?</h2></div>
+                    <div class="pts"><div class="kick">Punten</div><b>240</b></div>
+                </div>
+                <div class="tribune">
+                    <div class="tifo" data-tifo data-done="0,1,3" data-miss="2" data-next="4"></div>
+                    <div class="lbl"><span>vak 1</span><span>4/10</span><span>vak 10</span></div>
+                </div>
+                <a class="scarf scarf-btn" href="#"><b>VRAAG 5 ›</b></a>
+                <div class="chips">
+                    <a class="chip derby" href="#">Derby-special<small>Club – Anderlecht</small></a>
+                    <a class="chip" href="#">Tafel Jens<small>2/4 · aanschuiven</small></a>
+                </div>
+            </div>
+            <nav class="tabbar"><a class="on" href="#">SPEL</a><a href="#">ONLINE</a><a href="#">STAND</a><a href="#">IK</a></nav>
+        </div>
+    </section>
+
+    <section class="screen-wrap">
+        <span class="screen-label">02 · Vraag</span>
+        <div class="phone">
+            <div class="scarf top fringe"><b>WIE BEN IK?</b><small>VRAAG 5 / 10</small></div>
+            <div class="body">
+                <div class="q-meta"><span class="kick">Nog 80 punten te pakken</span><span class="clock">0:23</span></div>
+                <ol class="tips">
+                    <li>Ik debuteerde op mijn zeventiende in het eerste elftal van Anderlecht.</li>
+                    <li>Via Hamburg trok ik in 2008 naar Engeland.</li>
+                    <li class="locked">TIP 3 OVER 0:23</li>
+                </ol>
+                <div class="answer">
+                    <input placeholder="Naam" value="Kompa" aria-label="Jouw antwoord">
+                    <div class="row"><span class="kick">Typ gerust een deel</span><button>SCHIET</button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="screen-wrap">
+        <span class="screen-label">03 · Resultaat</span>
+        <div class="phone">
+            <div class="scarf top fringe"><b>+80</b><small>VRAAG 5 / 10</small></div>
+            <div class="body">
+                <div class="roar">Goal!</div>
+                <div class="was"><span class="kick">Het was</span><b>Vincent Kompany</b></div>
+                <div class="tribune">
+                    <div class="tifo flip" data-tifo data-done="0,1,3,4" data-miss="2" data-fresh="4"></div>
+                    <div class="lbl"><span>vandaag 320</span><span>5/10</span></div>
+                </div>
+                <a class="scarf scarf-btn res-btn" href="#"><b>VRAAG 6 ›</b></a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script>
+// Tifo-motief: claret vlak met een hemelsblauwe diagonale band en een gouden ster. 10 kolommen x 7 rijen.
+const ROWS = 7, COLS = 10;
+const star = new Set(["7,1", "6,2", "7,2", "8,2", "7,3"]);
+function color(c, r) {
+    if (star.has(`${c},${r}`)) return "var(--gold)";
+    const d = c - r * 1.2;
+    if (d > -1.5 && d < 1.5) return "var(--sky)";
+    if (d >= 1.5 && d < 2.6) return "var(--cream)";
+    return "var(--claret)";
+}
+document.querySelectorAll("[data-tifo]").forEach(el => {
+    const list = k => (el.dataset[k] ?? "").split(",").filter(Boolean).map(Number);
+    const done = list("done"), miss = list("miss"), next = list("next"), fresh = list("fresh");
+    for (let r = 0; r < ROWS; r++) {
+        for (let c = 0; c < COLS; c++) {
+            const i = document.createElement("i");
+            if (done.includes(c)) i.style.background = color(c, r);
+            else if (miss.includes(c)) i.className = "hole";
+            else if (next.includes(c)) i.className = "next";
+            if (fresh.includes(c)) { i.className = "fresh"; i.style.setProperty("--d", r); }
+            el.appendChild(i);
+        }
+    }
+});
+</script>
+</body>
+</html>

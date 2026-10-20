@@ -42,7 +42,8 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
         var types = await TypesForAsync(date);
         // Te weinig vragen van een type in de bank? Dan wordt het gewoon "Wie ben ik?".
         var questions = await BuildMixAsync(types, null)
-                        ?? await BuildAsync(QuestionType.WieBenIk, GameRules.QuestionsPerDay, null)
+                        ?? await BuildAsync(QuestionType.WieBenIk, GameRules.QuestionsPerDay, null,
+                            targets: Difficulty.Plan(GameRules.QuestionsPerDay))
                         ?? throw new QuizException("Er zitten nog niet genoeg spelers in de database.");
 
         return await SaveChallengeAsync(new DailyChallenge { Date = date }, questions,
@@ -68,7 +69,7 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
         return (await reload())!;
     }
 
-    private async Task<DailyChallenge?> LoadChallengeAsync(System.Linq.Expressions.Expression<Func<DailyChallenge, bool>> filter)
+    public async Task<DailyChallenge?> LoadChallengeAsync(System.Linq.Expressions.Expression<Func<DailyChallenge, bool>> filter)
     {
         var challenge = await db.DailyChallenges
             .Include(c => c.Questions).ThenInclude(q => q.Player)
@@ -90,16 +91,19 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
     /// <summary>
     /// Stelt <paramref name="count"/> vragen van één type samen, of null als er te weinig zijn.
     /// <paramref name="usedPlayers"/>: spelers die al in deze reeks zitten (bv. bij een kluts) komen niet nog eens voor.
+    /// <paramref name="targets"/>: de gewenste moeilijkheid per vraag (zie <see cref="Difficulty.Plan"/>); null = geen plan (online).
     /// </summary>
     private async Task<List<DailyQuestion>?> BuildAsync(
         QuestionType type, int count, string? tag, List<Player>? playerPool = null, HashSet<int>? usedPlayers = null,
-        HashSet<int>? excludeItems = null)
+        HashSet<int>? excludeItems = null, List<int>? targets = null)
     {
         if (QuestionTypes.Get(type).FromPlayers)
         {
             usedPlayers ??= [];
             var perQuestion = type == QuestionType.Counter ? QuestionRules.CounterPlayers : 1;
-            var players = await PickPlayersAsync(count * perQuestion, playerPool, usedPlayers);
+            // Counter: elke speler van de vraag krijgt de moeilijkheid van die vraag als doel.
+            var players = await PickPlayersAsync(count * perQuestion, playerPool, usedPlayers,
+                targets?.SelectMany(t => Enumerable.Repeat(t, perQuestion)).ToList());
             if (players.Count < count * perQuestion) return null;
             usedPlayers.UnionWith(players.Select(p => p.Id));
 
@@ -112,7 +116,7 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
                 .Select(p => new DailyQuestion { Type = type, PlayerId = p.Id }).ToList();
         }
 
-        var items = await PickItemsAsync(type, count, tag, excludeItems);
+        var items = await PickItemsAsync(type, count, tag, excludeItems, targets);
         return items.Count < count
             ? null
             : items.OrderBy(i => i.Difficulty).ThenBy(_ => Random.Shared.Next())
@@ -129,12 +133,15 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
     /// Kiest de spelers die het langst geleden gevraagd werden (nooit gebruikt eerst), maximaal twee klassiekers.
     /// Goedgekeurde spelers eerst; te keuren spelers enkel als er niet genoeg goedgekeurde zijn.
     /// </summary>
-    private async Task<List<Player>> PickPlayersAsync(int count, List<Player>? pool, HashSet<int> exclude)
+    private async Task<List<Player>> PickPlayersAsync(int count, List<Player>? pool, HashSet<int> exclude, List<int>? targets = null)
     {
         if (pool is not null)
         {
             // Een special: liefst spelers die nog niet in de reeks zitten; is de pool te klein, dan mag iemand terugkomen.
             var shuffled = pool.OrderBy(p => p.Status == PlayerStatus.Approved ? 0 : 1).ThenBy(_ => Random.Shared.Next()).ToList();
+            if (targets is not null)
+                return PickByPlan(shuffled, targets, p => p.Difficulty,
+                    p => (exclude.Contains(p.Id) ? 2 : 0) + (p.Status == PlayerStatus.Approved ? 0 : 1), (_, _) => true);
             var fresh = shuffled.Where(p => !exclude.Contains(p.Id)).ToList();
             return (fresh.Count >= count ? fresh : fresh.Concat(shuffled.Where(p => exclude.Contains(p.Id)))).Take(count).ToList();
         }
@@ -157,6 +164,10 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
             .ThenBy(p => lastUsed.TryGetValue(p.Id, out var d) ? d : DateOnly.MinValue)
             .ThenBy(_ => Random.Shared.Next());
 
+        if (targets is not null)
+            return PickByPlan(candidates.ToList(), targets, p => p.Difficulty, p => p.Status == PlayerStatus.Approved ? 0 : 1,
+                (picked, p) => p.Era != "classic" || picked.Count(x => x.Era == "classic") < MaxClassicPerDay);
+
         var picked = new List<Player>();
         foreach (var p in candidates)
         {
@@ -172,7 +183,8 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
     /// dan langst niet gebruikt eerst. Zijn er te weinig themavragen, dan vullen gewone vragen aan.
     /// <paramref name="exclude"/> (online): deze vragen niet, en verder willekeurig, zodat de rotatie van de daily ongemoeid blijft.
     /// </summary>
-    private async Task<List<QuizItem>> PickItemsAsync(QuestionType type, int count, string? tag, HashSet<int>? exclude = null)
+    private async Task<List<QuizItem>> PickItemsAsync(QuestionType type, int count, string? tag, HashSet<int>? exclude = null,
+        List<int>? targets = null)
     {
         var lastUsed = exclude is not null ? new Dictionary<int, DateOnly>() : await db.DailyQuestions
             .Where(q => q.QuizItemId != null)
@@ -180,19 +192,59 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
             .Select(g => new { Id = g.Key, LastUsed = g.Max(q => q.DailyChallenge.Date) })
             .ToDictionaryAsync(x => x.Id, x => x.LastUsed);
 
-        return (await db.QuizItems.Where(i => i.Type == type && i.Status != PlayerStatus.Rejected).ToListAsync())
+        var ordered = (await db.QuizItems.Where(i => i.Type == type && i.Status != PlayerStatus.Rejected).ToListAsync())
             .Where(i => exclude?.Contains(i.Id) != true)
             .OrderBy(i => PlayerTags.Any(i.Tags, tag) ? 0 : 1)
             .ThenBy(i => i.Status == PlayerStatus.Approved ? 0 : 1)
             .ThenBy(i => lastUsed.TryGetValue(i.Id, out var d) ? d : DateOnly.MinValue)
             .ThenBy(_ => Random.Shared.Next())
-            // Bij emoji, carrièrepad, wissel, rugnummer en mannetje is het antwoord het onderwerp: nooit twee keer dezelfde speler of club
-            // op één dag (bv. een feit- én een rebus-raadsel). Bij de andere types mag een antwoord terugkomen.
-            .DistinctBy(i => type is QuestionType.Emoji or QuestionType.Carriere or QuestionType.Wissel or QuestionType.Rugnummer or QuestionType.Mannetje
-                ? AnswerMatcher.Normalize(QuestionEngine.Describe(i.Type, i.Data).Answer)
-                : i.Id.ToString())
-            .Take(count)
             .ToList();
+
+        // Bij emoji, carrièrepad, wissel, rugnummer en mannetje is het antwoord het onderwerp: nooit twee keer dezelfde speler of club
+        // op één dag (bv. een feit- én een rebus-raadsel). Bij de andere types mag een antwoord terugkomen.
+        string Subject(QuizItem i) =>
+            type is QuestionType.Emoji or QuestionType.Carriere or QuestionType.Wissel or QuestionType.Rugnummer or QuestionType.Mannetje
+                ? AnswerMatcher.Normalize(QuestionEngine.Describe(i.Type, i.Data).Answer)
+                : i.Id.ToString();
+
+        if (targets is not null)
+            return PickByPlan(ordered, targets, i => i.Difficulty,
+                i => (PlayerTags.Any(i.Tags, tag) ? 0 : 2) + (i.Status == PlayerStatus.Approved ? 0 : 1),
+                (picked, i) => picked.All(p => Subject(p) != Subject(i)));
+
+        return ordered.DistinctBy(Subject).Take(count).ToList();
+    }
+
+    /// <summary>
+    /// Kiest per gewenste moeilijkheid uit <paramref name="targets"/> één kandidaat: eerst de laagste <paramref name="tier"/>
+    /// (thema, goedgekeurd), dan de moeilijkheid die het dichtst bij het doel ligt, dan de volgorde van <paramref name="candidates"/> (rotatie).
+    /// Meer vragen van 1 of 5 sterren dan gepland komen er enkel in als er niets anders over is.
+    /// Geeft minder terug dan gevraagd als de kandidaten op zijn.
+    /// </summary>
+    internal static List<T> PickByPlan<T>(IReadOnlyList<T> candidates, IReadOnlyList<int> targets,
+        Func<T, int> difficulty, Func<T, int> tier, Func<List<T>, T, bool> allowed) where T : class
+    {
+        var picked = new List<T>();
+        var left = candidates.ToList();
+        bool TooMany(T c) => difficulty(c) is Difficulty.Min or Difficulty.Max
+                             && picked.Count(p => difficulty(p) == difficulty(c)) >= targets.Count(t => t == difficulty(c));
+
+        // De opwarmer en de uitsmijter eerst, zodat het midden hun vragen niet opsnoept.
+        foreach (var target in targets.OrderBy(t => t is Difficulty.Min or Difficulty.Max ? 0 : 1))
+        {
+            var choice = left.Select((c, index) => (c, index))
+                .Where(x => allowed(picked, x.c))
+                .OrderBy(x => TooMany(x.c) ? 1 : 0)
+                .ThenBy(x => tier(x.c))
+                .ThenBy(x => Math.Abs(difficulty(x.c) - target))
+                .ThenBy(x => x.index)
+                .Select(x => x.c)
+                .FirstOrDefault();
+            if (choice is null) break;
+            picked.Add(choice);
+            left.Remove(choice);
+        }
+        return picked;
     }
 
     // ---------- Specials ----------
@@ -230,9 +282,15 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
     {
         var all = new List<DailyQuestion>();
         var usedPlayers = new HashSet<int>();
-        foreach (var (type, count) in questions is { } n ? QuestionTypes.Mix(types, n) : QuestionTypes.Mix(types))
+        var mix = questions is { } n ? QuestionTypes.Mix(types, n) : QuestionTypes.Mix(types);
+        // Daily en specials volgen het moeilijkheidsplan, verdeeld over de types; online kiest willekeurig.
+        var plan = questions is null
+            ? new Queue<int>(Difficulty.Plan(mix.Values.Sum()).OrderBy(_ => Random.Shared.Next()))
+            : null;
+        foreach (var (type, count) in mix)
         {
-            var part = await BuildAsync(type, count, tag, QuestionTypes.Get(type).FromPlayers ? playerPool : null, usedPlayers, excludeItems);
+            var targets = plan is null ? null : Enumerable.Range(0, count).Select(_ => plan.Dequeue()).ToList();
+            var part = await BuildAsync(type, count, tag, QuestionTypes.Get(type).FromPlayers ? playerPool : null, usedPlayers, excludeItems, targets);
             if (part is null) return null;
             all.AddRange(part);
         }
@@ -346,7 +404,7 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
     }
 
     /// <summary>Gemiddelde moeilijkheid van een reeks (0–5 sterren); een counter telt als het gemiddelde van zijn spelers.</summary>
-    private static double DifficultyOf(DailyChallenge challenge) => Difficulty.Average(challenge.Questions.Select(q =>
+    public static double DifficultyOf(DailyChallenge challenge) => Difficulty.Average(challenge.Questions.Select(q =>
         q.Player?.Difficulty ?? q.QuizItem?.Difficulty
         ?? (q.CounterPlayers.Count > 0 ? q.CounterPlayers.Average(p => p.Difficulty) : Difficulty.Default)));
 

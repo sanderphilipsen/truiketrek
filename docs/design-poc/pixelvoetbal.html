@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Truitje Trek Pixelvoetbal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* POC "Pixelvoetbal": een voetbalspel uit 1993. Gestreept gras, menu met een cursor,
+   tips als tekstballon die je wegtikt, en een GOAL!! die stuitert. */
+:root {
+    --grass-1: #3c9a3c;
+    --grass-2: #46a946;
+    --line: #e8f5e0;
+    --panel: #1a2a6c;
+    --panel-2: #24389a;
+    --white: #f4f4f4;
+    --yellow: #ffd83a;
+    --red: #e83b3b;
+    --black: #0b0b14;
+    --arcade: "Press Start 2P", monospace;
+    --pix: "Pixelify Sans", monospace;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #0b0b14; color: var(--white); font-family: var(--pix); padding: 32px 16px 64px; }
+.intro { max-width: 1240px; margin: 0 auto 28px; display: flex; flex-wrap: wrap; gap: 8px 32px; align-items: baseline; }
+.intro h1 { font-family: var(--arcade); font-weight: 400; font-size: 26px; margin: 0; color: var(--yellow); }
+.intro p { margin: 0; font-size: 19px; opacity: .75; max-width: 60ch; }
+.rail { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; max-width: 1240px; margin: 0 auto; }
+.screen-wrap { display: flex; flex-direction: column; gap: 10px; }
+.screen-label { opacity: .55; font-family: var(--arcade); font-size: 10px; letter-spacing: 1px; }
+
+.phone {
+    width: 375px; height: 780px; max-width: calc(100vw - 32px);
+    background: repeating-linear-gradient(0deg, var(--grass-1) 0 48px, var(--grass-2) 48px 96px);
+    border-radius: 28px; overflow: hidden; display: flex; flex-direction: column; position: relative;
+    image-rendering: pixelated;
+}
+.body { flex: 1; display: flex; flex-direction: column; padding: 0 14px; min-height: 0; position: relative; }
+
+/* Pixelrand: harde hoeken, dubbele kader */
+.box {
+    background: var(--panel); color: var(--white);
+    box-shadow: 0 0 0 3px var(--white), 0 0 0 6px var(--black), 6px 6px 0 6px rgba(0,0,0,.35);
+    margin: 6px; padding: 12px;
+}
+
+.hud { display: flex; justify-content: space-between; align-items: center; padding: 22px 14px 8px; font-family: var(--arcade); font-size: 11px; color: var(--white); text-shadow: 2px 2px 0 var(--black); }
+.hud .score { color: var(--yellow); }
+
+/* Mini-veld met pixelspelertjes */
+.field { position: relative; height: 150px; margin: 6px 6px 0; border: 3px solid var(--line); }
+.field::before { content: ""; position: absolute; left: 50%; top: -3px; bottom: -3px; width: 3px; background: var(--line); }
+.field::after { content: ""; position: absolute; left: 50%; top: 50%; width: 54px; height: 54px; margin: -27px 0 0 -27px; border: 3px solid var(--line); border-radius: 50%; }
+.guy { position: absolute; width: 10px; height: 16px; background: linear-gradient(var(--c) 0 60%, var(--white) 60% 80%, var(--black) 80%); box-shadow: 0 -5px 0 -1px #f2c6a0; z-index: 1; }
+.ball { position: absolute; z-index: 2; width: 12px; height: 12px; }
+.ball.run { animation: dribble 2.4s steps(12) infinite alternate; }
+@keyframes dribble { from { left: 30%; top: 60%; } to { left: 68%; top: 35%; } }
+@media (prefers-reduced-motion: reduce) { .ball.run, .goal-txt span { animation: none !important; } }
+
+.title { font-family: var(--arcade); font-size: 20px; line-height: 1.4; color: var(--yellow); text-shadow: 3px 3px 0 var(--black); margin: 18px 6px 4px; }
+
+.balls { display: flex; gap: 5px; margin: 10px 6px 0; }
+.balls span { width: 26px; height: 26px; display: grid; place-items: center; background: rgba(0,0,0,.25); }
+.balls span.now { background: var(--yellow); animation: blink .6s steps(1) infinite; }
+@keyframes blink { 50% { background: rgba(0,0,0,.25); } }
+.balls svg { width: 18px; height: 18px; }
+
+/* Menu met cursor */
+.menu { list-style: none; margin: 0; padding: 0; }
+.menu li a { display: flex; justify-content: space-between; text-decoration: none; color: var(--white); padding: 10px 6px 10px 24px; font-size: 20px; position: relative; }
+.menu li a small { color: #9fb0ff; font-size: 16px; }
+.menu li.sel a { color: var(--yellow); background: var(--panel-2); }
+.menu li.sel a::before { content: "▶"; position: absolute; left: 6px; animation: nudge .5s steps(2) infinite; }
+@keyframes nudge { 50% { transform: translateX(3px); } }
+.menu li.sel a b { font-family: var(--arcade); font-weight: 400; font-size: 14px; margin-top: 3px; }
+.menu-box { margin-top: 14px; padding: 6px; }
+
+.tabbar { margin-top: auto; display: flex; background: var(--black); padding-bottom: 14px; }
+.tabbar a { flex: 1; text-align: center; padding: 14px 0 8px; text-decoration: none; color: #6f7290; font-family: var(--arcade); font-size: 9px; }
+.tabbar a.on { color: var(--yellow); }
+
+/* ---------- Vraag: tekstballonnen ---------- */
+.timer { font-family: var(--arcade); color: var(--red); font-size: 20px; text-shadow: 2px 2px 0 var(--black); }
+.speech { position: relative; font-size: 19px; line-height: 1.3; margin-top: 16px; }
+.speech .who { position: absolute; top: -14px; left: 10px; background: var(--yellow); color: var(--black); font-family: var(--arcade); font-size: 9px; padding: 4px 6px; }
+.speech .more { position: absolute; right: 10px; bottom: 4px; color: var(--yellow); animation: blink2 .8s steps(1) infinite; }
+@keyframes blink2 { 50% { opacity: 0; } }
+.speech.locked { background: rgba(11,11,20,.55); color: #8a8da8; font-family: var(--arcade); font-size: 10px; }
+.mystery { display: flex; justify-content: center; margin-top: 18px; }
+.mystery .guy-big { width: 48px; height: 72px; position: relative; }
+.answer { margin-top: auto; margin-bottom: 14px; }
+.answer .box { padding: 10px; display: flex; gap: 8px; align-items: center; }
+.answer input { flex: 1; min-width: 0; background: var(--black); border: 0; color: var(--yellow); font-family: var(--arcade); font-size: 16px; padding: 12px 8px; outline: none; text-transform: uppercase; }
+.answer button { background: var(--red); color: var(--white); border: 0; font-family: var(--arcade); font-size: 12px; padding: 14px 10px; box-shadow: inset -3px -3px 0 rgba(0,0,0,.35); }
+.answer .worth { font-family: var(--arcade); font-size: 9px; text-align: right; margin: 4px 8px 0; text-shadow: 2px 2px 0 var(--black); }
+
+/* ---------- Resultaat ---------- */
+.goal-txt { margin-top: 70px; text-align: center; font-family: var(--arcade); font-size: 44px; color: var(--yellow); text-shadow: 4px 4px 0 var(--red), 8px 8px 0 var(--black); }
+.goal-txt span { display: inline-block; animation: bounce .5s steps(3) infinite alternate; animation-delay: calc(var(--i) * 80ms); }
+@keyframes bounce { to { transform: translateY(-12px); } }
+.res-box { margin-top: 40px; text-align: center; }
+.res-box .k { font-family: var(--arcade); font-size: 9px; color: #9fb0ff; }
+.res-box .name { font-family: var(--arcade); font-size: 15px; margin: 8px 0 14px; line-height: 1.5; }
+.res-box .pts { font-family: var(--arcade); color: var(--yellow); font-size: 22px; }
+.res-next { margin-top: auto; margin-bottom: 14px; }
+.res-next a { display: block; text-align: center; text-decoration: none; color: var(--yellow); font-family: var(--arcade); font-size: 14px; padding: 6px; }
+</style>
+</head>
+<body>
+<header class="intro">
+    <h1>Pixelvoetbal</h1>
+    <p>Een voetbalspel uit 1993. Gestreept gras, een menu met een cursor, tips als tekstballon en een GOAL!! die stuitert. Speels, en meteen herkenbaar als spel in plaats van formulier.</p>
+</header>
+
+<svg width="0" height="0" style="position:absolute">
+    <defs>
+        <symbol id="pball" viewBox="0 0 8 8" shape-rendering="crispEdges">
+            <rect x="2" y="0" width="4" height="8" fill="#f4f4f4"/><rect x="0" y="2" width="8" height="4" fill="#f4f4f4"/><rect x="1" y="1" width="6" height="6" fill="#f4f4f4"/>
+            <rect x="3" y="3" width="2" height="2" fill="#0b0b14"/><rect x="1" y="1" width="1" height="1" fill="#0b0b14"/><rect x="6" y="1" width="1" height="1" fill="#0b0b14"/><rect x="1" y="6" width="1" height="1" fill="#0b0b14"/><rect x="6" y="6" width="1" height="1" fill="#0b0b14"/>
+        </symbol>
+        <symbol id="pmiss" viewBox="0 0 8 8" shape-rendering="crispEdges">
+            <rect x="1" y="1" width="2" height="2" fill="#e83b3b"/><rect x="5" y="1" width="2" height="2" fill="#e83b3b"/><rect x="3" y="3" width="2" height="2" fill="#e83b3b"/><rect x="1" y="5" width="2" height="2" fill="#e83b3b"/><rect x="5" y="5" width="2" height="2" fill="#e83b3b"/>
+        </symbol>
+    </defs>
+</svg>
+
+<main class="rail">
+    <section class="screen-wrap">
+        <span class="screen-label">01 · HOME</span>
+        <div class="phone">
+            <div class="hud"><span>MA 19/10</span><span class="score">SCORE 000240</span></div>
+            <div class="field" aria-hidden="true">
+                <i class="guy" style="--c:var(--red);left:22%;top:40%"></i>
+                <i class="guy" style="--c:var(--red);left:40%;top:70%"></i>
+                <i class="guy" style="--c:#2b4bd8;left:62%;top:30%"></i>
+                <i class="guy" style="--c:#2b4bd8;left:78%;top:58%"></i>
+                <svg class="ball run"><use href="#pball"/></svg>
+            </div>
+            <div class="body">
+                <div class="title">WIE BEN IK?</div>
+                <div class="balls" aria-label="4 van 10 gespeeld">
+                    <span><svg><use href="#pball"/></svg></span><span><svg><use href="#pball"/></svg></span><span><svg><use href="#pmiss"/></svg></span><span><svg><use href="#pball"/></svg></span>
+                    <span class="now"></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="box menu-box">
+                    <ul class="menu">
+                        <li class="sel"><a href="#"><b>VRAAG 5</b><small>10 ▸</small></a></li>
+                        <li><a href="#">Derby Cup<small>2 dagen</small></a></li>
+                        <li><a href="#">Tafel Jens<small>2/4</small></a></li>
+                        <li><a href="#">Hi-scores<small>#9</small></a></li>
+                    </ul>
+                </div>
+            </div>
+            <nav class="tabbar"><a class="on" href="#">SPEL</a><a href="#">ONLINE</a><a href="#">STAND</a><a href="#">IK</a></nav>
+        </div>
+    </section>
+
+    <section class="screen-wrap">
+        <span class="screen-label">02 · VRAAG</span>
+        <div class="phone">
+            <div class="hud"><span>VRAAG 5/10</span><span class="timer">0:23</span></div>
+            <div class="body">
+                <div class="mystery" aria-hidden="true"><i class="guy guy-big" style="--c:#222;filter:brightness(.15)"></i></div>
+                <div class="box speech"><span class="who">???</span>Ik debuteerde op mijn zeventiende in het eerste elftal van Anderlecht.</div>
+                <div class="box speech"><span class="who">???</span>Via Hamburg trok ik in 2008 naar Engeland.<span class="more">▼</span></div>
+                <div class="box speech locked">TIP 3 ... 0:23</div>
+                <div class="answer">
+                    <div class="box"><input value="KOMPA" aria-label="Jouw antwoord"><button>SCHIET</button></div>
+                    <div class="worth">NOG 80 PT</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="screen-wrap">
+        <span class="screen-label">03 · RESULTAAT</span>
+        <div class="phone">
+            <div class="hud"><span>VRAAG 5/10</span><span class="score">SCORE 000320</span></div>
+            <div class="body">
+                <div class="goal-txt" aria-label="Goal"><span style="--i:0">G</span><span style="--i:1">O</span><span style="--i:2">A</span><span style="--i:3">L</span><span style="--i:4">!</span><span style="--i:5">!</span></div>
+                <div class="box res-box">
+                    <div class="k">HET WAS</div>
+                    <div class="name">VINCENT<br>KOMPANY</div>
+                    <div class="pts">+80</div>
+                </div>
+                <div class="box res-next"><a href="#">▶ VRAAG 6</a></div>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

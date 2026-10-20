@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Truitje Trek Kantine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Gochi+Hand&family=Karla:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+/* POC "Kantine": de clubkantine na de match. Houten toog, krijtbord aan de muur,
+   en je punten worden geturfd op een bierviltje, zoals de cafébaas dat doet. */
+:root {
+    --wood-1: #6b3f22;
+    --wood-2: #5a331b;
+    --chalk-bg: #263029;
+    --chalk: #f1efe6;
+    --coaster: #f3e9d2;
+    --coaster-ring: #b5262c;
+    --enamel: #b5262c;
+    --ink: #2b1a10;
+    --soft: #8a7360;
+    --slab: "Alfa Slab One", Rockwell, serif;
+    --hand: "Gochi Hand", "Comic Sans MS", cursive;
+    --sans: "Karla", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #1d130c; color: var(--chalk); font-family: var(--sans); padding: 32px 16px 64px; }
+.intro { max-width: 1240px; margin: 0 auto 28px; display: flex; flex-wrap: wrap; gap: 8px 32px; align-items: baseline; }
+.intro h1 { font-family: var(--slab); font-weight: 400; font-size: 42px; margin: 0; color: #f3c977; }
+.intro p { margin: 0; font-size: 17px; opacity: .75; max-width: 60ch; }
+.rail { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; max-width: 1240px; margin: 0 auto; }
+.screen-wrap { display: flex; flex-direction: column; gap: 10px; }
+.screen-label { opacity: .55; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; font-weight: 800; }
+
+.phone {
+    width: 375px; height: 780px; max-width: calc(100vw - 32px);
+    background:
+        repeating-linear-gradient(90deg, transparent 0 74px, rgba(0,0,0,.25) 74px 76px),
+        repeating-linear-gradient(1deg, rgba(255,255,255,.03) 0 3px, transparent 3px 9px),
+        linear-gradient(180deg, var(--wood-1), var(--wood-2));
+    border-radius: 28px; overflow: hidden; display: flex; flex-direction: column; position: relative;
+}
+.body { flex: 1; display: flex; flex-direction: column; padding: 0 16px; min-height: 0; align-items: stretch; }
+
+/* Krijtbord aan de muur */
+.board {
+    background: radial-gradient(ellipse at 30% 20%, rgba(255,255,255,.07), transparent 60%), var(--chalk-bg);
+    border: 8px solid #8b5a32; box-shadow: inset 0 0 0 2px #3a2414, 0 6px 0 rgba(0,0,0,.3);
+    margin: 22px 16px 0; padding: 12px 16px 14px; color: var(--chalk); font-family: var(--hand); position: relative;
+}
+.board small { font-size: 17px; opacity: .7; }
+.board h2 { font-family: var(--hand); font-weight: 400; font-size: 42px; margin: 0; line-height: 1; }
+.board .date { position: absolute; right: 14px; top: 10px; font-size: 18px; opacity: .8; }
+
+/* Het bierviltje */
+.coaster {
+    width: 250px; aspect-ratio: 1; border-radius: 50%; margin: 26px auto 0; position: relative;
+    background:
+        radial-gradient(circle, transparent 64%, var(--coaster-ring) 64% 67%, transparent 67% 71%, var(--coaster-ring) 71% 72%, transparent 72%),
+        radial-gradient(circle at 35% 30%, #fbf4e3, var(--coaster));
+    box-shadow: 0 6px 0 rgba(0,0,0,.25), 0 14px 22px rgba(0,0,0,.25);
+    transform: rotate(-6deg); color: var(--ink);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+}
+.coaster .lbl { font-family: var(--slab); font-size: 13px; letter-spacing: 2px; color: var(--coaster-ring); }
+.coaster .pts { font-family: var(--slab); font-size: 66px; line-height: 1; }
+.coaster .tally { font-family: var(--hand); font-size: 36px; line-height: 1; letter-spacing: -2px; color: #1f3c8a; margin-top: 4px; }
+.coaster .tally s { text-decoration-thickness: 3px; }
+.coaster .tally .miss { color: var(--coaster-ring); }
+.coaster .of { font-family: var(--hand); font-size: 18px; color: var(--soft); }
+.stain { position: absolute; width: 120px; height: 120px; border-radius: 50%; border: 6px solid rgba(110,60,20,.14); right: -24px; bottom: -10px; }
+
+/* Emaillen bord als knop */
+.enamel {
+    margin-top: 28px; display: flex; justify-content: center; align-items: center; height: 64px; text-decoration: none;
+    background: var(--enamel); color: #fff6e6; border-radius: 10px; font-family: var(--slab); font-size: 24px; letter-spacing: 1px;
+    box-shadow: inset 0 0 0 4px var(--enamel), inset 0 0 0 6px #fff6e6, 0 5px 0 #6e1418;
+}
+
+/* Gereserveerd-bordje en affiche */
+.row2 { display: flex; gap: 10px; margin-top: 18px; }
+.reserved { flex: 1; text-decoration: none; background: #fff6e6; color: var(--ink); border-radius: 4px; padding: 8px 10px; transform: rotate(1deg); box-shadow: 0 3px 0 rgba(0,0,0,.3); }
+.reserved b { display: block; font-family: var(--slab); font-weight: 400; font-size: 13px; letter-spacing: 1px; color: var(--enamel); }
+.reserved span { font-weight: 800; font-size: 15px; }
+.poster { flex: 1; text-decoration: none; background: #f3c977; color: var(--ink); padding: 8px 10px; transform: rotate(-2deg); box-shadow: 0 3px 0 rgba(0,0,0,.3); }
+.poster b { display: block; font-family: var(--slab); font-weight: 400; font-size: 15px; }
+.poster span { font-weight: 700; font-size: 13px; }
+
+.tabbar { margin-top: auto; display: flex; background: #2b1a10; border-top: 3px solid #8b5a32; }
+.tabbar a { flex: 1; text-align: center; padding: 14px 0 22px; text-decoration: none; color: #a88d74; font-family: var(--slab); font-size: 13px; letter-spacing: 1px; }
+.tabbar a.on { color: #f3c977; }
+
+/* ---------- Vraag ---------- */
+.board.q { margin-top: 22px; }
+.board .timer { position: absolute; right: 14px; top: 8px; font-size: 30px; color: #ffb4a8; }
+.board ol { margin: 10px 0 0; padding: 0 0 0 26px; font-size: 22px; line-height: 1.15; }
+.board ol li { margin-bottom: 10px; }
+.board ol li.locked { opacity: .35; }
+.answer-coaster { margin-top: auto; margin-bottom: 18px; background: #fff6e6; border-radius: 14px; padding: 12px; color: var(--ink); box-shadow: 0 5px 0 rgba(0,0,0,.3); }
+.answer-coaster label { font-family: var(--slab); font-size: 12px; letter-spacing: 2px; color: var(--enamel); }
+.answer-coaster input { display: block; width: 100%; border: 0; border-bottom: 2px dashed var(--soft); background: none; font-family: var(--hand); font-size: 34px; color: #1f3c8a; outline: none; padding: 2px 0; }
+.answer-coaster .row { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+.answer-coaster .row span { font-weight: 800; color: var(--soft); }
+.answer-coaster button { background: var(--enamel); color: #fff6e6; border: 0; border-radius: 8px; font-family: var(--slab); font-size: 18px; padding: 12px 20px; box-shadow: 0 4px 0 #6e1418; }
+
+/* ---------- Resultaat ---------- */
+.res-coaster { margin-top: 60px; }
+.res-coaster .new { color: #1f8a4c; display: inline-block; animation: scribble .5s ease-out both; }
+@keyframes scribble { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@media (prefers-reduced-motion: reduce) { .res-coaster .new { animation: none; } }
+.res-was { text-align: center; margin-top: 30px; font-family: var(--hand); font-size: 22px; color: var(--chalk); }
+.res-was b { display: block; font-family: var(--slab); font-weight: 400; font-size: 30px; color: #f3c977; }
+.res-go { margin-top: auto; margin-bottom: 22px; }
+</style>
+</head>
+<body>
+<header class="intro">
+    <h1>Kantine</h1>
+    <p>De clubkantine na de match. Houten toog, krijtbord aan de muur, en je punten worden geturfd op een bierviltje, zoals de cafébaas dat doet.</p>
+</header>
+
+<main class="rail">
+    <section class="screen-wrap">
+        <span class="screen-label">01 · Home</span>
+        <div class="phone">
+            <div class="board">
+                <small>Vandaag op 't bord</small>
+                <h2>Wie ben ik?</h2>
+                <span class="date">ma 19/10</span>
+            </div>
+            <div class="body">
+                <div class="coaster" aria-label="240 punten, 4 van 10 gespeeld">
+                    <span class="lbl">TRUITJE TREK</span>
+                    <span class="pts">240</span>
+                    <span class="tally">|||<span class="miss">·</span>|</span>
+                    <span class="of">4 van 10</span>
+                    <span class="stain"></span>
+                </div>
+                <a class="enamel" href="#">VRAAG 5 »</a>
+                <div class="row2">
+                    <a class="reserved" href="#"><b>GERESERVEERD</b><span>Tafel Jens · 2/4</span></a>
+                    <a class="poster" href="#"><b>DERBY!</b><span>Club – Anderlecht</span></a>
+                </div>
+            </div>
+            <nav class="tabbar"><a class="on" href="#">SPEL</a><a href="#">ONLINE</a><a href="#">STAND</a><a href="#">IK</a></nav>
+        </div>
+    </section>
+
+    <section class="screen-wrap">
+        <span class="screen-label">02 · Vraag</span>
+        <div class="phone">
+            <div class="board q">
+                <small>Vraag 5 van 10</small>
+                <h2>Wie ben ik?</h2>
+                <span class="timer">0:23</span>
+                <ol>
+                    <li>Ik debuteerde op mijn zeventiende in het eerste elftal van Anderlecht.</li>
+                    <li>Via Hamburg trok ik in 2008 naar Engeland.</li>
+                    <li class="locked">komt zo...</li>
+                </ol>
+            </div>
+            <div class="body">
+                <div class="answer-coaster">
+                    <label for="k1">WIE IS 'T?</label>
+                    <input id="k1" value="Kompa">
+                    <div class="row"><span>nog 80 punten</span><button>SCHIET</button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="screen-wrap">
+        <span class="screen-label">03 · Resultaat</span>
+        <div class="phone">
+            <div class="board"><small>Vraag 5 van 10</small><h2>Goal! +80</h2></div>
+            <div class="body">
+                <div class="coaster res-coaster">
+                    <span class="lbl">TRUITJE TREK</span>
+                    <span class="pts">320</span>
+                    <span class="tally">|||<span class="miss">·</span>|<span class="new">|</span></span>
+                    <span class="of">5 van 10</span>
+                    <span class="stain"></span>
+                </div>
+                <div class="res-was">Het was<b>Vincent Kompany</b></div>
+                <a class="enamel res-go" href="#">VRAAG 6 »</a>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

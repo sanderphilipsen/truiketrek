@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Truitje Trek Oud Krijtbord</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+/* POC "Oud krijtbord": een versleten schoolbord in de kleedkamer. Krijtstof, vegen van de wisser,
+   half uitgeveegde tactiek van vorige week, en een houten richel met krijtjes als navigatie.
+   Alle tekst loopt door een SVG-filter zodat ze korrelig en onregelmatig oogt, zoals echt krijt. */
+:root {
+    --slate: #26332c;
+    --slate-2: #1e2924;
+    --chalk: #eeeee6;
+    --chalk-dim: rgba(238,238,230,.55);
+    --yellow: #f3e38a;
+    --pink: #f4a9b9;
+    --blue: #a6d4ee;
+    --wood: #7a4b27;
+    --wood-d: #4f2f16;
+    --sketch: "Cabin Sketch", "Comic Sans MS", cursive;
+    --hand: "Patrick Hand", "Comic Sans MS", cursive;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #17120d; color: var(--chalk); font-family: var(--hand); padding: 32px 16px 64px; }
+.intro { max-width: 1240px; margin: 0 auto 28px; display: flex; flex-wrap: wrap; gap: 8px 32px; align-items: baseline; }
+.intro h1 { font-family: var(--sketch); font-weight: 700; font-size: 48px; margin: 0; filter: url(#chalk); }
+.intro p { margin: 0; font-size: 20px; opacity: .75; max-width: 60ch; }
+.rail { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; max-width: 1240px; margin: 0 auto; }
+.screen-wrap { display: flex; flex-direction: column; gap: 10px; }
+.screen-label { opacity: .5; font-size: 16px; letter-spacing: 2px; text-transform: uppercase; }
+
+/* ---------- Het bord ---------- */
+.phone {
+    width: 375px; height: 780px; max-width: calc(100vw - 32px);
+    border-radius: 28px; overflow: hidden; position: relative; display: flex; flex-direction: column;
+    /* houten kader */
+    padding: 12px 12px 0;
+    background: linear-gradient(90deg, var(--wood-d), var(--wood) 6%, #8a5a31 50%, var(--wood) 94%, var(--wood-d));
+}
+.slate {
+    flex: 1; position: relative; overflow: hidden; display: flex; flex-direction: column; min-height: 0;
+    border-radius: 16px 16px 0 0;
+    box-shadow: inset 0 0 0 2px rgba(0,0,0,.4), inset 0 0 40px rgba(0,0,0,.55);
+    background:
+        /* vegen van de wisser */
+        radial-gradient(ellipse 60% 18% at 30% 22%, rgba(255,255,255,.07), transparent 70%),
+        radial-gradient(ellipse 70% 14% at 65% 58%, rgba(255,255,255,.06), transparent 70%),
+        radial-gradient(ellipse 50% 20% at 40% 85%, rgba(255,255,255,.05), transparent 70%),
+        /* krijtstof onderaan, waar het neerdwarrelt */
+        linear-gradient(transparent 82%, rgba(255,255,255,.05)),
+        linear-gradient(160deg, var(--slate), var(--slate-2));
+}
+/* korrel van het bord zelf */
+.slate::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* half uitgeveegde tactiek van vorige week */
+.ghost { position: absolute; pointer-events: none; color: rgba(238,238,230,.045); font-family: var(--sketch); filter: url(#chalk) blur(.6px); white-space: nowrap; }
+.ghost-svg { position: absolute; pointer-events: none; opacity: .08; filter: blur(.5px); }
+
+/* alles wat met krijt geschreven is */
+.ck { filter: url(#chalk); text-shadow: 0 0 1px rgba(238,238,230,.35); }
+.y { color: var(--yellow); } .p { color: var(--pink); } .b { color: var(--blue); }
+.content { position: relative; flex: 1; display: flex; flex-direction: column; padding: 18px 20px 0; min-height: 0; }
+
+.date-line { display: flex; justify-content: space-between; align-items: baseline; font-size: 21px; }
+.date-line .brand { font-family: var(--sketch); font-weight: 700; font-size: 22px; }
+
+h2.board-title { font-family: var(--sketch); font-weight: 700; font-size: 58px; line-height: .95; margin: 16px 0 0; }
+.underline { display: block; width: 230px; height: 16px; margin-top: 2px; }
+
+/* De opstelling: de trainer tekent het veld en zet de tien vragen als spelers in een 4-3-3.
+   Jij staat in doel. Wordt getekend door drawLineup() onderaan. */
+.lineup { display: block; width: 100%; height: auto; margin-top: 12px; overflow: visible; }
+.lineup text { font-family: var(--sketch); font-weight: 700; }
+.lineup .pulse { animation: pulse 1.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes pulse { 50% { opacity: .2; } }
+.lineup .fresh { animation: chalkin .8s .9s ease-out both; }
+@keyframes chalkin { from { opacity: 0; transform: scale(1.4); } }
+.lineup .fresh { transform-box: fill-box; transform-origin: center; }
+@media (prefers-reduced-motion: reduce) { .lineup .pulse, .lineup .fresh { animation: none; } }
+
+.title-row { display: flex; justify-content: space-between; align-items: flex-start; margin-top: 10px; }
+.title-row h2.board-title { font-size: 46px; margin: 0; }
+.score-ring { position: relative; font-family: var(--sketch); font-weight: 700; font-size: 34px; line-height: 1; padding: 10px 12px 4px; text-align: center; transform: rotate(-4deg); }
+.score-ring small { display: block; font-family: var(--hand); font-size: 16px; font-weight: 400; }
+.score-ring svg { position: absolute; inset: -4px -8px; width: calc(100% + 16px); height: calc(100% + 8px); overflow: visible; }
+
+/* vraagscherm: titel links, kleine opstelling rechts */
+.q-row { display: flex; gap: 10px; align-items: flex-start; margin-top: 6px; }
+.q-row .left { flex: 1; }
+.q-row .board-title { font-size: 42px; margin: 4px 0 0; }
+.q-row .pos { font-size: 20px; margin-top: 4px; }
+.q-row .lineup { width: 112px; flex: none; margin: 0; }
+
+/* krijtknop: getekende rechthoek met pijl */
+.chalk-btn {
+    position: relative; display: flex; justify-content: space-between; align-items: center; text-decoration: none; color: var(--yellow);
+    margin-top: 22px; height: 70px; padding: 0 22px; font-family: var(--sketch); font-weight: 700; font-size: 34px;
+}
+.chalk-btn svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.chalk-btn:active { transform: translate(1px, 2px); }
+
+.notes { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 21px; }
+.notes a { color: var(--chalk); text-decoration: none; }
+.notes a::before { content: "- "; }
+
+/* ---------- Richel met krijtjes = tabbar ---------- */
+.ledge {
+    position: relative; height: 82px; margin: 0 -12px; padding: 0 12px;
+    background: linear-gradient(var(--wood-d) 0 6px, #8a5a31 6px 22px, var(--wood) 22px 60%, var(--wood-d));
+    box-shadow: 0 -4px 8px rgba(0,0,0,.4);
+    display: flex;
+}
+.ledge::before { content: ""; position: absolute; left: 12px; right: 12px; top: 6px; height: 16px; background: linear-gradient(rgba(255,255,255,.12), rgba(255,255,255,.04)); } /* krijtstof op de richel */
+.ledge a { flex: 1; position: relative; text-decoration: none; color: #e9cfae; font-family: var(--sketch); font-weight: 700; font-size: 17px; text-align: center; padding-top: 34px; }
+.ledge a.on { color: #fff3dd; }
+.ledge a .stick { position: absolute; left: 50%; top: 4px; width: 48px; height: 12px; margin-left: -24px; border-radius: 3px 5px 5px 3px; background: var(--c, #f2f0e6); box-shadow: inset 0 -3px 0 rgba(0,0,0,.15); transform: rotate(var(--r, -4deg)); }
+.ledge a:not(.on) .stick { width: 22px; margin-left: -11px; opacity: .7; }
+.ledge .sponge { position: absolute; right: 18px; top: -18px; width: 66px; height: 22px; border-radius: 4px; background: linear-gradient(#5a4130 0 45%, #d9d4c6 45%); transform: rotate(3deg); display: none; }
+
+/* ---------- Vraag ---------- */
+.q-head { display: flex; justify-content: space-between; align-items: baseline; font-size: 22px; }
+.q-head .tijd { font-family: var(--sketch); font-weight: 700; font-size: 38px; }
+.tips { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 12px; font-size: 22px; line-height: 1.2; }
+.tips li { display: grid; grid-template-columns: 28px 1fr; gap: 6px; }
+.tips .n { font-family: var(--sketch); font-weight: 700; font-size: 26px; }
+.tips li.wiped { color: rgba(238,238,230,.38); filter: url(#chalk) blur(.6px); }
+.answer { margin-top: auto; padding-bottom: 14px; }
+.answer input { width: 100%; background: transparent; border: 0; color: var(--chalk); font-family: var(--sketch); font-weight: 700; font-size: 38px; outline: none; padding: 0; filter: url(#chalk); }
+.answer input::placeholder { color: rgba(238,238,230,.25); }
+.answer .line { display: block; width: 100%; height: 10px; }
+.answer .row { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; font-size: 22px; }
+.answer .row .chalk-btn { margin: 0; height: 56px; font-size: 28px; padding: 0 22px; }
+
+/* ---------- Resultaat ---------- */
+.big-word { font-family: var(--sketch); font-weight: 700; font-size: 84px; line-height: .9; margin-top: 14px; text-align: center; transform: rotate(-5deg); }
+.write { animation: write 1s steps(14) both; }
+@keyframes write { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+.stars { position: absolute; font-size: 30px; }
+.was { text-align: center; margin-top: 14px; font-size: 22px; }
+.was b { font-family: var(--sketch); font-weight: 700; font-size: 28px; }
+.res-btn { margin-top: auto; margin-bottom: 18px; }
+@media (prefers-reduced-motion: reduce) { .write { animation: none; } }
+</style>
+</head>
+<body>
+
+<!-- Krijtfilter: vreet stukjes uit de letters en laat de randen een beetje rafelen -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+        <filter id="chalk" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="4" result="noise"/>
+            <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.75" result="holes"/>
+            <feComposite in="SourceGraphic" in2="holes" operator="in" result="eaten"/>
+            <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="1" seed="9" result="wobble"/>
+            <feDisplacementMap in="eaten" in2="wobble" scale="2.2"/>
+        </filter>
+    </defs>
+</svg>
+
+<header class="intro">
+    <h1>Oud krijtbord</h1>
+    <p>Een versleten schoolbord in de kleedkamer. Krijtstof, vegen van de wisser, half uitgeveegde tactiek van vorige week, en een houten richel met krijtjes als navigatie.</p>
+</header>
+
+<main class="rail">
+
+    <!-- 1. Home -->
+    <section class="screen-wrap">
+        <span class="screen-label">01 · Home</span>
+        <div class="phone">
+            <div class="slate">
+                <!-- spoken van vorige week -->
+                <span class="ghost" style="left:150px;top:600px;font-size:30px;transform:rotate(-4deg)">zat. 14u30</span>
+
+                <div class="content">
+                    <div class="date-line ck"><span class="brand">Truitje Trek</span><span>ma 19 okt.</span></div>
+
+                    <div class="title-row ck">
+                        <div>
+                            <h2 class="board-title">Wie ben ik?</h2>
+                            <svg class="underline" viewBox="0 0 230 16" aria-hidden="true"><path d="M3 6 C60 2, 150 3, 226 7 M10 13 C80 9, 160 10, 220 12" fill="none" stroke="#f3e38a" stroke-width="3.2" stroke-linecap="round"/></svg>
+                        </div>
+                        <div class="score-ring">240<small>punten</small>
+                            <svg viewBox="0 0 100 70" preserveAspectRatio="none" aria-hidden="true"><path d="M14 14 C34 0, 86 2, 96 24 C104 50, 70 70, 40 66 C8 62, 0 38, 18 10" fill="none" stroke="#f4a9b9" stroke-width="3" stroke-linecap="round"/></svg>
+                        </div>
+                    </div>
+
+                    <svg class="lineup ck" viewBox="0 0 300 330" role="img" aria-label="Opstelling: 4 van 10 gespeeld, vraag 5 is aan de beurt"
+                         data-done="1,2,4" data-miss="3" data-next="5" data-note="nu jij!"></svg>
+
+                    <a class="chalk-btn ck" href="#">vraag 5 <span>→</span>
+                        <svg viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true"><path d="M4 8 L296 4 L293 66 L6 63 Z M8 3 L10 68" fill="none" stroke="#f3e38a" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg>
+                    </a>
+
+                    <div class="notes ck">
+                        <a href="#"><span class="b">Derby!</span> Club – Anderlecht, nog 2 dagen</a>
+                        <a href="#">Jens wacht aan tafel (2/4)</a>
+                    </div>
+                </div>
+            </div>
+            <nav class="ledge">
+                <a class="on" href="#"><i class="stick"></i>Spel</a>
+                <a href="#"><i class="stick" style="--c:var(--yellow);--r:6deg"></i>Online</a>
+                <a href="#"><i class="stick" style="--c:var(--pink);--r:-8deg"></i>Stand</a>
+                <a href="#"><i class="stick" style="--c:var(--blue);--r:3deg"></i>Ik</a>
+            </nav>
+        </div>
+    </section>
+
+    <!-- 2. Vraag -->
+    <section class="screen-wrap">
+        <span class="screen-label">02 · Vraag</span>
+        <div class="phone">
+            <div class="slate">
+                <span class="ghost" style="left:30px;top:420px;font-size:40px;transform:rotate(-6deg)">Opstelling ?</span>
+                <div class="content">
+                    <div class="q-head ck"><span>vraag 5 van 10</span><span class="tijd p">0:23</span></div>
+                    <div class="q-row">
+                        <div class="left ck">
+                            <h2 class="board-title">Wie ben ik?</h2>
+                            <div class="pos">nr. 5 · <span class="y">middenveld links</span></div>
+                        </div>
+                        <svg class="lineup" viewBox="0 0 300 330" aria-hidden="true" data-done="1,2,4" data-miss="3" data-next="5" data-mini="1"></svg>
+                    </div>
+                    <ol class="tips">
+                        <li class="ck"><span class="n y">1.</span><span>Ik debuteerde op mijn zeventiende in het eerste elftal van Anderlecht.</span></li>
+                        <li class="ck"><span class="n y">2.</span><span>Via Hamburg trok ik in 2008 naar Engeland.</span></li>
+                        <li class="wiped"><span class="n">3.</span><span>tip 3 komt over 0:23</span></li>
+                    </ol>
+                    <div class="answer">
+                        <input value="Kompa" placeholder="naam..." aria-label="Jouw antwoord">
+                        <svg class="line ck" viewBox="0 0 300 10" preserveAspectRatio="none" aria-hidden="true"><path d="M2 5 C100 2, 200 8, 298 4" fill="none" stroke="#eeeee6" stroke-width="2.5" stroke-linecap="round"/></svg>
+                        <div class="row ck"><span>nog <span class="y">80</span> punten</span>
+                            <a class="chalk-btn" href="#">schiet!
+                                <svg viewBox="0 0 150 56" preserveAspectRatio="none" aria-hidden="true"><path d="M5 6 L146 3 L144 52 L4 54 Z" fill="none" stroke="#f3e38a" stroke-width="3" stroke-linejoin="round"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="ledge">
+                <a class="on" href="#"><i class="stick"></i>Spel</a>
+                <a href="#"><i class="stick" style="--c:var(--yellow);--r:6deg"></i>Online</a>
+                <a href="#"><i class="stick" style="--c:var(--pink);--r:-8deg"></i>Stand</a>
+                <a href="#"><i class="stick" style="--c:var(--blue);--r:3deg"></i>Ik</a>
+            </nav>
+        </div>
+    </section>
+
+    <!-- 3. Resultaat -->
+    <section class="screen-wrap">
+        <span class="screen-label">03 · Resultaat</span>
+        <div class="phone">
+            <div class="slate">
+                <span class="ghost" style="left:60px;top:150px;font-size:52px;transform:rotate(6deg)">Wie ben ik?</span>
+                <div class="content">
+                    <div class="q-head ck"><span>vraag 5 van 10</span><span><span class="y">+80</span> → 320</span></div>
+                    <div class="ck" style="position:relative">
+                        <div class="big-word y write">GOAL!</div>
+                        <span class="stars y" style="left:4px;top:24px">✶</span>
+                        <span class="stars p" style="right:14px;top:4px;font-size:22px">✶</span>
+                    </div>
+                    <div class="was ck">het was <b>Vincent Kompany</b></div>
+                    <svg class="lineup ck" viewBox="0 0 300 330" role="img" aria-label="Opstelling: vraag 5 juist, vraag 6 is de volgende"
+                         data-done="1,2,4,5" data-miss="3" data-fresh="5" data-next="6" data-note="volgende" data-note-at="0,-72"></svg>
+                    <a class="chalk-btn ck res-btn" href="#">vraag 6 <span>→</span>
+                        <svg viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true"><path d="M4 8 L296 4 L293 66 L6 63 Z M8 3 L10 68" fill="none" stroke="#f3e38a" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg>
+                    </a>
+                </div>
+            </div>
+            <nav class="ledge">
+                <a class="on" href="#"><i class="stick"></i>Spel</a>
+                <a href="#"><i class="stick" style="--c:var(--yellow);--r:6deg"></i>Online</a>
+                <a href="#"><i class="stick" style="--c:var(--pink);--r:-8deg"></i>Stand</a>
+                <a href="#"><i class="stick" style="--c:var(--blue);--r:3deg"></i>Ik</a>
+            </nav>
+        </div>
+    </section>
+
+</main>
+
+<script>
+// De trainer tekent de opstelling: een wiebelig veld, tien vragen als spelers in een 4-3-3
+// (1-4 verdediging, 5-7 middenveld, 8-10 aanval) en jij in doel.
+const POS = { 1: [42, 252], 2: [112, 262], 3: [188, 262], 4: [258, 252], 5: [70, 182], 6: [150, 218], 7: [230, 182], 8: [58, 98], 9: [150, 80], 10: [242, 98] };
+const KEEPER = [150, 306];
+const C = { chalk: "#eeeee6", dim: "rgba(238,238,230,.45)", yellow: "#f3e38a", pink: "#f4a9b9", blue: "#a6d4ee" };
+const NS = "http://www.w3.org/2000/svg";
+
+function rng(seed) { return () => { seed = (seed + 0x6D2B79F5) | 0; let t = Math.imul(seed ^ (seed >>> 15), 1 | seed); t ^= t + Math.imul(t ^ (t >>> 7), 61 | t); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+function el(svg, tag, attrs) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; }
+function stroke(color, w) { return { fill: "none", stroke: color, "stroke-width": w, "stroke-linecap": "round", "stroke-linejoin": "round" }; }
+
+// lijn met een lichte bocht, zoals uit de losse hand
+function wobLine(r, x1, y1, x2, y2) {
+    const mx = (x1 + x2) / 2 + (r() - .5) * 4, my = (y1 + y2) / 2 + (r() - .5) * 4;
+    return `M${x1 + (r() - .5) * 2} ${y1 + (r() - .5) * 2} Q${mx} ${my} ${x2 + (r() - .5) * 2} ${y2 + (r() - .5) * 2}`;
+}
+// cirkel die net niet sluit en een beetje overlapt
+function wobCircle(r, cx, cy, rad) {
+    const a0 = r() * Math.PI * 2, end = a0 + Math.PI * 2 + .35; let d = "";
+    for (let a = a0; a <= end; a += .3) {
+        const rr = rad * (1 + (r() - .5) * .1);
+        d += (d ? "L" : "M") + (cx + Math.cos(a) * rr).toFixed(1) + " " + (cy + Math.sin(a) * rr).toFixed(1);
+    }
+    return d;
+}
+function arrow(svg, r, [x1, y1], [x2, y2], color, gap) {
+    const len = Math.hypot(x2 - x1, y2 - y1), ux = (x2 - x1) / len, uy = (y2 - y1) / len;
+    const sx = x1 + ux * gap, sy = y1 + uy * gap, ex = x2 - ux * gap, ey = y2 - uy * gap;
+    const cx = (sx + ex) / 2 - uy * 22, cy = (sy + ey) / 2 + ux * 22;
+    el(svg, "path", { d: `M${sx} ${sy} Q${cx} ${cy} ${ex} ${ey}`, ...stroke(color, 3) });
+    const tx = ex - cx, ty = ey - cy, tl = Math.hypot(tx, ty), ax = tx / tl, ay = ty / tl;
+    const h = (s) => `${ex - ax * 11 + s * ay * 7} ${ey - ay * 11 - s * ax * 7}`;
+    el(svg, "path", { d: `M${h(1)} L${ex} ${ey} L${h(-1)}`, ...stroke(color, 3) });
+    return [cx, cy];
+}
+
+function drawLineup(svg) {
+    const r = rng(7);
+    const list = (k) => (svg.dataset[k] ?? "").split(",").filter(Boolean).map(Number);
+    const done = list("done"), miss = list("miss"), fresh = list("fresh"), next = Number(svg.dataset.next), mini = !!svg.dataset.mini;
+    const lw = mini ? 5 : 2.5;
+
+    // het veld
+    const field = [[8, 10, 292, 8], [292, 8, 293, 322], [293, 322, 7, 323], [7, 323, 8, 10], [8, 165, 292, 166], [92, 9, 94, 60], [94, 60, 208, 61], [208, 61, 207, 8], [92, 322, 93, 274], [93, 274, 207, 275], [207, 275, 208, 322]];
+    for (const l of field) el(svg, "path", { d: wobLine(r, ...l), ...stroke(C.dim, lw) });
+    el(svg, "path", { d: wobCircle(r, 150, 165, 36), ...stroke(C.dim, lw) });
+
+    // korte notitie van de trainer met een pijltje naar wie nu aan de beurt is
+    if (!mini && svg.dataset.note && POS[next]) {
+        const [x, y] = POS[next], [dx, dy] = (svg.dataset.noteAt ?? "58,-58").split(",").map(Number);
+        const tx = x + dx, ty = y + dy;
+        el(svg, "text", { x: tx, y: ty, fill: C.chalk, "font-size": 19, "text-anchor": "middle", transform: `rotate(-6 ${tx} ${ty})` }).textContent = svg.dataset.note;
+        arrow(svg, r, [tx, ty + 4], [x, y], C.chalk, 22);
+    }
+
+    for (let n = 1; n <= 10; n++) {
+        const [x, y] = POS[n];
+        if (miss.includes(n)) {
+            el(svg, "path", { d: `${wobLine(r, x - 13, y - 13, x + 13, y + 13)} ${wobLine(r, x + 13, y - 13, x - 13, y + 13)}`, ...stroke(C.pink, mini ? 8 : 4) });
+            if (!mini) el(svg, "text", { x: x + 15, y: y - 10, fill: C.pink, "font-size": 15 }).textContent = n;
+        } else if (done.includes(n)) {
+            const g = el(svg, "g", fresh.includes(n) ? { class: "fresh" } : {});
+            el(g, "path", { d: wobCircle(r, x, y, 15), ...stroke(C.yellow, mini ? 8 : 3.5) });
+            if (mini) el(g, "circle", { cx: x, cy: y, r: 10, fill: C.yellow });
+            else el(g, "text", { x, y: y + 7, fill: C.yellow, "font-size": 20, "text-anchor": "middle" }).textContent = n;
+        } else if (n === next) {
+            el(svg, "path", { d: wobCircle(r, x, y, 16), ...stroke(C.chalk, mini ? 8 : 3.5) });
+            el(svg, "path", { d: wobCircle(r, x, y, 22), ...stroke(C.chalk, mini ? 6 : 2.5), class: "pulse" });
+            if (!mini) el(svg, "text", { x, y: y + 7, fill: C.chalk, "font-size": 21, "text-anchor": "middle" }).textContent = n;
+        } else {
+            el(svg, "path", { d: wobCircle(r, x, y, 13), ...stroke(C.dim, mini ? 6 : 2.5), "stroke-dasharray": mini ? "" : "5 5" });
+            if (!mini) el(svg, "text", { x, y: y + 6, fill: C.dim, "font-size": 17, "text-anchor": "middle" }).textContent = n;
+        }
+    }
+
+    // jij, in doel
+    const [kx, ky] = KEEPER;
+    el(svg, "path", { d: `${wobLine(r, kx - 20, ky - 12, kx + 20, ky - 12)} ${wobLine(r, kx + 20, ky - 12, kx + 20, ky + 12)} ${wobLine(r, kx + 20, ky + 12, kx - 20, ky + 12)} ${wobLine(r, kx - 20, ky + 12, kx - 20, ky - 12)}`, ...stroke(C.blue, mini ? 6 : 2.5) });
+    if (!mini) el(svg, "text", { x: kx, y: ky + 6, fill: C.blue, "font-size": 17, "text-anchor": "middle" }).textContent = "jij";
+}
+document.querySelectorAll("svg.lineup").forEach(drawLineup);
+</script>
+</body>
+</html>

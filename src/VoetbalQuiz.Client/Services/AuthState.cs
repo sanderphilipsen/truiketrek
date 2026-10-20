@@ -16,10 +16,23 @@ public class AuthState(ApiClient api) : AuthenticationStateProvider
     {
         if (!_loaded)
         {
-            try { _user = await api.MeAsync(); } catch { _user = null; }
+            _user = await LoadUserAsync();
             _loaded = true;
         }
         return Build();
+    }
+
+    // Na een deploy start de server een minuut of zo op (migraties, seed) en antwoordt hij met fouten.
+    // Dan blijven we het opnieuw proberen (met de spinner) in plaats van de speler naar het loginscherm te sturen.
+    private async Task<UserInfo?> LoadUserAsync()
+    {
+        var deadline = DateTime.UtcNow.AddSeconds(90);
+        while (true)
+        {
+            try { return await api.MeAsync(); }
+            catch when (DateTime.UtcNow < deadline) { await Task.Delay(3000); }
+            catch { return null; }
+        }
     }
 
     public async Task LoginAsync(LoginRequest req) => SetUser(await api.LoginAsync(req));

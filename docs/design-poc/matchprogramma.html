@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Truitje Trek Matchprogramma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Barlow+Condensed:wght@500;600;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* POC "Matchprogramma": de app als een gedrukt wedstrijdboekje.
+   Papier en inkt in plaats van kaarten met schaduw, typografie in plaats van emoji,
+   cijfers groot, uitleg weg. */
+:root {
+    --paper: #efe7d3;
+    --paper-2: #e6dcc3;
+    --ink: #17150f;
+    --ink-soft: #5b5547;
+    --pitch: #1f5a3a;
+    --red: #d2281f;
+    --gold: #e0a812;
+    --rule: 2px solid var(--ink);
+    --display: "Big Shoulders Display", Impact, sans-serif;
+    --cond: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --type: "Courier Prime", "Courier New", monospace;
+}
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    background: #2a2722;
+    color: var(--ink);
+    font-family: var(--cond);
+    padding: 32px 16px 64px;
+}
+.intro {
+    max-width: 1640px; margin: 0 auto 28px; color: var(--paper);
+    display: flex; flex-wrap: wrap; gap: 8px 32px; align-items: baseline;
+}
+.intro h1 { font-family: var(--display); font-weight: 900; font-size: 44px; margin: 0; letter-spacing: .5px; text-transform: uppercase; }
+.intro p { margin: 0; font-size: 18px; opacity: .7; max-width: 60ch; }
+
+.rail { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; max-width: 1640px; margin: 0 auto; }
+.screen-wrap { display: flex; flex-direction: column; gap: 10px; }
+.screen-label { color: var(--paper); opacity: .5; font-family: var(--type); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; }
+
+/* Het "toestel": 375 breed, papier met lichte korrel */
+.phone {
+    width: 375px; height: 780px; max-width: calc(100vw - 32px);
+    background:
+        radial-gradient(circle at 20% 10%, rgba(255,255,255,.35), transparent 40%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E"),
+        var(--paper);
+    border-radius: 28px; overflow: hidden; position: relative;
+    display: flex; flex-direction: column;
+}
+.body { flex: 1; padding: 0 18px; display: flex; flex-direction: column; min-height: 0; }
+
+/* ---------- Kop als krantenkop ---------- */
+.masthead { padding: 22px 18px 0; }
+.masthead-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; }
+.logo { font-family: var(--display); font-weight: 900; font-size: 30px; line-height: .85; text-transform: uppercase; letter-spacing: .3px; }
+.logo em { font-style: normal; color: var(--red); }
+.issue { font-family: var(--type); font-size: 12px; text-align: right; line-height: 1.3; color: var(--ink-soft); }
+.double-rule { border-top: var(--rule); border-bottom: 1px solid var(--ink); height: 5px; margin-top: 10px; }
+
+/* Truitje met rugnummer als avatar */
+.shirt { width: 40px; height: 40px; flex: none; position: relative; display: grid; place-items: center; }
+.shirt svg { position: absolute; inset: 0; }
+.shirt b { position: relative; font-family: var(--display); font-weight: 900; font-size: 17px; color: var(--paper); margin-top: 4px; }
+
+/* ---------- Home ---------- */
+.kicker { font-family: var(--type); font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-soft); }
+.today { margin-top: 22px; }
+.today h2 {
+    font-family: var(--display); font-weight: 900; text-transform: uppercase;
+    font-size: 76px; line-height: .82; margin: 6px 0 0; letter-spacing: -.5px;
+}
+.today h2 span { color: var(--red); }
+
+.score-line { display: flex; align-items: flex-end; justify-content: space-between; margin-top: 18px; }
+.ticks { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; flex: 1; margin-right: 18px; }
+.tick { height: 30px; border: 2px solid var(--ink); display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: 14px; }
+.tick.ok { background: var(--pitch); border-color: var(--pitch); color: var(--paper); }
+.tick.no { background: repeating-linear-gradient(-45deg, var(--red) 0 3px, transparent 3px 6px); border-color: var(--red); color: var(--red); }
+.tick.now { background: var(--ink); color: var(--paper); }
+.big-score { text-align: right; line-height: .8; }
+.big-score b { font-family: var(--display); font-weight: 900; font-size: 54px; display: block; }
+.big-score small { font-family: var(--type); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+
+.slab {
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--ink); color: var(--paper); text-decoration: none;
+    font-family: var(--display); font-weight: 900; font-size: 30px; text-transform: uppercase;
+    padding: 16px 18px 14px; margin-top: 20px; letter-spacing: .5px;
+    box-shadow: 5px 5px 0 var(--red);
+    transition: transform .08s, box-shadow .08s;
+}
+.slab:active { transform: translate(5px, 5px); box-shadow: 0 0 0 var(--red); }
+.slab .arrow { font-size: 34px; line-height: 1; }
+
+/* Ticketje voor een online tafel: perforatie en stub */
+.ticket {
+    margin-top: 26px; display: flex; text-decoration: none; color: inherit;
+    background: var(--paper-2); border: var(--rule); position: relative;
+}
+.ticket-main { flex: 1; padding: 10px 14px; }
+.ticket-main .kicker { font-size: 11px; }
+.ticket-main b { font-family: var(--display); font-weight: 900; font-size: 26px; text-transform: uppercase; display: block; line-height: 1; margin-top: 2px; }
+.ticket-stub {
+    width: 84px; border-left: 2px dashed var(--ink); display: grid; place-items: center; text-align: center;
+    font-family: var(--display); font-weight: 900; font-size: 34px; line-height: .8;
+}
+.ticket-stub small { display: block; font-family: var(--type); font-size: 10px; font-weight: 400; letter-spacing: 1px; margin-top: 4px; }
+.ticket::before, .ticket::after {
+    content: ""; position: absolute; right: 75px; width: 16px; height: 16px; border-radius: 50%;
+    background: var(--paper); border: var(--rule);
+}
+.ticket::before { top: -9px; clip-path: inset(50% 0 0 0); }
+.ticket::after { bottom: -9px; clip-path: inset(0 0 50% 0); }
+
+/* Special als schuine sticker */
+.sticker {
+    align-self: flex-start; margin-top: 22px; transform: rotate(-2.5deg);
+    background: var(--gold); padding: 8px 14px 6px; border: var(--rule);
+    font-family: var(--display); font-weight: 900; text-transform: uppercase; font-size: 22px; line-height: 1;
+}
+.sticker small { font-family: var(--type); font-size: 11px; font-weight: 400; text-transform: none; display: block; margin-top: 3px; }
+
+/* ---------- Tabbar: alleen woorden ---------- */
+.tabbar { display: flex; border-top: var(--rule); margin-top: auto; }
+.tabbar a {
+    flex: 1; text-align: center; padding: 14px 0 22px; text-decoration: none; color: var(--ink-soft);
+    font-family: var(--display); font-weight: 700; font-size: 17px; text-transform: uppercase; letter-spacing: 1px;
+    border-right: 1px solid rgba(23,21,15,.25);
+}
+.tabbar a:last-child { border-right: 0; }
+.tabbar a.on { color: var(--ink); background: var(--paper-2); box-shadow: inset 0 4px 0 var(--red); }
+
+/* ---------- Vraagscherm ---------- */
+.q-top { display: flex; justify-content: space-between; align-items: baseline; padding: 20px 18px 0; }
+.q-top .count { font-family: var(--display); font-weight: 900; font-size: 22px; text-transform: uppercase; }
+.q-top .clock { font-family: var(--display); font-weight: 900; font-size: 40px; line-height: 1; font-variant-numeric: tabular-nums; }
+.fuse { height: 8px; margin: 8px 18px 0; background: var(--paper-2); border: 2px solid var(--ink); }
+.fuse i { display: block; height: 100%; width: 62%; background: var(--ink); animation: burn 23s linear forwards; }
+@keyframes burn { to { width: 0; background: var(--red); } }
+@media (prefers-reduced-motion: reduce) { .fuse i { animation: none; } }
+
+.q-title { font-family: var(--display); font-weight: 900; font-size: 58px; line-height: .85; text-transform: uppercase; margin: 22px 0 14px; }
+.tips { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.tips li { display: grid; grid-template-columns: 30px 1fr; gap: 10px; align-items: start; }
+.tips .n { font-family: var(--display); font-weight: 900; font-size: 30px; line-height: .9; color: var(--red); }
+.tips p { margin: 0; font-family: var(--type); font-size: 16px; line-height: 1.35; }
+.tips li.locked .n { color: var(--ink-soft); }
+.tips li.locked p {
+    height: 40px; border: 2px dashed var(--ink-soft);
+    background: repeating-linear-gradient(-45deg, rgba(23,21,15,.08) 0 6px, transparent 6px 12px);
+    font-family: var(--cond); font-weight: 600; font-size: 14px; color: var(--ink-soft);
+    display: flex; align-items: center; padding: 0 10px; text-transform: uppercase; letter-spacing: 1px;
+}
+.answer { margin-top: auto; padding-bottom: 18px; }
+.answer label { display: block; }
+.answer input {
+    width: 100%; background: transparent; border: 0; border-bottom: 4px solid var(--ink); border-radius: 0;
+    font-family: var(--display); font-weight: 900; font-size: 34px; text-transform: uppercase; padding: 4px 0;
+    color: var(--ink); outline: none;
+}
+.answer input::placeholder { color: rgba(23,21,15,.28); }
+.answer-row { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+.worth { font-family: var(--type); font-size: 13px; }
+.worth b { font-family: var(--display); font-size: 24px; }
+.shoot {
+    background: var(--red); color: var(--paper); border: 0; font-family: var(--display); font-weight: 900;
+    font-size: 24px; text-transform: uppercase; padding: 10px 22px 8px; box-shadow: 4px 4px 0 var(--ink); cursor: pointer;
+}
+
+/* ---------- Resultaat ---------- */
+.result { flex: 1; display: flex; flex-direction: column; padding: 0 18px; position: relative; }
+.stamp {
+    margin: 64px auto 0; transform: rotate(-8deg);
+    border: 6px solid var(--pitch); color: var(--pitch); padding: 4px 18px 0;
+    font-family: var(--display); font-weight: 900; font-size: 112px; line-height: .9; text-transform: uppercase;
+    mix-blend-mode: multiply; opacity: .92;
+    animation: thump .35s cubic-bezier(.2, 1.6, .4, 1) both;
+}
+@keyframes thump { from { transform: rotate(-8deg) scale(1.8); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .stamp { animation: none; } }
+.who-was { text-align: center; margin-top: 42px; }
+.who-was b { display: block; font-family: var(--display); font-weight: 900; font-size: 44px; text-transform: uppercase; line-height: .9; margin-top: 6px; }
+.gain { display: flex; justify-content: center; gap: 28px; margin-top: 30px; border-top: var(--rule); border-bottom: var(--rule); padding: 12px 0 10px; }
+.gain div { text-align: center; }
+.gain b { display: block; font-family: var(--display); font-weight: 900; font-size: 44px; line-height: .9; }
+.gain b.plus { color: var(--pitch); }
+.gain small { font-family: var(--type); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+.result .slab { margin-top: auto; margin-bottom: 22px; }
+
+/* ---------- Stand als krantentabel ---------- */
+.table-title { font-family: var(--display); font-weight: 900; font-size: 50px; text-transform: uppercase; line-height: .85; margin: 22px 0 4px; }
+.switch { display: flex; gap: 16px; font-family: var(--display); font-weight: 700; font-size: 18px; text-transform: uppercase; margin: 8px 0 12px; }
+.switch span { color: var(--ink-soft); }
+.switch span.on { color: var(--ink); text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 5px; text-decoration-color: var(--red); }
+table { width: 100%; border-collapse: collapse; font-family: var(--cond); font-size: 19px; }
+thead th { font-family: var(--type); font-weight: 400; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; text-align: left; border-bottom: var(--rule); padding: 0 0 4px; color: var(--ink-soft); }
+th.num, td.num { text-align: right; }
+td { padding: 9px 0 7px; border-bottom: 1px solid rgba(23,21,15,.2); font-weight: 600; }
+td.pos { font-family: var(--display); font-weight: 900; font-size: 22px; width: 38px; }
+td.pts { font-family: var(--display); font-weight: 900; font-size: 22px; font-variant-numeric: tabular-nums; }
+td .trend { font-size: 12px; margin-left: 6px; vertical-align: 2px; }
+.up { color: var(--pitch); } .down { color: var(--red); }
+tr.me td { background: var(--ink); color: var(--paper); }
+tr.me td:first-child { padding-left: 8px; } tr.me td:last-child { padding-right: 8px; }
+tr.gap td { border: 0; text-align: center; color: var(--ink-soft); padding: 2px 0; letter-spacing: 4px; }
+</style>
+</head>
+<body>
+
+<header class="intro">
+    <h1>Matchprogramma</h1>
+    <p>De app als gedrukt wedstrijdboekje: papier en inkt, cijfers groot, geen emoji, geen uitlegzinnen. Elk scherm heeft één ding dat je moet doen.</p>
+</header>
+
+<main class="rail">
+
+    <!-- 1. Home -->
+    <section class="screen-wrap">
+        <span class="screen-label">01 · Home</span>
+        <div class="phone">
+            <div class="masthead">
+                <div class="masthead-row">
+                    <div class="logo">Truitje<br><em>Trek</em></div>
+                    <div class="issue">ma 19 okt<br>editie 293</div>
+                    <div class="shirt" aria-label="Jouw profiel">
+                        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M13 3 L4 8 L1 17 L8 19 L8 38 L32 38 L32 19 L39 17 L36 8 L27 3 Q20 9 13 3 Z" fill="#1f5a3a" stroke="#17150f" stroke-width="2" stroke-linejoin="round"/></svg>
+                        <b>7</b>
+                    </div>
+                </div>
+                <div class="double-rule"></div>
+            </div>
+
+            <div class="body">
+                <div class="today">
+                    <div class="kicker">Vandaag</div>
+                    <h2>Wie<br>ben <span>ik?</span></h2>
+                </div>
+
+                <div class="score-line">
+                    <div class="ticks" aria-label="4 van 10 gespeeld">
+                        <span class="tick ok">1</span><span class="tick ok">2</span><span class="tick no">3</span><span class="tick ok">4</span>
+                        <span class="tick now">5</span><span class="tick">6</span><span class="tick">7</span><span class="tick">8</span><span class="tick">9</span><span class="tick">10</span>
+                    </div>
+                    <div class="big-score"><b>240</b><small>punten</small></div>
+                </div>
+
+                <a class="slab" href="#">Vraag 5 <span class="arrow">→</span></a>
+
+                <a class="ticket" href="#">
+                    <div class="ticket-main">
+                        <div class="kicker">Jouw tafel wacht</div>
+                        <b>Café De Kroon</b>
+                    </div>
+                    <div class="ticket-stub">2/4<small>spelers</small></div>
+                </a>
+
+                <div class="sticker">Derby-special<small>Club – Anderlecht · nog 2 dagen</small></div>
+            </div>
+
+            <nav class="tabbar">
+                <a class="on" href="#">Spel</a><a href="#">Online</a><a href="#">Stand</a><a href="#">Ik</a>
+            </nav>
+        </div>
+    </section>
+
+    <!-- 2. Vraag -->
+    <section class="screen-wrap">
+        <span class="screen-label">02 · Vraag</span>
+        <div class="phone">
+            <div class="q-top">
+                <span class="count">Vraag 5 / 10</span>
+                <span class="clock">0:23</span>
+            </div>
+            <div class="fuse" aria-hidden="true"><i></i></div>
+
+            <div class="body">
+                <h2 class="q-title">Wie<br>ben ik?</h2>
+                <ol class="tips">
+                    <li><span class="n">1</span><p>Ik debuteerde op mijn zeventiende in het eerste elftal van Anderlecht.</p></li>
+                    <li><span class="n">2</span><p>Via Hamburg trok ik in 2008 naar Engeland.</p></li>
+                    <li class="locked"><span class="n">3</span><p>Over 0:23</p></li>
+                </ol>
+
+                <div class="answer">
+                    <label><span class="sr-only">Jouw antwoord</span><input type="text" placeholder="Naam…" value="Kompa"></label>
+                    <div class="answer-row">
+                        <span class="worth">nu nog <b>80</b> pt</span>
+                        <button class="shoot">Schiet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Resultaat -->
+    <section class="screen-wrap">
+        <span class="screen-label">03 · Resultaat</span>
+        <div class="phone">
+            <div class="q-top">
+                <span class="count">Vraag 5 / 10</span>
+            </div>
+            <div class="result">
+                <div class="stamp">Goal</div>
+                <div class="who-was">
+                    <span class="kicker">Het was</span>
+                    <b>Vincent<br>Kompany</b>
+                </div>
+                <div class="gain">
+                    <div><b class="plus">+80</b><small>deze vraag</small></div>
+                    <div><b>320</b><small>vandaag</small></div>
+                </div>
+                <a class="slab" href="#">Vraag 6 <span class="arrow">→</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Stand -->
+    <section class="screen-wrap">
+        <span class="screen-label">04 · Stand</span>
+        <div class="phone">
+            <div class="masthead">
+                <div class="masthead-row">
+                    <div class="logo">Truitje<br><em>Trek</em></div>
+                    <div class="issue">ma 19 okt<br>editie 293</div>
+                </div>
+                <div class="double-rule"></div>
+            </div>
+            <div class="body">
+                <h2 class="table-title">Stand</h2>
+                <div class="switch"><span>Dag</span><span class="on">Week</span><span>Maand</span><span>Rating</span></div>
+                <table>
+                    <thead><tr><th>#</th><th>Speler</th><th class="num">Pt</th></tr></thead>
+                    <tbody>
+                        <tr><td class="pos">1</td><td>Lotte_V <span class="trend up">▲2</span></td><td class="num pts">2 840</td></tr>
+                        <tr><td class="pos">2</td><td>DeKeeper</td><td class="num pts">2 710</td></tr>
+                        <tr><td class="pos">3</td><td>Rode Bram <span class="trend down">▼1</span></td><td class="num pts">2 655</td></tr>
+                        <tr><td class="pos">4</td><td>Sofie88</td><td class="num pts">2 400</td></tr>
+                        <tr class="gap"><td colspan="3">···</td></tr>
+                        <tr class="me"><td class="pos">9</td><td>Jij <span class="trend">▲3</span></td><td class="num pts">1 980</td></tr>
+                        <tr><td class="pos">10</td><td>Tibo.W</td><td class="num pts">1 935</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <nav class="tabbar">
+                <a href="#">Spel</a><a href="#">Online</a><a class="on" href="#">Stand</a><a href="#">Ik</a>
+            </nav>
+        </div>
+    </section>
+
+</main>
+<style>.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);}</style>
+</body>
+</html>

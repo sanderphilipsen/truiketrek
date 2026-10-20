@@ -90,14 +90,21 @@ public class DailyQuestion
 }
 
 /// <summary>Eén poging van een gebruiker op een vraag. Alle tijden zijn servertijden (UTC).</summary>
-public class Attempt
+public class Attempt : AttemptState
 {
     public int Id { get; set; }
     public required string UserId { get; set; }
     public AppUser User { get; set; } = null!;
     public int DailyQuestionId { get; set; }
     public DailyQuestion DailyQuestion { get; set; } = null!;
+}
 
+/// <summary>
+/// De speltoestand van één vraag, gedeeld door <see cref="Attempt"/> (de echte daily) en <see cref="TrainingAttempt"/>,
+/// zodat <see cref="Services.QuestionEngine"/> beide speelt. Zelf geen tabel.
+/// </summary>
+public abstract class AttemptState
+{
     public DateTime StartedAt { get; set; }
     public DateTime? AnsweredAt { get; set; }
 
@@ -120,6 +127,35 @@ public class Attempt
 
     /// <summary>Counter: welke spelers (index) overgeslagen zijn.</summary>
     public List<int> Skipped { get; set; } = [];
+}
+
+// ---------- Training ----------
+
+/// <summary>
+/// Eén trainingsrun: een gebruiker speelt een oude daily opnieuw. Telt nergens mee (geen klassement, XP, reeks of badges),
+/// en staat daarom in een eigen tabel: alles wat <see cref="QuizDbContext.Attempts"/> leest, blijft zo vanzelf competitie.
+/// </summary>
+public class TrainingRun
+{
+    public int Id { get; set; }
+    public required string UserId { get; set; }
+    public AppUser User { get; set; } = null!;
+    public int DailyChallengeId { get; set; }
+    public DailyChallenge DailyChallenge { get; set; } = null!;
+    public DateTime StartedAt { get; set; }
+    /// <summary>Ingevuld zodra de laatste vraag beantwoord is.</summary>
+    public DateTime? FinishedAt { get; set; }
+    public List<TrainingAttempt> Attempts { get; set; } = [];
+}
+
+/// <summary>Een vraag binnen een trainingsrun.</summary>
+public class TrainingAttempt : AttemptState
+{
+    public int Id { get; set; }
+    public int TrainingRunId { get; set; }
+    public TrainingRun TrainingRun { get; set; } = null!;
+    public int DailyQuestionId { get; set; }
+    public DailyQuestion DailyQuestion { get; set; } = null!;
 }
 
 public class Feedback

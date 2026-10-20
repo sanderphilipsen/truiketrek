@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Truitje Trek Krijtlijnen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@500;700;900&family=Saira:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* POC "Krijtlijnen": het scherm ís het veld. Gemaaid gras in ruiten, en alles wat je ziet
+   is getekend met witte lijnen: de middencirkel houdt je score, het strafschopgebied je tips. */
+:root {
+    --g1: #2f7d3a;
+    --g2: #378a43;
+    --line: #f7fbf2;
+    --line-soft: rgba(247,251,242,.55);
+    --flag: #ffd400;
+    --red: #ff5a4a;
+    --cond: "Saira Extra Condensed", "Arial Narrow", sans-serif;
+    --sans: "Saira", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #12301a; color: var(--line); font-family: var(--sans); padding: 32px 16px 64px; }
+.intro { max-width: 1240px; margin: 0 auto 28px; display: flex; flex-wrap: wrap; gap: 8px 32px; align-items: baseline; }
+.intro h1 { font-family: var(--cond); font-weight: 900; font-size: 52px; margin: 0; text-transform: uppercase; line-height: 1; }
+.intro p { margin: 0; font-size: 16px; opacity: .75; max-width: 60ch; }
+.rail { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; max-width: 1240px; margin: 0 auto; }
+.screen-wrap { display: flex; flex-direction: column; gap: 10px; }
+.screen-label { opacity: .55; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+
+.phone {
+    width: 375px; height: 780px; max-width: calc(100vw - 32px);
+    background:
+        repeating-conic-gradient(var(--g1) 0 25%, var(--g2) 0 50%) 0 0 / 120px 120px;
+    border-radius: 28px; overflow: hidden; display: flex; flex-direction: column; position: relative;
+}
+/* buitenlijn van het veld */
+.phone::before { content: ""; position: absolute; inset: 12px; border: 3px solid var(--line-soft); border-radius: 18px; pointer-events: none; }
+.body { flex: 1; display: flex; flex-direction: column; padding: 0 28px; min-height: 0; position: relative; }
+
+.top { display: flex; justify-content: space-between; align-items: baseline; padding: 30px 28px 0; position: relative; }
+.top .brand { font-family: var(--cond); font-weight: 900; font-size: 24px; text-transform: uppercase; letter-spacing: 1px; }
+.top .date { font-family: var(--cond); font-weight: 500; font-size: 18px; opacity: .8; }
+/* hoekvlag */
+.corner { position: absolute; left: 12px; top: 12px; width: 28px; height: 28px; border-right: 3px solid var(--line-soft); border-bottom: 3px solid var(--line-soft); border-bottom-right-radius: 28px; border-top: 0; }
+
+.title { font-family: var(--cond); font-weight: 900; font-size: 62px; line-height: .85; text-transform: uppercase; margin: 26px 0 0; text-shadow: 0 2px 0 rgba(0,0,0,.15); }
+.title small { display: block; font-weight: 500; font-size: 18px; letter-spacing: 3px; opacity: .8; margin-bottom: 6px; }
+
+/* middenlijn + middencirkel met de score */
+.center { position: relative; height: 210px; margin: 18px -28px 0; }
+.center::before { content: ""; position: absolute; left: 12px; right: 12px; top: 50%; height: 3px; background: var(--line-soft); }
+.circle { position: absolute; left: 50%; top: 50%; width: 180px; height: 180px; margin: -90px 0 0 -90px; border: 3px solid var(--line); border-radius: 50%; display: grid; place-items: center; text-align: center; background: radial-gradient(circle, rgba(0,0,0,.08), transparent 70%); }
+.circle b { font-family: var(--cond); font-weight: 900; font-size: 74px; line-height: .8; display: block; }
+.circle small { font-family: var(--cond); font-size: 16px; letter-spacing: 3px; text-transform: uppercase; opacity: .85; }
+.spot { position: absolute; left: 50%; top: 50%; width: 9px; height: 9px; margin: -4px; border-radius: 50%; background: var(--line); }
+
+/* tien "strafschopstippen" langs de lijn = voortgang */
+.spots { display: flex; justify-content: space-between; margin-top: 12px; }
+.spots i { width: 16px; height: 16px; border-radius: 50%; border: 3px solid var(--line-soft); }
+.spots i.ok { background: var(--line); border-color: var(--line); }
+.spots i.no { border-color: var(--red); background: radial-gradient(circle, var(--red) 35%, transparent 40%); }
+.spots i.now { border-color: var(--flag); box-shadow: 0 0 0 4px rgba(255,212,0,.3); }
+
+.kickoff {
+    margin-top: 22px; display: flex; justify-content: space-between; align-items: center; height: 62px; padding: 0 20px; text-decoration: none;
+    background: var(--line); color: var(--g1); font-family: var(--cond); font-weight: 900; font-size: 28px; text-transform: uppercase; letter-spacing: 1px;
+    border-radius: 2px;
+}
+.lines { display: flex; flex-direction: column; margin-top: 16px; }
+.lines a { display: flex; justify-content: space-between; padding: 10px 0; text-decoration: none; color: var(--line); border-top: 2px solid var(--line-soft); font-weight: 600; }
+.lines a span:last-child { font-family: var(--cond); font-weight: 700; color: var(--flag); font-size: 18px; text-transform: uppercase; }
+
+.tabbar { margin-top: auto; display: flex; padding: 0 12px 22px; position: relative; }
+.tabbar a { flex: 1; text-align: center; padding: 14px 0 6px; text-decoration: none; color: var(--line-soft); font-family: var(--cond); font-weight: 700; font-size: 17px; text-transform: uppercase; letter-spacing: 2px; }
+.tabbar a.on { color: var(--line); text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 6px; text-decoration-color: var(--flag); }
+
+/* ---------- Vraag: strafschopgebied ---------- */
+.box18 { margin: 22px -28px 0; border: 3px solid var(--line); border-top: 0; padding: 0 28px 20px; position: relative; }
+.box18::after { content: ""; position: absolute; left: 50%; bottom: -46px; width: 110px; height: 44px; margin-left: -55px; border: 3px solid var(--line); border-top: 0; border-radius: 0 0 110px 110px; }
+.box18 .title { margin-top: 18px; font-size: 54px; }
+.tips { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.tips li { display: grid; grid-template-columns: 26px 1fr; gap: 8px; font-size: 16px; line-height: 1.35; }
+.tips .n { font-family: var(--cond); font-weight: 900; font-size: 26px; line-height: 1; color: var(--flag); }
+.tips li.locked { opacity: .5; font-family: var(--cond); font-size: 18px; letter-spacing: 2px; text-transform: uppercase; }
+.clock { font-family: var(--cond); font-weight: 900; font-size: 38px; color: var(--flag); }
+.answer { margin-top: auto; margin-bottom: 26px; }
+.answer input { width: 100%; background: transparent; border: 0; border-bottom: 3px solid var(--line); color: var(--line); font-family: var(--cond); font-weight: 700; font-size: 36px; text-transform: uppercase; outline: none; padding: 4px 0; }
+.answer input::placeholder { color: var(--line-soft); }
+.answer .row { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; }
+.answer .row span { font-family: var(--cond); font-size: 18px; letter-spacing: 1px; text-transform: uppercase; }
+.answer .row b { color: var(--flag); font-size: 26px; }
+.answer button { background: var(--line); color: var(--g1); border: 0; font-family: var(--cond); font-weight: 900; font-size: 24px; text-transform: uppercase; padding: 10px 24px; border-radius: 2px; }
+
+/* ---------- Resultaat: doel met net ---------- */
+.goal { position: relative; width: 260px; height: 130px; margin: 50px auto 0; border: 5px solid var(--line); border-bottom: 0;
+    background: repeating-linear-gradient(45deg, transparent 0 10px, rgba(247,251,242,.35) 10px 11px), repeating-linear-gradient(-45deg, transparent 0 10px, rgba(247,251,242,.35) 10px 11px); }
+.goal .ball { position: absolute; width: 34px; height: 34px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #fff, #ddd); box-shadow: inset -4px -4px 0 rgba(0,0,0,.15); right: 40px; top: 36px; animation: in .5s cubic-bezier(.3,1.4,.5,1) both; }
+@keyframes in { from { transform: translate(-120px, 160px) scale(1.6); } }
+@media (prefers-reduced-motion: reduce) { .goal .ball { animation: none; } }
+.goal-line { height: 3px; background: var(--line); margin: 0 -28px; }
+.res-word { text-align: center; font-family: var(--cond); font-weight: 900; font-size: 96px; line-height: .9; text-transform: uppercase; margin-top: 26px; }
+.res-was { text-align: center; font-weight: 600; }
+.res-was b { display: block; font-family: var(--cond); font-weight: 700; font-size: 32px; text-transform: uppercase; }
+.res-pts { display: flex; justify-content: center; gap: 28px; margin-top: 18px; font-family: var(--cond); }
+.res-pts b { display: block; font-weight: 900; font-size: 40px; line-height: 1; text-align: center; }
+.res-pts b.plus { color: var(--flag); }
+.res-pts small { font-size: 14px; letter-spacing: 2px; text-transform: uppercase; opacity: .8; }
+.res-go { margin-top: auto; margin-bottom: 30px; }
+</style>
+</head>
+<body>
+<header class="intro">
+    <h1>Krijtlijnen</h1>
+    <p>Het scherm ís het veld. Gemaaid gras in ruiten, en alles is getekend met witte lijnen: de middencirkel houdt je score, het strafschopgebied je tips.</p>
+</header>
+
+<main class="rail">
+    <section class="screen-wrap">
+        <span class="screen-label">01 · Home</span>
+        <div class="phone">
+            <span class="corner"></span>
+            <div class="top"><span class="brand">Truitje Trek</span><span class="date">ma 19 okt</span></div>
+            <div class="body">
+                <h2 class="title"><small>Vandaag</small>Wie ben ik?</h2>
+                <div class="center">
+                    <div class="circle"><div><b>240</b><small>punten</small></div></div>
+                </div>
+                <div class="spots" aria-label="4 van 10 gespeeld"><i class="ok"></i><i class="ok"></i><i class="no"></i><i class="ok"></i><i class="now"></i><i></i><i></i><i></i><i></i><i></i></div>
+                <a class="kickoff" href="#">Vraag 5 <span>→</span></a>
+                <div class="lines">
+                    <a href="#"><span>Derby Club – Anderlecht</span><span>Special</span></a>
+                    <a href="#"><span>Tafel Jens · 2/4</span><span>Aanschuiven</span></a>
+                </div>
+            </div>
+            <nav class="tabbar"><a class="on" href="#">Spel</a><a href="#">Online</a><a href="#">Stand</a><a href="#">Ik</a></nav>
+        </div>
+    </section>
+
+    <section class="screen-wrap">
+        <span class="screen-label">02 · Vraag</span>
+        <div class="phone">
+            <div class="top"><span class="brand">Vraag 5 / 10</span><span class="clock">0:23</span></div>
+            <div class="body">
+                <div class="box18">
+                    <h2 class="title">Wie ben ik?</h2>
+                    <ol class="tips">
+                        <li><span class="n">1</span><span>Ik debuteerde op mijn zeventiende in het eerste elftal van Anderlecht.</span></li>
+                        <li><span class="n">2</span><span>Via Hamburg trok ik in 2008 naar Engeland.</span></li>
+                        <li class="locked"><span class="n">3</span><span>Over 0:23</span></li>
+                    </ol>
+                </div>
+                <div class="answer">
+                    <input placeholder="Naam" value="Kompa" aria-label="Jouw antwoord">
+                    <div class="row"><span>Nog <b>80</b> pt</span><button>Schiet</button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="screen-wrap">
+        <span class="screen-label">03 · Resultaat</span>
+        <div class="phone">
+            <div class="top"><span class="brand">Vraag 5 / 10</span></div>
+            <div class="body">
+                <div class="goal"><span class="ball"></span></div>
+                <div class="goal-line"></div>
+                <div class="res-word">Goal</div>
+                <div class="res-was">Het was<b>Vincent Kompany</b></div>
+                <div class="res-pts"><div><b class="plus">+80</b><small>vraag</small></div><div><b>320</b><small>vandaag</small></div></div>
+                <a class="kickoff res-go" href="#">Vraag 6 <span>→</span></a>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

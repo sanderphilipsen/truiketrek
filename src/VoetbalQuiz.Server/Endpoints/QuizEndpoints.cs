@@ -30,6 +30,7 @@ public static class QuizEndpoints
         var board = app.MapGroup("/api/leaderboard").RequireAuthorization();
 
         board.MapGet("/today", (ClaimsPrincipal user, ResultsService results) => results.GetDailyLeaderboardAsync(UserId(user)));
+        board.MapGet("/special/{id:int}", (int id, ClaimsPrincipal user, ResultsService results) => results.GetSpecialLeaderboardAsync(UserId(user), id));
         board.MapGet("/month/{year:int}/{month:int}", async (int year, int month, ClaimsPrincipal user, MonthRankingService ranking) =>
             year is < 2000 or > 2100 || month is < 1 or > 12
                 ? Results.BadRequest(new ErrorResponse("Ongeldige maand."))

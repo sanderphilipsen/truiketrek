@@ -1,5 +1,6 @@
 @page "/vraag/{Number:int}"
 @page "/special/{SpecialId:int}/vraag/{Number:int}"
+@page "/academie/poging/{RunId:int}/vraag/{Number:int}"
 @attribute [Authorize]
 @implements IDisposable
 @inject ApiClient Api
@@ -13,6 +14,10 @@
         Vraag <b>@Number</b> / @_total
     </h1>
 </div>
+@if (RunId is not null)
+{
+    <p class="training-label">🎓 @TrainingRules.Label</p>
+}
 
 @* Altijd aanwezig: schermlezers horen zo het resultaat ("GOAL! Ronaldo, 80 punten") zodra de vraag afgelopen is. *@
 <p class="sr-only" role="status">@ResultAnnouncement</p>
@@ -86,8 +91,13 @@ else
     /// <summary>Ingevuld als je een special speelt; anders is het de daily.</summary>
     [Parameter] public int? SpecialId { get; set; }
 
-    private string OverviewUrl => SpecialId is { } id ? $"special/{id}" : "daily";
-    private string QuestionUrl(int n) => SpecialId is { } id ? $"special/{id}/vraag/{n}" : $"vraag/{n}";
+    /// <summary>Ingevuld als je een oude daily opnieuw speelt in de academie.</summary>
+    [Parameter] public int? RunId { get; set; }
+
+    private string OverviewUrl => RunId is { } run ? $"academie/poging/{run}" : SpecialId is { } id ? $"special/{id}" : "daily";
+    private string QuestionUrl(int n) => RunId is { } run ? $"academie/poging/{run}/vraag/{n}"
+        : SpecialId is { } id ? $"special/{id}/vraag/{n}" : $"vraag/{n}";
+    private string QuizApi => RunId is { } run ? ApiClient.TrainingRun(run) : ApiClient.Quiz(SpecialId);
 
     private QuestionState? _state;
     private int _total = GameRules.QuestionsPerDay;
@@ -113,8 +123,8 @@ else
     {
         // Bij "Volgende vraag" hergebruikt Blazor deze component met een nieuw nummer.
         (_state, _error) = (null, null);
-        try { _total = (await Api.GetDailyAsync(SpecialId)).Questions.Count; } catch (ApiException) { }
-        await RunAsync(() => Api.StartAsync(Number, SpecialId));
+        try { _total = (await Api.GetOverviewAsync(QuizApi)).Questions.Count; } catch (ApiException) { }
+        await RunAsync(() => Api.StartAsync(QuizApi, Number));
         StartTimer();
     }
 
@@ -142,7 +152,7 @@ else
                 if (needsRefresh && !_busy && DateTime.UtcNow - _lastRefresh > TimeSpan.FromMilliseconds(500))
                 {
                     _lastRefresh = DateTime.UtcNow;
-                    await RunAsync(() => Api.GetQuestionAsync(Number, SpecialId));
+                    await RunAsync(() => Api.GetQuestionAsync(QuizApi, Number));
                 }
                 StateHasChanged();
             }
@@ -152,11 +162,11 @@ else
 
     private async Task<QuestionPlay.Feedback?> PlayAsync(string guess)
     {
-        await RunAsync(() => Api.GuessAsync(Number, guess, SpecialId), busy: true);
+        await RunAsync(() => Api.GuessAsync(QuizApi, Number, guess), busy: true);
         return _state is null ? null : new(_state.LastWrongGuess, _state.View, _state.Result is not null);
     }
 
-    private Task GiveUpAsync() => RunAsync(() => Api.GiveUpAsync(Number, SpecialId), busy: true);
+    private Task GiveUpAsync() => RunAsync(() => Api.GiveUpAsync(QuizApi, Number), busy: true);
 
     private async Task RunAsync(Func<Task<QuestionState>> call, bool busy = false)
     {

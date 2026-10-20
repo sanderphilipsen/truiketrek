@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Truitje Trek Teletekst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<style>
+/* POC "Teletekst": pagina 801, zondagavond, de uitslagen. Acht kleuren, één lettertype,
+   blokjes in plaats van iconen. De gekleurde knoppen onderaan zijn de navigatie. */
+:root {
+    --bk: #000; --wh: #fff; --ye: #ffff00; --cy: #00ffff; --gr: #00ff00; --rd: #ff0000; --mg: #ff00ff; --bl: #0000ff;
+    --tt: "VT323", "Courier New", monospace;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #101014; color: var(--wh); font-family: var(--tt); padding: 32px 16px 64px; font-size: 22px; }
+.intro { max-width: 1240px; margin: 0 auto 28px; display: flex; flex-wrap: wrap; gap: 8px 32px; align-items: baseline; }
+.intro h1 { margin: 0; font-weight: 400; font-size: 52px; color: var(--ye); background: var(--bl); padding: 0 12px; }
+.intro p { margin: 0; font-size: 22px; color: #aaa; max-width: 60ch; line-height: 1.1; }
+.rail { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; max-width: 1240px; margin: 0 auto; }
+.screen-wrap { display: flex; flex-direction: column; gap: 10px; }
+.screen-label { color: #777; font-size: 20px; letter-spacing: 2px; text-transform: uppercase; }
+
+.phone {
+    width: 375px; height: 780px; max-width: calc(100vw - 32px);
+    background: var(--bk); border-radius: 28px; overflow: hidden; display: flex; flex-direction: column; position: relative;
+    line-height: 1;
+}
+/* scanlines */
+.phone::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 1px, transparent 1px 3px); }
+.body { flex: 1; display: flex; flex-direction: column; padding: 0 14px; min-height: 0; }
+
+.status { display: flex; justify-content: space-between; padding: 20px 14px 6px; font-size: 22px; }
+.status .p { color: var(--wh); }
+.status .ch { color: var(--ye); }
+.status .t { color: var(--wh); }
+
+.banner { display: flex; align-items: stretch; margin: 0 14px; }
+.banner .blk { width: 22px; background: var(--c); }
+.banner h2 {
+    flex: 1; margin: 0; background: var(--bl); color: var(--ye); font-weight: 400; font-size: 34px; padding: 8px 10px 2px;
+    transform-origin: top; letter-spacing: 1px;
+}
+.dh { display: inline-block; transform: scaleY(1.9); transform-origin: top; margin: 14px 0 30px; }
+
+.row { display: flex; justify-content: space-between; padding: 3px 0; font-size: 24px; }
+.c-ye { color: var(--ye); } .c-cy { color: var(--cy); } .c-gr { color: var(--gr); } .c-rd { color: var(--rd); } .c-mg { color: var(--mg); } .c-wh { color: var(--wh); }
+.big { font-size: 64px; line-height: .8; }
+.spacer { height: 14px; }
+
+/* tien vragen als teletekst-blokjes */
+.blocks { display: flex; gap: 4px; margin: 6px 0; }
+.blocks i { flex: 1; height: 26px; background: #333; }
+.blocks i.ok { background: var(--gr); }
+.blocks i.no { background: var(--rd); }
+.blocks i.now { background: var(--ye); animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { background: #333; } }
+@media (prefers-reduced-motion: reduce) { .blocks i.now { animation: none; } }
+
+.press { display: block; margin-top: 14px; background: var(--ye); color: var(--bk); text-decoration: none; font-size: 34px; padding: 10px 12px 6px; }
+.press small { font-size: 22px; float: right; margin-top: 6px; }
+
+.index { margin-top: 12px; }
+.index a { display: flex; justify-content: space-between; text-decoration: none; color: var(--wh); padding: 4px 0; font-size: 24px; border-bottom: 1px dotted #333; }
+.index a span:last-child { color: var(--cy); }
+
+/* Fastext-knoppen = tabbar */
+.fastext { margin-top: auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+.fastext a { text-decoration: none; text-align: center; padding: 10px 0 24px; font-size: 22px; color: var(--bk); }
+.fastext a:nth-child(1) { background: var(--rd); color: var(--wh); }
+.fastext a:nth-child(2) { background: var(--gr); }
+.fastext a:nth-child(3) { background: var(--ye); }
+.fastext a:nth-child(4) { background: var(--cy); }
+.fastext a.on { text-decoration: underline; text-underline-offset: 4px; }
+
+/* ---------- Vraag ---------- */
+.tips { margin-top: 10px; }
+.tips p { margin: 0 0 12px; font-size: 25px; line-height: 1.05; color: var(--wh); }
+.tips p b { font-weight: 400; color: var(--cy); margin-right: 6px; }
+.tips p.locked { color: #555; }
+.answer { margin-top: auto; margin-bottom: 14px; }
+.answer .lbl { color: var(--cy); font-size: 22px; }
+.answer input { width: 100%; background: var(--bk); border: 0; border-bottom: 3px solid var(--ye); color: var(--ye); font-family: var(--tt); font-size: 42px; padding: 4px 0; outline: none; text-transform: uppercase; caret-color: var(--ye); }
+.answer .go { display: flex; justify-content: space-between; margin-top: 10px; }
+.answer button { background: var(--gr); border: 0; font-family: var(--tt); font-size: 30px; padding: 6px 18px 2px; }
+
+/* ---------- Resultaat ---------- */
+.goal { margin-top: 40px; text-align: center; }
+.goal .word { display: inline-block; font-size: 80px; color: var(--gr); transform: scaleY(2); transform-origin: top; letter-spacing: 6px; }
+.res { margin-top: 130px; }
+.res-go { margin-top: auto; margin-bottom: 14px; }
+</style>
+</head>
+<body>
+<header class="intro">
+    <h1>Teletekst</h1>
+    <p>Pagina 801 op zondagavond. Acht kleuren, één lettertype, blokjes in plaats van iconen. De vier gekleurde knoppen onderaan zijn de navigatie.</p>
+</header>
+
+<main class="rail">
+    <section class="screen-wrap">
+        <span class="screen-label">01 · Home</span>
+        <div class="phone">
+            <div class="status"><span class="p">P801</span><span class="ch">TRUITJE TREK</span><span class="t">ma 19 okt 20:41</span></div>
+            <div class="banner"><span class="blk" style="--c:var(--rd)"></span><h2>DAGQUIZ</h2><span class="blk" style="--c:var(--ye)"></span></div>
+            <div class="body">
+                <span class="dh c-cy" style="font-size:38px">WIE BEN IK?</span>
+                <div class="spacer"></div>
+                <div class="blocks" aria-label="4 van 10 gespeeld"><i class="ok"></i><i class="ok"></i><i class="no"></i><i class="ok"></i><i class="now"></i><i></i><i></i><i></i><i></i><i></i></div>
+                <div class="row"><span class="c-wh">gespeeld</span><span class="c-wh">4/10</span></div>
+                <div class="row"><span class="c-wh">punten</span><span class="c-ye big">240</span></div>
+                <div class="row"><span class="c-wh">plaats</span><span class="c-gr">9e ▲3</span></div>
+
+                <a class="press" href="#">VRAAG 5 <small>802 ›</small></a>
+
+                <div class="index">
+                    <a href="#"><span class="c-mg">DERBY Club-Anderlecht</span><span>810</span></a>
+                    <a href="#"><span>Tafel Jens 2/4 wacht</span><span>820</span></a>
+                    <a href="#"><span>Dagwinnaar: Lotte_V 720</span><span>830</span></a>
+                </div>
+            </div>
+            <nav class="fastext"><a class="on" href="#">SPEL</a><a href="#">ONLINE</a><a href="#">STAND</a><a href="#">IK</a></nav>
+        </div>
+    </section>
+
+    <section class="screen-wrap">
+        <span class="screen-label">02 · Vraag</span>
+        <div class="phone">
+            <div class="status"><span class="p">P802</span><span class="ch">VRAAG 5/10</span><span class="t c-rd">0:23</span></div>
+            <div class="banner"><span class="blk" style="--c:var(--cy)"></span><h2>WIE BEN IK?</h2><span class="blk" style="--c:var(--mg)"></span></div>
+            <div class="body">
+                <div class="tips">
+                    <div class="spacer"></div>
+                    <p><b>1</b>Ik debuteerde op mijn zeventiende in het eerste elftal van Anderlecht.</p>
+                    <p><b>2</b>Via Hamburg trok ik in 2008 naar Engeland.</p>
+                    <p class="locked"><b>3</b>░░░░░░░░ binnen 0:23</p>
+                </div>
+                <div class="answer">
+                    <div class="lbl">NAAM:</div>
+                    <input value="KOMPA_" aria-label="Jouw antwoord">
+                    <div class="go"><span class="c-ye" style="margin-top:8px">nog 80 pt</span><button>OK ›</button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="screen-wrap">
+        <span class="screen-label">03 · Resultaat</span>
+        <div class="phone">
+            <div class="status"><span class="p">P802</span><span class="ch">VRAAG 5/10</span><span class="t">20:41</span></div>
+            <div class="banner"><span class="blk" style="--c:var(--gr)"></span><h2>UITSLAG</h2><span class="blk" style="--c:var(--gr)"></span></div>
+            <div class="body">
+                <div class="goal"><span class="word">GOAL</span></div>
+                <div class="res">
+                    <div class="row"><span>het was</span><span class="c-cy">V. KOMPANY</span></div>
+                    <div class="row"><span>deze vraag</span><span class="c-gr">+80</span></div>
+                    <div class="row"><span>vandaag</span><span class="c-ye big">320</span></div>
+                    <div class="blocks"><i class="ok"></i><i class="ok"></i><i class="no"></i><i class="ok"></i><i class="ok"></i><i></i><i></i><i></i><i></i><i></i></div>
+                </div>
+                <a class="press res-go" href="#">VRAAG 6 <small>802 ›</small></a>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

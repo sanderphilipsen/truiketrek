@@ -1,0 +1,106 @@
+@page "/academie/{Date}"
+@page "/academie/special/{SpecialId:int}"
+@attribute [Authorize]
+@inject ApiClient Api
+@inject NavigationManager Nav
+
+<PageTitle>Academie – Truitje Trek</PageTitle>
+
+<div class="question-head">
+    <a href="academie" class="back">‹ Academie</a>
+</div>
+
+@if (_error is not null)
+{
+    <p class="error" role="alert">@_error</p>
+}
+else if (_day is null)
+{
+    <div class="center-msg"><Spinner /></div>
+}
+else
+{
+    var what = _day.Special is null ? "deze daily" : "deze special";
+
+    <section class="card hero">
+        @if (_day.Special is { } sp)
+        {
+            <div class="date">Special · @Training.SpecialDates(sp)</div>
+            <h1>@sp.Icon @sp.Name</h1>
+        }
+        else
+        {
+            <div class="date">@DutchDates.DayMonth(_day.Date)</div>
+            <h1>Academie</h1>
+        }
+        <div class="type-banner">@QuestionTypes.Label(_day.Types)</div>
+        <div class="muted">
+            @_day.Questions vragen · @Difficulty.Stars((int)Math.Round(_day.Difficulty)) ·
+            @(_day.Players == 1 ? "1 speler" : $"{_day.Players} spelers") @(_day.Special is null ? "die dag" : "in de special")
+        </div>
+        @if (_day.SharesWithToday)
+        {
+            @* Een vraag komt vandaag terug in de daily: eerst die spelen, anders ken je het antwoord al. *@
+            <p class="training-result">Een van deze vragen zit ook in de daily van vandaag. Speel eerst de daily van vandaag.</p>
+            <a class="btn primary big" href="daily">Naar de daily</a>
+        }
+        else
+        {
+            <button class="btn primary big" @onclick="StartAsync" disabled="@_starting">
+                @(_day.Real is null && _day.Runs.Count == 0 ? $"Speel {what}" : "Opnieuw spelen")
+            </button>
+        }
+        <p class="muted training-note">@TrainingRules.Label</p>
+    </section>
+
+    <h2 class="section-title">Jouw scores</h2>
+    @if (_day.Real is null && _day.Runs.Count == 0)
+    {
+        <div class="card center muted">Je speelde @what nog nooit.</div>
+    }
+    else
+    {
+        <TrainingScores Real="_day.Real" Runs="_day.Runs" Questions="_day.Questions" />
+    }
+}
+
+@code {
+    /// <summary>Een daily (yyyy-MM-dd)...</summary>
+    [Parameter] public string? Date { get; set; }
+
+    /// <summary>...of een afgelopen special.</summary>
+    [Parameter] public int? SpecialId { get; set; }
+
+    private TrainingDayDetail? _day;
+    private string? _error;
+    private bool _starting;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        (_day, _error) = (null, null);
+        try
+        {
+            if (SpecialId is { } id) _day = await Api.GetTrainingSpecialAsync(id);
+            else if (DateOnly.TryParseExact(Date, "yyyy-MM-dd", out var date)) _day = await Api.GetTrainingDayAsync(date);
+            else _error = "Deze dag bestaat niet.";
+        }
+        catch (ApiException ex) { _error = ex.Message; }
+    }
+
+    private async Task StartAsync()
+    {
+        _starting = true;
+        try
+        {
+            var run = _day!.Special is { } sp
+                ? await Api.StartTrainingSpecialRunAsync(sp.Id)
+                : await Api.StartTrainingRunAsync(_day.Date);
+            Nav.NavigateTo($"academie/poging/{run.Id}/vraag/1");
+        }
+        catch (ApiException ex)
+        {
+            _error = ex.Message;
+            _starting = false;
+        }
+    }
+}

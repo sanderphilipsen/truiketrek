@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Truitje Trek Scheidsrechter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* POC "Scheidsrechter": het boekje van de ref en de tv-beelden van de VAR.
+   Je dag staat genoteerd als wedstrijdminuten, een fout antwoord is een gele kaart,
+   en elk antwoord gaat langs de VAR. */
+:root {
+    --kit: #121214;
+    --kit-2: #1c1c20;
+    --paper: #f6f1e1;
+    --pen: #1f2e7a;
+    --yellow: #ffd400;
+    --red: #e10600;
+    --var: #12d6b8;
+    --tv: #0b1636;
+    --text: #f2f2f2;
+    --soft: #8d8d96;
+    --tvf: "Teko", "Arial Narrow", sans-serif;
+    --hand: "Kalam", "Comic Sans MS", cursive;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #070708; color: var(--text); font-family: var(--tvf); padding: 32px 16px 64px; }
+.intro { max-width: 1240px; margin: 0 auto 28px; display: flex; flex-wrap: wrap; gap: 8px 32px; align-items: baseline; }
+.intro h1 { font-weight: 600; font-size: 56px; margin: 0; line-height: 1; text-transform: uppercase; color: var(--yellow); }
+.intro p { margin: 0; font-size: 21px; opacity: .75; max-width: 60ch; line-height: 1.1; }
+.rail { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; max-width: 1240px; margin: 0 auto; }
+.screen-wrap { display: flex; flex-direction: column; gap: 10px; }
+.screen-label { opacity: .55; font-size: 18px; letter-spacing: 2px; text-transform: uppercase; }
+
+.phone {
+    width: 375px; height: 780px; max-width: calc(100vw - 32px);
+    background: repeating-linear-gradient(90deg, var(--kit) 0 18px, var(--kit-2) 18px 36px);
+    border-radius: 28px; overflow: hidden; display: flex; flex-direction: column; position: relative;
+}
+.body { flex: 1; display: flex; flex-direction: column; padding: 0 16px; min-height: 0; }
+
+/* Tv-scorebug */
+.bug { display: flex; align-items: stretch; margin: 22px 16px 0; height: 34px; font-size: 24px; line-height: 38px; }
+.bug span { padding: 0 10px; }
+.bug .tt { background: var(--text); color: var(--kit); font-weight: 600; }
+.bug .sc { background: var(--tv); font-weight: 600; }
+.bug .min { background: var(--var); color: var(--kit); font-weight: 600; }
+.bug .date { margin-left: auto; color: var(--soft); padding: 0; }
+
+/* Het boekje van de scheidsrechter */
+.notebook {
+    margin-top: 20px; background: repeating-linear-gradient(var(--paper) 0 29px, #d9d1b9 29px 30px); color: var(--pen);
+    border-radius: 4px 10px 10px 4px; padding: 14px 16px 10px 34px; position: relative; font-family: var(--hand);
+    box-shadow: 0 8px 18px rgba(0,0,0,.4); transform: rotate(-1deg);
+}
+.notebook::before { content: ""; position: absolute; left: 10px; top: 10px; bottom: 10px; width: 10px; background: radial-gradient(circle, #555 3px, transparent 4px) 0 0 / 10px 22px; }
+.notebook h2 { font-family: var(--hand); font-weight: 700; font-size: 30px; margin: 0; line-height: 1.1; }
+.notebook .lines { margin-top: 4px; font-size: 20px; line-height: 30px; }
+.notebook .lines div { display: flex; justify-content: space-between; }
+.notebook .lines .min { width: 46px; color: var(--soft); }
+.notebook .lines .what { flex: 1; }
+.notebook .ok { color: #1c7a3d; }
+.notebook .card { display: inline-block; width: 13px; height: 18px; background: var(--yellow); border: 1px solid #b59700; vertical-align: -3px; transform: rotate(8deg); }
+.notebook .next { color: var(--red); font-weight: 700; }
+
+/* Gele kaart als knop */
+.card-btn {
+    margin-top: 24px; display: flex; align-items: center; justify-content: space-between; text-decoration: none;
+    background: var(--yellow); color: var(--kit); height: 70px; padding: 0 22px; border-radius: 8px;
+    font-size: 36px; font-weight: 600; text-transform: uppercase; line-height: 1; padding-top: 6px;
+    transform: rotate(-2deg); box-shadow: 0 6px 0 #a38700, 0 12px 20px rgba(0,0,0,.4);
+}
+.lower { margin-top: 18px; display: flex; flex-direction: column; gap: 6px; }
+.lower a { display: flex; text-decoration: none; color: var(--text); font-size: 22px; line-height: 1; }
+.lower a span:first-child { background: var(--var); color: var(--kit); padding: 7px 10px 3px; font-weight: 600; }
+.lower a span:last-child { background: var(--tv); padding: 7px 12px 3px; flex: 1; }
+
+.tabbar { margin-top: auto; display: flex; background: #000; }
+.tabbar a { flex: 1; text-align: center; padding: 14px 0 20px; text-decoration: none; color: var(--soft); font-size: 22px; text-transform: uppercase; letter-spacing: 1px; line-height: 1; }
+.tabbar a.on { color: var(--yellow); box-shadow: inset 0 3px 0 var(--yellow); }
+
+/* ---------- Vraag: tv-graphics ---------- */
+.q-title { margin-top: 30px; font-size: 64px; font-weight: 600; line-height: .8; text-transform: uppercase; }
+.q-title small { display: block; font-size: 22px; color: var(--var); font-weight: 500; letter-spacing: 2px; }
+.thirds { display: flex; flex-direction: column; gap: 8px; margin-top: 18px; }
+.third { display: grid; grid-template-columns: 34px 1fr; background: var(--paper); color: var(--kit); }
+.third b { background: var(--tv); color: var(--var); font-size: 26px; display: grid; place-items: center; font-weight: 600; }
+.third p { margin: 0; padding: 8px 10px 6px; font-family: var(--hand); font-size: 17px; line-height: 1.25; }
+.third.locked { background: transparent; border: 2px dashed #444; }
+.third.locked b { background: transparent; color: var(--soft); }
+.third.locked p { color: var(--soft); font-family: var(--tvf); font-size: 22px; text-transform: uppercase; letter-spacing: 1px; }
+.answer { margin-top: auto; margin-bottom: 18px; }
+.answer input { width: 100%; height: 64px; background: var(--paper); border: 0; border-left: 10px solid var(--yellow); color: var(--pen); font-family: var(--hand); font-weight: 700; font-size: 30px; padding: 0 14px; outline: none; }
+.answer .row { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+.answer .row span { font-size: 24px; color: var(--soft); }
+.answer .row b { color: var(--yellow); font-weight: 600; }
+.answer button { background: var(--text); color: var(--kit); border: 0; font-family: var(--tvf); font-weight: 600; font-size: 28px; padding: 10px 24px 4px; text-transform: uppercase; }
+
+/* ---------- Resultaat: VAR ---------- */
+.var-screen { margin-top: 40px; border: 3px solid var(--var); position: relative; padding: 24px 16px 18px; text-align: center; background: rgba(18,214,184,.06); }
+.var-screen .tag { position: absolute; left: -3px; top: -16px; background: var(--var); color: var(--kit); font-size: 24px; font-weight: 600; padding: 4px 10px 0; line-height: 1; }
+.var-screen .check { font-size: 26px; color: var(--var); letter-spacing: 3px; text-transform: uppercase; }
+.var-screen .verdict { font-size: 120px; font-weight: 600; line-height: .8; text-transform: uppercase; margin-top: 12px; animation: decide .4s .2s cubic-bezier(.2,1.5,.4,1) both; }
+@keyframes decide { from { transform: scale(.6); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .var-screen .verdict { animation: none; } }
+.var-screen .was { font-size: 26px; margin-top: 12px; }
+.var-screen .was b { color: var(--yellow); font-weight: 600; }
+.res-bug { display: flex; justify-content: center; margin-top: 22px; font-size: 30px; line-height: 40px; }
+.res-bug span { padding: 2px 14px 0; }
+.res-bug .plus { background: var(--var); color: var(--kit); font-weight: 600; }
+.res-bug .tot { background: var(--tv); }
+.res-go { margin-top: auto; margin-bottom: 22px; }
+</style>
+</head>
+<body>
+<header class="intro">
+    <h1>Scheidsrechter</h1>
+    <p>Het boekje van de ref en de tv-beelden van de VAR. Je dag staat genoteerd als wedstrijdminuten, een fout antwoord is een gele kaart, en elk antwoord gaat langs de VAR.</p>
+</header>
+
+<main class="rail">
+    <section class="screen-wrap">
+        <span class="screen-label">01 · Home</span>
+        <div class="phone">
+            <div class="bug"><span class="tt">TT</span><span class="sc">240</span><span class="min">36'</span><span class="date">MA 19 OKT</span></div>
+            <div class="body">
+                <div class="notebook">
+                    <h2>Wie ben ik?</h2>
+                    <div class="lines">
+                        <div><span class="min">9'</span><span class="what ok">juist</span><span>+70</span></div>
+                        <div><span class="min">18'</span><span class="what ok">juist</span><span>+90</span></div>
+                        <div><span class="min">27'</span><span class="what"><i class="card"></i> fout</span><span>0</span></div>
+                        <div><span class="min">36'</span><span class="what ok">juist</span><span>+80</span></div>
+                        <div><span class="min">45'</span><span class="what next">nu spelen →</span><span></span></div>
+                    </div>
+                </div>
+                <a class="card-btn" href="#">Vraag 5 <span>›</span></a>
+                <div class="lower">
+                    <a href="#"><span>DERBY</span><span>Club – Anderlecht · nog 2 dagen</span></a>
+                    <a href="#"><span>TAFEL</span><span>Jens wacht · 2/4</span></a>
+                </div>
+            </div>
+            <nav class="tabbar"><a class="on" href="#">Spel</a><a href="#">Online</a><a href="#">Stand</a><a href="#">Ik</a></nav>
+        </div>
+    </section>
+
+    <section class="screen-wrap">
+        <span class="screen-label">02 · Vraag</span>
+        <div class="phone">
+            <div class="bug"><span class="tt">TT</span><span class="sc">5/10</span><span class="min">0:23</span></div>
+            <div class="body">
+                <h2 class="q-title"><small>Vraag 5 · nog 80 pt</small>Wie ben ik?</h2>
+                <div class="thirds">
+                    <div class="third"><b>1</b><p>Ik debuteerde op mijn zeventiende in het eerste elftal van Anderlecht.</p></div>
+                    <div class="third"><b>2</b><p>Via Hamburg trok ik in 2008 naar Engeland.</p></div>
+                    <div class="third locked"><b>3</b><p>Tip 3 over 0:23</p></div>
+                </div>
+                <div class="answer">
+                    <input placeholder="Naam" value="Kompa" aria-label="Jouw antwoord">
+                    <div class="row"><span>Nog <b>80</b> punten</span><button>Fluit</button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="screen-wrap">
+        <span class="screen-label">03 · Resultaat</span>
+        <div class="phone">
+            <div class="bug"><span class="tt">TT</span><span class="sc">320</span><span class="min">45'</span></div>
+            <div class="body">
+                <div class="var-screen">
+                    <span class="tag">VAR</span>
+                    <div class="check">Check afgerond</div>
+                    <div class="verdict">Goal</div>
+                    <div class="was">Het was <b>Vincent Kompany</b></div>
+                </div>
+                <div class="res-bug"><span class="plus">+80</span><span class="tot">320 vandaag</span></div>
+                <a class="card-btn res-go" href="#">Vraag 6 <span>›</span></a>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

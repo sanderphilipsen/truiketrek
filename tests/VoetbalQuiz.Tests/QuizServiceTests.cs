@@ -196,6 +196,43 @@ public sealed class QuizServiceTests : IDisposable
     }
 
     [Fact]
+    public async Task Daily_has_exactly_one_question_of_one_star_and_one_of_five_stars()
+    {
+        // Spelers 6-11: iedereen kent ze; 12-15: enkel voor kenners. Daarbij 10 gewone spelers van 3 sterren.
+        foreach (var p in _db.Players.AsEnumerable())
+        {
+            var n = int.Parse(p.Name.Split(' ')[1]);
+            p.Difficulty = n is >= 6 and <= 11 ? 1 : n >= 12 ? 5 : 3;
+        }
+        for (var i = 16; i <= 25; i++)
+            _db.Players.Add(new Player { Name = $"Speler {i}", Era = "modern", Difficulty = 3, Hints = ["Tip"] });
+        await _db.SaveChangesAsync();
+
+        for (var day = 0; day < 3; day++)
+        {
+            var questions = (await _quiz.GetOrCreateChallengeAsync(_quiz.Today)).Questions;
+            Assert.Equal(10, questions.Count);
+            Assert.Single(questions, q => q.Player!.Difficulty == 1);
+            Assert.Single(questions, q => q.Player!.Difficulty == 5);
+            Assert.True(questions.Count(q => q.Player!.Era == "classic") <= 2);
+            _clock.Advance(TimeSpan.FromDays(1));
+        }
+    }
+
+    [Fact]
+    public async Task Daily_follows_the_difficulty_plan_when_every_level_is_available()
+    {
+        foreach (var p in _db.Players) p.Era = "modern";
+        for (var i = 16; i <= 40; i++)
+            _db.Players.Add(new Player { Name = $"Speler {i}", Era = "modern", Difficulty = i % 5 + 1, Hints = ["Tip"] });
+        await _db.SaveChangesAsync();
+
+        var questions = (await _quiz.GetOrCreateChallengeAsync(_quiz.Today)).Questions;
+
+        Assert.Equal(Difficulty.Plan(10), questions.Select(q => q.Player!.Difficulty).Order().ToList());
+    }
+
+    [Fact]
     public async Task Day_podium_gets_bonus_in_monthly_leaderboard()
     {
         var other = AddUser("vriend");

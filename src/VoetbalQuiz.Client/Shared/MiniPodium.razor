@@ -1,0 +1,25 @@
+@* De huidige top 3 van een daily of special, compact aan de rechterkant van een tegel op Home. Tikken opent het klassement. *@
+@if (Entries is { Count: > 0 })
+{
+    <a class="mini-podium" href="@Href" aria-label="@Label">
+        <ol aria-hidden="true">
+            @foreach (var e in Entries.Take(3))
+            {
+                <li class="@(e.IsMe ? "me" : "")">
+                    <span class="mp-medal">@Medal(e.Rank)</span>
+                    <span class="mp-name">@e.UserName</span>
+                    <span class="mp-pts">@e.Points</span>
+                </li>
+            }
+        </ol>
+    </a>
+}
+
+@code {
+    [Parameter, EditorRequired] public List<LeaderboardEntry>? Entries { get; set; }
+    [Parameter, EditorRequired] public string Href { get; set; } = "";
+
+    private string Label => "Top 3: " + string.Join(", ", Entries!.Take(3).Select(e => $"{e.Rank}. {e.UserName} met {e.Points} punten")) + ". Open het klassement.";
+
+    private static string Medal(int rank) => rank switch { 1 => "🥇", 2 => "🥈", _ => "🥉" };
+}

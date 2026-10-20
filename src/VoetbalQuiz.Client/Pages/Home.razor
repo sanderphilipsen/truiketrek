@@ -86,7 +86,10 @@ else
                 <div class="type-banner small">@QuestionTypes.DayLabel(_daily)</div>
                 <DifficultyStars Value="_daily.Difficulty" />
             </div>
-            <div class="home-score" aria-live="polite"><b>@_daily.TotalPoints</b><small>punten</small></div>
+            <div class="home-side">
+                <div class="home-score" aria-live="polite"><b>@_daily.TotalPoints</b><small>punten</small></div>
+                <MiniPodium Entries="@_dailyTop" Href="klassement" />
+            </div>
         </div>
 
         <ol class="progress-dots" role="img" aria-label="@ProgressLabel(answered, correct, _daily.Questions.Count)">
@@ -195,6 +198,13 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
     </section>
 }
 
+@* Academie: oude dailies opnieuw spelen. Onderaan, want de daily, de special en online gaan voor; de uitleg staat in de academie zelf. *@
+<a class="card training-tile" href="academie">
+    <span class="training-tile-icon" aria-hidden="true">🎓</span>
+    <b class="training-tile-text">Academie</b>
+    <span class="training-tile-go" aria-hidden="true">›</span>
+</a>
+
 @code {
     private const string IntroHiddenKey = "tt-intro-hidden";
 
@@ -205,6 +215,8 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
     private string? _specialsError;
     private bool _retryingSpecials;
     private DailyRank? _rank;
+    private List<LeaderboardEntry>? _dailyTop;
+    private Dictionary<int, List<LeaderboardEntry>> _specialTop = [];
     private List<MatchSummary> _myTables = [];
     private bool _introHidden = true; // pas tonen als zeker is dat de speler ze niet weggeklikt heeft
 
@@ -216,6 +228,7 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
             LoadDailyAsync(),
             LoadSpecialsAsync(),
             LoadRankAsync(),
+            LoadDailyTopAsync(),
             LoadIntroAsync(),
             RefreshUserAsync(),
             GoldenBall.EnsureLoadedAsync()); // nieuwe dag: misschien een nieuwe Gouden Bal
@@ -249,6 +262,23 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
             _specialsError = ex is ApiException api ? api.Message : "De specials konden niet geladen worden.";
         }
         StateHasChanged();
+        await LoadSpecialTopAsync();
+    }
+
+    /// <summary>De top 3 in de tegels is een extraatje: lukt het niet, dan tonen we ze gewoon niet.</summary>
+    private async Task LoadDailyTopAsync()
+    {
+        try { _dailyTop = (await Api.GetTodayLeaderboardAsync()).Entries; }
+        catch (Exception ex) when (ex is ApiException or HttpRequestException) { _dailyTop = null; }
+        StateHasChanged();
+    }
+
+    private async Task LoadSpecialTopAsync()
+    {
+        if (ActiveSpecial is not { } sp) return;
+        try { _specialTop[sp.Id] = (await Api.GetSpecialLeaderboardAsync(sp.Id)).Entries; }
+        catch (Exception ex) when (ex is ApiException or HttpRequestException) { }
+        StateHasChanged();
     }
 
     /// <summary>De plaats is een extraatje: lukt het niet, dan tonen we ze gewoon niet.</summary>
@@ -271,6 +301,7 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
         _retryingDaily = true;
         await LoadDailyAsync();
         if (_rank is null) await LoadRankAsync();
+        if (_dailyTop is null) await LoadDailyTopAsync();
         _retryingDaily = false;
     }
 
@@ -338,21 +369,37 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
             {
                 <a class="affiche-link" href="special/@sp.Id" tabindex="-1" aria-hidden="true"><AfficheBanner Affiche="affiche" /></a>
             }
+            @* Bovenaan links de naam met daaronder de stand, rechts meteen de top 3; onderaan een brede knop zoals bij de daily. *@
             <div class="card special-card home-special-card @(sp.Affiche is null ? "" : "with-affiche") @(sp.Finished ? "done" : "")">
-                <span class="special-icon" aria-hidden="true">@sp.Icon</span>
-                <div>
-                    <small class="special-kicker">@(isNew ? "Nieuw vandaag" : "Special")</small>
-                    <h2 id="special-title-@sp.Id" class="home-special-name">@sp.Name</h2>
-                    <small>@SpecialMeta(sp)</small>
-                    <DifficultyStars Value="sp.Difficulty" />
+                <div class="home-special-head">
+                    <div class="home-special-text">
+                        <h2 id="special-title-@sp.Id" class="home-special-name">@sp.Name</h2>
+                        @if (isNew && sp.Answered == 0)
+                        {
+                            @* Startdag: zegt waarom de special boven de daily staat, in de plaats van "Nog x dagen". *@
+                            <small class="home-special-new">Nieuw vandaag</small>
+                        }
+                        else
+                        {
+                            <small class="home-special-meta @(sp.Finished ? "is-done" : "")">@SpecialMeta(sp)</small>
+                        }
+                    </div>
+                    @if (_specialTop.TryGetValue(sp.Id, out var top) && top.Count == 0 && !sp.Finished)
+                    {
+                        <small class="home-special-first">Nog niemand gespeeld. Pak jij goud?</small>
+                    }
+                    else
+                    {
+                        <MiniPodium Entries="@top" Href="@($"special/{sp.Id}")" />
+                    }
                 </div>
                 @if (sp.Finished)
                 {
-                    <a class="btn small home-special-play done" href="special/@sp.Id" aria-label="Bekijk @sp.Name">Bekijk</a>
+                    <a class="btn home-special-play done" href="special/@sp.Id">Bekijk je resultaat</a>
                 }
                 else
                 {
-                    <a class="btn small home-special-play @(SpecialIsMain ? "primary" : "")" href="special/@sp.Id" aria-label="Speel @sp.Name">Speel</a>
+                    <a class="btn home-special-play @(SpecialIsMain ? "primary" : "")" href="special/@sp.Id">@(sp.Answered > 0 ? "Verder met de special" : "Start de special")</a>
                 }
             </div>
         </section>;

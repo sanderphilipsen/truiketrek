@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Truitje Trek Promo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&display=swap" rel="stylesheet">
+<!--
+  Promofilmpje van Truitje Trek: een animatie van ±30 s in 9:16 (1080 x 1920).
+  Opnemen: open met ?rec, dan start het filmpje vanzelf zonder knoppen. R of spatie herstart.
+-->
+<style>
+:root {
+    --pitch: #0b3d24;
+    --pitch-2: #0f5132;
+    --accent: #f5c400;
+    --ok: #1f9d55;
+    --fail: #d64545;
+    --text: #13241b;
+    --muted: #5d6f65;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: #04170d; overflow: hidden; }
+body { font-family: "Archivo", system-ui, "Segoe UI", sans-serif; color: #fff; }
+
+#viewport { position: fixed; inset: 0; }
+#stage {
+    position: absolute; left: 50%; top: 50%; width: 1080px; height: 1920px; overflow: hidden;
+    transform: translate(-50%, -50%); transform-origin: center center;
+    background: linear-gradient(180deg, var(--pitch-2) 0%, var(--pitch) 100%);
+}
+/* Grasmat met maaistroken die traag voorbij schuiven */
+.grass {
+    position: absolute; inset: -240px 0 0;
+    background: repeating-linear-gradient(180deg, rgba(255,255,255,.04) 0 120px, transparent 120px 240px);
+    animation: mow 12s linear infinite;
+}
+@keyframes mow { to { transform: translateY(240px); } }
+.circle {
+    position: absolute; left: 50%; top: 50%; width: 820px; height: 820px; margin: -410px 0 0 -410px;
+    border: 10px solid rgba(255,255,255,.07); border-radius: 50%;
+}
+.halfway { position: absolute; left: 0; right: 0; top: 50%; height: 10px; margin-top: -5px; background: rgba(255,255,255,.07); }
+
+/* ---------- Scènes ---------- */
+.scene {
+    position: absolute; inset: 0; padding: 150px 80px 120px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 44px;
+    text-align: center; opacity: 0; visibility: hidden;
+}
+.scene.on { opacity: 1; visibility: visible; }
+.scene.on.out { opacity: 0; transition: opacity .35s ease; }
+
+.cap { margin: 0; font-size: 84px; line-height: 1.02; font-weight: 900; letter-spacing: -1px; text-shadow: 0 6px 24px rgba(0,0,0,.35); }
+.cap em, .cap3 em { font-style: normal; color: var(--accent); }
+.cap3 { margin: 0; font-size: 56px; font-weight: 800; line-height: 1.1; }
+.tag {
+    display: inline-block; padding: 14px 30px; border-radius: 999px; font-size: 34px; font-weight: 800; letter-spacing: 2px;
+    background: rgba(0,0,0,.28); border: 3px solid rgba(255,255,255,.2);
+}
+
+/* Instap-animaties: lopen pas als de scène aan staat, met vertraging --d */
+.scene.on .pop  { animation: pop .6s cubic-bezier(.2,1.5,.4,1) var(--d,0s) both; }
+.scene.on .up   { animation: up .55s cubic-bezier(.2,.9,.3,1) var(--d,0s) both; }
+.scene.on .slam { animation: slam .5s cubic-bezier(.3,1.3,.5,1) var(--d,0s) both; }
+.scene.on .fromL { animation: fromL .55s cubic-bezier(.2,1.1,.4,1) var(--d,0s) both; }
+.scene.on .fromR { animation: fromR .55s cubic-bezier(.2,1.1,.4,1) var(--d,0s) both; }
+.later { opacity: 0; }
+.later.show { animation: up .5s cubic-bezier(.2,.9,.3,1) both; }
+.later.popper.show { animation: pop .55s cubic-bezier(.2,1.5,.4,1) both; }
+
+@keyframes pop  { 0% { opacity: 0; transform: scale(.3); } 60% { opacity: 1; transform: scale(1.08); } 100% { opacity: 1; transform: none; } }
+@keyframes up   { from { opacity: 0; transform: translateY(70px); } to { opacity: 1; transform: none; } }
+@keyframes slam { from { opacity: 0; transform: scale(2.6); } to { opacity: 1; transform: none; } }
+@keyframes fromL { from { opacity: 0; transform: translateX(-130%) rotate(-4deg); } to { opacity: 1; transform: none; } }
+@keyframes fromR { from { opacity: 0; transform: translateX(130%) rotate(4deg); } to { opacity: 1; transform: none; } }
+
+/* ---------- 1. Intro ---------- */
+.logo { width: 440px; height: 440px; filter: drop-shadow(0 24px 40px rgba(0,0,0,.4)); }
+.scene.on .logo-tug { animation: tug 1.1s ease-in-out 1s both; transform-origin: 30% 60%; }
+@keyframes tug { 0%,100% { transform: none; } 25% { transform: skewX(-7deg) translateX(14px); } 50% { transform: skewX(4deg); } 75% { transform: skewX(-3deg) translateX(6px); } }
+.title { margin: 0; font-size: 190px; line-height: .86; font-weight: 900; letter-spacing: -4px; text-transform: uppercase; }
+.title span { color: var(--accent); }
+.sub { margin: 0; font-size: 50px; font-weight: 700; opacity: .9; }
+
+/* ---------- 2. Daily ---------- */
+.qcard {
+    position: relative; width: 920px; padding: 48px; border-radius: 48px; background: #fff; color: var(--text); text-align: left;
+    box-shadow: 0 30px 70px rgba(0,0,0,.35);
+}
+.qhead { display: flex; justify-content: space-between; align-items: center; font-size: 40px; font-weight: 800; }
+.qnum { color: var(--muted); font-size: 34px; font-weight: 700; }
+.timer { height: 18px; margin: 28px 0 34px; border-radius: 9px; background: #e3ebe6; overflow: hidden; }
+.timer i { display: block; height: 100%; width: 100%; border-radius: 9px; background: var(--accent); transform-origin: left; }
+.timer.run i { animation: drain 4.6s linear both; }
+.timer.stop i { animation-play-state: paused; background: var(--ok); }
+@keyframes drain { to { transform: scaleX(.1); } }
+.tips { list-style: none; margin: 0 0 34px; padding: 0; display: grid; gap: 18px; }
+.tips li { font-size: 44px; font-weight: 700; padding: 22px 28px; border-radius: 22px; background: #f1f6f3; }
+.tips li.ghost { background: none; border: 4px dashed #d5e0d9; color: #a3b3aa; font-weight: 600; }
+.answer {
+    display: flex; align-items: center; height: 110px; padding: 0 30px; border-radius: 24px; border: 5px solid #cfdcd4;
+    font-size: 54px; font-weight: 800; transition: border-color .2s, background .2s;
+}
+.answer.ok { border-color: var(--ok); background: #e5f6ec; color: var(--ok); }
+.caret { width: 5px; height: 60px; margin-left: 4px; background: var(--text); animation: blink .8s steps(1) infinite; }
+.answer.ok .caret { display: none; }
+@keyframes blink { 50% { opacity: 0; } }
+.pts {
+    position: absolute; right: 40px; top: -46px; padding: 14px 30px; border-radius: 999px;
+    background: var(--accent); color: var(--pitch); font-size: 40px; font-weight: 900; box-shadow: 0 10px 24px rgba(0,0,0,.25);
+}
+.pts b { font-size: 52px; }
+.stamp {
+    position: absolute; left: 50%; top: 50%; padding: 26px 56px; border-radius: 30px; background: var(--ok); color: #fff;
+    font-size: 110px; font-weight: 900; line-height: 1; text-transform: uppercase; box-shadow: 0 20px 50px rgba(0,0,0,.4);
+    opacity: 0; transform: translate(-50%, -50%) rotate(-8deg) scale(3);
+}
+.stamp small { display: block; font-size: 58px; margin-top: 8px; color: #d9ffe8; }
+.stamp.show { animation: stamp .45s cubic-bezier(.3,1.4,.5,1) both; }
+@keyframes stamp { to { opacity: 1; transform: translate(-50%, -50%) rotate(-8deg) scale(1); } }
+.note { margin: 0; font-size: 44px; font-weight: 700; opacity: .95; }
+
+/* ---------- 3. Vraagtypes ---------- */
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; width: 940px; }
+.tile {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; height: 230px; padding: 16px;
+    border-radius: 34px; background: rgba(255,255,255,.1); border: 3px solid rgba(255,255,255,.16);
+}
+.tile .ic { font-size: 84px; line-height: 1; }
+.tile b { font-size: 33px; font-weight: 800; line-height: 1.05; }
+
+/* ---------- 4. Online derby ---------- */
+.seats { position: relative; display: grid; grid-template-columns: repeat(3, 290px); gap: 30px 34px; }
+.seat {
+    position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 24px 10px 20px;
+    border-radius: 34px; background: rgba(0,0,0,.24); border: 3px solid rgba(255,255,255,.14);
+}
+.seat .av { width: 170px; height: 170px; }
+.seat b { font-size: 40px; font-weight: 800; }
+.seat .sc { font-size: 36px; font-weight: 800; color: var(--accent); }
+.seat.me { border-color: var(--accent); }
+.seats.shake { animation: shake .5s ease; }
+@keyframes shake { 20%,60% { transform: translateX(-16px); } 40%,80% { transform: translateX(16px); } }
+.chip {
+    position: absolute; left: 50%; top: 40px; z-index: 3; padding: 10px 24px; border-radius: 999px; white-space: nowrap;
+    font-size: 44px; font-weight: 900; background: #fff; color: var(--text); box-shadow: 0 10px 24px rgba(0,0,0,.35);
+    animation: chip 1.5s ease both;
+}
+.chip.bad { background: var(--fail); color: #fff; }
+.chip.good { background: var(--ok); color: #fff; }
+.chip.gold { background: var(--accent); color: var(--pitch); }
+@keyframes chip { 0% { opacity: 0; transform: translate(-50%, 30px) scale(.4); } 15% { opacity: 1; transform: translate(-50%, 0) scale(1.1); } 25% { transform: translate(-50%, 0) scale(1); } 80% { opacity: 1; transform: translate(-50%, -20px); } 100% { opacity: 0; transform: translate(-50%, -50px); } }
+.sticker {
+    position: absolute; right: 24px; top: 20px; z-index: 2; width: 74px; height: 104px; border-radius: 10px; background: #e3262f;
+    box-shadow: 0 8px 18px rgba(0,0,0,.4); animation: sticker .45s cubic-bezier(.3,1.4,.5,1) both;
+}
+@keyframes sticker { from { opacity: 0; transform: translate(-260px, 380px) rotate(-50deg) scale(2.2); } to { opacity: 1; transform: rotate(12deg); } }
+.coin {
+    position: absolute; left: 92px; top: 70px; z-index: 4; font-size: 64px; animation: coin .8s cubic-bezier(.4,0,.3,1) both;
+}
+@keyframes coin { 0% { transform: none; opacity: 0; } 10% { opacity: 1; } 50% { transform: translate(162px, -120px) scale(1.3); } 100% { transform: translate(324px, 0); opacity: 1; } }
+
+.weapon {
+    position: relative; z-index: 6; display: flex; align-items: center; gap: 34px; width: 940px; min-height: 230px; padding: 30px 40px;
+    border-radius: 40px; background: #fff; color: var(--text); text-align: left; box-shadow: 0 30px 70px rgba(0,0,0,.45);
+    opacity: 0;
+}
+.weapon.in { animation: wcard 1.25s ease both; }
+@keyframes wcard {
+    0% { opacity: 0; transform: translateY(120px) rotate(-8deg) scale(.6); }
+    14% { opacity: 1; transform: rotate(1deg) scale(1.04); }
+    22%, 84% { opacity: 1; transform: none; }
+    100% { opacity: 0; transform: translateX(-140px) rotate(-3deg); }
+}
+.weapon.last { animation-name: wcardStay; }
+@keyframes wcardStay { 0% { opacity: 0; transform: translateY(120px) rotate(-8deg) scale(.6); } 14% { opacity: 1; transform: rotate(1deg) scale(1.04); } 22%, 100% { opacity: 1; transform: none; } }
+.wicon { font-size: 130px; line-height: 1; flex: none; }
+.weapon b { display: block; font-size: 60px; font-weight: 900; line-height: 1; }
+.weapon .wdesc { display: block; margin-top: 10px; font-size: 38px; font-weight: 700; color: var(--muted); line-height: 1.15; }
+.weapon .wby { display: inline-block; margin-top: 12px; padding: 4px 16px; border-radius: 999px; background: #eef4f0; font-size: 28px; font-weight: 800; color: var(--pitch-2); }
+.foot { margin: 0; font-size: 40px; font-weight: 700; opacity: .85; }
+
+/* Bengaals vuur: rode rook over het hele scherm */
+.smoke { position: absolute; inset: 0; z-index: 5; pointer-events: none; opacity: 0; transition: opacity .35s ease; background: rgba(170, 20, 20, .55); }
+.smoke.on { opacity: 1; }
+.smoke.off { opacity: 0; transition-duration: .8s; }
+.smoke i {
+    position: absolute; width: 1100px; height: 1100px; border-radius: 50%; filter: blur(30px);
+    background: radial-gradient(circle, rgba(225,38,38,.96) 0%, rgba(205,30,30,.85) 38%, rgba(190,20,20,0) 70%);
+}
+.smoke.on i { animation: drift 2.2s ease-out both; }
+.smoke i:nth-child(1) { left: -500px; top: 200px; }
+.smoke i:nth-child(2) { left: 300px; top: -200px; animation-delay: .1s; }
+.smoke i:nth-child(3) { left: -200px; top: 800px; animation-delay: .15s; }
+.smoke i:nth-child(4) { left: 420px; top: 560px; animation-delay: .05s; }
+.smoke i:nth-child(5) { left: 0; top: 1300px; animation-delay: .2s; }
+@keyframes drift { from { transform: translateX(-600px) scale(.4); } to { transform: translateX(120px) scale(1.2); } }
+
+/* ---------- 5. Specials ---------- */
+.banners { display: grid; gap: 30px; width: 940px; }
+.banner {
+    position: relative; display: flex; align-items: center; gap: 30px; height: 200px; padding: 0 40px; border-radius: 36px;
+    text-align: left; box-shadow: 0 20px 44px rgba(0,0,0,.35); overflow: hidden;
+}
+.banner .bi { font-size: 96px; line-height: 1; flex: none; }
+.banner b { display: block; font-size: 56px; font-weight: 900; line-height: 1; text-transform: uppercase; letter-spacing: -.5px; }
+.banner span { display: block; margin-top: 8px; font-size: 36px; font-weight: 700; opacity: .92; }
+.b-topper { background: linear-gradient(110deg, #4c1d7a 0 50%, #0b3f93 50% 100%); }
+.b-cup { background: linear-gradient(110deg, #b5121b, #e0282f 55%, #f5c400); }
+.b-lage { background: linear-gradient(110deg, #c8102e 0 50%, #f36c00 50% 100%); }
+.b-halloween { background: linear-gradient(110deg, #17110c, #3a2412 50%, #ff7518); }
+
+/* ---------- 6. Gouden Bal ---------- */
+.board { width: 920px; display: grid; gap: 20px; transition: opacity .35s, transform .35s; }
+.board.away { opacity: 0; transform: scale(.85); }
+.row {
+    display: flex; align-items: center; gap: 26px; height: 140px; padding: 0 36px; border-radius: 30px;
+    background: rgba(255,255,255,.12); font-size: 52px; font-weight: 800;
+}
+.row .medal { font-size: 70px; }
+.row .nm { flex: 1; text-align: left; }
+.row.first { background: var(--accent); color: var(--pitch); box-shadow: 0 0 60px rgba(245,196,0,.5); }
+.away { opacity: 0 !important; transform: scale(.85); transition: opacity .35s, transform .35s; }
+.gbwrap { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 34px; pointer-events: none; }
+.gb { position: relative; width: 420px; height: 420px; }
+.gb svg { position: relative; width: 100%; height: 100%; filter: drop-shadow(0 20px 40px rgba(0,0,0,.45)); }
+.rays {
+    position: absolute; left: 50%; top: 50%; width: 900px; height: 900px; margin: -450px 0 0 -450px; border-radius: 50%;
+    background: repeating-conic-gradient(rgba(245,196,0,.28) 0 10deg, transparent 10deg 20deg);
+    mask: radial-gradient(circle, #000 20%, transparent 68%); -webkit-mask: radial-gradient(circle, #000 20%, transparent 68%);
+    animation: spin 14s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.gb.show { animation: drop .7s cubic-bezier(.3,1.5,.5,1) both; }
+@keyframes drop { from { opacity: 0; transform: translateY(-700px) rotate(-200deg); } to { opacity: 1; transform: none; } }
+.gbtitle { font-size: 104px; font-weight: 900; line-height: .95; text-transform: uppercase; color: var(--accent); text-shadow: 0 8px 30px rgba(0,0,0,.4); }
+.gbtitle small { display: block; font-size: 44px; color: #fff; letter-spacing: 4px; margin-top: 6px; }
+.winner { display: flex; align-items: center; gap: 30px; }
+.winner .av { width: 210px; height: 210px; flex: none; filter: drop-shadow(0 0 24px rgba(245,196,0,.85)); }
+.winner p { margin: 0; text-align: left; font-size: 44px; font-weight: 800; line-height: 1.25; }
+
+/* ---------- 7. Outro ---------- */
+.logo-sm { width: 340px; height: 340px; filter: drop-shadow(0 24px 40px rgba(0,0,0,.4)); }
+.cta {
+    padding: 34px 90px; border-radius: 999px; background: var(--accent); color: var(--pitch); font-size: 68px; font-weight: 900;
+    box-shadow: 0 20px 50px rgba(0,0,0,.35);
+}
+.scene.on .cta { animation: pop .6s cubic-bezier(.2,1.5,.4,1) var(--d,0s) both, pulse 1.1s ease-in-out 2s infinite; }
+@keyframes pulse { 50% { transform: scale(1.06); } }
+
+/* ---------- Bediening (niet in beeld bij ?rec) ---------- */
+#start, #again, #record {
+    position: fixed; z-index: 20; border: 0; cursor: pointer; font: 900 22px "Archivo", system-ui, sans-serif;
+    border-radius: 999px; background: var(--accent); color: var(--pitch); box-shadow: 0 10px 30px rgba(0,0,0,.4);
+    white-space: nowrap;
+}
+#start { left: 50%; top: 50%; transform: translate(-50%, -50%); padding: 22px 44px; font-size: 28px; }
+#start small { display: block; font-size: 14px; font-weight: 700; opacity: .75; margin-top: 4px; }
+#again { right: 18px; bottom: 18px; padding: 14px 26px; opacity: 0; pointer-events: none; transition: opacity .4s; }
+#again.show { opacity: 1; pointer-events: auto; }
+#record { left: 50%; top: calc(50% + 80px); transform: translateX(-50%); padding: 14px 28px; background: #fff; }
+#record small { display: block; font-size: 13px; font-weight: 700; opacity: .7; margin-top: 3px; }
+#status { position: fixed; z-index: 20; left: 18px; bottom: 18px; font: 800 16px "Archivo", system-ui, sans-serif; color: #fff; }
+.rec #start, .rec #again, .rec #record, .recording #record, .recording #again { display: none; }
+</style>
+</head>
+<body>
+<div id="viewport">
+  <div id="stage">
+    <div class="grass"></div><div class="halfway"></div><div class="circle"></div>
+    <div id="scenes">
+
+      <!-- 1. Intro (0 – 3 s) -->
+      <section class="scene" id="s1">
+        <div class="pop" style="--d:.1s"><div class="logo-tug"><svg class="logo" data-logo></svg></div></div>
+        <h1 class="title slam" style="--d:.7s">Truitje<br><span>Trek</span></h1>
+        <p class="sub up" style="--d:1.3s">De voetbalquiz voor jou en je maten</p>
+      </section>
+
+      <!-- 2. Daily (3 – 8 s) -->
+      <section class="scene" id="s2">
+        <h2 class="cap up" style="--d:.05s">Elke dag <em>10 nieuwe</em> vragen</h2>
+        <div class="qcard pop" style="--d:.3s">
+          <div class="pts"><b id="pts">100</b> ptn</div>
+          <div class="qhead"><span>🕵️ Wie ben ik?</span><span class="qnum">Vraag 3/10</span></div>
+          <div class="timer" id="timer"><i></i></div>
+          <ol class="tips">
+            <li class="later" id="tip1">Ik ben doelman.</li>
+            <li class="later" id="tip2">Ik speelde bij Genk, Chelsea en Real Madrid.</li>
+            <li class="later ghost" id="tip3">Volgende tip over 5 s…</li>
+          </ol>
+          <div class="answer" id="answer"><span id="typed"></span><span class="caret"></span></div>
+        </div>
+        <p class="note later" id="note">“kurtwa”? Courtois! Tikfouten mogen 😉</p>
+        <h2 class="cap later" id="s2c2">Hoe sneller, <em>hoe meer punten</em></h2>
+        <div class="stamp" id="stamp">Binnen!<small>+90 punten</small></div>
+      </section>
+
+      <!-- 3. Vraagtypes (8 – 12 s) -->
+      <section class="scene" id="s3">
+        <h2 class="cap up" style="--d:.05s"><em>12</em> soorten vragen</h2>
+        <div class="grid" id="grid"></div>
+        <h3 class="cap3 later" id="s3c2">Elke dag <em>een andere mix</em></h3>
+      </section>
+
+      <!-- 4. Online derby (12 – 20 s) -->
+      <section class="scene" id="s4">
+        <div class="tag pop" style="--d:.05s">🔴 LIVE · ONLINE DERBY</div>
+        <h2 class="cap up" style="--d:.15s">Speel online tegen <em>je maten</em></h2>
+        <div class="seats" id="seats"></div>
+        <h3 class="cap3 later" id="s4c2">Iedereen krijgt <em>één geheim wapen</em> 🤫</h3>
+        <div class="weapon" id="weapon">
+          <div class="wicon"></div>
+          <div><b class="wname"></b><span class="wdesc"></span><span class="wby"></span></div>
+        </div>
+      </section>
+
+      <!-- 5. Specials (20 – 24 s) -->
+      <section class="scene" id="s5">
+        <h2 class="cap up" style="--d:.05s">Specials rond <em>de grote matchen</em></h2>
+        <div class="banners">
+          <div class="banner b-topper fromL" style="--d:.35s"><span class="bi">⚔️</span><div><b>De Topper</b><span>Anderlecht – Club Brugge</span></div></div>
+          <div class="banner b-cup fromR" style="--d:.75s"><span class="bi">🏆</span><div><b>Croky Cup</b><span>Beker van België</span></div></div>
+          <div class="banner b-lage fromL" style="--d:1.15s"><span class="bi">🦁</span><div><b>Derby der Lage Landen</b><span>België – Nederland</span></div></div>
+          <div class="banner b-halloween fromR" style="--d:1.55s"><span class="bi">🎃</span><div><b>Halloween</b><span>Griezelig moeilijk</span></div></div>
+        </div>
+        <h3 class="cap3 later" id="s5c2">Eigen klassement · <em>beker voor de winnaar</em></h3>
+      </section>
+
+      <!-- 6. Gouden Bal (24 – 28 s) -->
+      <section class="scene" id="s6">
+        <h2 class="cap up" style="--d:.05s" id="s6cap">Word de <em>beste van de maand</em></h2>
+        <div class="board" id="board">
+          <div class="row first up" style="--d:.75s"><span class="medal">🥇</span><span class="nm">Jij</span><span>4.820</span></div>
+          <div class="row up" style="--d:.5s"><span class="medal">🥈</span><span class="nm">Lotte</span><span>4.610</span></div>
+          <div class="row up" style="--d:.25s"><span class="medal">🥉</span><span class="nm">Bram</span><span>4.395</span></div>
+        </div>
+        <div class="gbwrap">
+          <h2 class="cap later" id="s6c2">Pak de <em>Gouden Bal</em></h2>
+          <div class="gb later" id="gb"><div class="rays"></div><svg data-ball></svg></div>
+          <div class="gbtitle later" id="gbtitle">Gouden Bal<small>OKTOBER</small></div>
+          <div class="winner later popper" id="winner"><div class="av" data-winner></div><p>⭐ Een ster op je shirt<br>✨ Een gouden rand</p></div>
+        </div>
+      </section>
+
+      <!-- 7. Outro (28 – 30 s) -->
+      <section class="scene" id="s7">
+        <div class="pop" style="--d:.05s"><svg class="logo-sm" data-logo></svg></div>
+        <h2 class="cap up" style="--d:.35s">Trek jij aan<br><em>het langste eind?</em></h2>
+        <div class="cta" style="--d:.7s">▶ Speel nu</div>
+      </section>
+    </div>
+    <div class="smoke" id="smoke"><i></i><i></i><i></i><i></i><i></i></div>
+  </div>
+</div>
+<button id="start">▶ Speel de promo<small>R of spatie = opnieuw · ?rec = opnamemodus</small></button>
+<button id="again">↻ Opnieuw</button>
+<button id="record">⏺ Opnemen als MP4<small>Kies "dit tabblad" en klik Delen</small></button>
+<div id="status"></div>
+
+<script>
+const $ = id => document.getElementById(id);
+
+// ---------- Tekeningen ----------
+const LOGO = `<defs><linearGradient id="LGp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f5132"/><stop offset="1" stop-color="#0b3d24"/></linearGradient>
+<linearGradient id="LGs" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd83a"/><stop offset="1" stop-color="#f0b800"/></linearGradient>
+<clipPath id="LGt"><rect width="512" height="512" rx="112"/></clipPath></defs>
+<g clip-path="url(#LGt)"><rect width="512" height="512" fill="url(#LGp)"/>
+<g fill="#fff" opacity=".045"><rect y="0" width="512" height="64"/><rect y="128" width="512" height="64"/><rect y="256" width="512" height="64"/><rect y="384" width="512" height="64"/></g>
+<circle cx="256" cy="256" r="196" fill="none" stroke="#fff" stroke-opacity=".12" stroke-width="8"/>
+<g stroke="#fff" stroke-width="12" stroke-linecap="round" opacity=".55"><line x1="40" y1="196" x2="84" y2="196"/><line x1="26" y1="246" x2="88" y2="246"/><line x1="40" y1="296" x2="84" y2="296"/></g>
+<g transform="translate(-34 -6) rotate(-6 256 256)">
+<path d="M200 112 Q256 136 312 112 L388 146 L420 222 L362 244 L344 214 L344 300 Q392 336 448 352 L438 396 Q356 392 300 412 Q244 404 186 412 L190 214 L172 244 L114 222 L146 146 Z" fill="url(#LGs)" stroke="#0b3d24" stroke-width="12" stroke-linejoin="round"/>
+<path d="M220 120 Q256 166 292 120" fill="none" stroke="#0b3d24" stroke-width="12" stroke-linecap="round"/>
+<g fill="none" stroke="#b98a00" stroke-width="8" stroke-linecap="round"><path d="M262 300 Q340 340 418 372"/><path d="M232 352 Q330 370 412 386"/><path d="M300 250 Q350 296 410 350"/></g>
+<text x="232" y="318" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="120" fill="#0b3d24">7</text></g>
+<path d="M432 404 L470 360 L580 450 L540 500 Z" fill="#d64545" stroke="#0b3d24" stroke-width="12" stroke-linejoin="round"/>
+<path d="M446 388 L468 362" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity=".8"/>
+<g transform="rotate(-40 418 366)"><rect x="366" y="328" width="108" height="76" rx="30" fill="#f2c39b" stroke="#0b3d24" stroke-width="12"/>
+<g stroke="#0b3d24" stroke-width="8" stroke-linecap="round"><line x1="394" y1="332" x2="394" y2="356"/><line x1="420" y1="332" x2="420" y2="356"/><line x1="446" y1="332" x2="446" y2="356"/></g></g></g>`;
+
+const BALL = `<defs><radialGradient id="GB" cx=".35" cy=".3" r=".85"><stop offset="0" stop-color="#fff6c2"/><stop offset=".45" stop-color="#f5c400"/><stop offset="1" stop-color="#8f6400"/></radialGradient></defs>
+<circle cx="100" cy="100" r="92" fill="url(#GB)" stroke="#7a5600" stroke-width="4"/>
+<polygon points="100,62 136.1,88.3 122.3,130.7 77.7,130.7 63.9,88.3" fill="#a87b00" opacity=".8"/>
+<g stroke="#8a6200" stroke-width="4" stroke-linecap="round" opacity=".8"><line x1="100" y1="62" x2="100" y2="10"/><line x1="136.1" y1="88.3" x2="186" y2="72"/><line x1="122.3" y1="130.7" x2="153" y2="173"/><line x1="77.7" y1="130.7" x2="47" y2="173"/><line x1="63.9" y1="88.3" x2="14" y2="72"/></g>
+<ellipse cx="70" cy="52" rx="26" ry="14" fill="#fff" opacity=".45" transform="rotate(-30 70 52)"/>`;
+
+function star(cx, cy, r) {
+    const p = [];
+    for (let i = 0; i < 10; i++) {
+        const a = -Math.PI / 2 + i * Math.PI / 5, rr = i % 2 ? r * .45 : r;
+        p.push((cx + rr * Math.cos(a)).toFixed(1) + ',' + (cy + rr * Math.sin(a)).toFixed(1));
+    }
+    return `<polygon points="${p.join(' ')}" fill="#f5c400" stroke="#7a5600" stroke-width="2"/>`;
+}
+
+let avatarId = 0;
+function avatar(o) {
+    const id = 'av' + (avatarId++);
+    return `<svg viewBox="0 0 200 200" width="100%" height="100%"><defs><clipPath id="${id}"><circle cx="100" cy="100" r="96"/></clipPath></defs>
+<g clip-path="url(#${id})"><rect width="200" height="200" fill="${o.bg || '#1d6b45'}"/>
+<path d="M22 210 Q26 150 70 136 L100 150 L130 136 Q174 150 178 210 Z" fill="${o.shirt}"/>
+<path d="M78 138 L100 162 L122 138" fill="none" stroke="${o.trim}" stroke-width="7" stroke-linejoin="round"/>
+<text x="100" y="196" text-anchor="middle" font-family="Archivo, Arial Black, sans-serif" font-weight="900" font-size="30" fill="${o.trim}">${o.num}</text>
+${o.star ? star(140, 170, 15) : ''}
+<rect x="86" y="112" width="28" height="30" rx="8" fill="${o.skin}"/>
+<ellipse cx="100" cy="90" rx="34" ry="38" fill="${o.skin}"/>
+<path d="${o.long ? 'M62 120 Q56 46 100 48 Q144 46 138 120 Q132 72 100 68 Q68 72 62 120Z' : 'M66 86 Q62 48 100 48 Q138 48 134 86 Q128 64 100 64 Q72 64 66 86Z'}" fill="${o.hair}"/>
+<circle cx="88" cy="92" r="4" fill="#1b1b1b"/><circle cx="112" cy="92" r="4" fill="#1b1b1b"/>
+<path d="M88 108 Q100 118 112 108" fill="none" stroke="#5a2e1a" stroke-width="4" stroke-linecap="round"/></g>
+${o.gold ? '<circle cx="100" cy="100" r="93" fill="none" stroke="#f5c400" stroke-width="9"/>' : ''}</svg>`;
+}
+
+const PLAYERS = {
+    jij:   { name: 'Jij',   sc: 260, skin: '#f2c39b', hair: '#3b2414', shirt: '#f5c400', trim: '#0b3d24', num: 7 },
+    bram:  { name: 'Bram',  sc: 240, skin: '#e0ac7e', hair: '#111',    shirt: '#d64545', trim: '#fff',    num: 9 },
+    noor:  { name: 'Noor',  sc: 210, skin: '#8d5a3b', hair: '#1a0f08', shirt: '#2a62d6', trim: '#fff',    num: 10, long: true },
+    lotte: { name: 'Lotte', sc: 310, skin: '#f6d3b3', hair: '#d9a441', shirt: '#6a2d91', trim: '#fff',    num: 8, long: true },
+    wout:  { name: 'Wout',  sc: 190, skin: '#c98e62', hair: '#6b3a1e', shirt: '#111',    trim: '#f5c400', num: 4 },
+    sem:   { name: 'Sem',   sc: 170, skin: '#f2c39b', hair: '#a0522d', shirt: '#1f9d55', trim: '#fff',    num: 11 },
+};
+
+const TYPES = [['🕵️', 'Wie ben ik?'], ['⚡', 'Snelvuur'], ['🧭', 'Carrièrepad'], ['🧩', 'Hoort er niet bij'], ['📅', 'Raad het jaar'], ['😀', 'Emoji-raadsel'],
+    ['📋', 'Opstelling'], ['🔄', 'Wissel'], ['🔢', 'Rugnummer'], ['👤', 'Mannetje'], ['🌀', 'Kluts'], ['🏃', 'Counter']];
+
+const WEAPONS = {
+    rode:    ['🟥', 'Rode kaart', 'Je tegenstander krijgt maar de helft van zijn punten', 'Lotte → Bram'],
+    vuur:    ['🎆', 'Bengaals vuur', 'Rode rook over het scherm van al je tegenstanders', 'door Noor'],
+    gok:     ['🎲', 'Gokchinees', 'Dubbel of niks!', 'door jou'],
+    trump:   ['🟨', 'Trump booster', 'Jouw antwoord wordt het juiste. De rest heeft het fout.', 'door Bram'],
+    handen:  ['🧤', 'Propere handen', 'De helft van de punten van je tegenstander is voor jou', 'Wout → Lotte'],
+};
+
+// Dynamische inhoud één keer opbouwen; de stage-HTML dient daarna als sjabloon om te herstarten.
+document.querySelectorAll('[data-logo]').forEach(s => { s.setAttribute('viewBox', '0 0 512 512'); s.innerHTML = LOGO; });
+document.querySelector('[data-ball]').setAttribute('viewBox', '0 0 200 200');
+document.querySelector('[data-ball]').innerHTML = BALL;
+document.querySelector('[data-winner]').innerHTML = avatar({ ...PLAYERS.jij, gold: true, star: true });
+$('grid').innerHTML = TYPES.map(([ic, nm], i) =>
+    `<div class="tile pop" style="--d:${(.25 + i * .11).toFixed(2)}s"><span class="ic">${ic}</span><b>${nm}</b></div>`).join('');
+$('seats').innerHTML = ['jij', 'bram', 'noor', 'lotte', 'wout', 'sem'].map((k, i) => {
+    const p = PLAYERS[k];
+    return `<div class="seat pop${k === 'jij' ? ' me' : ''}" id="seat-${k}" style="--d:${(.35 + i * .08).toFixed(2)}s">
+<div class="av">${avatar(p)}</div><b>${p.name}</b><span class="sc">${p.sc}</span></div>`;
+}).join('');
+const TEMPLATE = $('scenes').innerHTML;
+
+// ---------- Hulpjes ----------
+const fmt = n => n.toLocaleString('nl-BE');
+const scene = id => $(id).classList.add('on');
+const leave = id => $(id).classList.add('out');
+const show = id => $(id).classList.add('show');
+
+function countTo(el, to, dur = 600) {
+    const from = +el.textContent.replace(/\D/g, ''), t0 = performance.now();
+    (function step(now) {
+        const p = Math.min(1, (now - t0) / dur);
+        el.textContent = fmt(Math.round(from + (to - from) * (1 - Math.pow(1 - p, 3))));
+        if (p < 1) requestAnimationFrame(step);
+    })(t0);
+}
+function chip(who, text, cls = '') {
+    const c = document.createElement('div');
+    c.className = 'chip ' + cls;
+    c.textContent = text;
+    $('seat-' + who).appendChild(c);
+}
+function score(who, to) { countTo($('seat-' + who).querySelector('.sc'), to); }
+function weapon(key, last) {
+    const [ic, nm, desc, by] = WEAPONS[key], w = $('weapon');
+    w.querySelector('.wicon').textContent = ic;
+    w.querySelector('.wname').textContent = nm;
+    w.querySelector('.wdesc').textContent = desc;
+    w.querySelector('.wby').textContent = by;
+    w.className = 'weapon';
+    void w.offsetWidth;
+    w.className = 'weapon in' + (last ? ' last' : '');
+}
+
+// ---------- Tijdlijn (seconden) ----------
+const T = [];
+const at = (t, fn) => T.push([t, fn]);
+
+// 1. Intro
+at(0, () => scene('s1'));
+at(2.85, () => leave('s1'));
+
+// 2. Daily
+at(3.0, () => scene('s2'));
+at(3.6, () => { show('tip1'); $('timer').classList.add('run'); });
+at(4.5, () => { show('tip2'); countTo($('pts'), 90, 300); });
+at(4.75, () => show('tip3'));
+'kurtwa'.split('').forEach((c, i) => at(5.0 + i * .1, () => $('typed').textContent += c));
+at(5.75, () => {
+    $('typed').textContent = 'Thibaut Courtois';
+    $('answer').classList.add('ok');
+    $('timer').classList.add('stop');
+    show('stamp');
+});
+at(6.35, () => show('note'));
+at(6.9, () => show('s2c2'));
+at(7.85, () => leave('s2'));
+
+// 3. Vraagtypes
+at(8.0, () => scene('s3'));
+at(10.2, () => show('s3c2'));
+at(11.85, () => leave('s3'));
+
+// 4. Online derby met wapens
+at(12.0, () => scene('s4'));
+at(13.0, () => show('s4c2'));
+at(13.5, () => weapon('rode'));
+at(13.85, () => {
+    const s = document.createElement('div');
+    s.className = 'sticker';
+    $('seat-bram').appendChild(s);
+    chip('bram', '½ punten', 'bad');
+});
+at(14.8, () => weapon('vuur'));
+at(15.05, () => $('smoke').className = 'smoke on');
+at(16.0, () => $('smoke').className = 'smoke on off');
+at(16.1, () => weapon('gok'));
+at(16.45, () => chip('jij', '🎲 ×2', 'gold'));
+at(16.75, () => score('jij', 440));
+at(17.4, () => weapon('trump'));
+at(17.7, () => {
+    $('seats').classList.add('shake');
+    chip('bram', '✓', 'good');
+    chip('jij', '✗', 'bad');
+    chip('sem', '✗', 'bad');
+    score('bram', 330);
+});
+at(18.7, () => weapon('handen', true));
+at(19.0, () => {
+    const c = document.createElement('div');
+    c.className = 'coin';
+    c.textContent = '🧤';
+    $('seat-lotte').appendChild(c);
+    chip('lotte', '−40', 'bad');
+    score('lotte', 270);
+});
+at(19.5, () => { chip('wout', '+40', 'good'); score('wout', 230); });
+at(19.85, () => leave('s4'));
+
+// 5. Specials
+at(20.0, () => scene('s5'));
+at(22.4, () => show('s5c2'));
+at(23.85, () => leave('s5'));
+
+// 6. Gouden Bal
+at(24.0, () => scene('s6'));
+at(25.3, () => { $('board').classList.add('away'); $('s6cap').classList.add('away'); });
+at(25.45, () => { show('gb'); show('s6c2'); });
+at(25.9, () => show('gbtitle'));
+at(26.5, () => show('winner'));
+at(27.85, () => leave('s6'));
+
+// 7. Outro
+at(28.0, () => scene('s7'));
+at(31.0, () => { if (!REC) $('again').classList.add('show'); });
+
+T.sort((a, b) => a[0] - b[0]);
+
+// ---------- Afspelen ----------
+const params = new URLSearchParams(location.search);
+const REC = params.has('rec');
+let raf = 0, t0 = 0, next = 0;
+
+function tick(now) {
+    const t = (now - t0) / 1000;
+    while (next < T.length && T[next][0] <= t) T[next++][1]();
+    if (next < T.length) raf = requestAnimationFrame(tick);
+    else if (params.has('loop')) setTimeout(play, 1500);
+}
+function play() {
+    cancelAnimationFrame(raf);
+    fit();
+    $('scenes').innerHTML = TEMPLATE;
+    $('smoke').className = 'smoke';
+    $('again').classList.remove('show');
+    $('start').style.display = 'none';
+    $('record').style.display = 'none';
+    next = 0;
+    t0 = performance.now();
+    raf = requestAnimationFrame(tick);
+}
+
+function fit() {
+    const s = Math.min(innerWidth / 1080, innerHeight / 1920);
+    $('stage').style.transform = `translate(-50%, -50%) scale(${s})`;
+}
+addEventListener('resize', fit);
+fit();
+
+// ---------- Opnemen naar MP4, zonder iets te installeren ----------
+// De browser neemt zijn eigen tabblad op (Chrome/Edge), bijgesneden tot enkel het podium.
+const MIME = ['video/mp4;codecs=avc1.640028', 'video/mp4;codecs=avc1', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm']
+    .find(m => window.MediaRecorder && MediaRecorder.isTypeSupported(m));
+const setStatus = text => $('status').textContent = text;
+
+async function record() {
+    let stream;
+    try {
+        stream = await navigator.mediaDevices.getDisplayMedia({
+            video: { frameRate: 60, cursor: 'never' }, audio: false,
+            preferCurrentTab: true, selfBrowserSurface: 'include', surfaceSwitching: 'exclude',
+        });
+    } catch {
+        return setStatus('Opname geannuleerd.');
+    }
+    const track = stream.getVideoTracks()[0];
+    if (window.CropTarget && track.cropTo) await track.cropTo(await CropTarget.fromElement($('stage')));
+    else setStatus('Let op: deze browser kan niet bijsnijden, je krijgt het hele tabblad.');
+
+    document.body.classList.add('recording');
+    const chunks = [];
+    const recorder = new MediaRecorder(stream, { mimeType: MIME, videoBitsPerSecond: 12_000_000 });
+    recorder.ondataavailable = e => e.data.size && chunks.push(e.data);
+    recorder.onstop = () => {
+        stream.getTracks().forEach(t => t.stop());
+        document.body.classList.remove('recording');
+        const ext = MIME.startsWith('video/mp4') ? 'mp4' : 'webm';
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(new Blob(chunks, { type: MIME }));
+        a.download = 'truitje-trek-promo.' + ext;
+        a.click();
+        setStatus(ext === 'mp4' ? 'Klaar: truitje-trek-promo.mp4 staat in je Downloads.' : 'Klaar, maar deze browser kan enkel WebM maken.');
+        $('record').style.display = '';
+    };
+
+    await new Promise(r => setTimeout(r, 500));   // de bijsnijding en de deelbalk laten zakken
+    recorder.start(1000);
+    play();
+    setStatus('');
+    setTimeout(() => recorder.state !== 'inactive' && recorder.stop(), 31500);
+}
+if (!MIME || !navigator.mediaDevices?.getDisplayMedia) $('record').style.display = 'none';
+$('record').onclick = record;
+
+$('start').onclick = play;
+$('again').onclick = play;
+addEventListener('keydown', e => { if (e.key === 'r' || e.key === 'R' || e.key === ' ') { e.preventDefault(); play(); } });
+if (REC) { document.body.classList.add('rec'); document.fonts.ready.then(() => setTimeout(play, 600)); }
+</script>
+</body>
+</html>

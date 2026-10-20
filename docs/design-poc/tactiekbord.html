@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Truitje Trek Tactiekbord</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Barlow:wght@500;600;800&display=swap" rel="stylesheet">
+<style>
+/* POC "Tactiekbord": het whiteboard in de kleedkamer. De tien vragen van de dag zijn tien magneetjes
+   in een 4-3-3: je bouwt op van achteruit naar de spits. Jij staat in doel. */
+:root {
+    --board: #f4f5f2;
+    --frame: #b9bcbf;
+    --marker: #1d2a6b;
+    --marker-red: #d12f2f;
+    --marker-green: #1f8a4c;
+    --ink: #20232a;
+    --soft: #767a82;
+    --hand: "Permanent Marker", "Comic Sans MS", cursive;
+    --sans: "Barlow", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #3b3f45; color: var(--ink); font-family: var(--sans); padding: 32px 16px 64px; }
+.intro { max-width: 1240px; margin: 0 auto 28px; display: flex; flex-wrap: wrap; gap: 8px 32px; align-items: baseline; color: #fff; }
+.intro h1 { font-family: var(--hand); font-weight: 400; font-size: 42px; margin: 0; }
+.intro p { margin: 0; font-size: 17px; opacity: .75; max-width: 60ch; }
+.rail { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; max-width: 1240px; margin: 0 auto; }
+.screen-wrap { display: flex; flex-direction: column; gap: 10px; }
+.screen-label { color: #fff; opacity: .55; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+
+.phone {
+    width: 375px; height: 780px; max-width: calc(100vw - 32px);
+    background:
+        radial-gradient(ellipse at 70% 30%, rgba(29,42,107,.05), transparent 40%),
+        radial-gradient(ellipse at 20% 80%, rgba(0,0,0,.035), transparent 45%),
+        var(--board);
+    border-radius: 28px; overflow: hidden; display: flex; flex-direction: column;
+    box-shadow: inset 0 0 0 7px var(--frame), inset 0 0 0 8px #9a9da1;
+}
+.body { flex: 1; display: flex; flex-direction: column; padding: 0 22px; min-height: 0; }
+.hand { font-family: var(--hand); color: var(--marker); }
+
+.head { padding: 30px 22px 0; display: flex; justify-content: space-between; align-items: flex-start; }
+.head h2 { font-family: var(--hand); font-weight: 400; color: var(--marker); font-size: 40px; line-height: .95; margin: 0; transform: rotate(-2deg); }
+.head h2 u { text-decoration-color: var(--marker-red); text-decoration-thickness: 3px; text-underline-offset: 6px; }
+.head .date { font-weight: 600; font-size: 13px; color: var(--soft); text-align: right; text-transform: uppercase; letter-spacing: 1px; }
+.head .date b { display: block; font-family: var(--hand); font-weight: 400; color: var(--marker-red); font-size: 26px; letter-spacing: 0; text-transform: none; }
+
+/* Het veld met magneetjes */
+.pitch { position: relative; margin-top: 18px; height: 380px; }
+.pitch svg.lines { position: absolute; inset: 0; width: 100%; height: 100%; }
+.mag {
+    position: absolute; width: 40px; height: 40px; margin: -20px 0 0 -20px; border-radius: 50%;
+    display: grid; place-items: center; font-weight: 800; font-size: 16px; color: #fff;
+    box-shadow: 0 3px 0 rgba(0,0,0,.25), inset 0 -3px 0 rgba(0,0,0,.18), inset 0 2px 0 rgba(255,255,255,.35);
+}
+.mag.ok { background: var(--marker-green); }
+.mag.no { background: var(--marker-red); }
+.mag.todo { background: #fff; color: var(--soft); box-shadow: 0 2px 0 rgba(0,0,0,.18), inset 0 0 0 2px #cfd2d6; }
+.mag.next { background: var(--marker); width: 48px; height: 48px; margin: -24px 0 0 -24px; font-size: 20px; }
+.mag.next::after {
+    content: ""; position: absolute; inset: -9px; border-radius: 50%; border: 3px solid var(--marker-red);
+    border-left-color: transparent; transform: rotate(-30deg);
+}
+.mag.you { background: #f2b705; color: var(--ink); width: 46px; height: 46px; margin: -23px 0 0 -23px; font-family: var(--hand); font-weight: 400; font-size: 14px; }
+.note { position: absolute; font-family: var(--hand); color: var(--marker-red); font-size: 20px; line-height: 1; white-space: nowrap; }
+
+.foot { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 4px; }
+.foot .pts { font-family: var(--hand); font-size: 50px; color: var(--marker); line-height: 1; }
+.foot small { font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--soft); display: block; }
+.go {
+    display: inline-flex; align-items: center; height: 58px; padding: 0 22px; text-decoration: none;
+    background: var(--marker); color: #fff; border-radius: 30px; font-weight: 800; font-size: 19px; text-transform: uppercase; letter-spacing: 1px;
+    box-shadow: 0 4px 0 #0f1745;
+}
+
+/* Magneetstrookjes: tafel en special */
+.strips { display: flex; gap: 8px; margin-top: 18px; }
+.strip { flex: 1; text-decoration: none; color: var(--ink); background: #fff; border-left: 6px solid var(--c); padding: 8px 10px; box-shadow: 0 2px 0 rgba(0,0,0,.12); font-weight: 800; font-size: 14px; line-height: 1.15; transform: rotate(var(--r)); }
+.strip small { display: block; font-weight: 500; color: var(--soft); font-size: 12px; }
+
+.tray { margin-top: auto; display: flex; padding: 0 14px 22px; gap: 4px; border-top: 8px solid var(--frame); background: #d8dadc; }
+.tray a { flex: 1; text-align: center; padding: 12px 0 2px; text-decoration: none; color: var(--soft); font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+.tray a.on { color: var(--marker); }
+.tray a.on::before { content: ""; display: block; width: 34px; height: 8px; margin: 0 auto 6px; border-radius: 4px; background: var(--marker); }
+
+/* ---------- Vraag ---------- */
+.q-top { display: flex; justify-content: space-between; align-items: center; padding: 30px 22px 0; }
+.q-top .pos { font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--soft); }
+.q-top .pos b { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--marker); color: #fff; margin-right: 6px; }
+.timer { font-family: var(--hand); font-size: 36px; color: var(--marker-red); }
+.q-title { font-family: var(--hand); font-weight: 400; color: var(--marker); font-size: 54px; line-height: .95; margin: 20px 0 10px; transform: rotate(-2deg); }
+.tips { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.tips li { display: grid; grid-template-columns: 34px 1fr; gap: 8px; font-size: 18px; font-weight: 500; line-height: 1.3; }
+.tips .n { width: 30px; height: 30px; border: 3px solid var(--marker-red); border-radius: 50%; display: grid; place-items: center; font-family: var(--hand); color: var(--marker-red); font-size: 16px; }
+.tips li.locked { color: var(--soft); }
+.tips li.locked p { margin: 0; font-family: var(--hand); font-size: 18px; color: #b3b6bb; }
+.tips p { margin: 0; }
+.answer { margin-top: auto; margin-bottom: 22px; }
+.answer input { width: 100%; height: 62px; border: 0; border-bottom: 4px solid var(--marker); background: transparent; font-family: var(--hand); font-size: 32px; color: var(--marker); outline: none; padding: 0 4px; }
+.answer input::placeholder { color: #c3c6cb; }
+.answer-row { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; }
+.answer-row span { font-weight: 600; color: var(--soft); }
+.answer-row b { font-family: var(--hand); font-weight: 400; color: var(--marker); font-size: 24px; }
+.answer-row button { height: 56px; padding: 0 26px; border: 0; border-radius: 30px; background: var(--marker-red); color: #fff; font-family: var(--sans); font-weight: 800; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 0 #8e1d1d; }
+
+/* ---------- Resultaat ---------- */
+.verdict { position: relative; margin: 58px auto 0; width: 240px; height: 170px; }
+.verdict svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.verdict svg path { stroke-dasharray: 900; stroke-dashoffset: 900; animation: draw .7s ease-out forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) { .verdict svg path { animation: none; stroke-dashoffset: 0; } }
+.verdict span { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--hand); color: var(--marker-green); font-size: 72px; transform: rotate(-4deg); }
+.was { text-align: center; margin-top: 18px; }
+.was small { font-weight: 700; font-size: 13px; color: var(--soft); text-transform: uppercase; letter-spacing: 1px; }
+.was b { display: block; font-family: var(--hand); font-weight: 400; color: var(--marker); font-size: 40px; margin-top: 2px; }
+.mini { display: flex; justify-content: center; gap: 6px; margin-top: 26px; }
+.mini i { width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: inset 0 0 0 2px #cfd2d6; }
+.mini i.ok { background: var(--marker-green); box-shadow: none; }
+.mini i.no { background: var(--marker-red); box-shadow: none; }
+.res-go { margin: auto auto 26px; }
+</style>
+</head>
+<body>
+<header class="intro">
+    <h1>Tactiekbord</h1>
+    <p>Het whiteboard uit de kleedkamer. De tien vragen zijn tien magneetjes in een 4-3-3: je bouwt op van achteruit naar de spits, en jij staat in doel.</p>
+</header>
+
+<main class="rail">
+    <section class="screen-wrap">
+        <span class="screen-label">01 · Home</span>
+        <div class="phone">
+            <div class="head">
+                <h2>Vandaag:<br><u>Wie ben ik?</u></h2>
+                <div class="date">Maandag<b>19/10</b></div>
+            </div>
+            <div class="body">
+                <div class="pitch" aria-label="4 van 10 gespeeld">
+                    <svg class="lines" viewBox="0 0 330 380" preserveAspectRatio="none" aria-hidden="true">
+                        <g fill="none" stroke="#1d2a6b" stroke-opacity=".35" stroke-width="2.5" stroke-linecap="round">
+                            <path d="M6 6 L324 5 L325 374 L5 375 Z"/>
+                            <path d="M6 6 Q165 8 324 5" />
+                            <path d="M110 375 L111 320 L220 321 L219 375"/>
+                            <path d="M135 6 A30 30 0 0 0 195 6"/>
+                        </g>
+                    </svg>
+                    <!-- verdediging: vraag 1-4 -->
+                    <span class="mag ok" style="left:12%;top:74%">1</span>
+                    <span class="mag ok" style="left:37%;top:77%">2</span>
+                    <span class="mag no" style="left:63%;top:77%">3</span>
+                    <span class="mag ok" style="left:88%;top:74%">4</span>
+                    <!-- middenveld: vraag 5-7 -->
+                    <span class="mag next" style="left:22%;top:44%">5</span>
+                    <span class="mag todo" style="left:50%;top:50%">6</span>
+                    <span class="mag todo" style="left:78%;top:44%">7</span>
+                    <!-- aanval: vraag 8-10 -->
+                    <span class="mag todo" style="left:16%;top:17%">8</span>
+                    <span class="mag todo" style="left:50%;top:12%">9</span>
+                    <span class="mag todo" style="left:84%;top:17%">10</span>
+                    <span class="mag you" style="left:50%;top:93%">jij</span>
+                    <span class="note" style="left:36%;top:57%;transform:rotate(-6deg)">← hier!</span>
+                </div>
+
+                <div class="foot">
+                    <div><small>Punten</small><span class="pts">240</span></div>
+                    <a class="go" href="#">Vraag 5 →</a>
+                </div>
+
+                <div class="strips">
+                    <a class="strip" href="#" style="--c:#d12f2f;--r:-1deg">Derby-special<small>Club – Anderlecht</small></a>
+                    <a class="strip" href="#" style="--c:#1d2a6b;--r:1deg">Tafel Jens<small>2/4 · aanschuiven</small></a>
+                </div>
+            </div>
+            <nav class="tray"><a class="on" href="#">Spel</a><a href="#">Online</a><a href="#">Stand</a><a href="#">Ik</a></nav>
+        </div>
+    </section>
+
+    <section class="screen-wrap">
+        <span class="screen-label">02 · Vraag</span>
+        <div class="phone">
+            <div class="q-top"><span class="pos"><b>5</b>Middenveld links</span><span class="timer">0:23</span></div>
+            <div class="body">
+                <h2 class="q-title">Wie ben ik?</h2>
+                <ol class="tips">
+                    <li><span class="n">1</span><p>Ik debuteerde op mijn zeventiende in het eerste elftal van Anderlecht.</p></li>
+                    <li><span class="n">2</span><p>Via Hamburg trok ik in 2008 naar Engeland.</p></li>
+                    <li class="locked"><span class="n">3</span><p>... komt over 0:23</p></li>
+                </ol>
+                <div class="answer">
+                    <input placeholder="naam..." value="Kompa" aria-label="Jouw antwoord">
+                    <div class="answer-row"><span>nog <b>80</b> pt</span><button>Schiet</button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="screen-wrap">
+        <span class="screen-label">03 · Resultaat</span>
+        <div class="phone">
+            <div class="q-top"><span class="pos"><b>5</b>Middenveld links</span></div>
+            <div class="body">
+                <div class="verdict">
+                    <svg viewBox="0 0 240 170" aria-hidden="true"><path d="M30 90 C 20 30, 120 8, 190 30 C 245 50, 235 130, 160 152 C 90 172, 18 140, 34 80" fill="none" stroke="#1f8a4c" stroke-width="5" stroke-linecap="round"/></svg>
+                    <span>+80</span>
+                </div>
+                <div class="was"><small>Het was</small><b>Vincent Kompany</b></div>
+                <div class="mini" aria-label="5 van 10 gespeeld"><i class="ok"></i><i class="ok"></i><i class="no"></i><i class="ok"></i><i class="ok"></i><i></i><i></i><i></i><i></i><i></i></div>
+                <a class="go res-go" href="#">Vraag 6 →</a>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

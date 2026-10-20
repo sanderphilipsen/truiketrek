@@ -89,6 +89,22 @@ public sealed class SpecialAndProgressTests : IDisposable
     }
 
     [Fact]
+    public async Task Special_leaderboard_ranks_only_that_special()
+    {
+        var id = await HalloweenAsync();
+        await PlayAllAsync(_friend, id, correct: false);
+        await PlayAllAsync(_me, id, correct: true);
+        await PlayAllAsync(_friend, null, correct: true); // de daily telt niet mee
+
+        var board = await _results.GetSpecialLeaderboardAsync(_me, id);
+        Assert.Collection(board.Entries,
+            e => { Assert.Equal((1, "sander", 1000, true), (e.Rank, e.UserName, e.Points, e.IsMe)); },
+            e => { Assert.Equal((2, "tom", 0, false), (e.Rank, e.UserName, e.Points, e.IsMe)); });
+
+        Assert.Empty((await _results.GetSpecialLeaderboardAsync(_me, id + 1)).Entries);
+    }
+
+    [Fact]
     public async Task Daily_and_active_special_show_their_average_difficulty()
     {
         foreach (var p in _db.Players) p.Difficulty = p.Tags.Contains("halloween") ? 5 : 1;

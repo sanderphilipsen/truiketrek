@@ -1,0 +1,93 @@
+@page "/academie"
+@attribute [Authorize]
+@inject ApiClient Api
+
+<PageTitle>Academie – Truitje Trek</PageTitle>
+
+<SectionHeader Level="1" Title="Academie" Subtitle="Speel elke daily die ooit was opnieuw. Telt niet voor het klassement." />
+
+<div class="month-nav">
+    <button class="linkish" aria-label="Vorige maand" @onclick="() => MoveMonthAsync(-1)" disabled="@(_archive is not { HasEarlier: true })">‹</button>
+    <span>@(_archive is null ? "" : DutchDates.MonthYear(_archive.Year, _archive.Month))</span>
+    <button class="linkish" aria-label="Volgende maand" @onclick="() => MoveMonthAsync(1)" disabled="@(_archive is not { HasLater: true })">›</button>
+</div>
+
+@if (_error is not null)
+{
+    <p class="error" role="alert">@_error</p>
+}
+else if (_archive is null)
+{
+    <div class="center-msg"><Spinner /></div>
+}
+else if (_archive.Days.Count == 0)
+{
+    <div class="card center muted">Geen dailies in deze maand.</div>
+}
+else
+{
+    <ul class="training-days">
+        @foreach (var day in _archive.Days)
+        {
+            <li>
+                <a class="training-day @(day.Played ? "played" : "new") @(day.Special is null ? "" : "special")" href="@DayUrl(day)">
+                    <span class="training-day-mark" aria-hidden="true">@(day.Played ? "✓" : "")</span>
+                    <span class="training-day-text">
+                        @if (day.Special is { } sp)
+                        {
+                            <b>@sp.Icon @sp.Name</b>
+                            <small class="special-kicker">Special · @SpecialDates(sp)</small>
+                        }
+                        else
+                        {
+                            <b class="cap">@DutchDates.DayMonth(day.Date)</b>
+                        }
+                        <small>@QuestionTypes.Label(day.Types) · @Difficulty.Stars((int)Math.Round(day.Difficulty))</small>
+                        <small>@PlayedText(day)</small>
+                    </span>
+                    <span class="btn small training-day-play" aria-hidden="true">@(day.Played ? "Opnieuw" : "Spelen")</span>
+                </a>
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    private TrainingArchive? _archive;
+    private string? _error;
+
+    // Zonder maand kiest de server (Belgische tijd) de maand van de laatste daily die je kan spelen; de klok van de browser telt niet.
+    protected override Task OnInitializedAsync() => LoadAsync(null, null);
+
+    private Task MoveMonthAsync(int delta)
+    {
+        var d = new DateOnly(_archive!.Year, _archive.Month, 1).AddMonths(delta);
+        return LoadAsync(d.Year, d.Month);
+    }
+
+    private async Task LoadAsync(int? year, int? month)
+    {
+        (_archive, _error) = (null, null);
+        try { _archive = await Api.GetTrainingArchiveAsync(year, month); }
+        catch (ApiException ex) { _error = ex.Message; }
+    }
+
+    private static string DayUrl(TrainingDay day) =>
+        day.Special is { } sp ? $"academie/special/{sp.Id}" : $"academie/{day.Date:yyyy-MM-dd}";
+
+    /// <summary>"25 december" voor een special van één dag, anders "1 – 3 oktober".</summary>
+    public static string SpecialDates(TrainingSpecial sp) => sp.StartDate == sp.EndDate
+        ? $"{sp.EndDate.Day} {DutchDates.Month(sp.EndDate.Month)}"
+        : sp.StartDate.Month == sp.EndDate.Month
+            ? $"{sp.StartDate.Day} – {sp.EndDate.Day} {DutchDates.Month(sp.EndDate.Month)}"
+            : $"{sp.StartDate.Day} {DutchDates.Month(sp.StartDate.Month)} – {sp.EndDate.Day} {DutchDates.Month(sp.EndDate.Month)}";
+
+    private static string PlayedText(TrainingDay day)
+    {
+        var parts = new List<string>();
+        if (day.Real is { } real) parts.Add($"Echt: {real.Points} ({real.Rank}{DutchDates.OrdinalSuffix(real.Rank)} van {real.Players})");
+        if (day.Runs > 0)
+            parts.Add(day.BestTraining is { } best ? $"{day.Runs}× opnieuw gespeeld, beste {best}" : $"{day.Runs}× opnieuw gespeeld");
+        return parts.Count == 0 ? "Nog nooit gespeeld" : string.Join(" · ", parts);
+    }
+}

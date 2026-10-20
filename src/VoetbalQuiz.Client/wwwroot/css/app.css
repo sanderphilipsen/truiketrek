@@ -327,6 +327,7 @@ input:focus { border-color: var(--pitch-2); box-shadow: 0 0 0 3px rgba(15, 81, 5
 /* ---------- Statistieken ---------- */
 .section-title { color: #fff; font-size: 1.05rem; margin: 18px 0 10px; }
 .section-title:first-child { margin-top: 4px; }
+.section-note { color: rgba(255, 255, 255, .8); font-size: .85rem; margin: 8px 2px 0; }
 .my-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
 .my-stats div {
     background: var(--card);
@@ -720,32 +721,102 @@ select { font: inherit; padding: 8px; border-radius: 8px; border: 1.5px solid #c
 }
 
 /* ---------- Specials ---------- */
-.special-card { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;
+.special-card { text-decoration: none; color: inherit;
     background: linear-gradient(135deg, #fff7d1, #ffffff); border: 2px solid var(--accent); }
-.special-card > div { flex: 1; display: flex; flex-direction: column; }
 .special-card small { color: var(--muted); }
-.special-icon { font-size: 2.2rem; }
+.special-icon { font-size: 2.2rem; line-height: 1; }
 
 /* Moeilijkheid van de daily of een special: 0–5 sterren, halve sterren door de volle laag af te knippen. */
 .difficulty-stars { position: relative; display: inline-block; font-size: .95rem; line-height: 1; letter-spacing: 1px; white-space: nowrap; }
 .difficulty-stars .ds-empty { color: var(--muted); opacity: .35; }
 .difficulty-stars .ds-full { position: absolute; inset: 0 auto 0 0; overflow: hidden; color: var(--accent); text-shadow: 0 0 1px rgba(0, 0, 0, .45); }
 .home-daily .difficulty-stars { display: block; width: max-content; margin: 0 0 8px; }
-.special-card .difficulty-stars { margin-top: 2px; }
 .special-hero .special-icon { font-size: 3rem; }
 .special-kicker { font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; color: var(--accent-text) !important; }
-/* Home: de (enige) lopende special als kaart over de volle breedte met een knop "Speel".
+/* Home: de (enige) lopende special als kaart over de volle breedte: links de naam met daaronder de stand,
+   rechts bovenaan de top 3, onderaan een brede knop zoals bij de daily.
    Op de startdag (.is-new) staat ze boven de daily, anders eronder. */
 .home-special { margin-bottom: 16px; }
-.home-special-card { margin-bottom: 0; padding: 16px 18px; min-height: var(--tap); }
+.home-special-card { margin-bottom: 0; padding: 14px 16px; }
 .home-special-card.done { border-color: var(--ok); }
-.home-special-name { margin: 0; font-size: 1.05rem; overflow-wrap: anywhere; }
-.home-special.is-new .home-special-name { font-size: 1.2rem; }
-/* "Speel": donkergroen naast de gele hoofdknop van de daily; geel (.primary) zodra de special de hoofdactie is. */
-.btn.home-special-play { flex: none; min-height: var(--tap); min-width: 76px; background: var(--pitch-2); color: #fff; }
+/* min-height = drie podiumregels, zodat de kaart niet verspringt als de top 3 later binnenkomt. */
+.home-special-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; min-height: 62px; }
+.home-special-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.home-special-name { margin: 0; font-size: 1.15rem; line-height: 1.2; overflow-wrap: anywhere; }
+.home-special.is-new .home-special-name { font-size: 1.25rem; }
+.home-special-card small.home-special-meta { font-size: .85rem; }
+.home-special-card small.home-special-meta.is-done { color: var(--ok-text); font-weight: 700; }
+.home-special-card small.home-special-new { font-size: .85rem; font-weight: 800; color: var(--accent-text); white-space: nowrap; }
+/* De top 3 is hier de blikvanger naast de naam: groter dan in de dailytegel, punten in de tekstkleur. */
+.home-special-head .mini-podium { flex: 0 1 148px; min-width: 0; }
+.home-special-head .mini-podium ol { gap: 3px; grid-template-columns: minmax(0, 1fr); }
+.home-special-head .mini-podium li { font-size: .9rem; line-height: 1.3; gap: 6px; }
+.home-special-head .mini-podium .mp-medal { font-size: .9rem; }
+.home-special-head .mini-podium .mp-pts { color: var(--text); }
+.home-special-head .mini-podium li:first-child .mp-name { font-weight: 700; }
+.home-special-first { flex: 0 1 140px; font-size: .85rem; text-align: right; }
+/* Smalle gsm: de naam krijgt wat meer plaats, zodat ze niet over drie regels loopt. */
+@media (max-width: 359px) {
+    .home-special-head { gap: 10px; }
+    .home-special-head .mini-podium { flex-basis: 128px; }
+    .home-special-first { flex-basis: 108px; }
+    .home-special-name, .home-special.is-new .home-special-name { font-size: 1.05rem; }
+}
+/* Brede knop onderaan: donkergroen naast de gele hoofdknop van de daily; geel (.primary) zodra de special de hoofdactie is. */
+.btn.home-special-play { display: flex; justify-content: center; align-items: center; width: 100%; min-height: var(--tap);
+    margin-top: 12px; background: var(--pitch-2); color: #fff; }
 .btn.home-special-play.primary { background: var(--accent); color: #1b1600; }
 .btn.home-special-play.done { background: #e8efe9; color: var(--text); }
 .home-special-error { margin-bottom: 16px; }
+/* Home: de huidige top 3 rechts in de daily- en specialtegel. Lange namen worden afgekapt. */
+.home-side { flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; max-width: 46%; }
+.mini-podium { display: block; text-decoration: none; color: inherit; max-width: 100%; }
+.mini-podium ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.mini-podium li { display: flex; align-items: center; gap: 4px; font-size: .8rem; line-height: 1.25; }
+.mini-podium .mp-medal { flex: none; font-size: .75rem; }
+.mini-podium .mp-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mini-podium .mp-pts { flex: none; margin-left: auto; padding-left: 6px; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--muted); }
+.mini-podium li.me .mp-name { font-weight: 800; }
+
+/* ---------- Academie (in de code: training) ---------- */
+/* Home: de academie als eenvoudige tegel onderaan. */
+/* Extra ruimte boven de tegel: anders plakt ze aan de kaart "Nieuw partijtje" van online spelen. */
+.training-tile { display: flex; align-items: center; gap: 12px; padding: 16px 18px; margin-top: 32px; text-decoration: none; color: inherit; min-height: var(--tap); }
+.training-tile-icon { font-size: 2rem; line-height: 1; }
+.training-tile-text { flex: 1; min-width: 0; font-size: 1.1rem; }
+.training-tile-go { font-size: 1.6rem; line-height: 1; color: var(--pitch-2); }
+.btn.training-day-play { flex: none; min-height: var(--tap); min-width: 76px; display: grid; place-items: center;
+    background: var(--pitch-2); color: #fff; }
+
+/* Archief: per dag een rij; "nog nooit gespeeld" springt eruit, "al gespeeld" krijgt een vinkje en een rustige knop. */
+.training-days { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.training-day { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: var(--radius);
+    background: var(--card); color: var(--text); text-decoration: none; box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+    border-left: 4px solid var(--accent); }
+.training-day.played { border-left-color: var(--ok); }
+/* Een afgelopen special: in de stijl van de special-kaart. */
+.training-day.special { background: linear-gradient(135deg, #fff7d1, #ffffff); }
+.training-day-mark { width: 28px; height: 28px; flex: none; border-radius: 50%; display: grid; place-items: center;
+    font-weight: 800; background: #eef2ef; color: var(--muted); }
+.training-day.played .training-day-mark { background: var(--ok); color: #fff; }
+.training-day-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; overflow-wrap: anywhere; }
+.training-day-text b { display: block; }
+.training-day-text small { color: var(--muted); font-size: .82rem; }
+.training-day.played .btn.training-day-play { background: #e8efe9; color: var(--text); }
+
+/* Altijd duidelijk dat dit niet de echte daily is. */
+.training-label { display: inline-block; background: rgba(255, 255, 255, .14); color: #fff; border-radius: 999px;
+    padding: 4px 12px; margin: -4px 0 12px; font-size: .85rem; font-weight: 700; }
+.training-note { margin: 12px 0 0; }
+.training-result { font-size: 1.05rem; margin: 12px 0 4px; }
+.hero .btn + .btn { margin-top: 8px; }
+
+/* Scorelijst: je echte poging bovenaan, dan elke trainingsrun (nieuwste eerst). */
+.training-scores li.real { box-shadow: inset 4px 0 0 var(--ok); }
+.training-scores li.left .pts { color: var(--muted); }
+.training-best { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; font-size: .72rem; font-weight: 800;
+    background: var(--accent); color: #1b1600; vertical-align: middle; }
+.training-best.now { background: var(--pitch-2); color: #fff; }
 
 /* ---------- Badges & bekers ---------- */
 .trophies { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }

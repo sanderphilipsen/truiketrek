@@ -58,6 +58,23 @@ else
         }
     </ol>
 
+    @if (!_info.IsUpcoming)
+    {
+        <h2 class="section-title">🏆 Klassement</h2>
+        @if (_board is null)
+        {
+            <div class="center-msg"><Spinner /></div>
+        }
+        else if (_board.Entries.Count == 0)
+        {
+            <div class="card center muted">Nog niemand speelde deze special.</div>
+        }
+        else
+        {
+            <LeaderboardList Entries="@_board.Entries.Select(e => new LeaderboardList.Row(e.Rank, e.UserName, e.AvatarId, e.Points, e.IsMe)).ToList()" />
+            <p class="section-note">@_board.Note</p>
+        }
+    }
 }
 
 @code {
@@ -65,6 +82,7 @@ else
 
     private SpecialSummary? _info;
     private DailyOverview? _overview;
+    private Leaderboard? _board;
     private string? _error;
 
     protected override async Task OnParametersSetAsync()
@@ -74,6 +92,7 @@ else
             _info = (await Api.GetSpecialsAsync()).FirstOrDefault(s => s.Id == Id)
                     ?? throw new ApiException("Deze special is niet (meer) beschikbaar.");
             _overview = await Api.GetDailyAsync(Id);
+            if (!_info.IsUpcoming) _board = await Api.GetSpecialLeaderboardAsync(Id);
         }
         catch (ApiException ex) { _error = ex.Message; }
     }

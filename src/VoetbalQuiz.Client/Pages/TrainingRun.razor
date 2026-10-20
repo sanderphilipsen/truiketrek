@@ -1,0 +1,133 @@
+@page "/academie/poging/{RunId:int}"
+@attribute [Authorize]
+@inject ApiClient Api
+@inject NavigationManager Nav
+
+<PageTitle>Academie – Truitje Trek</PageTitle>
+
+@if (_error is not null)
+{
+    <p class="error" role="alert">@_error</p>
+    <a class="btn" href="academie">Terug naar de academie</a>
+}
+else if (_overview is null || _summary is null)
+{
+    <div class="center-msg"><Spinner /></div>
+}
+else
+{
+    var answered = _overview.Questions.Count(q => q.Status == QuestionStatus.Answered);
+    var next = _overview.Questions.FirstOrDefault(q => q.Status != QuestionStatus.Answered);
+
+    var sp = _summary.Special;
+
+    <div class="question-head">
+        @if (sp is not null)
+        {
+            <a href="academie/special/@sp.Id" class="back">‹ @sp.Name</a>
+        }
+        else
+        {
+            <a href="academie/@_overview.Date.ToString("yyyy-MM-dd")" class="back">‹ @DutchDates.DayMonth(_overview.Date)</a>
+        }
+    </div>
+
+    <section class="card hero">
+        @if (sp is not null)
+        {
+            <div class="date">Special · @Training.SpecialDates(sp)</div>
+            <h1>@sp.Icon @sp.Name</h1>
+        }
+        else
+        {
+            <div class="date">@DutchDates.DayMonth(_overview.Date)</div>
+            <h1>Academie</h1>
+        }
+        <div class="type-banner">@QuestionTypes.DayLabel(_overview)</div>
+        <div class="score-big">@_overview.TotalPoints <small>punten</small></div>
+        <div class="muted">@answered / @_overview.Questions.Count gespeeld</div>
+
+        @if (next is not null)
+        {
+            <a class="btn primary big" href="academie/poging/@RunId/vraag/@next.Number">
+                @(answered == 0 ? "Start" : $"Verder met vraag {next.Number}")
+            </a>
+        }
+        else
+        {
+            <p class="training-result" aria-live="polite">
+                Daarmee was je <b>@_summary.WouldBeRank@DutchDates.OrdinalSuffix(_summary.WouldBeRank) van @_summary.Players</b>
+                geweest @(sp is null ? $"op {DutchDates.DayMonth(_summary.Date)}" : $"in de {sp.Name}").
+            </p>
+            @if (_summary.Real is { } real)
+            {
+                var diff = _summary.Points - real.Points;
+                <p class="muted">Echt: @real.Points · Nu: @_summary.Points (@(diff >= 0 ? "+" : "")@diff)</p>
+            }
+            <button class="btn primary big" @onclick="AgainAsync" disabled="@_starting">Opnieuw spelen</button>
+            <a class="btn" href="academie">Iets anders kiezen</a>
+        }
+        <p class="muted training-note">@TrainingRules.Label</p>
+    </section>
+
+    @if (next is null)
+    {
+        <h2 class="section-title">Jouw scores op deze @(sp is null ? "daily" : "special")</h2>
+        <TrainingScores Real="_summary.Real" Runs="_summary.Runs" Questions="_summary.Questions" Current="RunId" />
+    }
+
+    <h2 class="section-title">Vragen</h2>
+    <ol class="question-list">
+        @foreach (var q in _overview.Questions)
+        {
+            <li class="@CssFor(q)">
+                <span class="num">@q.Number</span>
+                <span class="name">@(q.PlayerName ?? (q.Status == QuestionStatus.NotStarted ? "?" : "bezig…"))</span>
+                <span class="pts">@(q.Points is { } p ? $"{p}" : "")</span>
+            </li>
+        }
+    </ol>
+}
+
+@code {
+    [Parameter] public int RunId { get; set; }
+
+    private DailyOverview? _overview;
+    private TrainingSummary? _summary;
+    private string? _error;
+    private bool _starting;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        (_overview, _summary, _error) = (null, null, null);
+        try
+        {
+            _overview = await Api.GetOverviewAsync(ApiClient.TrainingRun(RunId));
+            _summary = await Api.GetTrainingSummaryAsync(RunId);
+        }
+        catch (ApiException ex) { _error = ex.Message; }
+    }
+
+    private async Task AgainAsync()
+    {
+        _starting = true;
+        try
+        {
+            var run = await Api.StartTrainingAgainAsync(RunId);
+            Nav.NavigateTo($"academie/poging/{run.Id}/vraag/1");
+        }
+        catch (ApiException ex)
+        {
+            _error = ex.Message;
+            _starting = false;
+        }
+    }
+
+    private static string CssFor(QuestionSummary q) => q switch
+    {
+        { Correct: true } => "ok",
+        { Correct: false } => "fail",
+        { Status: QuestionStatus.NotStarted } => "todo",
+        _ => "busy",
+    };
+}

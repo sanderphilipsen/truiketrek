@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Truitje Trek Stadionbord</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Doto:wght@700;900&family=Archivo+Narrow:wght@500;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* POC "Stadionbord": de app als het oude lichtbord boven de tribune op een avondmatch.
+   Pikzwart, amber lampjes, klapcijfers. Weinig woorden, want een scorebord heeft geen ruimte. */
+:root {
+    --night: #0c0c0b;
+    --panel: #161613;
+    --bulb: #ffb21e;
+    --bulb-dim: rgba(255, 178, 30, .14);
+    --green: #42e07a;
+    --red: #ff4a3d;
+    --text: #e9e3d2;
+    --soft: #8b8576;
+    --dots: "Doto", monospace;
+    --narrow: "Archivo Narrow", "Arial Narrow", sans-serif;
+    --flap: "Oswald", Impact, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #050505; color: var(--text); font-family: var(--narrow); padding: 32px 16px 64px; }
+.intro { max-width: 1240px; margin: 0 auto 28px; display: flex; flex-wrap: wrap; gap: 8px 32px; align-items: baseline; }
+.intro h1 { font-family: var(--dots); font-weight: 900; font-size: 44px; margin: 0; color: var(--bulb); text-transform: uppercase; text-shadow: 0 0 14px rgba(255,178,30,.5); }
+.intro p { margin: 0; font-size: 18px; color: var(--soft); max-width: 60ch; }
+.rail { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; max-width: 1240px; margin: 0 auto; }
+.screen-wrap { display: flex; flex-direction: column; gap: 10px; }
+.screen-label { color: var(--soft); font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
+
+.phone {
+    width: 375px; height: 780px; max-width: calc(100vw - 32px);
+    background: radial-gradient(ellipse at 50% -10%, rgba(255,178,30,.10), transparent 55%), var(--night);
+    border-radius: 28px; overflow: hidden; display: flex; flex-direction: column; position: relative;
+    border: 1px solid #222;
+}
+.body { flex: 1; display: flex; flex-direction: column; padding: 0 16px; min-height: 0; }
+
+/* Lichtkrant bovenaan: loopt traag voorbij */
+.ticker { border-bottom: 1px solid #262520; overflow: hidden; white-space: nowrap; padding: 22px 0 10px; }
+.ticker span {
+    display: inline-block; padding-left: 100%; animation: run 18s linear infinite;
+    font-family: var(--dots); font-weight: 900; font-size: 18px; color: var(--bulb); letter-spacing: 1px; text-transform: uppercase;
+    text-shadow: 0 0 8px rgba(255,178,30,.6);
+}
+@keyframes run { to { transform: translateX(-100%); } }
+@media (prefers-reduced-motion: reduce) { .ticker span { animation: none; padding-left: 16px; } }
+
+/* Het bord zelf */
+.board {
+    margin-top: 18px; background: var(--panel); border: 2px solid #2a2924; border-radius: 6px; padding: 14px 14px 16px;
+    box-shadow: inset 0 0 0 4px #0e0e0c;
+}
+.board-label { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--soft); display: flex; justify-content: space-between; }
+.dotline {
+    font-family: var(--dots); font-weight: 900; color: var(--bulb); text-transform: uppercase; line-height: .95;
+    text-shadow: 0 0 10px rgba(255,178,30,.55);
+}
+.dotline.xl { font-size: 58px; margin-top: 8px; }
+.dotline .off { color: var(--bulb-dim); text-shadow: none; }
+
+/* Klapcijfers */
+.flaps { display: flex; gap: 4px; }
+.flap {
+    width: 44px; height: 64px; background: linear-gradient(#232320 0 49%, #111 49% 51%, #1c1c19 51%);
+    border-radius: 4px; display: grid; place-items: center;
+    font-family: var(--flap); font-weight: 700; font-size: 48px; color: var(--text); line-height: 1;
+}
+.flap.sm { width: 30px; height: 44px; font-size: 32px; }
+
+.score-row { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 14px; }
+.score-row .lbl { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--soft); margin-bottom: 6px; }
+
+/* Tien lampjes = tien vragen */
+.lamps { display: flex; gap: 9px; margin-top: 18px; justify-content: space-between; }
+.lamp { width: 22px; height: 22px; border-radius: 50%; background: #222; box-shadow: inset 0 -2px 3px rgba(0,0,0,.6); }
+.lamp.ok { background: var(--green); box-shadow: 0 0 10px var(--green); }
+.lamp.no { background: var(--red); box-shadow: 0 0 10px var(--red); }
+.lamp.now { background: var(--bulb); box-shadow: 0 0 12px var(--bulb); animation: blink 1.2s steps(2) infinite; }
+@keyframes blink { 50% { opacity: .35; } }
+@media (prefers-reduced-motion: reduce) { .lamp.now { animation: none; } }
+
+.go {
+    margin-top: 22px; display: flex; justify-content: center; align-items: center; gap: 12px; text-decoration: none;
+    height: 72px; border-radius: 6px; background: var(--bulb); color: var(--night);
+    font-family: var(--flap); font-weight: 700; font-size: 28px; text-transform: uppercase; letter-spacing: 2px;
+    box-shadow: 0 0 28px rgba(255,178,30,.35);
+}
+
+.side { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+.side a { text-decoration: none; color: inherit; background: var(--panel); border: 1px solid #2a2924; border-radius: 6px; padding: 10px 12px; }
+.side small { display: block; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--soft); }
+.side b { display: block; font-family: var(--flap); font-weight: 500; font-size: 22px; text-transform: uppercase; margin-top: 2px; }
+.side b.live { color: var(--red); }
+.side b.live::before { content: "● "; font-size: 14px; vertical-align: 3px; }
+
+.tabbar { margin-top: auto; display: flex; border-top: 1px solid #262520; }
+.tabbar a {
+    flex: 1; text-align: center; padding: 14px 0 22px; text-decoration: none; color: var(--soft);
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700;
+}
+.tabbar a.on { color: var(--bulb); text-shadow: 0 0 8px rgba(255,178,30,.6); }
+
+/* ---------- Vraag ---------- */
+.q-head { display: flex; justify-content: space-between; align-items: center; padding: 22px 16px 0; }
+.q-head .n { font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--soft); }
+.clock { font-family: var(--dots); font-weight: 900; font-size: 44px; color: var(--red); text-shadow: 0 0 12px rgba(255,74,61,.6); line-height: 1; }
+.tips { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-direction: column; gap: 8px; }
+.tips li { background: var(--panel); border-left: 4px solid var(--bulb); border-radius: 4px; padding: 10px 12px; font-size: 18px; line-height: 1.3; }
+.tips li.off { border-left-color: #2a2924; color: var(--soft); font-size: 14px; letter-spacing: 2px; text-transform: uppercase; }
+.input {
+    margin-top: auto; background: var(--panel); border: 2px solid var(--bulb); border-radius: 6px;
+    display: flex; align-items: center; padding: 6px 6px 6px 14px; margin-bottom: 18px;
+}
+.input input { flex: 1; min-width: 0; background: none; border: 0; outline: none; color: var(--bulb); font-family: var(--dots); font-weight: 900; font-size: 28px; text-transform: uppercase; }
+.input input::placeholder { color: var(--bulb-dim); }
+.input button { background: var(--bulb); border: 0; border-radius: 4px; height: 52px; padding: 0 18px; font-family: var(--flap); font-weight: 700; font-size: 20px; text-transform: uppercase; }
+.worth { text-align: right; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--soft); margin: 10px 0 6px; }
+.worth b { color: var(--bulb); font-size: 18px; }
+
+/* ---------- Resultaat ---------- */
+.flash {
+    margin-top: 70px; text-align: center; font-family: var(--dots); font-weight: 900; font-size: 120px; line-height: .9;
+    color: var(--green); text-shadow: 0 0 22px rgba(66,224,122,.7);
+    animation: flash .6s steps(2) 3;
+}
+@keyframes flash { 50% { opacity: .15; } }
+@media (prefers-reduced-motion: reduce) { .flash { animation: none; } }
+.answer-was { text-align: center; margin-top: 24px; }
+.answer-was small { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--soft); }
+.answer-was b { display: block; font-family: var(--flap); font-weight: 700; font-size: 38px; text-transform: uppercase; margin-top: 4px; }
+.res-flaps { display: flex; justify-content: center; align-items: center; gap: 18px; margin-top: 30px; }
+.res-flaps .plus { font-family: var(--flap); font-weight: 700; font-size: 40px; color: var(--green); }
+.result-go { margin-top: auto; margin-bottom: 18px; }
+</style>
+</head>
+<body>
+<header class="intro">
+    <h1>Stadionbord</h1>
+    <p>Het lichtbord boven de tribune op een avondmatch. Donker, amber lampjes, klapcijfers. Een scorebord heeft geen plek voor uitleg.</p>
+</header>
+
+<main class="rail">
+    <section class="screen-wrap">
+        <span class="screen-label">01 · Home</span>
+        <div class="phone">
+            <div class="ticker"><span>Dagwinnaar gisteren: Lotte_V 720 pt &nbsp;·&nbsp; Derby-special Club – Anderlecht nog 2 dagen &nbsp;·&nbsp; Jens zoekt nog 2 spelers</span></div>
+            <div class="body">
+                <div class="board">
+                    <div class="board-label"><span>Vandaag</span><span>ma 19.10</span></div>
+                    <div class="dotline xl">Wie ben<br>ik?</div>
+                    <div class="lamps" aria-label="4 van 10 gespeeld">
+                        <i class="lamp ok"></i><i class="lamp ok"></i><i class="lamp no"></i><i class="lamp ok"></i><i class="lamp now"></i>
+                        <i class="lamp"></i><i class="lamp"></i><i class="lamp"></i><i class="lamp"></i><i class="lamp"></i>
+                    </div>
+                    <div class="score-row">
+                        <div><div class="lbl">Punten</div><div class="flaps"><span class="flap">2</span><span class="flap">4</span><span class="flap">0</span></div></div>
+                        <div style="text-align:right"><div class="lbl">Plaats</div><div class="flaps"><span class="flap sm">#</span><span class="flap sm">9</span></div></div>
+                    </div>
+                </div>
+
+                <a class="go" href="#">Vraag 5 ›</a>
+
+                <div class="side">
+                    <a href="#"><small>Jouw tafel</small><b>2/4 klaar</b></a>
+                    <a href="#"><small>Online</small><b class="live">3 live</b></a>
+                </div>
+            </div>
+            <nav class="tabbar"><a class="on" href="#">Spel</a><a href="#">Online</a><a href="#">Stand</a><a href="#">Ik</a></nav>
+        </div>
+    </section>
+
+    <section class="screen-wrap">
+        <span class="screen-label">02 · Vraag</span>
+        <div class="phone">
+            <div class="q-head"><span class="n">Vraag 5 / 10</span><span class="clock">0:23</span></div>
+            <div class="body">
+                <div class="board">
+                    <div class="dotline xl">Wie ben<br>ik?</div>
+                </div>
+                <ol class="tips">
+                    <li>Ik debuteerde op mijn zeventiende in het eerste elftal van Anderlecht.</li>
+                    <li>Via Hamburg trok ik in 2008 naar Engeland.</li>
+                    <li class="off">Tip 3 over 0:23</li>
+                </ol>
+                <div class="worth">Nu nog <b>80</b> pt</div>
+                <label class="input"><input placeholder="Naam" value="Kompa" aria-label="Jouw antwoord"><button>Schiet</button></label>
+            </div>
+        </div>
+    </section>
+
+    <section class="screen-wrap">
+        <span class="screen-label">03 · Resultaat</span>
+        <div class="phone">
+            <div class="q-head"><span class="n">Vraag 5 / 10</span></div>
+            <div class="body">
+                <div class="flash">GOAL</div>
+                <div class="answer-was"><small>Het was</small><b>Vincent Kompany</b></div>
+                <div class="res-flaps">
+                    <span class="plus">+80</span>
+                    <div class="flaps"><span class="flap">3</span><span class="flap">2</span><span class="flap">0</span></div>
+                </div>
+                <a class="go result-go" href="#">Vraag 6 ›</a>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

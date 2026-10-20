@@ -48,6 +48,17 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
             .ThenBy(t => t.FinishedAt)
             .ToList();
 
+    /// <summary>Een plaats in het klassement van een daily of special.</summary>
+    public record DayStanding(string UserId, int Points, int Correct, int Wrong);
+
+    /// <summary>Het klassement van elk van deze reeksen (daily of special; zelfde volgorde als het dagklassement), per reeks.</summary>
+    public async Task<Dictionary<int, List<DayStanding>>> DayStandingsAsync(ICollection<int> challengeIds)
+    {
+        var rows = await RowsAsync(a => challengeIds.Contains(a.DailyQuestion.DailyChallengeId), includeSpecials: true);
+        return DayTotals(rows).GroupBy(t => t.ChallengeId).ToDictionary(g => g.Key,
+            g => RankDay(g).Select(t => new DayStanding(t.UserId, t.Points, t.Correct, t.Wrong)).ToList());
+    }
+
     // ---------- Avatar en level ----------
 
     public record UserCard(string? AvatarId, int Level);
@@ -247,6 +258,16 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
         var entries = ranked.Select((t, i) => new LeaderboardEntry(
             i + 1, t.UserName, cards[t.UserId].AvatarId, cards[t.UserId].Level, t.Points, 1, t.Correct, 0, t.UserId == userId)).ToList();
         return new Leaderboard("Vandaag", $"Top 3 van de dag krijgt +{MonthRules.PodiumBonus[0]} / +{MonthRules.PodiumBonus[1]} / +{MonthRules.PodiumBonus[2]} in het maandklassement.", entries);
+    }
+
+    /// <summary>Het klassement van één special, met dezelfde volgorde als de dagwinnaar.</summary>
+    public async Task<Leaderboard> GetSpecialLeaderboardAsync(string userId, int specialId)
+    {
+        var ranked = RankDay(DayTotals(await RowsAsync(a => a.DailyQuestion.DailyChallenge.SpecialEventId == specialId, includeSpecials: true)));
+        var cards = await UserCardsAsync();
+        var entries = ranked.Select((t, i) => new LeaderboardEntry(
+            i + 1, t.UserName, cards[t.UserId].AvatarId, cards[t.UserId].Level, t.Points, 1, t.Correct, 0, t.UserId == userId)).ToList();
+        return new Leaderboard("Klassement", $"Top 3 krijgt na afloop +{MonthRules.PodiumBonus[0]} / +{MonthRules.PodiumBonus[1]} / +{MonthRules.PodiumBonus[2]} in het maandklassement.", entries);
     }
 
     /// <summary>
