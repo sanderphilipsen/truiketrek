@@ -5,7 +5,8 @@ namespace VoetbalQuiz.Server.Data;
 
 public class AppUser : IdentityUser
 {
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    /// <summary>Wanneer de speler zich registreerde (UTC); gezet bij het registreren.</summary>
+    public DateTime CreatedAt { get; set; }
     public string? AvatarId { get; set; }
 
     /// <summary>XP per onderdeel (zoals Levels.Breakdown) die de speler al zag in de beloningspopup. Null = nog nooit.</summary>

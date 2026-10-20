@@ -1,6 +1,4 @@
-using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Time.Testing;
 using VoetbalQuiz.Server.Data;
 using VoetbalQuiz.Server.Services;
@@ -10,9 +8,9 @@ namespace VoetbalQuiz.Tests;
 
 public sealed class QuizServiceTests : IDisposable
 {
-    private readonly SqliteConnection _connection = new("Data Source=:memory:");
+    private readonly TestDb _t = new();
     private readonly QuizDbContext _db;
-    private readonly FakeTimeProvider _clock = new(new DateTimeOffset(2026, 10, 17, 10, 0, 0, TimeSpan.Zero));
+    private readonly FakeTimeProvider _clock;
     private readonly QuizService _quiz;
     private readonly ResultsService _results;
     private readonly MonthRankingService _ranking;
@@ -20,9 +18,7 @@ public sealed class QuizServiceTests : IDisposable
 
     public QuizServiceTests()
     {
-        _connection.Open();
-        _db = new QuizDbContext(new DbContextOptionsBuilder<QuizDbContext>().UseSqlite(_connection).Options);
-        _db.Database.EnsureCreated();
+        (_db, _clock) = (_t.Db, _t.Clock);
 
         for (var i = 1; i <= 15; i++)
         {
@@ -38,21 +34,15 @@ public sealed class QuizServiceTests : IDisposable
         _db.SaveChanges();
         _userId = user.Id;
 
-        _results = new ResultsService(_db, _clock, new MemoryCache(new MemoryCacheOptions()));
-        _ranking = new MonthRankingService(_db, _results);
-        _quiz = new QuizService(_db, _clock, _results);
+        _results = _t.Results;
+        _ranking = _t.Ranking;
+        _quiz = _t.Quiz;
     }
 
-    private string AddUser(string name)
-    {
-        var user = new AppUser { UserName = name };
-        _db.Users.Add(user);
-        _db.SaveChanges();
-        return user.Id;
-    }
+    private string AddUser(string name) => _t.AddUser(name);
 
     private async Task<string> NameOfQuestion(int number) =>
-        (await _quiz.GetOrCreateChallengeAsync(_quiz.Today)).Questions.Single(q => q.Number == number).Player.Name;
+        (await _quiz.GetOrCreateChallengeAsync(_quiz.Today)).Questions.Single(q => q.Number == number).Player!.Name;
 
     [Fact]
     public async Task Daily_challenge_has_ten_questions_and_max_two_classics()
@@ -60,7 +50,7 @@ public sealed class QuizServiceTests : IDisposable
         var challenge = await _quiz.GetOrCreateChallengeAsync(_quiz.Today);
 
         Assert.Equal(10, challenge.Questions.Count);
-        Assert.True(challenge.Questions.Count(q => q.Player.Era == "classic") <= 2);
+        Assert.True(challenge.Questions.Count(q => q.Player!.Era == "classic") <= 2);
         Assert.Equal(challenge.Id, (await _quiz.GetOrCreateChallengeAsync(_quiz.Today)).Id);
     }
 
@@ -131,6 +121,88 @@ public sealed class QuizServiceTests : IDisposable
         Assert.Equal(QuestionStatus.Answered, late.Status);
         Assert.False(late.Result!.Correct);
         Assert.Equal(0, late.Result.Points);
+    }
+
+    // ---------- Karakterisering van de pogingflow (vangnet voor refactorplan stap 1.1) ----------
+
+    [Fact]
+    public async Task A_question_stops_after_the_maximum_number_of_guesses()
+    {
+        await _quiz.StartAsync(_userId, 1);
+        QuestionState state = null!;
+        for (var i = 1; i < GameRules.MaxGuessesPerQuestion; i++) state = await _quiz.GuessAsync(_userId, 1, $"Fout {i}");
+        Assert.Equal(QuestionStatus.InProgress, state.Status);
+
+        var last = await _quiz.GuessAsync(_userId, 1, "Nog eens fout");
+        Assert.Equal(QuestionStatus.Answered, last.Status);
+        Assert.False(last.Result!.Correct);
+        Assert.Equal(0, last.Result.Points);
+        Assert.Equal(GameRules.MaxGuessesPerQuestion, last.WrongGuesses);
+
+        var after = await _quiz.GuessAsync(_userId, 1, await NameOfQuestion(1));
+        Assert.False(after.Result!.Correct);
+        Assert.Null(after.LastWrongGuess);
+    }
+
+    [Fact]
+    public async Task An_answer_within_the_latency_grace_still_counts()
+    {
+        await _quiz.StartAsync(_userId, 1);
+        _clock.Advance(TimeSpan.FromSeconds(GameRules.TimeLimitSeconds + GameRules.LatencyGraceSeconds - 0.1));
+        var inTime = await _quiz.GuessAsync(_userId, 1, await NameOfQuestion(1));
+        Assert.True(inTime.Result!.Correct);
+        Assert.Equal(GameRules.LastChancePoints, inTime.Result.Points);
+    }
+
+    [Fact]
+    public async Task After_the_grace_the_question_closes_at_the_time_limit()
+    {
+        await _quiz.StartAsync(_userId, 1);
+        _clock.Advance(TimeSpan.FromSeconds(GameRules.TimeLimitSeconds + GameRules.LatencyGraceSeconds + 0.1));
+        var late = await _quiz.GetStateAsync(_userId, 1);
+        Assert.Equal(QuestionStatus.Answered, late.Status);
+        Assert.False(late.Result!.Correct);
+        Assert.Equal(GameRules.TimeLimitSeconds, late.ElapsedSeconds); // afgesloten op de limiet, niet op het moment van kijken
+        Assert.Equal(GameRules.HintCount, late.Hints.Count);
+        Assert.Null(late.LastWrongGuess);
+    }
+
+    [Fact]
+    public async Task The_overview_closes_expired_questions_so_the_next_one_can_start()
+    {
+        await _quiz.StartAsync(_userId, 1);
+        var during = await _quiz.GetOverviewAsync(_userId);
+        Assert.Equal(QuestionStatus.InProgress, during.Questions[0].Status);
+        Assert.Null(during.Questions[0].PlayerName);
+
+        _clock.Advance(TimeSpan.FromSeconds(GameRules.TimeLimitSeconds + 1));
+        var overview = await _quiz.GetOverviewAsync(_userId);
+        Assert.Equal(QuestionStatus.Answered, overview.Questions[0].Status);
+        Assert.Equal(0, overview.Questions[0].Points);
+        Assert.Equal(await NameOfQuestion(1), overview.Questions[0].PlayerName);
+        Assert.Equal(QuestionStatus.NotStarted, overview.Questions[1].Status);
+
+        var next = await _quiz.StartAsync(_userId, 2);
+        Assert.Equal(QuestionStatus.InProgress, next.Status);
+    }
+
+    [Fact]
+    public async Task A_give_up_sent_together_with_a_guess_is_dropped()
+    {
+        await _quiz.StartAsync(_userId, 1);
+
+        // Een tweede verzoek dat tegelijk binnenkomt werkt met een oudere kopie van de poging.
+        using var other = _t.NewContext();
+        var stale = _t.NewQuiz(other);
+        await stale.GetStateAsync(_userId, 1);
+
+        await _quiz.GuessAsync(_userId, 1, "Iemand");
+        var dropped = await stale.GiveUpAsync(_userId, 1);
+        Assert.Equal(QuestionStatus.InProgress, dropped.Status);
+        Assert.Equal(1, dropped.WrongGuesses);
+
+        var right = await _quiz.GuessAsync(_userId, 1, await NameOfQuestion(1));
+        Assert.Equal(100 - GameRules.WrongGuessPenalty, right.Result!.Points);
     }
 
     [Fact]
@@ -304,9 +376,5 @@ public sealed class QuizServiceTests : IDisposable
         Assert.Equal(3, level.Level);
     }
 
-    public void Dispose()
-    {
-        _db.Dispose();
-        _connection.Dispose();
-    }
+    public void Dispose() => _t.Dispose();
 }

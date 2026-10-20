@@ -25,8 +25,8 @@
                     var d = day;
                     var actual = QuestionTypes.ResolveDay(d.Planned, _disabled);
                     var changed = !actual.SequenceEqual(d.Planned.Distinct().Order());
-                    <div class="week-day @(d.Day == DateTime.Today.DayOfWeek ? "today" : "") @(d.IsMix ? "mix" : "")">
-                        <b>@QuestionTypes.DayName(d.Day)@(d.Day == DateTime.Today.DayOfWeek ? " (vandaag)" : "")</b>
+                    <div class="week-day @(d.Day == QuizDay.Today().DayOfWeek ? "today" : "") @(d.IsMix ? "mix" : "")">
+                        <b>@QuestionTypes.DayName(d.Day)@(d.Day == QuizDay.Today().DayOfWeek ? " (vandaag)" : "")</b>
                         <select value="@(d.IsMix ? MixValue : d.Type.ToString())" @onchange="e => Change(d.Day, e.Value?.ToString())">
                             @foreach (var t in QuestionTypes.All)
                             {

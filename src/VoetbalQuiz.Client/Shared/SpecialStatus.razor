@@ -1,6 +1,6 @@
 @* Status van een special: actief, gepland of afgelopen. *@
 @{
-    var today = DateOnly.FromDateTime(DateTime.Today);
+    var today = QuizDay.Today();
     var (label, css) = Item.StartDate > today ? ("Gepland", "planned")
         : Item.EndDate < today ? ("Afgelopen", "past")
         : ("Nu actief", "active");

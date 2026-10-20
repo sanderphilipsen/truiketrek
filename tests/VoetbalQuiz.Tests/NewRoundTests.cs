@@ -1,6 +1,3 @@
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Time.Testing;
 using VoetbalQuiz.Server.Data;
 using VoetbalQuiz.Server.Services;
@@ -11,11 +8,11 @@ namespace VoetbalQuiz.Tests;
 /// <summary>De rondes wissel, rugnummer, mannetje, kluts in de zestien en counter, en de derby-specials.</summary>
 public sealed class NewRoundTests : IDisposable
 {
-    private readonly SqliteConnection _connection = new("Data Source=:memory:");
+    private readonly TestDb _t = new();
     private readonly QuizDbContext _db;
 
     // 17 oktober 2026 is een zaterdag.
-    private readonly FakeTimeProvider _clock = new(new DateTimeOffset(2026, 10, 17, 10, 0, 0, TimeSpan.Zero));
+    private readonly FakeTimeProvider _clock;
     private readonly QuizService _quiz;
     private readonly AdminService _admin;
     private readonly string _me;
@@ -25,9 +22,7 @@ public sealed class NewRoundTests : IDisposable
 
     public NewRoundTests()
     {
-        _connection.Open();
-        _db = new QuizDbContext(new DbContextOptionsBuilder<QuizDbContext>().UseSqlite(_connection).Options);
-        _db.Database.EnsureCreated();
+        (_db, _clock) = (_t.Db, _t.Clock);
 
         // 60 spelers met duidelijk verschillende namen: genoeg voor 5 counters van 10.
         var n = 0;
@@ -56,9 +51,7 @@ public sealed class NewRoundTests : IDisposable
         _db.SaveChanges();
         _me = user.Id;
 
-        var results = new ResultsService(_db, _clock, new MemoryCache(new MemoryCacheOptions()));
-        _quiz = new QuizService(_db, _clock, results);
-        _admin = new AdminService(_db, _quiz);
+        (_quiz, _admin) = (_t.Quiz, _t.Admin);
     }
 
     private void Add<T>(QuestionType type, T data)
@@ -219,7 +212,7 @@ public sealed class NewRoundTests : IDisposable
         Assert.Contains(players, p => p.Tags.Contains("anderlecht"));
         Assert.Contains(players, p => p.Tags.Contains("club-brugge"));
 
-        var summary = (await new ResultsService(_db, _clock, new MemoryCache(new MemoryCacheOptions())).GetSpecialsAsync(_me)).Single();
+        var summary = (await _t.NewResults(_db).GetSpecialsAsync(_me)).Single();
         Assert.Equal("Anderlecht", summary.Affiche!.Home);
     }
 
@@ -250,9 +243,5 @@ public sealed class NewRoundTests : IDisposable
         Assert.Contains(Commentary.ForResult(false, 0, 100, -3), Commentary.Missed);
     }
 
-    public void Dispose()
-    {
-        _db.Dispose();
-        _connection.Dispose();
-    }
+    public void Dispose() => _t.Dispose();
 }

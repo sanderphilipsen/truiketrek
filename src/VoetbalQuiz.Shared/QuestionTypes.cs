@@ -79,6 +79,25 @@ public static class QuestionTypes
         return types.Count == 0 ? [QuestionType.WieBenIk] : types;
     }
 
+    /// <summary>
+    /// De types van een dag volgens de weekplanning: de mix als er meer dan één type gekozen is, anders het ene type
+    /// (geen planning = <see cref="DefaultFor"/>), en dan zoals <see cref="ResolveDay"/>.
+    /// </summary>
+    public static List<QuestionType> ResolveSchedule(
+        QuestionType? type, IReadOnlyCollection<QuestionType>? mixTypes, DayOfWeek day, ICollection<QuestionType> disabled) =>
+        ResolveDay(mixTypes is { Count: > 1 } ? mixTypes : [type ?? DefaultFor(day)], disabled);
+
+    /// <summary>
+    /// De types van een special, zonder de uitgeschakelde. Geen keuze = "Wie ben ik?"; staan ze allemaal uit, dan toch
+    /// de gekozen types (een special wordt niet plots een mix van iets anders).
+    /// </summary>
+    public static List<QuestionType> ResolveSpecial(IReadOnlyCollection<QuestionType> types, ICollection<QuestionType> disabled)
+    {
+        IReadOnlyCollection<QuestionType> chosen = types.Count > 0 ? types : [QuestionType.WieBenIk];
+        var enabled = chosen.Where(t => !disabled.Contains(t)).Distinct().Order().ToList();
+        return enabled.Count > 0 ? enabled : chosen.Distinct().ToList();
+    }
+
     /// <summary>"🕵️ ⚡ 📅" voor een mix.</summary>
     public static string Icons(IEnumerable<QuestionType> types) => string.Join(" ", types.Select(t => Get(t).Icon));
     /// <summary>"⚡ Snelvuur" of "🎲 Mix 🕵️ ⚡ 📅" voor de banner van een dag.</summary>
@@ -150,6 +169,19 @@ public static class QuestionRules
     public const int MinYear = 1970;
     public const int MaxYear = 2026;
 
+    /// <summary>Spelers van vóór 2005 hebben dit tijdperk (<c>Player.Era</c>); de andere zijn "modern".</summary>
+    public const string ClassicEra = "classic";
+
+    /// <summary>Een daily (of special) heeft maximaal zoveel klassiekers bij de spelersvragen.</summary>
+    public const int MaxClassicPerDay = 2;
+
+    /// <summary>
+    /// Types waarbij het antwoord het onderwerp is (een speler of club): die komt nooit twee keer voor in één reeks
+    /// (bv. een feit- én een rebus-raadsel over dezelfde speler). Bij de andere types mag een antwoord terugkomen.
+    /// </summary>
+    public static bool AnswerIsSubject(QuestionType type) =>
+        type is QuestionType.Emoji or QuestionType.Carriere or QuestionType.Wissel or QuestionType.Rugnummer or QuestionType.Mannetje;
+
     /// <summary>Juist antwoord: 100 bij een bliksemsnel antwoord, 50 op de valreep.</summary>
     public static int SpeedPoints(double elapsed, double limit) =>
         (int)Math.Round(50 + 50 * Math.Clamp(1 - Math.Max(0, elapsed - GameRules.LatencyGraceSeconds) / limit, 0, 1));
@@ -195,8 +227,9 @@ public static class QuestionRules
         _ => 0,
     };
 
+    /// <summary>Opstelling: het maximum (alle namen gevonden) naar rato van de gevonden namen.</summary>
     public static int OpstellingPoints(int found, int blanks) =>
-        blanks == 0 ? 0 : (int)Math.Round(200.0 * found / blanks);
+        blanks == 0 ? 0 : (int)Math.Round((double)QuestionTypes.Get(QuestionType.Opstelling).MaxPoints * found / blanks);
 }
 
 // ---------- Inhoud van de vragenbank (zoals in Data/questions/*.json) ----------

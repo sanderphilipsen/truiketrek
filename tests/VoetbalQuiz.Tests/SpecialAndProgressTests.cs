@@ -1,6 +1,4 @@
-using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Time.Testing;
 using VoetbalQuiz.Server.Data;
 using VoetbalQuiz.Server.Services;
@@ -10,9 +8,9 @@ namespace VoetbalQuiz.Tests;
 
 public sealed class SpecialAndProgressTests : IDisposable
 {
-    private readonly SqliteConnection _connection = new("Data Source=:memory:");
+    private readonly TestDb _t = new();
     private readonly QuizDbContext _db;
-    private readonly FakeTimeProvider _clock = new(new DateTimeOffset(2026, 10, 17, 10, 0, 0, TimeSpan.Zero));
+    private readonly FakeTimeProvider _clock;
     private readonly ResultsService _results;
     private readonly QuizService _quiz;
     private readonly AdminService _admin;
@@ -22,9 +20,7 @@ public sealed class SpecialAndProgressTests : IDisposable
 
     public SpecialAndProgressTests()
     {
-        _connection.Open();
-        _db = new QuizDbContext(new DbContextOptionsBuilder<QuizDbContext>().UseSqlite(_connection).Options);
-        _db.Database.EnsureCreated();
+        (_db, _clock) = (_t.Db, _t.Clock);
 
         for (var i = 1; i <= 30; i++)
         {
@@ -40,21 +36,14 @@ public sealed class SpecialAndProgressTests : IDisposable
         _me = AddUser("sander");
         _friend = AddUser("tom");
 
-        _results = new ResultsService(_db, _clock, new MemoryCache(new MemoryCacheOptions()));
-        _quiz = new QuizService(_db, _clock, _results);
-        _admin = new AdminService(_db, _quiz);
-        var online = new OnlineService(_db, _results);
-        _ranking = new MonthRankingService(_db, _results);
-        _progress = new ProgressService(_db, _clock, _results, online, _ranking, new GoldenBallService(_db, _clock, _ranking, _results));
+        _results = _t.Results;
+        _quiz = _t.Quiz;
+        _admin = _t.Admin;
+        _ranking = _t.Ranking;
+        _progress = _t.Progress;
     }
 
-    private string AddUser(string name)
-    {
-        var user = new AppUser { UserName = name };
-        _db.Users.Add(user);
-        _db.SaveChanges();
-        return user.Id;
-    }
+    private string AddUser(string name) => _t.AddUser(name);
 
     private async Task PlayAllAsync(string userId, int? specialId, bool correct)
     {
@@ -62,7 +51,7 @@ public sealed class SpecialAndProgressTests : IDisposable
         foreach (var q in challenge.Questions.OrderBy(q => q.Number))
         {
             await _quiz.StartAsync(userId, q.Number, specialId);
-            if (correct) await _quiz.GuessAsync(userId, q.Number, q.Player.Name, specialId);
+            if (correct) await _quiz.GuessAsync(userId, q.Number, q.Player!.Name, specialId);
             else await _quiz.GiveUpAsync(userId, q.Number, specialId);
         }
     }
@@ -77,7 +66,7 @@ public sealed class SpecialAndProgressTests : IDisposable
         await PlayAllAsync(_me, id, correct: true);
 
         var challenge = await _quiz.GetOrCreateSpecialChallengeAsync(id);
-        Assert.All(challenge.Questions, q => Assert.Contains("halloween", q.Player.Tags));
+        Assert.All(challenge.Questions, q => Assert.Contains("halloween", q.Player!.Tags));
 
         var month = Assert.Single((await _ranking.GetAsync(_me, 2026, 10)).Entries);
         Assert.Equal(1000, month.Specials);
@@ -157,7 +146,7 @@ public sealed class SpecialAndProgressTests : IDisposable
         foreach (var p in _db.Players.Where(p => p.Tags.Count == 0)) p.Status = PlayerStatus.Rejected;
         await _db.SaveChangesAsync();
         var challenge = await _quiz.GetOrCreateChallengeAsync(_quiz.Today);
-        Assert.All(challenge.Questions, q => Assert.NotEqual(PlayerStatus.Rejected, q.Player.Status));
+        Assert.All(challenge.Questions, q => Assert.NotEqual(PlayerStatus.Rejected, q.Player!.Status));
     }
 
     [Fact]
@@ -243,9 +232,5 @@ public sealed class SpecialAndProgressTests : IDisposable
         Assert.Contains(profile.Badges, b => b.Id == "allrounder" && !b.Earned && b.Progress == $"1/{QuestionTypes.All.Count}");
     }
 
-    public void Dispose()
-    {
-        _db.Dispose();
-        _connection.Dispose();
-    }
+    public void Dispose() => _t.Dispose();
 }

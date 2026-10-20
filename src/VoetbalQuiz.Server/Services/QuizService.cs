@@ -13,8 +13,6 @@ public class QuizException(string message) : Exception(message);
 /// </summary>
 public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService results)
 {
-    private const int MaxClassicPerDay = 2;
-
     private DateTime Now => clock.GetUtcNow().UtcDateTime;
 
     public DateOnly Today => QuizClock.Today(clock);
@@ -25,14 +23,11 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
         (await db.DisabledQuestionTypes.Select(d => d.Type).ToListAsync()).ToHashSet();
 
     /// <summary>De vraagtypes van een dag volgens de weekplanning (één type of een mix), zonder uitgeschakelde types.</summary>
-    public async Task<List<QuestionType>> TypesForAsync(DateOnly date) =>
-        ResolveTypes(await db.DailySchedule.SingleOrDefaultAsync(d => d.Day == date.DayOfWeek), date.DayOfWeek, await DisabledTypesAsync());
-
-    public static List<QuestionType> ResolveTypes(DailyScheduleDay? row, DayOfWeek day, ICollection<QuestionType> disabled) =>
-        QuestionTypes.ResolveDay(row is { MixTypes.Count: > 1 } ? row.MixTypes : [row?.Type ?? QuestionTypes.DefaultFor(day)], disabled);
-
-    private static List<QuestionType> Enabled(IEnumerable<QuestionType> types, ICollection<QuestionType> disabled) =>
-        types.Where(t => !disabled.Contains(t)).Distinct().Order().ToList();
+    public async Task<List<QuestionType>> TypesForAsync(DateOnly date)
+    {
+        var row = await db.DailySchedule.SingleOrDefaultAsync(d => d.Day == date.DayOfWeek);
+        return QuestionTypes.ResolveSchedule(row?.Type, row?.MixTypes, date.DayOfWeek, await DisabledTypesAsync());
+    }
 
     public async Task<DailyChallenge> GetOrCreateChallengeAsync(DateOnly date)
     {
@@ -76,15 +71,7 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
             .Include(c => c.Questions).ThenInclude(q => q.QuizItem)
             .AsSplitQuery()
             .SingleOrDefaultAsync(filter);
-
-        // Counter: de spelers staan als lijst van ids bij de vraag.
-        var ids = challenge?.Questions.SelectMany(q => q.CounterPlayerIds).Distinct().ToList() ?? [];
-        if (ids.Count > 0)
-        {
-            var players = await db.Players.Where(p => ids.Contains(p.Id)).ToDictionaryAsync(p => p.Id);
-            foreach (var q in challenge!.Questions)
-                q.CounterPlayers = q.CounterPlayerIds.Where(players.ContainsKey).Select(id => players[id]).ToList();
-        }
+        if (challenge is not null) await db.LoadCounterPlayersAsync(challenge.Questions);
         return challenge;
     }
 
@@ -166,12 +153,12 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
 
         if (targets is not null)
             return PickByPlan(candidates.ToList(), targets, p => p.Difficulty, p => p.Status == PlayerStatus.Approved ? 0 : 1,
-                (picked, p) => p.Era != "classic" || picked.Count(x => x.Era == "classic") < MaxClassicPerDay);
+                (picked, p) => p.Era != QuestionRules.ClassicEra || picked.Count(x => x.Era == QuestionRules.ClassicEra) < QuestionRules.MaxClassicPerDay);
 
         var picked = new List<Player>();
         foreach (var p in candidates)
         {
-            if (p.Era == "classic" && picked.Count(x => x.Era == "classic") >= MaxClassicPerDay) continue;
+            if (p.Era == QuestionRules.ClassicEra && picked.Count(x => x.Era == QuestionRules.ClassicEra) >= QuestionRules.MaxClassicPerDay) continue;
             picked.Add(p);
             if (picked.Count == count) break;
         }
@@ -200,10 +187,9 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
             .ThenBy(_ => Random.Shared.Next())
             .ToList();
 
-        // Bij emoji, carrièrepad, wissel, rugnummer en mannetje is het antwoord het onderwerp: nooit twee keer dezelfde speler of club
-        // op één dag (bv. een feit- én een rebus-raadsel). Bij de andere types mag een antwoord terugkomen.
+        // Is het antwoord het onderwerp (zie QuestionRules.AnswerIsSubject), dan nooit twee keer dezelfde speler of club op één dag.
         string Subject(QuizItem i) =>
-            type is QuestionType.Emoji or QuestionType.Carriere or QuestionType.Wissel or QuestionType.Rugnummer or QuestionType.Mannetje
+            QuestionRules.AnswerIsSubject(type)
                 ? AnswerMatcher.Normalize(QuestionEngine.Describe(i.Type, i.Data).Answer)
                 : i.Id.ToString();
 
@@ -267,14 +253,7 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
 
     /// <summary>De types van een special, zonder de uitgeschakelde (staan ze allemaal uit, dan toch de gekozen types).</summary>
     public async Task<List<QuestionType>> SpecialTypesAsync(SpecialEvent special) =>
-        ResolveSpecialTypes(special.Types, await DisabledTypesAsync());
-
-    public static List<QuestionType> ResolveSpecialTypes(List<QuestionType> types, ICollection<QuestionType> disabled)
-    {
-        List<QuestionType> chosen = types.Count > 0 ? types : [QuestionType.WieBenIk];
-        var enabled = Enabled(chosen, disabled);
-        return enabled.Count > 0 ? enabled : chosen.Distinct().ToList();
-    }
+        QuestionTypes.ResolveSpecial(special.Types, await DisabledTypesAsync());
 
     /// <summary>Stelt een reeks samen volgens <see cref="QuestionTypes.Mix"/>; null als een type te weinig vragen heeft.</summary>
     private async Task<List<DailyQuestion>?> BuildMixAsync(
@@ -337,8 +316,7 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
     private async Task<(List<Player> Pool, HashSet<int> DailyItems)> OnlinePoolAsync()
     {
         var daily = await db.DailyQuestions.Where(q => q.DailyChallenge.Date == Today).ToListAsync();
-        var dailyPlayers = daily.Where(q => q.PlayerId != null).Select(q => q.PlayerId!.Value)
-            .Concat(daily.SelectMany(q => q.CounterPlayerIds)).ToHashSet();
+        var dailyPlayers = daily.SelectMany(QuestionContent.PlayersOf).ToHashSet();
         var dailyItems = daily.Where(q => q.QuizItemId != null).Select(q => q.QuizItemId!.Value).ToHashSet();
         var pool = await db.Players.Where(p => p.Status != PlayerStatus.Rejected && !dailyPlayers.Contains(p.Id)).ToListAsync();
         return (pool, dailyItems);
@@ -386,8 +364,8 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
         var questions = challenge.Questions.OrderBy(q => q.Number).Select(q =>
         {
             var a = attempts.GetValueOrDefault(q.Id);
-            if (a is not null) CloseIfExpired(q, a);
-            var status = StatusOf(a);
+            if (a is not null) AttemptFlow.CloseIfExpired(q, a, Now);
+            var status = AttemptFlow.StatusOf(a);
             return new QuestionSummary(
                 q.Number, status,
                 status == QuestionStatus.Answered ? a!.Points : null,
@@ -452,7 +430,7 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
         if (challenge is null) return;
         var questions = challenge.Questions.ToDictionary(q => q.Id);
         foreach (var attempt in open)
-            if (questions.TryGetValue(attempt.DailyQuestionId, out var question)) CloseIfExpired(question, attempt);
+            if (questions.TryGetValue(attempt.DailyQuestionId, out var question)) AttemptFlow.CloseIfExpired(question, attempt, Now);
         await SaveAsync();
     }
 
@@ -468,11 +446,8 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
                 && await db.SpecialEvents.AnyAsync(s => s.Id == sid && s.EndDate < Today))
                 throw new QuizException("Deze special is afgelopen.");
 
-            // Je moet de vragen in volgorde spelen.
-            var previous = question.DailyChallenge.Questions.Where(q => q.Number < number).Select(q => q.Id).ToList();
-            var answeredBefore = await db.Attempts.CountAsync(a => a.UserId == userId && previous.Contains(a.DailyQuestionId) && a.AnsweredAt != null);
-            if (answeredBefore < previous.Count)
-                throw new QuizException("Speel eerst de vorige vragen.");
+            await AttemptFlow.EnsureInOrderAsync(question, previous =>
+                db.Attempts.CountAsync(a => a.UserId == userId && previous.Contains(a.DailyQuestionId) && a.AnsweredAt != null));
 
             attempt = new Attempt { UserId = userId, DailyQuestionId = question.Id, StartedAt = Now };
             db.Attempts.Add(attempt);
@@ -497,34 +472,8 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
         var (question, attempt) = await FindAsync(userId, number, specialId);
         if (attempt is null) throw new QuizException("Deze vraag is nog niet gestart.");
 
-        CloseIfExpired(question, attempt);
-        var trimmed = guess?.Trim();
-        string? lastWrong = null;
-
-        if (attempt.AnsweredAt is null && !string.IsNullOrEmpty(trimmed))
-        {
-            attempt.Guesses++;
-            attempt.LastGuess = trimmed;
-            var outcome = QuestionEngine.Guess(question, attempt, trimmed, Seconds(attempt.StartedAt, Now));
-            if (outcome.Wrong)
-            {
-                attempt.WrongGuesses++;
-                lastWrong = trimmed;
-            }
-            attempt.Points = outcome.Points;
-            if (outcome.Done)
-            {
-                attempt.AnsweredAt = Now;
-                attempt.Correct = outcome.Correct;
-            }
-            else if (attempt.Guesses >= GameRules.MaxGuessesPerQuestion)
-            {
-                attempt.AnsweredAt = Now;
-                attempt.Correct = false;
-                attempt.Points = QuestionEngine.PointsWhenStopped(question, attempt);
-            }
-            if (!await SaveAsync()) lastWrong = null;
-        }
+        var lastWrong = AttemptFlow.Guess(question, attempt, guess, Now);
+        if (!await SaveAsync()) lastWrong = null;
         return await StateAsync(question, attempt, lastWrong);
     }
 
@@ -534,75 +483,20 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
         var (question, attempt) = await FindAsync(userId, number, specialId);
         if (attempt is null) throw new QuizException("Deze vraag is nog niet gestart.");
 
-        if (attempt.AnsweredAt is null)
-        {
-            attempt.Guesses++;
-            attempt.AnsweredAt = Now;
-            attempt.Correct = false;
-            attempt.Points = QuestionEngine.PointsWhenStopped(question, attempt);
-            await SaveAsync();
-        }
+        AttemptFlow.GiveUp(question, attempt, Now);
+        await SaveAsync();
         return await StateAsync(question, attempt);
     }
 
-    /// <summary>
-    /// Bewaart de pogingen. Kwam er tegelijk een ander verzoek voor dezelfde vraag binnen (dubbele tik, of een script
-    /// dat gokken afvuurt), dan telt enkel dat andere: deze wijziging vervalt en we lezen de poging opnieuw in.
-    /// </summary>
-    private async Task<bool> SaveAsync()
-    {
-        try
-        {
-            await db.SaveChangesAsync();
-            return true;
-        }
-        catch (DbUpdateConcurrencyException ex)
-        {
-            foreach (var entry in ex.Entries) await entry.ReloadAsync();
-            return false;
-        }
-    }
+    /// <summary>Van gokken die tegelijk binnenkomen telt er maar één (zie <see cref="AttemptFlow.SaveAsync"/>).</summary>
+    private Task<bool> SaveAsync() => AttemptFlow.SaveAsync(db);
 
     private async Task<QuestionState> StateAsync(DailyQuestion question, Attempt attempt, string? lastWrong = null)
     {
-        CloseIfExpired(question, attempt);
+        AttemptFlow.CloseIfExpired(question, attempt, Now);
         await SaveAsync();
-
-        var status = StatusOf(attempt);
-        var limit = QuestionEngine.TimeLimit(question);
-
-        if (status == QuestionStatus.Answered)
-        {
-            var result = QuestionEngine.Result(question, attempt);
-            var (_, finalView) = QuestionEngine.Visible(question, attempt, limit);
-            return new QuestionState(question.Number, status, result.AllHints, Seconds(attempt.StartedAt, attempt.AnsweredAt!.Value),
-                attempt.WrongGuesses, lastWrong, result, question.Type, limit, finalView);
-        }
-
-        var elapsed = Seconds(attempt.StartedAt, Now);
-        var (hints, view) = QuestionEngine.Visible(question, attempt, elapsed);
-        return new QuestionState(question.Number, status, hints, elapsed, attempt.WrongGuesses, lastWrong, null,
-            question.Type, limit, view);
+        return AttemptFlow.State(question, attempt, Now, lastWrong);
     }
-
-    /// <summary>Sluit een vraag af als de tijd om is (een opstelling houdt de gevonden namen).</summary>
-    private void CloseIfExpired(DailyQuestion question, Attempt attempt)
-    {
-        if (attempt.AnsweredAt is not null) return;
-        var limit = QuestionEngine.TimeLimit(question);
-        if (Seconds(attempt.StartedAt, Now) <= limit + GameRules.LatencyGraceSeconds) return;
-
-        attempt.AnsweredAt = attempt.StartedAt.AddSeconds(limit);
-        attempt.Correct = false;
-        attempt.Points = QuestionEngine.PointsWhenStopped(question, attempt);
-    }
-
-    private static QuestionStatus StatusOf(Attempt? a) => a switch
-    {
-        null => QuestionStatus.NotStarted,
-        { AnsweredAt: not null } => QuestionStatus.Answered,
-        _ => QuestionStatus.InProgress,
-    };
 
     private async Task<(DailyQuestion, Attempt?)> FindAsync(string userId, int number, int? specialId)
     {
@@ -619,6 +513,4 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
         return await db.Attempts.Where(a => a.UserId == userId && ids.Contains(a.DailyQuestionId))
             .ToDictionaryAsync(a => a.DailyQuestionId);
     }
-
-    private static double Seconds(DateTime from, DateTime to) => (to - from).TotalSeconds;
 }

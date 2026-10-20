@@ -16,7 +16,10 @@ builder.Services.AddDataProtection()
     .SetApplicationName("VoetbalQuiz")
     .PersistKeysToDbContext<QuizDbContext>();
 
-builder.Services.AddAuthorization();
+// Admins staan in de configuratie onder "Admins" (gebruikersnamen); zie CurrentUser.
+builder.Services.AddAuthorizationBuilder()
+    .AddPolicy(CurrentUser.AdminPolicy, policy => policy.RequireAuthenticatedUser()
+        .RequireAssertion(ctx => CurrentUser.IsAdminName(ctx.User.Identity?.Name, builder.Configuration)));
 builder.Services.AddIdentityApiEndpoints<AppUser>(options =>
     {
         // Vriendengroep: eenvoudige wachtwoordregels.
@@ -48,6 +51,7 @@ builder.Services.AddScoped<GoldenBallService>();
 builder.Services.AddScoped<AdminService>();
 builder.Services.AddScoped<PasswordResetService>();
 builder.Services.AddScoped<ProgressService>();
+builder.Services.AddScoped<FeedbackService>();
 builder.Services.AddSingleton<IMatchNotifier, MatchNotifier>();
 builder.Services.AddHostedService<MatchEngine>();
 builder.Services.AddMemoryCache();

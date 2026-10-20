@@ -1,6 +1,3 @@
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Time.Testing;
 using VoetbalQuiz.Server.Data;
 using VoetbalQuiz.Server.Services;
@@ -10,9 +7,9 @@ namespace VoetbalQuiz.Tests;
 
 public sealed class TrainingTests : IDisposable
 {
-    private readonly SqliteConnection _connection = new("Data Source=:memory:");
+    private readonly TestDb _t = new();
     private readonly QuizDbContext _db;
-    private readonly FakeTimeProvider _clock = new(new DateTimeOffset(2026, 10, 17, 10, 0, 0, TimeSpan.Zero));
+    private readonly FakeTimeProvider _clock;
     private readonly QuizService _quiz;
     private readonly ResultsService _results;
     private readonly MonthRankingService _ranking;
@@ -23,9 +20,7 @@ public sealed class TrainingTests : IDisposable
 
     public TrainingTests()
     {
-        _connection.Open();
-        _db = new QuizDbContext(new DbContextOptionsBuilder<QuizDbContext>().UseSqlite(_connection).Options);
-        _db.Database.EnsureCreated();
+        (_db, _clock) = (_t.Db, _t.Clock);
 
         for (var i = 1; i <= 15; i++)
             _db.Players.Add(new Player
@@ -40,18 +35,14 @@ public sealed class TrainingTests : IDisposable
         _db.SaveChanges();
         (_me, _other) = (me.Id, other.Id);
 
-        _results = new ResultsService(_db, _clock, new MemoryCache(new MemoryCacheOptions()));
-        _ranking = new MonthRankingService(_db, _results);
-        _quiz = new QuizService(_db, _clock, _results);
-        _training = new TrainingService(_db, _clock, _quiz, _results);
+        _results = _t.Results;
+        _ranking = _t.Ranking;
+        _quiz = _t.Quiz;
+        _training = _t.Training;
         _day = _quiz.Today;
     }
 
-    public void Dispose()
-    {
-        _db.Dispose();
-        _connection.Dispose();
-    }
+    public void Dispose() => _t.Dispose();
 
     private async Task<string> NameOf(int number) =>
         (await _quiz.GetOrCreateChallengeAsync(_day)).Questions.Single(q => q.Number == number).Player!.Name;
@@ -350,5 +341,37 @@ public sealed class TrainingTests : IDisposable
         Assert.Equal(3, TrainingService.WouldBeRank(others, 300, 3, 2)); // minder fout dan c
         Assert.Equal(3, TrainingService.WouldBeRank(others, 300, 3, 1)); // volledig gelijk met b: b was eerder klaar
         Assert.Equal(4, TrainingService.WouldBeRank(others, 0, 0, 0));
+    }
+
+    [Fact]
+    public async Task Would_be_rank_matches_the_real_day_ranking()
+    {
+        var challenge = await _quiz.GetOrCreateChallengeAsync(_day);
+        var (q1, q2) = (challenge.Questions.Single(q => q.Number == 1), challenge.Questions.Single(q => q.Number == 2));
+        var start = _clock.GetUtcNow().UtcDateTime;
+        void Play(string user, DailyQuestion q, int points, bool correct, int wrong, int second) =>
+            _db.Attempts.Add(new Attempt
+            {
+                UserId = user, DailyQuestionId = q.Id, StartedAt = start, AnsweredAt = start.AddSeconds(second),
+                Points = points, Correct = correct, WrongGuesses = wrong,
+            });
+
+        // Gelijke punten: eerst meer juist, dan minder fout. Wie het eerst klaar was, beslist pas daarna.
+        var (a, b, c, d) = (_t.AddUser("a"), _t.AddUser("b"), _t.AddUser("c"), _t.AddUser("d"));
+        Play(a, q1, 100, true, 0, 9); Play(a, q2, 50, true, 0, 9);  // 150, 2 juist
+        Play(b, q1, 150, true, 0, 1);                               // 150, 1 juist, 0 fout
+        Play(c, q1, 100, true, 3, 2); Play(c, q2, 50, false, 0, 2); // 150, 1 juist, 3 fout
+        Play(d, q1, 90, true, 0, 1);
+        await _db.SaveChangesAsync();
+
+        var standings = (await _results.DayStandingsAsync([challenge.Id]))[challenge.Id];
+        Assert.Equal([a, b, c, d], standings.Select(s => s.UserId));
+        for (var i = 0; i < standings.Count; i++)
+        {
+            var s = standings[i];
+            Assert.Equal(i + 1, TrainingService.WouldBeRank(standings.Where(o => o != s), s.Points, s.Correct, s.Wrong));
+        }
+        // Volledig gelijk met b: in de academie ben je later klaar dan wie echt speelde.
+        Assert.Equal(3, TrainingService.WouldBeRank(standings, 150, 1, 0));
     }
 }

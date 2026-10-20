@@ -1,6 +1,4 @@
-using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Time.Testing;
 using VoetbalQuiz.Server.Data;
 using VoetbalQuiz.Server.Services;
@@ -10,21 +8,16 @@ namespace VoetbalQuiz.Tests;
 
 public sealed class GoldenBallTests : IDisposable
 {
-    private readonly SqliteConnection _connection = new("Data Source=:memory:");
+    private readonly TestDb _t = new(new DateTimeOffset(2026, 9, 10, 10, 0, 0, TimeSpan.Zero));
     private readonly QuizDbContext _db;
-    private readonly FakeTimeProvider _clock = new(new DateTimeOffset(2026, 9, 10, 10, 0, 0, TimeSpan.Zero));
+    private readonly FakeTimeProvider _clock;
     private readonly GoldenBallService _goldenBall;
     private readonly ProgressService _progress;
 
     public GoldenBallTests()
     {
-        _connection.Open();
-        _db = new QuizDbContext(new DbContextOptionsBuilder<QuizDbContext>().UseSqlite(_connection).Options);
-        _db.Database.EnsureCreated();
-        var results = new ResultsService(_db, _clock, new MemoryCache(new MemoryCacheOptions()));
-        var ranking = new MonthRankingService(_db, results);
-        _goldenBall = new GoldenBallService(_db, _clock, ranking, results);
-        _progress = new ProgressService(_db, _clock, results, new OnlineService(_db, results), ranking, _goldenBall);
+        (_db, _clock) = (_t.Db, _t.Clock);
+        (_goldenBall, _progress) = (_t.GoldenBall, _t.Progress);
     }
 
     private string User(string name)
@@ -207,9 +200,5 @@ public sealed class GoldenBallTests : IDisposable
         Assert.Equal(3, (await _goldenBall.GetAsync(a)).Stars["a"]);
     }
 
-    public void Dispose()
-    {
-        _db.Dispose();
-        _connection.Dispose();
-    }
+    public void Dispose() => _t.Dispose();
 }

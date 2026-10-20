@@ -442,8 +442,7 @@ public class MatchService(
     /// </summary>
     private async Task SwapAsync(Match match, MatchQuestion question)
     {
-        var usedPlayers = match.Questions.Where(q => q.PlayerId != null).Select(q => q.PlayerId!.Value)
-            .Concat(match.Questions.SelectMany(q => q.CounterPlayerIds));
+        var usedPlayers = match.Questions.SelectMany(QuestionContent.PlayersOf);
         var usedItems = match.Questions.Where(q => q.QuizItemId != null).Select(q => q.QuizItemId!.Value);
         var fresh = await quiz.BuildReplacementAsync(question.Type, usedPlayers, usedItems)
             ?? throw new QuizException("Er is geen vraag meer om mee te wisselen.");
@@ -454,8 +453,8 @@ public class MatchService(
         question.QuizItemId = fresh.QuizItemId;
         question.Blanks = fresh.Blanks;
         question.CounterPlayerIds = fresh.CounterPlayerIds;
-        var counter = await db.Players.Where(p => fresh.CounterPlayerIds.Contains(p.Id)).ToDictionaryAsync(p => p.Id);
-        question.CounterPlayers = fresh.CounterPlayerIds.Select(id => counter[id]).ToList();
+        question.CounterPlayers = [];
+        await db.LoadCounterPlayersAsync([question]);
 
         foreach (var answer in question.Answers.ToList())
         {
@@ -852,15 +851,7 @@ public class MatchService(
             .AsSplitQuery()
             .SingleOrDefaultAsync(m => m.Id == matchId)
             ?? throw new QuizException("Deze wedstrijd bestaat niet.");
-
-        // Counter: de spelers staan als lijst van ids bij de vraag.
-        var ids = match.Questions.SelectMany(q => q.CounterPlayerIds).Distinct().ToList();
-        if (ids.Count > 0)
-        {
-            var players = await db.Players.Where(p => ids.Contains(p.Id)).ToDictionaryAsync(p => p.Id);
-            foreach (var q in match.Questions)
-                q.CounterPlayers = q.CounterPlayerIds.Where(players.ContainsKey).Select(id => players[id]).ToList();
-        }
+        await db.LoadCounterPlayersAsync(match.Questions);
         return match;
     }
 

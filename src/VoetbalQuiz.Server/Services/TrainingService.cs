@@ -37,7 +37,7 @@ public class TrainingService(QuizDbContext db, TimeProvider clock, QuizService q
             .Include(c => c.Questions).ThenInclude(q => q.QuizItem)
             .AsSplitQuery()
             .ToListAsync();
-        await LoadCounterPlayersAsync(challenges);
+        await db.LoadCounterPlayersAsync(challenges.SelectMany(c => c.Questions)); // nodig voor de moeilijkheid
 
         var ids = challenges.Select(c => c.Id).ToList();
         var standings = await results.DayStandingsAsync(ids);
@@ -133,13 +133,11 @@ public class TrainingService(QuizDbContext db, TimeProvider clock, QuizService q
             .Where(a => a.UserId == userId && ids.Contains(a.DailyQuestionId) && a.AnsweredAt != null)
             .Select(a => a.DailyQuestionId).ToListAsync()).ToHashSet();
         var open = today.Questions.Where(q => !answered.Contains(q.Id)).ToList();
-        return new(open.SelectMany(PlayersOf).ToHashSet(), open.Where(q => q.QuizItemId is not null).Select(q => q.QuizItemId!.Value).ToHashSet());
+        return new(open.SelectMany(QuestionContent.PlayersOf).ToHashSet(), open.Where(q => q.QuizItemId is not null).Select(q => q.QuizItemId!.Value).ToHashSet());
     }
 
-    private static IEnumerable<int> PlayersOf(DailyQuestion q) => q.PlayerId is { } p ? [p, .. q.CounterPlayerIds] : q.CounterPlayerIds;
-
     private static bool Shares(DailyQuestion q, OpenToday open) =>
-        PlayersOf(q).Any(open.Players.Contains) || (q.QuizItemId is { } item && open.Items.Contains(item));
+        QuestionContent.PlayersOf(q).Any(open.Players.Contains) || (q.QuizItemId is { } item && open.Items.Contains(item));
 
     private static bool SharesWithToday(DailyChallenge c, OpenToday open) => c.Questions.Any(q => Shares(q, open));
 
@@ -190,11 +188,8 @@ public class TrainingService(QuizDbContext db, TimeProvider clock, QuizService q
         if (attempt is null)
         {
             // Ook in training speel je de vragen in volgorde.
-            var previous = question.DailyChallenge.Questions.Where(q => q.Number < number).Select(q => q.Id).ToList();
-            var answeredBefore = await db.TrainingAttempts.CountAsync(a =>
-                a.TrainingRunId == run.Id && previous.Contains(a.DailyQuestionId) && a.AnsweredAt != null);
-            if (answeredBefore < previous.Count)
-                throw new QuizException("Speel eerst de vorige vragen.");
+            await AttemptFlow.EnsureInOrderAsync(question, previous => db.TrainingAttempts.CountAsync(a =>
+                a.TrainingRunId == run.Id && previous.Contains(a.DailyQuestionId) && a.AnsweredAt != null));
             // Opnieuw nagekeken per vraag: de daily van vandaag kan pas na het starten van de run aangemaakt zijn.
             if (Shares(question, await OpenTodayAsync(userId)))
                 throw new QuizException(SharesWithTodayMessage);
@@ -245,13 +240,14 @@ public class TrainingService(QuizDbContext db, TimeProvider clock, QuizService q
     // ---------- Rangschikking ----------
 
     /// <summary>
-    /// Je plaats als je die dag zo gespeeld had, met de volgorde van het dagklassement (punten, dan juist, dan minder fout).
+    /// Je plaats als je die dag zo gespeeld had, met de volgorde van het dagklassement (<see cref="DayScore"/>).
     /// Bij een volledige gelijkstand gaat wie echt speelde voor: die was eerder klaar.
     /// </summary>
-    public static int WouldBeRank(IEnumerable<ResultsService.DayStanding> others, int points, int correct, int wrong) =>
-        1 + others.Count(o => o.Points > points
-                              || (o.Points == points && o.Correct > correct)
-                              || (o.Points == points && o.Correct == correct && o.Wrong <= wrong));
+    public static int WouldBeRank(IEnumerable<ResultsService.DayStanding> others, int points, int correct, int wrong)
+    {
+        var mine = new DayScore(points, correct, wrong);
+        return 1 + others.Count(o => new DayScore(o.Points, o.Correct, o.Wrong).CompareTo(mine) <= 0);
+    }
 
     // ---------- Hulp ----------
 
@@ -359,28 +355,6 @@ public class TrainingService(QuizDbContext db, TimeProvider clock, QuizService q
             run.FinishedAt = answered;
     }
 
-    /// <summary>Zoals in <see cref="QuizService"/>: van gokken die tegelijk binnenkomen telt er maar één.</summary>
-    private async Task<bool> SaveAsync()
-    {
-        try
-        {
-            await db.SaveChangesAsync();
-            return true;
-        }
-        catch (DbUpdateConcurrencyException ex)
-        {
-            foreach (var entry in ex.Entries) await entry.ReloadAsync();
-            return false;
-        }
-    }
-
-    /// <summary>Counter: de spelers staan als lijst van ids bij de vraag (nodig voor de moeilijkheid).</summary>
-    private async Task LoadCounterPlayersAsync(List<DailyChallenge> challenges)
-    {
-        var ids = challenges.SelectMany(c => c.Questions).SelectMany(q => q.CounterPlayerIds).Distinct().ToList();
-        if (ids.Count == 0) return;
-        var players = await db.Players.Where(p => ids.Contains(p.Id)).ToDictionaryAsync(p => p.Id);
-        foreach (var q in challenges.SelectMany(c => c.Questions))
-            q.CounterPlayers = q.CounterPlayerIds.Where(players.ContainsKey).Select(id => players[id]).ToList();
-    }
+    /// <summary>Zoals in de daily: van gokken die tegelijk binnenkomen telt er maar één (zie <see cref="AttemptFlow.SaveAsync"/>).</summary>
+    private Task<bool> SaveAsync() => AttemptFlow.SaveAsync(db);
 }

@@ -9,12 +9,8 @@ public static class AdminEndpoints
     public static void MapAdminEndpoints(this IEndpointRouteBuilder app)
     {
         var admin = app.MapGroup("/api/admin")
-            .RequireAuthorization()
-            .AddEndpointFilter(async (ctx, next) =>
-                FeedbackEndpoints.IsAdmin(ctx.HttpContext.User, ctx.HttpContext.RequestServices.GetRequiredService<IConfiguration>())
-                    ? await next(ctx)
-                    : Results.Forbid())
-            .AddEndpointFilter(QuizEndpoints.HandleQuizErrors);
+            .RequireAuthorization(CurrentUser.AdminPolicy)
+            .AddEndpointFilter(EndpointFilters.HandleQuizErrors);
 
         admin.MapGet("/dashboard", (AdminService svc, TimeProvider clock) => svc.DashboardAsync(QuizClock.Today(clock)));
 

@@ -1,11 +1,14 @@
+using Microsoft.EntityFrameworkCore;
 using VoetbalQuiz.Server.Data;
 using VoetbalQuiz.Shared;
 
 namespace VoetbalQuiz.Server.Services;
 
 /// <summary>
-/// De klok en de toestand van één vraag, los van waar de poging bewaard wordt (zelfde regels als de daily in
-/// <see cref="QuizService"/>). Gebruikt door de training, die haar pogingen in een eigen tabel bewaart.
+/// De klok en de toestand van één vraag, los van waar de poging bewaard wordt: één plek voor de regels van een poging
+/// (speling, maximum aantal pogingen, deelpunten bij stoppen). Gebruikt door de daily en de specials
+/// (<see cref="QuizService"/>, tabel Attempts) en de academie (<see cref="TrainingService"/>, tabel TrainingAttempts).
+/// Online (<see cref="MatchService"/>) heeft nog een eigen variant met een gedeelde klok per vraag.
 /// </summary>
 public static class AttemptFlow
 {
@@ -70,6 +73,36 @@ public static class AttemptFlow
         attempt.AnsweredAt = now;
         attempt.Correct = false;
         attempt.Points = QuestionEngine.PointsWhenStopped(question, attempt);
+    }
+
+    /// <summary>
+    /// Je speelt de vragen van een reeks in volgorde: alle vorige vragen moeten af zijn.
+    /// <paramref name="answeredAmong"/> telt hoeveel van de gegeven vragen (ids) je al afwerkte, in de tabel van die flow.
+    /// </summary>
+    public static async Task EnsureInOrderAsync(DailyQuestion question, Func<List<int>, Task<int>> answeredAmong)
+    {
+        var previous = question.DailyChallenge.Questions.Where(q => q.Number < question.Number).Select(q => q.Id).ToList();
+        if (await answeredAmong(previous) < previous.Count)
+            throw new QuizException("Speel eerst de vorige vragen.");
+    }
+
+    /// <summary>
+    /// Bewaart de pogingen. Kwam er tegelijk een ander verzoek voor dezelfde vraag binnen (dubbele tik, of een script
+    /// dat gokken afvuurt), dan telt enkel dat andere: deze wijziging vervalt en we lezen de poging opnieuw in
+    /// (<see cref="AttemptState.Guesses"/> is het concurrency token). False als deze wijziging verviel.
+    /// </summary>
+    public static async Task<bool> SaveAsync(QuizDbContext db)
+    {
+        try
+        {
+            await db.SaveChangesAsync();
+            return true;
+        }
+        catch (DbUpdateConcurrencyException ex)
+        {
+            foreach (var entry in ex.Entries) await entry.ReloadAsync();
+            return false;
+        }
     }
 
     /// <summary>Wat de client van de vraag mag zien: het antwoord pas als de vraag afgelopen is.</summary>

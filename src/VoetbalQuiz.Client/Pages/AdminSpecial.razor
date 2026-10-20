@@ -189,7 +189,7 @@
     private HashSet<int> _picked = [];
     private string? _error, _loadError;
 
-    private static DateOnly Today => DateOnly.FromDateTime(DateTime.Today);
+    private static DateOnly Today => QuizDay.Today();
     private HashSet<QuestionType> _types = [];
 
     /// <summary>Zelfde verdeling als de server (QuestionTypes.Mix): om beurten, max. 10 vragen en 1000 punten.</summary>

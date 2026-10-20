@@ -54,12 +54,12 @@ else
 
 @code {
     private bool _monthly;
-    private int _year = DateTime.Today.Year, _month = DateTime.Today.Month;
+    private int _year = QuizDay.Today().Year, _month = QuizDay.Today().Month;
     private Leaderboard? _today;
     private MonthRanking? _ranking;
     private string? _error;
 
-    private bool IsCurrentMonth => _year == DateTime.Today.Year && _month == DateTime.Today.Month;
+    private bool IsCurrentMonth => _year == QuizDay.Today().Year && _month == QuizDay.Today().Month;
 
     protected override Task OnInitializedAsync() => LoadAsync();
 

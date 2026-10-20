@@ -28,7 +28,7 @@
     }
     else
     {
-        var today = DateOnly.FromDateTime(DateTime.Today);
+        var today = QuizDay.Today();
         foreach (var (title, items) in new[]
         {
             ("Nu actief", _specials.Where(s => s.StartDate <= today && today <= s.EndDate).OrderBy(s => s.EndDate).ToList()),

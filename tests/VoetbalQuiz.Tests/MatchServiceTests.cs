@@ -1,6 +1,4 @@
-using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Time.Testing;
 using VoetbalQuiz.Server.Data;
 using VoetbalQuiz.Server.Services;
@@ -10,15 +8,9 @@ namespace VoetbalQuiz.Tests;
 
 public sealed class MatchServiceTests : IDisposable
 {
-    private sealed class NoNotifier : IMatchNotifier
-    {
-        public Task LobbyChangedAsync() => Task.CompletedTask;
-        public Task MatchChangedAsync(int matchId) => Task.CompletedTask;
-    }
-
-    private readonly SqliteConnection _connection = new("Data Source=:memory:");
+    private readonly TestDb _t = new();
     private readonly QuizDbContext _db;
-    private readonly FakeTimeProvider _clock = new(new DateTimeOffset(2026, 10, 17, 10, 0, 0, TimeSpan.Zero));
+    private readonly FakeTimeProvider _clock;
     private readonly ResultsService _results;
     private readonly MatchService _matches;
     private readonly OnlineService _online;
@@ -26,9 +18,7 @@ public sealed class MatchServiceTests : IDisposable
 
     public MatchServiceTests()
     {
-        _connection.Open();
-        _db = new QuizDbContext(new DbContextOptionsBuilder<QuizDbContext>().UseSqlite(_connection).Options);
-        _db.Database.EnsureCreated();
+        (_db, _clock) = (_t.Db, _t.Clock);
 
         for (var i = 1; i <= 15; i++)
             _db.Players.Add(new Player { Name = $"Speler {i}", Hints = [.. Enumerable.Range(1, 5).Select(h => $"Tip {h}")] });
@@ -36,18 +26,12 @@ public sealed class MatchServiceTests : IDisposable
         _guest = AddUser("gast");
         _third = AddUser("derde");
 
-        _results = new ResultsService(_db, _clock, new MemoryCache(new MemoryCacheOptions()));
-        _matches = new MatchService(_db, _clock, _results, new QuizService(_db, _clock, _results), new NoNotifier());
-        _online = new OnlineService(_db, _results);
+        _results = _t.Results;
+        _matches = _t.Matches();
+        _online = _t.Online;
     }
 
-    private string AddUser(string name)
-    {
-        var user = new AppUser { UserName = name };
-        _db.Users.Add(user);
-        _db.SaveChanges();
-        return user.Id;
-    }
+    private string AddUser(string name) => _t.AddUser(name);
 
     private async Task<string> CurrentAnswerAsync(int matchId)
     {
@@ -350,7 +334,7 @@ public sealed class MatchServiceTests : IDisposable
         await Assert.ThrowsAsync<QuizException>(() =>
             _matches.CreateAsync(_host, "host", new CreateMatchRequest(null, 4, [QuestionType.Emoji])));
 
-        var quiz = new QuizService(_db, _clock, _results);
+        var quiz = _t.Quiz;
         Assert.DoesNotContain(QuestionType.Snelvuur, await quiz.ActiveTypesAsync());
     }
 
@@ -373,9 +357,5 @@ public sealed class MatchServiceTests : IDisposable
         Assert.Equal("🎲 Mix 🕵️ ⚡", QuestionTypes.Label(Assert.Single(lobby.Mine).Types));
     }
 
-    public void Dispose()
-    {
-        _db.Dispose();
-        _connection.Dispose();
-    }
+    public void Dispose() => _t.Dispose();
 }

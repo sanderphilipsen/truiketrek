@@ -85,7 +85,8 @@ public static class QuestionEngine
             case QuestionType.Opstelling:
             {
                 var d = Data<OpstellingData>(q);
-                return ([], new QuestionView(d.Title, Lineup: Slots(d, q.Blanks, a.Found, revealAll: false), MaxPoints: 200));
+                return ([], new QuestionView(d.Title, Lineup: Slots(d, q.Blanks, a.Found, revealAll: false),
+                    MaxPoints: QuestionTypes.Get(QuestionType.Opstelling).MaxPoints));
             }
             case QuestionType.Wissel:
             {

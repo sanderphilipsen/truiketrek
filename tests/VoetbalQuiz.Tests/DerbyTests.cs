@@ -1,6 +1,4 @@
-using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Time.Testing;
 using VoetbalQuiz.Server.Data;
 using VoetbalQuiz.Server.Services;
@@ -10,23 +8,15 @@ namespace VoetbalQuiz.Tests;
 
 public sealed class DerbyTests : IDisposable
 {
-    private sealed class NoNotifier : IMatchNotifier
-    {
-        public Task LobbyChangedAsync() => Task.CompletedTask;
-        public Task MatchChangedAsync(int matchId) => Task.CompletedTask;
-    }
-
-    private readonly SqliteConnection _connection = new("Data Source=:memory:");
+    private readonly TestDb _t = new();
     private readonly QuizDbContext _db;
-    private readonly FakeTimeProvider _clock = new(new DateTimeOffset(2026, 10, 17, 10, 0, 0, TimeSpan.Zero));
+    private readonly FakeTimeProvider _clock;
     private readonly MatchService _matches;
     private readonly string _host, _guest, _third;
 
     public DerbyTests()
     {
-        _connection.Open();
-        _db = new QuizDbContext(new DbContextOptionsBuilder<QuizDbContext>().UseSqlite(_connection).Options);
-        _db.Database.EnsureCreated();
+        (_db, _clock) = (_t.Db, _t.Clock);
 
         for (var i = 1; i <= 15; i++)
             _db.Players.Add(new Player { Name = $"Speler {i}", Hints = [.. Enumerable.Range(1, 5).Select(h => $"Tip {h}")] });
@@ -42,17 +32,10 @@ public sealed class DerbyTests : IDisposable
         _guest = AddUser("gast");
         _third = AddUser("derde");
 
-        var results = new ResultsService(_db, _clock, new MemoryCache(new MemoryCacheOptions()));
-        _matches = new MatchService(_db, _clock, results, new QuizService(_db, _clock, results), new NoNotifier(), new Random(7));
+        _matches = _t.Matches(new Random(7));
     }
 
-    private string AddUser(string name)
-    {
-        var user = new AppUser { UserName = name };
-        _db.Users.Add(user);
-        _db.SaveChanges();
-        return user.Id;
-    }
+    private string AddUser(string name) => _t.AddUser(name);
 
     private async Task Tick(double seconds)
     {
@@ -424,9 +407,8 @@ public sealed class DerbyTests : IDisposable
         Give(id, _host, DerbyWeapon.BengaalsVuur);
 
         // Een tweede verzoek dat tegelijk binnenkomt (dubbele tik) werkt met een oudere kopie van de wedstrijd.
-        using var other = new QuizDbContext(new DbContextOptionsBuilder<QuizDbContext>().UseSqlite(_connection).Options);
-        var results = new ResultsService(other, _clock, new MemoryCache(new MemoryCacheOptions()));
-        var stale = new MatchService(other, _clock, results, new QuizService(other, _clock, results), new NoNotifier());
+        using var other = _t.NewContext();
+        var stale = _t.NewMatches(other);
         Assert.True((await stale.GetStateAsync(_host, id)).Derby!.CanUseWeapon);
 
         await _matches.UseWeaponAsync(_host, id, null);
@@ -507,9 +489,5 @@ public sealed class DerbyTests : IDisposable
         Assert.All(report.Where(r => r.UserName != "host"), r => Assert.Null(r.Question)); // niet ingezet
     }
 
-    public void Dispose()
-    {
-        _db.Dispose();
-        _connection.Dispose();
-    }
+    public void Dispose() => _t.Dispose();
 }

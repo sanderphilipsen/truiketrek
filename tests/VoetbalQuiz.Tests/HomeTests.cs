@@ -1,6 +1,4 @@
-using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Time.Testing;
 using VoetbalQuiz.Server.Data;
 using VoetbalQuiz.Server.Services;
@@ -11,10 +9,10 @@ namespace VoetbalQuiz.Tests;
 /// <summary>Wat Home van de server krijgt: je plaats van vandaag (en of je steeg), de startdag van een special en "Verder met vraag N".</summary>
 public sealed class HomeTests : IDisposable
 {
-    private readonly SqliteConnection _connection = new("Data Source=:memory:");
+    private readonly TestDb _t = new();
     private readonly QuizDbContext _db;
     // Zaterdag 17 oktober, 12:00 in België.
-    private readonly FakeTimeProvider _clock = new(new DateTimeOffset(2026, 10, 17, 10, 0, 0, TimeSpan.Zero));
+    private readonly FakeTimeProvider _clock;
     private readonly ResultsService _results;
     private readonly QuizService _quiz;
     private readonly AdminService _admin;
@@ -22,9 +20,7 @@ public sealed class HomeTests : IDisposable
 
     public HomeTests()
     {
-        _connection.Open();
-        _db = new QuizDbContext(new DbContextOptionsBuilder<QuizDbContext>().UseSqlite(_connection).Options);
-        _db.Database.EnsureCreated();
+        (_db, _clock) = (_t.Db, _t.Clock);
 
         for (var i = 1; i <= 30; i++)
         {
@@ -40,18 +36,12 @@ public sealed class HomeTests : IDisposable
         _me = AddUser("sander");
         _tom = AddUser("tom");
 
-        _results = new ResultsService(_db, _clock, new MemoryCache(new MemoryCacheOptions()));
-        _quiz = new QuizService(_db, _clock, _results);
-        _admin = new AdminService(_db, _quiz);
+        _results = _t.Results;
+        _quiz = _t.Quiz;
+        _admin = _t.Admin;
     }
 
-    private string AddUser(string name)
-    {
-        var user = new AppUser { UserName = name };
-        _db.Users.Add(user);
-        _db.SaveChanges();
-        return user.Id;
-    }
+    private string AddUser(string name) => _t.AddUser(name);
 
     /// <summary>Speelt de vragen <paramref name="from"/> tot en met <paramref name="to"/> van de daily.</summary>
     private async Task PlayAsync(string userId, int from, int to, bool correct)
@@ -261,9 +251,5 @@ public sealed class HomeTests : IDisposable
         Assert.False(Levels.IsNewcomer(2));
     }
 
-    public void Dispose()
-    {
-        _db.Dispose();
-        _connection.Dispose();
-    }
+    public void Dispose() => _t.Dispose();
 }

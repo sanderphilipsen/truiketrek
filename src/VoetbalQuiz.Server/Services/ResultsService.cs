@@ -38,13 +38,11 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
             g.Sum(r => r.Points), g.Count(r => r.Correct), g.Sum(r => r.WrongGuesses), g.Max(r => r.AnsweredAt)));
 
     /// <summary>
-    /// Volgorde van een dag. Bij gelijke punten wint wie meer juist had, dan wie minder fout gokte,
+    /// Volgorde van een dag (zie <see cref="DayScore"/>): punten, dan meer juist, dan minder fout,
     /// en dan wie het eerst klaar was. Zo is er altijd precies één dagwinnaar.
     /// </summary>
     private static List<DayTotal> RankDay(IEnumerable<DayTotal> totals) =>
-        totals.OrderByDescending(t => t.Points)
-            .ThenByDescending(t => t.Correct)
-            .ThenBy(t => t.Wrong)
+        totals.OrderBy(t => new DayScore(t.Points, t.Correct, t.Wrong))
             .ThenBy(t => t.FinishedAt)
             .ToList();
 
@@ -193,7 +191,7 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
             var active = s.StartDate <= today && today <= s.EndDate;
             var count = hasChallenge && sizes.TryGetValue(cid, out var size)
                 ? size
-                : QuestionTypes.Mix(QuizService.ResolveSpecialTypes(s.Types, disabled)).Values.Sum();
+                : QuestionTypes.Mix(QuestionTypes.ResolveSpecial(s.Types, disabled)).Values.Sum();
             return new SpecialSummary(s.Id, s.Name, s.Icon, s.Description, s.StartDate, s.EndDate,
                 active, s.StartDate > today,
                 played?.Sum(r => r.Points), played?.Count ?? 0, challenges.GetValueOrDefault(s.Id), s.Theme,

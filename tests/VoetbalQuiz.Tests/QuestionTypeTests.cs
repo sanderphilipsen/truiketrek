@@ -1,6 +1,3 @@
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Time.Testing;
 using VoetbalQuiz.Server.Data;
 using VoetbalQuiz.Server.Services;
@@ -10,20 +7,18 @@ namespace VoetbalQuiz.Tests;
 
 public sealed class QuestionTypeTests : IDisposable
 {
-    private readonly SqliteConnection _connection = new("Data Source=:memory:");
+    private readonly TestDb _t = new();
     private readonly QuizDbContext _db;
 
     // 17 oktober 2026 is een zaterdag.
-    private readonly FakeTimeProvider _clock = new(new DateTimeOffset(2026, 10, 17, 10, 0, 0, TimeSpan.Zero));
+    private readonly FakeTimeProvider _clock;
     private readonly QuizService _quiz;
     private readonly AdminService _admin;
     private readonly string _me;
 
     public QuestionTypeTests()
     {
-        _connection.Open();
-        _db = new QuizDbContext(new DbContextOptionsBuilder<QuizDbContext>().UseSqlite(_connection).Options);
-        _db.Database.EnsureCreated();
+        (_db, _clock) = (_t.Db, _t.Clock);
 
         for (var i = 1; i <= 15; i++)
             _db.Players.Add(new Player { Name = $"Speler {i}", Status = PlayerStatus.Approved, Hints = [.. Enumerable.Range(1, 5).Select(h => $"Tip {h}")] });
@@ -43,9 +38,7 @@ public sealed class QuestionTypeTests : IDisposable
         _db.SaveChanges();
         _me = user.Id;
 
-        var results = new ResultsService(_db, _clock, new MemoryCache(new MemoryCacheOptions()));
-        _quiz = new QuizService(_db, _clock, results);
-        _admin = new AdminService(_db, _quiz);
+        (_quiz, _admin) = (_t.Quiz, _t.Admin);
     }
 
     private void Add<T>(QuestionType type, string key, T data) =>
@@ -169,8 +162,8 @@ public sealed class QuestionTypeTests : IDisposable
         await _quiz.StartAsync(_me, 1);
 
         // Een tweede verzoek dat tegelijk binnenkomt werkt met een oudere kopie van de poging.
-        using var other = new QuizDbContext(new DbContextOptionsBuilder<QuizDbContext>().UseSqlite(_connection).Options);
-        var stale = new QuizService(other, _clock, new ResultsService(other, _clock, new MemoryCache(new MemoryCacheOptions())));
+        using var other = _t.NewContext();
+        var stale = _t.NewQuiz(other);
         await stale.GetStateAsync(_me, 1);
 
         await _quiz.GuessAsync(_me, 1, "Iemand");
@@ -305,9 +298,5 @@ public sealed class QuestionTypeTests : IDisposable
         Assert.Equal([QuestionType.Snelvuur], await _quiz.TypesForAsync(_quiz.Today));
     }
 
-    public void Dispose()
-    {
-        _db.Dispose();
-        _connection.Dispose();
-    }
+    public void Dispose() => _t.Dispose();
 }

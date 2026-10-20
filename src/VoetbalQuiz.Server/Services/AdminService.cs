@@ -5,8 +5,10 @@ using VoetbalQuiz.Shared;
 namespace VoetbalQuiz.Server.Services;
 
 /// <summary>Beheer van de spelersdatabase en de specials (enkel voor admins).</summary>
-public class AdminService(QuizDbContext db, QuizService quiz)
+public class AdminService(QuizDbContext db, QuizService quiz, TimeProvider clock)
 {
+    private DateTime Now => clock.GetUtcNow().UtcDateTime;
+
     // ---------- Spelers ----------
 
     public async Task<PlayerCounts> CountsAsync()
@@ -61,14 +63,14 @@ public class AdminService(QuizDbContext db, QuizService quiz)
         player.Answers = clean.Answers;
         player.Country = clean.Country;
         player.Competition = clean.Competition;
-        player.Era = clean.Era is "classic" ? "classic" : "modern";
+        player.Era = clean.Era is QuestionRules.ClassicEra ? QuestionRules.ClassicEra : "modern";
         player.Difficulty = Difficulty.Clamp(clean.Difficulty);
         player.Hints = clean.Hints;
         player.Sources = clean.Sources;
         player.Tags = clean.Tags.Where(t => PlayerTags.All.Any(x => x.Key == t)).Distinct().ToList();
         player.Status = clean.Status;
         player.ReviewNote = clean.Status == PlayerStatus.Approved ? null : clean.ReviewNote;
-        if (clean.Status == PlayerStatus.Approved) player.CheckedAt = DateOnly.FromDateTime(DateTime.UtcNow);
+        if (clean.Status == PlayerStatus.Approved) player.CheckedAt = DateOnly.FromDateTime(Now);
         player.EditedInAdmin = true;
         player.UpdatedBy = adminName;
 
@@ -241,7 +243,7 @@ public class AdminService(QuizDbContext db, QuizService quiz)
         item.Tags = edit.Tags.Where(t => PlayerTags.All.Any(x => x.Key == t)).Distinct().ToList();
         item.Status = edit.Status;
         item.ReviewNote = edit.Status == PlayerStatus.Approved ? null : edit.ReviewNote;
-        if (edit.Status == PlayerStatus.Approved) item.CheckedAt = DateOnly.FromDateTime(DateTime.UtcNow);
+        if (edit.Status == PlayerStatus.Approved) item.CheckedAt = DateOnly.FromDateTime(Now);
         item.EditedInAdmin = true;
         item.UpdatedBy = adminName;
         await db.SaveChangesAsync();
@@ -285,7 +287,7 @@ public class AdminService(QuizDbContext db, QuizService quiz)
         edit = edit with { Tag = PlayerTags.Join(PlayerTags.Split(edit.Tag)) };
 
         var special = edit.Id == 0
-            ? db.SpecialEvents.Add(new SpecialEvent { Theme = edit.Theme, Name = edit.Name, CreatedAt = DateTime.UtcNow }).Entity
+            ? db.SpecialEvents.Add(new SpecialEvent { Theme = edit.Theme, Name = edit.Name, CreatedAt = Now }).Entity
             : await db.SpecialEvents.FindAsync(edit.Id) ?? throw new QuizException("Special niet gevonden.");
 
         var locked = special.Id != 0 && await db.DailyChallenges.AnyAsync(c => c.SpecialEventId == special.Id);

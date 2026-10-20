@@ -7,8 +7,6 @@ namespace VoetbalQuiz.Server.Services;
 /// <summary>Badges, bekers per seizoen en het spelersprofiel met head-to-head.</summary>
 public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsService results, OnlineService online, MonthRankingService ranking, GoldenBallService goldenBall)
 {
-    private static readonly TimeZoneInfo Brussels = TimeZoneInfo.FindSystemTimeZoneById("Europe/Brussels");
-
     /// <summary>Alles wat we over één speler moeten weten om badges te bepalen.</summary>
     private record Facts(
         int DaysPlayed, int LongestStreak, int PerfectDays, int FirstHintHits, int DaysWon, int BestDay, int WrongGuesses,
@@ -106,7 +104,7 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
         var level = await results.LevelOfAsync(user.Id);
 
         return new PublicProfile(
-            user.UserName!, user.AvatarId, level, DateOnly.FromDateTime(user.CreatedAt), user.Id == viewerId,
+            user.UserName!, user.AvatarId, level, QuizClock.ToBrusselsDate(user.CreatedAt), user.Id == viewerId,
             facts.DaysPlayed, facts.DaysWon, facts.BestDay, rating, facts.MatchesWon,
             badges, trophies.OrderByDescending(t => t.Place == 1).ThenBy(t => t.Place).ToList(),
             user.Id == viewerId ? null : await HeadToHeadAsync(viewerId, user.Id));
@@ -185,7 +183,7 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
         var daily = attempts.Where(a => !a.Special).ToList();
         var days = daily.GroupBy(a => a.DailyChallengeId).ToList();
         var dates = days.Select(d => d.First().Date).Distinct().Order().ToList();
-        var hours = attempts.Select(a => TimeZoneInfo.ConvertTimeFromUtc(DateTime.SpecifyKind(a.StartedAt, DateTimeKind.Utc), Brussels).Hour).ToList();
+        var hours = attempts.Select(a => QuizClock.ToBrussels(a.StartedAt).Hour).ToList();
 
         var challengeWins = await db.DailyChallenges.Where(c => c.WinnerUserId == userId)
             .Select(c => c.SpecialEventId != null).ToListAsync();

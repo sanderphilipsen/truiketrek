@@ -12,7 +12,8 @@ public static class AccountEndpoints
     {
         var group = app.MapGroup("/api/account");
 
-        group.MapPost("/register", async (RegisterRequest req, UserManager<AppUser> users, SignInManager<AppUser> signIn, ResultsService results, IConfiguration config) =>
+        group.MapPost("/register", async (RegisterRequest req, UserManager<AppUser> users, SignInManager<AppUser> signIn, ResultsService results,
+            IConfiguration config, TimeProvider clock) =>
         {
             var userName = req.UserName?.Trim() ?? "";
             if (userName.Length is < 2 or > 20)
@@ -21,7 +22,7 @@ public static class AccountEndpoints
             // Nieuwe spelers vertrekken van nul, zodat ze hun eerste XP en badges in de beloningspopup zien.
             var user = new AppUser
             {
-                UserName = userName, Email = req.Email?.Trim(),
+                UserName = userName, Email = req.Email?.Trim(), CreatedAt = clock.GetUtcNow().UtcDateTime,
                 SeenXpParts = [.. Levels.Breakdown(new XpInput(0, 0, 0, 0, 0)).Select(p => p.Xp)], SeenBadges = [],
             };
             var result = await users.CreateAsync(user, req.Password ?? "");
@@ -68,7 +69,7 @@ public static class AccountEndpoints
             var inputs = await results.XpInputsAsync();
             var input = inputs.GetValueOrDefault(user.Id) ?? new XpInput(0, 0, 0, 0, 0);
             return Results.Ok(new ProfileInfo(
-                user.UserName!, user.Email ?? "", user.AvatarId, DateOnly.FromDateTime(user.CreatedAt),
+                user.UserName!, user.Email ?? "", user.AvatarId, QuizClock.ToBrusselsDate(user.CreatedAt),
                 Levels.For(Levels.Xp(input)), Levels.Breakdown(input)));
         }).RequireAuthorization();
 
@@ -104,7 +105,7 @@ public static class AccountEndpoints
 
     private static async Task<UserInfo> InfoAsync(AppUser user, ResultsService results, IConfiguration config) =>
         new(user.UserName!, user.Email ?? "", user.AvatarId, (await results.LevelOfAsync(user.Id)).Level,
-            FeedbackEndpoints.IsAdminName(user.UserName, config));
+            CurrentUser.IsAdminName(user.UserName, config));
 
     private static string Translate(IEnumerable<IdentityError> errors) =>
         string.Join(" ", errors.Select(e => e.Code switch

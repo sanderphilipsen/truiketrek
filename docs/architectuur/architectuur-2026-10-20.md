@@ -353,6 +353,33 @@ Bijkomende stappen:
 | 3.6 | **Waarschuwing bij aanpassen**: het admin-paneel toont bij een speler of vraag dat die vandaag in de daily (of een lopende special) zit, en vraagt bevestiging bij opslaan. | `AdminService.cs`, `AdminDtos.cs`, `AdminSpeler.razor`, `AdminVraag.razor` | laag | test op de vlag in de DTO; handmatig in het admin-paneel | S |
 | 3.7 | **Special hoort bij de maand van haar startdatum**, ook in de academie; één helper in Shared die beide gebruiken. **Gedragswijziging** voor de academie. (B12) | `TrainingService.cs`, `MonthRules.cs`, tests | laag | test met een special die over twee maanden loopt | S |
 
+## Status uitvoering fase 0 en 1 (20 oktober 2026)
+
+Uitgevoerd op HEAD 0e18e7b, niet gecommit. Uitgangssituatie: 240 tests groen, 5 warnings. Na elke stap: build zonder
+warnings en alle tests groen. Gebouwd met `--artifacts-path artifacts` omdat de lokaal draaiende server `bin/` vergrendelde.
+
+| Stap | Status | Wat | Tests na de stap |
+|---|---|---|---|
+| 0.1 | uitgevoerd | Nieuw `OnlineAttemptTests.cs` (opstelling, counter, jaar, speling, passen, en het huidige "geen limiet online" dat in 3.1 bewust omdraait); in `QuizServiceTests.cs` maximum pogingen, speling, afsluiten op de limiet, overzicht sluit verlopen vragen, gelijktijdig passen. | 253 groen, 5 warnings (oud) |
+| 0.2 | uitgevoerd | `TestDb.cs` (SQLite, klok, services, tweede context); 11 testklassen omgezet (`PasswordResetTests` niet: die heeft de DI van Identity nodig). De 5 CS8602-warnings opgelost. | 253 groen, 0 warnings |
+| 0.3 | uitgevoerd, test hier overgeslagen | `PostgresMigrationTests.cs` met Testcontainers.PostgreSql 4.16.0 (`postgres:17-alpine`): migraties, seeders, daily spelen; `[DockerFact]` slaat over zonder Docker-API. Plus een test zonder database die `HasPendingModelChanges()` voor Npgsql nakijkt. `ServerContent.cs` (gedeeld met `QuestionBankTests`). Podman draait hier wel, maar zijn Docker-compatibele named pipe ontbreekt, dus de containertest is **niet** echt gedraaid. | 253 groen + 1 overgeslagen |
+| 1.1 | uitgevoerd | `QuizService` gokt, past, sluit af en geeft toestand via `AttemptFlow`; de kopie is weg. | 253 groen + 1 overgeslagen |
+| 1.2 | uitgevoerd | Nieuw `QuestionContent.cs` (`PlayersOf`, `LoadCounterPlayersAsync`); `AttemptFlow.SaveAsync` en `AttemptFlow.EnsureInOrderAsync`. Gebruikt in `QuizService`, `TrainingService`, `MatchService` (ook de derby-wissel). | 253 groen + 1 overgeslagen |
+| 1.3 | uitgevoerd | Shared: `QuestionTypes.ResolveSchedule`/`ResolveSpecial`, `QuestionRules.ClassicEra`/`MaxClassicPerDay`/`AnswerIsSubject`, opstelling via `MaxPoints`, `DayScore` (volgorde dagklassement) gebruikt door `RankDay` en `WouldBeRank`. Test die `WouldBeRank` tegen `DayStandingsAsync` legt. | 254 groen + 1 overgeslagen |
+| 1.4 | uitgevoerd | `Shared/QuizDay.cs` (Belgische dag, ook voor de client); `QuizClock` gebruikt die; `ProgressService` zonder eigen tijdzone; `AdminService` en feedback via `TimeProvider`; `AppUser.CreatedAt` gezet bij registreren (geen standaardwaarde meer, geen migratie nodig); vijf Razor-pagina's gebruiken `QuizDay.Today()`. `QuizClockTests.cs` rond middernacht (zomer en winter). | 261 groen + 1 overgeslagen |
+| 1.5 | uitgevoerd | Admin-policy in `Program.cs` (`CurrentUser.AdminPolicy`), `user.UserId()`-extensie, `EndpointFilters.HandleQuizErrors`, `FeedbackService` + `FeedbackTests.cs`. Routes en DTO's ongewijzigd. | 265 groen + 1 overgeslagen |
+
+Na te kijken door de eigenaar:
+
+- Admin-paneel (alle pagina's), en feedback: melden, lijst, antwoord als admin; als niet-admin moet `/api/admin/...` 403 geven.
+- Registreren: "lid sinds" op het profiel. Bestaande accounts behouden hun datum.
+- Datum in de browser (Planning "vandaag", specials actief/gepland, lopende maand in het klassement): nu Belgische tijd.
+  Nagekeken in de tests, niet in een echte browser. Zonder tijdzonedata valt `QuizDay` terug op de lokale tijd.
+- PostgreSQL-rooktest lokaal draaien: Podman machine herstarten (of de Docker-compatibiliteit aanzetten) zodat
+  `\\.\pipe\podman-machine-default` bestaat, en dan `DOCKER_HOST=npipe://./pipe/podman-machine-default`.
+- `CheckedAt` en `SpecialEvent.CreatedAt` blijven, zoals voordien, de UTC-datum (niet de Belgische); bewust niet gewijzigd.
+- Na 1.3 (puntentelling opstelling, klassementsvolgorde) en 0.1 (online): de agent `spelregel-reviewer` laten kijken.
+
 ## Open vragen voor de eigenaar (oorspronkelijk)
 
 1. **Mag het datamodel wijzigen?** Stap 3.1 (`MatchAnswer` met `Guesses`/`StartedAt`) en 3.3 (rowversion) vragen een migratie.
