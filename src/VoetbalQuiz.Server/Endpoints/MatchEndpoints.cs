@@ -12,7 +12,7 @@ public static class MatchEndpoints
 
         matches.MapGet("/", (ClaimsPrincipal user, MatchService svc) => svc.GetLobbyAsync(user.UserId()));
         // Enkel de types die aan staan kan je kiezen voor een partijtje.
-        matches.MapGet("/types", (QuizService quiz) => quiz.ActiveTypesAsync());
+        matches.MapGet("/types", (QuestionPicker picker) => picker.ActiveTypesAsync());
         matches.MapPost("/", async (CreateMatchRequest req, ClaimsPrincipal user, MatchService svc) =>
             new { Id = await svc.CreateAsync(user.UserId(), user.Identity!.Name!, req) });
         matches.MapGet("/{id:int}", (int id, ClaimsPrincipal user, MatchService svc) => svc.GetStateAsync(user.UserId(), id));

@@ -41,9 +41,11 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 
 builder.Services.AddSingleton(TimeProvider.System);
+builder.Services.AddScoped<QuestionPicker>();
 builder.Services.AddScoped<QuizService>();
 builder.Services.AddScoped<TrainingService>();
 builder.Services.AddScoped<ResultsService>();
+builder.Services.AddScoped<DerbyService>();
 builder.Services.AddScoped<MatchService>();
 builder.Services.AddScoped<OnlineService>();
 builder.Services.AddScoped<MonthRankingService>();

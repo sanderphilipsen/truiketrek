@@ -46,6 +46,7 @@ public sealed class TestDb : IDisposable
     // ---------- Services op de gedeelde context ----------
 
     private ResultsService? _results;
+    private QuestionPicker? _picker;
     private QuizService? _quiz;
     private AdminService? _admin;
     private MonthRankingService? _ranking;
@@ -56,8 +57,9 @@ public sealed class TestDb : IDisposable
     private FeedbackService? _feedback;
 
     public ResultsService Results => _results ??= NewResults(Db);
-    public QuizService Quiz => _quiz ??= new QuizService(Db, Clock, Results);
-    public AdminService Admin => _admin ??= new AdminService(Db, Quiz, Clock);
+    public QuestionPicker Picker => _picker ??= new QuestionPicker(Db, Clock);
+    public QuizService Quiz => _quiz ??= new QuizService(Db, Clock, Results, Picker);
+    public AdminService Admin => _admin ??= new AdminService(Db, Picker, Clock);
     public MonthRankingService Ranking => _ranking ??= new MonthRankingService(Db, Results);
     public OnlineService Online => _online ??= new OnlineService(Db, Results);
     public GoldenBallService GoldenBall => _goldenBall ??= new GoldenBallService(Db, Clock, Ranking, Results);
@@ -66,19 +68,19 @@ public sealed class TestDb : IDisposable
     public FeedbackService Feedback => _feedback ??= new FeedbackService(Db, Clock);
 
     /// <summary>Online wedstrijden zonder SignalR; <paramref name="random"/> legt de wapens van een derby vast.</summary>
-    public MatchService Matches(Random? random = null) => new(Db, Clock, Results, Quiz, new NoNotifier(), random);
+    public MatchService Matches(Random? random = null) => new(Db, Clock, Results, Picker, new DerbyService(Db, Clock, Picker), new NoNotifier(), random);
 
     // ---------- Services op een andere context (bv. een verzoek dat tegelijk binnenkomt) ----------
 
     /// <summary>Met een eigen, lege cache.</summary>
     public ResultsService NewResults(QuizDbContext db) => new(db, Clock, new MemoryCache(new MemoryCacheOptions()));
 
-    public QuizService NewQuiz(QuizDbContext db) => new(db, Clock, NewResults(db));
+    public QuizService NewQuiz(QuizDbContext db) => new(db, Clock, NewResults(db), new QuestionPicker(db, Clock));
 
     public MatchService NewMatches(QuizDbContext db)
     {
-        var results = NewResults(db);
-        return new MatchService(db, Clock, results, new QuizService(db, Clock, results), new NoNotifier());
+        var picker = new QuestionPicker(db, Clock);
+        return new MatchService(db, Clock, NewResults(db), picker, new DerbyService(db, Clock, picker), new NoNotifier());
     }
 
     private sealed class NoNotifier : IMatchNotifier

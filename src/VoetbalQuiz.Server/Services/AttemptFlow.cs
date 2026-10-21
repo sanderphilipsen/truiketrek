@@ -22,7 +22,7 @@ public static class AttemptFlow
     };
 
     /// <summary>Sluit een vraag af als de tijd om is (een opstelling houdt de gevonden namen). True als er iets wijzigde.</summary>
-    public static bool CloseIfExpired(DailyQuestion question, AttemptState attempt, DateTime now)
+    public static bool CloseIfExpired(IQuizQuestion question, AttemptState attempt, DateTime now)
     {
         if (attempt.AnsweredAt is not null) return false;
         var limit = QuestionEngine.TimeLimit(question);
@@ -35,7 +35,7 @@ public static class AttemptFlow
     }
 
     /// <summary>Verwerkt een gok (getypte naam, gekozen optie of jaartal). Geeft de foute gok terug, of null.</summary>
-    public static string? Guess(DailyQuestion question, AttemptState attempt, string? guess, DateTime now)
+    public static string? Guess(IQuizQuestion question, AttemptState attempt, string? guess, DateTime now)
     {
         CloseIfExpired(question, attempt, now);
         var trimmed = guess?.Trim();
@@ -66,7 +66,7 @@ public static class AttemptFlow
     }
 
     /// <summary>"Ik pas" (of "Klaar" bij een opstelling): de vraag stopt, enkel een opstelling houdt deelpunten.</summary>
-    public static void GiveUp(DailyQuestion question, AttemptState attempt, DateTime now)
+    public static void GiveUp(IQuizQuestion question, AttemptState attempt, DateTime now)
     {
         if (attempt.AnsweredAt is not null) return;
         attempt.Guesses++;
@@ -106,7 +106,7 @@ public static class AttemptFlow
     }
 
     /// <summary>Wat de client van de vraag mag zien: het antwoord pas als de vraag afgelopen is.</summary>
-    public static QuestionState State(DailyQuestion question, AttemptState attempt, DateTime now, string? lastWrong = null)
+    public static QuestionState State(IQuizQuestion question, AttemptState attempt, DateTime now, string? lastWrong = null)
     {
         var status = StatusOf(attempt);
         var limit = QuestionEngine.TimeLimit(question);

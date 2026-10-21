@@ -295,7 +295,7 @@ public sealed class QuestionTypeTests : IDisposable
         await _admin.SetTypeEnabledAsync(QuestionType.Jaar, false);
         await Assert.ThrowsAsync<QuizException>(() => _admin.SetTypeEnabledAsync(QuestionType.WieBenIk, false));
         await _admin.SetTypeEnabledAsync(QuestionType.Snelvuur, true);
-        Assert.Equal([QuestionType.Snelvuur], await _quiz.TypesForAsync(_quiz.Today));
+        Assert.Equal([QuestionType.Snelvuur], await _t.Picker.TypesForAsync(_quiz.Today));
     }
 
     public void Dispose() => _t.Dispose();

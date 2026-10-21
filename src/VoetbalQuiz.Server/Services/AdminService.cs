@@ -5,7 +5,7 @@ using VoetbalQuiz.Shared;
 namespace VoetbalQuiz.Server.Services;
 
 /// <summary>Beheer van de spelersdatabase en de specials (enkel voor admins).</summary>
-public class AdminService(QuizDbContext db, QuizService quiz, TimeProvider clock)
+public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider clock)
 {
     private DateTime Now => clock.GetUtcNow().UtcDateTime;
 
@@ -130,7 +130,7 @@ public class AdminService(QuizDbContext db, QuizService quiz, TimeProvider clock
         var days = QuestionTypes.Week.Select(d => stored.TryGetValue(d, out var row)
             ? new ScheduleDay(d, row.Type, row.MixTypes.Count > 1 ? row.MixTypes : null)
             : new ScheduleDay(d, QuestionTypes.DefaultFor(d))).ToList();
-        var disabled = await quiz.DisabledTypesAsync();
+        var disabled = await picker.DisabledTypesAsync();
         // Hoeveel vragen van elk type een week vraagt, zoals de dagen er werkelijk uitzien (mix, uitgeschakelde types).
         var weekly = days.SelectMany(d => QuestionTypes.Mix(QuestionTypes.ResolveDay(d.Planned, disabled)))
             .GroupBy(m => m.Key).ToDictionary(g => g.Key, g => g.Sum(m => m.Value));
@@ -266,7 +266,7 @@ public class AdminService(QuizDbContext db, QuizService quiz, TimeProvider clock
         var result = new List<SpecialAdminItem>();
         foreach (var s in specials)
         {
-            var pool = (await quiz.SpecialPoolAsync(s)).Count;
+            var pool = (await picker.SpecialPoolAsync(s)).Count;
             result.Add(new SpecialAdminItem(s.Id, s.Theme, s.Name, s.Icon, s.StartDate, s.EndDate, s.Tag, pool,
                 started.Contains(s.Id), participants.GetValueOrDefault(s.Id), s.Types));
         }
@@ -306,7 +306,7 @@ public class AdminService(QuizDbContext db, QuizService quiz, TimeProvider clock
         special.PlayerIds = edit.PlayerIds.Distinct().ToList();
         special.Types = types;
 
-        var shortages = await quiz.SpecialShortagesAsync(special);
+        var shortages = await picker.SpecialShortagesAsync(special);
         if (shortages.Count > 0) throw new QuizException("Niet genoeg vragen: " + string.Join(" ", shortages));
 
         await db.SaveChangesAsync();

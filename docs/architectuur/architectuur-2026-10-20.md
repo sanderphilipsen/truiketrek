@@ -380,6 +380,30 @@ Na te kijken door de eigenaar:
 - `CheckedAt` en `SpecialEvent.CreatedAt` blijven, zoals voordien, de UTC-datum (niet de Belgische); bewust niet gewijzigd.
 - Na 1.3 (puntentelling opstelling, klassementsvolgorde) en 0.1 (online): de agent `spelregel-reviewer` laten kijken.
 
+## Status uitvoering fase 2 (21 oktober 2026)
+
+Uitgevoerd op HEAD 3f0a2b8, niet gecommit. Uitgangssituatie: 265 groen + 1 overgeslagen (PostgreSQL zonder Docker),
+0 warnings. Na elke stap: build zonder warnings en alle tests groen (gebouwd met `--artifacts-path artifacts`).
+Geen gedragswijziging; routes, DTO's en SignalR-berichten ongewijzigd. Fase 3 niet aangeraakt
+(`Opstelling_online_has_no_guess_limit_yet` ongewijzigd).
+
+| Stap | Status | Wat | Tests na de stap |
+|---|---|---|---|
+| 2.1 | uitgevoerd | Nieuw `QuestionPicker.cs`: types (uitgeschakeld, weekplanning, special, actief), `BuildDailyAsync` (met de terugval op "Wie ben ik?"), `BuildSpecialAsync`, special-pool en tekorten, online-pool, `BuildOnlineAsync`, `BuildReplacementAsync`, `BuildMixAsync`/`BuildAsync`/`Pick*`/`PickByPlan` (code letterlijk verplaatst). `QuizService` (516 -> 244 regels) houdt de daily/special-flow en hangt af van `QuestionPicker`. `MatchService`, `AdminService` en `GET /api/matches/types` hangen nu van `QuestionPicker` af in plaats van `QuizService`; `TrainingService` gebruikt enkel het laden/aanmaken van reeksen en blijft op `QuizService`. DI in `Program.cs` en `TestDb` (`Picker`); twee tests roepen `TypesForAsync`/`ActiveTypesAsync` nu op de picker aan. | 265 groen + 1 overgeslagen, 0 warnings |
+| 2.2 | uitgevoerd | `IQuizQuestion` (Id, Number, Type, Player, QuizItem, Blanks, CounterPlayers) in `Entities.cs`, geïmplementeerd door `DailyQuestion` en `MatchQuestion`. `QuestionEngine` en `AttemptFlow` (behalve `EnsureInOrderAsync`) werken op de interface; `AsDaily` is weg; `WithAnswer` geeft een lichte kopie (`JudgedQuestion`, privé record). Geen migratie: de pending-model-test is groen. | 265 groen + 1 overgeslagen, 0 warnings |
+| 2.3 | uitgevoerd | Nieuw `MatchScoring.cs` (statisch, zonder database): klok van een vraag (`TimeLimit`, `Elapsed`, `LimitFor`, `ScoringElapsed`), beoordelen (`AsAttempt`, `Judged`, `TrumpChoice`), `EndQuestion` met de vaste volgorde Trump -> posities -> vertrekkers -> rode kaarten -> gokken -> stelen -> score, en `Finish`. Nieuw `DerbyService.cs`: wapen inzetten op een geladen `Match` (controle `WhyNot`, claimen in de database, effect, wissel) en de derby-toestand (`State`). `MatchService` (864 -> 426 regels) houdt lobby, spelen, verloop en toestand; `UseWeaponAsync` laadt, laat `DerbyService` het wapen inzetten, bewaart en geeft de toestand (route en tests ongewijzigd). `PhaseOf` is statisch met de tijd als parameter. Nieuw `MatchScoringTests.cs` (6 tests zonder database). | 271 groen + 1 overgeslagen, 0 warnings |
+
+Na te kijken door de eigenaar:
+
+- Handmatig een gewoon online partijtje spelen (aanmaken, joinen, starten, antwoorden, tussenstand, einde) en een derby met
+  minstens drie spelers: elk wapen één keer, vooral wissel (nieuwe vraag), Trump (officieel/echt antwoord in de reveal),
+  rode kaart + propere handen op dezelfde speler, gok verloren, en iemand die halverwege vertrekt.
+- Admin: special aanmaken met te weinig vragen (tekorten), type uit- en aanzetten, "Spelen"-lijst van types online.
+- Daily en een lopende special openen (reeks wordt aangemaakt via `QuestionPicker`).
+- De checklist in `.claude/skills/nieuw-vraagtype/SKILL.md` noemt nog enkel `QuizService`/`MatchService`; selectie zit nu in
+  `QuestionPicker`, afrekening online in `MatchScoring`. Niet aangepast (configuratie).
+- Omdat 2.3 de afrekening online raakt: de agent `spelregel-reviewer` laten kijken.
+
 ## Open vragen voor de eigenaar (oorspronkelijk)
 
 1. **Mag het datamodel wijzigen?** Stap 3.1 (`MatchAnswer` met `Guesses`/`StartedAt`) en 3.3 (rowversion) vragen een migratie.

@@ -63,7 +63,23 @@ public class DailyChallenge
     public int? WinnerPoints { get; set; }
 }
 
-public class DailyQuestion
+/// <summary>
+/// De inhoud van een vraag zoals <c>QuestionEngine</c> ze beoordeelt en toont, los van waar ze bewaard wordt:
+/// een vraag van de daily, een special of de academie (<see cref="DailyQuestion"/>) of van een online partijtje
+/// (<see cref="MatchQuestion"/>).
+/// </summary>
+public interface IQuizQuestion
+{
+    int Id { get; }
+    int Number { get; }
+    QuestionType Type { get; }
+    Player? Player { get; }
+    QuizItem? QuizItem { get; }
+    List<int> Blanks { get; }
+    List<Player> CounterPlayers { get; }
+}
+
+public class DailyQuestion : IQuizQuestion
 {
     public int Id { get; set; }
     public int DailyChallengeId { get; set; }
@@ -222,7 +238,7 @@ public class MatchPlayer
     public int WeaponEffect { get; set; }
 }
 
-public class MatchQuestion
+public class MatchQuestion : IQuizQuestion
 {
     public int Id { get; set; }
     public int MatchId { get; set; }

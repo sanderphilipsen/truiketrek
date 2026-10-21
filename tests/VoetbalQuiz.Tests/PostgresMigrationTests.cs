@@ -50,7 +50,8 @@ public sealed class PostgresMigrationTests
         await db.SaveChangesAsync();
 
         var clock = new FakeTimeProvider(TestDb.DefaultNow);
-        var quiz = new QuizService(db, clock, new ResultsService(db, clock, new MemoryCache(new MemoryCacheOptions())));
+        var quiz = new QuizService(db, clock, new ResultsService(db, clock, new MemoryCache(new MemoryCacheOptions())),
+            new QuestionPicker(db, clock));
         var challenge = await quiz.GetOrCreateChallengeAsync(quiz.Today);
         Assert.NotEmpty(challenge.Questions);
 

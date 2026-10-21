@@ -334,8 +334,7 @@ public sealed class MatchServiceTests : IDisposable
         await Assert.ThrowsAsync<QuizException>(() =>
             _matches.CreateAsync(_host, "host", new CreateMatchRequest(null, 4, [QuestionType.Emoji])));
 
-        var quiz = _t.Quiz;
-        Assert.DoesNotContain(QuestionType.Snelvuur, await quiz.ActiveTypesAsync());
+        Assert.DoesNotContain(QuestionType.Snelvuur, await _t.Picker.ActiveTypesAsync());
     }
 
     [Fact]
