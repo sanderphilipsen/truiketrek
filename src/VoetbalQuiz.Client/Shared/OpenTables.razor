@@ -51,7 +51,7 @@ else
                             }
                             else
                             {
-                                <span class="match-meta-chunk">@m.Players/@m.Seats spelers</span> <span class="match-meta-chunk">· wacht op start</span>
+                                <span class="match-meta"><span class="match-meta-chunk">@m.Players/@m.Seats spelers</span> <span class="match-meta-chunk sep">wacht op start</span></span>
                             }
                         </small>
                         <small class="table-type"><MatchMeta Types="m.Types" Questions="m.Questions" Derby="m.Derby" /></small>
@@ -133,7 +133,7 @@ else
                     <span class="table-icon">🏁</span>
                     <div class="table-info">
                         <b>@m.Name</b>
-                        <small><span class="match-meta-chunk">@When(m.CreatedAt)</span> <span class="match-meta-chunk">· @m.HostName</span> <span class="match-meta-chunk">· @m.Players spelers</span></small>
+                        <small class="match-meta"><span class="match-meta-chunk">@When(m.CreatedAt)</span> <span class="match-meta-chunk sep">@m.HostName</span> <span class="match-meta-chunk sep">@m.Players spelers</span></small>
                     </div>
                     <span class="muted">Uitslag ›</span>
                 </a>

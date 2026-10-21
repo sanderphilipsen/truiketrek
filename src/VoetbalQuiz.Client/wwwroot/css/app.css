@@ -611,9 +611,17 @@ body:has(.sheet) { overflow: hidden; }
     .kleedkamer-title { font-size: 1.2rem; }
 }
 /* Spelvorm, vragen en derby (MatchMeta): elk stukje blijft heel, afbreken kan enkel tussen de stukjes. */
-.match-meta { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 2px 5px; }
+/* Elk stukje heeft links een vaste strook: "·" bij .sep, leeg bij de rest. De strook van het eerste stukje op een regel
+   valt in de weggeknipte rand links (negatieve marge + clip-path), dus een regel begint nooit met "·". */
+.match-meta {
+    --sep: .7em;
+    display: inline-flex; flex-wrap: wrap; align-items: center; row-gap: 2px;
+    margin-left: calc(-1 * var(--sep)); clip-path: inset(-6px -6px -6px var(--sep));
+}
+.match-meta > *, .match-meta > .derby-badge { margin-left: var(--sep); }
+.match-meta > .sep { margin-left: 0; }
+.match-meta > .sep::before { content: "·"; display: inline-block; width: var(--sep); text-align: center; }
 .match-meta-chunk { display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: bottom; }
-.match-meta .derby-badge { margin-left: 0; }
 .kleedkamer-seats {
     list-style: none; margin: 18px 0 0; padding: 0;
     display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px 6px;

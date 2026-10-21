@@ -1,5 +1,6 @@
 @* Spelvorm, aantal vragen en derby van een partijtje, netjes afgebroken op een smal scherm:
-   "🎲 Mix" en "· 10 vragen" blijven elk één geheel (geen los "·" aan het regeleinde) en de mix-icoontjes breken enkel tussen twee icoontjes. *@
+   "🎲 Mix" en "10 vragen" blijven elk één geheel en de mix-icoontjes breken enkel tussen twee icoontjes.
+   Het "·" komt uit de CSS (.sep) en valt weg aan het begin van een regel. *@
 <span class="match-meta @Class">
     @if (Types is { Count: > 1 })
     {
@@ -10,7 +11,7 @@
     {
         <span class="match-meta-chunk">@QuestionTypes.Label(Types)</span>
     }
-    <span class="match-meta-chunk">· @Questions vragen</span>
+    <span class="match-meta-chunk sep">@Questions vragen</span>
     @if (Derby)
     {
         <span class="derby-badge">🔥 Derby</span>
