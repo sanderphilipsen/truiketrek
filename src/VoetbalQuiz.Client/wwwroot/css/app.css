@@ -34,9 +34,22 @@ html, body {
     margin: 0;
     min-height: 100%;
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    background: linear-gradient(180deg, var(--pitch) 0%, var(--pitch-2) 100%) fixed;
     color: var(--text);
     -webkit-tap-highlight-color: transparent;
+}
+/* Alleen op html: een eigen achtergrond op body zou over het veld (body::before) heen schilderen */
+html { background: linear-gradient(180deg, var(--pitch) 0%, var(--pitch-2) 100%) fixed; }
+
+/* Voetbalveld achter alles: gemaaide banen en flauwe lijnen, vast bij het scrollen */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        url("../pitch.svg") center / cover no-repeat,
+        repeating-linear-gradient(180deg, rgba(255, 255, 255, .035) 0 10vh, transparent 10vh 20vh);
 }
 
 a { color: inherit; }
