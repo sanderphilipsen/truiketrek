@@ -1,35 +1,48 @@
-@* Een partijtje delen: het deelmenu van de gsm als dat er is, anders WhatsApp, Messenger en kopiëren. *@
+@* Een partijtje delen: het deelmenu van de gsm als dat er is, anders WhatsApp, Messenger en kopiëren.
+   Primary: uitnodigen is nu de hoofdactie (de organisator zit nog alleen), dus de gele knop. *@
+@implements IDisposable
 @inject NavigationManager Nav
 @inject IJSRuntime JS
 
-<div class="share">
+<div class="share @(Primary ? "primary" : "")">
     @if (_fallback)
     {
-        <p class="share-label">Nodig vrienden uit</p>
+        <p class="share-label">Nodig je maten uit</p>
         <div class="share-row">
-            <a class="btn small" href="@($"https://wa.me/?text={Uri.EscapeDataString($"{Text} {Link}")}")" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn" href="@($"https://wa.me/?text={Uri.EscapeDataString($"{Text} {Link}")}")" target="_blank" rel="noopener">WhatsApp</a>
             @if (_touch)
             {
-                <a class="btn small" href="@($"fb-messenger://share/?link={Uri.EscapeDataString(Link)}")">Messenger</a>
+                <a class="btn" href="@($"fb-messenger://share/?link={Uri.EscapeDataString(Link)}")">Messenger</a>
             }
-            <button class="btn small" @onclick="CopyAsync">@(_copied ? "Gekopieerd" : "Kopieer link")</button>
+            <button type="button" class="btn @(Primary ? "primary" : "") @(_copied ? "copied" : "")" @onclick="CopyAsync">
+                @(_copied ? "✓ Gekopieerd" : "Kopieer link")
+            </button>
         </div>
         @if (_copyFailed)
         {
+            <p class="share-hint">Kopiëren lukte niet. Selecteer de link hieronder en kopieer hem zelf.</p>
             <input class="share-link" readonly value="@Link" aria-label="Link naar het partijtje" onfocus="this.select()" />
         }
     }
     else
     {
-        <button class="btn big share-btn" @onclick="ShareAsync">Nodig vrienden uit</button>
+        <button type="button" class="btn big share-btn @(Primary ? "primary" : "")" @onclick="ShareAsync">
+            <span aria-hidden="true">📣</span> Nodig maten uit
+        </button>
     }
+    @* Altijd aanwezig, zodat schermlezers "gekopieerd" voorlezen. *@
+    <span class="sr-only" role="status" aria-live="polite">@(_copied ? "Link gekopieerd" : "")</span>
 </div>
 
 @code {
     [Parameter, EditorRequired] public int Id { get; set; }
     [Parameter, EditorRequired] public string Name { get; set; } = "";
 
+    /// <summary>Uitnodigen als hoofdactie (gele knop); anders een gewone, ondergeschikte knop.</summary>
+    [Parameter] public bool Primary { get; set; }
+
     private bool _fallback, _touch, _copied, _copyFailed;
+    private CancellationTokenSource? _reset;
 
     private string Link => $"{Nav.BaseUri}online/{Id}";
     private string Text => $"Doe mee met mijn partijtje \"{Name}\" in Truitje Trek:";
@@ -57,7 +70,21 @@
     {
         _copied = await JS.InvokeAsync<bool>("truitje.copy", Link);
         _copyFailed = !_copied;
+        if (!_copied) return;
+        StateHasChanged();
+
+        // Na twee seconden terug naar "Kopieer link", zodat je opnieuw kan kopiëren.
+        _reset?.Cancel();
+        _reset = new CancellationTokenSource();
+        try
+        {
+            await Task.Delay(2000, _reset.Token);
+            _copied = false;
+        }
+        catch (TaskCanceledException) { }
     }
+
+    public void Dispose() => _reset?.Cancel();
 
     private record ShareCaps(bool Share, bool Touch);
 }

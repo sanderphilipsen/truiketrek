@@ -44,13 +44,17 @@ else
                     <Avatar Id="@m.HostAvatarId" User="@m.HostName" Size="40" />
                     <div class="table-info">
                         <b>@m.Name</b>
-                        <small>@(m.Status == MatchStatus.Running ? "🔴 Bezig" : $"{m.Players}/{m.Seats} spelers · wacht op start")</small>
-                        <small class="table-type">@QuestionTypes.Label(m.Types) · @(m.Questions) vragen
-                            @if (m.Derby)
+                        <small>
+                            @if (m.Status == MatchStatus.Running)
                             {
-                                <span class="derby-badge">🔥 Derby</span>
+                                <span>🔴 Bezig</span>
+                            }
+                            else
+                            {
+                                <span class="match-meta-chunk">@m.Players/@m.Seats spelers</span> <span class="match-meta-chunk">· wacht op start</span>
                             }
                         </small>
+                        <small class="table-type"><MatchMeta Types="m.Types" Questions="m.Questions" Derby="m.Derby" /></small>
                     </div>
                     <span class="btn small primary">@(m.Status == MatchStatus.Running ? "Verder" : "Open")</span>
                 </a>
@@ -60,13 +64,28 @@ else
 
     @if (!Compact)
     {
-        <h2 class="section-title">Open partijtjes</h2>
+        @* De live-stip staat achter de kop, zodat zijn halo niet buiten de inhoudsmarge uitsteekt. *@
+        <h2 class="section-title rooms-title">
+            Nu open
+            @if (_lobby.Open.Count > 0)
+            {
+                <span class="rooms-live"><span class="live-dot" aria-hidden="true"></span>@_lobby.Open.Count live</span>
+            }
+        </h2>
     }
     @if (_lobby.Open.Count == 0)
     {
         <div class="card center tables-empty">
             <span class="tables-empty-icon" aria-hidden="true">🏟️</span>
-            <p>Nog geen open partijtjes. Maak er zelf een en daag je maten uit!</p>
+            @if (_lobby.Mine.Count > 0)
+            {
+                @* Je hebt zelf al een partijtje open: niet nog eens "maak er een" zeggen. *@
+                <p>Nog geen andere open partijtjes. Deel de link van jouw partijtje, zodat je maten kunnen aanschuiven.</p>
+            }
+            else
+            {
+                <p>Nog geen open partijtjes. Maak er zelf een en daag je maten uit!</p>
+            }
         </div>
     }
     else
@@ -75,27 +94,25 @@ else
         <div class="tables">
             @foreach (var m in shown)
             {
-                <div class="table-card">
-                    <Avatar Id="@m.HostAvatarId" User="@m.HostName" Size="40" />
+                var free = m.Seats - m.Players;
+                <div class="table-card room">
+                    <Avatar Id="@m.HostAvatarId" User="@m.HostName" Size="44" />
                     <div class="table-info">
                         <b>@m.Name</b>
-                        <small>@m.HostName · @m.Players/@m.Seats spelers</small>
-                        <small class="table-type">@QuestionTypes.Label(m.Types) · @(m.Questions) vragen
-                            @if (m.Derby)
-                            {
-                                <span class="derby-badge">🔥 Derby</span>
-                            }
-                        </small>
-                        <div class="seats" aria-hidden="true">
+                        <small class="table-type"><MatchMeta Types="m.Types" Questions="m.Questions" Derby="m.Derby" /></small>
+                        <div class="room-seats">
                             @for (var i = 0; i < m.Seats; i++)
                             {
-                                <span class="seat @(i < m.Players ? "taken" : "")"></span>
+                                <span class="seat @(i < m.Players ? "taken" : "")" aria-hidden="true"></span>
                             }
+                            <span class="room-free @(free == 1 ? "last" : "")">
+                                <span class="sr-only">@m.Players van @m.Seats plaatsen bezet, </span>@(free == 1 ? "laatste plaats!" : $"nog {free} vrij")
+                            </span>
                         </div>
                     </div>
                     @* Op Home is de daily de hoofdactie: meedoen krijgt daar een gewone knop. *@
-                    <button class="btn small @(Compact ? "" : "primary")" @onclick="() => JoinAsync(m.Id)" disabled="@_busy"
-                            aria-label="Doe mee met @m.Name">Doe mee</button>
+                    <button type="button" class="btn small room-join @(Compact ? "" : "primary")" @onclick="() => JoinAsync(m.Id)" disabled="@_busy"
+                            aria-label="Doe mee met @m.Name">@(_joining == m.Id ? "Even…" : "Doe mee")</button>
                 </div>
             }
         </div>
@@ -116,7 +133,7 @@ else
                     <span class="table-icon">🏁</span>
                     <div class="table-info">
                         <b>@m.Name</b>
-                        <small>@m.HostName · @m.Players spelers</small>
+                        <small><span class="match-meta-chunk">@When(m.CreatedAt)</span> <span class="match-meta-chunk">· @m.HostName</span> <span class="match-meta-chunk">· @m.Players spelers</span></small>
                     </div>
                     <span class="muted">Uitslag ›</span>
                 </a>
@@ -184,9 +201,21 @@ else
         _busy = false;
     }
 
+    /// <summary>Het partijtje waar je net op "Doe mee" tikte (meteen zichtbare reactie).</summary>
+    private int? _joining;
+
+    /// <summary>Wanneer een partijtje gespeeld werd: vandaag, gisteren of de datum (d/m).</summary>
+    private static string When(DateTime created)
+    {
+        var day = (created.Kind == DateTimeKind.Unspecified ? created : created.ToLocalTime()).Date;
+        var today = DateTime.Now.Date;
+        return day == today ? "Vandaag" : day == today.AddDays(-1) ? "Gisteren" : $"{day.Day}/{day.Month}";
+    }
+
     private async Task JoinAsync(int id)
     {
         _busy = true;
+        _joining = id;
         try
         {
             await Api.JoinMatchAsync(id);
@@ -197,7 +226,7 @@ else
             _error = ex.Message;
             await LoadAsync();
         }
-        finally { _busy = false; }
+        finally { _busy = false; _joining = null; }
     }
 
     public async ValueTask DisposeAsync()

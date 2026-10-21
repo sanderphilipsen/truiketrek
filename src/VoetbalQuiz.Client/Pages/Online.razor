@@ -3,16 +3,18 @@
 
 <PageTitle>Online – Truitje Trek</PageTitle>
 
-<section class="card">
-    <h1>Online spelen</h1>
-    <p class="muted">Speel live tegen je vrienden.</p>
-    <CreateTableForm UserName="@_me" Collapsible="true" />
-</section>
+@* De lobby: spring met één tik in een open match, of zet er zelf een klaar (bottom sheet).
+   Is er niets open (en zit je zelf nergens in), dan wordt "Nieuwe match" de gele hoofdknop. *@
+<h1 class="page-title">Online spelen</h1>
+<p class="online-sub">Speel live tegen je maten. Spring in een open match of zet er zelf een klaar.</p>
+<CreateTableForm UserName="@_me" Primary="@_nothingOpen" />
 
-<OpenTables ShowRecent="true" />
+<OpenTables ShowRecent="true" OnLoaded="l => _nothingOpen = l.Open.Count == 0 && l.Mine.Count == 0" />
 
 @code {
     private string? _me;
+    /// <summary>Geen open partijtjes en zelf nergens in: dan is een nieuwe match maken de hoofdactie.</summary>
+    private bool _nothingOpen;
 
     [CascadingParameter] private Task<AuthenticationState>? AuthTask { get; set; }
 

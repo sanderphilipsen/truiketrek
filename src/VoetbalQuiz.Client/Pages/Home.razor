@@ -174,7 +174,7 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
     <SectionHeader Id="online-title" Title="Online spelen" Subtitle="Speel live tegen je maten." Href="online" LinkLabel="Alle partijtjes in de lobby" />
     @* Jouw partijtjes staan als banner bovenaan; hier enkel (maximaal 3) open partijtjes om aan mee te doen. *@
     <OpenTables ShowMine="false" Max="3" Compact="true" OnLoaded="l => _myTables = l.Mine" />
-    <CreateTableForm UserName="@Auth.User?.UserName" Collapsible="true" Card="true" />
+    <CreateTableForm UserName="@Auth.User?.UserName" />
 </section>
 
 @if (UpcomingSpecials.Count > 0)

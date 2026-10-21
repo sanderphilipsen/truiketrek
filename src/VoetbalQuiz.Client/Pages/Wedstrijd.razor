@@ -39,14 +39,87 @@ else
     switch (_state.Phase)
     {
         case MatchPhase.Lobby:
-            <section class="card">
-                <h1>@_state.Name</h1>
-                <p class="muted">@_state.Players.Count / @_state.Seats spelers in het partijtje</p>
-                <p><b>@QuestionTypes.Label(_state.Types)</b> <span class="muted">· @_state.TotalQuestions vragen</span></p>
+            @* De kleedkamer: wie er al is, hoeveel maten er nog nodig zijn en altijd precies één gele hoofdknop.
+               Alleen: uitnodigen. Vanaf twee spelers: de organisator geeft de aftrap. *@
+            var host = _state.Players.FirstOrDefault(p => p.IsHost);
+            var free = _state.Seats - _state.Players.Count;
+            var enough = _state.Players.Count >= MatchRules.MinSeats;
+            <section class="card kleedkamer" aria-labelledby="kleedkamer-title">
+                <p class="kleedkamer-kicker">Kleedkamer</p>
+                <h1 id="kleedkamer-title" class="kleedkamer-title">@_state.Name</h1>
+                <p class="kleedkamer-meta">
+                    <MatchMeta Types="_state.Types" Questions="_state.TotalQuestions" Derby="@(_state.Derby is not null)" />
+                </p>
+
+                @* Bij meer dan vier plaatsen kleinere truitjes, zodat uitnodigen of starten op een smal scherm in beeld blijft. *@
+                <ul class="kleedkamer-seats @(_state.Seats > 4 ? "many" : "")" aria-label="Plaatsen: @_state.Players.Count van @_state.Seats bezet">
+                    @foreach (var p in _state.Players)
+                    {
+                        @* Nieuwe spelers krijgen een nieuw element (via @key), dus de inloop-animatie speelt enkel bij wie net aanschuift. *@
+                        <li @key="@("p:" + p.UserName)" class="kleedkamer-seat taken @(p.IsMe ? "me" : "")">
+                            <span class="kleedkamer-avatar">
+                                <Avatar Id="@p.AvatarId" User="@p.UserName" Size="@(_state.Seats > 4 ? 40 : 52)" />
+                                @if (p.IsHost)
+                                {
+                                    <span class="kleedkamer-captain" aria-hidden="true">C</span>
+                                }
+                            </span>
+                            <b>@p.UserName</b>
+                            <small>@(p.IsHost ? "organisator" : $"Lv {p.Level}")</small>
+                        </li>
+                    }
+                    @for (var i = 0; i < free; i++)
+                    {
+                        <li @key="@("f:" + i)" class="kleedkamer-seat free">
+                            <span class="kleedkamer-avatar"><span class="kleedkamer-plus" aria-hidden="true">+</span></span>
+                            <small>Vrij</small>
+                        </li>
+                    }
+                </ul>
+
+                <p class="kleedkamer-status @(enough ? "ready" : "")" role="status" aria-live="polite">@LobbyStatus(free)</p>
+
+                @if (_state.IsHost)
+                {
+                    @if (!enough)
+                    {
+                        <TafelDelen Id="Id" Name="@_state.Name" Primary="true" />
+                    }
+                    else
+                    {
+                        <button type="button" class="btn primary big kleedkamer-start" @onclick="StartAsync" disabled="@_busy">
+                            @(_busy ? "Aftrap…" : "Start de wedstrijd")
+                        </button>
+                        @if (free > 0)
+                        {
+                            <TafelDelen Id="Id" Name="@_state.Name" />
+                        }
+                    }
+                }
+                else if (_state.IAmIn)
+                {
+                    <div class="kleedkamer-wait">
+                        <span class="kleedkamer-wait-ball" aria-hidden="true">⚽</span>
+                        <span>Wachten op de aftrap door <b>@(host?.UserName ?? "de organisator")</b></span>
+                    </div>
+                    @if (free > 0)
+                    {
+                        <TafelDelen Id="Id" Name="@_state.Name" />
+                    }
+                }
+                else if (free > 0)
+                {
+                    <button type="button" class="btn primary big" @onclick="JoinAsync" disabled="@_busy">Aanschuiven</button>
+                }
+                else
+                {
+                    <p class="kleedkamer-full">Dit partijtje is volzet. Kijk in de lobby voor een ander.</p>
+                }
+
                 @if (_state.Derby is not null)
                 {
-                    <div class="derby-intro">
-                        <b>🔥 Derby</b>
+                    <details class="derby-intro">
+                        <summary><span><b>🔥 Derby:</b> iedereen krijgt een geheim wapen</span></summary>
                         <span>Bij de aftrap krijgt iedereen één geheim wapen, één keer in te zetten:</span>
                         <ul>
                             @foreach (var w in DerbyRules.All)
@@ -62,47 +135,12 @@ else
                             }
                         </ul>
                         <small class="muted">Op de eerste en de laatste vraag geldt wapenstilstand.</small>
-                    </div>
-                }
-                <ul class="match-players">
-                    @foreach (var p in _state.Players)
-                    {
-                        <li>
-                            <Avatar Id="@p.AvatarId" User="@p.UserName" Size="40" />
-                            <span><b>@p.UserName</b> <span class="lvl">Lv @p.Level</span></span>
-                            @if (p.IsHost) { <span class="tag">organisator</span> }
-                        </li>
-                    }
-                    @for (var i = _state.Players.Count; i < _state.Seats; i++)
-                    {
-                        <li class="empty-seat"><span class="seat"></span> Vrije plaats</li>
-                    }
-                </ul>
-
-                @if (_state.IsHost)
-                {
-                    <button class="btn primary big" @onclick="StartAsync"
-                            disabled="@(_busy || _state.Players.Count < MatchRules.MinSeats)">
-                        @(_state.Players.Count < MatchRules.MinSeats ? "Wachten op spelers…" : "Start de wedstrijd")
-                    </button>
-                }
-                else if (_state.IAmIn)
-                {
-                    <p class="center muted">Wachten tot de organisator start…</p>
-                }
-                else if (_state.Players.Count < _state.Seats)
-                {
-                    <button class="btn primary big" @onclick="JoinAsync" disabled="@_busy">Aanschuiven</button>
-                }
-
-                @if (_state.IAmIn && _state.Players.Count < _state.Seats)
-                {
-                    <TafelDelen Id="Id" Name="@_state.Name" />
+                    </details>
                 }
 
                 @if (_state.IAmIn)
                 {
-                    <button class="linkish center-block" @onclick="LeaveAsync">
+                    <button type="button" class="btn kleedkamer-leave" @onclick="LeaveAsync" disabled="@_busy">
                         @(_state.IsHost ? "Partijtje opheffen" : "Partijtje verlaten")
                     </button>
                 }
@@ -373,6 +411,7 @@ else
         try
         {
             var state = await call();
+            TrackArrival(_state, state);
             _syncedAt = DateTime.UtcNow;
             _syncedElapsed = state.PhaseElapsedSeconds;
             _state = state;
@@ -506,12 +545,46 @@ else
 
     private async Task LeaveAsync()
     {
+        if (_state is null) return;
+        var question = _state.IsHost
+            ? "Partijtje opheffen? Het verdwijnt uit de lobby en wie al aangeschoven is, moet een ander zoeken."
+            : "Partijtje verlaten? Je plaats komt vrij voor iemand anders.";
+        if (!await JS.InvokeAsync<bool>("confirm", question)) return;
         try
         {
             await Api.LeaveMatchAsync(Id);
             Nav.NavigateTo("online");
         }
         catch (ApiException ex) { _error = ex.Message; }
+    }
+
+    // ---------- Kleedkamer ----------
+
+    /// <summary>Wie net aanschoof (voor de live-melding); weg zodra iemand vertrekt of de wedstrijd begint.</summary>
+    private string? _arrival;
+
+    private void TrackArrival(MatchState? old, MatchState state)
+    {
+        if (old is not { Phase: MatchPhase.Lobby } || state.Phase != MatchPhase.Lobby)
+        {
+            _arrival = null;
+            return;
+        }
+        var arrived = state.Players.FirstOrDefault(p => !p.IsMe && old.Players.All(o => o.UserName != p.UserName));
+        if (arrived is not null) _arrival = arrived.UserName;
+        else if (state.Players.Count < old.Players.Count) _arrival = null;
+    }
+
+    private string LobbyStatus(int free)
+    {
+        var count = _state?.Players.Count ?? 0;
+        var missing = MatchRules.MinSeats - count;
+        var core = missing > 0
+            ? $"Nog {missing} {(missing == 1 ? "maat" : "maten")} nodig voor de aftrap"
+            : free == 0
+                ? "Volzet! Klaar voor de aftrap."
+                : $"Klaar voor de aftrap · nog {free} {(free == 1 ? "plaats" : "plaatsen")} vrij";
+        return _arrival is null ? core : $"{_arrival} schoof aan! {core}";
     }
 
     /// <summary>Jouw plaats in de tussenstand (gedeeld bij gelijke score), zoals Standings ze toont.</summary>

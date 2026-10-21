@@ -1,0 +1,25 @@
+@* Spelvorm, aantal vragen en derby van een partijtje, netjes afgebroken op een smal scherm:
+   "🎲 Mix" en "· 10 vragen" blijven elk één geheel (geen los "·" aan het regeleinde) en de mix-icoontjes breken enkel tussen twee icoontjes. *@
+<span class="match-meta @Class">
+    @if (Types is { Count: > 1 })
+    {
+        <span class="match-meta-chunk">🎲 Mix</span>
+        <span class="match-meta-icons">@QuestionTypes.Icons(Types)</span>
+    }
+    else
+    {
+        <span class="match-meta-chunk">@QuestionTypes.Label(Types)</span>
+    }
+    <span class="match-meta-chunk">· @Questions vragen</span>
+    @if (Derby)
+    {
+        <span class="derby-badge">🔥 Derby</span>
+    }
+</span>
+
+@code {
+    [Parameter, EditorRequired] public IReadOnlyCollection<QuestionType>? Types { get; set; }
+    [Parameter, EditorRequired] public int Questions { get; set; }
+    [Parameter] public bool Derby { get; set; }
+    [Parameter] public string? Class { get; set; }
+}
