@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 using VoetbalQuiz.Server.Data;
 using VoetbalQuiz.Shared;
 
@@ -82,18 +83,26 @@ public class MatchService(
 
     public async Task JoinAsync(string userId, int matchId)
     {
-        var match = await LoadAsync(matchId);
-        if (match.Players.Any(p => p.UserId == userId)) return;
-        if (match.Status != MatchStatus.Lobby) throw new QuizException("Deze wedstrijd is al begonnen.");
-        if (match.Players.Count >= match.Seats) throw new QuizException("Dit partijtje is vol.");
+        var (match, saved) = await ChangeAsync(matchId, match =>
+        {
+            if (match.Players.Any(p => p.UserId == userId)) return false;
+            if (match.Status != MatchStatus.Lobby) throw new QuizException("Deze wedstrijd is al begonnen.");
+            if (match.Players.Count >= match.Seats) throw new QuizException("Dit partijtje is vol.");
 
-        match.Players.Add(new MatchPlayer { UserId = userId, JoinedAt = Now });
-        await SaveAndNotifyAsync(match);
+            match.Players.Add(new MatchPlayer { UserId = userId, JoinedAt = Now });
+            return true;
+        });
+        if (saved) await NotifyAsync(match, lobby: true);
     }
 
     public async Task LeaveAsync(string userId, int matchId)
     {
-        var match = await LoadAsync(matchId);
+        var (match, _) = await ChangeAsync(matchId, match => Leave(match, userId));
+        await NotifyAsync(match, lobby: true);
+    }
+
+    private bool Leave(Match match, string userId)
+    {
         var me = match.Players.SingleOrDefault(p => p.UserId == userId) ?? throw new QuizException("Je speelt niet mee in dit partijtje.");
 
         if (match.Status == MatchStatus.Lobby)
@@ -118,12 +127,17 @@ public class MatchService(
                 }
             }
         }
-        await SaveAndNotifyAsync(match);
+        return true;
     }
 
     public async Task StartAsync(string userId, int matchId)
     {
-        var match = await LoadAsync(matchId);
+        var (match, _) = await ChangeAsync(matchId, async match => { await StartAsync(match, userId); return true; });
+        await NotifyAsync(match, lobby: true);
+    }
+
+    private async Task StartAsync(Match match, string userId)
+    {
         if (match.HostUserId != userId) throw new QuizException("Enkel de organisator kan starten.");
         if (match.Status != MatchStatus.Lobby) throw new QuizException("Deze wedstrijd is al begonnen.");
         if (match.Players.Count < MatchRules.MinSeats) throw new QuizException("Je hebt minstens 2 spelers nodig.");
@@ -161,7 +175,6 @@ public class MatchService(
         match.Questions[0].StartsAt = Now.AddSeconds(MatchRules.CountdownSeconds);
         match.Status = MatchStatus.Running;
         match.StartedAt = Now;
-        await SaveAndNotifyAsync(match);
     }
 
     /// <summary>De types van een partijtje; leeg (oudere partijtjes) = "Wie ben ik?".</summary>
@@ -175,72 +188,74 @@ public class MatchService(
         var trimmed = guess?.Trim();
         if (string.IsNullOrEmpty(trimmed)) return await GetStateAsync(userId, matchId);
 
-        var (match, question, answer) = await PlayableAsync(userId, matchId);
         string? wrong = null;
-        if (question is not null && answer is { AnsweredAt: null })
+        int? guessesSeen = null;
+        var (match, saved) = await ChangeAsync(matchId, match =>
         {
-            answer.LastGuess = trimmed;
-            var attempt = MatchScoring.AsAttempt(userId, answer);
-            var outcome = QuestionEngine.Guess(question, attempt, trimmed, MatchScoring.ScoringElapsed(question, answer, Now));
-            (answer.Choice, answer.Found, answer.Skipped) = (attempt.Choice, attempt.Found, attempt.Skipped);
-            if (outcome.Wrong)
-            {
-                answer.WrongGuesses++;
-                wrong = trimmed;
-            }
-            answer.SpeedPoints = outcome.Points;
-            if (outcome.Done)
-            {
-                answer.Correct = outcome.Correct;
-                answer.AnsweredAt = Now;
-            }
-            await SaveAndNotifyAsync(match, lobby: false);
-        }
+            if (Playable(match, userId) is not (var question, var answer)) return false;
+            // Kwam er tegelijk een andere gok van jou binnen (dubbele tik), dan telt enkel die, zoals in de daily.
+            if (guessesSeen is { } seen && seen != answer.Guesses) return false;
+            guessesSeen = answer.Guesses;
+            // Dezelfde regels als de daily (ook het maximum aantal pogingen), maar met de gedeelde klok van de vraag.
+            wrong = AttemptFlow.GuessAt(question, answer, trimmed, Now, MatchScoring.ScoringElapsed(question, answer, Now));
+            return true;
+        });
+        if (saved) await NotifyAsync(match, lobby: false);
+        else wrong = null;
         return await GetStateAsync(userId, matchId, wrong);
     }
 
     /// <summary>"Ik pas" (of "Ik ben klaar" bij een opstelling): een opstelling en een counter houden hun deelpunten.</summary>
     public async Task<MatchState> GiveUpAsync(string userId, int matchId)
     {
-        var (match, question, answer) = await PlayableAsync(userId, matchId);
-        if (question is not null && answer is { AnsweredAt: null })
+        var (match, saved) = await ChangeAsync(matchId, match =>
         {
+            if (Playable(match, userId) is not (var question, var answer)) return false;
+            AttemptFlow.GiveUp(question, answer, Now);
             answer.GaveUp = true;
-            answer.AnsweredAt = Now;
-            answer.SpeedPoints = QuestionEngine.PointsWhenStopped(question, MatchScoring.AsAttempt(userId, answer));
-            await SaveAndNotifyAsync(match, lobby: false);
-        }
+            return true;
+        });
+        if (saved) await NotifyAsync(match, lobby: false);
         return await GetStateAsync(userId, matchId);
     }
 
-    /// <summary>De lopende vraag en jouw antwoordrij, als je op dit moment mag antwoorden.</summary>
-    private async Task<(Match, MatchQuestion?, MatchAnswer?)> PlayableAsync(string userId, int matchId)
+    /// <summary>De lopende vraag en jouw (nog open) antwoordrij, als je op dit moment mag antwoorden; anders null.</summary>
+    private (MatchQuestion Question, MatchAnswer Answer)? Playable(Match match, string userId)
     {
-        var match = await LoadAsync(matchId);
         var me = match.Players.SingleOrDefault(p => p.UserId == userId && p.LeftAt == null);
         var question = CurrentQuestion(match);
         if (me is null || match.Status != MatchStatus.Running || question is null || PhaseOf(match, question, Now) != MatchPhase.Question)
-            return (match, null, null);
+            return null;
         var answer = question.Answers.SingleOrDefault(a => a.UserId == userId);
         if (MatchScoring.Elapsed(question, Now) > MatchScoring.LimitFor(question, answer) + GameRules.LatencyGraceSeconds)
-            return (match, null, null);
+            return null;
+        if (answer is { AnsweredAt: not null }) return null;
 
         if (answer is null)
         {
             answer = new MatchAnswer { UserId = userId };
             question.Answers.Add(answer);
         }
-        return (match, question, answer);
+        answer.StartedAt = question.StartsAt!.Value; // de gedeelde klok (ook na een wissel of een wapen vooraf)
+        return (question, answer);
     }
 
     // ---------- Derby ----------
 
-    /// <summary>Zet je wapen in (zie <see cref="DerbyService.UseWeaponAsync"/>) en geeft de nieuwe toestand.</summary>
+    /// <summary>
+    /// Zet je wapen in (zie <see cref="DerbyService.UseWeaponAsync"/>) en geeft de nieuwe toestand. In één transactie:
+    /// de claims in de database draaien mee terug als het bewaren botst en opnieuw begint. De claim lockt de rij van de
+    /// werper vóór de rest bewaard wordt, dus de engine kan in PostgreSQL in een deadlock met dit verzoek komen; ook dat
+    /// telt als botsing (zie <see cref="IsRace"/>).
+    /// </summary>
     public async Task<MatchState> UseWeaponAsync(string userId, int matchId, string? target)
     {
-        var match = await LoadAsync(matchId);
-        await derby.UseWeaponAsync(match, userId, target);
-        await SaveAndNotifyAsync(match, lobby: false);
+        var (match, _) = await ChangeAsync(matchId, async match =>
+        {
+            await derby.UseWeaponAsync(match, userId, target);
+            return true;
+        }, transaction: true);
+        await NotifyAsync(match, lobby: false);
         return await GetStateAsync(userId, matchId);
     }
 
@@ -252,21 +267,35 @@ public class MatchService(
         var changed = 0;
 
         var staleBefore = Now - MatchRules.LobbyTimeout;
-        var stale = await db.Matches.Where(m => m.Status == MatchStatus.Lobby && m.CreatedAt < staleBefore).ToListAsync();
-        foreach (var m in stale) m.Status = MatchStatus.Cancelled;
-        if (stale.Count > 0)
+        var stale = await db.Matches.Where(m => m.Status == MatchStatus.Lobby && m.CreatedAt < staleBefore)
+            .Select(m => m.Id).ToListAsync();
+        foreach (var id in stale)
         {
-            await db.SaveChangesAsync();
-            await notifier.LobbyChangedAsync();
-            changed += stale.Count;
+            var (_, saved) = await ChangeAsync(id, m =>
+            {
+                if (m.Status != MatchStatus.Lobby) return false; // intussen gestart of geannuleerd
+                m.Status = MatchStatus.Cancelled;
+                return true;
+            });
+            if (saved) changed++;
         }
+        if (changed > 0) await notifier.LobbyChangedAsync();
 
         var running = await db.Matches.Where(m => m.Status == MatchStatus.Running).Select(m => m.Id).ToListAsync();
         foreach (var id in running)
         {
-            var match = await LoadAsync(id);
-            if (!Advance(match)) continue;
-            await SaveAndNotifyAsync(match, lobby: match.Status != MatchStatus.Running);
+            Match match;
+            bool saved;
+            try
+            {
+                (match, saved) = await ChangeAsync(id, Advance);
+            }
+            catch (QuizException)
+            {
+                continue; // bleef botsen: de volgende tick probeert het opnieuw, de andere wedstrijden lopen door
+            }
+            if (!saved) continue;
+            await NotifyAsync(match, lobby: match.Status != MatchStatus.Running);
             changed++;
         }
         return changed;
@@ -322,7 +351,7 @@ public class MatchService(
         string? answerLabel = null;
         if (question is not null)
         {
-            var attempt = MatchScoring.AsAttempt(userId, myAnswer);
+            var attempt = myAnswer ?? new MatchAnswer { UserId = userId, StartedAt = question.StartsAt ?? Now }; // nog niet gespeeld: leeg
             limit = MatchScoring.LimitFor(question, myAnswer); // met een verlenging: jouw eigen, langere tijd
             switch (phase)
             {
@@ -355,10 +384,10 @@ public class MatchService(
 
         // Eerst wie juist was (in volgorde van aankomst), daarna wie deelpunten haalde.
         var reveal = phase is MatchPhase.Reveal && question is not null
-            ? question.Answers.Where(a => a.SpeedPoints + a.Bonus > 0 && match.Players.Any(p => p.UserId == a.UserId && p.LeftAt == null))
-                .OrderBy(a => a.Position ?? int.MaxValue).ThenByDescending(a => a.SpeedPoints)
+            ? question.Answers.Where(a => a.Points + a.Bonus > 0 && match.Players.Any(p => p.UserId == a.UserId && p.LeftAt == null))
+                .OrderBy(a => a.Position ?? int.MaxValue).ThenByDescending(a => a.Points)
                 .Select(a => new RevealEntry(a.User.UserName!, cards.GetValueOrDefault(a.UserId)?.AvatarId,
-                    a.Position ?? 0, a.SpeedPoints + a.Bonus, a.Bonus, a.UserId == userId))
+                    a.Position ?? 0, a.Points + a.Bonus, a.Bonus, a.UserId == userId))
                 .ToList()
             : [];
 
@@ -384,7 +413,7 @@ public class MatchService(
             limit,
             view,
             result,
-            (myAnswer?.SpeedPoints ?? 0) + (myAnswer?.Bonus ?? 0),
+            (myAnswer?.Points ?? 0) + (myAnswer?.Bonus ?? 0),
             match.Derby ? derby.State(match, question, phase, userId, cards) : null);
     }
 
@@ -417,9 +446,65 @@ public class MatchService(
         return match;
     }
 
-    private async Task SaveAndNotifyAsync(Match match, bool lobby = true)
+    /// <summary>Hoe vaak een wijziging aan een wedstrijd opnieuw begint als iemand anders tegelijk schreef.</summary>
+    private const int MaxSaveAttempts = 5;
+
+    /// <summary>
+    /// Elke wijziging aan een wedstrijd loopt hierlangs: laden, <paramref name="change"/> toepassen (false = niets te
+    /// bewaren) en bewaren met <see cref="Match.Version"/> als concurrency token. Schreef intussen iemand anders (de engine,
+    /// een andere speler, een tweede tik), dan begint het opnieuw vanaf een verse toestand, begrensd door
+    /// <see cref="MaxSaveAttempts"/>. Zo rekent de engine nooit af op een verouderde toestand en komt een gok die
+    /// geladen werd voor het afsluiten van een vraag er niet meer na. Gaat uit van één serverinstantie (zie README).
+    /// </summary>
+    private async Task<(Match Match, bool Saved)> ChangeAsync(int matchId, Func<Match, Task<bool>> change, bool transaction = false)
     {
-        await db.SaveChangesAsync();
+        for (var attempt = 1; ; attempt++)
+        {
+            await using var tx = transaction ? await db.Database.BeginTransactionAsync() : null;
+            var match = await LoadAsync(matchId);
+            try
+            {
+                if (!await change(match)) return (match, false);
+                match.Version++;
+                await db.SaveChangesAsync();
+                if (tx is not null) await tx.CommitAsync();
+                return (match, true);
+            }
+            catch (Exception ex) when (IsRace(ex) && attempt < MaxSaveAttempts)
+            {
+                db.ChangeTracker.Clear(); // de transactie (als die er is) draait terug bij het verlaten van de lus
+            }
+            catch (Exception ex) when (IsRace(ex))
+            {
+                db.ChangeTracker.Clear();
+                throw new QuizException("Het is even druk in dit partijtje. Probeer het opnieuw.");
+            }
+        }
+    }
+
+    /// <summary>
+    /// Iemand schreef tegelijk: de versie klopte niet meer, of een nieuwe rij (je eerste antwoord op een vraag, joinen)
+    /// botste op de unieke index omdat een ander verzoek ze net aanmaakte, of PostgreSQL brak een deadlock af.
+    /// </summary>
+    private static bool IsRace(Exception ex) => ex switch
+    {
+        DbUpdateConcurrencyException => true,
+        DbUpdateException u when u.Entries.Any(e => e.State == EntityState.Added && e.Entity is MatchAnswer or MatchPlayer) => true,
+        _ => IsDeadlock(ex),
+    };
+
+    private static bool IsDeadlock(Exception? ex)
+    {
+        for (; ex is not null; ex = ex.InnerException)
+            if (ex is PostgresException { SqlState: PostgresErrorCodes.DeadlockDetected }) return true;
+        return false;
+    }
+
+    private Task<(Match Match, bool Saved)> ChangeAsync(int matchId, Func<Match, bool> change) =>
+        ChangeAsync(matchId, match => Task.FromResult(change(match)));
+
+    private async Task NotifyAsync(Match match, bool lobby)
+    {
         await notifier.MatchChangedAsync(match.Id);
         if (lobby) await notifier.LobbyChangedAsync();
     }

@@ -7,8 +7,9 @@ namespace VoetbalQuiz.Server.Services;
 /// <summary>
 /// De klok en de toestand van één vraag, los van waar de poging bewaard wordt: één plek voor de regels van een poging
 /// (speling, maximum aantal pogingen, deelpunten bij stoppen). Gebruikt door de daily en de specials
-/// (<see cref="QuizService"/>, tabel Attempts) en de academie (<see cref="TrainingService"/>, tabel TrainingAttempts).
-/// Online (<see cref="MatchService"/>) heeft nog een eigen variant met een gedeelde klok per vraag.
+/// (<see cref="QuizService"/>, tabel Attempts), de academie (<see cref="TrainingService"/>, tabel TrainingAttempts) en
+/// online (<see cref="MatchService"/>, tabel MatchAnswers). Online heeft een gedeelde klok per vraag: daar scoort
+/// <see cref="GuessAt"/> met de tijd van de wedstrijd en sluit de wedstrijd de vraag af.
 /// </summary>
 public static class AttemptFlow
 {
@@ -38,13 +39,23 @@ public static class AttemptFlow
     public static string? Guess(IQuizQuestion question, AttemptState attempt, string? guess, DateTime now)
     {
         CloseIfExpired(question, attempt, now);
+        return GuessAt(question, attempt, guess, now, Seconds(attempt.StartedAt, now));
+    }
+
+    /// <summary>
+    /// Zoals <see cref="Guess"/>, maar de tijd waarmee gescoord wordt komt van de oproeper en de vraag sluit hier niet
+    /// op tijd af. Voor online (<see cref="MatchService"/>): de klok is daar gedeeld per vraag, met verlenging (derby),
+    /// en de wedstrijd sluit de vraag zelf af.
+    /// </summary>
+    public static string? GuessAt(IQuizQuestion question, AttemptState attempt, string? guess, DateTime now, double elapsed)
+    {
         var trimmed = guess?.Trim();
         if (attempt.AnsweredAt is not null || string.IsNullOrEmpty(trimmed)) return null;
 
         string? lastWrong = null;
         attempt.Guesses++;
         attempt.LastGuess = trimmed;
-        var outcome = QuestionEngine.Guess(question, attempt, trimmed, Seconds(attempt.StartedAt, now));
+        var outcome = QuestionEngine.Guess(question, attempt, trimmed, elapsed);
         if (outcome.Wrong)
         {
             attempt.WrongGuesses++;

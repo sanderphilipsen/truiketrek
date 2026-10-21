@@ -404,6 +404,53 @@ Na te kijken door de eigenaar:
   `QuestionPicker`, afrekening online in `MatchScoring`. Niet aangepast (configuratie).
 - Omdat 2.3 de afrekening online raakt: de agent `spelregel-reviewer` laten kijken.
 
+## Status uitvoering fase 3 (21 oktober 2026)
+
+Uitgevoerd op HEAD b02e0b4, niet gecommit. Uitgangssituatie: 271 groen + 1 overgeslagen (PostgreSQL zonder Docker),
+0 warnings. Na elke stap: build zonder warnings, alle tests groen en, als het model wijzigde,
+`dotnet ef migrations has-pending-model-changes` zonder wijzigingen (gebouwd met `--artifacts-path artifacts`; voor
+`dotnet ef` met de omgevingsvariabelen `UseArtifactsOutput=true` en `ArtifactsPath=<repo>/artifacts`, omdat de lokaal
+draaiende server `bin/` vergrendelde). Routes en SignalR-berichten ongewijzigd; DTO's enkel uitgebreid (3.6).
+
+| Stap | Status | Wat | Tests na de stap |
+|---|---|---|---|
+| 3.1 | uitgevoerd | `MatchAnswer` erft van `AttemptState`; `Points` blijft in kolom `SpeedPoints` (`HasColumnName`), `Guesses` is het concurrency token, `StartedAt` is de start van de vraag (gedeelde klok). `AttemptFlow.GuessAt` (zelfde regels als `Guess`, maar met de scoretijd van de wedstrijd en zonder zelf af te sluiten); online gokt via `GuessAt` en past via `AttemptFlow.GiveUp`, dus `MaxGuessesPerQuestion` (40) geldt ook online. `MatchScoring.AsAttempt` en de terugkopie zijn weg; de Trump-herbeoordeling werkt rechtstreeks op het antwoord. Een wissel zet ook `Guesses` terug op 0. Migratie **`20261021065050_MatchAnswerAttempt`**: kolommen `Guesses` (0) en `StartedAt`; bestaande rijen krijgen met SQL de start van hun vraag (of de aanmaak van de wedstrijd). Test `Opstelling_online_has_no_guess_limit_yet` omgedraaid tot `Opstelling_online_stops_at_the_guess_limit_and_keeps_partial_points`. | 271 groen + 1 overgeslagen, 0 warnings |
+| 3.3 | uitgevoerd | `Match.Version` (int, concurrency token) op het niveau van de hele wedstrijd. Elke schrijver (lobby, gok, passen, wapen, engine, opruimen van oude lobby's) gaat door één `MatchService.ChangeAsync`: laden, wijzigen, `Version++`, bewaren; bij een `DbUpdateConcurrencyException` (of een botsing op de unieke index bij een nieuw antwoord of joinen) opnieuw vanaf een verse toestand, maximaal 5 keer, daarna een `QuizException` ("even druk"). Wapens lopen in een transactie zodat de claims (`ExecuteUpdate`) mee terugdraaien. Twee gelijktijdige gokken van dezelfde speler: enkel de eerste telt, zoals in de daily. README: sectie "Hosten op Azure" zegt dat de app op één instantie draait (beslissing 4). Migratie **`20261021065908_MatchVersion`** (kolom `Version`, 0). Nieuw `MatchConcurrencyTests.cs` (3 tests met twee contexts en een interceptor die de andere schrijver net voor het bewaren laat tussenkomen); zonder `Version++` falen er twee. | 274 groen + 1 overgeslagen, 0 warnings |
+| 3.6 | uitgevoerd | `PlayerEdit.InPlay` en `QuizItemEdit.InPlay` (optioneel, laatste veld): "de daily van vandaag", "de special …" of beide, null als het item nergens competitief open is. `AdminService.InPlayAsync` kijkt naar de reeks van vandaag en de reeksen van lopende specials (ook counter-spelers). `AdminSpeler.razor` en `AdminVraag.razor` tonen een gele melding (`.in-play` in `app.css`) en vragen bevestiging (`confirm`) bij elk opslaan; opslaan blijft toegelaten. Nieuw `AdminInPlayTests.cs`. | 275 groen + 1 overgeslagen, 0 warnings |
+| 3.7 | uitgevoerd | `MonthRules.Days(year, month)` in Shared, gebruikt door `MonthRankingService.ComputeAsync` en `TrainingService.GetArchiveAsync`; beide filteren op de datum van de reeks (= startdatum van een special). De academie toont een special nu in de maand van haar startdatum (pas als ze afgelopen is), `TrainingDay.Date` is haar startdatum; `HasEarlier` volgt dezelfde regel. Nieuw `SpecialMonthTests.cs` (special 29 september – 2 oktober); `TrainingTests` verwacht de startdatum. | 276 groen + 1 overgeslagen, 0 warnings |
+| 3.2 | vervallen | Beslissing 3a. | – |
+| 3.4 | uitgesteld | Enkel als de snelheid een probleem wordt; dat is niet aangetoond (geen metingen). | – |
+| 3.5 | vervallen | Beslissing 7. | – |
+
+Keuze bij 3.3: geen `xmin`. De versie wordt door de app opgehoogd in plaats van door PostgreSQL. Reden: een rowversion op
+`Match` werkt pas als elke schrijver de `Match`-rij ook echt bijwerkt (een gok wijzigt enkel een antwoord), en SQLite kent
+geen `xmin`, zodat de tests iets anders zouden testen dan productie. Een gewone int-kolom gedraagt zich in beide gelijk
+en staat op één plek (`ChangeAsync`). Op het niveau van `MatchAnswer`/`MatchPlayer` alleen volstond niet: de engine wijzigt
+bij het afsluiten niet altijd elke rij, dus een gok die erna bewaard werd, bleef onopgemerkt.
+
+Gedrag dat veranderde:
+
+- Online: na 40 pogingen op één vraag stopt die vraag voor jou (een opstelling of counter houdt de deelpunten). Passen
+  telt als poging.
+- Online: een gok of vertrek die botst met de engine wordt opnieuw beoordeeld op de verse toestand; een gok die binnenkomt
+  nadat de vraag afgerekend werd, telt niet meer. Bij aanhoudende botsingen krijgt de speler "Het is even druk in dit
+  partijtje. Probeer het opnieuw." (400).
+- Admin: waarschuwing en bevestiging bij het opslaan van een speler of vraag die vandaag in de daily of een lopende special
+  zit.
+- Academie: een special die over twee maanden loopt, staat in de maand van haar startdatum (vroeger: einddatum).
+
+Na te kijken door de eigenaar:
+
+- Migraties `MatchAnswerAttempt` en `MatchVersion` toepassen op de lokale PostgreSQL (start de app) en nakijken dat
+  bestaande `MatchAnswers` een zinnige `StartedAt` kregen. De PostgreSQL-rooktest (`PostgresMigrationTests`) is hier nog
+  altijd overgeslagen (geen Docker); de SQL in `MatchAnswerAttempt` is dus niet tegen een echte PostgreSQL gedraaid.
+- Een online partijtje met twee toestellen: gokken, passen, tijd om, iemand die vertrekt tijdens de tussenstand, en een
+  derby met elk wapen (vooral wissel en verlenging).
+- Admin: een speler en een vraag uit de daily van vandaag (en uit een lopende special) openen: gele melding, bevestiging bij
+  opslaan, annuleren slaat niets op. Niet in een browser bekeken.
+- Academie: de maandnavigatie met een special die over twee maanden liep.
+- Omdat 3.1 en 3.3 de online mode raken en 3.7 de klassementen/academie: de agent `spelregel-reviewer` laten kijken.
+
 ## Open vragen voor de eigenaar (oorspronkelijk)
 
 1. **Mag het datamodel wijzigen?** Stap 3.1 (`MatchAnswer` met `Guesses`/`StartedAt`) en 3.3 (rowversion) vragen een migratie.

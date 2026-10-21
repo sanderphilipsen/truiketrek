@@ -1,5 +1,6 @@
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Time.Testing;
 using VoetbalQuiz.Server.Data;
@@ -32,8 +33,14 @@ public sealed class TestDb : IDisposable
     public QuizDbContext Db { get; }
     public FakeTimeProvider Clock { get; }
 
-    /// <summary>Een tweede context op dezelfde database, zoals een verzoek dat tegelijk binnenkomt.</summary>
-    public QuizDbContext NewContext() => new(_options);
+    /// <summary>
+    /// Een tweede context op dezelfde database, zoals een verzoek dat tegelijk binnenkomt. Met
+    /// <paramref name="interceptors"/> kan een test iets laten gebeuren net voor die context bewaart.
+    /// </summary>
+    public QuizDbContext NewContext(params IInterceptor[] interceptors) =>
+        interceptors.Length == 0
+            ? new(_options)
+            : new(new DbContextOptionsBuilder<QuizDbContext>().UseSqlite(_connection).AddInterceptors(interceptors).Options);
 
     public string AddUser(string name)
     {

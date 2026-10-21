@@ -288,6 +288,28 @@ public sealed class DerbyTests : IDisposable
         Assert.Empty(reveal.Reveal);
     }
 
+    /// <summary>Een antwoord dat de wissel overleeft (hier door een gok), begint ook opnieuw te tellen voor de limiet van pogingen.</summary>
+    [Fact]
+    public async Task Swap_resets_the_guess_count_of_an_answer_that_carries_over()
+    {
+        var id = await AtQuestionTwoAsync();
+        Give(id, _host, DerbyWeapon.Gokchinees);
+        await _matches.UseWeaponAsync(_host, id, null);
+        var (old, _) = await CurrentAsync(id);
+        await _matches.GuessAsync(_host, id, old.Correct.ToString());
+
+        Give(id, _guest, DerbyWeapon.Wissel);
+        await _matches.UseWeaponAsync(_guest, id, null);
+
+        var mine = await _db.MatchAnswers.AsNoTracking()
+            .SingleAsync(a => a.UserId == _host && a.MatchQuestion.MatchId == id && a.MatchQuestion.Number == 2);
+        Assert.True(mine.Gamble);
+        Assert.Equal(0, mine.Guesses);
+        Assert.Null(mine.AnsweredAt);
+        await Tick(DerbyRules.SwapCountdownSeconds);
+        Assert.False((await _matches.GetStateAsync(_host, id)).MyDone);
+    }
+
     [Fact]
     public async Task Gokchinees_doubles_your_points_after_seeing_the_question()
     {

@@ -31,21 +31,6 @@ public static class MatchScoring
     // ---------- Beoordelen ----------
 
     /// <summary>
-    /// De engine werkt rechtstreeks op een MatchQuestion (zie <see cref="IQuizQuestion"/>); de stand van een antwoord
-    /// wordt nog omgezet naar een Attempt (niet opgeslagen), tot online dezelfde poging gebruikt als de daily.
-    /// </summary>
-    public static Attempt AsAttempt(string userId, MatchAnswer? a) => new()
-    {
-        UserId = userId,
-        WrongGuesses = a?.WrongGuesses ?? 0,
-        Correct = a?.Correct ?? false,
-        Points = a?.SpeedPoints ?? 0,
-        Choice = a?.Choice,
-        Found = [.. a?.Found ?? []],
-        Skipped = [.. a?.Skipped ?? []],
-    };
-
-    /// <summary>
     /// De vraag zoals ze beoordeeld wordt. Met een Trump booster (en een antwoord van wie hem inzette)
     /// is diens keuze het juiste antwoord; anders de gewone vraag.
     /// </summary>
@@ -68,7 +53,7 @@ public static class MatchScoring
     {
         question.EndedAt = now;
         foreach (var answer in question.Answers.Where(a => a.AnsweredAt is null))
-            answer.SpeedPoints = QuestionEngine.PointsWhenStopped(question, AsAttempt(answer.UserId, answer));
+            answer.Points = QuestionEngine.PointsWhenStopped(question, answer);
         ApplyTrump(match, question);
 
         // Wie vertrok, telt niet meer mee: geen positie (die gaat naar wie bleef) en geen punten.
@@ -82,12 +67,12 @@ public static class MatchScoring
         }
         // Ook niets om te stelen bij een vertrekker.
         foreach (var answer in question.Answers.Where(a => left.Contains(a.UserId)))
-            (answer.SpeedPoints, answer.Bonus) = (0, 0);
+            (answer.Points, answer.Bonus) = (0, 0);
         ApplyRedCards(match, question);
         var losers = ApplyGambles(match, question);
         var steals = ApplySteals(match, question);
         foreach (var answer in question.Answers)
-            match.Players.Single(p => p.UserId == answer.UserId).Score += answer.SpeedPoints + answer.Bonus;
+            match.Players.Single(p => p.UserId == answer.UserId).Score += answer.Points + answer.Bonus;
         foreach (var (thief, amount) in steals)
             match.Players.Single(p => p.UserId == thief).Score += amount;
         foreach (var loser in losers)
@@ -131,11 +116,11 @@ public static class MatchScoring
         var lost = 0;
         foreach (var answer in question.Answers.Where(a => a.Choice != null && a.AnsweredAt != null))
         {
-            var attempt = AsAttempt(answer.UserId, answer);
-            var outcome = QuestionEngine.Guess(judged, attempt, answer.Choice!.Value.ToString(), (answer.AnsweredAt!.Value - question.StartsAt!.Value).TotalSeconds);
-            if (answer.UserId != question.TrumpUserId) lost += Math.Max(0, answer.SpeedPoints - outcome.Points);
+            // Een keuzevraag zet enkel dezelfde keuze opnieuw: de poging zelf verandert niet.
+            var outcome = QuestionEngine.Guess(judged, answer, answer.Choice!.Value.ToString(), (answer.AnsweredAt!.Value - question.StartsAt!.Value).TotalSeconds);
+            if (answer.UserId != question.TrumpUserId) lost += Math.Max(0, answer.Points - outcome.Points);
             answer.Correct = outcome.Correct;
-            answer.SpeedPoints = outcome.Points;
+            answer.Points = outcome.Points;
         }
         match.Players.Single(p => p.UserId == question.TrumpUserId).WeaponEffect = lost;
     }
@@ -145,10 +130,10 @@ public static class MatchScoring
     {
         foreach (var answer in question.Answers.Where(a => a.RedCardFromUserId != null))
         {
-            var before = answer.SpeedPoints + answer.Bonus;
-            answer.SpeedPoints = DerbyRules.AfterRedCard(answer.SpeedPoints);
+            var before = answer.Points + answer.Bonus;
+            answer.Points = DerbyRules.AfterRedCard(answer.Points);
             answer.Bonus = DerbyRules.AfterRedCard(answer.Bonus);
-            match.Players.Single(p => p.UserId == answer.RedCardFromUserId).WeaponEffect = before - answer.SpeedPoints - answer.Bonus;
+            match.Players.Single(p => p.UserId == answer.RedCardFromUserId).WeaponEffect = before - answer.Points - answer.Bonus;
         }
     }
 
@@ -162,10 +147,10 @@ public static class MatchScoring
         foreach (var answer in question.Answers.Where(a => a.Gamble))
         {
             var player = match.Players.Single(p => p.UserId == answer.UserId);
-            var points = answer.SpeedPoints + answer.Bonus;
+            var points = answer.Points + answer.Bonus;
             if (points > 0)
             {
-                (answer.SpeedPoints, answer.Bonus) = (answer.SpeedPoints * 2, answer.Bonus * 2);
+                (answer.Points, answer.Bonus) = (answer.Points * 2, answer.Bonus * 2);
                 player.WeaponEffect = points;
             }
             else losers.Add(player);
@@ -182,8 +167,8 @@ public static class MatchScoring
         var gains = new Dictionary<string, int>();
         foreach (var answer in question.Answers.Where(a => a.StolenByUserId != null))
         {
-            var (speed, bonus) = (DerbyRules.Stolen(answer.SpeedPoints), DerbyRules.Stolen(answer.Bonus));
-            (answer.SpeedPoints, answer.Bonus) = (answer.SpeedPoints - speed, answer.Bonus - bonus);
+            var (speed, bonus) = (DerbyRules.Stolen(answer.Points), DerbyRules.Stolen(answer.Bonus));
+            (answer.Points, answer.Bonus) = (answer.Points - speed, answer.Bonus - bonus);
             gains[answer.StolenByUserId!] = gains.GetValueOrDefault(answer.StolenByUserId!) + speed + bonus;
             match.Players.Single(p => p.UserId == answer.StolenByUserId).WeaponEffect = speed + bonus;
         }

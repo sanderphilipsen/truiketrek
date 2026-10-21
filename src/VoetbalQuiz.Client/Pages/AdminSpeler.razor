@@ -5,6 +5,7 @@
 @inject AuthState Auth
 @inject AdminState State
 @inject NavigationManager Nav
+@inject IJSRuntime JS
 
 <PageTitle>@(Id == 0 ? "Nieuwe speler" : _name) – Admin</PageTitle>
 
@@ -143,6 +144,10 @@
                             @if (_original.CheckedAt is { } c) { <span> · gecontroleerd @c.ToString("dd/MM/yyyy")</span> }
                             @if (_original.UpdatedBy is not null) { <span> · door @_original.UpdatedBy</span> }
                         </small>
+                    }
+                    @if (_original?.InPlay is { } live)
+                    {
+                        <p class="in-play" role="status">⚠️ Deze speler zit nu in @live. Aanpassen mag, maar wie de vraag nog speelt, ziet je wijziging meteen.</p>
                     }
 
                     <ul class="checklist">
@@ -286,6 +291,9 @@
 
     private async Task SaveAsync(PlayerStatus status)
     {
+        if (_original?.InPlay is { } live && !await JS.InvokeAsync<bool>("confirm",
+                $"Deze speler zit nu in {live}. Wie de vraag nog speelt, ziet je wijziging meteen. Toch opslaan?"))
+            return;
         (_busy, _error, _message) = (true, null, null);
         try
         {

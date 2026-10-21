@@ -25,7 +25,7 @@ public record TrainingSpecial(int Id, string Name, string Icon, DateOnly StartDa
 
 /// <summary>
 /// Een daily of afgelopen special in het archief. Real is null als je ze niet echt speelde. Special: ingevuld voor een special;
-/// Date is dan haar einddatum (daarop staat ze in het archief).
+/// Date is dan haar startdatum (ze staat in de maand waarin ze startte, zoals in het maandklassement).
 /// </summary>
 public record TrainingDay(
     DateOnly Date, double Difficulty, List<QuestionType> Types, RealResult? Real, int Runs, int? BestTraining, TrainingSpecial? Special = null)

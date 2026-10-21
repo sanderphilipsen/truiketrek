@@ -53,12 +53,15 @@ public class QuizDbContext(DbContextOptions<QuizDbContext> options) : IdentityDb
         builder.Entity<Feedback>().Property(f => f.Status).HasConversion<string>();
         builder.Entity<Match>().Property(m => m.Status).HasConversion<string>();
         builder.Entity<Match>().HasIndex(m => m.Status);
+        builder.Entity<Match>().Property(m => m.Version).IsConcurrencyToken();
         builder.Entity<Match>().HasOne(m => m.Host).WithMany().HasForeignKey(m => m.HostUserId);
         builder.Entity<MatchPlayer>().HasIndex(p => new { p.MatchId, p.UserId }).IsUnique();
         builder.Entity<MatchPlayer>().Property(p => p.Weapon).HasConversion<string>();
         builder.Entity<MatchQuestion>().HasIndex(q => new { q.MatchId, q.Number }).IsUnique();
         builder.Entity<MatchQuestion>().Property(q => q.Type).HasConversion<string>();
         builder.Entity<MatchAnswer>().HasIndex(a => new { a.MatchQuestionId, a.UserId }).IsUnique();
+        builder.Entity<MatchAnswer>().Property(a => a.Points).HasColumnName("SpeedPoints");
+        builder.Entity<MatchAnswer>().Property(a => a.Guesses).IsConcurrencyToken();
         builder.Entity<Attempt>().HasIndex(a => new { a.UserId, a.DailyQuestionId }).IsUnique();
         builder.Entity<Attempt>().Property(a => a.Guesses).IsConcurrencyToken();
         builder.Entity<TrainingRun>().HasIndex(r => new { r.UserId, r.DailyChallengeId });

@@ -402,6 +402,8 @@ input:focus { border-color: var(--pitch-2); box-shadow: 0 0 0 3px rgba(15, 81, 5
 .stack { display: flex; flex-direction: column; gap: 12px; }
 .stack label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: .9rem; }
 .success { background: #e3f6ea; color: #14612f; border-radius: 10px; padding: 10px 12px; margin: 0; }
+/* Admin: deze speler of vraag zit nu in de daily of een lopende special. */
+.in-play { background: #fff4d6; color: #7a4d00; border-radius: 10px; padding: 10px 12px; margin: 0; font-size: .9rem; }
 .muted.light { color: rgba(255, 255, 255, .7); margin-top: 16px; }
 
 .board li .avatar, .record .avatar { margin-left: -4px; }

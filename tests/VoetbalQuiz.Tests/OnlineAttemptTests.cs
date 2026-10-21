@@ -134,20 +134,80 @@ public sealed class OnlineAttemptTests : IDisposable
     private readonly record struct AnswerSnapshot(bool Done, bool Correct);
 
     /// <summary>
-    /// Huidig gedrag (bevinding B1): online is het aantal pogingen niet begrensd. De eigenaar besliste dat online dezelfde
-    /// limiet krijgt als de daily (<see cref="GameRules.MaxGuessesPerQuestion"/>); deze test verandert dus bewust in stap 3.1.
+    /// Online geldt dezelfde limiet als de daily (<see cref="GameRules.MaxGuessesPerQuestion"/>, beslissing van de eigenaar,
+    /// stap 3.1): op de laatste poging stopt de vraag, en een opstelling houdt dan haar deelpunten.
     /// </summary>
     [Fact]
-    public async Task Opstelling_online_has_no_guess_limit_yet()
+    public async Task Opstelling_online_stops_at_the_guess_limit_and_keeps_partial_points()
     {
         var id = await StartedAsync(QuestionType.Opstelling);
         var blanks = await BlankNamesAsync(id);
-        for (var i = 0; i < GameRules.MaxGuessesPerQuestion + 5; i++)
-            await _matches.GuessAsync(_host, id, $"Gok {i}");
+        await _matches.GuessAsync(_host, id, blanks[0]);
+        MatchState state = null!;
+        for (var i = 1; i < GameRules.MaxGuessesPerQuestion - 1; i++)
+            state = await _matches.GuessAsync(_host, id, $"Gok {i}");
+        Assert.False(state.MyDone);
 
-        var after = await _matches.GuessAsync(_host, id, blanks[0]);
-        Assert.False(after.MyDone);
+        var last = await _matches.GuessAsync(_host, id, $"Gok {GameRules.MaxGuessesPerQuestion}");
+        Assert.True(last.MyDone);
+        Assert.False(last.MyCorrect);
+        var after = await _matches.GuessAsync(_host, id, blanks[1]); // daarna telt niets meer
         Assert.Equal(1, after.View!.Lineup!.Count(s => s.IsBlank && s.Name is not null));
+
+        await _matches.GiveUpAsync(_guest, id);
+        await _matches.AdvanceAllAsync(); // iedereen klaar
+        var reveal = await _matches.GetStateAsync(_host, id);
+        Assert.Equal(MatchPhase.Reveal, reveal.Phase);
+        Assert.Equal(QuestionRules.OpstellingPoints(1, QuestionRules.OpstellingBlanks), reveal.MyPoints);
+    }
+
+    [Fact]
+    public async Task Counter_online_stops_at_the_guess_limit_and_keeps_partial_points()
+    {
+        var id = await StartedAsync(QuestionType.Counter);
+        var names = await CounterNamesAsync(id);
+        await _matches.GuessAsync(_host, id, names[0]);
+        MatchState state = null!;
+        for (var i = 1; i < GameRules.MaxGuessesPerQuestion - 1; i++)
+            state = await _matches.GuessAsync(_host, id, $"Niemand {i}");
+        Assert.False(state.MyDone);
+
+        var last = await _matches.GuessAsync(_host, id, "Niemand");
+        Assert.True(last.MyDone);
+        Assert.False(last.MyCorrect);
+
+        await _matches.GiveUpAsync(_guest, id);
+        await _matches.AdvanceAllAsync();
+        var reveal = await _matches.GetStateAsync(_host, id);
+        Assert.Equal(MatchPhase.Reveal, reveal.Phase);
+        Assert.Equal(QuestionRules.CounterPoints(1), reveal.MyPoints);
+    }
+
+    /// <summary>In een derby verdubbelt de Gokchinees ook de deelpunten die je bij de limiet van pogingen houdt.</summary>
+    [Fact]
+    public async Task A_gamble_doubles_the_partial_points_kept_at_the_guess_limit()
+    {
+        var id = await _matches.CreateAsync(_host, "host", new CreateMatchRequest(null, 4, [QuestionType.Counter], Derby: true, Questions: 3));
+        await _matches.JoinAsync(_guest, id);
+        await _matches.StartAsync(_host, id);
+        await Tick(MatchRules.CountdownSeconds);
+        await Tick(QuestionRules.CounterSeconds + GameRules.LatencyGraceSeconds + 1);
+        await Tick(MatchRules.RevealSeconds); // vraag 2: wapens mogen
+        var before = (await _matches.GetStateAsync(_host, id)).Players.Single(p => p.IsMe).Score;
+        _db.MatchPlayers.Single(p => p.MatchId == id && p.UserId == _host).Weapon = DerbyWeapon.Gokchinees;
+        await _db.SaveChangesAsync();
+        await _matches.UseWeaponAsync(_host, id, null);
+
+        var names = await CounterNamesAsync(id);
+        await _matches.GuessAsync(_host, id, names[0]);
+        for (var i = 1; i < GameRules.MaxGuessesPerQuestion; i++)
+            await _matches.GuessAsync(_host, id, $"Niemand {i}");
+        await _matches.GiveUpAsync(_guest, id);
+        await _matches.AdvanceAllAsync();
+
+        var reveal = await _matches.GetStateAsync(_host, id);
+        Assert.Equal(MatchPhase.Reveal, reveal.Phase);
+        Assert.Equal(before + 2 * QuestionRules.CounterPoints(1), reveal.Players.Single(p => p.IsMe).Score);
     }
 
     [Fact]

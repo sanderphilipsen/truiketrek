@@ -301,7 +301,7 @@ public sealed class TrainingTests : IDisposable
         await NextDayAsync();
         var archived = (await _training.GetArchiveAsync(_me, _day.Year, _day.Month)).Days.Single(d => d.Special is not null);
         Assert.Equal(id, archived.Special!.Id);
-        Assert.Equal(_day.AddDays(1), archived.Date); // op haar einddatum
+        Assert.Equal(_day, archived.Date); // op haar startdatum, zoals in het maandklassement
         Assert.False(archived.Played);
 
         var run = await _training.StartSpecialRunAsync(_me, id);

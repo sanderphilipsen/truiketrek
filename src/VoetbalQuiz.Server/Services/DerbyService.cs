@@ -67,12 +67,13 @@ public class DerbyService(QuizDbContext db, TimeProvider clock, QuestionPicker p
     }
 
     /// <summary>De antwoordrij van een speler bij een vraag; bestaat ze nog niet, dan wordt ze aangemaakt.</summary>
-    private static MatchAnswer AnswerOf(MatchQuestion question, string userId)
+    private MatchAnswer AnswerOf(MatchQuestion question, string userId)
     {
         var answer = question.Answers.SingleOrDefault(a => a.UserId == userId);
         if (answer is null)
         {
-            answer = new MatchAnswer { UserId = userId };
+            // Een wapen kan klaargezet worden voor de vraag start; zodra je speelt wordt StartedAt de start van de vraag.
+            answer = new MatchAnswer { UserId = userId, StartedAt = question.StartsAt ?? Now };
             question.Answers.Add(answer);
         }
         return answer;
@@ -202,7 +203,7 @@ public class DerbyService(QuizDbContext db, TimeProvider clock, QuestionPicker p
                 continue;
             }
             (answer.WrongGuesses, answer.LastGuess, answer.Correct, answer.GaveUp, answer.AnsweredAt) = (0, null, false, false, null);
-            (answer.SpeedPoints, answer.Choice, answer.Found, answer.Skipped) = (0, null, [], []);
+            (answer.Points, answer.Guesses, answer.Choice, answer.Found, answer.Skipped) = (0, 0, null, [], []);
         }
         (question.TrumpUserId, question.FlareUserId, question.FlareAt) = (null, null, null);
         question.StartsAt = Now.AddSeconds(DerbyRules.SwapCountdownSeconds);

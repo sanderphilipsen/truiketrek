@@ -9,10 +9,14 @@ public record PlayerListItem(
     int Id, string Name, PlayerStatus Status, string Country, string Competition, string Era, int Difficulty,
     List<string> Tags, int Sources, DateOnly? CheckedAt, int TimesUsed, DateOnly? LastUsed, string? ReviewNote);
 
+/// <summary>
+/// Een speler in het admin-paneel. <paramref name="InPlay"/>: waar de speler nu in het spel zit ("de daily van vandaag",
+/// "de special …"), of null. Aanpassen mag, maar de lopende vraag verandert mee: het paneel vraagt dan bevestiging.
+/// </summary>
 public record PlayerEdit(
     int Id, string Name, List<string> Answers, string Country, string Competition, string Era, int Difficulty,
     List<string> Hints, List<string> Sources, List<string> Tags, PlayerStatus Status, string? ReviewNote,
-    DateOnly? CheckedAt, string? UpdatedBy, int TimesUsed);
+    DateOnly? CheckedAt, string? UpdatedBy, int TimesUsed, string? InPlay = null);
 
 public record PlayerCounts(int Review, int Approved, int Rejected);
 
@@ -260,10 +264,13 @@ public record QuizItemListItem(
     int Id, QuestionType Type, string Label, string Answer, PlayerStatus Status, int Difficulty, List<string> Tags,
     int Sources, DateOnly? CheckedAt, int TimesUsed, DateOnly? LastUsed, string? ReviewNote);
 
-/// <summary>Een vraag uit de vragenbank. Data is de inhoud als JSON (formaat per type, zie QuestionTypes.cs).</summary>
+/// <summary>
+/// Een vraag uit de vragenbank. Data is de inhoud als JSON (formaat per type, zie QuestionTypes.cs).
+/// <paramref name="InPlay"/>: zoals bij <see cref="PlayerEdit"/>, waar de vraag nu in het spel zit, of null.
+/// </summary>
 public record QuizItemEdit(
     int Id, QuestionType Type, string Data, int Difficulty, List<string> Sources, List<string> Tags,
-    PlayerStatus Status, string? ReviewNote, DateOnly? CheckedAt, string? UpdatedBy, int TimesUsed);
+    PlayerStatus Status, string? ReviewNote, DateOnly? CheckedAt, string? UpdatedBy, int TimesUsed, string? InPlay = null);
 
 /// <summary>Een weekdag: één type, of een mix als Mix twee of meer types bevat.</summary>
 public record ScheduleDay(DayOfWeek Day, QuestionType Type, List<QuestionType>? Mix = null)

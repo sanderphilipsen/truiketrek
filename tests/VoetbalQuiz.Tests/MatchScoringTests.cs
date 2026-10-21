@@ -32,7 +32,7 @@ public class MatchScoringTests
     {
         var a = new MatchAnswer
         {
-            UserId = user, Correct = correct, SpeedPoints = points, AnsweredAt = T0.AddSeconds(at), Choice = choice,
+            UserId = user, Correct = correct, Points = points, AnsweredAt = T0.AddSeconds(at), Choice = choice,
         };
         q.Answers.Add(a);
         return a;
@@ -75,8 +75,8 @@ public class MatchScoringTests
 
         MatchScoring.EndQuestion(m, q, T0.AddSeconds(30));
 
-        Assert.Equal(QuestionRules.CounterPoints(2), open.SpeedPoints);
-        Assert.Equal((null, 0, 0), (leaver.Position, leaver.SpeedPoints, leaver.Bonus));
+        Assert.Equal(QuestionRules.CounterPoints(2), open.Points);
+        Assert.Equal((null, 0, 0), (leaver.Position, leaver.Points, leaver.Bonus));
         Assert.Equal(0, Player(m, "weg").Score);
         Assert.Equal(1, stayer.Position); // de positie van de vertrekker gaat naar wie bleef
         Assert.Equal(60 + MatchRules.BonusFor(1), Player(m, "b").Score);
@@ -131,10 +131,10 @@ public class MatchScoringTests
         MatchScoring.EndQuestion(m, q, T0.AddSeconds(20));
 
         Assert.True(mine.Correct);
-        Assert.Equal(QuestionRules.SpeedPoints(4, QuestionRules.SnelvuurSeconds), mine.SpeedPoints);
+        Assert.Equal(QuestionRules.SpeedPoints(4, QuestionRules.SnelvuurSeconds), mine.Points);
         Assert.Equal(1, mine.Position);
         Assert.False(other.Correct);
-        Assert.Equal(0, other.SpeedPoints);
+        Assert.Equal(0, other.Points);
         Assert.Equal(85, Player(m, "trump").WeaponEffect);
         Assert.Equal("C", QuestionEngine.AnswerLabel(MatchScoring.Judged(q)));
         Assert.Equal("B", QuestionEngine.AnswerLabel(q));

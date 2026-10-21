@@ -117,8 +117,9 @@ public class Attempt : AttemptState
 }
 
 /// <summary>
-/// De speltoestand van één vraag, gedeeld door <see cref="Attempt"/> (de echte daily) en <see cref="TrainingAttempt"/>,
-/// zodat <see cref="Services.QuestionEngine"/> beide speelt. Zelf geen tabel.
+/// De speltoestand van één vraag, gedeeld door <see cref="Attempt"/> (de echte daily), <see cref="TrainingAttempt"/> en
+/// <see cref="MatchAnswer"/> (online), zodat <see cref="Services.QuestionEngine"/> en <see cref="Services.AttemptFlow"/>
+/// ze allemaal spelen. Zelf geen tabel.
 /// </summary>
 public abstract class AttemptState
 {
@@ -210,6 +211,12 @@ public class Match
 
     /// <summary>Hoeveel vragen de organisator koos (zie <see cref="MatchRules.ClampQuestions"/>).</summary>
     public int QuestionCount { get; set; } = MatchRules.DefaultQuestions;
+
+    /// <summary>
+    /// Concurrency token van de hele wedstrijd: elke wijziging (lobby, gok, wapen, de klok van de engine) verhoogt het.
+    /// Schreef iemand anders intussen, dan begint <see cref="Services.MatchService"/> opnieuw vanaf een verse toestand.
+    /// </summary>
+    public int Version { get; set; }
     public List<MatchPlayer> Players { get; set; } = [];
     public List<MatchQuestion> Questions { get; set; } = [];
 }
@@ -279,26 +286,21 @@ public class MatchQuestion : IQuizQuestion
     public string? SwapUserId { get; set; }
 }
 
-public class MatchAnswer
+/// <summary>
+/// Het antwoord van een speler op een online vraag: dezelfde poging als in de daily (<see cref="AttemptState"/>, met
+/// <see cref="AttemptState.Guesses"/> als concurrency token), plus wat online erbij komt (positie, bonus, derby).
+/// <see cref="AttemptState.Points"/> zijn de punten zonder positiebonus (ook deelpunten bij jaar, opstelling en counter;
+/// kolom <c>SpeedPoints</c>). <see cref="AttemptState.StartedAt"/> is de start van de vraag (de klok is gedeeld).
+/// </summary>
+public class MatchAnswer : AttemptState
 {
     public int Id { get; set; }
     public int MatchQuestionId { get; set; }
     public MatchQuestion MatchQuestion { get; set; } = null!;
     public required string UserId { get; set; }
     public AppUser User { get; set; } = null!;
-    public int WrongGuesses { get; set; }
-    public string? LastGuess { get; set; }
-    public bool Correct { get; set; }
+    /// <summary>De speler paste ("Ik pas" of "Ik ben klaar").</summary>
     public bool GaveUp { get; set; }
-    /// <summary>Klaar met deze vraag: juist, gepast, een optie gekozen of een opstelling/counter afgewerkt.</summary>
-    public DateTime? AnsweredAt { get; set; }
-    /// <summary>Punten zonder positiebonus (ook deelpunten bij jaar, opstelling en counter).</summary>
-    public int SpeedPoints { get; set; }
-
-    /// <summary>Zoals bij <see cref="Attempt"/>: gekozen optie of jaartal, gevonden en overgeslagen plaatsen.</summary>
-    public int? Choice { get; set; }
-    public List<int> Found { get; set; } = [];
-    public List<int> Skipped { get; set; } = [];
     /// <summary>Volgorde van de juiste antwoorden, ingevuld als de vraag afloopt.</summary>
     public int? Position { get; set; }
     public int Bonus { get; set; }

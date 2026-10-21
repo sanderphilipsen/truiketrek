@@ -38,8 +38,7 @@ public class MonthRankingService(QuizDbContext db, ResultsService results)
     /// <summary>Ruwe maandtotalen per gebruiker (UserName bevat hier nog de user-id), gesorteerd van hoog naar laag.</summary>
     public async Task<List<MonthEntry>> ComputeAsync(int year, int month)
     {
-        var from = new DateOnly(year, month, 1);
-        var to = from.AddMonths(1);
+        var (from, to) = MonthRules.Days(year, month);
 
         // Daily en specials: de scores zelf. Een special telt in de maand waarin hij start.
         var played = await db.Attempts

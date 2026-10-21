@@ -180,5 +180,6 @@ De omgeving opnieuw opzetten of de instellingen herstellen: `pwsh scripts/setup-
 
 - Bij het opstarten voert de app zelf de migraties uit en laadt ze de spelers en vragen.
 - **Always On** staat aan. Anders slaapt de app in en lopen de online wedstrijden en de dagafsluiting niet. **WebSockets** staan aan voor SignalR, en de app werkt alleen via HTTPS (nodig voor de PWA).
+- **Eén instantie, niet uitschalen.** De app gaat ervan uit dat er precies één serverinstantie draait: `MatchEngine` zet de wedstrijden verder in die ene instantie, de SignalR-groepen hebben geen backplane en een paar gegevens (avatars, levels) staan in een geheugencache. Gelijktijdige schrijvers binnen die instantie (de engine en verzoeken) vangt `Match.Version` op: wie botst, begint opnieuw vanaf een verse toestand. Met twee instanties kan een vraag twee keer afgerekend worden en missen spelers seintjes; dat vraagt eerst een backplane en een gedeelde cache.
 - De connection string (`ConnectionStrings__Quiz`) en de admins (`Admins__0`, …) staan in de app-instellingen van de web-app, niet in git. Alleen Azure-diensten mogen met de database verbinden.
 - Logs bekijken: `az webapp log tail -g tbooking-rg -n truitjetrek`.

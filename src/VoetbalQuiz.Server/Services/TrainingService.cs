@@ -17,7 +17,8 @@ public class TrainingService(QuizDbContext db, TimeProvider clock, QuizService q
     // ---------- Archief ----------
 
     /// <summary>
-    /// De dailies en afgelopen specials van een maand (een special op haar einddatum), nieuwste eerst.
+    /// De dailies en afgelopen specials van een maand, nieuwste eerst. Een special staat in de maand van haar startdatum,
+    /// net als in het maandklassement (<see cref="MonthRules.Days"/>), maar pas als ze afgelopen is.
     /// Zonder maand: de maand van gisteren, de laatste dag die je kan spelen (Belgische tijd).
     /// </summary>
     public async Task<TrainingArchive> GetArchiveAsync(string userId, int? year = null, int? month = null)
@@ -25,13 +26,11 @@ public class TrainingService(QuizDbContext db, TimeProvider clock, QuizService q
         var today = Today;
         var yesterday = today.AddDays(-1);
         var latest = new DateOnly(yesterday.Year, yesterday.Month, 1);
-        var from = year is { } y && month is { } m ? new DateOnly(y, m, 1) : latest;
-        var to = from.AddMonths(1);
+        var (from, to) = year is { } y && month is { } m ? MonthRules.Days(y, m) : MonthRules.Days(latest.Year, latest.Month);
 
         var challenges = await db.DailyChallenges
-            .Where(c => c.SpecialEventId == null
-                ? c.Date >= from && c.Date < to && c.Date < today
-                : c.SpecialEvent!.EndDate >= from && c.SpecialEvent.EndDate < to && c.SpecialEvent.EndDate < today)
+            .Where(c => c.Date >= from && c.Date < to
+                        && (c.SpecialEventId == null ? c.Date < today : c.SpecialEvent!.EndDate < today))
             .Include(c => c.SpecialEvent)
             .Include(c => c.Questions).ThenInclude(q => q.Player)
             .Include(c => c.Questions).ThenInclude(q => q.QuizItem)
@@ -47,11 +46,11 @@ public class TrainingService(QuizDbContext db, TimeProvider clock, QuizService q
         {
             var infos = RunInfos(runs[c.Id]);
             var special = SpecialOf(c.SpecialEvent);
-            return new TrainingDay(special?.EndDate ?? c.Date, QuizService.DifficultyOf(c), TypesOf(c),
+            return new TrainingDay(c.Date, QuizService.DifficultyOf(c), TypesOf(c),
                 RealOf(userId, standings.GetValueOrDefault(c.Id)), infos.Count, infos.FirstOrDefault(r => r.IsBest)?.Points, special);
         }).OrderByDescending(d => d.Date).ThenBy(d => d.Special is null ? 0 : 1).ToList();
 
-        var hasEarlier = await db.DailyChallenges.AnyAsync(c => c.SpecialEventId == null ? c.Date < from : c.SpecialEvent!.EndDate < from);
+        var hasEarlier = await db.DailyChallenges.AnyAsync(c => c.Date < from && (c.SpecialEventId == null || c.SpecialEvent!.EndDate < today));
         return new TrainingArchive(from.Year, from.Month, days, hasEarlier, from < latest);
     }
 

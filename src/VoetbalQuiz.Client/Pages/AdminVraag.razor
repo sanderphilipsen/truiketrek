@@ -3,6 +3,7 @@
 @inject ApiClient Api
 @inject AuthState Auth
 @inject NavigationManager Nav
+@inject IJSRuntime JS
 
 <PageTitle>Vraag bewerken – Admin</PageTitle>
 
@@ -172,6 +173,10 @@
                         @if (_dirty) { <span class="unsaved">● Niet opgeslagen</span> }
                     </div>
                     @if (_original is not null) { <small class="muted">@_original.TimesUsed× gevraagd</small> }
+                    @if (_original?.InPlay is { } live)
+                    {
+                        <p class="in-play" role="status">⚠️ Deze vraag zit nu in @live. Aanpassen mag, maar wie ze nog speelt, ziet je wijziging meteen.</p>
+                    }
                     <ul class="checklist">
                         <li class="@(complete ? "ok" : "todo")">@(complete ? "✓ Inhoud volledig" : "✗ " + string.Join(" ", Missing()))</li>
                         <li class="@(_sources.Count > 0 ? "ok" : "todo")">@(_sources.Count > 0 ? "✓" : "✗") Minstens één bron</li>
@@ -372,6 +377,9 @@
 
     private async Task SaveAsync(PlayerStatus status)
     {
+        if (_original?.InPlay is { } live && !await JS.InvokeAsync<bool>("confirm",
+                $"Deze vraag zit nu in {live}. Wie ze nog speelt, ziet je wijziging meteen. Toch opslaan?"))
+            return;
         (_busy, _error, _message) = (true, null, null);
         try
         {

@@ -42,7 +42,28 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
         var p = await db.Players.FindAsync(id) ?? throw new QuizException("Speler niet gevonden.");
         var usage = await UsageAsync();
         return new PlayerEdit(p.Id, p.Name, p.Answers, p.Country, p.Competition, p.Era, p.Difficulty, p.Hints,
-            p.Sources, p.Tags, p.Status, p.ReviewNote, p.CheckedAt, p.UpdatedBy, usage.GetValueOrDefault(p.Id));
+            p.Sources, p.Tags, p.Status, p.ReviewNote, p.CheckedAt, p.UpdatedBy, usage.GetValueOrDefault(p.Id),
+            await InPlayAsync(q => QuestionContent.PlayersOf(q).Contains(p.Id)));
+    }
+
+    /// <summary>
+    /// Waar een speler of vraag nu competitief gespeeld wordt: de daily van vandaag of een lopende special (null = nergens).
+    /// Een vraag verwijst naar de speler of vraag zelf, dus een aanpassing verandert ook de lopende vraag; het admin-paneel
+    /// waarschuwt daarom en vraagt bevestiging (aanpassen blijft toegelaten). Een reeks die nog niet aangemaakt is, telt niet.
+    /// </summary>
+    private async Task<string?> InPlayAsync(Func<DailyQuestion, bool> uses)
+    {
+        var today = QuizClock.Today(clock);
+        var live = await db.DailyQuestions
+            .Where(q => q.DailyChallenge.SpecialEventId == null
+                ? q.DailyChallenge.Date == today
+                : q.DailyChallenge.SpecialEvent!.StartDate <= today && today <= q.DailyChallenge.SpecialEvent.EndDate)
+            .Include(q => q.DailyChallenge).ThenInclude(c => c.SpecialEvent)
+            .ToListAsync();
+        var where = live.Where(uses)
+            .Select(q => q.DailyChallenge.SpecialEvent is { } s ? $"de special {s.Name}" : "de daily van vandaag")
+            .Distinct().Order().ToList();
+        return where.Count == 0 ? null : string.Join(" en ", where);
     }
 
     /// <summary>Nieuwe speler (id 0) of een bestaande bijwerken. Goedkeuren kan enkel met bronnen.</summary>
@@ -216,7 +237,8 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
     {
         var i = await db.QuizItems.FindAsync(id) ?? throw new QuizException("Vraag niet gevonden.");
         var used = await db.DailyQuestions.CountAsync(q => q.QuizItemId == id);
-        return new QuizItemEdit(i.Id, i.Type, i.Data, i.Difficulty, i.Sources, i.Tags, i.Status, i.ReviewNote, i.CheckedAt, i.UpdatedBy, used);
+        return new QuizItemEdit(i.Id, i.Type, i.Data, i.Difficulty, i.Sources, i.Tags, i.Status, i.ReviewNote, i.CheckedAt, i.UpdatedBy, used,
+            await InPlayAsync(q => q.QuizItemId == id));
     }
 
     public async Task<int> SaveQuizItemAsync(QuizItemEdit edit, string adminName)

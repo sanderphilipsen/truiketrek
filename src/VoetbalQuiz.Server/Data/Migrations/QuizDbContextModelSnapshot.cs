@@ -585,6 +585,10 @@ namespace VoetbalQuiz.Server.Data.Migrations
                         .IsRequired()
                         .HasColumnType("integer[]");
 
+                    b.Property<int>("Version")
+                        .IsConcurrencyToken()
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("HostUserId");
@@ -627,11 +631,19 @@ namespace VoetbalQuiz.Server.Data.Migrations
                     b.Property<bool>("GaveUp")
                         .HasColumnType("boolean");
 
+                    b.Property<int>("Guesses")
+                        .IsConcurrencyToken()
+                        .HasColumnType("integer");
+
                     b.Property<string>("LastGuess")
                         .HasColumnType("text");
 
                     b.Property<int>("MatchQuestionId")
                         .HasColumnType("integer");
+
+                    b.Property<int>("Points")
+                        .HasColumnType("integer")
+                        .HasColumnName("SpeedPoints");
 
                     b.Property<int?>("Position")
                         .HasColumnType("integer");
@@ -643,8 +655,8 @@ namespace VoetbalQuiz.Server.Data.Migrations
                         .IsRequired()
                         .HasColumnType("integer[]");
 
-                    b.Property<int>("SpeedPoints")
-                        .HasColumnType("integer");
+                    b.Property<DateTime>("StartedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("StolenByUserId")
                         .HasColumnType("text");
