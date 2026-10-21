@@ -4440,5 +4440,277 @@
       "spanje"
     ],
     "checkedAt": "2026-10-19"
+  },
+  {
+    "prompt": "Welke club werd in de jaren 2010 geen Belgisch landskampioen?",
+    "options": ["KRC Genk", "Standard", "KAA Gent", "Anderlecht"],
+    "odd": 1,
+    "explanation": "Anderlecht (o.a. 2013-14 en 2016-17), Genk (2010-11 en 2018-19) en Gent (2014-15) werden kampioen in de jaren 2010; Standard won zijn laatste titels in 2007-08 en 2008-09.",
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"],
+    "tags": ["belgie"]
+  },
+  {
+    "prompt": "Wie zat niet in de definitieve Belgische EK-selectie van 2016?",
+    "options": ["Radja Nainggolan", "Marouane Fellaini", "Vincent Kompany", "Jan Vertonghen"],
+    "odd": 2,
+    "explanation": "Nainggolan, Fellaini en Vertonghen stonden in de definitieve selectie van 23 voor het EK 2016; Kompany niet.",
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2016_squads"],
+    "tags": ["rode-duivels", "belgie"]
+  },
+  {
+    "prompt": "Wie ontbrak op het WK 2014 in de Belgische selectie?",
+    "options": ["Kevin Mirallas", "Divock Origi", "Adnan Januzaj", "Christian Benteke"],
+    "odd": 3,
+    "explanation": "Mirallas, Origi en Januzaj maakten deel uit van de Belgische WK-selectie van 2014; Benteke scheurde in april 2014 zijn achillespees en miste het toernooi.",
+    "difficulty": 4,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_squads",
+      "https://www.si.com/soccer/2014/04/03/aston-villa-belgium-christian-benteke-tears-achilles-out-world-cup"
+    ],
+    "tags": ["rode-duivels", "wk", "belgie"]
+  },
+  {
+    "prompt": "Wie won nooit de Gouden Schoen van de Premier League, ook niet gedeeld?",
+    "options": ["Romelu Lukaku", "Jamie Vardy", "Son Heung-min", "Pierre-Emerick Aubameyang"],
+    "odd": 0,
+    "explanation": "Vardy (2019-20), Son (2021-22, gedeeld met Salah) en Aubameyang (2018-19, gedeeld met Mané en Salah) wonnen de Gouden Schoen; Lukaku nooit.",
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Premier_League_Golden_Boot"],
+    "tags": []
+  },
+  {
+    "prompt": "Welke Rode Duivel speelde nooit in de Premier League?",
+    "options": ["Eden Hazard", "Dries Mertens", "Marouane Fellaini", "Jan Vertonghen"],
+    "odd": 1,
+    "explanation": "Hazard speelde voor Chelsea, Fellaini voor Everton en Manchester United en Vertonghen voor Tottenham; Mertens speelde in Nederland, Italië en Turkije, maar nooit in Engeland.",
+    "difficulty": 3,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Eden_Hazard",
+      "https://en.wikipedia.org/wiki/Marouane_Fellaini",
+      "https://en.wikipedia.org/wiki/Jan_Vertonghen",
+      "https://en.wikipedia.org/wiki/Dries_Mertens"
+    ],
+    "tags": ["rode-duivels", "belgie"]
+  },
+  {
+    "prompt": "Wie was nooit hoofdtrainer van Real Madrid?",
+    "options": ["Jupp Heynckes", "Rafael Benítez", "Jürgen Klopp", "Zinedine Zidane"],
+    "odd": 2,
+    "explanation": "Heynckes (1997-98), Benítez (2015-16) en Zidane (2016-18 en 2019-21) trainden Real Madrid; Klopp nooit.",
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/List_of_Real_Madrid_CF_managers"],
+    "tags": []
+  },
+  {
+    "prompt": "Wie was nooit hoofdtrainer van Chelsea?",
+    "options": ["Gianluca Vialli", "Guus Hiddink", "Arsène Wenger", "André Villas-Boas"],
+    "odd": 2,
+    "explanation": "Vialli (1998-2000), Hiddink (interim in 2009 en 2015-16) en Villas-Boas (2011-12) trainden Chelsea; Wenger nooit.",
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/List_of_Chelsea_F.C._managers"],
+    "tags": []
+  },
+  {
+    "prompt": "Wie werd nooit topschutter van een seizoen in de Champions League, ook niet gedeeld?",
+    "options": ["Mohamed Salah", "Erling Haaland", "Robert Lewandowski", "Karim Benzema"],
+    "odd": 0,
+    "explanation": "Haaland (2020-21 en 2022-23), Lewandowski (2019-20) en Benzema (2021-22) waren topschutter van de Champions League; Salah nooit.",
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/List_of_UEFA_Champions_League_top_scorers"],
+    "tags": ["champions-league"]
+  },
+  {
+    "prompt": "Wie won nooit de Europese Gouden Schoen?",
+    "options": ["Luis Suárez", "Mohamed Salah", "Harry Kane", "Lionel Messi"],
+    "odd": 1,
+    "explanation": "Suárez (2013-14 gedeeld en 2015-16), Kane (2023-24) en Messi (zes keer) wonnen de Europese Gouden Schoen; Salah nooit.",
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/European_Golden_Shoe"],
+    "tags": []
+  },
+  {
+    "prompt": "Welke club won nooit de FA Cup?",
+    "options": ["Wimbledon", "Coventry City", "Fulham", "Wigan Athletic"],
+    "odd": 2,
+    "explanation": "Wimbledon (1988), Coventry City (1987) en Wigan Athletic (2013) wonnen de FA Cup; Fulham verloor in 1975 als enige finale van West Ham.",
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/List_of_FA_Cup_winners"],
+    "tags": []
+  },
+  {
+    "prompt": "Wie werd nooit topschutter van een EK?",
+    "options": ["Michel Platini", "Alan Shearer", "Patrik Schick", "Zlatan Ibrahimović"],
+    "odd": 3,
+    "explanation": "Platini (1984, negen goals), Shearer (1996, vijf goals) en Schick (2020, vijf goals, samen met Ronaldo) waren topschutter van een EK; Ibrahimović nooit.",
+    "difficulty": 4,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_European_Championship_records_and_statistics",
+      "https://en.wikipedia.org/wiki/Zlatan_Ibrahimovi%C4%87"
+    ],
+    "tags": []
+  },
+  {
+    "prompt": "Wie speelde minder dan 100 interlands voor België?",
+    "options": ["Jan Vertonghen", "Axel Witsel", "Vincent Kompany", "Toby Alderweireld"],
+    "odd": 2,
+    "explanation": "Vertonghen (157), Witsel (140) en Alderweireld (127) speelden ruim meer dan 100 interlands voor België; Kompany bleef op 89.",
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/List_of_Belgium_international_footballers"],
+    "tags": ["rode-duivels", "belgie"]
+  },
+  {
+    "prompt": "Wie won nooit de Gouden Bal van een WK?",
+    "options": ["Kylian Mbappé", "Luka Modrić", "Diego Forlán", "Zinedine Zidane"],
+    "odd": 0,
+    "explanation": "Zidane (2006), Forlán (2010) en Modrić (2018) wonnen de Gouden Bal; Mbappé won enkel de Gouden Schoen als topschutter.",
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/FIFA_World_Cup_awards"],
+    "tags": ["wk"]
+  },
+  {
+    "prompt": "Wie was nooit hoofdtrainer van Paris Saint-Germain?",
+    "options": ["Unai Emery", "Thomas Tuchel", "Laurent Blanc", "Antonio Conte"],
+    "odd": 3,
+    "explanation": "Emery (2016-18), Tuchel (2018-20) en Blanc (2013-16) trainden PSG; Conte nooit.",
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/List_of_Paris_Saint-Germain_F.C._managers"],
+    "tags": ["frankrijk"]
+  },
+  {
+    "prompt": "Wie leidde Manchester United nooit als hoofdtrainer, ook niet tijdelijk?",
+    "options": ["Louis van Gaal", "Mauricio Pochettino", "Ole Gunnar Solskjær", "Ruud van Nistelrooy"],
+    "odd": 1,
+    "explanation": "Van Gaal (2014-16), Solskjær (2018-21) en Van Nistelrooy (tijdelijk in 2024) leidden United; Pochettino nooit.",
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/List_of_Manchester_United_F.C._managers"],
+    "tags": []
+  },
+  {
+    "prompt": "Bij welke club was Vincent Kompany nooit hoofdtrainer?",
+    "options": ["Burnley", "Anderlecht", "Standard", "Bayern München"],
+    "odd": 2,
+    "explanation": "Kompany was hoofdtrainer van Anderlecht (eerst als speler-trainer), Burnley (2022-24) en Bayern München (vanaf 2024); Standard trainde hij nooit.",
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Vincent_Kompany"],
+    "tags": ["belgie"]
+  },
+  {
+    "prompt": "Welk land was geen groepstegenstander van België op het WK 1998?",
+    "options": ["Nederland", "Mexico", "Zuid-Korea", "Paraguay"],
+    "odd": 3,
+    "explanation": "België speelde in groep E gelijk tegen Nederland (0-0), Mexico (2-2) en Zuid-Korea (1-1); Paraguay zat in een andere groep.",
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/1998_FIFA_World_Cup_Group_E"],
+    "tags": ["rode-duivels", "wk", "belgie"]
+  },
+  {
+    "prompt": "Welk land was geen groepstegenstander van België op het EK 1984?",
+    "options": ["Spanje", "Frankrijk", "Denemarken", "Joegoslavië"],
+    "odd": 0,
+    "explanation": "België speelde in groep 1 tegen Frankrijk (0-5), Joegoslavië (2-0) en Denemarken (2-3); Spanje zat in groep 2.",
+    "difficulty": 4,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Euro_1984_Group_A",
+      "https://en.wikipedia.org/wiki/UEFA_Euro_1984_Group_B"
+    ],
+    "tags": ["rode-duivels", "belgie"]
+  },
+  {
+    "prompt": "Wie werd nooit topschutter van de Bundesliga?",
+    "options": ["Robert Lewandowski", "Harry Kane", "Erling Haaland", "Pierre-Emerick Aubameyang"],
+    "odd": 2,
+    "explanation": "Lewandowski (zeven keer), Kane (2023-24 en 2024-25) en Aubameyang (2016-17) waren topschutter van de Bundesliga; Haaland nooit.",
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Torj%C3%A4gerkanone"],
+    "tags": ["duitsland"]
+  },
+  {
+    "prompt": "Wie werd nooit topschutter van de Serie A?",
+    "options": ["Gonzalo Higuaín", "Cristiano Ronaldo", "Romelu Lukaku", "Victor Osimhen"],
+    "odd": 2,
+    "explanation": "Higuaín (2015-16, 36 goals), Ronaldo (2020-21, 29 goals) en Osimhen (2022-23, 26 goals) werden topschutter van de Serie A; Lukaku nooit.",
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Capocannoniere"],
+    "tags": ["italie"]
+  },
+  {
+    "prompt": "Welke trainer werd nooit kampioen in de Premier League?",
+    "options": ["Claudio Ranieri", "Rafael Benítez", "Manuel Pellegrini", "Antonio Conte"],
+    "odd": 1,
+    "explanation": "Ranieri (Leicester, 2015-16), Pellegrini (Manchester City, 2013-14) en Conte (Chelsea, 2016-17) werden kampioen; Benítez nooit.",
+    "difficulty": 3,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Premier_League_winning_managers",
+      "https://en.wikipedia.org/wiki/Rafael_Ben%C3%ADtez"
+    ],
+    "tags": []
+  },
+  {
+    "prompt": "Bij welke club speelde Jan Vertonghen nooit?",
+    "options": ["Anderlecht", "Benfica", "Club Brugge", "Tottenham Hotspur"],
+    "odd": 2,
+    "explanation": "Vertonghen speelde voor Ajax, Tottenham Hotspur (2012-20), Benfica (2020-22) en Anderlecht (2022-25); Club Brugge was enkel een tegenstander.",
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Jan_Vertonghen"],
+    "tags": ["rode-duivels", "belgie"]
+  },
+  {
+    "prompt": "Bij welke club speelde Harry Kane nooit?",
+    "options": ["Millwall", "Crystal Palace", "Norwich City", "Leicester City"],
+    "odd": 1,
+    "explanation": "Kane werd als jonge speler van Tottenham uitgeleend aan Leyton Orient, Millwall, Norwich City en Leicester City; voor Crystal Palace speelde hij nooit.",
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Harry_Kane"],
+    "tags": []
+  },
+  {
+    "prompt": "Welke Rode Duivel speelde nooit voor Anderlecht?",
+    "options": ["Kevin De Bruyne", "Youri Tielemans", "Leander Dendoncker", "Romelu Lukaku"],
+    "odd": 0,
+    "explanation": "Tielemans, Dendoncker en Lukaku speelden bij Anderlecht; De Bruyne ging van Genk naar Chelsea en speelde nooit voor Anderlecht.",
+    "difficulty": 3,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
+      "https://en.wikipedia.org/wiki/Youri_Tielemans",
+      "https://en.wikipedia.org/wiki/Leander_Dendoncker",
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+    ],
+    "tags": ["rode-duivels", "anderlecht", "belgie"]
+  },
+  {
+    "prompt": "Welke club werd in de jaren 2000 geen Belgisch landskampioen?",
+    "options": ["KRC Genk", "KAA Gent", "Club Brugge", "Anderlecht"],
+    "odd": 1,
+    "explanation": "Anderlecht (o.a. 2003-04), Genk (2001-02) en Club Brugge (2002-03) werden kampioen in de jaren 2000; Gent won pas in 2014-15 zijn eerste titel.",
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"],
+    "tags": ["belgie"]
   }
 ]

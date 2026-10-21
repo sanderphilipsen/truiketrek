@@ -134,3 +134,15 @@ Los hiervan, en eerder te doen: een herlabelronde naar de volle schaal (punt 1),
 ## Notities
 
 - 2026-10-20: analyse toegevoegd (labelverdeling, seeder overschrijft `Difficulty`, eenmalig gebruik per item, testdata is circulair) en een voorstel per open vraag.
+- 2026-10-20: herlabelronde door `moeilijkheid-inschatter` op vier bestanden (open vraag 7):
+
+  | Bestand | Voor (1-2-3-4-5) | Na (1-2-3-4-5) |
+  |---|---|---|
+  | carriere | 38-0-43-0-28 | 11-28-47-18-5 |
+  | wissel | 17-0-14-0-0 | 3-9-18-1-0 |
+  | rugnummer | 15-0-14-0-1 | 3-13-13-1-0 |
+  | mannetje | 17-0-10-0-0 | 4-11-10-2-0 |
+
+  Het tekort aan 2-sterren is weg. Wissel, rugnummer en mannetje hebben nu geen enkele 5 meer en bijna geen 4: dat lossen labels niet op, daar moet **moeilijkere inhoud** bij (Rode Duivels uit de jaren 80-90, Pro League-namen, minder bekende transfers). De agent meldde ook tips die het antwoord te vroeg verraden (bv. Maradona en Zidane bij mannetje, Fellaini en Kompany bij wissel, Ronaldo en Messi bij rugnummer).
+- 2026-10-20: `speler-redacteur` schreef 28 moeilijkere items, allemaal nog op `review`: wissel +6×4 en +4×5, rugnummer +6×4 en +4×5, mannetje +5×4 en +3×5 (met 8 nieuwe avatars in `Avatars.cs`). Na goedkeuring wordt de verdeling (1-2-3-4-5): wissel 3-9-18-7-4, rugnummer 3-13-13-7-4, mannetje 4-11-10-7-3. Na te kijken door `inhoud-controleur`: het rugnummer en de periode van Fellaini (31 bij United, 2013-2015?) en Witsel (Atlético, eindjaar), de Genk-nummers uit 2002-03 (er is maar één bron), het bedrag van Boussoufa, het uiterlijk van de avatars van Van Himst en Rensenbrink, en of Gullit niet eerder 3 sterren is.
+- 2026-10-20: `inhoud-controleur` keurde alle 28 items goed (`approved`, `checkedAt` 2026-10-20), met deze correcties: Gullit 4 → 3 sterren, Carrasco (wissel) een nieuwe extra-tip (hij is opgeleid bij Genk, niet in Monaco), Nilis (wissel) "maar de Belgische nooit", Witsel (rugnummer) periode tot 2025, Tihinen (rugnummer) vanaf 2003. Fellaini nr. 31 (2013-2015) is bevestigd. Met één bron: de rugnummers van Nilis, Zetterberg en de Genk-spelers. De avatars en de meeste mannetje-tips zijn op kennis beoordeeld, niet met bronnen. Goedgekeurde verdeling (1-2-3-4-5): wissel 3-9-18-7-4, rugnummer 3-13-13-7-4, mannetje 4-11-11-6-3.

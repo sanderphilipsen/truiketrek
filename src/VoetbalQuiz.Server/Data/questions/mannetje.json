@@ -30,7 +30,7 @@
       "Ik won twee keer de Europa League met Chelsea",
       "Mijn broer Thorgan speelde ook bij de Rode Duivels"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Eden_Hazard"
@@ -71,7 +71,7 @@
       "Doelman die een Champions League-finale won met Real Madrid",
       "Ik ben afkomstig uit Bree en brak door bij Genk"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Thibaut_Courtois"
@@ -90,7 +90,7 @@
       "Jarenlang aanvoerder van Manchester City",
       "Later trainer van Burnley en Bayern München"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Vincent_Kompany"
@@ -130,7 +130,7 @@
       "Kopbalspecialist van Everton en Manchester United",
       "Ik kopte de gelijkmaker tegen Japan op het WK 2018"
     ],
-    "difficulty": 1,
+    "difficulty": 3,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Marouane_Fellaini"
@@ -229,7 +229,7 @@
       "Technische middenvelder van het WK 1986",
       "Van Italiaanse afkomst, opgegroeid in La Louvière"
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Enzo_Scifo"
@@ -272,7 +272,7 @@
       "Beste doelman van het WK 1994",
       "Later trainer van Standard, Gent en Club Brugge"
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Michel_Preud%27homme"
@@ -333,7 +333,7 @@
       "Als tiener wereldkampioen in 2018",
       "Hattrick in de WK-finale van 2022"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Kylian_Mbapp%C3%A9"
@@ -350,7 +350,7 @@
       "Noorse spits die doorbrak bij Salzburg en Dortmund",
       "Mijn vader speelde ook in de Premier League"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Erling_Haaland"
@@ -371,7 +371,7 @@
       "Linksvoetige aanvaller, jarenlang de ster van Liverpool",
       "Ik speelde eerder bij Basel, Chelsea, Fiorentina en Roma"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Mohamed_Salah"
@@ -390,7 +390,7 @@
       "Centrale verdediger en aanvoerder van Liverpool",
       "Tweede bij de Ballon d'Or van 2019"
     ],
-    "difficulty": 1,
+    "difficulty": 3,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Virgil_van_Dijk"
@@ -411,7 +411,7 @@
       "Twee kopgoals in de WK-finale van 1998",
       "Als trainer won ik drie Champions Leagues op rij"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Zin%C3%A9dine_Zidane"
@@ -431,7 +431,7 @@
       "Braziliaanse tovenaar met een brede glimlach",
       "Ballon d'Or-winnaar in 2005"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Ronaldinho"
@@ -452,7 +452,7 @@
       "Braziliaanse dribbelaar, opgeleid bij Santos",
       "De duurste transfer ooit"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Neymar"
@@ -471,7 +471,7 @@
       "Wereldkampioen in 1986, met de Hand van God",
       "Legende van Napoli"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Diego_Maradona"
@@ -492,7 +492,7 @@
       "Totaalvoetballer van Ajax en Oranje",
       "Later trainer van het Dream Team van Barcelona"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Johan_Cruyff"
@@ -536,6 +536,113 @@
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Edgar_Davids"
+    ],
+    "tags": [
+      "oranje"
+    ]
+  },
+  {
+    "answer": "Eric Gerets",
+    "aliases": ["Gerets"],
+    "avatar": "gerets",
+    "clues": [
+      "Verdediger die van Standard naar AC Milan en PSV trok",
+      "Later trainer van onder meer Club Brugge, Galatasaray en Marseille"
+    ],
+    "difficulty": 4,
+    "status": "approved", "checkedAt": "2026-10-20",
+    "sources": ["https://en.wikipedia.org/wiki/Eric_Gerets"],
+    "tags": ["rode-duivels", "standard", "legende"]
+  },
+  {
+    "answer": "George Best",
+    "aliases": ["Best"],
+    "avatar": "best",
+    "clues": [
+      "Noord-Ierse aanvaller die nooit op een WK speelde",
+      "Ballon d'Or in 1968, na de Europacup I-winst met Manchester United"
+    ],
+    "difficulty": 4,
+    "status": "approved", "checkedAt": "2026-10-20",
+    "sources": ["https://en.wikipedia.org/wiki/George_Best"],
+    "tags": ["legende", "champions-league"]
+  },
+  {
+    "answer": "Carlos Valderrama",
+    "aliases": ["Valderrama", "El Pibe"],
+    "avatar": "valderrama",
+    "clues": [
+      "Colombiaanse spelmaker en aanvoerder op drie WK's",
+      "Ik speelde bij Montpellier en later in de MLS bij Tampa Bay Mutiny"
+    ],
+    "difficulty": 4,
+    "status": "approved", "checkedAt": "2026-10-20",
+    "sources": ["https://en.wikipedia.org/wiki/Carlos_Valderrama"],
+    "tags": ["legende"]
+  },
+  {
+    "answer": "Franky Van der Elst",
+    "aliases": ["Van der Elst", "Vanderelst"],
+    "avatar": "vanderelst",
+    "clues": [
+      "Verdedigende middenvelder die vijftien seizoenen bij Club Brugge speelde",
+      "Vierde op het WK 1986 en later trainer van onder meer Germinal Beerschot en Lokeren"
+    ],
+    "difficulty": 4,
+    "status": "approved", "checkedAt": "2026-10-20",
+    "sources": ["https://en.wikipedia.org/wiki/Franky_Van_der_Elst"],
+    "tags": ["rode-duivels", "club-brugge"]
+  },
+  {
+    "answer": "Paul Van Himst",
+    "aliases": ["Van Himst", "Vanhimst", "Polle Gazon"],
+    "avatar": "vanhimst",
+    "clues": [
+      "Aanvaller die zestien seizoenen bij één Brusselse club speelde",
+      "Later bondscoach van de Rode Duivels op het WK 1994"
+    ],
+    "difficulty": 5,
+    "status": "approved", "checkedAt": "2026-10-20",
+    "sources": ["https://en.wikipedia.org/wiki/Paul_Van_Himst"],
+    "tags": ["rode-duivels", "anderlecht", "legende"]
+  },
+  {
+    "answer": "Rob Rensenbrink",
+    "aliases": ["Rensenbrink"],
+    "avatar": "rensenbrink",
+    "clues": [
+      "Nederlandse aanvaller bij DWS, Club Brugge, Anderlecht en Toulouse",
+      "In de slotminuten van de WK-finale van 1978 trof ik de paal"
+    ],
+    "difficulty": 5,
+    "status": "approved", "checkedAt": "2026-10-20",
+    "sources": ["https://en.wikipedia.org/wiki/Rob_Rensenbrink"],
+    "tags": ["oranje", "anderlecht", "club-brugge", "legende"]
+  },
+  {
+    "answer": "Karl-Heinz Rummenigge",
+    "aliases": ["Rummenigge", "Kalle Rummenigge"],
+    "avatar": "rummenigge",
+    "clues": [
+      "Duitse spits bij Bayern München, Inter en Servette",
+      "Twee keer Ballon d'Or-winnaar en later bestuursvoorzitter van Bayern"
+    ],
+    "difficulty": 5,
+    "status": "approved", "checkedAt": "2026-10-20",
+    "sources": ["https://en.wikipedia.org/wiki/Karl-Heinz_Rummenigge"],
+    "tags": ["legende", "champions-league"]
+  },
+  {
+    "answer": "Ruud Gullit",
+    "aliases": ["Gullit"],
+    "avatar": "gullit",
+    "clues": [
+      "Ik speelde bij Haarlem, Feyenoord, PSV, AC Milan, Sampdoria en Chelsea",
+      "Als speler-trainer won ik in 1997 de FA Cup"
+    ],
+    "difficulty": 3,
+    "status": "approved", "checkedAt": "2026-10-20",
+    "sources": ["https://en.wikipedia.org/wiki/Ruud_Gullit"
     ],
     "tags": [
       "oranje"

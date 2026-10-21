@@ -3638,5 +3638,248 @@
       "wk"
     ],
     "checkedAt": "2026-10-19"
+  },
+  {
+    "event": "Johan Cruijff verlaat Ajax en tekent bij FC Barcelona voor een toenmalig wereldrecordbedrag.",
+    "year": 1973,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Johan_Cruyff"],
+    "tags": ["oranje", "legende", "spanje"]
+  },
+  {
+    "event": "Leeds-supporters breken de boel af in Parijs nadat een goal van Lorimer wordt afgekeurd in de Europacup I-finale tegen Bayern München.",
+    "year": 1975,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/1975_European_Cup_final"],
+    "tags": ["champions-league", "duitsland"]
+  },
+  {
+    "event": "Liverpool wint in Rome zijn eerste Europacup I, met 3-1 tegen Borussia Mönchengladbach.",
+    "year": 1977,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/1977_European_Cup_final"],
+    "tags": ["champions-league"]
+  },
+  {
+    "event": "Trevor Francis wordt de eerste speler van een miljoen pond bij zijn overstap van Birmingham City naar Nottingham Forest.",
+    "year": 1979,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Trevor_Francis"],
+    "tags": []
+  },
+  {
+    "event": "Jan Ceulemans van Club Brugge wint voor het eerst de Gouden Schoen.",
+    "year": 1980,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"],
+    "tags": ["gouden-schoen", "club-brugge", "rode-duivels"]
+  },
+  {
+    "event": "Liverpool wint in het Stadio Olimpico van Rome de Europacup I na strafschoppen tegen AS Roma, met de beroemde 'spaghettibenen' van Grobbelaar.",
+    "year": 1984,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/1984_European_Cup_final"],
+    "tags": ["champions-league", "italie"]
+  },
+  {
+    "event": "België plaatst zich via een barrage tegen Nederland dankzij meer uitdoelpunten voor het WK in Mexico.",
+    "year": 1985,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_qualification_(UEFA)"],
+    "tags": ["rode-duivels", "oranje"]
+  },
+  {
+    "event": "Marco van Basten beslist in Athene de Europacup II-finale voor Ajax tegen Lokomotive Leipzig.",
+    "year": 1987,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/1987_European_Cup_Winners%27_Cup_final"],
+    "tags": ["oranje"]
+  },
+  {
+    "event": "Hillsborough: 97 Liverpool-supporters komen om het leven bij een FA Cup-halve finale in Sheffield.",
+    "year": 1989,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Hillsborough_disaster"],
+    "tags": []
+  },
+  {
+    "event": "Rode Ster Belgrado wint in Bari na strafschoppen de Europacup I-finale tegen Olympique Marseille.",
+    "year": 1991,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/1991_European_Cup_final"],
+    "tags": ["champions-league", "frankrijk"]
+  },
+  {
+    "event": "Het Heizelstadion in Brussel gaat open als nieuw gebouwd Koning Boudewijnstadion, thuis van de Rode Duivels.",
+    "year": 1995,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/King_Baudouin_Stadium"],
+    "tags": ["rode-duivels", "belgie"]
+  },
+  {
+    "event": "Alan Shearer verhuist van Blackburn naar zijn thuisstad Newcastle voor een wereldrecordbedrag van 15 miljoen pond.",
+    "year": 1996,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Alan_Shearer"],
+    "tags": []
+  },
+  {
+    "event": "Lierse SK wordt landskampioen, twee punten voor Club Brugge.",
+    "year": 1997,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/1996%E2%80%9397_Belgian_First_Division"],
+    "tags": ["belgie"]
+  },
+  {
+    "event": "Luís Figo trekt van FC Barcelona naar de aartsrivaal Real Madrid, tot grote woede van de Catalaanse fans.",
+    "year": 2000,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Lu%C3%ADs_Figo"],
+    "tags": ["portugal", "spanje"]
+  },
+  {
+    "event": "Zinédine Zidane verlaat Juventus voor Real Madrid in een wereldrecordtransfer.",
+    "year": 2001,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Zinedine_Zidane"],
+    "tags": ["frankrijk", "italie", "spanje"]
+  },
+  {
+    "event": "Bayern München wint in Milaan na strafschoppen de Champions League tegen Valencia, met Oliver Kahn als held.",
+    "year": 2001,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/2001_UEFA_Champions_League_final"],
+    "tags": ["champions-league", "duitsland", "spanje"]
+  },
+  {
+    "event": "Zidane knalt in Glasgow een volley in de kruising en bezorgt Real Madrid de Champions League tegen Bayer Leverkusen.",
+    "year": 2002,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/2002_UEFA_Champions_League_final"],
+    "tags": ["champions-league", "frankrijk", "spanje", "duitsland"]
+  },
+  {
+    "event": "Kameroens middenvelder Marc-Vivien Foé zakt tijdens de Confederations Cup-halve finale tegen Colombia in elkaar en overlijdt op het veld.",
+    "year": 2003,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Marc-Vivien_Fo%C3%A9"],
+    "tags": []
+  },
+  {
+    "event": "Vincent Kompany van Anderlecht wint de Gouden Schoen.",
+    "year": 2004,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"],
+    "tags": ["gouden-schoen", "anderlecht", "rode-duivels"]
+  },
+  {
+    "event": "Zlatan Ibrahimović verlaat Inter voor Barcelona in een ruildeal waarin Samuel Eto'o de andere richting uitgaat.",
+    "year": 2009,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Zlatan_Ibrahimovi%C4%87"],
+    "tags": ["italie", "spanje"]
+  },
+  {
+    "event": "KAA Gent opent zijn nieuwe stadion, toen nog de Ghelamco Arena, met een oefenmatch tegen VfB Stuttgart.",
+    "year": 2013,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Planet_Group_Arena"],
+    "tags": ["belgie"]
+  },
+  {
+    "event": "België komt in Belo Horizonte op het WK terug van achter tegen Algerije en wint met 2-1 dankzij Fellaini en Mertens.",
+    "year": 2014,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_Group_H"],
+    "tags": ["rode-duivels", "wk"]
+  },
+  {
+    "event": "Thibaut Courtois verlaat Chelsea voor Real Madrid.",
+    "year": 2018,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Thibaut_Courtois"],
+    "tags": ["rode-duivels", "spanje"]
+  },
+  {
+    "event": "In Kazan verslaat België vijfvoudig wereldkampioen Brazilië met 2-1 in de WK-kwartfinale, met een goal van De Bruyne.",
+    "year": 2018,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"],
+    "tags": ["rode-duivels", "wk", "de-bruyne"]
+  },
+  {
+    "event": "Een kopbal van Samuel Umtiti in Sint-Petersburg beslist de WK-halve finale tegen België.",
+    "year": 2018,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"],
+    "tags": ["rode-duivels", "wk", "frankrijk"]
+  },
+  {
+    "event": "Divock Origi scoort in Madrid de tweede goal in een Champions League-finale tussen twee Engelse clubs.",
+    "year": 2019,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/2019_UEFA_Champions_League_final"],
+    "tags": ["champions-league", "rode-duivels"]
+  },
+  {
+    "event": "Lucas Moura maakt in Amsterdam in blessuretijd zijn derde goal en Tottenham schakelt Ajax uit in de halve finale van de Champions League.",
+    "year": 2019,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/2018%E2%80%9319_UEFA_Champions_League_knockout_phase"],
+    "tags": ["champions-league", "oranje"]
+  },
+  {
+    "event": "Christian Eriksen zakt tijdens Denemarken – Finland op het EK in elkaar en wordt op het veld gereanimeerd.",
+    "year": 2021,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Christian_Eriksen"],
+    "tags": []
+  },
+  {
+    "event": "Club Brugge overleeft voor het eerst in zijn geschiedenis de groepsfase van de Champions League, na een 0-0 bij Atlético Madrid.",
+    "year": 2022,
+    "difficulty": 4,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2022%E2%80%9323_Club_Brugge_KV_season",
+      "https://brusselstimes.com/1450384/club-brugge-make-champions-league-history-with-win-at-atalanta"
+    ],
+    "tags": ["club-brugge", "champions-league", "belgie"]
+  },
+  {
+    "event": "Een afgeweken schot van Kolo Muani via Jan Vertonghen schakelt België uit in de achtste finale van het EK in Duitsland.",
+    "year": 2024,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2024_knockout_stage"],
+    "tags": ["rode-duivels", "frankrijk"]
   }
 ]

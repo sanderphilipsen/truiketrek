@@ -39,7 +39,7 @@
       "Napoli (2013–2022)",
       "Galatasaray (2022–2025)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Dries_Mertens"
@@ -64,7 +64,7 @@
       "Al-Duhail (2021–2022)",
       "Royal Antwerp (2022–2025)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Toby_Alderweireld"
@@ -86,7 +86,7 @@
       "Benfica (2020–2022)",
       "Anderlecht (2022–2025)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Jan_Vertonghen"
@@ -111,7 +111,7 @@
       "Girona (2025–2026)",
       "OGC Nice (2026–)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Axel_Witsel"
@@ -132,7 +132,7 @@
       "Manchester United (2013–2019)",
       "Shandong Taishan (2019–2023)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Marouane_Fellaini"
@@ -278,7 +278,7 @@
       "AC Milan (2022–2025)",
       "Nottingham Forest (2023–2024, huur)"
     ],
-    "difficulty": 1,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Divock_Origi"
@@ -301,7 +301,7 @@
       "Aston Villa (2023–2026)",
       "Manchester United (2026–)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Youri_Tielemans"
@@ -372,7 +372,7 @@
       "Manchester City (2008–2019)",
       "Anderlecht (2019–2020)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Vincent_Kompany"
@@ -395,7 +395,7 @@
       "Tottenham Hotspur (2012–2019)",
       "Guangzhou City (2019–2022)"
     ],
-    "difficulty": 5,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Mousa_Demb%C3%A9l%C3%A9_(Belgian_footballer)"
@@ -422,7 +422,7 @@
       "Moreirense (2022)",
       "AEL Limassol (2022–2023)"
     ],
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Kevin_Mirallas"
@@ -446,7 +446,7 @@
       "Royal Antwerp (2019–2020)",
       "KV Mechelen (2020–2021)"
     ],
-    "difficulty": 1,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Steven_Defour"
@@ -497,7 +497,7 @@
       "Hamburger SV (2004–2006)",
       "Bayern München (2006–2014)"
     ],
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Daniel_Van_Buyten"
@@ -570,7 +570,7 @@
       "Anderlecht (1997–2000)",
       "Sporting Charleroi (2000–2004)"
     ],
-    "difficulty": 5,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Enzo_Scifo"
@@ -593,7 +593,7 @@
       "Bordeaux (2000–2001)",
       "Schalke 04 (2001–2003)"
     ],
-    "difficulty": 5,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Marc_Wilmots"
@@ -617,7 +617,7 @@
       "Hertha BSC (2019–2022)",
       "Club Brugge (2022–2025)"
     ],
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Dedryck_Boyata"
@@ -640,7 +640,7 @@
       "FC Barcelona (2022–2026)",
       "Chicago Fire (2026–)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Robert_Lewandowski"
@@ -664,7 +664,7 @@
       "Grêmio (2023)",
       "Inter Miami (2024–)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Luis_Su%C3%A1rez_(Uruguayan_footballer)"
@@ -710,7 +710,7 @@
       "Benfica (2023–2025)",
       "Rosario Central (2025–)"
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/%C3%81ngel_Di_Mar%C3%ADa"
@@ -731,7 +731,7 @@
       "Bayern München (2009–2019)",
       "FC Groningen (2020–2021)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Arjen_Robben"
@@ -752,7 +752,7 @@
       "OGC Nice (2017–2018)",
       "Al-Gharafa (2018–2019)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Wesley_Sneijder"
@@ -773,7 +773,7 @@
       "New York Red Bulls (2010–2014)",
       "Arsenal (2012, huur)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Thierry_Henry"
@@ -796,7 +796,7 @@
       "Liverpool (2017–2026)",
       "Trabzonspor (2026–)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Mohamed_Salah"
@@ -841,7 +841,7 @@
       "Atlético Madrid (2015–2018)",
       "Sagan Tosu (2018–2019)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Fernando_Torres"
@@ -862,7 +862,7 @@
       "Juventus (2011–2015)",
       "New York City FC (2015–2017)"
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Andrea_Pirlo"
@@ -909,7 +909,7 @@
       "Ajax (2017–2021)",
       "Schalke 04 (2021)"
     ],
-    "difficulty": 5,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Klaas-Jan_Huntelaar"
@@ -938,7 +938,7 @@
       "Genoa (2024–2025)",
       "Al-Ittifaq (2026–)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Mario_Balotelli"
@@ -987,7 +987,7 @@
       "Olympique Marseille (2025–2026)",
       "Deportivo La Coruña (2026–)"
     ],
-    "difficulty": 5,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Pierre-Emerick_Aubameyang"
@@ -1010,7 +1010,7 @@
       "Los Angeles FC (2024–2025)",
       "Lille (2025–)"
     ],
-    "difficulty": 1,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Olivier_Giroud"
@@ -1052,7 +1052,7 @@
       "Bayern München (2022–2023)",
       "Al-Nassr (2023–)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Sadio_Man%C3%A9"
@@ -1074,7 +1074,7 @@
       "Al-Hilal (2023–2025)",
       "Al-Rayyan (2025–)"
     ],
-    "difficulty": 5,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Aleksandar_Mitrovi%C4%87"
@@ -1123,7 +1123,7 @@
       "Sevilla (2025–2026)",
       "CF Montréal (2026–)"
     ],
-    "difficulty": 5,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Alexis_S%C3%A1nchez"
@@ -1143,7 +1143,7 @@
       "Tottenham Hotspur (2020–2021, huur)",
       "Los Angeles FC (2022–2023)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Gareth_Bale"
@@ -1188,7 +1188,7 @@
       "Manchester City (2015–2025)",
       "Napoli (2025–)"
     ],
-    "difficulty": 3,
+    "difficulty": 1,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Kevin_De_Bruyne"
@@ -1263,7 +1263,7 @@
       "Real Oviedo (2025–2026)",
       "Hajduk Split (2026–)"
     ],
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Leander_Dendoncker"
@@ -1307,7 +1307,7 @@
       "Royal Antwerp (2024–2026)",
       "KV Mechelen (2026–)"
     ],
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Dennis_Praet"
@@ -1330,7 +1330,7 @@
       "1. FC Nürnberg (2010–2013)",
       "Club Brugge (2013–2018)"
     ],
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Timmy_Simons"
@@ -1355,7 +1355,7 @@
       "Lierse (2010–2012)",
       "Waasland-Beveren (2012–2013)"
     ],
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Wesley_Sonck"
@@ -1379,7 +1379,7 @@
       "Zulte Waregem (2020–2026)",
       "Beerschot (2026–)"
     ],
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Jelle_Vossen"
@@ -1404,7 +1404,7 @@
       "Huddersfield Town (2017–2019)",
       "KAA Gent (2019–2024)"
     ],
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Laurent_Depoitre"
@@ -1471,7 +1471,7 @@
       "Olympiacos (2017–2018)",
       "Lazio (2018–2021)"
     ],
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Silvio_Proto"
@@ -1496,7 +1496,7 @@
       "Al-Shabab (2019)",
       "Al-Sailiya (2019–2020)"
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Mbark_Boussoufa"
@@ -1540,7 +1540,7 @@
       "Southampton (2023–2025)",
       "Trabzonspor (2023–)"
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Paul_Onuachu"
@@ -1599,7 +1599,7 @@
       "Liverpool (2010–2011)",
       "Anderlecht (2011–2013)"
     ],
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Milan_Jovanovi%C4%87_(footballer,_born_1981)"
@@ -1663,7 +1663,7 @@
       "Leicester City (2013, huur)",
       "Bayern München (2023–)"
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Harry_Kane"
@@ -1683,7 +1683,7 @@
       "Juventus (2022–2024)",
       "AS Monaco (2025–2026)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Paul_Pogba"
@@ -1723,7 +1723,7 @@
       "Atlético Madrid (2021–2026)",
       "Orlando City (2026–)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Antoine_Griezmann"
@@ -1832,7 +1832,7 @@
       "Orlando City (2014–2017)",
       "São Paulo (2014, huur)"
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Kak%C3%A1"
@@ -1962,7 +1962,7 @@
       "D.C. United (2018–2019)",
       "Derby County (2020–2021)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Wayne_Rooney"
@@ -2005,7 +2005,7 @@
       "Al-Ittihad (2023–2026)",
       "Al-Hilal (2026)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://www.tsn.ca/soccer/article/al-hilal-benzema-agree-to-terminate-contract-after-six-months/",
@@ -2028,7 +2028,7 @@
       "Real Madrid (2012–2025)",
       "AC Milan (2025–)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Luka_Modri%C4%87"
@@ -2049,7 +2049,7 @@
       "Manchester City (2011–2021)",
       "FC Barcelona (2021)"
     ],
-    "difficulty": 1,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Sergio_Ag%C3%BCero"
@@ -2069,7 +2069,7 @@
       "Juventus (1996–2001)",
       "Real Madrid (2001–2006)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Zinedine_Zidane"
@@ -2093,7 +2093,7 @@
       "Juventus (2019–2021)",
       "Parma (2021–2023)"
     ],
-    "difficulty": 1,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Gianluigi_Buffon"
@@ -2114,7 +2114,7 @@
       "Rennes (2020–2023)",
       "Manchester City (2023–)"
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/J%C3%A9r%C3%A9my_Doku"
@@ -2184,7 +2184,7 @@
       "PSV (2022–2025)",
       "RB Leipzig (2025–)"
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Johan_Bakayoko"
@@ -2322,7 +2322,7 @@
       "PSV (1994–2000)",
       "Aston Villa (2000–2001)"
     ],
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Luc_Nilis"
@@ -2350,7 +2350,7 @@
       "Krylja Sovetov (2008–2009)",
       "AS Cannes (2009–2011)"
     ],
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Jan_Koller"
@@ -2379,7 +2379,7 @@
       "FC Sion (2009–2010)",
       "Neftchi Bakoe (2010–2012)"
     ],
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/%C3%89mile_Mpenza"
@@ -2474,7 +2474,7 @@
       "Lierse (1988–1989)",
       "Trabzonspor (1989–1990)"
     ],
-    "difficulty": 5,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Jean-Marie_Pfaff"
@@ -2499,7 +2499,7 @@
       "MVV Maastricht (1984–1985)",
       "PSV (1985–1992)"
     ],
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Eric_Gerets"
@@ -2511,5 +2511,264 @@
       "oranje"
     ],
     "checkedAt": "2026-10-19"
+  },
+  {
+    "answer": "Sébastien Pocognoli",
+    "aliases": ["Pocognoli"],
+    "clubs": [
+      "KRC Genk (2004–2007)",
+      "AZ (2007–2010)",
+      "Standard (2010–2013)",
+      "Hannover 96 (2013–2014)",
+      "West Bromwich Albion (2014–2017)",
+      "Brighton & Hove Albion (2016–2017, huur)",
+      "Standard (2017–2020)",
+      "Union SG (2020–2021)"
+    ],
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/S%C3%A9bastien_Pocognoli"],
+    "tags": ["rode-duivels", "standard"]
+  },
+  {
+    "answer": "Laurent Ciman",
+    "aliases": ["Ciman"],
+    "clubs": [
+      "Charleroi (2004–2008)",
+      "Club Brugge (2008–2010)",
+      "KV Kortrijk (2009–2010, huur)",
+      "Standard (2010–2015)",
+      "Montreal Impact (2015–2017)",
+      "Los Angeles FC (2018)",
+      "Dijon (2018)",
+      "Toronto FC (2019–2020)"
+    ],
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Laurent_Ciman"],
+    "tags": ["rode-duivels", "standard", "club-brugge"]
+  },
+  {
+    "answer": "Yaya Touré",
+    "aliases": ["Toure", "Yaya Toure"],
+    "clubs": [
+      "KSK Beveren (2001–2003)",
+      "Metalurh Donetsk (2003–2005)",
+      "Olympiacos (2005–2006)",
+      "AS Monaco (2006–2007)",
+      "FC Barcelona (2007–2010)",
+      "Manchester City (2010–2018)",
+      "Olympiacos (2018)",
+      "Qingdao Huanghai (2019)"
+    ],
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Yaya_Tour%C3%A9"],
+    "tags": []
+  },
+  {
+    "answer": "Victor Wanyama",
+    "aliases": ["Wanyama"],
+    "clubs": [
+      "Germinal Beerschot (2008–2011)",
+      "Celtic (2011–2013)",
+      "Southampton (2013–2016)",
+      "Tottenham Hotspur (2016–2020)",
+      "CF Montréal (2020–2024)",
+      "Dunfermline Athletic (2025)"
+    ],
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Victor_Wanyama"],
+    "tags": []
+  },
+  {
+    "answer": "Wilfred Ndidi",
+    "aliases": ["Ndidi"],
+    "clubs": [
+      "KRC Genk (2015–2017)",
+      "Leicester City (2017–2025)",
+      "Beşiktaş (2025–)"
+    ],
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Wilfred_Ndidi"],
+    "tags": []
+  },
+  {
+    "answer": "Guillaume Gillet",
+    "aliases": ["Gillet"],
+    "clubs": [
+      "Visé (2004–2005)",
+      "Eupen (2005–2006)",
+      "KAA Gent (2006–2008)",
+      "Anderlecht (2008–2015)",
+      "Bastia (2014–2015, huur)",
+      "Nantes (2015–2017)",
+      "Olympiacos (2017–2018)",
+      "Lens (2018–2020)",
+      "Charleroi (2020–2022)",
+      "Waasland-Beveren (2022)"
+    ],
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Guillaume_Gillet"],
+    "tags": ["rode-duivels", "anderlecht"]
+  },
+  {
+    "answer": "Anthony Vanden Borre",
+    "aliases": ["Vanden Borre", "Vandenborre"],
+    "clubs": [
+      "Anderlecht (2003–2007)",
+      "Fiorentina (2007–2008)",
+      "Genoa (2008–2010)",
+      "Portsmouth (2009–2010, huur)",
+      "KRC Genk (2010–2012)",
+      "Anderlecht (2013–2017)",
+      "Montpellier (2016–2017, huur)",
+      "TP Mazembe (2017)"
+    ],
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Anthony_Vanden_Borre"],
+    "tags": ["rode-duivels", "anderlecht"]
+  },
+  {
+    "answer": "Emmanuel Eboué",
+    "aliases": ["Eboué", "Eboue", "Emmanuel Eboue"],
+    "clubs": [
+      "ASEC Mimosas (2001–2002)",
+      "KSK Beveren (2002–2004)",
+      "Arsenal (2004–2011)",
+      "Galatasaray (2011–2015)",
+      "Sunderland (2016)"
+    ],
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Emmanuel_Ebou%C3%A9"],
+    "tags": []
+  },
+  {
+    "answer": "Jelle Van Damme",
+    "aliases": ["Van Damme", "Vandamme"],
+    "clubs": [
+      "Lokeren (1998)",
+      "Germinal Beerschot (2001–2002)",
+      "Ajax (2002–2004)",
+      "Southampton (2004–2006)",
+      "Werder Bremen (2005–2006, huur)",
+      "Anderlecht (2006–2010)",
+      "Wolverhampton Wanderers (2010–2011)",
+      "Standard (2011–2016)",
+      "LA Galaxy (2016–2017)",
+      "Royal Antwerp (2017–2019)",
+      "Lokeren (2019–2020)"
+    ],
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Jelle_Van_Damme"],
+    "tags": ["rode-duivels", "anderlecht", "standard"]
+  },
+  {
+    "answer": "Nicolas Lombaerts",
+    "aliases": ["Lombaerts"],
+    "clubs": [
+      "KAA Gent (2004–2007)",
+      "Zenit Sint-Petersburg (2007–2017)",
+      "KV Oostende (2017–2020)"
+    ],
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Nicolas_Lombaerts"],
+    "tags": ["rode-duivels"]
+  },
+  {
+    "answer": "Aruna Dindane",
+    "aliases": ["Dindane"],
+    "clubs": [
+      "ASEC Mimosas (1998–2000)",
+      "Anderlecht (2000–2005)",
+      "Lens (2005–2010)",
+      "Portsmouth (2009–2010, huur)",
+      "Lekhwiya (2010–2012)",
+      "Al-Gharafa (2012)",
+      "Al-Sailiya (2012–2013)",
+      "Crystal Palace (2013)"
+    ],
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Aruna_Dindane"],
+    "tags": ["anderlecht"]
+  },
+  {
+    "answer": "Branko Strupar",
+    "aliases": ["Strupar"],
+    "clubs": [
+      "Špansko (1989–1994)",
+      "KRC Genk (1994–1999)",
+      "Derby County (1999–2003)",
+      "Dinamo Zagreb (2003–2004)"
+    ],
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Branko_Strupar"],
+    "tags": ["rode-duivels"]
+  },
+  {
+    "answer": "Vadis Odjidja-Ofoe",
+    "aliases": ["Odjidja", "Odjidja-Ofoe", "Vadis Odjidja"],
+    "clubs": [
+      "Anderlecht (2007–2008)",
+      "Hamburger SV (2008–2009)",
+      "Club Brugge (2009–2014)",
+      "Norwich City (2014–2016)",
+      "Rotherham United (2015–2016, huur)",
+      "Legia Warschau (2016–2017)",
+      "Olympiacos (2017–2018)",
+      "KAA Gent (2018–2023)",
+      "Hajduk Split (2023–2024)",
+      "Eendracht Aalst Lede (2025–2026)"
+    ],
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Vadis_Odjidja-Ofoe"],
+    "tags": ["anderlecht", "club-brugge"]
+  },
+  {
+    "answer": "Mohamed Tchité",
+    "aliases": ["Tchité", "Tchite", "Mémé Tchité", "Meme Tchite", "Mohamed Tchite"],
+    "clubs": [
+      "Standard (2003–2006)",
+      "Anderlecht (2006–2007)",
+      "Racing Santander (2007–2010)",
+      "Standard (2010–2012)",
+      "Club Brugge (2012–2014)",
+      "Petrolul Ploiești (2015)",
+      "Sint-Truiden (2015–2016)",
+      "White Star Bruxelles (2016–2017)"
+    ],
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Mohamed_Tchit%C3%A9"],
+    "tags": ["standard", "anderlecht", "club-brugge"]
+  },
+  {
+    "answer": "Mbaye Leye",
+    "aliases": ["Leye"],
+    "clubs": [
+      "Amiens (2006–2007)",
+      "Zulte Waregem (2007–2008)",
+      "KAA Gent (2009–2010)",
+      "Standard (2010–2012)",
+      "Zulte Waregem (2012–2014)",
+      "Lokeren (2014–2015)",
+      "Zulte Waregem (2015–2017)",
+      "Eupen (2017–2018)",
+      "Mouscron (2018–2019)"
+    ],
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Mbaye_Leye"],
+    "tags": ["standard"]
   }
 ]

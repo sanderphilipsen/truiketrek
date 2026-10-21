@@ -70,6 +70,9 @@ public static class Avatars
         new("scifo", "Enzo Scifo", 1, HairStyle.Curly, 0, FacialHair.None, 0, 2, 10),
         new("ceulemans", "Jan Ceulemans", 1, HairStyle.Long, 2, FacialHair.Moustache, 0, 2, 11),
         new("preudhomme", "Michel Preud'homme", 1, HairStyle.Short, 2, FacialHair.Moustache, 4, 3, 1),
+        new("gerets", "Eric Gerets", 1, HairStyle.Curly, 1, FacialHair.Beard, 0, 2, 2),
+        new("vanderelst", "Franky Van der Elst", 1, HairStyle.Short, 2, FacialHair.None, 12, 3, 6, ShirtPattern.Stripes),
+        new("vanhimst", "Paul Van Himst", 0, HairStyle.Short, 5, FacialHair.None, 14, 2, 10),
 
         // Wereldsterren
         new("messi", "Lionel Messi", 1, HairStyle.Short, 2, FacialHair.Beard, 5, 2, 10, ShirtPattern.Stripes),
@@ -85,6 +88,11 @@ public static class Avatars
         new("cruijff", "Johan Cruijff", 1, HairStyle.Long, 2, FacialHair.None, 10, 3, 14),
         new("pirlo", "Andrea Pirlo", 1, HairStyle.Long, 2, FacialHair.Beard, 12, 2, 21),
         new("davids", "Edgar Davids", 4, HairStyle.Dreads, 0, FacialHair.None, 10, 3, 8, Glasses: Glasses.Sport),
+        new("best", "George Best", 0, HairStyle.Long, 1, FacialHair.None, 0, 2, 7),
+        new("valderrama", "Carlos Valderrama", 2, HairStyle.BigAfro, 5, FacialHair.Moustache, 1, 8, 10),
+        new("gullit", "Ruud Gullit", 3, HairStyle.Dreads, 0, FacialHair.None, 10, 3, 10),
+        new("rensenbrink", "Rob Rensenbrink", 1, HairStyle.Long, 2, FacialHair.Moustache, 14, 2, 11),
+        new("rummenigge", "Karl-Heinz Rummenigge", 0, HairStyle.Short, 3, FacialHair.None, 0, 2, 11),
     ];
 
     public static readonly AvatarDef Default = new("default", "Voetballer", 2, HairStyle.Short, 2, FacialHair.None, 13, 2, 0);

@@ -8,7 +8,7 @@
       "KRC Genk"
     ],
     "correct": 0,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
@@ -25,7 +25,7 @@
       "KV Mechelen"
     ],
     "correct": 1,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions",
@@ -63,7 +63,7 @@
       "Simon Mignolet"
     ],
     "correct": 1,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://nl.wikipedia.org/wiki/Gouden_Schoen_(België)"
@@ -83,7 +83,7 @@
       "KRC Genk"
     ],
     "correct": 2,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
@@ -156,7 +156,7 @@
       "Kevin De Bruyne"
     ],
     "correct": 2,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"
@@ -176,7 +176,7 @@
       "Fernandinho (eigen doelpunt)"
     ],
     "correct": 3,
-    "difficulty": 5,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"
@@ -196,7 +196,7 @@
       "Romelu Lukaku"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage",
@@ -237,7 +237,7 @@
       "Zwitserland"
     ],
     "correct": 2,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_national_football_team",
@@ -278,7 +278,7 @@
       "Paraguay"
     ],
     "correct": 1,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_knockout_stage"
@@ -417,7 +417,7 @@
       "Vincent Kompany"
     ],
     "correct": 2,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"
@@ -456,7 +456,7 @@
       "KRC Genk"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://nl.wikipedia.org/wiki/Gouden_Schoen_(België)"
@@ -534,7 +534,7 @@
       "Spanje"
     ],
     "correct": 0,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup_knockout_stage",
@@ -557,7 +557,7 @@
       "Spanje"
     ],
     "correct": 2,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_1980_final"
@@ -578,7 +578,7 @@
       "Lazio"
     ],
     "correct": 0,
-    "difficulty": 5,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Axel_Witsel"
@@ -598,7 +598,7 @@
       "Matz Sels"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Yashin_Trophy"
@@ -618,7 +618,7 @@
       "Leicester City"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Charles_De_Ketelaere"
@@ -654,7 +654,7 @@
       "Beerschot"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://nl.wikipedia.org/wiki/Gouden_Schoen_(België)"
@@ -675,7 +675,7 @@
       "Wouter Vrancken"
     ],
     "correct": 1,
-    "difficulty": 5,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions",
@@ -693,7 +693,7 @@
       "Bayern München"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2005_UEFA_Champions_League_final"
@@ -729,7 +729,7 @@
       "André Schürrle"
     ],
     "correct": 1,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_final"
@@ -797,7 +797,7 @@
       "Carlo Ancelotti"
     ],
     "correct": 0,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2015–16_Leicester_City_F.C._season"
@@ -814,7 +814,7 @@
       "Liverpool"
     ],
     "correct": 2,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/The_Invincibles_(football)"
@@ -888,7 +888,7 @@
       "Edin Terzić"
     ],
     "correct": 0,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2023–24_Bayer_04_Leverkusen_season"
@@ -905,7 +905,7 @@
       "Manchester United"
     ],
     "correct": 1,
-    "difficulty": 5,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2015_UEFA_Champions_League_final"
@@ -942,7 +942,7 @@
       "Andrea Pirlo"
     ],
     "correct": 2,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2006_FIFA_World_Cup_final"
@@ -1013,7 +1013,7 @@
       "Maurizio Sarri"
     ],
     "correct": 1,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2022–23_SSC_Napoli_season"
@@ -1030,7 +1030,7 @@
       "AS Roma"
     ],
     "correct": 2,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2010_UEFA_Champions_League_final"
@@ -1050,7 +1050,7 @@
       "Finidi George"
     ],
     "correct": 0,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1995_UEFA_Champions_League_final"
@@ -1089,7 +1089,7 @@
       "Roberto De Zerbi"
     ],
     "correct": 1,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Arne_Slot"
@@ -1106,7 +1106,7 @@
       "Mohamed Salah"
     ],
     "correct": 2,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_UEFA_Champions_League_final"
@@ -1125,7 +1125,7 @@
       "Mohamed Salah"
     ],
     "correct": 1,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://www.si.com/soccer/ousmane-dembele-wins-2025-ballon-dor"
@@ -1142,7 +1142,7 @@
       "Antoine Griezmann"
     ],
     "correct": 2,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_Ballon_d%27Or"
@@ -1159,7 +1159,7 @@
       "Berti Vogts"
     ],
     "correct": 0,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2004_final"
@@ -1176,7 +1176,7 @@
       "Real Madrid"
     ],
     "correct": 0,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2004_UEFA_Champions_League_final"
@@ -1196,7 +1196,7 @@
       "Cristiano Ronaldo"
     ],
     "correct": 1,
-    "difficulty": 5,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2008_UEFA_Champions_League_final"
@@ -1215,7 +1215,7 @@
       "Sevilla"
     ],
     "correct": 0,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2004_UEFA_Cup_final"
@@ -1317,7 +1317,7 @@
       "Émile Mpenza"
     ],
     "correct": 1,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_Group_H",
@@ -1338,7 +1338,7 @@
       "Chris Waddle"
     ],
     "correct": 2,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://www.fifa.com/news/platt-s-perfect-moment-breaks-belgian-hearts-2923004",
@@ -1380,7 +1380,7 @@
       "Robert Waseige"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"
@@ -1615,7 +1615,7 @@
       "Eden Hazard"
     ],
     "correct": 0,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_qualification_%E2%80%93_UEFA_Group_A"
@@ -1698,7 +1698,7 @@
       "Roberto Martínez"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://sporza.be/nl/2026/07/21/rode-duivels-hebben-nieuwe-bondscoach-nederlander-mark-van-bommel-volgt-rudi-garcia-op-tot-en-met-ek-2028~1784658390861/",
@@ -1719,7 +1719,7 @@
       "KRC Genk"
     ],
     "correct": 0,
-    "difficulty": 1,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgian_Cup"
@@ -1770,7 +1770,7 @@
       "Bosuil"
     ],
     "correct": 1,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgian_Cup"
@@ -1821,7 +1821,7 @@
       "Aleksandar Mitrović"
     ],
     "correct": 2,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgian_Pro_League_top_scorers"
@@ -1875,7 +1875,7 @@
       "Ritchie De Laet"
     ],
     "correct": 0,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://nl.wikipedia.org/wiki/Gouden_Schoen_(Belgi%C3%AB)"
@@ -1895,7 +1895,7 @@
       "Hans Vanaken"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://nl.wikipedia.org/wiki/Gouden_Schoen_(Belgi%C3%AB)",
@@ -1917,7 +1917,7 @@
       "Anderlecht"
     ],
     "correct": 1,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions",
@@ -2012,7 +2012,7 @@
       "Kaká"
     ],
     "correct": 2,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_knockout_stage"
@@ -2051,7 +2051,7 @@
       "Thierry Henry"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Belgium_national_football_team_managers"
@@ -2112,7 +2112,7 @@
       "Real Madrid"
     ],
     "correct": 0,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals",
@@ -2154,7 +2154,7 @@
       "AC Milan"
     ],
     "correct": 1,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Italian_football_champions",
@@ -2172,7 +2172,7 @@
       "Villarreal"
     ],
     "correct": 1,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Spanish_football_champions",
@@ -2209,7 +2209,7 @@
       "Spanje"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://www.oneindia.com/international/video-dog-comes-out-of-nowhere-to-save-a-goal-in-a-football-match-in-argentina-2818973.html",
@@ -2229,7 +2229,7 @@
       "René Higuita"
     ],
     "correct": 3,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Ren%C3%A9_Higuita"
@@ -2248,7 +2248,7 @@
       "Het was een wedstrijd tussen jeugdploegen"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/AS_Adema"
@@ -2287,7 +2287,8 @@
     ],
     "correct": 0,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): obscure Engelse competitiematch uit 1976; afwijzen of enkel in een special.",
     "sources": [
       "https://en.wikipedia.org/wiki/Chris_Nicholl"
     ],
@@ -2369,7 +2370,7 @@
       "Arsenal"
     ],
     "correct": 0,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Kasper_Schmeichel",
@@ -2409,7 +2410,7 @@
       "Wesley Sonck"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Mbo_Mpenza",
@@ -2430,7 +2431,7 @@
       "Thomas Müller"
     ],
     "correct": 2,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Phantom_goal",
@@ -2534,7 +2535,7 @@
       "Eden Hazard"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Marouane_Fellaini"
@@ -2593,7 +2594,8 @@
     ],
     "correct": 0,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): obscure uitslag uit 1963; afwijzen.",
     "sources": [
       "https://en.wikipedia.org/wiki/1963%E2%80%9364_in_English_football",
       "https://www.goal.com/en/news/boxing-day-1963-remembering-english-football-s-christmas-goal-fest/blt7bd455c37f64df66"
@@ -2612,7 +2614,7 @@
       "Hugo Lloris"
     ],
     "correct": 3,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Hugo_Lloris",
@@ -2633,7 +2635,7 @@
       "Gérson"
     ],
     "correct": 2,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Jairzinho",
@@ -2655,7 +2657,7 @@
       "Nicolás Castillo"
     ],
     "correct": 1,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Marcelo_Salas",
@@ -2696,7 +2698,7 @@
       "Paolo Guerrero"
     ],
     "correct": 3,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Paolo_Guerrero",
@@ -2754,7 +2756,7 @@
       "Toby Alderweireld"
     ],
     "correct": 2,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Virgil_van_Dijk",
@@ -2816,7 +2818,7 @@
       "Charleroi"
     ],
     "correct": 0,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Jean-Marc_Bosman",
@@ -2897,7 +2899,7 @@
       "Adrián"
     ],
     "correct": 2,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_UEFA_Champions_League_final",
@@ -2959,7 +2961,7 @@
       "Argentinië"
     ],
     "correct": 3,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1978_FIFA_World_Cup_final"
@@ -2978,7 +2980,7 @@
       "Thierry Henry"
     ],
     "correct": 2,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Just_Fontaine",
@@ -3140,7 +3142,8 @@
     ],
     "correct": 1,
     "difficulty": 5,
-    "status": "approved", "checkedAt": "2026-10-18",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): detail van de finale van 1978; enkel in een special (Anderlecht).", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/1978_European_Cup_Winners%27_Cup_final",
       "https://en.wikipedia.org/wiki/Gilbert_Van_Binst"
@@ -3159,7 +3162,7 @@
       "Georges Heylens"
     ],
     "correct": 2,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/1978_European_Cup_Winners%27_Cup_final",
@@ -3179,7 +3182,7 @@
       "Aston Villa"
     ],
     "correct": 0,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/1978_European_Super_Cup"
@@ -3198,7 +3201,7 @@
       "Tottenham Hotspur"
     ],
     "correct": 3,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/1984_UEFA_Cup_final"
@@ -3218,7 +3221,8 @@
     ],
     "correct": 1,
     "difficulty": 5,
-    "status": "approved", "checkedAt": "2026-10-18",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): weinig bekende buitenlandse periode van Vercauteren; enkel in een special.", "checkedAt": "2026-10-18",
     "sources": [
       "https://nl.wikipedia.org/wiki/Frank_Vercauteren"
     ],
@@ -3256,7 +3260,7 @@
       "Franky Vercauteren"
     ],
     "correct": 3,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe",
@@ -3376,7 +3380,7 @@
       "Een zebra"
     ],
     "correct": 2,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_official_mascots"
@@ -3433,7 +3437,7 @@
       "Japan en Thailand"
     ],
     "correct": 1,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/FIFA_World_Cup",
@@ -3454,7 +3458,8 @@
     ],
     "correct": 3,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): Tokio en Seoel zijn even plausibel en bijna niemand weet Yokohama; enkel in een special (WK).",
     "sources": [
       "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup"
     ],
@@ -3472,7 +3477,7 @@
       "64"
     ],
     "correct": 2,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/FIFA_World_Cup"
@@ -3510,7 +3515,7 @@
       "Aviva Stadium"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2028"
@@ -3631,7 +3636,7 @@
       "Celtic en Aberdeen"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Old_Firm"
@@ -3719,7 +3724,7 @@
       "1996"
     ],
     "correct": 2,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Laws_of_the_Game_(association_football)"
@@ -3738,7 +3743,7 @@
       "WK 2022"
     ],
     "correct": 2,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Video_assistant_referee"
@@ -3778,7 +3783,8 @@
     ],
     "correct": 1,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): historisch jaartal dat vrijwel niemand kent; afwijzen of enkel in een special.",
     "sources": [
       "https://en.wikipedia.org/wiki/Laws_of_the_Game_(association_football)"
     ],
@@ -3889,7 +3895,7 @@
       "Tivoli"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Standard_Li%C3%A8ge"
@@ -3909,7 +3915,7 @@
       "Berchem Sport"
     ],
     "correct": 2,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Royal_Antwerp_F.C."
@@ -3926,7 +3932,7 @@
       "Lommel SK"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/K.R.C._Genk",
@@ -3944,7 +3950,7 @@
       "KVC Westerlo"
     ],
     "correct": 3,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_football_stadiums_in_Belgium"
@@ -4000,7 +4006,7 @@
       "KAA Gent"
     ],
     "correct": 3,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/K.A.A._Gent"
@@ -4053,7 +4059,8 @@
     ],
     "correct": 1,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): stamnummers kent bijna niemand; afwijzen.",
     "sources": [
       "https://sporza.be/nl/2025/06/06/van-antwerp-tot-lierse-ontdek-de-eerste-30-stamnummers-in-het-belgische-voetbal~1749213584899/"
     ],
@@ -4090,7 +4097,8 @@
     ],
     "correct": 2,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): exacte reeks uit de jaren 1930; afwijzen.",
     "sources": [
       "https://en.wikipedia.org/wiki/Royale_Union_Saint-Gilloise"
     ],
@@ -4219,7 +4227,7 @@
       "Operatie Rood Karton"
     ],
     "correct": 1,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://www.vrt.be/vrtnws/nl/2026/09/10/zaak-propere-handen-33-verdachten-voor-ki/",
@@ -4242,7 +4250,8 @@
     ],
     "correct": 2,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): exact aantal huiszoekingen in Propere Handen; afwijzen of herschrijven naar de grote lijnen van de zaak.",
     "sources": [
       "https://nl.wikipedia.org/wiki/Operatie_Propere_Handen",
       "https://www.lachambre.be/doc/flwb/Pdf/55/1716/55K1716001.pdf",
@@ -4263,7 +4272,7 @@
       "Burgerlijke partij"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://nl.wikipedia.org/wiki/Operatie_Propere_Handen",
@@ -4285,7 +4294,7 @@
       "Voorwaardelijke invrijheidstelling"
     ],
     "correct": 2,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://www.vrt.be/vrtnws/nl/2022/12/01/tien-verdachten-in-voetbaldossier-propere-handne-kunnen-vervol/",
@@ -4307,7 +4316,7 @@
       "Grondwettelijk Hof"
     ],
     "correct": 1,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://www.voetbalnieuws.be/news/923014/eindelijk-proces-propere-handen-nog-33-verdachten-over",
@@ -4349,7 +4358,7 @@
       "Singapore"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Ye_Zheyun",
@@ -4408,7 +4417,8 @@
     ],
     "correct": 2,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): jeugddetail van Raiola; afwijzen.",
     "sources": [
       "https://en.wikipedia.org/wiki/Mino_Raiola"
     ],
@@ -4426,7 +4436,7 @@
       "Rafaela Pimenta"
     ],
     "correct": 0,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Jorge_Mendes"
@@ -4446,7 +4456,7 @@
       "Gestifute"
     ],
     "correct": 3,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Jorge_Mendes"
@@ -4484,7 +4494,7 @@
       "Rob Jansen"
     ],
     "correct": 0,
-    "difficulty": 5,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Rafaela_Pimenta"
@@ -4504,7 +4514,8 @@
     ],
     "correct": 2,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): naam van het hotel bij FIFAgate; afwijzen.",
     "sources": [
       "https://en.wikipedia.org/wiki/2015_FIFA_corruption_case"
     ],
@@ -4542,7 +4553,7 @@
       "Lennart Johansson"
     ],
     "correct": 0,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2015_FIFA_corruption_case",
@@ -4602,7 +4613,7 @@
       "Sepp Blatter"
     ],
     "correct": 3,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Sepp_Blatter",
@@ -4641,7 +4652,7 @@
       "Antwerpen"
     ],
     "correct": 2,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Stijn_Stijnen",
@@ -4683,7 +4694,7 @@
       "KRC Genk"
     ],
     "correct": 2,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Stijn_Stijnen",
@@ -4705,7 +4716,8 @@
     ],
     "correct": 3,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): exact aantal interlands van Stijnen; afwijzen.",
     "sources": [
       "https://en.wikipedia.org/wiki/Stijn_Stijnen",
       "https://nl.wikipedia.org/wiki/Stijn_Stijnen"
@@ -4726,7 +4738,8 @@
     ],
     "correct": 0,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): debuutmatch van Stijnen; afwijzen.",
     "sources": [
       "https://en.wikipedia.org/wiki/Stijn_Stijnen",
       "https://nl.wikipedia.org/wiki/Stijn_Stijnen"
@@ -4746,7 +4759,7 @@
       "KV Oostende"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Stijn_Stijnen",
@@ -4870,7 +4883,8 @@
     ],
     "correct": 2,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): debuutmatch van Deschacht; afwijzen.",
     "sources": [
       "https://nl.wikipedia.org/wiki/Olivier_Deschacht"
     ],
@@ -4930,7 +4944,7 @@
       "Fysieke trainer van de U19"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Olivier_Deschacht"
@@ -4950,7 +4964,7 @@
       "Italië"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1958_FIFA_World_Cup_final",
@@ -4972,7 +4986,7 @@
       "Chicago Sting"
     ],
     "correct": 2,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Pel%C3%A9"
@@ -5056,7 +5070,8 @@
     ],
     "correct": 0,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): tegenstander bij Pelé's 1000ste goal; enkel in een special (Pelé).",
     "sources": [
       "https://en.wikipedia.org/wiki/Pel%C3%A9"
     ],
@@ -5075,7 +5090,7 @@
       "Paul Breitner"
     ],
     "correct": 2,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/New_York_Cosmos_(1970%E2%80%931985)",
@@ -5266,7 +5281,8 @@
     ],
     "correct": 2,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): exact aantal verdachten in Propere Handen; afwijzen of herschrijven naar de grote lijnen van de zaak.",
     "sources": [
       "https://nl.wikipedia.org/wiki/Operatie_Propere_Handen",
       "https://www.vrt.be/vrtnws/nl/2026/09/10/zaak-propere-handen-33-verdachten-voor-ki/"
@@ -5287,7 +5303,8 @@
     ],
     "correct": 2,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): exact aantal verdachten in Propere Handen; afwijzen of herschrijven naar de grote lijnen van de zaak.",
     "sources": [
       "https://www.vrt.be/vrtnws/nl/2026/09/10/zaak-propere-handen-33-verdachten-voor-ki/",
       "https://www.voetbalnieuws.be/news/923014/eindelijk-proces-propere-handen-nog-33-verdachten-over"
@@ -5308,7 +5325,8 @@
     ],
     "correct": 2,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): exact aantal schikkingen in Propere Handen; afwijzen of herschrijven naar de grote lijnen van de zaak.",
     "sources": [
       "https://www.vrt.be/vrtnws/nl/2026/09/10/zaak-propere-handen-33-verdachten-voor-ki/",
       "https://www.voetbalkrant.com/nieuws/2026-10-16/waarom-ligt-het-dossier-propere-handen-nu-weer-stil-advocaat-mogi-bayat-is-de-reden"
@@ -5329,7 +5347,8 @@
     ],
     "correct": 3,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): exact bedrag van de schikkingen in Propere Handen; afwijzen of herschrijven naar de grote lijnen van de zaak.",
     "sources": [
       "https://www.vrt.be/vrtnws/nl/2026/09/10/zaak-propere-handen-33-verdachten-voor-ki/",
       "https://www.voetbalkrant.com/nieuws/2026-10-16/waarom-ligt-het-dossier-propere-handen-nu-weer-stil-advocaat-mogi-bayat-is-de-reden"
@@ -5371,7 +5390,8 @@
     ],
     "correct": 1,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): proceduredetail van Propere Handen; afwijzen of herschrijven naar de grote lijnen van de zaak.",
     "sources": [
       "https://www.vrt.be/vrtnws/nl/2026/09/10/zaak-propere-handen-33-verdachten-voor-ki/",
       "https://www.voetbalprimeur.be/nieuws/2134109/zaak-propere-handen-stilgelegd-na-wraking-van-voorzitter.html"
@@ -5414,7 +5434,8 @@
     ],
     "correct": 3,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): specifieke match in Propere Handen; afwijzen of herschrijven naar de grote lijnen van de zaak.",
     "sources": [
       "https://nl.wikipedia.org/wiki/KV_Mechelen",
       "https://en.wikipedia.org/wiki/2017%E2%80%932019_Belgian_football_fraud_scandal"
@@ -5436,7 +5457,8 @@
     ],
     "correct": 1,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): welke minister de wet invoerde, is juridische kennis; afwijzen of herschrijven naar de grote lijnen van de zaak.",
     "sources": [
       "https://www.vrt.be/vrtnws/nl/2018/11/20/veljkovic/"
     ],
@@ -5497,7 +5519,7 @@
       "Beşiktaş"
     ],
     "correct": 1,
-    "difficulty": 4,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Jean-Marie_Pfaff",
@@ -5584,7 +5606,8 @@
     ],
     "correct": 2,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): exact aantal interlands van Pfaff; afwijzen.",
     "sources": [
       "https://en.wikipedia.org/wiki/Jean-Marie_Pfaff"
     ],
@@ -5708,7 +5731,8 @@
     ],
     "correct": 2,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): rugnummer uit één seizoen; afwijzen (hoort eerder bij het type rugnummer).",
     "sources": [
       "https://en.wikipedia.org/wiki/Romelu_Lukaku",
       "https://en.wikipedia.org/wiki/2022%E2%80%9323_Inter_Milan_season"
@@ -5729,7 +5753,7 @@
       "Fiorentina"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Romelu_Lukaku"
@@ -5925,8 +5949,9 @@
       "612"
     ],
     "correct": 0,
-    "difficulty": 4,
-    "status": "approved",
+    "difficulty": 5,
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): exact doelpuntentotaal (672); herschrijven met een bekender cijfer.",
     "sources": [
       "https://en.wikipedia.org/wiki/Lionel_Messi"
     ],
@@ -6027,7 +6052,7 @@
       "Diego Maradona"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1990_FIFA_World_Cup_knockout_stage"
@@ -6297,8 +6322,9 @@
       "Drongen"
     ],
     "correct": 3,
-    "difficulty": 4,
-    "status": "approved",
+    "difficulty": 5,
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): Gentse deelgemeente van De Bruyne; afwijzen.",
     "sources": [
       "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
       "https://nl.wikipedia.org/wiki/Kevin_De_Bruyne"
@@ -6318,7 +6344,7 @@
       "Standard"
     ],
     "correct": 0,
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Kevin_De_Bruyne"
@@ -6361,7 +6387,8 @@
     ],
     "correct": 2,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): debuutmatch van De Bruyne; afwijzen.",
     "sources": [
       "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
       "https://nl.wikipedia.org/wiki/Kevin_De_Bruyne"
@@ -6535,7 +6562,7 @@
       "Door een conflict met de FIFA"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 1,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Ballon_d%27Or"
@@ -6614,7 +6641,7 @@
       "Marco van Basten"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Ballon_d%27Or"
@@ -6715,7 +6742,7 @@
       "Franck Sauzée"
     ],
     "correct": 0,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1993_UEFA_Champions_League_final"
@@ -6754,7 +6781,7 @@
       "5"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_1984",
@@ -6794,7 +6821,7 @@
       "Christophe Galtier"
     ],
     "correct": 1,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2025_UEFA_Champions_League_final"
@@ -6853,7 +6880,7 @@
       "João Mário"
     ],
     "correct": 1,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2016_knockout_stage",
@@ -6930,7 +6957,7 @@
       "10"
     ],
     "correct": 2,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Eus%C3%A9bio",
@@ -7074,7 +7101,7 @@
       "30"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/S%C3%BCper_Lig"
@@ -7252,7 +7279,7 @@
       "Stuttgart"
     ],
     "correct": 2,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_1988_final"
@@ -7329,7 +7356,7 @@
       "Ajax – AZ"
     ],
     "correct": 0,
-    "difficulty": 1,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/De_Klassieker"
@@ -7469,7 +7496,7 @@
       "Brazilië"
     ],
     "correct": 0,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1982_FIFA_World_Cup_final"
@@ -7569,7 +7596,7 @@
       "Leander Dendoncker"
     ],
     "correct": 1,
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Alexis_Saelemaekers",
@@ -7612,7 +7639,8 @@
     ],
     "correct": 2,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): doelpuntenmaker in de EK-halve finale van 1972; enkel in een special.",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_1972"
     ],
@@ -7631,7 +7659,7 @@
       "Horst Hrubesch"
     ],
     "correct": 3,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_1980_final"
@@ -7751,7 +7779,7 @@
       "Vier"
     ],
     "correct": 2,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Vincent_Kompany"
@@ -7771,7 +7799,7 @@
       "24"
     ],
     "correct": 2,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "rejected",
     "sources": [
       "https://en.wikipedia.org/wiki/Kevin_De_Bruyne"
@@ -7832,7 +7860,7 @@
       "Johan Cruijff"
     ],
     "correct": 0,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1988_European_Cup_Winners%27_Cup_final"
@@ -7911,7 +7939,8 @@
     ],
     "correct": 1,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): allereerste Gouden Schoen van 1954; enkel in een special (Gouden Schoen).",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
     ],
@@ -7950,7 +7979,7 @@
       "Koning Boudewijnstadion"
     ],
     "correct": 3,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_football_stadiums_in_Belgium"
@@ -7970,7 +7999,8 @@
     ],
     "correct": 2,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): stamnummers kent bijna niemand; afwijzen.",
     "sources": [
       "https://sporza.be/nl/2025/06/06/van-antwerp-tot-lierse-ontdek-de-eerste-30-stamnummers-in-het-belgische-voetbal~1749213584899/"
     ],
@@ -7989,7 +8019,8 @@
     ],
     "correct": 1,
     "difficulty": 5,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): stamnummers kent bijna niemand; afwijzen.",
     "sources": [
       "https://sporza.be/nl/2025/06/06/van-antwerp-tot-lierse-ontdek-de-eerste-30-stamnummers-in-het-belgische-voetbal~1749213584899/"
     ],
@@ -8212,7 +8243,7 @@
       "Fernando Morientes"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2002_UEFA_Champions_League_final"
@@ -8272,7 +8303,7 @@
       "Getafe"
     ],
     "correct": 2,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Michy_Batshuayi"
@@ -8303,5 +8334,566 @@
       "rode-duivels"
     ],
     "checkedAt": "2026-10-19"
+  },
+  {
+    "question": "Welk land won EK 1992 nadat het als vervanger voor Joegoslavië was uitgenodigd?",
+    "options": [
+      "Zweden",
+      "Denemarken",
+      "Nederland",
+      "Duitsland"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_1992"],
+    "tags": []
+  },
+  {
+    "question": "Wie miste in 1994 de laatste strafschop in de WK-finale tussen Brazilië en Italië?",
+    "options": [
+      "Franco Baresi",
+      "Daniele Massaro",
+      "Paolo Maldini",
+      "Roberto Baggio"
+    ],
+    "correct": 3,
+    "difficulty": 2,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/1994_FIFA_World_Cup_final"],
+    "tags": ["wk", "italie"]
+  },
+  {
+    "question": "Welke club won in 1967 als eerste Britse club de Europacup I?",
+    "options": [
+      "Manchester United",
+      "Rangers",
+      "Celtic",
+      "Liverpool"
+    ],
+    "correct": 2,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/1967_European_Cup_final"],
+    "tags": ["champions-league"]
+  },
+  {
+    "question": "Wie scoorde in 1999 in blessuretijd de winnende goal voor Manchester United in de Champions League-finale tegen Bayern?",
+    "options": [
+      "Ole Gunnar Solskjær",
+      "Teddy Sheringham",
+      "Dwight Yorke",
+      "Andy Cole"
+    ],
+    "correct": 0,
+    "difficulty": 2,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/1999_UEFA_Champions_League_final"],
+    "tags": ["champions-league"]
+  },
+  {
+    "question": "Tegen welke club scoorde Agüero in 2012 diep in blessuretijd de goal die Manchester City de titel bezorgde?",
+    "options": [
+      "Sunderland",
+      "Newcastle United",
+      "Queens Park Rangers",
+      "Wigan Athletic"
+    ],
+    "correct": 2,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/2011%E2%80%9312_Manchester_City_F.C._season"],
+    "tags": []
+  },
+  {
+    "question": "Van welke club kwam Zinédine Zidane in 2001 naar Real Madrid?",
+    "options": [
+      "Bordeaux",
+      "Juventus",
+      "AC Milan",
+      "Cannes"
+    ],
+    "correct": 1,
+    "difficulty": 2,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Zinedine_Zidane"],
+    "tags": ["frankrijk"]
+  },
+  {
+    "question": "Welke Rode Duivel scoorde in 2019 in de Champions League-finale de 2-0 voor Liverpool tegen Tottenham?",
+    "options": [
+      "Mohamed Salah",
+      "Sadio Mané",
+      "Roberto Firmino",
+      "Divock Origi"
+    ],
+    "correct": 3,
+    "difficulty": 2,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/2019_UEFA_Champions_League_final", "https://en.wikipedia.org/wiki/Divock_Origi"],
+    "tags": ["champions-league", "rode-duivels", "belgie"]
+  },
+  {
+    "question": "Hoeveel Premier League-goals scoorde Erling Haaland in zijn debuutseizoen 2022-23 bij Manchester City?",
+    "options": [
+      "28",
+      "32",
+      "36",
+      "41"
+    ],
+    "correct": 2,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Erling_Haaland"],
+    "tags": []
+  },
+  {
+    "question": "Wie staat na Cristiano Ronaldo tweede in de lijst met topschutters aller tijden in de Champions League?",
+    "options": [
+      "Robert Lewandowski",
+      "Lionel Messi",
+      "Karim Benzema",
+      "Raúl"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/List_of_UEFA_Champions_League_top_scorers"],
+    "tags": ["champions-league", "messi"]
+  },
+  {
+    "question": "Welke club won in 2018 de Beker van België in de finale tegen Genk?",
+    "options": [
+      "Club Brugge",
+      "Standard Luik",
+      "KV Oostende",
+      "Anderlecht"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Belgian_Cup"],
+    "tags": ["beker-van-belgie", "standard", "belgie"]
+  },
+  {
+    "question": "Wie was bondscoach van België op het WK 1998 in Frankrijk?",
+    "options": [
+      "Robert Waseige",
+      "Georges Leekens",
+      "Paul Van Himst",
+      "Aimé Anthuenis"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/List_of_Belgium_national_football_team_managers"],
+    "tags": ["rode-duivels", "wk", "belgie"]
+  },
+  {
+    "question": "Welk land verliet in 1920 in Antwerpen tijdens de olympische finale tegen België het veld?",
+    "options": [
+      "Spanje",
+      "Nederland",
+      "Tsjecho-Slowakije",
+      "Zweden"
+    ],
+    "correct": 2,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Football_at_the_1920_Summer_Olympics"],
+    "tags": ["rode-duivels", "belgie"]
+  },
+  {
+    "question": "Welke club speelt zijn thuiswedstrijden op Stayen?",
+    "options": [
+      "Sint-Truiden",
+      "KV Mechelen",
+      "KV Kortrijk",
+      "Cercle Brugge"
+    ],
+    "correct": 0,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/List_of_football_stadiums_in_Belgium", "https://en.wikipedia.org/wiki/Sint-Truidense_V.V."],
+    "tags": ["belgie"]
+  },
+  {
+    "question": "Welke club speelt zijn thuiswedstrijden in het Guldensporenstadion?",
+    "options": [
+      "KV Oostende",
+      "Zulte Waregem",
+      "Sporting Lokeren",
+      "KV Kortrijk"
+    ],
+    "correct": 3,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/List_of_football_stadiums_in_Belgium", "https://en.wikipedia.org/wiki/K.V._Kortrijk"],
+    "tags": ["belgie"]
+  },
+  {
+    "question": "Welke club speelt zijn thuiswedstrijden in het Regenboogstadion?",
+    "options": [
+      "Zulte Waregem",
+      "KV Kortrijk",
+      "Cercle Brugge",
+      "OH Leuven"
+    ],
+    "correct": 0,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/List_of_football_stadiums_in_Belgium", "https://en.wikipedia.org/wiki/S.V._Zulte_Waregem"],
+    "tags": ["belgie"]
+  },
+  {
+    "question": "Welke club speelt zijn thuiswedstrijden op Den Dreef in Heverlee?",
+    "options": [
+      "Union SG",
+      "Beerschot",
+      "OH Leuven",
+      "KV Mechelen"
+    ],
+    "correct": 2,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/List_of_football_stadiums_in_Belgium", "https://en.wikipedia.org/wiki/Oud-Heverlee_Leuven"],
+    "tags": ["belgie"]
+  },
+  {
+    "question": "Welke Duitse trainer won in 2013 met Bayern München de treble?",
+    "options": [
+      "Jupp Heynckes",
+      "Pep Guardiola",
+      "Ottmar Hitzfeld",
+      "Louis van Gaal"
+    ],
+    "correct": 0,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/2012%E2%80%9313_FC_Bayern_Munich_season", "https://en.wikipedia.org/wiki/Jupp_Heynckes"],
+    "tags": ["champions-league", "duitsland"]
+  },
+  {
+    "question": "Welke Colombiaan werd topschutter van het WK 2014 in Brazilië?",
+    "options": [
+      "Radamel Falcao",
+      "Juan Cuadrado",
+      "Carlos Bacca",
+      "James Rodríguez"
+    ],
+    "correct": 3,
+    "difficulty": 2,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/2014_FIFA_World_Cup", "https://en.wikipedia.org/wiki/James_Rodr%C3%ADguez"],
+    "tags": ["wk"]
+  },
+  {
+    "question": "Welke club werd in 2001 Italiaans kampioen met Francesco Totti en Gabriel Batistuta?",
+    "options": [
+      "Lazio",
+      "AS Roma",
+      "Parma",
+      "Juventus"
+    ],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/2000%E2%80%9301_Serie_A", "https://en.wikipedia.org/wiki/AS_Roma"],
+    "tags": ["italie"]
+  },
+  {
+    "question": "Welke Nederlander scoorde in 1992 in de verlenging de winnende vrije trap voor Barcelona in de Europacup I-finale?",
+    "options": [
+      "Michael Laudrup",
+      "Hristo Stoichkov",
+      "Ronald Koeman",
+      "Pep Guardiola"
+    ],
+    "correct": 2,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/1992_European_Cup_final", "https://en.wikipedia.org/wiki/Ronald_Koeman"],
+    "tags": ["champions-league", "oranje"]
+  },
+  {
+    "question": "Welke Rode Duivel won op het WK 2018 de Gouden Handschoen voor beste doelman?",
+    "options": [
+      "Thibaut Courtois",
+      "Hugo Lloris",
+      "Danijel Subašić",
+      "Jordan Pickford"
+    ],
+    "correct": 0,
+    "difficulty": 2,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup", "https://en.wikipedia.org/wiki/Thibaut_Courtois"],
+    "tags": ["rode-duivels", "wk", "belgie"]
+  },
+  {
+    "question": "Welke trainer werd in 2020 en 2021 met Club Brugge landskampioen?",
+    "options": [
+      "Alfred Schreuder",
+      "Carl Hoefkens",
+      "Ivan Leko",
+      "Philippe Clement"
+    ],
+    "correct": 3,
+    "difficulty": 2,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Philippe_Clement", "https://en.wikipedia.org/wiki/Club_Brugge_KV"],
+    "tags": ["club-brugge", "belgie"]
+  },
+  {
+    "question": "Welke Duitser scoorde in 1996 de eerste golden goal in een EK-finale?",
+    "options": [
+      "Jürgen Klinsmann",
+      "Oliver Bierhoff",
+      "Matthias Sammer",
+      "Andreas Möller"
+    ],
+    "correct": 1,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_1996"],
+    "tags": ["duitsland"]
+  },
+  {
+    "question": "Welke trainer leidde Standard in 2009 naar de tweede landstitel op rij?",
+    "options": [
+      "Michel Preud'homme",
+      "Dominique D'Onofrio",
+      "László Bölöni",
+      "Ariel Jacobs"
+    ],
+    "correct": 2,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/L%C3%A1szl%C3%B3_B%C3%B6l%C3%B6ni", "https://en.wikipedia.org/wiki/2008%E2%80%9309_Belgian_First_Division"],
+    "tags": ["standard", "belgie"]
+  },
+  {
+    "question": "Welke club won in 1999 de allerlaatste Europacup II?",
+    "options": [
+      "Mallorca",
+      "Lazio",
+      "Chelsea",
+      "Parma"
+    ],
+    "correct": 1,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/1999_UEFA_Cup_Winners%27_Cup_final"],
+    "tags": []
+  },
+  {
+    "question": "Welke club werd in 2021 kampioen van eerste klasse B en promoveerde naar de hoogste klasse?",
+    "options": [
+      "Beerschot",
+      "Westerlo",
+      "Union SG",
+      "OH Leuven"
+    ],
+    "correct": 2,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Challenger_Pro_League"],
+    "tags": ["belgie"]
+  },
+  {
+    "question": "Welke club werd in 2000 voor het eerst Spaans kampioen?",
+    "options": [
+      "Valencia",
+      "Celta Vigo",
+      "Real Zaragoza",
+      "Deportivo La Coruña"
+    ],
+    "correct": 3,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/1999%E2%80%932000_La_Liga", "https://en.wikipedia.org/wiki/Deportivo_de_La_Coru%C3%B1a"],
+    "tags": ["spanje"]
+  },
+  {
+    "question": "Welke club werd in 2009 voor het eerst Duits kampioen?",
+    "options": [
+      "Schalke 04",
+      "VfL Wolfsburg",
+      "Hertha BSC",
+      "Werder Bremen"
+    ],
+    "correct": 1,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/2008%E2%80%9309_Bundesliga", "https://en.wikipedia.org/wiki/VfL_Wolfsburg"],
+    "tags": ["duitsland"]
+  },
+  {
+    "question": "Welke club werd in 2012 voor het eerst Frans kampioen?",
+    "options": [
+      "Lille",
+      "Toulouse",
+      "Rennes",
+      "Montpellier"
+    ],
+    "correct": 3,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/2011%E2%80%9312_Ligue_1", "https://en.wikipedia.org/wiki/Montpellier_HSC"],
+    "tags": ["frankrijk"]
+  },
+  {
+    "question": "Welke Engelse trainer leidde FC Twente in 2010 naar de eerste landstitel?",
+    "options": [
+      "Steve McClaren",
+      "Roy Hodgson",
+      "Sam Allardyce",
+      "Glenn Hoddle"
+    ],
+    "correct": 0,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/FC_Twente", "https://en.wikipedia.org/wiki/Steve_McClaren"],
+    "tags": ["oranje"]
+  },
+  {
+    "question": "Welke club werd in 2018 kampioen van eerste klasse B en promoveerde naar de hoogste klasse?",
+    "options": [
+      "Cercle Brugge",
+      "OH Leuven",
+      "Lommel SK",
+      "Lierse"
+    ],
+    "correct": 0,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Challenger_Pro_League", "https://en.wikipedia.org/wiki/Cercle_Brugge_K.S.V."],
+    "tags": ["belgie"]
+  },
+  {
+    "question": "Welke club werd in 1997 voor de vierde en laatste keer Belgisch kampioen?",
+    "options": [
+      "KV Mechelen",
+      "Lierse",
+      "KSK Beveren",
+      "Waterschei"
+    ],
+    "correct": 1,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/List_of_Belgian_football_champions", "https://en.wikipedia.org/wiki/K._Lierse_S.K."],
+    "tags": ["belgie"]
+  },
+  {
+    "question": "Met welke trainer won Genk in 1999 zijn eerste landstitel?",
+    "options": [
+      "Georges Leekens",
+      "Hugo Broos",
+      "Aimé Anthuenis",
+      "Eric Gerets"
+    ],
+    "correct": 2,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/K.R.C._Genk"],
+    "tags": ["belgie"]
+  },
+  {
+    "question": "Welke club werd in 1896 de eerste Belgische landskampioen?",
+    "options": [
+      "Racing Club de Bruxelles",
+      "Union SG",
+      "Antwerp",
+      "FC Liégeois"
+    ],
+    "correct": 3,
+    "difficulty": 5,
+    "status": "review",
+    "reviewNote": "Buiten bereik (moeilijkheid-inschatter 2026-10-21): eerste kampioen van 1896 is bijna onweetbaar; enkel in een special.",
+    "sources": ["https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"],
+    "tags": ["belgie"]
+  },
+  {
+    "question": "Tegen welke Engelse club won Anderlecht in 1976 in Brussel met 4-2 de Europacup II-finale?",
+    "options": [
+      "West Ham United",
+      "Aston Villa",
+      "Leeds United",
+      "Tottenham Hotspur"
+    ],
+    "correct": 0,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/1976_European_Cup_Winners%27_Cup_final"],
+    "tags": ["anderlecht", "belgie"]
+  },
+  {
+    "question": "Wie scoorde in 1978 op Wembley het enige doelpunt in de Europacup I-finale tussen Liverpool en Club Brugge?",
+    "options": [
+      "Graeme Souness",
+      "Kenny Dalglish",
+      "Ray Kennedy",
+      "Terry McDermott"
+    ],
+    "correct": 1,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/1978_European_Cup_final"],
+    "tags": ["club-brugge", "champions-league", "belgie"]
+  },
+  {
+    "question": "Wie scoorde in 1982 de enige goal in de openingswedstrijd van het WK, Argentinië tegen België?",
+    "options": [
+      "Jan Ceulemans",
+      "Alex Czerniatynski",
+      "Erwin Vandenbergh",
+      "Frank Vercauteren"
+    ],
+    "correct": 2,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/1982_FIFA_World_Cup_Group_3"],
+    "tags": ["rode-duivels", "wk", "belgie"]
+  },
+  {
+    "question": "Welke Kempense club promoveerde in 2022 als kampioen van eerste klasse B naar de hoogste klasse?",
+    "options": [
+      "KV Mechelen",
+      "Beerschot",
+      "Seraing",
+      "Westerlo"
+    ],
+    "correct": 3,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Challenger_Pro_League"],
+    "tags": ["belgie"]
+  },
+  {
+    "question": "Welke Engelse club versloeg Club Brugge in de UEFA Cup-finale van 1976?",
+    "options": [
+      "Liverpool",
+      "Tottenham Hotspur",
+      "Ipswich Town",
+      "Leeds United"
+    ],
+    "correct": 0,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/1976_UEFA_Cup_final"],
+    "tags": ["club-brugge", "belgie"]
+  },
+  {
+    "question": "Welke Brusselse club promoveerde in 2023 als winnaar van de reguliere competitie in de Challenger Pro League naar de hoogste klasse?",
+    "options": [
+      "Union SG",
+      "RWD Molenbeek",
+      "Lommel SK",
+      "Patro Eisden"
+    ],
+    "correct": 1,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Challenger_Pro_League"],
+    "tags": ["belgie"]
   }
 ]
