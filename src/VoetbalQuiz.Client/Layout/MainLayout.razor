@@ -21,40 +21,20 @@
 
 @* Het admin-paneel gebruikt de volle breedte van een groot scherm. *@
 <div class="app @(IsAdminPage ? "wide" : IsProfilePage ? "medium" : "")">
-    <header class="topbar">
-        <a href="" class="brand"><img src="logo.svg" alt="" class="logo" /> Truitje Trek</a>
+    @* Geen topbar en geen tabbalk: Home is de enige hub. Andere pagina's krijgen een kleine weg terug,
+       behalve schermen met een eigen terugknop (een vraag, een wedstrijd, een academiepoging) en Home zelf. *@
+    <main class="content">
         <AuthorizeView>
             <Authorized>
-                @if (Auth.User?.IsAdmin == true)
+                @if (ShowHomeLink)
                 {
-                    <a href="admin" class="admin-link" title="Admin">⚙️</a>
+                    <a href="" class="home-back">‹ Home</a>
                 }
-                @* Enkel je avatar met een levelbolletje: de naam staat in de begroeting op Home, level en XP eronder.
-                   Het label van de link zegt beide voor schermlezers. *@
-                <a href="profiel" class="who" aria-label="Jouw profiel: @context.User.Identity?.Name, level @Auth.User?.Level">
-                    <Avatar Id="@Auth.User?.AvatarId" User="@Auth.User?.UserName" Size="34" Decorative="true" />
-                    <span class="lvl-dot" aria-hidden="true">@Auth.User?.Level</span>
-                </a>
             </Authorized>
         </AuthorizeView>
-    </header>
-
-    <main class="content">
         <UpdateBanner />
         @Body
     </main>
-
-    <AuthorizeView>
-        <Authorized>
-            <nav class="tabbar" aria-label="Hoofdmenu">
-                <NavLink href="" Match="NavLinkMatch.All" aria-current="@Current("")"><span aria-hidden="true">🏠</span>Home</NavLink>
-                <NavLink href="klassement" aria-current="@Current("klassement")"><span aria-hidden="true">🏆</span>Klassement</NavLink>
-                <NavLink href="badges" aria-current="@Current("badges")"><span aria-hidden="true">🎖️</span>Badges</NavLink>
-                <NavLink href="statistieken" aria-current="@Current("statistieken")"><span aria-hidden="true">📊</span>Stats</NavLink>
-                <NavLink href="profiel" aria-current="@Current("profiel")"><span aria-hidden="true">👤</span>Profiel</NavLink>
-            </nav>
-        </Authorized>
-    </AuthorizeView>
 </div>
 
 @code {
@@ -62,7 +42,7 @@
     protected override async Task OnInitializedAsync()
     {
         Auth.AuthenticationStateChanged += OnAuthChanged;
-        Nav.LocationChanged += OnLocationChanged; // aria-current van de tabbar bijwerken
+        Nav.LocationChanged += OnLocationChanged; // de link terug naar Home tonen of verbergen
         UpdateNotice.Changed += OnUpdateNoticeChanged;
         UpdateNotice.Start();
         await Auth.GetAuthenticationStateAsync();
@@ -79,13 +59,16 @@
 
     private void OnLocationChanged(object? sender, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs e) => StateHasChanged();
 
-    /// <summary>"page" voor het tabblad van de huidige pagina (ook op een subpagina, bv. profiel/...), anders niets.</summary>
-    private string? Current(string tab)
+    private string Path => Nav.ToBaseRelativePath(Nav.Uri).Split('?', '#')[0].ToLowerInvariant();
+
+    /// <summary>"‹ Home" bovenaan, behalve op Home (en de sheets erop) en op schermen met een eigen terugknop.</summary>
+    private bool ShowHomeLink => Path switch
     {
-        var path = Nav.ToBaseRelativePath(Nav.Uri).Split('?', '#')[0];
-        var match = tab == "" ? path == "" : path.Equals(tab, StringComparison.OrdinalIgnoreCase) || path.StartsWith(tab + "/", StringComparison.OrdinalIgnoreCase);
-        return match ? "page" : null;
-    }
+        "" or "klassement" or "login" => false,
+        var p when p.Contains("vraag/") || p.StartsWith("academie/poging") => false,
+        var p when p.StartsWith("online/") && p.Length > 7 && char.IsDigit(p[7]) => false, // een wedstrijd of wachtkamer
+        _ => true,
+    };
 
     public void Dispose()
     {

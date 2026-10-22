@@ -11,7 +11,6 @@
     --ok-text: #157a43;       /* groene tekst op wit (≥ 4,5:1); --ok blijft voor vlakken en randen */
     --fail: #d64545;
     --radius: 12px;
-    --tabbar-h: 66px;         /* hoogte van de navigatiebalk onderaan, zonder safe-area */
     --tap: 44px;              /* minimale hoogte en breedte van een tikvlak */
     --skeleton: #e3ebe6;      /* plaatshouder terwijl een blok laadt (ook de lege voortgangsbolletjes) */
     --on-field-muted: rgba(255, 255, 255, .78); /* rustige tekst op het groene veld (≥ 4,5:1) */
@@ -133,50 +132,14 @@ h1 { margin: .2rem 0 .4rem; font-size: 1.5rem; }
     flex-direction: column;
 }
 
-/* ---------- Topbar & tabbar ---------- */
-.topbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: calc(env(safe-area-inset-top) + 14px) 16px 10px;
-    color: #fff;
+/* ---------- Zonder topbar en tabbalk ---------- */
+/* Home is de enige hub: geen vaste balken, het veld vult het hele scherm. */
+.content { flex: 1; padding: calc(env(safe-area-inset-top) + 14px) 16px calc(env(safe-area-inset-bottom) + 28px); }
+/* De weg terug naar Home op pagina's zonder eigen terugknop. */
+.home-back {
+    display: inline-flex; align-items: center; min-height: var(--tap); margin: -8px 0 4px; padding-right: 12px;
+    color: var(--on-field-muted); text-decoration: none; font-weight: 600;
 }
-.brand { font-weight: 800; font-size: 1.2rem; text-decoration: none; letter-spacing: .3px; }
-.brand { display: flex; align-items: center; gap: 8px; flex: none; white-space: nowrap; }
-.brand .logo { width: 34px; height: 34px; }
-.brand, .who, .admin-link { min-height: var(--tap); }
-.admin-link { display: inline-flex; align-items: center; justify-content: center; min-width: var(--tap); }
-
-.content { flex: 1; padding: 6px 16px 96px; }
-
-.tabbar {
-    position: fixed;
-    left: 0; right: 0; bottom: 0;
-    display: flex;
-    justify-content: space-around;
-    padding: 8px 8px calc(env(safe-area-inset-bottom) + 8px);
-    background: rgba(6, 30, 18, .96);
-    border-top: 1px solid var(--line);
-    backdrop-filter: blur(8px);
-}
-.tabbar a, .tabbar button {
-    flex: 1;
-    max-width: 96px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    color: rgba(255, 255, 255, .7);
-    font-size: .75rem;
-    text-decoration: none;
-    background: none;
-    border: 0;
-    padding: 4px;
-    min-height: var(--tap);
-}
-.tabbar span { font-size: 1.3rem; }
-.tabbar a.active { color: var(--accent); }
 
 /* ---------- Basis ---------- */
 .card {
@@ -397,10 +360,10 @@ input:focus { border-color: var(--pitch-2); box-shadow: 0 0 0 3px rgba(15, 81, 5
 .result-name { font-size: 1.5rem; font-weight: 800; margin: 4px 0; }
 .result-points { font-weight: 700; color: var(--pitch-2); }
 .result-points.zero { color: var(--muted); }
-/* Daily: "Volgende vraag" staat onder het resultaat en blijft boven de navigatiebalk plakken als de kaart lang is. */
+/* Daily: "Volgende vraag" staat onder het resultaat en blijft onderaan in beeld plakken als de kaart lang is. */
 .btn.big.daily-next {
     position: sticky;
-    bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom) + 8px);
+    bottom: calc(env(safe-area-inset-bottom) + 8px);
     z-index: 5;
     margin: 0 0 12px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, .3);
@@ -453,7 +416,7 @@ input:focus { border-color: var(--pitch-2); box-shadow: 0 0 0 3px rgba(15, 81, 5
 
 /* ---------- Avatar, level & profiel ---------- */
 .avatar { flex: none; border-radius: 50%; background: #fff; }
-.who { position: relative; display: flex; align-items: center; justify-content: center; min-width: var(--tap); text-decoration: none; }
+.who { position: relative; flex: none; display: flex; align-items: center; justify-content: center; min-width: var(--tap); min-height: var(--tap); text-decoration: none; }
 /* Het level als bolletje op de hoek van de avatar; de donkere rand houdt het los van de avatar (≥ 3:1). */
 .lvl-dot {
     position: absolute; right: -3px; bottom: 0;
@@ -462,7 +425,6 @@ input:focus { border-color: var(--pitch-2); box-shadow: 0 0 0 3px rgba(15, 81, 5
     background: var(--accent); color: #1b1600; border: 2px solid var(--pitch);
     font-size: .68rem; font-weight: 800; line-height: 1;
 }
-.admin-link { margin-left: auto; margin-right: 12px; font-size: 1.3rem; text-decoration: none; }
 .lvl {
     display: inline-block;
     white-space: nowrap;
@@ -892,8 +854,24 @@ body:has(.sheet) { overflow: hidden; }
 .optional { font-weight: 400; color: var(--muted); }
 
 /* ---------- Home ---------- */
-/* De topbar toont enkel de avatar: de begroeting is één rustige regel met je naam (een naam van 20 tekens mag breken). */
-.home-hello { margin: 0 0 12px; font-size: .95rem; font-weight: 600; color: var(--on-field-muted); overflow-wrap: anywhere; }
+/* Bovenaan Home, in plaats van een topbar: de begroeting (een naam van 20 tekens mag breken) en je avatar. */
+.home-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.home-hello { margin: 0; font-size: 1.25rem; font-weight: 800; color: #fff; overflow-wrap: anywhere; }
+/* Onderaan Home, in plaats van een tabbalk: een rustige rij links naar de rest van de app. */
+.home-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 6px; margin-top: 20px; }
+.home-links a {
+    display: inline-flex; align-items: center; gap: 6px; min-height: var(--tap); padding: 0 12px; border-radius: 999px;
+    color: var(--on-field-muted); text-decoration: none; font-weight: 600; font-size: .9rem;
+}
+.home-links a:hover { background: rgba(255, 255, 255, .08); color: #fff; }
+
+/* Een pagina als sheet over Home (PageSheet): vaste minimumhoogte zodat ze niet verspringt tijdens het laden,
+   en onderdelen die voor het groene veld gemaakt zijn (wit op groen) krijgen hier donkere tekst op wit. */
+.page-sheet { min-height: min(72dvh, 600px); }
+.page-sheet .tabs { background: var(--surface-soft); }
+.page-sheet .tabs button { color: var(--text); }
+.page-sheet .tabs button.active { background: var(--pitch-2); color: #fff; }
+.page-sheet .month-nav { color: var(--text); margin-bottom: 0; }
 .home-card-head { display: flex; justify-content: space-between; align-items: flex-start; }
 .home-card-head h2, .card > h2 { margin: 0 0 8px; font-size: 1.15rem; }
 .home-daily { min-height: 260px; } /* zelfde hoogte tijdens het laden: niets springt */
@@ -1042,12 +1020,6 @@ body:has(.sheet) { overflow: hidden; }
 .mini-podium li.me .mp-name { font-weight: 800; }
 
 /* ---------- Academie (in de code: training) ---------- */
-/* Home: de academie als eenvoudige tegel onderaan. */
-/* Extra ruimte boven de tegel: anders plakt ze aan de kaart "Nieuw partijtje" van online spelen. */
-.training-tile { display: flex; align-items: center; gap: 12px; padding: 16px 18px; margin-top: 32px; text-decoration: none; color: inherit; min-height: var(--tap); }
-.training-tile-icon { font-size: 2rem; line-height: 1; }
-.training-tile-text { flex: 1; min-width: 0; font-size: 1.1rem; }
-.training-tile-go { font-size: 1.6rem; line-height: 1; color: var(--pitch-2); }
 .btn.training-day-play { flex: none; min-height: var(--tap); min-width: 76px; display: grid; place-items: center;
     background: var(--pitch-2); color: #fff; }
 
@@ -1425,11 +1397,6 @@ button.choice:active { transform: scale(.97); }
 .badge-meter { height: 10px; border-radius: 99px; background: rgba(0, 0, 0, .12); overflow: hidden; }
 .badge-meter span { display: block; height: 100%; background: var(--accent); border-radius: 99px; }
 
-/* Smalle gsm: iets compacter, maar de labels blijven minstens 12 px. */
-@media (max-width: 380px) {
-    .tabbar a { font-size: .75rem; padding: 4px 0; letter-spacing: -.01em; }
-    .tabbar span { font-size: 1.15rem; }
-}
 
 /* ---------- Logo op de aanmeldpagina ---------- */
 .auth-logo { text-align: center; color: #fff; margin: 12px 0 18px; }

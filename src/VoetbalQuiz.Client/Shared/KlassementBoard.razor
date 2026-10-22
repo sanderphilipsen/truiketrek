@@ -1,9 +1,5 @@
-@page "/klassement"
-@attribute [Authorize]
+@* Het dag- en maandklassement; getoond als sheet over Home (/klassement). *@
 @inject ApiClient Api
-
-<PageTitle>Klassement – Truitje Trek</PageTitle>
-<h1 class="sr-only">Klassement</h1>
 
 <div class="tabs">
     <button class="@(_monthly ? "" : "active")" aria-pressed="@(_monthly ? "false" : "true")" @onclick="() => ShowAsync(false)">Vandaag</button>
