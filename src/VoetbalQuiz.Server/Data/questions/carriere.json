@@ -2526,7 +2526,7 @@
       "Union SG (2020–2021)"
     ],
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/S%C3%A9bastien_Pocognoli"],
     "tags": ["rode-duivels", "standard"]
   },
@@ -2544,7 +2544,7 @@
       "Toronto FC (2019–2020)"
     ],
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Laurent_Ciman"],
     "tags": ["rode-duivels", "standard", "club-brugge"]
   },
@@ -2562,7 +2562,7 @@
       "Qingdao Huanghai (2019)"
     ],
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Yaya_Tour%C3%A9"],
     "tags": []
   },
@@ -2578,7 +2578,7 @@
       "Dunfermline Athletic (2025)"
     ],
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Victor_Wanyama"],
     "tags": []
   },
@@ -2591,7 +2591,7 @@
       "Beşiktaş (2025–)"
     ],
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Wilfred_Ndidi"],
     "tags": []
   },
@@ -2611,7 +2611,7 @@
       "Waasland-Beveren (2022)"
     ],
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Guillaume_Gillet"],
     "tags": ["rode-duivels", "anderlecht"]
   },
@@ -2629,7 +2629,7 @@
       "TP Mazembe (2017)"
     ],
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Anthony_Vanden_Borre"],
     "tags": ["rode-duivels", "anderlecht"]
   },
@@ -2644,7 +2644,7 @@
       "Sunderland (2016)"
     ],
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Emmanuel_Ebou%C3%A9"],
     "tags": []
   },
@@ -2652,7 +2652,6 @@
     "answer": "Jelle Van Damme",
     "aliases": ["Van Damme", "Vandamme"],
     "clubs": [
-      "Lokeren (1998)",
       "Germinal Beerschot (2001–2002)",
       "Ajax (2002–2004)",
       "Southampton (2004–2006)",
@@ -2665,7 +2664,7 @@
       "Lokeren (2019–2020)"
     ],
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Jelle_Van_Damme"],
     "tags": ["rode-duivels", "anderlecht", "standard"]
   },
@@ -2678,7 +2677,7 @@
       "KV Oostende (2017–2020)"
     ],
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Nicolas_Lombaerts"],
     "tags": ["rode-duivels"]
   },
@@ -2696,7 +2695,7 @@
       "Crystal Palace (2013)"
     ],
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Aruna_Dindane"],
     "tags": ["anderlecht"]
   },
@@ -2710,7 +2709,7 @@
       "Dinamo Zagreb (2003–2004)"
     ],
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Branko_Strupar"],
     "tags": ["rode-duivels"]
   },
@@ -2730,7 +2729,7 @@
       "Eendracht Aalst Lede (2025–2026)"
     ],
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Vadis_Odjidja-Ofoe"],
     "tags": ["anderlecht", "club-brugge"]
   },
@@ -2748,7 +2747,7 @@
       "White Star Bruxelles (2016–2017)"
     ],
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Mohamed_Tchit%C3%A9"],
     "tags": ["standard", "anderlecht", "club-brugge"]
   },
@@ -2757,7 +2756,7 @@
     "aliases": ["Leye"],
     "clubs": [
       "Amiens (2006–2007)",
-      "Zulte Waregem (2007–2008)",
+      "Zulte Waregem (2007–2009)",
       "KAA Gent (2009–2010)",
       "Standard (2010–2012)",
       "Zulte Waregem (2012–2014)",
@@ -2767,7 +2766,7 @@
       "Mouscron (2018–2019)"
     ],
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Mbaye_Leye"],
     "tags": ["standard"]
   },
