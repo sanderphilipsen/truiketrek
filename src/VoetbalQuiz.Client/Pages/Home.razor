@@ -73,7 +73,7 @@ else
         @* Startdag van een special: het kaartje "Nieuw vandaag" staat boven de daily. *@
         @SpecialCard(hero, isNew: true)
     }
-    @* Scorebord bovenaan: de daily als compacte tegel (doorklikken voor alles), daaronder drie kleine tegeltjes. *@
+    @* Scorebord bovenaan: de daily als compacte tegel (doorklikken voor alles), daaronder twee kleine tegeltjes. *@
     @DailyCard()
     @MiniTiles()
 }
@@ -112,8 +112,8 @@ else
     }
 </section>;
 
-    // Drie kleine tegeltjes onder de daily: je plaats vandaag (opent het klassement als sheet), je reeks
-    // (opent de statistieken) en de instellingen (de tab Account van je profiel). Elk tegeltje zegt zijn getal in het label.
+    // Twee kleine tegeltjes onder de daily: je plaats vandaag (opent het klassement als sheet) en je reeks
+    // (opent de statistieken). Elk tegeltje zegt zijn getal in het label.
     private RenderFragment MiniTiles() => @<div class="sb-minis">
     <a class="card sb-mini" href="klassement" aria-label="@RankLabel">
         <Icon Name="trophy" Class="sb-icon" />
@@ -124,10 +124,6 @@ else
         <Icon Name="flame" Class="sb-icon" />
         <span class="sb-digits" aria-hidden="true">@(Streak > 0 ? Streak.ToString() : "–")</span>
         <span class="sb-label" aria-hidden="true">@(Streak switch { 0 => "start je reeks", 1 => "dag op rij", _ => "dagen op rij" })</span>
-    </a>
-    <a class="card sb-mini" href="profiel?tab=account">
-        <Icon Name="sliders-horizontal" Class="sb-icon sb-icon-big" />
-        <span class="sb-label">Instellingen</span>
     </a>
 </div>;
 
@@ -196,6 +192,13 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
     <CreateTableForm UserName="@Auth.User?.UserName" />
 </section>
 
+@* De academie (oude dailies opnieuw spelen) als brede scorebordtegel. *@
+<a class="card sb-academy" href="academie">
+    <Icon Name="graduation-cap" Class="sb-icon" />
+    <b class="sb-title">Academie</b>
+    <span class="sb-go" aria-hidden="true">›</span>
+</a>
+
 @if (UpcomingSpecials.Count > 0)
 {
     @* De eerstvolgende drie specials als kaartjes in een veegrij; nog niets om op te tikken. *@
@@ -216,16 +219,26 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
     </section>
 }
 
-@* Zonder tabbalk: wat geen tegeltje heeft, staat als rustige rij links onderaan. *@
-<nav class="home-links" aria-label="Meer">
-    <a href="online"><Icon Name="broadcast" /> Online</a>
-    <a href="badges"><Icon Name="medal" /> Badges</a>
-    <a href="academie"><Icon Name="graduation-cap" /> Academie</a>
-    @if (Auth.User?.IsAdmin == true)
-    {
-        <a href="admin"><Icon Name="gear-six" /> Admin</a>
-    }
-</nav>
+@* Onderaan: je badges, de instellingen (tab Account van je profiel) en het admin-paneel voor admins, als lage tegeltjes. *@
+<a class="card sb-strip" href="badges" aria-label="@BadgesLabel">
+    <Icon Name="medal" Class="sb-icon" />
+    <span class="sb-label" aria-hidden="true">Badges</span>
+    <span class="sb-digits" aria-hidden="true">@(_badges is { } b ? $"{b.Earned}/{b.Total}" : "–")</span>
+    <span class="sb-go" aria-hidden="true">›</span>
+</a>
+<a class="card sb-strip" href="profiel?tab=account">
+    <Icon Name="sliders-horizontal" Class="sb-icon" />
+    <span class="sb-label">Instellingen</span>
+    <span class="sb-go" aria-hidden="true">›</span>
+</a>
+@if (Auth.User?.IsAdmin == true)
+{
+    <a class="card sb-strip" href="admin">
+        <Icon Name="gear-six" Class="sb-icon" />
+        <span class="sb-label">Admin</span>
+        <span class="sb-go" aria-hidden="true">›</span>
+    </a>
+}
 
 @if (Sheet is "klassement")
 {
@@ -256,6 +269,7 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
             LoadDailyAsync(),
             LoadSpecialsAsync(),
             LoadRankAsync(),
+            LoadBadgesAsync(),
             LoadIntroAsync(),
             RefreshUserAsync(),
             GoldenBall.EnsureLoadedAsync()); // nieuwe dag: misschien een nieuwe Gouden Bal
@@ -314,6 +328,23 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
         catch (Exception ex) when (ex is ApiException or HttpRequestException) { }
         StateHasChanged();
     }
+
+    // Verdiende en alle badges voor het tegeltje onderaan; ook een extraatje (zonder getal blijft het tegeltje gewoon klikbaar).
+    private (int Earned, int Total)? _badges;
+
+    private async Task LoadBadgesAsync()
+    {
+        if (Auth.User is not { } me) return;
+        try
+        {
+            var badges = (await Api.GetPlayerProfileAsync(me.UserName)).Badges;
+            _badges = (badges.Count(b => b.Earned), badges.Count);
+        }
+        catch (Exception ex) when (ex is ApiException or HttpRequestException) { _badges = null; }
+        StateHasChanged();
+    }
+
+    private string BadgesLabel => _badges is { } b ? $"Badges: {b.Earned} van {b.Total} verdiend" : "Badges";
 
     /// <summary>De plaats is een extraatje: lukt het niet, dan tonen we ze gewoon niet.</summary>
     private async Task LoadRankAsync()

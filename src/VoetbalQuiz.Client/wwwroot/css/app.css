@@ -858,13 +858,6 @@ body:has(.sheet) { overflow: hidden; }
 /* Bovenaan Home, in plaats van een topbar: de begroeting (een naam van 20 tekens mag breken) en je avatar. */
 .home-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
 .home-hello { margin: 0; font-size: 1.25rem; font-weight: 800; color: #fff; overflow-wrap: anywhere; }
-/* Onderaan Home, in plaats van een tabbalk: een rustige rij links naar de rest van de app. */
-.home-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 6px; margin-top: 20px; }
-.home-links a {
-    display: inline-flex; align-items: center; gap: 6px; min-height: var(--tap); padding: 0 12px; border-radius: 999px;
-    color: var(--on-field-muted); text-decoration: none; font-weight: 600; font-size: .9rem;
-}
-.home-links a:hover { background: rgba(255, 255, 255, .08); color: #fff; }
 
 /* Een pagina als sheet over Home (PageSheet): vaste minimumhoogte zodat ze niet verspringt tijdens het laden,
    en onderdelen die voor het groene veld gemaakt zijn (wit op groen) krijgen hier donkere tekst op wit. */
@@ -901,7 +894,7 @@ body:has(.sheet) { overflow: hidden; }
 }
 .is-home .sheet .btn:not(.primary) { background: #e8efe9; box-shadow: none; }
 
-/* Bovenaan: de daily als compacte tegel, daaronder drie kleine tegeltjes (klassement, reeks, instellingen). */
+/* Bovenaan: de daily als compacte tegel, daaronder twee kleine tegeltjes (klassement en reeks). */
 .is-home .home-daily { min-height: 0; padding: 0; margin-bottom: 10px; }
 .is-home .home-daily.home-loading { padding: 14px; }
 .card.home-daily > .sb-label { padding: 14px 14px 0; font-size: .72rem; }
@@ -915,7 +908,7 @@ body:has(.sheet) { overflow: hidden; }
     font-weight: 800; font-size: 1.5rem; line-height: 1.1; color: var(--sb-digit); white-space: nowrap;
 }
 .sb-go { color: var(--sb-digit); font-weight: 700; font-size: .92rem; }
-.sb-minis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-bottom: 16px; }
+.sb-minis { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 16px; }
 .sb-minis > .card { margin-bottom: 0; }
 .sb-mini {
     display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
@@ -924,11 +917,20 @@ body:has(.sheet) { overflow: hidden; }
 .sb-mini .sb-digits { font-size: 1.35rem; }
 .sb-mini .sb-label { letter-spacing: .04em; line-height: 1.2; }
 .sb-icon { font-size: 1.4rem; color: var(--sb-digit); }
-.sb-icon-big { font-size: 1.9rem; margin-bottom: 4px; } /* een tegeltje zonder getal: het icoon neemt die plaats in */
 /* Lijniconen (Shared/Icon.razor): even groot als de tekst, op de basislijn. */
 .icon { flex: none; vertical-align: -.15em; }
-.home-links .icon { font-size: 1.1rem; color: var(--sb-digit, var(--accent)); }
-.sb-link:hover, .sb-mini:hover { background: rgba(255, 255, 255, .04); }
+/* Onderaan Home: kleine, lage tegeltjes op één regel (badges, instellingen, admin). */
+.sb-strip { display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 8px 16px; margin: 0 0 10px; text-decoration: none; }
+.sb-strip .sb-label { flex: 1; font-size: .8rem; }
+.sb-strip .sb-digits { font-size: 1.15rem; }
+.sb-strip .sb-go { font-size: 1.3rem; line-height: 1; }
+.sb-strip:hover { background: rgba(255, 255, 255, .04); }
+.sb-link:hover, .sb-mini:hover, .sb-academy:hover { background: rgba(255, 255, 255, .04); }
+/* De academie: brede tegel met een groot icoon, onder "Nieuwe match". */
+.sb-academy { display: flex; align-items: center; gap: 14px; padding: 14px 16px; margin: 12px 0 0; text-decoration: none; }
+.sb-academy .sb-icon { font-size: 2.2rem; }
+.sb-academy .sb-title { flex: 1; min-width: 0; font-size: 1.15rem; }
+.sb-academy .sb-go { font-size: 1.6rem; line-height: 1; }
 
 .home-card-head { display: flex; justify-content: space-between; align-items: flex-start; }
 .home-card-head h2, .card > h2 { margin: 0 0 8px; font-size: 1.15rem; }
