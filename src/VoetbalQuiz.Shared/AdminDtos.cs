@@ -245,7 +245,7 @@ public enum BadgeTier { Brons, Zilver, Goud }
 public record BadgeState(string Id, string Icon, string Name, string Description, BadgeTier Tier, bool Earned, string? Progress);
 
 /// <summary>Month = top 3 van het maandklassement (Daily/Online bleven voor oude gegevens).</summary>
-public enum TrophyKind { Daily, Online, Special, Month }
+public enum TrophyKind { Daily, Special, Month }
 
 public record Trophy(TrophyKind Kind, string Season, int Place, int Points);
 

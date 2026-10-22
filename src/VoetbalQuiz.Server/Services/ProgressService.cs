@@ -277,7 +277,7 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
     // ---------- Seizoenen en bekers ----------
 
     /// <summary>
-    /// Elke afgelopen maand is een seizoen: de top 3 van het maandklassement (daily + specials + online) krijgt een beker.
+    /// Elke afgelopen maand is een seizoen: de top 3 van het maandklassement (daily + specials) krijgt een beker.
     /// Wie een special wint, krijgt ook een beker.
     /// </summary>
     public async Task<Dictionary<string, List<Trophy>>> TrophiesAsync()

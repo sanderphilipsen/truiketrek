@@ -11,7 +11,7 @@ else
         {
             <div class="trophy-item place-@t.Place">
                 <div class="trophy-icon">@(t.Place switch { 1 => "🏆", 2 => "🥈", _ => "🥉" })</div>
-                <b>@(t.Kind switch { TrophyKind.Month => "Maand", TrophyKind.Daily => "Daily", TrophyKind.Online => "Online", _ => "Special" })</b>
+                <b>@(t.Kind switch { TrophyKind.Month => "Maand", TrophyKind.Daily => "Daily", _ => "Special" })</b>
                 <small class="cap">@t.Season</small>
                 <small>@t.Points pnt</small>
             </div>

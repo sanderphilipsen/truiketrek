@@ -456,15 +456,51 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent); box-sha
 .month-nav .linkish { text-decoration: none; font-size: 1.6rem; padding: 0 12px; min-width: var(--tap); min-height: var(--tap); }
 .month-nav .linkish:disabled { opacity: .3; }
 
-/* Klassementen: één blok met dunne scheidingslijnen in plaats van losse kaartjes. */
-.board { list-style: none; padding: 0; margin: 0; display: grid; gap: 1px; background: var(--divider); border-radius: var(--radius); overflow: hidden; }
-.board li { display: flex; align-items: center; gap: 12px; background: var(--card); padding: 10px 14px; }
-/* Jouw rij: een gele tint over de (dekkende) tegelkleur, zodat het veld er niet door schijnt. */
-.board li.me { background: linear-gradient(rgba(250, 199, 117, .1), rgba(250, 199, 117, .1)), var(--card); box-shadow: inset 4px 0 0 var(--sb-digit); }
-.board .rank { width: 28px; text-align: center; font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; }
+/* Klassementen: één blok met dunne scheidingslijnen, als de stand op tv. Geen overflow: hidden, anders kan jouw rij niet
+   in beeld blijven plakken; de hoeken komen van de eerste en laatste rij. */
+.board { list-style: none; padding: 0; margin: 0; display: grid; gap: 1px; background: var(--divider); border-radius: var(--radius); }
+.board li { display: flex; align-items: center; gap: 12px; background: var(--card); padding: 10px 14px 10px 10px; border-left: 4px solid transparent; }
+.board li:first-child { border-top-left-radius: calc(var(--radius) - 1px); border-top-right-radius: calc(var(--radius) - 1px); }
+.board li:last-child { border-bottom-left-radius: calc(var(--radius) - 1px); border-bottom-right-radius: calc(var(--radius) - 1px); }
+/* Zones: groen voor de prijzen (beker), rood voor de degradatiezone (enkel een prikkel). */
+.board li.zone-prize { border-left-color: var(--ok); }
+.board li.zone-drop { border-left-color: var(--fail); }
+.board li.zone-drop .rank { color: var(--fail-text); }
+.board .rank i { font-style: normal; font-size: .55rem; margin-left: 1px; vertical-align: 2px; }
+/* Jouw rij: duidelijke gele rand en een "jij"-label, en ze blijft boven- of onderaan in beeld plakken tot je ze bereikt. */
+.board li.me {
+    position: sticky; top: 8px; bottom: calc(env(safe-area-inset-bottom) + 8px); z-index: 3;
+    background: linear-gradient(rgba(250, 199, 117, .16), rgba(250, 199, 117, .16)), var(--card);
+    box-shadow: inset 0 0 0 2px var(--accent), 0 4px 14px rgba(0, 0, 0, .25);
+}
+.board li.me:first-child, .board li.me:last-child { border-radius: var(--radius); }
+.board .you {
+    display: inline-block; margin-left: 6px; padding: 1px 6px; border-radius: 999px; vertical-align: 2px;
+    background: var(--accent); color: #13241b; font-size: .62rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+}
+.board .rank { width: 28px; text-align: center; font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+/* Top 3: geen medaille-emoji maar het cijfer op een goud, zilver of brons blokje, in het scorebordlettertype. */
+.board .rank.top {
+    display: inline-grid; place-items: center; width: 26px; height: 26px; margin: 0 1px; border-radius: 6px;
+    font-family: var(--digits); font-size: .95rem; font-weight: 800; color: #13241b; text-shadow: 0 1px 0 rgba(255, 255, 255, .35);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .35), 0 1px 2px rgba(0, 0, 0, .35);
+}
+.board .rank.top-1 { background: linear-gradient(160deg, #ffe27a, #e0b100 55%, #b58900); }
+.board .rank.top-2 { background: linear-gradient(160deg, #f4f6f8, #c5cbd1 55%, #9aa3ab); }
+.board .rank.top-3 { background: linear-gradient(160deg, #f0b97f, #c97a3a 55%, #9b5a2a); }
+/* Pijltjes: gestegen (groen), gezakt (rood), gelijk of nieuw (grijs). */
+.board .move { width: 32px; flex: none; text-align: center; font-size: .78rem; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--muted); }
+.board .move.up { color: var(--ok-text); }
+.board .move.down { color: var(--fail-text); }
 .board .player { flex: 1; min-width: 0; display: flex; flex-direction: column; overflow-wrap: anywhere; text-decoration: none; }
 .board .player small { color: var(--muted); }
 .board .pts { font-weight: 800; font-size: 1.1rem; font-variant-numeric: tabular-nums; }
+/* Legende onder het maandklassement: een gekleurd blokje per zone. */
+.board-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.board-legend .zone-prize::before, .board-legend .zone-drop::before {
+    content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; background: var(--ok);
+}
+.board-legend .zone-drop::before { background: var(--fail); }
 
 /* ---------- Statistieken ---------- */
 .section-title { color: #fff; font-size: 1.05rem; margin: 18px 0 10px; }

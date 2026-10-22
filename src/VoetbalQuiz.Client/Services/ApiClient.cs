@@ -105,6 +105,7 @@ public class ApiClient(HttpClient http)
     public Task<Leaderboard> GetTodayLeaderboardAsync() => GetAsync<Leaderboard>("api/leaderboard/today");
     public Task<Leaderboard> GetSpecialLeaderboardAsync(int specialId) => GetAsync<Leaderboard>($"api/leaderboard/special/{specialId}");
     public Task<MonthRanking> GetMonthRankingAsync(int year, int month) => GetAsync<MonthRanking>($"api/leaderboard/month/{year}/{month}");
+    public Task<OnlineLeaderboard> GetOnlineLeaderboardAsync() => GetAsync<OnlineLeaderboard>("api/leaderboard/online");
 
     public Task<ProfileInfo> GetProfileAsync() => GetAsync<ProfileInfo>("api/account/profile");
     public Task<RewardSummary> ClaimRewardAsync() => PostAsync<RewardSummary>("api/progress/reward", null);

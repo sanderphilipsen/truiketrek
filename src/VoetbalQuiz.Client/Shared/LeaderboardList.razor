@@ -1,11 +1,23 @@
-@* Rijen van een klassement: plaats, speler en punten. Een naam opent het spelersprofiel (met head-to-head). *@
-<ol class="board">
+@* Rijen van een klassement, zoals de stand op tv: plaats, pijltje gestegen/gedaald, speler en punten.
+   Jouw rij springt eruit en blijft in beeld plakken (boven- of onderaan) zolang je ze niet in beeld scrolt.
+   Een naam opent het spelersprofiel (met head-to-head). *@
+<ol class="board @(ShowMovement ? "with-move" : "")">
     @foreach (var e in Entries)
     {
-        <li class="@(e.IsMe ? "me" : "")">
-            <span class="rank">@Medal(e.Rank)</span>
+        <li class="@Classes(e)">
+            <span class="rank @(e.Rank is >= 1 and <= 3 ? $"top top-{e.Rank}" : "")" aria-label="@($"{e.Rank}{DutchDates.OrdinalSuffix(e.Rank)}")">
+                @e.Rank
+                @if (e.Zone == RankZone.Drop) { <i aria-hidden="true">▼</i> }
+            </span>
+            @if (ShowMovement)
+            {
+                <span class="@MoveClass(e.Change)" aria-label="@MoveLabel(e.Change)">@MoveText(e.Change)</span>
+            }
             <Avatar Id="@e.AvatarId" User="@e.UserName" Size="38" />
-            <a class="player" href="speler/@Uri.EscapeDataString(e.UserName)"><b>@e.UserName</b></a>
+            <a class="player" href="speler/@Uri.EscapeDataString(e.UserName)">
+                <b>@e.UserName @if (e.IsMe) { <span class="you">jij</span> }</b>
+                @if (e.Sub is not null) { <small>@e.Sub</small> }
+            </a>
             <span class="pts">@e.Points</span>
         </li>
     }
@@ -14,7 +26,31 @@
 @code {
     [Parameter, EditorRequired] public List<Row> Entries { get; set; } = [];
 
-    public record Row(int Rank, string UserName, string? AvatarId, int Points, bool IsMe);
+    /// <summary>Toon per rij of ze gestegen of gedaald is (de kolom met pijltjes).</summary>
+    [Parameter] public bool ShowMovement { get; set; }
 
-    private static string Medal(int rank) => rank switch { 1 => "🥇", 2 => "🥈", 3 => "🥉", _ => rank.ToString() };
+    /// <summary>
+    /// Eén rij. <paramref name="Change"/>: plaatsen gestegen sinds gisteren (negatief = gezakt, null = nieuw);
+    /// <paramref name="Zone"/>: prijzen- of degradatiezone; <paramref name="Sub"/>: regeltje onder de naam.
+    /// </summary>
+    public record Row(int Rank, string UserName, string? AvatarId, int Points, bool IsMe,
+        int? Change = null, RankZone Zone = RankZone.None, string? Sub = null);
+
+    private static string Classes(Row e) =>
+        string.Join(' ', new[] { e.IsMe ? "me" : null, e.Zone switch { RankZone.Prize => "zone-prize", RankZone.Drop => "zone-drop", _ => null } }
+            .Where(c => c is not null));
+
+    private static string MoveClass(int? change) => "move " + change switch { null => "new", > 0 => "up", < 0 => "down", _ => "same" };
+
+    private static string MoveText(int? change) => change switch { null => "•", > 0 => $"▲{change}", < 0 => $"▼{-change}", _ => "–" };
+
+    private static string MoveLabel(int? change) => change switch
+    {
+        null => "Nieuw in het klassement",
+        1 => "1 plaats gestegen",
+        > 0 => $"{change} plaatsen gestegen",
+        -1 => "1 plaats gezakt",
+        < 0 => $"{-change} plaatsen gezakt",
+        _ => "Gelijk gebleven",
+    };
 }

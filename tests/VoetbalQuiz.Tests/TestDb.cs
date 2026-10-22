@@ -74,7 +74,7 @@ public sealed class TestDb : IDisposable
     public QuestionPicker Picker => _picker ??= new QuestionPicker(Db, Clock);
     public QuizService Quiz => _quiz ??= new QuizService(Db, Clock, Results, Picker, Maintenance);
     public AdminService Admin => _admin ??= new AdminService(Db, Picker, Clock);
-    public MonthRankingService Ranking => _ranking ??= new MonthRankingService(Db, Results);
+    public MonthRankingService Ranking => _ranking ??= new MonthRankingService(Db, Clock, Results);
     public OnlineService Online => _online ??= new OnlineService(Db, Results);
     public GoldenBallService GoldenBall => _goldenBall ??= new GoldenBallService(Db, Clock, Ranking, Results);
     public ProgressService Progress => _progress ??= new ProgressService(Db, Clock, Results, Online, Ranking, GoldenBall);

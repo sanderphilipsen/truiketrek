@@ -17,6 +17,10 @@ public static class QuizDay
     public static DateOnly DateOf(DateTimeOffset moment) =>
         DateOnly.FromDateTime(TimeZoneInfo.ConvertTime(moment, Brussels).DateTime);
 
+    /// <summary>Middernacht Belgische tijd aan het begin van deze dag, als UTC-tijdstip (om op de database te filteren).</summary>
+    public static DateTime StartOfDayUtc(DateOnly date) =>
+        TimeZoneInfo.ConvertTimeToUtc(date.ToDateTime(TimeOnly.MinValue, DateTimeKind.Unspecified), Brussels);
+
     /// <summary>Vandaag volgens de klok van dit toestel, in Belgische tijd (enkel voor weergave op de client).</summary>
     public static DateOnly Today() => DateOf(DateTimeOffset.UtcNow);
 

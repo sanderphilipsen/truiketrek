@@ -31,6 +31,7 @@ public static class QuizEndpoints
 
         board.MapGet("/today", (ClaimsPrincipal user, ResultsService results) => results.GetDailyLeaderboardAsync(user.UserId()));
         board.MapGet("/special/{id:int}", (int id, ClaimsPrincipal user, ResultsService results) => results.GetSpecialLeaderboardAsync(user.UserId(), id));
+        board.MapGet("/online", (ClaimsPrincipal user, OnlineService online) => online.GetRatingLeaderboardAsync(user.UserId()));
         board.MapGet("/month/{year:int}/{month:int}", async (int year, int month, ClaimsPrincipal user, MonthRankingService ranking) =>
             year is < 2000 or > 2100 || month is < 1 or > 12
                 ? Results.BadRequest(new ErrorResponse("Ongeldige maand."))

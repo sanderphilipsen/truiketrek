@@ -18,6 +18,28 @@ public sealed class GoldenBallTests : IDisposable
     {
         (_db, _clock) = (_t.Db, _t.Clock);
         (_goldenBall, _progress) = (_t.GoldenBall, _t.Progress);
+        for (var i = 1; i <= 30; i++)
+        {
+            _db.Players.Add(new Player
+            {
+                Name = $"Speler {i}", Status = PlayerStatus.Approved,
+                Hints = [.. Enumerable.Range(1, 5).Select(h => $"Tip {h}")], Sources = ["https://example.org"],
+            });
+        }
+        _db.SaveChanges();
+    }
+
+    /// <summary>De daily van vandaag helemaal spelen: alles juist bij de eerste tip, of alles passen.</summary>
+    private async Task PlayDailyAsync(string userId, bool correct)
+    {
+        var quiz = _t.Quiz;
+        var challenge = await quiz.GetOrCreateChallengeAsync(quiz.Today);
+        foreach (var q in challenge.Questions.OrderBy(q => q.Number))
+        {
+            await quiz.StartAsync(userId, q.Number);
+            if (correct) await quiz.GuessAsync(userId, q.Number, q.Player!.Name);
+            else await quiz.GiveUpAsync(userId, q.Number);
+        }
     }
 
     private string User(string name)
@@ -77,7 +99,8 @@ public sealed class GoldenBallTests : IDisposable
         var a = User("a"); var b = User("b");
         Match((a, 1), (b, 2));          // september: a
         GoTo(2026, 10, 15);
-        Match((b, 1), (a, 2));          // oktober: b
+        await PlayDailyAsync(b, correct: true);  // oktober: b (online telt niet meer mee)
+        await PlayDailyAsync(a, correct: false);
         GoTo(2026, 11, 1);
 
         var overview = await _goldenBall.GetAsync(a);
@@ -126,7 +149,8 @@ public sealed class GoldenBallTests : IDisposable
         var a = User("a"); var b = User("b");
         Match((a, 1), (b, 2));          // september: a, b tweede
         GoTo(2026, 10, 10);
-        Match((a, 1), (b, 2));          // oktober: a
+        await PlayDailyAsync(a, correct: true);  // oktober: a (met de daily; online telt niet meer mee)
+        await PlayDailyAsync(b, correct: false);
         GoTo(2026, 11, 1);
 
         var badges = (await _progress.GetProfileAsync(a, "a")).Badges.Where(x => x.Earned).Select(x => x.Id).ToList();
@@ -182,6 +206,7 @@ public sealed class GoldenBallTests : IDisposable
         Assert.False((await _goldenBall.GetAsync(a)).Announce);
     }
 
+    /// <summary>Sinds oktober 2026 telt online niet meer mee: de maand wordt met de daily gewonnen.</summary>
     [Fact]
     public async Task Hattrick_and_title_defence_over_the_year_end()
     {
@@ -189,7 +214,9 @@ public sealed class GoldenBallTests : IDisposable
         foreach (var (year, month) in new[] { (2026, 11), (2026, 12), (2027, 1) })
         {
             GoTo(year, month, 10);
-            Match((a, 1), (b, 2));
+            await PlayDailyAsync(a, correct: true);
+            await PlayDailyAsync(b, correct: false);
+            Match((b, 1), (a, 2)); // online telt niet meer mee: b wint de wedstrijd, a de maand
         }
         GoTo(2027, 2, 1);
 

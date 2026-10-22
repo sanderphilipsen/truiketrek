@@ -10,7 +10,7 @@ Een mobiele quiz-app (Blazor WebAssembly PWA) om met vrienden te spelen. Elke da
 - Voornaam + achternaam of enkel de achternaam is altijd juist ("Onana", "Lukaku", "Hazard" voor Eden én Thorgan).
 - Tikfouten, hoofdletters en accenten maken niet uit ("aguero", "De Bruine" en "KDB" worden aanvaard). Ook wat **fonetisch juist** is telt: "kurtwa" (Courtois), "lukakoe", "kastanje" (Castagne), "mbape". Dat geldt voor elk vraagtype waar je een naam typt ([AnswerMatcher.cs](src/VoetbalQuiz.Server/Services/AnswerMatcher.cs)).
 - Iedereen krijgt dezelfde 10 vragen per dag. Elke vraag kan je maar één keer spelen: herladen zet de klok niet terug. Je speelt de vragen in volgorde.
-- Er is een klassement per dag en per maand.
+- Er is een klassement per dag en per maand, en een online ratingklassement.
 - **Dagwinnaar:** na middernacht wordt de winnaar van de dag vastgelegd. Bij gelijke stand wint wie meer juist had, dan wie minder fout gokte, dan wie het eerst klaar was. De dagwinnaar krijgt **+50 punten** in het maandklassement (`DailyWinnerBonus`).
 - **Statistieken:** je eigen cijfers, een eregalerij met records (meeste dagzeges, hoogste dagscore, eeuwige tweede, snelste vinger, scherpschutter, …), alle Gouden Ballen en de moeilijkste spelers.
 
@@ -58,13 +58,17 @@ Elke dag is maximaal 1000 punten waard. De vragen voor de nieuwe types staan in 
 
 ### Klassementen
 
-Er zijn twee klassementen:
+Eén klassementscherm met drie tabbladen, en meer komt er niet bij (zie [docs/backlog/002](docs/backlog/002-herwerking-klassementen.md)):
 
 - **Vandaag:** enkel de daily van vandaag.
-- **Maand:** daily, specials en online samen. Maandpunten = daily-scores + special-scores + online-punten + podiumbonussen.
-  - Online: 100 per wedstrijd + 100 per tegenstander die je achter je liet (een gedeelde plaats telt half). Enkel je 20 beste wedstrijden van de maand tellen.
+- **Maand:** daily en specials samen. Maandpunten = daily-scores + special-scores + podiumbonussen. Je kan bladeren naar vorige maanden.
   - Podiumbonus: de top 3 van elke daily en special krijgt +100 / +50 / +25, zodra die dag of special afgelopen is.
-  - De top 3 van de maand krijgt een beker. Alle waarden staan in [MonthRules.cs](src/VoetbalQuiz.Shared/MonthRules.cs).
+  - De top 3 van de maand krijgt een beker; de eerste de Gouden Bal. Alle waarden staan in [MonthRules.cs](src/VoetbalQuiz.Shared/MonthRules.cs).
+  - **Online telt niet meer mee** sinds oktober 2026 (`MonthRules.OnlineCountsUntil`). Oudere maanden houden hun oude telling (100 per wedstrijd + 100 per tegenstander die je achter je liet, 20 beste wedstrijden), zodat een afgelopen stand niet verschuift.
+  - **Als de stand op tv:** de top 3 staat in een groene prijzenzone, en vanaf 10 spelers staan de onderste 3 in een rode degradatiezone (enkel een prikkel, zonder gevolg). In de lopende maand staat bij elke rij een pijltje tegenover de stand op het einde van gisteren (▲ gestegen, ▼ gezakt, – gelijk, • nieuw); een afgelopen maand is definitief en toont geen pijltjes. Jouw rij heeft een gele rand en het label "jij", en blijft boven- of onderaan in beeld plakken tot je ernaartoe scrolt.
+- **Online:** de Elo-rating van de online wedstrijden, los van de maand (`/api/leaderboard/online`).
+
+Specials houden hun eigen klassement op de specialpagina; hun punten tellen mee in de maand.
 
 ### Gouden Bal
 
@@ -85,7 +89,7 @@ Er zijn twee klassementen:
 ### Badges, seizoenen en head-to-head
 
 - **57 badges** (brons, zilver, goud): regelmaat (7 dagen op rij, volle week), snelheid, per vraagtype (Historicus, Scout, Bondscoach, Emoji-expert, …), thema's (Rode Duivels-fan, Champions League-kenner), online (Partijtjeskoning, Vol partijtje, Elo-meester), Gouden Bal (Zilveren Bal, Titelverdediger, Gouden hattrick, Messi-niveau), lange adem (Seizoenkaart, IJzeren man, GOAT) en karakter (Clean sheet, Doorzetter, Op de valreep). Bekijk ze via **🎖️ Badges** in het menu, met je voortgang per badge.
-- **Seizoenen:** elke maand is een seizoen. De top 3 van het daily- en het online maandklassement krijgt een beker in de prijzenkast.
+- **Seizoenen:** elke maand is een seizoen. De top 3 van het maandklassement krijgt een beker in de prijzenkast.
 - **Spelersprofiel:** tik op een naam in een klassement. Je ziet hun badges en bekers, en **jij tegen hen**: onderlinge daily-dagen en online wedstrijden.
 
 ### Online mode
@@ -96,7 +100,7 @@ Er zijn twee klassementen:
 - Spelers en vragen uit de daily van vandaag komen niet voor, zodat online spelen de daily niet verklapt. Online kiest willekeurig en verstoort de rotatie van de daily niet.
 - Wordt een type uitgeschakeld voor het partijtje start, dan valt het uit de mix; blijft er niets over, dan kan het partijtje niet starten.
 - Live updates gaan via SignalR (`/hubs/match`). De klok en de punten zitten op de server; `MatchEngine` zet de wedstrijden elke 250 ms verder.
-- Het online klassement staat los van de daily: een **Elo-rating** (iedereen start op 1000) en een maandklassement. In de stats staan online records: meeste zeges, hoogste rating, snelste schutter, onklopbaar, … Een wedstrijd levert ook XP op (+25, winst +75).
+- Het online klassement staat los van de daily en van het maandklassement: een **Elo-rating** (iedereen start op 1000), te zien op het tabblad Online van het klassement. In de stats staan online records: meeste zeges, hoogste rating, snelste schutter, onklopbaar, … Een wedstrijd levert ook XP op (+25, winst +75).
 
 **Vragenrotatie:** voor een nieuwe dag kiest de app de spelers die het langst geleden gevraagd werden; nooit gebruikte spelers komen eerst. Met 197 spelers duurt het ongeveer 20 dagen voor een speler terugkomt. Hoe meer spelers in de database, hoe langer ze wegblijven.
 
