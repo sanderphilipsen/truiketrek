@@ -155,7 +155,7 @@ public static class QuestionRules
     public const double EmojiSeconds = 15;
     public const double OpstellingSeconds = 60;
     public const double CounterSeconds = 60;
-    public const double VolgordeSeconds = 20;
+    public const double VolgordeSeconds = 30;
 
     /// <summary>Op volgorde: zoveel kaartjes per vraag.</summary>
     public const int VolgordeCards = 4;

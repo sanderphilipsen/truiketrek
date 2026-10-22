@@ -82,4 +82,5 @@ Voorbeeldopdrachten:
   - 10 vragen van 100 per dag;
   - niet in de vaste weekplanning (wel kiesbaar in het admin-paneel), wel in specials, online en de mix; niet in de derby mode;
   - alleen vaste feiten (transfers, geboortedata, afgelopen seizoenen), geen lopende cijfers.
+- 2026-10-22: tijd verhoogd van 20 naar 30 seconden (20 bleek te krap).
 - Gebouwd als `QuestionType.Volgorde`, bestand `Data/questions/volgorde.json` (niet `op-volgorde.json`). Geen migratie nodig: de gekozen volgorde staat in `AttemptState.Found`.
