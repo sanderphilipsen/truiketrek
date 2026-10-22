@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Truitje Trek</title>
+  <!-- Variant C "Strak": alleen het uitgerekte truitje op een donkere tegel met de groene lijn. Geen hand:
+       de rek en de vaartstreepjes vertellen het verhaal. Het properst op klein formaat. -->
+  <defs>
+    <clipPath id="tile"><rect width="512" height="512" rx="112"/></clipPath>
+  </defs>
+  <g clip-path="url(#tile)">
+    <rect width="512" height="512" fill="#06291b"/>
+    <g fill="#ffffff" opacity=".03">
+      <rect x="0" y="0" width="512" height="64"/>
+      <rect x="0" y="128" width="512" height="64"/>
+      <rect x="0" y="256" width="512" height="64"/>
+      <rect x="0" y="384" width="512" height="64"/>
+    </g>
+
+    <!-- Vaartstreepjes -->
+    <g stroke="#5dcaa5" stroke-width="16" stroke-linecap="round" opacity=".9">
+      <line x1="58" y1="206" x2="110" y2="206"/>
+      <line x1="40" y1="256" x2="116" y2="256"/>
+      <line x1="58" y1="306" x2="110" y2="306"/>
+    </g>
+
+    <!-- Het truitje: de rechtermouw rekt tot tegen de lijn -->
+    <g transform="translate(250 262) scale(.98) rotate(-6) translate(-250 -256)">
+      <path d="M200 112
+               Q256 136 312 112
+               L388 146 L420 222 L362 244 L344 214
+               L344 300
+               Q400 340 470 356
+               L464 404
+               Q372 396 300 412
+               Q244 404 186 412
+               L190 214 L172 244 L114 222 L146 146 Z"
+            fill="#f5c400" stroke="#031a10" stroke-width="12" stroke-linejoin="round"/>
+      <path d="M220 120 Q256 166 292 120" fill="none" stroke="#031a10" stroke-width="12" stroke-linecap="round"/>
+      <g fill="none" stroke="#c99f00" stroke-width="8" stroke-linecap="round">
+        <path d="M262 300 Q350 344 440 380"/>
+        <path d="M232 352 Q340 374 436 394"/>
+      </g>
+      <path transform="translate(186 214)" d="M0 0 H98 V24 L50 118 H16 L58 24 H0 Z" fill="#06291b"/>
+    </g>
+
+    <rect x="12" y="12" width="488" height="488" rx="100" fill="none" stroke="#5dcaa5" stroke-opacity=".75" stroke-width="10"/>
+  </g>
+</svg>

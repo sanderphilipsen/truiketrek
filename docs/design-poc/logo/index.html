@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Truitje Trek – logovarianten</title>
+<style>
+/* Vergelijkpagina: per variant één rij, zoals ze in de app komt: de loginpagina (112 px) op het veld,
+   de iconen (favicon 16 px, tabblad, startscherm 48 px, rond gemaskeerd op Android), op licht (admin) en het updatescherm (88 px). */
+:root {
+    --pitch: #0b3d24; --pitch-2: #0f5132; --card: #06291b; --text: #e3f4ea; --muted: #8cc7ab;
+    --sb-line: rgba(93, 202, 165, .62); --sb-digit: #fac775;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #0a1f15; color: var(--text); font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; padding: 16px 16px 40px; }
+h1 { margin: 0 0 4px; font-size: 1.3rem; }
+.intro { color: var(--muted); margin: 0 0 14px; max-width: 90ch; font-size: .9rem; }
+.row { display: flex; align-items: stretch; gap: 10px; margin-bottom: 12px; }
+.row h2 { writing-mode: vertical-rl; transform: rotate(180deg); margin: 0; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); text-align: center; }
+.row h2 b { color: var(--sb-digit); margin-top: 6px; }
+.field {
+    width: 300px; border-radius: 16px; overflow: hidden; border: 1px solid #1d3b2d; position: relative; padding: 14px 12px 10px;
+    background: linear-gradient(180deg, var(--pitch) 0%, var(--pitch-2) 100%);
+}
+.field::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(180deg, rgba(255,255,255,.035) 0 36px, transparent 36px 72px); }
+.field > * { position: relative; }
+.auth-logo { text-align: center; color: #fff; margin: 0 0 10px; }
+.auth-logo img { width: 112px; height: 112px; filter: drop-shadow(0 8px 18px rgba(0,0,0,.35)); }
+.auth-logo div { font-weight: 900; font-size: 1.4rem; letter-spacing: .5px; margin-top: 4px; }
+.auth-logo small { opacity: .75; font-size: .75rem; }
+.card { background: var(--card); border-radius: 12px; padding: 10px 12px; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+input { width: 100%; font-size: .85rem; padding: 8px 10px; border-radius: 8px; border: 1.5px solid var(--sb-line); background: #031a10; color: var(--text); margin-bottom: 6px; }
+.btn { display: block; width: 100%; padding: 8px; border-radius: 8px; border: 0; background: #f5c400; color: #06291b; font-weight: 800; font-size: .85rem; }
+.aside { display: flex; flex-direction: column; gap: 10px; width: 230px; }
+.sb-label { margin: 0 0 8px; font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.icons { display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
+.icons figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.icons figcaption { font-size: .65rem; color: var(--muted); }
+.icons img { display: block; }
+.round { border-radius: 50%; overflow: hidden; }
+.round img { width: 56px; height: 56px; object-fit: cover; }
+.tab { display: flex; align-items: center; gap: 6px; background: #fff; color: #222; border-radius: 8px 8px 0 0; padding: 5px 10px; font-size: .75rem; width: fit-content; }
+.tab img { width: 16px; height: 16px; }
+.light { background: #f3f5f4; color: #13241b; }
+.light .sb-label { color: #5d6f65; }
+.maint { width: 150px; border-radius: 16px; border: 1px solid #1d3b2d; background: linear-gradient(180deg, var(--pitch) 0%, var(--pitch-2) 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #fff; padding: 10px; gap: 4px; }
+.maint img { width: 88px; height: 88px; }
+.maint b { font-size: 1rem; }
+.maint span { color: rgba(255,255,255,.85); font-size: .72rem; }
+</style>
+</head>
+<body>
+<h1>Logovarianten in scorebordstijl</h1>
+<p class="intro">Per rij één variant zoals ze in de app komt: links de loginpagina (112 px), in het midden de iconen (favicon 16 px, 32 px, startscherm 48 px, rond gemaskeerd op Android, tabblad) en op licht (admin), rechts het updatescherm (88 px).</p>
+<div id="rows"></div>
+
+<template id="row">
+    <div class="row">
+        <h2><span class="name"></span><b class="key"></b></h2>
+        <div class="field">
+            <div class="auth-logo"><img class="logo" alt=""><div>Truitje Trek</div><small>De voetbalquiz waar je niet loskomt</small></div>
+            <section class="card">
+                <input value="sander" readonly aria-label="Gebruikersnaam">
+                <button class="btn" type="button">Aanmelden</button>
+            </section>
+        </div>
+        <div class="aside">
+            <section class="card">
+                <p class="sb-label">Iconen</p>
+                <div class="icons">
+                    <figure><img class="logo" width="16" height="16" alt=""><figcaption>16</figcaption></figure>
+                    <figure><img class="logo" width="32" height="32" alt=""><figcaption>32</figcaption></figure>
+                    <figure><img class="logo" width="48" height="48" alt=""><figcaption>48</figcaption></figure>
+                    <figure><div class="round"><img class="logo" alt=""></div><figcaption>rond</figcaption></figure>
+                </div>
+            </section>
+            <section class="card light">
+                <p class="sb-label">Op licht (admin) en tabblad</p>
+                <div class="icons">
+                    <figure><img class="logo" width="32" height="32" alt=""></figure>
+                    <figure><div class="tab"><img class="logo" alt="">Truitje Trek</div></figure>
+                </div>
+            </section>
+        </div>
+        <div class="maint"><img class="logo" alt=""><b>Truitje Trek</b><span>Even geduld, er komt een update.</span></div>
+    </div>
+</template>
+
+<script>
+const variants = [
+    { key: "Nu", name: "Huidig logo", src: "../../../src/VoetbalQuiz.Client/wwwroot/logo.svg" },
+    { key: "A", name: "Scorebordtegel", src: "a-scorebordtegel.svg" },
+    { key: "B", name: "Donker truitje", src: "b-donker-truitje.svg" },
+    { key: "C", name: "Strak", src: "c-strak.svg" },
+];
+const rows = document.getElementById("rows");
+const tpl = document.getElementById("row");
+for (const v of variants) {
+    const node = tpl.content.cloneNode(true);
+    node.querySelector(".key").textContent = v.key;
+    node.querySelector(".name").textContent = v.name;
+    node.querySelectorAll(".logo").forEach(img => img.src = v.src);
+    rows.appendChild(node);
+}
+</script>
+</body>
+</html>
