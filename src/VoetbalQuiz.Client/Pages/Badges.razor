@@ -5,7 +5,15 @@
 
 <PageTitle>Badges – Truitje Trek</PageTitle>
 
-<h1 class="page-title">Badges</h1>
+<PageHeader Title="Badges">
+    <Aside>
+        @if (_p is not null)
+        {
+            <span class="sb-digits" aria-label="@_p.Badges.Count(b => b.Earned) van @_p.Badges.Count verdiend">@_p.Badges.Count(b => b.Earned)/@_p.Badges.Count</span>
+            <span class="sb-label" aria-hidden="true">verdiend</span>
+        }
+    </Aside>
+</PageHeader>
 
 @if (_error is not null)
 {

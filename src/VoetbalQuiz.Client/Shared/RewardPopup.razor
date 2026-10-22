@@ -8,7 +8,7 @@
 @if (_reward is { } r && _open)
 {
     <div class="reward-backdrop" @onclick="SkipOrClose">
-        <div class="reward-card" role="dialog" aria-modal="true" aria-label="Beloning" @onclick:stopPropagation="true">
+        <div class="reward-card surface-light" role="dialog" aria-modal="true" aria-label="Beloning" @onclick:stopPropagation="true">
             @if (_burst > 0)
             {
                 <div class="confetti" @key="@($"confetti-{_burst}")" aria-hidden="true">

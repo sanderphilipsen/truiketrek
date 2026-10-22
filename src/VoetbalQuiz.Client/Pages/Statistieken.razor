@@ -4,7 +4,7 @@
 @inject GoldenBallState GoldenBall
 
 <PageTitle>Statistieken – Truitje Trek</PageTitle>
-<h1 class="sr-only">Statistieken</h1>
+<PageHeader Title="Statistieken" />
 
 <div class="mode-switch">
     <button class="@(_online ? "" : "active")" aria-pressed="@(_online ? "false" : "true")" @onclick="() => _online = false">Daily</button>

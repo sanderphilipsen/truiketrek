@@ -1,14 +1,12 @@
 @page "/"
-@page "/klassement"
 @attribute [Authorize]
 @inject ApiClient Api
 @inject AuthState Auth
-@inject NavigationManager Nav
 @inject GoldenBallState GoldenBall
 @inject IJSRuntime JS
 @implements IDisposable
 
-<PageTitle>@(Sheet is "klassement" ? "Klassement – Truitje Trek" : "Truitje Trek – Voetbalquiz")</PageTitle>
+<PageTitle>Truitje Trek – Voetbalquiz</PageTitle>
 
 @* Geen topbar: bovenaan een begroeting volgens het uur en je avatar met je level; de avatar opent je profiel. *@
 <div class="home-top">
@@ -112,7 +110,7 @@ else
     }
 </section>;
 
-    // Twee kleine tegeltjes onder de daily: je plaats vandaag (opent het klassement als sheet) en je reeks
+    // Twee kleine tegeltjes onder de daily: je plaats vandaag (opent het klassement) en je reeks
     // (opent de statistieken). Elk tegeltje zegt zijn getal in het label.
     private RenderFragment MiniTiles() => @<div class="sb-minis">
     <a class="card sb-mini" href="klassement" aria-label="@RankLabel">
@@ -240,11 +238,6 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
     </a>
 }
 
-@if (Sheet is "klassement")
-{
-    <PageSheet Title="Klassement"><KlassementBoard /></PageSheet>
-}
-
 @code {
     private const string IntroHiddenKey = "tt-intro-hidden";
 
@@ -262,8 +255,6 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
     protected override async Task OnInitializedAsync()
     {
         GoldenBall.Changed += Redraw;
-        // "/" en "/klassement" zijn dezelfde pagina: Blazor tekent ze niet opnieuw, dus de sheet openen of sluiten doen we zelf.
-        Nav.LocationChanged += OnLocationChanged;
         // Elk blok laadt apart: een fout of trage server raakt enkel dat blok.
         await Task.WhenAll(
             LoadDailyAsync(),
@@ -274,13 +265,6 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
             RefreshUserAsync(),
             GoldenBall.EnsureLoadedAsync()); // nieuwe dag: misschien een nieuwe Gouden Bal
     }
-
-    /// <summary>De sheet die over Home openstaat volgens het adres (bv. "klassement"), of null.</summary>
-    private string? Sheet => Nav.ToBaseRelativePath(Nav.Uri).Split('?', '#')[0].ToLowerInvariant() switch
-    {
-        "" => null,
-        var path => path,
-    };
 
     /// <summary>Volgens de klok van het toestel: 's ochtends (vanaf 5 uur), 's middags (vanaf 12 uur), anders 's avonds.</summary>
     private static string Greeting => DateTime.Now.Hour switch
@@ -492,13 +476,7 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
 
     private void Redraw() => InvokeAsync(StateHasChanged);
 
-    private void OnLocationChanged(object? sender, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs e) => Redraw();
-
-    public void Dispose()
-    {
-        GoldenBall.Changed -= Redraw;
-        Nav.LocationChanged -= OnLocationChanged;
-    }
+    public void Dispose() => GoldenBall.Changed -= Redraw;
 
     private static string StarsText(int stars) => stars == 1 ? "1 ster" : $"{stars} sterren";
 }

@@ -1,29 +1,63 @@
+/* De hele app is een scorebord: donkere tegels (--card) met een dunne groene lijn (--sb-line) en gele cijfers
+   (--sb-digit) op het levende veld. Wat bewust licht blijft (admin, de beloningspopup, invoervelden) krijgt
+   .surface-light: die zet dezelfde variabelen terug op licht, zodat componenten in beide werken. */
 :root {
     --pitch: #0b3d24;
     --pitch-2: #0f5132;
     --line: rgba(255, 255, 255, .12);
+    --card: #06291b;
+    --text: #e3f4ea;
+    --muted: #8cc7ab;
+    --accent: #f5c400;
+    --accent-text: #fac775;   /* gele tekst op een donkere tegel (≥ 4,5:1), bv. de XP in de beloning */
+    --ok: #1f9d55;
+    --ok-text: #6fdc9f;       /* groene tekst op een donkere tegel (≥ 4,5:1); --ok blijft voor vlakken en randen */
+    --fail: #d64545;
+    --fail-text: #f4a3a3;     /* rode tekst op een donkere tegel (≥ 4,5:1) */
+    --radius: 12px;
+    --tap: 44px;              /* minimale hoogte en breedte van een tikvlak */
+    --skeleton: rgba(255, 255, 255, .1); /* plaatshouder terwijl een blok laadt (ook de lege voortgangsbolletjes) */
+    --on-field-muted: rgba(255, 255, 255, .78); /* rustige tekst op het groene veld (≥ 4,5:1) */
+    --border: rgba(93, 202, 165, .35);  /* rustige rand van kaders */
+    --control-border: #5dcaa5; /* rand van een kies-knop die niet aan staat (≥ 3:1 op een tegel) */
+    --divider: rgba(93, 202, 165, .18); /* scheidingslijn in een lijst */
+    --surface-soft: rgba(255, 255, 255, .08); /* zachte vulling: gewone knop, label, vrije plaats */
+    --warn-bg: rgba(250, 199, 117, .12); /* zachte waarschuwing of "let op" */
+    --warn-line: #e0b100;
+    --warn-text: #f3c969;     /* waarschuwingstekst op een donkere tegel (≥ 4,5:1) */
+    --derby-bg: rgba(240, 149, 149, .1); /* derby: zachtrode vulling en rand */
+    --derby-line: rgba(240, 149, 149, .45);
+    --scrim: rgba(5, 25, 15, .72); /* donkere laag achter een popup of bottom sheet */
+    --sb-line: rgba(93, 202, 165, .45); /* de dunne groene lijn rond een tegel */
+    --sb-digit: #fac775;      /* gele scorebordcijfers */
+    --error-bg: rgba(214, 69, 69, .16);   /* foutmelding of fout antwoord */
+    --error-text: #f4a3a3;
+    --success-bg: rgba(31, 157, 85, .18); /* gelukt of juist */
+    --active-bg: rgba(93, 202, 165, .24); /* gekozen chip of tab */
+    color-scheme: dark;
+}
+.surface-light {
     --card: #ffffff;
     --text: #13241b;
     --muted: #5d6f65;
-    --accent: #f5c400;
-    --accent-text: #806300;   /* goudgele tekst op wit (≥ 4,5:1), bv. de XP in de beloning */
-    --ok: #1f9d55;
-    --ok-text: #157a43;       /* groene tekst op wit (≥ 4,5:1); --ok blijft voor vlakken en randen */
-    --fail: #d64545;
-    --radius: 12px;
-    --tap: 44px;              /* minimale hoogte en breedte van een tikvlak */
-    --skeleton: #e3ebe6;      /* plaatshouder terwijl een blok laadt (ook de lege voortgangsbolletjes) */
-    --on-field-muted: rgba(255, 255, 255, .78); /* rustige tekst op het groene veld (≥ 4,5:1) */
-    --border: #cfd8d2;        /* rustige rand van invoervelden en kaders */
-    --control-border: #7f948a; /* rand van een kies-knop die niet aan staat (≥ 3:1 op wit) */
-    --divider: #eef2ef;       /* scheidingslijn in een lijst */
-    --surface-soft: #e8efe9;  /* zachte vulling: gewone knop, label, vrije plaats */
-    --warn-bg: #fff8d6;       /* zachte waarschuwing of "let op" */
-    --warn-line: #e0b100;
-    --warn-text: #8a5a00;     /* waarschuwingstekst op wit (≥ 4,5:1) */
-    --derby-bg: #fff3f3;      /* derby: zachtrode vulling en rand */
+    --accent-text: #806300;
+    --ok-text: #157a43;
+    --fail-text: #b83232;
+    --skeleton: #e3ebe6;
+    --border: #cfd8d2;
+    --control-border: #7f948a;
+    --divider: #eef2ef;
+    --surface-soft: #e8efe9;
+    --warn-bg: #fff8d6;
+    --warn-text: #8a5a00;
+    --derby-bg: #fff3f3;
     --derby-line: #f1c6c6;
-    --scrim: rgba(5, 25, 15, .72); /* donkere laag achter een popup of bottom sheet */
+    --sb-line: #cfd8d2;
+    --sb-digit: #806300;
+    --error-bg: #fde8e8;
+    --error-text: #8a1c1c;
+    --success-bg: #e3f6ea;
+    --active-bg: var(--pitch-2);
     color-scheme: light;
 }
 
@@ -135,11 +169,25 @@ h1 { margin: .2rem 0 .4rem; font-size: 1.5rem; }
 /* ---------- Zonder topbar en tabbalk ---------- */
 /* Home is de enige hub: geen vaste balken, het veld vult het hele scherm. */
 .content { flex: 1; padding: calc(env(safe-area-inset-top) + 14px) 16px calc(env(safe-area-inset-bottom) + 28px); }
-/* De weg terug naar Home op pagina's zonder eigen terugknop. */
-.home-back {
-    display: inline-flex; align-items: center; min-height: var(--tap); margin: -8px 0 4px; padding-right: 12px;
-    color: var(--on-field-muted); text-decoration: none; font-weight: 600;
+/* Paginakop (Shared/PageHeader.razor): ronde terugknop, label en titel, rechts eventueel het kerngetal. */
+.page-head { display: flex; align-items: center; gap: 12px; margin: -2px 0 16px; color: #fff; }
+.page-back {
+    flex: none; display: grid; place-items: center; width: var(--tap); height: var(--tap); border-radius: 50%;
+    background: rgba(6, 41, 27, .8); box-shadow: inset 0 0 0 1px rgba(93, 202, 165, .45); color: #fff; font-size: 1.25rem; text-decoration: none;
 }
+.page-back:hover { background: rgba(6, 41, 27, .95); }
+.page-head-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.page-head .sb-label { color: var(--on-field-muted); }
+.page-head .page-title { margin: 0; font-size: 1.5rem; font-weight: 800; line-height: 1.15; overflow-wrap: anywhere; }
+.page-head-aside { flex: none; display: flex; flex-direction: column; align-items: flex-end; text-align: right; }
+
+/* Schuifovergang bij navigeren (zie index.html): vooruit van rechts, terug van links; het veld erachter blijft staan. */
+.content.nav-fwd { animation: nav-in-fwd .26s cubic-bezier(.2, .8, .3, 1); }
+.content.nav-back { animation: nav-in-back .26s cubic-bezier(.2, .8, .3, 1); }
+.content.nav-fade { animation: nav-fade .12s ease-out; }
+@keyframes nav-in-fwd { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: none; } }
+@keyframes nav-in-back { from { opacity: 0; transform: translateX(-28px); } to { opacity: 1; transform: none; } }
+@keyframes nav-fade { from { opacity: 0; } to { opacity: 1; } }
 
 /* ---------- Basis ---------- */
 .card {
@@ -174,7 +222,7 @@ h1 { margin: .2rem 0 .4rem; font-size: 1.5rem; }
     position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
     overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
-.error { background: #fde8e8; color: #8a1c1c; border-radius: 10px; padding: 10px 12px; }
+.error { background: var(--error-bg); color: var(--error-text); border-radius: 10px; padding: 10px 12px; }
 
 /* Skeleton: vaste plaatshouders terwijl een blok laadt, zodat het scherm niet verspringt.
    Zachte shimmer: een gloed die over de plaatshouder schuift (enkel transform, dus vloeiend en zonder layout shift).
@@ -197,7 +245,7 @@ h1 { margin: .2rem 0 .4rem; font-size: 1.5rem; }
 .skeleton-button { height: 54px; border-radius: 12px; margin-top: 6px; }
 
 /* Een blok dat niet laadde: zeg wat er is, met een knop om het opnieuw te proberen. Raakt enkel dat blok. */
-.block-error { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; background: #fde8e8; color: #8a1c1c; border-radius: 10px; padding: 12px; }
+.block-error { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; background: var(--error-bg); color: var(--error-text); border-radius: 10px; padding: 12px; }
 .block-error p { margin: 0; }
 .block-error .btn { min-height: var(--tap); background: var(--card); }
 
@@ -214,7 +262,7 @@ h1 { margin: .2rem 0 .4rem; font-size: 1.5rem; }
 .card .section-head { color: var(--text); margin: -10px 0 4px; }
 .card .section-head-title { font-size: 1.15rem; }
 .card .section-head-sub { color: var(--muted); }
-.card .section-head-link { color: var(--pitch-2); }
+.card .section-head-link { color: var(--sb-digit); }
 
 .btn {
     display: inline-block;
@@ -226,11 +274,13 @@ h1 { margin: .2rem 0 .4rem; font-size: 1.5rem; }
     font-weight: 700;
     text-align: center;
     text-decoration: none;
-    background: #e8efe9;
+    background: rgba(255, 255, 255, .06);
+    box-shadow: inset 0 0 0 1px var(--sb-line);
     color: var(--text);
     cursor: pointer;
 }
-.btn.primary { background: var(--accent); color: #1b1600; }
+.surface-light .btn:not(.primary) { background: var(--surface-soft); box-shadow: none; }
+.btn.primary { background: var(--accent); color: #1b1600; box-shadow: none; }
 .btn.big { display: block; width: 100%; padding: 16px; font-size: 1.1rem; margin-top: 16px; }
 .btn:disabled { opacity: .6; }
 .linkish { background: none; border: 0; color: inherit; font: inherit; cursor: pointer; text-decoration: underline; }
@@ -239,6 +289,8 @@ h1 { margin: .2rem 0 .4rem; font-size: 1.5rem; }
 .auth { margin-top: 24px; }
 .auth form { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
 .auth label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: .9rem; }
+/* Invoervelden blijven licht, ook op een donkere tegel: zo leest typen het best. De focusring is geel. */
+input, textarea, select { background: #fff; color: #13241b; color-scheme: light; }
 input {
     font-size: 1rem;
     padding: 12px 14px;
@@ -247,7 +299,7 @@ input {
     outline: none;
     width: 100%;
 }
-input:focus { border-color: var(--pitch-2); box-shadow: 0 0 0 3px rgba(15, 81, 50, .15); }
+input:focus, textarea:focus, select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(250, 199, 117, .45); outline: none; }
 .switch { display: block; margin: 16px auto 0; min-height: var(--tap); padding: 0 12px; color: var(--muted); }
 
 /* ---------- Home ---------- */
@@ -301,18 +353,18 @@ input:focus { border-color: var(--pitch-2); box-shadow: 0 0 0 3px rgba(15, 81, 5
     margin-bottom: 10px;
 }
 .stake-row { display: flex; align-items: baseline; justify-content: space-between; }
-.stake-points { font-size: 2.4rem; font-weight: 900; line-height: 1; color: var(--pitch-2); }
+.stake-points { font-size: 2.4rem; font-weight: 900; line-height: 1; color: var(--sb-digit); }
 .stake-label { color: var(--muted); font-size: .9rem; margin-left: 4px; }
 .clock { font-size: 1.3rem; font-weight: 800; color: var(--muted); font-variant-numeric: tabular-nums; }
 .clock.urgent { color: var(--fail); }
-.timebar { height: 6px; background: #e3ebe6; border-radius: 3px; overflow: hidden; margin-top: 10px; }
+.timebar { height: 6px; background: var(--skeleton); border-radius: 3px; overflow: hidden; margin-top: 10px; }
 .timebar div { height: 100%; background: var(--accent); transition: width .1s linear; }
 
 .answer { display: flex; gap: 8px; margin-bottom: 10px; }
 .answer input { flex: 1; font-size: 1.1rem; }
 .wrong {
-    background: #fde8e8;
-    color: #8a1c1c;
+    background: var(--error-bg);
+    color: var(--error-text);
     border-radius: 10px;
     padding: 8px 12px;
     margin-bottom: 10px;
@@ -358,7 +410,7 @@ input:focus { border-color: var(--pitch-2); box-shadow: 0 0 0 3px rgba(15, 81, 5
 .result.fail { border: 3px solid var(--fail); }
 .result-icon { font-size: 2rem; }
 .result-name { font-size: 1.5rem; font-weight: 800; margin: 4px 0; }
-.result-points { font-weight: 700; color: var(--pitch-2); }
+.result-points { font-weight: 700; color: var(--sb-digit); }
 .result-points.zero { color: var(--muted); }
 /* Daily: "Volgende vraag" staat onder het resultaat en blijft onderaan in beeld plakken als de kaart lang is. */
 .btn.big.daily-next {
@@ -379,9 +431,9 @@ input:focus { border-color: var(--pitch-2); box-shadow: 0 0 0 3px rgba(15, 81, 5
 .month-nav .linkish:disabled { opacity: .3; }
 
 /* Klassementen: één blok met dunne scheidingslijnen in plaats van losse kaartjes. */
-.board { list-style: none; padding: 0; margin: 0; display: grid; gap: 1px; background: #e3e9e5; border-radius: var(--radius); overflow: hidden; }
+.board { list-style: none; padding: 0; margin: 0; display: grid; gap: 1px; background: var(--divider); border-radius: var(--radius); overflow: hidden; }
 .board li { display: flex; align-items: center; gap: 12px; background: var(--card); padding: 10px 14px; }
-.board li.me { background: #fffbe6; box-shadow: inset 4px 0 0 var(--accent); }
+.board li.me { background: rgba(250, 199, 117, .1); box-shadow: inset 4px 0 0 var(--sb-digit); }
 .board .rank { width: 28px; text-align: center; font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; }
 .board .player { flex: 1; min-width: 0; display: flex; flex-direction: column; overflow-wrap: anywhere; text-decoration: none; }
 .board .player small { color: var(--muted); }
@@ -442,12 +494,12 @@ input:focus { border-color: var(--pitch-2); box-shadow: 0 0 0 3px rgba(15, 81, 5
 .profile-head > div { flex: 1; min-width: 0; }
 .profile-head h1 { margin: 0 0 4px; overflow-wrap: anywhere; }
 .level-line { font-weight: 700; margin-bottom: 8px; }
-.xpbar { height: 10px; background: #e3ebe6; border-radius: 5px; overflow: hidden; margin-bottom: 4px; }
+.xpbar { height: 10px; background: var(--skeleton); border-radius: 5px; overflow: hidden; margin-bottom: 4px; }
 .xpbar div { height: 100%; background: linear-gradient(90deg, var(--accent), #ffdd55); }
 
 .xp-details summary { cursor: pointer; font-weight: 700; }
 .xp-details table { width: 100%; margin: 12px 0 8px; border-collapse: collapse; }
-.xp-details td { padding: 6px 0; border-bottom: 1px solid #eef2ef; }
+.xp-details td { padding: 6px 0; border-bottom: 1px solid var(--divider); }
 .xp-details td:last-child { text-align: right; font-weight: 700; }
 
 .avatar-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 8px; }
@@ -468,9 +520,9 @@ input:focus { border-color: var(--pitch-2); box-shadow: 0 0 0 3px rgba(15, 81, 5
 
 .stack { display: flex; flex-direction: column; gap: 12px; }
 .stack label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: .9rem; }
-.success { background: #e3f6ea; color: #14612f; border-radius: 10px; padding: 10px 12px; margin: 0; }
+.success { background: var(--success-bg); color: var(--ok-text); border-radius: 10px; padding: 10px 12px; margin: 0; }
 /* Admin: deze speler of vraag zit nu in de daily of een lopende special. */
-.in-play { background: #fff4d6; color: #7a4d00; border-radius: 10px; padding: 10px 12px; margin: 0; font-size: .9rem; }
+.in-play { background: var(--warn-bg); color: var(--warn-text); border-radius: 10px; padding: 10px 12px; margin: 0; font-size: .9rem; }
 .muted.light { color: rgba(255, 255, 255, .7); margin-top: 16px; }
 
 .board li .avatar, .record .avatar { margin-left: -4px; }
@@ -488,12 +540,12 @@ input:focus { border-color: var(--pitch-2); box-shadow: 0 0 0 3px rgba(15, 81, 5
     font-size: 1rem;
     cursor: pointer;
 }
-.mode-switch button.active { background: var(--accent); border-color: var(--accent); color: #1b1600; }
+.mode-switch button.active { background: var(--active-bg); border-color: var(--control-border); color: #fff; }
 .btn.small { padding: 8px 14px; font-size: .9rem; min-height: var(--tap); }
 .center-block { display: block; margin: 14px auto 0; color: var(--muted); }
 .light-text { color: rgba(255, 255, 255, .8); }
 .field-label { font-weight: 600; font-size: .9rem; margin-bottom: 6px; }
-.tag { margin-left: auto; font-size: .72rem; background: #e8efe9; border-radius: 999px; padding: 2px 8px; color: var(--muted); }
+.tag { margin-left: auto; font-size: .72rem; background: var(--surface-soft); border-radius: 999px; padding: 2px 8px; color: var(--muted); }
 .pts .unit { display: block; font-size: .65rem; font-weight: 600; color: var(--muted); text-align: right; }
 textarea {
     font: inherit;
@@ -561,7 +613,7 @@ body:has(.sheet) { overflow: hidden; }
 .tafel-type-icon { flex: none; font-size: 1.1rem; }
 .tafel-type-name { flex: 1; min-width: 0; }
 .tafel-type-check { flex: none; width: 1em; font-weight: 900; }
-.tafel-type.active { background: var(--pitch-2); border-color: var(--pitch-2); color: #fff; }
+.tafel-type.active { background: var(--active-bg); border-color: var(--control-border); color: #fff; }
 .tafel-type-summary { display: block; margin-top: 6px; font-size: .8rem; color: var(--muted); }
 .tafel-type-summary.warn, .tafel-summary.warn { color: var(--warn-text); font-weight: 700; }
 .tafel-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
@@ -582,7 +634,7 @@ body:has(.sheet) { overflow: hidden; }
     border: 0; border-radius: 9px; background: none; color: var(--text);
     font: inherit; font-size: 1rem; font-weight: 800; cursor: pointer; touch-action: manipulation;
 }
-.tafel-count button.active { background: var(--pitch-2); color: #fff; }
+.tafel-count button.active { background: var(--active-bg); color: #fff; box-shadow: inset 0 0 0 1px var(--control-border); }
 .tafel-count button:disabled { opacity: .35; cursor: default; }
 .tafel-summary { margin: 0; text-align: center; font-size: .85rem; color: var(--muted); }
 .btn.tafel-submit { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: var(--tap); }
@@ -639,7 +691,7 @@ body:has(.sheet) { overflow: hidden; }
 .tafel-banner-text small { color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .tafel-banner .sb-digits { font-size: 1.2rem; }
 .tafel-banner-go { font-weight: 800; white-space: nowrap; color: var(--sb-digit, var(--text)); }
-.is-home .tafel-banner.live { border-color: #f09595; }
+.tafel-banner.live { border-color: #f09595; }
 .tafel-banner.live .sb-icon { color: #f09595; }
 .tafel-banner:hover { background: rgba(255, 255, 255, .04); }
 .table-card.done { opacity: .85; }
@@ -743,7 +795,7 @@ body:has(.sheet) { overflow: hidden; }
     flex: 1 1 auto; min-height: var(--tap); padding: 6px 10px; display: grid; place-items: center;
     font-size: .9rem; line-height: 1.15; white-space: nowrap;
 }
-.share-row .btn.copied { background: var(--ok-text); color: #fff; }
+.share-row .btn.copied { background: var(--ok); color: #fff; }
 .share-hint { margin: 8px 0 0; font-size: .85rem; color: var(--muted); }
 .share-link { width: 100%; margin-top: 6px; padding: 10px; border: 1px solid var(--border); border-radius: 10px; font: inherit; font-size: .9rem; }
 
@@ -782,7 +834,7 @@ body:has(.sheet) { overflow: hidden; }
 .result.small { padding: 12px; font-weight: 700; }
 /* Online tussenscherm: naam, jouw punten en plaats en de aftelling bovenaan; de tips ingeklapt onderaan. */
 .reveal-me { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
-.reveal-me span { background: #f3f6f4; border-radius: 999px; padding: 4px 12px; font-weight: 800; font-size: 1.05rem; }
+.reveal-me span { background: var(--surface-soft); border-radius: 999px; padding: 4px 12px; font-weight: 800; font-size: 1.05rem; }
 .reveal-next { color: var(--muted); font-size: .9rem; margin-top: 10px; font-variant-numeric: tabular-nums; }
 .reveal-head .timebar { margin-top: 6px; }
 .reveal-tips { margin-top: 12px; }
@@ -792,19 +844,20 @@ body:has(.sheet) { overflow: hidden; }
 .podium-card .trophy { font-size: 3.5rem; }
 
 /* ---------- Feedback ---------- */
-.tabs.light { background: #eef2ef; margin: 12px 0; }
+.tabs.light { background: var(--surface-soft); margin: 12px 0; }
 .tabs.light button { color: var(--text); }
-.tabs.light button.active { background: var(--pitch-2); color: #fff; }
+.tabs.light button.active { background: var(--active-bg); color: #fff; }
 .feedback-list { display: grid; gap: 8px; }
 .feedback-item { margin-bottom: 0; padding: 14px 16px; }
 .feedback-head { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
 .feedback-text { white-space: pre-wrap; margin: 8px 0; line-height: 1.4; }
-.status { font-size: .72rem; font-weight: 800; border-radius: 999px; padding: 3px 9px; background: #e8efe9; white-space: nowrap; }
+.status { font-size: .72rem; font-weight: 800; border-radius: 999px; padding: 3px 9px; background: var(--surface-soft); white-space: nowrap; }
+.status-nieuw, .status-gepland, .status-opgelost, .status-afgewezen { color: #13241b; }
 .status-nieuw { background: #fff3c4; }
 .status-gepland { background: #dbe9ff; }
 .status-opgelost { background: #d6f3e0; }
 .status-afgewezen { background: #f6dede; }
-.reply { background: #f3f7f4; border-radius: 10px; padding: 8px 12px; margin: 8px 0 0; }
+.reply { background: var(--surface-soft); border-radius: 10px; padding: 8px 12px; margin: 8px 0 0; }
 .admin-row { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
 .admin-row input { flex: 1; min-width: 140px; padding: 8px 10px; }
 
@@ -821,7 +874,7 @@ body:has(.sheet) { overflow: hidden; }
     gap: 16px;
     background: var(--card);
     padding: 8px 0;
-    border-bottom: 1px solid #eef2ef;
+    border-bottom: 1px solid var(--divider);
 }
 .builder-preview-actions { display: flex; flex-direction: column; gap: 8px; }
 .builder-title { font-weight: 700; font-size: .9rem; margin-bottom: 6px; }
@@ -842,14 +895,14 @@ body:has(.sheet) { overflow: hidden; }
     gap: 2px;
     width: 70px;
     padding: 6px 2px;
-    background: #f6f8f7;
+    background: var(--surface-soft);
     border: 2px solid transparent;
     border-radius: 12px;
     cursor: pointer;
     font: inherit;
 }
 .mini small { font-size: .66rem; color: var(--muted); text-align: center; line-height: 1.1; }
-.mini.on { border-color: var(--accent); background: #fffbe6; }
+.mini.on { border-color: var(--accent); background: rgba(250, 199, 117, .12); }
 .number-picker { display: flex; align-items: center; gap: 8px; }
 .number-picker input { width: 70px; text-align: center; font-weight: 800; }
 .optional { font-weight: 400; color: var(--muted); }
@@ -859,44 +912,15 @@ body:has(.sheet) { overflow: hidden; }
 .home-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
 .home-hello { margin: 0; font-size: 1.25rem; font-weight: 800; color: #fff; overflow-wrap: anywhere; }
 
-/* Een pagina als sheet over Home (PageSheet): vaste minimumhoogte zodat ze niet verspringt tijdens het laden,
-   en onderdelen die voor het groene veld gemaakt zijn (wit op groen) krijgen hier donkere tekst op wit. */
-.page-sheet { min-height: min(72dvh, 600px); }
-.page-sheet .tabs { background: var(--surface-soft); }
-.page-sheet .tabs button { color: var(--text); }
-.page-sheet .tabs button.active { background: var(--pitch-2); color: #fff; }
-.page-sheet .month-nav { color: var(--text); margin-bottom: 0; }
-
-/* ---------- Home als scorebord ---------- */
-/* Op Home (.is-home, gezet door MainLayout) zijn de tegels donkere scoreborden met een dunne groene lijn en gele
-   cijfers, zodat ze in het veld opgaan in plaats van er wit bovenop te liggen. We wisselen enkel de kleurvariabelen:
-   de daily, specials, open partijtjes en knoppen volgen vanzelf. Sheets (klassement, nieuwe match) blijven licht. */
-.is-home .content {
-    --card: #06291b;
-    --text: #e3f4ea;
-    --muted: #8cc7ab;
-    --surface-soft: rgba(255, 255, 255, .08);
-    --skeleton: rgba(255, 255, 255, .1);
-    --divider: rgba(93, 202, 165, .18);
-    --border: rgba(93, 202, 165, .35);
-    --control-border: #5dcaa5;
-    --sb-line: rgba(93, 202, 165, .45);
-    --sb-digit: #fac775;
-}
-.is-home .card, .is-home .table-card, .is-home .special-chip, .is-home .tafel-banner, .is-home .gb-strip {
+/* ---------- Scorebordtegels ---------- */
+/* Elke tegel heeft een dunne groene lijn en geen schaduw; de kleuren komen uit de variabelen op :root. */
+.card, .table-card, .special-chip, .tafel-banner, .gb-strip, .result, .stake, .record, .board {
     border: 1px solid var(--sb-line); box-shadow: none; color: var(--text);
 }
-.is-home .btn:not(.primary) { background: rgba(255, 255, 255, .06); color: var(--text); box-shadow: inset 0 0 0 1px var(--sb-line); }
-.is-home .sheet {
-    --card: #ffffff; --text: #13241b; --muted: #5d6f65; --surface-soft: #e8efe9; --skeleton: #e3ebe6;
-    --divider: #eef2ef; --border: #cfd8d2; --control-border: #7f948a;
-    color: var(--text);
-}
-.is-home .sheet .btn:not(.primary) { background: #e8efe9; box-shadow: none; }
 
-/* Bovenaan: de daily als compacte tegel, daaronder twee kleine tegeltjes (klassement en reeks). */
-.is-home .home-daily { min-height: 0; padding: 0; margin-bottom: 10px; }
-.is-home .home-daily.home-loading { padding: 14px; }
+/* Bovenaan Home: de daily als compacte tegel, daaronder twee kleine tegeltjes (klassement en reeks). */
+.home-daily { padding: 0; margin-bottom: 10px; }
+.home-daily.home-loading { padding: 14px; }
 .card.home-daily > .sb-label { padding: 14px 14px 0; font-size: .72rem; }
 .home-daily .block-error { margin: 10px 14px 14px; }
 .sb-link { display: flex; flex-direction: column; gap: 6px; height: 100%; padding: 14px; color: inherit; text-decoration: none; border-radius: inherit; }
@@ -934,7 +958,6 @@ body:has(.sheet) { overflow: hidden; }
 
 .home-card-head { display: flex; justify-content: space-between; align-items: flex-start; }
 .home-card-head h2, .card > h2 { margin: 0 0 8px; font-size: 1.15rem; }
-.home-daily { min-height: 260px; } /* zelfde hoogte tijdens het laden: niets springt */
 .home-daily .date { color: var(--muted); font-size: .85rem; }
 .home-daily .date::first-letter { text-transform: uppercase; }
 .home-score { text-align: right; }
@@ -948,12 +971,12 @@ body:has(.sheet) { overflow: hidden; }
 }
 .progress-dots .dot.ok { background: var(--ok); }
 .progress-dots .dot.fail { background: var(--fail); }
-.progress-dots .dot.now { background: var(--card); box-shadow: inset 0 0 0 2px var(--pitch-2); }
+.progress-dots .dot.now { background: var(--card); box-shadow: inset 0 0 0 2px var(--sb-digit); }
 /* Je plaats van vandaag; .rank-up springt één keer op en licht kort op als je steeg. */
 .home-rank { margin: 10px 0 0; font-size: .95rem; }
 .rank-up {
     display: inline-block; margin-left: 6px; padding: 2px 8px; border-radius: 999px;
-    background: #e3f6ea; color: var(--ok-text); font-size: .85rem; font-weight: 800; white-space: nowrap;
+    background: var(--success-bg); color: var(--ok-text); font-size: .85rem; font-weight: 800; white-space: nowrap;
     animation: rank-up-pop .5s cubic-bezier(.2, 1.4, .4, 1) .15s backwards, rank-up-glow .9s ease-out .15s;
 }
 .rank-up > span[aria-hidden] { display: inline-block; animation: rank-up-arrow .5s cubic-bezier(.2, 1.4, .4, 1) .3s backwards; }
@@ -1009,7 +1032,7 @@ body:has(.sheet) { overflow: hidden; }
 .card-link.light { color: #fff; }
 
 /* Binnenkort: de eerstvolgende drie specials als kaartjes in de veegrij; niets om op te tikken. */
-.special-chip.soon { border-top-color: var(--pitch-2); }
+.special-chip.soon { border-top-color: var(--sb-line); }
 .special-chip.soon small + small { margin-top: 0; }
 .special-chip-when { font-weight: 700; color: var(--text) !important; }
 /* Passen alle kaartjes, dan is er niets te vegen: geen rand-fade. Drie kaartjes passen vanaf ± 500 px. */
@@ -1020,7 +1043,7 @@ body:has(.sheet) { overflow: hidden; }
 
 /* ---------- Specials ---------- */
 .special-card { text-decoration: none; color: inherit;
-    background: linear-gradient(135deg, #fff7d1, #ffffff); border: 2px solid var(--accent); }
+    background: rgba(250, 199, 117, .1); border: 2px solid var(--accent); }
 .special-card small { color: var(--muted); }
 .special-icon { font-size: 2.2rem; line-height: 1; }
 
@@ -1064,7 +1087,7 @@ body:has(.sheet) { overflow: hidden; }
 .btn.home-special-play { display: flex; justify-content: center; align-items: center; width: 100%; min-height: var(--tap);
     margin-top: 12px; background: var(--pitch-2); color: #fff; }
 .btn.home-special-play.primary { background: var(--accent); color: #1b1600; }
-.btn.home-special-play.done { background: #e8efe9; color: var(--text); }
+.btn.home-special-play.done { background: var(--surface-soft); color: var(--text); }
 .home-special-error { margin-bottom: 16px; }
 /* Home: de huidige top 3 rechts in de daily- en specialtegel. Lange namen worden afgekapt. */
 .home-side { flex: 0 1 auto; min-width: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; max-width: 46%; }
@@ -1089,14 +1112,14 @@ body:has(.sheet) { overflow: hidden; }
     border-left: 4px solid var(--accent); }
 .training-day.played { border-left-color: var(--ok); }
 /* Een afgelopen special: in de stijl van de special-kaart. */
-.training-day.special { background: linear-gradient(135deg, #fff7d1, #ffffff); }
+.training-day.special { background: rgba(250, 199, 117, .08); }
 .training-day-mark { width: 28px; height: 28px; flex: none; border-radius: 50%; display: grid; place-items: center;
-    font-weight: 800; background: #eef2ef; color: var(--muted); }
+    font-weight: 800; background: var(--surface-soft); color: var(--muted); }
 .training-day.played .training-day-mark { background: var(--ok); color: #fff; }
 .training-day-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; overflow-wrap: anywhere; }
 .training-day-text b { display: block; }
 .training-day-text small { color: var(--muted); font-size: .82rem; }
-.training-day.played .btn.training-day-play { background: #e8efe9; color: var(--text); }
+.training-day.played .btn.training-day-play { background: var(--surface-soft); color: var(--text); }
 
 /* Altijd duidelijk dat dit niet de echte daily is. */
 .training-label { display: inline-block; background: rgba(255, 255, 255, .14); color: #fff; border-radius: 999px;
@@ -1122,8 +1145,8 @@ body:has(.sheet) { overflow: hidden; }
 .badges { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
 .badge {
     /* Nog niet verdiend: lichte kaart met stippelrand en een grijs icoon, maar volle tekstkleur zodat je leest hoe je hem haalt. */
-    background: #f3f6f4;
-    border: 2px dashed #b9c6be;
+    background: var(--surface-soft);
+    border: 2px dashed var(--border);
     border-radius: 12px;
     padding: 10px 6px;
     text-align: center;
@@ -1142,7 +1165,7 @@ body:has(.sheet) { overflow: hidden; }
 .badge .progress { font-weight: 800; color: var(--text); }
 
 /* ---------- Head-to-head ---------- */
-.h2h-row { display: grid; grid-template-columns: 70px auto 1fr; gap: 10px; align-items: center; padding: 6px 0; border-bottom: 1px solid #eef2ef; }
+.h2h-row { display: grid; grid-template-columns: 70px auto 1fr; gap: 10px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--divider); }
 .h2h-label { font-weight: 700; }
 .h2h-score { font-size: 1.4rem; }
 .h2h-verdict { margin: 10px 0 0; font-weight: 700; }
@@ -1162,7 +1185,7 @@ a.player { text-decoration: none; color: inherit; }
 .status-dot { flex: none; width: 12px; height: 12px; border-radius: 50%; background: #f0b400; }
 .status-dot.status-approved { background: var(--ok); }
 .status-dot.status-rejected { background: var(--fail); }
-.note { background: #fff3c4; border-radius: 8px; padding: 6px 10px; margin: 0; color: #5c4700; }
+.note { background: var(--warn-bg); border-radius: 8px; padding: 6px 10px; margin: 0; color: var(--warn-text); }
 small.note { display: inline-block; margin-top: 4px; }
 .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .hint-edit { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 6px; }
@@ -1172,9 +1195,9 @@ small.note { display: inline-block; margin-top: 4px; }
 .pick-list { max-height: 320px; overflow-y: auto; border: 1px solid #eef2ef; border-radius: 8px; padding: 6px; margin-top: 6px; }
 label.check { flex-direction: row !important; align-items: center; gap: 8px; font-weight: 500; }
 label.check input { width: auto; }
-.problems { background: #fde8e8; color: #8a1c1c; border-radius: 10px; padding: 8px 12px 8px 28px; margin: 0; }
+.problems { background: var(--error-bg); color: var(--error-text); border-radius: 10px; padding: 8px 12px 8px 28px; margin: 0; }
 .admin-actions { display: flex; gap: 8px; flex-wrap: wrap; }
-.btn.danger { background: #fde8e8; color: #8a1c1c; }
+.btn.danger { background: var(--error-bg); color: var(--error-text); box-shadow: none; }
 .small-print { font-size: .8rem; }
 .template-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 8px; }
 .template { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 4px; background: #f6f8f7; border-radius: 12px; text-decoration: none; color: inherit; text-align: center; }
@@ -1215,11 +1238,11 @@ label.check input { width: auto; }
 .grow { flex: 1; min-width: 160px; }
 .toolbar select { padding: 11px 10px; border-radius: 10px; }
 .segmented { display: inline-flex; flex-wrap: wrap; gap: 4px; background: rgba(255, 255, 255, .12); padding: 4px; border-radius: 12px; }
-.card .segmented { background: #eef2ef; }
+.card .segmented { background: var(--surface-soft); }
 .segmented button { border: 0; background: none; color: #fff; font-weight: 700; padding: 8px 12px; border-radius: 9px; cursor: pointer; font-size: .9rem; }
 .card .segmented button { color: var(--text); }
 .segmented button.on { background: var(--card); color: var(--text); box-shadow: 0 1px 3px rgba(0, 0, 0, .15); }
-.card .segmented button.on { background: var(--pitch-2); color: #fff; }
+.card .segmented button.on { background: var(--active-bg); color: #fff; }
 .segmented small { opacity: .7; margin-left: 4px; }
 .list-count { color: rgba(255, 255, 255, .75); margin: 4px 0 8px; font-size: .9rem; }
 
@@ -1313,8 +1336,8 @@ button.template { border: 0; cursor: pointer; font: inherit; }
     min-height: 64px; display: flex; align-items: center; justify-content: center;
 }
 button.choice:active { transform: scale(.97); }
-.choice.right { border-color: var(--ok); background: #e3f6ea; }
-.choice.wrong { border-color: var(--fail); background: #fde8e8; }
+.choice.right { border-color: var(--ok); background: var(--success-bg); }
+.choice.wrong { border-color: var(--fail); background: var(--error-bg); }
 .explanation { margin: 8px 0 0; color: var(--text); font-size: .95rem; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif, "Noto Color Emoji"; }
 .explanation { font-variant-emoji: emoji; }
 .explanation.plain { font-variant-emoji: normal; } /* cijfers zoals "10" niet als emoji tonen */
@@ -1453,7 +1476,7 @@ button.choice:active { transform: scale(.97); }
 
 /* ---------- Badges-pagina ---------- */
 .badge-summary p { margin: 10px 0 0; }
-.badge-meter { height: 10px; border-radius: 99px; background: rgba(0, 0, 0, .12); overflow: hidden; }
+.badge-meter { height: 10px; border-radius: 99px; background: var(--skeleton); overflow: hidden; }
 .badge-meter span { display: block; height: 100%; background: var(--accent); border-radius: 99px; }
 
 
@@ -1526,7 +1549,7 @@ button.choice:active { transform: scale(.97); }
     .profile-hero .level-line { justify-content: center; }
     .profile-stats { grid-template-columns: 1fr 1fr; }
 }
-.card-link { display: flex; align-items: center; justify-content: center; min-height: var(--tap); margin-top: 4px; font-weight: 700; font-size: .9rem; color: var(--pitch-2); text-decoration: none; }
+.card-link { display: flex; align-items: center; justify-content: center; min-height: var(--tap); margin-top: 4px; font-weight: 700; font-size: .9rem; color: var(--sb-digit); text-decoration: none; }
 .home-card-head .card-link { margin-top: 0; white-space: nowrap; }
 .profile-main .tabs.light button { font-size: .88rem; padding: 9px 6px; white-space: nowrap; }
 
@@ -1537,7 +1560,7 @@ button.choice:active { transform: scale(.97); }
     width: 34px; height: 34px; border-radius: 9px; border: 2px solid #dfe6e1; background: #fff;
     font-size: 1.05rem; cursor: pointer; opacity: .45; padding: 0;
 }
-.mix-chip.on { opacity: 1; border-color: var(--pitch-2); background: #e6f2eb; }
+.mix-chip.on { opacity: 1; border-color: var(--control-border); background: var(--active-bg); }
 .mix-chip.off { text-decoration: line-through; filter: grayscale(1); }
 .day-result { font-size: .75rem; line-height: 1.3; }
 .day-result .warn { color: #8a5a00; font-weight: 700; }
@@ -1563,10 +1586,10 @@ button.choice:active { transform: scale(.97); }
 .toggle:checked::after { transform: translateX(18px); }
 
 /* ---------- Nieuwe rondes: wissel, rugnummer, mannetje, kluts, counter ---------- */
-.result-shout { font-size: 1.1rem; font-weight: 900; text-transform: uppercase; letter-spacing: .04em; color: var(--pitch); }
-.result.fail .result-shout { color: var(--fail); }
+.result-shout { font-size: 1.1rem; font-weight: 900; text-transform: uppercase; letter-spacing: .04em; color: var(--ok-text); }
+.result.fail .result-shout { color: var(--fail-text); }
 .goal {
-    background: #e3f6ea; color: #14532d; border-radius: 10px; padding: 8px 12px; margin-bottom: 10px;
+    background: var(--success-bg); color: var(--ok-text); border-radius: 10px; padding: 8px 12px; margin-bottom: 10px;
     font-weight: 800; animation: pop .35s;
 }
 @keyframes pop { 0% { transform: scale(.85); } 60% { transform: scale(1.05); } 100% { transform: scale(1); } }

@@ -48,6 +48,29 @@
                 catch { return false; }
             },
         };
+
+        // Navigatie in de app: hoeveel schermen terug er nog binnen de app liggen (voor de terugknop van PageHeader),
+        // en een schuifovergang: vooruit schuift de inhoud in van rechts, terug van links. Het veld erachter blijft staan.
+        (() => {
+            let depth = 0;
+            const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+            const slide = dir => {
+                const content = document.querySelector('.content');
+                if (!content) return;
+                content.classList.remove('nav-fwd', 'nav-back');
+                void content.offsetWidth; // de animatie opnieuw laten starten
+                content.classList.add(reduce.matches ? 'nav-fade' : dir === 'back' ? 'nav-back' : 'nav-fwd');
+            };
+            const push = history.pushState;
+            history.pushState = function (...args) {
+                depth++;
+                const result = push.apply(this, args);
+                slide('fwd');
+                return result;
+            };
+            addEventListener('popstate', () => { depth = Math.max(0, depth - 1); slide('back'); });
+            window.truitje.canGoBack = () => depth > 0;
+        })();
     </script>
     <script src="pitch.js"></script>
     <!-- Geen #[.{fingerprint}]: bij publish wordt index.html niet herschreven en zou de placeholder letterlijk blijven staan. -->

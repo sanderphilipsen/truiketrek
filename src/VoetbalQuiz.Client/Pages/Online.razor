@@ -5,8 +5,7 @@
 
 @* De lobby: spring met één tik in een open match, of zet er zelf een klaar (bottom sheet).
    Is er niets open (en zit je zelf nergens in), dan wordt "Nieuwe match" de gele hoofdknop. *@
-<h1 class="page-title">Online spelen</h1>
-<p class="online-sub">Speel live tegen je maten. Spring in een open match of zet er zelf een klaar.</p>
+<PageHeader Title="Online spelen" Label="Speel live tegen je maten" />
 <CreateTableForm UserName="@_me" Primary="@_nothingOpen" />
 
 <OpenTables ShowRecent="true" OnLoaded="l => _nothingOpen = l.Open.Count == 0 && l.Mine.Count == 0" />

@@ -3,6 +3,7 @@
 @inject ApiClient Api
 
 <PageTitle>Special – Truitje Trek</PageTitle>
+<PageHeader Title="@(_info?.Name ?? "Special")" Label="Special" />
 <PitchFx Teams="_info?.Affiche" />
 
 @if (_error is not null)
@@ -25,7 +26,7 @@ else
             <AfficheBanner Affiche="affiche" Big="true" />
         }
         <div class="special-icon">@_info.Icon</div>
-        <h1>@_info.Name</h1>
+        <h2>@_info.Name</h2>
         <p class="muted">@_info.Description</p>
         <div class="muted">@Period(_info)</div>
         <div class="score-big">@_overview.TotalPoints <small>punten</small></div>

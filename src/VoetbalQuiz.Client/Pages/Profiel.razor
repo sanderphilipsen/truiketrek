@@ -6,6 +6,8 @@
 
 <PageTitle>Profiel – Truitje Trek</PageTitle>
 
+<PageHeader Title="Profiel" />
+
 @if (_error is not null)
 {
     <p class="error" role="alert">@_error</p>
@@ -27,7 +29,7 @@ else
                     <span class="hero-edit">✏️</span>
                 </button>
                 <div class="hero-main">
-                    <h1>@_profile.UserName</h1>
+                    <h2>@_profile.UserName</h2>
                     <div class="level-line"><span class="lvl big">Level @lvl.Level</span> @lvl.Title</div>
                     <div class="xpbar"><div style="width:@Percent(lvl.XpIntoLevel, lvl.XpForNextLevel)"></div></div>
                     <small class="muted">@lvl.XpIntoLevel / @lvl.XpForNextLevel XP tot level @(lvl.Level + 1)</small>

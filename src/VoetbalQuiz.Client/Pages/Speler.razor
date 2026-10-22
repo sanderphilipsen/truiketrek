@@ -4,6 +4,8 @@
 
 <PageTitle>@UserName – Truitje Trek</PageTitle>
 
+<PageHeader Title="@UserName" Label="Speler" />
+
 @if (_error is not null)
 {
     <p class="error" role="alert">@_error</p>
@@ -17,7 +19,7 @@ else
     <section class="card profile-head">
         <Avatar Id="@_p.AvatarId" User="@_p.UserName" Size="96" />
         <div>
-            <h1>@_p.UserName</h1>
+            <h2>@_p.UserName</h2>
             <div class="level-line"><span class="lvl big">Level @_p.Level.Level</span> @_p.Level.Title</div>
             <small class="muted">Speelt mee sinds @DutchDates.DayMonth(_p.MemberSince) @_p.MemberSince.Year</small>
         </div>

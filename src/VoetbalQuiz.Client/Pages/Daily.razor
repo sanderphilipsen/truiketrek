@@ -5,6 +5,8 @@
 
 <PageTitle>Daily challenge – Truitje Trek</PageTitle>
 
+<PageHeader Title="Daily" Label="@DutchDates.DayMonth(QuizDay.Today())" />
+
 @if (_error is not null)
 {
     <p class="error" role="alert">@_error</p>
@@ -19,8 +21,6 @@ else
     var next = _overview.Questions.FirstOrDefault(q => q.Status != QuestionStatus.Answered);
 
     <section class="card hero">
-        <div class="date">@DutchDates.DayMonth(_overview.Date)</div>
-        <h1>Daily challenge</h1>
         <div class="type-banner">@QuestionTypes.DayLabel(_overview)</div>
         <div class="score-big">@_overview.TotalPoints <small>punten</small></div>
         <div class="muted">@answered / @_overview.Questions.Count gespeeld</div>

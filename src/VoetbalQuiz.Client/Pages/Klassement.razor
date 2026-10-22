@@ -1,5 +1,19 @@
-@* Het dag- en maandklassement; getoond als sheet over Home (/klassement). *@
+@page "/klassement"
+@attribute [Authorize]
 @inject ApiClient Api
+
+<PageTitle>Klassement – Truitje Trek</PageTitle>
+
+<PageHeader Title="Klassement" Label="@(_monthly ? "Maand" : "Vandaag")">
+    <Aside>
+        @if (Me is { } me)
+        {
+            var place = $"{me.Rank}{DutchDates.OrdinalSuffix(me.Rank)}";
+            <span class="sb-digits" aria-label="@($"Je staat {place} van {me.Count}")">@place</span>
+            <span class="sb-label" aria-hidden="true">van @me.Count</span>
+        }
+    </Aside>
+</PageHeader>
 
 <div class="tabs">
     <button class="@(_monthly ? "" : "active")" aria-pressed="@(_monthly ? "false" : "true")" @onclick="() => ShowAsync(false)">Vandaag</button>
@@ -57,6 +71,11 @@ else
     private string? _error;
 
     private bool IsCurrentMonth => _year == QuizDay.Today().Year && _month == QuizDay.Today().Month;
+
+    /// <summary>Jouw plaats in het getoonde klassement, voor het kerngetal in de kop (null als je er niet in staat).</summary>
+    private (int Rank, int Count)? Me => _monthly
+        ? _ranking?.Entries.FirstOrDefault(e => e.IsMe) is { } m ? (m.Rank, _ranking.Entries.Count) : null
+        : _today?.Entries.FirstOrDefault(e => e.IsMe) is { } t ? (t.Rank, _today.Entries.Count) : null;
 
     protected override Task OnInitializedAsync() => LoadAsync();
 

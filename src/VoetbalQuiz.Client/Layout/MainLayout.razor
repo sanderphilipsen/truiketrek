@@ -20,19 +20,9 @@
 }
 
 @* Het admin-paneel gebruikt de volle breedte van een groot scherm. *@
-@* is-home: Home (en de sheets erop) in scorebordstijl, zie "Home als scorebord" in app.css. *@
-<div class="app @(IsAdminPage ? "wide" : IsProfilePage ? "medium" : "") @(Path is "" or "klassement" ? "is-home" : "")">
-    @* Geen topbar en geen tabbalk: Home is de enige hub. Andere pagina's krijgen een kleine weg terug,
-       behalve schermen met een eigen terugknop (een vraag, een wedstrijd, een academiepoging) en Home zelf. *@
+<div class="app @(IsAdminPage ? "wide surface-light" : IsProfilePage ? "medium" : "")">
+    @* Geen topbar en geen tabbalk: Home is de enige hub. Elke andere pagina heeft een eigen kop met terugknop (PageHeader). *@
     <main class="content">
-        <AuthorizeView>
-            <Authorized>
-                @if (ShowHomeLink)
-                {
-                    <a href="" class="home-back">‹ Home</a>
-                }
-            </Authorized>
-        </AuthorizeView>
         <UpdateBanner />
         @Body
     </main>
@@ -43,7 +33,7 @@
     protected override async Task OnInitializedAsync()
     {
         Auth.AuthenticationStateChanged += OnAuthChanged;
-        Nav.LocationChanged += OnLocationChanged; // de link terug naar Home tonen of verbergen
+        Nav.LocationChanged += OnLocationChanged; // de klassen van .app (admin, profiel) bijwerken
         UpdateNotice.Changed += OnUpdateNoticeChanged;
         UpdateNotice.Start();
         await Auth.GetAuthenticationStateAsync();
@@ -59,17 +49,6 @@
     }
 
     private void OnLocationChanged(object? sender, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs e) => StateHasChanged();
-
-    private string Path => Nav.ToBaseRelativePath(Nav.Uri).Split('?', '#')[0].ToLowerInvariant();
-
-    /// <summary>"‹ Home" bovenaan, behalve op Home (en de sheets erop) en op schermen met een eigen terugknop.</summary>
-    private bool ShowHomeLink => Path switch
-    {
-        "" or "klassement" or "login" => false,
-        var p when p.Contains("vraag/") || p.StartsWith("academie/poging") => false,
-        var p when p.StartsWith("online/") && p.Length > 7 && char.IsDigit(p[7]) => false, // een wedstrijd of wachtkamer
-        _ => true,
-    };
 
     public void Dispose()
     {

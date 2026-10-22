@@ -1,0 +1,41 @@
+@* De kop van elke pagina (zonder topbar): een ronde terugknop, een klein label, de paginatitel en rechts
+   eventueel het kerngetal van de pagina in gele cijfers. Terug gaat naar het vorige scherm in de app;
+   kwam je via een link of na herladen binnen, dan naar BackHref (standaard Home). *@
+@inject NavigationManager Nav
+@inject IJSRuntime JS
+
+<header class="page-head">
+    <a class="page-back" href="@BackHref" aria-label="Terug" @onclick="BackAsync" @onclick:preventDefault="true">
+        <Icon Name="caret-left" />
+    </a>
+    <div class="page-head-text">
+        @if (Label is not null)
+        {
+            <span class="sb-label">@Label</span>
+        }
+        <h1 class="page-title">@Title</h1>
+    </div>
+    @if (Aside is not null)
+    {
+        <div class="page-head-aside">@Aside</div>
+    }
+</header>
+
+@code {
+    [Parameter, EditorRequired] public string Title { get; set; } = "";
+
+    /// <summary>Klein label boven de titel, bv. "Vandaag" of de datum.</summary>
+    [Parameter] public string? Label { get; set; }
+
+    /// <summary>Rechts in de kop: het kerngetal van de pagina (gebruik .sb-digits en .sb-label).</summary>
+    [Parameter] public RenderFragment? Aside { get; set; }
+
+    /// <summary>Waar "terug" heen gaat als er geen vorig scherm in de app is.</summary>
+    [Parameter] public string BackHref { get; set; } = "";
+
+    private async Task BackAsync()
+    {
+        if (await JS.InvokeAsync<bool>("truitje.canGoBack")) await JS.InvokeVoidAsync("history.back");
+        else Nav.NavigateTo(BackHref);
+    }
+}
