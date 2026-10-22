@@ -20,7 +20,8 @@
 }
 
 @* Het admin-paneel gebruikt de volle breedte van een groot scherm. *@
-<div class="app @(IsAdminPage ? "wide" : IsProfilePage ? "medium" : "")">
+@* is-home: Home (en de sheets erop) in scorebordstijl, zie "Home als scorebord" in app.css. *@
+<div class="app @(IsAdminPage ? "wide" : IsProfilePage ? "medium" : "") @(Path is "" or "klassement" ? "is-home" : "")">
     @* Geen topbar en geen tabbalk: Home is de enige hub. Andere pagina's krijgen een kleine weg terug,
        behalve schermen met een eigen terugknop (een vraag, een wedstrijd, een academiepoging) en Home zelf. *@
     <main class="content">

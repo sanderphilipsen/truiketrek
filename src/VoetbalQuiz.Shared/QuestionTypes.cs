@@ -104,6 +104,9 @@ public static class QuestionTypes
     public static string DayLabel(DailyOverview day) =>
         day.IsMix ? $"🎲 Mix {Icons(day.Types!)}" : $"{Get(day.Type).Icon} {Get(day.Type).Name}";
 
+    /// <summary>Hetzelfde zonder iconen ("Snelvuur" of "Mix"), voor de rustige daily-tegel op Home.</summary>
+    public static string DayName(DailyOverview day) => day.IsMix ? "Mix" : Get(day.Type).Name;
+
     /// <summary>Zelfde label voor een lijst types (bv. van een online partijtje); leeg = "Wie ben ik?".</summary>
     public static string Label(IReadOnlyCollection<QuestionType>? types) => types switch
     {

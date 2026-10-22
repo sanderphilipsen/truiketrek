@@ -42,8 +42,9 @@ public record DailyOverview(DateOnly Date, int TotalPoints, List<QuestionSummary
 /// Date: de quizdag (Belgische datum) waarvoor de plaats geldt; Home toont ze enkel als die gelijk is aan de daily die het toont.
 /// Rank is null zolang je vandaag nog geen vraag beantwoordde; Players is het aantal spelers in dat klassement.
 /// PreviousRank: je plaats bij je vorige bezoek aan Home vandaag (null bij het eerste bezoek of als je toen nog niet meespeelde).
+/// Streak: je huidige reeks speeldagen na elkaar (tot vandaag of gisteren), zoals in de statistieken; voor het tegeltje op Home.
 /// </summary>
-public record DailyRank(DateOnly Date, int? Rank, int Players, int? PreviousRank)
+public record DailyRank(DateOnly Date, int? Rank, int Players, int? PreviousRank, int Streak = 0)
 {
     /// <summary>Zoveel plaatsen gestegen sinds je vorige bezoek (0 als je gelijk bleef, zakte of toen nog niet meespeelde).</summary>
     [System.Text.Json.Serialization.JsonIgnore]

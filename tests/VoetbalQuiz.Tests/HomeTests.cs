@@ -66,6 +66,7 @@ public sealed class HomeTests : IDisposable
         Assert.Equal(1, rank.Players);
         Assert.Null(rank.PreviousRank);
         Assert.Equal(0, rank.RisenBy);
+        Assert.Equal(0, rank.Streak);
     }
 
     [Fact]
@@ -103,7 +104,9 @@ public sealed class HomeTests : IDisposable
     public async Task Previous_rank_of_yesterday_does_not_count()
     {
         await PlayAsync(_me, 1, 1, correct: true);
-        Assert.Equal(1, (await _quiz.VisitDailyRankAsync(_me)).Rank);
+        var yesterday = await _quiz.VisitDailyRankAsync(_me);
+        Assert.Equal(1, yesterday.Rank);
+        Assert.Equal(1, yesterday.Streak);
 
         _clock.Advance(TimeSpan.FromDays(1));
 
@@ -111,6 +114,7 @@ public sealed class HomeTests : IDisposable
         Assert.Null(today.Rank);
         Assert.Null(today.PreviousRank);
         Assert.Equal(0, today.Players);
+        Assert.Equal(1, today.Streak); // gisteren gespeeld: de reeks loopt nog tot vandaag om middernacht
     }
 
     [Fact]
@@ -125,6 +129,7 @@ public sealed class HomeTests : IDisposable
         var rank = await _quiz.VisitDailyRankAsync(_me);
         Assert.Null(rank.Rank);
         Assert.Equal(0, rank.Players);
+        Assert.Equal(0, rank.Streak); // een special telt niet mee voor je reeks, net als in de statistieken
     }
 
     [Fact]

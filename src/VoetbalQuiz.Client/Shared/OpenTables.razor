@@ -16,18 +16,7 @@
         <p class="error" role="alert">@_loadError</p>
         <button type="button" class="btn small tables-retry" @onclick="RetryAsync" disabled="@_busy">Opnieuw proberen</button>
     }
-    else if (Compact)
-    {
-        @* Vaste hoogte terwijl de lobby laadt, zodat Home niet verspringt. *@
-        <div class="tables tables-skeleton" aria-busy="true">
-            <span class="sr-only" role="status">Partijtjes laden…</span>
-            <div class="table-card skeleton-card" aria-hidden="true">
-                <span class="skeleton skeleton-circle"></span>
-                <span class="skeleton-lines"><span class="skeleton skeleton-line"></span><span class="skeleton skeleton-line short"></span></span>
-            </div>
-        </div>
-    }
-    else
+    else if (!Compact)
     {
         <div class="center-msg"><Spinner /></div>
     }
@@ -73,10 +62,9 @@ else
             }
         </h2>
     }
-    @if (_lobby.Open.Count == 0)
+    @if (_lobby.Open.Count == 0 && !Compact)
     {
         <div class="card center tables-empty">
-            <span class="tables-empty-icon" aria-hidden="true">🏟️</span>
             @if (_lobby.Mine.Count > 0)
             {
                 @* Je hebt zelf al een partijtje open: niet nog eens "maak er een" zeggen. *@
@@ -88,7 +76,7 @@ else
             }
         </div>
     }
-    else
+    else if (_lobby.Open.Count > 0)
     {
         var shown = Max is { } max ? _lobby.Open.Take(max).ToList() : _lobby.Open;
         <div class="tables">
@@ -152,8 +140,8 @@ else
     [Parameter] public int? Max { get; set; }
 
     /// <summary>
-    /// Compact blok voor Home: geen eigen kop (Home zet er een sectiekop boven), een skeleton tijdens het laden
-    /// en een gewone (niet-gele) knop om mee te doen, zodat de daily de enige hoofdknop blijft.
+    /// Compact blok voor Home: geen kop, niets tijdens het laden en niets als er geen open partijtjes zijn
+    /// (dan staat enkel "Nieuwe match" op Home), en een gewone (niet-gele) knop om mee te doen.
     /// </summary>
     [Parameter] public bool Compact { get; set; }
 

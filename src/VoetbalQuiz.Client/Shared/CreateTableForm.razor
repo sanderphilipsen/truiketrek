@@ -7,7 +7,7 @@
 
 <button type="button" class="btn big tafel-new @(Primary ? "primary" : "")" @ref="_trigger"
         aria-haspopup="dialog" aria-expanded="@(_open ? "true" : "false")" @onclick="Open">
-    <span aria-hidden="true">＋</span> Nieuwe match
+    <Icon Name="plus" /> Nieuwe match
 </button>
 
 @if (_open)

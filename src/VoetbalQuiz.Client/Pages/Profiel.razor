@@ -175,8 +175,12 @@ else
     private bool _saving, _pwOk, _build, _avatarSaved;
     private ProfileTab _tab = ProfileTab.Avatar;
 
+    /// <summary>De tab om mee te openen, bv. "account" vanuit het tegeltje Instellingen op Home.</summary>
+    [SupplyParameterFromQuery(Name = "tab")] public string? StartTab { get; set; }
+
     protected override async Task OnInitializedAsync()
     {
+        if (Enum.TryParse<ProfileTab>(StartTab, ignoreCase: true, out var start)) _tab = start;
         try
         {
             _profile = await Api.GetProfileAsync();

@@ -291,7 +291,14 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
                 .SetProperty(u => u.HomeRank, rank)
                 .SetProperty(u => u.HomeRankDate, today));
 
-        return new DailyRank(today, rank, ranked.Count, previous);
+        // Je reeks voor het Stats-tegeltje op Home: enkel je speeldagen, niet de hele statistiek.
+        var myDates = await db.Attempts
+            .Where(a => a.UserId == userId && a.AnsweredAt != null && a.DailyQuestion.DailyChallenge.SpecialEventId == null)
+            .Select(a => a.DailyQuestion.DailyChallenge.Date)
+            .Distinct()
+            .ToListAsync();
+
+        return new DailyRank(today, rank, ranked.Count, previous, Streaks(myDates, today).Current);
     }
 
     // ---------- Statistieken ----------
