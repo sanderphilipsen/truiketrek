@@ -892,9 +892,8 @@ body:has(.sheet) { overflow: hidden; }
 .optional { font-weight: 400; color: var(--muted); }
 
 /* ---------- Home ---------- */
-/* De topbar toont enkel de avatar: de begroeting is één rustige regel met naam en level (een naam van 20 tekens mag breken). */
+/* De topbar toont enkel de avatar: de begroeting is één rustige regel met je naam (een naam van 20 tekens mag breken). */
 .home-hello { margin: 0 0 12px; font-size: .95rem; font-weight: 600; color: var(--on-field-muted); overflow-wrap: anywhere; }
-.home-hello .lvl { margin-left: 4px; }
 .home-card-head { display: flex; justify-content: space-between; align-items: flex-start; }
 .home-card-head h2, .card > h2 { margin: 0 0 8px; font-size: 1.15rem; }
 .home-daily { min-height: 260px; } /* zelfde hoogte tijdens het laden: niets springt */
