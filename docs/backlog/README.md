@@ -39,3 +39,7 @@ Houd deze tabel kort bij (enkel open items). Bij twijfel is de status in het bes
 | [010](010-vraagtype-verbindingsman.md) | Vraagtype "Verbindingsman" | feature | idee | laag | L |
 | [011](011-vraagtype-op-volgorde.md) | Vraagtype "Op volgorde" | feature | bezig | midden | M |
 | [012](012-vraagtype-wie-zei-het.md) | Vraagtype "Wie zei het?" | feature | klaar | midden | M |
+| [013](013-daag-uit.md) | Daag uit (asynchroon duel) | feature | idee | midden | L |
+| [014](014-verzamelalbum.md) | Verzamelalbum (Panini-stijl) | feature | idee | midden | L |
+| [015](015-pushmeldingen.md) | Pushmeldingen | feature | idee | laag | L |
+| [016](016-revanche-online-wedstrijd.md) | Revanche na een online wedstrijd | feature | idee | midden | S |
