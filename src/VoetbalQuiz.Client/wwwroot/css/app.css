@@ -283,7 +283,10 @@ h1 { margin: .2rem 0 .4rem; font-size: 1.5rem; }
     cursor: pointer;
 }
 .surface-light .btn:not(.primary) { background: var(--surface-soft); box-shadow: none; }
-.btn.primary { background: var(--accent); color: #1b1600; box-shadow: none; }
+/* Hoofdknop in scorebordstijl: een donkere tegel met een gele lijn en gele letters, als een opgelicht segment van het bord.
+   Vol geel blijft voor cijfers, de klok en het levelbolletje. */
+.btn.primary { background: rgba(250, 199, 117, .1); color: var(--sb-digit); box-shadow: inset 0 0 0 1.5px var(--sb-digit); }
+.btn.primary:hover { background: rgba(250, 199, 117, .18); }
 .btn.big { display: block; width: 100%; padding: 16px; font-size: 1.1rem; margin-top: 16px; }
 .btn:disabled { opacity: .6; }
 .linkish { background: none; border: 0; color: inherit; font: inherit; cursor: pointer; text-decoration: underline; }
@@ -440,7 +443,8 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent); box-sha
     bottom: calc(env(safe-area-inset-bottom) + 8px);
     z-index: 5;
     margin: 0 0 12px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, .3);
+    background: var(--card);
+    box-shadow: inset 0 0 0 1.5px var(--sb-digit), 0 6px 18px rgba(0, 0, 0, .3);
 }
 
 /* ---------- Klassement ---------- */
@@ -1111,7 +1115,7 @@ body:has(.sheet) { overflow: hidden; }
 /* Brede knop onderaan: donkergroen naast de gele hoofdknop van de daily; geel (.primary) zodra de special de hoofdactie is. */
 .btn.home-special-play { display: flex; justify-content: center; align-items: center; width: 100%; min-height: var(--tap);
     margin-top: 12px; background: var(--pitch-2); color: #fff; }
-.btn.home-special-play.primary { background: var(--accent); color: #1b1600; }
+.btn.home-special-play.primary { background: rgba(250, 199, 117, .1); color: var(--sb-digit); box-shadow: inset 0 0 0 1.5px var(--sb-digit); }
 .btn.home-special-play.done { background: var(--surface-soft); color: var(--text); }
 .home-special-error { margin-bottom: 16px; }
 /* Home: de huidige top 3 rechts in de daily- en specialtegel. Lange namen worden afgekapt. */
@@ -1679,41 +1683,47 @@ button.choice:active { transform: scale(.97); }
 .affiche.big .affiche-team { font-size: 1.15rem; padding: 14px; }
 .special-card.with-affiche { border-top-left-radius: 0; border-top-right-radius: 0; }
 
-/* ---------- Beloningspopup (XP en nieuwe badges) ---------- */
+/* ---------- Beloningspopup (XP en nieuwe badges) ----------
+   Een donkere scorebordtegel midden op het veld: de XP in gele scorebordcijfers, de dunne groene lijn rond de tegel
+   en de levelbalk, en nieuwe badges als tegeltjes met de kleur van hun tier. */
 .reward-backdrop {
     position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 16px;
-    background: rgba(5, 25, 15, .72); backdrop-filter: blur(3px);
+    background: var(--scrim); backdrop-filter: blur(3px);
     animation: reward-fade .25s ease-out;
 }
 .reward-card {
     position: relative; overflow: hidden; width: 100%; max-width: 380px; max-height: calc(100dvh - 32px); overflow-y: auto;
-    background: var(--card); border-radius: 20px; padding: 22px 18px 18px; text-align: center;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, .45);
+    background: var(--card); color: var(--text); border-radius: 20px; padding: 22px 18px 18px; text-align: center;
+    box-shadow: inset 0 0 0 1px var(--sb-line), 0 20px 60px rgba(0, 0, 0, .45);
     animation: reward-pop .45s cubic-bezier(.2, 1.4, .4, 1);
 }
-.reward-kicker { font-weight: 900; font-size: 1.25rem; }
+.reward-kicker { font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 .reward-xp {
-    font-size: 3rem; font-weight: 900; line-height: 1.1; margin: 6px 0 4px; color: var(--accent-text);
-    font-variant-numeric: tabular-nums; text-shadow: 0 2px 0 rgba(245, 196, 0, .35);
+    font-family: var(--digits); font-size: 3.2rem; font-weight: 700; line-height: 1.1; margin: 6px 0 10px; color: var(--sb-digit);
+    font-variant-numeric: tabular-nums; text-shadow: 0 0 18px rgba(250, 199, 117, .35);
 }
-.reward-xp small { font-size: 1.1rem; }
-.reward-parts { list-style: none; margin: 0 0 14px; padding: 0; display: grid; gap: 4px; }
+.reward-xp small { font-size: 1.1rem; color: var(--muted); }
+.reward-parts { list-style: none; margin: 0 0 14px; padding: 0; display: grid; border-top: 1px solid var(--divider); }
 .reward-parts li {
-    display: flex; justify-content: space-between; padding: 6px 10px; border-radius: 10px; background: #f3f6f4; font-size: .9rem;
+    display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 8px 4px; text-align: left;
+    border-bottom: 1px solid var(--divider); font-size: .9rem;
     opacity: 0; animation: reward-slide .35s ease-out forwards;
 }
-.reward-parts b { color: var(--ok-text); }
-.reward-level { text-align: left; background: #13241b; color: #fff; border-radius: 14px; padding: 10px 12px; }
-.reward-level.up { box-shadow: 0 0 0 3px var(--accent); transition: box-shadow .3s; }
+.reward-parts b { font-family: var(--digits); color: var(--ok-text); font-variant-numeric: tabular-nums; }
+.reward-level {
+    text-align: left; background: var(--input-bg); color: var(--text); border-radius: 14px; padding: 10px 12px;
+    box-shadow: inset 0 0 0 1px var(--sb-line);
+}
+.reward-level.up { box-shadow: inset 0 0 0 1px var(--sb-line), 0 0 0 3px var(--accent); transition: box-shadow .3s; }
 .reward-level-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-.reward-level-row small { display: block; opacity: .75; font-size: .75rem; }
+.reward-level-row small { display: block; color: var(--muted); font-size: .75rem; }
 .reward-level-num {
     width: 38px; height: 38px; flex: none; display: grid; place-items: center; border-radius: 50%;
     background: var(--accent); color: #1b1600; font-weight: 900; font-size: 1.1rem;
     animation: reward-bump .5s cubic-bezier(.2, 1.6, .4, 1);
 }
-.reward-level-xp { margin-left: auto; font-variant-numeric: tabular-nums; }
-.reward-bar { height: 12px; border-radius: 99px; background: rgba(255, 255, 255, .15); overflow: hidden; }
+.reward-level-xp { margin-left: auto; font-family: var(--digits); color: var(--sb-digit); font-variant-numeric: tabular-nums; }
+.reward-bar { height: 12px; border-radius: 99px; background: rgba(255, 255, 255, .12); overflow: hidden; }
 .reward-bar span {
     display: block; height: 100%; border-radius: 99px; transition: width .08s linear;
     background: linear-gradient(90deg, var(--accent), #ffe066, var(--accent)); background-size: 200% 100%;
@@ -1726,21 +1736,20 @@ button.choice:active { transform: scale(.97); }
 .reward-badges-title { margin: 16px 0 8px; font-weight: 900; font-size: 1.05rem; animation: reward-slide .3s ease-out; }
 .reward-badges { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 8px; perspective: 600px; }
 .reward-badge {
-    display: flex; flex-direction: column; gap: 2px; padding: 10px 6px; border-radius: 12px; background: var(--card);
+    display: flex; flex-direction: column; gap: 2px; padding: 10px 6px; border-radius: 12px; background: var(--surface-soft);
     border: 2px solid #c98b52; position: relative; overflow: hidden;
     opacity: 0; animation: reward-flip .7s cubic-bezier(.2, 1.3, .4, 1) var(--d, 0ms) forwards;
 }
 .reward-badge.tier-zilver { border-color: #b8c0c7; }
-.reward-badge.tier-goud { border-color: #e2b100; background: #fffbea; }
+.reward-badge.tier-goud { border-color: #e2b100; background: rgba(226, 177, 0, .14); }
 .reward-badge::after {
     content: ""; position: absolute; inset: 0; pointer-events: none;
-    background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, .85) 50%, transparent 65%);
+    background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, .35) 50%, transparent 65%);
     transform: translateX(-120%); animation: reward-glint 1s ease-out calc(var(--d, 0ms) + 600ms) forwards;
 }
 .reward-badge b { font-size: .8rem; }
 .reward-badge small { color: var(--muted); font-size: .68rem; line-height: 1.2; }
 .reward-card .btn.big { margin-top: 16px; width: 100%; }
-
 .confetti { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
 .confetti i {
     position: absolute; top: -12px; width: 8px; height: 12px; border-radius: 2px; opacity: 0;
