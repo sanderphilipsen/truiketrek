@@ -31,6 +31,7 @@
     --sb-line: rgba(93, 202, 165, .62); /* de dunne groene lijn rond een tegel (≥ 3:1 op een tegel) */
     --sb-digit: #fac775;      /* gele scorebordcijfers */
     --digits: ui-monospace, "Cascadia Mono", Consolas, monospace; /* lettertype van scorebordcijfers */
+    --input-bg: #031a10;      /* invoerveld: iets donkerder dan een tegel */
     --error-bg: rgba(214, 69, 69, .16);   /* foutmelding of fout antwoord */
     --error-text: #f4a3a3;
     --success-bg: rgba(31, 157, 85, .18); /* gelukt of juist */
@@ -55,6 +56,7 @@
     --derby-line: #f1c6c6;
     --sb-line: #cfd8d2;
     --sb-digit: #806300;
+    --input-bg: #ffffff;
     --error-bg: #fde8e8;
     --error-text: #8a1c1c;
     --success-bg: #e3f6ea;
@@ -290,13 +292,17 @@ h1 { margin: .2rem 0 .4rem; font-size: 1.5rem; }
 .auth { margin-top: 24px; }
 .auth form { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
 .auth label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: .9rem; }
-/* Invoervelden blijven licht, ook op een donkere tegel: zo leest typen het best. De focusring is geel. */
-input, textarea, select { background: #fff; color: #13241b; color-scheme: light; }
+/* Invoervelden in scorebordstijl: iets donkerder dan de tegel, met de dunne groene lijn; bij typen een gele lijn.
+   In het admin-paneel (.surface-light) blijven ze wit. */
+input, textarea, select { background: var(--input-bg); color: var(--text); color-scheme: dark; }
+input::placeholder, textarea::placeholder { color: var(--muted); opacity: 1; }
+input:-webkit-autofill { -webkit-text-fill-color: var(--text); box-shadow: 0 0 0 1000px var(--input-bg) inset; caret-color: var(--text); }
+.surface-light :is(input, textarea, select) { color-scheme: light; }
 input {
     font-size: 1rem;
     padding: 12px 14px;
     border-radius: 10px;
-    border: 1.5px solid #cfd8d2;
+    border: 1.5px solid var(--sb-line);
     outline: none;
     width: 100%;
 }
@@ -569,11 +575,11 @@ textarea {
     font-size: 1rem;
     padding: 12px 14px;
     border-radius: 10px;
-    border: 1.5px solid #cfd8d2;
+    border: 1.5px solid var(--sb-line);
     resize: vertical;
     width: 100%;
 }
-select { font: inherit; padding: 8px; border-radius: 8px; border: 1.5px solid #cfd8d2; }
+select { font: inherit; padding: 8px; border-radius: 8px; border: 1.5px solid var(--sb-line); }
 
 /* ---------- Online lobby ---------- */
 .btn.big.tafel-new { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 12px; }
