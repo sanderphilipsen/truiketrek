@@ -1,0 +1,36 @@
+@* Stuurt het voetbalveld op de achtergrond (wwwroot/pitch.js): de bal hupt tijdens een vraag, na je antwoord volgt
+   een goal, een schot op de paal of een bal over de zijlijn, en bij een affiche krijgen de aanvallen de clubkleuren.
+   Toont zelf niets. Bij het verdwijnen zet het enkel terug wat het zelf zette, niet wat de volgende pagina al zette. *@
+@inject IJSRuntime JS
+@implements IDisposable
+
+@code {
+    /// <summary>"question", "goal", "post", "out" of null (gewone aanvallen).</summary>
+    [Parameter] public string? Mood { get; set; }
+
+    /// <summary>De twee ploegen van een special, of null voor witte aanvallen.</summary>
+    [Parameter] public Affiche? Teams { get; set; }
+
+    private readonly string _owner = Guid.NewGuid().ToString("N");
+    private string? _sentMood;
+    private Affiche? _sentTeams;
+
+    /// <summary>De stemming bij een beoordeeld antwoord.</summary>
+    public static string ForResult(bool correct, int points) => correct ? "goal" : points > 0 ? "post" : "out";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender || Mood != _sentMood)
+        {
+            _sentMood = Mood;
+            await JS.InvokeVoidAsync("truitje.pitch.mood", Mood, _owner);
+        }
+        if (firstRender || Teams != _sentTeams)
+        {
+            _sentTeams = Teams;
+            await JS.InvokeVoidAsync("truitje.pitch.teams", Teams is { } a ? new[] { a.HomeColor, a.AwayColor } : null, _owner);
+        }
+    }
+
+    public void Dispose() => (JS as IJSInProcessRuntime)?.InvokeVoid("truitje.pitch.release", _owner);
+}

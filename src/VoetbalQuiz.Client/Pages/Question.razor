@@ -6,6 +6,7 @@
 @inject ApiClient Api
 
 <PageTitle>Vraag @Number – Truitje Trek</PageTitle>
+<PitchFx Mood="@PitchMood" Teams="_affiche" />
 
 <div class="question-head">
     <a href="@OverviewUrl" class="back">‹ Overzicht</a>
@@ -115,6 +116,18 @@ else
     private double LocalElapsed => _syncedElapsed + (DateTime.UtcNow - _syncedAt).TotalSeconds;
     private double SecondsLeft => Math.Max(0, (_state?.TimeLimit ?? 30) - LocalElapsed);
 
+    // Het veld op de achtergrond: de bal hupt tijdens de vraag; daarna een goal, de paal of over de zijlijn.
+    private string? PitchMood => _state switch
+    {
+        null => null,
+        { Result: { } r } => PitchFx.ForResult(r.Correct, r.Points),
+        _ => "question",
+    };
+
+    // De clubkleuren van een special met een affiche (bv. Anderlecht – Club Brugge).
+    private Affiche? _affiche;
+    private int? _afficheFor;
+
     private string ResultAnnouncement => _state?.Result is { } r
         ? $"{Commentary.ForResult(r.Correct, r.Points, _state.View?.MaxPoints ?? 100, Number)} {QuestionAnswer.Title(_state.Type, r)}. Plus {r.Points} punten."
         : "";
@@ -124,6 +137,12 @@ else
         // Bij "Volgende vraag" hergebruikt Blazor deze component met een nieuw nummer.
         (_state, _error) = (null, null);
         try { _total = (await Api.GetOverviewAsync(QuizApi)).Questions.Count; } catch (ApiException) { }
+        if (SpecialId != _afficheFor)
+        {
+            _afficheFor = SpecialId;
+            try { _affiche = SpecialId is { } id ? (await Api.GetSpecialsAsync()).FirstOrDefault(s => s.Id == id)?.Affiche : null; }
+            catch (ApiException) { _affiche = null; }
+        }
         await RunAsync(() => Api.StartAsync(QuizApi, Number));
         StartTimer();
     }

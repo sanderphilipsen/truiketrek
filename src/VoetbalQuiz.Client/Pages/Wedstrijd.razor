@@ -7,6 +7,7 @@
 @inject IJSRuntime JS
 
 <PageTitle>@(_state?.Name ?? "Wedstrijd") – Truitje Trek</PageTitle>
+<PitchFx Mood="@PitchMood()" />
 
 @* Weggaan tijdens een wedstrijd = het partijtje verlaten (en je punten kwijt): eerst bevestigen. *@
 <NavigationLock OnBeforeInternalNavigation="OnLeavingPageAsync" ConfirmExternalNavigation="@InGame" />
@@ -384,6 +385,29 @@ else
     private double SecondsLeft => Math.Max(0, (_state?.TimeLimit ?? GameRules.TimeLimitSeconds) - LocalElapsed);
 
     /// <summary>Types waar je één keer kiest: een foute keuze is meteen "mis".</summary>
+    // Het veld op de achtergrond: de bal hupt tijdens het aftellen en de vraag. Zodra jij klaar bent volgt je reactie
+    // (goal, paal of over de zijlijn); die blijft staan tijdens de tussenstand, zodat ze niet opnieuw afspeelt.
+    private string? _resultMood;
+
+    private string? PitchMood()
+    {
+        switch (_state?.Phase)
+        {
+            case MatchPhase.Countdown:
+                _resultMood = null;
+                return "question";
+            case MatchPhase.Question:
+                if (!_state.IAmIn) return "question";
+                if (!_state.MyDone) { _resultMood = null; return "question"; }
+                return _resultMood ??= PitchFx.ForResult(_state.MyCorrect, _state.MyPoints);
+            case MatchPhase.Reveal:
+                if (!_state.IAmIn) return null;
+                return _resultMood ??= _state.Reveal.Any(r => r.IsMe) ? "goal" : "out";
+            default:
+                return null;
+        }
+    }
+
     private static bool IsChoice(QuestionType type) => type is QuestionType.Snelvuur or QuestionType.NietBij or QuestionType.Jaar;
 
     protected override async Task OnInitializedAsync()

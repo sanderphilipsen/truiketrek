@@ -40,25 +40,49 @@ html, body {
 /* Alleen op html: een eigen achtergrond op body zou over het veld (body::before) heen schilderen */
 html { background: linear-gradient(180deg, var(--pitch) 0%, var(--pitch-2) 100%) fixed; }
 
-/* Voetbalveld achter alles: gemaaide banen en flauwe lijnen, vast bij het scrollen.
-   Bovenop speelt pitch-play.svg af en toe een aanval uit zoals op een tactiekbord. */
+/* ---------- Voetbalveld achter alles (pitch.js) ----------
+   Gemaaide banen in CSS; lijnen, aanvallen en reacties in de SVG van .pitch-fx. Overdag een zonnegloed,
+   na zonsondergang (html.pitch-night) een donkerder veld met stadionlichten uit de vier hoeken. */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    background:
-        url("../pitch-play.svg") center / cover no-repeat,
-        url("../pitch.svg") center / cover no-repeat,
-        repeating-linear-gradient(180deg, rgba(255, 255, 255, .035) 0 10vh, transparent 10vh 20vh);
+    background: repeating-linear-gradient(180deg, rgba(255, 255, 255, .035) 0 10vh, transparent 10vh 20vh);
 }
-@media (prefers-reduced-motion: reduce) {
-    body::before {
-        background:
-            url("../pitch.svg") center / cover no-repeat,
-            repeating-linear-gradient(180deg, rgba(255, 255, 255, .035) 0 10vh, transparent 10vh 20vh);
-    }
+.pitch-fx { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+.pitch-fx svg { display: block; width: 100%; height: 100%; }
+.pitch-fx::before, .pitch-fx::after { content: ""; position: absolute; inset: 0; transition: opacity 4s ease; }
+.pitch-fx::before { background: radial-gradient(ellipse 90% 55% at 12% -8%, rgba(255, 238, 180, .11), transparent 70%); }
+.pitch-fx::after {
+    opacity: 0;
+    background:
+        radial-gradient(ellipse 75% 45% at 0 0, rgba(255, 248, 215, .15), transparent 70%),
+        radial-gradient(ellipse 75% 45% at 100% 0, rgba(255, 248, 215, .15), transparent 70%),
+        radial-gradient(ellipse 75% 45% at 0 100%, rgba(255, 248, 215, .12), transparent 70%),
+        radial-gradient(ellipse 75% 45% at 100% 100%, rgba(255, 248, 215, .12), transparent 70%),
+        rgba(0, 8, 4, .3);
+}
+.pitch-night .pitch-fx::before { opacity: 0; }
+.pitch-night .pitch-fx::after { opacity: 1; }
+
+.pf-lines { fill: none; stroke: #fff; stroke-opacity: .13; stroke-width: 1.5; }
+.pf-lines *, .pf-trail, .pf-ring, .pf-ripple { vector-effect: non-scaling-stroke; }
+.pf-spots { fill: #fff; fill-opacity: .16; }
+.pf-ring { fill: none; stroke-opacity: .3; stroke-width: 1.5; }
+.pf-trail { fill: none; stroke-opacity: .32; stroke-width: 1.5; stroke-dasharray: 5 6; stroke-linecap: round; }
+.pf-trail.run { stroke-dasharray: none; stroke-opacity: .22; }
+.pf-ripple { fill: none; stroke: #fff; stroke-width: 1.5; }
+.pf-ball-fill { fill: #fff; fill-opacity: .6; }
+.pf-ball-edge { fill: none; stroke: #0b3d24; stroke-opacity: .35; stroke-width: .25; }
+.pf-bounce { animation: pf-bounce 1.1s ease-in-out infinite; }
+/* Van bovenaf gezien: een hupje is een bal die even groter wordt (ook juist op een gedraaid veld). */
+@keyframes pf-bounce { 0%, 100% { transform: scale(1); } 45% { transform: scale(1.35); } }
+
+/* Liggend scherm: de banen lopen mee met het gedraaide veld. */
+@media (orientation: landscape) and (min-width: 768px) {
+    body::before { background: repeating-linear-gradient(90deg, rgba(255, 255, 255, .035) 0 10vw, transparent 10vw 20vw); }
 }
 
 a { color: inherit; }
