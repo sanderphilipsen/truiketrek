@@ -1,6 +1,6 @@
 @* Derby: de effecten van de wapens over het scherm heen.
-   - Bengaals vuur: een supporter met bivakmuts rechtsonder, en rode rook die de vraag even onleesbaar maakt (niet bij wie het afstak).
-   - Trump booster: een karikatuur rechtsonder zolang de vraag loopt.
+   - Bengaals vuur: een supporter in het gele truitje, sjaal voor het gezicht, met fakkel rechtsonder, en rode rook die de vraag even onleesbaar maakt (niet bij wie het afstak).
+   - Trump booster: een karikatuur (in de stijl van het logo) met een scorebord-tekstballon rechtsonder zolang de vraag loopt.
    - Rode kaart: wie ze krijgt, ziet een kaart op zich afkomen.
    - Gokchinees: een louche gokbaas met koffertje vol geld rechtsonder (dubbel of niks).
    - Propere handen: een nette heer met smetteloos witte handschoenen die in een zak geld graait;
@@ -52,23 +52,34 @@
                         <circle cx="96" cy="22" r="1.6" class="s3" />
                         <circle cx="96" cy="22" r="1.2" class="s4" />
                     </g>
-                    @* De fakkel en de arm die hem omhoog steekt *@
-                    <rect x="93" y="28" width="6" height="40" rx="2" fill="#5b5b5b" transform="rotate(8 96 48)" />
-                    <path d="M78 112 L92 66" stroke="#1d1d22" stroke-width="13" stroke-linecap="round" />
-                    <circle cx="93" cy="66" r="7.5" fill="#1d1d22" />
-                    @* Lijf: zwarte hoodie met sjaal in clubkleuren *@
-                    <path d="M18 170 C18 128 34 108 60 108 C86 108 102 128 102 170 Z" fill="#1d1d22" />
-                    <path d="M36 112 L84 112 L80 124 L40 124 Z" fill="#d6262f" />
-                    <path d="M46 112 L52 112 L50 124 L44 124 Z M64 112 L70 112 L70 124 L64 124 Z" fill="#fff" />
-                    <path d="M40 124 L34 150 L44 150 L48 124 Z" fill="#d6262f" />
-                    @* Hoofd met bivakmuts: enkel de ogen zijn te zien *@
-                    <ellipse cx="60" cy="80" rx="25" ry="29" fill="#141418" />
-                    <rect x="42" y="70" width="36" height="13" rx="6.5" fill="#e9b48a" />
-                    <circle cx="52" cy="76.5" r="2.6" fill="#141418" />
-                    <circle cx="68" cy="76.5" r="2.6" fill="#141418" />
-                    <path d="M47 71 L56 73 M73 71 L64 73" stroke="#141418" stroke-width="2" stroke-linecap="round" />
-                    <path d="M44 95 Q60 90 76 95" stroke="#2c2c33" stroke-width="2" fill="none" />
-                    <ellipse cx="60" cy="54" rx="9" ry="4" fill="#2c2c33" />
+                    @* In de stijl van het logo: vlakke kleuren uit het palet met een dikke donkere omlijning.
+                       Een supporter in het gele truitje, de rood-witte sjaal over neus en mond en een pet achterstevoren,
+                       die de fakkel omhoog steekt. *@
+                    <g stroke="#031a10" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+                        <g transform="rotate(8 96 48)">
+                            <rect x="91" y="28" width="10" height="40" rx="3" fill="#d64545" />
+                            <path d="M91 40 H101" stroke="#fff" stroke-width="3" />
+                        </g>
+                        <path d="M72 118 L90 72" stroke="#031a10" stroke-width="18" />
+                        <path d="M72 118 L90 72" stroke="#f5c400" stroke-width="12" />
+                        <circle cx="93" cy="68" r="8" fill="#f2c39b" />
+                        <rect x="52" y="98" width="16" height="22" fill="#f2c39b" />
+                        <path d="M18 170 C18 128 34 108 60 108 C86 108 102 128 102 170 Z" fill="#f5c400" />
+                        <path d="M46 134 H70 L58 164" fill="none" stroke="#06291b" stroke-width="5" />
+                        <ellipse cx="60" cy="84" rx="22" ry="25" fill="#f2c39b" />
+                        <path d="M36 92 Q60 110 84 92 L86 108 Q60 128 34 108 Z" fill="#d64545" />
+                        <path d="M46 98 V112 M60 104 V118 M74 98 V112" stroke="#fff" stroke-width="4" />
+                        <path d="M36 108 L28 140 L40 140 L46 112 Z" fill="#d64545" />
+                        <path d="M33 128 H42" stroke="#fff" stroke-width="3" />
+                        <path d="M38 78 C38 52 82 52 82 78 Z" fill="#d64545" />
+                        <rect x="36" y="72" width="48" height="9" rx="4" fill="#f5c400" />
+                        <path d="M80 74 L106 70 L104 80 L82 82 Z" fill="#d64545" />
+                    </g>
+                    <g fill="#031a10">
+                        <circle cx="52" cy="88" r="2.6" />
+                        <circle cx="68" cy="88" r="2.6" />
+                    </g>
+                    <path d="M45 81 L56 84 M75 81 L64 84" stroke="#031a10" stroke-width="3" stroke-linecap="round" fill="none" />
                 </svg>
                 <figcaption>🎆 Vuur van @(f.ByMe ? "jou" : f.By)</figcaption>
             </figure>
@@ -78,34 +89,36 @@
             <figure class="derby-figure trump">
                 <div class="trump-bubble">FAKE NEWS!</div>
                 <svg viewBox="0 0 120 160" width="104" height="139">
-                    @* Pak, hemd en de veel te lange rode das *@
-                    <path d="M12 160 C12 118 30 100 60 100 C90 100 108 118 108 160 Z" fill="#1c2f6b" />
-                    <path d="M46 100 L60 126 L74 100 Z" fill="#fff" />
-                    <g class="trump-tie">
-                        <path d="M56 104 L64 104 L66 110 L62 160 L58 160 L54 110 Z" fill="#d6262f" />
-                        <path d="M55 102 L65 102 L64 108 L56 108 Z" fill="#a8161e" />
+                    @* In de stijl van het logo: een donker pak als scorebordtegel met een groene lijn op de revers,
+                       de veel te lange rode das, een gewone huidskleur en de kuif in het geel van het bord. *@
+                    <g stroke="#031a10" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+                        <rect x="50" y="86" width="20" height="20" fill="#f2c39b" />
+                        <path d="M12 160 C12 120 30 102 60 102 C90 102 108 120 108 160 Z" fill="#06291b" />
+                        <path d="M47 102 L60 134 L73 102 Z" fill="#fff" />
+                        <path d="M47 102 L42 134 L54 118 Z M73 102 L78 134 L66 118 Z" fill="#06291b" stroke="#5dcaa5" stroke-width="2.5" />
+                        <g class="trump-tie">
+                            <path d="M55 104 H65 L67 112 L62 158 H58 L53 112 Z" fill="#d64545" />
+                        </g>
+                        <g class="trump-thumb">
+                            <path d="M84 130 L95 114" stroke="#031a10" stroke-width="16" />
+                            <path d="M84 130 L95 114" stroke="#06291b" stroke-width="10" />
+                            <rect x="92" y="106" width="20" height="18" rx="6" fill="#f2c39b" />
+                            <rect x="99" y="90" width="8" height="20" rx="4" fill="#f2c39b" />
+                        </g>
+                        <ellipse cx="34" cy="68" rx="4" ry="7" fill="#f2c39b" />
+                        <ellipse cx="86" cy="68" rx="4" ry="7" fill="#f2c39b" />
+                        <ellipse cx="60" cy="66" rx="26" ry="29" fill="#f2c39b" />
+                        <ellipse cx="60" cy="84" rx="5" ry="3.5" fill="#d64545" />
+                        <g class="trump-hair">
+                            <path d="M31 56 C26 30 48 18 70 22 C90 25 100 36 97 52 C88 42 78 38 64 40 C52 42 40 46 31 56 Z" fill="#f5c400" />
+                            <path d="M64 40 C80 30 96 34 106 46 C96 44 86 44 80 48 Z" fill="#f5c400" />
+                        </g>
                     </g>
-                    @* Duim omhoog *@
-                    <g class="trump-thumb">
-                        <rect x="92" y="104" width="20" height="18" rx="6" fill="#f2a65a" />
-                        <rect x="99" y="88" width="8" height="20" rx="4" fill="#f2a65a" />
-                        <path d="M88 122 L96 112" stroke="#1c2f6b" stroke-width="10" stroke-linecap="round" />
+                    <g fill="#031a10">
+                        <circle cx="50" cy="63" r="2.8" />
+                        <circle cx="70" cy="63" r="2.8" />
                     </g>
-                    @* Oranje hoofd met lichte ogen *@
-                    <ellipse cx="60" cy="64" rx="27" ry="31" fill="#f29a4a" />
-                    <ellipse cx="49" cy="60" rx="8" ry="5.5" fill="#f9d9b0" />
-                    <ellipse cx="71" cy="60" rx="8" ry="5.5" fill="#f9d9b0" />
-                    <path d="M45 60 Q49 58 53 60 M67 60 Q71 58 75 60" stroke="#3b2a1a" stroke-width="2.2" fill="none" stroke-linecap="round" />
-                    <path d="M42 52 L55 53 M65 53 L78 52" stroke="#e7c35a" stroke-width="3" stroke-linecap="round" />
-                    <ellipse cx="60" cy="82" rx="6" ry="4.5" fill="#9b2a1e" />
-                    <ellipse cx="60" cy="81" rx="3" ry="1.6" fill="#5a120c" />
-                    <ellipse cx="33" cy="66" rx="4" ry="7" fill="#e8893a" />
-                    <ellipse cx="87" cy="66" rx="4" ry="7" fill="#e8893a" />
-                    @* De beroemde blonde kuif *@
-                    <g class="trump-hair">
-                        <path d="M30 52 C26 26 50 18 70 22 C90 25 100 36 96 50 C88 40 78 36 64 38 C52 40 40 44 30 52 Z" fill="#f4d36b" />
-                        <path d="M64 38 C80 30 96 34 104 44 C96 42 86 42 80 46 Z" fill="#e9c24f" />
-                    </g>
+                    <path d="M43 56 L56 57 M64 57 L77 56" stroke="#031a10" stroke-width="3" stroke-linecap="round" fill="none" />
                 </svg>
                 <figcaption>🟨 Booster van @(t.ByMe ? "jou" : t.By)</figcaption>
             </figure>

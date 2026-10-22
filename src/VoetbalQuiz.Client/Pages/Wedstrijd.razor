@@ -164,9 +164,9 @@ else
             else if (_state.CurrentNumber <= 1 && _state.Derby?.MyWeapon is { } weapon)
             {
                 <div class="countdown">
-                    <div>Jouw wapen voor deze derby</div>
-                    <div class="weapon-reveal">
-                        <span class="wr-icon">@DerbyRules.Get(weapon).Icon</span>
+                    <div class="weapon-reveal" role="status">
+                        <span class="sb-label">Jouw geheime wapen</span>
+                        <span class="wr-icon" aria-hidden="true">@DerbyRules.Get(weapon).Icon</span>
                         <b>@DerbyRules.Get(weapon).Name</b>
                         <small>@DerbyRules.Get(weapon).HowTo</small>
                     </div>

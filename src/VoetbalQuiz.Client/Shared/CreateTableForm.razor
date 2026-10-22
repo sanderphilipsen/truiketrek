@@ -83,18 +83,30 @@
                 </div>
             </div>
 
-            <button type="button" class="derby-toggle @(_derby ? "active" : "")" aria-pressed="@(_derby ? "true" : "false")" @onclick="ToggleDerby">
-                <span class="derby-flame" aria-hidden="true">🔥</span>
-                <span class="derby-text">
-                    <b>Derby</b>
-                    <small>Elk een geheim wapen @string.Join(" ", DerbyRules.All.Select(w => w.Icon))</small>
-                    @if (_derby && _chosen.Count > 0 && !_chosen.Any(DerbyRules.TrumpWorksOn))
+            @* Derby: een rij zoals "Plaatsen", met rechts een schakelaar in scorebordstijl. Aan: de wapens verschijnen eronder. *@
+            <div class="derby-field @(_derby ? "active" : "")">
+                <button type="button" class="derby-toggle" role="switch" aria-checked="@(_derby ? "true" : "false")" @onclick="ToggleDerby">
+                    <span class="derby-flame" aria-hidden="true"><Icon Name="flame" /></span>
+                    <span class="derby-text">
+                        <b>Derby</b>
+                        <small>Iedereen krijgt een geheim wapen</small>
+                    </span>
+                    <span class="derby-switch" aria-hidden="true"><span class="derby-knob"></span></span>
+                </button>
+                @if (_derby)
+                {
+                    <ul class="derby-arsenal" aria-label="De wapens">
+                        @foreach (var w in DerbyRules.All)
+                        {
+                            <li title="@w.HowTo"><span aria-hidden="true">@w.Icon</span> @w.Name</li>
+                        }
+                    </ul>
+                    @if (_chosen.Count > 0 && !_chosen.Any(DerbyRules.TrumpWorksOn))
                     {
                         <small class="derby-note">🟨 Trump booster enkel bij Snelvuur, Wie hoort er niet bij of Raad het jaar.</small>
                     }
-                </span>
-                <span class="switch" aria-hidden="true"></span>
-            </button>
+                }
+            </div>
         </div>
 
         <div class="sheet-foot">
