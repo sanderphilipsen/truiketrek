@@ -330,14 +330,22 @@ else
             break;
 
         case MatchPhase.Finished:
-            var winner = _state.Players.FirstOrDefault(p => p.Rank == 1);
+            var firsts = _state.Players.Where(p => p.Rank == 1).ToList();
+            var stayers = _state.Players.Count(p => !p.Left);
+            var draw = firsts.Count > 1;
+            var winner = firsts.FirstOrDefault();
+            var iWon = winner?.IsMe == true && MatchRules.IsWin(winner.Rank, stayers, firsts.Count);
             <section class="card center podium-card">
-                <div class="trophy">🏆</div>
-                <h1>@(winner?.IsMe == true ? "Jij wint!" : $"{winner?.UserName} wint!")</h1>
+                <div class="trophy">@(draw ? "🤝" : "🏆")</div>
+                <h1>@(draw ? "Gelijkspel!" : winner?.IsMe == true ? "Jij wint!" : $"{winner?.UserName} wint!")</h1>
                 <div class="muted">@_state.Name</div>
-                @if (_state.Players.Count(p => !p.Left) < MatchRules.StayersForWin)
+                @if (stayers < MatchRules.StayersForWin)
                 {
                     <small class="muted">Iedereen anders vertrok: dit telt niet als zege voor je rating, reeks of badges.</small>
+                }
+                else if (draw)
+                {
+                    <small class="muted">@string.Join(" en ", firsts.Select(p => p.IsMe ? "jij" : p.UserName)) delen de eerste plaats: dat telt voor niemand als zege.</small>
                 }
             </section>
             <Standings Players="_state.Players" />
@@ -363,7 +371,7 @@ else
             }
             <a class="btn primary big" href="">Terug naar Home</a>
             @* Eerst even de eindstand laten zien. *@
-            <RewardPopup DelayMs="2500" Kicker="@(winner?.IsMe == true ? "Wat een zege!" : "Wedstrijd gespeeld!")" />
+            <RewardPopup DelayMs="2500" Kicker="@(iWon ? "Wat een zege!" : draw && firsts.Any(p => p.IsMe) ? "Gelijkspel!" : "Wedstrijd gespeeld!")" />
             break;
 
         case MatchPhase.Cancelled:

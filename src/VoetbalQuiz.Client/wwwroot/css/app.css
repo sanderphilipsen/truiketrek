@@ -62,6 +62,8 @@
     --success-bg: #e3f6ea;
     --active-bg: var(--pitch-2);
     color-scheme: light;
+    /* html/body erven de donkere tekstkleur als berekende waarde; de variabele alleen terugzetten is niet genoeg. */
+    color: var(--text);
 }
 
 * { box-sizing: border-box; }

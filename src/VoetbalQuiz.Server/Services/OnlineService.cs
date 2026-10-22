@@ -7,8 +7,11 @@ namespace VoetbalQuiz.Server.Services;
 /// <summary>Klassementen en statistieken van online wedstrijden, apart van de daily.</summary>
 public class OnlineService(QuizDbContext db, ResultsService results)
 {
-    /// <summary>Won: eerste, en de wedstrijd telt als zege (zie <see cref="MatchRules.StayersForWin"/>).</summary>
-    private record PlayerResult(string UserId, string UserName, int Score, int Rank, int FirstCorrect, bool Won);
+    /// <summary>
+    /// Counts: er bleven genoeg spelers over (zie <see cref="MatchRules.StayersForWin"/>).
+    /// Won: een echte zege volgens <see cref="MatchRules.IsWin"/> (alleen eerste, geen gelijkspel).
+    /// </summary>
+    private record PlayerResult(string UserId, string UserName, int Score, int Rank, int FirstCorrect, bool Counts, bool Won);
 
     private record FinishedMatch(int Id, DateTime FinishedAt, List<PlayerResult> Players);
 
@@ -24,14 +27,16 @@ public class OnlineService(QuizDbContext db, ResultsService results)
                 UserName = p.User.UserName!,
                 p.Score,
                 Rank = p.Rank ?? 99,
-                Counts = p.Match.Players.Count(o => o.LeftAt == null) >= MatchRules.StayersForWin,
+                Stayers = p.Match.Players.Count(o => o.LeftAt == null),
+                Firsts = p.Match.Players.Count(o => o.Rank == 1),
                 FirstCorrect = db.MatchAnswers.Count(a => a.MatchQuestion.MatchId == p.MatchId && a.UserId == p.UserId && a.Position == 1),
             })
             .ToListAsync();
 
         return rows.GroupBy(r => r.MatchId)
             .Select(g => new FinishedMatch(g.Key, g.First().FinishedAt,
-                g.Select(r => new PlayerResult(r.UserId, r.UserName, r.Score, r.Rank, r.FirstCorrect, r.Rank == 1 && r.Counts)).ToList()))
+                g.Select(r => new PlayerResult(r.UserId, r.UserName, r.Score, r.Rank, r.FirstCorrect,
+                    r.Stayers >= MatchRules.StayersForWin, MatchRules.IsWin(r.Rank, r.Stayers, r.Firsts))).ToList()))
             .OrderBy(m => m.FinishedAt)
             .ToList();
     }
@@ -65,8 +70,8 @@ public class OnlineService(QuizDbContext db, ResultsService results)
             foreach (var p in players)
             {
                 // Als enige overgebleven: geen zege, dus ook geen rating erbij en de reeks blijft staan.
-                // Wie vertrok, verliest wel gewoon.
-                if (p.Rank == 1 && !p.Won) continue;
+                // Wie vertrok, verliest wel gewoon. Een gelijkspel telt wel voor de rating (een half punt), maar breekt de reeks.
+                if (p.Rank == 1 && !p.Counts) continue;
                 rating[p.UserId] += deltas[p.UserId];
                 best[p.UserId] = Math.Max(best.GetValueOrDefault(p.UserId, MatchRules.StartRating), rating[p.UserId]);
                 streak[p.UserId] = p.Won ? streak.GetValueOrDefault(p.UserId) + 1 : 0;

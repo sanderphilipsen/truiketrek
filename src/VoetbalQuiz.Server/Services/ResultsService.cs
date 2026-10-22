@@ -71,11 +71,18 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
             .GroupBy(c => c.WinnerUserId!)
             .Select(g => new { UserId = g.Key, Count = g.Count() })
             .ToDictionaryAsync(x => x.UserId, x => x.Count);
-        var matches = await db.MatchPlayers
+        var matchRows = await db.MatchPlayers
             .Where(p => p.Match.Status == MatchStatus.Finished)
-            .GroupBy(p => p.UserId)
-            .Select(g => new { UserId = g.Key, Played = g.Count(), Won = g.Count(p => p.Rank == 1 && p.Match.Players.Count(o => o.LeftAt == null) >= MatchRules.StayersForWin) })
-            .ToDictionaryAsync(x => x.UserId);
+            .Select(p => new
+            {
+                p.UserId, p.Rank,
+                Stayers = p.Match.Players.Count(o => o.LeftAt == null),
+                Firsts = p.Match.Players.Count(o => o.Rank == 1),
+            })
+            .ToListAsync();
+        var matches = matchRows.GroupBy(p => p.UserId)
+            .Select(g => new { UserId = g.Key, Played = g.Count(), Won = g.Count(p => MatchRules.IsWin(p.Rank, p.Stayers, p.Firsts)) })
+            .ToDictionary(x => x.UserId);
 
         var sizes = await ChallengeSizesAsync();
         var daily = rows.GroupBy(r => r.UserId).ToDictionary(g => g.Key, g => g.ToList());

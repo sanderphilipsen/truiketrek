@@ -156,4 +156,15 @@ public class MatchScoringTests
         Assert.Equal(0, Player(m, "vroeg").Score);
         Assert.Equal(0, Player(m, "laat").Score);
     }
+
+    [Theory]
+    [InlineData(1, 2, 1, true)]   // alleen eerste, met twee die bleven
+    [InlineData(1, 4, 1, true)]
+    [InlineData(1, 2, 2, false)]  // gelijkspel: gedeelde eerste plaats
+    [InlineData(1, 3, 3, false)]
+    [InlineData(1, 1, 1, false)]  // als enige overgebleven
+    [InlineData(2, 2, 1, false)]  // tweede
+    [InlineData(null, 2, 1, false)]
+    public void A_win_is_sole_first_place_with_enough_stayers(int? rank, int stayers, int firsts, bool expected) =>
+        Assert.Equal(expected, MatchRules.IsWin(rank, stayers, firsts));
 }

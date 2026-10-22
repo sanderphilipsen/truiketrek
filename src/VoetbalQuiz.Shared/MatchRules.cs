@@ -30,6 +30,15 @@ public static class MatchRules
     public const int StayersForWin = 2;
     public const int MaxSeats = 8;
 
+    /// <summary>
+    /// Een zege: alleen eerste (een gedeelde eerste plaats is een gelijkspel en telt voor niemand als zege: anders
+    /// win je allebei door samen op alles te passen) en genoeg spelers die bleven (<see cref="StayersForWin"/>).
+    /// </summary>
+    /// <param name="rank">De eindplaats van de speler.</param>
+    /// <param name="stayers">Hoeveel spelers tot het einde bleven.</param>
+    /// <param name="firsts">Hoeveel spelers op de eerste plaats eindigden.</param>
+    public static bool IsWin(int? rank, int stayers, int firsts) => rank == 1 && stayers >= StayersForWin && firsts == 1;
+
     /// <summary>Aftellen voor de eerste vraag.</summary>
     public const double CountdownSeconds = 3;
 

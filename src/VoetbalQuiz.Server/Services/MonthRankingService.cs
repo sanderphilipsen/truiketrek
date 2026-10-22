@@ -127,17 +127,18 @@ public class MonthRankingService(QuizDbContext db, TimeProvider clock, ResultsSe
             .Select(p => new
             {
                 p.MatchId, p.UserId, Rank = p.Rank ?? 99,
-                Counts = p.Match.Players.Count(o => o.LeftAt == null) >= MatchRules.StayersForWin,
+                Stayers = p.Match.Players.Count(o => o.LeftAt == null),
+                Firsts = p.Match.Players.Count(o => o.Rank == 1),
             })
             .ToListAsync();
-        // Als enige overgebleven: geen zege en geen punten (zie MatchRules.StayersForWin).
+        // Als enige overgebleven: geen zege en geen punten (zie MatchRules.StayersForWin). Een gelijkspel is geen zege.
         return matchRows.GroupBy(r => r.MatchId)
-            .SelectMany(match => match.Select(p => p.Rank == 1 && !p.Counts
+            .SelectMany(match => match.Select(p => p.Rank == 1 && p.Stayers < MatchRules.StayersForWin
                 ? new { p.UserId, Won = false, Points = 0 }
                 : new
                 {
                     p.UserId,
-                    Won = p.Rank == 1,
+                    Won = MatchRules.IsWin(p.Rank, p.Stayers, p.Firsts),
                     Points = MonthRules.OnlinePoints(match.Count(o => o.UserId != p.UserId && o.Rank > p.Rank)
                                                      + 0.5 * match.Count(o => o.UserId != p.UserId && o.Rank == p.Rank)),
                 }))

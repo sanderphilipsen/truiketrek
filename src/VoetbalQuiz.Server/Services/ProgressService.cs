@@ -187,19 +187,26 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
 
         var challengeWins = await db.DailyChallenges.Where(c => c.WinnerUserId == userId)
             .Select(c => c.SpecialEventId != null).ToListAsync();
-        // Een zege telt enkel als er genoeg spelers bleven; een groot partijtje = 4 spelers die bleven.
+        // Een zege telt enkel als er genoeg spelers bleven en je alleen eerste was (MatchRules.IsWin);
+        // een groot partijtje = 4 spelers die bleven.
         var bigTableWins = await db.MatchPlayers.CountAsync(p => p.UserId == userId && p.Rank == 1
-            && p.Match.Status == MatchStatus.Finished && p.Match.Players.Count(o => o.LeftAt == null) >= 4);
+            && p.Match.Status == MatchStatus.Finished && p.Match.Players.Count(o => o.LeftAt == null) >= 4
+            && p.Match.Players.Count(o => o.Rank == 1) == 1);
         var matches = await db.MatchPlayers.Where(p => p.UserId == userId && p.Match.Status == MatchStatus.Finished)
             .OrderBy(p => p.Match.FinishedAt)
-            .Select(p => new { p.Rank, Counts = p.Match.Players.Count(o => o.LeftAt == null) >= MatchRules.StayersForWin })
+            .Select(p => new
+            {
+                p.Rank,
+                Stayers = p.Match.Players.Count(o => o.LeftAt == null),
+                Firsts = p.Match.Players.Count(o => o.Rank == 1),
+            })
             .ToListAsync();
         var goldenBalls = await goldenBall.WonByAsync(userId);
         int winStreak = 0, wins = 0;
         foreach (var m in matches)
         {
-            if (m.Rank == 1 && !m.Counts) continue; // als enige over: geen zege, reeks blijft staan
-            wins = m.Rank == 1 ? wins + 1 : 0;
+            if (m.Rank == 1 && m.Stayers < MatchRules.StayersForWin) continue; // als enige over: geen zege, reeks blijft staan
+            wins = MatchRules.IsWin(m.Rank, m.Stayers, m.Firsts) ? wins + 1 : 0; // een gelijkspel breekt de reeks
             winStreak = Math.Max(winStreak, wins);
         }
 
@@ -214,7 +221,7 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
             hours.Any(h => h < 5),
             hours.Any(h => h is >= 5 and < 7),
             matches.Count,
-            matches.Count(m => m.Rank == 1 && m.Counts),
+            matches.Count(m => MatchRules.IsWin(m.Rank, m.Stayers, m.Firsts)),
             attempts.Where(a => a.Special).Select(a => a.DailyChallengeId).Distinct().Count(),
             challengeWins.Count(special => special),
             (await results.LevelOfAsync(userId)).Level,

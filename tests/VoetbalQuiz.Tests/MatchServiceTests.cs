@@ -265,6 +265,36 @@ public sealed class MatchServiceTests : IDisposable
     }
 
     [Fact]
+    public async Task Draw_is_nobodys_win()
+    {
+        var id = await _matches.CreateAsync(_host, "host", new CreateMatchRequest(null, 2, Questions: 3));
+        await _matches.JoinAsync(_guest, id);
+        await _matches.StartAsync(_host, id);
+        await Tick(MatchRules.CountdownSeconds);
+
+        // Allebei laten ze elke vraag verlopen: 0–0, gedeelde eerste plaats.
+        for (var guard = 0; guard < 20 && (await _matches.GetStateAsync(_host, id)).Phase != MatchPhase.Finished; guard++)
+        {
+            await Tick(GameRules.TimeLimitSeconds + 1);
+            await Tick(MatchRules.RevealSeconds);
+        }
+        var final = await _matches.GetStateAsync(_host, id);
+        Assert.Equal(MatchPhase.Finished, final.Phase);
+        Assert.All(final.Players, p => Assert.Equal(1, p.Rank));
+
+        // Een gelijkspel is geen zege: geen zege in het klassement en de stats, geen winst-XP, geen zegebadge.
+        // De rating telt een half punt: bij gelijke ratings verandert er niets.
+        var board = await _online.GetRatingLeaderboardAsync(_host);
+        Assert.All(board.Entries, e => Assert.Equal((MatchRules.StartRating, 1, 0), (e.Value, e.Played, e.Wins)));
+        Assert.Equal(0, (await _online.GetStatsAsync(_host)).Me.Wins);
+        Assert.Equal(Levels.XpPerMatch, (await _results.LevelOfAsync(_host)).Xp);
+        Assert.Equal(Levels.XpPerMatch, (await _results.LevelOfAsync(_guest)).Xp);
+        var profile = await _t.Progress.GetProfileAsync(_host, "host");
+        Assert.Equal(0, profile.MatchesWon);
+        Assert.False(profile.Badges.Single(b => b.Id == "eerste-zege").Earned);
+    }
+
+    [Fact]
     public async Task Host_leaving_lobby_cancels_the_table()
     {
         var id = await _matches.CreateAsync(_host, "host", new CreateMatchRequest(null, 4));

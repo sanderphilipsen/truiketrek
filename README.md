@@ -100,7 +100,7 @@ Specials houden hun eigen klassement op de specialpagina; hun punten tellen mee 
 - Spelers en vragen uit de daily van vandaag komen niet voor, zodat online spelen de daily niet verklapt. Online kiest willekeurig en verstoort de rotatie van de daily niet.
 - Wordt een type uitgeschakeld voor het partijtje start, dan valt het uit de mix; blijft er niets over, dan kan het partijtje niet starten.
 - Live updates gaan via SignalR (`/hubs/match`). De klok en de punten zitten op de server; `MatchEngine` zet de wedstrijden elke 250 ms verder.
-- Het online klassement staat los van de daily en van het maandklassement: een **Elo-rating** (iedereen start op 1000), te zien op het tabblad Online van het klassement. In de stats staan online records: meeste zeges, hoogste rating, snelste schutter, onklopbaar, … Een wedstrijd levert ook XP op (+25, winst +75).
+- Het online klassement staat los van de daily en van het maandklassement: een **Elo-rating** (iedereen start op 1000), te zien op het tabblad Online van het klassement. In de stats staan online records: meeste zeges, hoogste rating, snelste schutter, onklopbaar, … Een wedstrijd levert ook XP op (+25, winst +75). Een zege is alleen eerste eindigen met minstens twee spelers die bleven (`MatchRules.IsWin`): een **gelijkspel** telt voor niemand als zege (wel een half punt voor de rating), en wie als enige overblijft wint niets.
 
 **Vragenrotatie:** voor een nieuwe dag kiest de app de spelers die het langst geleden gevraagd werden; nooit gebruikte spelers komen eerst. Met 197 spelers duurt het ongeveer 20 dagen voor een speler terugkomt. Hoe meer spelers in de database, hoe langer ze wegblijven.
 

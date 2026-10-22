@@ -87,6 +87,19 @@ public sealed class MonthRankingTests : IDisposable
     }
 
     [Fact]
+    public async Task Draw_gives_half_an_opponent_but_no_win()
+    {
+        using var t = September();
+        var a = t.User("a"); var b = t.User("b");
+        t.Match((a, 1), (b, 1));
+        var entries = (await t._ranking.GetAsync(a, 2026, 9)).Entries.ToDictionary(e => e.UserName);
+        Assert.Equal(MonthRules.OnlinePoints(0.5), entries["a"].Online);
+        Assert.Equal(MonthRules.OnlinePoints(0.5), entries["b"].Online);
+        Assert.Equal(0, entries["a"].MatchesWon);
+        Assert.Equal(0, entries["b"].MatchesWon);
+    }
+
+    [Fact]
     public async Task Only_the_best_online_matches_count()
     {
         using var t = September();
