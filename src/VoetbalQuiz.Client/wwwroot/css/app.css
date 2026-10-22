@@ -28,7 +28,8 @@
     --derby-bg: rgba(240, 149, 149, .1); /* derby: zachtrode vulling en rand */
     --derby-line: rgba(240, 149, 149, .45);
     --scrim: rgba(5, 25, 15, .72); /* donkere laag achter een popup of bottom sheet */
-    --sb-line: rgba(93, 202, 165, .62); /* de dunne groene lijn rond een tegel (≥ 3:1 op een tegel) */
+    --sb-line: rgba(93, 202, 165, .3);  /* de dunne groene lijn rond een tegel: rustig, de tegel is al donkerder dan het veld */
+    --sb-line-strong: rgba(93, 202, 165, .62); /* dezelfde lijn rond knoppen, invoervelden en schakelaars (≥ 3:1 op een tegel) */
     --sb-digit: #fac775;      /* gele scorebordcijfers */
     --digits: ui-monospace, "Cascadia Mono", Consolas, monospace; /* lettertype van scorebordcijfers */
     --input-bg: #031a10;      /* invoerveld: iets donkerder dan een tegel */
@@ -54,7 +55,8 @@
     --warn-text: #8a5a00;
     --derby-bg: #fff3f3;
     --derby-line: #f1c6c6;
-    --sb-line: #cfd8d2;
+    --sb-line: #e2e9e5;
+    --sb-line-strong: #cfd8d2;
     --sb-digit: #806300;
     --input-bg: #ffffff;
     --error-bg: #fde8e8;
@@ -279,7 +281,7 @@ h1 { margin: .2rem 0 .4rem; font-size: 1.5rem; }
     text-align: center;
     text-decoration: none;
     background: rgba(255, 255, 255, .06);
-    box-shadow: inset 0 0 0 1px var(--sb-line);
+    box-shadow: inset 0 0 0 1px var(--sb-line-strong);
     color: var(--text);
     cursor: pointer;
 }
@@ -306,7 +308,7 @@ input {
     font-size: 1rem;
     padding: 12px 14px;
     border-radius: 10px;
-    border: 1.5px solid var(--sb-line);
+    border: 1.5px solid var(--sb-line-strong);
     outline: none;
     width: 100%;
 }
@@ -369,7 +371,7 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent); box-sha
 /* De klok als lichtkrant: gele cijfers in een donker kastje, rood en knipperend in de laatste seconden. */
 .clock {
     font-family: var(--digits); font-size: 1.45rem; font-weight: 800; color: var(--sb-digit); font-variant-numeric: tabular-nums;
-    background: rgba(0, 0, 0, .35); box-shadow: inset 0 0 0 1px var(--sb-line); border-radius: 8px; padding: 2px 10px; min-width: 3.2em; text-align: center;
+    background: rgba(0, 0, 0, .35); box-shadow: inset 0 0 0 1px var(--sb-line-strong); border-radius: 8px; padding: 2px 10px; min-width: 3.2em; text-align: center;
 }
 .clock.urgent { color: var(--fail-text); box-shadow: inset 0 0 0 1px var(--fail); animation: clock-blink 1s steps(2, start) infinite; }
 @keyframes clock-blink { 50% { opacity: .55; } }
@@ -617,11 +619,11 @@ textarea {
     font-size: 1rem;
     padding: 12px 14px;
     border-radius: 10px;
-    border: 1.5px solid var(--sb-line);
+    border: 1.5px solid var(--sb-line-strong);
     resize: vertical;
     width: 100%;
 }
-select { font: inherit; padding: 8px; border-radius: 8px; border: 1.5px solid var(--sb-line); }
+select { font: inherit; padding: 8px; border-radius: 8px; border: 1.5px solid var(--sb-line-strong); }
 
 /* ---------- Online lobby ---------- */
 .btn.big.tafel-new { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 12px; }
@@ -1820,7 +1822,7 @@ button.choice:active { transform: scale(.97); }
 .derby-toggle {
     -webkit-appearance: none; appearance: none;
     display: flex; align-items: center; gap: 12px; width: 100%; min-height: 56px; padding: 10px 12px; text-align: left;
-    background: var(--card); border: 1.5px solid var(--sb-line); border-radius: 12px; color: inherit; font: inherit; cursor: pointer;
+    background: var(--card); border: 1.5px solid var(--sb-line-strong); border-radius: 12px; color: inherit; font: inherit; cursor: pointer;
     touch-action: manipulation; transition: border-color .15s, background .15s;
 }
 .derby-toggle:focus-visible { outline: 3px solid rgba(250, 199, 117, .45); outline-offset: 2px; }
@@ -1833,7 +1835,7 @@ button.choice:active { transform: scale(.97); }
 .derby-toggle .derby-text small { color: var(--muted); font-size: .78rem; }
 .derby-switch {
     flex: none; position: relative; width: 52px; height: 30px; border-radius: 999px;
-    background: var(--input-bg); box-shadow: inset 0 0 0 1.5px var(--sb-line); transition: background .2s, box-shadow .2s;
+    background: var(--input-bg); box-shadow: inset 0 0 0 1.5px var(--sb-line-strong); transition: background .2s, box-shadow .2s;
 }
 .derby-knob {
     position: absolute; top: 4px; left: 4px; width: 22px; height: 22px; border-radius: 50%;
