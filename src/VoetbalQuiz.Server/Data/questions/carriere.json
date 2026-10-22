@@ -2770,5 +2770,5257 @@
     "status": "review",
     "sources": ["https://en.wikipedia.org/wiki/Mbaye_Leye"],
     "tags": ["standard"]
+  },
+  {
+    "answer": "Koen Casteels",
+    "aliases": [
+      "Casteels"
+    ],
+    "clubs": [
+      "KRC Genk (2009–2011)",
+      "TSG Hoffenheim (2011–2015)",
+      "Werder Bremen (2015, huur)",
+      "VfL Wolfsburg (2015–2024)",
+      "Al-Qadsiah (2024–)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Koen_Casteels"
+    ],
+    "tags": [
+      "rode-duivels",
+      "duitsland"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Matz Sels",
+    "aliases": [
+      "Sels"
+    ],
+    "clubs": [
+      "Lierse (2010–2014)",
+      "KAA Gent (2014–2016)",
+      "Newcastle United (2016–2018)",
+      "Anderlecht (2017–2018, huur)",
+      "Strasbourg (2018–2024)",
+      "Nottingham Forest (2024–)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Matz_Sels"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "frankrijk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Jason Denayer",
+    "aliases": [
+      "Denayer"
+    ],
+    "clubs": [
+      "Manchester City (2014–2018)",
+      "Celtic (2014–2015, huur)",
+      "Galatasaray (2015–2016, huur)",
+      "Sunderland (2016–2017, huur)",
+      "Galatasaray (2017–2018, huur)",
+      "Lyon (2018–2022)",
+      "Shabab Al Ahli (2022–2023)",
+      "Al Fateh (2023–2025)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jason_Denayer"
+    ],
+    "tags": [
+      "rode-duivels",
+      "turkije",
+      "frankrijk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Dodi Lukebakio",
+    "aliases": [
+      "Lukebakio"
+    ],
+    "clubs": [
+      "Anderlecht (2015–2018)",
+      "Toulouse (2016–2017, huur)",
+      "Charleroi (2017–2018, huur)",
+      "Watford (2018–2019)",
+      "Fortuna Düsseldorf (2018–2019, huur)",
+      "Hertha BSC (2019–2023)",
+      "VfL Wolfsburg (2021–2022, huur)",
+      "Sevilla (2023–2025)",
+      "Benfica (2025–)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dodi_Lukebakio"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "frankrijk",
+      "duitsland",
+      "spanje",
+      "portugal"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Jordan Lukaku",
+    "aliases": [],
+    "clubs": [
+      "Anderlecht (2011–2013)",
+      "KV Oostende (2013–2016)",
+      "Lazio (2016–2022)",
+      "Royal Antwerp (2020–2021, huur)",
+      "Vicenza (2022, huur)",
+      "Ponferradina (2022–2023)",
+      "Adanaspor (2023–2024)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jordan_Lukaku"
+    ],
+    "tags": [
+      "rode-duivels",
+      "familie",
+      "lukaku",
+      "anderlecht",
+      "italie",
+      "spanje",
+      "turkije"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Christian Kabasele",
+    "aliases": [
+      "Kabasele"
+    ],
+    "clubs": [
+      "KAS Eupen (2008–2011)",
+      "KV Mechelen (2011, huur)",
+      "Ludogorets Razgrad (2011–2012)",
+      "KAS Eupen (2012–2014)",
+      "KRC Genk (2014–2016)",
+      "Watford (2016–2023)",
+      "Udinese (2023–)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Christian_Kabasele"
+    ],
+    "tags": [
+      "rode-duivels",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Sebastiaan Bornauw",
+    "aliases": [
+      "Bornauw"
+    ],
+    "clubs": [
+      "Anderlecht (2018–2019)",
+      "1. FC Köln (2019–2021)",
+      "VfL Wolfsburg (2021–2025)",
+      "Leeds United (2025–)",
+      "Hamburger SV (2026–, huur)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sebastiaan_Bornauw"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "duitsland"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Alexis Saelemaekers",
+    "aliases": [
+      "Saelemaekers"
+    ],
+    "clubs": [
+      "Anderlecht (2018–2020)",
+      "AC Milan (2020–2023)",
+      "Bologna (2023–2024, huur)",
+      "Roma (2024–2025, huur)",
+      "AC Milan (2025–)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Alexis_Saelemaekers"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Albert Sambi Lokonga",
+    "aliases": [
+      "Sambi Lokonga",
+      "Lokonga"
+    ],
+    "clubs": [
+      "Anderlecht (2017–2021)",
+      "Arsenal (2021–2025)",
+      "Crystal Palace (2023, huur)",
+      "Luton Town (2023–2024, huur)",
+      "Sevilla (2024–2025, huur)",
+      "Hamburger SV (2025–)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Albert_Sambi_Lokonga"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "duitsland",
+      "spanje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Ritchie De Laet",
+    "aliases": [
+      "De Laet"
+    ],
+    "clubs": [
+      "Royal Antwerp (2006–2007)",
+      "Stoke City (2007–2009)",
+      "Manchester United (2009–2012)",
+      "Norwich City (2011–2012, huur)",
+      "Leicester City (2012–2016)",
+      "Middlesbrough (2016, huur)",
+      "Aston Villa (2016–2019)",
+      "Royal Antwerp (2018, huur)",
+      "Melbourne City (2018–2019, huur)",
+      "Royal Antwerp (2019–2024)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ritchie_De_Laet",
+      "https://nl.wikipedia.org/wiki/Ritchie_De_Laet"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Igor de Camargo",
+    "aliases": [
+      "De Camargo",
+      "Camargo"
+    ],
+    "clubs": [
+      "KRC Genk (2001–2005)",
+      "RWD Molenbeek (2005–2006)",
+      "Standard (2006–2010)",
+      "Borussia Mönchengladbach (2010–2013)",
+      "TSG Hoffenheim (2013, huur)",
+      "Standard (2013–2015)",
+      "KRC Genk (2015–2016)",
+      "APOEL (2016–2018)",
+      "KV Mechelen (2018–2022)",
+      "RWDM (2022)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Igor_de_Camargo"
+    ],
+    "tags": [
+      "rode-duivels",
+      "standard",
+      "duitsland"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Thomas Kaminski",
+    "aliases": [
+      "Kaminski"
+    ],
+    "clubs": [
+      "Germinal Beerschot (2008–2011)",
+      "Anderlecht (2012–2016)",
+      "FC Copenhagen (2015–2016, huur)",
+      "KV Kortrijk (2016–2019)",
+      "KAA Gent (2019–2020)",
+      "Blackburn Rovers (2020–2023)",
+      "Luton Town (2023–2025)",
+      "Charlton Athletic (2025–)",
+      "Omonia (2026–, huur)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Thomas_Kaminski"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Aaron Leya Iseka",
+    "aliases": [
+      "Leya Iseka",
+      "Iseka"
+    ],
+    "clubs": [
+      "Anderlecht (2014–2018)",
+      "Olympique Marseille (2016–2017, huur)",
+      "Zulte Waregem (2017–2018, huur)",
+      "Toulouse (2018–2021)",
+      "Metz (2020–2021, huur)",
+      "Barnsley (2021–2024)",
+      "OFI (2024)",
+      "CSKA Sofia (2024–2025)",
+      "OFI (2025–)"
+    ],
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Aaron_Leya_Iseka",
+      "https://ie.soccerway.com/player/leya-aaron/SjNjcMEr/transfers"
+    ],
+    "tags": [
+      "anderlecht",
+      "frankrijk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Wout Faes",
+    "aliases": [
+      "Faes"
+    ],
+    "clubs": [
+      "Anderlecht (2016–2018)",
+      "SC Heerenveen (2017, huur)",
+      "Excelsior (2017–2018, huur)",
+      "KV Oostende (2018–2020)",
+      "Reims (2020–2022)",
+      "Leicester City (2022–2026)",
+      "AS Monaco (2026, huur)",
+      "Shabab Al Ahli (2026–)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Wout_Faes",
+      "https://sporza.be/nl/2026/09/28/op-naar-het-midden-oosten-wout-faes-verlaat-zinkend-schip-leicester-city-voor-lucratief-avontuur-in-dubai~1790598504725/"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "frankrijk",
+      "oranje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Arthur Theate",
+    "aliases": [
+      "Theate"
+    ],
+    "clubs": [
+      "KV Oostende (2020–2021)",
+      "Bologna (2021–2022, huur)",
+      "Rennes (2022–2024)",
+      "Eintracht Frankfurt (2024–2025, huur)",
+      "Eintracht Frankfurt (2025–)",
+      "Bologna (2026–, huur)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Arthur_Theate",
+      "https://sporza.be/nl/2026/08/30/terug-naar-het-vertrouwde-nest-in-bologna-arthur-theate-ruilt-bundesliga-opnieuw-in-voor-serie-a~1788082513255/"
+    ],
+    "tags": [
+      "rode-duivels",
+      "frankrijk",
+      "duitsland",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Sven Kums",
+    "aliases": [
+      "Kums"
+    ],
+    "clubs": [
+      "Anderlecht (2006–2008)",
+      "KV Kortrijk (2008–2011)",
+      "SC Heerenveen (2011–2013)",
+      "Zulte Waregem (2013–2014)",
+      "KAA Gent (2014–2016)",
+      "Watford (2016–2017)",
+      "Udinese (2016–2017, huur)",
+      "Anderlecht (2017–2020)",
+      "KAA Gent (2019–2020, huur)",
+      "KAA Gent (2020–2025)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sven_Kums",
+      "https://nl.wikipedia.org/wiki/Sven_Kums"
+    ],
+    "tags": [
+      "anderlecht",
+      "oranje",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Zakaria Bakkali",
+    "aliases": [
+      "Bakkali"
+    ],
+    "clubs": [
+      "PSV (2013–2015)",
+      "Valencia (2015–2018)",
+      "Deportivo La Coruña (2017–2018, huur)",
+      "Anderlecht (2018–2022)",
+      "Beerschot (2021, huur)",
+      "RKC Waalwijk (2022–2024)",
+      "IR Tanger (2025–2026)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Zakaria_Bakkali",
+      "https://www.bladi.net/battait-records-zakaria-bakkali-retrouve-club,124318.html"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "oranje",
+      "spanje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Luis Pedro Cavanda",
+    "aliases": [
+      "Cavanda"
+    ],
+    "clubs": [
+      "Lazio (2009–2015)",
+      "Torino (2011, huur)",
+      "Bari (2012, huur)",
+      "Trabzonspor (2015–2016)",
+      "Galatasaray (2016–2018)",
+      "Standard (2018–2020)",
+      "Neuchâtel Xamax (2022–2023)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Luis_Pedro_Cavanda"
+    ],
+    "tags": [
+      "rode-duivels",
+      "standard",
+      "italie",
+      "turkije"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Jonathan Legear",
+    "aliases": [
+      "Legear"
+    ],
+    "clubs": [
+      "Anderlecht (2004–2011)",
+      "Terek Grozny (2011–2013)",
+      "KV Mechelen (2014)",
+      "Blackpool (2014–2015)",
+      "Standard (2015–2017)",
+      "Sint-Truiden (2017–2019)",
+      "Adana Demirspor (2019)",
+      "URSL Visé (2020–2023)"
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jonathan_Legear"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "standard",
+      "turkije"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Tom De Sutter",
+    "aliases": [
+      "De Sutter"
+    ],
+    "clubs": [
+      "KM Torhout (2005–2006)",
+      "Cercle Brugge (2006–2009)",
+      "Anderlecht (2009–2013)",
+      "Club Brugge (2013–2015)",
+      "Bursaspor (2015–2016)",
+      "Lokeren (2016–2018)",
+      "KV Oostende (2019)",
+      "Royal Knokke (2019–2020)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Tom_De_Sutter"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "club-brugge",
+      "turkije"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Maxime Lestienne",
+    "aliases": [
+      "Lestienne"
+    ],
+    "clubs": [
+      "Mouscron (2008–2009)",
+      "Club Brugge (2010–2014)",
+      "Genoa (2014–2015, huur)",
+      "Al-Arabi (2014–2016)",
+      "PSV (2015–2016, huur)",
+      "Rubin Kazan (2016–2018)",
+      "Málaga (2018, huur)",
+      "Standard (2018–2022)",
+      "Lion City Sailors (2022–2025)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Maxime_Lestienne"
+    ],
+    "tags": [
+      "club-brugge",
+      "standard",
+      "italie",
+      "spanje",
+      "oranje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Orel Mangala",
+    "aliases": [],
+    "clubs": [
+      "VfB Stuttgart (2017–2022)",
+      "Hamburger SV (2018–2019, huur)",
+      "Nottingham Forest (2022–2024)",
+      "Lyon (2024, huur)",
+      "Lyon (2024–)",
+      "Everton (2024–2025, huur)",
+      "Getafe (2026–, huur)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Orel_Mangala",
+      "https://africasoccer.com/?p=582040",
+      "https://africasoccer.com/?p=582040"
+    ],
+    "tags": [
+      "rode-duivels",
+      "duitsland",
+      "frankrijk",
+      "spanje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Elias Cobbaut",
+    "aliases": [
+      "Cobbaut"
+    ],
+    "clubs": [
+      "KV Mechelen (2016–2018)",
+      "Anderlecht (2018–2022)",
+      "Parma (2021–2022, huur)",
+      "Parma (2022–2024)",
+      "KV Mechelen (2023–2024, huur)",
+      "Sparta Praag (2024–)"
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Elias_Cobbaut",
+      "https://nl.wikipedia.org/wiki/Elias_Cobbaut",
+      "https://nl.wikipedia.org/wiki/Elias_Cobbaut"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Philippe Albert",
+    "aliases": [],
+    "clubs": [
+      "Charleroi (1985–1989)",
+      "KV Mechelen (1989–1992)",
+      "Anderlecht (1992–1994)",
+      "Newcastle United (1994–1999)",
+      "Fulham (1999, huur)",
+      "Charleroi (1999–2000)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Philippe_Albert",
+      "https://nl.wikipedia.org/wiki/Philippe_Albert"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Stéphane Demol",
+    "aliases": [
+      "Demol"
+    ],
+    "clubs": [
+      "Anderlecht (1984–1988)",
+      "Bologna (1988–1989)",
+      "Porto (1989–1990)",
+      "Toulouse (1990–1991)",
+      "Standard (1991–1993)",
+      "Cercle Brugge (1993–1994)",
+      "Sporting Braga (1994–1995)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/St%C3%A9phane_Demol",
+      "https://nl.wikipedia.org/wiki/St%C3%A9phane_Demol"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "standard",
+      "legende",
+      "portugal",
+      "frankrijk",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Erwin Vandenbergh",
+    "aliases": [],
+    "clubs": [
+      "Lierse (1976–1982)",
+      "Anderlecht (1982–1986)",
+      "Lille (1986–1990)",
+      "KAA Gent (1990–1994)",
+      "RWD Molenbeek (1994–1995)"
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Erwin_Vandenbergh"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "legende",
+      "frankrijk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Gilles De Bilde",
+    "aliases": [
+      "De Bilde"
+    ],
+    "clubs": [
+      "Eendracht Aalst (1992–1995)",
+      "Anderlecht (1995–1997)",
+      "PSV (1997–1999)",
+      "Sheffield Wednesday (1999–2001)",
+      "Aston Villa (2000–2001, huur)",
+      "Anderlecht (2001–2003)",
+      "Lierse (2003–2004)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gilles_De_Bilde"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "oranje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Lorenzo Staelens",
+    "aliases": [
+      "Staelens"
+    ],
+    "clubs": [
+      "White Star Lauwe (1982–1987)",
+      "KV Kortrijk (1987–1989)",
+      "Club Brugge (1989–1998)",
+      "Anderlecht (1998–2000)",
+      "Ōita Trinita (2001)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lorenzo_Staelens",
+      "https://nl.wikipedia.org/wiki/Lorenzo_Staelens"
+    ],
+    "tags": [
+      "rode-duivels",
+      "club-brugge",
+      "anderlecht",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Mbo Mpenza",
+    "aliases": [
+      "Mbo"
+    ],
+    "clubs": [
+      "KV Kortrijk (1993–1996)",
+      "Mouscron (1996–1997)",
+      "Standard (1997–1999)",
+      "Sporting CP (2000–2001)",
+      "Galatasaray (2001)",
+      "Mouscron (2002–2004)",
+      "Anderlecht (2004–2008)",
+      "AEL Larissa (2008)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mbo_Mpenza"
+    ],
+    "tags": [
+      "rode-duivels",
+      "standard",
+      "anderlecht",
+      "portugal",
+      "turkije"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Walter Baseggio",
+    "aliases": [
+      "Baseggio"
+    ],
+    "clubs": [
+      "Anderlecht (1996–2005)",
+      "Treviso (2006)",
+      "Anderlecht (2007)",
+      "Mouscron (2008–2010)",
+      "Tubize (2010–2011)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Walter_Baseggio"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Nico Van Kerckhoven",
+    "aliases": [
+      "Van Kerckhoven"
+    ],
+    "clubs": [
+      "Lierse (1990–1998)",
+      "Schalke 04 (1998–2004)",
+      "Borussia Mönchengladbach (2004–2005)",
+      "Westerlo (2005–2010)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Nico_Van_Kerckhoven"
+    ],
+    "tags": [
+      "rode-duivels",
+      "duitsland"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Philippe Clement",
+    "aliases": [
+      "Clement"
+    ],
+    "clubs": [
+      "Beerschot (1992–1995)",
+      "KRC Genk (1995–1998)",
+      "Coventry City (1998–1999)",
+      "Club Brugge (1999–2009)",
+      "Germinal Beerschot (2009–2011)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Philippe_Clement"
+    ],
+    "tags": [
+      "rode-duivels",
+      "club-brugge"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Joos Valgaeren",
+    "aliases": [
+      "Valgaeren"
+    ],
+    "clubs": [
+      "Verbroedering Geel (1993–1994)",
+      "KV Mechelen (1994–1997)",
+      "Roda JC (1997–2000)",
+      "Celtic (2000–2005)",
+      "Club Brugge (2005–2008)",
+      "FC Emmen (2008–2010)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Joos_Valgaeren"
+    ],
+    "tags": [
+      "rode-duivels",
+      "club-brugge",
+      "oranje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "René Vandereycken",
+    "aliases": [
+      "Vandereycken"
+    ],
+    "clubs": [
+      "KSC Hasselt (1971–1974)",
+      "Club Brugge (1974–1981)",
+      "Genoa (1981–1983)",
+      "Anderlecht (1983–1986)",
+      "Blau-Weiß 1890 Berlin (1986–1987)",
+      "KAA Gent (1987–1989)"
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ren%C3%A9_Vandereycken"
+    ],
+    "tags": [
+      "rode-duivels",
+      "club-brugge",
+      "anderlecht",
+      "legende",
+      "italie",
+      "duitsland"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Luis Oliveira",
+    "aliases": [],
+    "clubs": [
+      "Anderlecht (1988–1992)",
+      "Cagliari (1992–1996)",
+      "Fiorentina (1996–1999)",
+      "Cagliari (1999–2000)",
+      "Bologna (2000–2001)",
+      "Como (2001–2002)",
+      "Catania (2002–2004)"
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Luis_Oliveira"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Johan Walem",
+    "aliases": [
+      "Walem"
+    ],
+    "clubs": [
+      "Anderlecht (1991–1997)",
+      "Udinese (1997–1999)",
+      "Parma (1999–2000)",
+      "Udinese (2000–2001)",
+      "Standard (2001–2003)",
+      "Torino (2003–2004)",
+      "Catania (2004–2005)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Johan_Walem"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "standard",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Eric Deflandre",
+    "aliases": [
+      "Deflandre"
+    ],
+    "clubs": [
+      "RFC Liège (1991–1995)",
+      "Germinal Ekeren (1995–1996)",
+      "Club Brugge (1996–2000)",
+      "Lyon (2000–2004)",
+      "Standard (2004–2007)",
+      "FC Brussels (2007)",
+      "FC Dender (2008–2009)",
+      "Lierse (2009–2010)",
+      "RFC Liège (2010–2012)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Eric_Deflandre"
+    ],
+    "tags": [
+      "rode-duivels",
+      "club-brugge",
+      "standard",
+      "frankrijk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Yves Vanderhaeghe",
+    "aliases": [
+      "Vanderhaeghe"
+    ],
+    "clubs": [
+      "Mouscron (1992–1994)",
+      "Eendracht Aalst (1994–1997)",
+      "Mouscron (1998–2000)",
+      "Anderlecht (2000–2006)",
+      "KSV Roeselare (2007–2008)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Yves_Vanderhaeghe"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Geert De Vlieger",
+    "aliases": [
+      "De Vlieger"
+    ],
+    "clubs": [
+      "KSK Beveren (1989–1995)",
+      "Anderlecht (1995–2000)",
+      "KRC Harelbeke (1998–1999, huur)",
+      "Willem II (2000–2004)",
+      "Manchester City (2004–2006)",
+      "Zulte Waregem (2006–2008)",
+      "Club Brugge (2008–2011)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Geert_De_Vlieger",
+      "https://nl.wikipedia.org/wiki/Geert_De_Vlieger"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "club-brugge",
+      "oranje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Alex Czerniatynski",
+    "aliases": [
+      "Czerniatynski"
+    ],
+    "clubs": [
+      "Charleroi (1978–1981)",
+      "Royal Antwerp (1981–1982)",
+      "Anderlecht (1982–1985)",
+      "Standard (1985–1989)",
+      "Royal Antwerp (1989–1993)",
+      "KV Mechelen (1993–1996)",
+      "Germinal Ekeren (1996–1997)",
+      "Tilleur (1997–1999)"
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Alex_Czerniatynski",
+      "https://nl.wikipedia.org/wiki/Alex_Czerniatynski"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "standard",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Michel Renquin",
+    "aliases": [
+      "Renquin"
+    ],
+    "clubs": [
+      "Standard (1974–1981)",
+      "Anderlecht (1981–1982)",
+      "Servette (1982–1985)",
+      "Standard (1986–1988)",
+      "FC Sion (1988–1990)"
+    ],
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Michel_Renquin",
+      "https://nl.wikipedia.org/wiki/Michel_Renquin"
+    ],
+    "tags": [
+      "rode-duivels",
+      "standard",
+      "anderlecht",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Gilbert Bodart",
+    "aliases": [],
+    "clubs": [
+      "Standard (1981–1996)",
+      "Bordeaux (1996–1997)",
+      "Standard (1997–1998)",
+      "Brescia (1998–2000)",
+      "Ravenna (2000–2001)",
+      "KSK Beveren (2001–2002)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gilbert_Bodart",
+      "https://nl.wikipedia.org/wiki/Gilbert_Bodart"
+    ],
+    "tags": [
+      "rode-duivels",
+      "standard",
+      "legende",
+      "frankrijk",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Bertrand Crasson",
+    "aliases": [
+      "Crasson"
+    ],
+    "clubs": [
+      "Anderlecht (1989–1996)",
+      "Napoli (1996–1998)",
+      "Anderlecht (1998–2003)",
+      "Lierse (2003–2004)",
+      "FC Brussels (2004–2005)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Bertrand_Crasson"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Danny Boffin",
+    "aliases": [
+      "Boffin"
+    ],
+    "clubs": [
+      "Sint-Truiden (1985–1987)",
+      "RFC Liège (1987–1991)",
+      "Anderlecht (1991–1997)",
+      "Metz (1997–2001)",
+      "Sint-Truiden (2001–2003)",
+      "Standard (2004)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Danny_Boffin"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "standard",
+      "frankrijk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Gaby Mudingayi",
+    "aliases": [
+      "Mudingayi"
+    ],
+    "clubs": [
+      "Union SG (1998–2000)",
+      "KAA Gent (2000–2004)",
+      "Torino (2004–2005)",
+      "Lazio (2005–2008)",
+      "Bologna (2008–2012)",
+      "Inter (2012–2013, huur)",
+      "Inter (2013–2014)",
+      "Elche (2014–2015)",
+      "Cesena (2015)",
+      "Pisa (2016–2017)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gaby_Mudingayi",
+      "https://it.wikipedia.org/wiki/Gaby_Mudingayi",
+      "https://nl.wikipedia.org/wiki/Gaby_Mudingayi",
+      "https://nl.wikipedia.org/wiki/Gaby_Mudingayi"
+    ],
+    "tags": [
+      "rode-duivels",
+      "italie",
+      "spanje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Jean-François Gillet",
+    "aliases": [],
+    "clubs": [
+      "Standard (1996–1999)",
+      "Monza (1999–2000)",
+      "Bari (2000–2011)",
+      "Treviso (2003–2004, huur)",
+      "Bologna (2011–2012)",
+      "Torino (2012–2015)",
+      "Catania (2015–2016)",
+      "KV Mechelen (2015–2016, huur)",
+      "Standard (2016–2021)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jean-Fran%C3%A7ois_Gillet"
+    ],
+    "tags": [
+      "rode-duivels",
+      "standard",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Luigi Pieroni",
+    "aliases": [
+      "Pieroni"
+    ],
+    "clubs": [
+      "Mouscron (2003–2004)",
+      "AJ Auxerre (2004–2007)",
+      "FC Nantes (2007–2008)",
+      "RC Lens (2007–2008, huur)",
+      "Anderlecht (2008, huur)",
+      "Valenciennes (2008–2010)",
+      "KAA Gent (2010)",
+      "Standard (2010–2011)",
+      "Arles-Avignon (2011–2013)"
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Luigi_Pieroni",
+      "https://nl.wikipedia.org/wiki/Luigi_Pieroni"
+    ],
+    "tags": [
+      "rode-duivels",
+      "anderlecht",
+      "standard",
+      "frankrijk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Faris Haroun",
+    "aliases": [
+      "Haroun"
+    ],
+    "clubs": [
+      "KRC Genk (2003–2008)",
+      "Germinal Beerschot (2008–2011)",
+      "Middlesbrough (2011–2014)",
+      "Blackpool (2014)",
+      "Cercle Brugge (2015–2017)",
+      "Royal Antwerp (2017–2023)"
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Faris_Haroun",
+      "https://nl.wikipedia.org/wiki/Faris_Haroun"
+    ],
+    "tags": [
+      "rode-duivels"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Sven Vermant",
+    "aliases": [
+      "Vermant"
+    ],
+    "clubs": [
+      "KV Mechelen (1989–1993)",
+      "Club Brugge (1993–2001)",
+      "Schalke 04 (2001–2005)",
+      "Club Brugge (2005–2008)",
+      "Royal Knokke (2008–2010)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sven_Vermant"
+    ],
+    "tags": [
+      "rode-duivels",
+      "club-brugge",
+      "duitsland"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Kevin Vandenbergh",
+    "aliases": [],
+    "clubs": [
+      "Westerlo (1999–2002)",
+      "KRC Genk (2002–2007)",
+      "FC Utrecht (2007–2010)",
+      "Germinal Beerschot (2008–2009, huur)",
+      "KAS Eupen (2010–2011)",
+      "KV Mechelen (2011–2012)",
+      "Westerlo (2012–2015)",
+      "Dessel Sport (2015–2016)",
+      "Aarschot (2016–2020)",
+      "Ramsel (2020–)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_Vandenbergh",
+      "https://nl.wikipedia.org/wiki/Kevin_Vandenbergh",
+      "https://nl.wikipedia.org/wiki/Kevin_Vandenbergh"
+    ],
+    "tags": [
+      "rode-duivels",
+      "oranje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Ruud Gullit",
+    "aliases": [
+      "Gullit"
+    ],
+    "clubs": [
+      "HFC Haarlem (1979–1982)",
+      "Feyenoord (1982–1985)",
+      "PSV (1985–1987)",
+      "AC Milan (1987–1993)",
+      "Sampdoria (1993–1994)",
+      "AC Milan (1994)",
+      "Sampdoria (1994–1995)",
+      "Chelsea (1995–1998)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ruud_Gullit",
+      "https://nl.wikipedia.org/wiki/Ruud_Gullit"
+    ],
+    "tags": [
+      "oranje",
+      "italie",
+      "legende",
+      "ballon-dor"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Ronald Koeman",
+    "aliases": [],
+    "clubs": [
+      "Groningen (1980–1983)",
+      "Ajax (1983–1986)",
+      "PSV (1986–1989)",
+      "FC Barcelona (1989–1995)",
+      "Feyenoord (1995–1997)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ronald_Koeman"
+    ],
+    "tags": [
+      "oranje",
+      "spanje",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Johan Cruijff",
+    "aliases": [
+      "Cruijff",
+      "Cruyff",
+      "Johan Cruyff"
+    ],
+    "clubs": [
+      "Ajax (1964–1973)",
+      "FC Barcelona (1973–1978)",
+      "Los Angeles Aztecs (1979)",
+      "Washington Diplomats (1980–1981)",
+      "Levante (1981, huur)",
+      "Ajax (1981–1983)",
+      "Feyenoord (1983–1984)"
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Johan_Cruyff"
+    ],
+    "tags": [
+      "oranje",
+      "spanje",
+      "legende",
+      "ballon-dor"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Patrick Kluivert",
+    "aliases": [],
+    "clubs": [
+      "Ajax (1994–1997)",
+      "AC Milan (1997–1998)",
+      "FC Barcelona (1998–2004)",
+      "Newcastle United (2004–2005)",
+      "Valencia (2005–2006)",
+      "PSV (2006–2007)",
+      "Lille (2007–2008)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Patrick_Kluivert"
+    ],
+    "tags": [
+      "oranje",
+      "italie",
+      "spanje",
+      "frankrijk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Robin van Persie",
+    "aliases": [
+      "Van Persie"
+    ],
+    "clubs": [
+      "Feyenoord (2001–2004)",
+      "Arsenal (2004–2012)",
+      "Manchester United (2012–2015)",
+      "Fenerbahçe (2015–2018)",
+      "Feyenoord (2018–2019)"
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Robin_van_Persie"
+    ],
+    "tags": [
+      "oranje",
+      "turkije"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Rafael van der Vaart",
+    "aliases": [
+      "Van der Vaart"
+    ],
+    "clubs": [
+      "Ajax (2000–2005)",
+      "Hamburger SV (2005–2008)",
+      "Real Madrid (2008–2010)",
+      "Tottenham Hotspur (2010–2012)",
+      "Hamburger SV (2012–2015)",
+      "Real Betis (2015–2016)",
+      "FC Midtjylland (2016–2018)",
+      "Esbjerg (2018)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Rafael_van_der_Vaart"
+    ],
+    "tags": [
+      "oranje",
+      "duitsland",
+      "spanje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Jimmy Floyd Hasselbaink",
+    "aliases": [
+      "Hasselbaink",
+      "Jimmy Hasselbaink"
+    ],
+    "clubs": [
+      "Telstar (1990–1991)",
+      "AZ (1991–1994)",
+      "Campomaiorense (1995–1996)",
+      "Boavista (1996–1997)",
+      "Leeds United (1997–1999)",
+      "Atlético Madrid (1999–2000)",
+      "Chelsea (2000–2004)",
+      "Middlesbrough (2004–2006)",
+      "Charlton Athletic (2006–2007)",
+      "Cardiff City (2007–2008)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jimmy_Floyd_Hasselbaink"
+    ],
+    "tags": [
+      "oranje",
+      "portugal",
+      "spanje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Roy Makaay",
+    "aliases": [
+      "Makaay"
+    ],
+    "clubs": [
+      "Vitesse (1993–1997)",
+      "Tenerife (1997–1999)",
+      "Deportivo La Coruña (1999–2003)",
+      "Bayern München (2003–2007)",
+      "Feyenoord (2007–2010)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Roy_Makaay"
+    ],
+    "tags": [
+      "oranje",
+      "spanje",
+      "duitsland"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Marc Overmars",
+    "aliases": [
+      "Overmars"
+    ],
+    "clubs": [
+      "Go Ahead Eagles (1990–1991)",
+      "Willem II (1991–1992)",
+      "Ajax (1992–1997)",
+      "Arsenal (1997–2000)",
+      "FC Barcelona (2000–2004)",
+      "Go Ahead Eagles (2008–2009)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Marc_Overmars"
+    ],
+    "tags": [
+      "oranje",
+      "spanje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Virgil van Dijk",
+    "aliases": [
+      "Van Dijk"
+    ],
+    "clubs": [
+      "Groningen (2011–2013)",
+      "Celtic (2013–2015)",
+      "Southampton (2015–2018)",
+      "Liverpool (2018–)"
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Virgil_van_Dijk"
+    ],
+    "tags": [
+      "oranje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Edgar Davids",
+    "aliases": [
+      "Davids"
+    ],
+    "clubs": [
+      "Ajax (1991–1996)",
+      "AC Milan (1996–1997)",
+      "Juventus (1997–2004)",
+      "FC Barcelona (2004, huur)",
+      "Inter (2004–2005)",
+      "Tottenham Hotspur (2005–2007)",
+      "Ajax (2007–2009)",
+      "Crystal Palace (2010)",
+      "Barnet (2012–2014)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Edgar_Davids"
+    ],
+    "tags": [
+      "oranje",
+      "italie",
+      "spanje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Jaap Stam",
+    "aliases": [
+      "Stam"
+    ],
+    "clubs": [
+      "FC Zwolle (1992–1993)",
+      "Cambuur (1993–1995)",
+      "Willem II (1995–1996)",
+      "PSV (1996–1998)",
+      "Manchester United (1998–2001)",
+      "Lazio (2001–2004)",
+      "AC Milan (2004–2006)",
+      "Ajax (2006–2007)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jaap_Stam"
+    ],
+    "tags": [
+      "oranje",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Dirk Kuyt",
+    "aliases": [
+      "Kuyt"
+    ],
+    "clubs": [
+      "FC Utrecht (1998–2003)",
+      "Feyenoord (2003–2006)",
+      "Liverpool (2006–2012)",
+      "Fenerbahçe (2012–2015)",
+      "Feyenoord (2015–2017)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dirk_Kuyt"
+    ],
+    "tags": [
+      "oranje",
+      "turkije"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Mark van Bommel",
+    "aliases": [
+      "Van Bommel"
+    ],
+    "clubs": [
+      "Fortuna Sittard (1992–1999)",
+      "PSV (1999–2005)",
+      "FC Barcelona (2005–2006)",
+      "Bayern München (2006–2011)",
+      "AC Milan (2011–2012)",
+      "PSV (2012–2013)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mark_van_Bommel"
+    ],
+    "tags": [
+      "oranje",
+      "spanje",
+      "duitsland",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Clarence Seedorf",
+    "aliases": [
+      "Seedorf"
+    ],
+    "clubs": [
+      "Ajax (1992–1995)",
+      "Sampdoria (1995–1996)",
+      "Real Madrid (1996–2000)",
+      "Inter (2000–2002)",
+      "AC Milan (2002–2012)",
+      "Botafogo (2012–2014)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Clarence_Seedorf"
+    ],
+    "tags": [
+      "oranje",
+      "italie",
+      "spanje",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Pierre van Hooijdonk",
+    "aliases": [
+      "Van Hooijdonk"
+    ],
+    "clubs": [
+      "RBC Roosendaal (1989–1991)",
+      "NAC Breda (1991–1995)",
+      "Celtic (1995–1997)",
+      "Nottingham Forest (1997–1999)",
+      "Vitesse (1999–2000)",
+      "Benfica (2000–2001)",
+      "Feyenoord (2001–2003)",
+      "Fenerbahçe (2003–2005)",
+      "NAC Breda (2005–2006)",
+      "Feyenoord (2006–2007)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pierre_van_Hooijdonk"
+    ],
+    "tags": [
+      "oranje",
+      "portugal",
+      "turkije"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Ibrahim Afellay",
+    "aliases": [
+      "Afellay"
+    ],
+    "clubs": [
+      "PSV (2004–2010)",
+      "FC Barcelona (2010–2015)",
+      "Schalke 04 (2012–2013, huur)",
+      "Olympiacos (2014–2015, huur)",
+      "Stoke City (2015–2019)",
+      "PSV (2019–2020)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ibrahim_Afellay"
+    ],
+    "tags": [
+      "oranje",
+      "spanje",
+      "duitsland"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Edwin van der Sar",
+    "aliases": [
+      "Van der Sar"
+    ],
+    "clubs": [
+      "Ajax (1990–1999)",
+      "Juventus (1999–2001)",
+      "Fulham (2001–2005)",
+      "Manchester United (2005–2011)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Edwin_van_der_Sar"
+    ],
+    "tags": [
+      "oranje",
+      "italie",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "John Heitinga",
+    "aliases": [
+      "Heitinga",
+      "Johnny Heitinga"
+    ],
+    "clubs": [
+      "Ajax (2001–2008)",
+      "Atlético Madrid (2008–2009)",
+      "Everton (2009–2014)",
+      "Fulham (2014)",
+      "Hertha BSC (2014–2015)",
+      "Ajax (2015–2016)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/John_Heitinga"
+    ],
+    "tags": [
+      "oranje",
+      "spanje",
+      "duitsland"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Frank Rijkaard",
+    "aliases": [
+      "Rijkaard"
+    ],
+    "clubs": [
+      "Ajax (1980–1987)",
+      "Sporting CP (1987–1988)",
+      "Real Zaragoza (1987–1988, huur)",
+      "AC Milan (1988–1993)",
+      "Ajax (1993–1995)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Frank_Rijkaard"
+    ],
+    "tags": [
+      "oranje",
+      "italie",
+      "portugal",
+      "spanje",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Wim van Hanegem",
+    "aliases": [
+      "Van Hanegem",
+      "Willem van Hanegem"
+    ],
+    "clubs": [
+      "Velox (1962–1966)",
+      "Xerxes (1966–1968)",
+      "Feyenoord (1968–1976)",
+      "AZ '67 (1976–1979)",
+      "Chicago Sting (1979)",
+      "FC Utrecht (1979–1981)",
+      "Feyenoord (1981–1983)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Wim_van_Hanegem"
+    ],
+    "tags": [
+      "oranje",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Ronald de Boer",
+    "aliases": [],
+    "clubs": [
+      "Ajax (1988–1991)",
+      "Twente (1991–1993)",
+      "Ajax (1993–1999)",
+      "FC Barcelona (1999–2000)",
+      "Rangers (2000–2004)",
+      "Al-Rayyan (2004–2005)",
+      "Al-Shamal (2005–2008)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ronald_de_Boer"
+    ],
+    "tags": [
+      "oranje",
+      "spanje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Giovanni van Bronckhorst",
+    "aliases": [
+      "Van Bronckhorst",
+      "Gio van Bronckhorst"
+    ],
+    "clubs": [
+      "Feyenoord (1993–1998)",
+      "RKC Waalwijk (1993–1994, huur)",
+      "Rangers (1998–2001)",
+      "Arsenal (2001–2003)",
+      "FC Barcelona (2003–2007)",
+      "Feyenoord (2007–2010)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Giovanni_van_Bronckhorst"
+    ],
+    "tags": [
+      "oranje",
+      "spanje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Ruud Krol",
+    "aliases": [
+      "Krol"
+    ],
+    "clubs": [
+      "Ajax (1969–1980)",
+      "Vancouver Whitecaps (1980)",
+      "Napoli (1980–1984)",
+      "Cannes (1984–1986)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ruud_Krol"
+    ],
+    "tags": [
+      "oranje",
+      "italie",
+      "frankrijk",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Wim Kieft",
+    "aliases": [
+      "Kieft"
+    ],
+    "clubs": [
+      "Ajax (1979–1983)",
+      "Pisa (1983–1986)",
+      "Torino (1986–1987)",
+      "PSV (1987–1990)",
+      "Bordeaux (1990–1991)",
+      "PSV (1991–1994)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Wim_Kieft"
+    ],
+    "tags": [
+      "oranje",
+      "italie",
+      "frankrijk",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Rob Rensenbrink",
+    "aliases": [
+      "Rensenbrink",
+      "Robbie Rensenbrink"
+    ],
+    "clubs": [
+      "DWS (1965–1969)",
+      "Club Brugge (1969–1971)",
+      "Anderlecht (1971–1980)",
+      "Portland Timbers (1980)",
+      "Toulouse (1981–1982)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Rob_Rensenbrink"
+    ],
+    "tags": [
+      "oranje",
+      "belgie",
+      "anderlecht",
+      "club-brugge",
+      "frankrijk",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Arie Haan",
+    "aliases": [
+      "Haan"
+    ],
+    "clubs": [
+      "Ajax (1967–1975)",
+      "Anderlecht (1975–1981)",
+      "Standard (1981–1983)",
+      "PSV (1983–1984)",
+      "Seiko (1984–1985)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Arie_Haan"
+    ],
+    "tags": [
+      "oranje",
+      "belgie",
+      "anderlecht",
+      "standard",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Bas Dost",
+    "aliases": [
+      "Dost"
+    ],
+    "clubs": [
+      "FC Emmen (2007–2008)",
+      "Heracles Almelo (2008–2010)",
+      "Heerenveen (2010–2012)",
+      "VfL Wolfsburg (2012–2016)",
+      "Sporting CP (2016–2019)",
+      "Eintracht Frankfurt (2019–2020)",
+      "Club Brugge (2021–2022)",
+      "FC Utrecht (2022–2023)",
+      "NEC (2023–2024)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Bas_Dost"
+    ],
+    "tags": [
+      "oranje",
+      "belgie",
+      "club-brugge",
+      "duitsland",
+      "portugal"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Erwin Koeman",
+    "aliases": [],
+    "clubs": [
+      "Groningen (1978–1979)",
+      "PSV (1979–1982)",
+      "Groningen (1982–1985)",
+      "KV Mechelen (1985–1990)",
+      "PSV (1990–1994)",
+      "Groningen (1994–1998)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Erwin_Koeman"
+    ],
+    "tags": [
+      "oranje",
+      "belgie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Johan Boskamp",
+    "aliases": [
+      "Boskamp"
+    ],
+    "clubs": [
+      "Feyenoord (1966–1974)",
+      "Holland Sport (1969–1970, huur)",
+      "RWD Molenbeek (1974–1982)",
+      "Lierse (1982–1984)"
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Johan_Boskamp"
+    ],
+    "tags": [
+      "oranje",
+      "belgie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Ruud Geels",
+    "aliases": [
+      "Geels"
+    ],
+    "clubs": [
+      "Telstar (1965–1966)",
+      "Feyenoord (1966–1970)",
+      "Go Ahead Eagles (1970–1972)",
+      "Club Brugge (1972–1974)",
+      "Ajax (1974–1978)",
+      "Anderlecht (1978–1979)",
+      "Sparta Rotterdam (1979–1981)",
+      "PSV (1981–1982)",
+      "NAC Breda (1982–1984)"
+    ],
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ruud_Geels",
+      "https://nl.wikipedia.org/wiki/Ruud_Geels"
+    ],
+    "tags": [
+      "oranje",
+      "belgie",
+      "club-brugge",
+      "anderlecht",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Vincent Janssen",
+    "aliases": [],
+    "clubs": [
+      "Almere City (2013–2015)",
+      "AZ (2015–2016)",
+      "Tottenham Hotspur (2016–2019)",
+      "Fenerbahçe (2017–2018, huur)",
+      "Monterrey (2019–2022)",
+      "Royal Antwerp (2022–2026)",
+      "Portland Timbers (2026–)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Vincent_Janssen",
+      "https://www.mlssoccer.com/news/portland-timbers-sign-forward-vincent-janssen"
+    ],
+    "tags": [
+      "oranje",
+      "belgie",
+      "turkije"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Wesley Hoedt",
+    "aliases": [
+      "Hoedt"
+    ],
+    "clubs": [
+      "AZ (2013–2015)",
+      "Lazio (2015–2017)",
+      "Southampton (2017–2021)",
+      "Celta Vigo (2019, huur)",
+      "Royal Antwerp (2019–2020, huur)",
+      "Lazio (2020–2021, huur)",
+      "Anderlecht (2021–2023)",
+      "Watford (2023–2024)",
+      "Al-Shabab (2024–2026)",
+      "AZ (2026–)"
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Wesley_Hoedt",
+      "https://www.nhnieuws.nl/nieuws/362988/az-haalt-verdediger-hoedt-terug-naar-alkmaar"
+    ],
+    "tags": [
+      "oranje",
+      "belgie",
+      "anderlecht",
+      "italie",
+      "spanje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Bram Nuytinck",
+    "aliases": [
+      "Nuytinck"
+    ],
+    "clubs": [
+      "NEC (2009–2012)",
+      "Anderlecht (2012–2017)",
+      "Udinese (2017–2022)",
+      "Sampdoria (2023)",
+      "NEC (2023–)"
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Bram_Nuytinck"
+    ],
+    "tags": [
+      "oranje",
+      "belgie",
+      "anderlecht",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Lucas Biglia",
+    "aliases": [
+      "Biglia"
+    ],
+    "clubs": [
+      "Argentinos Juniors (2004–2005)",
+      "Independiente (2005–2006)",
+      "Anderlecht (2006–2013)",
+      "Lazio (2013–2017)",
+      "AC Milan (2017–2020)",
+      "Fatih Karagümrük (2020–2022)",
+      "İstanbul Başakşehir (2022–2023)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lucas_Biglia"
+    ],
+    "tags": [
+      "belgie",
+      "anderlecht",
+      "italie",
+      "turkije"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Chancel Mbemba",
+    "aliases": [
+      "Mbemba"
+    ],
+    "clubs": [
+      "Anderlecht (2013–2015)",
+      "Newcastle United (2015–2018)",
+      "Porto (2018–2022)",
+      "Olympique Marseille (2022–2025)",
+      "Lille (2025–2026)",
+      "Al-Diriyah (2026–)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Chancel_Mbemba"
+    ],
+    "tags": [
+      "belgie",
+      "anderlecht",
+      "frankrijk",
+      "portugal"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Marcin Wasilewski",
+    "aliases": [
+      "Wasilewski"
+    ],
+    "clubs": [
+      "Hutnik Kraków (1998–2000)",
+      "Śląsk Wrocław (2000–2002)",
+      "Wisła Płock (2002–2005)",
+      "Amica Wronki (2005–2006)",
+      "Lech Poznań (2006–2007)",
+      "Anderlecht (2007–2013)",
+      "Leicester City (2013–2017)",
+      "Wisła Kraków (2017–2020)"
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Marcin_Wasilewski"
+    ],
+    "tags": [
+      "belgie",
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Łukasz Teodorczyk",
+    "aliases": [
+      "Teodorczyk"
+    ],
+    "clubs": [
+      "Polonia Warschau (2010–2013)",
+      "Lech Poznań (2013–2014)",
+      "Dynamo Kiev (2014–2017)",
+      "Anderlecht (2016–2017, huur)",
+      "Anderlecht (2017–2018)",
+      "Udinese (2018–2021)",
+      "Sporting Charleroi (2020–2021, huur)",
+      "Vicenza (2022)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/%C5%81ukasz_Teodorczyk"
+    ],
+    "tags": [
+      "belgie",
+      "anderlecht",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Mario Stanić",
+    "aliases": [
+      "Stanić",
+      "Stanic"
+    ],
+    "clubs": [
+      "Željezničar (1988–1992)",
+      "Croatia Zagreb (1992–1993)",
+      "Sporting Gijón (1993–1994)",
+      "Benfica (1994–1995)",
+      "Club Brugge (1995–1996)",
+      "Parma (1996–2000)",
+      "Chelsea (2000–2004)"
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mario_Stani%C4%87"
+    ],
+    "tags": [
+      "belgie",
+      "club-brugge",
+      "italie",
+      "spanje",
+      "portugal"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Arnór Guðjohnsen",
+    "aliases": [
+      "Arnor Gudjohnsen"
+    ],
+    "clubs": [
+      "Víkingur (1978)",
+      "Lokeren (1978–1983)",
+      "Anderlecht (1983–1990)",
+      "Bordeaux (1990–1992)",
+      "Häcken (1993)",
+      "Örebro (1994–1998)",
+      "Valur (1998–2000)",
+      "Stjarnan (2001)"
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Arn%C3%B3r_Gu%C3%B0johnsen"
+    ],
+    "tags": [
+      "belgie",
+      "anderlecht",
+      "frankrijk",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Gervinho",
+    "aliases": [],
+    "clubs": [
+      "KSK Beveren (2005–2007)",
+      "Le Mans (2007–2009)",
+      "Lille (2009–2011)",
+      "Arsenal (2011–2013)",
+      "AS Roma (2013–2016)",
+      "Hebei China Fortune (2016–2018)",
+      "Parma (2018–2021)",
+      "Trabzonspor (2021–2022)",
+      "Aris Saloniki (2022–2023)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gervinho"
+    ],
+    "tags": [
+      "belgie",
+      "frankrijk",
+      "italie",
+      "turkije"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Sander Berge",
+    "aliases": [
+      "Berge"
+    ],
+    "clubs": [
+      "Asker (2013–2014)",
+      "Vålerenga (2015–2017)",
+      "KRC Genk (2017–2020)",
+      "Sheffield United (2020–2023)",
+      "Burnley (2023–2024)",
+      "Fulham (2024–)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sander_Berge"
+    ],
+    "tags": [
+      "belgie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Lior Refaelov",
+    "aliases": [
+      "Refaelov"
+    ],
+    "clubs": [
+      "Maccabi Haifa (2004–2011)",
+      "Club Brugge (2011–2018)",
+      "Royal Antwerp (2018–2019, huur)",
+      "Royal Antwerp (2019–2021)",
+      "Anderlecht (2021–2023)",
+      "Maccabi Haifa (2023–2025)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lior_Refaelov",
+      "https://sporza.be/nl/2021/04/26/gouden-schoen-lior-refaelov-tekent-voor-2-jaar-bij-anderlecht~1619421839682/"
+    ],
+    "tags": [
+      "belgie",
+      "club-brugge",
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Carlos Bacca",
+    "aliases": [
+      "Bacca"
+    ],
+    "clubs": [
+      "Atlético Junior (2007–2011)",
+      "Club Brugge (2011–2013)",
+      "Sevilla (2013–2015)",
+      "AC Milan (2015–2018)",
+      "Villarreal (2017–2018, huur)",
+      "Villarreal (2018–2021)",
+      "Granada (2021–2022)",
+      "Atlético Junior (2022–2026)",
+      "Deportivo Cali (2026–)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Carlos_Bacca",
+      "https://www.elheraldo.co/deportes/2026/08/01/ya-es-oficial-carlos-bacca-se-convierte-en-nuevo-jugador-del-deportivo-cali/"
+    ],
+    "tags": [
+      "belgie",
+      "club-brugge",
+      "spanje",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Frank Arnesen",
+    "aliases": [
+      "Arnesen"
+    ],
+    "clubs": [
+      "Ajax (1975–1981)",
+      "Valencia (1981–1983)",
+      "Anderlecht (1983–1985)",
+      "PSV (1985–1988)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Frank_Arnesen"
+    ],
+    "tags": [
+      "oranje",
+      "belgie",
+      "anderlecht",
+      "spanje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Sunday Oliseh",
+    "aliases": [
+      "Oliseh"
+    ],
+    "clubs": [
+      "Julius Berger (1990)",
+      "RFC Luik (1991–1994)",
+      "Reggiana (1994–1995)",
+      "1. FC Köln (1995–1997)",
+      "Ajax (1997–1999)",
+      "Juventus (1999–2000)",
+      "Borussia Dortmund (2000–2005)",
+      "VfL Bochum (2003–2004, huur)",
+      "KRC Genk (2005–2006)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sunday_Oliseh"
+    ],
+    "tags": [
+      "belgie",
+      "oranje",
+      "italie",
+      "duitsland"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Ivan Leko",
+    "aliases": [],
+    "clubs": [
+      "Hajduk Split (1995–2001)",
+      "Trogir (1996, huur)",
+      "Málaga (2001–2005)",
+      "Hajduk Split (2005)",
+      "Club Brugge (2005–2009)",
+      "Germinal Beerschot (2009, huur)",
+      "Lokeren (2009–2014)"
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ivan_Leko"
+    ],
+    "tags": [
+      "belgie",
+      "club-brugge",
+      "spanje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Ivica Mornar",
+    "aliases": [
+      "Mornar"
+    ],
+    "clubs": [
+      "Hajduk Split (1991–1995)",
+      "Eintracht Frankfurt (1995–1996)",
+      "Sevilla (1996–1997)",
+      "Ourense (1997–1998)",
+      "Standard (1998–2001)",
+      "Anderlecht (2001–2004)",
+      "Portsmouth (2004)",
+      "Rennes (2004–2005, huur)",
+      "Portsmouth (2005–2006)"
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ivica_Mornar",
+      "https://www.11v11.com/players/ivica-mornar-13840/"
+    ],
+    "tags": [
+      "belgie",
+      "anderlecht",
+      "standard",
+      "duitsland",
+      "spanje",
+      "frankrijk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Tomasz Radzinski",
+    "aliases": [
+      "Radzinski"
+    ],
+    "clubs": [
+      "Germinal Ekeren (1994–1998)",
+      "Anderlecht (1998–2001)",
+      "Everton (2001–2004)",
+      "Fulham (2004–2007)",
+      "Skoda Xanthi (2007–2008)",
+      "Lierse (2008–2011)",
+      "Waasland-Beveren (2012)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Tomasz_Radzinski",
+      "https://nl.wikipedia.org/wiki/Tomasz_Radzinski",
+      "https://nl.wikipedia.org/wiki/Tomasz_Radzinski"
+    ],
+    "tags": [
+      "belgie",
+      "anderlecht"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Mbwana Samatta",
+    "aliases": [
+      "Samatta",
+      "Ally Samatta"
+    ],
+    "clubs": [
+      "Simba SC (2010–2011)",
+      "TP Mazembe (2011–2016)",
+      "KRC Genk (2016–2020)",
+      "Aston Villa (2020)",
+      "Fenerbahçe (2020–2021, huur)",
+      "Royal Antwerp (2021–2022, huur)",
+      "KRC Genk (2022–2023, huur)",
+      "PAOK (2023–2025)",
+      "Le Havre (2025–)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mbwana_Samatta",
+      "https://nl.wikipedia.org/wiki/Mbwana_Samatta",
+      "https://nl.wikipedia.org/wiki/Mbwana_Samatta"
+    ],
+    "tags": [
+      "belgie",
+      "frankrijk",
+      "turkije"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Gary Lineker",
+    "aliases": [
+      "Lineker"
+    ],
+    "clubs": [
+      "Leicester City (1978–1985)",
+      "Everton (1985–1986)",
+      "FC Barcelona (1986–1989)",
+      "Tottenham Hotspur (1989–1992)",
+      "Nagoya Grampus (1992–1994)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gary_Lineker"
+    ],
+    "tags": [
+      "spanje",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Jürgen Klinsmann",
+    "aliases": [
+      "Klinsmann",
+      "Klinsi"
+    ],
+    "clubs": [
+      "Stuttgarter Kickers (1981–1984)",
+      "VfB Stuttgart (1984–1989)",
+      "Inter (1989–1992)",
+      "AS Monaco (1992–1994)",
+      "Tottenham Hotspur (1994–1995)",
+      "Bayern München (1995–1997)",
+      "Sampdoria (1997–1998)",
+      "Tottenham Hotspur (1997–1998, huur)",
+      "Orange County Blue Star (2003)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/J%C3%BCrgen_Klinsmann"
+    ],
+    "tags": [
+      "duitsland",
+      "italie",
+      "frankrijk",
+      "legende",
+      "wk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Lothar Matthäus",
+    "aliases": [
+      "Matthäus",
+      "Matthaus"
+    ],
+    "clubs": [
+      "Borussia Mönchengladbach (1979–1984)",
+      "Bayern München (1984–1988)",
+      "Inter (1988–1992)",
+      "Bayern München (1992–2000)",
+      "MetroStars (2000)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lothar_Matth%C3%A4us"
+    ],
+    "tags": [
+      "duitsland",
+      "italie",
+      "legende",
+      "wk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Rudi Völler",
+    "aliases": [
+      "Völler",
+      "Voller"
+    ],
+    "clubs": [
+      "Kickers Offenbach (1977–1980)",
+      "1860 München (1980–1982)",
+      "Werder Bremen (1982–1987)",
+      "AS Roma (1987–1992)",
+      "Olympique Marseille (1992–1994)",
+      "Bayer Leverkusen (1994–1996)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Rudi_V%C3%B6ller"
+    ],
+    "tags": [
+      "duitsland",
+      "italie",
+      "frankrijk",
+      "legende",
+      "wk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Gianluca Vialli",
+    "aliases": [
+      "Vialli"
+    ],
+    "clubs": [
+      "Cremonese (1980–1984)",
+      "Sampdoria (1984–1992)",
+      "Juventus (1992–1996)",
+      "Chelsea (1996–1999)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gianluca_Vialli"
+    ],
+    "tags": [
+      "italie",
+      "legende",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Roberto Baggio",
+    "aliases": [],
+    "clubs": [
+      "Vicenza (1982–1985)",
+      "Fiorentina (1985–1990)",
+      "Juventus (1990–1995)",
+      "AC Milan (1995–1997)",
+      "Bologna (1997–1998)",
+      "Inter (1998–2000)",
+      "Brescia (2000–2004)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Roberto_Baggio"
+    ],
+    "tags": [
+      "italie",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Gianfranco Zola",
+    "aliases": [
+      "Zola"
+    ],
+    "clubs": [
+      "Nuorese (1984–1986)",
+      "Torres (1986–1989)",
+      "Napoli (1989–1993)",
+      "Parma (1993–1996)",
+      "Chelsea (1996–2003)",
+      "Cagliari (2003–2005)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gianfranco_Zola"
+    ],
+    "tags": [
+      "italie",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Kevin Keegan",
+    "aliases": [
+      "Keegan"
+    ],
+    "clubs": [
+      "Scunthorpe United (1968–1971)",
+      "Liverpool (1971–1977)",
+      "Hamburger SV (1977–1980)",
+      "Southampton (1980–1982)",
+      "Newcastle United (1982–1984)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_Keegan"
+    ],
+    "tags": [
+      "duitsland",
+      "legende",
+      "ballon-dor",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Gheorghe Hagi",
+    "aliases": [
+      "Hagi"
+    ],
+    "clubs": [
+      "Farul Constanța (1982–1983)",
+      "Sportul Studențesc (1983–1986)",
+      "Steaua Boekarest (1986–1990)",
+      "Real Madrid (1990–1992)",
+      "Brescia (1992–1994)",
+      "FC Barcelona (1994–1996)",
+      "Galatasaray (1996–2001)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gheorghe_Hagi"
+    ],
+    "tags": [
+      "spanje",
+      "italie",
+      "turkije",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Davor Šuker",
+    "aliases": [
+      "Šuker",
+      "Suker"
+    ],
+    "clubs": [
+      "Osijek (1984–1989)",
+      "Dinamo Zagreb (1989–1991)",
+      "Sevilla (1991–1996)",
+      "Real Madrid (1996–1999)",
+      "Arsenal (1999–2000)",
+      "West Ham United (2000–2001)",
+      "1860 München (2001–2003)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Davor_%C5%A0uker"
+    ],
+    "tags": [
+      "spanje",
+      "duitsland",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Siniša Mihajlović",
+    "aliases": [
+      "Mihajlović",
+      "Mihajlovic"
+    ],
+    "clubs": [
+      "Borovo (1986–1988)",
+      "Vojvodina (1988–1990)",
+      "Rode Ster Belgrado (1990–1992)",
+      "AS Roma (1992–1994)",
+      "Sampdoria (1994–1998)",
+      "Lazio (1998–2004)",
+      "Inter (2004–2006)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sini%C5%A1a_Mihajlovi%C4%87"
+    ],
+    "tags": [
+      "italie",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Michael Laudrup",
+    "aliases": [],
+    "clubs": [
+      "Kjøbenhavns Boldklub (1981)",
+      "Brøndby (1982–1983)",
+      "Lazio (1983–1985, huur)",
+      "Juventus (1985–1989)",
+      "FC Barcelona (1989–1994)",
+      "Real Madrid (1994–1996)",
+      "Vissel Kobe (1996–1997)",
+      "Ajax (1997–1998)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Michael_Laudrup"
+    ],
+    "tags": [
+      "italie",
+      "spanje",
+      "oranje",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Brian Laudrup",
+    "aliases": [],
+    "clubs": [
+      "Brøndby (1986–1989)",
+      "Bayer Uerdingen (1989–1990)",
+      "Bayern München (1990–1992)",
+      "Fiorentina (1992–1994)",
+      "AC Milan (1993–1994, huur)",
+      "Rangers (1994–1998)",
+      "Chelsea (1998)",
+      "FC Kopenhagen (1998–1999)",
+      "Ajax (1999–2000)"
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Brian_Laudrup"
+    ],
+    "tags": [
+      "duitsland",
+      "italie",
+      "oranje",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Peter Schmeichel",
+    "aliases": [],
+    "clubs": [
+      "Gladsaxe-Hero (1981–1984)",
+      "Hvidovre (1984–1987)",
+      "Brøndby (1987–1991)",
+      "Manchester United (1991–1999)",
+      "Sporting CP (1999–2001)",
+      "Aston Villa (2001–2002)",
+      "Manchester City (2002–2003)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Peter_Schmeichel"
+    ],
+    "tags": [
+      "portugal",
+      "legende",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Luís Figo",
+    "aliases": [
+      "Figo",
+      "Luis Figo"
+    ],
+    "clubs": [
+      "Sporting CP (1989–1995)",
+      "FC Barcelona (1995–2000)",
+      "Real Madrid (2000–2005)",
+      "Inter (2005–2009)"
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lu%C3%ADs_Figo"
+    ],
+    "tags": [
+      "portugal",
+      "spanje",
+      "italie",
+      "ballon-dor",
+      "champions-league",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Deco",
+    "aliases": [],
+    "clubs": [
+      "Corinthians (1996–1997)",
+      "Benfica (1997–1998)",
+      "Alverca (1997–1998, huur)",
+      "Salgueiros (1998–1999, huur)",
+      "FC Porto (1999–2004)",
+      "FC Barcelona (2004–2008)",
+      "Chelsea (2008–2010)",
+      "Fluminense (2010–2013)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Deco",
+      "https://www.uefa.com/news-media/news/0252-0cd3991e3b1b-5811fc90cbba-1000--former-portugal-midfielder-deco-retires/"
+    ],
+    "tags": [
+      "portugal",
+      "spanje",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Marcel Desailly",
+    "aliases": [
+      "Desailly"
+    ],
+    "clubs": [
+      "Nantes (1986–1992)",
+      "Olympique Marseille (1992–1993)",
+      "AC Milan (1993–1998)",
+      "Chelsea (1998–2004)",
+      "Al-Gharafa (2004–2005)",
+      "Qatar SC (2005–2006)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Marcel_Desailly"
+    ],
+    "tags": [
+      "frankrijk",
+      "italie",
+      "wk",
+      "champions-league",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Patrick Vieira",
+    "aliases": [
+      "Vieira"
+    ],
+    "clubs": [
+      "Cannes (1993–1995)",
+      "AC Milan (1995–1996)",
+      "Arsenal (1996–2005)",
+      "Juventus (2005–2006)",
+      "Inter (2006–2010)",
+      "Manchester City (2010–2011)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Patrick_Vieira"
+    ],
+    "tags": [
+      "frankrijk",
+      "italie",
+      "wk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Emmanuel Petit",
+    "aliases": [
+      "Petit"
+    ],
+    "clubs": [
+      "AS Monaco (1988–1997)",
+      "Arsenal (1997–2000)",
+      "FC Barcelona (2000–2001)",
+      "Chelsea (2001–2004)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Emmanuel_Petit"
+    ],
+    "tags": [
+      "frankrijk",
+      "spanje",
+      "wk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Youri Djorkaeff",
+    "aliases": [
+      "Djorkaeff"
+    ],
+    "clubs": [
+      "Grenoble (1984–1989)",
+      "Strasbourg (1989–1990)",
+      "AS Monaco (1990–1995)",
+      "Paris Saint-Germain (1995–1996)",
+      "Inter (1996–1999)",
+      "Kaiserslautern (1999–2002)",
+      "Bolton Wanderers (2002–2004)",
+      "Blackburn Rovers (2004)",
+      "MetroStars (2005–2006)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Youri_Djorkaeff"
+    ],
+    "tags": [
+      "frankrijk",
+      "italie",
+      "duitsland",
+      "wk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Hakan Şükür",
+    "aliases": [
+      "Şükür",
+      "Sukur"
+    ],
+    "clubs": [
+      "Sakaryaspor (1987–1990)",
+      "Bursaspor (1990–1992)",
+      "Galatasaray (1992–1995)",
+      "Torino (1995)",
+      "Galatasaray (1995–2000)",
+      "Inter (2000–2002)",
+      "Parma (2002)",
+      "Blackburn Rovers (2002–2003)",
+      "Galatasaray (2003–2008)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Hakan_%C5%9E%C3%BCk%C3%BCr"
+    ],
+    "tags": [
+      "turkije",
+      "italie",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "David Beckham",
+    "aliases": [
+      "Beckham"
+    ],
+    "clubs": [
+      "Manchester United (1992–2003)",
+      "Preston North End (1995, huur)",
+      "Real Madrid (2003–2007)",
+      "LA Galaxy (2007–2012)",
+      "AC Milan (2009, huur)",
+      "AC Milan (2010, huur)",
+      "Paris Saint-Germain (2013)"
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/David_Beckham"
+    ],
+    "tags": [
+      "spanje",
+      "italie",
+      "frankrijk",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Michael Owen",
+    "aliases": [
+      "Owen"
+    ],
+    "clubs": [
+      "Liverpool (1996–2004)",
+      "Real Madrid (2004–2005)",
+      "Newcastle United (2005–2009)",
+      "Manchester United (2009–2012)",
+      "Stoke City (2012–2013)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Michael_Owen"
+    ],
+    "tags": [
+      "spanje",
+      "ballon-dor"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Frank Lampard",
+    "aliases": [
+      "Lampard"
+    ],
+    "clubs": [
+      "West Ham United (1995–2001)",
+      "Swansea City (1995–1996, huur)",
+      "Chelsea (2001–2014)",
+      "Manchester City (2014–2015)",
+      "New York City FC (2015–2016)"
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Frank_Lampard"
+    ],
+    "tags": [
+      "champions-league",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Petr Čech",
+    "aliases": [
+      "Čech",
+      "Cech"
+    ],
+    "clubs": [
+      "Chmel Blšany (1999–2001)",
+      "Sparta Praag (2001–2002)",
+      "Rennes (2002–2004)",
+      "Chelsea (2004–2015)",
+      "Arsenal (2015–2019)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Petr_%C4%8Cech"
+    ],
+    "tags": [
+      "frankrijk",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Jerzy Dudek",
+    "aliases": [
+      "Dudek"
+    ],
+    "clubs": [
+      "Concordia Knurów (1991–1995)",
+      "Sokół Tychy (1995–1996)",
+      "Feyenoord (1996–2001)",
+      "Liverpool (2001–2007)",
+      "Real Madrid (2007–2011)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jerzy_Dudek"
+    ],
+    "tags": [
+      "oranje",
+      "spanje",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Henrik Larsson",
+    "aliases": [
+      "Larsson"
+    ],
+    "clubs": [
+      "Högaborgs BK (1989–1991)",
+      "Helsingborgs IF (1992–1993)",
+      "Feyenoord (1993–1997)",
+      "Celtic (1997–2004)",
+      "FC Barcelona (2004–2006)",
+      "Helsingborgs IF (2006–2007)",
+      "Manchester United (2007, huur)",
+      "Helsingborgs IF (2007–2009)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Henrik_Larsson"
+    ],
+    "tags": [
+      "oranje",
+      "spanje",
+      "champions-league",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Freddie Ljungberg",
+    "aliases": [
+      "Ljungberg"
+    ],
+    "clubs": [
+      "Halmstad (1994–1998)",
+      "Arsenal (1998–2007)",
+      "West Ham United (2007–2008)",
+      "Seattle Sounders (2009–2010)",
+      "Chicago Fire (2010)",
+      "Celtic (2011)",
+      "Shimizu S-Pulse (2011–2012)",
+      "Mumbai City (2014)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Freddie_Ljungberg"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Andriy Shevchenko",
+    "aliases": [
+      "Shevchenko",
+      "Sheva",
+      "Sjevtsjenko"
+    ],
+    "clubs": [
+      "Dynamo Kiev (1993–1999)",
+      "AC Milan (1999–2006)",
+      "Chelsea (2006–2009)",
+      "AC Milan (2008–2009, huur)",
+      "Dynamo Kiev (2009–2012)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Andriy_Shevchenko"
+    ],
+    "tags": [
+      "italie",
+      "ballon-dor",
+      "champions-league",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Alessandro Del Piero",
+    "aliases": [
+      "Del Piero"
+    ],
+    "clubs": [
+      "Padova (1991–1993)",
+      "Juventus (1993–2012)",
+      "Sydney FC (2012–2014)",
+      "Delhi Dynamos (2014)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Alessandro_Del_Piero"
+    ],
+    "tags": [
+      "italie",
+      "wk",
+      "champions-league",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Gennaro Gattuso",
+    "aliases": [
+      "Gattuso",
+      "Ringhio"
+    ],
+    "clubs": [
+      "Perugia (1995–1997)",
+      "Rangers (1997–1998)",
+      "Salernitana (1998–1999)",
+      "AC Milan (1999–2012)",
+      "FC Sion (2012–2013)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gennaro_Gattuso"
+    ],
+    "tags": [
+      "italie",
+      "wk",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Fabio Cannavaro",
+    "aliases": [
+      "Cannavaro"
+    ],
+    "clubs": [
+      "Napoli (1991–1995)",
+      "Parma (1995–2002)",
+      "Inter (2002–2004)",
+      "Juventus (2004–2006)",
+      "Real Madrid (2006–2009)",
+      "Juventus (2009–2010)",
+      "Al-Ahli Dubai (2010–2011)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Fabio_Cannavaro"
+    ],
+    "tags": [
+      "italie",
+      "spanje",
+      "wk",
+      "ballon-dor"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Miroslav Klose",
+    "aliases": [
+      "Klose"
+    ],
+    "clubs": [
+      "FC 08 Homburg (1998–1999)",
+      "Kaiserslautern (1999–2004)",
+      "Werder Bremen (2004–2007)",
+      "Bayern München (2007–2011)",
+      "Lazio (2011–2016)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Miroslav_Klose"
+    ],
+    "tags": [
+      "duitsland",
+      "italie",
+      "wk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Michael Ballack",
+    "aliases": [
+      "Ballack"
+    ],
+    "clubs": [
+      "Chemnitzer FC (1995–1997)",
+      "Kaiserslautern (1997–1999)",
+      "Bayer Leverkusen (1999–2002)",
+      "Bayern München (2002–2006)",
+      "Chelsea (2006–2010)",
+      "Bayer Leverkusen (2010–2012)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Michael_Ballack"
+    ],
+    "tags": [
+      "duitsland"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Lukas Podolski",
+    "aliases": [
+      "Podolski",
+      "Poldi"
+    ],
+    "clubs": [
+      "1. FC Köln (2003–2006)",
+      "Bayern München (2006–2009)",
+      "1. FC Köln (2009–2012)",
+      "Arsenal (2012–2015)",
+      "Inter (2015, huur)",
+      "Galatasaray (2015–2017)",
+      "Vissel Kobe (2017–2020)",
+      "Antalyaspor (2020–2021)",
+      "Górnik Zabrze (2021–2026)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lukas_Podolski"
+    ],
+    "tags": [
+      "duitsland",
+      "italie",
+      "turkije",
+      "wk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Mesut Özil",
+    "aliases": [
+      "Özil",
+      "Ozil",
+      "Oezil"
+    ],
+    "clubs": [
+      "Schalke 04 (2006–2008)",
+      "Werder Bremen (2008–2010)",
+      "Real Madrid (2010–2013)",
+      "Arsenal (2013–2021)",
+      "Fenerbahçe (2021–2022)",
+      "İstanbul Başakşehir (2022–2023)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mesut_%C3%96zil"
+    ],
+    "tags": [
+      "duitsland",
+      "spanje",
+      "turkije",
+      "wk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Pavel Nedvěd",
+    "aliases": [
+      "Nedvěd",
+      "Nedved"
+    ],
+    "clubs": [
+      "Dukla Praag (1991–1992)",
+      "Sparta Praag (1992–1996)",
+      "Lazio (1996–2001)",
+      "Juventus (2001–2009)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pavel_Nedv%C4%9Bd",
+      "https://cs.wikipedia.org/wiki/Pavel_Nedv%C4%9Bd"
+    ],
+    "tags": [
+      "italie",
+      "ballon-dor",
+      "legende"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Xabi Alonso",
+    "aliases": [
+      "Xabi"
+    ],
+    "clubs": [
+      "Real Sociedad (1999–2004)",
+      "Eibar (2000–2001, huur)",
+      "Liverpool (2004–2009)",
+      "Real Madrid (2009–2014)",
+      "Bayern München (2014–2017)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Xabi_Alonso"
+    ],
+    "tags": [
+      "spanje",
+      "duitsland",
+      "wk",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "David Villa",
+    "aliases": [
+      "Villa",
+      "Guaje"
+    ],
+    "clubs": [
+      "Sporting Gijón (2001–2003)",
+      "Real Zaragoza (2003–2005)",
+      "Valencia (2005–2010)",
+      "FC Barcelona (2010–2013)",
+      "Atlético Madrid (2013–2014)",
+      "New York City FC (2014–2018)",
+      "Melbourne City (2014, huur)",
+      "Vissel Kobe (2019–2020)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/David_Villa"
+    ],
+    "tags": [
+      "spanje",
+      "wk",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Santi Cazorla",
+    "aliases": [
+      "Cazorla"
+    ],
+    "clubs": [
+      "Villarreal (2003–2006)",
+      "Recreativo de Huelva (2006–2007)",
+      "Villarreal (2007–2011)",
+      "Málaga (2011–2012)",
+      "Arsenal (2012–2018)",
+      "Villarreal (2018–2020)",
+      "Al-Sadd (2020–2023)",
+      "Real Oviedo (2023–2026)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Santi_Cazorla"
+    ],
+    "tags": [
+      "spanje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Fernando Morientes",
+    "aliases": [
+      "Morientes"
+    ],
+    "clubs": [
+      "Albacete (1993–1995)",
+      "Real Zaragoza (1995–1997)",
+      "Real Madrid (1997–2005)",
+      "AS Monaco (2003–2004, huur)",
+      "Liverpool (2005–2006)",
+      "Valencia (2006–2009)",
+      "Olympique Marseille (2009–2010)"
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Fernando_Morientes"
+    ],
+    "tags": [
+      "spanje",
+      "frankrijk",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Nemanja Vidić",
+    "aliases": [
+      "Vidić",
+      "Vidic"
+    ],
+    "clubs": [
+      "Rode Ster Belgrado (2000–2004)",
+      "Spartak Subotica (2000–2001, huur)",
+      "Spartak Moskou (2004–2006)",
+      "Manchester United (2006–2014)",
+      "Inter (2014–2016)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Nemanja_Vidi%C4%87"
+    ],
+    "tags": [
+      "italie",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Franck Ribéry",
+    "aliases": [
+      "Ribéry",
+      "Ribery"
+    ],
+    "clubs": [
+      "US Boulogne (2000–2002)",
+      "Olympique Alès (2002–2003)",
+      "Stade Brest (2003–2004)",
+      "FC Metz (2004–2005)",
+      "Galatasaray (2005)",
+      "Olympique Marseille (2005–2007)",
+      "Bayern München (2007–2019)",
+      "Fiorentina (2019–2021)",
+      "Salernitana (2021–2022)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Franck_Rib%C3%A9ry"
+    ],
+    "tags": [
+      "frankrijk",
+      "duitsland",
+      "italie",
+      "turkije",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Dimitri Payet",
+    "aliases": [
+      "Payet"
+    ],
+    "clubs": [
+      "AS Excelsior (Réunion) (2004–2005)",
+      "Nantes (2005–2007)",
+      "Saint-Étienne (2007–2011)",
+      "Lille (2011–2013)",
+      "Olympique Marseille (2013–2015)",
+      "West Ham United (2015–2017)",
+      "Olympique Marseille (2017–2023)",
+      "Vasco da Gama (2023–2025)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dimitri_Payet"
+    ],
+    "tags": [
+      "frankrijk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Granit Xhaka",
+    "aliases": [
+      "Xhaka"
+    ],
+    "clubs": [
+      "FC Basel (2010–2012)",
+      "Borussia Mönchengladbach (2012–2016)",
+      "Arsenal (2016–2023)",
+      "Bayer Leverkusen (2023–2025)",
+      "Sunderland (2025–)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Granit_Xhaka",
+      "https://www.beinsports.com/en-us/soccer/premier-league/articles/xhaka-staying-put-and-wants-to-make-history-with-sunderland-2026-07-08"
+    ],
+    "tags": [
+      "duitsland"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Jamie Vardy",
+    "aliases": [
+      "Vardy"
+    ],
+    "clubs": [
+      "Stocksbridge Park Steels (2006–2010)",
+      "Halifax Town (2010–2011)",
+      "Fleetwood Town (2011–2012)",
+      "Leicester City (2012–2025)",
+      "Cremonese (2025–2026)",
+      "Burnley (2026–)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jamie_Vardy",
+      "https://www.jamaicaobserver.com/2026/09/06/vardy-signs-championship-strugglers-burnley/"
+    ],
+    "tags": [
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Arda Turan",
+    "aliases": [
+      "Turan"
+    ],
+    "clubs": [
+      "Galatasaray (2005–2011)",
+      "Manisaspor (2006, huur)",
+      "Atlético Madrid (2011–2015)",
+      "FC Barcelona (2015–2020)",
+      "İstanbul Başakşehir (2018–2020, huur)",
+      "Galatasaray (2020–2022)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Arda_Turan"
+    ],
+    "tags": [
+      "turkije",
+      "spanje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Cesc Fàbregas",
+    "aliases": [
+      "Fàbregas",
+      "Fabregas",
+      "Cesc"
+    ],
+    "clubs": [
+      "Arsenal (2003–2011)",
+      "FC Barcelona (2011–2014)",
+      "Chelsea (2014–2019)",
+      "AS Monaco (2019–2022)",
+      "Como (2022–2023)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Cesc_F%C3%A0bregas"
+    ],
+    "tags": [
+      "spanje",
+      "frankrijk",
+      "italie",
+      "wk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Fabien Barthez",
+    "aliases": [
+      "Barthez"
+    ],
+    "clubs": [
+      "Toulouse (1990–1992)",
+      "Olympique Marseille (1992–1995)",
+      "AS Monaco (1995–2000)",
+      "Manchester United (2000–2004)",
+      "Olympique Marseille (2004, huur)",
+      "Olympique Marseille (2004–2006)",
+      "Nantes (2006–2007)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Fabien_Barthez"
+    ],
+    "tags": [
+      "frankrijk",
+      "wk",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Zbigniew Boniek",
+    "aliases": [
+      "Boniek"
+    ],
+    "clubs": [
+      "Zawisza Bydgoszcz (1973–1975)",
+      "Widzew Łódź (1975–1982)",
+      "Juventus (1982–1985)",
+      "AS Roma (1985–1988)"
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Zbigniew_Boniek"
+    ],
+    "tags": [
+      "italie",
+      "legende",
+      "champions-league"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Ronaldo Nazário",
+    "aliases": [
+      "Ronaldo",
+      "Il Fenomeno",
+      "R9"
+    ],
+    "clubs": [
+      "Cruzeiro (1993–1994)",
+      "PSV (1994–1996)",
+      "FC Barcelona (1996–1997)",
+      "Inter (1997–2002)",
+      "Real Madrid (2002–2007)",
+      "AC Milan (2007–2008)",
+      "Corinthians (2009–2011)"
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ronaldo_(Brazilian_footballer)"
+    ],
+    "tags": [
+      "wk",
+      "ballon-dor",
+      "legende",
+      "oranje",
+      "spanje",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Rivaldo",
+    "aliases": [
+      "Rivaldo Vítor Borba Ferreira"
+    ],
+    "clubs": [
+      "Mogi Mirim (1992–1994)",
+      "Palmeiras (1994–1996)",
+      "Deportivo La Coruña (1996–1997)",
+      "FC Barcelona (1997–2002)",
+      "AC Milan (2002–2003)",
+      "Olympiacos (2004–2007)",
+      "AEK Athene (2007–2008)",
+      "Bunyodkor (2008–2011)",
+      "São Paulo (2011, huur)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Rivaldo"
+    ],
+    "tags": [
+      "wk",
+      "ballon-dor",
+      "legende",
+      "spanje",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Roberto Carlos",
+    "aliases": [
+      "Roberto Carlos da Silva"
+    ],
+    "clubs": [
+      "União São João (1991–1993)",
+      "Atlético Mineiro (1992–1993, huur)",
+      "Palmeiras (1993–1995)",
+      "Inter (1995–1996)",
+      "Real Madrid (1996–2007)",
+      "Fenerbahçe (2007–2009)",
+      "Corinthians (2010–2011)",
+      "Anzhi Makhachkala (2011–2012)",
+      "Delhi Dynamos (2015)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Roberto_Carlos"
+    ],
+    "tags": [
+      "wk",
+      "champions-league",
+      "legende",
+      "spanje",
+      "italie",
+      "turkije"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Cafu",
+    "aliases": [
+      "Marcos Evangelista de Morais"
+    ],
+    "clubs": [
+      "São Paulo (1989–1994)",
+      "Real Zaragoza (1995)",
+      "Juventude (1995)",
+      "Palmeiras (1995–1997)",
+      "AS Roma (1997–2003)",
+      "AC Milan (2003–2008)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Cafu",
+      "https://nl.wikipedia.org/wiki/Cafu"
+    ],
+    "tags": [
+      "wk",
+      "champions-league",
+      "legende",
+      "spanje",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Dani Alves",
+    "aliases": [
+      "Alves",
+      "Daniel Alves"
+    ],
+    "clubs": [
+      "Bahia (2001–2003)",
+      "Sevilla (2003–2008)",
+      "FC Barcelona (2008–2016)",
+      "Juventus (2016–2017)",
+      "Paris Saint-Germain (2017–2019)",
+      "São Paulo (2019–2021)",
+      "FC Barcelona (2021–2022)",
+      "Pumas UNAM (2022–2023)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dani_Alves"
+    ],
+    "tags": [
+      "champions-league",
+      "spanje",
+      "italie",
+      "frankrijk",
+      "messi"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Raphinha",
+    "aliases": [
+      "Raphael Dias Belloli"
+    ],
+    "clubs": [
+      "Vitória Guimarães (2016–2018)",
+      "Sporting CP (2018–2019)",
+      "Rennes (2019–2020)",
+      "Leeds United (2020–2022)",
+      "FC Barcelona (2022–)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Raphinha"
+    ],
+    "tags": [
+      "portugal",
+      "frankrijk",
+      "spanje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Marcelo",
+    "aliases": [
+      "Marcelo Vieira"
+    ],
+    "clubs": [
+      "Fluminense (2005–2007)",
+      "Real Madrid (2007–2022)",
+      "Olympiacos (2022–2023)",
+      "Fluminense (2023–2024)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Marcelo_(footballer,_born_1988)"
+    ],
+    "tags": [
+      "champions-league",
+      "spanje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Adriano",
+    "aliases": [
+      "L'Imperatore",
+      "Adriano Leite Ribeiro"
+    ],
+    "clubs": [
+      "Flamengo (2000–2001)",
+      "Inter (2001–2002)",
+      "Fiorentina (2002, huur)",
+      "Parma (2002–2004)",
+      "Inter (2004–2009)",
+      "Flamengo (2009–2010)",
+      "AS Roma (2010–2011)",
+      "Corinthians (2011–2012)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Adriano_(footballer,_born_February_1982)"
+    ],
+    "tags": [
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Dunga",
+    "aliases": [
+      "Carlos Caetano Bledorn Verri"
+    ],
+    "clubs": [
+      "Internacional (1980–1984)",
+      "Corinthians (1984–1985)",
+      "Santos (1985–1987)",
+      "Vasco da Gama (1987)",
+      "Pisa (1987–1988)",
+      "Fiorentina (1988–1992)",
+      "Pescara (1992–1993)",
+      "VfB Stuttgart (1993–1995)",
+      "Júbilo Iwata (1995–1998)",
+      "Internacional (1999–2000)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dunga"
+    ],
+    "tags": [
+      "wk",
+      "italie",
+      "duitsland"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Juninho Pernambucano",
+    "aliases": [
+      "Juninho",
+      "Pernambucano"
+    ],
+    "clubs": [
+      "Sport Recife (1993–1995)",
+      "Vasco da Gama (1995–2001)",
+      "Olympique Lyon (2001–2009)",
+      "Al-Gharafa (2009–2011)",
+      "Vasco da Gama (2011–2012)",
+      "New York Red Bulls (2013)",
+      "Vasco da Gama (2013)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Juninho_Pernambucano"
+    ],
+    "tags": [
+      "legende",
+      "frankrijk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "David Luiz",
+    "aliases": [
+      "Luiz",
+      "David Luiz Moreira Marinho"
+    ],
+    "clubs": [
+      "EC Vitória (2006–2007)",
+      "Benfica (2007–2011)",
+      "Chelsea (2011–2014)",
+      "Paris Saint-Germain (2014–2016)",
+      "Chelsea (2016–2019)",
+      "Arsenal (2019–2021)",
+      "Flamengo (2021–2024)",
+      "Fortaleza (2025)",
+      "Pafos (2025–)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/David_Luiz"
+    ],
+    "tags": [
+      "champions-league",
+      "portugal",
+      "frankrijk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Bebeto",
+    "aliases": [
+      "José Roberto Gama de Oliveira"
+    ],
+    "clubs": [
+      "Flamengo (1983–1989)",
+      "Vasco da Gama (1989–1992)",
+      "Deportivo La Coruña (1992–1996)",
+      "Flamengo (1996)",
+      "Sevilla (1996–1997)",
+      "Botafogo (1998–1999)",
+      "Toros Neza (1999)",
+      "Kashima Antlers (2000)",
+      "Vasco da Gama (2001)",
+      "Al-Ittihad (2002)"
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Bebeto"
+    ],
+    "tags": [
+      "wk",
+      "legende",
+      "spanje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Gilberto Silva",
+    "aliases": [],
+    "clubs": [
+      "América Mineiro (1997–2000)",
+      "Atlético Mineiro (2000–2002)",
+      "Arsenal (2002–2008)",
+      "Panathinaikos (2008–2011)",
+      "Grêmio (2011–2013)",
+      "Atlético Mineiro (2013–2014)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gilberto_Silva"
+    ],
+    "tags": [
+      "wk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Fernandinho",
+    "aliases": [
+      "Fernando Luiz Roza"
+    ],
+    "clubs": [
+      "Atlético Paranaense (2002–2005)",
+      "Shakhtar Donetsk (2005–2013)",
+      "Manchester City (2013–2022)",
+      "Athletico Paranaense (2022–2024)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Fernandinho_(footballer,_born_May_1985)"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Diego Maradona",
+    "aliases": [
+      "Maradona",
+      "Diego Armando Maradona",
+      "El Pibe de Oro"
+    ],
+    "clubs": [
+      "Argentinos Juniors (1976–1981)",
+      "Boca Juniors (1981–1982)",
+      "FC Barcelona (1982–1984)",
+      "Napoli (1984–1991)",
+      "Sevilla (1992–1993)",
+      "Newell's Old Boys (1993–1994)",
+      "Boca Juniors (1995–1997)"
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Diego_Maradona"
+    ],
+    "tags": [
+      "wk",
+      "legende",
+      "maradona",
+      "spanje",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Gabriel Batistuta",
+    "aliases": [
+      "Batistuta",
+      "Batigol"
+    ],
+    "clubs": [
+      "Newell's Old Boys (1988–1989)",
+      "River Plate (1989–1990)",
+      "Boca Juniors (1990–1991)",
+      "Fiorentina (1991–2000)",
+      "AS Roma (2000–2003)",
+      "Inter (2003, huur)",
+      "Al-Arabi (2003–2005)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gabriel_Batistuta"
+    ],
+    "tags": [
+      "legende",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Hernán Crespo",
+    "aliases": [
+      "Crespo"
+    ],
+    "clubs": [
+      "River Plate (1993–1996)",
+      "Parma (1996–2000)",
+      "Lazio (2000–2002)",
+      "Inter (2002–2003)",
+      "Chelsea (2003–2004)",
+      "AC Milan (2004–2005, huur)",
+      "Chelsea (2005–2006)",
+      "Inter (2006–2009)",
+      "Genoa (2009–2010)",
+      "Parma (2010–2012)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Hern%C3%A1n_Crespo"
+    ],
+    "tags": [
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Juan Román Riquelme",
+    "aliases": [
+      "Riquelme",
+      "Román Riquelme"
+    ],
+    "clubs": [
+      "Boca Juniors (1996–2002)",
+      "FC Barcelona (2002–2003)",
+      "Villarreal (2003–2007)",
+      "Boca Juniors (2007–2014)",
+      "Argentinos Juniors (2014–2015)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Juan_Rom%C3%A1n_Riquelme"
+    ],
+    "tags": [
+      "legende",
+      "spanje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Diego Simeone",
+    "aliases": [
+      "Cholo Simeone",
+      "El Cholo"
+    ],
+    "clubs": [
+      "Vélez Sarsfield (1987–1990)",
+      "Pisa (1990–1992)",
+      "Sevilla (1992–1994)",
+      "Atlético Madrid (1994–1997)",
+      "Inter (1997–1999)",
+      "Lazio (1999–2003)",
+      "Atlético Madrid (2003–2005)",
+      "Racing Club (2005–2006)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Diego_Simeone"
+    ],
+    "tags": [
+      "legende",
+      "spanje",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Javier Mascherano",
+    "aliases": [
+      "Mascherano",
+      "El Jefecito"
+    ],
+    "clubs": [
+      "River Plate (2003–2005)",
+      "Corinthians (2005–2006)",
+      "West Ham United (2006–2007)",
+      "Liverpool (2007–2010)",
+      "FC Barcelona (2010–2018)",
+      "Hebei China Fortune (2018–2019)",
+      "Estudiantes (2019–2020)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Javier_Mascherano"
+    ],
+    "tags": [
+      "champions-league",
+      "spanje",
+      "messi"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Juan Sebastián Verón",
+    "aliases": [
+      "Verón",
+      "La Brujita"
+    ],
+    "clubs": [
+      "Estudiantes (1994–1996)",
+      "Boca Juniors (1996)",
+      "Sampdoria (1996–1998)",
+      "Parma (1998–1999)",
+      "Lazio (1999–2001)",
+      "Manchester United (2001–2003)",
+      "Chelsea (2003–2004)",
+      "Inter (2004–2006, huur)",
+      "Estudiantes (2006–2014)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Juan_Sebasti%C3%A1n_Ver%C3%B3n"
+    ],
+    "tags": [
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Paulo Dybala",
+    "aliases": [
+      "Dybala",
+      "La Joya"
+    ],
+    "clubs": [
+      "Instituto (2011–2012)",
+      "Palermo (2012–2015)",
+      "Juventus (2015–2022)",
+      "AS Roma (2022–)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Paulo_Dybala"
+    ],
+    "tags": [
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Esteban Cambiasso",
+    "aliases": [
+      "Cambiasso",
+      "El Cuchu"
+    ],
+    "clubs": [
+      "Independiente (1998–2001)",
+      "River Plate (2001–2002)",
+      "Real Madrid (2002–2004)",
+      "Inter (2004–2014)",
+      "Leicester City (2014–2015)",
+      "Olympiacos (2015–2017)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Esteban_Cambiasso"
+    ],
+    "tags": [
+      "champions-league",
+      "spanje",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Diego Forlán",
+    "aliases": [
+      "Forlán"
+    ],
+    "clubs": [
+      "Independiente (1997–2002)",
+      "Manchester United (2002–2004)",
+      "Villarreal (2004–2007)",
+      "Atlético Madrid (2007–2011)",
+      "Inter (2011–2012)",
+      "Internacional (2012–2014)",
+      "Cerezo Osaka (2014–2015)",
+      "Peñarol (2015–2016)",
+      "Mumbai City (2016)",
+      "Kitchee (2018)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Diego_Forl%C3%A1n"
+    ],
+    "tags": [
+      "spanje",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Diego Godín",
+    "aliases": [
+      "Godín"
+    ],
+    "clubs": [
+      "Cerro (2003–2006)",
+      "Nacional (2006–2007)",
+      "Villarreal (2007–2010)",
+      "Atlético Madrid (2010–2019)",
+      "Inter (2019–2020)",
+      "Cagliari (2020–2022)",
+      "Atlético Mineiro (2022)",
+      "Vélez Sarsfield (2022–2023)",
+      "Porongos (2024)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Diego_God%C3%ADn"
+    ],
+    "tags": [
+      "spanje",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Luis Díaz",
+    "aliases": [
+      "Lucho Díaz"
+    ],
+    "clubs": [
+      "Barranquilla (2016–2017)",
+      "Atlético Junior (2017–2019)",
+      "FC Porto (2019–2022)",
+      "Liverpool (2022–2025)",
+      "Bayern München (2025–)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Luis_D%C3%ADaz_(footballer,_born_1997)"
+    ],
+    "tags": [
+      "portugal",
+      "duitsland"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Faustino Asprilla",
+    "aliases": [
+      "Asprilla",
+      "Tino Asprilla"
+    ],
+    "clubs": [
+      "Atlético Nacional (1989–1992)",
+      "Parma (1992–1996)",
+      "Newcastle United (1996–1998)",
+      "Parma (1998–1999)",
+      "Palmeiras (1999–2000)",
+      "Fluminense (2000–2001)",
+      "Atlante (2001–2002)",
+      "Atlético Nacional (2002)",
+      "Universidad de Chile (2003)",
+      "Cortuluá (2004)"
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Faustino_Asprilla"
+    ],
+    "tags": [
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Arturo Vidal",
+    "aliases": [
+      "Vidal",
+      "King Arturo"
+    ],
+    "clubs": [
+      "Colo-Colo (2005–2007)",
+      "Bayer Leverkusen (2007–2011)",
+      "Juventus (2011–2015)",
+      "Bayern München (2015–2018)",
+      "FC Barcelona (2018–2020)",
+      "Inter (2020–2022)",
+      "Flamengo (2022–2023)",
+      "Athletico Paranaense (2023–2024)",
+      "Colo-Colo (2024–)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Arturo_Vidal"
+    ],
+    "tags": [
+      "duitsland",
+      "italie",
+      "spanje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Iván Zamorano",
+    "aliases": [
+      "Zamorano",
+      "Bam Bam Zamorano"
+    ],
+    "clubs": [
+      "Cobresal (1985–1988)",
+      "St. Gallen (1988–1990)",
+      "Sevilla (1990–1992)",
+      "Real Madrid (1992–1996)",
+      "Inter (1996–2001)",
+      "América (2001–2003)",
+      "Colo-Colo (2003)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Iv%C3%A1n_Zamorano"
+    ],
+    "tags": [
+      "legende",
+      "spanje",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Claudio Pizarro",
+    "aliases": [
+      "Pizarro"
+    ],
+    "clubs": [
+      "Deportivo Pesquero (1996–1997)",
+      "Alianza Lima (1997–1999)",
+      "Werder Bremen (1999–2001)",
+      "Bayern München (2001–2007)",
+      "Chelsea (2007–2008)",
+      "Werder Bremen (2008–2012)",
+      "Bayern München (2012–2015)",
+      "Werder Bremen (2015–2017)",
+      "1. FC Köln (2017–2018)",
+      "Werder Bremen (2018–2020)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Claudio_Pizarro"
+    ],
+    "tags": [
+      "duitsland"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Hugo Sánchez",
+    "aliases": [
+      "Hugol"
+    ],
+    "clubs": [
+      "Pumas UNAM (1976–1981)",
+      "San Diego Sockers (1979–1980, huur)",
+      "Atlético Madrid (1981–1985)",
+      "Real Madrid (1985–1992)",
+      "América (1992–1993)",
+      "Rayo Vallecano (1993–1994)",
+      "Atlante (1994–1995)",
+      "Stahl Linz (1995–1996)",
+      "Dallas Burn (1996)",
+      "Atlético Celaya (1997)"
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Hugo_S%C3%A1nchez"
+    ],
+    "tags": [
+      "legende",
+      "spanje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Rafael Márquez",
+    "aliases": [
+      "Rafa Márquez",
+      "Márquez"
+    ],
+    "clubs": [
+      "Atlas (1996–1999)",
+      "AS Monaco (1999–2003)",
+      "FC Barcelona (2003–2010)",
+      "New York Red Bulls (2010–2012)",
+      "León (2012–2014)",
+      "Hellas Verona (2014–2015)",
+      "Atlas (2016–2018)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Rafael_M%C3%A1rquez"
+    ],
+    "tags": [
+      "champions-league",
+      "frankrijk",
+      "spanje",
+      "italie",
+      "messi"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Keylor Navas",
+    "aliases": [
+      "Navas"
+    ],
+    "clubs": [
+      "Saprissa (2005–2010)",
+      "Albacete (2010–2011)",
+      "Levante (2011–2014)",
+      "Real Madrid (2014–2019)",
+      "Paris Saint-Germain (2019–2024)",
+      "Nottingham Forest (2023, huur)",
+      "Newell's Old Boys (2025)",
+      "Pumas UNAM (2025–)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Keylor_Navas",
+      "https://es.wikipedia.org/wiki/Keylor_Navas"
+    ],
+    "tags": [
+      "champions-league",
+      "spanje",
+      "frankrijk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Tim Howard",
+    "aliases": [
+      "Howard"
+    ],
+    "clubs": [
+      "MetroStars (1998–2003)",
+      "Manchester United (2003–2006)",
+      "Everton (2006–2016)",
+      "Colorado Rapids (2016–2019)",
+      "Memphis 901 (2020)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Tim_Howard"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Didier Drogba",
+    "aliases": [
+      "Drogba"
+    ],
+    "clubs": [
+      "Le Mans (1998–2002)",
+      "Guingamp (2002–2003)",
+      "Olympique Marseille (2003–2004)",
+      "Chelsea (2004–2012)",
+      "Shanghai Shenhua (2012–2013)",
+      "Galatasaray (2013–2014)",
+      "Chelsea (2014–2015)",
+      "Montreal Impact (2015–2016)",
+      "Phoenix Rising (2017–2018)"
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Didier_Drogba"
+    ],
+    "tags": [
+      "champions-league",
+      "legende",
+      "frankrijk",
+      "turkije"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Samuel Eto'o",
+    "aliases": [
+      "Eto'o",
+      "Etoo"
+    ],
+    "clubs": [
+      "Real Madrid (1997–2000)",
+      "Mallorca (2000–2004)",
+      "FC Barcelona (2004–2009)",
+      "Inter (2009–2011)",
+      "Anzhi Makhachkala (2011–2013)",
+      "Chelsea (2013–2014)",
+      "Everton (2014–2015)",
+      "Sampdoria (2015)",
+      "Antalyaspor (2015–2018)",
+      "Qatar SC (2018–2019)"
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Samuel_Eto%27o"
+    ],
+    "tags": [
+      "champions-league",
+      "legende",
+      "spanje",
+      "italie",
+      "turkije",
+      "messi"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "George Weah",
+    "aliases": [],
+    "clubs": [
+      "Africa Sports (1987)",
+      "Tonnerre Yaoundé (1987–1988)",
+      "AS Monaco (1988–1992)",
+      "Paris Saint-Germain (1992–1995)",
+      "AC Milan (1995–2000)",
+      "Chelsea (2000, huur)",
+      "Manchester City (2000)",
+      "Olympique Marseille (2000–2001)",
+      "Al Jazira (2001–2003)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/George_Weah"
+    ],
+    "tags": [
+      "ballon-dor",
+      "legende",
+      "frankrijk",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Jay-Jay Okocha",
+    "aliases": [
+      "Okocha",
+      "Austin Okocha"
+    ],
+    "clubs": [
+      "Borussia Neunkirchen (1990–1992)",
+      "Eintracht Frankfurt (1992–1996)",
+      "Fenerbahçe (1996–1998)",
+      "Paris Saint-Germain (1998–2002)",
+      "Bolton Wanderers (2002–2006)",
+      "Qatar SC (2006–2007)",
+      "Hull City (2007–2008)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jay-Jay_Okocha"
+    ],
+    "tags": [
+      "legende",
+      "duitsland",
+      "turkije",
+      "frankrijk"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Michael Essien",
+    "aliases": [
+      "Essien"
+    ],
+    "clubs": [
+      "Bastia (2000–2003)",
+      "Olympique Lyon (2003–2005)",
+      "Chelsea (2005–2014)",
+      "Real Madrid (2012–2013, huur)",
+      "AC Milan (2014–2015)",
+      "Panathinaikos (2015–2016)",
+      "Persib Bandung (2017–2018)",
+      "Sabail (2019–2020)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Michael_Essien"
+    ],
+    "tags": [
+      "champions-league",
+      "frankrijk",
+      "spanje",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Emmanuel Adebayor",
+    "aliases": [
+      "Adebayor"
+    ],
+    "clubs": [
+      "FC Metz (2001–2003)",
+      "AS Monaco (2003–2006)",
+      "Arsenal (2006–2009)",
+      "Manchester City (2009–2011)",
+      "Real Madrid (2011, huur)",
+      "Tottenham Hotspur (2011–2015)",
+      "Crystal Palace (2016)",
+      "İstanbul Başakşehir (2017–2019)",
+      "Kayserispor (2019)",
+      "Olimpia (2020)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Emmanuel_Adebayor"
+    ],
+    "tags": [
+      "frankrijk",
+      "spanje",
+      "turkije"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Kolo Touré",
+    "aliases": [
+      "Kolo Toure"
+    ],
+    "clubs": [
+      "ASEC Mimosas (1999–2002)",
+      "Arsenal (2002–2009)",
+      "Manchester City (2009–2013)",
+      "Liverpool (2013–2016)",
+      "Celtic (2016–2017)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kolo_Tour%C3%A9"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Nwankwo Kanu",
+    "aliases": [
+      "Kanu"
+    ],
+    "clubs": [
+      "Iwuanyanwu Nationale (1992–1993)",
+      "Ajax (1993–1996)",
+      "Inter (1996–1999)",
+      "Arsenal (1999–2004)",
+      "West Bromwich Albion (2004–2006)",
+      "Portsmouth (2006–2012)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Nwankwo_Kanu"
+    ],
+    "tags": [
+      "champions-league",
+      "oranje",
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Achraf Hakimi",
+    "aliases": [
+      "Hakimi"
+    ],
+    "clubs": [
+      "Real Madrid (2017–2020)",
+      "Borussia Dortmund (2018–2020, huur)",
+      "Inter (2020–2021)",
+      "Paris Saint-Germain (2021–)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Achraf_Hakimi"
+    ],
+    "tags": [
+      "champions-league",
+      "duitsland",
+      "spanje",
+      "italie",
+      "frankrijk",
+      "messi"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Seydou Keita",
+    "aliases": [
+      "Seydou Keïta"
+    ],
+    "clubs": [
+      "Olympique Marseille (1999–2000)",
+      "Lorient (2000–2002)",
+      "RC Lens (2002–2007)",
+      "Sevilla (2007–2008)",
+      "FC Barcelona (2008–2012)",
+      "Dalian Aerbin (2012–2014)",
+      "Valencia (2014)",
+      "AS Roma (2014–2016)",
+      "El Jaish (2016–2017)"
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Seydou_Keita"
+    ],
+    "tags": [
+      "champions-league",
+      "frankrijk",
+      "spanje",
+      "italie",
+      "messi"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Mohammed Kudus",
+    "aliases": [
+      "Kudus"
+    ],
+    "clubs": [
+      "Nordsjælland (2018–2020)",
+      "Ajax (2020–2023)",
+      "West Ham United (2023–2025)",
+      "Tottenham Hotspur (2025–)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mohammed_Kudus"
+    ],
+    "tags": [
+      "oranje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Hidetoshi Nakata",
+    "aliases": [
+      "Nakata"
+    ],
+    "clubs": [
+      "Bellmare Hiratsuka (1995–1998)",
+      "Perugia (1998–2000)",
+      "AS Roma (2000–2001)",
+      "Parma (2001–2004)",
+      "Bologna (2004, huur)",
+      "Fiorentina (2004–2006)",
+      "Bolton Wanderers (2005–2006, huur)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Hidetoshi_Nakata"
+    ],
+    "tags": [
+      "italie"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Son Heung-min",
+    "aliases": [
+      "Son",
+      "Heung-min Son",
+      "Sonny"
+    ],
+    "clubs": [
+      "Hamburger SV (2010–2013)",
+      "Bayer Leverkusen (2013–2015)",
+      "Tottenham Hotspur (2015–2025)",
+      "Los Angeles FC (2025–)"
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Son_Heung-min"
+    ],
+    "tags": [
+      "duitsland"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Park Ji-sung",
+    "aliases": [
+      "Ji-sung Park"
+    ],
+    "clubs": [
+      "Kyoto Purple Sanga (2000–2003)",
+      "PSV (2003–2005)",
+      "Manchester United (2005–2012)",
+      "Queens Park Rangers (2012–2014)",
+      "PSV (2013–2014, huur)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Park_Ji-sung"
+    ],
+    "tags": [
+      "oranje"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Kim Min-jae",
+    "aliases": [
+      "Min-jae Kim",
+      "Kim Minjae"
+    ],
+    "clubs": [
+      "Gyeongju KHNP (2016)",
+      "Jeonbuk Hyundai Motors (2017–2018)",
+      "Beijing Guoan (2019–2021)",
+      "Fenerbahçe (2021–2022)",
+      "Napoli (2022–2023)",
+      "Bayern München (2023–)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kim_Min-jae_(footballer)"
+    ],
+    "tags": [
+      "turkije",
+      "italie",
+      "duitsland"
+    ],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "answer": "Harry Kewell",
+    "aliases": [
+      "Kewell"
+    ],
+    "clubs": [
+      "Leeds United (1996–2003)",
+      "Liverpool (2003–2008)",
+      "Galatasaray (2008–2011)",
+      "Melbourne Victory (2011–2012)",
+      "Al-Gharafa (2013)",
+      "Melbourne Heart (2013–2014)"
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Harry_Kewell"
+    ],
+    "tags": [
+      "champions-league",
+      "turkije"
+    ],
+    "checkedAt": "2026-10-22"
   }
 ]

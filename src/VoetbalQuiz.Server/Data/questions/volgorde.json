@@ -87,5 +87,4185 @@
     ],
     "tags": ["gouden-schoen"],
     "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wie werd het eerst wereldkampioen?",
+    "items": [
+      { "label": "Argentinië (met Maradona) in Mexico", "value": "1986" },
+      { "label": "West-Duitsland in Italië", "value": "1990" },
+      { "label": "Brazilië in de Verenigde Staten", "value": "1994" },
+      { "label": "Frankrijk in eigen land", "value": "1998" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals"
+    ],
+    "tags": ["wk", "maradona", "frankrijk", "duitsland"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de eerste vier wereldkampioenen van deze eeuw, van vroeg naar laat.",
+    "items": [
+      { "label": "Brazilië (Ronaldo scoort twee keer in de finale)", "value": "2002" },
+      { "label": "Italië (na strafschoppen tegen Frankrijk)", "value": "2006" },
+      { "label": "Spanje (goal van Iniesta in de verlenging)", "value": "2010" },
+      { "label": "Duitsland (goal van Götze in de verlenging)", "value": "2014" }
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals"
+    ],
+    "tags": ["wk", "italie", "spanje", "duitsland"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wie werd het eerst Europees kampioen?",
+    "items": [
+      { "label": "Denemarken, als laatkomer na de uitsluiting van Joegoslavië", "value": "1992" },
+      { "label": "Griekenland, tegen gastland Portugal", "value": "2004" },
+      { "label": "Portugal, tegen gastland Frankrijk", "value": "2016" },
+      { "label": "Italië, na strafschoppen op Wembley", "value": "2021 (EK 2020)" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_European_Championship"
+    ],
+    "tags": ["portugal", "italie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: wie won de meeste Gouden Ballen?",
+    "items": [
+      { "label": "Lionel Messi", "value": "8" },
+      { "label": "Cristiano Ronaldo", "value": "5" },
+      { "label": "Michel Platini", "value": "3" },
+      { "label": "Zinédine Zidane", "value": "1" }
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ballon_d%27Or"
+    ],
+    "tags": ["ballon-dor", "messi", "frankrijk", "portugal"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wie won het eerst zijn (eerste) Gouden Bal?",
+    "items": [
+      { "label": "Johan Cruijff", "value": "1971" },
+      { "label": "Michel Platini", "value": "1983" },
+      { "label": "Marco van Basten", "value": "1988" },
+      { "label": "Zinédine Zidane", "value": "1998" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ballon_d%27Or"
+    ],
+    "tags": ["ballon-dor", "oranje", "frankrijk", "legende"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: wie speelde de meeste interlands voor de Rode Duivels?",
+    "items": [
+      { "label": "Jan Vertonghen", "value": "157" },
+      { "label": "Eden Hazard", "value": "126" },
+      { "label": "Jan Ceulemans", "value": "96" },
+      { "label": "Enzo Scifo", "value": "84" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgium_international_footballers"
+    ],
+    "tags": ["rode-duivels", "legende"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: wie scoorde het meest voor de Rode Duivels?",
+    "items": [
+      { "label": "Romelu Lukaku", "value": "meer dan 90" },
+      { "label": "Eden Hazard", "value": "33" },
+      { "label": "Marc Wilmots", "value": "28" },
+      { "label": "Jan Ceulemans", "value": "23" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgium_international_footballers"
+    ],
+    "tags": ["rode-duivels", "lukaku"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wanneer werden deze clubs (voor het laatst) landskampioen?",
+    "items": [
+      { "label": "KV Mechelen", "value": "1989" },
+      { "label": "Lierse", "value": "1997" },
+      { "label": "Racing Genk", "value": "2019" },
+      { "label": "Union Sint-Gillis", "value": "2025" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
+    ],
+    "tags": ["belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: Belgische landstitels (stand na seizoen 2025-26).",
+    "items": [
+      { "label": "Anderlecht", "value": "34" },
+      { "label": "Club Brugge", "value": "20" },
+      { "label": "Union Sint-Gillis", "value": "12" },
+      { "label": "Standard", "value": "10" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
+    ],
+    "tags": ["anderlecht", "club-brugge", "standard", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: Bekers van België gewonnen (stand na 2026).",
+    "items": [
+      { "label": "Club Brugge", "value": "12" },
+      { "label": "Anderlecht", "value": "9" },
+      { "label": "Racing Genk", "value": "5" },
+      { "label": "KV Mechelen", "value": "2" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgian_Cup"
+    ],
+    "tags": ["beker-van-belgie", "club-brugge", "anderlecht", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van duur naar goedkoop: enkele van de duurste transfers ooit.",
+    "items": [
+      { "label": "Neymar van Barcelona naar PSG", "value": "€ 222 mln" },
+      { "label": "Kylian Mbappé van Monaco naar PSG", "value": "€ 180 mln" },
+      { "label": "João Félix van Benfica naar Atlético", "value": "€ 126 mln" },
+      { "label": "Jack Grealish van Aston Villa naar Man City", "value": "± € 118 mln" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_most_expensive_association_football_transfers"
+    ],
+    "tags": ["frankrijk", "spanje", "portugal"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van duur naar goedkoop: grote transfers van Rode Duivels.",
+    "items": [
+      { "label": "Romelu Lukaku van Inter naar Chelsea", "value": "± € 115 mln (2021)" },
+      { "label": "Eden Hazard van Chelsea naar Real Madrid", "value": "± € 100 mln zonder bonussen (2019)" },
+      { "label": "Romelu Lukaku van Everton naar Man United", "value": "± € 85 mln (2017)" },
+      { "label": "Kevin De Bruyne van Wolfsburg naar Man City", "value": "± € 76 mln (2015)" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku",
+      "https://en.wikipedia.org/wiki/Eden_Hazard",
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne"
+    ],
+    "tags": ["rode-duivels", "lukaku", "de-bruyne"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de transfers van Kevin De Bruyne.",
+    "items": [
+      { "label": "Van Genk naar Chelsea", "value": "2012" },
+      { "label": "Van Chelsea naar Wolfsburg", "value": "2014" },
+      { "label": "Van Wolfsburg naar Manchester City", "value": "2015" },
+      { "label": "Van Manchester City naar Napoli", "value": "2025" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne"
+    ],
+    "tags": ["de-bruyne", "rode-duivels"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: enkele transfers van Romelu Lukaku, van vroeg naar laat.",
+    "items": [
+      { "label": "Van Anderlecht naar Chelsea", "value": "2011" },
+      { "label": "Definitief naar Everton", "value": "2014" },
+      { "label": "Naar Manchester United", "value": "2017" },
+      { "label": "Naar Inter", "value": "2019" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+    ],
+    "tags": ["lukaku", "rode-duivels"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de carrière van Eden Hazard.",
+    "items": [
+      { "label": "Debuut in het eerste elftal van Lille", "value": "2007" },
+      { "label": "Transfer naar Chelsea", "value": "2012" },
+      { "label": "Transfer naar Real Madrid", "value": "2019" },
+      { "label": "Zet een punt achter zijn carrière", "value": "2023" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Eden_Hazard"
+    ],
+    "tags": ["rode-duivels"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de carrière van Thibaut Courtois.",
+    "items": [
+      { "label": "Debuut in het eerste elftal van Genk", "value": "2009" },
+      { "label": "Transfer naar Chelsea", "value": "2011" },
+      { "label": "Transfer naar Real Madrid", "value": "2018" },
+      { "label": "Man van de match in de Champions League-finale", "value": "2022" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Thibaut_Courtois"
+    ],
+    "tags": ["rode-duivels", "champions-league"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wie won het eerst de Champions League?",
+    "items": [
+      { "label": "Ajax, tegen AC Milan in Wenen", "value": "1995" },
+      { "label": "Borussia Dortmund, tegen Juventus in München", "value": "1997" },
+      { "label": "FC Porto, tegen Monaco in Gelsenkirchen", "value": "2004" },
+      { "label": "Chelsea, tegen Bayern in München", "value": "2012" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
+    ],
+    "tags": ["champions-league", "oranje", "duitsland", "portugal"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: enkele recente Champions League-winnaars, van vroeg naar laat.",
+    "items": [
+      { "label": "Liverpool, tegen Tottenham in Madrid", "value": "2019" },
+      { "label": "Chelsea, tegen Manchester City in Porto", "value": "2021" },
+      { "label": "Manchester City, tegen Inter in Istanbul", "value": "2023" },
+      { "label": "PSG, met 5-0 tegen Inter in München", "value": "2025" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
+    ],
+    "tags": ["champions-league"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: Europacup I / Champions League gewonnen (stand na 2026).",
+    "items": [
+      { "label": "Real Madrid", "value": "15" },
+      { "label": "AC Milan", "value": "7" },
+      { "label": "FC Barcelona", "value": "5" },
+      { "label": "Ajax", "value": "4" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
+    ],
+    "tags": ["champions-league", "spanje", "italie", "oranje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: enkele WK-uitschakelingen van de Rode Duivels, van vroeg naar laat.",
+    "items": [
+      { "label": "Tegen Engeland, goal van Platt in de 119e minuut", "value": "1990" },
+      { "label": "Tegen Duitsland, 3-2 en een geweigerde penalty", "value": "1994" },
+      { "label": "Tegen Brazilië, na een afgekeurde goal van Wilmots", "value": "2002" },
+      { "label": "Tegen Argentinië, goal van Higuaín", "value": "2014" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"
+    ],
+    "tags": ["rode-duivels", "wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van oud naar jong: welke Rode Duivel van de nieuwe generatie werd het eerst geboren?",
+    "items": [
+      { "label": "Youri Tielemans", "value": "7 mei 1997" },
+      { "label": "Loïs Openda", "value": "16 februari 2000" },
+      { "label": "Charles De Ketelaere", "value": "10 maart 2001" },
+      { "label": "Jérémy Doku", "value": "27 mei 2002" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Youri_Tielemans",
+      "https://en.wikipedia.org/wiki/Lo%C3%AFs_Openda",
+      "https://en.wikipedia.org/wiki/Charles_De_Ketelaere",
+      "https://en.wikipedia.org/wiki/J%C3%A9r%C3%A9my_Doku"
+    ],
+    "tags": ["rode-duivels"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van oud naar jong: welke legende werd het eerst geboren?",
+    "items": [
+      { "label": "Jean-Marie Pfaff", "value": "4 december 1953" },
+      { "label": "Jan Ceulemans", "value": "28 februari 1957" },
+      { "label": "Michel Preud'homme", "value": "24 januari 1959" },
+      { "label": "Enzo Scifo", "value": "19 februari 1966" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jean-Marie_Pfaff",
+      "https://en.wikipedia.org/wiki/Jan_Ceulemans",
+      "https://en.wikipedia.org/wiki/Michel_Preud%27homme",
+      "https://en.wikipedia.org/wiki/Enzo_Scifo"
+    ],
+    "tags": ["rode-duivels", "legende", "pfaff"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van oud naar jong: welke nummer 10 werd het eerst geboren?",
+    "items": [
+      { "label": "Diego Maradona", "value": "30 oktober 1960" },
+      { "label": "Zinédine Zidane", "value": "23 juni 1972" },
+      { "label": "Ronaldinho", "value": "21 maart 1980" },
+      { "label": "Lionel Messi", "value": "24 juni 1987" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Diego_Maradona",
+      "https://en.wikipedia.org/wiki/Zinedine_Zidane",
+      "https://en.wikipedia.org/wiki/Ronaldinho",
+      "https://en.wikipedia.org/wiki/Lionel_Messi"
+    ],
+    "tags": ["maradona", "messi", "legende", "frankrijk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van oud naar jong: welke ster werd het eerst geboren?",
+    "items": [
+      { "label": "Cristiano Ronaldo", "value": "5 februari 1985" },
+      { "label": "Lionel Messi", "value": "24 juni 1987" },
+      { "label": "Neymar", "value": "5 februari 1992" },
+      { "label": "Kylian Mbappé", "value": "20 december 1998" }
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Cristiano_Ronaldo",
+      "https://en.wikipedia.org/wiki/Lionel_Messi",
+      "https://en.wikipedia.org/wiki/Neymar",
+      "https://en.wikipedia.org/wiki/Kylian_Mbapp%C3%A9"
+    ],
+    "tags": ["messi", "portugal", "frankrijk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: mijlpalen van Lionel Messi.",
+    "items": [
+      { "label": "Debuut in het eerste elftal van Barcelona", "value": "2004" },
+      { "label": "Eerste Gouden Bal", "value": "2009" },
+      { "label": "Transfer naar PSG", "value": "2021" },
+      { "label": "Wereldkampioen met Argentinië", "value": "2022" }
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lionel_Messi"
+    ],
+    "tags": ["messi", "ballon-dor", "wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: mijlpalen van Diego Maradona.",
+    "items": [
+      { "label": "Transfer van Boca Juniors naar Barcelona", "value": "1982" },
+      { "label": "Transfer naar Napoli", "value": "1984" },
+      { "label": "Wereldkampioen in Mexico, met de Hand van God", "value": "1986" },
+      { "label": "Eerste scudetto met Napoli", "value": "1987" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Diego_Maradona"
+    ],
+    "tags": ["maradona", "legende", "wk", "italie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: mijlpalen van Jean-Marie Pfaff.",
+    "items": [
+      { "label": "Debuut bij de Rode Duivels", "value": "1976" },
+      { "label": "Landskampioen met Beveren", "value": "1979" },
+      { "label": "Transfer naar Bayern München", "value": "1982" },
+      { "label": "Vierde op het WK in Mexico", "value": "1986" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jean-Marie_Pfaff"
+    ],
+    "tags": ["pfaff", "legende", "rode-duivels", "duitsland"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: wie won de meeste Gouden Schoenen?",
+    "items": [
+      { "label": "Paul Van Himst", "value": "4" },
+      { "label": "Jan Ceulemans", "value": "3" },
+      { "label": "Pär Zetterberg", "value": "2" },
+      { "label": "Vincent Kompany", "value": "1" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
+    ],
+    "tags": ["gouden-schoen", "anderlecht", "legende"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: titels in de Premier League (stand na seizoen 2025-26).",
+    "items": [
+      { "label": "Manchester United", "value": "13" },
+      { "label": "Manchester City", "value": "8" },
+      { "label": "Chelsea", "value": "5" },
+      { "label": "Arsenal", "value": "4" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_English_football_champions"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: Italiaanse landstitels (stand na seizoen 2025-26).",
+    "items": [
+      { "label": "Juventus", "value": "36" },
+      { "label": "Inter", "value": "21" },
+      { "label": "AC Milan", "value": "19" },
+      { "label": "Napoli", "value": "4" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Italian_football_champions"
+    ],
+    "tags": ["italie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: Spaanse landstitels (stand na seizoen 2025-26).",
+    "items": [
+      { "label": "Real Madrid", "value": "36" },
+      { "label": "FC Barcelona", "value": "29" },
+      { "label": "Atlético Madrid", "value": "11" },
+      { "label": "Athletic Bilbao", "value": "8" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Spanish_football_champions"
+    ],
+    "tags": ["spanje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: Nederlandse landstitels (stand na seizoen 2025-26).",
+    "items": [
+      { "label": "Ajax", "value": "36" },
+      { "label": "PSV", "value": "27" },
+      { "label": "Feyenoord", "value": "16" },
+      { "label": "AZ", "value": "2" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Dutch_football_champions"
+    ],
+    "tags": ["oranje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: momenten van Oranje, van vroeg naar laat.",
+    "items": [
+      { "label": "Europees kampioen in West-Duitsland", "value": "1988" },
+      { "label": "WK-finale verloren tegen Spanje", "value": "2010" },
+      { "label": "Derde op het WK in Brazilië", "value": "2014" },
+      { "label": "Finale van de eerste Nations League verloren", "value": "2019" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Netherlands_national_football_team"
+    ],
+    "tags": ["oranje", "wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: titels van Frankrijk, van vroeg naar laat.",
+    "items": [
+      { "label": "Europees kampioen met Platini", "value": "1984" },
+      { "label": "Wereldkampioen in eigen land", "value": "1998" },
+      { "label": "Europees kampioen met een golden goal van Trezeguet", "value": "2000" },
+      { "label": "Wereldkampioen in Rusland", "value": "2018" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/France_national_football_team"
+    ],
+    "tags": ["frankrijk", "wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: momenten van Portugal, van vroeg naar laat.",
+    "items": [
+      { "label": "EK-finale in eigen land verloren tegen Griekenland", "value": "2004" },
+      { "label": "Europees kampioen in Frankrijk", "value": "2016" },
+      { "label": "Wint de eerste Nations League", "value": "2019" },
+      { "label": "Wint de Nations League na strafschoppen tegen Spanje", "value": "2025" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Portugal_national_football_team"
+    ],
+    "tags": ["portugal"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: momenten uit het Turkse voetbal, van vroeg naar laat.",
+    "items": [
+      { "label": "Galatasaray wint de UEFA Cup tegen Arsenal", "value": "2000" },
+      { "label": "Turkije wordt derde op het WK", "value": "2002" },
+      { "label": "Halve finale op het EK na drie comebacks", "value": "2008" },
+      { "label": "Kwartfinale op het EK in Duitsland", "value": "2024" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Turkey_national_football_team",
+      "https://en.wikipedia.org/wiki/2000_UEFA_Cup_final"
+    ],
+    "tags": ["turkije", "wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: titels van Spanje, van vroeg naar laat.",
+    "items": [
+      { "label": "Europees kampioen in Oostenrijk en Zwitserland", "value": "2008" },
+      { "label": "Wereldkampioen in Zuid-Afrika", "value": "2010" },
+      { "label": "Europees kampioen met 4-0 tegen Italië", "value": "2012" },
+      { "label": "Europees kampioen in Duitsland", "value": "2024" }
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Spain_national_football_team"
+    ],
+    "tags": ["spanje", "wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: momenten van Italië, van vroeg naar laat.",
+    "items": [
+      { "label": "Wereldkampioen in Spanje met Paolo Rossi", "value": "1982" },
+      { "label": "WK-finale verloren na de misser van Baggio", "value": "1994" },
+      { "label": "Wereldkampioen in Duitsland", "value": "2006" },
+      { "label": "Europees kampioen op Wembley", "value": "2021 (EK 2020)" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Italy_national_football_team"
+    ],
+    "tags": ["italie", "wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: titels van (West-)Duitsland, van vroeg naar laat.",
+    "items": [
+      { "label": "Wereldkampioen in eigen land met Beckenbauer", "value": "1974" },
+      { "label": "Europees kampioen tegen België in Rome", "value": "1980" },
+      { "label": "Wereldkampioen in Italië", "value": "1990" },
+      { "label": "Wereldkampioen in Brazilië", "value": "2014" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Germany_national_football_team"
+    ],
+    "tags": ["duitsland", "wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: recente winnaars van de Gouden Bal (stand na 2025), van vroeg naar laat.",
+    "items": [
+      { "label": "Luka Modrić", "value": "2018" },
+      { "label": "Karim Benzema", "value": "2022" },
+      { "label": "Rodri", "value": "2024" },
+      { "label": "Ousmane Dembélé", "value": "2025" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ballon_d%27Or"
+    ],
+    "tags": ["ballon-dor", "frankrijk", "spanje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van groot naar klein: zet deze Rode Duivels op lengte.",
+    "items": [
+      { "label": "Thibaut Courtois", "value": "2,00 m" },
+      { "label": "Romelu Lukaku", "value": "1,91 m" },
+      { "label": "Kevin De Bruyne", "value": "1,81 m" },
+      { "label": "Eden Hazard", "value": "1,75 m" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Thibaut_Courtois",
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku",
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
+      "https://en.wikipedia.org/wiki/Eden_Hazard"
+    ],
+    "tags": ["rode-duivels", "lukaku", "de-bruyne", "curiosa"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van hoog naar laag: het vaste rugnummer bij de Rode Duivels.",
+    "items": [
+      { "label": "Eden Hazard", "value": "10" },
+      { "label": "Romelu Lukaku", "value": "9" },
+      { "label": "Kevin De Bruyne", "value": "7" },
+      { "label": "Thibaut Courtois", "value": "1" }
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgium_national_football_team"
+    ],
+    "tags": ["rode-duivels", "lukaku", "de-bruyne"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: mijlpalen van Kylian Mbappé.",
+    "items": [
+      { "label": "Debuut in het eerste elftal van Monaco", "value": "2015" },
+      { "label": "Naar PSG (op huurbasis)", "value": "2017" },
+      { "label": "Wereldkampioen met Frankrijk", "value": "2018" },
+      { "label": "Transfervrij naar Real Madrid", "value": "2024" }
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kylian_Mbapp%C3%A9"
+    ],
+    "tags": ["frankrijk", "wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de transfers van Cristiano Ronaldo, van vroeg naar laat.",
+    "items": [
+      { "label": "Van Sporting naar Manchester United", "value": "2003" },
+      { "label": "Naar Real Madrid", "value": "2009" },
+      { "label": "Naar Juventus", "value": "2018" },
+      { "label": "Naar Al-Nassr", "value": "2023" }
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Cristiano_Ronaldo"
+    ],
+    "tags": ["portugal", "spanje", "italie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: mijlpalen van Zinédine Zidane.",
+    "items": [
+      { "label": "Van Bordeaux naar Juventus", "value": "1996" },
+      { "label": "Naar Real Madrid voor een recordbedrag", "value": "2001" },
+      { "label": "Rode kaart na een kopstoot in de WK-finale", "value": "2006" },
+      { "label": "Wordt hoofdtrainer van Real Madrid", "value": "2016" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Zinedine_Zidane"
+    ],
+    "tags": ["frankrijk", "legende", "wk", "spanje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de trainerscarrière van Pep Guardiola.",
+    "items": [
+      { "label": "Hoofdtrainer van Barcelona", "value": "2008" },
+      { "label": "Hoofdtrainer van Bayern München", "value": "2013" },
+      { "label": "Hoofdtrainer van Manchester City", "value": "2016" },
+      { "label": "Treble met Manchester City", "value": "2023" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pep_Guardiola"
+    ],
+    "tags": ["spanje", "duitsland", "champions-league"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: Champions League-titels als trainer.",
+    "items": [
+      { "label": "Carlo Ancelotti", "value": "5" },
+      { "label": "Pep Guardiola", "value": "3" },
+      { "label": "José Mourinho", "value": "2" },
+      { "label": "Jürgen Klopp", "value": "1" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_UEFA_Champions_League_winning_managers"
+    ],
+    "tags": ["champions-league", "italie", "spanje", "portugal", "duitsland"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: mijlpalen van Vincent Kompany.",
+    "items": [
+      { "label": "Debuut in het eerste elftal van Anderlecht", "value": "2003" },
+      { "label": "Transfer naar Hamburg", "value": "2006" },
+      { "label": "Transfer naar Manchester City", "value": "2008" },
+      { "label": "Wordt hoofdtrainer van Bayern München", "value": "2024" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Vincent_Kompany"
+    ],
+    "tags": ["rode-duivels", "anderlecht", "duitsland"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wanneer tekenden deze Rode Duivels bij deze Engelse club?",
+    "items": [
+      { "label": "Vincent Kompany bij Manchester City", "value": "2008" },
+      { "label": "Romelu Lukaku bij Chelsea", "value": "2011" },
+      { "label": "Eden Hazard bij Chelsea", "value": "2012" },
+      { "label": "Toby Alderweireld bij Tottenham", "value": "2015" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Vincent_Kompany",
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku",
+      "https://en.wikipedia.org/wiki/Eden_Hazard",
+      "https://en.wikipedia.org/wiki/Toby_Alderweireld"
+    ],
+    "tags": ["rode-duivels", "lukaku"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wanneer pakten deze topclubs hun laatste landstitel (stand na seizoen 2025-26)?",
+    "items": [
+      { "label": "Standard", "value": "2009" },
+      { "label": "Anderlecht", "value": "2017" },
+      { "label": "Antwerp", "value": "2023" },
+      { "label": "Club Brugge", "value": "2026" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
+    ],
+    "tags": ["standard", "anderlecht", "club-brugge", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: landstitels van deze clubs (stand na seizoen 2025-26).",
+    "items": [
+      { "label": "Beerschot", "value": "7" },
+      { "label": "Antwerp", "value": "5" },
+      { "label": "Cercle Brugge", "value": "3" },
+      { "label": "KAA Gent", "value": "1" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
+    ],
+    "tags": ["belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: in welk seizoen won deze club haar eerste landstitel?",
+    "items": [
+      { "label": "Antwerp", "value": "1928-29" },
+      { "label": "Anderlecht", "value": "1946-47" },
+      { "label": "Standard", "value": "1957-58" },
+      { "label": "Racing Genk", "value": "1998-99" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
+    ],
+    "tags": ["anderlecht", "standard", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: in welk seizoen won deze club haar eerste landstitel?",
+    "items": [
+      { "label": "Club Brugge (toen nog FC Brugeois)", "value": "1919-20" },
+      { "label": "Lierse", "value": "1931-32" },
+      { "label": "KV Mechelen (toen RFC Malinois)", "value": "1942-43" },
+      { "label": "KAA Gent", "value": "2014-15" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
+    ],
+    "tags": ["club-brugge", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: Bekers van België gewonnen (stand na 2026).",
+    "items": [
+      { "label": "Standard", "value": "8" },
+      { "label": "Racing Genk", "value": "5" },
+      { "label": "KAA Gent", "value": "4" },
+      { "label": "Cercle Brugge", "value": "2" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgian_Cup",
+      "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals"
+    ],
+    "tags": ["beker-van-belgie", "standard", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: deze verrassende bekerwinnaars, van vroeg naar laat (jaar van de finale).",
+    "items": [
+      { "label": "Westerlo", "value": "2001" },
+      { "label": "La Louvière", "value": "2003" },
+      { "label": "Germinal Beerschot", "value": "2005" },
+      { "label": "Zulte Waregem (eerste bekerwinst)", "value": "2006" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals",
+      "https://en.wikipedia.org/wiki/Belgian_Cup"
+    ],
+    "tags": ["beker-van-belgie", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: bekerfinales die Club Brugge won (jaar van de finale).",
+    "items": [
+      { "label": "Tegen Beerschot, na strafschoppen", "value": "1968" },
+      { "label": "Tegen Daring Brussel (6-1)", "value": "1970" },
+      { "label": "Tegen Anderlecht (4-3)", "value": "1977" },
+      { "label": "Tegen Cercle Brugge (3-0)", "value": "1986" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals",
+      "https://en.wikipedia.org/wiki/Club_Brugge_KV"
+    ],
+    "tags": ["club-brugge", "beker-van-belgie", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: bekerfinales die Anderlecht verloor (jaar van de finale).",
+    "items": [
+      { "label": "Tegen Standard (0-1)", "value": "1966" },
+      { "label": "Tegen Germinal Ekeren (2-4 na verlengingen)", "value": "1997" },
+      { "label": "Tegen Gent, na strafschoppen", "value": "2022" },
+      { "label": "Tegen Union SG (1-3 na verlengingen)", "value": "2026" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals"
+    ],
+    "tags": ["anderlecht", "beker-van-belgie", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: in welk jaar won deze speler de Gouden Schoen als speler van Anderlecht?",
+    "items": [
+      { "label": "Rob Rensenbrink", "value": "1976" },
+      { "label": "Enzo Scifo", "value": "1984" },
+      { "label": "Jan Koller", "value": "2000" },
+      { "label": "Vincent Kompany", "value": "2004" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
+    ],
+    "tags": ["gouden-schoen", "anderlecht", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: Gouden Schoen-winnaars van Club Brugge in de voorbije tien jaar (editiejaar, uitgereikt begin volgend jaar).",
+    "items": [
+      { "label": "José Izquierdo", "value": "2016" },
+      { "label": "Ruud Vormer", "value": "2017" },
+      { "label": "Simon Mignolet", "value": "2022" },
+      { "label": "Ardon Jashari", "value": "2025" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe",
+      "https://sporza.be/nl/2025/02/04/hans-vanaken-verzilvert-nieuw-brugs-feestje-met-zijn-3e-gouden-schoen-5e-trofee-voor-tessa-wullaert~1738664963115/"
+    ],
+    "tags": ["gouden-schoen", "club-brugge", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: Gouden Schoenen per club (stand na de editie van 2025).",
+    "items": [
+      { "label": "Anderlecht", "value": "22 (+2 gedeeld met een andere club)" },
+      { "label": "Club Brugge", "value": "17" },
+      { "label": "Standard", "value": "9" },
+      { "label": "Racing Genk", "value": "3" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
+    ],
+    "tags": ["gouden-schoen", "anderlecht", "club-brugge", "standard", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van oud naar jong: welke Gouden Schoen-winnaar werd het eerst geboren?",
+    "items": [
+      { "label": "Paul Van Himst", "value": "2 oktober 1943" },
+      { "label": "Rob Rensenbrink", "value": "3 juli 1947" },
+      { "label": "Timmy Simons", "value": "11 december 1976" },
+      { "label": "Hans Vanaken", "value": "24 augustus 1992" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Paul_Van_Himst",
+      "https://en.wikipedia.org/wiki/Rob_Rensenbrink",
+      "https://en.wikipedia.org/wiki/Timmy_Simons",
+      "https://en.wikipedia.org/wiki/Hans_Vanaken"
+    ],
+    "tags": ["gouden-schoen", "legende", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van oud naar jong: welke Gouden Schoen-winnaar uit deze eeuw werd het eerst geboren?",
+    "items": [
+      { "label": "Wesley Sonck", "value": "9 augustus 1978" },
+      { "label": "Steven Defour", "value": "15 april 1988" },
+      { "label": "Axel Witsel", "value": "12 januari 1989" },
+      { "label": "Ardon Jashari", "value": "30 juli 2002" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Wesley_Sonck",
+      "https://en.wikipedia.org/wiki/Steven_Defour",
+      "https://en.wikipedia.org/wiki/Axel_Witsel",
+      "https://en.wikipedia.org/wiki/Ardon_Jashari"
+    ],
+    "tags": ["gouden-schoen", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van groot naar klein: zet deze Gouden Schoen-winnaars op lengte.",
+    "items": [
+      { "label": "Jan Koller", "value": "2,02 m" },
+      { "label": "Toby Alderweireld", "value": "1,87 m" },
+      { "label": "Wesley Sonck", "value": "1,74 m" },
+      { "label": "Mbark Boussoufa", "value": "1,67 m" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jan_Koller",
+      "https://nl.wikipedia.org/wiki/Toby_Alderweireld",
+      "https://en.wikipedia.org/wiki/Wesley_Sonck",
+      "https://nl.wikipedia.org/wiki/Mbark_Boussoufa"
+    ],
+    "tags": ["gouden-schoen", "curiosa", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: competitiedoelpunten in het seizoen dat deze speler topschutter werd.",
+    "items": [
+      { "label": "Erwin Vandenbergh (Lierse, 1979-80)", "value": "39" },
+      { "label": "Paul Onuachu (Genk, 2020-21)", "value": "33" },
+      { "label": "Wesley Sonck (Genk, 2001-02)", "value": "30" },
+      { "label": "Romelu Lukaku (Anderlecht, 2009-10)", "value": "15" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgian_Pro_League_top_scorers"
+    ],
+    "tags": ["lukaku", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: in welk seizoen werd deze speler voor het eerst topschutter van de Belgische hoogste klasse?",
+    "items": [
+      { "label": "Paul Van Himst", "value": "1963-64" },
+      { "label": "Erwin Vandenbergh", "value": "1979-80" },
+      { "label": "Josip Weber", "value": "1991-92" },
+      { "label": "Romelu Lukaku", "value": "2009-10" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgian_Pro_League_top_scorers"
+    ],
+    "tags": ["lukaku", "legende", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: hoe vaak werd deze speler topschutter van de Belgische hoogste klasse?",
+    "items": [
+      { "label": "Erwin Vandenbergh", "value": "6" },
+      { "label": "Victor Wegria", "value": "4" },
+      { "label": "Josip Weber", "value": "3" },
+      { "label": "Alfred Riedl", "value": "2" }
+    ],
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgian_Pro_League_top_scorers",
+      "https://en.wikipedia.org/wiki/Belgian_Pro_League"
+    ],
+    "tags": ["legende", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: in welk seizoen werd deze Anderlecht-speler voor het eerst topschutter van de competitie?",
+    "items": [
+      { "label": "Jef Mermans", "value": "1946-47" },
+      { "label": "Jan Mulder", "value": "1966-67" },
+      { "label": "Aleksandar Mitrović", "value": "2014-15" },
+      { "label": "Łukasz Teodorczyk", "value": "2016-17" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgian_Pro_League_top_scorers"
+    ],
+    "tags": ["anderlecht", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wanneer openden deze stadions?",
+    "items": [
+      { "label": "Stade Maurice Dufrasne (Standard)", "value": "1909" },
+      { "label": "Stade Joseph Marien (Union SG)", "value": "1919" },
+      { "label": "Bosuilstadion (Antwerp)", "value": "1923" },
+      { "label": "Jan Breydelstadion (Club Brugge en Cercle)", "value": "1975" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Stade_Maurice_Dufrasne",
+      "https://en.wikipedia.org/wiki/Stade_Joseph_Marien",
+      "https://en.wikipedia.org/wiki/Bosuilstadion",
+      "https://en.wikipedia.org/wiki/Jan_Breydel_Stadium"
+    ],
+    "tags": ["belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van groot naar klein: zet deze stadions op capaciteit (bij benadering).",
+    "items": [
+      { "label": "Jan Breydelstadion (Club Brugge en Cercle)", "value": "± 29.000" },
+      { "label": "Stade Maurice Dufrasne (Standard)", "value": "± 27.700" },
+      { "label": "Cegeka Arena (Racing Genk)", "value": "± 23.700" },
+      { "label": "Stade Joseph Marien (Union SG)", "value": "± 9.400" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_football_stadiums_in_Belgium",
+      "https://en.wikipedia.org/wiki/Jan_Breydel_Stadium",
+      "https://en.wikipedia.org/wiki/Stade_Maurice_Dufrasne",
+      "https://en.wikipedia.org/wiki/Cegeka_Arena",
+      "https://en.wikipedia.org/wiki/Stade_Joseph_Marien"
+    ],
+    "tags": ["belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van oud naar jong: in welk jaar werd deze club opgericht?",
+    "items": [
+      { "label": "Antwerp", "value": "1880" },
+      { "label": "Club Brugge", "value": "1891" },
+      { "label": "Anderlecht", "value": "1908" },
+      { "label": "Racing Genk (door een fusie)", "value": "1988" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Royal_Antwerp_F.C.",
+      "https://en.wikipedia.org/wiki/Club_Brugge_KV",
+      "https://en.wikipedia.org/wiki/R.S.C._Anderlecht",
+      "https://en.wikipedia.org/wiki/K.R.C._Genk"
+    ],
+    "tags": ["club-brugge", "anderlecht", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van oud naar jong: in welk jaar werd deze club opgericht?",
+    "items": [
+      { "label": "Union Sint-Gillis", "value": "1897" },
+      { "label": "Standard", "value": "1898" },
+      { "label": "Cercle Brugge", "value": "1899" },
+      { "label": "KV Mechelen", "value": "1904" }
+    ],
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Royale_Union_Saint-Gilloise",
+      "https://en.wikipedia.org/wiki/Standard_Li%C3%A8ge",
+      "https://en.wikipedia.org/wiki/Cercle_Brugge_K.S.V.",
+      "https://en.wikipedia.org/wiki/K.V._Mechelen"
+    ],
+    "tags": ["standard", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van laag naar hoog: het stamnummer van deze clubs.",
+    "items": [
+      { "label": "Antwerp", "value": "1" },
+      { "label": "Club Brugge", "value": "3" },
+      { "label": "Union Sint-Gillis", "value": "10" },
+      { "label": "Standard", "value": "16" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://sporza.be/nl/2025/06/06/van-antwerp-tot-lierse-ontdek-de-eerste-30-stamnummers-in-het-belgische-voetbal~1749213584899/",
+      "https://en.wikipedia.org/wiki/Royal_Antwerp_F.C.",
+      "https://en.wikipedia.org/wiki/Club_Brugge_KV",
+      "https://en.wikipedia.org/wiki/Royale_Union_Saint-Gilloise"
+    ],
+    "tags": ["club-brugge", "standard", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: in welk seizoen speelde deze club voor het eerst in de hoogste klasse?",
+    "items": [
+      { "label": "Standard", "value": "1909-10" },
+      { "label": "Anderlecht", "value": "1921-22" },
+      { "label": "Westerlo", "value": "1997-98" },
+      { "label": "OH Leuven", "value": "2011-12" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgian_Pro_League_clubs"
+    ],
+    "tags": ["standard", "anderlecht", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: Europese finales van Anderlecht.",
+    "items": [
+      { "label": "Verliest de Jaarbeursstedenbeker tegen Arsenal", "value": "1970" },
+      { "label": "Wint de Europacup II tegen Austria Wenen (4-0)", "value": "1978" },
+      { "label": "Wint de UEFA Cup tegen Benfica", "value": "1983" },
+      { "label": "Verliest de Europacup II-finale tegen Sampdoria", "value": "1990" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/R.S.C._Anderlecht"
+    ],
+    "tags": ["anderlecht", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: Europese hoogtepunten van Club Brugge.",
+    "items": [
+      { "label": "Verliest de finale van de UEFA Cup tegen Liverpool", "value": "1976" },
+      { "label": "Verliest de finale van de Europacup I tegen Liverpool", "value": "1978" },
+      { "label": "Haalt de halve finale van de Europacup II", "value": "1992" },
+      { "label": "Haalt de halve finale van de Conference League", "value": "2024" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Club_Brugge_KV",
+      "https://en.wikipedia.org/wiki/Club_Brugge_KV_in_European_football"
+    ],
+    "tags": ["club-brugge", "champions-league", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: Champions League-groepsfases van Genk en Gent.",
+    "items": [
+      { "label": "Genk, voor het eerst in de groepsfase", "value": "2002-03" },
+      { "label": "Genk, in een groep met Chelsea, Valencia en Leverkusen", "value": "2011-12" },
+      { "label": "Gent, in een groep met Lyon, Zenit en Valencia", "value": "2015-16" },
+      { "label": "Genk, in een groep met Liverpool, Napoli en Salzburg", "value": "2019-20" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/K.R.C._Genk",
+      "https://en.wikipedia.org/wiki/K.A.A._Gent"
+    ],
+    "tags": ["champions-league", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: Champions League-groepen van Club Brugge.",
+    "items": [
+      { "label": "Met Galatasaray, Real Madrid en PSG", "value": "2019-20" },
+      { "label": "Met Dortmund, Lazio en Zenit", "value": "2020-21" },
+      { "label": "Met PSG, Leipzig en Manchester City", "value": "2021-22" },
+      { "label": "Met Leverkusen, Porto en Atlético (naar de laatste zestien)", "value": "2022-23" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Club_Brugge_KV_in_European_football"
+    ],
+    "tags": ["club-brugge", "champions-league", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wanneer won deze trainer zijn eerste landstitel met Anderlecht?",
+    "items": [
+      { "label": "Paul Van Himst", "value": "1984-85" },
+      { "label": "Johan Boskamp", "value": "1992-93" },
+      { "label": "Aimé Antheunis", "value": "1999-2000" },
+      { "label": "Ariël Jacobs", "value": "2009-10" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Lijst_van_trainers_van_RSC_Anderlecht_(mannen)",
+      "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
+    ],
+    "tags": ["anderlecht", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wanneer won deze trainer zijn eerste landstitel met Club Brugge?",
+    "items": [
+      { "label": "Ernst Happel", "value": "1975-76" },
+      { "label": "Georges Leekens", "value": "1989-90" },
+      { "label": "Eric Gerets", "value": "1997-98" },
+      { "label": "Trond Sollied", "value": "2002-03" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Lijst_van_trainers_van_Club_Brugge",
+      "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions",
+      "https://en.wikipedia.org/wiki/Club_Brugge_KV"
+    ],
+    "tags": ["club-brugge", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de geschiedenis van Union Sint-Gillis.",
+    "items": [
+      { "label": "Derde landstitel op rij (60 ongeslagen matchen)", "value": "1935" },
+      { "label": "Laatste degradatie uit de hoogste klasse", "value": "1973" },
+      { "label": "Promotie terug naar de hoogste klasse", "value": "2021" },
+      { "label": "Eerste landstitel van de eeuw", "value": "2025" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Royale_Union_Saint-Gilloise",
+      "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
+    ],
+    "tags": ["belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de geschiedenis van Cercle Brugge.",
+    "items": [
+      { "label": "Oprichting van de club", "value": "1899" },
+      { "label": "Eerste landstitel", "value": "1911" },
+      { "label": "Laatste bekerwinst (na strafschoppen tegen Beveren)", "value": "1985" },
+      { "label": "Kévin Denkey wordt topschutter", "value": "2024" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Cercle_Brugge_K.S.V.",
+      "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals",
+      "https://en.wikipedia.org/wiki/Belgian_Pro_League_top_scorers"
+    ],
+    "tags": ["beker-van-belgie", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de geschiedenis van Lierse.",
+    "items": [
+      { "label": "Eerste landstitel", "value": "1932" },
+      { "label": "Eerste bekerwinst (tegen Racing White)", "value": "1969" },
+      { "label": "Vierde landstitel", "value": "1997" },
+      { "label": "Tweede bekerwinst (tegen Standard)", "value": "1999" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions",
+      "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals"
+    ],
+    "tags": ["beker-van-belgie", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de geschiedenis van Antwerp.",
+    "items": [
+      { "label": "Eerste landstitel", "value": "1929" },
+      { "label": "Eerste bekerwinst (4-0 tegen Waterschei)", "value": "1955" },
+      { "label": "Verliest de Europacup II-finale op Wembley tegen Parma", "value": "1993" },
+      { "label": "Landstitel en beker in hetzelfde seizoen", "value": "2023" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Royal_Antwerp_F.C.",
+      "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals"
+    ],
+    "tags": ["beker-van-belgie", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de geschiedenis van Beveren.",
+    "items": [
+      { "label": "Eerste bekerwinst (2-0 tegen Charleroi)", "value": "1978" },
+      { "label": "Eerste landstitel", "value": "1979" },
+      { "label": "Tweede bekerwinst (3-1 tegen Club Brugge)", "value": "1983" },
+      { "label": "Tweede landstitel", "value": "1984" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals",
+      "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
+    ],
+    "tags": ["beker-van-belgie", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de geschiedenis van KV Mechelen.",
+    "items": [
+      { "label": "Eerste bekerwinst (1-0 tegen RFC Luik)", "value": "1987" },
+      { "label": "Wint de Europacup II tegen Ajax", "value": "1988" },
+      { "label": "Vierde landstitel", "value": "1989" },
+      { "label": "Tweede bekerwinst (2-1 tegen Gent)", "value": "2019" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/K.V._Mechelen",
+      "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals"
+    ],
+    "tags": ["beker-van-belgie", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: aantal doelpunten in deze bekerfinales (verlengingen meegerekend).",
+    "items": [
+      { "label": "Club Brugge - Daring Brussel (1970)", "value": "7 doelpunten (6-1)" },
+      { "label": "Germinal Ekeren - Anderlecht (1997)", "value": "6 doelpunten (4-2)" },
+      { "label": "Club Brugge - Moeskroen (2002)", "value": "4 doelpunten (3-1)" },
+      { "label": "Lokeren - Kortrijk (2012)", "value": "1 doelpunt (1-0)" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals"
+    ],
+    "tags": ["beker-van-belgie", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van groot naar klein: inwoners van de stad waar deze club speelt (bij benadering).",
+    "items": [
+      { "label": "Antwerpen (Antwerp)", "value": "± 565.000" },
+      { "label": "Gent (KAA Gent)", "value": "± 270.000" },
+      { "label": "Brugge (Club Brugge en Cercle)", "value": "± 120.000" },
+      { "label": "Genk (Racing Genk)", "value": "± 66.000" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Antwerp",
+      "https://en.wikipedia.org/wiki/Ghent",
+      "https://en.wikipedia.org/wiki/Bruges",
+      "https://en.wikipedia.org/wiki/Genk"
+    ],
+    "tags": ["belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van groot naar klein: inwoners van de stad waar deze club speelt (bij benadering).",
+    "items": [
+      { "label": "Luik (Standard)", "value": "± 198.000" },
+      { "label": "Mechelen (KV Mechelen)", "value": "± 89.000" },
+      { "label": "Sint-Truiden (STVV)", "value": "± 41.000" },
+      { "label": "Westerlo (KVC Westerlo)", "value": "± 25.000" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Li%C3%A8ge",
+      "https://en.wikipedia.org/wiki/Mechelen",
+      "https://en.wikipedia.org/wiki/Sint-Truiden",
+      "https://en.wikipedia.org/wiki/Westerlo"
+    ],
+    "tags": ["standard", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van duur naar goedkoop: transfers van Belgische clubs naar het buitenland (gerapporteerde bedragen).",
+    "items": [
+      { "label": "Charles De Ketelaere: Club Brugge naar AC Milan", "value": "± € 35 mln (2022)" },
+      { "label": "Jonathan David: Gent naar Lille", "value": "€ 30 mln (2020)" },
+      { "label": "Kalidou Koulibaly: Genk naar Napoli", "value": "± £ 6,5 mln (2014)" },
+      { "label": "Michy Batshuayi: Standard naar Marseille", "value": "£ 4,5 mln (2014)" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Charles_De_Ketelaere",
+      "https://en.wikipedia.org/wiki/Jonathan_David",
+      "https://en.wikipedia.org/wiki/Kalidou_Koulibaly",
+      "https://en.wikipedia.org/wiki/Michy_Batshuayi"
+    ],
+    "tags": ["club-brugge", "standard", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: Belgische Supercups gewonnen (stand na 2026).",
+    "items": [
+      { "label": "Club Brugge", "value": "18" },
+      { "label": "Anderlecht", "value": "13" },
+      { "label": "Standard", "value": "4" },
+      { "label": "Antwerp", "value": "1" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgian_Super_Cup"
+    ],
+    "tags": ["club-brugge", "anderlecht", "standard", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: punten na de reguliere competitie 2025-26 (voor de play-offs).",
+    "items": [
+      { "label": "Union Sint-Gillis", "value": "66" },
+      { "label": "Club Brugge", "value": "63" },
+      { "label": "Sint-Truiden", "value": "57" },
+      { "label": "Anderlecht", "value": "44" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2025%E2%80%9326_Belgian_Pro_League"
+    ],
+    "tags": ["club-brugge", "anderlecht", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: punten na de reguliere competitie 2024-25 (voor de play-offs).",
+    "items": [
+      { "label": "Racing Genk", "value": "68" },
+      { "label": "Club Brugge", "value": "59" },
+      { "label": "Union Sint-Gillis", "value": "55" },
+      { "label": "Anderlecht", "value": "51" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2024%E2%80%9325_Belgian_Pro_League"
+    ],
+    "tags": ["club-brugge", "anderlecht", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: in welk jaar won deze speler de Ebbenhouten Schoen (elk won hem één keer)?",
+    "items": [
+      { "label": "Victor Ikpeba (RFC Luik)", "value": "1993" },
+      { "label": "Émile Mpenza (Moeskroen)", "value": "1997" },
+      { "label": "Mido (Gent)", "value": "2001" },
+      { "label": "Marouane Fellaini (Standard)", "value": "2008" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ebony_Shoe"
+    ],
+    "tags": ["standard", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: Ebbenhouten Schoenen per club (stand na 2026).",
+    "items": [
+      { "label": "Anderlecht", "value": "10" },
+      { "label": "Racing Genk", "value": "7" },
+      { "label": "Club Brugge", "value": "5" },
+      { "label": "KAA Gent", "value": "3" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ebony_Shoe"
+    ],
+    "tags": ["anderlecht", "club-brugge", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: verloren bekerfinales (stand na 2026).",
+    "items": [
+      { "label": "Standard", "value": "10" },
+      { "label": "Anderlecht", "value": "7" },
+      { "label": "Beveren", "value": "3" },
+      { "label": "Racing Genk", "value": "1" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgian_Cup",
+      "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals"
+    ],
+    "tags": ["beker-van-belgie", "anderlecht", "standard", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: bekerfinales die op strafschoppen beslist werden (jaar van de finale).",
+    "items": [
+      { "label": "Cercle Brugge - Beveren", "value": "1985" },
+      { "label": "Antwerp - Mechelen", "value": "1992" },
+      { "label": "Zulte Waregem - Oostende", "value": "2017" },
+      { "label": "Gent - Anderlecht", "value": "2022" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals"
+    ],
+    "tags": ["beker-van-belgie", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: Gouden Schoen-winnaars van Standard in de jaren 2000, van vroeg naar laat.",
+    "items": [
+      { "label": "Sérgio Conceição", "value": "2005" },
+      { "label": "Steven Defour", "value": "2007" },
+      { "label": "Axel Witsel", "value": "2008" },
+      { "label": "Milan Jovanović", "value": "2009" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
+    ],
+    "tags": ["gouden-schoen", "standard", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: Standard in deze eeuw, van vroeg naar laat (jaar van de finale of het seizoenseinde).",
+    "items": [
+      { "label": "Eerste landstitel van de eeuw", "value": "2008" },
+      { "label": "Bekerwinst tegen Westerlo (2-0)", "value": "2011" },
+      { "label": "Bekerwinst tegen Club Brugge (2-1)", "value": "2016" },
+      { "label": "Bekerwinst tegen Genk (1-0 na verlengingen)", "value": "2018" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Standard_Li%C3%A8ge",
+      "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals",
+      "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
+    ],
+    "tags": ["standard", "beker-van-belgie", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: bekerfinales die Anderlecht won (jaar van de finale).",
+    "items": [
+      { "label": "Eerste beker: tegen Standard (3-2 n.v.)", "value": "1965" },
+      { "label": "Tegen Lierse (4-0)", "value": "1976" },
+      { "label": "Tegen Club Brugge (2-0)", "value": "1994" },
+      { "label": "Tegen Gent (3-2)", "value": "2008" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals",
+      "https://en.wikipedia.org/wiki/R.S.C._Anderlecht"
+    ],
+    "tags": ["anderlecht", "beker-van-belgie", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: memorabele WK-zeges van de Rode Duivels.",
+    "items": [
+      { "label": "3-0 tegen El Salvador (eerste WK-zege ooit)", "value": "1970" },
+      { "label": "1-0 tegen titelverdediger Argentinië", "value": "1982" },
+      { "label": "4-3 tegen de Sovjet-Unie na verlenging", "value": "1986" },
+      { "label": "3-2 tegen Japan na 0-2 achterstand", "value": "2018" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup",
+      "https://en.wikipedia.org/wiki/Belgium_national_football_team",
+      "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"
+    ],
+    "tags": ["rode-duivels", "wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: vier wedstrijden van de Rode Duivels op het WK 1986, van vroeg naar laat.",
+    "items": [
+      { "label": "2-1 tegen Irak", "value": "8 juni 1986" },
+      { "label": "4-3 tegen de Sovjet-Unie na verlenging", "value": "15 juni 1986" },
+      { "label": "Strafschoppen tegen Spanje", "value": "22 juni 1986" },
+      { "label": "0-2 tegen Argentinië", "value": "25 juni 1986" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"
+    ],
+    "tags": ["rode-duivels", "wk", "legende"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: vier wedstrijden van de Rode Duivels op het WK 2014, van vroeg naar laat.",
+    "items": [
+      { "label": "2-1 tegen Algerije", "value": "17 juni 2014" },
+      { "label": "1-0 tegen Rusland", "value": "22 juni 2014" },
+      { "label": "2-1 tegen de Verenigde Staten na verlenging", "value": "1 juli 2014" },
+      { "label": "0-1 tegen Argentinië", "value": "5 juli 2014" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_Group_H",
+      "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_knockout_stage"
+    ],
+    "tags": ["rode-duivels", "wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: vier wedstrijden van de Rode Duivels op het WK 2018, van vroeg naar laat.",
+    "items": [
+      { "label": "3-0 tegen Panama", "value": "18 juni 2018" },
+      { "label": "5-2 tegen Tunesië", "value": "23 juni 2018" },
+      { "label": "2-1 tegen Brazilië", "value": "6 juli 2018" },
+      { "label": "0-1 tegen Frankrijk", "value": "10 juli 2018" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_Group_G",
+      "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"
+    ],
+    "tags": ["rode-duivels", "wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: vier wedstrijden van de Rode Duivels op het WK 2026, van vroeg naar laat.",
+    "items": [
+      { "label": "5-1 tegen Nieuw-Zeeland", "value": "26 juni 2026" },
+      { "label": "3-2 tegen Senegal na verlenging", "value": "1 juli 2026" },
+      { "label": "4-1 tegen de Verenigde Staten", "value": "6 juli 2026" },
+      { "label": "1-2 tegen Spanje, het einde van de rit", "value": "10 juli 2026" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgium_national_football_team",
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku",
+      "https://worldcupranking.com/blog/world-cup-2026-match-98-spain-vs-belgium/"
+    ],
+    "tags": ["rode-duivels", "wk", "spanje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de wedstrijden van de Rode Duivels op het EK 1980, van vroeg naar laat.",
+    "items": [
+      { "label": "1-1 tegen Engeland", "value": "12 juni 1980" },
+      { "label": "2-1 tegen Spanje", "value": "15 juni 1980" },
+      { "label": "0-0 tegen Italië", "value": "18 juni 1980" },
+      { "label": "1-2 tegen West-Duitsland in de finale", "value": "22 juni 1980" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgium_at_the_UEFA_European_Championship"
+    ],
+    "tags": ["rode-duivels", "legende", "duitsland", "italie", "spanje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: vier wedstrijden van de Rode Duivels op het EK 2020, van vroeg naar laat.",
+    "items": [
+      { "label": "3-0 tegen Rusland", "value": "12 juni 2021" },
+      { "label": "2-1 bij Denemarken", "value": "17 juni 2021" },
+      { "label": "2-0 tegen Finland", "value": "21 juni 2021" },
+      { "label": "1-0 tegen Portugal, goal van Thorgan Hazard", "value": "27 juni 2021" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Euro_2020_Group_B",
+      "https://en.wikipedia.org/wiki/UEFA_Euro_2020_knockout_stage"
+    ],
+    "tags": ["rode-duivels", "portugal"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wanneer werden deze bondscoaches aangesteld?",
+    "items": [
+      { "label": "Robert Waseige", "value": "1999" },
+      { "label": "Aimé Anthuenis", "value": "2002" },
+      { "label": "Dick Advocaat", "value": "2009" },
+      { "label": "Domenico Tedesco", "value": "2023" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgium_national_football_team_managers",
+      "https://en.wikipedia.org/wiki/Belgium_national_football_team"
+    ],
+    "tags": ["rode-duivels"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de carrière van Roberto Martínez.",
+    "items": [
+      { "label": "Wint de FA Cup met Wigan", "value": "2013" },
+      { "label": "Wordt bondscoach van de Rode Duivels", "value": "2016" },
+      { "label": "Derde op het WK in Rusland", "value": "2018" },
+      { "label": "Wint de Nations League met Portugal", "value": "2025" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Roberto_Mart%C3%ADnez"
+    ],
+    "tags": ["rode-duivels", "portugal", "wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van oud naar jong: welke bondscoach werd het eerst geboren?",
+    "items": [
+      { "label": "Raymond Goethals", "value": "7 oktober 1921" },
+      { "label": "Guy Thys", "value": "6 december 1922" },
+      { "label": "Roberto Martínez", "value": "13 juli 1973" },
+      { "label": "Mark van Bommel", "value": "22 april 1977" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Raymond_Goethals",
+      "https://en.wikipedia.org/wiki/Guy_Thys",
+      "https://en.wikipedia.org/wiki/Roberto_Mart%C3%ADnez",
+      "https://en.wikipedia.org/wiki/Mark_van_Bommel"
+    ],
+    "tags": ["rode-duivels", "legende"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: mijlpalen uit de geschiedenis van de Rode Duivels.",
+    "items": [
+      { "label": "Eerste interland: 3-3 tegen Frankrijk", "value": "1904" },
+      { "label": "Olympisch goud in Antwerpen", "value": "1920" },
+      { "label": "Eerste deelname aan een WK", "value": "1930" },
+      { "label": "Derde op het EK in eigen land", "value": "1972" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgium_national_football_team",
+      "https://en.wikipedia.org/wiki/Football_at_the_1920_Summer_Olympics",
+      "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup",
+      "https://en.wikipedia.org/wiki/Belgium_at_the_UEFA_European_Championship"
+    ],
+    "tags": ["rode-duivels", "legende"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: enkele reuzenzeges van de Rode Duivels, van vroeg naar laat.",
+    "items": [
+      { "label": "9-0 tegen Zambia", "value": "1994" },
+      { "label": "10-1 tegen San Marino", "value": "2001" },
+      { "label": "9-0 tegen Gibraltar", "value": "2017" },
+      { "label": "9-0 tegen San Marino", "value": "2019" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgium_national_football_team"
+    ],
+    "tags": ["rode-duivels"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: interlands voor de Rode Duivels (oud-spelers).",
+    "items": [
+      { "label": "Toby Alderweireld", "value": "127" },
+      { "label": "Dries Mertens", "value": "109" },
+      { "label": "Timmy Simons", "value": "94" },
+      { "label": "Marouane Fellaini", "value": "87" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgium_international_footballers"
+    ],
+    "tags": ["rode-duivels"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: interlands voor de Rode Duivels (oud-spelers).",
+    "items": [
+      { "label": "Vincent Kompany", "value": "89" },
+      { "label": "Eric Gerets", "value": "86" },
+      { "label": "Mousa Dembélé", "value": "82" },
+      { "label": "Paul Van Himst", "value": "81" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgium_international_footballers"
+    ],
+    "tags": ["rode-duivels", "legende"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: interlands voor de Rode Duivels (de generatie van de jaren 80 en 90).",
+    "items": [
+      { "label": "Franky Van der Elst", "value": "86" },
+      { "label": "Bart Goor", "value": "78" },
+      { "label": "Georges Grün", "value": "77" },
+      { "label": "Lorenzo Staelens", "value": "70" }
+    ],
+    "difficulty": 5,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgium_international_footballers"
+    ],
+    "tags": ["rode-duivels", "legende"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: doelpunten voor de Rode Duivels (oud-spelers).",
+    "items": [
+      { "label": "Paul Van Himst", "value": "30" },
+      { "label": "Wesley Sonck", "value": "24" },
+      { "label": "Marc Degryse", "value": "23" },
+      { "label": "Dries Mertens", "value": "21" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgium_international_footballers",
+      "https://en.wikipedia.org/wiki/Wesley_Sonck",
+      "https://en.wikipedia.org/wiki/Marc_Degryse",
+      "https://en.wikipedia.org/wiki/Dries_Mertens"
+    ],
+    "tags": ["rode-duivels", "legende"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de carrière van Enzo Scifo.",
+    "items": [
+      { "label": "Debuut in het eerste elftal van Anderlecht", "value": "1983" },
+      { "label": "Transfer naar Inter", "value": "1987" },
+      { "label": "Transfer naar Torino", "value": "1991" },
+      { "label": "Transfer naar AS Monaco", "value": "1993" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Enzo_Scifo"
+    ],
+    "tags": ["rode-duivels", "legende", "anderlecht", "italie", "frankrijk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de carrière van Marc Wilmots.",
+    "items": [
+      { "label": "Transfer naar Standard", "value": "1991" },
+      { "label": "Transfer naar Schalke 04", "value": "1996" },
+      { "label": "Wint de UEFA Cup met Schalke", "value": "1997" },
+      { "label": "Transfer naar Bordeaux", "value": "2000" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Marc_Wilmots"
+    ],
+    "tags": ["rode-duivels", "legende", "standard", "duitsland", "frankrijk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: mijlpalen van Michel Preud'homme.",
+    "items": [
+      { "label": "Wint de Europacup II met Mechelen", "value": "1988" },
+      { "label": "Beste doelman van het WK", "value": "1994" },
+      { "label": "Landskampioen als trainer van Standard", "value": "2008" },
+      { "label": "Landskampioen als trainer van Club Brugge", "value": "2016" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Michel_Preud%27homme"
+    ],
+    "tags": ["rode-duivels", "legende", "standard", "club-brugge", "wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: mijlpalen uit de spelerscarrière van Eric Gerets.",
+    "items": [
+      { "label": "Wint de Gouden Schoen", "value": "1982" },
+      { "label": "Transfer van Standard naar AC Milan", "value": "1983" },
+      { "label": "Transfer naar PSV", "value": "1985" },
+      { "label": "Wint de Europacup I met PSV", "value": "1988" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Eric_Gerets"
+    ],
+    "tags": ["rode-duivels", "legende", "gouden-schoen", "italie", "oranje", "standard"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de trofeeën van Eric Gerets als trainer.",
+    "items": [
+      { "label": "Landskampioen met Lierse", "value": "1997" },
+      { "label": "Eerste landstitel met PSV", "value": "2000" },
+      { "label": "Landskampioen met Galatasaray", "value": "2006" },
+      { "label": "Wint de Arab Cup met Marokko", "value": "2012" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Eric_Gerets"
+    ],
+    "tags": ["legende", "oranje", "turkije"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: mijlpalen van Paul Van Himst.",
+    "items": [
+      { "label": "Debuut bij de Rode Duivels, op 17-jarige leeftijd", "value": "1960" },
+      { "label": "Derde op het EK in eigen land", "value": "1972" },
+      { "label": "Landskampioen als trainer van Anderlecht", "value": "1985" },
+      { "label": "Wordt bondscoach", "value": "1991" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Paul_Van_Himst"
+    ],
+    "tags": ["rode-duivels", "legende", "anderlecht"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: mijlpalen van Jan Ceulemans.",
+    "items": [
+      { "label": "Transfer van Lierse naar Club Brugge", "value": "1978" },
+      { "label": "Verliest de EK-finale in Rome", "value": "1980" },
+      { "label": "Aanvoerder van de Rode Duivels op het WK in Mexico", "value": "1986" },
+      { "label": "Laatste interland, op het WK in Italië", "value": "1990" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jan_Ceulemans"
+    ],
+    "tags": ["rode-duivels", "legende", "club-brugge"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de carrière van Marc Degryse.",
+    "items": [
+      { "label": "Transfer van Club Brugge naar Anderlecht", "value": "1989" },
+      { "label": "Wint de Gouden Schoen", "value": "1991" },
+      { "label": "Transfer naar Sheffield Wednesday", "value": "1995" },
+      { "label": "Transfer naar PSV", "value": "1996" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Marc_Degryse"
+    ],
+    "tags": ["rode-duivels", "legende", "anderlecht", "club-brugge", "gouden-schoen", "oranje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de carrière van Axel Witsel.",
+    "items": [
+      { "label": "Wint de Gouden Schoen bij Standard", "value": "2008" },
+      { "label": "Transfer naar Zenit Sint-Petersburg", "value": "2012" },
+      { "label": "Transfer naar Borussia Dortmund", "value": "2018" },
+      { "label": "Transfer naar Atlético Madrid", "value": "2022" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Axel_Witsel"
+    ],
+    "tags": ["rode-duivels", "gouden-schoen", "standard", "duitsland", "spanje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de carrière van Dries Mertens.",
+    "items": [
+      { "label": "Transfer naar FC Utrecht", "value": "2009" },
+      { "label": "Debuut bij de Rode Duivels", "value": "2011" },
+      { "label": "Transfer naar Napoli", "value": "2013" },
+      { "label": "Transfer naar Galatasaray", "value": "2022" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dries_Mertens"
+    ],
+    "tags": ["rode-duivels", "oranje", "italie", "turkije"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de carrière van Jan Vertonghen.",
+    "items": [
+      { "label": "Debuut bij de Rode Duivels", "value": "2007" },
+      { "label": "Transfer van Ajax naar Tottenham", "value": "2012" },
+      { "label": "Verliest de Champions League-finale", "value": "2019" },
+      { "label": "Transfer naar Anderlecht", "value": "2022" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jan_Vertonghen"
+    ],
+    "tags": ["rode-duivels", "anderlecht", "champions-league", "oranje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de clubs van Toby Alderweireld, van vroeg naar laat.",
+    "items": [
+      { "label": "Transfer van Ajax naar Atlético Madrid", "value": "2013" },
+      { "label": "Uitgeleend aan Southampton", "value": "2014" },
+      { "label": "Transfer naar Tottenham", "value": "2015" },
+      { "label": "Transfer naar Antwerp", "value": "2022" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Toby_Alderweireld"
+    ],
+    "tags": ["rode-duivels", "spanje", "oranje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de carrière van Youri Tielemans.",
+    "items": [
+      { "label": "Debuut in het eerste elftal van Anderlecht", "value": "2013" },
+      { "label": "Transfer naar AS Monaco", "value": "2017" },
+      { "label": "Scoort de winnende goal in de FA Cup-finale", "value": "2021" },
+      { "label": "Transfer naar Aston Villa", "value": "2023" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Youri_Tielemans"
+    ],
+    "tags": ["rode-duivels", "anderlecht", "frankrijk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de carrière van Jérémy Doku.",
+    "items": [
+      { "label": "Debuut in het eerste elftal van Anderlecht", "value": "2018" },
+      { "label": "Transfer naar Rennes", "value": "2020" },
+      { "label": "Transfer naar Manchester City", "value": "2023" },
+      { "label": "Landskampioen in Engeland", "value": "2024" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/J%C3%A9r%C3%A9my_Doku"
+    ],
+    "tags": ["rode-duivels", "anderlecht", "frankrijk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de carrière van Charles De Ketelaere.",
+    "items": [
+      { "label": "Debuut in het eerste elftal van Club Brugge", "value": "2019" },
+      { "label": "Debuut bij de Rode Duivels", "value": "2020" },
+      { "label": "Transfer naar AC Milan", "value": "2022" },
+      { "label": "Wint de Europa League met Atalanta", "value": "2024" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Charles_De_Ketelaere"
+    ],
+    "tags": ["rode-duivels", "club-brugge", "italie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: mijlpalen van Kevin De Bruyne.",
+    "items": [
+      { "label": "Debuut bij de Rode Duivels", "value": "2010" },
+      { "label": "Scoort tegen Brazilië op het WK", "value": "2018" },
+      { "label": "Evenaart het assistrecord van Thierry Henry in de Premier League", "value": "2020" },
+      { "label": "Wint de Champions League met Manchester City", "value": "2023" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne"
+    ],
+    "tags": ["de-bruyne", "rode-duivels", "champions-league", "wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: mijlpalen van Romelu Lukaku bij de Rode Duivels.",
+    "items": [
+      { "label": "Scoort voor het eerst, twee keer tegen Rusland", "value": "2010" },
+      { "label": "Wordt recordschutter van de Rode Duivels", "value": "2017" },
+      { "label": "Bronzen Schoen op het WK", "value": "2018" },
+      { "label": "Vier goals en ploeg van het toernooi op het EK", "value": "2021 (EK 2020)" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+    ],
+    "tags": ["lukaku", "rode-duivels", "wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: prijzen en mijlpalen van Thibaut Courtois.",
+    "items": [
+      { "label": "Wint de Europa League met Atlético Madrid", "value": "2012" },
+      { "label": "Eerste landstitel in Engeland met Chelsea", "value": "2015" },
+      { "label": "Gouden Handschoen op het WK", "value": "2018" },
+      { "label": "Kruisbandblessure bij Real Madrid", "value": "2023" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Thibaut_Courtois"
+    ],
+    "tags": ["rode-duivels", "spanje", "wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: mijlpalen van Eden Hazard.",
+    "items": [
+      { "label": "Eerste keer speler van het jaar in de Ligue 1", "value": "2011" },
+      { "label": "Eerste landstitel in Engeland met Chelsea", "value": "2015" },
+      { "label": "Derde op het WK als aanvoerder van de Rode Duivels", "value": "2018" },
+      { "label": "Wint de Champions League met Real Madrid", "value": "2022" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Eden_Hazard"
+    ],
+    "tags": ["rode-duivels", "champions-league", "frankrijk", "spanje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de trainerscarrière van Vincent Kompany.",
+    "items": [
+      { "label": "Speler-trainer bij Anderlecht", "value": "2019" },
+      { "label": "Wordt trainer van Burnley", "value": "2022" },
+      { "label": "Promotie met Burnley naar de Premier League", "value": "2023" },
+      { "label": "Eerste Bundesliga-titel met Bayern München", "value": "2025" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Vincent_Kompany"
+    ],
+    "tags": ["rode-duivels", "anderlecht", "duitsland"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de carrière van Emile Mpenza.",
+    "items": [
+      { "label": "Transfer naar Standard", "value": "1997" },
+      { "label": "Transfer naar Schalke 04", "value": "2000" },
+      { "label": "Transfer naar Hamburg", "value": "2004" },
+      { "label": "Transfer naar Manchester City", "value": "2007" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Emile_Mpenza"
+    ],
+    "tags": ["rode-duivels", "standard", "duitsland"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de carrière van Thomas Vermaelen.",
+    "items": [
+      { "label": "Debuut in het eerste elftal van Ajax", "value": "2004" },
+      { "label": "Transfer naar Arsenal", "value": "2009" },
+      { "label": "Transfer naar Barcelona", "value": "2014" },
+      { "label": "Transfer naar Vissel Kobe", "value": "2019" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Thomas_Vermaelen"
+    ],
+    "tags": ["rode-duivels", "oranje", "spanje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de carrière van Loïs Openda.",
+    "items": [
+      { "label": "Debuut in het eerste elftal van Club Brugge", "value": "2018" },
+      { "label": "Transfer naar Lens", "value": "2022" },
+      { "label": "Transfer naar RB Leipzig", "value": "2023" },
+      { "label": "Uitgeleend aan Juventus", "value": "2025" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lo%C3%AFs_Openda"
+    ],
+    "tags": ["rode-duivels", "club-brugge", "frankrijk", "duitsland", "italie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de carrière van Leandro Trossard.",
+    "items": [
+      { "label": "Transfer van Genk naar Brighton", "value": "2019" },
+      { "label": "Debuut bij de Rode Duivels", "value": "2020" },
+      { "label": "Transfer naar Arsenal", "value": "2023" },
+      { "label": "Transfer naar Beşiktaş", "value": "2026" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Leandro_Trossard"
+    ],
+    "tags": ["rode-duivels", "turkije"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de opmars van doelman Senne Lammens.",
+    "items": [
+      { "label": "Stapt over van Club Brugge naar Antwerp", "value": "2023" },
+      { "label": "Transfer van Antwerp naar Manchester United", "value": "1 september 2025" },
+      { "label": "Debuut bij de Rode Duivels tegen Liechtenstein", "value": "18 november 2025" },
+      { "label": "Komt op het WK in voor de geblesseerde Courtois", "value": "10 juli 2026" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Senne_Lammens",
+      "https://en.wikipedia.org/wiki/Belgium_national_football_team"
+    ],
+    "tags": ["rode-duivels", "wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van oud naar jong: welke Rode Duivel van de gouden generatie werd het eerst geboren?",
+    "items": [
+      { "label": "Vincent Kompany", "value": "10 april 1986" },
+      { "label": "Dries Mertens", "value": "6 mei 1987" },
+      { "label": "Marouane Fellaini", "value": "22 november 1987" },
+      { "label": "Axel Witsel", "value": "12 januari 1989" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Vincent_Kompany",
+      "https://en.wikipedia.org/wiki/Dries_Mertens",
+      "https://en.wikipedia.org/wiki/Marouane_Fellaini",
+      "https://en.wikipedia.org/wiki/Axel_Witsel"
+    ],
+    "tags": ["rode-duivels"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van oud naar jong: welke voetballende broer werd het eerst geboren?",
+    "items": [
+      { "label": "Mbo Mpenza", "value": "4 december 1976" },
+      { "label": "Emile Mpenza", "value": "4 juli 1978" },
+      { "label": "Eden Hazard", "value": "7 januari 1991" },
+      { "label": "Thorgan Hazard", "value": "29 maart 1993" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mbo_Mpenza",
+      "https://en.wikipedia.org/wiki/Emile_Mpenza",
+      "https://en.wikipedia.org/wiki/Eden_Hazard",
+      "https://en.wikipedia.org/wiki/Thorgan_Hazard"
+    ],
+    "tags": ["rode-duivels", "familie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van oud naar jong: welke Rode Duivel werd het eerst geboren?",
+    "items": [
+      { "label": "Leandro Trossard", "value": "4 december 1994" },
+      { "label": "Dodi Lukebakio", "value": "24 september 1997" },
+      { "label": "Amadou Onana", "value": "16 augustus 2001" },
+      { "label": "Senne Lammens", "value": "7 juli 2002" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Leandro_Trossard",
+      "https://en.wikipedia.org/wiki/Dodi_Lukebakio",
+      "https://en.wikipedia.org/wiki/Amadou_Onana",
+      "https://en.wikipedia.org/wiki/Senne_Lammens"
+    ],
+    "tags": ["rode-duivels"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van groot naar klein: zet deze Rode Duivels op lengte.",
+    "items": [
+      { "label": "Jan Vertonghen", "value": "1,89 m" },
+      { "label": "Axel Witsel", "value": "1,86 m" },
+      { "label": "Thorgan Hazard", "value": "1,75 m" },
+      { "label": "Dries Mertens", "value": "1,69 m" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jan_Vertonghen",
+      "https://en.wikipedia.org/wiki/Axel_Witsel",
+      "https://en.wikipedia.org/wiki/Thorgan_Hazard",
+      "https://en.wikipedia.org/wiki/Dries_Mertens"
+    ],
+    "tags": ["rode-duivels", "curiosa"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van groot naar klein: zet deze Rode Duivels van de nieuwe generatie op lengte.",
+    "items": [
+      { "label": "Amadou Onana", "value": "1,95 m" },
+      { "label": "Dodi Lukebakio", "value": "1,87 m" },
+      { "label": "Loïs Openda", "value": "1,75 m" },
+      { "label": "Leandro Trossard", "value": "1,72 m" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Amadou_Onana",
+      "https://en.wikipedia.org/wiki/Dodi_Lukebakio",
+      "https://en.wikipedia.org/wiki/Lo%C3%AFs_Openda",
+      "https://en.wikipedia.org/wiki/Leandro_Trossard"
+    ],
+    "tags": ["rode-duivels", "curiosa"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wie maakte het eerst zijn debuut bij de Rode Duivels?",
+    "items": [
+      { "label": "Axel Witsel", "value": "26 maart 2008" },
+      { "label": "Kevin De Bruyne", "value": "11 augustus 2010" },
+      { "label": "Dries Mertens", "value": "9 februari 2011" },
+      { "label": "Youri Tielemans", "value": "9 november 2016" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Axel_Witsel",
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
+      "https://en.wikipedia.org/wiki/Dries_Mertens",
+      "https://en.wikipedia.org/wiki/Youri_Tielemans"
+    ],
+    "tags": ["rode-duivels", "de-bruyne"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van jong naar oud: hoe oud was deze Rode Duivel bij zijn debuut?",
+    "items": [
+      { "label": "Eden Hazard", "value": "17 jaar" },
+      { "label": "Jérémy Doku", "value": "18 jaar" },
+      { "label": "Youri Tielemans", "value": "19 jaar" },
+      { "label": "Dries Mertens", "value": "23 jaar" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Eden_Hazard",
+      "https://en.wikipedia.org/wiki/J%C3%A9r%C3%A9my_Doku",
+      "https://en.wikipedia.org/wiki/Youri_Tielemans",
+      "https://en.wikipedia.org/wiki/Dries_Mertens"
+    ],
+    "tags": ["rode-duivels"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van duur naar goedkoop: transfers van jonge Rode Duivels (geschatte bedragen).",
+    "items": [
+      { "label": "Jérémy Doku van Rennes naar Manchester City", "value": "± € 65 mln (2023)" },
+      { "label": "Loïs Openda van Lens naar RB Leipzig", "value": "± € 45 mln (2023)" },
+      { "label": "Charles De Ketelaere van Club Brugge naar AC Milan", "value": "± € 35 mln (2022)" },
+      { "label": "Youri Tielemans van Anderlecht naar AS Monaco", "value": "± € 25 mln (2017)" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/J%C3%A9r%C3%A9my_Doku",
+      "https://en.wikipedia.org/wiki/Lo%C3%AFs_Openda",
+      "https://en.wikipedia.org/wiki/Charles_De_Ketelaere",
+      "https://en.wikipedia.org/wiki/Youri_Tielemans"
+    ],
+    "tags": ["rode-duivels", "club-brugge", "anderlecht"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van duur naar goedkoop: Rode Duivels naar de Engelse competitie (bedragen in pond).",
+    "items": [
+      { "label": "Romelu Lukaku van Inter naar Chelsea", "value": "± £ 97,5 mln (2021)" },
+      { "label": "Jérémy Doku van Rennes naar Manchester City", "value": "± £ 55 mln (2023)" },
+      { "label": "Amadou Onana van Everton naar Aston Villa", "value": "± £ 50 mln (2024)" },
+      { "label": "Youri Tielemans van Aston Villa naar Manchester United", "value": "£ 35 mln (2026)" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku",
+      "https://en.wikipedia.org/wiki/J%C3%A9r%C3%A9my_Doku",
+      "https://en.wikipedia.org/wiki/Amadou_Onana",
+      "https://en.wikipedia.org/wiki/Youri_Tielemans"
+    ],
+    "tags": ["rode-duivels", "lukaku"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: zet deze gastlanden van het WK in volgorde.",
+    "items": [
+      { "label": "Zweden", "value": "1958" },
+      { "label": "Chili", "value": "1962" },
+      { "label": "Argentinië", "value": "1978" },
+      { "label": "Spanje", "value": "1982" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals",
+      "https://en.wikipedia.org/wiki/FIFA_World_Cup"
+    ],
+    "tags": ["wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: zet deze recente gastlanden van het WK in volgorde.",
+    "items": [
+      { "label": "Zuid-Korea en Japan", "value": "2002" },
+      { "label": "Zuid-Afrika", "value": "2010" },
+      { "label": "Rusland", "value": "2018" },
+      { "label": "Qatar", "value": "2022" }
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals",
+      "https://en.wikipedia.org/wiki/FIFA_World_Cup"
+    ],
+    "tags": ["wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van weinig naar veel: met hoeveel landen werd het WK gespeeld?",
+    "items": [
+      { "label": "WK 1930 in Uruguay", "value": "13" },
+      { "label": "WK 1982 in Spanje", "value": "24" },
+      { "label": "WK 1998 in Frankrijk", "value": "32" },
+      { "label": "WK 2026 in de VS, Canada en Mexico", "value": "48" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/FIFA_World_Cup",
+      "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup"
+    ],
+    "tags": ["wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: zet deze WK-finales in volgorde.",
+    "items": [
+      { "label": "West-Duitsland klopt Hongarije met 3-2", "value": "1954" },
+      { "label": "Engeland klopt thuis West-Duitsland na verlenging", "value": "1966" },
+      { "label": "Brazilië klopt Italië met 4-1", "value": "1970" },
+      { "label": "Argentinië klopt thuis Nederland na verlenging", "value": "1978" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals"
+    ],
+    "tags": ["wk", "oranje", "duitsland"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wie werd topscorer van het WK?",
+    "items": [
+      { "label": "Eusébio", "value": "1966" },
+      { "label": "Mario Kempes", "value": "1978" },
+      { "label": "Gary Lineker", "value": "1986" },
+      { "label": "James Rodríguez", "value": "2014" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/FIFA_World_Cup_top_goalscorers"
+    ],
+    "tags": ["wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de mascottes van het WK, van vroeg naar laat.",
+    "items": [
+      { "label": "Naranjito, de sinaasappel", "value": "1982" },
+      { "label": "Ciao, een poppetje met een voetbal als hoofd", "value": "1990" },
+      { "label": "Footix, de haan", "value": "1998" },
+      { "label": "Zakumi, het luipaard", "value": "2010" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/FIFA_World_Cup_official_mascots"
+    ],
+    "tags": ["wk", "spanje", "frankrijk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de officiële wedstrijdbal van het WK (mannen), van vroeg naar laat.",
+    "items": [
+      { "label": "Tango", "value": "1978" },
+      { "label": "Azteca", "value": "1986" },
+      { "label": "Jabulani", "value": "2010" },
+      { "label": "Trionda", "value": "2026" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_official_match_balls"
+    ],
+    "tags": ["wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: in welk stadion werd de WK-finale gespeeld?",
+    "items": [
+      { "label": "International Stadium Yokohama", "value": "2002" },
+      { "label": "Olympiastadion in Berlijn", "value": "2006" },
+      { "label": "Luzhniki-stadion in Moskou", "value": "2018" },
+      { "label": "MetLife Stadium in New Jersey", "value": "2026" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals"
+    ],
+    "tags": ["wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: wereldtitels (stand na het WK 2026).",
+    "items": [
+      { "label": "Brazilië", "value": "5" },
+      { "label": "Duitsland (met West-Duitsland)", "value": "4" },
+      { "label": "Argentinië", "value": "3" },
+      { "label": "Spanje", "value": "2" }
+    ],
+    "difficulty": 1,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/FIFA_World_Cup",
+      "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup"
+    ],
+    "tags": ["wk", "spanje", "duitsland"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: doelpunten op het WK (stand na het WK 2026).",
+    "items": [
+      { "label": "Kylian Mbappé", "value": "22" },
+      { "label": "Lionel Messi", "value": "21" },
+      { "label": "Miroslav Klose", "value": "16" },
+      { "label": "Ronaldo (Brazilië)", "value": "15" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/FIFA_World_Cup_top_goalscorers",
+      "https://en.wikipedia.org/wiki/Miroslav_Klose"
+    ],
+    "tags": ["wk", "messi", "frankrijk", "duitsland"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: aantal doelpunten op het hele WK.",
+    "items": [
+      { "label": "WK 2026", "value": "308" },
+      { "label": "WK 1954 in Zwitserland", "value": "140" },
+      { "label": "WK 1990 in Italië", "value": "115" },
+      { "label": "WK 1930 in Uruguay", "value": "70" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_records_and_statistics"
+    ],
+    "tags": ["wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van oud naar jong: de leeftijd van deze WK-recordhouders.",
+    "items": [
+      { "label": "Essam El-Hadary, oudste speler ooit op een WK", "value": "45 jaar en 161 dagen" },
+      { "label": "Cristiano Ronaldo, oudste in een knock-outmatch", "value": "41 jaar en 151 dagen" },
+      { "label": "Dino Zoff, oudste speler in een finale", "value": "40 jaar en 133 dagen" },
+      { "label": "Pelé, jongste speler in een finale", "value": "17 jaar en 249 dagen" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_records_and_statistics"
+    ],
+    "tags": ["wk", "pele", "portugal"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: aantal doelpunten in deze WK-wedstrijden.",
+    "items": [
+      { "label": "Oostenrijk-Zwitserland (1954)", "value": "12" },
+      { "label": "Brazilië-Polen (1938)", "value": "11" },
+      { "label": "Frankrijk-Paraguay (1958)", "value": "10" },
+      { "label": "Hongarije-Zuid-Korea (1954)", "value": "9" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_records_and_statistics"
+    ],
+    "tags": ["wk", "curiosa"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: mijlpalen van Pelé.",
+    "items": [
+      { "label": "Wereldkampioen op zijn zeventiende", "value": "1958" },
+      { "label": "Scoort zijn duizendste doelpunt", "value": "1969" },
+      { "label": "Derde wereldtitel, in Mexico", "value": "1970" },
+      { "label": "Begint bij New York Cosmos", "value": "1975" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pel%C3%A9"
+    ],
+    "tags": ["pele", "legende", "wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: Diego Maradona en Argentinië.",
+    "items": [
+      { "label": "Wereldkampioen bij de jeugd in Japan", "value": "1979" },
+      { "label": "Verliest de WK-finale tegen West-Duitsland", "value": "1990" },
+      { "label": "Wordt na een dopingtest uit het WK gezet", "value": "1994" },
+      { "label": "Bondscoach op het WK in Zuid-Afrika", "value": "2010" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Diego_Maradona"
+    ],
+    "tags": ["maradona", "legende", "wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: Lionel Messi met Argentinië.",
+    "items": [
+      { "label": "Olympisch goud in Peking", "value": "2008" },
+      { "label": "Verliest de WK-finale tegen Duitsland", "value": "2014" },
+      { "label": "Wint de Copa América tegen Brazilië", "value": "2021" },
+      { "label": "Verliest de WK-finale tegen Spanje", "value": "2026" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lionel_Messi",
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals"
+    ],
+    "tags": ["messi", "wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: welke bondscoach leidde zijn land naar de wereldtitel?",
+    "items": [
+      { "label": "Alf Ramsey (Engeland)", "value": "1966" },
+      { "label": "César Luis Menotti (Argentinië)", "value": "1978" },
+      { "label": "Carlos Alberto Parreira (Brazilië)", "value": "1994" },
+      { "label": "Luis de la Fuente (Spanje)", "value": "2026" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_winning_managers"
+    ],
+    "tags": ["wk", "spanje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: WK-sensaties, van vroeg naar laat.",
+    "items": [
+      { "label": "De Verenigde Staten kloppen Engeland met 1-0", "value": "1950" },
+      { "label": "Senegal klopt wereldkampioen Frankrijk", "value": "2002" },
+      { "label": "Brazilië verliest met 1-7 van Duitsland", "value": "2014" },
+      { "label": "Saoedi-Arabië klopt Argentinië met 2-1", "value": "2022" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/England_national_football_team",
+      "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_Group_A",
+      "https://en.wikipedia.org/wiki/Brazil_v_Germany_(2014_FIFA_World_Cup)",
+      "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_Group_C"
+    ],
+    "tags": ["wk", "frankrijk", "duitsland"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: momenten van Brazilië op het WK, van vroeg naar laat.",
+    "items": [
+      { "label": "Verliest thuis de beslissende match van Uruguay", "value": "1950" },
+      { "label": "Eerste wereldtitel, met 5-2 tegen Zweden", "value": "1958" },
+      { "label": "Derde titel, met 4-1 tegen Italië", "value": "1970" },
+      { "label": "Vierde titel, na strafschoppen tegen Italië", "value": "1994" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals",
+      "https://en.wikipedia.org/wiki/FIFA_World_Cup"
+    ],
+    "tags": ["wk", "italie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: momenten van Engeland, van vroeg naar laat.",
+    "items": [
+      { "label": "Wereldkampioen in eigen land", "value": "1966" },
+      { "label": "Verliest de halve finale na strafschoppen van West-Duitsland", "value": "1990" },
+      { "label": "Verliest de EK-finale na strafschoppen van Italië", "value": "2021 (EK 2020)" },
+      { "label": "Derde op het WK in de VS, Canada en Mexico", "value": "2026" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/England_national_football_team"
+    ],
+    "tags": ["wk", "italie", "duitsland"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: momenten van Argentinië, van vroeg naar laat.",
+    "items": [
+      { "label": "Wereldkampioen in eigen land", "value": "1978" },
+      { "label": "Verliest de WK-finale met 0-1 van West-Duitsland", "value": "1990" },
+      { "label": "Wint de Copa América met 1-0 tegen Brazilië", "value": "2021" },
+      { "label": "Verliest de WK-finale na verlenging van Spanje", "value": "2026" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals",
+      "https://en.wikipedia.org/wiki/Copa_Am%C3%A9rica"
+    ],
+    "tags": ["wk", "messi", "maradona"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: momenten van Kroatië, van vroeg naar laat.",
+    "items": [
+      { "label": "Derde op het WK in Frankrijk", "value": "1998" },
+      { "label": "Verliest de WK-finale met 4-2 van Frankrijk", "value": "2018" },
+      { "label": "Verliest de Nations League-finale na strafschoppen", "value": "2023" },
+      { "label": "Uitgeschakeld door Portugal (2-1) op het WK", "value": "2026" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Croatia_national_football_team"
+    ],
+    "tags": ["wk", "frankrijk", "portugal"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wie werd Europees kampioen?",
+    "items": [
+      { "label": "Sovjet-Unie, in de allereerste editie", "value": "1960" },
+      { "label": "Spanje, thuis tegen de Sovjet-Unie", "value": "1964" },
+      { "label": "Tsjechoslowakije, na strafschoppen tegen West-Duitsland", "value": "1976" },
+      { "label": "Duitsland, met een golden goal tegen Tsjechië", "value": "1996" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_European_Championship"
+    ],
+    "tags": ["spanje", "duitsland"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: zet deze gastlanden van het EK in volgorde.",
+    "items": [
+      { "label": "Zweden", "value": "1992" },
+      { "label": "Portugal", "value": "2004" },
+      { "label": "Oostenrijk en Zwitserland", "value": "2008" },
+      { "label": "Polen en Oekraïne", "value": "2012" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_European_Championship"
+    ],
+    "tags": ["portugal"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van weinig naar veel: met hoeveel landen werd de eindronde van het EK gespeeld?",
+    "items": [
+      { "label": "EK 1960", "value": "4" },
+      { "label": "EK 1980", "value": "8" },
+      { "label": "EK 1996", "value": "16" },
+      { "label": "EK 2016", "value": "24" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_European_Championship"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: doelpunten van deze spelers op het EK (stand na EK 2024).",
+    "items": [
+      { "label": "Cristiano Ronaldo", "value": "14" },
+      { "label": "Michel Platini", "value": "9" },
+      { "label": "Antoine Griezmann", "value": "7" },
+      { "label": "Nuno Gomes", "value": "6" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://theanalyst.com/2024/06/european-championship-top-scorers/",
+      "https://theanalyst.com/2024/06/european-championship-top-scorers/"
+    ],
+    "tags": ["portugal", "frankrijk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: in welk stadion werd de EK-finale gespeeld?",
+    "items": [
+      { "label": "De Kuip in Rotterdam", "value": "2000" },
+      { "label": "Estádio da Luz in Lissabon", "value": "2004" },
+      { "label": "Ernst-Happel-Stadion in Wenen", "value": "2008" },
+      { "label": "Olympiastadion in Kiev", "value": "2012" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Euro_2000",
+      "https://en.wikipedia.org/wiki/UEFA_Euro_2004",
+      "https://en.wikipedia.org/wiki/UEFA_European_Championship",
+      "https://en.wikipedia.org/wiki/UEFA_Euro_2012"
+    ],
+    "tags": ["portugal", "spanje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: in welk stadion werd de finale van de Nations League gespeeld?",
+    "items": [
+      { "label": "Estádio do Dragão in Porto", "value": "2019" },
+      { "label": "San Siro in Milaan", "value": "2021" },
+      { "label": "De Kuip in Rotterdam", "value": "2023" },
+      { "label": "Allianz Arena in München", "value": "2025" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2018%E2%80%9319_UEFA_Nations_League",
+      "https://en.wikipedia.org/wiki/2020%E2%80%9321_UEFA_Nations_League",
+      "https://en.wikipedia.org/wiki/2022%E2%80%9323_UEFA_Nations_League",
+      "https://en.wikipedia.org/wiki/2024%E2%80%9325_UEFA_Nations_League"
+    ],
+    "tags": ["portugal", "frankrijk", "spanje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wie won de Copa América?",
+    "items": [
+      { "label": "Colombia, in eigen land (eerste titel)", "value": "2001" },
+      { "label": "Uruguay, met 3-0 tegen Paraguay", "value": "2011" },
+      { "label": "Brazilië, met 3-1 tegen Peru", "value": "2019" },
+      { "label": "Argentinië, met 1-0 tegen Brazilië", "value": "2021" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Copa_Am%C3%A9rica"
+    ],
+    "tags": ["messi"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: titels in de Copa América (stand na 2024).",
+    "items": [
+      { "label": "Argentinië", "value": "16" },
+      { "label": "Uruguay", "value": "15" },
+      { "label": "Brazilië", "value": "9" },
+      { "label": "Chili", "value": "2" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Copa_Am%C3%A9rica"
+    ],
+    "tags": ["messi"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wie won de Afrika Cup?",
+    "items": [
+      { "label": "Zambia, na strafschoppen tegen Ivoorkust", "value": "2012" },
+      { "label": "Nigeria, tegen Burkina Faso", "value": "2013" },
+      { "label": "Algerije, met 1-0 tegen Senegal", "value": "2019" },
+      { "label": "Senegal, na strafschoppen tegen Egypte", "value": "2021 (gespeeld in 2022)" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Africa_Cup_of_Nations"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: gastlanden van de Afrika Cup sinds 2004.",
+    "items": [
+      { "label": "Tunesië", "value": "2004" },
+      { "label": "Angola", "value": "2010" },
+      { "label": "Zuid-Afrika", "value": "2013" },
+      { "label": "Kameroen", "value": "2021 (gespeeld in 2022)" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Africa_Cup_of_Nations"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: titels in de Afrika Cup (stand 2026).",
+    "items": [
+      { "label": "Egypte", "value": "7" },
+      { "label": "Kameroen", "value": "5" },
+      { "label": "Ghana", "value": "4" },
+      { "label": "Algerije", "value": "2" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Africa_Cup_of_Nations"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: titels in de Asian Cup (stand na 2023).",
+    "items": [
+      { "label": "Japan", "value": "4" },
+      { "label": "Saoedi-Arabië", "value": "3" },
+      { "label": "Qatar", "value": "2" },
+      { "label": "Koeweit", "value": "1" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/AFC_Asian_Cup"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wie won de Asian Cup?",
+    "items": [
+      { "label": "Koeweit, in eigen land", "value": "1980" },
+      { "label": "Irak, met 1-0 tegen Saoedi-Arabië", "value": "2007" },
+      { "label": "Australië, na verlenging tegen Zuid-Korea", "value": "2015" },
+      { "label": "Qatar, met 3-1 tegen Japan", "value": "2019" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/AFC_Asian_Cup"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wie won olympisch goud bij het voetbal (mannen)?",
+    "items": [
+      { "label": "Spanje, in Barcelona", "value": "1992" },
+      { "label": "Nigeria", "value": "1996" },
+      { "label": "Kameroen", "value": "2000" },
+      { "label": "Brazilië, in Rio de Janeiro", "value": "2016" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Football_at_the_Summer_Olympics"
+    ],
+    "tags": ["spanje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wie werd wereldkampioen bij de vrouwen?",
+    "items": [
+      { "label": "Noorwegen, met 2-0 tegen Duitsland", "value": "1995" },
+      { "label": "Duitsland, na verlenging tegen Zweden", "value": "2003" },
+      { "label": "Japan, na strafschoppen tegen de VS", "value": "2011" },
+      { "label": "Spanje, met 1-0 tegen Engeland", "value": "2023" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup"
+    ],
+    "tags": ["spanje", "duitsland"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van weinig naar veel: met hoeveel landen werd het WK voor vrouwen gespeeld?",
+    "items": [
+      { "label": "WK 1991 in China", "value": "12" },
+      { "label": "WK 1999 in de VS", "value": "16" },
+      { "label": "WK 2015 in Canada", "value": "24" },
+      { "label": "WK 2023 in Australië en Nieuw-Zeeland", "value": "32" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup"
+    ],
+    "tags": ["wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: doelpunten van deze speelsters op het WK voor vrouwen (stand na 2023).",
+    "items": [
+      { "label": "Marta", "value": "17" },
+      { "label": "Birgit Prinz", "value": "14" },
+      { "label": "Michelle Akers", "value": "12" },
+      { "label": "Cristiane", "value": "11" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup",
+      "https://theanalyst.com/2023/06/most-womens-world-cup-goals/"
+    ],
+    "tags": ["wk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wie werd Europees kampioen bij de vrouwen?",
+    "items": [
+      { "label": "Zweden, na strafschoppen tegen Engeland", "value": "1984" },
+      { "label": "Noorwegen, met 1-0 tegen Italië", "value": "1993" },
+      { "label": "Nederland, in eigen land", "value": "2017" },
+      { "label": "Engeland, na verlenging tegen Duitsland", "value": "2022" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Women%27s_Championship"
+    ],
+    "tags": ["oranje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: interlanddoelpunten van deze spelers (stand 7 oktober 2026).",
+    "items": [
+      { "label": "Cristiano Ronaldo", "value": "146" },
+      { "label": "Lionel Messi", "value": "126" },
+      { "label": "Ali Daei (Iran)", "value": "108" },
+      { "label": "Robert Lewandowski", "value": "92" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_50_or_more_international_goals"
+    ],
+    "tags": ["messi", "portugal"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: interlands van deze spelers (stand 6 oktober 2026).",
+    "items": [
+      { "label": "Cristiano Ronaldo", "value": "234" },
+      { "label": "Lionel Messi", "value": "208" },
+      { "label": "Luka Modrić", "value": "206" },
+      { "label": "Sergio Ramos", "value": "180" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_100_or_more_international_caps"
+    ],
+    "tags": ["messi", "portugal", "spanje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: interlanddoelpunten voor Duitsland van deze spelers.",
+    "items": [
+      { "label": "Miroslav Klose", "value": "71" },
+      { "label": "Gerd Müller", "value": "68" },
+      { "label": "Lukas Podolski", "value": "49" },
+      { "label": "Uwe Seeler", "value": "43" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Germany_national_football_team_records_and_statistics"
+    ],
+    "tags": ["duitsland", "legende"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: interlands voor Italië van deze spelers.",
+    "items": [
+      { "label": "Gianluigi Buffon", "value": "176" },
+      { "label": "Fabio Cannavaro", "value": "136" },
+      { "label": "Paolo Maldini", "value": "126" },
+      { "label": "Andrea Pirlo", "value": "116" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Italy_national_football_team_records_and_statistics"
+    ],
+    "tags": ["italie", "legende"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: interlanddoelpunten voor Spanje van deze spelers.",
+    "items": [
+      { "label": "David Villa", "value": "59" },
+      { "label": "Raúl", "value": "44" },
+      { "label": "Fernando Torres", "value": "38" },
+      { "label": "Fernando Hierro", "value": "29" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Spain_national_football_team_records_and_statistics"
+    ],
+    "tags": ["spanje", "legende"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: interlanddoelpunten voor Engeland (stand 6 oktober 2026).",
+    "items": [
+      { "label": "Harry Kane", "value": "91" },
+      { "label": "Wayne Rooney", "value": "53" },
+      { "label": "Bobby Charlton", "value": "49" },
+      { "label": "Gary Lineker", "value": "48" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/England_national_football_team_records_and_statistics"
+    ],
+    "tags": ["legende"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: interlanddoelpunten voor Brazilië (stand 25 september 2026).",
+    "items": [
+      { "label": "Neymar", "value": "80" },
+      { "label": "Pelé", "value": "77" },
+      { "label": "Ronaldo", "value": "62" },
+      { "label": "Romário", "value": "55" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Brazil_national_football_team_records_and_statistics"
+    ],
+    "tags": ["pele", "legende"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: interlanddoelpunten voor Argentinië van deze spelers (stand 6 oktober 2026).",
+    "items": [
+      { "label": "Gabriel Batistuta", "value": "56" },
+      { "label": "Sergio Agüero", "value": "41" },
+      { "label": "Hernán Crespo", "value": "35" },
+      { "label": "Diego Maradona", "value": "34" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Argentina_national_football_team_records_and_statistics"
+    ],
+    "tags": ["maradona", "legende"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wanneer begonnen deze bondscoaches bij Engeland?",
+    "items": [
+      { "label": "Alf Ramsey", "value": "1963" },
+      { "label": "Bobby Robson", "value": "1982" },
+      { "label": "Sven-Göran Eriksson", "value": "2001" },
+      { "label": "Roy Hodgson", "value": "2012" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/England_national_football_team"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wie werd (voor het eerst) bondscoach van Oranje?",
+    "items": [
+      { "label": "Rinus Michels", "value": "1974" },
+      { "label": "Louis van Gaal", "value": "2000" },
+      { "label": "Bert van Marwijk", "value": "2008" },
+      { "label": "Ronald Koeman", "value": "2018" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Netherlands_national_football_team_managers"
+    ],
+    "tags": ["oranje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: Europese finales die op strafschoppen werden beslist.",
+    "items": [
+      { "label": "Rode Ster Belgrado klopt Marseille in Bari", "value": "1991" },
+      { "label": "Bayern klopt Valencia in Milaan", "value": "2001" },
+      { "label": "Manchester United klopt Chelsea in Moskou", "value": "2008" },
+      { "label": "PSG klopt Arsenal in Boedapest", "value": "2026" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals",
+      "https://en.wikipedia.org/wiki/2026_UEFA_Champions_League_final"
+    ],
+    "tags": ["champions-league"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: Champions League-finales van Real Madrid, van vroeg naar laat.",
+    "items": [
+      { "label": "Winst tegen Bayer Leverkusen in Glasgow", "value": "2002" },
+      { "label": "Winst tegen Atlético in Lissabon (4-1)", "value": "2014" },
+      { "label": "Winst tegen Juventus in Cardiff", "value": "2017" },
+      { "label": "Winst tegen Dortmund op Wembley", "value": "2024" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
+    ],
+    "tags": ["champions-league", "spanje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: vier Europese titels van Barcelona (Europacup I en Champions League), van vroeg naar laat.",
+    "items": [
+      { "label": "Winst tegen Sampdoria op Wembley", "value": "1992" },
+      { "label": "Winst tegen Arsenal in Parijs", "value": "2006" },
+      { "label": "Winst tegen Manchester United in Rome", "value": "2009" },
+      { "label": "Winst tegen Juventus in Berlijn", "value": "2015" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals",
+      "https://en.wikipedia.org/wiki/FC_Barcelona"
+    ],
+    "tags": ["champions-league", "spanje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: vier Europese finalewinsten van Bayern München, van vroeg naar laat.",
+    "items": [
+      { "label": "Replay tegen Atlético na een 1-1", "value": "1974" },
+      { "label": "Strafschoppen tegen Valencia", "value": "2001" },
+      { "label": "Finale tegen Dortmund op Wembley", "value": "2013" },
+      { "label": "Finale tegen PSG in Lissabon", "value": "2020" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
+    ],
+    "tags": ["champions-league", "duitsland"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: Champions League-titels van Engelse clubs (stand na seizoen 2025-26).",
+    "items": [
+      { "label": "Liverpool", "value": "6" },
+      { "label": "Manchester United", "value": "3" },
+      { "label": "Chelsea", "value": "2" },
+      { "label": "Aston Villa", "value": "1" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
+    ],
+    "tags": ["champions-league"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: Europacup I- en Champions League-titels per land (stand na seizoen 2025-26).",
+    "items": [
+      { "label": "Spaanse clubs", "value": "20" },
+      { "label": "Engelse clubs", "value": "15" },
+      { "label": "Italiaanse clubs", "value": "12" },
+      { "label": "Duitse clubs", "value": "8" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
+    ],
+    "tags": ["champions-league", "spanje", "italie", "duitsland"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: PSG in Europa, van vroeg naar laat.",
+    "items": [
+      { "label": "Wint de Europacup II tegen Rapid Wenen", "value": "1996" },
+      { "label": "Verliest de Europacup II-finale tegen Barcelona", "value": "1997" },
+      { "label": "Verliest de CL-finale tegen Bayern in Lissabon", "value": "2020" },
+      { "label": "Wint de CL met 5-0 tegen Inter", "value": "2025" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/European_Cup_Winners%27_Cup",
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
+    ],
+    "tags": ["frankrijk", "champions-league"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: legendarische Europese ommekeren, van vroeg naar laat.",
+    "items": [
+      { "label": "United scoort twee keer in blessuretijd tegen Bayern", "value": "1999" },
+      { "label": "Liverpool komt in Istanbul van 0-3 terug", "value": "2005" },
+      { "label": "Barcelona wint 6-1 na een 0-4 in Parijs", "value": "2017" },
+      { "label": "Liverpool maakt op Anfield 0-3 goed tegen Barça", "value": "2019" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1998%E2%80%9399_UEFA_Champions_League",
+      "https://en.wikipedia.org/wiki/2005_UEFA_Champions_League_final",
+      "https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Champions_League_knockout_phase",
+      "https://en.wikipedia.org/wiki/2018%E2%80%9319_UEFA_Champions_League_knockout_phase"
+    ],
+    "tags": ["champions-league"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: doelpunten in de Champions League (stand oktober 2026).",
+    "items": [
+      { "label": "Cristiano Ronaldo", "value": "140" },
+      { "label": "Lionel Messi", "value": "129" },
+      { "label": "Karim Benzema", "value": "90" },
+      { "label": "Raúl", "value": "71" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_UEFA_Champions_League_top_scorers"
+    ],
+    "tags": ["champions-league", "messi", "portugal"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: Franse clubs in een Europacup I- of Champions League-finale.",
+    "items": [
+      { "label": "Reims verliest van Real Madrid in Parijs", "value": "1956" },
+      { "label": "Saint-Étienne verliest van Bayern op Hampden Park", "value": "1976" },
+      { "label": "Marseille wint van Milan in München", "value": "1993" },
+      { "label": "Monaco verliest van Porto in Gelsenkirchen", "value": "2004" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
+    ],
+    "tags": ["frankrijk", "champions-league"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: Europese trofeeën van FC Porto.",
+    "items": [
+      { "label": "Europacup I tegen Bayern in Wenen", "value": "1987" },
+      { "label": "UEFA Cup tegen Celtic in Sevilla", "value": "2003" },
+      { "label": "Champions League tegen Monaco", "value": "2004" },
+      { "label": "Europa League tegen Braga in Dublin", "value": "2011" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals",
+      "https://en.wikipedia.org/wiki/List_of_UEFA_Cup_and_Europa_League_finals"
+    ],
+    "tags": ["portugal", "champions-league"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wanneer won deze Engelse club de Europacup II?",
+    "items": [
+      { "label": "Tottenham", "value": "1963" },
+      { "label": "Manchester City", "value": "1970" },
+      { "label": "Everton", "value": "1985" },
+      { "label": "Arsenal", "value": "1994" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/European_Cup_Winners%27_Cup"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: recente winnaars van de Europa League, van vroeg naar laat.",
+    "items": [
+      { "label": "Eintracht Frankfurt, na strafschoppen tegen Rangers", "value": "2022" },
+      { "label": "Atalanta, met 3-0 tegen Leverkusen", "value": "2024" },
+      { "label": "Tottenham, met 1-0 tegen Manchester United", "value": "2025" },
+      { "label": "Aston Villa, met 3-0 tegen Freiburg", "value": "2026" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_UEFA_Cup_and_Europa_League_finals"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: UEFA Cup- en Europa League-titels (stand na seizoen 2025-26).",
+    "items": [
+      { "label": "Sevilla", "value": "7" },
+      { "label": "Liverpool", "value": "3" },
+      { "label": "Chelsea", "value": "2" },
+      { "label": "Villarreal", "value": "1" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_UEFA_Cup_and_Europa_League_finals"
+    ],
+    "tags": ["spanje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: winnaars van de Conference League, van vroeg naar laat.",
+    "items": [
+      { "label": "Roma van Mourinho, tegen Feyenoord", "value": "2022" },
+      { "label": "West Ham, tegen Fiorentina", "value": "2023" },
+      { "label": "Chelsea, tegen Real Betis", "value": "2025" },
+      { "label": "Crystal Palace, tegen Rayo Vallecano", "value": "2026" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Conference_League",
+      "https://en.wikipedia.org/wiki/Jos%C3%A9_Mourinho"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: Duitse landstitels (stand na seizoen 2025-26).",
+    "items": [
+      { "label": "Bayern München", "value": "35" },
+      { "label": "1. FC Nürnberg", "value": "9" },
+      { "label": "Borussia Dortmund", "value": "8" },
+      { "label": "Schalke 04", "value": "7" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_German_football_champions",
+      "https://en.wikipedia.org/wiki/Borussia_Dortmund",
+      "https://en.wikipedia.org/wiki/FC_Bayern_Munich"
+    ],
+    "tags": ["duitsland"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: Franse landstitels (stand na seizoen 2025-26).",
+    "items": [
+      { "label": "Paris Saint-Germain", "value": "14" },
+      { "label": "Saint-Étienne", "value": "10" },
+      { "label": "Monaco", "value": "8" },
+      { "label": "Lyon", "value": "7" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_French_football_champions"
+    ],
+    "tags": ["frankrijk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: Portugese landstitels (stand na seizoen 2025-26).",
+    "items": [
+      { "label": "Benfica", "value": "38" },
+      { "label": "Porto", "value": "31" },
+      { "label": "Sporting", "value": "21" },
+      { "label": "Boavista", "value": "1" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Portuguese_football_champions",
+      "https://en.wikipedia.org/wiki/S.L._Benfica",
+      "https://en.wikipedia.org/wiki/FC_Porto",
+      "https://en.wikipedia.org/wiki/Sporting_CP"
+    ],
+    "tags": ["portugal"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wanneer pakten deze Turkse clubs hun laatste landstitel (stand na seizoen 2025-26)?",
+    "items": [
+      { "label": "İstanbul Başakşehir", "value": "2019-20" },
+      { "label": "Beşiktaş", "value": "2020-21" },
+      { "label": "Trabzonspor", "value": "2021-22" },
+      { "label": "Galatasaray", "value": "2025-26" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Turkish_football_champions"
+    ],
+    "tags": ["turkije"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wanneer pakten deze Nederlandse clubs hun laatste landstitel (stand na seizoen 2025-26)?",
+    "items": [
+      { "label": "AZ", "value": "2008-09" },
+      { "label": "FC Twente", "value": "2009-10" },
+      { "label": "Ajax", "value": "2021-22" },
+      { "label": "Feyenoord", "value": "2022-23" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Dutch_football_champions"
+    ],
+    "tags": ["oranje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: Premier League-kampioenen, van vroeg naar laat.",
+    "items": [
+      { "label": "Blackburn Rovers", "value": "1994-95" },
+      { "label": "Arsenal, de Invincibles", "value": "2003-04" },
+      { "label": "Leicester City, de sprookjeskampioen", "value": "2015-16" },
+      { "label": "Liverpool, eerste titel in dertig jaar", "value": "2019-20" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_English_football_champions"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wanneer pakten deze Spaanse clubs hun laatste landstitel (stand na seizoen 2025-26)?",
+    "items": [
+      { "label": "Athletic Bilbao", "value": "1983-84" },
+      { "label": "Deportivo La Coruña", "value": "1999-2000" },
+      { "label": "Valencia", "value": "2003-04" },
+      { "label": "Atlético Madrid", "value": "2020-21" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Spanish_football_champions"
+    ],
+    "tags": ["spanje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wanneer pakten deze Italiaanse clubs hun laatste scudetto (stand na seizoen 2025-26)?",
+    "items": [
+      { "label": "Cagliari", "value": "1969-70" },
+      { "label": "Hellas Verona", "value": "1984-85" },
+      { "label": "Sampdoria", "value": "1990-91" },
+      { "label": "Lazio", "value": "1999-2000" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Italian_football_champions"
+    ],
+    "tags": ["italie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wanneer pakten deze Duitse clubs hun laatste landstitel (stand na seizoen 2025-26)?",
+    "items": [
+      { "label": "Werder Bremen", "value": "2003-04" },
+      { "label": "VfB Stuttgart", "value": "2006-07" },
+      { "label": "VfL Wolfsburg", "value": "2008-09" },
+      { "label": "Bayer Leverkusen", "value": "2023-24" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_German_football_champions"
+    ],
+    "tags": ["duitsland"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: doelpunten in de Premier League (alle tijden, stand half oktober 2026).",
+    "items": [
+      { "label": "Alan Shearer", "value": "260" },
+      { "label": "Harry Kane", "value": "213" },
+      { "label": "Mohamed Salah", "value": "193" },
+      { "label": "Thierry Henry", "value": "175" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Premier_League_players_with_100_or_more_goals"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: doelpunten in de Serie A (alle tijden, stand na augustus 2026).",
+    "items": [
+      { "label": "Silvio Piola", "value": "274" },
+      { "label": "Francesco Totti", "value": "250" },
+      { "label": "Giuseppe Meazza", "value": "216" },
+      { "label": "Roberto Baggio", "value": "205" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Serie_A_players_with_100_or_more_goals"
+    ],
+    "tags": ["italie", "legende"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: doelpunten in de Bundesliga (alle tijden, stand oktober 2026).",
+    "items": [
+      { "label": "Gerd Müller", "value": "365" },
+      { "label": "Robert Lewandowski", "value": "312" },
+      { "label": "Klaus Fischer", "value": "268" },
+      { "label": "Jupp Heynckes", "value": "220" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Bundesliga_players_with_100_or_more_goals"
+    ],
+    "tags": ["duitsland", "legende"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: Europese Gouden Schoenen (stand na seizoen 2025-26).",
+    "items": [
+      { "label": "Lionel Messi", "value": "6" },
+      { "label": "Cristiano Ronaldo", "value": "4" },
+      { "label": "Harry Kane", "value": "2" },
+      { "label": "Kylian Mbappé", "value": "1" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/European_Golden_Shoe"
+    ],
+    "tags": ["messi", "portugal", "frankrijk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wanneer won deze speler voor het eerst de Europese Gouden Schoen?",
+    "items": [
+      { "label": "Thierry Henry", "value": "2003-04" },
+      { "label": "Lionel Messi", "value": "2009-10" },
+      { "label": "Robert Lewandowski", "value": "2020-21" },
+      { "label": "Kylian Mbappé", "value": "2024-25" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/European_Golden_Shoe"
+    ],
+    "tags": ["messi", "frankrijk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van veel naar weinig: competitiedoelpunten in het seizoen van hun Europese Gouden Schoen.",
+    "items": [
+      { "label": "Lionel Messi, seizoen 2011-12", "value": "50" },
+      { "label": "Cristiano Ronaldo, seizoen 2014-15", "value": "48" },
+      { "label": "Robert Lewandowski, seizoen 2020-21", "value": "41" },
+      { "label": "Erling Haaland, seizoen 2022-23", "value": "36" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/European_Golden_Shoe"
+    ],
+    "tags": ["messi", "portugal"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wanneer won deze speler de Gouden Bal?",
+    "items": [
+      { "label": "Jean-Pierre Papin", "value": "1991" },
+      { "label": "George Weah", "value": "1995" },
+      { "label": "Luís Figo", "value": "2000" },
+      { "label": "Kaká", "value": "2007" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ballon_d%27Or"
+    ],
+    "tags": ["ballon-dor", "legende"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wanneer won zij voor het eerst de Gouden Bal bij de vrouwen?",
+    "items": [
+      { "label": "Ada Hegerberg", "value": "2018" },
+      { "label": "Megan Rapinoe", "value": "2019" },
+      { "label": "Alexia Putellas", "value": "2021" },
+      { "label": "Aitana Bonmatí", "value": "2023" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ballon_d%27Or_F%C3%A9minin"
+    ],
+    "tags": ["ballon-dor", "spanje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van oud naar jong: welke Engelse club werd het eerst opgericht?",
+    "items": [
+      { "label": "Manchester United (als Newton Heath)", "value": "1878" },
+      { "label": "Arsenal (als Dial Square)", "value": "1886" },
+      { "label": "Liverpool", "value": "1892" },
+      { "label": "Chelsea", "value": "1905" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Manchester_United_F.C.",
+      "https://en.wikipedia.org/wiki/Arsenal_F.C.",
+      "https://en.wikipedia.org/wiki/Liverpool_F.C.",
+      "https://en.wikipedia.org/wiki/Chelsea_F.C."
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van oud naar jong: welke Turkse club werd het eerst opgericht?",
+    "items": [
+      { "label": "Beşiktaş", "value": "1903" },
+      { "label": "Galatasaray", "value": "1905" },
+      { "label": "Fenerbahçe", "value": "1907" },
+      { "label": "Trabzonspor", "value": "1967" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Be%C5%9Fikta%C5%9F_J.K.",
+      "https://en.wikipedia.org/wiki/Galatasaray_S.K._(football)",
+      "https://en.wikipedia.org/wiki/Fenerbah%C3%A7e_S.K._(football)",
+      "https://en.wikipedia.org/wiki/Trabzonspor"
+    ],
+    "tags": ["turkije"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van groot naar klein: de capaciteit van het stadion (stand 2026).",
+    "items": [
+      { "label": "Real Madrid: Santiago Bernabéu", "value": "± 83.000" },
+      { "label": "Manchester United: Old Trafford", "value": "± 74.000" },
+      { "label": "Arsenal: Emirates Stadium", "value": "± 61.000" },
+      { "label": "Chelsea: Stamford Bridge", "value": "± 40.000" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Real_Madrid_CF",
+      "https://en.wikipedia.org/wiki/Manchester_United_F.C.",
+      "https://en.wikipedia.org/wiki/Arsenal_F.C.",
+      "https://en.wikipedia.org/wiki/Chelsea_F.C."
+    ],
+    "tags": ["spanje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van groot naar klein: de capaciteit van het stadion van deze Italiaanse clubs (stand 2026).",
+    "items": [
+      { "label": "Milan en Inter: San Siro", "value": "± 76.000" },
+      { "label": "Roma: Stadio Olimpico", "value": "± 71.000" },
+      { "label": "Napoli: Stadio Maradona", "value": "± 55.000" },
+      { "label": "Juventus: Allianz Stadium", "value": "± 41.700" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/AC_Milan",
+      "https://en.wikipedia.org/wiki/Inter_Milan",
+      "https://en.wikipedia.org/wiki/AS_Roma",
+      "https://en.wikipedia.org/wiki/SSC_Napoli",
+      "https://en.wikipedia.org/wiki/Juventus_F.C.",
+      "https://en.wikipedia.org/wiki/Allianz_Stadium_(Turin)"
+    ],
+    "tags": ["italie", "maradona"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: trainers van Manchester United, van vroeg naar laat aangesteld.",
+    "items": [
+      { "label": "David Moyes", "value": "2013" },
+      { "label": "José Mourinho", "value": "2016" },
+      { "label": "Erik ten Hag", "value": "2022" },
+      { "label": "Rúben Amorim", "value": "2024" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Manchester_United_F.C._managers"
+    ],
+    "tags": ["oranje", "portugal"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van oud naar jong: welke jonge ster werd het eerst geboren?",
+    "items": [
+      { "label": "Vinícius Júnior", "value": "12 juli 2000" },
+      { "label": "Erling Haaland", "value": "21 juli 2000" },
+      { "label": "Jude Bellingham", "value": "29 juni 2003" },
+      { "label": "Lamine Yamal", "value": "13 juli 2007" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Vin%C3%ADcius_J%C3%BAnior",
+      "https://en.wikipedia.org/wiki/Erling_Haaland",
+      "https://en.wikipedia.org/wiki/Jude_Bellingham",
+      "https://en.wikipedia.org/wiki/Lamine_Yamal"
+    ],
+    "tags": ["spanje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van oud naar jong: welke topspeler werd het eerst geboren?",
+    "items": [
+      { "label": "Luka Modrić", "value": "9 september 1985" },
+      { "label": "Robert Lewandowski", "value": "21 augustus 1988" },
+      { "label": "Mohamed Salah", "value": "15 juni 1992" },
+      { "label": "Harry Kane", "value": "28 juli 1993" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Luka_Modri%C4%87",
+      "https://en.wikipedia.org/wiki/Robert_Lewandowski",
+      "https://en.wikipedia.org/wiki/Mohamed_Salah",
+      "https://en.wikipedia.org/wiki/Harry_Kane"
+    ],
+    "tags": [],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van oud naar jong: welke voetballegende werd het eerst geboren?",
+    "items": [
+      { "label": "Pelé", "value": "23 oktober 1940" },
+      { "label": "Franz Beckenbauer", "value": "11 september 1945" },
+      { "label": "Johan Cruijff", "value": "25 april 1947" },
+      { "label": "Michel Platini", "value": "21 juni 1955" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pel%C3%A9",
+      "https://en.wikipedia.org/wiki/Franz_Beckenbauer",
+      "https://en.wikipedia.org/wiki/Johan_Cruyff",
+      "https://en.wikipedia.org/wiki/Michel_Platini"
+    ],
+    "tags": ["legende", "pele", "oranje", "duitsland", "frankrijk"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Van oud naar jong: welke topcoach werd het eerst geboren?",
+    "items": [
+      { "label": "Alex Ferguson", "value": "31 december 1941" },
+      { "label": "Carlo Ancelotti", "value": "10 juni 1959" },
+      { "label": "Jürgen Klopp", "value": "16 juni 1967" },
+      { "label": "Pep Guardiola", "value": "18 januari 1971" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Alex_Ferguson",
+      "https://en.wikipedia.org/wiki/Carlo_Ancelotti",
+      "https://en.wikipedia.org/wiki/J%C3%BCrgen_Klopp",
+      "https://en.wikipedia.org/wiki/Pep_Guardiola"
+    ],
+    "tags": ["italie", "duitsland", "spanje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de transfers van Zlatan Ibrahimović, van vroeg naar laat.",
+    "items": [
+      { "label": "Van Malmö naar Ajax", "value": "2001" },
+      { "label": "Naar Barcelona", "value": "2009" },
+      { "label": "Naar Paris Saint-Germain", "value": "2012" },
+      { "label": "Naar Manchester United", "value": "2016" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Zlatan_Ibrahimovi%C4%87"
+    ],
+    "tags": ["frankrijk", "spanje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de carrière van Thierry Henry.",
+    "items": [
+      { "label": "Debuut in het eerste elftal van Monaco", "value": "1994" },
+      { "label": "Transfer naar Arsenal", "value": "1999" },
+      { "label": "Transfer naar Barcelona", "value": "2007" },
+      { "label": "Transfer naar New York Red Bulls", "value": "2010" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Thierry_Henry"
+    ],
+    "tags": ["frankrijk", "legende"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de transfers van Ronaldo Nazário, van vroeg naar laat.",
+    "items": [
+      { "label": "Naar PSV", "value": "1994" },
+      { "label": "Naar Barcelona", "value": "1996" },
+      { "label": "Naar Inter", "value": "1997" },
+      { "label": "Naar Real Madrid", "value": "2002" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ronaldo_(Brazilian_footballer)"
+    ],
+    "tags": ["legende", "ballon-dor", "spanje", "italie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de carrière van Erling Haaland.",
+    "items": [
+      { "label": "Debuut in het eerste elftal van Molde", "value": "2017" },
+      { "label": "Transfer naar Red Bull Salzburg", "value": "2019" },
+      { "label": "Transfer naar Borussia Dortmund", "value": "2020" },
+      { "label": "Transfer naar Manchester City", "value": "2022" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Erling_Haaland"
+    ],
+    "tags": ["duitsland"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de carrière van Harry Kane.",
+    "items": [
+      { "label": "Debuut in het eerste elftal van Tottenham", "value": "2011" },
+      { "label": "Eerste Gouden Schoen in de Premier League", "value": "2016" },
+      { "label": "Transfer naar Bayern München", "value": "2023" },
+      { "label": "Eerste prijs: landskampioen met Bayern", "value": "2025" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Harry_Kane"
+    ],
+    "tags": ["duitsland"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de carrière van Johan Cruijff.",
+    "items": [
+      { "label": "Debuut in het eerste elftal van Ajax", "value": "1964" },
+      { "label": "Transfer naar Barcelona", "value": "1973" },
+      { "label": "Van Ajax naar Feyenoord", "value": "1983" },
+      { "label": "Wordt trainer van Barcelona", "value": "1988" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Johan_Cruyff"
+    ],
+    "tags": ["oranje", "legende", "spanje"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: de loopbaan van Alex Ferguson.",
+    "items": [
+      { "label": "Wint de Europacup II met Aberdeen", "value": "1983" },
+      { "label": "Wordt trainer van Manchester United", "value": "1986" },
+      { "label": "Treble met United", "value": "1999" },
+      { "label": "Stopt als trainer", "value": "2013" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Alex_Ferguson",
+      "https://en.wikipedia.org/wiki/European_Cup_Winners%27_Cup"
+    ],
+    "tags": ["legende"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wanneer werd José Mourinho trainer van deze clubs?",
+    "items": [
+      { "label": "FC Porto", "value": "2002" },
+      { "label": "Inter", "value": "2008" },
+      { "label": "Manchester United", "value": "2016" },
+      { "label": "AS Roma", "value": "2021" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jos%C3%A9_Mourinho"
+    ],
+    "tags": ["portugal", "italie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wereldrecordtransfers, van vroeg naar laat.",
+    "items": [
+      { "label": "Luís Figo, van Barcelona naar Real Madrid", "value": "2000" },
+      { "label": "Cristiano Ronaldo, van Man United naar Real Madrid", "value": "2009" },
+      { "label": "Gareth Bale, van Tottenham naar Real Madrid", "value": "2013" },
+      { "label": "Paul Pogba, van Juventus naar Man United", "value": "2016" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_most_expensive_association_football_transfers"
+    ],
+    "tags": ["spanje", "portugal"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: Gouden Schoen-winnaars van Genk en Gent (editiejaar).",
+    "items": [
+      { "label": "Roland Storme (Gent)", "value": "1958" },
+      { "label": "Branko Strupar (Genk)", "value": "1998" },
+      { "label": "Sven Kums (Gent)", "value": "2015" },
+      { "label": "Paul Onuachu (Genk)", "value": "2021" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
+    ],
+    "tags": ["gouden-schoen", "belgie"],
+    "checkedAt": "2026-10-22"
   }
 ]
