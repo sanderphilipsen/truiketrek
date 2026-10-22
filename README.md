@@ -118,6 +118,8 @@ Alle regels staan op één plek: [GameRules.cs](src/VoetbalQuiz.Shared/GameRules
 
 Vereist: .NET 10 SDK en Podman.
 
+Snelste weg: `pwsh scripts/start-local.ps1` controleert .NET en Podman, start de Podman-machine en de database als die nog niet draaien, en zegt of de app al bezig is. In Claude Code doet `/start-app` dat en start daarna ook de app. Met de hand:
+
 1. Start de database: een PostgreSQL-container `voetbalquiz-db` op poort 5433. De data staat in het volume `voetbalquiz-pgdata` en blijft bewaard.
 
    ```bash

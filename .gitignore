@@ -486,3 +486,6 @@ $RECYCLE.BIN/
 *.db-shm
 *.db-wal
 maintenance.local.json
+
+# Claude Code worktrees
+.claude/worktrees/
