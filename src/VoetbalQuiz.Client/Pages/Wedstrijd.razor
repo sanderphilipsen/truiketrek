@@ -225,7 +225,7 @@ else
             </div>
 
             <QuestionPlay @key="_state.CurrentNumber" Type="_state.Type" View="_state.View" Hints="_state.Hints" Busy="_busy"
-                          ReadOnly="@(!_state.IAmIn || _state.MyDone)" Send="PlayAsync" />
+                          ReadOnly="@(!_state.IAmIn || _state.MyDone)" SecondsLeft="SecondsLeft" Send="PlayAsync" />
 
             @if (_state.IAmIn && !_state.MyDone)
             {
@@ -243,8 +243,21 @@ else
             var mine = _state.Reveal.FirstOrDefault(r => r.IsMe);
             var revealLeft = Math.Max(0, MatchRules.RevealSeconds - LocalElapsed);
             <div class="result reveal-head @(mine is not null ? "ok" : "fail")">
-                <div class="muted">Het was…</div>
-                <div class="result-name">@_state.RevealedPlayer</div>
+                @if (_state.Type == QuestionType.Volgorde)
+                {
+                    <div class="muted">De juiste volgorde</div>
+                    <ol class="reveal-order">
+                        @foreach (var card in (_state.RevealedPlayer ?? "").Split(" → "))
+                        {
+                            <li>@card</li>
+                        }
+                    </ol>
+                }
+                else
+                {
+                    <div class="muted">Het was…</div>
+                    <div class="result-name">@_state.RevealedPlayer</div>
+                }
                 @if (_state.IAmIn)
                 {
                     <div class="reveal-me" role="status">
@@ -409,7 +422,7 @@ else
         }
     }
 
-    private static bool IsChoice(QuestionType type) => type is QuestionType.Snelvuur or QuestionType.NietBij or QuestionType.Jaar;
+    private static bool IsChoice(QuestionType type) => type is QuestionType.Snelvuur or QuestionType.NietBij or QuestionType.Jaar or QuestionType.Volgorde;
 
     protected override async Task OnInitializedAsync()
     {
@@ -625,6 +638,7 @@ else
         QuestionType.Jaar => "Bekijk het juiste jaar",
         QuestionType.Emoji => "Bekijk de emoji",
         QuestionType.Opstelling => "Bekijk de volledige opstelling",
+        QuestionType.Volgorde => "Bekijk de juiste volgorde",
         _ => "Bekijk alle tips",
     };
 

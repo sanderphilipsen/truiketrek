@@ -107,6 +107,8 @@ public record AnswerResult(
     int? CorrectYear = null,
     int? MyYear = null,
     List<LineupSlot>? FullLineup = null,
+    // Op volgorde: de gekozen volgorde (indexen in de juiste volgorde), null als de speler niets instuurde.
+    List<int>? MyOrder = null,
     // De vraag liep af omdat de tijd om was (niet omdat de speler paste of antwoordde).
     bool TimedOut = false);
 

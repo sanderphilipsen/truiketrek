@@ -10,9 +10,15 @@
     case QuestionType.Mannetje:
     case QuestionType.Kluts:
     case QuestionType.Counter:
+    case QuestionType.Volgorde:
         @if (Type == QuestionType.Mannetje && View?.Avatar is { } avatar)
         {
             <div class="mannetje"><Avatar Id="@avatar" Size="140" /></div>
+        }
+        @if (Type == QuestionType.Volgorde)
+        {
+            <p class="prompt">@View?.Prompt</p>
+            @if (Result.MyOrder is null) { <p class="center light-text">@(Result.TimedOut ? "Niet op tijd gekozen." : "Je paste.")</p> }
         }
         <ol class="hints">
             @for (var i = 0; i < Result.AllHints.Count; i++)
@@ -68,6 +74,7 @@
         QuestionType.Jaar => r.Correct ? "Exact juist!" : r.Points > 0 ? "Dichtbij!" : $"Het was {r.CorrectYear}",
         QuestionType.Opstelling => r.PlayerName,
         QuestionType.Counter => "Counter",
+        QuestionType.Volgorde => r.Correct ? "Helemaal juist!" : r.Points > 0 ? "Bijna!" : "Helemaal omgekeerd",
         _ => r.PlayerName,
     };
 }

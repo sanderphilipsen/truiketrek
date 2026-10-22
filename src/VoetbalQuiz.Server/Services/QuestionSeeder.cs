@@ -126,6 +126,8 @@ public class QuestionSeeder(QuizDbContext db, IWebHostEnvironment env, ILogger<Q
                     ? (QuestionEngine.KeyFor(type, QuestionEngine.Serialize(d)), QuestionEngine.Serialize(d with { Aliases = d.Aliases ?? [] })) : (null, ""),
                 QuestionType.Mannetje => e.Deserialize<MannetjeData>(Json) is { } d
                     ? (d.Answer, QuestionEngine.Serialize(d with { Aliases = d.Aliases ?? [], Clues = d.Clues ?? [] })) : (null, ""),
+                QuestionType.Volgorde => e.Deserialize<VolgordeData>(Json) is { Items: not null } d
+                    ? (QuestionEngine.KeyFor(type, QuestionEngine.Serialize(d)), QuestionEngine.Serialize(d)) : (null, ""),
                 _ => (null, ""),
             };
         }

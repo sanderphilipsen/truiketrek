@@ -60,6 +60,8 @@ public class MatchService(
         var active = await picker.ActiveTypesAsync();
         if (types.Any(t => !active.Contains(t)))
             throw new QuizException("Dat vraagtype staat momenteel uit. Kies een ander type.");
+        if (req.Derby && types.Where(t => !DerbyRules.AllowedIn(t)).ToList() is [var notInDerby, ..])
+            throw new QuizException($"{QuestionTypes.Get(notInDerby).Name} kan niet in een derby. Kies een ander type.");
         var count = MatchRules.ClampQuestions(req.Questions, types.Count);
         if (await picker.BuildOnlineAsync(types, count) is null)
             throw new QuizException("Er zijn nog niet genoeg vragen voor deze keuze. Kies een ander type of een mix.");

@@ -71,7 +71,7 @@ else
         <div class="timebar"><div style="width:@QuestionDisplay.Percent(LocalElapsed / _state.TimeLimit)"></div></div>
     </div>
 
-    <QuestionPlay @key="Number" Type="_state.Type" View="_state.View" Hints="_state.Hints" Busy="_busy" Send="PlayAsync" />
+    <QuestionPlay @key="Number" Type="_state.Type" View="_state.View" Hints="_state.Hints" Busy="_busy" SecondsLeft="SecondsLeft" Send="PlayAsync" />
 
     <div class="actions">
         <button class="linkish" @onclick="GiveUpAsync" disabled="@_busy">

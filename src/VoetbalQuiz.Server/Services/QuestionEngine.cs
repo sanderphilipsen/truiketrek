@@ -33,6 +33,7 @@ public static class QuestionEngine
         QuestionType.Mannetje => Data<MannetjeData>(q).Answer,
         QuestionType.Kluts => q.Player!.Name,
         QuestionType.Counter => $"Counter ({q.CounterPlayers.Count} spelers)",
+        QuestionType.Volgorde => string.Join(" → ", Data<VolgordeData>(q).Items.Select(i => i.Label)),
         _ => "",
     };
 
@@ -48,6 +49,7 @@ public static class QuestionEngine
         QuestionType.Wissel or QuestionType.Rugnummer or QuestionType.Mannetje or QuestionType.Kluts =>
             QuestionRules.RevealLimit(QuestionRules.RevealSteps),
         QuestionType.Counter => QuestionRules.CounterSeconds,
+        QuestionType.Volgorde => QuestionRules.VolgordeSeconds,
         _ => GameRules.TimeLimitSeconds,
     };
 
@@ -122,6 +124,11 @@ public static class QuestionEngine
                     Note: current < 0 ? null : $"Speler {current + 1} van {total}",
                     MaxPoints: QuestionTypes.Get(QuestionType.Counter).MaxPoints, Found: a.Found.Count, Total: total));
             }
+            case QuestionType.Volgorde:
+            {
+                var d = Data<VolgordeData>(q);
+                return ([], new QuestionView(d.Question, VolgordeShown(q).Select(i => d.Items[i].Label).ToList()));
+            }
             default:
                 return ([], new QuestionView());
         }
@@ -192,6 +199,37 @@ public static class QuestionEngine
     /// <summary>Counter: de speler die aan de beurt is (nog niet geraden of overgeslagen), of -1 als ze allemaal gepasseerd zijn.</summary>
     public static int CounterCurrent(IQuizQuestion q, AttemptState a) =>
         Enumerable.Range(0, q.CounterPlayers.Count).FirstOrDefault(i => !a.Found.Contains(i) && !a.Skipped.Contains(i), -1);
+
+    /// <summary>
+    /// Op volgorde: in welke volgorde de kaartjes getoond worden (indexen in de juiste volgorde). Vast per vraag, zodat
+    /// herladen niets verandert, en nooit al juist.
+    /// </summary>
+    public static List<int> VolgordeShown(IQuizQuestion q)
+    {
+        var count = Data<VolgordeData>(q).Items.Count;
+        var rng = new Random(q.Id * 31 + 7);
+        var shown = Enumerable.Range(0, count).ToList();
+        for (var attempt = 0; attempt < 10 && shown.SequenceEqual(Enumerable.Range(0, count)); attempt++)
+            shown = [.. Enumerable.Range(0, count).OrderBy(_ => rng.Next())];
+        return shown;
+    }
+
+    /// <summary>
+    /// Op volgorde: de gok "2,0,3,1" (de getoonde kaartjes in de aangetikte volgorde) als indexen in de juiste volgorde.
+    /// Niet aangetikte kaartjes komen achteraan, in de getoonde volgorde. Null als de gok ongeldig is.
+    /// </summary>
+    public static List<int>? VolgordeOrder(IQuizQuestion q, string guess)
+    {
+        var shown = VolgordeShown(q);
+        var tapped = new List<int>();
+        foreach (var part in guess.Split(',', StringSplitOptions.TrimEntries))
+        {
+            if (!int.TryParse(part, out var i) || i < 0 || i >= shown.Count || tapped.Contains(i)) return null;
+            tapped.Add(i);
+        }
+        if (tapped.Count == 0) return null;
+        return [.. tapped.Concat(Enumerable.Range(0, shown.Count).Except(tapped)).Select(i => shown[i])];
+    }
 
     /// <summary>Counter: de duidelijkste tip (de laatste) van een speler.</summary>
     private static string CounterClue(Player p) => p.Hints.LastOrDefault() ?? "";
@@ -290,6 +328,14 @@ public static class QuestionEngine
                 return new(all, all, QuestionRules.OpstellingPoints(a.Found.Count, q.Blanks.Count), false);
             }
 
+            case QuestionType.Volgorde:
+            {
+                if (VolgordeOrder(q, guess) is not { } order) return new(false, false, 0, false);
+                a.Found = order;
+                var points = QuestionRules.VolgordePoints(order);
+                return new(true, points == QuestionTypes.Get(QuestionType.Volgorde).MaxPoints, points, false);
+            }
+
             default:
                 return new(false, false, 0, false);
         }
@@ -368,6 +414,16 @@ public static class QuestionEngine
                     (a.Found.Contains(i) ? "✅ " : a.Skipped.Contains(i) ? "⏭️ " : "⌛ ") + p.Name).ToList(),
                 Explanation = $"{a.Found.Count} van de {q.CounterPlayers.Count} spelers geraden",
             },
+            QuestionType.Volgorde => Data<VolgordeData>(q) is var v
+                ? baseResult with
+                {
+                    // De juiste volgorde; ✅ waar jij hetzelfde kaartje op die plaats legde.
+                    AllHints = v.Items.Select((item, i) =>
+                        (a.Found.Count == 0 ? "" : a.Found.ElementAtOrDefault(i) == i ? "✅ " : "❌ ") + $"{item.Label} · {item.Value}").ToList(),
+                    Explanation = a.Found.Count == 0 ? null : $"{a.Points} van de {QuestionTypes.Get(QuestionType.Volgorde).MaxPoints} punten: hoe dichter bij de juiste volgorde, hoe meer",
+                    MyOrder = a.Found.Count == 0 ? null : a.Found,
+                }
+                : baseResult,
             _ => baseResult,
         };
     }
@@ -396,6 +452,7 @@ public static class QuestionEngine
         QuestionType.Wissel => Parse<WisselData>(data) is var d ? ($"{d.From} → {d.To} ({d.When})", d.Answer) : ("", ""),
         QuestionType.Rugnummer => Parse<RugnummerData>(data) is var d ? ($"#{d.Number} – {d.Club}", d.Answer) : ("", ""),
         QuestionType.Mannetje => Parse<MannetjeData>(data) is var d ? (string.Join(" · ", d.Clues), d.Answer) : ("", ""),
+        QuestionType.Volgorde => Parse<VolgordeData>(data) is var d ? (d.Question, string.Join(" → ", d.Items.Select(i => i.Label))) : ("", ""),
         _ => ("", ""),
     };
 
@@ -404,6 +461,7 @@ public static class QuestionEngine
     {
         QuestionType.Emoji => Parse<EmojiData>(data) is var d ? $"{d.Emojis}|{d.Answer}" : "",
         QuestionType.Carriere or QuestionType.Mannetje => Describe(type, data).Answer,
+        QuestionType.Volgorde => Describe(type, data) is var v ? $"{v.Label}|{v.Answer}" : "",
         _ => Describe(type, data).Label,
     };
 
@@ -456,6 +514,16 @@ public static class QuestionEngine
                     ? Check(!string.IsNullOrWhiteSpace(d.Answer), "Vul de speler in.")
                         .Concat(Check(Avatars.IsValid(d.Avatar), "Kies een geldige avatar."))
                         .Concat(Check(d.Clues.Count(c => !string.IsNullOrWhiteSpace(c)) >= 2, "Geef minstens 2 tips.")).ToList()
+                    : [],
+                QuestionType.Volgorde => Parse<VolgordeData>(data) is var d
+                    ? Check(!string.IsNullOrWhiteSpace(d.Question), "Vul de opdracht in.")
+                        .Concat(Check(d.Items.Count == QuestionRules.VolgordeCards
+                            && d.Items.All(i => !string.IsNullOrWhiteSpace(i.Label) && !string.IsNullOrWhiteSpace(i.Value)),
+                            $"Er zijn {QuestionRules.VolgordeCards} kaartjes nodig, elk met een tekst en een waarde."))
+                        .Concat(Check(d.Items.Select(i => i.Label.Trim()).Distinct(StringComparer.OrdinalIgnoreCase).Count() == d.Items.Count,
+                            "Twee kaartjes hebben dezelfde tekst."))
+                        .Concat(Check(d.Items.Select(i => i.Value.Trim()).Distinct(StringComparer.OrdinalIgnoreCase).Count() == d.Items.Count,
+                            "Twee kaartjes hebben dezelfde waarde: dan is de volgorde niet eenduidig.")).ToList()
                     : [],
                 _ => ["Dit type hoort niet in de vragenbank."],
             };

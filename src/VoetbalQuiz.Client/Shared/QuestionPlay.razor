@@ -36,6 +36,30 @@
         }
         break;
 
+    case QuestionType.Volgorde:
+        <p class="prompt big">@View?.Prompt</p>
+        <div class="order-cards">
+            @for (var i = 0; i < (View?.Options?.Count ?? 0); i++)
+            {
+                var index = i;
+                var place = _order.IndexOf(index);
+                <button class="order-card @(place >= 0 ? "order-card-on" : "")" @onclick="() => ToggleCard(index)" disabled="@(Busy || ReadOnly || _orderSent)"
+                        aria-label="@CardLabel(index)">
+                    <span class="order-num" aria-hidden="true">@(place >= 0 ? (place + 1).ToString() : "")</span>
+                    <span>@View!.Options![index]</span>
+                </button>
+            }
+        </div>
+        @if (!ReadOnly)
+        {
+            var total = View?.Options?.Count ?? 0;
+            <button class="btn primary big" @onclick="SendOrderAsync" disabled="@(Busy || _orderSent || _order.Count < total)">
+                @(_order.Count < total ? $"Tik nog {total - _order.Count} kaartje{(total - _order.Count == 1 ? "" : "s")} aan" : "Klaar")
+            </button>
+            <p class="center light-text">Nog eens tikken haalt een kaartje terug weg.</p>
+        }
+        break;
+
     default:
         @* Getypte types: Wie ben ik?, Carrièrepad, Emoji, Opstelling, Wissel, Rugnummer, Mannetje, Kluts en Counter *@
         @if (Type == QuestionType.Emoji)
@@ -148,7 +172,10 @@
     /// <summary>Enkel kijken (bv. een toeschouwer bij een online partijtje).</summary>
     [Parameter] public bool ReadOnly { get; set; }
 
-    /// <summary>Stuurt een poging (een naam, een optie "0".."3" of een jaartal); null als het mislukte.</summary>
+    /// <summary>Hoeveel tijd er nog is. Op volgorde: vlak voor het einde gaat de aangetikte volgorde vanzelf weg.</summary>
+    [Parameter] public double SecondsLeft { get; set; } = double.MaxValue;
+
+    /// <summary>Stuurt een poging (een naam, een optie "0".."3", een jaartal of een volgorde "2,0,3,1"); null als het mislukte.</summary>
     [Parameter, EditorRequired] public Func<string, Task<Feedback?>> Send { get; set; } = null!;
 
     private string _guess = "";
@@ -196,6 +223,32 @@
     private Task ConfirmYearAsync() => YearValid && !Busy ? SendAsync(_yearText) : Task.CompletedTask;
 
     private async Task SendAsync(string guess) => await Send(guess);
+
+    /// <summary>Op volgorde: de getoonde kaartjes (index) in de volgorde waarin de speler ze aantikte.</summary>
+    private readonly List<int> _order = [];
+    private bool _orderSent;
+
+    /// <summary>Voor schermlezers: de tekst van het kaartje en, als het aangetikt is, zijn plaats.</summary>
+    private string CardLabel(int index) =>
+        (View?.Options?[index] ?? "") + (_order.IndexOf(index) is var place and >= 0 ? $", plaats {place + 1}" : "");
+
+    private void ToggleCard(int index)
+    {
+        if (!_order.Remove(index)) _order.Add(index);
+    }
+
+    private async Task SendOrderAsync()
+    {
+        if (_orderSent || _order.Count == 0) return;
+        _orderSent = true;
+        if (await Send(string.Join(",", _order)) is null) _orderSent = false;
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        // Wat aangetikt is, telt: de rest komt achteraan.
+        if (Type == QuestionType.Volgorde && !ReadOnly && SecondsLeft <= QuestionRules.VolgordeAutoSendSeconds && !Busy) await SendOrderAsync();
+    }
 
     private async Task TypeAsync()
     {

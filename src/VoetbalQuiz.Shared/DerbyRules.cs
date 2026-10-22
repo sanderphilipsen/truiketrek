@@ -52,6 +52,12 @@ public static class DerbyRules
     public static bool TrumpWorksOn(QuestionType type) =>
         type is QuestionType.Snelvuur or QuestionType.NietBij or QuestionType.Jaar;
 
+    /// <summary>
+    /// Vraagtypes die in een derby mogen. Op volgorde niet: de wapens (rode kaart, gokchinees, wissel) zijn gemaakt voor
+    /// één antwoord per vraag, niet voor deelpunten uit één volgorde.
+    /// </summary>
+    public static bool AllowedIn(QuestionType type) => type != QuestionType.Volgorde;
+
     /// <summary>Wapenstilstand: op de eerste en de laatste vraag kan niemand een wapen inzetten.</summary>
     public static bool Ceasefire(int number, int total) => number <= 1 || number >= total;
 

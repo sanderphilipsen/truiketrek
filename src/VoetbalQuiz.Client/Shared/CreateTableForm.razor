@@ -46,7 +46,7 @@
                 else
                 {
                     <div class="tafel-types">
-                        @foreach (var t in QuestionTypes.All.Where(t => _active.Contains(t.Type)))
+                        @foreach (var t in QuestionTypes.All.Where(t => _active.Contains(t.Type) && (!_derby || DerbyRules.AllowedIn(t.Type))))
                         {
                             var type = t.Type;
                             var on = _chosen.Contains(type);
@@ -200,6 +200,10 @@
     private void ToggleDerby()
     {
         _derby = !_derby;
+        // Types die niet in een derby passen (op volgorde) vallen weg; blijft er niets over, dan het eerste dat wel mag.
+        if (_derby && _chosen.RemoveAll(t => !DerbyRules.AllowedIn(t)) > 0 && _chosen.Count == 0
+            && _active?.FirstOrDefault(DerbyRules.AllowedIn) is { } fallback && DerbyRules.AllowedIn(fallback))
+            _chosen.Add(fallback);
         if (!_nameTouched) _name = SuggestName();
     }
 
@@ -231,6 +235,7 @@
                     QuestionType.Jaar => [$"{u}'s tijdmachine", $"Jaartallen bij {u}"],
                     QuestionType.Carriere or QuestionType.Wissel => [$"{u}'s transfermarkt", $"Mercato bij {u}"],
                     QuestionType.Opstelling => [$"{u}'s basiself", $"Tactiekbord van {u}"],
+                    QuestionType.Volgorde => [$"Rangorde bij {u}", $"{u}'s ladder"],
                     _ => [$"Wie is wie bij {u}?", $"{u}'s raadseluurtje"],
                 };
         string[] generic = _derby ? [] : [$"Partijtje van {u}", $"{u}'s kleedkamer", $"Zondagsvoetbal bij {u}", $"Matchke van {u}", $"Café {u}"];

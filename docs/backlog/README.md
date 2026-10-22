@@ -34,3 +34,8 @@ Houd deze tabel kort bij (enkel open items). Bij twijfel is de status in het bes
 | [005](005-seizoenssfeer.md) | Seizoenssfeer op feestdagen en voetbalmomenten | ux | concept | midden | M |
 | [006](006-streaker.md) | Streaker die over het scherm loopt | feature | concept | laag | M |
 | [007](007-gemiste-daily-naspelen.md) | Academie: oude dailies en specials terugspelen | feature | bezig | midden | M |
+| [008](008-vraagtype-kaart.md) | Vraagtype "Kaart van België" | feature | idee | laag | L |
+| [009](009-vraagtype-raster.md) | Vraagtype "Raster" (3×3) | feature | idee | midden | L |
+| [010](010-vraagtype-verbindingsman.md) | Vraagtype "Verbindingsman" | feature | idee | laag | L |
+| [011](011-vraagtype-op-volgorde.md) | Vraagtype "Op volgorde" | feature | bezig | midden | M |
+| [012](012-vraagtype-wie-zei-het.md) | Vraagtype "Wie zei het?" | feature | klaar | midden | M |

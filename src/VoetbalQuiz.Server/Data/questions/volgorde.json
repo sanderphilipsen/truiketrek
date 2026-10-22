@@ -1,0 +1,91 @@
+[
+  {
+    "question": "Van oud naar jong: wie werd het eerst geboren?",
+    "items": [
+      { "label": "Jan Vertonghen", "value": "24 april 1987" },
+      { "label": "Kevin De Bruyne", "value": "28 juni 1991" },
+      { "label": "Thibaut Courtois", "value": "11 mei 1992" },
+      { "label": "Romelu Lukaku", "value": "13 mei 1993" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jan_Vertonghen",
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
+      "https://en.wikipedia.org/wiki/Thibaut_Courtois",
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+    ],
+    "tags": ["rode-duivels"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: zet deze momenten van de Rode Duivels in volgorde.",
+    "items": [
+      { "label": "EK-finale verloren tegen West-Duitsland", "value": "1980" },
+      { "label": "Vierde op het WK in Mexico", "value": "1986" },
+      { "label": "Samen met Nederland gastland van het EK", "value": "2000" },
+      { "label": "Derde op het WK in Rusland", "value": "2018" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/UEFA_Euro_1980_final",
+      "https://en.wikipedia.org/wiki/1986_FIFA_World_Cup",
+      "https://en.wikipedia.org/wiki/UEFA_Euro_2000",
+      "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup"
+    ],
+    "tags": ["rode-duivels"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: Belgische clubs in een Europese finale.",
+    "items": [
+      { "label": "Anderlecht wint de Europacup II tegen West Ham", "value": "1976" },
+      { "label": "Club Brugge verliest de Europacup I-finale tegen Liverpool", "value": "1978" },
+      { "label": "Standard verliest de Europacup II-finale tegen Barcelona", "value": "1982" },
+      { "label": "KV Mechelen wint de Europacup II tegen Ajax", "value": "1988" }
+    ],
+    "difficulty": 4,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/1976_European_Cup_Winners%27_Cup_final",
+      "https://en.wikipedia.org/wiki/1978_European_Cup_final",
+      "https://en.wikipedia.org/wiki/1982_European_Cup_Winners%27_Cup_final",
+      "https://en.wikipedia.org/wiki/1988_European_Cup_Winners%27_Cup_final"
+    ],
+    "tags": ["anderlecht", "club-brugge", "standard", "belgie"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wie werd het eerst (voor het eerst) bondscoach van de Rode Duivels?",
+    "items": [
+      { "label": "Guy Thys", "value": "1976" },
+      { "label": "Georges Leekens", "value": "1997" },
+      { "label": "Marc Wilmots", "value": "2012" },
+      { "label": "Roberto Martínez", "value": "2016" }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_Belgium_national_football_team_managers"
+    ],
+    "tags": ["rode-duivels"],
+    "checkedAt": "2026-10-22"
+  },
+  {
+    "question": "Chronologisch: wie won het eerst zijn (eerste) Gouden Schoen?",
+    "items": [
+      { "label": "Paul Van Himst", "value": "1960" },
+      { "label": "Jan Ceulemans", "value": "1980" },
+      { "label": "Wesley Sonck", "value": "2001" },
+      { "label": "Hans Vanaken", "value": "2018" }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
+    ],
+    "tags": ["gouden-schoen"],
+    "checkedAt": "2026-10-22"
+  }
+]

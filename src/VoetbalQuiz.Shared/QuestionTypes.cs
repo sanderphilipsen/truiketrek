@@ -1,6 +1,6 @@
 namespace VoetbalQuiz.Shared;
 
-public enum QuestionType { WieBenIk, Snelvuur, Carriere, NietBij, Jaar, Emoji, Opstelling, Wissel, Rugnummer, Mannetje, Kluts, Counter }
+public enum QuestionType { WieBenIk, Snelvuur, Carriere, NietBij, Jaar, Emoji, Opstelling, Wissel, Rugnummer, Mannetje, Kluts, Counter, Volgorde }
 
 /// <summary>
 /// Vaste eigenschappen per vraagtype. Een dag is altijd maximaal 1000 punten waard.
@@ -25,6 +25,7 @@ public static class QuestionTypes
         new(QuestionType.Mannetje, "Mannetje", "👤", "Van zwart silhouet tot volledig mannetje. Herken jij de speler?", 10, 100, "mannetje"),
         new(QuestionType.Kluts, "Kluts in de zestien", "🌀", "De letters van een naam liggen door elkaar. Om de paar seconden valt er één juist.", 10, 100, "", FromPlayers: true),
         new(QuestionType.Counter, "Counter", "🏃", "Zoveel mogelijk spelers in 60 seconden, met één tip per speler. Raden of doorspelen!", 5, 200, "", FromPlayers: true),
+        new(QuestionType.Volgorde, "Op volgorde", "🔀", "Tik de kaartjes aan in de juiste volgorde. Hoe dichter, hoe meer punten.", 10, 100, "volgorde"),
     ];
 
     public static QuestionTypeInfo Get(QuestionType type) => All.First(t => t.Type == type);
@@ -154,6 +155,16 @@ public static class QuestionRules
     public const double EmojiSeconds = 15;
     public const double OpstellingSeconds = 60;
     public const double CounterSeconds = 60;
+    public const double VolgordeSeconds = 20;
+
+    /// <summary>Op volgorde: zoveel kaartjes per vraag.</summary>
+    public const int VolgordeCards = 4;
+
+    /// <summary>
+    /// Op volgorde: zo lang vóór het einde stuurt de app een onafgewerkte volgorde zelf door. Binnen de speling van de
+    /// server (<see cref="GameRules.LatencyGraceSeconds"/>), zodat ze ook bij een trage verbinding nog meetelt.
+    /// </summary>
+    public const double VolgordeAutoSendSeconds = GameRules.LatencyGraceSeconds - 0.1;
 
     /// <summary>Counter: zoveel spelers per vraag, elk goed voor <see cref="CounterPointsPerPlayer"/> punten.</summary>
     public const int CounterPlayers = 10;
@@ -236,6 +247,21 @@ public static class QuestionRules
     /// <summary>Opstelling: het maximum (alle namen gevonden) naar rato van de gevonden namen.</summary>
     public static int OpstellingPoints(int found, int blanks) =>
         blanks == 0 ? 0 : (int)Math.Round((double)QuestionTypes.Get(QuestionType.Opstelling).MaxPoints * found / blanks);
+
+    /// <summary>
+    /// Op volgorde: het maximum naar rato van de paren die in de juiste volgorde staan. <paramref name="order"/> is de
+    /// gekozen volgorde als indexen in de juiste volgorde (0 hoort eerst). Twee buren omwisselen kost zo maar één paar.
+    /// </summary>
+    public static int VolgordePoints(IReadOnlyList<int> order)
+    {
+        var pairs = order.Count * (order.Count - 1) / 2;
+        if (pairs == 0) return 0;
+        var right = 0;
+        for (var i = 0; i < order.Count; i++)
+            for (var j = i + 1; j < order.Count; j++)
+                if (order[i] < order[j]) right++;
+        return (int)Math.Round((double)QuestionTypes.Get(QuestionType.Volgorde).MaxPoints * right / pairs);
+    }
 }
 
 // ---------- Inhoud van de vragenbank (zoals in Data/questions/*.json) ----------
@@ -256,6 +282,12 @@ public record RugnummerData(string Answer, List<string> Aliases, int Number, str
 
 /// <summary>Een getekend mannetje: Avatar is een avatar-id (bv. "debruyne") of een zelfgemaakte code ("c1:…").</summary>
 public record MannetjeData(string Answer, List<string> Aliases, string Avatar, List<string> Clues);
+
+/// <summary>Op volgorde: een kaartje. Value (bv. "€ 115 mln" of "1986") wordt pas na afloop getoond.</summary>
+public record VolgordeItem(string Label, string Value);
+
+/// <summary>Op volgorde: de opdracht en de kaartjes in de juiste volgorde (de server husselt ze).</summary>
+public record VolgordeData(string Question, List<VolgordeItem> Items);
 
 /// <summary>Een plaats in een opstelling zoals de speler hem ziet (Name null = nog in te vullen).</summary>
 public record LineupSlot(string Position, string? Name, bool IsBlank);

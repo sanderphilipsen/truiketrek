@@ -140,7 +140,10 @@ public abstract class AttemptState
     /// <summary>Meerkeuze/niet-bij: gekozen optie. Jaar: gekozen jaartal.</summary>
     public int? Choice { get; set; }
 
-    /// <summary>Opstelling: welke plaatsen al juist ingevuld zijn. Counter: welke spelers (index) geraden zijn.</summary>
+    /// <summary>
+    /// Opstelling: welke plaatsen al juist ingevuld zijn. Counter: welke spelers (index) geraden zijn.
+    /// Op volgorde: de gekozen volgorde, als indexen in de juiste volgorde.
+    /// </summary>
     public List<int> Found { get; set; } = [];
 
     /// <summary>Counter: welke spelers (index) overgeslagen zijn.</summary>

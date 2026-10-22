@@ -131,6 +131,19 @@
                                 <textarea rows="3" @bind="_lines" @bind:event="oninput" @bind:after="Touch"></textarea>
                             </label>
                             break;
+
+                        case QuestionType.Volgorde:
+                            <label>Opdracht <input @bind="_text" @bind:event="oninput" @bind:after="Touch" placeholder="Bv. Van oud naar jong: wie werd het eerst geboren?" /></label>
+                            <p class="muted">Zet de kaartjes in de juiste volgorde (1 = eerst). De speler ziet ze door elkaar; de waarde verschijnt pas na afloop.</p>
+                            @for (var i = 0; i < QuestionRules.VolgordeCards; i++)
+                            {
+                                var index = i;
+                                <div class="row-2">
+                                    <label>@(index + 1). Kaartje <input @bind="_options[index]" @bind:event="oninput" @bind:after="Touch" placeholder="Bv. Kevin De Bruyne" /></label>
+                                    <label>Waarde <input @bind="_values[index]" @bind:event="oninput" @bind:after="Touch" placeholder="Bv. 28 juni 1991" /></label>
+                                </div>
+                            }
+                            break;
                     }
 
                     <label>Moeilijkheid
@@ -209,6 +222,7 @@
     private int _difficulty = Difficulty.Default, _correct, _year = 2010, _number = 10;
     private string _when = "", _fee = "", _from = "", _to = "", _extra = "", _position = "", _country = "", _club = "", _avatar = Avatars.All[0].Id;
     private List<string> _options = ["", "", "", ""];
+    private List<string> _values = ["", "", "", ""];
     private string[] _positions = new string[11], _names = new string[11], _nameAliases = new string[11];
     private List<string> _sources = [];
     private HashSet<string> _tags = [];
@@ -290,6 +304,12 @@
                 var m = System.Text.Json.JsonSerializer.Deserialize<MannetjeData>(data, Json)!;
                 (_answer, _aliases, _avatar, _lines) = (m.Answer, string.Join(", ", m.Aliases), m.Avatar, string.Join("\n", m.Clues));
                 break;
+            case QuestionType.Volgorde:
+                var v = System.Text.Json.JsonSerializer.Deserialize<VolgordeData>(data, Json)!;
+                _text = v.Question;
+                _options = [.. Enumerable.Range(0, QuestionRules.VolgordeCards).Select(i => v.Items.ElementAtOrDefault(i)?.Label ?? "")];
+                _values = [.. Enumerable.Range(0, QuestionRules.VolgordeCards).Select(i => v.Items.ElementAtOrDefault(i)?.Value ?? "")];
+                break;
         }
     }
 
@@ -308,6 +328,8 @@
         QuestionType.Wissel => Serialize(new WisselData(_answer.Trim(), Split(_aliases, ','), _when.Trim(), _fee.Trim(), _from.Trim(), _to.Trim(), _extra.Trim())),
         QuestionType.Rugnummer => Serialize(new RugnummerData(_answer.Trim(), Split(_aliases, ','), _number, _position.Trim(), _country.Trim(), _club.Trim(), _extra.Trim())),
         QuestionType.Mannetje => Serialize(new MannetjeData(_answer.Trim(), Split(_aliases, ','), _avatar, Split(_lines, '\n'))),
+        QuestionType.Volgorde => Serialize(new VolgordeData(_text.Trim(),
+            _options.Zip(_values, (label, value) => new VolgordeItem(label.Trim(), value.Trim())).ToList())),
         _ => "{}",
     };
 
@@ -348,6 +370,10 @@
             case QuestionType.Mannetje:
                 if (string.IsNullOrWhiteSpace(_answer)) missing.Add("Speler ontbreekt.");
                 if (Split(_lines, '\n').Count < 2) missing.Add("Minstens 2 tips.");
+                break;
+            case QuestionType.Volgorde:
+                if (string.IsNullOrWhiteSpace(_text)) missing.Add("Opdracht ontbreekt.");
+                if (_options.Concat(_values).Any(string.IsNullOrWhiteSpace)) missing.Add($"Vul alle {QuestionRules.VolgordeCards} kaartjes en waarden in.");
                 break;
         }
         return missing;

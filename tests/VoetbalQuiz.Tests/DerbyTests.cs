@@ -56,6 +56,14 @@ public sealed class DerbyTests : IDisposable
         return id;
     }
 
+    [Fact]
+    public async Task Op_volgorde_cannot_be_played_in_a_derby()
+    {
+        var error = await Assert.ThrowsAsync<QuizException>(() => _matches.CreateAsync(_host, "host",
+            new CreateMatchRequest(null, 4, [QuestionType.Snelvuur, QuestionType.Volgorde], Derby: true)));
+        Assert.Contains("Op volgorde", error.Message);
+    }
+
     private void Give(int matchId, string userId, DerbyWeapon weapon)
     {
         _db.MatchPlayers.Single(p => p.MatchId == matchId && p.UserId == userId).Weapon = weapon;

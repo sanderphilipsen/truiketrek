@@ -27,6 +27,7 @@ public sealed class QuestionTypeTests : IDisposable
         {
             Add(QuestionType.Snelvuur, $"V{i}", new SnelvuurData($"Vraag {i}?", ["A", "B", "C", "D"], 2));
             Add(QuestionType.Jaar, $"J{i}", new JaarData($"Gebeurtenis {i}", 2000 + i));
+            Add(QuestionType.Volgorde, $"R{i}", new VolgordeData($"Opdracht {i}", [.. Enumerable.Range(0, QuestionRules.VolgordeCards).Select(n => new VolgordeItem($"Kaart {i}-{n}", $"Waarde {n}"))]));
             Add(QuestionType.Carriere, $"Speler C{i}", new CarriereData($"Speler C{i}", [], ["Club 1 (2001–2003)", "Club 2 (2003–2006)", "Club 3 (2006–2010)", "Club 4 (2010–2014)"]));
             Add(QuestionType.Emoji, $"E{i}", new EmojiData("⚽🇧🇪", $"Emoji Speler {i}", [], "speler", "uitleg"));
             Add(QuestionType.Opstelling, $"O{i}", new OpstellingData($"Finale {i}", "Ploeg",
@@ -96,6 +97,111 @@ public sealed class QuestionTypeTests : IDisposable
         var state = await _quiz.GuessAsync(_me, 1, (year + 1).ToString());
         Assert.Equal(75, state.Result!.Points);
         Assert.Equal(year, state.Result.CorrectYear);
+    }
+
+    [Theory]
+    [InlineData(new[] { 0, 1, 2, 3 }, 100)]
+    [InlineData(new[] { 1, 0, 2, 3 }, 83)] // twee buren omgewisseld: 5 van de 6 paren
+    [InlineData(new[] { 3, 0, 1, 2 }, 50)]
+    [InlineData(new[] { 3, 2, 1, 0 }, 0)]
+    public void Volgorde_scores_the_pairs_in_the_right_order(int[] order, int points) =>
+        Assert.Equal(points, QuestionRules.VolgordePoints(order));
+
+    /// <summary>De gok voor de juiste volgorde: per plaats het getoonde kaartje (index) dat daar hoort.</summary>
+    private static string VolgordeGuess(QuestionState state, VolgordeData data, params int[] correctIndexes) =>
+        string.Join(",", correctIndexes.Select(c => state.View!.Options!.IndexOf(data.Items[c].Label)));
+
+    [Fact]
+    public async Task Volgorde_shuffles_hides_the_values_and_scores_the_order()
+    {
+        await PlanTodayAsync(QuestionType.Volgorde);
+        var data = QuestionEngine.Parse<VolgordeData>((await FirstQuestionAsync()).QuizItem!.Data);
+        var start = await _quiz.StartAsync(_me, 1);
+
+        Assert.Equal(QuestionRules.VolgordeCards, start.View!.Options!.Count);
+        Assert.NotEqual(data.Items.Select(i => i.Label), start.View.Options); // nooit al juist
+        Assert.DoesNotContain("Waarde", System.Text.Json.JsonSerializer.Serialize(start));
+
+        // Herladen toont dezelfde volgorde.
+        Assert.Equal(start.View.Options, (await _quiz.GetStateAsync(_me, 1)).View!.Options);
+
+        var done = await _quiz.GuessAsync(_me, 1, VolgordeGuess(start, data, 0, 1, 2, 3));
+        Assert.True(done.Result!.Correct);
+        Assert.Equal(100, done.Result.Points);
+        Assert.All(done.Result.AllHints, h => Assert.StartsWith("✅", h));
+        Assert.Contains("Waarde 0", done.Result.AllHints[0]);
+
+        var second = await _quiz.StartAsync(_me, 2);
+        var data2 = QuestionEngine.Parse<VolgordeData>((await _quiz.GetOrCreateChallengeAsync(_quiz.Today)).Questions.Single(q => q.Number == 2).QuizItem!.Data);
+        var swapped = await _quiz.GuessAsync(_me, 2, VolgordeGuess(second, data2, 1, 0, 2, 3));
+        Assert.False(swapped.Result!.Correct);
+        Assert.Equal(83, swapped.Result.Points);
+    }
+
+    [Fact]
+    public async Task Volgorde_ignores_invalid_orders_and_puts_untapped_cards_last()
+    {
+        await PlanTodayAsync(QuestionType.Volgorde);
+        var q = await FirstQuestionAsync();
+        var data = QuestionEngine.Parse<VolgordeData>(q.QuizItem!.Data);
+        var start = await _quiz.StartAsync(_me, 1);
+
+        foreach (var bad in new[] { "0,0", "9", "a,b", "" })
+            Assert.Equal(QuestionStatus.InProgress, (await _quiz.GuessAsync(_me, 1, bad)).Status);
+
+        // Alleen het eerste kaartje aangetikt (juist); de rest volgt in de getoonde volgorde.
+        var partial = await _quiz.GuessAsync(_me, 1, VolgordeGuess(start, data, 0));
+        var shownRest = QuestionEngine.VolgordeShown(q).Where(i => i != 0).ToList();
+        Assert.Equal(QuestionRules.VolgordePoints([0, .. shownRest]), partial.Result!.Points);
+    }
+
+    [Fact]
+    public void Volgorde_never_shows_the_cards_already_in_order()
+    {
+        var item = new QuizItem { Type = QuestionType.Volgorde, Key = "x",
+            Data = QuestionEngine.Serialize(new VolgordeData("?", [.. Enumerable.Range(0, QuestionRules.VolgordeCards).Select(n => new VolgordeItem($"K{n}", $"W{n}"))])) };
+        for (var id = 1; id <= 500; id++)
+        {
+            var shown = QuestionEngine.VolgordeShown(new DailyQuestion { Id = id, Type = QuestionType.Volgorde, QuizItem = item });
+            Assert.Equal(Enumerable.Range(0, QuestionRules.VolgordeCards), shown.Order());
+            Assert.NotEqual(Enumerable.Range(0, QuestionRules.VolgordeCards), shown);
+        }
+    }
+
+    [Fact]
+    public void Volgorde_checks_its_content()
+    {
+        static List<string> Problems(params (string Label, string Value)[] items) =>
+            QuestionEngine.Problems(QuestionType.Volgorde, QuestionEngine.Serialize(new VolgordeData("Opdracht", [.. items.Select(i => new VolgordeItem(i.Label, i.Value))])));
+
+        Assert.Empty(Problems(("A", "1"), ("B", "2"), ("C", "3"), ("D", "4")));
+        Assert.NotEmpty(Problems(("A", "1"), ("B", "2"), ("C", "3")));                // te weinig kaartjes
+        Assert.NotEmpty(Problems(("A", "1"), ("B", ""), ("C", "3"), ("D", "4")));     // lege waarde
+        Assert.NotEmpty(Problems(("A", "1"), ("a", "2"), ("C", "3"), ("D", "4")));    // dubbele tekst
+        Assert.NotEmpty(Problems(("A", "1"), ("B", "1"), ("C", "3"), ("D", "4")));    // dubbele waarde
+    }
+
+    [Fact]
+    public async Task Volgorde_sent_completely_wrong_is_a_miss_not_a_pass()
+    {
+        await PlanTodayAsync(QuestionType.Volgorde);
+        var data = QuestionEngine.Parse<VolgordeData>((await FirstQuestionAsync()).QuizItem!.Data);
+        var start = await _quiz.StartAsync(_me, 1);
+        var done = await _quiz.GuessAsync(_me, 1, VolgordeGuess(start, data, 3, 2, 1, 0));
+        Assert.Equal(0, done.Result!.Points);
+        Assert.Equal([3, 2, 1, 0], done.Result.MyOrder);
+        Assert.NotEqual("Gepast.", Commentary.ForResult(done.Result, 100, 1));
+    }
+
+    [Fact]
+    public async Task Volgorde_without_an_answer_gives_nothing_when_time_runs_out()
+    {
+        await PlanTodayAsync(QuestionType.Volgorde);
+        await _quiz.StartAsync(_me, 1);
+        _clock.Advance(TimeSpan.FromSeconds(QuestionRules.VolgordeSeconds + 1));
+        var end = await _quiz.GetStateAsync(_me, 1);
+        Assert.Equal(0, end.Result!.Points);
+        Assert.True(end.Result.TimedOut);
     }
 
     [Fact]
@@ -284,7 +390,7 @@ public sealed class QuestionTypeTests : IDisposable
     {
         await PlanTodayAsync(QuestionType.Snelvuur);
         foreach (var t in new[] { QuestionType.Snelvuur, QuestionType.NietBij, QuestionType.Opstelling, QuestionType.Carriere, QuestionType.Emoji,
-                     QuestionType.Wissel, QuestionType.Rugnummer, QuestionType.Mannetje, QuestionType.Kluts, QuestionType.Counter })
+                     QuestionType.Wissel, QuestionType.Rugnummer, QuestionType.Mannetje, QuestionType.Kluts, QuestionType.Counter, QuestionType.Volgorde })
             await _admin.SetTypeEnabledAsync(t, false);
 
         var challenge = await _quiz.GetOrCreateChallengeAsync(_quiz.Today);
