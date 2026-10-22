@@ -2,7 +2,22 @@
 @inject AuthState Auth
 @inject NavigationManager Nav
 @inject GoldenBallState GoldenBall
+@inject UpdateNotice UpdateNotice
 @implements IDisposable
+
+@* Tijdens een update is de app dicht. Wie midden in een vraag zit, mag die afmaken (de klok loopt op de server);
+   een volgende vraag start de server niet meer. *@
+@if (UpdateNotice.IsComing && !IsQuestionPage)
+{
+    <div class="app">
+        <div class="maintenance-screen" role="status">
+            <img src="logo.svg" alt="" class="maintenance-logo" />
+            <h1>Truitje Trek</h1>
+            <p>@UpdateNotice.Message</p>
+        </div>
+    </div>
+    return;
+}
 
 @* Het admin-paneel gebruikt de volle breedte van een groot scherm. *@
 <div class="app @(IsAdminPage ? "wide" : IsProfilePage ? "medium" : "")">
@@ -25,6 +40,7 @@
     </header>
 
     <main class="content">
+        <UpdateBanner />
         @Body
     </main>
 
@@ -47,6 +63,8 @@
     {
         Auth.AuthenticationStateChanged += OnAuthChanged;
         Nav.LocationChanged += OnLocationChanged; // aria-current van de tabbar bijwerken
+        UpdateNotice.Changed += OnUpdateNoticeChanged;
+        UpdateNotice.Start();
         await Auth.GetAuthenticationStateAsync();
         await LoadGoldenBallAsync();
     }
@@ -73,7 +91,12 @@
     {
         Auth.AuthenticationStateChanged -= OnAuthChanged;
         Nav.LocationChanged -= OnLocationChanged;
+        UpdateNotice.Changed -= OnUpdateNoticeChanged;
     }
+
+    private void OnUpdateNoticeChanged() => InvokeAsync(StateHasChanged);
+
+    private bool IsQuestionPage => Nav.ToBaseRelativePath(Nav.Uri).Split('?', '#')[0].Contains("vraag/", StringComparison.OrdinalIgnoreCase);
 
     private bool IsProfilePage => Nav.ToBaseRelativePath(Nav.Uri).StartsWith("profiel", StringComparison.OrdinalIgnoreCase);
 

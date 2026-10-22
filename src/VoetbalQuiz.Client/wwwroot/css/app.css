@@ -1360,7 +1360,23 @@ button.choice:active { transform: scale(.97); }
     font-weight: 600;
 }
 #update-banner[hidden] { display: none; }
-#update-banner .reload { color: var(--accent); margin-left: 6px; }
+
+/* Tijdens een update (zie MainLayout): enkel de boodschap. */
+.maintenance-screen {
+    flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 12px; padding: 32px 24px; text-align: center; color: #fff;
+}
+.maintenance-screen h1 { margin: 0; font-size: 1.6rem; }
+.maintenance-screen p { margin: 0; max-width: 22rem; font-size: 1.1rem; line-height: 1.45; color: rgba(255, 255, 255, .85); }
+.maintenance-logo { width: 88px; height: 88px; }
+
+/* Op een vraag die nog afgewerkt mag worden (zie UpdateBanner). */
+.update-notice {
+    display: flex; gap: 8px; align-items: flex-start;
+    margin: 0 0 12px; padding: 10px 12px; border-radius: 10px;
+    background: var(--warn-bg); color: var(--warn-text); border: 1px solid var(--warn-line);
+    font-size: .9rem; font-weight: 600; line-height: 1.35;
+}#update-banner .reload { color: var(--accent); margin-left: 6px; }
 
 .loading-progress {
     position: absolute;

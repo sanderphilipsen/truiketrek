@@ -1,0 +1,19 @@
+@inject UpdateNotice Notice
+@implements IDisposable
+
+@* Enkel te zien op een vraag die nog afgewerkt mag worden; elders toont MainLayout het onderhoudsscherm. *@
+@if (Notice.IsComing)
+{
+    <div class="update-notice" role="status">
+        <span aria-hidden="true">🔧</span>
+        <span>@UpdateNotice.Message</span>
+    </div>
+}
+
+@code {
+    protected override void OnInitialized() => Notice.Changed += Refresh;
+
+    private void Refresh() => InvokeAsync(StateHasChanged);
+
+    public void Dispose() => Notice.Changed -= Refresh;
+}

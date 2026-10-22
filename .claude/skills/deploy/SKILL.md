@@ -24,7 +24,7 @@ Draai op de achtergrond (duurt enkele minuten):
 ```bash
 pwsh scripts/deploy-azure.ps1
 ```
-Het script publiceert, zet de zip op de web-app en wacht tot de app antwoordt.
+Het script publiceert, zet de app dicht (spelers zien enkel "Er worden momenteel updates uitgevoerd"; een vraag die al loopt, mag nog afgewerkt worden), wacht 1 minuut zodat een lopende vraag kan afronden, zet de zip op de web-app, wacht tot de nieuwe versie antwoordt en haalt de aankondiging weer weg. Reken op een minuut of vijf. Bij een dringende hotfix: `-WarnMinutes 0`.
 
 ## Nadien
 

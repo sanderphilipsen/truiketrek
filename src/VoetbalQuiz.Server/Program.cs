@@ -41,6 +41,10 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 
 builder.Services.AddSingleton(TimeProvider.System);
+// Op Azure staat /home/data buiten de app-map en overleeft het een deploy; lokaal is het een bestand naast het project.
+builder.Services.AddSingleton(sp => new MaintenanceNotice(
+    builder.Configuration["Maintenance:File"] is { Length: > 0 } file ? Path.Combine(builder.Environment.ContentRootPath, file) : null,
+    sp.GetRequiredService<TimeProvider>()));
 builder.Services.AddScoped<QuestionPicker>();
 builder.Services.AddScoped<QuizService>();
 builder.Services.AddScoped<TrainingService>();
@@ -88,6 +92,8 @@ app.MapMatchEndpoints();
 app.MapAdminEndpoints();
 app.MapProfileEndpoints();
 app.MapHub<MatchHub>("/hubs/match");
+// Zonder aanmelding: ook het aanmeldscherm toont dat er een update komt.
+app.MapGet("/api/status", (MaintenanceNotice maintenance) => maintenance.Status());
 // index.html altijd opnieuw laten valideren: zonder Cache-Control houdt een browser na een deploy
 // een oude versie vast die naar verdwenen framework-bestanden verwijst, en start de app niet meer.
 app.MapFallbackToFile("index.html", new StaticFileOptions

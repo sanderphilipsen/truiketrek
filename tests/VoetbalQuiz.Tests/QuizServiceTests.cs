@@ -376,5 +376,32 @@ public sealed class QuizServiceTests : IDisposable
         Assert.Equal(3, level.Level);
     }
 
+    [Fact]
+    public async Task Announced_update_blocks_new_questions_but_lets_you_finish_the_current_one()
+    {
+        var other = AddUser("jan");
+        await _quiz.StartAsync(other, 1);
+        _t.AnnounceUpdate(_clock.GetUtcNow().AddMinutes(3));
+
+        var ex = await Assert.ThrowsAsync<QuizException>(() => _quiz.StartAsync(_userId, 1));
+        Assert.Equal(MaintenanceNotice.BlockedMessage, ex.Message);
+
+        // De gestarte vraag herladen en afwerken lukt; de volgende vraag start pas na de update.
+        await _quiz.StartAsync(other, 1);
+        Assert.Equal(QuestionStatus.Answered, (await _quiz.GiveUpAsync(other, 1)).Status);
+        await Assert.ThrowsAsync<QuizException>(() => _quiz.StartAsync(other, 2));
+    }
+
+    [Fact]
+    public async Task Forgotten_update_notice_expires()
+    {
+        _t.AnnounceUpdate(_clock.GetUtcNow().AddMinutes(3));
+        Assert.NotNull(_t.Maintenance.UpdateAt());
+
+        _clock.Advance(TimeSpan.FromMinutes(3) + MaintenanceNotice.MaxAge + TimeSpan.FromSeconds(1));
+        Assert.Null(_t.Maintenance.UpdateAt());
+        await _quiz.StartAsync(_userId, 1);
+    }
+
     public void Dispose() => _t.Dispose();
 }

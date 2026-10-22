@@ -14,6 +14,12 @@ public record ProfileInfo(
     LevelInfo Level, List<XpPart> XpBreakdown);
 public record ErrorResponse(string Message);
 
+/// <summary>
+/// Toestand van de server: <paramref name="UpdateAt"/> (UTC) is gezet zolang er zo een update komt. Aan
+/// <paramref name="Version"/> ziet het deployscript dat de nieuwe versie draait.
+/// </summary>
+public record ServerStatus(DateTime? UpdateAt, string? Version = null);
+
 /// <summary>Wat je bijkreeg sinds de vorige beloningspopup (na een daily, special of online wedstrijd).</summary>
 public record RewardSummary(LevelInfo Before, LevelInfo After, List<XpPart> Gained, List<BadgeState> NewBadges)
 {

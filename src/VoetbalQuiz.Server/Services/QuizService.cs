@@ -11,7 +11,7 @@ public class QuizException(string message) : Exception(message);
 /// te zien wat op dat moment vrijgegeven is, en de punten worden hier berekend.
 /// Welke vragen in een reeks komen, kiest <see cref="QuestionPicker"/>; wat per vraagtype verschilt, staat in <see cref="QuestionEngine"/>.
 /// </summary>
-public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService results, QuestionPicker picker)
+public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService results, QuestionPicker picker, MaintenanceNotice maintenance)
 {
     private DateTime Now => clock.GetUtcNow().UtcDateTime;
 
@@ -173,6 +173,10 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
             if (question.DailyChallenge.SpecialEventId is { } sid
                 && await db.SpecialEvents.AnyAsync(s => s.Id == sid && s.EndDate < Today))
                 throw new QuizException("Deze special is afgelopen.");
+
+            // Een gestarte vraag mag afgewerkt worden; een nieuwe start pas na de update.
+            if (maintenance.UpdateAt() is not null)
+                throw new QuizException(MaintenanceNotice.BlockedMessage);
 
             await AttemptFlow.EnsureInOrderAsync(question, previous =>
                 db.Attempts.CountAsync(a => a.UserId == userId && previous.Contains(a.DailyQuestionId) && a.AnsweredAt != null));

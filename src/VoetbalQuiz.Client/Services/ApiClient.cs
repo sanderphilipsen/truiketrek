@@ -133,6 +133,7 @@ public class ApiClient(HttpClient http)
 
     public Task<StatsOverview> GetStatsAsync() => GetAsync<StatsOverview>("api/stats");
     public Task<GoldenBallOverview> GetGoldenBallAsync() => GetAsync<GoldenBallOverview>("api/gouden-bal");
+    public Task<ServerStatus> GetStatusAsync() => GetAsync<ServerStatus>("api/status");
 
     private async Task<T> GetAsync<T>(string url) => await ReadAsync<T>(await http.GetAsync(url));
 

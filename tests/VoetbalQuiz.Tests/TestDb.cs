@@ -33,6 +33,13 @@ public sealed class TestDb : IDisposable
     public QuizDbContext Db { get; }
     public FakeTimeProvider Clock { get; }
 
+    /// <summary>Het bestand waarmee het deployscript een update aankondigt; zet het met <see cref="AnnounceUpdate"/>.</summary>
+    public string MaintenanceFile { get; } = Path.Combine(Path.GetTempPath(), $"voetbalquiz-maintenance-{Guid.NewGuid():N}.json");
+    public MaintenanceNotice Maintenance => _maintenance ??= new MaintenanceNotice(MaintenanceFile, Clock);
+    private MaintenanceNotice? _maintenance;
+
+    public void AnnounceUpdate(DateTimeOffset at) => File.WriteAllText(MaintenanceFile, $$"""{"updateAt":"{{at:O}}"}""");
+
     /// <summary>
     /// Een tweede context op dezelfde database, zoals een verzoek dat tegelijk binnenkomt. Met
     /// <paramref name="interceptors"/> kan een test iets laten gebeuren net voor die context bewaart.
@@ -65,7 +72,7 @@ public sealed class TestDb : IDisposable
 
     public ResultsService Results => _results ??= NewResults(Db);
     public QuestionPicker Picker => _picker ??= new QuestionPicker(Db, Clock);
-    public QuizService Quiz => _quiz ??= new QuizService(Db, Clock, Results, Picker);
+    public QuizService Quiz => _quiz ??= new QuizService(Db, Clock, Results, Picker, Maintenance);
     public AdminService Admin => _admin ??= new AdminService(Db, Picker, Clock);
     public MonthRankingService Ranking => _ranking ??= new MonthRankingService(Db, Results);
     public OnlineService Online => _online ??= new OnlineService(Db, Results);
@@ -82,7 +89,7 @@ public sealed class TestDb : IDisposable
     /// <summary>Met een eigen, lege cache.</summary>
     public ResultsService NewResults(QuizDbContext db) => new(db, Clock, new MemoryCache(new MemoryCacheOptions()));
 
-    public QuizService NewQuiz(QuizDbContext db) => new(db, Clock, NewResults(db), new QuestionPicker(db, Clock));
+    public QuizService NewQuiz(QuizDbContext db) => new(db, Clock, NewResults(db), new QuestionPicker(db, Clock), Maintenance);
 
     public MatchService NewMatches(QuizDbContext db)
     {
@@ -98,6 +105,7 @@ public sealed class TestDb : IDisposable
 
     public void Dispose()
     {
+        File.Delete(MaintenanceFile);
         Db.Dispose();
         _connection.Dispose();
     }
