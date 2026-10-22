@@ -10,7 +10,7 @@
 
     <div class="tabs light">
         <button class="@(_type == FeedbackType.Bug ? "active" : "")" aria-pressed="@(_type == FeedbackType.Bug ? "true" : "false")" @onclick="() => _type = FeedbackType.Bug">🐞 Bug melden</button>
-        <button class="@(_type == FeedbackType.Feature ? "active" : "")" aria-pressed="@(_type == FeedbackType.Feature ? "true" : "false")" @onclick="() => _type = FeedbackType.Feature">💡 Feature request</button>
+        <button class="@(_type == FeedbackType.Feature ? "active" : "")" aria-pressed="@(_type == FeedbackType.Feature ? "true" : "false")" @onclick="() => _type = FeedbackType.Feature">💡 Idee</button>
     </div>
 
     <form class="stack" @onsubmit="SubmitAsync">

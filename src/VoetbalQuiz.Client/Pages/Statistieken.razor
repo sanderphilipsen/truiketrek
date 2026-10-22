@@ -4,6 +4,7 @@
 @inject GoldenBallState GoldenBall
 
 <PageTitle>Statistieken – Truitje Trek</PageTitle>
+<h1 class="sr-only">Statistieken</h1>
 
 <div class="mode-switch">
     <button class="@(_online ? "" : "active")" aria-pressed="@(_online ? "false" : "true")" @onclick="() => _online = false">Daily</button>
@@ -45,10 +46,10 @@ else
 
     <h2 class="section-title">Jouw cijfers</h2>
     <div class="my-stats">
-        <div><b>@me.DaysPlayed</b><small>dagen gespeeld</small></div>
+        <div><b>@me.DaysPlayed</b><small>@(me.DaysPlayed == 1 ? "dag" : "dagen") gespeeld</small></div>
         <div><b>@me.BestDay</b><small>beste dag</small></div>
         <div><b>@me.CorrectPercent%</b><small>juist geraden</small></div>
-        <div><b>@me.CurrentStreak</b><small>dagen op rij</small></div>
+        <div><b>@me.CurrentStreak</b><small>@(me.CurrentStreak == 1 ? "dag" : "dagen") op rij</small></div>
     </div>
 
     <h2 class="section-title">Eregalerij</h2>

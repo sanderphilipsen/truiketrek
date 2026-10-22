@@ -338,7 +338,9 @@ public static class QuestionEngine
     /// <summary>Wat er na afloop getoond wordt: het juiste antwoord en de uitleg.</summary>
     public static AnswerResult Result(IQuizQuestion q, AttemptState a)
     {
-        var baseResult = new AnswerResult(a.Correct, a.Points, AnswerLabel(q), a.WrongGuesses, []);
+        // CloseIfExpired sluit een verlopen vraag af op precies StartedAt + de tijdslimiet; passen of antwoorden gebeurt eerder.
+        var timedOut = !a.Correct && a.AnsweredAt is { } at && (at - a.StartedAt).TotalSeconds >= TimeLimit(q) - 0.001;
+        var baseResult = new AnswerResult(a.Correct, a.Points, AnswerLabel(q), a.WrongGuesses, [], TimedOut: timedOut);
         return q.Type switch
         {
             QuestionType.WieBenIk => baseResult with { AllHints = q.Player!.Hints },

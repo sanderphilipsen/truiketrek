@@ -8,7 +8,7 @@
 @if (_reward is { } r && _open)
 {
     <div class="reward-backdrop" @onclick="SkipOrClose">
-        <div class="reward-card" role="dialog" aria-label="Beloning" @onclick:stopPropagation="true">
+        <div class="reward-card" role="dialog" aria-modal="true" aria-label="Beloning" @onclick:stopPropagation="true">
             @if (_burst > 0)
             {
                 <div class="confetti" @key="@($"confetti-{_burst}")" aria-hidden="true">
@@ -64,7 +64,7 @@
                 </div>
             }
 
-            <button class="btn primary big" @onclick="SkipOrClose">@(_done ? "Top!" : "Overslaan")</button>
+            <button class="btn primary big" @ref="_mainButton" @onclick="SkipOrClose">@(_done ? "Top!" : "Overslaan")</button>
         </div>
     </div>
 }
@@ -84,6 +84,17 @@
     private int _shownXp, _levelUps, _burst;
     private List<Piece> _confetti = [];
     private readonly CancellationTokenSource _cts = new();
+
+    // Zodra de popup opengaat, krijgt de knop de focus: zo weten toetsenbord en schermlezer waar ze zijn.
+    private ElementReference _mainButton;
+    private bool _focused;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!_open || _focused) return;
+        _focused = true;
+        try { await _mainButton.FocusAsync(); } catch (InvalidOperationException) { }
+    }
 
     protected override async Task OnInitializedAsync()
     {

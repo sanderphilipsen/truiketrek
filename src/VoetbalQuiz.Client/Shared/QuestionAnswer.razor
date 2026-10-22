@@ -32,7 +32,7 @@
                 <div class="choice @css">@View!.Options![i]</div>
             }
         </div>
-        @if (Result.MyChoice is null) { <p class="center light-text">Niet op tijd gekozen.</p> }
+        @if (Result.MyChoice is null) { <p class="center light-text">@(Result.TimedOut ? "Niet op tijd gekozen." : "Je paste.")</p> }
         break;
 
     case QuestionType.Jaar:

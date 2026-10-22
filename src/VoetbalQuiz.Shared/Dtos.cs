@@ -105,7 +105,9 @@ public record AnswerResult(
     int? MyChoice = null,
     int? CorrectYear = null,
     int? MyYear = null,
-    List<LineupSlot>? FullLineup = null);
+    List<LineupSlot>? FullLineup = null,
+    // De vraag liep af omdat de tijd om was (niet omdat de speler paste of antwoordde).
+    bool TimedOut = false);
 
 // Leaderboard
 public record LeaderboardEntry(

@@ -54,6 +54,7 @@ else
             <li class="@(q.Correct == true ? "ok" : q.Correct == false ? "fail" : q.Status == QuestionStatus.NotStarted ? "todo" : "busy")">
                 <span class="num">@q.Number</span>
                 <span class="name">@(q.PlayerName ?? (q.Status == QuestionStatus.NotStarted ? "?" : "bezig…"))</span>
+                @if (q.Correct is { } correct) { <span class="mark" role="img" aria-label="@(correct ? "juist" : "fout")">@(correct ? "✓" : "✗")</span> }
                 <span class="pts">@(q.Points is { } p ? $"{p}" : "")</span>
             </li>
         }

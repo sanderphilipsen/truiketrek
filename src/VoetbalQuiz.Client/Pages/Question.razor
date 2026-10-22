@@ -12,7 +12,7 @@
     <a href="@OverviewUrl" class="back">‹ Overzicht</a>
     <h1 class="question-title">
         @if (_state is not null) { <span class="type-tag">@Info.Icon @Info.Name</span> }
-        Vraag <b>@Number</b> / @_total
+        <span class="q-count">Vraag <b>@Number</b> / @_total</span>
     </h1>
 </div>
 @if (RunId is not null)
@@ -37,9 +37,9 @@ else if (_state.Result is { } result)
     @* ---------- Na afloop ---------- *@
     <div class="result @(result.Correct || result.Points > 0 ? "ok" : "fail")">
         <div class="result-icon">@(result.Correct ? "⚽" : result.Points > 0 ? "👍" : "❌")</div>
-        <div class="result-shout">@Commentary.ForResult(result.Correct, result.Points, _state.View?.MaxPoints ?? 100, Number)</div>
+        <div class="result-shout">@Commentary.ForResult(result, _state.View?.MaxPoints ?? 100, Number)</div>
         <div class="result-name">@QuestionAnswer.Title(_state.Type, result)</div>
-        <div class="result-points">+@result.Points punten</div>
+        <div class="result-points @(result.Points == 0 ? "zero" : "")">+@result.Points punten</div>
         @if (result.WrongGuesses > 0)
         {
             <div class="muted">@result.WrongGuesses foute @(result.WrongGuesses == 1 ? "poging" : "pogingen")</div>
@@ -129,7 +129,7 @@ else
     private int? _afficheFor;
 
     private string ResultAnnouncement => _state?.Result is { } r
-        ? $"{Commentary.ForResult(r.Correct, r.Points, _state.View?.MaxPoints ?? 100, Number)} {QuestionAnswer.Title(_state.Type, r)}. Plus {r.Points} punten."
+        ? $"{Commentary.ForResult(r, _state.View?.MaxPoints ?? 100, Number)} {QuestionAnswer.Title(_state.Type, r)}. Plus {r.Points} punten."
         : "";
 
     protected override async Task OnParametersSetAsync()

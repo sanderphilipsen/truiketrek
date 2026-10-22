@@ -37,7 +37,7 @@ else
             @if (_public is not null)
             {
                 <div class="my-stats profile-stats">
-                    <div><b>@_public.DaysPlayed</b><small>dagen gespeeld</small></div>
+                    <div><b>@_public.DaysPlayed</b><small>@(_public.DaysPlayed == 1 ? "dag" : "dagen") gespeeld</small></div>
                     <div><b>@_public.DaysWon</b><small>dagzeges</small></div>
                     <div><b>@_public.BestDay</b><small>beste dag</small></div>
                     <div><b>@_public.Rating</b><small>online rating</small></div>

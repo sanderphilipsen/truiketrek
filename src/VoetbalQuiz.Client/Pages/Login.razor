@@ -8,13 +8,13 @@
 
 <section class="card auth">
     <h1>@(_register ? "Account maken" : "Aanmelden")</h1>
-    <p class="muted">Elke dag 10 voetballers raden. Hoe sneller, hoe meer punten.</p>
+    <p class="muted">Elke dag 10 voetbalvragen. Hoe sneller, hoe meer punten.</p>
 
     <form @onsubmit="SubmitAsync">
         @if (_register)
         {
             <label>Gebruikersnaam
-                <input @bind="_userName" autocomplete="username" maxlength="20" required />
+                <input @bind="_userName" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" maxlength="20" required />
             </label>
             <label>E-mail
                 <input type="email" @bind="_email" autocomplete="email" required />
@@ -23,7 +23,7 @@
         else
         {
             <label>Gebruikersnaam of e-mail
-                <input @bind="_userName" autocomplete="username" required />
+                <input @bind="_userName" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required />
             </label>
         }
         <label>Wachtwoord

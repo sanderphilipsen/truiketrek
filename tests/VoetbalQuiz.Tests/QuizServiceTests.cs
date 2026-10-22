@@ -114,6 +114,8 @@ public sealed class QuizServiceTests : IDisposable
         await _quiz.StartAsync(_userId, 1);
         var gaveUp = await _quiz.GiveUpAsync(_userId, 1);
         Assert.Equal(0, gaveUp.Result!.Points);
+        Assert.False(gaveUp.Result.TimedOut);
+        Assert.Equal("Gepast.", Commentary.ForResult(gaveUp.Result, 100, 1));
 
         await _quiz.StartAsync(_userId, 2);
         _clock.Advance(TimeSpan.FromSeconds(GameRules.TimeLimitSeconds + 1));
@@ -163,6 +165,8 @@ public sealed class QuizServiceTests : IDisposable
         Assert.Equal(QuestionStatus.Answered, late.Status);
         Assert.False(late.Result!.Correct);
         Assert.Equal(GameRules.TimeLimitSeconds, late.ElapsedSeconds); // afgesloten op de limiet, niet op het moment van kijken
+        Assert.True(late.Result.TimedOut);
+        Assert.Equal("Tijd is om!", Commentary.ForResult(late.Result, 100, 1));
         Assert.Equal(GameRules.HintCount, late.Hints.Count);
         Assert.Null(late.LastWrongGuess);
     }

@@ -21,4 +21,15 @@ public static class Commentary
         : correct ? Pick(Goal, seed)
         : points > 0 ? Pick(Almost, seed)
         : Pick(Missed, seed);
+
+    /// <summary>
+    /// Zoals hierboven, maar zonder punten zegt het waarom: de tijd was om, of de speler paste zelf.
+    /// Een fout gekozen optie of jaartal blijft een gemiste kans.
+    /// </summary>
+    public static string ForResult(AnswerResult result, int maxPoints, int seed) => result switch
+    {
+        { Correct: false, Points: 0, TimedOut: true } => "Tijd is om!",
+        { Correct: false, Points: 0, MyChoice: null, MyYear: null } => "Gepast.",
+        _ => ForResult(result.Correct, result.Points, maxPoints, seed),
+    };
 }
