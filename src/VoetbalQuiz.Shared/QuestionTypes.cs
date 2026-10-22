@@ -14,9 +14,9 @@ public static class QuestionTypes
     public static readonly List<QuestionTypeInfo> All =
     [
         new(QuestionType.WieBenIk, "Wie ben ik?", "🕵️", "Een speler beschrijft zichzelf in 5 tips. Typ zijn naam.", 10, 100, "", FromPlayers: true),
-        new(QuestionType.Snelvuur, "Snelvuur", "⚡", "Kies het juiste antwoord uit 4. Je hebt 5 seconden.", 10, 100, "snelvuur"),
+        new(QuestionType.Snelvuur, "Snelvuur", "⚡", "Kies het juiste antwoord uit 4. Je hebt 15 seconden.", 10, 100, "snelvuur"),
         new(QuestionType.Carriere, "Carrièrepad", "🧭", "De clubs verschijnen één voor één. Wie is de speler?", 10, 100, "carriere"),
-        new(QuestionType.NietBij, "Wie hoort er niet bij?", "🧩", "Tik op de vreemde eend. Je hebt 6 seconden.", 10, 100, "niet-bij"),
+        new(QuestionType.NietBij, "Wie hoort er niet bij?", "🧩", "Tik op de vreemde eend. Je hebt 15 seconden.", 10, 100, "niet-bij"),
         new(QuestionType.Jaar, "Raad het jaar", "📅", "Kies het jaartal. Hoe dichter, hoe meer punten.", 10, 100, "jaar"),
         new(QuestionType.Emoji, "Emoji-raadsel", "😀", "Welke speler of club zit er in deze emoji's?", 10, 100, "emoji"),
         new(QuestionType.Opstelling, "Opstelling", "📋", "Vul de ontbrekende spelers van een bekende basiself aan.", 5, 200, "opstelling"),
@@ -142,9 +142,12 @@ public static class QuestionTypes
 /// <summary>Timing en puntentelling van de nieuwe vraagtypes. "Wie ben ik?" gebruikt <see cref="GameRules"/>.</summary>
 public static class QuestionRules
 {
-    public const double SnelvuurSeconds = 5;
-    public const double NietBijSeconds = 6;
-    public const double JaarSeconds = 10;
+    /// <summary>Geen enkele vraag geeft minder tijd dan dit.</summary>
+    public const double MinSeconds = 15;
+
+    public const double SnelvuurSeconds = 15;
+    public const double NietBijSeconds = 15;
+    public const double JaarSeconds = 15;
     public const double EmojiSeconds = 15;
     public const double OpstellingSeconds = 60;
     public const double CounterSeconds = 60;
@@ -196,7 +199,7 @@ public static class QuestionRules
     public static int RevealStep(double elapsed, int steps) =>
         Math.Clamp(1 + (int)Math.Floor(Math.Max(0, elapsed) / CarriereClubSeconds), 1, steps);
 
-    public static double RevealLimit(int steps) => steps * CarriereClubSeconds + CarriereExtraSeconds;
+    public static double RevealLimit(int steps) => Math.Max(MinSeconds, steps * CarriereClubSeconds + CarriereExtraSeconds);
 
     /// <summary>100 bij de eerste stap, 10 minder per extra stap, minimum 50; min strafpunten.</summary>
     public static int RevealPoints(int step, int wrongGuesses) =>

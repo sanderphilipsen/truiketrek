@@ -36,10 +36,10 @@ Er zijn 12 vraagtypes. Elke weekdag heeft in de daily een vast type **of een mix
 | Type | Werking | Tijd | Punten |
 |---|---|---|---|
 | 🕵️ Wie ben ik? | 5 tips, typ de naam | 30 s | 100 → 50 |
-| ⚡ Snelvuur | 4 opties, tik het juiste | 5 s | 50–100, sneller = meer |
+| ⚡ Snelvuur | 4 opties, tik het juiste | 15 s | 50–100, sneller = meer |
 | 🧭 Carrièrepad | clubs verschijnen één voor één, typ de speler | ±25 s | 100 → 50 |
-| 🧩 Wie hoort er niet bij? | tik de vreemde eend | 6 s | 50–100 |
-| 📅 Raad het jaar | kies het jaartal | 10 s | 100 / 75 / 50 / 25 |
+| 🧩 Wie hoort er niet bij? | tik de vreemde eend | 15 s | 50–100 |
+| 📅 Raad het jaar | kies het jaartal | 15 s | 100 / 75 / 50 / 25 |
 | 😀 Emoji-raadsel | typ de speler of club | 15 s | 100 → 50 |
 | 📋 Opstelling | vul 6 namen van een basiself aan | 60 s | tot 200 per opstelling (5 per dag) |
 | 🔄 Wissel | een spraakmakende transfer, feit per feit (wanneer, bedrag, van, naar, tip) | 26 s | 100 → 50 |
