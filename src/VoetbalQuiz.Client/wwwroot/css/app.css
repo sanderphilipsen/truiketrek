@@ -145,7 +145,6 @@ h1 { margin: .2rem 0 .4rem; font-size: 1.5rem; }
 .brand { font-weight: 800; font-size: 1.2rem; text-decoration: none; letter-spacing: .3px; }
 .brand { display: flex; align-items: center; gap: 8px; flex: none; white-space: nowrap; }
 .brand .logo { width: 34px; height: 34px; }
-.who { font-size: .9rem; opacity: .85; }
 .brand, .who, .admin-link { min-height: var(--tap); }
 .admin-link { display: inline-flex; align-items: center; justify-content: center; min-width: var(--tap); }
 
@@ -454,10 +453,15 @@ input:focus { border-color: var(--pitch-2); box-shadow: 0 0 0 3px rgba(15, 81, 5
 
 /* ---------- Avatar, level & profiel ---------- */
 .avatar { flex: none; border-radius: 50%; background: #fff; }
-.who { display: flex; align-items: center; gap: 8px; text-decoration: none; min-width: 0; }
-/* Lange namen: afkappen met … en op een heel smalle gsm weglaten (de naam staat ook in de begroeting). */
-.who-name { min-width: 0; max-width: 16ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-@media (max-width: 359px) { .who-name { display: none; } }
+.who { position: relative; display: flex; align-items: center; justify-content: center; min-width: var(--tap); text-decoration: none; }
+/* Het level als bolletje op de hoek van de avatar; de donkere rand houdt het los van de avatar (≥ 3:1). */
+.lvl-dot {
+    position: absolute; right: -3px; bottom: 0;
+    min-width: 18px; height: 18px; padding: 0 4px; border-radius: 9px;
+    display: grid; place-items: center;
+    background: var(--accent); color: #1b1600; border: 2px solid var(--pitch);
+    font-size: .68rem; font-weight: 800; line-height: 1;
+}
 .admin-link { margin-left: auto; margin-right: 12px; font-size: 1.3rem; text-decoration: none; }
 .lvl {
     display: inline-block;
@@ -888,8 +892,9 @@ body:has(.sheet) { overflow: hidden; }
 .optional { font-weight: 400; color: var(--muted); }
 
 /* ---------- Home ---------- */
-/* Naam, level en avatar staan in de topbar: de begroeting is één rustige regel (een naam van 20 tekens mag breken). */
+/* De topbar toont enkel de avatar: de begroeting is één rustige regel met naam en level (een naam van 20 tekens mag breken). */
 .home-hello { margin: 0 0 12px; font-size: .95rem; font-weight: 600; color: var(--on-field-muted); overflow-wrap: anywhere; }
+.home-hello .lvl { margin-left: 4px; }
 .home-card-head { display: flex; justify-content: space-between; align-items: flex-start; }
 .home-card-head h2, .card > h2 { margin: 0 0 8px; font-size: 1.15rem; }
 .home-daily { min-height: 260px; } /* zelfde hoogte tijdens het laden: niets springt */

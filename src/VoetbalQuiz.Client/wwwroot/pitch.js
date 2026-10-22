@@ -262,7 +262,8 @@
             svg.setAttribute('viewBox', '-20 0 210 100');
             field.setAttribute('transform', 'translate(0 100) rotate(-90)');
         } else {
-            svg.setAttribute('viewBox', '0 -20 100 210');
+            // Weinig ruimte boven de bovenste doellijn: die valt achter de topbar, zodat het veld bovenaan al begint.
+            svg.setAttribute('viewBox', '0 -8 100 210');
             field.removeAttribute('transform');
         }
     }

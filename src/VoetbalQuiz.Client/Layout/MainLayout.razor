@@ -29,11 +29,11 @@
                 {
                     <a href="admin" class="admin-link" title="Admin">⚙️</a>
                 }
-                @* Lange namen (tot 20 tekens) worden afgekapt; op een smalle gsm valt de naam weg, hij staat al in de begroeting. *@
+                @* Enkel je avatar met een levelbolletje: de naam staat in de begroeting op Home, level en XP eronder.
+                   Het label van de link zegt beide voor schermlezers. *@
                 <a href="profiel" class="who" aria-label="Jouw profiel: @context.User.Identity?.Name, level @Auth.User?.Level">
-                    <span class="who-name">@context.User.Identity?.Name</span>
-                    <span class="lvl">Lv @Auth.User?.Level</span>
-                    <Avatar Id="@Auth.User?.AvatarId" User="@Auth.User?.UserName" Size="34" />
+                    <Avatar Id="@Auth.User?.AvatarId" User="@Auth.User?.UserName" Size="34" Decorative="true" />
+                    <span class="lvl-dot" aria-hidden="true">@Auth.User?.Level</span>
                 </a>
             </Authorized>
         </AuthorizeView>

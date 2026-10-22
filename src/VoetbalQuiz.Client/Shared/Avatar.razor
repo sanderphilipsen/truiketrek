@@ -7,7 +7,8 @@
     var stars = Math.Min(GoldenBall.StarsOf(User), GoldenBallRules.MaxStarsShown);
     var golden = GoldenBall.IsHolder(User);
 }
-<svg class="avatar @(golden ? "golden" : "")" width="@Size" height="@Size" viewBox="0 0 100 100" role="img" aria-label="@Label(a.Name, stars, golden)">
+<svg class="avatar @(golden ? "golden" : "")" width="@Size" height="@Size" viewBox="0 0 100 100"
+     role="@(Decorative ? null : "img")" aria-label="@(Decorative ? null : Label(a.Name, stars, golden))" aria-hidden="@(Decorative ? "true" : null)">
     <defs>
         <clipPath id="clip-@_uid"><circle cx="50" cy="50" r="50" /></clipPath>
         <clipPath id="shirt-@_uid"><path d="@ShirtPath" /></clipPath>
@@ -204,6 +205,9 @@
     [Parameter] public string? User { get; set; }
 
     [Parameter] public int Size { get; set; } = 40;
+
+    /// <summary>Verborgen voor schermlezers, bv. als de link eromheen al zegt wie het is.</summary>
+    [Parameter] public bool Decorative { get; set; }
 
     private const string ShirtPath = "M8 100 Q10 74 34 68 L66 68 Q90 74 92 100 Z";
 

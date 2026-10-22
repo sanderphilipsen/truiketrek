@@ -8,8 +8,11 @@
 
 <PageTitle>Truitje Trek – Voetbalquiz</PageTitle>
 
-@* Naam, level en avatar staan al in de topbar: hier enkel één rustige regel. *@
-<h1 class="home-hello">Hoi @Auth.User?.UserName&nbsp;<span aria-hidden="true">👋</span></h1>
+@* De topbar toont enkel je avatar: hier een begroeting volgens het uur, met je naam en je level erbij. *@
+<h1 class="home-hello">
+    @Greeting @Auth.User?.UserName&nbsp;<span aria-hidden="true">👋</span>
+    @if (Auth.User is { } user) { <span class="lvl">Level @user.Level</span> }
+</h1>
 
 @foreach (var t in _myTables)
 {
@@ -233,6 +236,14 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
             RefreshUserAsync(),
             GoldenBall.EnsureLoadedAsync()); // nieuwe dag: misschien een nieuwe Gouden Bal
     }
+
+    /// <summary>Volgens de klok van het toestel: 's ochtends (vanaf 5 uur), 's middags (vanaf 12 uur), anders 's avonds.</summary>
+    private static string Greeting => DateTime.Now.Hour switch
+    {
+        >= 5 and < 12 => "Goedemorgen",
+        >= 12 and < 18 => "Goedemiddag",
+        _ => "Goedenavond",
+    };
 
     private async Task LoadDailyAsync()
     {
