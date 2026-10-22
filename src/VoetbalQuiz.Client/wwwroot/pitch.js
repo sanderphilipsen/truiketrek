@@ -289,6 +289,29 @@
         return ((T - lngHour) % 24 + 24) % 24;
     }
 
+    // Stadionlichten: uit elke hoek een lichtbundel richting de middenstip. De hoek hangt af van de vorm van het scherm.
+    function buildLights(host) {
+        const lights = document.createElement('div');
+        lights.className = 'pf-lights';
+        for (const corner of ['tl', 'tr', 'bl', 'br']) {
+            for (const part of ['beam', 'lamp', 'bank']) {
+                const span = document.createElement('span');
+                span.className = `pf-${part} ${corner}`;
+                lights.appendChild(span);
+            }
+        }
+        host.appendChild(lights);
+        const aim = () => {
+            const a = Math.atan2(innerWidth, innerHeight) * 180 / Math.PI;
+            lights.style.setProperty('--tl', `${180 - a}deg`);
+            lights.style.setProperty('--tr', `${180 + a}deg`);
+            lights.style.setProperty('--bl', `${a}deg`);
+            lights.style.setProperty('--br', `${360 - a}deg`);
+        };
+        aim();
+        addEventListener('resize', aim);
+    }
+
     function updateNight() {
         const now = new Date();
         const hour = now.getUTCHours() + now.getUTCMinutes() / 60;
@@ -304,6 +327,7 @@
         field = el('g', {}, svg);
         field.innerHTML = FIELD;
         layer = el('g', { class: 'pf-play' }, field);
+        buildLights(host);
         document.body.prepend(host);
 
         orient();

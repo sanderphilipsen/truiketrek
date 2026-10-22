@@ -53,19 +53,56 @@ body::before {
 }
 .pitch-fx { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
 .pitch-fx svg { display: block; width: 100%; height: 100%; }
-.pitch-fx::before, .pitch-fx::after { content: ""; position: absolute; inset: 0; transition: opacity 4s ease; }
-.pitch-fx::before { background: radial-gradient(ellipse 90% 55% at 12% -8%, rgba(255, 238, 180, .11), transparent 70%); }
-.pitch-fx::after {
-    opacity: 0;
-    background:
-        radial-gradient(ellipse 75% 45% at 0 0, rgba(255, 248, 215, .15), transparent 70%),
-        radial-gradient(ellipse 75% 45% at 100% 0, rgba(255, 248, 215, .15), transparent 70%),
-        radial-gradient(ellipse 75% 45% at 0 100%, rgba(255, 248, 215, .12), transparent 70%),
-        radial-gradient(ellipse 75% 45% at 100% 100%, rgba(255, 248, 215, .12), transparent 70%),
-        rgba(0, 8, 4, .3);
+.pitch-fx::before {
+    content: ""; position: absolute; inset: 0; transition: opacity 4s ease;
+    background: radial-gradient(ellipse 90% 55% at 12% -8%, rgba(255, 238, 180, .11), transparent 70%);
 }
 .pitch-night .pitch-fx::before { opacity: 0; }
-.pitch-night .pitch-fx::after { opacity: 1; }
+
+/* Avond: het veld wordt donkerder en uit elke hoek schijnt een lichtmast (lamp + bundel) naar de middenstip.
+   De richting (--tl, --tr, --bl, --br) zet pitch.js volgens de vorm van het scherm. */
+.pf-lights {
+    position: absolute; inset: 0; overflow: hidden; opacity: 0; transition: opacity 4s ease;
+    background: radial-gradient(ellipse 70% 55% at 50% 50%, rgba(0, 6, 3, .3), rgba(0, 4, 2, .62));
+}
+.pitch-night .pf-lights { opacity: 1; }
+.pf-beam, .pf-lamp, .pf-bank { position: absolute; }
+.pf-beam, .pf-lamp { border-radius: 50%; }
+.pf-beam {
+    --dir: 135deg;
+    width: 220vmax; height: 220vmax; margin: -110vmax 0 0 -110vmax;
+    background: conic-gradient(from calc(var(--dir) - 22deg),
+        transparent 0deg, rgba(255, 244, 205, .12) 7deg, rgba(255, 248, 220, .30) 16deg, rgba(255, 253, 240, .45) 22deg,
+        rgba(255, 248, 220, .30) 28deg, rgba(255, 244, 205, .12) 37deg, transparent 44deg);
+    -webkit-mask-image: radial-gradient(circle closest-side, #000 0, rgba(0, 0, 0, .75) 30%, rgba(0, 0, 0, .25) 60%, transparent 85%);
+    mask-image: radial-gradient(circle closest-side, #000 0, rgba(0, 0, 0, .75) 30%, rgba(0, 0, 0, .25) 60%, transparent 85%);
+    animation: pf-breathe 7s ease-in-out infinite;
+}
+/* De gloed rond de lichtmast. */
+.pf-lamp {
+    width: 60vmin; height: 60vmin; margin: -30vmin 0 0 -30vmin;
+    background: radial-gradient(circle closest-side, rgba(255, 255, 245, .85), rgba(255, 248, 215, .35) 22%, rgba(255, 244, 205, .1) 55%, transparent);
+    animation: pf-breathe 7s ease-in-out infinite;
+}
+/* De lampenbank zelf: een raster van felle lampjes, gekanteld naar de middenstip. */
+.pf-bank {
+    --dir: 135deg;
+    width: 46px; height: 28px; margin: -14px 0 0 -23px; border-radius: 4px;
+    background: radial-gradient(circle, #fff 0 2.4px, rgba(255, 250, 225, .6) 3.2px, transparent 4.4px) 1px 0 / 11px 9px, rgba(20, 30, 25, .55);
+    box-shadow: 0 0 18px 6px rgba(255, 250, 225, .55), 0 0 60px 24px rgba(255, 246, 210, .25);
+    transform: rotate(calc(var(--dir) - 180deg)) translateY(22px);
+}
+.tl:is(.pf-beam, .pf-bank) { --dir: var(--tl); }
+.tr:is(.pf-beam, .pf-bank) { --dir: var(--tr); }
+.bl:is(.pf-beam, .pf-bank) { --dir: var(--bl); }
+.br:is(.pf-beam, .pf-bank) { --dir: var(--br); }
+.tl:is(.pf-beam, .pf-lamp, .pf-bank) { left: 0; top: 0; }
+.tr:is(.pf-beam, .pf-lamp, .pf-bank) { left: 100%; top: 0; animation-delay: -2.1s; }
+.bl:is(.pf-beam, .pf-lamp, .pf-bank) { left: 0; top: 100%; animation-delay: -4.3s; }
+.br:is(.pf-beam, .pf-lamp, .pf-bank) { left: 100%; top: 100%; animation-delay: -5.6s; }
+/* De masten ademen elk op hun eigen ritme, zoals echte stadionlampen die nooit helemaal even fel branden. */
+@keyframes pf-breathe { 0%, 100% { opacity: 1; } 50% { opacity: .72; } }
+@media (prefers-reduced-motion: reduce) { .pf-beam, .pf-lamp { animation: none; } }
 
 .pf-lines { fill: none; stroke: #fff; stroke-opacity: .13; stroke-width: 1.5; }
 .pf-lines *, .pf-trail, .pf-ring, .pf-ripple { vector-effect: non-scaling-stroke; }
