@@ -41,15 +41,19 @@
 
 @if (ShowIntro)
 {
-    <section class="card home-intro" aria-labelledby="intro-title">
-        <h2 id="intro-title">Zo werkt het</h2>
+    @* Nieuwe spelers: één regel uitleg; "Meer" klapt de details open, "Begrepen" haalt het blok weg. *@
+    <details class="card home-intro">
+        <summary>
+            <span class="home-intro-line">Hoe sneller je juist bent, hoe meer punten. De klok start zodra je een vraag opent.</span>
+            <span class="sb-go" aria-hidden="true">Meer ›</span>
+        </summary>
         <ul>
             <li><span aria-hidden="true">⚽</span> Elke dag nieuwe vragen. Hoe minder tips je nodig hebt, hoe meer punten.</li>
             <li><span aria-hidden="true">🟨</span> Een foute gok kost @GameRules.WrongGuessPenalty punten. Even nadenken loont dus.</li>
             <li><span aria-hidden="true">🏆</span> De beste van de dag pakt de dagzege, en elke maand gaat er een Gouden Bal naar de top.</li>
         </ul>
         <button type="button" class="btn small" @onclick="HideIntroAsync">Begrepen</button>
-    </section>
+    </details>
 }
 
 @if (!TopReady)
@@ -59,10 +63,10 @@
         <div class="skeleton-lines" aria-hidden="true">
             <span class="skeleton skeleton-line short"></span>
             <span class="skeleton skeleton-line"></span>
+            <span class="skeleton skeleton-button"></span>
         </div>
         <span class="sr-only" role="status">Daily laden…</span>
     </div>
-    @MiniTiles()
 }
 else
 {
@@ -71,14 +75,20 @@ else
         @* Startdag van een special: het kaartje "Nieuw vandaag" staat boven de daily. *@
         @SpecialCard(hero, isNew: true)
     }
-    @* Scorebord bovenaan: de daily als compacte tegel (doorklikken voor alles), daaronder twee kleine tegeltjes. *@
     @DailyCard()
-    @MiniTiles()
 }
 
+@* Meteen onder de daily: online spelen, zonder kop of uitleg. Open partijtjes (enkel als die er zijn) en de tegel
+   "Nieuwe match", iets zwaarder dan de stroken eronder maar zonder geel. Home is de lobby. *@
+<section class="home-online" aria-label="Online spelen">
+    @* Jouw partijtjes staan als banner bovenaan; hier alle open partijtjes om aan mee te doen (er is geen aparte lobby meer). *@
+    <OpenTables ShowMine="false" Compact="true" OnLoaded="l => _myTables = l.Mine" />
+    <CreateTableForm UserName="@Auth.User?.UserName" Tile="true" />
+</section>
+
 @code {
-    // De daily als scorebordtegel: enkel het type, hoever je bent en de volgende stap. De hele tegel klikt door
-    // naar de volgende vraag (of naar het overzicht als je klaar bent); punten, sterren en de top 3 staan daar.
+    // De daily als scorebordtegel: je punten van vandaag, je plaats en je reeks, en één knop naar de volgende stap.
+    // Welk vraagtype het is en hoever je bent, zie je pas als je speelt; dat houdt de tegel rustig.
     private RenderFragment DailyCard() => @<section class="card home-daily" aria-labelledby="daily-title">
     @if (_daily is null)
     {
@@ -90,48 +100,44 @@ else
     }
     else
     {
-        var total = _daily.Questions.Count;
         var answered = _daily.Questions.Count(q => q.Status == QuestionStatus.Answered);
-        var correct = _daily.Questions.Count(q => q.Correct == true);
         var started = _daily.Questions.Any(q => q.Status != QuestionStatus.NotStarted);
         var next = _daily.Questions.FirstOrDefault(q => q.Status != QuestionStatus.Answered);
 
-        <a class="sb-link" href="@(next is null ? "daily" : $"vraag/{next.Number}")">
+        <div class="home-daily-head">
             <h2 id="daily-title" class="sb-label">Daily · vandaag</h2>
-            <span class="sb-main">
-                <b class="sb-title">@QuestionTypes.DayName(_daily)</b>
-                <span class="sb-digits" role="img" aria-label="@ProgressLabel(answered, correct, total)">@answered/@total</span>
-            </span>
-            <span class="sb-go">
-                @(next is null ? $"Klaar · {_daily.TotalPoints} punten" : started ? $"Verder met vraag {next.Number}" : "Start de daily")
-                <span aria-hidden="true">›</span>
-            </span>
+            @if (answered > 0)
+            {
+                <span class="sb-digits" role="img" aria-label="@_daily.TotalPoints punten vandaag">@_daily.TotalPoints</span>
+            }
+        </div>
+        @* Je plaats (opent het klassement) en je reeks (opent de statistieken), elk met zijn getal in het label. *@
+        <div class="home-daily-facts">
+            <a class="home-fact" href="klassement" aria-label="@RankLabel">
+                <Icon Name="trophy" Class="sb-icon" />
+                <span aria-hidden="true">@RankText</span>
+            </a>
+            <a class="home-fact" href="statistieken" aria-label="@StreakLabel">
+                <Icon Name="flame" Class="sb-icon" />
+                <span aria-hidden="true">@StreakText</span>
+            </a>
+        </div>
+        @* De enige gele knop op Home, tenzij de special na de daily de hoofdactie is. *@
+        <a class="btn home-daily-play @(SpecialIsMain ? "" : "primary")" href="@(next is null ? "daily" : $"vraag/{next.Number}")">
+            @(next is null ? "Bekijk je score" : started ? $"Verder met vraag {next.Number}" : "Start de daily")
+            <span aria-hidden="true">›</span>
         </a>
     }
 </section>;
 
-    // Twee kleine tegeltjes onder de daily: je plaats vandaag (opent het klassement) en je reeks
-    // (opent de statistieken). Elk tegeltje zegt zijn getal in het label.
-    private RenderFragment MiniTiles() => @<div class="sb-minis">
-    <a class="card sb-mini" href="klassement" aria-label="@RankLabel">
-        <Icon Name="trophy" Class="sb-icon" />
-        <span class="sb-digits" aria-hidden="true">@RankText</span>
-        <span class="sb-label" aria-hidden="true">@(TodayRank is { Rank: not null } r ? $"van {r.Players}" : "klassement")</span>
-    </a>
-    <a class="card sb-mini" href="statistieken" aria-label="@StreakLabel">
-        <Icon Name="flame" Class="sb-icon" />
-        <span class="sb-digits" aria-hidden="true">@(Streak > 0 ? Streak.ToString() : "–")</span>
-        <span class="sb-label" aria-hidden="true">@(Streak switch { 0 => "start je reeks", 1 => "dag op rij", _ => "dagen op rij" })</span>
-    </a>
-</div>;
-
     private DailyRank? TodayRank => _rank is { } r && _daily is { } d && r.Date == d.Date ? r : null;
-    private string RankText => TodayRank is { Rank: { } p } ? $"{p}{DutchDates.OrdinalSuffix(p)}" : "–";
+    private string RankText => TodayRank is { Rank: { } p } r ? $"{p}{DutchDates.OrdinalSuffix(p)} van {r.Players}" : "nog geen plaats";
     private string RankLabel => TodayRank is { Rank: { } p } r
         ? $"Klassement: je staat {p}{DutchDates.OrdinalSuffix(p)} van {r.Players} vandaag"
-        : "Klassement";
+        : "Klassement: nog geen plaats vandaag";
 
     private int Streak => _rank?.Streak ?? 0;
+    private string StreakText => Streak switch { 0 => "start je reeks", 1 => "1 dag op rij", var s => $"{s} dagen op rij" };
     private string StreakLabel => Streak switch
     {
         0 => "Statistieken: nog geen reeks",
@@ -183,41 +189,17 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
     @SpecialCard(active, isNew: false)
 }
 
-@* Online zonder kop of uitleg: open partijtjes (enkel als die er zijn) en "Nieuwe match". Home is de lobby. *@
-<section class="home-online" aria-label="Online spelen">
-    @* Jouw partijtjes staan als banner bovenaan; hier alle open partijtjes om aan mee te doen (er is geen aparte lobby meer). *@
-    <OpenTables ShowMine="false" Compact="true" OnLoaded="l => _myTables = l.Mine" />
-    <CreateTableForm UserName="@Auth.User?.UserName" />
-</section>
-
-@* De academie (oude dailies opnieuw spelen) als brede scorebordtegel. *@
-<a class="card sb-academy" href="academie">
-    <Icon Name="graduation-cap" Class="sb-icon" />
-    <b class="sb-title">Academie</b>
+@* Daaronder brede stroken, allemaal in dezelfde vorm: klassement, academie, badges, instellingen, admin. *@
+<a class="card sb-strip" href="klassement">
+    <Icon Name="trophy" Class="sb-icon" />
+    <span class="sb-label">Klassement</span>
     <span class="sb-go" aria-hidden="true">›</span>
 </a>
-
-@if (UpcomingSpecials.Count > 0)
-{
-    @* De eerstvolgende drie specials als kaartjes in een veegrij; nog niets om op te tikken. *@
-    <section class="home-soon" aria-labelledby="soon-title">
-        <SectionHeader Id="soon-title" Title="Binnenkort" />
-        <ul class="special-rail @(UpcomingSpecials.Count <= 2 ? "fits" : "")">
-            @foreach (var sp in UpcomingSpecials)
-            {
-                <li>
-                    <div class="special-chip soon">
-                        <b>@sp.Name</b>
-                        <small class="special-chip-when">@StartsInText(sp)</small>
-                        <small>@DutchDates.DayMonth(sp.StartDate)</small>
-                    </div>
-                </li>
-            }
-        </ul>
-    </section>
-}
-
-@* Onderaan: je badges, de instellingen (tab Account van je profiel) en het admin-paneel voor admins, als lage tegeltjes. *@
+<a class="card sb-strip" href="academie">
+    <Icon Name="graduation-cap" Class="sb-icon" />
+    <span class="sb-label">Academie</span>
+    <span class="sb-go" aria-hidden="true">›</span>
+</a>
 <a class="card sb-strip" href="badges" aria-label="@BadgesLabel">
     <Icon Name="medal" Class="sb-icon" />
     <span class="sb-label" aria-hidden="true">Badges</span>
@@ -236,6 +218,15 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
         <span class="sb-label">Admin</span>
         <span class="sb-go" aria-hidden="true">›</span>
     </a>
+}
+
+@if (TopReady && UpcomingSpecials.FirstOrDefault() is { } soon)
+{
+    @* Helemaal onderaan: de eerstvolgende special als één rustige regel; nog niets om op te tikken. *@
+    <p class="home-soon-line">
+        <span class="sb-label">Binnenkort</span>
+        <span><b>@soon.Name</b> · @StartsInText(soon)</span>
+    </p>
 }
 
 @code {
@@ -313,7 +304,7 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
         StateHasChanged();
     }
 
-    // Verdiende en alle badges voor het tegeltje onderaan; ook een extraatje (zonder getal blijft het tegeltje gewoon klikbaar).
+    // Verdiende en alle badges voor de strook onderaan; een extraatje (zonder getal blijft de strook gewoon klikbaar).
     private (int Earned, int Total)? _badges;
 
     private async Task LoadBadgesAsync()
@@ -452,14 +443,14 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
             </div>
         </section>;
 
-    /// <summary>Binnenkort: enkel de eerstvolgende drie.</summary>
+    /// <summary>Binnenkort: enkel de eerstvolgende special.</summary>
     private List<SpecialSummary> UpcomingSpecials =>
-        _specials?.Where(s => s.IsUpcoming).OrderBy(s => s.StartDate).Take(3).ToList() ?? [];
+        _specials?.Where(s => s.IsUpcoming).OrderBy(s => s.StartDate).Take(1).ToList() ?? [];
 
     private static string StartsInText(SpecialSummary s) => s.StartsIn switch
     {
-        <= 1 => "Morgen",
-        var d => $"Over {d} dagen",
+        <= 1 => "morgen",
+        var d => $"over {d} dagen",
     };
 
     private static bool Finished(SpecialSummary s) => s.Finished;
@@ -468,11 +459,6 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
         Finished(s) ? $"✓ {s.MyPoints} punten"
         : s.Answered > 0 ? $"{s.Answered}/{s.QuestionCount} gespeeld"
         : s.DaysLeft switch { 0 => "Laatste dag", 1 => "Nog 1 dag", var d => $"Nog {d} dagen" };
-
-    // ---------- Daily ----------
-
-    private static string ProgressLabel(int answered, int correct, int total) =>
-        answered == 0 ? $"Nog geen van de {total} vragen gespeeld" : $"{answered} van {total} gespeeld: {correct} juist, {answered - correct} fout";
 
     private void Redraw() => InvokeAsync(StateHasChanged);
 

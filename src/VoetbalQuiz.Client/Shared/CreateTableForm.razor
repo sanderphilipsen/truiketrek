@@ -5,10 +5,26 @@
 @inject ApiClient Api
 @inject NavigationManager Nav
 
-<button type="button" class="btn big tafel-new" @ref="_trigger"
-        aria-haspopup="dialog" aria-expanded="@(_open ? "true" : "false")" @onclick="Open">
-    <Icon Name="plus" /> Nieuwe match
-</button>
+@if (Tile)
+{
+    @* Op Home, net onder de daily: een tegel met een groot icoon en een ondertitel, iets zwaarder dan de stroken eronder. *@
+    <button type="button" class="card sb-strip sb-match" @ref="_trigger"
+            aria-haspopup="dialog" aria-expanded="@(_open ? "true" : "false")" @onclick="Open">
+        <Icon Name="users-three" Class="sb-icon" />
+        <span class="sb-match-text">
+            <b>Nieuwe match</b>
+            <small>Speel online tegen je maten</small>
+        </span>
+        <span class="sb-go" aria-hidden="true">›</span>
+    </button>
+}
+else
+{
+    <button type="button" class="btn big tafel-new" @ref="_trigger"
+            aria-haspopup="dialog" aria-expanded="@(_open ? "true" : "false")" @onclick="Open">
+        <Icon Name="plus" /> Nieuwe match
+    </button>
+}
 
 @if (_open)
 {
@@ -128,6 +144,9 @@
 
 @code {
     [Parameter] public string? UserName { get; set; }
+
+    /// <summary>De knop als tegel onder de daily (Home) in plaats van als grote knop (lobby).</summary>
+    [Parameter] public bool Tile { get; set; }
 
 
     private const int NameMax = 40;
