@@ -40,7 +40,8 @@ html, body {
 /* Alleen op html: een eigen achtergrond op body zou over het veld (body::before) heen schilderen */
 html { background: linear-gradient(180deg, var(--pitch) 0%, var(--pitch-2) 100%) fixed; }
 
-/* Voetbalveld achter alles: gemaaide banen en flauwe lijnen, vast bij het scrollen */
+/* Voetbalveld achter alles: gemaaide banen en flauwe lijnen, vast bij het scrollen.
+   Bovenop speelt pitch-play.svg af en toe een aanval uit zoals op een tactiekbord. */
 body::before {
     content: "";
     position: fixed;
@@ -48,8 +49,16 @@ body::before {
     z-index: -1;
     pointer-events: none;
     background:
+        url("../pitch-play.svg") center / cover no-repeat,
         url("../pitch.svg") center / cover no-repeat,
         repeating-linear-gradient(180deg, rgba(255, 255, 255, .035) 0 10vh, transparent 10vh 20vh);
+}
+@media (prefers-reduced-motion: reduce) {
+    body::before {
+        background:
+            url("../pitch.svg") center / cover no-repeat,
+            repeating-linear-gradient(180deg, rgba(255, 255, 255, .035) 0 10vh, transparent 10vh 20vh);
+    }
 }
 
 a { color: inherit; }
