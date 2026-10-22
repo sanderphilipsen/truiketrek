@@ -43,3 +43,4 @@ Houd deze tabel kort bij (enkel open items). Bij twijfel is de status in het bes
 | [014](014-verzamelalbum.md) | Verzamelalbum (Panini-stijl) | feature | idee | midden | L |
 | [015](015-pushmeldingen.md) | Pushmeldingen | feature | idee | laag | L |
 | [016](016-revanche-online-wedstrijd.md) | Revanche na een online wedstrijd | feature | idee | midden | S |
+| [017](017-vraagtype-clubraadsel.md) | Vraagtype "Clubraadsel" | feature | concept | midden | M |
