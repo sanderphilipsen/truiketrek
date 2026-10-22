@@ -8,13 +8,7 @@
 <PageTitle>Vraag @Number – Truitje Trek</PageTitle>
 <PitchFx Mood="@PitchMood" Teams="_affiche" />
 
-<div class="question-head">
-    <a href="@OverviewUrl" class="back">‹ Overzicht</a>
-    <h1 class="question-title">
-        @if (_state is not null) { <span class="type-tag">@Info.Icon @Info.Name</span> }
-        <span class="q-count">Vraag <b>@Number</b> / @_total</span>
-    </h1>
-</div>
+<PageHeader Title="@($"Vraag {Number} / {_total}")" Label="@(_state is null ? null : Info.Name)" BackHref="@OverviewUrl" Up="true" />
 @if (RunId is not null)
 {
     <p class="training-label">🎓 @TrainingRules.Label</p>
@@ -46,7 +40,7 @@ else if (_state.Result is { } result)
         }
         @if (result.Explanation is not null)
         {
-            <p class="explanation @(_state.Type is QuestionType.Emoji or QuestionType.NietBij ? "" : "plain")">@result.Explanation</p>
+            <p class="explanation @(_state.Type is QuestionType.Emoji ? "" : "plain")">@result.Explanation</p>
         }
     </div>
 

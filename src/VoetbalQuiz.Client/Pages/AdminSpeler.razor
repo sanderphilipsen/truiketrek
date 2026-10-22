@@ -8,6 +8,7 @@
 @inject IJSRuntime JS
 
 <PageTitle>@(Id == 0 ? "Nieuwe speler" : _name) – Admin</PageTitle>
+<ConfirmSheet @ref="_confirm" />
 
 <AdminGuard>
     <div class="editor-top">
@@ -289,10 +290,12 @@
         _ => "",
     };
 
+    private ConfirmSheet _confirm = null!;
+
     private async Task SaveAsync(PlayerStatus status)
     {
-        if (_original?.InPlay is { } live && !await JS.InvokeAsync<bool>("confirm",
-                $"Deze speler zit nu in {live}. Wie de vraag nog speelt, ziet je wijziging meteen. Toch opslaan?"))
+        if (_original?.InPlay is { } live && !await _confirm.AskAsync("Speler is in gebruik",
+                $"Deze speler zit nu in {live}. Wie de vraag nog speelt, ziet je wijziging meteen.", "Toch opslaan", danger: false))
             return;
         (_busy, _error, _message) = (true, null, null);
         try

@@ -1,0 +1,59 @@
+@* Een bevestiging in de stijl van de app, in plaats van confirm() van de browser: die verschijnt niet overal
+   (in een geïnstalleerde app of een ingebouwde browser geeft hij meteen "nee" terug zonder iets te tonen).
+   Gebruik: <ConfirmSheet @ref="_confirm" /> en dan `if (await _confirm.AskAsync("Titel", "Uitleg", "Ja, doe het")) ...` *@
+
+@if (_open)
+{
+    <div class="sheet-backdrop" @onclick="() => Close(false)"></div>
+    <section class="sheet confirm-sheet" role="alertdialog" aria-modal="true" aria-labelledby="confirm-title" aria-describedby="confirm-text"
+             @onkeydown="OnKeyDown">
+        <div class="sheet-head">
+            <span class="sheet-grip" aria-hidden="true"></span>
+            <h2 id="confirm-title" tabindex="-1" @ref="_heading">@_title</h2>
+        </div>
+        <div class="sheet-body">
+            <p id="confirm-text" class="confirm-text">@_text</p>
+        </div>
+        <div class="sheet-foot">
+            <button type="button" class="btn big @(_danger ? "danger" : "primary")" @onclick="() => Close(true)">@_yes</button>
+            <button type="button" class="btn big" @onclick="() => Close(false)">Annuleren</button>
+        </div>
+    </section>
+}
+
+@code {
+    private bool _open, _danger, _focus;
+    private string _title = "", _text = "", _yes = "";
+    private ElementReference _heading;
+    private TaskCompletionSource<bool>? _answer;
+
+    /// <summary>Toont de vraag en wacht op het antwoord: true bij de bevestigknop, false bij Annuleren, ernaast tikken of Escape.</summary>
+    public Task<bool> AskAsync(string title, string text, string yes, bool danger = true)
+    {
+        _answer?.TrySetResult(false);
+        (_title, _text, _yes, _danger) = (title, text, yes, danger);
+        _answer = new TaskCompletionSource<bool>();
+        _open = _focus = true;
+        StateHasChanged();
+        return _answer.Task;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!_focus) return;
+        _focus = false;
+        await _heading.FocusAsync();
+    }
+
+    private void Close(bool yes)
+    {
+        _open = false;
+        _answer?.TrySetResult(yes);
+        _answer = null;
+    }
+
+    private void OnKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Escape") Close(false);
+    }
+}

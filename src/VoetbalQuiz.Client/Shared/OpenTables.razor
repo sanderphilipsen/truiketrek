@@ -78,9 +78,8 @@ else
     }
     else if (_lobby.Open.Count > 0)
     {
-        var shown = Max is { } max ? _lobby.Open.Take(max).ToList() : _lobby.Open;
         <div class="tables">
-            @foreach (var m in shown)
+            @foreach (var m in _lobby.Open)
             {
                 var free = m.Seats - m.Players;
                 <div class="table-card room">
@@ -104,40 +103,12 @@ else
                 </div>
             }
         </div>
-        @if (shown.Count < _lobby.Open.Count)
-        {
-            var more = _lobby.Open.Count - shown.Count;
-            <a class="card-link light" href="online">Nog @more open @(more == 1 ? "partijtje" : "partijtjes") <span aria-hidden="true">›</span></a>
-        }
-    }
-
-    @if (ShowRecent && _lobby.RecentlyFinished.Count > 0)
-    {
-        <h2 class="section-title">Recent gespeeld</h2>
-        <div class="tables">
-            @foreach (var m in _lobby.RecentlyFinished)
-            {
-                <a class="table-card done" href="online/@m.Id">
-                    <span class="table-icon">🏁</span>
-                    <div class="table-info">
-                        <b>@m.Name</b>
-                        <small class="match-meta"><span class="match-meta-chunk">@When(m.CreatedAt)</span> <span class="match-meta-chunk sep">@m.HostName</span> <span class="match-meta-chunk sep">@m.Players spelers</span></small>
-                    </div>
-                    <span class="muted">Uitslag ›</span>
-                </a>
-            }
-        </div>
     }
 }
 
 @code {
-    [Parameter] public bool ShowRecent { get; set; }
-
     /// <summary>"Jouw partijtjes" tonen. Home zet dit uit en toont je partijtje als banner bovenaan (via OnLoaded).</summary>
     [Parameter] public bool ShowMine { get; set; } = true;
-
-    /// <summary>Hoogstens zoveel open partijtjes tonen (Home: 3); de rest staat in de lobby.</summary>
-    [Parameter] public int? Max { get; set; }
 
     /// <summary>
     /// Compact blok voor Home: geen kop, niets tijdens het laden en niets als er geen open partijtjes zijn
@@ -191,14 +162,6 @@ else
 
     /// <summary>Het partijtje waar je net op "Doe mee" tikte (meteen zichtbare reactie).</summary>
     private int? _joining;
-
-    /// <summary>Wanneer een partijtje gespeeld werd: vandaag, gisteren of de datum (d/m).</summary>
-    private static string When(DateTime created)
-    {
-        var day = (created.Kind == DateTimeKind.Unspecified ? created : created.ToLocalTime()).Date;
-        var today = DateTime.Now.Date;
-        return day == today ? "Vandaag" : day == today.AddDays(-1) ? "Gisteren" : $"{day.Day}/{day.Month}";
-    }
 
     private async Task JoinAsync(int id)
     {

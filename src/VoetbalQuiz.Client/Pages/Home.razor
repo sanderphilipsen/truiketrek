@@ -22,7 +22,7 @@
 
 @foreach (var t in _myTables)
 {
-    @* Je speelt mee in een partijtje: meteen terug naar je lobby of je lopende wedstrijd. *@
+    @* Je speelt mee in een partijtje: meteen terug naar je wachtkamer of je lopende wedstrijd. *@
     var running = t.Status == MatchStatus.Running;
     <a class="tafel-banner @(running ? "live" : "")" href="online/@t.Id"
        aria-label="@(running ? $"Je wedstrijd is bezig: {t.Name}. Verder" : $"Je partijtje wacht, {t.Players} van {t.Seats} spelers: {t.Name}. Open")">
@@ -183,10 +183,10 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
     @SpecialCard(active, isNew: false)
 }
 
-@* Online zonder kop of uitleg: open partijtjes (enkel als die er zijn) en "Nieuwe match". De lobby staat in de links onderaan. *@
+@* Online zonder kop of uitleg: open partijtjes (enkel als die er zijn) en "Nieuwe match". Home is de lobby. *@
 <section class="home-online" aria-label="Online spelen">
-    @* Jouw partijtjes staan als banner bovenaan; hier enkel (maximaal 3) open partijtjes om aan mee te doen. *@
-    <OpenTables ShowMine="false" Max="3" Compact="true" OnLoaded="l => _myTables = l.Mine" />
+    @* Jouw partijtjes staan als banner bovenaan; hier alle open partijtjes om aan mee te doen (er is geen aparte lobby meer). *@
+    <OpenTables ShowMine="false" Compact="true" OnLoaded="l => _myTables = l.Mine" />
     <CreateTableForm UserName="@Auth.User?.UserName" />
 </section>
 

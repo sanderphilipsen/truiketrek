@@ -32,6 +32,8 @@ else if (_online)
             <div><b>@(o.Played == 0 ? 0 : (int)Math.Round(100.0 * o.Wins / o.Played))%</b><small>winst</small></div>
         </div>
 
+        <RecentMatches />
+
         <h2 class="section-title">Eregalerij</h2>
         <HallOfFame Cards="_onlineStats.HallOfFame" EmptyText="Nog geen wedstrijden gespeeld." />
     }

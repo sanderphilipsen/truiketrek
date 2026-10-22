@@ -1,22 +1,10 @@
 @page "/online"
 @attribute [Authorize]
+@inject NavigationManager Nav
 
-<PageTitle>Online – Truitje Trek</PageTitle>
-
-@* De lobby: spring met één tik in een open match, of zet er zelf een klaar (bottom sheet).
-   Is er niets open (en zit je zelf nergens in), dan wordt "Nieuwe match" de gele hoofdknop. *@
-<PageHeader Title="Online spelen" Label="Speel live tegen je maten" />
-<CreateTableForm UserName="@_me" Primary="@_nothingOpen" />
-
-<OpenTables ShowRecent="true" OnLoaded="l => _nothingOpen = l.Open.Count == 0 && l.Mine.Count == 0" />
+@* De aparte lobby is opgegaan in Home (open partijtjes en "Nieuwe match" staan daar, je recente partijtjes onder
+   Statistieken › Online). Oude links naar /online komen zo gewoon op Home uit. *@
 
 @code {
-    private string? _me;
-    /// <summary>Geen open partijtjes en zelf nergens in: dan is een nieuwe match maken de hoofdactie.</summary>
-    private bool _nothingOpen;
-
-    [CascadingParameter] private Task<AuthenticationState>? AuthTask { get; set; }
-
-    protected override async Task OnInitializedAsync() =>
-        _me = AuthTask is null ? null : (await AuthTask).User.Identity?.Name;
+    protected override void OnInitialized() => Nav.NavigateTo("", replace: true);
 }

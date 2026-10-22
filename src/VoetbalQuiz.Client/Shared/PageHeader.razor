@@ -33,9 +33,16 @@
     /// <summary>Waar "terug" heen gaat als er geen vorig scherm in de app is.</summary>
     [Parameter] public string BackHref { get; set; } = "";
 
+    /// <summary>Altijd naar BackHref (één niveau hoger), bv. van een vraag naar het overzicht in plaats van naar de vorige vraag.</summary>
+    [Parameter] public bool Up { get; set; }
+
     private async Task BackAsync()
     {
-        if (await JS.InvokeAsync<bool>("truitje.canGoBack")) await JS.InvokeVoidAsync("history.back");
-        else Nav.NavigateTo(BackHref);
+        if (!Up && await JS.InvokeAsync<bool>("truitje.canGoBack")) await JS.InvokeVoidAsync("history.back");
+        else
+        {
+            await JS.InvokeVoidAsync("truitje.markBack"); // naar boven voelt als terug: van links inschuiven
+            Nav.NavigateTo(BackHref);
+        }
     }
 }

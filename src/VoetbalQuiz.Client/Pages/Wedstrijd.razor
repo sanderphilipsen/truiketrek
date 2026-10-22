@@ -11,9 +11,10 @@
 
 @* Weggaan tijdens een wedstrijd = het partijtje verlaten (en je punten kwijt): eerst bevestigen. *@
 <NavigationLock OnBeforeInternalNavigation="OnLeavingPageAsync" ConfirmExternalNavigation="@InGame" />
+<ConfirmSheet @ref="_confirm" />
 
 <div class="question-head">
-    <a href="online" class="back">@(InGame ? "‹ Verlaten" : "‹ Lobby")</a>
+    <a href="" class="back">@(InGame ? "‹ Verlaten" : "‹ Home")</a>
     @if (_state is { Phase: MatchPhase.Question or MatchPhase.Reveal or MatchPhase.Countdown })
     {
         <h1 class="question-title">
@@ -114,7 +115,7 @@ else
                 }
                 else
                 {
-                    <p class="kleedkamer-full">Dit partijtje is volzet. Kijk in de lobby voor een ander.</p>
+                    <p class="kleedkamer-full">Dit partijtje is volzet. Op Home vind je de andere open partijtjes.</p>
                 }
 
                 @if (_state.Derby is not null)
@@ -347,7 +348,7 @@ else
                     }
                 </ol>
             }
-            <a class="btn primary big" href="online">Terug naar de lobby</a>
+            <a class="btn primary big" href="">Terug naar Home</a>
             @* Eerst even de eindstand laten zien. *@
             <RewardPopup DelayMs="2500" Kicker="@(winner?.IsMe == true ? "Wat een zege!" : "Wedstrijd gespeeld!")" />
             break;
@@ -356,7 +357,7 @@ else
             <div class="card center">
                 <h1>Partijtje opgeheven</h1>
                 <p class="muted">Deze wedstrijd gaat niet (meer) door.</p>
-                <a class="btn primary" href="online">Naar de lobby</a>
+                <a class="btn primary" href="">Naar Home</a>
             </div>
             break;
     }
@@ -540,6 +541,7 @@ else
     private Task StartAsync() => ApplyAsync(() => Api.StartMatchAsync(Id), busy: true);
     private Task JoinAsync() => ApplyAsync(() => Api.JoinMatchAsync(Id), busy: true);
 
+    private ConfirmSheet _confirm = null!;
     private bool _left;
 
     /// <summary>Je speelt mee aan een lopende wedstrijd: weggaan kost je punten.</summary>
@@ -548,8 +550,8 @@ else
     private async Task OnLeavingPageAsync(LocationChangingContext context)
     {
         if (!InGame) return;
-        var sure = await JS.InvokeAsync<bool>("confirm",
-            "Als je de wedstrijd verlaat, verlies je al je punten en eindig je onderaan. Toch verlaten?");
+        var sure = await _confirm.AskAsync("Wedstrijd verlaten?",
+            "Als je de wedstrijd verlaat, verlies je al je punten en eindig je onderaan.", "Toch verlaten");
         if (!sure)
         {
             context.PreventNavigation();
@@ -570,14 +572,14 @@ else
     private async Task LeaveAsync()
     {
         if (_state is null) return;
-        var question = _state.IsHost
-            ? "Partijtje opheffen? Het verdwijnt uit de lobby en wie al aangeschoven is, moet een ander zoeken."
-            : "Partijtje verlaten? Je plaats komt vrij voor iemand anders.";
-        if (!await JS.InvokeAsync<bool>("confirm", question)) return;
+        var sure = _state.IsHost
+            ? await _confirm.AskAsync("Partijtje opheffen?", "Het verdwijnt uit de open partijtjes en wie al aangeschoven is, moet een ander zoeken.", "Opheffen")
+            : await _confirm.AskAsync("Partijtje verlaten?", "Je plaats komt vrij voor iemand anders.", "Verlaten");
+        if (!sure) return;
         try
         {
             await Api.LeaveMatchAsync(Id);
-            Nav.NavigateTo("online");
+            Nav.NavigateTo("");
         }
         catch (ApiException ex) { _error = ex.Message; }
     }

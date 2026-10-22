@@ -1,0 +1,39 @@
+@* Je recent gespeelde online partijtjes, met een link naar de uitslag. Staat onder Statistieken › Online
+   (vroeger in de lobby, die opging in Home). *@
+@inject ApiClient Api
+
+@if (_recent is { Count: > 0 })
+{
+    <h2 class="section-title">Recent gespeeld</h2>
+    <div class="tables">
+        @foreach (var m in _recent)
+        {
+            <a class="table-card done" href="online/@m.Id">
+                <Icon Name="flag-checkered" Class="table-icon" />
+                <div class="table-info">
+                    <b>@m.Name</b>
+                    <small class="match-meta"><span class="match-meta-chunk">@When(m.CreatedAt)</span> <span class="match-meta-chunk sep">@m.HostName</span> <span class="match-meta-chunk sep">@m.Players spelers</span></small>
+                </div>
+                <span class="muted">Uitslag ›</span>
+            </a>
+        }
+    </div>
+}
+
+@code {
+    private List<MatchSummary>? _recent;
+
+    // Een extraatje bij je cijfers: lukt het laden niet, dan valt het blok gewoon weg.
+    protected override async Task OnInitializedAsync()
+    {
+        try { _recent = (await Api.GetLobbyAsync()).RecentlyFinished; }
+        catch (Exception ex) when (ex is ApiException or HttpRequestException) { _recent = null; }
+    }
+
+    private static string When(DateTime created)
+    {
+        var day = (created.Kind == DateTimeKind.Unspecified ? created : created.ToLocalTime()).Date;
+        var today = DateTime.Now.Date;
+        return day == today ? "Vandaag" : day == today.AddDays(-1) ? "Gisteren" : $"{day.Day}/{day.Month}";
+    }
+}

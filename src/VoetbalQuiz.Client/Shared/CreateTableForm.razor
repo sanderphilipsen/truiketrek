@@ -1,11 +1,11 @@
-@* Een online match klaarzetten. Een knop opent een bottom sheet over de lobby (of Home) met:
+@* Een online match klaarzetten. Een knop op Home opent een bottom sheet met:
    een grappige, aanpasbare voorstelnaam, de spelvorm(en) als chips (twee of meer = mix), het aantal plaatsen
    met een stepper, het aantal vragen en de derby-schakelaar. Onderaan, altijd in duimbereik: een live samenvatting
    en "Zet de match klaar". De server beslist zoals voorheen (CreateMatchRequest is ongewijzigd). *@
 @inject ApiClient Api
 @inject NavigationManager Nav
 
-<button type="button" class="btn big tafel-new @(Primary ? "primary" : "")" @ref="_trigger"
+<button type="button" class="btn big tafel-new" @ref="_trigger"
         aria-haspopup="dialog" aria-expanded="@(_open ? "true" : "false")" @onclick="Open">
     <Icon Name="plus" /> Nieuwe match
 </button>
@@ -117,8 +117,6 @@
 @code {
     [Parameter] public string? UserName { get; set; }
 
-    /// <summary>De knop als gele hoofdactie (lobby zonder open partijtjes); anders een gewone knop.</summary>
-    [Parameter] public bool Primary { get; set; }
 
     private const int NameMax = 40;
 

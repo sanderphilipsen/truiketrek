@@ -53,6 +53,7 @@
         // en een schuifovergang: vooruit schuift de inhoud in van rechts, terug van links. Het veld erachter blijft staan.
         (() => {
             let depth = 0;
+            let nextIsBack = false; // een terugknop die één niveau hoger gaat (PageHeader Up) schuift ook terug
             const reduce = matchMedia('(prefers-reduced-motion: reduce)');
             const slide = dir => {
                 const content = document.querySelector('.content');
@@ -65,11 +66,13 @@
             history.pushState = function (...args) {
                 depth++;
                 const result = push.apply(this, args);
-                slide('fwd');
+                slide(nextIsBack ? 'back' : 'fwd');
+                nextIsBack = false;
                 return result;
             };
             addEventListener('popstate', () => { depth = Math.max(0, depth - 1); slide('back'); });
             window.truitje.canGoBack = () => depth > 0;
+            window.truitje.markBack = () => { nextIsBack = true; };
         })();
     </script>
     <script src="pitch.js"></script>

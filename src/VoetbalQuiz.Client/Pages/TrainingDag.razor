@@ -6,7 +6,7 @@
 
 <PageTitle>Academie – Truitje Trek</PageTitle>
 
-<PageHeader Title="@(_day?.Special?.Name ?? "Academie")" Label="@(_day is null ? null : _day.Special is { } s ? $"Special · {Training.SpecialDates(s)}" : DutchDates.DayMonth(_day.Date))" BackHref="academie" />
+<PageHeader Title="@(_day?.Special?.Name ?? "Academie")" Label="@(_day is null ? null : _day.Special is { } s ? $"Special · {Training.SpecialDates(s)}" : DutchDates.DayMonth(_day.Date))" BackHref="academie" Up="true" />
 
 @if (_error is not null)
 {

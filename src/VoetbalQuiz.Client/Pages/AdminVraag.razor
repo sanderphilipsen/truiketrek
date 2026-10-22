@@ -6,6 +6,7 @@
 @inject IJSRuntime JS
 
 <PageTitle>Vraag bewerken – Admin</PageTitle>
+<ConfirmSheet @ref="_confirm" />
 
 <AdminGuard>
     <div class="editor-top"><a href="admin/vragen?type=@_type" class="back">‹ Terug naar de vragenbank</a></div>
@@ -375,10 +376,12 @@
         Touch();
     }
 
+    private ConfirmSheet _confirm = null!;
+
     private async Task SaveAsync(PlayerStatus status)
     {
-        if (_original?.InPlay is { } live && !await JS.InvokeAsync<bool>("confirm",
-                $"Deze vraag zit nu in {live}. Wie ze nog speelt, ziet je wijziging meteen. Toch opslaan?"))
+        if (_original?.InPlay is { } live && !await _confirm.AskAsync("Vraag is in gebruik",
+                $"Deze vraag zit nu in {live}. Wie ze nog speelt, ziet je wijziging meteen.", "Toch opslaan", danger: false))
             return;
         (_busy, _error, _message) = (true, null, null);
         try

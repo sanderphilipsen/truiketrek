@@ -21,28 +21,11 @@ else
 
     var sp = _summary.Special;
 
-    <div class="question-head">
-        @if (sp is not null)
-        {
-            <a href="academie/special/@sp.Id" class="back">‹ @sp.Name</a>
-        }
-        else
-        {
-            <a href="academie/@_overview.Date.ToString("yyyy-MM-dd")" class="back">‹ @DutchDates.DayMonth(_overview.Date)</a>
-        }
-    </div>
+    <PageHeader Title="@(sp?.Name ?? "Academie")" Up="true"
+                Label="@(sp is not null ? $"Special · {Training.SpecialDates(sp)}" : DutchDates.DayMonth(_overview.Date))"
+                BackHref="@(sp is not null ? $"academie/special/{sp.Id}" : $"academie/{_overview.Date:yyyy-MM-dd}")" />
 
     <section class="card hero">
-        @if (sp is not null)
-        {
-            <div class="date">Special · @Training.SpecialDates(sp)</div>
-            <h1>@sp.Icon @sp.Name</h1>
-        }
-        else
-        {
-            <div class="date">@DutchDates.DayMonth(_overview.Date)</div>
-            <h1>Academie</h1>
-        }
         <div class="type-banner">@QuestionTypes.DayLabel(_overview)</div>
         <div class="score-big">@_overview.TotalPoints <small>punten</small></div>
         <div class="muted">@answered / @_overview.Questions.Count gespeeld</div>
