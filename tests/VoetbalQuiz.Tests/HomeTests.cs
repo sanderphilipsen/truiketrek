@@ -28,7 +28,7 @@ public sealed class HomeTests : IDisposable
             {
                 Name = $"Speler {i}",
                 Status = PlayerStatus.Approved,
-                Tags = ["halloween"], // genoeg voor een special met counter (3 × 10 spelers)
+                Tags = ["halloween"], // genoeg voor een special met counter (25 spelers) en 5 × Wie ben ik?
                 Hints = [.. Enumerable.Range(1, 5).Select(h => $"Tip {h}")],
                 Sources = ["https://example.org"],
             });
@@ -197,7 +197,7 @@ public sealed class HomeTests : IDisposable
     [Fact]
     public async Task Special_reports_its_real_question_count_started_and_finished()
     {
-        // Wie ben ik? + Counter: een counter telt voor 200 punten, dus de reeks heeft minder dan 10 vragen.
+        // Wie ben ik? + Counter: een counter telt voor 500 punten, dus de reeks heeft minder dan 10 vragen.
         var id = await _admin.SaveSpecialAsync(new SpecialEdit(0, "halloween", "Halloween", "🎃", "", _quiz.Today, _quiz.Today,
             "halloween", [], [QuestionType.WieBenIk, QuestionType.Counter]));
         var expected = QuestionTypes.Mix([QuestionType.WieBenIk, QuestionType.Counter]).Values.Sum();

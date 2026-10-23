@@ -22,8 +22,8 @@ public sealed class OnlineAttemptTests : IDisposable
     {
         (_db, _clock) = (_t.Db, _t.Clock);
 
-        // Genoeg spelers voor drie counters van tien.
-        for (var i = 1; i <= 35; i++)
+        // Genoeg spelers voor drie counters van 25.
+        for (var i = 1; i <= 80; i++)
             _db.Players.Add(new Player { Name = $"Speler {i}", Status = PlayerStatus.Approved, Hints = [.. Enumerable.Range(1, 5).Select(h => $"Tip {h}")] });
         for (var i = 0; i < 6; i++)
         {
@@ -168,7 +168,7 @@ public sealed class OnlineAttemptTests : IDisposable
         var names = await CounterNamesAsync(id);
         await _matches.GuessAsync(_host, id, names[0]);
         MatchState state = null!;
-        for (var i = 1; i < GameRules.MaxGuessesPerQuestion - 1; i++)
+        for (var i = 1; i < QuestionRules.MaxGuesses(QuestionType.Counter) - 1; i++)
             state = await _matches.GuessAsync(_host, id, $"Niemand {i}");
         Assert.False(state.MyDone);
 
@@ -200,7 +200,7 @@ public sealed class OnlineAttemptTests : IDisposable
 
         var names = await CounterNamesAsync(id);
         await _matches.GuessAsync(_host, id, names[0]);
-        for (var i = 1; i < GameRules.MaxGuessesPerQuestion; i++)
+        for (var i = 1; i < QuestionRules.MaxGuesses(QuestionType.Counter); i++)
             await _matches.GuessAsync(_host, id, $"Niemand {i}");
         await _matches.GiveUpAsync(_guest, id);
         await _matches.AdvanceAllAsync();
@@ -218,17 +218,17 @@ public sealed class OnlineAttemptTests : IDisposable
         Assert.Equal(QuestionRules.CounterPlayers, names.Count);
 
         var start = await _matches.GetStateAsync(_host, id);
-        Assert.Equal("Speler 1 van 10", start.View!.Note);
+        Assert.Equal($"Speler 1 van {QuestionRules.CounterPlayers}", start.View!.Note);
 
         var wrong = await _matches.GuessAsync(_host, id, "Niemand");
         Assert.Equal(0, wrong.MyWrongGuesses); // snelheidsronde: geen straf
-        Assert.Equal("Speler 1 van 10", wrong.View!.Note);
+        Assert.Equal($"Speler 1 van {QuestionRules.CounterPlayers}", wrong.View!.Note);
 
         await _matches.GuessAsync(_host, id, names[0]);
         await _matches.GuessAsync(_host, id, QuestionRules.CounterSkip);
         var third = await _matches.GuessAsync(_host, id, names[2]);
         Assert.Equal(2, third.View!.Found);
-        Assert.Equal("Speler 4 van 10", third.View.Note);
+        Assert.Equal($"Speler 4 van {QuestionRules.CounterPlayers}", third.View.Note);
         Assert.False(third.MyDone);
 
         await Tick(QuestionRules.CounterSeconds + 1);

@@ -102,7 +102,7 @@
                 @foreach (var s in _overview.Stock)
                 {
                     var info = QuestionTypes.Get(s.Type);
-                    // Zoals de server: een counter vraagt 10 spelers per vraag, de twee delen van een kaartdag delen één kaart.
+                    // Zoals de server: een counter vraagt 25 spelers per vraag, de twee delen van een kaartdag delen één kaart.
                     var perWeek = QuestionTypes.ItemsFor(s.Type, Weekly().GetValueOrDefault(s.Type));
                     var weeks = perWeek == 0 ? (int?)null : s.NeverUsed / perWeek;
                     <a class="stock-row" href="@(QuestionTypes.Get(s.Type).FromPlayers ? "admin/spelers" : $"admin/vragen?type={s.Type}")">

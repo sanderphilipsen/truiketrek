@@ -24,7 +24,7 @@ public sealed class NewRoundTests : IDisposable
     {
         (_db, _clock) = (_t.Db, _t.Clock);
 
-        // 60 spelers met duidelijk verschillende namen: genoeg voor 5 counters van 10.
+        // 60 spelers met duidelijk verschillende namen: genoeg voor 2 counters van 25.
         var n = 0;
         foreach (var first in FirstNames)
             foreach (var last in LastNames)

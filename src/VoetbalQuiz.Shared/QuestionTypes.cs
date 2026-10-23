@@ -29,7 +29,8 @@ public static class QuestionTypes
         new(QuestionType.Rugnummer, "Rugnummer", "🔢", "Een rugnummer, dan positie, land en club. Wie droeg dit shirt?", 10, 100, "rugnummer"),
         new(QuestionType.Mannetje, "Mannetje", "👤", "Van zwart silhouet tot volledig mannetje. Herken jij de speler?", 10, 100, "mannetje"),
         new(QuestionType.Kluts, "Kluts in de zestien", "🌀", "De letters van een naam liggen door elkaar. Om de paar seconden valt er één juist.", 10, 100, "", FromPlayers: true),
-        new(QuestionType.Counter, "Counter", "🏃", "Zoveel mogelijk spelers in 60 seconden, met één tip per speler. Raden of doorspelen!", 5, 200, "", FromPlayers: true),
+        new(QuestionType.Counter, "Counter", "🏃", $"Zoveel mogelijk van {QuestionRules.CounterPlayers} spelers in {(int)QuestionRules.CounterSeconds} seconden, met één tip per speler. Raden of doorspelen!",
+            QuestionRules.CounterPerDay, QuestionRules.CounterPlayers * QuestionRules.CounterPointsPerPlayer, "", FromPlayers: true),
         new(QuestionType.Volgorde, "Op volgorde", "🔀", "Tik de kaartjes aan in de juiste volgorde. Hoe dichter, hoe meer punten.", 10, 100, "volgorde"),
         new(QuestionType.Krant, "De Zondag", "📰", "Elke zondag vier krantenartikels met elk vijf gaten. Tik op een gat en vul het in, in de volgorde die je wil.", 4, 250, "krant",
             Alone: true),
@@ -237,7 +238,8 @@ public static class QuestionRules
     public const double JaarSeconds = 15;
     public const double EmojiSeconds = 15;
     public const double OpstellingSeconds = 60;
-    public const double CounterSeconds = 60;
+    /// <summary>Counter: 6 seconden per speler, zoals toen een counter nog 10 spelers in 60 seconden had.</summary>
+    public const double CounterSeconds = CounterPlayers * 6;
     public const double VolgordeSeconds = 30;
 
     /// <summary>Op volgorde: zoveel kaartjes per vraag.</summary>
@@ -310,8 +312,11 @@ public static class QuestionRules
         capacity is > 0 ? $"{stadium} · {capacity.Value.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("nl-BE"))}" : stadium;
 
     /// <summary>Counter: zoveel spelers per vraag, elk goed voor <see cref="CounterPointsPerPlayer"/> punten.</summary>
-    public const int CounterPlayers = 10;
+    public const int CounterPlayers = 25;
     public const int CounterPointsPerPlayer = 20;
+
+    /// <summary>Counter: zoveel counters vullen een dag alleen (2 × 25 spelers × 20 punten = 1000).</summary>
+    public const int CounterPerDay = QuestionTypes.DayMaxPoints / (CounterPlayers * CounterPointsPerPlayer);
 
     /// <summary>Counter: deze "gok" betekent doorspelen naar de volgende speler (niemand typt dit als naam).</summary>
     public const string CounterSkip = "/volgende";
@@ -410,7 +415,15 @@ public static class QuestionRules
     public static int CounterPoints(int found) => found * CounterPointsPerPlayer;
 
     /// <summary>Zoveel pogingen mag je op één vraag doen; daarna stopt ze (zie <see cref="GameRules.MaxGuessesPerQuestion"/>).</summary>
-    public static int MaxGuesses(QuestionType type) => type == QuestionType.Krant ? KrantMaxGuesses : GameRules.MaxGuessesPerQuestion;
+    public static int MaxGuesses(QuestionType type) => type switch
+    {
+        QuestionType.Krant => KrantMaxGuesses,
+        QuestionType.Counter => CounterMaxGuesses,
+        _ => GameRules.MaxGuessesPerQuestion,
+    };
+
+    /// <summary>Counter: elke speler kost minstens één poging (raden of doorspelen), dus ruimer dan de gewone limiet.</summary>
+    public const int CounterMaxGuesses = CounterPlayers * 4;
 
     public static double KrantLimit(int gaps) => Math.Max(KrantMinSeconds, gaps * KrantSecondsPerGap);
 
