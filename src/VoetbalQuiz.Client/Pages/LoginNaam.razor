@@ -1,0 +1,78 @@
+@page "/login/naam"
+@inject AuthState Auth
+@inject ApiClient Api
+@inject NavigationManager Nav
+
+<PageTitle>Kies je gebruikersnaam – Truitje Trek</PageTitle>
+
+<div class="auth-logo"><img src="logo.svg" alt="Truitje Trek" /><div>Truitje Trek</div><small>De voetbalquiz waar je niet loskomt</small></div>
+
+<section class="card auth">
+    <h1>Kies je gebruikersnaam</h1>
+    @if (_info is null)
+    {
+        @if (_expired)
+        {
+            <p class="error" role="alert">Je aanmelding bij Google is verlopen.</p>
+            <a class="btn primary big" href="login">Terug naar aanmelden</a>
+        }
+        else
+        {
+            <div class="center-msg"><Spinner /></div>
+        }
+    }
+    else
+    {
+        <p class="muted">Je bent aangemeld met Google@(_info.Email.Length > 0 ? $" ({_info.Email})" : ""). Kies nog hoe je in de klassementen verschijnt.</p>
+
+        <form @onsubmit="SubmitAsync">
+            <label>Gebruikersnaam
+                <input @bind="_userName" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" maxlength="20" required />
+            </label>
+
+            @if (_error is not null)
+            {
+                <p class="error" role="alert">@_error</p>
+            }
+
+            <button class="btn primary" disabled="@_busy">Account maken</button>
+        </form>
+    }
+</section>
+
+@code {
+    [SupplyParameterFromQuery(Name = "terug")] public string? Terug { get; set; }
+
+    private GoogleSignupInfo? _info;
+    private bool _expired;
+    private string _userName = "";
+    private string? _error;
+    private bool _busy;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try { _info = await Api.GetGoogleSignupAsync(); }
+        catch { /* behandeld als verlopen */ }
+        _expired = _info is null;
+        _userName = _info?.SuggestedUserName ?? "";
+    }
+
+    private async Task SubmitAsync()
+    {
+        _busy = true;
+        _error = null;
+        try
+        {
+            await Auth.GoogleSignupAsync(new GoogleSignupRequest(_userName));
+            Nav.NavigateTo(ReturnPath.Safe(Terug));
+        }
+        catch (ApiException ex)
+        {
+            _error = ex.Message;
+        }
+        finally
+        {
+            _busy = false;
+        }
+    }
+}

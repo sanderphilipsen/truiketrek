@@ -23,6 +23,16 @@ public class ApiClient(HttpClient http)
     public Task<UserInfo> LoginAsync(LoginRequest req) => PostAsync<UserInfo>("api/account/login", req);
     public Task<UserInfo> RegisterAsync(RegisterRequest req) => PostAsync<UserInfo>("api/account/register", req);
     public Task LogoutAsync() => http.PostAsync("api/account/logout", null);
+    public Task<LoginOptions> GetLoginOptionsAsync() => GetAsync<LoginOptions>("api/account/options");
+    /// <summary>Na Google: de voorgestelde naam voor een nieuwe speler, of null als de Google-aanmelding verlopen is.</summary>
+    public async Task<GoogleSignupInfo?> GetGoogleSignupAsync()
+    {
+        var response = await http.GetAsync("api/account/google/nieuw");
+        if (response.StatusCode == HttpStatusCode.NotFound) return null;
+        response.EnsureSuccessStatusCode();
+        return await response.Content.ReadFromJsonAsync<GoogleSignupInfo>();
+    }
+    public Task<UserInfo> GoogleSignupAsync(GoogleSignupRequest req) => PostAsync<UserInfo>("api/account/google/nieuw", req);
 
     // Daily, specials en training gebruiken dezelfde vragenflow; enkel het adres verschilt.
     public static string Quiz(int? specialId) => specialId is { } id ? $"api/specials/{id}" : "api/daily";

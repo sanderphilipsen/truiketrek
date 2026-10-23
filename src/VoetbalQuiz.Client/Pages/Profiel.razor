@@ -132,11 +132,18 @@ else
 
                 default:
                     <section class="card">
-                        <h3 class="card-title">Wachtwoord wijzigen</h3>
+                        <h3 class="card-title">@(_profile.HasPassword ? "Wachtwoord wijzigen" : "Wachtwoord instellen")</h3>
+                        @if (!_profile.HasPassword)
+                        {
+                            <p class="muted">Je meldt je aan met Google. Met een wachtwoord kan je je ook aanmelden met je gebruikersnaam.</p>
+                        }
                         <form class="stack" @onsubmit="ChangePasswordAsync">
-                            <label>Huidig wachtwoord
-                                <input type="password" @bind="_current" autocomplete="current-password" required />
-                            </label>
+                            @if (_profile.HasPassword)
+                            {
+                                <label>Huidig wachtwoord
+                                    <input type="password" @bind="_current" autocomplete="current-password" required />
+                                </label>
+                            }
                             <div class="form-row">
                                 <label>Nieuw wachtwoord
                                     <input type="password" @bind="_new" autocomplete="new-password" minlength="6" required />
@@ -221,6 +228,7 @@ else
             await Api.ChangePasswordAsync(new ChangePasswordRequest(_current, _new));
             _pwOk = true;
             _current = _new = _repeat = "";
+            _profile = _profile! with { HasPassword = true };
         }
         catch (ApiException ex) { _pwError = ex.Message; }
         finally { _saving = false; }

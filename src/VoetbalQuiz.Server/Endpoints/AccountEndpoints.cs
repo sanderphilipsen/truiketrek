@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using VoetbalQuiz.Server.Data;
 using VoetbalQuiz.Server.Services;
@@ -33,7 +34,8 @@ public static class AccountEndpoints
             return Results.Ok(await InfoAsync(user, results, config));
         });
 
-        group.MapPost("/login", async (LoginRequest req, UserManager<AppUser> users, SignInManager<AppUser> signIn, ResultsService results, IConfiguration config) =>
+        group.MapPost("/login", async (LoginRequest req, HttpContext http, UserManager<AppUser> users, SignInManager<AppUser> signIn,
+            GoogleLoginService google, ResultsService results, IConfiguration config) =>
         {
             var key = req.UserNameOrEmail?.Trim() ?? "";
             var user = key.Contains('@') ? await users.FindByEmailAsync(key) : await users.FindByNameAsync(key);
@@ -46,6 +48,13 @@ public static class AccountEndpoints
             if (!result.Succeeded)
                 return Results.BadRequest(new ErrorResponse("Onbekende gebruiker of verkeerd wachtwoord."));
 
+            // Kwam de speler van "Doorgaan met Google" (fout=koppel)? Nu het wachtwoord klopt, Google koppelen.
+            if (await signIn.GetExternalLoginInfoAsync() is { } external)
+            {
+                await google.LinkAfterPasswordAsync(user, external);
+                await http.SignOutAsync(IdentityConstants.ExternalScheme);
+            }
+
             return Results.Ok(await InfoAsync(user, results, config));
         });
 
@@ -55,7 +64,73 @@ public static class AccountEndpoints
             return Results.Ok();
         });
 
-        group.MapGet("/me", async (ClaimsPrincipal principal, UserManager<AppUser> users, ResultsService results, IConfiguration config) =>
+        group.MapGet("/options", (IConfiguration config) => new LoginOptions(GoogleLoginService.IsConfigured(config)));
+
+        // Stap 1: naar Google. Google stuurt terug naar /signin-google, dat de gegevens in de externe cookie zet
+        // en daarna doorgaat naar /google/klaar.
+        group.MapGet("/google", (string? terug, SignInManager<AppUser> signIn, IConfiguration config) =>
+        {
+            if (!GoogleLoginService.IsConfigured(config)) return Results.NotFound();
+            var properties = signIn.ConfigureExternalAuthenticationProperties(GoogleLoginService.Provider,
+                "/api/account/google/klaar" + ReturnQuery(terug));
+            return Results.Challenge(properties, [GoogleLoginService.Provider]);
+        });
+
+        // Stap 2: bestaande of gekoppelde speler meteen aanmelden; een nieuwe speler kiest eerst een gebruikersnaam.
+        group.MapGet("/google/klaar", async (string? terug, HttpContext http, SignInManager<AppUser> signIn,
+            UserManager<AppUser> users, GoogleLoginService google) =>
+        {
+            var info = await signIn.GetExternalLoginInfoAsync();
+            if (info is null) return Results.Redirect("/login?fout=google");
+
+            var (next, user) = await google.FindOrLinkAsync(info);
+            switch (next)
+            {
+                case GoogleNext.ChooseUserName:
+                    return Results.LocalRedirect("~/login/naam" + ReturnQuery(terug));
+                case GoogleNext.SignInWithPasswordFirst:
+                    // De externe cookie blijft staan: /login koppelt Google na een geslaagde aanmelding met het wachtwoord.
+                    return Results.LocalRedirect("~/login?fout=koppel" + ReturnQuery(terug, '&'));
+                case GoogleNext.EmailNotVerified:
+                    await http.SignOutAsync(IdentityConstants.ExternalScheme);
+                    return Results.LocalRedirect("~/login?fout=onbevestigd");
+            }
+
+            await http.SignOutAsync(IdentityConstants.ExternalScheme);
+            if (await users.IsLockedOutAsync(user!)) return Results.LocalRedirect("~/login?fout=geblokkeerd");
+            await signIn.SignInAsync(user!, isPersistent: true);
+            return Results.LocalRedirect("~/" + ReturnPath.Safe(terug));
+        });
+
+        group.MapGet("/google/nieuw", async (SignInManager<AppUser> signIn, GoogleLoginService google) =>
+        {
+            var info = await signIn.GetExternalLoginInfoAsync();
+            return info is null
+                ? Results.NotFound()
+                : Results.Ok(new GoogleSignupInfo(await google.SuggestUserNameAsync(info), GoogleLoginService.Email(info) ?? ""));
+        });
+
+        group.MapPost("/google/nieuw", async (GoogleSignupRequest req, HttpContext http, SignInManager<AppUser> signIn,
+            GoogleLoginService google, ResultsService results, IConfiguration config) =>
+        {
+            var info = await signIn.GetExternalLoginInfoAsync();
+            if (info is null)
+                return Results.BadRequest(new ErrorResponse("Je aanmelding bij Google is verlopen. Probeer het opnieuw."));
+
+            var userName = req.UserName?.Trim() ?? "";
+            if (userName.Length is < 2 or > 20)
+                return Results.BadRequest(new ErrorResponse("Kies een gebruikersnaam van 2 tot 20 tekens."));
+
+            var (user, result) = await google.CreateAsync(info, userName);
+            if (user is null)
+                return Results.BadRequest(new ErrorResponse(Translate(result.Errors)));
+
+            await http.SignOutAsync(IdentityConstants.ExternalScheme);
+            await signIn.SignInAsync(user, isPersistent: true);
+            return Results.Ok(await InfoAsync(user, results, config));
+        });
+
+        group.MapGet("/me",async (ClaimsPrincipal principal, UserManager<AppUser> users, ResultsService results, IConfiguration config) =>
         {
             var user = await users.GetUserAsync(principal);
             return user is null ? Results.Unauthorized() : Results.Ok(await InfoAsync(user, results, config));
@@ -70,7 +145,7 @@ public static class AccountEndpoints
             var input = inputs.GetValueOrDefault(user.Id) ?? new XpInput(0, 0, 0, 0, 0);
             return Results.Ok(new ProfileInfo(
                 user.UserName!, user.Email ?? "", user.AvatarId, QuizClock.ToBrusselsDate(user.CreatedAt),
-                Levels.For(Levels.Xp(input)), Levels.Breakdown(input)));
+                Levels.For(Levels.Xp(input)), Levels.Breakdown(input), await users.HasPasswordAsync(user)));
         }).RequireAuthorization();
 
         group.MapPost("/password", async (ChangePasswordRequest req, ClaimsPrincipal principal,
@@ -79,7 +154,10 @@ public static class AccountEndpoints
             var user = await users.GetUserAsync(principal);
             if (user is null) return Results.Unauthorized();
 
-            var result = await users.ChangePasswordAsync(user, req.CurrentPassword ?? "", req.NewPassword ?? "");
+            // Wie zich enkel met Google aanmeldt, heeft nog geen wachtwoord en kiest er gewoon een.
+            var result = await users.HasPasswordAsync(user)
+                ? await users.ChangePasswordAsync(user, req.CurrentPassword ?? "", req.NewPassword ?? "")
+                : await users.AddPasswordAsync(user, req.NewPassword ?? "");
             if (!result.Succeeded)
                 return Results.BadRequest(new ErrorResponse(Translate(result.Errors)));
 
@@ -106,6 +184,9 @@ public static class AccountEndpoints
     private static async Task<UserInfo> InfoAsync(AppUser user, ResultsService results, IConfiguration config) =>
         new(user.UserName!, user.Email ?? "", user.AvatarId, (await results.LevelOfAsync(user.Id)).Level,
             CurrentUser.IsAdminName(user.UserName, config));
+
+    private static string ReturnQuery(string? terug, char separator = '?') =>
+        ReturnPath.Safe(terug) is { Length: > 0 } safe ? separator + "terug=" + Uri.EscapeDataString(safe) : "";
 
     private static string Translate(IEnumerable<IdentityError> errors) =>
         string.Join(" ", errors.Select(e => e.Code switch

@@ -37,6 +37,7 @@ public class AuthState(ApiClient api) : AuthenticationStateProvider
 
     public async Task LoginAsync(LoginRequest req) => SetUser(await api.LoginAsync(req));
     public async Task RegisterAsync(RegisterRequest req) => SetUser(await api.RegisterAsync(req));
+    public async Task GoogleSignupAsync(GoogleSignupRequest req) => SetUser(await api.GoogleSignupAsync(req));
 
     public async Task SetAvatarAsync(string avatarId) => SetUser(await api.SetAvatarAsync(avatarId));
 

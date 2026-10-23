@@ -3,6 +3,11 @@ namespace VoetbalQuiz.Shared;
 // Account
 public record RegisterRequest(string UserName, string Email, string Password);
 public record LoginRequest(string UserNameOrEmail, string Password);
+/// <summary>Welke aanmeldmanieren de server aanbiedt (Google enkel als de sleutels ingesteld zijn).</summary>
+public record LoginOptions(bool Google);
+/// <summary>Na Google, voor een nieuwe speler: voorgestelde gebruikersnaam en het e-mailadres van Google.</summary>
+public record GoogleSignupInfo(string SuggestedUserName, string Email);
+public record GoogleSignupRequest(string UserName);
 public record UserInfo(string UserName, string Email, string? AvatarId, int Level, bool IsAdmin = false);
 public record ChangePasswordRequest(string CurrentPassword, string NewPassword);
 public record SetAvatarRequest(string AvatarId);
@@ -11,7 +16,7 @@ public record ResetPasswordResult(string UserName, string TemporaryPassword);
 
 public record ProfileInfo(
     string UserName, string Email, string? AvatarId, DateOnly MemberSince,
-    LevelInfo Level, List<XpPart> XpBreakdown);
+    LevelInfo Level, List<XpPart> XpBreakdown, bool HasPassword = true);
 public record ErrorResponse(string Message);
 
 /// <summary>

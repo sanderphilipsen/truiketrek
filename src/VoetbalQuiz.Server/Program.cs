@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using VoetbalQuiz.Server.Data;
@@ -32,12 +34,40 @@ builder.Services.AddIdentityApiEndpoints<AppUser>(options =>
     })
     .AddEntityFrameworkStores<QuizDbContext>();
 
+// Aanmelden met Google kan pas wanneer Authentication:Google:ClientId en ClientSecret ingesteld zijn
+// (lokaal in user-secrets, op Azure als app-instelling). Zonder die sleutels verschijnt de knop niet.
+if (GoogleLoginService.IsConfigured(builder.Configuration))
+{
+    builder.Services.AddAuthentication().AddGoogle(options =>
+    {
+        options.ClientId = builder.Configuration[GoogleLoginService.ClientIdKey]!;
+        options.ClientSecret = builder.Configuration[GoogleLoginService.ClientSecretKey]!;
+        options.SignInScheme = IdentityConstants.ExternalScheme;
+        options.ClaimActions.MapJsonKey(GoogleLoginService.EmailVerifiedClaim, "email_verified");
+        // Geannuleerd of mislukt bij Google: terug naar het aanmeldscherm in plaats van een foutpagina.
+        options.Events.OnRemoteFailure = ctx =>
+        {
+            ctx.Response.Redirect("/login?fout=google");
+            ctx.HandleResponse();
+            return Task.CompletedTask;
+        };
+    });
+}
+
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.Cookie.Name = "voetbalquiz";
-    options.Cookie.SameSite = SameSiteMode.Strict;
+    // Lax en niet Strict: na de terugsprong van Google moet de cookie meteen meegaan.
+    options.Cookie.SameSite = SameSiteMode.Lax;
     options.ExpireTimeSpan = TimeSpan.FromDays(60);
     options.SlidingExpiration = true;
+});
+
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+    options.KnownIPNetworks.Clear();
+    options.KnownProxies.Clear();
 });
 
 builder.Services.AddSingleton(TimeProvider.System);
@@ -58,6 +88,7 @@ builder.Services.AddScoped<AdminService>();
 builder.Services.AddScoped<PasswordResetService>();
 builder.Services.AddScoped<ProgressService>();
 builder.Services.AddScoped<FeedbackService>();
+builder.Services.AddScoped<GoogleLoginService>();
 builder.Services.AddSingleton<LastSeenTracker>();
 builder.Services.AddSingleton<IMatchNotifier, MatchNotifier>();
 builder.Services.AddHostedService<MatchEngine>();
@@ -81,6 +112,8 @@ if (app.Environment.IsDevelopment())
     app.UseWebAssemblyDebugging();
 }
 
+// Azure zet HTTPS af vóór de app: zonder de doorgestuurde headers zou de terugkeer-URL voor Google http:// worden.
+app.UseForwardedHeaders();
 app.UseAuthentication();
 app.UseAuthorization();
 
