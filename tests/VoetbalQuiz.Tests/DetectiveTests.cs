@@ -31,10 +31,13 @@ public sealed class DetectiveTests : IDisposable
         _db = _t.Db;
         for (var i = 1; i <= 15; i++)
             _db.Players.Add(new Player { Name = $"Speler {i}", Status = PlayerStatus.Approved, Hints = [.. Enumerable.Range(1, 5).Select(h => $"Tip {h}")] });
-        _db.QuizItems.Add(new QuizItem
-        {
-            Type = QuestionType.Detective, Key = "De gestolen beker", Data = QuestionEngine.Serialize(Case()), Status = PlayerStatus.Approved,
-        });
+        // Vier zaken per dag: vier keer dezelfde puzzel onder een andere titel.
+        foreach (var n in Enumerable.Range(1, QuestionTypes.Get(QuestionType.Detective).PerDay))
+            _db.QuizItems.Add(new QuizItem
+            {
+                Type = QuestionType.Detective, Key = $"De gestolen beker {n}", Data = QuestionEngine.Serialize(Case() with { Title = $"De gestolen beker {n}" }),
+                Status = PlayerStatus.Approved,
+            });
         _me = _t.AddUser("sander");
         _db.SaveChanges();
     }
@@ -45,12 +48,12 @@ public sealed class DetectiveTests : IDisposable
     private static int Max => QuestionTypes.Get(QuestionType.Detective).MaxPoints;
 
     [Theory]
-    [InlineData(2, 0, 1000)]
-    [InlineData(3, 0, 850)]
-    [InlineData(6, 0, 400)]
-    [InlineData(8, 0, 250)] // minimum
-    [InlineData(2, 1, 500)] // na een foute beschuldiging de helft
-    [InlineData(4, 1, 350)]
+    [InlineData(2, 0, 250)]
+    [InlineData(3, 0, 215)]
+    [InlineData(6, 0, 110)]
+    [InlineData(8, 0, 75)] // minimum
+    [InlineData(2, 1, 125)] // na een foute beschuldiging de helft
+    [InlineData(4, 1, 90)]
     [InlineData(2, 2, 0)]
     public void Points_drop_per_extra_witness_and_halve_after_a_wrong_accusation(int opened, int wrong, int points) =>
         Assert.Equal(points, QuestionRules.DetectivePoints(opened, wrong));
@@ -58,7 +61,7 @@ public sealed class DetectiveTests : IDisposable
     [Fact]
     public void A_case_fills_a_day_on_its_own_and_never_joins_a_mix()
     {
-        Assert.Equal(new Dictionary<QuestionType, int> { [QuestionType.Detective] = 1 }, QuestionTypes.Mix([QuestionType.Detective]));
+        Assert.Equal(new Dictionary<QuestionType, int> { [QuestionType.Detective] = 4 }, QuestionTypes.Mix([QuestionType.Detective]));
         Assert.DoesNotContain(QuestionType.Detective, QuestionTypes.Mix([QuestionType.WieBenIk, QuestionType.Detective]).Keys);
         Assert.DoesNotContain(QuestionType.Detective, QuestionTypes.Mix([QuestionType.Snelvuur, QuestionType.Detective], 7).Keys);
     }
@@ -70,18 +73,20 @@ public sealed class DetectiveTests : IDisposable
     }
 
     [Fact]
-    public async Task The_day_is_one_case_with_one_clock_and_two_witnesses_open()
+    public async Task The_day_is_four_cases_with_a_clock_each_and_two_witnesses_open()
     {
         await PlanTodayAsync();
         var challenge = await _t.Quiz.GetOrCreateChallengeAsync(_t.Quiz.Today);
-        Assert.Equal(QuestionType.Detective, Assert.Single(challenge.Questions).Type);
+        Assert.Equal(4, challenge.Questions.Count);
+        Assert.All(challenge.Questions, q => Assert.Equal(QuestionType.Detective, q.Type));
+        Assert.Equal(4, challenge.Questions.Select(q => q.QuizItemId).Distinct().Count());
 
         var state = await _t.Quiz.StartAsync(_me, 1);
         Assert.Equal(QuestionRules.DetectiveSeconds, state.TimeLimit);
         Assert.Equal(Max, state.View!.MaxPoints);
         var d = state.View.Detective!;
         Assert.Equal(["Verklaring 1", "Verklaring 2"], d.Clues);
-        Assert.Equal((4, 6, 2, 1000, 850), (d.CluesTotal, d.Suspects.Count, d.AccusationsLeft, d.PointsNow, d.PointsNext));
+        Assert.Equal((4, 6, 2, 250, 215), (d.CluesTotal, d.Suspects.Count, d.AccusationsLeft, d.PointsNow, d.PointsNext));
     }
 
     [Fact]
@@ -107,7 +112,7 @@ public sealed class DetectiveTests : IDisposable
 
         var third = await _t.Quiz.GuessAsync(_me, 1, QuestionRules.DetectiveNextClue);
         Assert.Equal(3, third.View!.Detective!.Clues.Count);
-        Assert.Equal((850, 700), (third.View.Detective.PointsNow, third.View.Detective.PointsNext));
+        Assert.Equal((215, 180), (third.View.Detective.PointsNow, third.View.Detective.PointsNext));
         Assert.Equal(0, third.WrongGuesses);
 
         await _t.Quiz.GuessAsync(_me, 1, QuestionRules.DetectiveNextClue);
@@ -140,7 +145,7 @@ public sealed class DetectiveTests : IDisposable
         Assert.Equal(1, wrong.WrongGuesses);
         var d = wrong.View!.Detective!;
         Assert.True(d.Suspects[0].Accused);
-        Assert.Equal((1, 500), (d.AccusationsLeft, d.PointsNow));
+        Assert.Equal((1, 125), (d.AccusationsLeft, d.PointsNow));
 
         var again = await _t.Quiz.GuessAsync(_me, 1, "0"); // dezelfde verdachte telt niet opnieuw
         Assert.Equal(1, again.WrongGuesses);
@@ -160,7 +165,7 @@ public sealed class DetectiveTests : IDisposable
 
         var done = await _t.Quiz.GuessAsync(_me, 1, Culprit.ToString());
         Assert.True(done.Result!.Correct);
-        Assert.Equal(425, done.Result.Points); // 850 / 2
+        Assert.Equal(107, done.Result.Points); // 215 / 2
     }
 
     [Fact]
@@ -248,13 +253,14 @@ public sealed class DetectiveTests : IDisposable
     {
         await PlanTodayAsync();
         await _t.Quiz.StartAsync(_me, 1);
-        var item = _db.QuizItems.Single(i => i.Type == QuestionType.Detective);
-        var edit = await _t.Admin.QuizItemAsync(item.Id);
+        var challenge = await _t.Quiz.GetOrCreateChallengeAsync(_t.Quiz.Today);
+        var edit = await _t.Admin.QuizItemAsync(challenge.Questions.Single(q => q.Number == 1).QuizItemId!.Value);
+        var played = QuestionEngine.Parse<DetectiveData>(edit.Data);
 
         // Teksten bijwerken mag nog.
-        await _t.Admin.SaveQuizItemAsync(edit with { Data = QuestionEngine.Serialize(Case() with { Intro = "Beter verhaal." }), Sources = ["https://example.com"] }, "admin");
+        await _t.Admin.SaveQuizItemAsync(edit with { Data = QuestionEngine.Serialize(played with { Intro = "Beter verhaal." }), Sources = ["https://example.com"] }, "admin");
 
-        var swapped = Case() with { Suspects = [.. Case().Suspects.AsEnumerable().Reverse()] };
+        var swapped = played with { Suspects = [.. played.Suspects.AsEnumerable().Reverse()] };
         await Assert.ThrowsAsync<QuizException>(() =>
             _t.Admin.SaveQuizItemAsync(edit with { Data = QuestionEngine.Serialize(swapped), Sources = ["https://example.com"] }, "admin"));
     }

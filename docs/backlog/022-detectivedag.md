@@ -26,13 +26,13 @@ Een daily die voetbalkennis en logisch redeneren combineert, verpakt in een verh
 ### Beslissingen (2026-10-23)
 
 - **Twee beschuldigingen.** Is de eerste fout, dan halveren de punten; de tweede fout sluit de zaak met 0.
-- **Punten:** de eerste 2 verklaringen staan open bij de start. De dader aanwijzen met enkel die open: 1000. Elke extra verklaring kost 150, met een minimum van 250. Bij 6 verklaringen: 1000, 850, 700, 550, 400.
+- **Punten:** vier zaken per dag van elk maximaal 250 (samen 1000, zoals De Zondag). De eerste 2 verklaringen staan open bij de start. De dader aanwijzen met enkel die open: 250. Elke extra verklaring kost 35, met een minimum van 75. Bij 6 verklaringen: 250, 215, 180, 145, 110. (Eerst 1 zaak van 1000; op 23/10 gewijzigd naar 4 × 250.)
 - **Vaste volgorde** van de verklaringen, van vaag naar scherp.
-- **Eén klok van 3 minuten** voor de hele zaak. Is de tijd op, of geeft de speler op: 0.
+- **Eén klok van 3 minuten** per zaak. Is de tijd op, of geeft de speler op: 0 voor die zaak.
 - **Schrappen is vrijblijvend:** een tik streept door, nog een tik zet terug. De server weet niet wie je doorstreepte; enkel het aantal geopende verklaringen en de beschuldiging tellen.
 - **Waterdicht:** elke verklaring vermeldt in de data zelf welke verdachten ze uitsluit (niet berekend). De controle bij het opslaan eist: na alle verklaringen blijft precies de dader over, geen verklaring sluit de dader uit, elke verklaring sluit minstens één verdachte uit. Vaste woordenlijst: "speelde voor" = minstens één officiële wedstrijd, een uitleenbeurt telt mee.
 - **Verhaaltjes:** een vaste set sjablonen (gestolen trofee, verdwenen rugnummer, gelekte opstelling, ...), met per zaak nieuwe verdachten en verklaringen.
-- **Hoe vaak:** zoals De Krant, als dag op zich via specials en het admin-paneel, niet in de vaste weekplanning.
+- **Hoe vaak:** als dag in de weekplanning of als special (beide kunnen), niet in een mix.
 - **Online nee, Academie ja** (een gemiste zaak naspelen).
 - **Eerste zaak:** "De gestolen Gouden Schoen" (dader Hans Vanaken). Zaken met actieve spelers verouderen: vóór elke inzet opnieuw nakijken.
 

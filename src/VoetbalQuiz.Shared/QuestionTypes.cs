@@ -6,7 +6,7 @@ public enum QuestionType { WieBenIk, Snelvuur, Carriere, NietBij, Jaar, Emoji, O
 /// Vaste eigenschappen per vraagtype. Een dag is altijd maximaal 1000 punten waard.
 /// FromPlayers: de vragen komen uit de spelersdatabase (zoals "Wie ben ik?"), niet uit de vragenbank.
 /// Alone: een solo-type. Het vult in zijn eentje de hele dag, met één of meer vragen (De Zondag: 4 × 250, Detectivedag:
-/// 1 × 1000, Kaart: 2 × 500). Zo'n type komt nooit in een mix (<see cref="QuestionTypes.Mix(IEnumerable{QuestionType})"/> laat
+/// 4 × 250, Kaart: 2 × 500). Zo'n type komt nooit in een mix (<see cref="QuestionTypes.Mix(IEnumerable{QuestionType})"/> laat
 /// het vallen zodra er een ander type bij is, en het admin-paneel weigert de combinatie), niet online, niet in de badge
 /// Allrounder en niet in de "100 punten"-statistieken. XP: zijn vragen tellen samen als een volle dag en zijn deelpunten tellen mee.
 /// </summary>
@@ -33,8 +33,8 @@ public static class QuestionTypes
         new(QuestionType.Volgorde, "Op volgorde", "🔀", "Tik de kaartjes aan in de juiste volgorde. Hoe dichter, hoe meer punten.", 10, 100, "volgorde"),
         new(QuestionType.Krant, "De Zondag", "📰", "Elke zondag vier krantenartikels met elk vijf gaten. Tik op een gat en vul het in, in de volgorde die je wil.", 4, 250, "krant",
             Alone: true),
-        new(QuestionType.Detective, "Detectivedag", "🔎", "Wie is de dader? Open de getuigen één voor één, schrap verdachten en wijs de dader aan. Hoe minder getuigen, hoe meer punten.",
-            1, 1000, "detective", Alone: true),
+        new(QuestionType.Detective, "Detectivedag", "🔎", "Wie is de dader? Open de getuigen één voor één, schrap verdachten en wijs de dader aan. Vier zaken per dag: hoe minder getuigen, hoe meer punten.",
+            4, 250, "detective", Alone: true),
         new(QuestionType.Kaart, "Kaart", "🗺️",
             $"Twee delen op dezelfde kaart van een land: eerst kies je bij elke speld de club, daarna bij elke club het stadion. " +
             $"Per deel {QuestionRules.KaartPins} spelden, {(int)QuestionRules.KaartSeconds / 60} minuten en " +
@@ -69,15 +69,14 @@ public static class QuestionTypes
     }
 
     /// <summary>
-    /// Kan de admin dit type als dag in de weekplanning kiezen? Gewone types wel, en van de solo-types enkel de kaart (de
-    /// eigenaar kiest per kaartdag een land). De Zondag staat vast op zondag (<see cref="ZondagDay"/>) en de Detectivedag
-    /// speel je als special.
+    /// Kan de admin dit type als dag in de weekplanning kiezen? Gewone types wel, en van de solo-types de kaart (de
+    /// eigenaar kiest per kaartdag een land) en de Detectivedag (vier zaken). De Zondag staat vast op zondag (<see cref="ZondagDay"/>).
     /// </summary>
-    public static bool InWeekPlanning(QuestionType type) => !Get(type).Alone || type == QuestionType.Kaart;
+    public static bool InWeekPlanning(QuestionType type) => !Get(type).Alone || type is QuestionType.Kaart or QuestionType.Detective;
 
     /// <summary>
     /// "Gespeelde vragen" voor de XP: een vraag telt als één, maar de vragen van een solo-type tellen samen als een volle
-    /// dag (<see cref="GameRules.QuestionsPerDay"/>): elk artikel van De Zondag (4) telt 2,5, de Detectivedag (1) 10, elk deel
+    /// dag (<see cref="GameRules.QuestionsPerDay"/>): elk artikel van De Zondag (4) telt 2,5, elke zaak van de Detectivedag (4) ook 2,5, elk deel
     /// van de kaart (2) 5. Een kommagetal: de som wordt pas op het einde afgerond (zie ResultsService).
     /// </summary>
     public static double PlayedWeight(QuestionType type) =>
@@ -337,15 +336,15 @@ public static class QuestionRules
     /// </summary>
     public const int KrantMaxGuesses = 100;
 
-    /// <summary>Detectivedag: één klok voor de hele zaak.</summary>
+    /// <summary>Detectivedag: één klok per zaak (vier zaken per dag).</summary>
     public const double DetectiveSeconds = 180;
 
     /// <summary>Detectivedag: zoveel verklaringen staan open bij de start (met nul kan je enkel gokken).</summary>
     public const int DetectiveOpenAtStart = 2;
 
     /// <summary>Detectivedag: elke verklaring na de eerste <see cref="DetectiveOpenAtStart"/> kost zoveel punten, tot dit minimum.</summary>
-    public const int DetectivePointsPerClue = 150;
-    public const int DetectiveMinPoints = 250;
+    public const int DetectivePointsPerClue = 35;
+    public const int DetectiveMinPoints = 75;
 
     /// <summary>Detectivedag: zoveel keer mag je iemand beschuldigen. Na een foute beschuldiging halveren de punten.</summary>
     public const int DetectiveAccusations = 2;
@@ -430,8 +429,8 @@ public static class QuestionRules
         gaps == 0 ? 0 : (int)Math.Round(QuestionTypes.Get(QuestionType.Krant).MaxPoints * score / gaps);
 
     /// <summary>
-    /// Detectivedag: wat de dader aanwijzen nu oplevert. 1000 met enkel de verklaringen van bij de start, 150 minder per
-    /// extra verklaring (minimum 250), de helft na een foute beschuldiging.
+    /// Detectivedag: wat de dader aanwijzen nu oplevert. 250 met enkel de verklaringen van bij de start, 35 minder per
+    /// extra verklaring (minimum 75), de helft na een foute beschuldiging.
     /// </summary>
     public static int DetectivePoints(int opened, int wrongAccusations)
     {
