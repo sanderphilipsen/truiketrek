@@ -35,8 +35,8 @@ Lopende planning: [planning-2026-10-23.md](planning-2026-10-23.md) (week 44 t/m 
 | [004](004-weergavethemas.md) | Weergavemodussen: de speler kiest een thema | feature | concept | midden | L | niet nu |
 | [005](005-seizoenssfeer.md) | Seizoenssfeer op feestdagen en voetbalmomenten | ux | concept | midden | M | wk 46 (lichte versie) |
 | [006](006-streaker.md) | Streaker die over het scherm loopt | feature | concept | laag | M | niet nu |
-| [008](008-vraagtype-kaart.md) | Vraagtype "Kaart van België" | feature | idee | laag | L | voorstel: schrappen |
-| [009](009-vraagtype-raster.md) | Vraagtype "Raster" (3×3) | feature | idee | midden | L | niet nu |
+| [008](008-vraagtype-kaart.md) | Kaartdag: "Wie speelt hier?" | feature | concept | midden | M | niet nu |
+| [009](009-vraagtype-raster.md) | Vraagtype "Raster" (3×3) | feature | concept | midden | L | niet nu |
 | [010](010-vraagtype-verbindingsman.md) | Vraagtype "Verbindingsman" | feature | idee | laag | L | voorstel: bij 009 |
 | [012](012-vraagtype-wie-zei-het.md) | Vraagtype "Wie zei het?" | feature | klaar | midden | M | inhoud wk 45-46, bouwen wk 47 |
 | [013](013-daag-uit.md) | Daag uit (asynchroon duel) | feature | idee | midden | L | concept wk 45, bouwen wk 48-49 |
