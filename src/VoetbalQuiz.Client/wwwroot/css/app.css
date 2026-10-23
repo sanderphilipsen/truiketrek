@@ -102,7 +102,9 @@ body::before {
 .pitch-night .pitch-fx::before { opacity: 0; }
 
 /* Avond: het veld wordt donkerder en uit elke hoek schijnt een lichtmast (lamp + bundel) naar de middenstip.
-   De richting (--tl, --tr, --bl, --br) zet pitch.js volgens de vorm van het scherm. */
+   De richting (--tl, --tr, --bl, --br) zet pitch.js volgens de vorm van het scherm.
+   De bundels staan stil: een geanimeerd element met mask-image flikkert in Chrome op Mali-GPU's (Samsung Galaxy S21
+   Ultra), zeker op een OLED-scherm bij lage helderheid. Alleen de kleine lampen ademen, op een eigen laag zonder masker. */
 .pf-lights {
     position: absolute; inset: 0; overflow: hidden; opacity: 0; transition: opacity 4s ease;
     background: radial-gradient(ellipse 70% 55% at 50% 50%, rgba(0, 6, 3, .3), rgba(0, 4, 2, .62));
@@ -112,18 +114,19 @@ body::before {
 .pf-beam, .pf-lamp { border-radius: 50%; }
 .pf-beam {
     --dir: 135deg;
-    width: 220vmax; height: 220vmax; margin: -110vmax 0 0 -110vmax;
+    /* Straal 80vmax reikt vanuit elke hoek ruim voorbij de middenstip (hoogstens 71vmax ver). */
+    width: 160vmax; height: 160vmax; margin: -80vmax 0 0 -80vmax;
     background: conic-gradient(from calc(var(--dir) - 22deg),
         transparent 0deg, rgba(255, 244, 205, .12) 7deg, rgba(255, 248, 220, .30) 16deg, rgba(255, 253, 240, .45) 22deg,
         rgba(255, 248, 220, .30) 28deg, rgba(255, 244, 205, .12) 37deg, transparent 44deg);
     -webkit-mask-image: radial-gradient(circle closest-side, #000 0, rgba(0, 0, 0, .75) 30%, rgba(0, 0, 0, .25) 60%, transparent 85%);
     mask-image: radial-gradient(circle closest-side, #000 0, rgba(0, 0, 0, .75) 30%, rgba(0, 0, 0, .25) 60%, transparent 85%);
-    animation: pf-breathe 7s ease-in-out infinite;
 }
 /* De gloed rond de lichtmast. */
 .pf-lamp {
     width: 60vmin; height: 60vmin; margin: -30vmin 0 0 -30vmin;
     background: radial-gradient(circle closest-side, rgba(255, 255, 245, .85), rgba(255, 248, 215, .35) 22%, rgba(255, 244, 205, .1) 55%, transparent);
+    will-change: opacity;
     animation: pf-breathe 7s ease-in-out infinite;
 }
 /* De lampenbank zelf: een raster van felle lampjes, gekanteld naar de middenstip. */
@@ -142,9 +145,10 @@ body::before {
 .tr:is(.pf-beam, .pf-lamp, .pf-bank) { left: 100%; top: 0; animation-delay: -2.1s; }
 .bl:is(.pf-beam, .pf-lamp, .pf-bank) { left: 0; top: 100%; animation-delay: -4.3s; }
 .br:is(.pf-beam, .pf-lamp, .pf-bank) { left: 100%; top: 100%; animation-delay: -5.6s; }
-/* De masten ademen elk op hun eigen ritme, zoals echte stadionlampen die nooit helemaal even fel branden. */
-@keyframes pf-breathe { 0%, 100% { opacity: 1; } 50% { opacity: .72; } }
-@media (prefers-reduced-motion: reduce) { .pf-beam, .pf-lamp { animation: none; } }
+/* De lampen ademen elk op hun eigen ritme, zoals echte stadionlampen die nooit helemaal even fel branden.
+   Zacht genoeg om op een OLED-scherm niet in stapjes te springen. */
+@keyframes pf-breathe { 0%, 100% { opacity: 1; } 50% { opacity: .8; } }
+@media (prefers-reduced-motion: reduce) { .pf-lamp { animation: none; } }
 
 .pf-lines { fill: none; stroke: #fff; stroke-opacity: .13; stroke-width: 1.5; }
 .pf-lines *, .pf-trail, .pf-ring, .pf-ripple { vector-effect: non-scaling-stroke; }
