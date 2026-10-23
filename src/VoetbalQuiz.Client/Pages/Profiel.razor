@@ -4,9 +4,9 @@
 @inject AuthState Auth
 @inject NavigationManager Nav
 
-<PageTitle>Profiel – Truitje Trek</PageTitle>
+<PageTitle>Spelersfiche – Truitje Trek</PageTitle>
 
-<PageHeader Title="Profiel" />
+<PageHeader Title="Spelersfiche" />
 
 @if (_error is not null)
 {
@@ -161,9 +161,9 @@ else
                     <section class="card menu-list">
                         @if (Auth.User?.IsAdmin == true)
                         {
-                            <a href="admin"><span><Icon Name="gear-six" /></span>Admin-paneel<i>›</i></a>
+                            <a href="admin"><span><Icon Name="gear-six" /></span>Bestuurskamer<i>›</i></a>
                         }
-                        <a href="feedback"><span><Icon Name="bug" /></span>Bug of idee melden<i>›</i></a>
+                        <a href="feedback"><span><Icon Name="bug" /></span>Naar de VAR (bug of idee)<i>›</i></a>
                         <button @onclick="LogoutAsync"><span><Icon Name="sign-out" /></span>Afmelden<i>›</i></button>
                     </section>
 
