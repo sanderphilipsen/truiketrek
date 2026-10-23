@@ -1,7 +1,7 @@
 # 002 – Herwerking van de klassementen
 
 - **Soort:** feature
-- **Status:** bezig
+- **Status:** gedaan voor fase 1 (`97fad5a`); fase 2 open, niet in [planning-2026-10-23](planning-2026-10-23.md)
 - **Prioriteit:** midden
 - **Moeite:** L (fase 1 M-L, fase 2 M)
 - **Aangemaakt:** 2026-10-20

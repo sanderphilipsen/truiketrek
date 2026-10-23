@@ -1,7 +1,7 @@
 # 011 – Vraagtype "Op volgorde"
 
 - **Soort:** feature
-- **Status:** bezig
+- **Status:** gedaan (`4803333`, `6d5fd4a`; 250 vragen in `85d98eb`); nog in geen daily of special gespeeld
 - **Prioriteit:** midden
 - **Moeite:** M
 - **Aangemaakt:** 2026-10-22

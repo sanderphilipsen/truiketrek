@@ -1,7 +1,7 @@
 # 007 – Academie: oude dailies en specials terugspelen
 
 - **Soort:** feature
-- **Status:** bezig
+- **Status:** gedaan (`0e18e7b`, bijgewerkt in `6fb0dc2`); niet gebouwd: de teller "je miste 3 dailies" en de uitbreidingen
 - **Prioriteit:** midden
 - **Moeite:** M (eerste versie), L met de uitbreidingen
 - **Aangemaakt:** 2026-10-20
