@@ -5,7 +5,7 @@
 @inject AuthState Auth
 @inject NavigationManager Nav
 
-<PageTitle>Special – Admin</PageTitle>
+<PageTitle>Special – Bestuurskamer</PageTitle>
 
 <AdminGuard>
     <div class="editor-top"><a href="admin/specials" class="back">‹ Terug naar specials</a></div>
@@ -73,7 +73,7 @@
 
                 <section class="card stack">
                     <h2>@(Id == 0 ? "4. " : "")Welke vraagtypes?</h2>
-                    <p class="muted">De vragen worden om beurten over de gekozen types verdeeld (max. @GameRules.QuestionsPerDay vragen en 1000 punten; een opstelling telt voor twee). Vragen met het thema van de special krijgen voorrang. Een type dat in Planning uitgeschakeld is, wordt overgeslagen. 📰 De Krant en 🗺️ Kaart vullen elk een hele special: kies je er een, dan gaan de andere types uit.</p>
+                    <p class="muted">De vragen worden om beurten over de gekozen types verdeeld (max. @GameRules.QuestionsPerDay vragen en 1000 punten; een opstelling telt voor twee). Vragen met het thema van de special krijgen voorrang. Een type dat in Planning uitgeschakeld is, wordt overgeslagen. 📰 De Zondag, 🔎 Detectivedag en 🗺️ Kaart vullen elk een hele special: kies je er een, dan gaan de andere types uit.</p>
                     <div class="tag-toggle">
                         @foreach (var t in QuestionTypes.All)
                         {
@@ -217,7 +217,7 @@
         : string.Join(", ", MixCounts().Select(kv => $"{kv.Value}× {QuestionTypes.Get(kv.Key).Icon} {QuestionTypes.Get(kv.Key).Name}"));
 
     /// <summary>
-    /// De solo-regel (<see cref="QuestionTypeInfo.Alone"/>): De Krant en de kaart staan alleen. Kies je er een, dan gaan de
+    /// De solo-regel (<see cref="QuestionTypeInfo.Alone"/>): De Zondag, Detectivedag en de kaart staan alleen. Kies je er een, dan gaan de
     /// andere types uit; kies je daarna een ander type, dan gaat het solo-type uit.
     /// </summary>
     private void ToggleType(QuestionType type)

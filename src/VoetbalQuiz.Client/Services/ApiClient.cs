@@ -128,6 +128,14 @@ public class ApiClient(HttpClient http)
     public async Task SendFeedbackAsync(FeedbackRequest req) => await EnsureOkAsync(await http.PostAsJsonAsync("api/feedback", req));
     public async Task UpdateFeedbackAsync(int id, FeedbackUpdate req) => await EnsureOkAsync(await http.PutAsJsonAsync($"api/feedback/{id}", req));
 
+    // Meldingencentrum
+    public Task<List<NotificationItem>> GetNotificationsAsync() => GetAsync<List<NotificationItem>>("api/notifications");
+    public Task<NotificationCount> GetNotificationCountAsync() => GetAsync<NotificationCount>("api/notifications/count");
+    public async Task MarkNotificationsReadAsync() => await EnsureOkAsync(await http.PostAsync("api/notifications/read", null));
+    public Task<List<AnnouncementItem>> GetAnnouncementsAsync() => GetAsync<List<AnnouncementItem>>("api/admin/announcements");
+    public async Task AddAnnouncementAsync(AnnouncementRequest req) => await EnsureOkAsync(await http.PostAsJsonAsync("api/admin/announcements", req));
+    public async Task DeleteAnnouncementAsync(int id) => await EnsureOkAsync(await http.DeleteAsync($"api/admin/announcements/{id}"));
+
     // Online
     public Task<LobbyOverview> GetLobbyAsync() => GetAsync<LobbyOverview>("api/matches");
     public Task<List<QuestionType>> GetMatchTypesAsync() => GetAsync<List<QuestionType>>("api/matches/types");

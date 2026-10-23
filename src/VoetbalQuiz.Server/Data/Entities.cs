@@ -28,6 +28,9 @@ public class AppUser : IdentityUser
     /// </summary>
     public DateTime? LastSeenAt { get; set; }
 
+    /// <summary>Tot wanneer de speler de releasenota's (<see cref="Announcement"/>) gezien heeft (UTC). Null = nog nooit.</summary>
+    public DateTime? AnnouncementsReadAt { get; set; }
+
     /// <summary>De maand (eerste dag) waarvan de speler de uitreiking van de Gouden Bal al zag. Null = nog nooit.</summary>
     public DateOnly? GoldenBallSeenMonth { get; set; }
 }
@@ -214,6 +217,31 @@ public class Feedback
     public DateTime CreatedAt { get; set; }
     public FeedbackStatus Status { get; set; } = FeedbackStatus.Nieuw;
     public string? Reply { get; set; }
+}
+
+/// <summary>Een melding voor één gebruiker, bv. "nieuwe bug gemeld" voor een admin of "je melding is opgelost".</summary>
+public class Notification
+{
+    public int Id { get; set; }
+    public required string UserId { get; set; }
+    public AppUser User { get; set; } = null!;
+    public NotificationKind Kind { get; set; }
+    public required string Title { get; set; }
+    public string? Text { get; set; }
+    /// <summary>Pagina in de app waar de melding heen gaat, bv. "feedback".</summary>
+    public string? Link { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public DateTime? ReadAt { get; set; }
+}
+
+/// <summary>Een releasenota van een admin voor alle spelers ("Wat is er nieuw"). Gezien per speler via AppUser.AnnouncementsReadAt.</summary>
+public class Announcement
+{
+    public int Id { get; set; }
+    public required string Title { get; set; }
+    public required string Text { get; set; }
+    public string? Link { get; set; }
+    public DateTime CreatedAt { get; set; }
 }
 
 // ---------- Online wedstrijden ----------

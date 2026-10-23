@@ -55,6 +55,7 @@ Alle huidige types zijn intypen, meerkeuze of een getal schatten. Een kaart met 
 ## Notities
 
 - 2026-10-23, review landenkaarten: de sleutel van een kaart is land|competitie|seizoen (oude kaarten zonder land gaan via de seeder netjes op afgewezen); een speld moet binnen de grens van haar land liggen (`KaartGrenzen`, vereenvoudigde omtrek met 5 km marge, gegenereerd uit de buitenlijn van `KaartPaden`); de picker speelt nooit een kaart met problemen en kiest eerst het land, dan het thema van de special, dan een ander land dan de vorige kaartdag; een ongewijzigde kaart blijft in de admin beheersbaar, ook als ze niet meer aan de regels voldoet.
+- 2026-10-23, merge met De Zondag en de Detectivedag: Kaart, De Zondag en de Detectivedag volgen dezelfde solo-regels (`Alone`). In de weekplanning kies je van de solo-types enkel de kaart (`QuestionTypes.InWeekPlanning`): zondag is altijd De Zondag, de Detectivedag is een special. Een kaartdag valt dus nooit op zondag.
 - **Bekende hints (aanvaard):**
   - Deel 2: wie de stadions kent die al geplaatst zijn, kan de laatste spelden door eliminatie raden (de lijst toont wel altijd alle stadions).
   - Deel 1: twee keuzelijsten bij een speld verraden een gedeeld stadion, en dus vrijwel altijd Brugge (Club en Cercle).

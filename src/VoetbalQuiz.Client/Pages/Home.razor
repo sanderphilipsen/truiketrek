@@ -11,9 +11,16 @@
 @* Geen topbar: bovenaan een begroeting volgens het uur en je avatar met je level; de avatar opent je profiel. *@
 <div class="home-top">
     <h1 class="home-hello">@Greeting @Auth.User?.UserName</h1>
+    <a href="meldingen" class="bell" aria-label="@(_unread > 0 ? $"Meldingen, {_unread} nieuw" : "Meldingen")">
+        <Icon Name="bell" />
+        @if (_unread > 0)
+        {
+            <span class="bell-dot" aria-hidden="true">@(_unread > 9 ? "9+" : _unread)</span>
+        }
+    </a>
     @if (Auth.User is { } me)
     {
-        <a href="profiel" class="who" aria-label="Jouw profiel: @me.UserName, level @me.Level">
+        <a href="profiel" class="who" aria-label="Jouw spelersfiche: @me.UserName, level @me.Level">
             <Avatar Id="@me.AvatarId" User="@me.UserName" Size="40" Decorative="true" />
             <span class="lvl-dot" aria-hidden="true">@me.Level</span>
         </a>
@@ -192,7 +199,7 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
     @SpecialCard(active, isNew: false)
 }
 
-@* Daaronder brede stroken, allemaal in dezelfde vorm: klassement, academie, badges, instellingen, feedback, admin. *@
+@* Daaronder brede stroken, allemaal in dezelfde vorm: klassement, academie, prijzenkast, instellingen, VAR, bestuurskamer. *@
 <a class="card sb-strip" href="klassement">
     <Icon Name="trophy" Class="sb-icon" />
     <span class="sb-label">Klassement</span>
@@ -205,7 +212,7 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
 </a>
 <a class="card sb-strip" href="badges" aria-label="@BadgesLabel">
     <Icon Name="medal" Class="sb-icon" />
-    <span class="sb-label" aria-hidden="true">Badges</span>
+    <span class="sb-label" aria-hidden="true">Prijzenkast</span>
     <span class="sb-digits" aria-hidden="true">@(_badges is { } b ? $"{b.Earned}/{b.Total}" : "–")</span>
     <span class="sb-go" aria-hidden="true">›</span>
 </a>
@@ -214,16 +221,23 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
     <span class="sb-label">Instellingen</span>
     <span class="sb-go" aria-hidden="true">›</span>
 </a>
-<a class="card sb-strip" href="feedback">
+@* Voetbalnamen met de gewone naam eronder, zodat ze duidelijk blijven. *@
+<a class="card sb-strip" href="feedback" aria-label="Naar de VAR: bug of idee melden">
     <Icon Name="bug" Class="sb-icon" />
-    <span class="sb-label">Bug of idee melden</span>
+    <span class="sb-strip-text" aria-hidden="true">
+        <span class="sb-label">Naar de VAR</span>
+        <small>Bug of idee melden</small>
+    </span>
     <span class="sb-go" aria-hidden="true">›</span>
 </a>
 @if (Auth.User?.IsAdmin == true)
 {
-    <a class="card sb-strip" href="admin">
+    <a class="card sb-strip" href="admin" aria-label="Bestuurskamer: admin">
         <Icon Name="gear-six" Class="sb-icon" />
-        <span class="sb-label">Admin</span>
+        <span class="sb-strip-text" aria-hidden="true">
+            <span class="sb-label">Bestuurskamer</span>
+            <small>Admin</small>
+        </span>
         <span class="sb-go" aria-hidden="true">›</span>
     </a>
 }
@@ -250,6 +264,7 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
     private Dictionary<int, List<LeaderboardEntry>> _specialTop = [];
     private List<MatchSummary> _myTables = [];
     private bool _introHidden = true; // pas tonen als zeker is dat de speler ze niet weggeklikt heeft
+    private int _unread;
 
     protected override async Task OnInitializedAsync()
     {
@@ -260,6 +275,7 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
             LoadSpecialsAsync(),
             LoadRankAsync(),
             LoadBadgesAsync(),
+            LoadUnreadAsync(),
             LoadIntroAsync(),
             RefreshUserAsync(),
             GoldenBall.EnsureLoadedAsync()); // nieuwe dag: misschien een nieuwe Gouden Bal
@@ -327,7 +343,14 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
         StateHasChanged();
     }
 
-    private string BadgesLabel => _badges is { } b ? $"Badges: {b.Earned} van {b.Total} verdiend" : "Badges";
+    private async Task LoadUnreadAsync()
+    {
+        try { _unread = (await Api.GetNotificationCountAsync()).Unread; }
+        catch (Exception ex) when (ex is ApiException or HttpRequestException) { _unread = 0; }
+        StateHasChanged();
+    }
+
+    private string BadgesLabel => _badges is { } b ? $"Prijzenkast: {b.Earned} van {b.Total} badges verdiend" : "Prijzenkast";
 
     /// <summary>De plaats is een extraatje: lukt het niet, dan tonen we ze gewoon niet.</summary>
     private async Task LoadRankAsync()

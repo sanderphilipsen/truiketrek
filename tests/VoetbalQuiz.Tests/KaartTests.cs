@@ -494,8 +494,9 @@ public sealed class KaartTests : IDisposable
         Assert.Equal(PlayerStatus.Approved, fresh.Status);
 
         // De volgende kaartdag kiest de oude kaart niet meer.
-        await _t.Admin.SaveScheduleAsync([new ScheduleDay(DayOfWeek.Sunday, QuestionType.Kaart)]);
-        _clock.Advance(TimeSpan.FromDays(1));
+        // Maandag (zondag is altijd De Zondag).
+        await _t.Admin.SaveScheduleAsync([new ScheduleDay(DayOfWeek.Monday, QuestionType.Kaart)]);
+        _clock.Advance(TimeSpan.FromDays(2));
         var day2 = await _quiz.GetOrCreateChallengeAsync(_quiz.Today);
         Assert.Equal(fresh.Id, day2.Questions.First().QuizItemId);
     }
@@ -989,10 +990,10 @@ public sealed class KaartTests : IDisposable
         Add(QuestionType.Kaart, "Ligue 1|2026-27", MapIn("FR", "Ligue 1"));
         _db.SaveChanges();
         await _t.Admin.SaveScheduleAsync(
-            [new ScheduleDay(DayOfWeek.Saturday, QuestionType.Kaart), new ScheduleDay(DayOfWeek.Sunday, QuestionType.Kaart)]);
+            [new ScheduleDay(DayOfWeek.Saturday, QuestionType.Kaart), new ScheduleDay(DayOfWeek.Monday, QuestionType.Kaart)]); // zondag: De Zondag
 
         var first = LandOf(await _quiz.GetOrCreateChallengeAsync(_quiz.Today));
-        _clock.Advance(TimeSpan.FromDays(1));
+        _clock.Advance(TimeSpan.FromDays(2));
         var second = LandOf(await _quiz.GetOrCreateChallengeAsync(_quiz.Today));
         Assert.NotEqual(first, second);
     }

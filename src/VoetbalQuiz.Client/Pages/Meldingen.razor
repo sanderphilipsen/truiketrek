@@ -1,0 +1,96 @@
+@page "/meldingen"
+@attribute [Authorize]
+@inject ApiClient Api
+
+<PageTitle>Meldingen – Truitje Trek</PageTitle>
+
+<PageHeader Title="Meldingen" />
+
+@* Wie de lijst opent, heeft alles gezien: het bolletje op Home verdwijnt. Nieuwe meldingen blijven tijdens dit bezoek gemarkeerd. *@
+@if (_error is not null)
+{
+    <div class="card center">
+        <p class="error" role="alert">@_error</p>
+        <button class="btn" @onclick="LoadAsync">Opnieuw proberen</button>
+    </div>
+}
+else if (_items is null)
+{
+    <div class="center-msg"><Spinner /></div>
+}
+else if (_items.Count == 0)
+{
+    <div class="card center muted">Nog geen meldingen. Nieuws over de app en antwoorden op je feedback verschijnen hier.</div>
+}
+else
+{
+    <ul class="notif-list">
+        @foreach (var n in _items)
+        {
+            <li>
+                @if (n.Link is { } link)
+                {
+                    <a class="card notif @(n.IsNew ? "new" : "")" href="@link">@Body(n)</a>
+                }
+                else
+                {
+                    <div class="card notif @(n.IsNew ? "new" : "")">@Body(n)</div>
+                }
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    private List<NotificationItem>? _items;
+    private string? _error;
+
+    protected override Task OnInitializedAsync() => LoadAsync();
+
+    private async Task LoadAsync()
+    {
+        _error = null;
+        try
+        {
+            _items = await Api.GetNotificationsAsync();
+            if (_items.Any(n => n.IsNew)) await Api.MarkNotificationsReadAsync();
+        }
+        catch (Exception ex) when (ex is ApiException or HttpRequestException)
+        {
+            _error = "De meldingen konden niet geladen worden. Controleer je verbinding.";
+        }
+    }
+
+    private static string IconFor(NotificationKind kind) => kind switch
+    {
+        NotificationKind.Nieuws => "megaphone",
+        NotificationKind.NieuweFeedback => "bug",
+        NotificationKind.Voorraad => "arrows-clockwise",
+        _ => "chat-circle",
+    };
+
+    private static string LabelFor(NotificationKind kind) => kind switch
+    {
+        NotificationKind.Nieuws => "Wat is er nieuw",
+        NotificationKind.NieuweFeedback => "Feedback",
+        NotificationKind.Voorraad => "Vragenvoorraad",
+        _ => "Je melding",
+    };
+
+    private RenderFragment Body(NotificationItem n) =>
+        @<text>
+            <span class="notif-icon"><Icon Name="@IconFor(n.Kind)" /></span>
+            <span class="notif-body">
+                <span class="sb-label">@LabelFor(n.Kind) · @DutchDates.Ago(n.CreatedAt, DateTime.UtcNow)</span>
+                <b>@n.Title</b>
+                @if (n.Text is not null)
+                {
+                    <span class="notif-text">@n.Text</span>
+                }
+            </span>
+            @if (n.IsNew)
+            {
+                <span class="notif-new" aria-label="Nieuw"></span>
+            }
+        </text>;
+}

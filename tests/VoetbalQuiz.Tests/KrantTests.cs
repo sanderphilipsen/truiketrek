@@ -4,18 +4,18 @@ using VoetbalQuiz.Shared;
 
 namespace VoetbalQuiz.Tests;
 
-/// <summary>De Krant: een artikel met gaten dat de hele dag vult.</summary>
+/// <summary>De Krant: de vaste rubriek "De Zondag", vier artikels met elk vijf gaten.</summary>
 public sealed class KrantTests : IDisposable
 {
     private readonly TestDb _t = new();
     private readonly QuizDbContext _db;
     private readonly string _me;
 
-    // Vier gaten: drie namen en één getal (een minuut, met deelpunten per minuut ernaast).
+    // Vijf gaten: vier namen en één getal (een minuut, met deelpunten per minuut ernaast).
     private const string Text = """
         In de [[#69 : minuut]]e minuut kopte [[Jan Vertonghen / Vertonghen : speler]] de 1-2 binnen.
 
-        Daarna scoorden [[Marouane Fellaini / Fellaini : speler]] en [[Nacer Chadli / Chadli : speler]].
+        Daarna scoorden [[Marouane Fellaini / Fellaini : speler]] en [[Nacer Chadli / Chadli : speler]], na werk van [[Eden Hazard / Hazard : speler]].
         """;
 
     public KrantTests()
@@ -23,18 +23,24 @@ public sealed class KrantTests : IDisposable
         _db = _t.Db;
         for (var i = 1; i <= 15; i++)
             _db.Players.Add(new Player { Name = $"Speler {i}", Status = PlayerStatus.Approved, Hints = [.. Enumerable.Range(1, 5).Select(h => $"Tip {h}")] });
-        _db.QuizItems.Add(new QuizItem
-        {
-            Type = QuestionType.Krant, Key = "België – Japan",
-            Data = QuestionEngine.Serialize(new KrantData("verslag", "België – Japan", "WK 2018", Text)),
-            Status = PlayerStatus.Approved,
-        });
+        // Vier artikels: precies genoeg voor één zondag. In de tests speel je telkens het eerste.
+        for (var i = 1; i <= 4; i++)
+            _db.QuizItems.Add(new QuizItem
+            {
+                Type = QuestionType.Krant, Key = $"Artikel {i}",
+                Data = QuestionEngine.Serialize(new KrantData("verslag", $"Artikel {i}", "WK 2018", Text)),
+                Status = PlayerStatus.Approved,
+            });
         _me = _t.AddUser("sander");
         _db.SaveChanges();
     }
 
-    private async Task PlanTodayAsync() =>
-        await _t.Admin.SaveScheduleAsync([new ScheduleDay(DayOfWeek.Saturday, QuestionType.Krant)]); // 17/10/2026 is een zaterdag
+    /// <summary>Van zaterdag 17/10/2026 naar zondag: De Zondag, wat de planning ook zegt.</summary>
+    private async Task ToSundayAsync()
+    {
+        await _t.Admin.SaveScheduleAsync([new ScheduleDay(DayOfWeek.Sunday, QuestionType.Snelvuur)]);
+        _t.Clock.Advance(TimeSpan.FromDays(1));
+    }
 
     private static int Max => QuestionTypes.Get(QuestionType.Krant).MaxPoints;
 
@@ -45,7 +51,7 @@ public sealed class KrantTests : IDisposable
 
         Assert.Empty(article.Problems);
         Assert.Equal(2, article.Paragraphs.Count);
-        Assert.Equal(4, article.Gaps.Count);
+        Assert.Equal(5, article.Gaps.Count);
         Assert.Equal(("69", "minuut", 69, 1), (article.Gaps[0].Answer, article.Gaps[0].Hint, article.Gaps[0].Number, article.Gaps[0].Tolerance));
         Assert.Equal("Jan Vertonghen", article.Gaps[1].Answer);
         Assert.Equal(["Vertonghen"], article.Gaps[1].Aliases);
@@ -73,7 +79,7 @@ public sealed class KrantTests : IDisposable
     [Fact]
     public void A_newspaper_fills_a_day_on_its_own_and_never_joins_a_mix()
     {
-        Assert.Equal(new Dictionary<QuestionType, int> { [QuestionType.Krant] = 1 }, QuestionTypes.Mix([QuestionType.Krant]));
+        Assert.Equal(new Dictionary<QuestionType, int> { [QuestionType.Krant] = 4 }, QuestionTypes.Mix([QuestionType.Krant]));
         Assert.DoesNotContain(QuestionType.Krant, QuestionTypes.Mix([QuestionType.WieBenIk, QuestionType.Krant]).Keys);
         Assert.DoesNotContain(QuestionType.Krant, QuestionTypes.Mix([QuestionType.Snelvuur, QuestionType.Krant], 7).Keys);
     }
@@ -85,26 +91,32 @@ public sealed class KrantTests : IDisposable
     }
 
     [Fact]
-    public async Task The_day_is_one_article_worth_the_whole_day_with_one_clock()
+    public async Task Every_sunday_is_four_articles_of_five_gaps_worth_the_whole_day()
     {
-        await PlanTodayAsync();
+        await ToSundayAsync();
         var challenge = await _t.Quiz.GetOrCreateChallengeAsync(_t.Quiz.Today);
-        Assert.Equal(QuestionType.Krant, Assert.Single(challenge.Questions).Type);
+        Assert.Equal(4, challenge.Questions.Count);
+        Assert.All(challenge.Questions, q => Assert.Equal(QuestionType.Krant, q.Type));
+        Assert.Equal(QuestionTypes.DayMaxPoints, 4 * Max);
+        Assert.Equal(50, Max / QuestionRules.KrantGaps);
+
+        // Op een andere dag volgt de planning gewoon (hier: niets ingepland, dus de standaard voor maandag).
+        Assert.DoesNotContain(QuestionType.Krant, await _t.Picker.TypesForAsync(_t.Quiz.Today.AddDays(1)));
 
         var state = await _t.Quiz.StartAsync(_me, 1);
-        Assert.Equal(QuestionRules.KrantLimit(4), state.TimeLimit);
+        Assert.Equal(QuestionRules.KrantLimit(5), state.TimeLimit);
         Assert.Equal(Max, state.View!.MaxPoints);
-        Assert.Equal((0, 4), (state.View.Found, state.View.Total));
+        Assert.Equal((0, 5), (state.View.Found, state.View.Total));
     }
 
     [Fact]
     public async Task The_client_never_sees_an_answer_before_the_end()
     {
-        await PlanTodayAsync();
+        await ToSundayAsync();
         var state = await _t.Quiz.StartAsync(_me, 1);
 
         var gaps = state.View!.Article!.SelectMany(p => p).Where(p => p.Gap >= 0).ToList();
-        Assert.Equal(4, gaps.Count);
+        Assert.Equal(5, gaps.Count);
         Assert.All(gaps, g => Assert.True(g.Filled is null && g.Answer is null && g.Score is null));
         Assert.DoesNotContain(state.View.Article!.SelectMany(p => p), p => p.Text.Contains("Vertonghen") || p.Text.Contains("69"));
         Assert.Null(state.Result);
@@ -113,7 +125,7 @@ public sealed class KrantTests : IDisposable
     [Fact]
     public async Task Gaps_can_be_filled_in_any_order_and_a_wrong_name_costs_nothing()
     {
-        await PlanTodayAsync();
+        await ToSundayAsync();
         await _t.Quiz.StartAsync(_me, 1);
 
         var wrong = await _t.Quiz.GuessAsync(_me, 1, "3|Fellaini"); // gat 3 is Chadli
@@ -131,7 +143,7 @@ public sealed class KrantTests : IDisposable
     [Fact]
     public async Task A_number_is_guessed_once_and_scores_by_distance()
     {
-        await PlanTodayAsync();
+        await ToSundayAsync();
         await _t.Quiz.StartAsync(_me, 1);
 
         var first = await _t.Quiz.GuessAsync(_me, 1, "0|70e");
@@ -140,8 +152,8 @@ public sealed class KrantTests : IDisposable
         await _t.Quiz.GuessAsync(_me, 1, "0|69"); // tweede gok op hetzelfde getal telt niet
         var done = await _t.Quiz.GiveUpAsync(_me, 1);
 
-        // 0,75 van één gat uit vier: 1000 × 0,75 / 4.
-        Assert.Equal(QuestionRules.KrantPoints(0.75, 4), done.Result!.Points);
+        // 0,75 van één gat uit vijf: 250 × 0,75 / 5.
+        Assert.Equal(QuestionRules.KrantPoints(0.75, 5), done.Result!.Points);
         var minute = done.Result.FullArticle!.SelectMany(p => p).Single(p => p.Gap == 0);
         Assert.Equal(("69", "70", 0.75), (minute.Answer, minute.Filled, minute.Score));
     }
@@ -149,10 +161,10 @@ public sealed class KrantTests : IDisposable
     [Fact]
     public async Task Filling_every_gap_ends_the_article_with_the_full_day()
     {
-        await PlanTodayAsync();
+        await ToSundayAsync();
         await _t.Quiz.StartAsync(_me, 1);
 
-        foreach (var guess in new[] { "1|Vertonghen", "2|Marouane Fellaini", "0|69" })
+        foreach (var guess in new[] { "1|Vertonghen", "2|Marouane Fellaini", "4|Hazard", "0|69" })
             Assert.Null((await _t.Quiz.GuessAsync(_me, 1, guess)).Result);
         var last = await _t.Quiz.GuessAsync(_me, 1, "3|Chadli");
 
@@ -164,23 +176,23 @@ public sealed class KrantTests : IDisposable
     [Fact]
     public async Task Stopping_keeps_the_gaps_you_found_and_reveals_the_rest()
     {
-        await PlanTodayAsync();
+        await ToSundayAsync();
         await _t.Quiz.StartAsync(_me, 1);
         await _t.Quiz.GuessAsync(_me, 1, "1|Vertonghen");
 
         var stopped = await _t.Quiz.GiveUpAsync(_me, 1);
 
         Assert.False(stopped.Result!.Correct);
-        Assert.Equal(Max / 4, stopped.Result.Points);
+        Assert.Equal(Max / 5, stopped.Result.Points);
         var gaps = stopped.Result.FullArticle!.SelectMany(p => p).Where(p => p.Gap >= 0).ToList();
-        Assert.Equal(["69", "Jan Vertonghen", "Marouane Fellaini", "Nacer Chadli"], gaps.Select(g => g.Answer));
-        Assert.Equal([0, 1, 0, 0], gaps.Select(g => g.Score ?? -1));
+        Assert.Equal(["69", "Jan Vertonghen", "Marouane Fellaini", "Nacer Chadli", "Eden Hazard"], gaps.Select(g => g.Answer));
+        Assert.Equal([0, 1, 0, 0, 0], gaps.Select(g => g.Score ?? -1));
     }
 
     [Fact]
     public async Task Time_up_keeps_the_partial_points()
     {
-        await PlanTodayAsync();
+        await ToSundayAsync();
         var state = await _t.Quiz.StartAsync(_me, 1);
         await _t.Quiz.GuessAsync(_me, 1, "2|Fellaini");
 
@@ -188,7 +200,7 @@ public sealed class KrantTests : IDisposable
         var after = await _t.Quiz.GetStateAsync(_me, 1);
 
         Assert.True(after.Result!.TimedOut);
-        Assert.Equal(Max / 4, after.Result.Points);
+        Assert.Equal(Max / 5, after.Result.Points);
     }
 
     [Fact]
@@ -225,15 +237,17 @@ public sealed class KrantTests : IDisposable
     [InlineData("Kop", "", "[[Fellaini : speler]] en Fellaini nog eens.")]
     public void Answers_that_are_already_visible_are_flagged(string headline, string intro, string text)
     {
+        // Enkel de meldingen over verklappen (het extra gat maakt er zes, dat is een andere melding).
         var leaks = QuestionEngine.Problems(QuestionType.Krant,
-            QuestionEngine.Serialize(new KrantData("verslag", headline, intro, Text + "\n\n" + text)));
+                QuestionEngine.Serialize(new KrantData("verslag", headline, intro, Text + "\n\n" + text)))
+            .Where(p => p.Contains("staat") || p.Contains("verraadt")).ToList();
         Assert.Equal(intro == "WK 1969", leaks.Count == 0);
     }
 
     [Fact]
     public async Task Invalid_input_is_ignored_without_points_or_penalty()
     {
-        await PlanTodayAsync();
+        await ToSundayAsync();
         await _t.Quiz.StartAsync(_me, 1);
 
         foreach (var guess in new[] { "99|Vertonghen", "-1|Vertonghen", "Vertonghen", "abc|Vertonghen", "1|", "0|geen idee" })
@@ -249,23 +263,26 @@ public sealed class KrantTests : IDisposable
     [Fact]
     public async Task A_newspaper_day_earns_xp_like_a_full_day()
     {
-        await PlanTodayAsync();
-        await _t.Quiz.StartAsync(_me, 1);
-        await _t.Quiz.GuessAsync(_me, 1, "1|Vertonghen");
-        await _t.Quiz.GiveUpAsync(_me, 1);
+        await ToSundayAsync();
+        for (var n = 1; n <= 4; n++)
+        {
+            await _t.Quiz.StartAsync(_me, n);
+            if (n == 1) await _t.Quiz.GuessAsync(_me, 1, "1|Vertonghen");
+            await _t.Quiz.GiveUpAsync(_me, n);
+        }
 
         var xp = (await _t.Results.XpInputsAsync())[_me];
-        Assert.Equal(GameRules.QuestionsPerDay, xp.QuestionsPlayed);
-        Assert.Equal(Max / 4, xp.CorrectPoints); // ook deelpunten tellen, al is het artikel niet foutloos
+        Assert.Equal(GameRules.QuestionsPerDay, xp.QuestionsPlayed); // vier artikels tellen samen als een volle dag
+        Assert.Equal(Max / 5, xp.CorrectPoints); // ook deelpunten tellen, al is het artikel niet foutloos
     }
 
     [Fact]
     public async Task A_played_article_keeps_its_gaps_in_the_admin()
     {
-        await PlanTodayAsync();
+        await ToSundayAsync();
         await _t.Quiz.StartAsync(_me, 1);
         await _t.Quiz.GuessAsync(_me, 1, "1|Vertonghen");
-        var item = _db.QuizItems.Single(i => i.Type == QuestionType.Krant);
+        var item = _db.QuizItems.Single(i => i.Key == "Artikel 1");
 
         QuizItemEdit Edit(string text) => new(item.Id, QuestionType.Krant,
             QuestionEngine.Serialize(new KrantData("verslag", "België – Japan", "WK 2018", text)), 3, ["https://example.org"], [], PlayerStatus.Approved, null, null, null, 0);
@@ -274,6 +291,34 @@ public sealed class KrantTests : IDisposable
         await _t.Admin.SaveQuizItemAsync(Edit(Text.Replace("Vertonghen / Vertonghen : speler", "Vertonghen / Vertonghen / Jan V. : verdediger")), "admin");
         // Een gat vooraan erbij niet: dan schuiven de gevonden gaten op.
         await Assert.ThrowsAsync<QuizException>(() => _t.Admin.SaveQuizItemAsync(Edit("Vooraf [[Hazard : speler]]. " + Text), "admin"));
+    }
+
+    /// <summary>
+    /// De echte artikels (krant.json): op een zondag komen er vier in willekeurige volgorde, dus geen enkel artikel mag
+    /// een antwoord van een ander tonen (in de kop, het intro, een hint of de gewone tekst). Getallen van één cijfer tellen niet.
+    /// </summary>
+    [Fact]
+    public void No_article_in_the_bank_gives_away_an_answer_of_another()
+    {
+        var file = Path.Combine(ServerContent.Root, "Data", "questions", "krant.json");
+        var articles = System.Text.Json.JsonSerializer.Deserialize<List<KrantData>>(File.ReadAllText(file),
+                new System.Text.Json.JsonSerializerOptions(System.Text.Json.JsonSerializerDefaults.Web))!
+            .Select(d => (Data: d, Article: KrantText.Parse(d.Text))).ToList();
+
+        static bool Has(string text, string word) => System.Text.RegularExpressions.Regex.IsMatch(text,
+            $@"(?<!\w){System.Text.RegularExpressions.Regex.Escape(word)}(?!\w)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+
+        var leaks = new List<string>();
+        foreach (var a in articles)
+            foreach (var b in articles.Where(b => b.Data.Headline != a.Data.Headline))
+            {
+                var visible = string.Join(" ", new[] { b.Data.Headline, b.Data.Intro }
+                    .Concat(b.Article.Paragraphs.SelectMany(p => p).Where(s => s.Gap < 0).Select(s => s.Text))
+                    .Concat(b.Article.Gaps.Select(g => g.Hint)));
+                foreach (var answer in a.Article.Gaps.SelectMany(g => g.Aliases.Prepend(g.Answer)).Where(x => x.Length > 1))
+                    if (Has(visible, answer)) leaks.Add($"\"{b.Data.Headline}\" toont \"{answer}\" (antwoord in \"{a.Data.Headline}\")");
+            }
+        Assert.True(leaks.Count == 0, string.Join("\n", leaks));
     }
 
     public void Dispose() => _t.Dispose();

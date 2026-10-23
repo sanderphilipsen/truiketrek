@@ -5,7 +5,7 @@
 @inject AdminState State
 @inject IJSRuntime JS
 
-<PageTitle>Admin – Truitje Trek</PageTitle>
+<PageTitle>Bestuurskamer – Truitje Trek</PageTitle>
 
 <AdminGuard>
     @if (_error is not null)
@@ -91,7 +91,7 @@
 
         <section class="card">
             <h2>Wachtwoord resetten</h2>
-            <p class="muted">Voor wie zijn wachtwoord vergeten is. Je krijgt één keer een tijdelijk wachtwoord te zien: geef het door, de speler kiest daarna zelf een nieuw in Profiel.</p>
+            <p class="muted">Voor wie zijn wachtwoord vergeten is. Je krijgt één keer een tijdelijk wachtwoord te zien: geef het door, de speler kiest daarna zelf een nieuw via de Spelersfiche.</p>
             <form class="stack" @onsubmit="ResetPasswordAsync">
                 <label>Gebruikersnaam
                     <input @bind="_resetName" autocomplete="off" required />

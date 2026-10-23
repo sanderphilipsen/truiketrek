@@ -3,7 +3,7 @@
 @inject ApiClient Api
 @inject AuthState Auth
 
-<PageTitle>Planning – Admin</PageTitle>
+<PageTitle>Planning – Bestuurskamer</PageTitle>
 
 <AdminGuard>
     @if (_error is not null) { <p class="error">@_error</p> }
@@ -17,19 +17,27 @@
             <h2>Weekplanning van de daily</h2>
             <p class="muted">
                 Kies per weekdag één vraagtype of een <b>mix</b>. Een mix verdeelt de vragen om beurten over de gekozen types
-                (max. 1000 punten, een opstelling telt voor twee). 📰 De Krant en 🗺️ Kaart (twee delen op dezelfde kaart) vullen elk een hele dag van 1000 punten en zijn een dag op zich: ze
-                kunnen niet in een mix. Een wijziging geldt vanaf de eerstvolgende dag die nog niet gestart is.
+                (max. 1000 punten, een opstelling telt voor twee). Een <b>kaartdag</b> (🗺️ Kaart, twee delen op dezelfde kaart, samen 1000 punten) is een dag op zich: kies er een land voor. Zondag is altijd De Zondag;
+                de Detectivedag speel je als special. Solo-types kunnen niet in een mix. Een wijziging geldt vanaf de eerstvolgende dag die nog niet gestart is.
             </p>
             <div class="week">
                 @foreach (var day in _days)
                 {
                     var d = day;
-                    var actual = QuestionTypes.ResolveDay(d.Planned, _disabled);
-                    var changed = !actual.SequenceEqual(d.Planned.Distinct().Order());
+                    var actual = QuestionTypes.ResolveSchedule(d.Type, d.Mix, d.Day, _disabled);
+                    IEnumerable<QuestionType> planned = d.Day == QuestionTypes.ZondagDay ? [QuestionType.Krant] : d.Planned.Distinct().Order();
+                    var changed = !actual.SequenceEqual(planned);
                     <div class="week-day @(d.Day == QuizDay.Today().DayOfWeek ? "today" : "") @(d.IsMix ? "mix" : "")">
                         <b>@QuestionTypes.DayName(d.Day)@(d.Day == QuizDay.Today().DayOfWeek ? " (vandaag)" : "")</b>
+                        @if (d.Day == QuestionTypes.ZondagDay)
+                        {
+                            @* De vaste rubriek: zondag is altijd De Zondag (QuestionTypes.ResolveSchedule). *@
+                            <span>@QuestionTypes.Get(QuestionType.Krant).Icon @QuestionTypes.Get(QuestionType.Krant).Name <small class="muted">(vaste rubriek)</small></span>
+                        }
+                        else
+                        {
                         <select value="@(d.IsMix ? MixValue : d.Type.ToString())" @onchange="e => Change(d.Day, e.Value?.ToString())">
-                            @foreach (var t in QuestionTypes.All)
+                            @foreach (var t in QuestionTypes.All.Where(t => QuestionTypes.InWeekPlanning(t.Type)))
                             {
                                 <option value="@t.Type">@t.Icon @t.Name@(_disabled.Contains(t.Type) ? " (uit)" : "")</option>
                             }
@@ -38,7 +46,7 @@
                         @if (d.IsMix)
                         {
                             <div class="mix-chips">
-                                @* Solo-types (De Krant, de kaart) passen niet in een mix: die kies je als type van de dag. *@
+                                @* Solo-types (De Zondag, Detectivedag, de kaart) passen niet in een mix. *@
                                 @foreach (var t in QuestionTypes.All.Where(t => !t.Alone))
                                 {
                                     var type = t.Type;
@@ -50,6 +58,7 @@
                         else if (d.Type == QuestionType.Kaart)
                         {
                             <KaartLandSelect Value="@d.KaartCountry" Maps="_overview.KaartMaps" ValueChanged="c => SetKaartCountry(d.Day, c)" />
+                        }
                         }
                         <small class="muted day-result">
                             @if (changed)
@@ -140,7 +149,7 @@
         if (value == MixValue)
         {
             // Begin de mix met het huidige type en het volgende, zodat het meteen een echte mix is.
-            // Een solo-type (De Krant, de kaart) kan niet in een mix.
+            // Een solo-type (De Zondag, Detectivedag, de kaart) kan niet in een mix.
             var regular = QuestionTypes.All.Where(t => !t.Alone).Select(t => t.Type).ToList();
             var current = QuestionTypes.Get(_days[i].Type).Alone ? regular[0] : _days[i].Type;
             var next = regular[(regular.IndexOf(current) + 1) % regular.Count];

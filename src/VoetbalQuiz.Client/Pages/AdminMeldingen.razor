@@ -1,0 +1,90 @@
+@page "/admin/meldingen"
+@attribute [Authorize]
+@inject ApiClient Api
+@inject AuthState Auth
+
+<PageTitle>Meldingen – Bestuurskamer</PageTitle>
+
+<ConfirmSheet @ref="_confirm" />
+
+<AdminGuard>
+    <section class="card">
+        <h2>Wat is er nieuw</h2>
+        <p class="muted">Een releasenota komt bij elke speler binnen als melding (het belletje op Home). Spelers die zich later registreren, zien ze niet.</p>
+        <form class="stack" @onsubmit="AddAsync">
+            <label>Titel
+                <input @bind="_title" maxlength="80" required placeholder="Bv. De academie telt nu wat je nog moet spelen" />
+            </label>
+            <label>Tekst
+                <textarea @bind="_text" rows="4" maxlength="1000" required></textarea>
+            </label>
+            <label>Link <span class="optional">(optioneel, een pagina in de app, bv. academie of online)</span>
+                <input @bind="_link" maxlength="200" />
+            </label>
+            @if (_formError is not null) { <p class="error" role="alert">@_formError</p> }
+            @if (_sent) { <p class="success" role="status">Verstuurd naar alle spelers.</p> }
+            <button class="btn primary" disabled="@_busy">Versturen</button>
+        </form>
+    </section>
+
+    @if (_items is { Count: > 0 })
+    {
+        <h2 class="section-title">Verstuurd</h2>
+        <div class="feedback-list">
+            @foreach (var a in _items)
+            {
+                <article class="card feedback-item">
+                    <div class="feedback-head">
+                        <span><Icon Name="megaphone" /> <b>@a.Title</b></span>
+                        <button class="btn small" @onclick="() => DeleteAsync(a)" aria-label="Wis @a.Title"><Icon Name="trash" /></button>
+                    </div>
+                    <p class="feedback-text">@a.Text</p>
+                    <small class="muted">@a.CreatedAt.ToLocalTime().ToString("dd/MM/yyyy HH:mm")@(a.Link is null ? "" : $" · link: {a.Link}")</small>
+                </article>
+            }
+        </div>
+    }
+</AdminGuard>
+
+@code {
+    private ConfirmSheet _confirm = null!;
+    private List<AnnouncementItem>? _items;
+    private string _title = "", _text = "", _link = "";
+    private string? _formError;
+    private bool _busy, _sent;
+
+    protected override Task OnInitializedAsync() => Auth.User?.IsAdmin == true ? LoadAsync() : Task.CompletedTask;
+
+    private async Task LoadAsync()
+    {
+        try { _items = await Api.GetAnnouncementsAsync(); }
+        catch (ApiException) { _items = []; }
+    }
+
+    private async Task AddAsync()
+    {
+        _busy = true;
+        _formError = null;
+        _sent = false;
+        try
+        {
+            await Api.AddAnnouncementAsync(new AnnouncementRequest(_title, _text, _link));
+            _sent = true;
+            _title = _text = _link = "";
+            await LoadAsync();
+        }
+        catch (ApiException ex) { _formError = ex.Message; }
+        finally { _busy = false; }
+    }
+
+    private async Task DeleteAsync(AnnouncementItem a)
+    {
+        if (!await _confirm.AskAsync("Releasenota wissen?", $"\"{a.Title}\" verdwijnt bij alle spelers uit hun meldingen.", "Wissen")) return;
+        try
+        {
+            await Api.DeleteAnnouncementAsync(a.Id);
+            await LoadAsync();
+        }
+        catch (ApiException ex) { _formError = ex.Message; }
+    }
+}

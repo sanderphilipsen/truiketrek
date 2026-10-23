@@ -93,10 +93,11 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
             var days = mine.GroupBy(r => r.ChallengeId).ToList();
             var online = matches.GetValueOrDefault(id);
             return new XpInput(
-                // Een solo-type (De Krant, de kaart) vult de hele dag: zijn vragen tellen samen als een volle dag vragen
-                // (QuestionTypes.PlayedWeight). Juiste antwoorden, plus de deelpunten van types die zelden helemaal juist zijn
-                // (QuestionRules.PartialScores: de solo-types, opstelling en counter); anders levert zo'n dag amper XP op.
-                mine.Sum(r => QuestionTypes.PlayedWeight(r.Type)),
+                // Een solo-type (De Zondag: 4 artikels, Detectivedag, de kaart: 2 delen) vult de hele dag: zijn vragen tellen samen
+                // als een volle dag vragen (QuestionTypes.PlayedWeight). Juiste antwoorden, plus de deelpunten van types die zelden
+                // helemaal juist zijn (QuestionRules.PartialScores: de solo-types, opstelling en counter); anders levert zo'n dag
+                // amper XP op.
+                (int)Math.Round(mine.Sum(r => QuestionTypes.PlayedWeight(r.Type))),
                 mine.Where(r => r.Correct || QuestionRules.PartialScores(r.Type)).Sum(r => r.Points),
                 days.Count(d => d.Count() == sizes.GetValueOrDefault(d.Key)),
                 days.Count(d => d.Count(r => r.Correct) == sizes.GetValueOrDefault(d.Key)),

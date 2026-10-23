@@ -31,7 +31,7 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock, ILogger<Questi
 
     /// <summary>
     /// De types die nu aan staan en die je kan kiezen voor een online partijtje: geen solo-types
-    /// (<see cref="QuestionTypeInfo.Alone"/>: De Krant, de kaart), want die vullen een hele dag.
+    /// (<see cref="QuestionTypeInfo.Alone"/>: De Zondag, Detectivedag, de kaart), want die vullen een hele dag.
     /// </summary>
     public async Task<List<QuestionType>> ActiveTypesAsync()
     {
@@ -343,7 +343,7 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock, ILogger<Questi
     }
 
     /// <summary>
-    /// Een solo-type (<see cref="QuestionTypeInfo.Alone"/>: een artikel van De Krant, een kaart) enkel als het goedgekeurd is:
+    /// Een solo-type (<see cref="QuestionTypeInfo.Alone"/>: een artikel van De Zondag, een zaak, een kaart) enkel als het goedgekeurd is:
     /// het is een hele dag, een fout weegt dan te zwaar.
     /// </summary>
     private static bool ApprovedOnly(QuestionType type) => QuestionTypes.Get(type).Alone;

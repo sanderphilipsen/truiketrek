@@ -94,6 +94,10 @@
         }
         break;
 
+    case QuestionType.Detective:
+        <DetectiveBoard View="View" Busy="Busy" ReadOnly="ReadOnly" Send="Send" />
+        break;
+
     case QuestionType.Kaart:
         @* Deel 1: bij elke speld de club(s) kiezen. Deel 2: de club staat bij de speld, kies het stadion. *@
         var stadiums = View?.Part == QuestionRules.KaartStadiumsPart;

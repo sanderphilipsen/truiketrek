@@ -1,0 +1,140 @@
+@* Detectivedag tijdens het spelen: het verhaaltje, de geopende getuigenverklaringen en de verdachten. Een tik streept een
+   verdachte door (enkel hier, de server weet het niet); "Wijs de dader aan" zet de kaartjes in beschuldigmodus. *@
+
+@if (View?.Detective is { } d)
+{
+    <div class="detective">
+        <h2 class="detective-title">@View.Prompt</h2>
+        <p class="detective-intro">@View.Note</p>
+
+        <ol class="detective-clues" aria-label="Getuigenverklaringen">
+            @for (var i = 0; i < d.Clues.Count; i++)
+            {
+                <li class="detective-clue @(i == d.Clues.Count - 1 && i >= QuestionRules.DetectiveOpenAtStart ? "new" : "")" @key="i">
+                    <span class="detective-witness">Getuige @(i + 1)</span>
+                    <span>“@d.Clues[i]”</span>
+                </li>
+            }
+        </ol>
+
+        @if (!ReadOnly && d.PointsNext is { } next)
+        {
+            <button class="btn detective-next" @onclick="NextClueAsync" disabled="@Busy">
+                Volgende getuige <small>(@(d.CluesTotal - d.Clues.Count) over · daarna @next punten)</small>
+            </button>
+        }
+
+        <div class="detective-status" role="status" aria-live="polite">
+            @if (_accusing)
+            {
+                <span>Tik op de verdachte die je beschuldigt.</span>
+            }
+            else if (_missed is not null)
+            {
+                <span class="wrong"><Icon Name="x-circle" /> @_missed was het niet! Nog @d.AccusationsLeft beschuldiging, de punten zijn gehalveerd.</span>
+            }
+            else
+            {
+                <span class="light-text">Tik op een verdachte om hem door te strepen.</span>
+            }
+        </div>
+
+        <div class="detective-suspects @(_accusing ? "accusing" : "")">
+            @for (var i = 0; i < d.Suspects.Count; i++)
+            {
+                var index = i;
+                var s = d.Suspects[i];
+                var struck = _struck.Contains(i);
+                <button class="suspect @(struck ? "struck" : "") @(s.Accused ? "accused" : "") @(_target == i ? "target" : "")"
+                        @onclick="() => TapSuspect(index)" disabled="@(ReadOnly || s.Accused || Busy)"
+                        aria-pressed="@(_accusing ? (_target == i).ToString().ToLower() : struck.ToString().ToLower())"
+                        aria-label="@SuspectLabel(s, struck)">
+                    <span class="suspect-initials" aria-hidden="true">@Initials(s.Name)</span>
+                    <span class="suspect-name">@s.Name</span>
+                    <small>@s.Card</small>
+                    @if (s.Accused) { <span class="suspect-tag">Onschuldig</span> }
+                </button>
+            }
+        </div>
+
+        @if (!ReadOnly)
+        {
+            <div class="detective-dock">
+                @if (_target is { } t && _accusing)
+                {
+                    <p class="detective-confirm">Beschuldig je <b>@d.Suspects[t].Name</b>? Dat levert @d.PointsNow punten op als het klopt.</p>
+                    <div class="detective-actions">
+                        <button class="btn" @onclick="CancelAccuse" disabled="@Busy">Toch niet</button>
+                        <button class="btn primary" @onclick="AccuseAsync" disabled="@Busy">Ja, hij is het!</button>
+                    </div>
+                }
+                else if (_accusing)
+                {
+                    <div class="detective-actions">
+                        <button class="btn" @onclick="CancelAccuse" disabled="@Busy">Terug</button>
+                    </div>
+                }
+                else
+                {
+                    <button class="btn primary big" @onclick="StartAccuse" disabled="@Busy"><Icon Name="magnifying-glass" /> Wijs de dader aan</button>
+                }
+            </div>
+        }
+    </div>
+}
+
+@code {
+    [Parameter] public QuestionView? View { get; set; }
+    [Parameter] public bool Busy { get; set; }
+    [Parameter] public bool ReadOnly { get; set; }
+
+    /// <summary>Stuurt "/getuige" of de index van een beschuldigde verdachte; null als het mislukte.</summary>
+    [Parameter, EditorRequired] public Func<string, Task<QuestionPlay.Feedback?>> Send { get; set; } = null!;
+
+    /// <summary>Doorgestreepte verdachten: enkel een hulpmiddel voor de speler.</summary>
+    private readonly HashSet<int> _struck = [];
+
+    private bool _accusing;
+    private int? _target;
+    private string? _missed;
+
+    private static string SuspectLabel(DetectiveCard s, bool struck) =>
+        s.Name + (s.Accused ? ", onschuldig" : struck ? ", doorgestreept" : "");
+
+    /// <summary>"HV" voor Hans Vanaken; tussenvoegsels (van, der, ...) tellen niet mee.</summary>
+    private static string Initials(string name)
+    {
+        var words = name.Split(' ', StringSplitOptions.RemoveEmptyEntries).Where(w => char.IsUpper(w[0])).ToList();
+        return words.Count == 0 ? "?" : $"{words[0][0]}{(words.Count > 1 ? words[^1][0] : "")}";
+    }
+
+    private void TapSuspect(int i)
+    {
+        if (_accusing) _target = i;
+        else if (!_struck.Remove(i)) _struck.Add(i);
+    }
+
+    private void StartAccuse() => (_accusing, _target, _missed) = (true, null, null);
+
+    private void CancelAccuse() => (_accusing, _target) = (false, null);
+
+    private async Task NextClueAsync()
+    {
+        _missed = null;
+        await Send(QuestionRules.DetectiveNextClue);
+    }
+
+    private async Task AccuseAsync()
+    {
+        if (_target is not { } t || View?.Detective is not { } d) return;
+        var name = d.Suspects[t].Name;
+        var feedback = await Send(t.ToString());
+        if (feedback is null) return;
+        (_accusing, _target) = (false, null);
+        if (feedback.WrongGuess is not null && !feedback.Finished)
+        {
+            _missed = name;
+            _struck.Add(t);
+        }
+    }
+}

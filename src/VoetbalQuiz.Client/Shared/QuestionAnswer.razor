@@ -61,6 +61,43 @@
         <KrantArticle Headline="@View?.Prompt" Intro="@View?.Note" Kind="@View?.ArticleKind" Paragraphs="Result.FullArticle ?? []" Reveal="true" />
         break;
 
+    case QuestionType.Detective:
+        @* Het dossier: de dader bovenaan, dan per verdachte welke getuige hem uitsloot en waarom. *@
+        <div class="detective dossier">
+            <h2 class="detective-title">Dossier: @View?.Prompt</h2>
+            <ul class="dossier-list">
+                @foreach (var v in (Result.Dossier ?? []).OrderBy(v => v.IsCulprit ? 0 : v.Clue ?? 99))
+                {
+                    <li class="dossier-row @(v.IsCulprit ? "culprit" : "")">
+                        <div class="dossier-head">
+                            <b>@v.Name</b>
+                            @if (v.IsCulprit) { <span class="suspect-tag culprit">Dader</span> }
+                            else { <span class="dossier-clue">getuige @v.Clue</span> }
+                            @if (v.Accused) { <span class="suspect-tag @(v.IsCulprit ? "right" : "")">@(v.IsCulprit ? "jij wees hem aan" : "jij beschuldigde hem")</span> }
+                        </div>
+                        @if (!v.IsCulprit && v.Clue is { } c && c <= Result.AllHints.Count)
+                        {
+                            <small>“@Result.AllHints[c - 1]” @v.Reason</small>
+                        }
+                        else
+                        {
+                            <small>@v.Card</small>
+                        }
+                    </li>
+                }
+            </ul>
+            <ol class="detective-clues all" aria-label="Alle getuigenverklaringen">
+                @for (var i = 0; i < Result.AllHints.Count; i++)
+                {
+                    <li class="detective-clue @(i < (View?.Step ?? 0) ? "" : "unopened")" @key="i">
+                        <span class="detective-witness">Getuige @(i + 1)@(i < (View?.Step ?? 0) ? "" : " (niet gehoord)")</span>
+                        <span>“@Result.AllHints[i]”</span>
+                    </li>
+                }
+            </ol>
+        </div>
+        break;
+
     case QuestionType.Kaart:
         @* De volle kaart: elke speld groen, oranje (deels) of rood met de club(s), daaronder dezelfde lijst als tekst,
            met bij een fout wat jij koos. *@
@@ -93,6 +130,7 @@
         QuestionType.Jaar => r.Correct ? "Exact juist!" : r.Points > 0 ? "Dichtbij!" : $"Het was {r.CorrectYear}",
         QuestionType.Opstelling => r.PlayerName,
         QuestionType.Krant => r.Correct ? "Foutloos ingevuld!" : r.PlayerName,
+        QuestionType.Detective => r.Correct ? $"Ontmaskerd: {r.PlayerName}!" : $"De dader was {r.PlayerName}",
         QuestionType.Counter => "Counter",
         QuestionType.Volgorde => r.Correct ? "Helemaal juist!" : r.Points > 0 ? "Bijna!" : "Helemaal omgekeerd",
         QuestionType.Kaart => r.Correct ? "Foutloze kaart!" : r.PlayerName,

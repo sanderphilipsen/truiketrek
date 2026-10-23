@@ -1,0 +1,68 @@
+[
+  {
+    "story": "gestolen-trofee",
+    "title": "De gestolen Gouden Schoen",
+    "intro": "De nacht na het gala is de Gouden Schoen verdwenen uit de vitrine. Acht vroegere winnaars waren nog in de zaal toen de lichten uitgingen. Eén van hen is de dader. De getuigen hebben elk iets gezien...",
+    "suspects": [
+      { "key": "ceulemans", "name": "Jan Ceulemans", "card": "Middenvelder · Gouden Schoen 1980, 1985, 1986" },
+      { "key": "scifo", "name": "Enzo Scifo", "card": "Middenvelder · Gouden Schoen 1984" },
+      { "key": "vanderelst", "name": "Franky Van der Elst", "card": "Middenvelder · Gouden Schoen 1996, 1997" },
+      { "key": "sonck", "name": "Wesley Sonck", "card": "Spits · Gouden Schoen 2001" },
+      { "key": "simons", "name": "Timmy Simons", "card": "Middenvelder · Gouden Schoen 2002" },
+      { "key": "kompany", "name": "Vincent Kompany", "card": "Verdediger · Gouden Schoen 2004" },
+      { "key": "witsel", "name": "Axel Witsel", "card": "Middenvelder · Gouden Schoen 2008" },
+      { "key": "vanaken", "name": "Hans Vanaken", "card": "Middenvelder · Gouden Schoen 2018, 2019" }
+    ],
+    "culprit": "vanaken",
+    "clues": [
+      {
+        "text": "De dader heeft nooit in Italië gespeeld.",
+        "excludes": ["scifo"],
+        "explain": { "scifo": "Speelde voor Inter (1987-88) en Torino (1991-93)." }
+      },
+      {
+        "text": "De dader won zijn Gouden Schoen nooit in de jaren 80.",
+        "excludes": ["ceulemans"],
+        "explain": { "ceulemans": "Won de Gouden Schoen in 1980, 1985 en 1986." }
+      },
+      {
+        "text": "De dader speelde nooit voor Anderlecht.",
+        "excludes": ["kompany"],
+        "explain": { "kompany": "Kwam uit de jeugd van Anderlecht en speelde er 2003-06 en 2019-20." }
+      },
+      {
+        "text": "De dader speelde ooit voor Club Brugge.",
+        "excludes": ["witsel"],
+        "explain": { "witsel": "Speelde in België enkel voor Standard, nooit voor Club Brugge." }
+      },
+      {
+        "text": "De dader speelde nooit een officiële wedstrijd voor een buitenlandse club.",
+        "excludes": ["sonck", "simons"],
+        "explain": {
+          "sonck": "Speelde voor Ajax en Borussia Mönchengladbach.",
+          "simons": "Speelde voor PSV en 1. FC Nürnberg."
+        }
+      },
+      {
+        "text": "De dader won minstens één Gouden Schoen na 2000.",
+        "excludes": ["vanderelst"],
+        "explain": { "vanderelst": "Won zijn twee Gouden Schoenen in 1996 en 1997." }
+      }
+    ],
+    "solution": "Hans Vanaken speelde in het eerste elftal enkel voor Belgische clubs (Lommel, Lokeren en Club Brugge) en won de Gouden Schoen in 2018 en 2019.",
+    "difficulty": 3,
+    "status": "review",
+    "reviewNote": "Eerste zaak, feiten nog na te kijken door inhoud-controleur. Vanaken is actief: vóór elke inzet controleren of hij nog geen buitenlandse club had.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Gouden_Schoen",
+      "https://nl.wikipedia.org/wiki/Hans_Vanaken",
+      "https://nl.wikipedia.org/wiki/Enzo_Scifo",
+      "https://nl.wikipedia.org/wiki/Wesley_Sonck",
+      "https://nl.wikipedia.org/wiki/Timmy_Simons",
+      "https://nl.wikipedia.org/wiki/Vincent_Kompany",
+      "https://nl.wikipedia.org/wiki/Axel_Witsel"
+    ],
+    "tags": ["gouden-schoen"],
+    "checkedAt": "2026-10-23"
+  }
+]
