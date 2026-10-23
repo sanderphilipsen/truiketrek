@@ -20,7 +20,7 @@ Een mobiele quiz-app (Blazor WebAssembly PWA) om met vrienden te spelen. Elke da
 - **Levels:** XP voor elke gespeelde vraag (+10), voor juiste antwoorden (punten / 5), voor een volledige dag (+50), voor 10 op 10 (+50) en per dagzege (+100). Elk level vraagt 100 XP meer dan het vorige en er is geen maximum. Titels gaan van Jeugdspeler tot Legende ([Levels.cs](src/VoetbalQuiz.Shared/Levels.cs)).
 - **Beloningspopup:** na een volledige daily, special of online wedstrijd zie je met animaties hoeveel XP je bijkreeg (per onderdeel), hoe je levelbalk volloopt (met level-up en confetti) en welke badges je nieuw hebt. De server onthoudt wat je al gezien hebt (`SeenXpParts`, `SeenBadges`), dus XP of badges die later binnenkomen (bv. een dagzege na middernacht) verschijnen de volgende keer ([RewardPopup.razor](src/VoetbalQuiz.Client/Shared/RewardPopup.razor)).
 
-- **Feedback:** via Profiel → "Bug of idee melden". Spelers zien hun eigen meldingen en de status ervan. Admins zien alles en kunnen een status en antwoord geven. Admins zijn gebruikersnamen in de configuratie onder `Admins` (lokaal: `sander` in `appsettings.Development.json`).
+- **Feedback:** via de strook "Bug of idee melden" op Home of via Profiel → Account. Spelers zien hun eigen meldingen en de status ervan. Admins zien alles en kunnen een status en antwoord geven. Admins zijn gebruikersnamen in de configuratie onder `Admins` (lokaal: `sander` in `appsettings.Development.json`).
 
 ### Spelers controleren en toevoegen (admin)
 

@@ -189,7 +189,7 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
     @SpecialCard(active, isNew: false)
 }
 
-@* Daaronder brede stroken, allemaal in dezelfde vorm: klassement, academie, badges, instellingen, admin. *@
+@* Daaronder brede stroken, allemaal in dezelfde vorm: klassement, academie, badges, instellingen, feedback, admin. *@
 <a class="card sb-strip" href="klassement">
     <Icon Name="trophy" Class="sb-icon" />
     <span class="sb-label">Klassement</span>
@@ -209,6 +209,11 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
 <a class="card sb-strip" href="profiel?tab=account">
     <Icon Name="sliders-horizontal" Class="sb-icon" />
     <span class="sb-label">Instellingen</span>
+    <span class="sb-go" aria-hidden="true">›</span>
+</a>
+<a class="card sb-strip" href="feedback">
+    <Icon Name="bug" Class="sb-icon" />
+    <span class="sb-label">Bug of idee melden</span>
     <span class="sb-go" aria-hidden="true">›</span>
 </a>
 @if (Auth.User?.IsAdmin == true)
