@@ -1754,7 +1754,23 @@ button.choice:active { transform: scale(.97); }
 .kaart-selects { display: grid; grid-template-columns: repeat(var(--kaart-lijsten, 1), minmax(0, 1fr)); gap: 8px; }
 .kaart-shared { color: var(--warn-text); font-weight: 600; font-size: .95rem; }
 /* Native keuzelijst: op een gsm opent de eigen lijst van het toestel. Groot genoeg voor de duim. */
-.kaart-select { width: 100%; min-width: 0; min-height: 48px; padding: 10px 12px; font-size: 1rem; border-radius: 10px; }
+.kaart-select {
+    -webkit-appearance: none; appearance: none;
+    width: 100%; min-width: 0; min-height: 48px; padding: 10px 40px 10px 14px;
+    font-size: 1rem; font-weight: 700; text-overflow: ellipsis; cursor: pointer;
+    color: var(--text); background-color: var(--input-bg);
+    border: 1.5px solid var(--sb-line-strong); border-radius: 10px;
+    /* Eigen pijltje in de accentkleur, in plaats van het grijze van het toestel. */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1.5 1.5 7 7l5.5-5.5' fill='none' stroke='%23f5c400' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 14px center; background-size: 14px 9px;
+    transition: border-color .15s, box-shadow .15s;
+}
+/* Nog niets gekozen: gedempte tekst, zoals een placeholder. Gekozen: gele rand, zodat je ziet dat Bevestig kan. */
+.kaart-select:has(option[value=""]:checked) { color: var(--muted); font-weight: 600; }
+.kaart-select:not(:has(option[value=""]:checked)) { border-color: var(--accent); }
+.kaart-select:disabled { opacity: .6; cursor: default; }
+.kaart-select option { color: var(--text); background: var(--card); font-weight: 600; }
+.kaart-select option[value=""] { color: var(--muted); }
 .kaart-actions { display: grid; grid-template-columns: 1fr 1.6fr; gap: 10px; }
 .kaart-actions .btn { min-height: 48px; margin: 0; width: 100%; }
 @media (max-height: 680px) { .kaart-select, .kaart-actions .btn { min-height: 44px; padding-top: 8px; padding-bottom: 8px; } }
