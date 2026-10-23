@@ -205,6 +205,26 @@
                                 }
                             }
                             break;
+
+                        case QuestionType.Kaart:
+                            @* Alleen-lezen: de spelden pas je aan in Data/questions/kaart.json. Moeilijkheid, bronnen, thema's en status kunnen hier wel. *@
+                            @if (_kaart is null)
+                            {
+                                <p class="note"><Icon Name="warning" /> Nieuwe kaarten voeg je toe in <code>Data/questions/kaart.json</code>.</p>
+                            }
+                            else
+                            {
+                                <p><b>@_kaart.Question</b></p>
+                                <p class="muted">@(KaartProjection.Find(_kaart.Land)?.Naam ?? _kaart.Land) · @_kaart.Competition @_kaart.Season · @_kaart.Pins.Count spelden · @_kaart.Pins.Sum(p => p.Clubs.Count) clubs. De spelden pas je aan in <code>Data/questions/kaart.json</code>.</p>
+                                <LandKaart Land="@_kaart.Land" Pins="KaartPreview()" />
+                                <ul class="kaart-admin-list">
+                                    @foreach (var p in _kaart.Pins)
+                                    {
+                                        <li><b>@string.Join(" en ", p.Clubs)</b> <small class="muted">@p.Stadium, @p.City (@p.Lat.ToString("0.0000", System.Globalization.CultureInfo.InvariantCulture), @p.Lon.ToString("0.0000", System.Globalization.CultureInfo.InvariantCulture))</small></li>
+                                    }
+                                </ul>
+                            }
+                            break;
                     }
 
                     <label>Moeilijkheid
@@ -378,6 +398,9 @@
             case QuestionType.Detective:
                 _lines = Pretty(System.Text.Json.JsonSerializer.Deserialize<DetectiveData>(data, Json)!);
                 break;
+            case QuestionType.Kaart:
+                (_raw, _kaart) = (data, System.Text.Json.JsonSerializer.Deserialize<KaartData>(data, Json));
+                break;
         }
     }
 
@@ -409,6 +432,14 @@
             : new KrantPiece("", s.Gap, article.Gaps[s.Gap].Hint, article.Gaps[s.Gap].Number is not null,
                 Answer: article.Gaps[s.Gap].Answer, Score: 1)).ToList()).ToList();
 
+    /// <summary>Kaart: de inhoud zoals ze binnenkwam (alleen-lezen, gaat ongewijzigd terug bij opslaan).</summary>
+    private string _raw = "{}";
+    private KaartData? _kaart;
+
+    /// <summary>Kaart: alle spelden met hun club(s), zoals na afloop van een kaartdag.</summary>
+    private List<KaartPin> KaartPreview() =>
+        _kaart?.Pins.Select(p => new KaartPin(p.Lat, p.Lon, KaartPinState.Juist, string.Join(" / ", p.Clubs))).ToList() ?? [];
+
     private static List<string> Split(string s, char sep) =>
         s.Split(sep, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToList();
 
@@ -428,6 +459,7 @@
             _options.Zip(_values, (label, value) => new VolgordeItem(label.Trim(), value.Trim())).ToList())),
         QuestionType.Krant => Serialize(new KrantData(_krantKind, _text.Trim(), _explanation.Trim(), _lines.Trim())),
         QuestionType.Detective => ParseCase(_lines) is { } d ? Serialize(d) : _lines,
+        QuestionType.Kaart => _raw,
         _ => "{}",
     };
 
@@ -482,6 +514,9 @@
                 break;
             case QuestionType.Detective:
                 if (ParseCase(_lines) is null) missing.Add("De zaak is geen geldige JSON.");
+                break;
+            case QuestionType.Kaart:
+                if (_kaart is null) missing.Add("Voeg kaarten toe in kaart.json.");
                 break;
         }
         return missing;

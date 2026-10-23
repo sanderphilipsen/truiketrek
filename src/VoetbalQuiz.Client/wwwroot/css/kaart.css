@@ -1,0 +1,135 @@
+/* Landkaart (Shared/LandKaart.razor; BelgieKaart is een wrapper) voor het vraagtype Kaart.
+   Gebruikt de tokens uit app.css, zodat de kaart zowel op een donkere tegel als in .surface-light klopt.
+   Eigen tokens staan op .land-kaart zelf (niet in :root), zodat een ouder ze kan overschrijven. */
+.land-kaart {
+    --kaart-land: var(--surface-soft);        /* vulling van de regio's */
+    --kaart-grens-binnen: var(--sb-line-strong); /* regiogrenzen */
+    --kaart-grens-buiten: var(--control-border); /* landsgrens en kust (≥ 3:1) */
+    --kaart-huidig: var(--accent);            /* de speld die nu gevraagd wordt */
+    --kaart-juist: var(--ok);
+    --kaart-fout: var(--fail);
+    --kaart-deels: #c96a00;                   /* half juist (gedeeld stadion): oranje; ≥ 3:1 met wit, met de donkere en de lichte tegel */
+    --kaart-teken: #ffffff;                   /* vinkje, kruis en halve vulling in de bol */
+    --kaart-ring: var(--accent);              /* uitdijende ring rond de huidige speld */
+    --kaart-pin-rand: var(--pitch);           /* donkere rand rond elke speld: los van de grenzen, en geel/oranje blijft zichtbaar op licht */
+    --kaart-halo: var(--card);                /* halo achter een clubnaam, in de kleur van de tegel */
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+}
+/* Op een lichte tegel: grenzen donkerder, ring in donkergoud. */
+.surface-light .land-kaart,
+.land-kaart.surface-light {
+    --kaart-grens-binnen: var(--control-border);
+    --kaart-grens-buiten: var(--muted);
+    --kaart-ring: var(--accent-text);
+}
+.land-kaart svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+/* Geen kaart voor dit land (onbekende code): rustig melden in plaats van te crashen. */
+.land-kaart-leeg {
+    margin: 0;
+    padding: 24px 16px;
+    text-align: center;
+    color: var(--muted);
+}
+
+.kaart-regios path {
+    fill: var(--kaart-land);
+    fill-rule: evenodd;       /* enclaves (Brussel in Vlaams-Brabant, Treviño) zijn gaten in de regio rond */
+    stroke: var(--kaart-grens-binnen);
+    stroke-width: .7;
+    stroke-linejoin: round;
+}
+.kaart-grens {
+    fill: none;
+    stroke: var(--kaart-grens-buiten);
+    stroke-width: 1.4;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+/* Spelden. Beantwoorde spelden zijn kleine bollen met een teken, zodat juist/fout ook zonder kleur leesbaar is. */
+.kaart-pin-vorm {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+}
+.kaart-pin-bol {
+    stroke: var(--kaart-pin-rand);
+    stroke-width: 1.5;
+}
+.kaart-pin-juist .kaart-pin-bol { fill: var(--kaart-juist); }
+.kaart-pin-fout .kaart-pin-bol { fill: var(--kaart-fout); }
+.kaart-pin-deels .kaart-pin-bol { fill: var(--kaart-deels); }
+.kaart-pin-teken {
+    fill: none;
+    stroke: var(--kaart-teken);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.kaart-pin-half { fill: var(--kaart-teken); }
+.kaart-pin-juist .kaart-pin-vorm,
+.kaart-pin-deels .kaart-pin-vorm,
+.kaart-pin-fout .kaart-pin-vorm {
+    transform-origin: 50% 50%;
+    animation: kaart-pin-zet .28s cubic-bezier(.3, 1.6, .5, 1) both;
+}
+
+/* De huidige speld: een gele punaise met de punt op het stadion en een ring die zacht uitdijt. */
+.kaart-pin-huidig .kaart-pin-vorm { animation: kaart-pin-val .32s cubic-bezier(.3, 1.4, .5, 1) both; }
+.kaart-pin-kop {
+    fill: var(--kaart-huidig);
+    stroke: var(--kaart-pin-rand);
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+}
+.kaart-pin-oog { fill: var(--kaart-pin-rand); }
+.kaart-pin-ring {
+    fill: none;
+    stroke: var(--kaart-ring);
+    stroke-width: 1.6;
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+    animation: kaart-pin-puls 1.6s ease-out infinite;
+}
+
+@keyframes kaart-pin-val {
+    from { transform: translateY(-10px) scale(.6); opacity: 0; }
+    to { transform: none; opacity: 1; }
+}
+@keyframes kaart-pin-zet {
+    from { transform: scale(.4); }
+    to { transform: none; }
+}
+@keyframes kaart-pin-puls {
+    from { transform: scale(1); opacity: .9; }
+    to { transform: scale(3.2); opacity: 0; }
+}
+
+/* Clubnaam bij een beantwoorde speld, met een halo in de tegelkleur zodat hij over grenzen leesbaar blijft. */
+.kaart-labels text {
+    font-size: 12px;  /* viewBox-eenheden: ±10,8 px op een gsm van 375 px */
+    font-weight: 600;
+    fill: var(--text);
+    stroke: var(--kaart-halo);
+    stroke-width: 3px;
+    stroke-linejoin: round;
+    paint-order: stroke;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .kaart-pin-vorm,
+    .kaart-pin-huidig .kaart-pin-vorm,
+    .kaart-pin-juist .kaart-pin-vorm,
+    .kaart-pin-deels .kaart-pin-vorm,
+    .kaart-pin-fout .kaart-pin-vorm { animation: none; }
+    /* Geen puls: de ring blijft als vaste markering staan. */
+    .kaart-pin-ring { animation: none; transform: scale(2); opacity: .7; }
+}

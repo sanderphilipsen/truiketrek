@@ -1,0 +1,27 @@
+@* Admin: het land van de kaart voor een kaartdag (weekplanning) of een kaartspecial. Leeg = willekeurig.
+   Per land staat erbij hoeveel goedgekeurde kaarten er zijn; zonder goedgekeurde kaart kiest de server toch willekeurig. *@
+<label class="kaart-land-select">Land van de kaart
+    <select value="@(Value ?? "")" disabled="@Disabled" @onchange="e => Changed(e.Value?.ToString())">
+        <option value="">🎲 Willekeurig (liefst een ander land dan de vorige kaartdag)</option>
+        @foreach (var land in KaartProjection.Landen)
+        {
+            var count = Maps?.GetValueOrDefault(land.Code) ?? 0;
+            <option value="@land.Code">@Capitalize(land.Naam) (@(count == 1 ? "1 kaart" : $"{count} kaarten")@(count == 0 ? ": wordt willekeurig" : ""))</option>
+        }
+    </select>
+</label>
+
+@code {
+    /// <summary>De ISO-code van het gekozen land, of null voor willekeurig.</summary>
+    [Parameter] public string? Value { get; set; }
+    [Parameter] public EventCallback<string?> ValueChanged { get; set; }
+
+    /// <summary>Per land hoeveel goedgekeurde kaarten er zijn (zie ScheduleOverview.KaartMaps).</summary>
+    [Parameter] public Dictionary<string, int>? Maps { get; set; }
+    [Parameter] public bool Disabled { get; set; }
+
+    private Task Changed(string? value) => ValueChanged.InvokeAsync(string.IsNullOrEmpty(value) ? null : value);
+
+    /// <summary>"het Verenigd Koninkrijk" → "Het Verenigd Koninkrijk" aan het begin van een optie.</summary>
+    private static string Capitalize(string s) => s.Length == 0 ? s : char.ToUpperInvariant(s[0]) + s[1..];
+}

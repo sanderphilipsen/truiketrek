@@ -1,11 +1,14 @@
 namespace VoetbalQuiz.Shared;
 
-public enum QuestionType { WieBenIk, Snelvuur, Carriere, NietBij, Jaar, Emoji, Opstelling, Wissel, Rugnummer, Mannetje, Kluts, Counter, Volgorde, Krant, Detective }
+public enum QuestionType { WieBenIk, Snelvuur, Carriere, NietBij, Jaar, Emoji, Opstelling, Wissel, Rugnummer, Mannetje, Kluts, Counter, Volgorde, Krant, Detective, Kaart }
 
 /// <summary>
 /// Vaste eigenschappen per vraagtype. Een dag is altijd maximaal 1000 punten waard.
 /// FromPlayers: de vragen komen uit de spelersdatabase (zoals "Wie ben ik?"), niet uit de vragenbank.
-/// Alone: het type vult een dag op zich (zoals De Krant, de rubriek "De Zondag"). Het komt nooit in een mix of online.
+/// Alone: een solo-type. Het vult in zijn eentje de hele dag, met één of meer vragen (De Zondag: 4 × 250, Detectivedag:
+/// 1 × 1000, Kaart: 2 × 500). Zo'n type komt nooit in een mix (<see cref="QuestionTypes.Mix(IEnumerable{QuestionType})"/> laat
+/// het vallen zodra er een ander type bij is, en het admin-paneel weigert de combinatie), niet online, niet in de badge
+/// Allrounder en niet in de "100 punten"-statistieken. XP: zijn vragen tellen samen als een volle dag en zijn deelpunten tellen mee.
 /// </summary>
 public record QuestionTypeInfo(
     QuestionType Type, string Name, string Icon, string HowTo, int PerDay, int MaxPoints, string FileName, bool FromPlayers = false,
@@ -32,13 +35,58 @@ public static class QuestionTypes
             Alone: true),
         new(QuestionType.Detective, "Detectivedag", "🔎", "Wie is de dader? Open de getuigen één voor één, schrap verdachten en wijs de dader aan. Hoe minder getuigen, hoe meer punten.",
             1, 1000, "detective", Alone: true),
+        new(QuestionType.Kaart, "Kaart", "🗺️",
+            $"Twee delen op dezelfde kaart van een land: eerst kies je bij elke speld de club, daarna bij elke club het stadion. " +
+            $"Per deel {QuestionRules.KaartPins} spelden, {(int)QuestionRules.KaartSeconds / 60} minuten en " +
+            $"{QuestionRules.KaartPointsPerPin} punten per speld.",
+            QuestionRules.KaartParts, QuestionRules.KaartPartPoints, "kaart", Alone: true),
     ];
 
     public static QuestionTypeInfo Get(QuestionType type) => All.First(t => t.Type == type);
 
     /// <summary>
+    /// Hoeveel spelers of vragen uit de bank <paramref name="questions"/> vragen van dit type nodig hebben: een counter
+    /// vraagt <see cref="QuestionRules.CounterPlayers"/> spelers per vraag, de twee delen van een kaartdag delen één kaart.
+    /// </summary>
+    public static int ItemsFor(QuestionType type, int questions) => type switch
+    {
+        QuestionType.Counter => questions * QuestionRules.CounterPlayers,
+        QuestionType.Kaart => (questions + QuestionRules.KaartParts - 1) / QuestionRules.KaartParts,
+        _ => questions,
+    };
+
+    /// <summary>
+    /// De solo-regel voor de weekplanning en de specials: een type met <see cref="QuestionTypeInfo.Alone"/> staat altijd
+    /// alleen. Geeft de foutmelding voor het admin-paneel, of null als de keuze klopt. Komt er toch een combinatie binnen
+    /// (oude data), dan valt het solo-type weg (zie <see cref="Playable"/>).
+    /// </summary>
+    public static string? AloneProblem(IEnumerable<QuestionType> types)
+    {
+        var list = types.Distinct().ToList();
+        return list.Count > 1 && list.Where(t => Get(t).Alone).ToList() is [var alone, ..]
+            ? $"{Get(alone).Name} is een dag op zich: combineer het niet met andere vraagtypes."
+            : null;
+    }
+
+    /// <summary>
+    /// Kan de admin dit type als dag in de weekplanning kiezen? Gewone types wel, en van de solo-types enkel de kaart (de
+    /// eigenaar kiest per kaartdag een land). De Zondag staat vast op zondag (<see cref="ZondagDay"/>) en de Detectivedag
+    /// speel je als special.
+    /// </summary>
+    public static bool InWeekPlanning(QuestionType type) => !Get(type).Alone || type == QuestionType.Kaart;
+
+    /// <summary>
+    /// "Gespeelde vragen" voor de XP: een vraag telt als één, maar de vragen van een solo-type tellen samen als een volle
+    /// dag (<see cref="GameRules.QuestionsPerDay"/>): elk artikel van De Zondag (4) telt 2,5, de Detectivedag (1) 10, elk deel
+    /// van de kaart (2) 5. Een kommagetal: de som wordt pas op het einde afgerond (zie ResultsService).
+    /// </summary>
+    public static double PlayedWeight(QuestionType type) =>
+        Get(type) is { Alone: true } info ? (double)GameRules.QuestionsPerDay / Math.Max(1, info.PerDay) : 1;
+
+    /// <summary>
     /// Hoeveel vragen van elk type een mix krijgt: om beurten één vraag per type, zolang de dag onder
     /// 1000 punten en 10 vragen blijft. Een opstelling (200 punten) telt dus voor twee gewone vragen.
+    /// Een solo-type vult de dag alleen: het valt weg zodra er een ander type bij is (<see cref="Playable"/>).
     /// </summary>
     public static Dictionary<QuestionType, int> Mix(IEnumerable<QuestionType> types)
     {
@@ -76,23 +124,24 @@ public static class QuestionTypes
     /// De types die samen kunnen: een type dat alleen een dag vult (<see cref="QuestionTypeInfo.Alone"/>) valt weg zodra er
     /// een ander type bij is: zo'n type speel je enkel als dag op zich (bv. De Zondag, of een special met enkel dat type).
     /// </summary>
-    private static List<QuestionType> Playable(IEnumerable<QuestionType> types)
+    private static List<QuestionType> Playable(IEnumerable<QuestionType> types, bool fallback = true)
     {
         var list = types.Distinct().ToList();
         if (list.Any(t => !Get(t).Alone)) list = list.Where(t => !Get(t).Alone).ToList();
         else if (list.Count > 1) list = list.Take(1).ToList();
-        return list.Count == 0 ? [QuestionType.WieBenIk] : list;
+        return list.Count == 0 && fallback ? [QuestionType.WieBenIk] : list;
     }
 
     public const int DayMaxPoints = 1000;
     /// <summary>
     /// Wat een dag werkelijk wordt: de geplande types zonder de uitgeschakelde. Blijft er niets over
-    /// (het type van die dag staat uit), dan wordt het een mix van alle types die nog aan staan.
+    /// (het type van die dag staat uit), dan wordt het een mix van alle types die nog aan staan, zonder de solo-types.
+    /// Zit een solo-type samen met andere types in de planning (oude data), dan valt het weg, zoals in <see cref="Playable"/>.
     /// </summary>
     public static List<QuestionType> ResolveDay(IEnumerable<QuestionType> planned, ICollection<QuestionType> disabled)
     {
-        var types = planned.Where(t => !disabled.Contains(t)).Distinct().Order().ToList();
-        if (types.Count == 0) types = All.Select(i => i.Type).Where(t => !disabled.Contains(t)).ToList();
+        var types = Playable(planned.Where(t => !disabled.Contains(t)).Distinct().Order(), fallback: false);
+        if (types.Count == 0) types = All.Where(i => !disabled.Contains(i.Type) && !i.Alone).Select(i => i.Type).ToList();
         return types.Count == 0 ? [QuestionType.WieBenIk] : types;
     }
 
@@ -113,13 +162,17 @@ public static class QuestionTypes
 
     /// <summary>
     /// De types van een special, zonder de uitgeschakelde. Geen keuze = "Wie ben ik?"; staan ze allemaal uit, dan toch
-    /// de gekozen types (een special wordt niet plots een mix van iets anders).
+    /// de gekozen types (een special wordt niet plots een mix van iets anders). Een solo-type samen met andere types valt
+    /// weg (<see cref="Playable"/>). Een solo-type dat uit staat, wordt nooit "toch" gespeeld: een special met enkel
+    /// De Krant of de kaart wordt dan "Wie ben ik?".
     /// </summary>
     public static List<QuestionType> ResolveSpecial(IReadOnlyCollection<QuestionType> types, ICollection<QuestionType> disabled)
     {
         IReadOnlyCollection<QuestionType> chosen = types.Count > 0 ? types : [QuestionType.WieBenIk];
-        var enabled = chosen.Where(t => !disabled.Contains(t)).Distinct().Order().ToList();
-        return enabled.Count > 0 ? enabled : chosen.Distinct().ToList();
+        var enabled = Playable(chosen.Where(t => !disabled.Contains(t)).Distinct().Order(), fallback: false);
+        if (enabled.Count > 0) return enabled;
+        var regular = chosen.Where(t => !Get(t).Alone).Distinct().ToList();
+        return regular.Count > 0 ? regular : [QuestionType.WieBenIk];
     }
 
     /// <summary>"🕵️ ⚡ 📅" voor een mix.</summary>
@@ -196,6 +249,59 @@ public static class QuestionRules
     /// server (<see cref="GameRules.LatencyGraceSeconds"/>), zodat ze ook bij een trage verbinding nog meetelt.
     /// </summary>
     public const double VolgordeAutoSendSeconds = GameRules.LatencyGraceSeconds - 0.1;
+
+    /// <summary>
+    /// Kaart: een kaartdag bestaat uit twee delen (twee vragen op dezelfde kaart). Deel 1 (<see cref="KaartClubsPart"/>):
+    /// bij elke speld de club(s) kiezen. Deel 2 (<see cref="KaartStadiumsPart"/>): bij elke club(s) het stadion kiezen.
+    /// </summary>
+    public const int KaartParts = 2;
+    public const int KaartClubsPart = 1, KaartStadiumsPart = 2;
+
+    /// <summary>Kaart: zoveel punten per deel; de twee delen samen zijn de hele dag (<see cref="QuestionTypes.DayMaxPoints"/>).</summary>
+    public const int KaartPartPoints = QuestionTypes.DayMaxPoints / KaartParts;
+
+    /// <summary>Kaart: de tijd voor één deel (alle spelden samen). Daarna zijn de resterende spelden fout.</summary>
+    public const double KaartSeconds = 180;
+
+    /// <summary>Kaart: deze "gok" slaat de huidige speld over (telt als fout).</summary>
+    public const string KaartSkip = "/overslaan";
+
+    /// <summary>Kaart: scheidt de gekozen clubs bij een gedeeld stadion ("Club Brugge|Cercle Brugge").</summary>
+    public const char KaartSeparator = '|';
+
+    /// <summary>
+    /// Kaart: elke gok begint met het nummer van de speld (1 = de eerste): "3:Club Brugge|Cercle Brugge" of "3:/overslaan".
+    /// Een gok voor een andere speld dan de huidige (een dubbele tik, een oude request) doet niets.
+    /// </summary>
+    public const char KaartPinPrefix = ':';
+
+    /// <summary>De gok voor speld <paramref name="pin"/> (1 = de eerste) met dit antwoord.</summary>
+    public static string KaartGuess(int pin, string answer) => $"{pin}{KaartPinPrefix}{answer}";
+
+    /// <summary>
+    /// Types met deelpunten: de vraag is zelden helemaal juist, maar wat je vindt, telt. Alle solo-types
+    /// (<see cref="QuestionTypeInfo.Alone"/>: De Zondag, Detectivedag, de kaart) plus opstelling en counter.
+    /// Hun punten tellen mee voor de XP ("Juiste antwoorden") ook als de vraag niet volledig juist is, en de dag- en
+    /// special-overzichten tonen een deelscore als deels juist (½) in plaats van fout.
+    /// </summary>
+    public static bool PartialScores(QuestionType type) =>
+        QuestionTypes.Get(type).Alone || type is QuestionType.Opstelling or QuestionType.Counter;
+
+    /// <summary>
+    /// Kaart: elke kaart heeft precies zoveel spelden, in elk land (10 clubs van een competitie, geen volledige reeks).
+    /// Zo is een kaart in elk land even lang en is een speld in deel 2 altijd <see cref="KaartPointsPerPin"/> punten waard.
+    /// Elke geldige gok zet één speld vast, dus ruim onder <see cref="GameRules.MaxGuessesPerQuestion"/>.
+    /// </summary>
+    public const int KaartPins = 10;
+
+    /// <summary>
+    /// Kaart: een speld is zoveel punten waard (500 / 10). In deel 1 verdeelt een gedeeld stadion zijn speld over de
+    /// clubs, zodat het totaal per deel <see cref="KaartPartPoints"/> blijft (zie <see cref="KaartPoints"/>).
+    /// </summary>
+    public const int KaartPointsPerPin = KaartPartPoints / KaartPins;
+
+    /// <summary>Kaart: een kaart zonder land (van vóór de landkaarten) is een kaart van België.</summary>
+    public const string KaartDefaultCountry = "BE";
 
     /// <summary>Counter: zoveel spelers per vraag, elk goed voor <see cref="CounterPointsPerPlayer"/> punten.</summary>
     public const int CounterPlayers = 10;
@@ -359,6 +465,13 @@ public static class QuestionRules
                 if (order[i] < order[j]) right++;
         return (int)Math.Round((double)QuestionTypes.Get(QuestionType.Volgorde).MaxPoints * right / pairs);
     }
+
+    /// <summary>
+    /// Kaart: de punten van één deel (<see cref="KaartPartPoints"/>) naar rato, naar beneden afgerond. Deel 1: juiste clubs
+    /// van alle clubs (een gedeeld stadion telt per club). Deel 2: juiste stadions van alle spelden.
+    /// </summary>
+    public static int KaartPoints(int right, int total) =>
+        total <= 0 ? 0 : (int)Math.Floor((double)KaartPartPoints * Math.Clamp(right, 0, total) / total);
 }
 
 // ---------- Inhoud van de vragenbank (zoals in Data/questions/*.json) ----------
@@ -385,6 +498,20 @@ public record VolgordeItem(string Label, string Value);
 
 /// <summary>Op volgorde: de opdracht en de kaartjes in de juiste volgorde (de server husselt ze).</summary>
 public record VolgordeData(string Question, List<VolgordeItem> Items);
+
+/// <summary>Kaart: een stadion met de club(s) die er thuis spelen (meer dan één bij een gedeeld stadion).</summary>
+public record KaartStadion(string Stadium, string City, double Lat, double Lon, List<string> Clubs);
+
+/// <summary>
+/// Kaart: één competitie op de kaart van een land (Country: ISO-code, zie <see cref="KaartProjection.Landen"/>; leeg = België).
+/// De server schudt de spelden en geeft ze één voor één vrij.
+/// </summary>
+public record KaartData(string Question, string Competition, string Season, List<KaartStadion> Pins, string? Country = null)
+{
+    /// <summary>Het land van de kaart (ISO-code in hoofdletters); een kaart zonder land is een kaart van België.</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public string Land => string.IsNullOrWhiteSpace(Country) ? QuestionRules.KaartDefaultCountry : Country.Trim().ToUpperInvariant();
+}
 
 /// <summary>
 /// De Krant: een artikel. Text bevat de gaten als [[antwoord / ook goed : hint]] of, voor een getal, [[#69 : minuut]]

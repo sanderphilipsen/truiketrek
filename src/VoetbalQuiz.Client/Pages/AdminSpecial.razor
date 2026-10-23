@@ -73,7 +73,7 @@
 
                 <section class="card stack">
                     <h2>@(Id == 0 ? "4. " : "")Welke vraagtypes?</h2>
-                    <p class="muted">De vragen worden om beurten over de gekozen types verdeeld (max. @GameRules.QuestionsPerDay vragen en 1000 punten; een opstelling telt voor twee). Vragen met het thema van de special krijgen voorrang. Een type dat in Planning uitgeschakeld is, wordt overgeslagen.</p>
+                    <p class="muted">De vragen worden om beurten over de gekozen types verdeeld (max. @GameRules.QuestionsPerDay vragen en 1000 punten; een opstelling telt voor twee). Vragen met het thema van de special krijgen voorrang. Een type dat in Planning uitgeschakeld is, wordt overgeslagen. 📰 De Zondag, 🔎 Detectivedag en 🗺️ Kaart vullen elk een hele special: kies je er een, dan gaan de andere types uit.</p>
                     <div class="tag-toggle">
                         @foreach (var t in QuestionTypes.All)
                         {
@@ -82,6 +82,10 @@
                         }
                     </div>
                     <small class="muted">Verdeling: @Mix()</small>
+                    @if (_types.Contains(QuestionType.Kaart))
+                    {
+                        <KaartLandSelect @bind-Value="_kaartCountry" Maps="_kaartMaps" Disabled="_locked" />
+                    }
                 </section>
 
                 <section class="card stack">
@@ -192,6 +196,10 @@
     private static DateOnly Today => QuizDay.Today();
     private HashSet<QuestionType> _types = [];
 
+    /// <summary>Kaartspecial: het land van de kaart (null = willekeurig) en per land het aantal goedgekeurde kaarten.</summary>
+    private string? _kaartCountry;
+    private Dictionary<string, int>? _kaartMaps;
+
     /// <summary>Zelfde verdeling als de server (QuestionTypes.Mix): om beurten, max. 10 vragen en 1000 punten.</summary>
     private Dictionary<QuestionType, int> MixCounts() =>
         _types.Count == 0 ? [] : QuestionTypes.Mix(QuestionTypes.All.Select(x => x.Type).Where(_types.Contains));
@@ -208,7 +216,10 @@
     private string Mix() => _types.Count == 0 ? "kies minstens één type"
         : string.Join(", ", MixCounts().Select(kv => $"{kv.Value}× {QuestionTypes.Get(kv.Key).Icon} {QuestionTypes.Get(kv.Key).Name}"));
 
-    /// <summary>Een type dat de hele dag vult (De Krant) staat alleen: kies je het, dan gaan de andere uit, en omgekeerd.</summary>
+    /// <summary>
+    /// De solo-regel (<see cref="QuestionTypeInfo.Alone"/>): De Zondag, Detectivedag en de kaart staan alleen. Kies je er een, dan gaan de
+    /// andere types uit; kies je daarna een ander type, dan gaat het solo-type uit.
+    /// </summary>
     private void ToggleType(QuestionType type)
     {
         if (_types.Remove(type)) return;
@@ -223,6 +234,7 @@
         try
         {
             _all = await Api.GetAdminPlayersAsync(null, null, null);
+            _kaartMaps = (await Api.GetScheduleAsync()).KaartMaps;
             if (Id == 0)
             {
                 var theme = System.Web.HttpUtility.ParseQueryString(Nav.ToAbsoluteUri(Nav.Uri).Query)["theme"];
@@ -234,6 +246,7 @@
             (_theme, _name, _icon, _description, _start, _end, _tags) = (s.Theme, s.Name, s.Icon, s.Description, s.StartDate, s.EndDate, [.. PlayerTags.Split(s.Tag)]);
             _types = s.Types is { Count: > 0 } types ? [.. types] : [QuestionType.WieBenIk];
             _picked = [.. s.PlayerIds];
+            _kaartCountry = s.KaartCountry;
             _manual = _picked.Count > 0;
         }
         catch (ApiException ex) { _loadError = ex.Message; }
@@ -247,7 +260,7 @@
         _description = t.Description;
         _tags = [.. PlayerTags.Split(t.Tag)];
         _manual = t.Tag is null;
-        // De types van het sjabloon; anders alle vraagtypes, behalve de lange opstelling.
+        // De types van het sjabloon; anders alle vraagtypes, behalve de lange opstelling en de solo-types.
         _types = [.. t.Types ?? QuestionTypes.All.Where(x => !x.Alone).Select(x => x.Type).Where(x => x != QuestionType.Opstelling)];
         var date = t.Month is { } m && t.Day is { } d ? NextDate(m, d) : Today;
         (_start, _end) = (date, date);
@@ -305,7 +318,8 @@
         try
         {
             var edit = new SpecialEdit(Id, _theme, _name, _icon, _description, _start, _end,
-                _manual ? null : PlayerTags.Join(_tags), _manual ? [.. _picked] : [], [.. QuestionTypes.All.Select(x => x.Type).Where(_types.Contains)]);
+                _manual ? null : PlayerTags.Join(_tags), _manual ? [.. _picked] : [], [.. QuestionTypes.All.Select(x => x.Type).Where(_types.Contains)],
+                _types.Contains(QuestionType.Kaart) ? _kaartCountry : null);
             var id = await Api.SaveAdminSpecialAsync(edit);
             _saved = true;
             if (Id == 0) Nav.NavigateTo($"admin/specials/{id}");

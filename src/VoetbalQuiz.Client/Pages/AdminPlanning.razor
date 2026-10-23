@@ -17,7 +17,8 @@
             <h2>Weekplanning van de daily</h2>
             <p class="muted">
                 Kies per weekdag één vraagtype of een <b>mix</b>. Een mix verdeelt de vragen om beurten over de gekozen types
-                (max. 1000 punten, een opstelling telt voor twee). Een wijziging geldt vanaf de eerstvolgende dag die nog niet gestart is.
+                (max. 1000 punten, een opstelling telt voor twee). Een <b>kaartdag</b> (🗺️ Kaart, twee delen op dezelfde kaart, samen 1000 punten) is een dag op zich: kies er een land voor. Zondag is altijd De Zondag;
+                de Detectivedag speel je als special. Solo-types kunnen niet in een mix. Een wijziging geldt vanaf de eerstvolgende dag die nog niet gestart is.
             </p>
             <div class="week">
                 @foreach (var day in _days)
@@ -36,7 +37,7 @@
                         else
                         {
                         <select value="@(d.IsMix ? MixValue : d.Type.ToString())" @onchange="e => Change(d.Day, e.Value?.ToString())">
-                            @foreach (var t in QuestionTypes.All.Where(t => !t.Alone))
+                            @foreach (var t in QuestionTypes.All.Where(t => QuestionTypes.InWeekPlanning(t.Type)))
                             {
                                 <option value="@t.Type">@t.Icon @t.Name@(_disabled.Contains(t.Type) ? " (uit)" : "")</option>
                             }
@@ -45,6 +46,7 @@
                         @if (d.IsMix)
                         {
                             <div class="mix-chips">
+                                @* Solo-types (De Zondag, Detectivedag, de kaart) passen niet in een mix. *@
                                 @foreach (var t in QuestionTypes.All.Where(t => !t.Alone))
                                 {
                                     var type = t.Type;
@@ -52,6 +54,10 @@
                                             title="@t.Name" @onclick="() => ToggleMix(d.Day, type)">@t.Icon</button>
                                 }
                             </div>
+                        }
+                        else if (d.Type == QuestionType.Kaart)
+                        {
+                            <KaartLandSelect Value="@d.KaartCountry" Maps="_overview.KaartMaps" ValueChanged="c => SetKaartCountry(d.Day, c)" />
                         }
                         }
                         <small class="muted day-result">
@@ -96,7 +102,8 @@
                 @foreach (var s in _overview.Stock)
                 {
                     var info = QuestionTypes.Get(s.Type);
-                    var perWeek = Weekly().GetValueOrDefault(s.Type);
+                    // Zoals de server: een counter vraagt 10 spelers per vraag, de twee delen van een kaartdag delen één kaart.
+                    var perWeek = QuestionTypes.ItemsFor(s.Type, Weekly().GetValueOrDefault(s.Type));
                     var weeks = perWeek == 0 ? (int?)null : s.NeverUsed / perWeek;
                     <a class="stock-row" href="@(QuestionTypes.Get(s.Type).FromPlayers ? "admin/spelers" : $"admin/vragen?type={s.Type}")">
                         <span class="stock-name">@info.Icon @info.Name</span>
@@ -142,7 +149,7 @@
         if (value == MixValue)
         {
             // Begin de mix met het huidige type en het volgende, zodat het meteen een echte mix is.
-            // Een type dat de hele dag vult (De Krant) kan niet in een mix.
+            // Een solo-type (De Zondag, Detectivedag, de kaart) kan niet in een mix.
             var regular = QuestionTypes.All.Where(t => !t.Alone).Select(t => t.Type).ToList();
             var current = QuestionTypes.Get(_days[i].Type).Alone ? regular[0] : _days[i].Type;
             var next = regular[(regular.IndexOf(current) + 1) % regular.Count];
@@ -152,6 +159,14 @@
         {
             _days[i] = _days[i] with { Type = type, Mix = null };
         }
+        (_dirty, _saved) = (true, false);
+    }
+
+    /// <summary>Kaartdag: het land van de kaart (null = willekeurig).</summary>
+    private void SetKaartCountry(DayOfWeek day, string? country)
+    {
+        var i = _days.FindIndex(d => d.Day == day);
+        _days[i] = _days[i] with { KaartCountry = country };
         (_dirty, _saved) = (true, false);
     }
 
@@ -173,7 +188,11 @@
 
     private static string MixLabel(List<QuestionType> types)
     {
-        if (types.Count == 1) return QuestionTypes.Get(types[0]).PerDay is var n && n == 1 ? "1 vraag" : $"{n} vragen";
+        if (types.Count == 1)
+        {
+            var info = QuestionTypes.Get(types[0]);
+            return info.PerDay == 1 ? "1 vraag" : info.Alone ? $"{info.PerDay} delen van {info.MaxPoints} punten" : $"{info.PerDay} vragen";
+        }
         var mix = QuestionTypes.Mix(types);
         return $"Mix: {string.Join(" · ", mix.Select(m => $"{m.Value}× {QuestionTypes.Get(m.Key).Icon}"))}";
     }

@@ -325,6 +325,10 @@ namespace VoetbalQuiz.Server.Data.Migrations
                     b.Property<string>("LastGuess")
                         .HasColumnType("text");
 
+                    b.PrimitiveCollection<List<string>>("Picks")
+                        .IsRequired()
+                        .HasColumnType("text[]");
+
                     b.Property<int>("Points")
                         .HasColumnType("integer");
 
@@ -412,6 +416,9 @@ namespace VoetbalQuiz.Server.Data.Migrations
                     b.Property<int>("Number")
                         .HasColumnType("integer");
 
+                    b.Property<int>("Part")
+                        .HasColumnType("integer");
+
                     b.Property<int?>("PlayerId")
                         .HasColumnType("integer");
 
@@ -444,6 +451,9 @@ namespace VoetbalQuiz.Server.Data.Migrations
 
                     b.Property<int>("Day")
                         .HasColumnType("integer");
+
+                    b.Property<string>("KaartCountry")
+                        .HasColumnType("text");
 
                     b.PrimitiveCollection<int[]>("MixTypes")
                         .IsRequired()
@@ -678,6 +688,10 @@ namespace VoetbalQuiz.Server.Data.Migrations
 
                     b.Property<int>("MatchQuestionId")
                         .HasColumnType("integer");
+
+                    b.PrimitiveCollection<List<string>>("Picks")
+                        .IsRequired()
+                        .HasColumnType("text[]");
 
                     b.Property<int>("Points")
                         .HasColumnType("integer")
@@ -1013,6 +1027,9 @@ namespace VoetbalQuiz.Server.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("KaartCountry")
+                        .HasColumnType("text");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -1070,6 +1087,10 @@ namespace VoetbalQuiz.Server.Data.Migrations
 
                     b.Property<string>("LastGuess")
                         .HasColumnType("text");
+
+                    b.PrimitiveCollection<List<string>>("Picks")
+                        .IsRequired()
+                        .HasColumnType("text[]");
 
                     b.Property<int>("Points")
                         .HasColumnType("integer");

@@ -46,7 +46,7 @@ else
             <li class="@CssFor(q)">
                 <span class="num">@q.Number</span>
                 <span class="name">@(q.PlayerName ?? (q.Status == QuestionStatus.NotStarted ? "?" : "bezig…"))</span>
-                @if (q.Correct is { } correct) { <span class="mark" role="img" aria-label="@(correct ? "juist" : "fout")">@(correct ? "✓" : "✗")</span> }
+                @if (q.Correct is not null) { var mark = QuestionDisplay.Mark(q); <span class="mark" role="img" aria-label="@mark.Label">@mark.Symbol</span> }
                 <span class="pts">@(q.Points is { } p ? $"{p}" : "")</span>
             </li>
         }
@@ -70,11 +70,5 @@ else
         catch (ApiException ex) { _error = ex.Message; }
     }
 
-    private static string CssFor(QuestionSummary q) => q switch
-    {
-        { Correct: true } => "ok",
-        { Correct: false } => "fail",
-        { Status: QuestionStatus.NotStarted } => "todo",
-        _ => "busy",
-    };
+    private static string CssFor(QuestionSummary q) => QuestionDisplay.ListCss(q);
 }

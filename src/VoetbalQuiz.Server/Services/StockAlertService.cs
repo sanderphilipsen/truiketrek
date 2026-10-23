@@ -131,7 +131,7 @@ public class StockAlertService(QuizDbContext db, QuestionPicker picker, Notifica
             foreach (var (type, count) in QuestionTypes.Mix(await picker.TypesForAsync(from.AddDays(d))))
             {
                 var key = QuestionTypes.Get(type).FromPlayers ? QuestionType.WieBenIk : type;
-                need[key] = need.GetValueOrDefault(key) + (type == QuestionType.Counter ? count * QuestionRules.CounterPlayers : count);
+                need[key] = need.GetValueOrDefault(key) + QuestionTypes.ItemsFor(type, count); // counter: 10 spelers, kaartdag: één kaart
             }
         return need;
     }

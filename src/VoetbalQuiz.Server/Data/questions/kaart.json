@@ -1,0 +1,197 @@
+[
+  {
+    "question": "Eerste klasse 2026-27: welke club speelt hier thuis?",
+    "country": "BE",
+    "competition": "Jupiler Pro League",
+    "season": "2026-27",
+    "pins": [
+      { "stadium": "Jan Breydelstadion", "city": "Brugge", "lat": 51.1931, "lon": 3.1806, "clubs": ["Club Brugge"] },
+      { "stadium": "Lotto Park", "city": "Anderlecht", "lat": 50.8342, "lon": 4.2983, "clubs": ["Anderlecht"] },
+      { "stadium": "Bosuilstadion", "city": "Antwerpen", "lat": 51.2325, "lon": 4.4722, "clubs": ["Antwerp"] },
+      { "stadium": "Maurice Dufrasnestadion", "city": "Luik", "lat": 50.6100, "lon": 5.5434, "clubs": ["Standard"] },
+      { "stadium": "Stade du Pays de Charleroi", "city": "Charleroi", "lat": 50.4146, "lon": 4.4538, "clubs": ["Charleroi"] },
+      { "stadium": "Easi Arena", "city": "La Louvière", "lat": 50.4775, "lon": 4.2013, "clubs": ["La Louvière"] },
+      { "stadium": "Guldensporenstadion", "city": "Kortrijk", "lat": 50.8304, "lon": 3.2489, "clubs": ["Kortrijk"] },
+      { "stadium": "'t Kuipje", "city": "Westerlo", "lat": 51.0948, "lon": 4.9288, "clubs": ["Westerlo"] },
+      { "stadium": "Soevereinstadion", "city": "Lommel", "lat": 51.2394, "lon": 5.3071, "clubs": ["Lommel"] },
+      { "stadium": "Stayen", "city": "Sint-Truiden", "lat": 50.8135, "lon": 5.1663, "clubs": ["Sint-Truiden"] }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2026%E2%80%9327_Belgian_Pro_League",
+      "https://nl.wikipedia.org/wiki/Eerste_klasse_A_2026-27_(voetbal_Belgi%C3%AB)",
+      "https://en.wikipedia.org/wiki/Jan_Breydel_Stadium"
+    ],
+    "tags": ["belgie", "jupiler-pro-league"],
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "question": "Challenger Pro League 2026-27: welke club speelt hier thuis?",
+    "country": "BE",
+    "competition": "Challenger Pro League",
+    "season": "2026-27",
+    "pins": [
+      { "stadium": "Olympisch Stadion", "city": "Antwerpen", "lat": 51.1850, "lon": 4.3822, "clubs": ["Beerschot"] },
+      { "stadium": "Dender Football Complex", "city": "Denderleeuw", "lat": 50.8837, "lon": 4.0712, "clubs": ["Dender"] },
+      { "stadium": "Daknamstadion", "city": "Lokeren", "lat": 51.1164, "lon": 3.9872, "clubs": ["Lokeren"] },
+      { "stadium": "Kehrwegstadion", "city": "Eupen", "lat": 50.6264, "lon": 6.0458, "clubs": ["Eupen"] },
+      { "stadium": "Stade de Rocourt", "city": "Luik", "lat": 50.6603, "lon": 5.5519, "clubs": ["RFC Luik"] },
+      { "stadium": "Stedelijk Sportstadion", "city": "Hasselt", "lat": 50.9363, "lon": 5.3210, "clubs": ["Sporting Hasselt"] },
+      { "stadium": "Patro-Stadion", "city": "Maasmechelen", "lat": 50.9944, "lon": 5.7035, "clubs": ["Patro Eisden"] },
+      { "stadium": "Robert Urbainstadion", "city": "Boussu-Bois", "lat": 50.4135, "lon": 3.7794, "clubs": ["Francs Borains"] },
+      { "stadium": "Yvan Georgesstadion", "city": "Virton", "lat": 49.5625, "lon": 5.5306, "clubs": ["Virton"] },
+      { "stadium": "Schiervelde", "city": "Roeselare", "lat": 50.9521, "lon": 3.1054, "clubs": ["Club NXT"] }
+    ],
+    "difficulty": 4,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2026%E2%80%9327_Challenger_Pro_League",
+      "https://nl.wikipedia.org/wiki/Eerste_klasse_B_2026/27_(voetbal_Belgi%C3%AB)",
+      "https://nominatim.openstreetmap.org/search?format=json&q=Stedelijk+Sportstadion+Hasselt",
+      "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=50.4135&lon=3.7794&zoom=18",
+      "https://fr.wikipedia.org/wiki/Stade_Robert-Urbain"
+    ],
+    "tags": ["belgie", "challenger-pro-league"]
+  },
+  {
+    "question": "Ligue 1 2026-27: welke club speelt hier thuis?",
+    "country": "FR",
+    "competition": "Ligue 1",
+    "season": "2026-27",
+    "pins": [
+      { "stadium": "Parc des Princes", "city": "Parijs", "lat": 48.8414, "lon": 2.2531, "clubs": ["PSG"] },
+      { "stadium": "Stade Vélodrome", "city": "Marseille", "lat": 43.2697, "lon": 5.3958, "clubs": ["Marseille"] },
+      { "stadium": "Groupama Stadium", "city": "Décines-Charpieu", "lat": 45.7652, "lon": 4.9821, "clubs": ["Lyon"] },
+      { "stadium": "Stade Pierre-Mauroy", "city": "Villeneuve-d'Ascq", "lat": 50.6119, "lon": 3.1304, "clubs": ["Lille"] },
+      { "stadium": "Allianz Riviera", "city": "Nice", "lat": 43.7053, "lon": 7.1925, "clubs": ["Nice"] },
+      { "stadium": "Stadium de Toulouse", "city": "Toulouse", "lat": 43.5831, "lon": 1.4342, "clubs": ["Toulouse"] },
+      { "stadium": "Roazhon Park", "city": "Rennes", "lat": 48.1075, "lon": -1.7128, "clubs": ["Rennes"] },
+      { "stadium": "Stade de la Meinau", "city": "Straatsburg", "lat": 48.5600, "lon": 7.7550, "clubs": ["Strasbourg"] },
+      { "stadium": "Stade Francis-Le Blé", "city": "Brest", "lat": 48.4029, "lon": -4.4617, "clubs": ["Brest"] },
+      { "stadium": "Stade Bollaert-Delelis", "city": "Lens", "lat": 50.4328, "lon": 2.8150, "clubs": ["Lens"] }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2026%E2%80%9327_Ligue_1",
+      "https://fr.wikipedia.org/wiki/Parc_des_Princes",
+      "https://en.wikipedia.org/wiki/Stade_V%C3%A9lodrome",
+      "https://en.wikipedia.org/wiki/Parc_Olympique_Lyonnais"
+    ],
+    "tags": ["frankrijk", "ligue-1"],
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "question": "Serie A 2026-27: welke club speelt hier thuis?",
+    "country": "IT",
+    "competition": "Serie A",
+    "season": "2026-27",
+    "pins": [
+      { "stadium": "San Siro", "city": "Milaan", "lat": 45.4781, "lon": 9.1239, "clubs": ["Inter"] },
+      { "stadium": "Allianz Stadium", "city": "Turijn", "lat": 45.1094, "lon": 7.6411, "clubs": ["Juventus"] },
+      { "stadium": "Stadio Diego Armando Maradona", "city": "Napels", "lat": 40.8280, "lon": 14.1930, "clubs": ["Napoli"] },
+      { "stadium": "Stadio Olimpico", "city": "Rome", "lat": 41.9339, "lon": 12.4547, "clubs": ["Roma"] },
+      { "stadium": "Stadio Artemio Franchi", "city": "Florence", "lat": 43.7808, "lon": 11.2822, "clubs": ["Fiorentina"] },
+      { "stadium": "Stadio Renato Dall'Ara", "city": "Bologna", "lat": 44.4922, "lon": 11.3097, "clubs": ["Bologna"] },
+      { "stadium": "New Balance Arena", "city": "Bergamo", "lat": 45.7089, "lon": 9.6808, "clubs": ["Atalanta"] },
+      { "stadium": "Stadio Luigi Ferraris", "city": "Genua", "lat": 44.4164, "lon": 8.9525, "clubs": ["Genoa"] },
+      { "stadium": "Stadio Via del Mare", "city": "Lecce", "lat": 40.3653, "lon": 18.2089, "clubs": ["Lecce"] },
+      { "stadium": "Bluenergy Stadium", "city": "Udine", "lat": 46.0816, "lon": 13.2001, "clubs": ["Udinese"] }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2026%E2%80%9327_Serie_A",
+      "https://en.wikipedia.org/wiki/San_Siro",
+      "https://en.wikipedia.org/wiki/Juventus_Stadium",
+      "https://en.wikipedia.org/wiki/Stadio_di_Bergamo"
+    ],
+    "tags": ["italie", "serie-a"],
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "question": "LaLiga 2026-27: welke club speelt hier thuis?",
+    "country": "ES",
+    "competition": "LaLiga",
+    "season": "2026-27",
+    "pins": [
+      { "stadium": "Bernabéu", "city": "Madrid", "lat": 40.4531, "lon": -3.6884, "clubs": ["Real Madrid"] },
+      { "stadium": "Spotify Camp Nou", "city": "Barcelona", "lat": 41.3808, "lon": 2.1228, "clubs": ["Barcelona"] },
+      { "stadium": "Ramón Sánchez-Pizjuán", "city": "Sevilla", "lat": 37.3840, "lon": -5.9705, "clubs": ["Sevilla"] },
+      { "stadium": "Mestalla", "city": "Valencia", "lat": 39.4747, "lon": -0.3583, "clubs": ["Valencia"] },
+      { "stadium": "San Mamés", "city": "Bilbao", "lat": 43.2642, "lon": -2.9494, "clubs": ["Athletic Bilbao"] },
+      { "stadium": "Reale Arena", "city": "San Sebastián", "lat": 43.3014, "lon": -1.9736, "clubs": ["Real Sociedad"] },
+      { "stadium": "Estadio de la Cerámica", "city": "Villarreal", "lat": 39.9442, "lon": -0.1036, "clubs": ["Villarreal"] },
+      { "stadium": "Balaídos", "city": "Vigo", "lat": 42.2119, "lon": -8.7403, "clubs": ["Celta Vigo"] },
+      { "stadium": "La Rosaleda", "city": "Málaga", "lat": 36.7342, "lon": -4.4266, "clubs": ["Málaga"] },
+      { "stadium": "El Sadar", "city": "Pamplona", "lat": 42.7967, "lon": -1.6369, "clubs": ["Osasuna"] }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2026%E2%80%9327_La_Liga",
+      "https://www.football-espana.net/2025/11/12/real-madrid-make-new-stadium-name-official-with-new-branding",
+      "https://es.wikipedia.org/wiki/Estadio_de_Mestalla",
+      "https://es.wikipedia.org/wiki/Estadio_El_Sadar"
+    ],
+    "tags": ["spanje", "la-liga"],
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "question": "Bundesliga 2026-27: welke club speelt hier thuis?",
+    "country": "DE",
+    "competition": "Bundesliga",
+    "season": "2026-27",
+    "pins": [
+      { "stadium": "Allianz Arena", "city": "München", "lat": 48.2188, "lon": 11.6248, "clubs": ["Bayern München"] },
+      { "stadium": "Signal Iduna Park", "city": "Dortmund", "lat": 51.4925, "lon": 7.4517, "clubs": ["Borussia Dortmund"] },
+      { "stadium": "Volksparkstadion", "city": "Hamburg", "lat": 53.5872, "lon": 9.8986, "clubs": ["Hamburger SV"] },
+      { "stadium": "Weserstadion", "city": "Bremen", "lat": 53.0664, "lon": 8.8375, "clubs": ["Werder Bremen"] },
+      { "stadium": "Stadion An der Alten Försterei", "city": "Berlijn", "lat": 52.4572, "lon": 13.5681, "clubs": ["Union Berlin"] },
+      { "stadium": "Red Bull Arena", "city": "Leipzig", "lat": 51.3458, "lon": 12.3483, "clubs": ["RB Leipzig"] },
+      { "stadium": "Deutsche Bank Park", "city": "Frankfurt", "lat": 50.0681, "lon": 8.6458, "clubs": ["Eintracht Frankfurt"] },
+      { "stadium": "MHPArena", "city": "Stuttgart", "lat": 48.7922, "lon": 9.2319, "clubs": ["VfB Stuttgart"] },
+      { "stadium": "RheinEnergieStadion", "city": "Keulen", "lat": 50.9336, "lon": 6.8750, "clubs": ["1. FC Köln"] },
+      { "stadium": "Europa-Park Stadion", "city": "Freiburg", "lat": 48.0216, "lon": 7.8297, "clubs": ["SC Freiburg"] }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2026%E2%80%9327_Bundesliga",
+      "https://de.wikipedia.org/wiki/Volksparkstadion",
+      "https://en.wikipedia.org/wiki/Allianz_Arena",
+      "https://en.wikipedia.org/wiki/Westfalenstadion"
+    ],
+    "tags": ["duitsland", "bundesliga"],
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "question": "Premier League 2026-27: welke club speelt hier thuis?",
+    "country": "GB",
+    "competition": "Premier League",
+    "season": "2026-27",
+    "pins": [
+      { "stadium": "Emirates Stadium", "city": "Londen", "lat": 51.5550, "lon": -0.1083, "clubs": ["Arsenal"] },
+      { "stadium": "Old Trafford", "city": "Manchester", "lat": 53.4631, "lon": -2.2914, "clubs": ["Manchester United"] },
+      { "stadium": "Anfield", "city": "Liverpool", "lat": 53.4308, "lon": -2.9608, "clubs": ["Liverpool"] },
+      { "stadium": "St James' Park", "city": "Newcastle", "lat": 54.9756, "lon": -1.6217, "clubs": ["Newcastle"] },
+      { "stadium": "Villa Park", "city": "Birmingham", "lat": 52.5092, "lon": -1.8847, "clubs": ["Aston Villa"] },
+      { "stadium": "Elland Road", "city": "Leeds", "lat": 53.7778, "lon": -1.5722, "clubs": ["Leeds United"] },
+      { "stadium": "Stadium of Light", "city": "Sunderland", "lat": 54.9144, "lon": -1.3882, "clubs": ["Sunderland"] },
+      { "stadium": "American Express Stadium", "city": "Brighton", "lat": 50.8618, "lon": -0.0833, "clubs": ["Brighton"] },
+      { "stadium": "MKM Stadium", "city": "Hull", "lat": 53.7461, "lon": -0.3678, "clubs": ["Hull City"] },
+      { "stadium": "Portman Road", "city": "Ipswich", "lat": 52.0550, "lon": 1.1453, "clubs": ["Ipswich Town"] }
+    ],
+    "difficulty": 3,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2026%E2%80%9327_Premier_League",
+      "https://en.wikipedia.org/wiki/Emirates_Stadium",
+      "https://en.wikipedia.org/wiki/Falmer_Stadium",
+      "https://en.wikipedia.org/wiki/Portman_Road"
+    ],
+    "tags": ["verenigd-koninkrijk", "premier-league"],
+    "checkedAt": "2026-10-23"
+  }
+]

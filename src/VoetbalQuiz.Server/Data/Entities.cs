@@ -89,6 +89,9 @@ public interface IQuizQuestion
     QuizItem? QuizItem { get; }
     List<int> Blanks { get; }
     List<Player> CounterPlayers { get; }
+
+    /// <summary>Kaart: welk deel van de kaartdag (<see cref="QuestionRules.KaartClubsPart"/> of <see cref="QuestionRules.KaartStadiumsPart"/>); 0 bij de andere types.</summary>
+    int Part { get; }
 }
 
 public class DailyQuestion : IQuizQuestion
@@ -116,6 +119,12 @@ public class DailyQuestion : IQuizQuestion
     /// <summary>Counter: de spelers zelf (niet opgeslagen, ingeladen door QuizService).</summary>
     [System.ComponentModel.DataAnnotations.Schema.NotMapped]
     public List<Player> CounterPlayers { get; set; } = [];
+
+    /// <summary>
+    /// Kaart: welk deel van de kaartdag. Beide delen gebruiken dezelfde kaart (QuizItem): deel 1 de clubs, deel 2 de stadions.
+    /// 0 bij de andere types.
+    /// </summary>
+    public int Part { get; set; }
 }
 
 /// <summary>Eén poging van een gebruiker op een vraag. Alle tijden zijn servertijden (UTC).</summary>
@@ -160,6 +169,12 @@ public abstract class AttemptState
 
     /// <summary>Counter: welke spelers (index) overgeslagen zijn. De Krant: de gegokte getallen, als paren (gat, gok).</summary>
     public List<int> Skipped { get; set; } = [];
+
+    /// <summary>
+    /// Kaart: wat de speler per beantwoorde speld koos, in de volgorde van de spelden ("Club Brugge|Cercle Brugge" of een
+    /// stadion; leeg = overgeslagen). <see cref="Found"/> houdt per speld bij hoeveel daarvan juist was.
+    /// </summary>
+    public List<string> Picks { get; set; } = [];
 }
 
 // ---------- Training ----------
@@ -311,6 +326,10 @@ public class MatchQuestion : IQuizQuestion
     [System.ComponentModel.DataAnnotations.Schema.NotMapped]
     public List<Player> CounterPlayers { get; set; } = [];
 
+    /// <summary>Online is er geen kaart (een solo-type, zie <see cref="QuestionTypeInfo.Alone"/>), dus nooit een deel.</summary>
+    [System.ComponentModel.DataAnnotations.Schema.NotMapped]
+    public int Part => 0;
+
     /// <summary>Wanneer de eerste tip verschijnt (null = nog niet aan de beurt).</summary>
     public DateTime? StartsAt { get; set; }
     public DateTime? EndedAt { get; set; }
@@ -373,6 +392,9 @@ public class SpecialEvent
 
     /// <summary>Welke vraagtypes de special mengt (leeg = enkel "Wie ben ik?").</summary>
     public List<QuestionType> Types { get; set; } = [];
+
+    /// <summary>Kaart: het land van de kaart (ISO-code); null = willekeurig (zie QuestionPicker).</summary>
+    public string? KaartCountry { get; set; }
     public DateTime CreatedAt { get; set; }
 }
 
@@ -406,6 +428,9 @@ public class DailyScheduleDay
 
     /// <summary>Twee of meer types: die dag is een mix (Type wordt dan niet gebruikt).</summary>
     public List<QuestionType> MixTypes { get; set; } = [];
+
+    /// <summary>Kaart: het land van de kaart (ISO-code); null = willekeurig (zie QuestionPicker).</summary>
+    public string? KaartCountry { get; set; }
 }
 
 /// <summary>Een vraagtype dat de admin (tijdelijk) uitgeschakeld heeft. Het komt niet in dailies of specials.</summary>

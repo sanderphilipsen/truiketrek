@@ -358,6 +358,7 @@ public sealed class QuestionTypeTests : IDisposable
         Assert.Equal(4, withLineups[QuestionType.WieBenIk]);
         Assert.Equal(3, withLineups[QuestionType.Opstelling]); // 4×100 + 3×200 = 1000
 
+        // Alle types: de solo-types (De Krant, de kaart) vallen weg, zie KrantTests en KaartTests.
         var all = QuestionTypes.Mix(QuestionTypes.All.Select(t => t.Type));
         Assert.True(all.Values.Sum() <= GameRules.QuestionsPerDay);
         Assert.Equal(QuestionTypes.DayMaxPoints, all.Sum(m => m.Value * QuestionTypes.Get(m.Key).MaxPoints));
@@ -390,7 +391,8 @@ public sealed class QuestionTypeTests : IDisposable
     {
         await PlanTodayAsync(QuestionType.Snelvuur);
         foreach (var t in new[] { QuestionType.Snelvuur, QuestionType.NietBij, QuestionType.Opstelling, QuestionType.Carriere, QuestionType.Emoji,
-                     QuestionType.Wissel, QuestionType.Rugnummer, QuestionType.Mannetje, QuestionType.Kluts, QuestionType.Counter, QuestionType.Volgorde })
+                     QuestionType.Wissel, QuestionType.Rugnummer, QuestionType.Mannetje, QuestionType.Kluts, QuestionType.Counter, QuestionType.Volgorde,
+                     QuestionType.Kaart })
             await _admin.SetTypeEnabledAsync(t, false);
 
         var challenge = await _quiz.GetOrCreateChallengeAsync(_quiz.Today);

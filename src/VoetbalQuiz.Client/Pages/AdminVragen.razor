@@ -24,8 +24,16 @@
             <button class="@(_status == PlayerStatus.Rejected ? "on" : "")" @onclick="() => StatusAsync(PlayerStatus.Rejected)">Afgewezen</button>
         </div>
         <input class="grow" type="search" value="@_search" placeholder="Zoek…" @oninput="e => SearchAsync(e.Value?.ToString())" />
-        <a class="btn primary" href="admin/vragen/0?type=@_type">+ Vraag toevoegen</a>
+        @if (_type != QuestionType.Kaart)
+        {
+            <a class="btn primary" href="admin/vragen/0?type=@_type">+ Vraag toevoegen</a>
+        }
     </div>
+    @if (_type == QuestionType.Kaart)
+    {
+        @* Nog geen editor voor kaarten: de spelden (stadions, coördinaten, clubs) staan in het bestand. *@
+        <p class="muted light-text">Kaarten voeg je toe of pas je aan in <code>Data/questions/kaart.json</code>. Hier kan je ze bekijken, keuren en taggen.</p>
+    }
 
     @if (_items is null)
     {
@@ -35,7 +43,10 @@
     {
         <div class="card center">
             <p class="muted">Nog geen vragen van dit type met deze filters.</p>
-            <a class="btn primary" href="admin/vragen/0?type=@_type">+ Eerste vraag toevoegen</a>
+            @if (_type != QuestionType.Kaart)
+            {
+                <a class="btn primary" href="admin/vragen/0?type=@_type">+ Eerste vraag toevoegen</a>
+            }
         </div>
     }
     else

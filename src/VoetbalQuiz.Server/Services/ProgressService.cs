@@ -44,6 +44,7 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
         new("gokker", "🎲", "Gokker van dienst", "50 foute pogingen (gewaagd!)", BadgeTier.Brons, f => f.WrongGuesses, 50),
 
         // Vraagtypes
+        // Solo-types (De Krant, de kaart) tellen niet mee: ze komen niet elke week, de badge mag daar niet op wachten.
         new("allrounder", "🧠", "Allrounder", $"Speel elk van de {QuestionTypes.All.Count(t => !t.Alone)} vraagtypes", BadgeTier.Zilver, f => f.TypesPlayed, QuestionTypes.All.Count(t => !t.Alone)),
         new("jaartallenkenner", "📆", "Jaartallenkenner", "10 keer het exacte jaar", BadgeTier.Brons, f => f.ExactYears, 10),
         new("historicus", "📜", "Historicus", "50 keer het exacte jaar", BadgeTier.Goud, f => f.ExactYears, 50),

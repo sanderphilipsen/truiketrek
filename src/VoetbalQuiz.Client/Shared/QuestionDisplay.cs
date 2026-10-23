@@ -14,6 +14,8 @@ public static class QuestionDisplay
         // Carrièrepad, wissel, rugnummer, mannetje en kluts: 100 bij de eerste stap, 10 minder per extra stap, minimum 50.
         _ when QuestionRules.Reveals(type) => QuestionRules.RevealPoints(Math.Max(1, view?.Step ?? 1), wrongGuesses).ToString(),
         QuestionType.Counter => $"{view?.Found ?? 0}/{view?.Total ?? 0}",
+        // Kaart: wat al juist staat (clubs in deel 1, stadions in deel 2); de server rekent de punten.
+        QuestionType.Kaart => (view?.Pins?.Sum(p => p.Hits ?? 0) ?? 0).ToString(),
         QuestionType.Emoji => QuestionRules.EmojiPoints(elapsed, wrongGuesses).ToString(),
         QuestionType.Snelvuur or QuestionType.NietBij => QuestionRules.SpeedPoints(elapsed, timeLimit).ToString(),
         QuestionType.Jaar => "100",
@@ -43,6 +45,7 @@ public static class QuestionDisplay
         QuestionType.Krant => "gaten ingevuld",
         QuestionType.Detective => "punten als je nu de dader aanwijst",
         QuestionType.Volgorde => "punten bij de juiste volgorde",
+        QuestionType.Kaart => "juist geplaatst",
         QuestionType.Counter => $"spelers geraden (+{QuestionRules.CounterPointsPerPlayer} per speler)",
         QuestionType.WieBenIk or QuestionType.Emoji => "punten",
         _ when QuestionRules.Reveals(type) => "punten",
@@ -57,6 +60,27 @@ public static class QuestionDisplay
             QuestionRules.RevealStep(elapsed, view?.Steps ?? 1) > (view?.Step ?? 1)
             && elapsed < timeLimit - QuestionRules.CarriereExtraSeconds,
         _ => false,
+    };
+
+    /// <summary>
+    /// Het teken in een vragenlijst (daily, special, academie): ✓ juist, ½ deels juist (een deelscore bij een type met
+    /// deelpunten, zie <see cref="QuestionRules.PartialScores"/>), ✗ fout.
+    /// </summary>
+    public static (string Symbol, string Label) Mark(QuestionSummary q) => q switch
+    {
+        { Correct: true } => ("✓", "juist"),
+        { Partial: true } => ("½", "deels juist"),
+        _ => ("✗", "fout"),
+    };
+
+    /// <summary>De CSS-klasse van een vraag in een vragenlijst.</summary>
+    public static string ListCss(QuestionSummary q) => q switch
+    {
+        { Correct: true } => "ok",
+        { Partial: true } => "partial",
+        { Correct: false } => "fail",
+        { Status: QuestionStatus.NotStarted } => "todo",
+        _ => "busy",
     };
 
     /// <summary>Opstelling: hoeveel open plaatsen al ingevuld zijn.</summary>

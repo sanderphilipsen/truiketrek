@@ -23,6 +23,9 @@ public class QuestionSeeder(QuizDbContext db, IWebHostEnvironment env, ILogger<Q
         if (!Directory.Exists(folder)) return;
 
         var existing = await db.QuizItems.ToDictionaryAsync(i => (i.Type, i.Key));
+        // Kaarten die al in een reeks zitten: hun spelden en clubs liggen vast (zie QuestionEngine.KaartOrder).
+        var playedMaps = (await db.DailyQuestions.Where(q => q.Type == QuestionType.Kaart && q.QuizItemId != null)
+            .Select(q => q.QuizItemId!.Value).ToListAsync()).ToHashSet();
         int added = 0, updated = 0, kept = 0, skipped = 0, retired = 0;
         var seen = new HashSet<(QuestionType, string)>();
         var readTypes = new HashSet<QuestionType>();
@@ -72,7 +75,8 @@ public class QuestionSeeder(QuizDbContext db, IWebHostEnvironment env, ILogger<Q
                     updated++;
                 }
 
-                item.Data = data;
+                if (!playedMaps.Contains(item.Id)) item.Data = data;
+                else if (item.Data != data) logger.LogWarning("Kaart {Key} is al gespeeld: de nieuwe spelden worden niet overgenomen. Een gewijzigde kaart heeft een nieuwe sleutel nodig (land, competitie en seizoen), bv. een ander seizoen.", key);
                 item.Difficulty = Difficulty.Clamp(meta.Difficulty);
                 item.Status = meta.Status?.ToLowerInvariant() switch
                 {
@@ -132,6 +136,20 @@ public class QuestionSeeder(QuizDbContext db, IWebHostEnvironment env, ILogger<Q
                     ? (d.Headline, QuestionEngine.Serialize(d with { Intro = d.Intro ?? "" })) : (null, ""),
                 QuestionType.Detective => e.Deserialize<DetectiveData>(Json) is { Suspects: not null, Clues: not null } d
                     ? (d.Title, QuestionEngine.Serialize(d)) : (null, ""),
+                // Kaart: enkel de inhoud (competitie, seizoen, spelden); trefwoorden en bronnen staan in Meta.
+                QuestionType.Kaart => e.Deserialize<KaartData>(Json) is { Pins: not null } d
+                    ? (QuestionEngine.KeyFor(type, QuestionEngine.Serialize(d)),
+                       // Namen getrimd: ze staan als keuze in de lijst en komen zo terug in de gok.
+                       // Het land in hoofdletters; een kaart zonder land is een kaart van België.
+                       QuestionEngine.Serialize(d with
+                       {
+                           Country = d.Land,
+                           Pins = d.Pins.Select(p => p with
+                           {
+                               Stadium = p.Stadium?.Trim()!, City = p.City?.Trim()!, Clubs = (p.Clubs ?? []).Select(c => c?.Trim()!).ToList(),
+                           }).ToList(),
+                       }))
+                    : (null, ""),
                 _ => (null, ""),
             };
         }

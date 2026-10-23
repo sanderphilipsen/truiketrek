@@ -9,7 +9,7 @@ namespace VoetbalQuiz.Server.Services;
 /// partijtje en voor een derby-wissel (willekeurig, nooit iets uit de daily van vandaag). Bewaart zelf niets:
 /// de reeks aanmaken doet <see cref="QuizService"/>, een partijtje <see cref="MatchService"/>.
 /// </summary>
-public class QuestionPicker(QuizDbContext db, TimeProvider clock)
+public class QuestionPicker(QuizDbContext db, TimeProvider clock, ILogger<QuestionPicker>? logger = null)
 {
     private DateOnly Today => QuizClock.Today(clock);
 
@@ -29,7 +29,10 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock)
     public async Task<List<QuestionType>> SpecialTypesAsync(SpecialEvent special) =>
         QuestionTypes.ResolveSpecial(special.Types, await DisabledTypesAsync());
 
-    /// <summary>De types die nu aan staan: enkel die kan je kiezen voor een online partijtje (geen types die een hele dag vullen).</summary>
+    /// <summary>
+    /// De types die nu aan staan en die je kan kiezen voor een online partijtje: geen solo-types
+    /// (<see cref="QuestionTypeInfo.Alone"/>: De Zondag, Detectivedag, de kaart), want die vullen een hele dag.
+    /// </summary>
     public async Task<List<QuestionType>> ActiveTypesAsync()
     {
         var disabled = await DisabledTypesAsync();
@@ -45,14 +48,16 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock)
     public async Task<List<DailyQuestion>?> BuildDailyAsync(DateOnly date)
     {
         var types = await TypesForAsync(date);
-        return await BuildMixAsync(types, null)
+        // Een kaartdag: het land dat de admin in de weekplanning koos (null = willekeurig).
+        var country = (await db.DailySchedule.SingleOrDefaultAsync(d => d.Day == date.DayOfWeek))?.KaartCountry;
+        return await BuildMixAsync(types, null, kaartCountry: country)
                ?? await BuildAsync(QuestionType.WieBenIk, GameRules.QuestionsPerDay, null,
                    targets: Difficulty.Plan(GameRules.QuestionsPerDay));
     }
 
     /// <summary>De vragen van een special (thema en spelerspool van de special); null als een type te weinig vragen heeft.</summary>
     public async Task<List<DailyQuestion>?> BuildSpecialAsync(SpecialEvent special) =>
-        await BuildMixAsync(await SpecialTypesAsync(special), special.Tag, await SpecialPoolAsync(special));
+        await BuildMixAsync(await SpecialTypesAsync(special), special.Tag, await SpecialPoolAsync(special), kaartCountry: special.KaartCountry);
 
     /// <summary>
     /// Spelers voor de spelersvragen van een special (wie ben ik, kluts, counter): de handmatig gekozen spelers,
@@ -73,10 +78,12 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock)
         foreach (var (type, count) in QuestionTypes.Mix(await SpecialTypesAsync(special)))
         {
             var fromPlayers = QuestionTypes.Get(type).FromPlayers;
-            var needed = type == QuestionType.Counter ? count * QuestionRules.CounterPlayers : count;
+            var needed = QuestionTypes.ItemsFor(type, count);
+            var approvedOnly = ApprovedOnly(type);
             var available = fromPlayers
                 ? (await SpecialPoolAsync(special)).Count
-                : await db.QuizItems.CountAsync(i => i.Type == type && i.Status != PlayerStatus.Rejected);
+                : await db.QuizItems.CountAsync(i => i.Type == type && i.Status != PlayerStatus.Rejected
+                    && (!approvedOnly || i.Status == PlayerStatus.Approved));
             if (available < needed)
                 problems.Add($"{QuestionTypes.Get(type).Name}: {available} {(fromPlayers ? "spelers" : "vragen")} beschikbaar, {needed} nodig.");
         }
@@ -124,7 +131,8 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock)
 
     /// <summary>Stelt een reeks samen volgens <see cref="QuestionTypes.Mix"/>; null als een type te weinig vragen heeft.</summary>
     private async Task<List<DailyQuestion>?> BuildMixAsync(
-        List<QuestionType> types, string? tag, List<Player>? playerPool = null, HashSet<int>? excludeItems = null, int? questions = null)
+        List<QuestionType> types, string? tag, List<Player>? playerPool = null, HashSet<int>? excludeItems = null, int? questions = null,
+        string? kaartCountry = null)
     {
         var all = new List<DailyQuestion>();
         var usedPlayers = new HashSet<int>();
@@ -136,7 +144,8 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock)
         foreach (var (type, count) in mix)
         {
             var targets = plan is null ? null : Enumerable.Range(0, count).Select(_ => plan.Dequeue()).ToList();
-            var part = await BuildAsync(type, count, tag, QuestionTypes.Get(type).FromPlayers ? playerPool : null, usedPlayers, excludeItems, targets);
+            var part = await BuildAsync(type, count, tag, QuestionTypes.Get(type).FromPlayers ? playerPool : null, usedPlayers, excludeItems, targets,
+                kaartCountry);
             if (part is null) return null;
             all.AddRange(part);
         }
@@ -152,7 +161,7 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock)
     /// </summary>
     private async Task<List<DailyQuestion>?> BuildAsync(
         QuestionType type, int count, string? tag, List<Player>? playerPool = null, HashSet<int>? usedPlayers = null,
-        HashSet<int>? excludeItems = null, List<int>? targets = null)
+        HashSet<int>? excludeItems = null, List<int>? targets = null, string? kaartCountry = null)
     {
         if (QuestionTypes.Get(type).FromPlayers)
         {
@@ -171,6 +180,15 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock)
 
             return players.OrderBy(p => p.Difficulty).ThenBy(_ => Random.Shared.Next())
                 .Select(p => new DailyQuestion { Type = type, PlayerId = p.Id }).ToList();
+        }
+
+        if (type == QuestionType.Kaart)
+        {
+            // Kaartdag: één kaart, gespeeld in twee delen (twee vragen op hetzelfde item): eerst de clubs, dan de stadions.
+            if (await PickMapAsync(tag, kaartCountry, excludeItems) is not { } map) return null;
+            return Enumerable.Range(1, QuestionRules.KaartParts)
+                .Select(part => new DailyQuestion { Type = type, QuizItemId = map.Id, Part = part })
+                .Take(count).ToList();
         }
 
         var items = await PickItemsAsync(type, count, tag, excludeItems, targets);
@@ -249,7 +267,9 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock)
             .Select(g => new { Id = g.Key, LastUsed = g.Max(q => q.DailyChallenge.Date) })
             .ToDictionaryAsync(x => x.Id, x => x.LastUsed);
 
-        var ordered = (await db.QuizItems.Where(i => i.Type == type && i.Status != PlayerStatus.Rejected).ToListAsync())
+        var approvedOnly = ApprovedOnly(type);
+        var ordered = (await db.QuizItems.Where(i => i.Type == type && i.Status != PlayerStatus.Rejected
+                && (!approvedOnly || i.Status == PlayerStatus.Approved)).ToListAsync())
             .Where(i => exclude?.Contains(i.Id) != true)
             .OrderBy(i => PlayerTags.Any(i.Tags, tag) ? 0 : 1)
             .ThenBy(i => i.Status == PlayerStatus.Approved ? 0 : 1)
@@ -270,6 +290,63 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock)
 
         return ordered.DistinctBy(Subject).Take(count).ToList();
     }
+
+    /// <summary>
+    /// Kaart: een goedgekeurde, geldige kaart (<see cref="QuestionEngine.Problems"/> leeg: een oude kaart die niet meer aan de
+    /// regels voldoet, wordt nooit gespeeld). De voorkeur, in deze volgorde:
+    /// 1. het land dat de admin koos (<paramref name="country"/>);
+    /// 2. anders de kaarten met het thema van de special (<paramref name="tag"/>), ook als dat het land van de vorige kaartdag is;
+    /// 3. anders een ander land dan de vorige kaartdag;
+    /// 4. anders alle kaarten.
+    /// Daarbinnen eerst een ander land dan de vorige kaartdag, dan de langst niet gebruikte kaart. Null = geen kaart.
+    /// </summary>
+    private async Task<QuizItem?> PickMapAsync(string? tag, string? country, HashSet<int>? exclude)
+    {
+        var maps = new List<(QuizItem Item, string Land)>();
+        foreach (var item in await db.QuizItems.Where(i => i.Type == QuestionType.Kaart && i.Status == PlayerStatus.Approved).ToListAsync())
+        {
+            if (exclude?.Contains(item.Id) == true) continue;
+            // Eén kapotte of ongeldige rij legt de kaartdag niet plat: die kaart slaan we over.
+            if (QuestionEngine.Problems(QuestionType.Kaart, item.Data) is [var problem, ..])
+            {
+                logger?.LogWarning("Kaart {Id} ({Key}) wordt overgeslagen: {Problem}", item.Id, item.Key, problem);
+                continue;
+            }
+            maps.Add((item, QuestionEngine.Parse<KaartData>(item.Data).Land));
+        }
+        if (maps.Count == 0) return null;
+
+        var played = await db.DailyQuestions.Where(q => q.Type == QuestionType.Kaart && q.QuizItemId != null)
+            .Select(q => new { ItemId = q.QuizItemId!.Value, q.DailyChallenge.Date, QuestionId = q.Id }).ToListAsync();
+        var lastUsed = played.GroupBy(x => x.ItemId).ToDictionary(g => g.Key, g => g.Max(x => x.Date));
+        var previousId = played.OrderByDescending(x => x.Date).ThenByDescending(x => x.QuestionId).Select(x => (int?)x.ItemId).FirstOrDefault();
+        var previousLand = previousId is { } id ? LandOf(await db.QuizItems.FindAsync(id)) : null;
+
+        var wanted = KaartProjection.Find(country)?.Code;
+        List<(QuizItem Item, string Land)> themed = tag is null ? [] : maps.Where(m => PlayerTags.Any(m.Item.Tags, tag)).ToList();
+        var pool = wanted is not null && maps.Any(m => m.Land == wanted) ? maps.Where(m => m.Land == wanted).ToList()
+            : themed.Count > 0 ? themed
+            : maps.Any(m => m.Land != previousLand) ? maps.Where(m => m.Land != previousLand).ToList()
+            : maps;
+        return pool.OrderBy(m => m.Land == previousLand ? 1 : 0)
+            .ThenBy(m => lastUsed.TryGetValue(m.Item.Id, out var d) ? d : DateOnly.MinValue)
+            .ThenBy(_ => Random.Shared.Next())
+            .First().Item;
+    }
+
+    /// <summary>Het land van een kaart, of null als de kaart weg of niet te lezen is.</summary>
+    private static string? LandOf(QuizItem? item)
+    {
+        if (item is null) return null;
+        try { return QuestionEngine.Parse<KaartData>(item.Data).Land; }
+        catch (System.Text.Json.JsonException) { return null; }
+    }
+
+    /// <summary>
+    /// Een solo-type (<see cref="QuestionTypeInfo.Alone"/>: een artikel van De Zondag, een zaak, een kaart) enkel als het goedgekeurd is:
+    /// het is een hele dag, een fout weegt dan te zwaar.
+    /// </summary>
+    private static bool ApprovedOnly(QuestionType type) => QuestionTypes.Get(type).Alone;
 
     /// <summary>
     /// Kiest per gewenste moeilijkheid uit <paramref name="targets"/> één kandidaat: eerst de laagste <paramref name="tier"/>
