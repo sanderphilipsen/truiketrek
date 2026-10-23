@@ -130,6 +130,8 @@ public class QuestionSeeder(QuizDbContext db, IWebHostEnvironment env, ILogger<Q
                     ? (QuestionEngine.KeyFor(type, QuestionEngine.Serialize(d)), QuestionEngine.Serialize(d)) : (null, ""),
                 QuestionType.Krant => e.Deserialize<KrantData>(Json) is { Text: not null } d
                     ? (d.Headline, QuestionEngine.Serialize(d with { Intro = d.Intro ?? "" })) : (null, ""),
+                QuestionType.Detective => e.Deserialize<DetectiveData>(Json) is { Suspects: not null, Clues: not null } d
+                    ? (d.Title, QuestionEngine.Serialize(d)) : (null, ""),
                 _ => (null, ""),
             };
         }

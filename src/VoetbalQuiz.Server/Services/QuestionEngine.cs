@@ -35,6 +35,7 @@ public static class QuestionEngine
         QuestionType.Counter => $"Counter ({q.CounterPlayers.Count} spelers)",
         QuestionType.Volgorde => string.Join(" → ", Data<VolgordeData>(q).Items.Select(i => i.Label)),
         QuestionType.Krant => Data<KrantData>(q).Headline,
+        QuestionType.Detective => CulpritName(Data<DetectiveData>(q)),
         _ => "",
     };
 
@@ -52,6 +53,7 @@ public static class QuestionEngine
         QuestionType.Counter => QuestionRules.CounterSeconds,
         QuestionType.Volgorde => QuestionRules.VolgordeSeconds,
         QuestionType.Krant => QuestionRules.KrantLimit(Krant(q).Gaps.Count),
+        QuestionType.Detective => QuestionRules.DetectiveSeconds,
         _ => GameRules.TimeLimitSeconds,
     };
 
@@ -138,6 +140,20 @@ public static class QuestionEngine
                 return ([], new QuestionView(d.Headline, Note: d.Intro, MaxPoints: QuestionTypes.Get(QuestionType.Krant).MaxPoints,
                     Found: article.Gaps.Count - KrantOpen(article, a), Total: article.Gaps.Count,
                     Article: KrantPieces(article, a, reveal: false), ArticleKind: d.Kind));
+            }
+            case QuestionType.Detective:
+            {
+                // Enkel de geopende verklaringen, nooit de dader of wie een verklaring uitsluit.
+                var d = Data<DetectiveData>(q);
+                var opened = DetectiveOpened(d, a);
+                var wrong = a.Skipped.Count;
+                return ([], new QuestionView(d.Title, Note: d.Intro, MaxPoints: QuestionTypes.Get(QuestionType.Detective).MaxPoints,
+                    Step: opened, Steps: d.Clues.Count,
+                    Detective: new DetectiveView(
+                        d.Suspects.Select((s, i) => new DetectiveCard(s.Name, s.Card, a.Skipped.Contains(i))).ToList(),
+                        d.Clues.Take(opened).Select(c => c.Text).ToList(), d.Clues.Count,
+                        QuestionRules.DetectiveAccusations - wrong, QuestionRules.DetectivePoints(opened, wrong),
+                        opened < d.Clues.Count ? QuestionRules.DetectivePoints(opened + 1, wrong) : null)));
             }
             default:
                 return ([], new QuestionView());
@@ -292,6 +308,18 @@ public static class QuestionEngine
         }).ToList()).ToList();
     }
 
+    /// <summary>
+    /// Detectivedag: hoeveel verklaringen open staan. Bewaard in <see cref="AttemptState.Choice"/> (null = enkel die van
+    /// bij de start); de fout beschuldigde verdachten staan in <see cref="AttemptState.Skipped"/>, de juiste in Found.
+    /// </summary>
+    public static int DetectiveOpened(DetectiveData d, AttemptState a) =>
+        Math.Clamp(a.Choice ?? QuestionRules.DetectiveOpenAtStart, Math.Min(QuestionRules.DetectiveOpenAtStart, d.Clues.Count), d.Clues.Count);
+
+    private static string CulpritName(DetectiveData d) => d.Suspects.FirstOrDefault(s => s.Key == d.Culprit)?.Name ?? "";
+
+    /// <summary>Detectivedag: per verdachte de eerste verklaring die hem uitsluit (index), of -1 (de dader).</summary>
+    public static int DetectiveExcludedBy(DetectiveData d, string key) => d.Clues.FindIndex(c => c.Excludes.Contains(key));
+
     /// <summary>Counter: de duidelijkste tip (de laatste) van een speler.</summary>
     private static string CounterClue(Player p) => p.Hints.LastOrDefault() ?? "";
 
@@ -422,6 +450,27 @@ public static class QuestionEngine
                 return new(done, done && points == QuestionTypes.Get(QuestionType.Krant).MaxPoints, points, false);
             }
 
+            case QuestionType.Detective:
+            {
+                // "/getuige" opent de volgende verklaring; een getal beschuldigt die verdachte. Schrappen blijft bij de client.
+                var d = Data<DetectiveData>(q);
+                var opened = DetectiveOpened(d, a);
+                if (guess == QuestionRules.DetectiveNextClue)
+                {
+                    if (opened < d.Clues.Count) a.Choice = opened + 1;
+                    return new(false, false, 0, false);
+                }
+                if (!int.TryParse(guess, out var i) || i < 0 || i >= d.Suspects.Count || a.Skipped.Contains(i))
+                    return new(false, false, 0, false);
+                if (d.Suspects[i].Key == d.Culprit)
+                {
+                    a.Found = [i];
+                    return new(true, true, QuestionRules.DetectivePoints(opened, a.Skipped.Count), false);
+                }
+                a.Skipped = [.. a.Skipped, i];
+                return new(a.Skipped.Count >= QuestionRules.DetectiveAccusations, false, 0, true);
+            }
+
             default:
                 return new(false, false, 0, false);
         }
@@ -518,6 +567,19 @@ public static class QuestionEngine
                     Explanation = $"{k.Gaps.Where((g, i) => KrantGapScore(g, i, a, KrantNumbers(a)) >= 1).Count()} van de {k.Gaps.Count} gaten juist",
                 }
                 : baseResult,
+            QuestionType.Detective => Data<DetectiveData>(q) is var d
+                ? baseResult with
+                {
+                    AllHints = d.Clues.Select(c => c.Text).ToList(),
+                    Explanation = d.Solution,
+                    Dossier = d.Suspects.Select((s, i) =>
+                    {
+                        var clue = DetectiveExcludedBy(d, s.Key);
+                        return new DetectiveVerdict(s.Name, s.Card, s.Key == d.Culprit, a.Skipped.Contains(i) || a.Found.Contains(i),
+                            clue < 0 ? null : clue + 1, clue < 0 ? null : d.Clues[clue].Explain?.GetValueOrDefault(s.Key));
+                    }).ToList(),
+                }
+                : baseResult,
             _ => baseResult,
         };
     }
@@ -548,6 +610,7 @@ public static class QuestionEngine
         QuestionType.Mannetje => Parse<MannetjeData>(data) is var d ? (string.Join(" · ", d.Clues), d.Answer) : ("", ""),
         QuestionType.Volgorde => Parse<VolgordeData>(data) is var d ? (d.Question, string.Join(" → ", d.Items.Select(i => i.Label))) : ("", ""),
         QuestionType.Krant => Parse<KrantData>(data) is var d ? (d.Headline, $"{KrantText.Parse(d.Text).Gaps.Count} gaten") : ("", ""),
+        QuestionType.Detective => Parse<DetectiveData>(data) is var d ? (d.Title, CulpritName(d)) : ("", ""),
         _ => ("", ""),
     };
 
@@ -629,6 +692,7 @@ public static class QuestionEngine
                         .Concat(Check(k.Gaps.All(g => !string.IsNullOrWhiteSpace(g.Hint)), "Geef elk gat een hint (bv. [[Vertonghen : speler]])."))
                         .Concat(KrantLeaks(d, k)).ToList()
                     : [],
+                QuestionType.Detective => DetectiveProblems(Parse<DetectiveData>(data)).ToList(),
                 _ => ["Dit type hoort niet in de vragenbank."],
             };
         }
@@ -639,6 +703,47 @@ public static class QuestionEngine
     }
 
     private static IEnumerable<string> Check(bool ok, string problem) => ok ? [] : [problem];
+
+    /// <summary>
+    /// Detectivedag: de zaak moet waterdicht zijn. Na alle verklaringen blijft precies de dader over, geen verklaring sluit
+    /// hem uit en elke verklaring sluit iemand uit. Na de verklaringen van bij de start blijven er minstens twee over.
+    /// </summary>
+    private static IEnumerable<string> DetectiveProblems(DetectiveData d)
+    {
+        var suspects = d.Suspects ?? [];
+        var clues = d.Clues ?? [];
+        var keys = suspects.Select(s => s.Key?.Trim() ?? "").ToList();
+        if (string.IsNullOrWhiteSpace(d.Title)) yield return "Geef de zaak een titel.";
+        if (string.IsNullOrWhiteSpace(d.Intro)) yield return "Schrijf het verhaaltje.";
+        if (string.IsNullOrWhiteSpace(d.Solution)) yield return "Schrijf de uitleg over de dader voor het dossier.";
+        if (suspects.Count is < QuestionRules.DetectiveMinSuspects or > QuestionRules.DetectiveMaxSuspects)
+            yield return $"Een zaak heeft {QuestionRules.DetectiveMinSuspects} tot {QuestionRules.DetectiveMaxSuspects} verdachten (nu {suspects.Count}).";
+        if (keys.Any(string.IsNullOrEmpty) || suspects.Any(s => string.IsNullOrWhiteSpace(s.Name)))
+            yield return "Elke verdachte heeft een sleutel en een naam.";
+        if (keys.Distinct().Count() != keys.Count) yield return "Twee verdachten hebben dezelfde sleutel.";
+        if (!keys.Contains(d.Culprit)) { yield return "De dader staat niet bij de verdachten."; yield break; }
+        if (clues.Count is < QuestionRules.DetectiveMinClues or > QuestionRules.DetectiveMaxClues)
+            yield return $"Een zaak heeft {QuestionRules.DetectiveMinClues} tot {QuestionRules.DetectiveMaxClues} verklaringen (nu {clues.Count}).";
+
+        for (var i = 0; i < clues.Count; i++)
+        {
+            var c = clues[i];
+            var excludes = c.Excludes ?? [];
+            if (string.IsNullOrWhiteSpace(c.Text)) yield return $"Verklaring {i + 1} heeft geen tekst.";
+            if (excludes.Count == 0) yield return $"Verklaring {i + 1} sluit niemand uit.";
+            if (excludes.Contains(d.Culprit)) yield return $"Verklaring {i + 1} sluit de dader zelf uit.";
+            foreach (var unknown in excludes.Where(k => !keys.Contains(k)))
+                yield return $"Verklaring {i + 1} sluit \"{unknown}\" uit, maar die staat niet bij de verdachten.";
+        }
+
+        var excluded = clues.SelectMany(c => c.Excludes ?? []).ToHashSet();
+        var left = keys.Where(k => !excluded.Contains(k)).ToList();
+        if (left.Count != 1)
+            yield return $"Na alle verklaringen blijven er {left.Count} verdachten over ({string.Join(", ", left)}); dat moet enkel de dader zijn.";
+
+        var leftAtStart = keys.Count - clues.Take(QuestionRules.DetectiveOpenAtStart).SelectMany(c => c.Excludes ?? []).Distinct().Count();
+        if (leftAtStart < 2) yield return "Na de verklaringen van bij de start is de dader al gekend; maak die vager.";
+    }
 
     /// <summary>
     /// De Krant: antwoorden die de speler al ziet vóór hij begint, in de kop, het intro, een hint of de gewone tekst.

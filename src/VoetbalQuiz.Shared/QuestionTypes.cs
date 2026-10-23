@@ -1,6 +1,6 @@
 namespace VoetbalQuiz.Shared;
 
-public enum QuestionType { WieBenIk, Snelvuur, Carriere, NietBij, Jaar, Emoji, Opstelling, Wissel, Rugnummer, Mannetje, Kluts, Counter, Volgorde, Krant }
+public enum QuestionType { WieBenIk, Snelvuur, Carriere, NietBij, Jaar, Emoji, Opstelling, Wissel, Rugnummer, Mannetje, Kluts, Counter, Volgorde, Krant, Detective }
 
 /// <summary>
 /// Vaste eigenschappen per vraagtype. Een dag is altijd maximaal 1000 punten waard.
@@ -30,6 +30,8 @@ public static class QuestionTypes
         new(QuestionType.Volgorde, "Op volgorde", "🔀", "Tik de kaartjes aan in de juiste volgorde. Hoe dichter, hoe meer punten.", 10, 100, "volgorde"),
         new(QuestionType.Krant, "De Zondag", "📰", "Elke zondag vier krantenartikels met elk vijf gaten. Tik op een gat en vul het in, in de volgorde die je wil.", 4, 250, "krant",
             Alone: true),
+        new(QuestionType.Detective, "Detectivedag", "🔎", "Wie is de dader? Open de getuigen één voor één, schrap verdachten en wijs de dader aan. Hoe minder getuigen, hoe meer punten.",
+            1, 1000, "detective", Alone: true),
     ];
 
     public static QuestionTypeInfo Get(QuestionType type) => All.First(t => t.Type == type);
@@ -222,6 +224,28 @@ public static class QuestionRules
     /// </summary>
     public const int KrantMaxGuesses = 100;
 
+    /// <summary>Detectivedag: één klok voor de hele zaak.</summary>
+    public const double DetectiveSeconds = 180;
+
+    /// <summary>Detectivedag: zoveel verklaringen staan open bij de start (met nul kan je enkel gokken).</summary>
+    public const int DetectiveOpenAtStart = 2;
+
+    /// <summary>Detectivedag: elke verklaring na de eerste <see cref="DetectiveOpenAtStart"/> kost zoveel punten, tot dit minimum.</summary>
+    public const int DetectivePointsPerClue = 150;
+    public const int DetectiveMinPoints = 250;
+
+    /// <summary>Detectivedag: zoveel keer mag je iemand beschuldigen. Na een foute beschuldiging halveren de punten.</summary>
+    public const int DetectiveAccusations = 2;
+
+    /// <summary>Detectivedag: zoveel verdachten en verklaringen heeft een zaak.</summary>
+    public const int DetectiveMinSuspects = 6;
+    public const int DetectiveMaxSuspects = 8;
+    public const int DetectiveMinClues = 4;
+    public const int DetectiveMaxClues = 8;
+
+    /// <summary>Detectivedag: deze "gok" roept de volgende getuige op; een getal is een beschuldiging (de verdachte).</summary>
+    public const string DetectiveNextClue = "/getuige";
+
     /// <summary>Opstelling: zoveel namen van de elf moet je aanvullen.</summary>
     public const int OpstellingBlanks = 6;
 
@@ -291,6 +315,18 @@ public static class QuestionRules
     /// <summary>De Krant: het maximum verdeeld over de gaten; <paramref name="score"/> is de som van de delen per gat.</summary>
     public static int KrantPoints(double score, int gaps) =>
         gaps == 0 ? 0 : (int)Math.Round(QuestionTypes.Get(QuestionType.Krant).MaxPoints * score / gaps);
+
+    /// <summary>
+    /// Detectivedag: wat de dader aanwijzen nu oplevert. 1000 met enkel de verklaringen van bij de start, 150 minder per
+    /// extra verklaring (minimum 250), de helft na een foute beschuldiging.
+    /// </summary>
+    public static int DetectivePoints(int opened, int wrongAccusations)
+    {
+        if (wrongAccusations >= DetectiveAccusations) return 0;
+        var points = Math.Max(DetectiveMinPoints,
+            QuestionTypes.Get(QuestionType.Detective).MaxPoints - Math.Max(0, opened - DetectiveOpenAtStart) * DetectivePointsPerClue);
+        return wrongAccusations == 0 ? points : points / 2;
+    }
 
     public static int EmojiPoints(double elapsed, int wrongGuesses) =>
         Math.Max(0, SpeedPoints(elapsed, EmojiSeconds) - wrongGuesses * GameRules.WrongGuessPenalty);
@@ -362,6 +398,35 @@ public record KrantData(string Kind, string Headline, string Intro, string Text)
 /// </summary>
 public record KrantPiece(string Text, int Gap = -1, string? Hint = null, bool IsNumber = false, string? Filled = null,
     string? Answer = null, double? Score = null);
+
+/// <summary>Detectivedag: een verdachte. Key verwijst ernaar vanuit de verklaringen; Card is een korte regel (positie, periode).</summary>
+public record DetectiveSuspect(string Key, string Name, string Card);
+
+/// <summary>
+/// Detectivedag: een getuigenverklaring, een voetbalfeit over de dader. Excludes: de verdachten (keys) die ze uitsluit, door
+/// de redactie ingevuld en niet berekend. Explain: per uitgesloten verdachte waarom (voor het dossier achteraf).
+/// </summary>
+public record DetectiveClue(string Text, List<string> Excludes, Dictionary<string, string>? Explain = null);
+
+/// <summary>
+/// Detectivedag: één zaak. Story is het sjabloon (bv. "gestolen-trofee"), Intro het verhaaltje, Clues in vaste volgorde
+/// van vaag naar scherp, Culprit de key van de dader en Solution de uitleg over de dader in het dossier.
+/// </summary>
+public record DetectiveData(string Story, string Title, string Intro, List<DetectiveSuspect> Suspects, string Culprit,
+    List<DetectiveClue> Clues, string Solution);
+
+/// <summary>Detectivedag: een verdachte zoals de speler hem ziet. Accused: al (fout) beschuldigd.</summary>
+public record DetectiveCard(string Name, string Card, bool Accused);
+
+/// <summary>
+/// Detectivedag tijdens het spelen: de verdachten, de geopende verklaringen, hoeveel beschuldigingen je nog hebt en wat
+/// de dader aanwijzen nu oplevert (PointsNext: na nog een verklaring; null als er geen meer is).
+/// </summary>
+public record DetectiveView(List<DetectiveCard> Suspects, List<string> Clues, int CluesTotal, int AccusationsLeft, int PointsNow,
+    int? PointsNext);
+
+/// <summary>Detectivedag, het dossier achteraf: per verdachte de eerste verklaring (1..n) die hem uitsloot, en waarom.</summary>
+public record DetectiveVerdict(string Name, string Card, bool IsCulprit, bool Accused, int? Clue, string? Reason);
 
 /// <summary>Een plaats in een opstelling zoals de speler hem ziet (Name null = nog in te vullen).</summary>
 public record LineupSlot(string Position, string? Name, bool IsBlank);

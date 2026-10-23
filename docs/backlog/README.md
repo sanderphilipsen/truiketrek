@@ -48,7 +48,6 @@ Lopende planning: [planning-2026-10-23.md](planning-2026-10-23.md) (week 44 t/m 
 | [019](019-matchverslag.md) | Matchverslag: een legendarische match invullen | feature | concept | midden | M | niet gepland |
 | [020](020-toernooiboom.md) | Toernooiboom: de knock-outfase invullen | feature | concept | laag | M | niet gepland |
 | [021](021-codekraker.md) | Codekraker: speurtocht naar één geheime naam | feature | concept | midden | M | niet gepland |
-| [022](022-detectivedag.md) | Detectivedag: "Wie is de dader?" | feature | concept | midden | M | niet gepland |
 | [023](023-inzetdag.md) | Inzetdag: punten inzetten per vraag | feature | concept | midden | S | niet gepland |
 | [024](024-puzzeldag.md) | Puzzeldag: 12 woorden, 3 verbanden | feature | concept | midden | M | niet gepland |
 | [025](025-open-deur.md) | Open Deur: vier trefwoorden per vraag | feature | concept | midden | M | niet gepland |
@@ -58,4 +57,4 @@ Lopende planning: [planning-2026-10-23.md](planning-2026-10-23.md) (week 44 t/m 
 | [029](029-vraagtype-estafette.md) | Vraagtype "Estafette" | feature | idee | midden | M | niet gepland |
 | [030](030-vraagtype-schat-het-getal.md) | Vraagtype "Schat het getal" | feature | idee | midden | S | niet gepland |
 
-Recent gedaan: [002](002-herwerking-klassementen.md) fase 1 (`97fad5a`), [007](007-gemiste-daily-naspelen.md) Academie (`0e18e7b`), [011](011-vraagtype-op-volgorde.md) Op volgorde (`4803333`).
+Recent gedaan: [002](002-herwerking-klassementen.md) fase 1 (`97fad5a`), [007](007-gemiste-daily-naspelen.md) Academie (`0e18e7b`), [011](011-vraagtype-op-volgorde.md) Op volgorde (`4803333`), [022](022-detectivedag.md) Detectivedag (`5471602`, eerste zaak nog op review).

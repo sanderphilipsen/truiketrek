@@ -264,6 +264,9 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
     private static IEnumerable<(string Answer, int? Number)> KrantGaps(string data) =>
         KrantText.Parse(QuestionEngine.Parse<KrantData>(data).Text).Gaps.Select(g => (g.Answer, g.Number));
 
+    private static IEnumerable<string> DetectiveCast(string data) =>
+        QuestionEngine.Parse<DetectiveData>(data) is var d ? d.Suspects.Select(s => s.Key).Append("dader:" + d.Culprit) : [];
+
     public async Task<int> SaveQuizItemAsync(QuizItemEdit edit, string adminName)
     {
         if (QuestionTypes.Get(edit.Type).FromPlayers)
@@ -279,6 +282,13 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
             && await db.Attempts.AnyAsync(a => a.DailyQuestion.QuizItemId == edit.Id)
             && !KrantGaps(played.Data).SequenceEqual(KrantGaps(edit.Data)))
             throw new QuizException("Dit artikel is al gespeeld: de gaten (aantal, volgorde en antwoorden) kunnen niet meer wijzigen. Maak een nieuw artikel.");
+
+        // Detectivedag: pogingen onthouden beschuldigde verdachten op hun plaats. Een gespeelde zaak houdt dus dezelfde
+        // verdachten in dezelfde volgorde en dezelfde dader; verklaringen en teksten mogen nog bijgewerkt worden.
+        if (edit.Type == QuestionType.Detective && edit.Id != 0 && await db.QuizItems.FindAsync(edit.Id) is { } solved
+            && await db.Attempts.AnyAsync(a => a.DailyQuestion.QuizItemId == edit.Id)
+            && !DetectiveCast(solved.Data).SequenceEqual(DetectiveCast(edit.Data)))
+            throw new QuizException("Deze zaak is al gespeeld: de verdachten (volgorde) en de dader kunnen niet meer wijzigen. Maak een nieuwe zaak.");
 
         var key = QuestionEngine.KeyFor(edit.Type, edit.Data);
         if (await db.QuizItems.AnyAsync(i => i.Type == edit.Type && i.Key == key && i.Id != edit.Id))
