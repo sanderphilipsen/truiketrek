@@ -53,9 +53,12 @@ public static class AttemptFlow
         if (attempt.AnsweredAt is not null || string.IsNullOrEmpty(trimmed)) return null;
 
         string? lastWrong = null;
+        var outcome = QuestionEngine.Guess(question, attempt, trimmed, elapsed);
+        // Een gok die niet telt (kaart: een andere speld dan de huidige, of een ongeldig antwoord) wijzigt niets, ook
+        // niet het aantal pogingen: zo kan een dubbele tik of een script de grens van MaxGuessesPerQuestion niet opsouperen.
+        if (outcome.Ignored) return null;
         attempt.Guesses++;
         attempt.LastGuess = trimmed;
-        var outcome = QuestionEngine.Guess(question, attempt, trimmed, elapsed);
         if (outcome.Wrong)
         {
             attempt.WrongGuesses++;

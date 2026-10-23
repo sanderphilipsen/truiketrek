@@ -57,6 +57,8 @@ public class MatchService(
         if (name.Length > 40) name = name[..40];
 
         var types = TypesOf(req.Types);
+        if (types.Where(t => !MatchRules.AllowedOnline(t)).ToList() is [var notOnline, ..])
+            throw new QuizException($"{QuestionTypes.Get(notOnline).Name} kan niet online. Kies een ander type.");
         var active = await picker.ActiveTypesAsync();
         if (types.Any(t => !active.Contains(t)))
             throw new QuizException("Dat vraagtype staat momenteel uit. Kies een ander type.");

@@ -188,7 +188,7 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
                 : (items.Count(i => i.Type == info.Type && i.Status == PlayerStatus.Approved),
                    items.Count(i => i.Type == info.Type && i.Status == PlayerStatus.Review),
                    items.Count(i => i.Type == info.Type && i.Status == PlayerStatus.Approved && !usedItems.Contains(i.Id)));
-            var perWeek = weekly.GetValueOrDefault(info.Type) * (info.Type == QuestionType.Counter ? QuestionRules.CounterPlayers : 1);
+            var perWeek = QuestionTypes.ItemsFor(info.Type, weekly.GetValueOrDefault(info.Type));
             return new TypeStock(info.Type, approved, review, neverUsed, perWeek == 0 ? 0 : neverUsed / perWeek, perWeek);
         }).ToList();
 
@@ -197,6 +197,9 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
 
     public async Task SaveScheduleAsync(List<ScheduleDay> days)
     {
+        // De solo-regel: een kaartdag is een dag op zich, niet een type in een mix.
+        if (days.Where(d => d.IsMix).Select(d => QuestionTypes.SoloProblem(d.Mix!)).FirstOrDefault(p => p is not null) is { } solo)
+            throw new QuizException(solo);
         var stored = await db.DailySchedule.ToListAsync();
         foreach (var day in days)
         {
@@ -209,7 +212,10 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
         await db.SaveChangesAsync();
     }
 
-    /// <summary>Zet een vraagtype aan of uit voor de dailies en specials. Er moet altijd minstens één type aan staan.</summary>
+    /// <summary>
+    /// Zet een vraagtype aan of uit voor de dailies en specials. Er moet altijd minstens één type aan staan dat geen
+    /// solo-type is: de terugval voor een dag of special waarvan alles uit staat, is een mix zonder de kaart.
+    /// </summary>
     public async Task SetTypeEnabledAsync(QuestionType type, bool enabled)
     {
         var row = await db.DisabledQuestionTypes.SingleOrDefaultAsync(d => d.Type == type);
@@ -219,8 +225,9 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
         }
         else if (row is null)
         {
-            if (await db.DisabledQuestionTypes.CountAsync() >= QuestionTypes.All.Count - 1)
-                throw new QuizException("Er moet minstens één vraagtype aan staan.");
+            var disabled = await picker.DisabledTypesAsync();
+            if (QuestionTypes.All.Count(t => !QuestionTypes.IsSolo(t.Type) && !disabled.Contains(t.Type) && t.Type != type) == 0)
+                throw new QuizException("Er moet minstens één vraagtype aan staan (naast de kaart).");
             db.DisabledQuestionTypes.Add(new DisabledQuestionType { Type = type });
         }
         await db.SaveChangesAsync();
@@ -275,6 +282,11 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
         var item = edit.Id == 0
             ? db.QuizItems.Add(new QuizItem { Type = edit.Type, Key = key, Data = edit.Data }).Entity
             : await db.QuizItems.FindAsync(edit.Id) ?? throw new QuizException("Vraag niet gevonden.");
+
+        // Een kaart die al in een reeks zit, verandert niet meer van spelden of clubs: de pogingen bewaren posities in de
+        // geschudde volgorde (QuestionEngine.KaartOrder), en die hangt van de spelden af. Status, bronnen en thema's mogen wel.
+        if (item.Type == QuestionType.Kaart && item.Id != 0 && item.Data != edit.Data && await db.DailyQuestions.AnyAsync(q => q.QuizItemId == item.Id))
+            throw new QuizException("Deze kaart is al gespeeld: de spelden en clubs kunnen niet meer wijzigen. Maak een nieuwe kaart (bv. voor een nieuw seizoen).");
 
         item.Key = key;
         item.Data = edit.Data;
@@ -332,6 +344,7 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
 
         var locked = special.Id != 0 && await db.DailyChallenges.AnyAsync(c => c.SpecialEventId == special.Id);
         var types = (edit.Types ?? []).Distinct().ToList();
+        if (QuestionTypes.SoloProblem(types) is { } solo) throw new QuizException(solo);
         if (locked && (special.Tag != edit.Tag || !special.PlayerIds.SequenceEqual(edit.PlayerIds) || special.StartDate != edit.StartDate
                        || !special.Types.SequenceEqual(types)))
             throw new QuizException("Deze special wordt al gespeeld: enkel de naam, beschrijving, icoon en einddatum kunnen nog wijzigen.");

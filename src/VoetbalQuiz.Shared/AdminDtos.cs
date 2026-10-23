@@ -74,6 +74,9 @@ public static class PlayerTags
         ("duitsland", "Duits voetbal"),
         ("turkije", "Turks voetbal"),
         ("portugal", "Portugees voetbal"),
+        // Competities (o.a. de kaarten van de kaartdag).
+        ("jupiler-pro-league", "Jupiler Pro League"),
+        ("challenger-pro-league", "Challenger Pro League"),
     ];
 
     /// <summary>Een special kan meerdere thema's combineren, bv. "anderlecht,club-brugge" voor de topper.</summary>

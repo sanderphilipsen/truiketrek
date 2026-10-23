@@ -1,0 +1,76 @@
+[
+  {
+    "question": "Eerste klasse 2026-27: welke club speelt hier thuis?",
+    "competition": "Jupiler Pro League",
+    "season": "2026-27",
+    "pins": [
+      { "stadium": "Jan Breydelstadion", "city": "Brugge", "lat": 51.1931, "lon": 3.1806, "clubs": ["Club Brugge", "Cercle Brugge"] },
+      { "stadium": "Lotto Park", "city": "Anderlecht", "lat": 50.8342, "lon": 4.2983, "clubs": ["Anderlecht"] },
+      { "stadium": "Bosuilstadion", "city": "Antwerpen", "lat": 51.2325, "lon": 4.4722, "clubs": ["Antwerp"] },
+      { "stadium": "Freethielstadion", "city": "Beveren", "lat": 51.2141, "lon": 4.2439, "clubs": ["Beveren"] },
+      { "stadium": "Stade du Pays de Charleroi", "city": "Charleroi", "lat": 50.4146, "lon": 4.4538, "clubs": ["Charleroi"] },
+      { "stadium": "Cegeka Arena", "city": "Genk", "lat": 51.0050, "lon": 5.5333, "clubs": ["Genk"] },
+      { "stadium": "Planet Group Arena", "city": "Gent", "lat": 51.0161, "lon": 3.7342, "clubs": ["Gent"] },
+      { "stadium": "Guldensporenstadion", "city": "Kortrijk", "lat": 50.8304, "lon": 3.2489, "clubs": ["Kortrijk"] },
+      { "stadium": "Easi Arena", "city": "La Louvière", "lat": 50.4775, "lon": 4.2013, "clubs": ["La Louvière"] },
+      { "stadium": "Soevereinstadion", "city": "Lommel", "lat": 51.2394, "lon": 5.3071, "clubs": ["Lommel"] },
+      { "stadium": "Stadion Achter de Kazerne", "city": "Mechelen", "lat": 51.0372, "lon": 4.4864, "clubs": ["Mechelen"] },
+      { "stadium": "King Power at Den Dreef Stadion", "city": "Leuven", "lat": 50.8683, "lon": 4.6942, "clubs": ["OH Leuven"] },
+      { "stadium": "Stayen", "city": "Sint-Truiden", "lat": 50.8135, "lon": 5.1663, "clubs": ["Sint-Truiden"] },
+      { "stadium": "Maurice Dufrasnestadion", "city": "Luik", "lat": 50.6100, "lon": 5.5434, "clubs": ["Standard"] },
+      { "stadium": "Joseph Marienstadion", "city": "Vorst", "lat": 50.8178, "lon": 4.3293, "clubs": ["Union"] },
+      { "stadium": "'t Kuipje", "city": "Westerlo", "lat": 51.0948, "lon": 4.9288, "clubs": ["Westerlo"] },
+      { "stadium": "Elindus Arena", "city": "Waregem", "lat": 50.8831, "lon": 3.4289, "clubs": ["Zulte Waregem"] }
+    ],
+    "difficulty": 2,
+    "status": "approved",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2026%E2%80%9327_Belgian_Pro_League",
+      "https://en.wikipedia.org/wiki/Jan_Breydel_Stadium",
+      "https://en.wikipedia.org/wiki/Joseph_Marien_Stadium",
+      "https://nl.wikipedia.org/wiki/Joseph_Marienstadion",
+      "https://www.wikidata.org/wiki/Q135110334",
+      "https://nl.wikipedia.org/wiki/Eerste_klasse_A_2026-27_(voetbal_Belgi%C3%AB)",
+      "https://en.wikipedia.org/wiki/Elindus_Arena",
+      "https://en.wikipedia.org/wiki/Den_Dreef",
+      "https://en.wikipedia.org/wiki/Achter_de_Kazerne"
+    ],
+    "tags": ["belgie", "jupiler-pro-league"],
+    "checkedAt": "2026-10-23"
+  },
+  {
+    "question": "Challenger Pro League 2026-27: welke club speelt hier thuis?",
+    "competition": "Challenger Pro League",
+    "season": "2026-27",
+    "pins": [
+      { "stadium": "Olympisch Stadion", "city": "Antwerpen", "lat": 51.1850, "lon": 4.3822, "clubs": ["Beerschot"] },
+      { "stadium": "Herman Vanderpoortenstadion", "city": "Lier", "lat": 51.1442, "lon": 4.5736, "clubs": ["Lierse"] },
+      { "stadium": "Dender Football Complex", "city": "Denderleeuw", "lat": 50.8837, "lon": 4.0712, "clubs": ["Dender"] },
+      { "stadium": "Planet Group Arena", "city": "Gent", "lat": 51.0161, "lon": 3.7342, "clubs": ["Jong Gent"] },
+      { "stadium": "Daknamstadion", "city": "Lokeren", "lat": 51.1164, "lon": 3.9872, "clubs": ["Lokeren"] },
+      { "stadium": "Kehrwegstadion", "city": "Eupen", "lat": 50.6264, "lon": 6.0458, "clubs": ["Eupen"] },
+      { "stadium": "Stade de Rocourt", "city": "Luik", "lat": 50.6603, "lon": 5.5519, "clubs": ["RFC Luik"] },
+      { "stadium": "Pairaystadion", "city": "Seraing", "lat": 50.6004, "lon": 5.5037, "clubs": ["Seraing"] },
+      { "stadium": "Stedelijk Sportstadion", "city": "Hasselt", "lat": 50.9363, "lon": 5.3210, "clubs": ["Sporting Hasselt"] },
+      { "stadium": "Patro-Stadion", "city": "Maasmechelen", "lat": 50.9944, "lon": 5.7035, "clubs": ["Patro Eisden"] },
+      { "stadium": "Leunenstadion", "city": "Geel", "lat": 51.1703, "lon": 4.9683, "clubs": ["Jong Genk"] },
+      { "stadium": "Dakota Arena", "city": "Deinze", "lat": 50.9838, "lon": 3.5204, "clubs": ["RSCA Futures"] },
+      { "stadium": "Robert Urbainstadion", "city": "Boussu-Bois", "lat": 50.4135, "lon": 3.7794, "clubs": ["Francs Borains"] },
+      { "stadium": "Yvan Georgesstadion", "city": "Virton", "lat": 49.5625, "lon": 5.5306, "clubs": ["Virton"] },
+      { "stadium": "Schiervelde", "city": "Roeselare", "lat": 50.9521, "lon": 3.1054, "clubs": ["Club NXT"] }
+    ],
+    "difficulty": 4,
+    "status": "review",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2026%E2%80%9327_Challenger_Pro_League",
+      "https://nl.wikipedia.org/wiki/Eerste_klasse_B_2026/27_(voetbal_Belgi%C3%AB)",
+      "https://nl.wikipedia.org/wiki/Leunenstadion",
+      "https://www.wikidata.org/wiki/Q3250417",
+      "https://www.wikidata.org/wiki/Q16062685",
+      "https://nominatim.openstreetmap.org/search?format=json&q=Stedelijk+Sportstadion+Hasselt",
+      "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=50.4135&lon=3.7794&zoom=18",
+      "https://fr.wikipedia.org/wiki/Stade_Robert-Urbain"
+    ],
+    "tags": ["belgie", "challenger-pro-league"]
+  }
+]

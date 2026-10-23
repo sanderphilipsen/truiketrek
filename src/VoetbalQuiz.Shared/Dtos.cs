@@ -63,7 +63,16 @@ public record QuestionSummary(
     QuestionStatus Status,
     int? Points,
     bool? Correct,
-    string? PlayerName);
+    string? PlayerName,
+    QuestionType Type = QuestionType.WieBenIk)
+{
+    /// <summary>
+    /// Niet helemaal juist, maar wel punten bij een type met deelpunten (<see cref="QuestionRules.PartialScores"/>):
+    /// deels juist, geen fout.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public bool Partial => Correct == false && Points > 0 && QuestionRules.PartialScores(Type);
+}
 
 /// <summary>Huidige toestand van één vraag zoals de server die ziet.</summary>
 public record QuestionState(
@@ -94,9 +103,30 @@ public record QuestionView(
     List<List<LetterTile>>? Letters = null,
     // Rugnummer: het nummer op het shirt.
     int? Shirt = null,
-    // Counter: al gevonden en het totaal aantal spelers.
+    // Counter: al gevonden en het totaal aantal spelers. Kaart: al beantwoorde spelden en het totaal aantal spelden.
     int Found = 0,
-    int Total = 0);
+    int Total = 0,
+    // Kaart: de beantwoorde spelden en de huidige, nooit de volgende. De keuzelijst (alle clubs in deel 1, alle
+    // stadions in deel 2) staat in Options.
+    List<KaartSpeld>? Pins = null,
+    // Kaart: welk deel (QuestionRules.KaartClubsPart of KaartStadiumsPart); 0 bij de andere types.
+    int Part = 0);
+
+/// <summary>
+/// Kaart: een speld zoals de speler ze ziet. Choices = hoeveel keuzelijsten (deel 1: één per club die er speelt; deel 2: één).
+/// Clubs: in deel 2 de club(s) bij de speld, want dat is de vraag (in deel 1 null tot het antwoord).
+/// Answer (het juiste antwoord: de clubs of het stadion), Pick (wat jij koos, leeg = overgeslagen) en Hits (hoeveel juist)
+/// pas zodra de speld beantwoord is.
+/// </summary>
+public record KaartSpeld(double Lat, double Lon, int Choices, List<string>? Clubs = null,
+    List<string>? Answer = null, string? Pick = null, int? Hits = null)
+{
+    /// <summary>Nog niet beantwoord: de speld die nu aan de beurt is.</summary>
+    public bool IsCurrent => Hits is null;
+
+    /// <summary>Alles juist (bij een gedeeld stadion in deel 1: beide clubs).</summary>
+    public bool IsRight => Hits == Choices;
+}
 
 public record AnswerRequest(string Guess);
 
@@ -114,6 +144,8 @@ public record AnswerResult(
     List<LineupSlot>? FullLineup = null,
     // Op volgorde: de gekozen volgorde (indexen in de juiste volgorde), null als de speler niets instuurde.
     List<int>? MyOrder = null,
+    // Kaart: wat de speler per beantwoorde speld koos (leeg = overgeslagen), null als hij geen enkele speld beantwoordde.
+    List<string>? MyPicks = null,
     // De vraag liep af omdat de tijd om was (niet omdat de speler paste of antwoordde).
     bool TimedOut = false);
 

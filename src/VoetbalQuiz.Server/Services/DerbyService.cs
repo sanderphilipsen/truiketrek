@@ -203,7 +203,7 @@ public class DerbyService(QuizDbContext db, TimeProvider clock, QuestionPicker p
                 continue;
             }
             (answer.WrongGuesses, answer.LastGuess, answer.Correct, answer.GaveUp, answer.AnsweredAt) = (0, null, false, false, null);
-            (answer.Points, answer.Guesses, answer.Choice, answer.Found, answer.Skipped) = (0, 0, null, [], []);
+            (answer.Points, answer.Guesses, answer.Choice, answer.Found, answer.Skipped, answer.Picks) = (0, 0, null, [], [], []);
         }
         (question.TrumpUserId, question.FlareUserId, question.FlareAt) = (null, null, null);
         question.StartsAt = Now.AddSeconds(DerbyRules.SwapCountdownSeconds);

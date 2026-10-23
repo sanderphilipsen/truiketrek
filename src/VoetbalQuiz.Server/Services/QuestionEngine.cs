@@ -34,6 +34,9 @@ public static class QuestionEngine
         QuestionType.Kluts => q.Player!.Name,
         QuestionType.Counter => $"Counter ({q.CounterPlayers.Count} spelers)",
         QuestionType.Volgorde => string.Join(" → ", Data<VolgordeData>(q).Items.Select(i => i.Label)),
+        QuestionType.Kaart => Data<KaartData>(q) is var k
+            ? $"{k.Competition} {k.Season}: {(IsStadiumPart(q) ? "de stadions" : "de clubs")}"
+            : "",
         _ => "",
     };
 
@@ -50,6 +53,7 @@ public static class QuestionEngine
             QuestionRules.RevealLimit(QuestionRules.RevealSteps),
         QuestionType.Counter => QuestionRules.CounterSeconds,
         QuestionType.Volgorde => QuestionRules.VolgordeSeconds,
+        QuestionType.Kaart => QuestionRules.KaartSeconds,
         _ => GameRules.TimeLimitSeconds,
     };
 
@@ -128,6 +132,30 @@ public static class QuestionEngine
             {
                 var d = Data<VolgordeData>(q);
                 return ([], new QuestionView(d.Question, VolgordeShown(q).Select(i => d.Items[i].Label).ToList()));
+            }
+            case QuestionType.Kaart:
+            {
+                var d = Data<KaartData>(q);
+                var stadiums = IsStadiumPart(q);
+                var order = KaartOrder(q);
+                var passed = Math.Min(a.Found.Count, order.Count);
+                // Na afloop mag alles zichtbaar zijn (wat niet beantwoord werd, is fout); tijdens het spelen enkel de
+                // beantwoorde spelden en de huidige: nooit het antwoord op de huidige, nooit waar de volgende staan.
+                // Deel 1 noemt nooit een stadion (dat is de vraag van deel 2); deel 2 toont de clubs, want dat is zijn vraag.
+                var over = a.AnsweredAt is not null;
+                var pins = order.Select((pin, pos) => (Pin: d.Pins[pin], Pos: pos))
+                    .Where(x => over || x.Pos <= passed)
+                    .Select(x => x.Pos < passed || over
+                        ? new KaartSpeld(x.Pin.Lat, x.Pin.Lon, KaartChoices(q, x.Pin), x.Pin.Clubs, KaartAnswer(q, x.Pin),
+                            x.Pos < passed ? a.Picks.ElementAtOrDefault(x.Pos) ?? "" : null, x.Pos < passed ? a.Found[x.Pos] : 0)
+                        : new KaartSpeld(x.Pin.Lat, x.Pin.Lon, KaartChoices(q, x.Pin), stadiums ? x.Pin.Clubs : null))
+                    .ToList();
+                var part = stadiums ? QuestionRules.KaartStadiumsPart : QuestionRules.KaartClubsPart;
+                return ([], new QuestionView(stadiums ? $"{d.Competition} {d.Season}: in welk stadion speelt deze club thuis?" : d.Question,
+                    KaartOptions(q, d),
+                    MaxPoints: QuestionRules.KaartPartPoints,
+                    Note: over || passed >= order.Count ? $"Deel {part}" : $"Deel {part} · speld {passed + 1} van {order.Count}",
+                    Found: passed, Total: order.Count, Pins: pins, Part: part));
             }
             default:
                 return ([], new QuestionView());
@@ -231,10 +259,76 @@ public static class QuestionEngine
         return [.. tapped.Concat(Enumerable.Range(0, shown.Count).Except(tapped)).Select(i => shown[i])];
     }
 
+    /// <summary>
+    /// Kaart: in welke volgorde de spelden verschijnen (indexen in de data). Geschud, maar vast per vraag: voor iedereen
+    /// die dezelfde daily speelt dezelfde volgorde, en herladen verandert niets. De twee delen zijn twee vragen (eigen id),
+    /// dus deel 2 heeft een andere volgorde dan deel 1.
+    /// Hangt af van het aantal spelden: daarom wijzigt de inhoud van een kaart niet meer zodra ze in een reeks zit
+    /// (<see cref="Found"/> en <see cref="AttemptState.Picks"/> zijn posities in deze volgorde).
+    /// </summary>
+    public static List<int> KaartOrder(IQuizQuestion q)
+    {
+        var count = Data<KaartData>(q).Pins.Count;
+        var rng = new Random(q.Id * 31 + 11);
+        return [.. Enumerable.Range(0, count).OrderBy(_ => rng.Next())];
+    }
+
+    /// <summary>Kaart: deel 2 (bij de clubs het stadion zoeken)? Anders deel 1.</summary>
+    private static bool IsStadiumPart(IQuizQuestion q) => q.Part == QuestionRules.KaartStadiumsPart;
+
+    /// <summary>Kaart: alle clubs van de competitie, alfabetisch. De keuzelijst toont ze altijd allemaal, ook de geplaatste.</summary>
+    public static List<string> KaartClubs(KaartData d) => Alphabetical(d.Pins.SelectMany(p => p.Clubs));
+
+    /// <summary>Kaart: alle stadions van de kaart (het veld stadium), alfabetisch. De keuzelijst van deel 2.</summary>
+    public static List<string> KaartStadiums(KaartData d) => Alphabetical(d.Pins.Select(p => p.Stadium));
+
+    private static List<string> Alphabetical(IEnumerable<string> names) =>
+        names.Distinct(StringComparer.OrdinalIgnoreCase).Order(StringComparer.InvariantCultureIgnoreCase).ToList();
+
+    private static List<string> KaartOptions(IQuizQuestion q, KaartData d) => IsStadiumPart(q) ? KaartStadiums(d) : KaartClubs(d);
+
+    /// <summary>Kaart: hoeveel keuzelijsten een speld heeft: één per club in deel 1, één stadion in deel 2.</summary>
+    private static int KaartChoices(IQuizQuestion q, KaartStadion pin) => IsStadiumPart(q) ? 1 : pin.Clubs.Count;
+
+    /// <summary>Kaart: het juiste antwoord op een speld: de club(s) in deel 1, het stadion in deel 2.</summary>
+    private static List<string> KaartAnswer(IQuizQuestion q, KaartStadion pin) => IsStadiumPart(q) ? [pin.Stadium] : pin.Clubs;
+
+    /// <summary>Kaart: hoeveel er in totaal juist kan zijn: alle clubs (deel 1, een gedeeld stadion telt per club) of alle spelden (deel 2).</summary>
+    private static int KaartTotal(IQuizQuestion q, KaartData d) => d.Pins.Sum(p => KaartChoices(q, p));
+
+    /// <summary>
+    /// Kaart: hoeveel van het antwoord ("Club Brugge|Cercle Brugge" in deel 1, een stadion in deel 2) bij deze speld hoort,
+    /// en het antwoord zoals het in de keuzelijst staat. Overslaan = 0. Null als het antwoord ongeldig is: leeg, meer keuzes
+    /// dan de speld heeft, of iets dat niet in de keuzelijst staat.
+    /// </summary>
+    private static (int Hits, string Pick)? KaartHits(IQuizQuestion q, KaartData d, KaartStadion pin, string answer)
+    {
+        if (answer == QuestionRules.KaartSkip) return (0, "");
+        var chosen = answer.Split(QuestionRules.KaartSeparator, StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
+        var options = KaartOptions(q, d);
+        if (chosen.Length == 0 || chosen.Length > KaartChoices(q, pin)
+            || chosen.Any(c => !options.Contains(c, StringComparer.OrdinalIgnoreCase))) return null;
+        var picked = chosen.Select(c => options.First(o => string.Equals(o, c, StringComparison.OrdinalIgnoreCase))).ToList();
+        // Twee keer dezelfde club kiezen bij een gedeeld stadion telt maar één keer.
+        var right = KaartAnswer(q, pin);
+        return (picked.Distinct(StringComparer.OrdinalIgnoreCase).Count(c => right.Contains(c, StringComparer.OrdinalIgnoreCase)),
+            string.Join(QuestionRules.KaartSeparator, picked));
+    }
+
+    /// <summary>Kaart: "3:Genk" → speld 3 en het antwoord "Genk". Null zonder geldig nummer.</summary>
+    private static (int Pin, string Answer)? KaartParse(string guess) =>
+        guess.Split(QuestionRules.KaartPinPrefix, 2) is [var number, var answer] && int.TryParse(number, out var pin)
+            ? (pin, answer.Trim())
+            : null;
+
     /// <summary>Counter: de duidelijkste tip (de laatste) van een speler.</summary>
     private static string CounterClue(Player p) => p.Hints.LastOrDefault() ?? "";
 
-    public record Outcome(bool Done, bool Correct, int Points, bool Wrong);
+    /// <summary>
+    /// De uitkomst van een poging. Ignored: de poging telt niet (een kaartgok voor een andere speld dan de huidige, of een
+    /// ongeldig antwoord): ze wijzigt niets en telt niet mee voor <see cref="GameRules.MaxGuessesPerQuestion"/>.
+    /// </summary>
+    public record Outcome(bool Done, bool Correct, int Points, bool Wrong, bool Ignored = false);
 
     /// <summary>Beoordeelt een poging. Getypte types mogen opnieuw proberen; keuzetypes zijn meteen klaar.</summary>
     public static Outcome Guess(IQuizQuestion q, AttemptState a, string guess, double elapsed)
@@ -336,6 +430,27 @@ public static class QuestionEngine
                 return new(true, points == QuestionTypes.Get(QuestionType.Volgorde).MaxPoints, points, false);
             }
 
+            case QuestionType.Kaart:
+            {
+                // Found: per beantwoorde speld (in de geschudde volgorde) hoeveel juist was; Picks: wat de speler koos.
+                // Een antwoord is definitief. Een gok voor een andere speld dan de huidige (dubbele tik) of een ongeldig
+                // antwoord telt niet: niets wijzigt en het is geen poging.
+                var d = Data<KaartData>(q);
+                var order = KaartOrder(q);
+                var total = KaartTotal(q, d);
+                var points = QuestionRules.KaartPoints(a.Found.Sum(), total);
+                if (a.Found.Count >= order.Count) return new(true, a.Found.Sum() == total, points, false);
+
+                if (KaartParse(guess) is not { } g || g.Pin != a.Found.Count + 1
+                    || KaartHits(q, d, d.Pins[order[a.Found.Count]], g.Answer) is not { } hit)
+                    return new(false, false, points, false, Ignored: true);
+                a.Found = [.. a.Found, hit.Hits];
+                a.Picks = [.. a.Picks, hit.Pick];
+                var done = a.Found.Count == order.Count;
+                var right = a.Found.Sum();
+                return new(done, done && right == total, QuestionRules.KaartPoints(right, total), false);
+            }
+
             default:
                 return new(false, false, 0, false);
         }
@@ -365,6 +480,7 @@ public static class QuestionEngine
         public Player? Player => null;
         public List<int> Blanks { get; } = [];
         public List<Player> CounterPlayers { get; } = [];
+        public int Part => 0;
     }
 
     /// <summary>Een getypte naam bij een type dat stap voor stap onthult (wissel, rugnummer, mannetje, kluts).</summary>
@@ -378,6 +494,7 @@ public static class QuestionEngine
     {
         QuestionType.Opstelling => QuestionRules.OpstellingPoints(a.Found.Count, q.Blanks.Count),
         QuestionType.Counter => QuestionRules.CounterPoints(a.Found.Count),
+        QuestionType.Kaart => QuestionRules.KaartPoints(a.Found.Sum(), KaartTotal(q, Data<KaartData>(q))),
         _ => 0,
     };
 
@@ -385,7 +502,9 @@ public static class QuestionEngine
     public static AnswerResult Result(IQuizQuestion q, AttemptState a)
     {
         // CloseIfExpired sluit een verlopen vraag af op precies StartedAt + de tijdslimiet; passen of antwoorden gebeurt eerder.
-        var timedOut = !a.Correct && a.AnsweredAt is { } at && (at - a.StartedAt).TotalSeconds >= TimeLimit(q) - 0.001;
+        var timedOut = !a.Correct && a.AnsweredAt is { } at && (at - a.StartedAt).TotalSeconds >= TimeLimit(q) - 0.001
+                       // Kaart: wie alle spelden binnen de speling beantwoordde, liep niet tegen de tijd aan.
+                       && (q.Type != QuestionType.Kaart || a.Found.Count < Data<KaartData>(q).Pins.Count);
         var baseResult = new AnswerResult(a.Correct, a.Points, AnswerLabel(q), a.WrongGuesses, [], TimedOut: timedOut);
         return q.Type switch
         {
@@ -424,8 +543,41 @@ public static class QuestionEngine
                     MyOrder = a.Found.Count == 0 ? null : a.Found,
                 }
                 : baseResult,
+            QuestionType.Kaart => Data<KaartData>(q) is var k
+                ? baseResult with
+                {
+                    // Elke speld in de volgorde waarin ze verscheen: ✅ juist, 🟡 deels (gedeeld stadion), ❌ fout, ⌛ niet aan
+                    // toe gekomen; bij een fout ook wat de speler koos. Deel 1 noemt geen stadion (dat vraagt deel 2).
+                    AllHints = KaartOrder(q).Select((pin, pos) => KaartLine(q, k.Pins[pin], pos, a)).ToList(),
+                    Explanation = IsStadiumPart(q)
+                        ? $"{a.Found.Sum()} van de {KaartTotal(q, k)} stadions juist"
+                        : $"{a.Found.Sum()} van de {KaartTotal(q, k)} clubs juist geplaatst",
+                    MyPicks = a.Picks.Count == 0 ? null : a.Picks,
+                }
+                : baseResult,
             _ => baseResult,
         };
+    }
+
+    /// <summary>
+    /// Kaart: één regel van het resultaat, bv. "❌ Genk · Genk (jij: Standard)" in deel 1 of
+    /// "✅ Club Brugge en Cercle Brugge · Jan Breydelstadion" in deel 2.
+    /// </summary>
+    private static string KaartLine(IQuizQuestion q, KaartStadion p, int pos, AttemptState a)
+    {
+        var clubs = string.Join(" en ", p.Clubs);
+        // Deel 1 toont de stad, behalve als die al in de clubnaam zit ("Kortrijk · Kortrijk" zegt niets extra).
+        var where = IsStadiumPart(q) ? $" · {p.Stadium}"
+            : p.Clubs.Any(c => c.Contains(p.City, StringComparison.OrdinalIgnoreCase)) ? ""
+            : $" · {p.City}";
+        if (pos >= a.Found.Count) return $"⌛ {clubs}{where}";
+        var hits = a.Found[pos];
+        var mark = hits == KaartChoices(q, p) ? "✅ " : hits > 0 ? "🟡 " : "❌ ";
+        var pick = a.Picks.ElementAtOrDefault(pos) ?? "";
+        var mine = hits == KaartChoices(q, p) ? ""
+            : pick.Length == 0 ? " (overgeslagen)"
+            : $" (jij: {pick.Replace(QuestionRules.KaartSeparator.ToString(), " en ")})";
+        return $"{mark}{clubs}{where}{mine}";
     }
 
     /// <summary>Opstelling: kies welke plaatsen ingevuld moeten worden (de keeper blijft zichtbaar).</summary>
@@ -453,6 +605,9 @@ public static class QuestionEngine
         QuestionType.Rugnummer => Parse<RugnummerData>(data) is var d ? ($"#{d.Number} – {d.Club}", d.Answer) : ("", ""),
         QuestionType.Mannetje => Parse<MannetjeData>(data) is var d ? (string.Join(" · ", d.Clues), d.Answer) : ("", ""),
         QuestionType.Volgorde => Parse<VolgordeData>(data) is var d ? (d.Question, string.Join(" → ", d.Items.Select(i => i.Label))) : ("", ""),
+        QuestionType.Kaart => Parse<KaartData>(data) is var d
+            ? ($"{d.Competition} {d.Season} ({d.Pins?.Count ?? 0} spelden)", string.Join(", ", (d.Pins ?? []).SelectMany(p => p.Clubs ?? [])))
+            : ("", ""),
         _ => ("", ""),
     };
 
@@ -462,6 +617,9 @@ public static class QuestionEngine
         QuestionType.Emoji => Parse<EmojiData>(data) is var d ? $"{d.Emojis}|{d.Answer}" : "",
         QuestionType.Carriere or QuestionType.Mannetje => Describe(type, data).Answer,
         QuestionType.Volgorde => Describe(type, data) is var v ? $"{v.Label}|{v.Answer}" : "",
+        // Eén kaart per competitie en seizoen. Een nieuw seizoen is een nieuw item: een kaart die al in een reeks zit,
+        // verandert niet meer van spelden of clubs (zie AdminService.SaveQuizItemAsync en QuestionSeeder).
+        QuestionType.Kaart => Parse<KaartData>(data) is var d ? $"{d.Competition}|{d.Season}" : "",
         _ => Describe(type, data).Label,
     };
 
@@ -525,6 +683,7 @@ public static class QuestionEngine
                         .Concat(Check(d.Items.Select(i => i.Value.Trim()).Distinct(StringComparer.OrdinalIgnoreCase).Count() == d.Items.Count,
                             "Twee kaartjes hebben dezelfde waarde: dan is de volgorde niet eenduidig.")).ToList()
                     : [],
+                QuestionType.Kaart => Parse<KaartData>(data) is var d ? KaartProblems(d) : [],
                 _ => ["Dit type hoort niet in de vragenbank."],
             };
         }
@@ -532,6 +691,30 @@ public static class QuestionEngine
         {
             return ["De inhoud is ongeldig."];
         }
+    }
+
+    private static List<string> KaartProblems(KaartData d)
+    {
+        var pins = d.Pins ?? [];
+        var clubs = pins.SelectMany(p => p.Clubs ?? []).Select(c => c.Trim()).ToList();
+        return Check(!string.IsNullOrWhiteSpace(d.Question), "Vul de vraag in.")
+            .Concat(Check(!string.IsNullOrWhiteSpace(d.Competition) && !string.IsNullOrWhiteSpace(d.Season), "Vul de competitie en het seizoen in."))
+            .Concat(Check(pins.Count is >= QuestionRules.KaartMinPins and <= QuestionRules.KaartMaxPins,
+                $"Een kaart heeft {QuestionRules.KaartMinPins} tot {QuestionRules.KaartMaxPins} spelden."))
+            .Concat(Check(pins.All(p => !string.IsNullOrWhiteSpace(p.Stadium) && p.Clubs is { Count: > 0 } && p.Clubs.All(c => !string.IsNullOrWhiteSpace(c))),
+                "Elke speld heeft een stadion en minstens één club."))
+            // Een naam is een keuze in de lijst en gaat zo terug in de gok: geen scheidingsteken, geen spaties rond.
+            .Concat(Check(pins.SelectMany(p => (p.Clubs ?? []).Append(p.Stadium ?? ""))
+                    .All(n => !n.Contains(QuestionRules.KaartSeparator) && n == n.Trim()),
+                $"Een club- of stadionnaam bevat '{QuestionRules.KaartSeparator}' of begint of eindigt met een spatie."))
+            // Dezelfde grenzen als de kaart zelf (BelgieKaart): een speld die hier doorkomt, valt nooit van de kaart.
+            .Concat(Check(pins.All(p => KaartProjection.Contains(p.Lat, p.Lon)),
+                "Een speld ligt buiten de kaart van België: controleer de coördinaten."))
+            .Concat(Check(clubs.Distinct(StringComparer.OrdinalIgnoreCase).Count() == clubs.Count,
+                "Een club staat bij twee spelden: elke club hoort bij één stadion."))
+            // Deel 2 kiest het stadion uit een lijst: twee spelden met dezelfde naam zijn niet uit elkaar te houden.
+            .Concat(Check(pins.Select(p => p.Stadium?.Trim()).Distinct(StringComparer.OrdinalIgnoreCase).Count() == pins.Count,
+                "Twee spelden hebben dezelfde stadionnaam.")).ToList();
     }
 
     private static IEnumerable<string> Check(bool ok, string problem) => ok ? [] : [problem];

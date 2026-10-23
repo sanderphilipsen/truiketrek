@@ -144,6 +144,26 @@
                                 </div>
                             }
                             break;
+
+                        case QuestionType.Kaart:
+                            @* Alleen-lezen: de spelden pas je aan in Data/questions/kaart.json. Moeilijkheid, bronnen, thema's en status kunnen hier wel. *@
+                            @if (_kaart is null)
+                            {
+                                <p class="note"><Icon Name="warning" /> Nieuwe kaarten voeg je toe in <code>Data/questions/kaart.json</code>.</p>
+                            }
+                            else
+                            {
+                                <p><b>@_kaart.Question</b></p>
+                                <p class="muted">@_kaart.Competition @_kaart.Season · @_kaart.Pins.Count spelden · @_kaart.Pins.Sum(p => p.Clubs.Count) clubs. De spelden pas je aan in <code>Data/questions/kaart.json</code>.</p>
+                                <BelgieKaart Pins="KaartPreview()" />
+                                <ul class="kaart-admin-list">
+                                    @foreach (var p in _kaart.Pins)
+                                    {
+                                        <li><b>@string.Join(" en ", p.Clubs)</b> <small class="muted">@p.Stadium, @p.City (@p.Lat.ToString("0.0000", System.Globalization.CultureInfo.InvariantCulture), @p.Lon.ToString("0.0000", System.Globalization.CultureInfo.InvariantCulture))</small></li>
+                                    }
+                                </ul>
+                            }
+                            break;
                     }
 
                     <label>Moeilijkheid
@@ -310,8 +330,19 @@
                 _options = [.. Enumerable.Range(0, QuestionRules.VolgordeCards).Select(i => v.Items.ElementAtOrDefault(i)?.Label ?? "")];
                 _values = [.. Enumerable.Range(0, QuestionRules.VolgordeCards).Select(i => v.Items.ElementAtOrDefault(i)?.Value ?? "")];
                 break;
+            case QuestionType.Kaart:
+                (_raw, _kaart) = (data, System.Text.Json.JsonSerializer.Deserialize<KaartData>(data, Json));
+                break;
         }
     }
+
+    /// <summary>Kaart: de inhoud zoals ze binnenkwam (alleen-lezen, gaat ongewijzigd terug bij opslaan).</summary>
+    private string _raw = "{}";
+    private KaartData? _kaart;
+
+    /// <summary>Kaart: alle spelden met hun club(s), zoals na afloop van een kaartdag.</summary>
+    private List<KaartPin> KaartPreview() =>
+        _kaart?.Pins.Select(p => new KaartPin(p.Lat, p.Lon, KaartPinState.Juist, string.Join(" / ", p.Clubs))).ToList() ?? [];
 
     private static List<string> Split(string s, char sep) =>
         s.Split(sep, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToList();
@@ -330,6 +361,7 @@
         QuestionType.Mannetje => Serialize(new MannetjeData(_answer.Trim(), Split(_aliases, ','), _avatar, Split(_lines, '\n'))),
         QuestionType.Volgorde => Serialize(new VolgordeData(_text.Trim(),
             _options.Zip(_values, (label, value) => new VolgordeItem(label.Trim(), value.Trim())).ToList())),
+        QuestionType.Kaart => _raw,
         _ => "{}",
     };
 
@@ -374,6 +406,9 @@
             case QuestionType.Volgorde:
                 if (string.IsNullOrWhiteSpace(_text)) missing.Add("Opdracht ontbreekt.");
                 if (_options.Concat(_values).Any(string.IsNullOrWhiteSpace)) missing.Add($"Vul alle {QuestionRules.VolgordeCards} kaartjes en waarden in.");
+                break;
+            case QuestionType.Kaart:
+                if (_kaart is null) missing.Add("Voeg kaarten toe in kaart.json.");
                 break;
         }
         return missing;

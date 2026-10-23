@@ -30,8 +30,10 @@ else if (_state is null)
 else if (_state.Result is { } result)
 {
     @* ---------- Na afloop ---------- *@
-    <div class="result @(result.Correct || result.Points > 0 ? "ok" : "fail")">
-        <div class="result-icon"><Icon Name="@(result.Correct ? "check-circle" : result.Points > 0 ? "thumbs-up" : "x-circle")" /></div>
+    @* Groen bij juist of minstens de helft van de punten; daaronder neutraal (zoals Commentary.Partial), zonder punten rood. *@
+    var mood = ResultMood(result, _state.View?.MaxPoints ?? 100);
+    <div class="result @mood">
+        <div class="result-icon"><Icon Name="@(result.Correct ? "check-circle" : mood == "ok" ? "thumbs-up" : mood == "partial" ? "check" : "x-circle")" /></div>
         <div class="result-shout">@Commentary.ForResult(result, _state.View?.MaxPoints ?? 100, Number)</div>
         <div class="result-name">@QuestionAnswer.Title(_state.Type, result)</div>
         <div class="result-points @(result.Points == 0 ? "zero" : "")">+@result.Points punten</div>
@@ -66,6 +68,11 @@ else
                 <span class="stake-points">@QuestionDisplay.PointsNow(_state.Type, _state.View, LocalElapsed, _state.WrongGuesses, _state.TimeLimit)</span>
                 <span class="stake-label">@QuestionDisplay.PointsLabel(_state.Type)</span>
             </div>
+            @if (_state.Type == QuestionType.Kaart)
+            {
+                @* Bij de kaart staat "Ik stop" bovenaan: onderaan zit het vaste paneel met de keuzelijsten. *@
+                <button class="linkish stake-stop" @onclick="GiveUpAsync" disabled="@_busy">Ik stop</button>
+            }
             <div class="clock @(SecondsLeft <= 3 ? "urgent" : "")" role="timer">@Math.Ceiling(SecondsLeft)s</div>
             <span class="sr-only" aria-live="polite">@QuestionDisplay.ClockAnnouncement(SecondsLeft)</span>
         </div>
@@ -74,11 +81,14 @@ else
 
     <QuestionPlay @key="Number" Type="_state.Type" View="_state.View" Hints="_state.Hints" Busy="_busy" SecondsLeft="SecondsLeft" Send="PlayAsync" />
 
-    <div class="actions">
-        <button class="linkish" @onclick="GiveUpAsync" disabled="@_busy">
-            @(_state.Type == QuestionType.Opstelling ? "Ik ben klaar" : _state.Type == QuestionType.Counter ? "Ik stop" : "Ik pas")
-        </button>
-    </div>
+    @if (_state.Type != QuestionType.Kaart)
+    {
+        <div class="actions">
+            <button class="linkish" @onclick="GiveUpAsync" disabled="@_busy">
+                @(_state.Type == QuestionType.Opstelling ? "Ik ben klaar" : _state.Type == QuestionType.Counter ? "Ik stop" : "Ik pas")
+            </button>
+        </div>
+    }
 }
 
 @code {
@@ -109,6 +119,10 @@ else
     private DateTime _lastRefresh;
     private PeriodicTimer? _timer;
     private CancellationTokenSource _cts = new();
+
+    /// <summary>"ok" (juist of minstens de helft van de punten), "partial" (wat punten, minder dan de helft) of "fail".</summary>
+    private static string ResultMood(AnswerResult r, int maxPoints) =>
+        r.Correct || r.Points > 0 && r.Points >= Commentary.AlmostShare * maxPoints ? "ok" : r.Points > 0 ? "partial" : "fail";
 
     private QuestionTypeInfo Info => QuestionTypes.Get(_state?.Type ?? QuestionType.WieBenIk);
     private double LocalElapsed => _syncedElapsed + (DateTime.UtcNow - _syncedAt).TotalSeconds;

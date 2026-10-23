@@ -56,6 +56,21 @@
     case QuestionType.Opstelling:
         <Lineup Slots="Result.FullLineup ?? []" Found="FoundNames()" />
         break;
+
+    case QuestionType.Kaart:
+        @* De volle kaart: elke speld groen, oranje (deels) of rood met de club(s), daaronder dezelfde lijst als tekst,
+           met bij een fout wat jij koos. *@
+        <p class="center light-text">@View?.Note</p>
+        <p class="prompt">@View?.Prompt</p>
+        <BelgieKaart Pins="QuestionPlay.KaartPins(View)" />
+        @if (Result.TimedOut) { <p class="center light-text">De tijd was om: de rest van de spelden telt als fout.</p> }
+        <ol class="hints">
+            @for (var i = 0; i < Result.AllHints.Count; i++)
+            {
+                <li class="hint" @key="i"><span class="hint-num">@(i + 1)</span><span>@Result.AllHints[i]</span></li>
+            }
+        </ol>
+        break;
 }
 
 @code {
@@ -75,6 +90,7 @@
         QuestionType.Opstelling => r.PlayerName,
         QuestionType.Counter => "Counter",
         QuestionType.Volgorde => r.Correct ? "Helemaal juist!" : r.Points > 0 ? "Bijna!" : "Helemaal omgekeerd",
+        QuestionType.Kaart => r.Correct ? "Foutloze kaart!" : r.PlayerName,
         _ => r.PlayerName,
     };
 }

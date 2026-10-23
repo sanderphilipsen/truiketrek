@@ -14,7 +14,7 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
     /// <summary>Eén beantwoorde vraag, plat gemaakt voor berekeningen.</summary>
     private record Row(
         string UserId, string UserName, int ChallengeId, DateOnly Date, string? PlayerName,
-        int Points, bool Correct, int WrongGuesses, DateTime StartedAt, DateTime AnsweredAt);
+        int Points, bool Correct, int WrongGuesses, DateTime StartedAt, DateTime AnsweredAt, QuestionType Type);
 
     /// <summary>Totaal van één gebruiker op één dag.</summary>
     private record DayTotal(
@@ -29,7 +29,8 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
             .Where(filter)
             .Select(a => new Row(
                 a.UserId, a.User.UserName!, a.DailyQuestion.DailyChallengeId, a.DailyQuestion.DailyChallenge.Date,
-                a.DailyQuestion.Player != null ? a.DailyQuestion.Player.Name : null, a.Points, a.Correct, a.WrongGuesses, a.StartedAt, a.AnsweredAt!.Value))
+                a.DailyQuestion.Player != null ? a.DailyQuestion.Player.Name : null, a.Points, a.Correct, a.WrongGuesses, a.StartedAt, a.AnsweredAt!.Value,
+                a.DailyQuestion.Type))
             .ToListAsync();
 
     private static IEnumerable<DayTotal> DayTotals(IEnumerable<Row> rows) =>
@@ -93,7 +94,8 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
             var online = matches.GetValueOrDefault(id);
             return new XpInput(
                 mine.Count,
-                mine.Where(r => r.Correct).Sum(r => r.Points),
+                // Juiste antwoorden, plus de deelpunten van types die zelden helemaal juist zijn (kaart, opstelling, counter).
+                mine.Where(r => r.Correct || QuestionRules.PartialScores(r.Type)).Sum(r => r.Points),
                 days.Count(d => d.Count() == sizes.GetValueOrDefault(d.Key)),
                 days.Count(d => d.Count(r => r.Correct) == sizes.GetValueOrDefault(d.Key)),
                 wins.GetValueOrDefault(id),

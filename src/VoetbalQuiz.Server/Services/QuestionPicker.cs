@@ -29,11 +29,14 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock)
     public async Task<List<QuestionType>> SpecialTypesAsync(SpecialEvent special) =>
         QuestionTypes.ResolveSpecial(special.Types, await DisabledTypesAsync());
 
-    /// <summary>De types die nu aan staan: enkel die kan je kiezen voor een online partijtje.</summary>
+    /// <summary>
+    /// De types die je nu kan kiezen voor een online partijtje: die aan staan en online passen
+    /// (<see cref="MatchRules.AllowedOnline"/>: de kaart niet).
+    /// </summary>
     public async Task<List<QuestionType>> ActiveTypesAsync()
     {
         var disabled = await DisabledTypesAsync();
-        return QuestionTypes.All.Select(t => t.Type).Where(t => !disabled.Contains(t)).ToList();
+        return QuestionTypes.All.Select(t => t.Type).Where(t => !disabled.Contains(t) && MatchRules.AllowedOnline(t)).ToList();
     }
 
     // ---------- Daily en specials ----------
@@ -73,10 +76,12 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock)
         foreach (var (type, count) in QuestionTypes.Mix(await SpecialTypesAsync(special)))
         {
             var fromPlayers = QuestionTypes.Get(type).FromPlayers;
-            var needed = type == QuestionType.Counter ? count * QuestionRules.CounterPlayers : count;
+            var needed = QuestionTypes.ItemsFor(type, count);
+            var approvedOnly = ApprovedOnly(type);
             var available = fromPlayers
                 ? (await SpecialPoolAsync(special)).Count
-                : await db.QuizItems.CountAsync(i => i.Type == type && i.Status != PlayerStatus.Rejected);
+                : await db.QuizItems.CountAsync(i => i.Type == type && i.Status != PlayerStatus.Rejected
+                    && (!approvedOnly || i.Status == PlayerStatus.Approved));
             if (available < needed)
                 problems.Add($"{QuestionTypes.Get(type).Name}: {available} {(fromPlayers ? "spelers" : "vragen")} beschikbaar, {needed} nodig.");
         }
@@ -173,6 +178,16 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock)
                 .Select(p => new DailyQuestion { Type = type, PlayerId = p.Id }).ToList();
         }
 
+        if (type == QuestionType.Kaart)
+        {
+            // Kaartdag: één kaart, gespeeld in twee delen (twee vragen op hetzelfde item): eerst de clubs, dan de stadions.
+            var maps = await PickItemsAsync(type, QuestionTypes.ItemsFor(type, count), tag, excludeItems, targets?.Take(1).ToList());
+            if (maps.Count < QuestionTypes.ItemsFor(type, count)) return null;
+            return maps.SelectMany(map => Enumerable.Range(1, QuestionRules.KaartParts)
+                    .Select(part => new DailyQuestion { Type = type, QuizItemId = map.Id, Part = part }))
+                .Take(count).ToList();
+        }
+
         var items = await PickItemsAsync(type, count, tag, excludeItems, targets);
         return items.Count < count
             ? null
@@ -249,7 +264,9 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock)
             .Select(g => new { Id = g.Key, LastUsed = g.Max(q => q.DailyChallenge.Date) })
             .ToDictionaryAsync(x => x.Id, x => x.LastUsed);
 
-        var ordered = (await db.QuizItems.Where(i => i.Type == type && i.Status != PlayerStatus.Rejected).ToListAsync())
+        var approvedOnly = ApprovedOnly(type);
+        var ordered = (await db.QuizItems.Where(i => i.Type == type && i.Status != PlayerStatus.Rejected
+                && (!approvedOnly || i.Status == PlayerStatus.Approved)).ToListAsync())
             .Where(i => exclude?.Contains(i.Id) != true)
             .OrderBy(i => PlayerTags.Any(i.Tags, tag) ? 0 : 1)
             .ThenBy(i => i.Status == PlayerStatus.Approved ? 0 : 1)
@@ -270,6 +287,9 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock)
 
         return ordered.DistinctBy(Subject).Take(count).ToList();
     }
+
+    /// <summary>Een kaart enkel als ze goedgekeurd is: een kaart is een hele dag, een fout stadion of club weegt dan te zwaar.</summary>
+    private static bool ApprovedOnly(QuestionType type) => type == QuestionType.Kaart;
 
     /// <summary>
     /// Kiest per gewenste moeilijkheid uit <paramref name="targets"/> één kandidaat: eerst de laagste <paramref name="tier"/>

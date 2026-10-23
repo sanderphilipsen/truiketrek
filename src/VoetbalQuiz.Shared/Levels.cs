@@ -1,6 +1,9 @@
 namespace VoetbalQuiz.Shared;
 
-/// <summary>Wat een speler gedaan heeft, de basis voor XP.</summary>
+/// <summary>
+/// Wat een speler gedaan heeft, de basis voor XP. CorrectPoints: de punten van juiste antwoorden, plus alle punten van
+/// types met deelpunten (<see cref="QuestionRules.PartialScores"/>: kaart, opstelling, counter), ook als die niet volledig juist zijn.
+/// </summary>
 public record XpInput(
     int QuestionsPlayed, int CorrectPoints, int DaysCompleted, int PerfectDays, int DaysWon,
     int MatchesPlayed = 0, int MatchesWon = 0);

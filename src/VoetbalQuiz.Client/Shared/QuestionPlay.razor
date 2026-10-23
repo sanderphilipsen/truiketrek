@@ -60,6 +60,62 @@
         }
         break;
 
+    case QuestionType.Kaart:
+        @* Deel 1: bij elke speld de club(s) kiezen. Deel 2: de club staat bij de speld, kies het stadion. *@
+        var stadiums = View?.Part == QuestionRules.KaartStadiumsPart;
+        <div class="kaart-q">
+            <p class="prompt kaart-prompt">@View?.Prompt</p>
+            <BelgieKaart Pins="KaartPins(View)" LabelHuidig="stadiums" />
+        </div>
+        @if (!ReadOnly && CurrentPin is { } pin)
+        {
+            @* Vast paneel onderaan: keuzelijst(en) en knoppen blijven altijd zichtbaar, ook bij een gedeeld stadion op een
+               klein scherm. De reactie op de vorige speld heeft een vaste plaats, zodat de knoppen nooit verspringen. *@
+            <div class="kaart-panel">
+                <div class="kaart-feedback" role="status" aria-live="polite">
+                    @if (LastAnswered is { } last)
+                    {
+                        <div class="kaart-fb @(last.IsRight ? "ok" : last.Hits > 0 ? "half" : "bad")" @key="View!.Found">
+                            <Icon Name="@(last.IsRight ? "check-circle" : "x-circle")" />
+                            <span>@FeedbackText(last, stadiums)</span>
+                        </div>
+                    }
+                </div>
+                <div class="kaart-head">
+                    <span class="kaart-count">Speld <b>@(View!.Found + 1)</b>/@View.Total</span>
+                    @if (stadiums)
+                    {
+                        <b class="kaart-clubs">@string.Join(" en ", pin.Clubs ?? [])</b>
+                    }
+                    else if (pin.Choices > 1)
+                    {
+                        <span class="kaart-shared">Gedeeld stadion: @pin.Choices clubs</span>
+                    }
+                </div>
+                @* Bij een gedeeld stadion staan de keuzelijsten naast elkaar: het paneel wordt niet hoger. *@
+                <div class="kaart-selects" style="--kaart-lijsten: @pin.Choices">
+                @for (var i = 0; i < pin.Choices; i++)
+                {
+                    var index = i;
+                    <select class="kaart-select" value="@KaartChoice(index)" disabled="@Busy"
+                            aria-label="@SelectLabel(pin, index, stadiums)"
+                            @onchange="e => SetKaartChoice(index, e.Value?.ToString())">
+                        <option value="">@(stadiums ? "Kies een stadion…" : pin.Choices > 1 ? $"Club {index + 1}…" : "Kies een club…")</option>
+                        @foreach (var option in View.Options ?? [])
+                        {
+                            <option value="@option">@option</option>
+                        }
+                    </select>
+                }
+                </div>
+                <div class="kaart-actions">
+                    <button class="btn skip" @onclick="SkipPinAsync" disabled="@Busy">Overslaan</button>
+                    <button class="btn primary" @onclick="ConfirmPinAsync" disabled="@(Busy || !KaartReady(pin))">Bevestig</button>
+                </div>
+            </div>
+        }
+        break;
+
     default:
         @* Getypte types: Wie ben ik?, Carrièrepad, Emoji, Opstelling, Wissel, Rugnummer, Mannetje, Kluts en Counter *@
         @if (Type == QuestionType.Emoji)
@@ -242,6 +298,78 @@
         if (_orderSent || _order.Count == 0) return;
         _orderSent = true;
         if (await Send(string.Join(",", _order)) is null) _orderSent = false;
+    }
+
+    // ---------- Kaart ----------
+
+    /// <summary>Kaart: de gekozen club per keuzelijst van de huidige speld (leeg = nog niets gekozen).</summary>
+    private string[] _kaartChoices = [];
+
+    /// <summary>Kaart: voor welke speld (aantal al beantwoorde) de keuzes gelden; een nieuwe speld begint leeg.</summary>
+    private int _kaartFor = -1;
+
+    private KaartSpeld? CurrentPin => View?.Pins?.FirstOrDefault(p => p.IsCurrent);
+
+    /// <summary>Kaart: de laatst beantwoorde speld (de spelden komen in de volgorde waarin ze verschenen).</summary>
+    private KaartSpeld? LastAnswered => View is { Found: > 0, Pins: { } pins } ? pins.ElementAtOrDefault(View.Found - 1) : null;
+
+    /// <summary>
+    /// De spelden van de server als spelden op de kaart: groen, oranje (deels) of rood. Het label is de club: in deel 1
+    /// na het antwoord, in deel 2 ook bij de huidige speld (daar is de club de vraag).
+    /// </summary>
+    public static List<KaartPin> KaartPins(QuestionView? view) =>
+        view?.Pins?.Select(p => new KaartPin(p.Lat, p.Lon,
+            p.IsCurrent ? KaartPinState.Huidig : p.IsRight ? KaartPinState.Juist : p.Hits > 0 ? KaartPinState.Deels : KaartPinState.Fout,
+            p.Clubs is null ? null : string.Join(" / ", p.Clubs))).ToList() ?? [];
+
+    /// <summary>"Juist: Genk" of "Fout: het was Genk (jij: Standard)"; in deel 2 met het stadion.</summary>
+    private static string FeedbackText(KaartSpeld last, bool stadiums)
+    {
+        var answer = string.Join(" en ", last.Answer ?? []);
+        if (last.IsRight) return $"Juist: {answer}";
+        var mine = string.IsNullOrEmpty(last.Pick) ? "overgeslagen" : "jij: " + last.Pick.Replace(QuestionRules.KaartSeparator.ToString(), " en ");
+        return $"{(last.Hits > 0 ? "Deels juist" : "Fout")}: het was {answer} ({mine})";
+    }
+
+    private static string SelectLabel(KaartSpeld pin, int index, bool stadiums) =>
+        stadiums ? $"In welk stadion speelt {string.Join(" en ", pin.Clubs ?? [])}?"
+        : pin.Choices > 1 ? $"Club {index + 1} van dit stadion" : "Welke club speelt hier?";
+
+    private string KaartChoice(int index) => _kaartChoices.ElementAtOrDefault(index) ?? "";
+
+    private void SetKaartChoice(int index, string? choice)
+    {
+        if (index < _kaartChoices.Length) _kaartChoices[index] = choice ?? "";
+    }
+
+    /// <summary>Elke keuzelijst ingevuld (bij een gedeeld stadion in deel 1 alle clubs).</summary>
+    private bool KaartReady(KaartSpeld pin) => _kaartChoices.Length == pin.Choices && _kaartChoices.All(c => c.Length > 0);
+
+    /// <summary>De gok gaat met het nummer van de speld mee: een dubbele tik telt zo nooit voor de volgende speld.</summary>
+    private Task SendPinAsync(string answer) => Send(QuestionRules.KaartGuess((View?.Found ?? 0) + 1, answer));
+
+    private async Task ConfirmPinAsync()
+    {
+        if (CurrentPin is not { } pin || !KaartReady(pin) || Busy) return;
+        await SendPinAsync(string.Join(QuestionRules.KaartSeparator, _kaartChoices));
+    }
+
+    /// <summary>Overslaan telt als fout: de volgende speld verschijnt.</summary>
+    private async Task SkipPinAsync()
+    {
+        if (Busy) return;
+        await SendPinAsync(QuestionRules.KaartSkip);
+    }
+
+    protected override void OnParametersSet()
+    {
+        // Een nieuwe speld: lege keuzelijsten, één per club (deel 1) of één voor het stadion (deel 2).
+        if (Type == QuestionType.Kaart && View is { } view && view.Found != _kaartFor)
+        {
+            _kaartFor = view.Found;
+            _kaartChoices = new string[CurrentPin?.Choices ?? 0];
+            Array.Fill(_kaartChoices, "");
+        }
     }
 
     protected override async Task OnParametersSetAsync()

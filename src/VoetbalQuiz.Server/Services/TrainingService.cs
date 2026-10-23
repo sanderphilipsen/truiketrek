@@ -154,7 +154,7 @@ public class TrainingService(QuizDbContext db, TimeProvider clock, QuizService q
             var status = AttemptFlow.StatusOf(a);
             var answered = status == QuestionStatus.Answered;
             return new QuestionSummary(q.Number, status, answered ? a!.Points : null, answered ? a!.Correct : null,
-                answered ? QuestionEngine.AnswerLabel(q) : null);
+                answered ? QuestionEngine.AnswerLabel(q) : null, q.Type);
         }).ToList();
 
         var types = TypesOf(challenge);

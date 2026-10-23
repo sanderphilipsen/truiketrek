@@ -240,6 +240,7 @@ public sealed class NewRoundTests : IDisposable
         Assert.Contains(Commentary.ForResult(true, 100, 100, 1), Commentary.Perfect);
         Assert.Contains(Commentary.ForResult(true, 80, 100, 1), Commentary.Goal);
         Assert.Contains(Commentary.ForResult(false, 50, 100, 1), Commentary.Almost);
+        Assert.Contains(Commentary.ForResult(false, 25, 100, 1), Commentary.Partial); // minder dan de helft is geen "bijna"
         Assert.Contains(Commentary.ForResult(false, 0, 100, -3), Commentary.Missed);
     }
 

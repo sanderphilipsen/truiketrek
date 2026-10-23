@@ -44,7 +44,9 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
         new("gokker", "🎲", "Gokker van dienst", "50 foute pogingen (gewaagd!)", BadgeTier.Brons, f => f.WrongGuesses, 50),
 
         // Vraagtypes
-        new("allrounder", "🧠", "Allrounder", $"Speel elk van de {QuestionTypes.All.Count} vraagtypes", BadgeTier.Zilver, f => f.TypesPlayed, QuestionTypes.All.Count),
+        // Solo-types (de kaart) tellen niet mee: een kaartdag komt niet elke week, de badge mag daar niet op wachten.
+        new("allrounder", "🧠", "Allrounder", $"Speel elk van de {QuestionTypes.All.Count(t => !QuestionTypes.IsSolo(t.Type))} vraagtypes", BadgeTier.Zilver,
+            f => f.TypesPlayed, QuestionTypes.All.Count(t => !QuestionTypes.IsSolo(t.Type))),
         new("jaartallenkenner", "📆", "Jaartallenkenner", "10 keer het exacte jaar", BadgeTier.Brons, f => f.ExactYears, 10),
         new("historicus", "📜", "Historicus", "50 keer het exacte jaar", BadgeTier.Goud, f => f.ExactYears, 50),
         new("supersnel", "💨", "Supersnel", "25 keer 90+ punten bij Snelvuur", BadgeTier.Zilver, f => f.FastSnelvuur, 25),
@@ -228,7 +230,7 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
             goldenBalls.Count,
             LongestMonthRun(goldenBalls),
             trophies.Count(t => t.Kind == TrophyKind.Month && t.Place == 2),
-            attempts.Select(a => a.Type).Distinct().Count(),
+            attempts.Select(a => a.Type).Where(t => !QuestionTypes.IsSolo(t)).Distinct().Count(),
             Hits(QuestionType.Jaar, p => p == 100),
             Hits(QuestionType.Snelvuur, p => p >= 90),
             Hits(QuestionType.NietBij),

@@ -83,6 +83,9 @@ public interface IQuizQuestion
     QuizItem? QuizItem { get; }
     List<int> Blanks { get; }
     List<Player> CounterPlayers { get; }
+
+    /// <summary>Kaart: welk deel van de kaartdag (<see cref="QuestionRules.KaartClubsPart"/> of <see cref="QuestionRules.KaartStadiumsPart"/>); 0 bij de andere types.</summary>
+    int Part { get; }
 }
 
 public class DailyQuestion : IQuizQuestion
@@ -110,6 +113,12 @@ public class DailyQuestion : IQuizQuestion
     /// <summary>Counter: de spelers zelf (niet opgeslagen, ingeladen door QuizService).</summary>
     [System.ComponentModel.DataAnnotations.Schema.NotMapped]
     public List<Player> CounterPlayers { get; set; } = [];
+
+    /// <summary>
+    /// Kaart: welk deel van de kaartdag. Beide delen gebruiken dezelfde kaart (QuizItem): deel 1 de clubs, deel 2 de stadions.
+    /// 0 bij de andere types.
+    /// </summary>
+    public int Part { get; set; }
 }
 
 /// <summary>Eén poging van een gebruiker op een vraag. Alle tijden zijn servertijden (UTC).</summary>
@@ -154,6 +163,12 @@ public abstract class AttemptState
 
     /// <summary>Counter: welke spelers (index) overgeslagen zijn.</summary>
     public List<int> Skipped { get; set; } = [];
+
+    /// <summary>
+    /// Kaart: wat de speler per beantwoorde speld koos, in de volgorde van de spelden ("Club Brugge|Cercle Brugge" of een
+    /// stadion; leeg = overgeslagen). <see cref="Found"/> houdt per speld bij hoeveel daarvan juist was.
+    /// </summary>
+    public List<string> Picks { get; set; } = [];
 }
 
 // ---------- Training ----------
@@ -279,6 +294,10 @@ public class MatchQuestion : IQuizQuestion
     /// <summary>Counter: de spelers zelf (niet opgeslagen, ingeladen door MatchService).</summary>
     [System.ComponentModel.DataAnnotations.Schema.NotMapped]
     public List<Player> CounterPlayers { get; set; } = [];
+
+    /// <summary>Online is er geen kaart (zie <see cref="MatchRules.AllowedOnline"/>), dus nooit een deel.</summary>
+    [System.ComponentModel.DataAnnotations.Schema.NotMapped]
+    public int Part => 0;
 
     /// <summary>Wanneer de eerste tip verschijnt (null = nog niet aan de beurt).</summary>
     public DateTime? StartsAt { get; set; }

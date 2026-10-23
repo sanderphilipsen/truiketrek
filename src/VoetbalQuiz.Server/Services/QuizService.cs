@@ -98,7 +98,8 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
                 q.Number, status,
                 status == QuestionStatus.Answered ? a!.Points : null,
                 status == QuestionStatus.Answered ? a!.Correct : null,
-                status == QuestionStatus.Answered ? QuestionEngine.AnswerLabel(q) : null);
+                status == QuestionStatus.Answered ? QuestionEngine.AnswerLabel(q) : null,
+                q.Type);
         }).ToList();
 
         await SaveAsync();
