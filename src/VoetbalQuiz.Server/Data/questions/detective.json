@@ -6,12 +6,12 @@
     "suspects": [
       { "key": "ceulemans", "name": "Jan Ceulemans", "card": "Middenvelder · Gouden Schoen 1980, 1985, 1986" },
       { "key": "scifo", "name": "Enzo Scifo", "card": "Middenvelder · Gouden Schoen 1984" },
-      { "key": "vanderelst", "name": "Franky Van der Elst", "card": "Middenvelder · Gouden Schoen 1996, 1997" },
+      { "key": "vanderelst", "name": "Franky Van der Elst", "card": "Middenvelder · Gouden Schoen 1990, 1996" },
       { "key": "sonck", "name": "Wesley Sonck", "card": "Spits · Gouden Schoen 2001" },
       { "key": "simons", "name": "Timmy Simons", "card": "Middenvelder · Gouden Schoen 2002" },
       { "key": "kompany", "name": "Vincent Kompany", "card": "Verdediger · Gouden Schoen 2004" },
       { "key": "witsel", "name": "Axel Witsel", "card": "Middenvelder · Gouden Schoen 2008" },
-      { "key": "vanaken", "name": "Hans Vanaken", "card": "Middenvelder · Gouden Schoen 2018, 2019" }
+      { "key": "vanaken", "name": "Hans Vanaken", "card": "Middenvelder · Gouden Schoen 2018, 2019, 2024" }
     ],
     "culprit": "vanaken",
     "clues": [
@@ -28,7 +28,7 @@
       {
         "text": "De dader speelde nooit voor Anderlecht.",
         "excludes": ["kompany"],
-        "explain": { "kompany": "Kwam uit de jeugd van Anderlecht en speelde er 2003-06 en 2019-20." }
+        "explain": { "kompany": "Speelde voor Anderlecht in 2003-06 en opnieuw in 2019-20." }
       },
       {
         "text": "De dader speelde ooit voor Club Brugge.",
@@ -46,16 +46,19 @@
       {
         "text": "De dader won minstens één Gouden Schoen na 2000.",
         "excludes": ["vanderelst"],
-        "explain": { "vanderelst": "Won zijn twee Gouden Schoenen in 1996 en 1997." }
+        "explain": { "vanderelst": "Won zijn twee Gouden Schoenen in 1990 en 1996." }
       }
     ],
-    "solution": "Hans Vanaken speelde in het eerste elftal enkel voor Belgische clubs (Lommel, Lokeren en Club Brugge) en won de Gouden Schoen in 2018 en 2019.",
+    "solution": "Hans Vanaken speelde in het eerste elftal enkel voor Belgische clubs (Lommel United, Lokeren en Club Brugge) en won de Gouden Schoen in 2018, 2019 en 2024.",
     "difficulty": 3,
-    "status": "review",
-    "reviewNote": "Eerste zaak, feiten nog na te kijken door inhoud-controleur. Vanaken is actief: vóór elke inzet controleren of hij nog geen buitenlandse club had.",
+    "status": "approved",
+    "reviewNote": "Nagekeken door inhoud-controleur (23/10/2026): waterdicht na correcties (Van der Elst 1990 en 1996, Vanaken ook 2024). Vanaken is actief: vóór elke inzet controleren of hij nog geen buitenlandse club had.",
     "sources": [
-      "https://nl.wikipedia.org/wiki/Gouden_Schoen",
+      "https://nl.wikipedia.org/wiki/Gouden_Schoen_(Belgi%C3%AB)",
       "https://nl.wikipedia.org/wiki/Hans_Vanaken",
+      "https://www.clubbrugge.be/en/news/hans-vanaken-wint-derde-gouden-schoen",
+      "https://nl.wikipedia.org/wiki/Franky_Van_der_Elst",
+      "https://nl.wikipedia.org/wiki/Jan_Ceulemans",
       "https://nl.wikipedia.org/wiki/Enzo_Scifo",
       "https://nl.wikipedia.org/wiki/Wesley_Sonck",
       "https://nl.wikipedia.org/wiki/Timmy_Simons",
