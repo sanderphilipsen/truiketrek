@@ -76,7 +76,7 @@ Specials houden hun eigen klassement op de specialpagina; hun punten tellen mee 
 - Wie op het einde van de maand **bovenaan het maandklassement** staat, wint de **Gouden Bal**. Bij een gedeelde eerste plaats krijgen ze hem allebei.
 - Elke Gouden Bal is voor altijd een **kleine ster op het shirt** van je avatar (drie per rij, max. 9 getekend).
 - De winnaar draagt de **hele volgende maand een gouden rand** rond de avatar; daarna gaat die over naar de volgende winnaar.
-- Op de **eerste dag van de maand** staat de nieuwe Gouden Bal groot op het dashboard ("Gouden Bal oktober"). Op Stats staat de lijst van alle Gouden Ballen.
+- De eerste keer dat je na de toekenning Home opent, komt de **uitreiking** groot over het scherm: de winnaar met de nummers 2 en 3 (één keer per speler, enkel als je toen al een account had). Op de **eerste dag van de maand** staat de nieuwe Gouden Bal ook als strook bovenaan Home ("Gouden Bal oktober"). Op Stats staat de lijst van alle Gouden Ballen.
 - De server legt de winnaar één keer vast bij het eerste verzoek nadat de maand ook in UTC voorbij is (in België tussen 1 en 2 uur op de eerste). Loopt er nog een special die in die maand startte, dan wacht hij tot die afgelopen is; de aankondiging komt dan op de dag van toekenning. De winnaar wordt bewaard in de tabellen `GoldenBalls` en `GoldenBallMonths` ([GoldenBallService.cs](src/VoetbalQuiz.Server/Services/GoldenBallService.cs)), zodat sterren niet meer verschuiven. Badges: Gouden Bal, Zilveren Bal (tweede), Titelverdediger (twee maanden na elkaar), Gouden hattrick (3) en Messi-niveau (8).
 
 ### Specials

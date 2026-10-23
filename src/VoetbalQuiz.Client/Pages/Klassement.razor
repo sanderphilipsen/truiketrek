@@ -114,6 +114,9 @@ else
     /// <summary>Open meteen een tabblad, bv. <c>/klassement?tab=maand</c> vanaf Home.</summary>
     [SupplyParameterFromQuery(Name = "tab")] public string? StartTab { get; set; }
 
+    /// <summary>Open het maandklassement op een afgelopen maand, bv. <c>?tab=maand&amp;maand=2026-10</c> vanaf de Gouden Bal.</summary>
+    [SupplyParameterFromQuery(Name = "maand")] public string? StartMonth { get; set; }
+
     private bool IsCurrentMonth => _year == QuizDay.Today().Year && _month == QuizDay.Today().Month;
 
     private string Label => _tab switch { Tab.Vandaag => "Vandaag", Tab.Maand => "Maand", _ => "Online" };
@@ -129,6 +132,8 @@ else
     protected override Task OnInitializedAsync()
     {
         if (Enum.TryParse<Tab>(StartTab, ignoreCase: true, out var start)) _tab = start;
+        if (DateOnly.TryParseExact(StartMonth + "-01", "yyyy-MM-dd", out var month) && month <= QuizDay.Today())
+            (_year, _month) = (month.Year, month.Month);
         return LoadAsync();
     }
 

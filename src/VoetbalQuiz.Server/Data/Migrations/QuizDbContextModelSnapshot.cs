@@ -199,6 +199,9 @@ namespace VoetbalQuiz.Server.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
 
+                    b.Property<DateOnly?>("GoldenBallSeenMonth")
+                        .HasColumnType("date");
+
                     b.Property<int?>("HomeRank")
                         .HasColumnType("integer");
 

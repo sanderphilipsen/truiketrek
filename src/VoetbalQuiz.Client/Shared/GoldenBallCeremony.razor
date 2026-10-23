@@ -1,0 +1,127 @@
+@* De uitreiking van de Gouden Bal: één keer per speler groot over Home, de eerste keer na de toekenning.
+   De server beslist of ze getoond wordt (zie GoldenBallOverview.Ceremony); wegklikken onthoudt de server, ook voor andere toestellen. *@
+@implements IDisposable
+@inject GoldenBallState GoldenBall
+
+@if (GoldenBall.Overview?.Ceremony is { } c)
+{
+    var mine = c.Winners.Any(w => w.IsMe);
+    var me = c.Winners.FirstOrDefault(w => w.IsMe);
+    <div class="reward-backdrop" @onclick="CloseAsync">
+        <div class="reward-card gb-ceremony @(mine ? "me" : "")" role="dialog" aria-modal="true" aria-labelledby="gb-ceremony-title"
+             @onclick:stopPropagation="true" @onkeydown="OnKeyDown">
+            @if (mine)
+            {
+                <div class="confetti" aria-hidden="true">
+                    @foreach (var p in _confetti)
+                    {
+                        <i style="left:@(p.Left)%;background:@p.Color;animation-delay:@(p.Delay)ms;animation-duration:@(p.Duration)ms;--drift:@(p.Drift)px"></i>
+                    }
+                </div>
+            }
+
+            <div class="reward-kicker">Uitreiking · @c.MonthName</div>
+            <span class="gb-ceremony-ball" aria-hidden="true"><Icon Name="soccer-ball" /></span>
+            <h2 id="gb-ceremony-title" class="gb-ceremony-title">
+                @if (mine)
+                {
+                    <text>Jij wint de<br />Gouden Bal</text>
+                }
+                else
+                {
+                    <text>Gouden Bal</text>
+                }
+            </h2>
+
+            <div class="gb-ceremony-winners">
+                @foreach (var w in c.Winners)
+                {
+                    <div class="gb-ceremony-winner">
+                        <Avatar Id="@w.AvatarId" User="@w.UserName" Size="@(c.Winners.Count > 1 ? 84 : 104)" />
+                        @if (!mine || c.Winners.Count > 1)
+                        {
+                            <b>@(w.IsMe ? "Jij" : w.UserName)</b>
+                        }
+                        <span class="gb-ceremony-points"><span class="sb-digits">@w.Points</span> maandpunten</span>
+                        @if (!mine)
+                        {
+                            var stars = GoldenBall.StarsOf(w.UserName);
+                            <small><span class="gb-ceremony-stars" aria-hidden="true">@(new string('★', Math.Min(stars, GoldenBallRules.MaxStarsShown)))</span> @StarsText(stars)</small>
+                        }
+                    </div>
+                }
+            </div>
+
+            @if (me is not null)
+            {
+                <ul class="gb-ceremony-prize">
+                    <li><span aria-hidden="true">★</span> Een nieuwe ster op je shirt</li>
+                    <li><span aria-hidden="true">◯</span> Heel @DutchDates.Month(c.Month % 12 + 1) een gouden rand</li>
+                </ul>
+            }
+
+            @if (c.RunnersUp.Count > 0)
+            {
+                <ol class="gb-ceremony-podium" aria-label="Ook op het podium">
+                    @foreach (var r in c.RunnersUp)
+                    {
+                        <li class="@(r.IsMe ? "me" : "")">
+                            <span class="mp-medal top-@Math.Min(r.Rank, 3)">@r.Rank</span>
+                            <Avatar Id="@r.AvatarId" User="@r.UserName" Size="28" Decorative="true" />
+                            <span class="gb-ceremony-name">@(r.IsMe ? "Jij" : r.UserName)</span>
+                            <span class="gb-ceremony-pts">@r.Points</span>
+                        </li>
+                    }
+                </ol>
+            }
+
+            <button class="btn big gb-ceremony-go" @ref="_button" @onclick="CloseAsync">@(mine ? "Top, verder" : "Verder")</button>
+            @if (!mine)
+            {
+                <a class="gb-ceremony-link" href="klassement?tab=maand&maand=@c.Year-@c.Month.ToString("00")" @onclick="CloseAsync">Bekijk het klassement ›</a>
+            }
+        </div>
+    </div>
+}
+
+@code {
+    private record Piece(int Left, string Color, int Delay, int Duration, int Drift);
+    private static readonly string[] Colors = ["#f5c400", "#fac775", "#ffffff", "#e0b100", "#1f9d55"];
+
+    private List<Piece> _confetti = [];
+    private ElementReference _button;
+    private bool _focused;
+
+    protected override void OnInitialized()
+    {
+        GoldenBall.Changed += Redraw;
+        var rnd = new Random();
+        _confetti = Enumerable.Range(0, 48).Select(_ => new Piece(
+            rnd.Next(0, 100), Colors[rnd.Next(Colors.Length)], rnd.Next(0, 900), rnd.Next(1600, 2800), rnd.Next(-60, 60))).ToList();
+    }
+
+    // Zodra de uitreiking verschijnt, krijgt de knop de focus: zo weten toetsenbord en schermlezer waar ze zijn.
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (_focused || GoldenBall.Overview?.Ceremony is null) return;
+        _focused = true;
+        try { await _button.FocusAsync(); } catch (InvalidOperationException) { }
+    }
+
+    private async Task OnKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Escape") await CloseAsync();
+    }
+
+    private Task CloseAsync() => GoldenBall.DismissCeremonyAsync();
+
+    private static string StarsText(int stars) => stars switch
+    {
+        <= 1 => "eerste Gouden Bal",
+        var n => $"{n}e Gouden Bal",
+    };
+
+    private void Redraw() => InvokeAsync(StateHasChanged);
+
+    public void Dispose() => GoldenBall.Changed -= Redraw;
+}

@@ -1827,6 +1827,41 @@ button.choice:active { transform: scale(.97); }
     .golden-ball-card .gb-ball { animation: none; }
 }
 
+/* De uitreiking (GoldenBallCeremony): de beloningstegel met de winnaar groot, de nummers 2 en 3 als rijen van het
+   mini-podium. De knop is hier bewust vol geel: de uitreiking is één keer per maand het moment van de app.
+   De winnaar zelf krijgt een gele lijn rond de tegel en confetti. */
+.gb-ceremony.me { box-shadow: inset 0 0 0 1.5px var(--sb-digit), 0 20px 60px rgba(0, 0, 0, .45); }
+.gb-ceremony-ball { display: inline-flex; margin-top: 10px; font-size: 2.6rem; color: var(--sb-digit); animation: gb-spin 2.4s ease-in-out infinite; }
+.gb-ceremony-title { margin: 2px 0 0; font-size: 1.4rem; font-weight: 900; line-height: 1.15; letter-spacing: .04em; text-transform: uppercase; color: #fff; }
+.gb-ceremony-winners { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 20px; margin-top: 16px; }
+.gb-ceremony-winner { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 0; }
+.gb-ceremony-winner .avatar { margin-bottom: 6px; }
+.gb-ceremony-winner b { font-size: 1.25rem; font-weight: 800; color: #fff; overflow-wrap: anywhere; }
+.gb-ceremony-points { color: var(--muted); font-size: .9rem; }
+.gb-ceremony-points .sb-digits { font-size: 1.25rem; }
+.gb-ceremony-winner small { color: var(--muted); font-size: .85rem; }
+.gb-ceremony-stars { color: var(--sb-digit); letter-spacing: .05em; }
+.gb-ceremony-prize {
+    list-style: none; margin: 14px 0 0; padding: 10px 12px; display: grid; gap: 4px; text-align: left;
+    border-radius: var(--radius); background: var(--warn-bg); font-size: .92rem;
+}
+.gb-ceremony-prize span { display: inline-block; width: 1.2em; color: var(--sb-digit); }
+.gb-ceremony-podium { list-style: none; margin: 14px 0 0; padding: 0; text-align: left; }
+.gb-ceremony-podium li { display: flex; align-items: center; gap: 8px; padding: 7px 2px; border-top: 1px solid var(--divider); font-size: .95rem; }
+.gb-ceremony-podium .mp-medal {
+    flex: none; display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 5px;
+    font-family: var(--digits); font-size: .75rem; font-weight: 800; color: #13241b; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .35);
+}
+.gb-ceremony-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gb-ceremony-podium li.me .gb-ceremony-name { font-weight: 800; }
+.gb-ceremony-pts { flex: none; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--muted); }
+.btn.big.gb-ceremony-go { margin-top: 16px; background: var(--accent); color: #1b1600; box-shadow: none; font-weight: 800; }
+.btn.big.gb-ceremony-go:hover { background: #ffd21f; }
+.gb-ceremony-link { display: inline-flex; align-items: center; min-height: var(--tap); margin-top: 4px; color: var(--sb-digit); font-weight: 700; font-size: .92rem; text-decoration: none; }
+@media (prefers-reduced-motion: reduce) {
+    .gb-ceremony-ball { animation: none; }
+}
+
 /* Home: de Gouden Bal als compacte strook onder de daily, die openklapt naar de winnaars. */
 .gb-strip {
     margin-bottom: 16px; border-radius: var(--radius); color: #1b1600;

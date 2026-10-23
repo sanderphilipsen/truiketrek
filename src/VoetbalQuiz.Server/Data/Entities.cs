@@ -27,6 +27,9 @@ public class AppUser : IdentityUser
     /// bijgewerkt (zie LastSeenTracker). Null = nog nooit gezien sinds deze kolom bestaat.
     /// </summary>
     public DateTime? LastSeenAt { get; set; }
+
+    /// <summary>De maand (eerste dag) waarvan de speler de uitreiking van de Gouden Bal al zag. Null = nog nooit.</summary>
+    public DateOnly? GoldenBallSeenMonth { get; set; }
 }
 
 public class Player
