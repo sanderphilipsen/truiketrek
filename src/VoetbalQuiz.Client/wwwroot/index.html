@@ -69,6 +69,17 @@
                 nextIsBack = false;
                 return result;
             };
+            // Vervangen (bv. van vraag naar vraag) telt niet als extra stap terug, maar schuift wel.
+            const replace = history.replaceState;
+            history.replaceState = function (...args) {
+                const before = location.href;
+                const result = replace.apply(this, args);
+                if (location.href !== before) {
+                    slide(nextIsBack ? 'back' : 'fwd');
+                    nextIsBack = false;
+                }
+                return result;
+            };
             addEventListener('popstate', () => { depth = Math.max(0, depth - 1); slide('back'); });
             window.truitje.canGoBack = () => depth > 0;
             window.truitje.markBack = () => { nextIsBack = true; };

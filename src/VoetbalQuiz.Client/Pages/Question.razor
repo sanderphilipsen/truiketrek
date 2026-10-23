@@ -4,6 +4,7 @@
 @attribute [Authorize]
 @implements IDisposable
 @inject ApiClient Api
+@inject NavigationManager Nav
 
 <PageTitle>Vraag @Number – Truitje Trek</PageTitle>
 <PitchFx Mood="@PitchMood" Teams="_affiche" />
@@ -20,7 +21,7 @@
 @if (_error is not null)
 {
     <p class="error" role="alert">@_error</p>
-    <a class="btn" href="@OverviewUrl">Terug naar overzicht</a>
+    <a class="btn" href="@OverviewUrl" @onclick="() => Go(OverviewUrl)" @onclick:preventDefault="true">Terug naar overzicht</a>
 }
 else if (_state is null)
 {
@@ -47,11 +48,11 @@ else if (_state.Result is { } result)
     @* De hoofdactie meteen onder het resultaat, zodat ze zonder scrollen in beeld en onder de duim staat; de tips volgen erna. *@
     @if (Number < _total)
     {
-        <a class="btn primary big daily-next" href="@QuestionUrl(Number + 1)">Volgende vraag ›</a>
+        <a class="btn primary big daily-next" href="@QuestionUrl(Number + 1)" @onclick="() => Go(QuestionUrl(Number + 1))" @onclick:preventDefault="true">Volgende vraag ›</a>
     }
     else
     {
-        <a class="btn primary big daily-next" href="@OverviewUrl">Bekijk je score</a>
+        <a class="btn primary big daily-next" href="@OverviewUrl" @onclick="() => Go(OverviewUrl)" @onclick:preventDefault="true">Bekijk je score</a>
     }
 
     <QuestionAnswer Type="_state.Type" Result="result" View="_state.View" />
@@ -92,6 +93,9 @@ else
     private string OverviewUrl => RunId is { } run ? $"academie/poging/{run}" : SpecialId is { } id ? $"special/{id}" : "daily";
     private string QuestionUrl(int n) => RunId is { } run ? $"academie/poging/{run}/vraag/{n}"
         : SpecialId is { } id ? $"special/{id}/vraag/{n}" : $"vraag/{n}";
+    // Binnen een quiz vervangen we de stap in de geschiedenis: zo is de hele daily één stap en loopt
+    // de terugknop van de gsm na afloop niet alle vragen opnieuw af.
+    private void Go(string url) => Nav.NavigateTo(url, replace: true);
     private string QuizApi => RunId is { } run ? ApiClient.TrainingRun(run) : ApiClient.Quiz(SpecialId);
 
     private QuestionState? _state;

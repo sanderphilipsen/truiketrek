@@ -32,7 +32,7 @@ else
 
         @if (next is not null)
         {
-            <a class="btn primary big" href="academie/poging/@RunId/vraag/@next.Number">
+            <a class="btn primary big" href="academie/poging/@RunId/vraag/@next.Number" @onclick="() => Play(next.Number)" @onclick:preventDefault="true">
                 @(answered == 0 ? "Start" : $"Verder met vraag {next.Number}")
             </a>
         }
@@ -74,6 +74,9 @@ else
 }
 
 @code {
+    // Vervangen, niet toevoegen: zie Daily.
+    private void Play(int n) => Nav.NavigateTo($"academie/poging/{RunId}/vraag/{n}", replace: true);
+
     [Parameter] public int RunId { get; set; }
 
     private DailyOverview? _overview;
@@ -98,7 +101,7 @@ else
         try
         {
             var run = await Api.StartTrainingAgainAsync(RunId);
-            Nav.NavigateTo($"academie/poging/{run.Id}/vraag/1");
+            Nav.NavigateTo($"academie/poging/{run.Id}/vraag/1", replace: true);
         }
         catch (ApiException ex)
         {

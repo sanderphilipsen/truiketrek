@@ -42,7 +42,8 @@
         else
         {
             await JS.InvokeVoidAsync("truitje.markBack"); // naar boven voelt als terug: van links inschuiven
-            Nav.NavigateTo(BackHref);
+            // Vervangen, niet toevoegen: anders brengt de terugknop van de gsm je daarna weer naar dit scherm.
+            Nav.NavigateTo(BackHref, replace: true);
         }
     }
 }
