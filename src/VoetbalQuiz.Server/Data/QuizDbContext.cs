@@ -13,6 +13,8 @@ public class QuizDbContext(DbContextOptions<QuizDbContext> options) : IdentityDb
     public DbSet<TrainingRun> TrainingRuns => Set<TrainingRun>();
     public DbSet<TrainingAttempt> TrainingAttempts => Set<TrainingAttempt>();
     public DbSet<Feedback> Feedback => Set<Feedback>();
+    public DbSet<Notification> Notifications => Set<Notification>();
+    public DbSet<Announcement> Announcements => Set<Announcement>();
     public DbSet<SpecialEvent> SpecialEvents => Set<SpecialEvent>();
     public DbSet<QuizItem> QuizItems => Set<QuizItem>();
     public DbSet<DailyScheduleDay> DailySchedule => Set<DailyScheduleDay>();
@@ -51,6 +53,9 @@ public class QuizDbContext(DbContextOptions<QuizDbContext> options) : IdentityDb
         builder.Entity<DailyQuestion>().HasIndex(q => new { q.DailyChallengeId, q.Number }).IsUnique();
         builder.Entity<Feedback>().Property(f => f.Type).HasConversion<string>();
         builder.Entity<Feedback>().Property(f => f.Status).HasConversion<string>();
+        builder.Entity<Notification>().Property(n => n.Kind).HasConversion<string>();
+        builder.Entity<Notification>().HasIndex(n => new { n.UserId, n.CreatedAt });
+        builder.Entity<Announcement>().HasIndex(a => a.CreatedAt);
         builder.Entity<Match>().Property(m => m.Status).HasConversion<string>();
         builder.Entity<Match>().HasIndex(m => m.Status);
         builder.Entity<Match>().Property(m => m.Version).IsConcurrencyToken();

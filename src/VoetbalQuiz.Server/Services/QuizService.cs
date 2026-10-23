@@ -11,7 +11,8 @@ public class QuizException(string message) : Exception(message);
 /// te zien wat op dat moment vrijgegeven is, en de punten worden hier berekend.
 /// Welke vragen in een reeks komen, kiest <see cref="QuestionPicker"/>; wat per vraagtype verschilt, staat in <see cref="QuestionEngine"/>.
 /// </summary>
-public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService results, QuestionPicker picker, MaintenanceNotice maintenance)
+public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService results, QuestionPicker picker, MaintenanceNotice maintenance,
+    StockAlertService stock)
 {
     private DateTime Now => clock.GetUtcNow().UtcDateTime;
 
@@ -27,11 +28,14 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
         var questions = await picker.BuildDailyAsync(date)
                         ?? throw new QuizException("Er zitten nog niet genoeg spelers in de database.");
 
-        return await SaveChallengeAsync(new DailyChallenge { Date = date }, questions,
+        var (saved, created) = await SaveChallengeAsync(new DailyChallenge { Date = date }, questions,
             () => LoadChallengeAsync(c => c.Date == date && c.SpecialEventId == null));
+        if (created) await stock.CheckAsync(saved);
+        return saved;
     }
 
-    private async Task<DailyChallenge> SaveChallengeAsync(
+    /// <summary>Bewaart een nieuwe reeks. <c>Created</c> is false als iemand anders dezelfde reeks net eerder aanmaakte.</summary>
+    private async Task<(DailyChallenge Challenge, bool Created)> SaveChallengeAsync(
         DailyChallenge challenge, List<DailyQuestion> questions, Func<Task<DailyChallenge?>> reload)
     {
         var number = 1;
@@ -46,8 +50,9 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
         {
             // Iemand anders maakte dezelfde reeks tegelijk aan: die gebruiken we.
             db.ChangeTracker.Clear();
+            return ((await reload())!, false);
         }
-        return (await reload())!;
+        return ((await reload())!, true);
     }
 
     public async Task<DailyChallenge?> LoadChallengeAsync(System.Linq.Expressions.Expression<Func<DailyChallenge, bool>> filter)
@@ -75,8 +80,8 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
 
         var questions = await picker.BuildSpecialAsync(special)
                         ?? throw new QuizException("Deze special heeft nog niet genoeg vragen.");
-        return await SaveChallengeAsync(new DailyChallenge { Date = special.StartDate, SpecialEventId = special.Id }, questions,
-            () => LoadChallengeAsync(c => c.SpecialEventId == specialId));
+        return (await SaveChallengeAsync(new DailyChallenge { Date = special.StartDate, SpecialEventId = special.Id }, questions,
+            () => LoadChallengeAsync(c => c.SpecialEventId == specialId))).Challenge;
     }
 
     private Task<DailyChallenge> ChallengeAsync(int? specialId) =>

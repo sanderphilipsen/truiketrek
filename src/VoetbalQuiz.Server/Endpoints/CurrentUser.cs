@@ -15,5 +15,7 @@ public static class CurrentUser
     public static bool IsAdmin(ClaimsPrincipal user, IConfiguration config) => IsAdminName(user.Identity?.Name, config);
 
     public static bool IsAdminName(string? userName, IConfiguration config) =>
-        config.GetSection("Admins").Get<string[]>()?.Contains(userName, StringComparer.OrdinalIgnoreCase) == true;
+        AdminNames(config).Contains(userName, StringComparer.OrdinalIgnoreCase);
+
+    public static string[] AdminNames(IConfiguration config) => config.GetSection("Admins").Get<string[]>() ?? [];
 }

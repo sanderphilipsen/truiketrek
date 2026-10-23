@@ -1,6 +1,7 @@
 using DotNet.Testcontainers.Configurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Time.Testing;
 using Testcontainers.PostgreSql;
@@ -50,8 +51,11 @@ public sealed class PostgresMigrationTests
         await db.SaveChangesAsync();
 
         var clock = new FakeTimeProvider(TestDb.DefaultNow);
+        var picker = new QuestionPicker(db, clock);
         var quiz = new QuizService(db, clock, new ResultsService(db, clock, new MemoryCache(new MemoryCacheOptions())),
-            new QuestionPicker(db, clock), new MaintenanceNotice(null, clock));
+            picker, new MaintenanceNotice(null, clock),
+            new StockAlertService(db, picker, new NotificationService(db, clock, new ConfigurationBuilder().Build()),
+                NullLogger<StockAlertService>.Instance));
         var challenge = await quiz.GetOrCreateChallengeAsync(quiz.Today);
         Assert.NotEmpty(challenge.Questions);
 

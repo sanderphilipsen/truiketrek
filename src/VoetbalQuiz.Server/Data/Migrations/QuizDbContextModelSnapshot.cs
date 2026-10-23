@@ -174,6 +174,35 @@ namespace VoetbalQuiz.Server.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("VoetbalQuiz.Server.Data.Announcement", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Link")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.ToTable("Announcements");
+                });
+
             modelBuilder.Entity("VoetbalQuiz.Server.Data.AppUser", b =>
                 {
                     b.Property<string>("Id")
@@ -181,6 +210,9 @@ namespace VoetbalQuiz.Server.Data.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("integer");
+
+                    b.Property<DateTime?>("AnnouncementsReadAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("AvatarId")
                         .HasColumnType("text");
@@ -798,6 +830,45 @@ namespace VoetbalQuiz.Server.Data.Migrations
                     b.ToTable("MatchQuestions");
                 });
 
+            modelBuilder.Entity("VoetbalQuiz.Server.Data.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Kind")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Link")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("ReadAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId", "CreatedAt");
+
+                    b.ToTable("Notifications");
+                });
+
             modelBuilder.Entity("VoetbalQuiz.Server.Data.Player", b =>
                 {
                     b.Property<int>("Id")
@@ -1257,6 +1328,17 @@ namespace VoetbalQuiz.Server.Data.Migrations
                     b.Navigation("Player");
 
                     b.Navigation("QuizItem");
+                });
+
+            modelBuilder.Entity("VoetbalQuiz.Server.Data.Notification", b =>
+                {
+                    b.HasOne("VoetbalQuiz.Server.Data.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("VoetbalQuiz.Server.Data.TrainingAttempt", b =>

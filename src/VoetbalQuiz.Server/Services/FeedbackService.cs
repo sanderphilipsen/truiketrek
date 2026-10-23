@@ -5,7 +5,7 @@ using VoetbalQuiz.Shared;
 namespace VoetbalQuiz.Server.Services;
 
 /// <summary>Meldingen van spelers (fouten, ideeën) en het antwoord van een admin.</summary>
-public class FeedbackService(QuizDbContext db, TimeProvider clock)
+public class FeedbackService(QuizDbContext db, TimeProvider clock, NotificationService notifications)
 {
     /// <summary>Gewone spelers zien hun eigen meldingen, admins zien alles. Nieuwste eerst.</summary>
     public async Task<FeedbackOverview> ListAsync(string userId, bool admin)
@@ -36,6 +36,9 @@ public class FeedbackService(QuizDbContext db, TimeProvider clock)
             Description = description,
             CreatedAt = clock.GetUtcNow().UtcDateTime,
         });
+        var userName = await db.Users.Where(u => u.Id == userId).Select(u => u.UserName).SingleAsync();
+        await notifications.AddForAdminsAsync(userId, NotificationKind.NieuweFeedback,
+            req.Type == FeedbackType.Bug ? "Nieuwe bug gemeld" : "Nieuw idee", $"{userName}: {title}", "admin/feedback");
         await db.SaveChangesAsync();
     }
 
@@ -45,8 +48,16 @@ public class FeedbackService(QuizDbContext db, TimeProvider clock)
         var item = await db.Feedback.FindAsync(id);
         if (item is null) return false;
 
+        var reply = string.IsNullOrWhiteSpace(req.Reply) ? null : req.Reply.Trim();
+        // De melder hoort het bij een nieuw antwoord of een andere status; enkel opslaan zonder wijziging stuurt niets.
+        var newReply = reply is not null && reply != item.Reply;
+        if (newReply || req.Status != item.Status)
+            notifications.Add(item.UserId, NotificationKind.FeedbackAntwoord,
+                newReply ? "Antwoord op je melding" : $"Je melding staat op {req.Status.ToString().ToLowerInvariant()}",
+                newReply ? $"{item.Title}: {reply}" : item.Title, "feedback");
+
         item.Status = req.Status;
-        item.Reply = string.IsNullOrWhiteSpace(req.Reply) ? null : req.Reply.Trim();
+        item.Reply = reply;
         await db.SaveChangesAsync();
         return true;
     }

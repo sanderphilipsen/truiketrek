@@ -2,6 +2,8 @@ using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Time.Testing;
 using VoetbalQuiz.Server.Data;
 using VoetbalQuiz.Server.Services;
@@ -69,17 +71,25 @@ public sealed class TestDb : IDisposable
     private ProgressService? _progress;
     private TrainingService? _training;
     private FeedbackService? _feedback;
+    private NotificationService? _notifications;
+    private StockAlertService? _stockAlerts;
+
+    /// <summary>De serverconfiguratie: "admin" is de enige admin.</summary>
+    public IConfiguration Config { get; } = new ConfigurationBuilder()
+        .AddInMemoryCollection(new Dictionary<string, string?> { ["Admins:0"] = "admin" }).Build();
 
     public ResultsService Results => _results ??= NewResults(Db);
     public QuestionPicker Picker => _picker ??= new QuestionPicker(Db, Clock);
-    public QuizService Quiz => _quiz ??= new QuizService(Db, Clock, Results, Picker, Maintenance);
+    public QuizService Quiz => _quiz ??= new QuizService(Db, Clock, Results, Picker, Maintenance, StockAlerts);
     public AdminService Admin => _admin ??= new AdminService(Db, Picker, Clock);
     public MonthRankingService Ranking => _ranking ??= new MonthRankingService(Db, Clock, Results);
     public OnlineService Online => _online ??= new OnlineService(Db, Results);
     public GoldenBallService GoldenBall => _goldenBall ??= new GoldenBallService(Db, Clock, Ranking, Results);
     public ProgressService Progress => _progress ??= new ProgressService(Db, Clock, Results, Online, Ranking, GoldenBall);
     public TrainingService Training => _training ??= new TrainingService(Db, Clock, Quiz, Results);
-    public FeedbackService Feedback => _feedback ??= new FeedbackService(Db, Clock);
+    public FeedbackService Feedback => _feedback ??= new FeedbackService(Db, Clock, Notifications);
+    public NotificationService Notifications => _notifications ??= new NotificationService(Db, Clock, Config);
+    public StockAlertService StockAlerts => _stockAlerts ??= new StockAlertService(Db, Picker, Notifications, NullLogger<StockAlertService>.Instance);
 
     /// <summary>Online wedstrijden zonder SignalR; <paramref name="random"/> legt de wapens van een derby vast.</summary>
     public MatchService Matches(Random? random = null) => new(Db, Clock, Results, Picker, new DerbyService(Db, Clock, Picker), new NoNotifier(), random);
@@ -89,7 +99,12 @@ public sealed class TestDb : IDisposable
     /// <summary>Met een eigen, lege cache.</summary>
     public ResultsService NewResults(QuizDbContext db) => new(db, Clock, new MemoryCache(new MemoryCacheOptions()));
 
-    public QuizService NewQuiz(QuizDbContext db) => new(db, Clock, NewResults(db), new QuestionPicker(db, Clock), Maintenance);
+    public QuizService NewQuiz(QuizDbContext db)
+    {
+        var picker = new QuestionPicker(db, Clock);
+        return new(db, Clock, NewResults(db), picker, Maintenance,
+            new StockAlertService(db, picker, new NotificationService(db, Clock, Config), NullLogger<StockAlertService>.Instance));
+    }
 
     public MatchService NewMatches(QuizDbContext db)
     {

@@ -11,6 +11,13 @@
 @* Geen topbar: bovenaan een begroeting volgens het uur en je avatar met je level; de avatar opent je profiel. *@
 <div class="home-top">
     <h1 class="home-hello">@Greeting @Auth.User?.UserName</h1>
+    <a href="meldingen" class="bell" aria-label="@(_unread > 0 ? $"Meldingen, {_unread} nieuw" : "Meldingen")">
+        <Icon Name="bell" />
+        @if (_unread > 0)
+        {
+            <span class="bell-dot" aria-hidden="true">@(_unread > 9 ? "9+" : _unread)</span>
+        }
+    </a>
     @if (Auth.User is { } me)
     {
         <a href="profiel" class="who" aria-label="Jouw spelersfiche: @me.UserName, level @me.Level">
@@ -257,6 +264,7 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
     private Dictionary<int, List<LeaderboardEntry>> _specialTop = [];
     private List<MatchSummary> _myTables = [];
     private bool _introHidden = true; // pas tonen als zeker is dat de speler ze niet weggeklikt heeft
+    private int _unread;
 
     protected override async Task OnInitializedAsync()
     {
@@ -267,6 +275,7 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
             LoadSpecialsAsync(),
             LoadRankAsync(),
             LoadBadgesAsync(),
+            LoadUnreadAsync(),
             LoadIntroAsync(),
             RefreshUserAsync(),
             GoldenBall.EnsureLoadedAsync()); // nieuwe dag: misschien een nieuwe Gouden Bal
@@ -331,6 +340,13 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
             _badges = (badges.Count(b => b.Earned), badges.Count);
         }
         catch (Exception ex) when (ex is ApiException or HttpRequestException) { _badges = null; }
+        StateHasChanged();
+    }
+
+    private async Task LoadUnreadAsync()
+    {
+        try { _unread = (await Api.GetNotificationCountAsync()).Unread; }
+        catch (Exception ex) when (ex is ApiException or HttpRequestException) { _unread = 0; }
         StateHasChanged();
     }
 

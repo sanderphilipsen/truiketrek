@@ -44,10 +44,22 @@
       "port": 5197
     },
     {
+      "name": "voetbalquiz-meldingen",
+      "runtimeExecutable": "pwsh",
+      "runtimeArgs": ["-NoProfile", "-Command", "$env:ASPNETCORE_ENVIRONMENT='Development'; $env:ASPNETCORE_URLS='http://localhost:5198'; $env:Admins__0='proefadmin'; $env:ConnectionStrings__Quiz=((Get-Content src/VoetbalQuiz.Server/appsettings.Development.json | ConvertFrom-Json).ConnectionStrings.Quiz -replace 'Database=voetbalquiz;','Database=voetbalquiz_meldingen;'); dotnet run --project src/VoetbalQuiz.Server -c Release --no-launch-profile"],
+      "port": 5198
+    },
+    {
       "name": "voetbalquiz-goudenbal",
       "runtimeExecutable": "pwsh",
       "runtimeArgs": ["-NoProfile", "-Command", "$env:ASPNETCORE_ENVIRONMENT='Development'; $env:ASPNETCORE_URLS='http://localhost:5199'; $env:ConnectionStrings__Quiz=((Get-Content src/VoetbalQuiz.Server/appsettings.Development.json | ConvertFrom-Json).ConnectionStrings.Quiz -replace 'Database=voetbalquiz;','Database=voetbalquiz_goudenbal;'); dotnet run --project src/VoetbalQuiz.Server -c Migratie --no-launch-profile"],
       "port": 5199
+    },
+    {
+      "name": "voetbalquiz-namen",
+      "runtimeExecutable": "pwsh",
+      "runtimeArgs": ["-NoProfile", "-Command", "$env:ASPNETCORE_ENVIRONMENT='Development'; $env:ASPNETCORE_URLS='http://localhost:5201'; $env:Admins__0='proefadmin'; $env:ConnectionStrings__Quiz=((Get-Content src/VoetbalQuiz.Server/appsettings.Development.json | ConvertFrom-Json).ConnectionStrings.Quiz -replace 'Database=voetbalquiz;','Database=voetbalquiz_namen;'); dotnet run --project src/VoetbalQuiz.Server -c Namen --no-launch-profile"],
+      "port": 5201
     },
     {
       "name": "voetbalquiz-krant",
