@@ -93,9 +93,9 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
             var days = mine.GroupBy(r => r.ChallengeId).ToList();
             var online = matches.GetValueOrDefault(id);
             return new XpInput(
-                // Een type dat de hele dag vult (De Krant) is één vraag, maar telt als een volle dag vragen, en ook zijn
+                // Een type dat een dag op zich vult (De Zondag: 4 artikels) telt samen als een volle dag vragen, en ook zijn
                 // deelpunten tellen (zelden alles juist): anders levert zo'n dag amper XP op.
-                mine.Sum(r => QuestionTypes.Get(r.Type).Alone ? GameRules.QuestionsPerDay : 1),
+                (int)Math.Round(mine.Sum(r => QuestionTypes.Get(r.Type) is { Alone: true } t ? (double)GameRules.QuestionsPerDay / t.PerDay : 1)),
                 mine.Where(r => r.Correct || QuestionTypes.Get(r.Type).Alone).Sum(r => r.Points),
                 days.Count(d => d.Count() == sizes.GetValueOrDefault(d.Key)),
                 days.Count(d => d.Count(r => r.Correct) == sizes.GetValueOrDefault(d.Key)),

@@ -163,7 +163,7 @@
                                 Tip: de tekst rond een gat mag het antwoord van een ander gat niet verraden.
                             </p>
                             <label>Artikel <textarea rows="14" @bind="_lines" @bind:event="oninput" @bind:after="Touch"></textarea></label>
-                            <p class="muted">@article.Gaps.Count gaten (@QuestionRules.KrantMinGaps tot @QuestionRules.KrantMaxGaps) · klok @QuestionRules.KrantLimit(article.Gaps.Count) seconden</p>
+                            <p class="muted">@article.Gaps.Count van de @QuestionRules.KrantGaps gaten · klok @QuestionRules.KrantLimit(article.Gaps.Count) seconden</p>
                             @foreach (var problem in article.Problems) { <p class="error">@problem</p> }
                             <KrantArticle Headline="@_text" Intro="@_explanation" Kind="@_krantKind" Reveal="true"
                                           Paragraphs="Preview(article)" />
@@ -415,8 +415,8 @@
                 if (string.IsNullOrWhiteSpace(_text)) missing.Add("Kop ontbreekt.");
                 var gaps = KrantText.Parse(_lines);
                 if (gaps.Problems.Count > 0) missing.Add("Een gat is ongeldig.");
-                if (gaps.Gaps.Count is < QuestionRules.KrantMinGaps or > QuestionRules.KrantMaxGaps)
-                    missing.Add($"{QuestionRules.KrantMinGaps} tot {QuestionRules.KrantMaxGaps} gaten nodig.");
+                if (gaps.Gaps.Count != QuestionRules.KrantGaps)
+                    missing.Add($"Precies {QuestionRules.KrantGaps} gaten nodig.");
                 break;
         }
         return missing;

@@ -190,7 +190,7 @@ else
 
     private async Task GiveUpAsync()
     {
-        // De Krant is de hele dag: per ongeluk stoppen kost veel, dus eerst vragen.
+        // Een artikel van De Zondag is 250 punten: per ongeluk stoppen kost veel, dus eerst vragen.
         if (_state?.Type == QuestionType.Krant && !await _confirm.AskAsync("Klaar met de krant?",
                 "Open gaten tellen dan niet meer mee. Je kan het artikel niet opnieuw spelen.", "Ja, ik ben klaar", danger: false))
             return;

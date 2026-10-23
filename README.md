@@ -32,7 +32,7 @@ Een mobiele quiz-app (Blazor WebAssembly PWA) om met vrienden te spelen. Elke da
 
 ### Vraagtypes en weekplanning
 
-Er zijn 13 vraagtypes. Elke weekdag heeft in de daily een vast type **of een mix van types**, in te stellen via Admin → **Planning**:
+Er zijn 14 vraagtypes. Elke weekdag (behalve zondag, zie De Zondag) heeft in de daily een vast type **of een mix van types**, in te stellen via Admin → **Planning**:
 
 | Type | Werking | Tijd | Punten |
 |---|---|---|---|
@@ -49,11 +49,11 @@ Er zijn 13 vraagtypes. Elke weekdag heeft in de daily een vast type **of een mix
 | 🌀 Kluts in de zestien | de letters van een spelersnaam door elkaar; elke 4 s valt per woord een letter juist | 26 s | 100 → 50 |
 | 🏃 Counter | zoveel mogelijk spelers in 60 s, met telkens hun duidelijkste tip; doorspelen mag, fout kost niets | 60 s | 20 per speler, tot 200 (5 per dag) |
 | 🔀 Op volgorde | tik 4 kaartjes aan in de juiste volgorde (bv. van oud naar jong); de waarden verschijnen na afloop | 30 s | 100 × juiste paren / 6 |
-| 📰 De Krant | een krantenartikel (verslag, interview of dossier) met 4 tot 12 gaten; tik een gat aan en vul het in, in de volgorde die je wil. Namen opnieuw proberen mag, een getal gok je één keer | 20 s per gat, één klok | 1000 × (som van de gaten) / gaten; getal: exact 1, per stap ernaast 0,75 / 0,5 / 0,25 |
+| 📰 De Zondag | vaste rubriek elke zondag: 4 krantenartikels (verslag, interview of dossier) met elk precies 5 gaten; tik een gat aan en vul het in, in de volgorde die je wil. Namen opnieuw proberen mag, een getal gok je één keer | 20 s per gat (100 s per artikel) | 50 per gat, 250 per artikel; getal: exact 50, per stap ernaast 37,5 / 25 / 12,5 |
 
 - **Mix:** de vragen gaan om beurten over de gekozen types, zolang de dag onder 10 vragen en 1000 punten blijft (een opstelling en een counter tellen voor twee). Een mix van álle types geeft 9 vragen en laat de laatste types van de lijst vallen; kies dus liever een paar types. De verdeling staat in `QuestionTypes.Mix`.
 - **Kluts en counter** gebruiken de spelers (net als "Wie ben ik?"), niet de vragenbank. Een speler komt nooit twee keer voor in dezelfde reeks. Wissel, rugnummer en mannetje staan in de vragenbank (`wissel.json`, `rugnummer.json`, `mannetje.json`), nog met status "te keuren". Op volgorde staat in `volgorde.json` en zit niet in de vaste weekplanning, wel in specials, online en de mix (niet in een derby).
-- **De Krant** (`krant.json`) is één vraag van 1000 punten die de hele dag vult: als dag in de weekplanning of als special met enkel dit type. Het komt nooit in een mix, online of een derby. Gaten schrijf je als `[[Jan Vertonghen / Vertonghen : speler]]` of `[[#69 : minuut]]` (stap voor deelpunten: `[[#115~5 : miljoen euro]]`).
+- **De Zondag** (type `Krant`, `krant.json`) is de vaste daily van elke zondag: 4 artikels van 250 punten, samen 1000. De planning kan zondag niet wijzigen (`QuestionTypes.ResolveSchedule`); staat het type uit, dan wordt zondag een mix. Het komt nooit in een mix, online of een derby, wel in een special met enkel dit type. Gaten schrijf je als `[[Jan Vertonghen / Vertonghen : speler]]` of `[[#69 : minuut]]` (stap voor deelpunten: `[[#115~5 : miljoen euro]]`). Elk artikel heeft precies 5 gaten, en een test controleert dat geen artikel een antwoord van een ander toont. Voor 5 zondagen zijn 20 artikels nodig.
 - **Feedback in voetbaltaal:** een foute gok is "Voorlangs!", "Naast!", …; juist is "Binnen!" of "Zitten!", met de maximumscore "In de winkelhaak!", deelpunten "Tegen de lat!" en niets "Afgefloten." ([Commentary.cs](src/VoetbalQuiz.Shared/Commentary.cs)).
 - **Type uitschakelen:** in Planning zet je een type aan of uit. Een type dat uit staat, komt niet meer in de daily of specials (de vragen blijven bewaard). Een dag met enkel dat type wordt een mix van de types die nog aan staan. Minstens één type blijft altijd aan. Een daily die al gestart is, verandert niet.
 

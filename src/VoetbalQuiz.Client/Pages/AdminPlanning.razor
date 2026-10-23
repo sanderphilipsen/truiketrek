@@ -23,12 +23,20 @@
                 @foreach (var day in _days)
                 {
                     var d = day;
-                    var actual = QuestionTypes.ResolveDay(d.Planned, _disabled);
-                    var changed = !actual.SequenceEqual(d.Planned.Distinct().Order());
+                    var actual = QuestionTypes.ResolveSchedule(d.Type, d.Mix, d.Day, _disabled);
+                    IEnumerable<QuestionType> planned = d.Day == QuestionTypes.ZondagDay ? [QuestionType.Krant] : d.Planned.Distinct().Order();
+                    var changed = !actual.SequenceEqual(planned);
                     <div class="week-day @(d.Day == QuizDay.Today().DayOfWeek ? "today" : "") @(d.IsMix ? "mix" : "")">
                         <b>@QuestionTypes.DayName(d.Day)@(d.Day == QuizDay.Today().DayOfWeek ? " (vandaag)" : "")</b>
+                        @if (d.Day == QuestionTypes.ZondagDay)
+                        {
+                            @* De vaste rubriek: zondag is altijd De Zondag (QuestionTypes.ResolveSchedule). *@
+                            <span>@QuestionTypes.Get(QuestionType.Krant).Icon @QuestionTypes.Get(QuestionType.Krant).Name <small class="muted">(vaste rubriek)</small></span>
+                        }
+                        else
+                        {
                         <select value="@(d.IsMix ? MixValue : d.Type.ToString())" @onchange="e => Change(d.Day, e.Value?.ToString())">
-                            @foreach (var t in QuestionTypes.All)
+                            @foreach (var t in QuestionTypes.All.Where(t => !t.Alone))
                             {
                                 <option value="@t.Type">@t.Icon @t.Name@(_disabled.Contains(t.Type) ? " (uit)" : "")</option>
                             }
@@ -44,6 +52,7 @@
                                             title="@t.Name" @onclick="() => ToggleMix(d.Day, type)">@t.Icon</button>
                                 }
                             </div>
+                        }
                         }
                         <small class="muted day-result">
                             @if (changed)

@@ -5,7 +5,7 @@ public enum QuestionType { WieBenIk, Snelvuur, Carriere, NietBij, Jaar, Emoji, O
 /// <summary>
 /// Vaste eigenschappen per vraagtype. Een dag is altijd maximaal 1000 punten waard.
 /// FromPlayers: de vragen komen uit de spelersdatabase (zoals "Wie ben ik?"), niet uit de vragenbank.
-/// Alone: één vraag is de hele dag (zoals De Krant). Zo'n type komt nooit in een mix of online, enkel als dag op zich.
+/// Alone: het type vult een dag op zich (zoals De Krant, de rubriek "De Zondag"). Het komt nooit in een mix of online.
 /// </summary>
 public record QuestionTypeInfo(
     QuestionType Type, string Name, string Icon, string HowTo, int PerDay, int MaxPoints, string FileName, bool FromPlayers = false,
@@ -28,7 +28,7 @@ public static class QuestionTypes
         new(QuestionType.Kluts, "Kluts in de zestien", "🌀", "De letters van een naam liggen door elkaar. Om de paar seconden valt er één juist.", 10, 100, "", FromPlayers: true),
         new(QuestionType.Counter, "Counter", "🏃", "Zoveel mogelijk spelers in 60 seconden, met één tip per speler. Raden of doorspelen!", 5, 200, "", FromPlayers: true),
         new(QuestionType.Volgorde, "Op volgorde", "🔀", "Tik de kaartjes aan in de juiste volgorde. Hoe dichter, hoe meer punten.", 10, 100, "volgorde"),
-        new(QuestionType.Krant, "De Krant", "📰", "Een krantenartikel met gaten. Tik op een gat en vul het in, in de volgorde die je wil.", 1, 1000, "krant",
+        new(QuestionType.Krant, "De Zondag", "📰", "Elke zondag vier krantenartikels met elk vijf gaten. Tik op een gat en vul het in, in de volgorde die je wil.", 4, 250, "krant",
             Alone: true),
     ];
 
@@ -72,7 +72,7 @@ public static class QuestionTypes
 
     /// <summary>
     /// De types die samen kunnen: een type dat alleen een dag vult (<see cref="QuestionTypeInfo.Alone"/>) valt weg zodra er
-    /// een ander type bij is, want hij zou de hele dag opeisen. Enkel zo'n type (bv. een special "De Krant") mag wel.
+    /// een ander type bij is: zo'n type speel je enkel als dag op zich (bv. De Zondag, of een special met enkel dat type).
     /// </summary>
     private static List<QuestionType> Playable(IEnumerable<QuestionType> types)
     {
@@ -100,7 +100,14 @@ public static class QuestionTypes
     /// </summary>
     public static List<QuestionType> ResolveSchedule(
         QuestionType? type, IReadOnlyCollection<QuestionType>? mixTypes, DayOfWeek day, ICollection<QuestionType> disabled) =>
-        ResolveDay(mixTypes is { Count: > 1 } ? mixTypes : [type ?? DefaultFor(day)], disabled);
+        day == ZondagDay ? ResolveDay([QuestionType.Krant], disabled)
+            : ResolveDay(mixTypes is { Count: > 1 } ? mixTypes : [type ?? DefaultFor(day)], disabled);
+
+    /// <summary>
+    /// De vaste rubriek "De Zondag": de daily van elke zondag is altijd De Krant, wat de planning ook zegt. Staat het type
+    /// uit, dan wordt het een mix van de andere types (zoals bij <see cref="ResolveDay"/>).
+    /// </summary>
+    public const DayOfWeek ZondagDay = DayOfWeek.Sunday;
 
     /// <summary>
     /// De types van een special, zonder de uitgeschakelde. Geen keuze = "Wie ben ik?"; staan ze allemaal uit, dan toch
@@ -147,7 +154,7 @@ public static class QuestionTypes
         DayOfWeek.Thursday => QuestionType.NietBij,
         DayOfWeek.Friday => QuestionType.Emoji,
         DayOfWeek.Saturday => QuestionType.Jaar,
-        _ => QuestionType.Opstelling,
+        _ => QuestionType.Krant, // zondag: de vaste rubriek "De Zondag"
     };
 
     public static readonly DayOfWeek[] Week =
@@ -206,9 +213,8 @@ public static class QuestionRules
     public const double KrantSecondsPerGap = 20;
     public const double KrantMinSeconds = 60;
 
-    /// <summary>De Krant: zoveel gaten mag een artikel hebben.</summary>
-    public const int KrantMinGaps = 4;
-    public const int KrantMaxGaps = 12;
+    /// <summary>De Krant: elk artikel heeft precies zoveel gaten (4 artikels × 5 gaten × 50 punten = 1000).</summary>
+    public const int KrantGaps = 5;
 
     /// <summary>
     /// De Krant: zoveel pogingen voor het hele artikel. Een foute naam kost niets, dus je probeert er meer dan bij één

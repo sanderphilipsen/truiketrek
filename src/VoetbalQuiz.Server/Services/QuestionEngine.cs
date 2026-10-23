@@ -624,8 +624,8 @@ public static class QuestionEngine
                     ? Check(!string.IsNullOrWhiteSpace(d.Headline), "Geef het artikel een kop.")
                         .Concat(Check(d.Kind is "verslag" or "interview" or "dossier", "Kies de soort: verslag, interview of dossier."))
                         .Concat(k.Problems)
-                        .Concat(Check(k.Gaps.Count is >= QuestionRules.KrantMinGaps and <= QuestionRules.KrantMaxGaps,
-                            $"Een artikel heeft {QuestionRules.KrantMinGaps} tot {QuestionRules.KrantMaxGaps} gaten (nu {k.Gaps.Count})."))
+                        .Concat(Check(k.Gaps.Count == QuestionRules.KrantGaps,
+                            $"Een artikel heeft precies {QuestionRules.KrantGaps} gaten (nu {k.Gaps.Count})."))
                         .Concat(Check(k.Gaps.All(g => !string.IsNullOrWhiteSpace(g.Hint)), "Geef elk gat een hint (bv. [[Vertonghen : speler]])."))
                         .Concat(KrantLeaks(d, k)).ToList()
                     : [],
