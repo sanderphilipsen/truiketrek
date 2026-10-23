@@ -21,10 +21,10 @@ else
     var what = _day.Special is null ? "deze daily" : "deze special";
     var players = _day.Players == 1 ? "1 speler" : $"{_day.Players} spelers";
 
-    @* Dezelfde tegel als de daily op Home: het vraagtype als label, rechts je echte score, onderaan één knop. *@
+    @* Dezelfde tegel als de daily op Home (zonder vraagtype: dat zie je pas als je speelt), rechts je echte score, onderaan één knop. *@
     <section class="card home-daily training-hero">
         <div class="home-daily-head">
-            <h2 class="sb-label">@QuestionTypes.Name(_day.Types)</h2>
+            <h2 class="sb-label">@(_day.Special is null ? "Daily" : "Special")</h2>
             @if (_day.Real is { } real)
             {
                 <span class="sb-digits" role="img" aria-label="@real.Points punten toen">@real.Points</span>

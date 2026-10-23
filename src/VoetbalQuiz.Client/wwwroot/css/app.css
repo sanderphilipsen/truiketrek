@@ -1136,6 +1136,13 @@ body:has(.sheet) { overflow: hidden; }
 .training-day-text b { font-size: .95rem; line-height: 1.25; }
 .training-day-text small { color: var(--muted); font-size: .8rem; }
 .training-day .sb-digits { font-size: 1.15rem; }
+/* Nog niet gespeeld: een gele stip voor de dag en rechts een gele "Spelen"-knop; gespeeld: een rustig grijs pijltje. */
+.training-day.open::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.btn.small.training-play {
+    flex: none; display: grid; place-items: center; min-height: 36px; padding: 6px 14px; font-size: .85rem;
+    background: rgba(250, 199, 117, .1); color: var(--sb-digit); box-shadow: inset 0 0 0 1.5px var(--sb-digit);
+}
+.training-day.played .sb-go { color: var(--muted); }
 
 /* Eén daily of special: dezelfde tegel als de daily op Home, met één knop. */
 .training-facts { margin: 6px 0 0; color: var(--muted); font-size: .9rem; }

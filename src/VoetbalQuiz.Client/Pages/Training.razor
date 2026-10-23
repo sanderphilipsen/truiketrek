@@ -4,7 +4,17 @@
 
 <PageTitle>Academie – Truitje Trek</PageTitle>
 
-<PageHeader Title="Academie" Label="Oefenen · telt niet mee" />
+<PageHeader Title="Academie" Label="Oefenen · telt niet mee">
+    <Aside>
+        @if (_archive is { Days.Count: > 0 })
+        {
+            @* Rechts in de kop: hoeveel dagen van deze maand je nog niet speelde. *@
+            var open = _archive.Days.Count(d => !d.Played);
+            <span class="sb-digits" aria-label="@(open == 0 ? "Alles gespeeld deze maand" : $"{open} nog te spelen deze maand")">@open</span>
+            <span class="sb-label" aria-hidden="true">@(open == 0 ? "alles gespeeld" : "nog te spelen")</span>
+        }
+    </Aside>
+</PageHeader>
 
 <div class="month-nav">
     <button class="linkish" aria-label="Vorige maand" @onclick="() => MoveMonthAsync(-1)" disabled="@(_archive is not { HasEarlier: true })">‹</button>
@@ -26,12 +36,13 @@ else if (_archive.Days.Count == 0)
 }
 else
 {
-    @* Per dag één strook in de vorm van Home: de dag en het vraagtype, rechts je echte score in gele cijfers. *@
+    @* Per dag één strook in de vorm van Home: de dag (zonder vraagtype), rechts je echte score in gele cijfers.
+       Nog niet gespeeld springt eruit: een gele "Spelen"-knop rechts en een gele stip voor de dag; gespeelde dagen zijn rustig. *@
     <ul class="training-days">
         @foreach (var day in _archive.Days)
         {
             <li>
-                <a class="card sb-strip training-day" href="@DayUrl(day)" aria-label="@AriaLabel(day)">
+                <a class="card sb-strip training-day @(day.Played ? "played" : "open")" href="@DayUrl(day)" aria-label="@AriaLabel(day)">
                     <span class="training-day-text" aria-hidden="true">
                         @if (day.Special is { } sp)
                         {
@@ -41,14 +52,21 @@ else
                         else
                         {
                             <b class="cap">@DutchDates.DayMonth(day.Date)</b>
-                            <small>@QuestionTypes.Name(day.Types) · @Sub(day)</small>
+                            <small>@Sub(day)</small>
                         }
                     </span>
                     @if (day.Real is { } real)
                     {
                         <span class="sb-digits" aria-hidden="true">@real.Points</span>
                     }
-                    <span class="sb-go" aria-hidden="true">›</span>
+                    @if (day.Played)
+                    {
+                        <span class="sb-go" aria-hidden="true">›</span>
+                    }
+                    else
+                    {
+                        <span class="btn small training-play" aria-hidden="true">Spelen</span>
+                    }
                 </a>
             </li>
         }
@@ -91,13 +109,13 @@ else
         var parts = new List<string>();
         if (day.Real is { } real) parts.Add($"{real.Rank}{DutchDates.OrdinalSuffix(real.Rank)} van {real.Players}");
         if (day.Runs > 0) parts.Add(day.Runs == 1 ? "1× geoefend" : $"{day.Runs}× geoefend");
-        return parts.Count == 0 ? "nog niet gespeeld" : string.Join(" · ", parts);
+        return parts.Count == 0 ? "Nog niet gespeeld" : string.Join(" · ", parts);
     }
 
     private static string AriaLabel(TrainingDay day)
     {
         var what = day.Special is { } sp ? $"Special {sp.Name}, {SpecialDates(sp)}" : DutchDates.DayMonth(day.Date);
         var score = day.Real is { } real ? $", {real.Points} punten" : "";
-        return $"{what}, {QuestionTypes.Name(day.Types)}, {Sub(day)}{score}";
+        return $"{what}, {Sub(day)}{score}";
     }
 }
