@@ -41,7 +41,7 @@
                     <h2>@(Id == 0 ? "2. " : "")Wat zien de spelers?</h2>
                     @if (_locked)
                     {
-                        <p class="note">🔒 Deze special wordt al gespeeld. Enkel naam, icoon, beschrijving en einddatum kunnen nog wijzigen.</p>
+                        <p class="note"><Icon Name="lock" /> Deze special wordt al gespeeld. Enkel naam, icoon, beschrijving en einddatum kunnen nog wijzigen.</p>
                     }
                     <div class="row-icon">
                         <label>Icoon <input @bind="_icon" maxlength="8" class="icon-input" /></label>
@@ -118,7 +118,7 @@
                             </div>
                         }
                         <div class="toolbar">
-                            <input class="grow" type="search" @bind="_filter" @bind:event="oninput" placeholder="🔍 Zoek spelers om toe te voegen…" disabled="@_locked" />
+                            <input class="grow" type="search" @bind="_filter" @bind:event="oninput" placeholder="Zoek spelers om toe te voegen…" disabled="@_locked" />
                             <select @onchange="e => AddTag(e.Value?.ToString())" disabled="@_locked">
                                 <option value="">+ Voeg een heel thema toe…</option>
                                 @foreach (var (key, label) in PlayerTags.All) { <option value="@key">@label</option> }
@@ -153,10 +153,10 @@
                     </ul>
                     @if (_error is not null) { <p class="error">@_error</p> }
                     @if (_saved) { <p class="success">Opgeslagen. De special verschijnt op @DutchDates.DayMonth(_start) op de homepagina.</p> }
-                    <button class="btn primary" @onclick="SaveAsync" disabled="@(_busy || !enough || _types.Count == 0 || string.IsNullOrWhiteSpace(_name))">💾 Opslaan</button>
+                    <button class="btn primary" @onclick="SaveAsync" disabled="@(_busy || !enough || _types.Count == 0 || string.IsNullOrWhiteSpace(_name))">Opslaan</button>
                     @if (Id != 0 && !_locked)
                     {
-                        <button class="btn danger" @onclick="DeleteAsync" disabled="@_busy">🗑 Verwijderen</button>
+                        <button class="btn danger" @onclick="DeleteAsync" disabled="@_busy">Verwijderen</button>
                     }
                 </section>
 

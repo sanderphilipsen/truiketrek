@@ -19,7 +19,7 @@
     </div>
 
     <div class="toolbar">
-        <input class="grow" type="search" value="@State.Search" placeholder="🔍 Zoek op naam…"
+        <input class="grow" type="search" value="@State.Search" placeholder="Zoek op naam…"
                @oninput="e => SearchAsync(e.Value?.ToString())" />
         <select value="@State.Tag" @onchange="e => TagAsync(e.Value?.ToString())">
             <option value="">Alle thema's</option>
@@ -49,7 +49,7 @@
         <div class="card center">
             <p class="muted">
                 @(State.Status == PlayerStatus.Review && string.IsNullOrEmpty(State.Search)
-                    ? "Er zijn geen spelers te keuren. Alles is nagekeken! 👍"
+                    ? "Er zijn geen spelers te keuren. Alles is nagekeken."
                     : "Geen spelers gevonden met deze filters.")
             </p>
             <button class="btn" @onclick="ResetAsync">Toon alle spelers</button>
@@ -70,7 +70,7 @@
                 <a class="pt-row" href="admin/spelers/@p.Id">
                     <span class="pt-name">
                         <b>@p.Name</b>
-                        @if (p.ReviewNote is not null) { <small class="note">⚠️ @p.ReviewNote</small> }
+                        @if (p.ReviewNote is not null) { <small class="note"><Icon Name="warning" /> @p.ReviewNote</small> }
                     </span>
                     <span><span class="pill @StatusCss(p.Status)">@StatusLabel(p.Status)</span></span>
                     <span class="pt-meta">@p.Country · @p.Competition@(p.Era == "classic" ? " · klassieker" : "")</span>
@@ -162,16 +162,16 @@
 
     private static string ShortTag(string key) => key switch
     {
-        "champions-league" => "⭐ CL",
-        "gouden-schoen" => "👟 Gouden Schoen",
-        "rode-duivels" => "🇧🇪 Rode Duivel",
-        "kerst" => "🎄 Kerst",
-        "nieuwjaar" => "🎆 Nieuwjaar",
-        "halloween" => "🎃 Halloween",
-        "sinterklaas" => "🎁 Sinterklaas",
-        "wk" => "🌍 WK",
-        "familie" => "👨‍👦 Familie",
-        "curiosa" => "🤡 Curiosa",
+        "champions-league" => "CL",
+        "gouden-schoen" => "Gouden Schoen",
+        "rode-duivels" => "Rode Duivel",
+        "kerst" => "Kerst",
+        "nieuwjaar" => "Nieuwjaar",
+        "halloween" => "Halloween",
+        "sinterklaas" => "Sinterklaas",
+        "wk" => "WK",
+        "familie" => "Familie",
+        "curiosa" => "Curiosa",
         _ => key,
     };
 

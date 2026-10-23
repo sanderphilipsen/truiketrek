@@ -43,7 +43,7 @@ else
                 <div class="tafel-name">
                     <input id="tafel-name" value="@_name" maxlength="@NameMax" autocomplete="off"
                            placeholder="Partijtje van @UserName" @oninput="OnNameInput" />
-                    <button type="button" class="tafel-reroll" aria-label="Andere naam voorstellen" title="Andere naam" @onclick="Reroll">🎲</button>
+                    <button type="button" class="tafel-reroll" aria-label="Andere naam voorstellen" title="Andere naam" @onclick="Reroll"><Icon Name="dice-five" /></button>
                 </div>
             </div>
 
@@ -119,7 +119,7 @@ else
                     </ul>
                     @if (_chosen.Count > 0 && !_chosen.Any(DerbyRules.TrumpWorksOn))
                     {
-                        <small class="derby-note">🟨 Trump booster enkel bij Snelvuur, Wie hoort er niet bij of Raad het jaar.</small>
+                        <small class="derby-note">Trump booster enkel bij Snelvuur, Wie hoort er niet bij of Raad het jaar.</small>
                     }
                 }
             </div>
@@ -182,7 +182,7 @@ else
 
     private string FootSummary => _chosen.Count == 0
         ? "Kies eerst een spelvorm."
-        : $"{QuestionTypes.Label(_chosen)} · {Questions} vragen · {_seats} plaatsen{(_derby ? " · 🔥 Derby" : "")}";
+        : $"{QuestionTypes.Label(_chosen)} · {Questions} vragen · {_seats} plaatsen{(_derby ? " · Derby" : "")}";
 
     protected override async Task OnInitializedAsync()
     {

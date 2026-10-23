@@ -23,14 +23,14 @@
         var items = _overview.Items.Where(Show).ToList();
         @if (items.Count == 0)
         {
-            <div class="card center muted">Niets in deze lijst. 🎉</div>
+            <div class="card center muted">Niets in deze lijst.</div>
         }
         <div class="feedback-list">
             @foreach (var item in items)
             {
                 <article class="card feedback-item">
                     <div class="feedback-head">
-                        <span>@(item.Type == FeedbackType.Bug ? "🐞" : "💡") <b>@item.Title</b></span>
+                        <span><Icon Name="@(item.Type == FeedbackType.Bug ? "bug" : "lightbulb")" /> <b>@item.Title</b></span>
                         <span class="status status-@item.Status.ToString().ToLowerInvariant()">@item.Status</span>
                     </div>
                     <p class="feedback-text">@item.Description</p>

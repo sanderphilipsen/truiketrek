@@ -3,7 +3,7 @@
     @if (Real is not null)
     {
         <li class="real">
-            <span class="rank" aria-hidden="true">⚽</span>
+            <span class="rank" aria-hidden="true"><Icon Name="soccer-ball" /></span>
             <span class="player">
                 <b>Echt</b>
                 <small>@Real.Rank@DutchDates.OrdinalSuffix(Real.Rank) van @Real.Players · @Real.Correct / @Questions juist</small>
@@ -14,7 +14,7 @@
     @foreach (var run in Runs)
     {
         <li class="@(run.Id == Current ? "me" : "") @(run.Finished ? "" : "left")">
-            <span class="rank" aria-hidden="true">🎓</span>
+            <span class="rank" aria-hidden="true"><Icon Name="graduation-cap" /></span>
             <span class="player">
                 <b>
                     Poging @(Runs.Count - Runs.IndexOf(run))

@@ -148,7 +148,7 @@
                     }
                     @if (_original?.InPlay is { } live)
                     {
-                        <p class="in-play" role="status">⚠️ Deze speler zit nu in @live. Aanpassen mag, maar wie de vraag nog speelt, ziet je wijziging meteen.</p>
+                        <p class="in-play" role="status"><Icon Name="warning" /> Deze speler zit nu in @live. Aanpassen mag, maar wie de vraag nog speelt, ziet je wijziging meteen.</p>
                     }
 
                     <ul class="checklist">
@@ -161,11 +161,11 @@
                     @if (_error is not null) { <p class="error">@_error</p> }
                     @if (_message is not null) { <p class="success">@_message</p> }
 
-                    <button class="btn primary" @onclick="() => SaveAsync(status)" disabled="@_busy">💾 Opslaan</button>
+                    <button class="btn primary" @onclick="() => SaveAsync(status)" disabled="@_busy">Opslaan</button>
                     @if (status != PlayerStatus.Approved)
                     {
                         <button class="btn approve" @onclick="() => SaveAsync(PlayerStatus.Approved)" disabled="@(_busy || !canApprove)"
-                                title="@(canApprove ? "" : "Los eerst de punten met ✗ op")">✅ Opslaan en goedkeuren</button>
+                                title="@(canApprove ? "" : "Los eerst de punten met ✗ op")">Opslaan en goedkeuren</button>
                     }
                     @if (status != PlayerStatus.Review)
                     {
@@ -173,7 +173,7 @@
                     }
                     @if (status != PlayerStatus.Rejected)
                     {
-                        <button class="btn danger" @onclick="() => SaveAsync(PlayerStatus.Rejected)" disabled="@_busy">⛔ Afwijzen</button>
+                        <button class="btn danger" @onclick="() => SaveAsync(PlayerStatus.Rejected)" disabled="@_busy">Afwijzen</button>
                     }
                     <small class="muted">Enkel goedgekeurde spelers komen in de quiz.</small>
                 </section>

@@ -15,6 +15,22 @@ public static class DutchDates
 
     public static string DayMonth(DateOnly date) => $"{Days[(int)date.DayOfWeek]} {date.Day} {Month(date.Month)}";
 
+    /// <summary>
+    /// Hoe lang geleden, in gewone woorden: "zonet", "12 min geleden", "3 uur geleden", "gisteren", "5 dagen geleden",
+    /// en vanaf een maand de datum ("12 september 2026"). Beide tijdstippen in dezelfde tijdzone (bv. UTC).
+    /// </summary>
+    public static string Ago(DateTime moment, DateTime now)
+    {
+        var span = now - moment;
+        if (span < TimeSpan.FromMinutes(1)) return "zonet";
+        if (span < TimeSpan.FromHours(1)) return $"{(int)span.TotalMinutes} min geleden";
+        if (span < TimeSpan.FromHours(24)) return (int)span.TotalHours == 1 ? "1 uur geleden" : $"{(int)span.TotalHours} uur geleden";
+        var days = (int)span.TotalDays;
+        if (days == 1) return "gisteren";
+        if (days < 30) return $"{days} dagen geleden";
+        return $"{moment.Day} {Month(moment.Month)} {moment.Year}";
+    }
+
     /// <summary>Achtervoegsel van een rangtelwoord in cijfers: 1ste, 2de, 8ste, 19de, 20ste, 100ste, 101ste, 102de, 108ste.</summary>
     public static string OrdinalSuffix(int n)
     {

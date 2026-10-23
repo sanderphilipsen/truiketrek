@@ -23,7 +23,7 @@
             <button class="@(_status == PlayerStatus.Approved ? "on" : "")" @onclick="() => StatusAsync(PlayerStatus.Approved)">Goedgekeurd</button>
             <button class="@(_status == PlayerStatus.Rejected ? "on" : "")" @onclick="() => StatusAsync(PlayerStatus.Rejected)">Afgewezen</button>
         </div>
-        <input class="grow" type="search" value="@_search" placeholder="🔍 Zoek…" @oninput="e => SearchAsync(e.Value?.ToString())" />
+        <input class="grow" type="search" value="@_search" placeholder="Zoek…" @oninput="e => SearchAsync(e.Value?.ToString())" />
         <a class="btn primary" href="admin/vragen/0?type=@_type">+ Vraag toevoegen</a>
     </div>
 
@@ -48,7 +48,7 @@
                 <a class="pt-row q-row" href="admin/vragen/@q.Id">
                     <span class="pt-name">
                         <b>@q.Label</b>
-                        @if (q.ReviewNote is not null) { <small class="note">⚠️ @q.ReviewNote</small> }
+                        @if (q.ReviewNote is not null) { <small class="note"><Icon Name="warning" /> @q.ReviewNote</small> }
                     </span>
                     <span class="pt-meta">@q.Answer</span>
                     <span><span class="pill @AdminSpelers.StatusCss(q.Status)">@AdminSpelers.StatusLabel(q.Status)</span></span>

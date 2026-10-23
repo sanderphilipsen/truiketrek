@@ -20,11 +20,19 @@ public record PlayerEdit(
 
 public record PlayerCounts(int Review, int Approved, int Rejected);
 
+// ---------- Leden ----------
+
+/// <summary>Hoeveel spelers er geregistreerd zijn en hoeveel er de laatste 24 uur en 7 dagen online waren.</summary>
+public record UserCounts(int Total, int ActiveDay, int ActiveWeek);
+
+/// <summary>Een geregistreerde speler in het admin-paneel. LastSeenAt (UTC) is null als die nog nooit gezien is.</summary>
+public record AdminUserItem(string UserName, string? AvatarId, DateTime CreatedAt, DateTime? LastSeenAt);
+
 /// <summary>Startscherm van het admin-paneel: wat vraagt aandacht?</summary>
 public record AdminDashboard(
     PlayerCounts Players, int NewFeedback, int OpenFeedback,
     List<SpecialAdminItem> ActiveSpecials, List<SpecialAdminItem> UpcomingSpecials,
-    Dictionary<string, int> TagCounts, int DailyDaysLeft);
+    Dictionary<string, int> TagCounts, int DailyDaysLeft, UserCounts Users);
 
 /// <summary>Thema's om spelers te groeperen, o.a. voor specials.</summary>
 public static class PlayerTags

@@ -28,6 +28,7 @@ Een mobiele quiz-app (Blazor WebAssembly PWA) om met vrienden te spelen. Elke da
 - **Enkel goedgekeurde spelers komen in de quiz.** Goedkeuren kan pas met minstens één bron, en tips die de naam verklappen worden geweigerd.
 - Via Profiel → ⚙️ Admin → **Spelers** kan je spelers zoeken, filteren op status of thema, bewerken, goedkeuren of afwijzen, en nieuwe spelers toevoegen. De editor heeft zoeklinks naar Wikipedia en Transfermarkt.
 - Een speler die je in het admin-paneel aanpast, wordt niet meer overschreven door de JSON-bestanden.
+- Admin → **Leden** toont wie er geregistreerd is en wanneer die het laatst online was (`LastSeenAt`, hooguit om de 5 minuten bijgewerkt bij een API-verzoek, zie [LastSeenTracker.cs](src/VoetbalQuiz.Server/Services/LastSeenTracker.cs)). Het overzicht telt hoeveel leden er de laatste 24 uur en 7 dagen online waren.
 
 ### Vraagtypes en weekplanning
 

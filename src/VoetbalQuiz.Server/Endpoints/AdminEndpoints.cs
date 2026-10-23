@@ -13,6 +13,7 @@ public static class AdminEndpoints
             .AddEndpointFilter(EndpointFilters.HandleQuizErrors);
 
         admin.MapGet("/dashboard", (AdminService svc, TimeProvider clock) => svc.DashboardAsync(QuizClock.Today(clock)));
+        admin.MapGet("/users", (AdminService svc) => svc.UsersAsync());
 
         // Spelers
         admin.MapGet("/players/counts", (AdminService svc) => svc.CountsAsync());

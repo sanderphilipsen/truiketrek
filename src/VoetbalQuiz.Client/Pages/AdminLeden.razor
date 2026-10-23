@@ -1,0 +1,77 @@
+@page "/admin/leden"
+@attribute [Authorize]
+@inject ApiClient Api
+@inject AuthState Auth
+
+<PageTitle>Leden – Admin</PageTitle>
+
+<AdminGuard>
+    @if (_error is not null)
+    {
+        <p class="error">@_error</p>
+    }
+    else if (_users is null)
+    {
+        <div class="center-msg"><Spinner /></div>
+    }
+    else
+    {
+        var now = DateTime.UtcNow;
+        var day = _users.Count(u => u.LastSeenAt >= now.AddDays(-1));
+        var week = _users.Count(u => u.LastSeenAt >= now.AddDays(-7));
+
+        @* Dezelfde cijfers als op het overzicht, dan iedereen: wie het laatst online was eerst. *@
+        <div class="dash-grid">
+            <div class="dash-card">
+                <Icon Name="users" Class="dash-icon" />
+                <b>@_users.Count</b>
+                <span>geregistreerd</span>
+            </div>
+            <div class="dash-card">
+                <Icon Name="clock" Class="dash-icon" />
+                <b>@day</b>
+                <span>online in de laatste 24 uur</span>
+                <small>@week in de laatste 7 dagen</small>
+            </div>
+        </div>
+
+        <section class="card">
+            <h2>Alle leden</h2>
+            <div class="admin-list">
+                @foreach (var u in _users)
+                {
+                    <a class="admin-row-card plain" href="speler/@Uri.EscapeDataString(u.UserName)">
+                        <Avatar Id="@u.AvatarId" User="@u.UserName" Size="36" />
+                        <div class="table-info">
+                            <b>@u.UserName</b>
+                            <small>Lid sinds @MemberSince(u.CreatedAt)</small>
+                        </div>
+                        <small class="last-seen">@LastSeen(u.LastSeenAt, now)</small>
+                    </a>
+                }
+            </div>
+        </section>
+    }
+</AdminGuard>
+
+@code {
+    private List<AdminUserItem>? _users;
+    private string? _error;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Auth.User?.IsAdmin != true) return;
+        try { _users = await Api.GetAdminUsersAsync(); }
+        catch (ApiException ex) { _error = ex.Message; }
+    }
+
+    private static string MemberSince(DateTime utc)
+    {
+        var d = DateOnly.FromDateTime(utc.ToLocalTime());
+        return $"{d.Day} {DutchDates.Month(d.Month)} {d.Year}";
+    }
+
+    /// <summary>"online zonet", "online 3 uur geleden", …; zonder datum is de speler niet meer gezien sinds we dit bijhouden.</summary>
+    private static string LastSeen(DateTime? utc, DateTime now) =>
+        utc is { } t ? $"online {DutchDates.Ago(t, now)}" : "nog niet gezien";
+}

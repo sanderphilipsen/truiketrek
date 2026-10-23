@@ -83,6 +83,7 @@ public class ApiClient(HttpClient http)
     public Task<ResetPasswordResult> ResetUserPasswordAsync(string userName) =>
         PostAsync<ResetPasswordResult>("api/admin/users/reset-password", new ResetPasswordRequest(userName));
     public Task<AdminDashboard> GetAdminDashboardAsync() => GetAsync<AdminDashboard>("api/admin/dashboard");
+    public Task<List<AdminUserItem>> GetAdminUsersAsync() => GetAsync<List<AdminUserItem>>("api/admin/users");
     public Task<PlayerCounts> GetPlayerCountsAsync() => GetAsync<PlayerCounts>("api/admin/players/counts");
     public Task<List<PlayerListItem>> GetAdminPlayersAsync(PlayerStatus? status, string? search, string? tag)
     {

@@ -108,6 +108,14 @@ public static class QuestionTypes
     /// <summary>Hetzelfde zonder iconen ("Snelvuur" of "Mix"), voor de rustige daily-tegel op Home.</summary>
     public static string DayName(DailyOverview day) => day.IsMix ? "Mix" : Get(day.Type).Name;
 
+    /// <summary>Enkel de naam van een lijst types, zonder iconen: "Snelvuur" of "Mix"; leeg = "Wie ben ik?".</summary>
+    public static string Name(IReadOnlyCollection<QuestionType>? types) => types switch
+    {
+        { Count: > 1 } => "Mix",
+        { Count: 1 } => Get(types.First()).Name,
+        _ => Get(QuestionType.WieBenIk).Name,
+    };
+
     /// <summary>Zelfde label voor een lijst types (bv. van een online partijtje); leeg = "Wie ben ik?".</summary>
     public static string Label(IReadOnlyCollection<QuestionType>? types) => types switch
     {

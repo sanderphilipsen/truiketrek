@@ -26,7 +26,7 @@ else
             <section class="card profile-hero">
                 <button class="hero-avatar" title="Avatar wijzigen" @onclick="() => _tab = ProfileTab.Avatar">
                     <Avatar Id="@_profile.AvatarId" User="@_profile.UserName" Size="96" />
-                    <span class="hero-edit">✏️</span>
+                    <span class="hero-edit"><Icon Name="pencil-simple" /></span>
                 </button>
                 <div class="hero-main">
                     <h2>@_profile.UserName</h2>
@@ -48,8 +48,8 @@ else
                 var earned = _public.Badges.Where(b => b.Earned).ToList();
                 <a class="card badge-teaser" href="badges">
                     <div class="teaser-text">
-                        <b>🎖️ @earned.Count/@_public.Badges.Count badges</b>
-                        <small class="muted">🏆 @_public.Trophies.Count @(_public.Trophies.Count == 1 ? "beker" : "bekers") · @(earned.Count == 0 ? "bekijk wat je kan verdienen" : "bekijk ze allemaal")</small>
+                        <b><Icon Name="medal" Class="sb-icon" /> @earned.Count/@_public.Badges.Count badges</b>
+                        <small class="muted">@_public.Trophies.Count @(_public.Trophies.Count == 1 ? "beker" : "bekers") · @(earned.Count == 0 ? "bekijk wat je kan verdienen" : "bekijk ze allemaal")</small>
                         @if (earned.Count > 0)
                         {
                             <div class="teaser-icons">
@@ -68,9 +68,9 @@ else
         @* ---------- Rechts: wat je kan aanpassen ---------- *@
         <div class="profile-main">
             <div class="tabs profile-tabs">
-                <button class="@(_tab == ProfileTab.Avatar ? "active" : "")" aria-pressed="@(_tab == ProfileTab.Avatar ? "true" : "false")" @onclick="() => _tab = ProfileTab.Avatar">🎨 Avatar</button>
-                <button class="@(_tab == ProfileTab.Level ? "active" : "")" aria-pressed="@(_tab == ProfileTab.Level ? "true" : "false")" @onclick="() => _tab = ProfileTab.Level">⭐ Level</button>
-                <button class="@(_tab == ProfileTab.Account ? "active" : "")" aria-pressed="@(_tab == ProfileTab.Account ? "true" : "false")" @onclick="() => _tab = ProfileTab.Account">🔒 Account</button>
+                <button class="@(_tab == ProfileTab.Avatar ? "active" : "")" aria-pressed="@(_tab == ProfileTab.Avatar ? "true" : "false")" @onclick="() => _tab = ProfileTab.Avatar"><Icon Name="palette" /> Avatar</button>
+                <button class="@(_tab == ProfileTab.Level ? "active" : "")" aria-pressed="@(_tab == ProfileTab.Level ? "true" : "false")" @onclick="() => _tab = ProfileTab.Level"><Icon Name="star" /> Level</button>
+                <button class="@(_tab == ProfileTab.Account ? "active" : "")" aria-pressed="@(_tab == ProfileTab.Account ? "true" : "false")" @onclick="() => _tab = ProfileTab.Account"><Icon Name="lock" /> Account</button>
             </div>
 
             @switch (_tab)
@@ -78,8 +78,8 @@ else
                 case ProfileTab.Avatar:
                     <section class="card">
                         <div class="tabs light">
-                            <button class="@(_build ? "" : "active")" aria-pressed="@(_build ? "false" : "true")" @onclick="() => _build = false">⚽ Voetballer kiezen</button>
-                            <button class="@(_build ? "active" : "")" aria-pressed="@(_build ? "true" : "false")" @onclick="() => _build = true">🎨 Zelf maken</button>
+                            <button class="@(_build ? "" : "active")" aria-pressed="@(_build ? "false" : "true")" @onclick="() => _build = false"><Icon Name="soccer-ball" /> Voetballer kiezen</button>
+                            <button class="@(_build ? "active" : "")" aria-pressed="@(_build ? "true" : "false")" @onclick="() => _build = true"><Icon Name="palette" /> Zelf maken</button>
                         </div>
                         @if (_avatarSaved)
                         {
@@ -87,7 +87,7 @@ else
                         }
                         @if (_build)
                         {
-                            <p class="muted">Begin van je huidige avatar of druk op 🎲, en pas alles aan naar je eigen smaak.</p>
+                            <p class="muted">Begin van je huidige avatar of druk op Willekeurig, en pas alles aan naar je eigen smaak.</p>
                             <AvatarBuilder Start="@Avatars.Get(_profile.AvatarId)" OnSave="PickAsync" Saving="_saving" />
                         }
                         else
@@ -154,10 +154,10 @@ else
                     <section class="card menu-list">
                         @if (Auth.User?.IsAdmin == true)
                         {
-                            <a href="admin"><span>⚙️</span>Admin-paneel<i>›</i></a>
+                            <a href="admin"><span><Icon Name="gear-six" /></span>Admin-paneel<i>›</i></a>
                         }
-                        <a href="feedback"><span>🐞</span>Bug of idee melden<i>›</i></a>
-                        <button @onclick="LogoutAsync"><span>🚪</span>Afmelden<i>›</i></button>
+                        <a href="feedback"><span><Icon Name="bug" /></span>Bug of idee melden<i>›</i></a>
+                        <button @onclick="LogoutAsync"><span><Icon Name="sign-out" /></span>Afmelden<i>›</i></button>
                     </section>
 
                     <p class="member-since">Lid sinds @DutchDates.DayMonth(_profile.MemberSince) @_profile.MemberSince.Year · @_profile.Email</p>

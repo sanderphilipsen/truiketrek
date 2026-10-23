@@ -11,7 +11,7 @@
 <PageHeader Title="@($"Vraag {Number} / {_total}")" Label="@(_state is null ? null : Info.Name)" BackHref="@OverviewUrl" Up="true" />
 @if (RunId is not null)
 {
-    <p class="training-label">🎓 @TrainingRules.Label</p>
+    <p class="training-label"><Icon Name="graduation-cap" /> @TrainingRules.Label</p>
 }
 
 @* Altijd aanwezig: schermlezers horen zo het resultaat ("GOAL! Ronaldo, 80 punten") zodra de vraag afgelopen is. *@
@@ -30,7 +30,7 @@ else if (_state.Result is { } result)
 {
     @* ---------- Na afloop ---------- *@
     <div class="result @(result.Correct || result.Points > 0 ? "ok" : "fail")">
-        <div class="result-icon">@(result.Correct ? "⚽" : result.Points > 0 ? "👍" : "❌")</div>
+        <div class="result-icon"><Icon Name="@(result.Correct ? "check-circle" : result.Points > 0 ? "thumbs-up" : "x-circle")" /></div>
         <div class="result-shout">@Commentary.ForResult(result, _state.View?.MaxPoints ?? 100, Number)</div>
         <div class="result-name">@QuestionAnswer.Title(_state.Type, result)</div>
         <div class="result-points @(result.Points == 0 ? "zero" : "")">+@result.Points punten</div>

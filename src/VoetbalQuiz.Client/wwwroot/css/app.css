@@ -436,7 +436,8 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent); box-sha
 .choice.wrong::before { content: "✗"; margin-right: 6px; color: var(--fail-text); font-weight: 900; }
 .choice.wrong { animation: shake .35s; }
 @media (prefers-reduced-motion: reduce) { .result.ok, .result.fail, .choice.wrong, .clock.urgent { animation: none; } }
-.result-icon { font-size: 2rem; }
+.result-icon { font-size: 2rem; line-height: 1; color: var(--ok-text); }
+.result.fail .result-icon { color: var(--fail-text); }
 .result-name { font-size: 1.5rem; font-weight: 800; margin: 4px 0; }
 .result-points { font-weight: 700; color: var(--sb-digit); }
 .result-points.zero { color: var(--muted); }
@@ -452,7 +453,10 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent); box-sha
 
 /* ---------- Klassement ---------- */
 .tabs { display: flex; background: rgba(255, 255, 255, .1); border-radius: 12px; padding: 4px; margin-bottom: 12px; }
-.tabs button { flex: 1; border: 0; background: none; color: #fff; padding: 10px; border-radius: 9px; font-weight: 700; font-size: .95rem; }
+.tabs button {
+    flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    border: 0; background: none; color: #fff; padding: 10px; border-radius: 9px; font-weight: 700; font-size: .95rem;
+}
 .tabs button.active { background: var(--card); color: var(--text); }
 .month-nav { display: flex; align-items: center; justify-content: space-between; color: #fff; margin-bottom: 12px; font-weight: 700; }
 .month-nav span:first-letter { text-transform: uppercase; }
@@ -483,6 +487,9 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent); box-sha
     background: var(--accent); color: #13241b; font-size: .62rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
 }
 .board .rank { width: 28px; text-align: center; font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+/* Een icoon in de plaats van een cijfer (Gouden Ballen, academie): in het scorebordgeel. */
+.board .rank .icon { font-size: 1.15rem; }
+.board .rank.gold { color: var(--sb-digit); }
 /* Top 3: geen medaille-emoji maar het cijfer op een goud, zilver of brons blokje, in het scorebordlettertype. */
 .board .rank.top {
     display: inline-grid; place-items: center; width: 26px; height: 26px; margin: 0 1px; border-radius: 6px;
@@ -717,6 +724,7 @@ body:has(.sheet) { overflow: hidden; }
 .rooms-title { display: flex; align-items: center; gap: 8px; }
 .rooms-live { display: inline-flex; align-items: center; gap: 6px; padding-left: 4px; color: var(--on-field-muted); font-size: .85rem; font-weight: 600; }
 .live-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--fail); box-shadow: 0 0 0 0 rgba(214, 69, 69, .6); animation: live-pulse 1.8s ease-out infinite; }
+.live-dot.inline { display: inline-block; width: 8px; height: 8px; vertical-align: 1px; }
 @keyframes live-pulse {
     0% { box-shadow: 0 0 0 0 rgba(214, 69, 69, .6); }
     70%, 100% { box-shadow: 0 0 0 8px rgba(214, 69, 69, 0); }
@@ -910,7 +918,7 @@ body:has(.sheet) { overflow: hidden; }
 .reveal-tips summary { color: #fff; font-weight: 700; cursor: pointer; padding: 12px 0; }
 .reveal-tips[open] summary { margin-bottom: 4px; }
 .board li.left { opacity: .5; }
-.podium-card .trophy { font-size: 3.5rem; }
+.podium-card .trophy { font-size: 3.5rem; line-height: 1; color: var(--accent); }
 
 /* ---------- Feedback ---------- */
 .tabs.light { background: var(--surface-soft); margin: 12px 0; }
@@ -955,7 +963,7 @@ body:has(.sheet) { overflow: hidden; }
     cursor: pointer;
     padding: 0;
 }
-.swatch.none { background: #fff; color: var(--muted); font-weight: 700; }
+.swatch.none { background: var(--input-bg); color: var(--muted); font-weight: 700; }
 .swatch.on { outline: 3px solid var(--accent); outline-offset: 2px; }
 .mini {
     display: flex;
@@ -1083,7 +1091,7 @@ body:has(.sheet) { overflow: hidden; }
 .home-special-head .mini-podium { flex: 0 1 148px; min-width: 0; }
 .home-special-head .mini-podium ol { gap: 3px; grid-template-columns: minmax(0, 1fr); }
 .home-special-head .mini-podium li { font-size: .9rem; line-height: 1.3; gap: 6px; }
-.home-special-head .mini-podium .mp-medal { font-size: .9rem; }
+.home-special-head .mini-podium .mp-medal { width: 20px; height: 20px; font-size: .78rem; }
 .home-special-head .mini-podium .mp-pts { color: var(--text); }
 .home-special-head .mini-podium li:first-child .mp-name { font-weight: 700; }
 .home-special-first { flex: 0 1 140px; font-size: .85rem; text-align: right; }
@@ -1105,36 +1113,36 @@ body:has(.sheet) { overflow: hidden; }
 /* minmax(0, 1fr): een lange naam krijgt een beletselteken in plaats van de tegel open te duwen (320 px). */
 .mini-podium ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px; }
 .mini-podium li { display: flex; align-items: center; gap: 4px; font-size: .8rem; line-height: 1.25; }
-.mini-podium .mp-medal { flex: none; font-size: .75rem; }
+/* De plaats als cijfer op een goud, zilver of brons blokje (zoals in het klassement), geen medaille-emoji. */
+.mini-podium .mp-medal {
+    flex: none; display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 5px;
+    font-family: var(--digits); font-size: .7rem; font-weight: 800; color: #13241b;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .35);
+}
+.mp-medal.top-1 { background: linear-gradient(160deg, #ffe27a, #e0b100 55%, #b58900); }
+.mp-medal.top-2 { background: linear-gradient(160deg, #f4f6f8, #c5cbd1 55%, #9aa3ab); }
+.mp-medal.top-3 { background: linear-gradient(160deg, #f0b97f, #c97a3a 55%, #9b5a2a); }
 .mini-podium .mp-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .mini-podium .mp-pts { flex: none; margin-left: auto; padding-left: 6px; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--muted); }
 .mini-podium li.me .mp-name { font-weight: 800; }
 
 /* ---------- Academie (in de code: training) ---------- */
-.btn.training-day-play { flex: none; min-height: var(--tap); min-width: 76px; display: grid; place-items: center;
-    background: var(--pitch-2); color: #fff; }
-
-/* Archief: per dag een rij; "nog nooit gespeeld" springt eruit, "al gespeeld" krijgt een vinkje en een rustige knop. */
-.training-days { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
-.training-day { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: var(--radius);
-    background: var(--card); color: var(--text); text-decoration: none; box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
-    border-left: 4px solid var(--accent); }
-.training-day.played { border-left-color: var(--ok); }
-/* Een afgelopen special: in de stijl van de special-kaart. */
-.training-day.special { background: rgba(250, 199, 117, .08); }
-.training-day-mark { width: 28px; height: 28px; flex: none; border-radius: 50%; display: grid; place-items: center;
-    font-weight: 800; background: var(--surface-soft); color: var(--muted); }
-.training-day.played .training-day-mark { background: var(--ok); color: #fff; }
+/* Archief: per dag een strook in de vorm van Home (dag en vraagtype, rechts je echte score in gele cijfers). */
+.training-days { list-style: none; padding: 0; margin: 0; }
+.training-day { padding: 10px 16px; }
 .training-day-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; overflow-wrap: anywhere; }
-.training-day-text b { display: block; }
-.training-day-text small { color: var(--muted); font-size: .82rem; }
-.training-day.played .btn.training-day-play { background: var(--surface-soft); color: var(--text); }
+.training-day-text b { font-size: .95rem; line-height: 1.25; }
+.training-day-text small { color: var(--muted); font-size: .8rem; }
+.training-day .sb-digits { font-size: 1.15rem; }
+
+/* Eén daily of special: dezelfde tegel als de daily op Home, met één knop. */
+.training-facts { margin: 6px 0 0; color: var(--muted); font-size: .9rem; }
+.training-note { margin: 10px 0 0; font-size: .8rem; text-align: center; }
+.training-result { font-size: .95rem; margin: 10px 0 0; }
 
 /* Altijd duidelijk dat dit niet de echte daily is. */
-.training-label { display: inline-block; background: rgba(255, 255, 255, .14); color: #fff; border-radius: 999px;
+.training-label { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, .14); color: #fff; border-radius: 999px;
     padding: 4px 12px; margin: -4px 0 12px; font-size: .85rem; font-weight: 700; }
-.training-note { margin: 12px 0 0; }
-.training-result { font-size: 1.05rem; margin: 12px 0 4px; }
 .hero .btn + .btn { margin-top: 8px; }
 
 /* Scorelijst: je echte poging bovenaan, dan elke trainingsrun (nieuwste eerst). */
@@ -1148,7 +1156,10 @@ body:has(.sheet) { overflow: hidden; }
 .trophies { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }
 .trophy-item { background: var(--card); border-radius: 12px; padding: 10px 6px; text-align: center; display: flex; flex-direction: column; gap: 2px; }
 .trophy-item.place-1 { border: 2px solid var(--accent); }
-.trophy-icon { font-size: 2rem; }
+/* Eén lijnicoon per beker, in goud, zilver of brons. */
+.trophy-icon { font-size: 2rem; line-height: 1; color: #c97a3a; }
+.trophy-item.place-1 .trophy-icon { color: var(--accent); }
+.trophy-item.place-2 .trophy-icon { color: #c5cbd1; }
 .trophy-item small { color: var(--muted); font-size: .72rem; }
 /* Minstens 140 px per tegel: bij 100 px liep "Partijtjeskampioen" op 375 px buiten zijn tegel. */
 .badges { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
@@ -1233,7 +1244,8 @@ label.check input { width: auto; }
 .dash-card b { font-size: 2.2rem; line-height: 1.1; }
 .dash-card span:not(.dash-icon) { font-weight: 700; }
 .dash-card small { color: var(--muted); margin-top: 4px; }
-.dash-icon { font-size: 1.6rem; }
+.dash-icon { font-size: 1.6rem; color: var(--pitch-2); margin-bottom: 4px; }
+.admin-row-card .last-seen { margin-left: auto; white-space: nowrap; color: var(--muted); font-size: .82rem; }
 .dash-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
 
 .tag-bars { display: grid; gap: 8px; }
@@ -1531,19 +1543,21 @@ button.choice:active { transform: scale(.97); }
 .hero-edit {
     position: absolute; right: -2px; bottom: -2px;
     width: 30px; height: 30px; border-radius: 50%;
-    display: grid; place-items: center; font-size: .85rem;
+    display: grid; place-items: center; font-size: .95rem; color: #1b1600;
     background: var(--accent); box-shadow: 0 2px 6px rgba(0, 0, 0, .25);
 }
 .hero-main { flex: 1; min-width: 0; }
 .hero-main h1 { margin: 0 0 4px; overflow-wrap: anywhere; }
 
 .badge-teaser { display: flex; align-items: center; gap: 12px; text-decoration: none; padding: 14px 16px; }
+.badge-teaser .sb-icon { font-size: 1.1rem; vertical-align: -.2em; }
 .teaser-text { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
 .teaser-icons { display: flex; gap: 4px; font-size: 1.3rem; margin-top: 4px; flex-wrap: wrap; }
 .teaser-go { font-size: 1.6rem; color: var(--muted); line-height: 1; }
 
-.profile-main .avatar-option { background: #f3f7f4; }
-.profile-main .avatar-option.selected { background: #fff8d6; }
+/* Voetballer kiezen: donkere tegels zoals de rest van het profiel; de gekozen krijgt de gele rand en een zachte tint. */
+.profile-main .avatar-option { background: var(--surface-soft); border-width: 2px; }
+.profile-main .avatar-option.selected { background: rgba(250, 199, 117, .12); }
 
 .card-title { margin: 0 0 12px; font-size: 1.05rem; }
 .form-row { display: grid; grid-template-columns: 1fr; gap: 12px; }
@@ -1563,10 +1577,10 @@ button.choice:active { transform: scale(.97); }
     padding: 14px 20px; border: 0; background: none; font: inherit; font-weight: 600;
     text-decoration: none; color: var(--text); cursor: pointer; text-align: left;
 }
-.menu-list > * + * { border-top: 1px solid #eef2ef; }
-.menu-list span { font-size: 1.2rem; }
+.menu-list > * + * { border-top: 1px solid var(--divider); }
+.menu-list span { display: inline-flex; font-size: 1.2rem; color: var(--sb-digit); }
 .menu-list i { margin-left: auto; font-style: normal; color: var(--muted); font-size: 1.3rem; }
-.menu-list a:hover, .menu-list button:hover { background: #f3f7f4; }
+.menu-list a:hover, .menu-list button:hover { background: var(--surface-soft); }
 .member-since { color: rgba(255, 255, 255, .65); text-align: center; font-size: .85rem; margin: 4px 0 0; overflow-wrap: anywhere; }
 
 @media (min-width: 560px) {
@@ -1801,7 +1815,7 @@ button.choice:active { transform: scale(.97); }
     cursor: pointer; list-style: none;
 }
 .gb-strip summary::-webkit-details-marker { display: none; }
-.gb-strip-ball { font-size: 1.6rem; }
+.gb-strip-ball { display: inline-flex; font-size: 1.6rem; color: var(--sb-digit); }
 .gb-strip-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 .gb-strip-text small { color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .gb-strip-chevron { font-size: 1.4rem; font-weight: 800; color: var(--muted); transition: transform .15s; }

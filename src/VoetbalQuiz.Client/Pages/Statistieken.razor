@@ -64,7 +64,7 @@ else
             @foreach (var m in gb.History)
             {
                 <li class="@(m.IsMe ? "me" : "")">
-                    <span class="rank">⚽</span>
+                    <span class="rank gold" aria-hidden="true"><Icon Name="soccer-ball" /></span>
                     <Avatar Id="@m.AvatarId" User="@m.UserName" Size="38" />
                     <span class="player"><b>@m.UserName</b><small class="cap">@DutchDates.MonthYear(m.Year, m.Month)</small></span>
                     <span class="pts">@m.Points</span>
@@ -77,10 +77,10 @@ else
     {
         <h2 class="section-title">Moeilijkste spelers</h2>
         <ol class="board">
-            @foreach (var h in _stats.Hardest)
+            @foreach (var (h, i) in _stats.Hardest.Select((h, i) => (h, i)))
             {
                 <li>
-                    <span class="rank">🤯</span>
+                    <span class="rank">@(i + 1)</span>
                     <span class="player"><b>@h.PlayerName</b><small>@h.Attempts keer gevraagd</small></span>
                     <span class="pts">@h.CorrectPercent%</span>
                 </li>

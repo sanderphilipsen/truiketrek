@@ -6,7 +6,7 @@
             @foreach (var e in Entries.Take(3))
             {
                 <li class="@(e.IsMe ? "me" : "")">
-                    <span class="mp-medal">@Medal(e.Rank)</span>
+                    <span class="mp-medal top-@Math.Clamp(e.Rank, 1, 3)">@e.Rank</span>
                     <span class="mp-name">@e.UserName</span>
                     <span class="mp-pts">@e.Points</span>
                 </li>
@@ -20,6 +20,4 @@
     [Parameter, EditorRequired] public string Href { get; set; } = "";
 
     private string Label => "Top 3: " + string.Join(", ", Entries!.Take(3).Select(e => $"{e.Rank}. {e.UserName} met {e.Points} punten")) + ". Open het klassement.";
-
-    private static string Medal(int rank) => rank switch { 1 => "🥇", 2 => "🥈", _ => "🥉" };
 }

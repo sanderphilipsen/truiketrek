@@ -1,5 +1,5 @@
 @* Prijzenkast (bekers per seizoen en specials) en badges van een speler. *@
-<h2 class="section-title">🏆 Prijzenkast</h2>
+<h2 class="section-title">Prijzenkast</h2>
 @if (Profile.Trophies.Count == 0)
 {
     <div class="card center muted">Nog geen bekers. Eindig in de top 3 van een maand of win een special!</div>
@@ -10,7 +10,7 @@ else
         @foreach (var t in Profile.Trophies)
         {
             <div class="trophy-item place-@t.Place">
-                <div class="trophy-icon">@(t.Place switch { 1 => "🏆", 2 => "🥈", _ => "🥉" })</div>
+                <div class="trophy-icon" aria-label="@(t.Place switch { 1 => "eerste", 2 => "tweede", _ => "derde" })"><Icon Name="@(t.Place == 1 ? "trophy" : "medal")" /></div>
                 <b>@(t.Kind switch { TrophyKind.Month => "Maand", TrophyKind.Daily => "Daily", _ => "Special" })</b>
                 <small class="cap">@t.Season</small>
                 <small>@t.Points pnt</small>
@@ -19,7 +19,7 @@ else
     </div>
 }
 
-<h2 class="section-title">🎖️ Badges <small class="light-text">@Profile.Badges.Count(b => b.Earned)/@Profile.Badges.Count</small></h2>
+<h2 class="section-title">Badges <small class="light-text">@Profile.Badges.Count(b => b.Earned)/@Profile.Badges.Count</small></h2>
 <div class="badges">
     @foreach (var b in Profile.Badges)
     {

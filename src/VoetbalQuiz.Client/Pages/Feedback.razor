@@ -11,8 +11,8 @@
     <p class="muted">Iets werkt niet, of je hebt een goed idee? Laat het hier weten.</p>
 
     <div class="tabs light">
-        <button class="@(_type == FeedbackType.Bug ? "active" : "")" aria-pressed="@(_type == FeedbackType.Bug ? "true" : "false")" @onclick="() => _type = FeedbackType.Bug">🐞 Bug melden</button>
-        <button class="@(_type == FeedbackType.Feature ? "active" : "")" aria-pressed="@(_type == FeedbackType.Feature ? "true" : "false")" @onclick="() => _type = FeedbackType.Feature">💡 Idee</button>
+        <button class="@(_type == FeedbackType.Bug ? "active" : "")" aria-pressed="@(_type == FeedbackType.Bug ? "true" : "false")" @onclick="() => _type = FeedbackType.Bug"><Icon Name="bug" /> Bug melden</button>
+        <button class="@(_type == FeedbackType.Feature ? "active" : "")" aria-pressed="@(_type == FeedbackType.Feature ? "true" : "false")" @onclick="() => _type = FeedbackType.Feature"><Icon Name="lightbulb" /> Idee</button>
     </div>
 
     <form class="stack" @onsubmit="SubmitAsync">
@@ -37,14 +37,14 @@
         {
             <article class="card feedback-item">
                 <div class="feedback-head">
-                    <span>@(item.Type == FeedbackType.Bug ? "🐞" : "💡") <b>@item.Title</b></span>
+                    <span><Icon Name="@(item.Type == FeedbackType.Bug ? "bug" : "lightbulb")" /> <b>@item.Title</b></span>
                     <span class="status status-@item.Status.ToString().ToLowerInvariant()">@item.Status</span>
                 </div>
                 <p class="feedback-text">@item.Description</p>
                 <small class="muted">@item.UserName · @item.CreatedAt.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</small>
                 @if (item.Reply is not null)
                 {
-                    <p class="reply">💬 @item.Reply</p>
+                    <p class="reply"><Icon Name="chat-circle" /> @item.Reply</p>
                 }
                 @if (_overview.IsAdmin)
                 {

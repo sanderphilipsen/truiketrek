@@ -140,7 +140,25 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
             specials.Where(s => s.StartDate <= today && today <= s.EndDate).ToList(),
             specials.Where(s => s.StartDate > today).OrderBy(s => s.StartDate).ToList(),
             tagCounts,
-            neverUsed / GameRules.QuestionsPerDay);
+            neverUsed / GameRules.QuestionsPerDay,
+            await UserCountsAsync());
+    }
+
+    // ---------- Leden ----------
+
+    public async Task<UserCounts> UserCountsAsync()
+    {
+        var now = Now;
+        var seen = await db.Users.Select(u => u.LastSeenAt).ToListAsync();
+        return new UserCounts(seen.Count, seen.Count(t => t >= now.AddDays(-1)), seen.Count(t => t >= now.AddDays(-7)));
+    }
+
+    /// <summary>Alle geregistreerde spelers: wie het laatst online was eerst, wie nog nooit gezien is onderaan (nieuwste eerst).</summary>
+    public async Task<List<AdminUserItem>> UsersAsync()
+    {
+        var users = await db.Users.Select(u => new AdminUserItem(u.UserName!, u.AvatarId, u.CreatedAt, u.LastSeenAt)).ToListAsync();
+        // In het geheugen sorteren: PostgreSQL zet null bij aflopend sorteren vooraan, SQLite achteraan.
+        return users.OrderByDescending(u => u.LastSeenAt ?? DateTime.MinValue).ThenByDescending(u => u.CreatedAt).ToList();
     }
 
     // ---------- Weekplanning ----------

@@ -58,6 +58,7 @@ builder.Services.AddScoped<AdminService>();
 builder.Services.AddScoped<PasswordResetService>();
 builder.Services.AddScoped<ProgressService>();
 builder.Services.AddScoped<FeedbackService>();
+builder.Services.AddSingleton<LastSeenTracker>();
 builder.Services.AddSingleton<IMatchNotifier, MatchNotifier>();
 builder.Services.AddHostedService<MatchEngine>();
 builder.Services.AddMemoryCache();
@@ -82,6 +83,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+// "Laatst online" voor het admin-paneel: elk API-verzoek van een aangemelde speler telt (hooguit om de 5 minuten een schrijfactie).
+app.Use(async (ctx, next) =>
+{
+    if (ctx.User.Identity?.IsAuthenticated == true && ctx.Request.Path.StartsWithSegments("/api"))
+        await ctx.RequestServices.GetRequiredService<LastSeenTracker>().TouchAsync(ctx.User.UserId(), ctx.RequestServices.GetRequiredService<QuizDbContext>());
+    await next(ctx);
+});
 
 app.MapStaticAssets();
 app.MapAccountEndpoints();

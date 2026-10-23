@@ -19,26 +19,32 @@
     else
     {
         <div class="dash-grid">
+            <a class="dash-card" href="admin/leden">
+                <Icon Name="users" Class="dash-icon" />
+                <b>@_d.Users.Total</b>
+                <span>leden</span>
+                <small>@_d.Users.ActiveDay online in de laatste 24 uur · @_d.Users.ActiveWeek deze week</small>
+            </a>
             <a class="dash-card @(_d.Players.Review > 0 ? "attention" : "")" href="admin/spelers" @onclick="() => State.Status = PlayerStatus.Review">
-                <span class="dash-icon">🕵️</span>
+                <Icon Name="magnifying-glass" Class="dash-icon" />
                 <b>@_d.Players.Review</b>
                 <span>spelers te keuren</span>
-                <small>@(_d.Players.Review == 0 ? "Alles is nagekeken 👍" : "Controleer de tips met een bron en keur goed")</small>
+                <small>@(_d.Players.Review == 0 ? "Alles is nagekeken" : "Controleer de tips met een bron en keur goed")</small>
             </a>
             <a class="dash-card" href="admin/spelers" @onclick="() => State.Status = null">
-                <span class="dash-icon">✅</span>
+                <Icon Name="check-circle" Class="dash-icon" />
                 <b>@_d.Players.Approved</b>
                 <span>spelers in de quiz</span>
                 <small>Nog ±@_d.DailyDaysLeft dagen tot een speler voor het eerst terugkomt</small>
             </a>
             <a class="dash-card @(_d.NewFeedback > 0 ? "attention" : "")" href="admin/feedback">
-                <span class="dash-icon">🐞</span>
+                <Icon Name="bug" Class="dash-icon" />
                 <b>@_d.NewFeedback</b>
                 <span>nieuwe meldingen</span>
                 <small>@_d.OpenFeedback nog open in totaal</small>
             </a>
             <a class="dash-card" href="admin/specials">
-                <span class="dash-icon">✨</span>
+                <Icon Name="sparkle" Class="dash-icon" />
                 <b>@(_d.ActiveSpecials.Count + _d.UpcomingSpecials.Count)</b>
                 <span>specials actief of gepland</span>
                 <small>@(_d.UpcomingSpecials.FirstOrDefault() is { } next ? $"Volgende: {next.Name} op {next.StartDate:dd/MM}" : "Nog niets gepland")</small>

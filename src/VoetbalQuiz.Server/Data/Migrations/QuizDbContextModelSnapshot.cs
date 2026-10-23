@@ -205,6 +205,9 @@ namespace VoetbalQuiz.Server.Data.Migrations
                     b.Property<DateOnly?>("HomeRankDate")
                         .HasColumnType("date");
 
+                    b.Property<DateTime?>("LastSeenAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean");
 

@@ -48,9 +48,9 @@
             <span class="sb-go" aria-hidden="true">Meer ›</span>
         </summary>
         <ul>
-            <li><span aria-hidden="true">⚽</span> Elke dag nieuwe vragen. Hoe minder tips je nodig hebt, hoe meer punten.</li>
-            <li><span aria-hidden="true">🟨</span> Een foute gok kost @GameRules.WrongGuessPenalty punten. Even nadenken loont dus.</li>
-            <li><span aria-hidden="true">🏆</span> De beste van de dag pakt de dagzege, en elke maand gaat er een Gouden Bal naar de top.</li>
+            <li><Icon Name="soccer-ball" Class="sb-icon" /> Elke dag nieuwe vragen. Hoe minder tips je nodig hebt, hoe meer punten.</li>
+            <li><Icon Name="warning" Class="sb-icon" /> Een foute gok kost @GameRules.WrongGuessPenalty punten. Even nadenken loont dus.</li>
+            <li><Icon Name="trophy" Class="sb-icon" /> De beste van de dag pakt de dagzege, en elke maand gaat er een Gouden Bal naar de top.</li>
         </ul>
         <button type="button" class="btn small" @onclick="HideIntroAsync">Begrepen</button>
     </details>
@@ -152,7 +152,7 @@ else
     var mine = gb.Holders.Any(h => h.IsMe);
     <details class="gb-strip @(mine ? "me" : "")">
         <summary>
-            <span class="gb-strip-ball" aria-hidden="true">⚽</span>
+            <span class="gb-strip-ball" aria-hidden="true"><Icon Name="soccer-ball" /></span>
             <span class="gb-strip-text">
                 <b>@gb.Holders[0].Title</b>
                 <small>@(mine ? "Jij wint de Gouden Bal!" : string.Join(" & ", gb.Holders.Select(h => h.UserName)))</small>

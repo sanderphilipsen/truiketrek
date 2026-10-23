@@ -21,6 +21,12 @@ public class AppUser : IdentityUser
     /// </summary>
     public int? HomeRank { get; set; }
     public DateOnly? HomeRankDate { get; set; }
+
+    /// <summary>
+    /// Laatste API-verzoek van de speler (UTC), voor "laatst online" in het admin-paneel. Hooguit om de 5 minuten
+    /// bijgewerkt (zie LastSeenTracker). Null = nog nooit gezien sinds deze kolom bestaat.
+    /// </summary>
+    public DateTime? LastSeenAt { get; set; }
 }
 
 public class Player

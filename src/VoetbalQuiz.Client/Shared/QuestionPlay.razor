@@ -127,15 +127,15 @@
             <div class="play-feedback" role="status" aria-live="polite">
                 @if (_goal is not null)
                 {
-                    <div class="goal" @key="_goal">⚽ @_goal</div>
+                    <div class="goal" @key="_goal"><Icon Name="soccer-ball" /> @_goal</div>
                 }
                 @if (_wrongGuess is not null)
                 {
-                    <div class="wrong" @key="_wrongKey">❌ @Commentary.Pick(Commentary.Wrong, _wrongKey) “@_wrongGuess” is fout@(Type == QuestionType.Counter ? "" : $" (−{GameRules.WrongGuessPenalty})")</div>
+                    <div class="wrong" @key="_wrongKey"><Icon Name="x-circle" /> @Commentary.Pick(Commentary.Wrong, _wrongKey) “@_wrongGuess” is fout@(Type == QuestionType.Counter ? "" : $" (−{GameRules.WrongGuessPenalty})")</div>
                 }
                 @if (_notInLineup is not null)
                 {
-                    <div class="wrong" @key="_notInLineup">🛡️ @Commentary.Pick(Commentary.Blocked, _notInLineup.Length) “@_notInLineup” staat niet (meer) op een open plaats</div>
+                    <div class="wrong" @key="_notInLineup"><Icon Name="shield" /> @Commentary.Pick(Commentary.Blocked, _notInLineup.Length) “@_notInLineup” staat niet (meer) op een open plaats</div>
                 }
             </div>
         }

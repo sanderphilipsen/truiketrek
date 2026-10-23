@@ -16,7 +16,7 @@
         <section class="card stack">
             <h2>Weekplanning van de daily</h2>
             <p class="muted">
-                Kies per weekdag één vraagtype of een <b>🎲 mix</b>. Een mix verdeelt de vragen om beurten over de gekozen types
+                Kies per weekdag één vraagtype of een <b>mix</b>. Een mix verdeelt de vragen om beurten over de gekozen types
                 (max. 1000 punten, een opstelling telt voor twee). Een wijziging geldt vanaf de eerstvolgende dag die nog niet gestart is.
             </p>
             <div class="week">
@@ -32,7 +32,7 @@
                             {
                                 <option value="@t.Type">@t.Icon @t.Name@(_disabled.Contains(t.Type) ? " (uit)" : "")</option>
                             }
-                            <option value="@MixValue">🎲 Mix van types…</option>
+                            <option value="@MixValue">Mix van types…</option>
                         </select>
                         @if (d.IsMix)
                         {
@@ -48,7 +48,7 @@
                         <small class="muted day-result">
                             @if (changed)
                             {
-                                <span class="warn">⚠️ Uitgeschakeld type: wordt </span>
+                                <span class="warn"><Icon Name="warning" /> Uitgeschakeld type: wordt </span>
                             }
                             @MixLabel(actual)
                         </small>
@@ -56,7 +56,7 @@
                 }
             </div>
             @if (_saved) { <p class="success">Planning opgeslagen.</p> }
-            <button class="btn primary" @onclick="SaveAsync" disabled="@(!_dirty || _busy)">💾 Planning opslaan</button>
+            <button class="btn primary" @onclick="SaveAsync" disabled="@(!_dirty || _busy)">Planning opslaan</button>
         </section>
 
         <section class="card">

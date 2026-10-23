@@ -101,7 +101,7 @@ else
                 else if (_state.IAmIn)
                 {
                     <div class="kleedkamer-wait">
-                        <span class="kleedkamer-wait-ball" aria-hidden="true">⚽</span>
+                        <span class="kleedkamer-wait-ball" aria-hidden="true"><Icon Name="soccer-ball" /></span>
                         <span>Wachten op de aftrap door <b>@(host?.UserName ?? "de organisator")</b></span>
                     </div>
                     @if (free > 0)
@@ -121,7 +121,7 @@ else
                 @if (_state.Derby is not null)
                 {
                     <details class="derby-intro">
-                        <summary><span><b>🔥 Derby:</b> iedereen krijgt een geheim wapen</span></summary>
+                        <summary><span><b><Icon Name="flame" /> Derby:</b> iedereen krijgt een geheim wapen</span></summary>
                         <span>Bij de aftrap krijgt iedereen één geheim wapen, één keer in te zetten:</span>
                         <ul>
                             @foreach (var w in DerbyRules.All)
@@ -153,7 +153,7 @@ else
             @if (_state.Derby?.Events.FirstOrDefault(e => e.Weapon == DerbyWeapon.Wissel) is { } swap)
             {
                 <div class="sub-board" role="status">
-                    <div class="sub-title">🔁 WISSEL</div>
+                    <div class="sub-title"><Icon Name="arrows-clockwise" /> WISSEL</div>
                     <div class="sub-numbers">
                         <span class="out">@_state.CurrentNumber</span>
                         <span class="in">@_state.CurrentNumber</span>
@@ -212,15 +212,15 @@ else
             <div role="status" aria-live="polite">
                 @if (_state.MyCorrect)
                 {
-                    <div class="result ok small">✅ Juist! Wachten op de anderen…</div>
+                    <div class="result ok small"><Icon Name="check-circle" /> Juist! Wachten op de anderen…</div>
                 }
                 else if (_state.MyDone && _state.MyPoints > 0)
                 {
-                    <div class="result ok small">👍 +@_state.MyPoints punten. Wachten op de anderen…</div>
+                    <div class="result ok small"><Icon Name="thumbs-up" /> +@_state.MyPoints punten. Wachten op de anderen…</div>
                 }
                 else if (_state.MyDone)
                 {
-                    <div class="result fail small">@(IsChoice(_state.Type) ? "❌ Mis!" : "Je paste.") Wachten op de anderen…</div>
+                    <div class="result fail small">@if (IsChoice(_state.Type)) { <Icon Name="x-circle" /> <text>Mis!</text> } else { <text>Je paste.</text> } Wachten op de anderen…</div>
                 }
             </div>
 
@@ -283,7 +283,7 @@ else
             @if (_state.Derby?.TrumpOfficial is { } official)
             {
                 <div class="trump-verdict">
-                    <div>📢 <b>Officieel:</b> @official</div>
+                    <div><Icon Name="megaphone" /> <b>Officieel:</b> @official</div>
                     <div class="muted">Eigenlijk: @_state.Derby.TrumpActual</div>
                 </div>
             }
@@ -308,7 +308,9 @@ else
                     @foreach (var r in _state.Reveal)
                     {
                         <li class="@(r.IsMe ? "me" : "")">
-                            <span class="rank">@Medal(r.Position)</span>
+                            <span class="rank @(r.Position is >= 1 and <= 3 ? $"top top-{r.Position}" : "")" aria-label="@(r.Position == 0 ? "deelpunten" : $"{r.Position}{DutchDates.OrdinalSuffix(r.Position)}")">
+                                @if (r.Position == 0) { <Icon Name="thumbs-up" /> } else { @r.Position }
+                            </span>
                             <Avatar Id="@r.AvatarId" User="@r.UserName" Size="36" />
                             <span class="player"><b>@r.UserName</b>@if (r.Bonus > 0) {<small>+@r.Bonus positiebonus</small>}</span>
                             <span class="pts">+@r.Points</span>
@@ -336,7 +338,7 @@ else
             var winner = firsts.FirstOrDefault();
             var iWon = winner?.IsMe == true && MatchRules.IsWin(winner.Rank, stayers, firsts.Count);
             <section class="card center podium-card">
-                <div class="trophy">@(draw ? "🤝" : "🏆")</div>
+                <div class="trophy" aria-hidden="true"><Icon Name="@(draw ? "handshake" : "trophy")" /></div>
                 <h1>@(draw ? "Gelijkspel!" : winner?.IsMe == true ? "Jij wint!" : $"{winner?.UserName} wint!")</h1>
                 <div class="muted">@_state.Name</div>
                 @if (stayers < MatchRules.StayersForWin)
@@ -351,7 +353,7 @@ else
             <Standings Players="_state.Players" />
             @if (_state.Derby?.Report is { Count: > 0 } report)
             {
-                <h2 class="section-title">🔥 Derby-rapport</h2>
+                <h2 class="section-title"><Icon Name="flame" /> Derby-rapport</h2>
                 <ol class="board derby-report">
                     @foreach (var r in report)
                     {
@@ -649,9 +651,6 @@ else
         QuestionType.Volgorde => "Bekijk de juiste volgorde",
         _ => "Bekijk alle tips",
     };
-
-    /// <summary>Position 0: deelpunten zonder juist antwoord (jaar, opstelling, counter).</summary>
-    private static string Medal(int rank) => rank switch { 0 => "👍", 1 => "🥇", 2 => "🥈", 3 => "🥉", _ => rank.ToString() };
 
     public async ValueTask DisposeAsync()
     {
