@@ -94,6 +94,10 @@
         }
         break;
 
+    case QuestionType.Detective:
+        <DetectiveBoard View="View" Busy="Busy" ReadOnly="ReadOnly" Send="Send" />
+        break;
+
     default:
         @* Getypte types: Wie ben ik?, Carrièrepad, Emoji, Opstelling, Wissel, Rugnummer, Mannetje, Kluts en Counter *@
         @if (Type == QuestionType.Emoji)

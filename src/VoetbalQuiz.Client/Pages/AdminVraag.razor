@@ -168,6 +168,43 @@
                             <KrantArticle Headline="@_text" Intro="@_explanation" Kind="@_krantKind" Reveal="true"
                                           Paragraphs="Preview(article)" />
                             break;
+
+                        case QuestionType.Detective:
+                            var zaak = ParseCase(_lines);
+                            <p class="muted">
+                                Een zaak als JSON: <code>title</code>, <code>intro</code>, <code>suspects</code> (@QuestionRules.DetectiveMinSuspects tot
+                                @QuestionRules.DetectiveMaxSuspects, elk met <code>key</code>, <code>name</code>, <code>card</code>), <code>culprit</code> (een key),
+                                <code>clues</code> (@QuestionRules.DetectiveMinClues tot @QuestionRules.DetectiveMaxClues, van vaag naar scherp, elk met
+                                <code>text</code>, <code>excludes</code> en per uitgesloten verdachte een <code>explain</code>) en <code>solution</code>.
+                                De eerste @QuestionRules.DetectiveOpenAtStart verklaringen staan open bij de start. "Speelde voor" = minstens één officiële
+                                wedstrijd, een uitleenbeurt telt mee.
+                            </p>
+                            @if (string.IsNullOrWhiteSpace(_lines))
+                            {
+                                <button type="button" class="btn" @onclick="CaseTemplate">Begin met een leeg sjabloon</button>
+                            }
+                            <label>Zaak (JSON) <textarea rows="20" style="font-family: var(--digits)"@bind="_lines" @bind:event="oninput" @bind:after="Touch"></textarea></label>
+                            @if (zaak is null)
+                            {
+                                @if (!string.IsNullOrWhiteSpace(_lines)) { <p class="error">Geen geldige JSON.</p> }
+                            }
+                            else
+                            {
+                                @* Wat de speler na elke verklaring nog overhoudt; de server controleert de regels bij het opslaan. *@
+                                var left = zaak.Suspects.Select(s => s.Key).ToList();
+                                <ol class="muted">
+                                    @foreach (var c in zaak.Clues)
+                                    {
+                                        left = left.Except(c.Excludes ?? []).ToList();
+                                        <li>@c.Text → sluit uit: @string.Join(", ", c.Excludes ?? []) · over: @string.Join(", ", left)</li>
+                                    }
+                                </ol>
+                                @if (left.Count != 1 || left[0] != zaak.Culprit)
+                                {
+                                    <p class="error">Na alle verklaringen moet enkel de dader (@zaak.Culprit) overblijven.</p>
+                                }
+                            }
+                            break;
                     }
 
                     <label>Moeilijkheid
@@ -338,7 +375,31 @@
                 var k = System.Text.Json.JsonSerializer.Deserialize<KrantData>(data, Json)!;
                 (_krantKind, _text, _explanation, _lines) = (k.Kind, k.Headline, k.Intro, k.Text);
                 break;
+            case QuestionType.Detective:
+                _lines = Pretty(System.Text.Json.JsonSerializer.Deserialize<DetectiveData>(data, Json)!);
+                break;
         }
+    }
+
+    private static readonly System.Text.Json.JsonSerializerOptions PrettyJson = new(Json) { WriteIndented = true,
+        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+
+    private static string Pretty(DetectiveData d) => System.Text.Json.JsonSerializer.Serialize(d, PrettyJson);
+
+    /// <summary>Detectivedag: de zaak uit het tekstvak, of null als het (nog) geen geldige JSON is.</summary>
+    private static DetectiveData? ParseCase(string json)
+    {
+        try { return System.Text.Json.JsonSerializer.Deserialize<DetectiveData>(json, Json) is { Suspects: not null, Clues: not null } d ? d : null; }
+        catch (System.Text.Json.JsonException) { return null; }
+    }
+
+    private void CaseTemplate()
+    {
+        _lines = Pretty(new DetectiveData("gestolen-trofee", "", "",
+            Enumerable.Range(1, QuestionRules.DetectiveMinSuspects).Select(i => new DetectiveSuspect($"verdachte{i}", "", "")).ToList(),
+            "verdachte1",
+            Enumerable.Range(1, QuestionRules.DetectiveMinClues).Select(_ => new DetectiveClue("", [], new())).ToList(), ""));
+        Touch();
     }
 
     /// <summary>De Krant: het artikel zoals na afloop, met elk antwoord ingevuld.</summary>
@@ -366,6 +427,7 @@
         QuestionType.Volgorde => Serialize(new VolgordeData(_text.Trim(),
             _options.Zip(_values, (label, value) => new VolgordeItem(label.Trim(), value.Trim())).ToList())),
         QuestionType.Krant => Serialize(new KrantData(_krantKind, _text.Trim(), _explanation.Trim(), _lines.Trim())),
+        QuestionType.Detective => ParseCase(_lines) is { } d ? Serialize(d) : _lines,
         _ => "{}",
     };
 
@@ -417,6 +479,9 @@
                 if (gaps.Problems.Count > 0) missing.Add("Een gat is ongeldig.");
                 if (gaps.Gaps.Count is < QuestionRules.KrantMinGaps or > QuestionRules.KrantMaxGaps)
                     missing.Add($"{QuestionRules.KrantMinGaps} tot {QuestionRules.KrantMaxGaps} gaten nodig.");
+                break;
+            case QuestionType.Detective:
+                if (ParseCase(_lines) is null) missing.Add("De zaak is geen geldige JSON.");
                 break;
         }
         return missing;

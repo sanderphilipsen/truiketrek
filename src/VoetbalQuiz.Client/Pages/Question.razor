@@ -79,7 +79,8 @@ else
 
     <div class="actions">
         <button class="linkish" @onclick="GiveUpAsync" disabled="@_busy">
-            @(_state.Type is QuestionType.Opstelling or QuestionType.Krant ? "Ik ben klaar" : _state.Type == QuestionType.Counter ? "Ik stop" : "Ik pas")
+            @(_state.Type is QuestionType.Opstelling or QuestionType.Krant ? "Ik ben klaar"
+                : _state.Type == QuestionType.Counter ? "Ik stop" : _state.Type == QuestionType.Detective ? "Ik geef de zaak op" : "Ik pas")
         </button>
     </div>
 }
@@ -194,6 +195,9 @@ else
         if (_state?.Type == QuestionType.Krant && !await _confirm.AskAsync("Klaar met de krant?",
                 "Open gaten tellen dan niet meer mee. Je kan het artikel niet opnieuw spelen.", "Ja, ik ben klaar", danger: false))
             return;
+        if (_state?.Type == QuestionType.Detective && !await _confirm.AskAsync("Zaak opgeven?",
+                "Je krijgt dan 0 punten en ziet meteen wie de dader was. Je kan de zaak niet opnieuw spelen.", "Ja, geef op"))
+            return;
         await RunAsync(() => Api.GiveUpAsync(QuizApi, Number), busy: true);
     }
 
@@ -206,7 +210,7 @@ else
             _syncedAt = DateTime.UtcNow;
             _syncedElapsed = state.ElapsedSeconds;
             // De Krant: na afloop terug naar boven, naar de score (je zat ergens midden in het artikel).
-            var scrollUp = _state is { Result: null, Type: QuestionType.Krant } && state.Result is not null;
+            var scrollUp = _state is { Result: null, Type: QuestionType.Krant or QuestionType.Detective } && state.Result is not null;
             _state = state;
             if (scrollUp) await JS.InvokeVoidAsync("scrollTo", 0, 0);
         }

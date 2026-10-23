@@ -20,6 +20,7 @@ public static class QuestionDisplay
         QuestionType.Volgorde => QuestionTypes.Get(QuestionType.Volgorde).MaxPoints.ToString(),
         QuestionType.Opstelling => $"{LineupFound(view)}/{view?.Lineup?.Count(s => s.IsBlank) ?? 0}",
         QuestionType.Krant => $"{view?.Found ?? 0}/{view?.Total ?? 0}",
+        QuestionType.Detective => (view?.Detective?.PointsNow ?? 0).ToString(),
         _ => "",
     };
 
@@ -40,6 +41,7 @@ public static class QuestionDisplay
         QuestionType.Jaar => "punten bij het exacte jaar",
         QuestionType.Opstelling => "namen gevonden",
         QuestionType.Krant => "gaten ingevuld",
+        QuestionType.Detective => "punten als je nu de dader aanwijst",
         QuestionType.Volgorde => "punten bij de juiste volgorde",
         QuestionType.Counter => $"spelers geraden (+{QuestionRules.CounterPointsPerPlayer} per speler)",
         QuestionType.WieBenIk or QuestionType.Emoji => "punten",

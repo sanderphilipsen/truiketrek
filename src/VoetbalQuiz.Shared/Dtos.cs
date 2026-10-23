@@ -99,7 +99,9 @@ public record QuestionView(
     int Total = 0,
     // De Krant: de alinea's met de gaten (Prompt is de kop, Note het intro). Found/Total: ingevulde gaten.
     List<List<KrantPiece>>? Article = null,
-    string? ArticleKind = null);
+    string? ArticleKind = null,
+    // Detectivedag: verdachten en geopende verklaringen (Prompt is de titel, Note het verhaaltje).
+    DetectiveView? Detective = null);
 
 public record AnswerRequest(string Guess);
 
@@ -119,6 +121,8 @@ public record AnswerResult(
     List<int>? MyOrder = null,
     // De Krant: het hele artikel met per gat het antwoord, wat jij invulde en je score.
     List<List<KrantPiece>>? FullArticle = null,
+    // Detectivedag: het dossier, per verdachte welke verklaring hem uitsloot (AllHints: alle verklaringen).
+    List<DetectiveVerdict>? Dossier = null,
     // De vraag liep af omdat de tijd om was (niet omdat de speler paste of antwoordde).
     bool TimedOut = false);
 

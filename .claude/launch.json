@@ -54,6 +54,12 @@
       "runtimeExecutable": "pwsh",
       "runtimeArgs": ["-NoProfile", "-Command", "$env:ASPNETCORE_ENVIRONMENT='Development'; $env:ASPNETCORE_URLS='http://localhost:5202'; $env:Admins__0='proefadmin'; $env:ConnectionStrings__Quiz=((Get-Content src/VoetbalQuiz.Server/appsettings.Development.json | ConvertFrom-Json).ConnectionStrings.Quiz -replace 'Database=voetbalquiz;','Database=voetbalquiz_krant;'); dotnet run --project src/VoetbalQuiz.Server -c Krant --no-launch-profile"],
       "port": 5202
+    },
+    {
+      "name": "voetbalquiz-detective",
+      "runtimeExecutable": "pwsh",
+      "runtimeArgs": ["-NoProfile", "-Command", "$env:ASPNETCORE_ENVIRONMENT='Development'; $env:ASPNETCORE_URLS='http://localhost:5204'; $env:Admins__0='proefdetective'; $env:ConnectionStrings__Quiz=((Get-Content src/VoetbalQuiz.Server/appsettings.Development.json | ConvertFrom-Json).ConnectionStrings.Quiz -replace 'Database=voetbalquiz;','Database=voetbalquiz_detective;'); dotnet run --project src/VoetbalQuiz.Server -c Detective --no-launch-profile"],
+      "port": 5204
     }
   ]
 }
