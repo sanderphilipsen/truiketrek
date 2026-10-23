@@ -6,6 +6,7 @@
     --pitch-2: #0f5132;
     --line: rgba(255, 255, 255, .12);
     --card: #06291b;
+    --tile-bg: rgba(6, 41, 27, .85); /* tegel op het veld: het veld schemert er licht door; sheets, popups en knoppen houden --card */
     --text: #e3f4ea;
     --muted: #8cc7ab;
     --accent: #f5c400;
@@ -41,6 +42,7 @@
 }
 .surface-light {
     --card: #ffffff;
+    --tile-bg: var(--card);
     --text: #13241b;
     --muted: #5d6f65;
     --accent-text: #806300;
@@ -198,7 +200,7 @@ h1 { margin: .2rem 0 .4rem; font-size: 1.5rem; }
 
 /* ---------- Basis ---------- */
 .card {
-    background: var(--card);
+    background: var(--tile-bg);
     border-radius: var(--radius);
     padding: 20px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
@@ -360,7 +362,7 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent); box-sha
 .question-head .back { flex: none; }
 
 .stake {
-    background: var(--card);
+    background: var(--tile-bg);
     border-radius: var(--radius);
     padding: 12px 16px;
     margin-bottom: 10px;
@@ -399,7 +401,7 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent); box-sha
     display: flex;
     gap: 10px;
     align-items: flex-start;
-    background: var(--card);
+    background: var(--tile-bg);
     border-radius: 12px;
     padding: 12px 14px;
     line-height: 1.4;
@@ -423,7 +425,7 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent); box-sha
 .actions { display: flex; justify-content: center; }
 .actions .linkish { color: rgba(255, 255, 255, .75); display: inline-flex; align-items: center; min-height: var(--tap); padding: 0 16px; }
 
-.result { border-radius: var(--radius); padding: 18px; text-align: center; margin-bottom: 12px; background: var(--card); }
+.result { border-radius: var(--radius); padding: 18px; text-align: center; margin-bottom: 12px; background: var(--tile-bg); }
 /* Juist licht de kaart groen op (een gloed die uitdooft), fout schudt ze even rood. */
 .result.ok { border: 3px solid var(--ok); animation: result-glow 1.1s ease-out; }
 .result.fail { border: 3px solid var(--fail); animation: shake .35s; }
@@ -466,7 +468,7 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent); box-sha
 /* Klassementen: één blok met dunne scheidingslijnen, als de stand op tv. Geen overflow: hidden, anders kan jouw rij niet
    in beeld blijven plakken; de hoeken komen van de eerste en laatste rij. */
 .board { list-style: none; padding: 0; margin: 0; display: grid; gap: 1px; background: var(--divider); border-radius: var(--radius); }
-.board li { display: flex; align-items: center; gap: 12px; background: var(--card); padding: 10px 14px 10px 10px; border-left: 4px solid transparent; }
+.board li { display: flex; align-items: center; gap: 12px; background: var(--tile-bg); padding: 10px 14px 10px 10px; border-left: 4px solid transparent; }
 .board li:first-child { border-top-left-radius: calc(var(--radius) - 1px); border-top-right-radius: calc(var(--radius) - 1px); }
 .board li:last-child { border-bottom-left-radius: calc(var(--radius) - 1px); border-bottom-right-radius: calc(var(--radius) - 1px); }
 /* Zones: groen voor de prijzen (beker), rood voor de degradatiezone (enkel een prikkel). */
@@ -519,7 +521,7 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent); box-sha
 .section-note { color: rgba(255, 255, 255, .8); font-size: .85rem; margin: 8px 2px 0; }
 .my-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
 .my-stats div {
-    background: var(--card);
+    background: var(--tile-bg);
     border-radius: 12px;
     padding: 10px 4px;
     text-align: center;
@@ -530,8 +532,8 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent); box-sha
 .my-stats small { color: var(--muted); font-size: .7rem; line-height: 1.2; }
 
 .hall { display: grid; gap: 8px; }
-.record { display: flex; align-items: center; gap: 12px; background: var(--card); border-radius: 12px; padding: 12px 14px; }
-.record.me { background: linear-gradient(rgba(250, 199, 117, .16), rgba(250, 199, 117, .16)), var(--card); border-color: var(--control-border); }
+.record { display: flex; align-items: center; gap: 12px; background: var(--tile-bg); border-radius: 12px; padding: 12px 14px; }
+.record.me { background: linear-gradient(rgba(250, 199, 117, .16), rgba(250, 199, 117, .16)), var(--tile-bg); border-color: var(--control-border); }
 .record-icon { font-size: 1.6rem; }
 .record-body { flex: 1; display: flex; flex-direction: column; }
 .record-title { font-size: .8rem; text-transform: uppercase; letter-spacing: .4px; color: var(--muted); font-weight: 700; }
@@ -735,7 +737,7 @@ body:has(.sheet) { overflow: hidden; }
     display: flex;
     align-items: center;
     gap: 12px;
-    background: var(--card);
+    background: var(--tile-bg);
     border-radius: 12px;
     padding: 12px 14px;
     text-decoration: none;
@@ -762,7 +764,7 @@ body:has(.sheet) { overflow: hidden; }
 .tafel-banner {
     display: flex; align-items: center; gap: 12px;
     min-height: 56px; padding: 10px 14px; margin-bottom: 10px;
-    border-radius: 12px; background: var(--card); color: var(--text); text-decoration: none;
+    border-radius: 12px; background: var(--tile-bg); color: var(--text); text-decoration: none;
 }
 .tafel-banner-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 .tafel-banner-text small { color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -1154,7 +1156,7 @@ body:has(.sheet) { overflow: hidden; }
 
 /* ---------- Badges & bekers ---------- */
 .trophies { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }
-.trophy-item { background: var(--card); border-radius: 12px; padding: 10px 6px; text-align: center; display: flex; flex-direction: column; gap: 2px; }
+.trophy-item { background: var(--tile-bg); border-radius: 12px; padding: 10px 6px; text-align: center; display: flex; flex-direction: column; gap: 2px; }
 .trophy-item.place-1 { border: 2px solid var(--accent); }
 /* Eén lijnicoon per beker, in goud, zilver of brons. */
 .trophy-icon { font-size: 2rem; line-height: 1; color: #c97a3a; }
@@ -1175,7 +1177,7 @@ body:has(.sheet) { overflow: hidden; }
     gap: 2px;
 }
 .badge:not(.earned) .badge-icon { filter: grayscale(1); opacity: .5; }
-.badge.earned { background: var(--card); border-style: solid; border-color: transparent; }
+.badge.earned { background: var(--tile-bg); border-style: solid; border-color: transparent; }
 .badge.earned.tier-goud { border: 2px solid #e2b100; }
 .badge.earned.tier-zilver { border: 2px solid #b8c0c7; }
 .badge.earned.tier-brons { border: 2px solid #c98b52; }
@@ -1392,7 +1394,7 @@ button.choice:active { transform: scale(.97); }
 .year-slider { width: 100%; accent-color: var(--accent); }
 .year-scale { display: flex; justify-content: space-between; color: rgba(255, 255, 255, .7); font-size: .8rem; margin-bottom: 10px; }
 .year-result { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
-.year-result div { background: var(--card); border-radius: 12px; padding: 12px; text-align: center; display: flex; flex-direction: column; }
+.year-result div { background: var(--tile-bg); border-radius: 12px; padding: 12px; text-align: center; display: flex; flex-direction: column; }
 .year-result b { font-size: 2rem; }
 .year-result small { color: var(--muted); }
 .emoji-big { font-family: "Noto Color Emoji", "Segoe UI Emoji", "Apple Color Emoji", sans-serif; font-size: 3rem; text-align: center; letter-spacing: 6px; margin: 6px 0; line-height: 1.2; }
@@ -1659,7 +1661,7 @@ button.choice:active { transform: scale(.97); }
 }
 .kluts .tile.fixed { background: var(--ok); border-color: var(--ok); color: #fff; }
 
-.counter-card { background: var(--card); border-radius: var(--radius); padding: 12px 14px; margin-bottom: 10px; border-left: 5px solid var(--accent); }
+.counter-card { background: var(--tile-bg); border-radius: var(--radius); padding: 12px 14px; margin-bottom: 10px; border-left: 5px solid var(--accent); }
 .counter-card small { color: var(--muted); font-weight: 700; }
 .counter-card p { margin: 4px 0 0; font-size: 1.1rem; }
 .btn.skip { width: 100%; margin-bottom: 10px; }
