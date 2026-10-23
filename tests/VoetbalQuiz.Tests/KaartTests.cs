@@ -27,16 +27,16 @@ public sealed class KaartTests : IDisposable
     // Tien spelden (zoals elke kaart), waarvan één gedeeld stadion: elf clubs in totaal. Een kaart van België.
     private static readonly KaartData Map = new("Eerste klasse: welke club speelt hier thuis?", "Testcompetitie", "2026-27",
     [
-        new("Jan Breydelstadion", "Brugge", 51.1931, 3.1806, ["Club Brugge", "Cercle Brugge"]),
-        new("Lotto Park", "Anderlecht", 50.8342, 4.2983, ["Anderlecht"]),
-        new("Bosuilstadion", "Antwerpen", 51.2325, 4.4722, ["Antwerp"]),
-        new("Cegeka Arena", "Genk", 51.0051, 5.5333, ["Genk"]),
-        new("Stade Maurice Dufrasne", "Luik", 50.6101, 5.5434, ["Standard"]),
-        new("Planet Group Arena", "Gent", 51.0161, 3.7342, ["Gent"]),
-        new("Guldensporen Stadion", "Kortrijk", 50.8304, 3.2489, ["Kortrijk"]),
-        new("Stayen", "Sint-Truiden", 50.8135, 5.1663, ["Sint-Truiden"]),
-        new("AFAS-stadion Achter de Kazerne", "Mechelen", 51.0372, 4.4864, ["Mechelen"]),
-        new("Den Dreef", "Leuven", 50.8683, 4.6942, ["OH Leuven"]),
+        new("Jan Breydelstadion", "Brugge", 51.1931, 3.1806, ["Club Brugge", "Cercle Brugge"], 29042),
+        new("Lotto Park", "Anderlecht", 50.8342, 4.2983, ["Anderlecht"], 21500),
+        new("Bosuilstadion", "Antwerpen", 51.2325, 4.4722, ["Antwerp"], 16144),
+        new("Cegeka Arena", "Genk", 51.0051, 5.5333, ["Genk"], 23718),
+        new("Stade Maurice Dufrasne", "Luik", 50.6101, 5.5434, ["Standard"], 27670),
+        new("Planet Group Arena", "Gent", 51.0161, 3.7342, ["Gent"], 20000),
+        new("Guldensporen Stadion", "Kortrijk", 50.8304, 3.2489, ["Kortrijk"], 9399),
+        new("Stayen", "Sint-Truiden", 50.8135, 5.1663, ["Sint-Truiden"], 14600),
+        new("AFAS-stadion Achter de Kazerne", "Mechelen", 51.0372, 4.4864, ["Mechelen"], 16672),
+        new("Den Dreef", "Leuven", 50.8683, 4.6942, ["OH Leuven"], 10000),
     ], "BE");
 
     private const int TotalClubs = 11, TotalPins = QuestionRules.KaartPins;
@@ -48,7 +48,7 @@ public sealed class KaartTests : IDisposable
         var (lat, lon) = ((k.MinLat + k.MaxLat) / 2, (k.MinLon + k.MaxLon) / 2);
         return new KaartData($"{competition}: welke club speelt hier thuis?", competition, "2026-27",
             [.. Enumerable.Range(0, QuestionRules.KaartPins).Select(i =>
-                new KaartStadion($"{land} stadion {i}", $"{land} stad {i}", lat + i * 0.02, lon + i * 0.02, [$"{land} club {i}"]))], land);
+                new KaartStadion($"{land} stadion {i}", $"{land} stad {i}", lat + i * 0.02, lon + i * 0.02, [$"{land} club {i}"], 20000 + i))], land);
     }
 
     public KaartTests()
@@ -157,6 +157,9 @@ public sealed class KaartTests : IDisposable
         Assert.Equal(QuestionRules.KaartStadiumsPart, start2.View!.Part);
         Assert.Equal(QuestionRules.KaartSeconds, start2.TimeLimit);
         Assert.Equal(Map.Pins.Select(p => p.Stadium).Order(StringComparer.InvariantCultureIgnoreCase), start2.View.Options);
+        // De keuzelijst toont de capaciteit als hint, in dezelfde volgorde; de gok blijft de stadionnaam.
+        Assert.Equal(start2.View.Options!.Count, start2.View.OptionLabels!.Count);
+        Assert.Equal("Jan Breydelstadion · 29.042", start2.View.OptionLabels[start2.View.Options.IndexOf("Jan Breydelstadion")]);
         var part2 = await PlayAsync(2, s => Right(s));
         Assert.True(part2.Result!.Correct);
         Assert.Equal(500, part2.Result.Points);
@@ -474,6 +477,11 @@ public sealed class KaartTests : IDisposable
         await SeedMapsAsync(InFile(Changed, difficulty: 4));
         Assert.Equal(before, MapItem.Data);       // de spelden liggen vast
         Assert.Equal(4, MapItem.Difficulty);      // de rest wordt wel bijgewerkt
+
+        // Wat de antwoorden niet raakt, zoals de capaciteit, neemt een gespeelde kaart wel over.
+        var bigger = Map with { Pins = [.. Map.Pins.SkipLast(1), Map.Pins[^1] with { Capacity = 10500 }] };
+        await SeedMapsAsync(InFile(bigger));
+        Assert.Equal(10500, QuestionEngine.Parse<KaartData>(MapItem.Data).Pins[^1].Capacity);
     }
 
     [Fact]
@@ -777,7 +785,8 @@ public sealed class KaartTests : IDisposable
         Assert.NotEmpty(Problems(Replace(new("Tweede", "Lier", 51.13, 4.57, ["Genk"]))));                           // club bij twee spelden
         Assert.NotEmpty(Problems(Replace(new("Lotto Park", "Lier", 51.13, 4.57, ["Lierse"]))));                     // stadionnaam dubbel
         Assert.NotEmpty(Problems(Replace(new("Leeg", "Lier", 51.13, 4.57, []))));                                   // speld zonder club
-        Assert.Empty(Problems(Replace(new("Herman Vanderpoortenstadion", "Lier", 51.13, 4.57, ["Lierse"]))));     // dezelfde, maar geldig
+        Assert.Empty(Problems(Replace(new("Herman Vanderpoortenstadion", "Lier", 51.13, 4.57, ["Lierse"], 14538)))); // dezelfde, maar geldig
+        Assert.NotEmpty(Problems(Replace(new("Herman Vanderpoortenstadion", "Lier", 51.13, 4.57, ["Lierse"]))));   // zonder capaciteit
         Assert.NotEmpty(Problems(Map with { Country = "NL" }));                                                     // onbekend land
         Assert.Empty(Problems(Map with { Country = null }));                                                        // geen land = België
         foreach (var land in KaartProjection.Landen) Assert.Empty(Problems(MapIn(land.Code, $"Competitie {land.Code}")));
@@ -898,11 +907,11 @@ public sealed class KaartTests : IDisposable
         static List<string> Problems(KaartData d) => QuestionEngine.Problems(QuestionType.Kaart, QuestionEngine.Serialize(d));
         KaartData With(KaartStadion extra) => Map with { Pins = [.. Map.Pins.SkipLast(1), extra] };
 
-        Assert.NotEmpty(Problems(With(new("Ghelamco", "Gent", 51.01, 3.73, ["Beveren|Waasland"]))));
-        Assert.NotEmpty(Problems(With(new("Ghelamco|Arena", "Gent", 51.01, 3.73, ["Beveren"]))));
-        Assert.NotEmpty(Problems(With(new("Ghelamco", "Gent", 51.01, 3.73, [" Beveren"]))));
-        Assert.NotEmpty(Problems(With(new("Ghelamco ", "Gent", 51.01, 3.73, ["Beveren"]))));
-        Assert.Empty(Problems(With(new("Ghelamco", "Gent", 51.01, 3.73, ["Beveren"]))));
+        Assert.NotEmpty(Problems(With(new("Ghelamco", "Gent", 51.01, 3.73, ["Beveren|Waasland"], 12000))));
+        Assert.NotEmpty(Problems(With(new("Ghelamco|Arena", "Gent", 51.01, 3.73, ["Beveren"], 12000))));
+        Assert.NotEmpty(Problems(With(new("Ghelamco", "Gent", 51.01, 3.73, [" Beveren"], 12000))));
+        Assert.NotEmpty(Problems(With(new("Ghelamco ", "Gent", 51.01, 3.73, ["Beveren"], 12000))));
+        Assert.Empty(Problems(With(new("Ghelamco", "Gent", 51.01, 3.73, ["Beveren"], 12000))));
     }
 
     [Fact]

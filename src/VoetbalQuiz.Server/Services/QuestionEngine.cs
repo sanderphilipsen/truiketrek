@@ -177,11 +177,13 @@ public static class QuestionEngine
                         : new KaartSpeld(x.Pin.Lat, x.Pin.Lon, KaartChoices(q, x.Pin), stadiums ? x.Pin.Clubs : null))
                     .ToList();
                 var part = stadiums ? QuestionRules.KaartStadiumsPart : QuestionRules.KaartClubsPart;
+                var options = KaartOptions(q, d);
                 return ([], new QuestionView(stadiums ? $"{d.Competition} {d.Season}: in welk stadion speelt deze club thuis?" : d.Question,
-                    KaartOptions(q, d),
+                    options,
                     MaxPoints: QuestionRules.KaartPartPoints,
                     Note: over || passed >= order.Count ? $"Deel {part} · {LandNaam(d)}" : $"Deel {part} · {LandNaam(d)} · speld {passed + 1} van {order.Count}",
-                    Found: passed, Total: order.Count, Pins: pins, Part: part, Country: d.Land));
+                    Found: passed, Total: order.Count, Pins: pins, Part: part, Country: d.Land,
+                    OptionLabels: stadiums ? KaartStadiumLabels(d, options) : null));
             }
             default:
                 return ([], new QuestionView());
@@ -378,6 +380,22 @@ public static class QuestionEngine
         names.Distinct(StringComparer.OrdinalIgnoreCase).Order(StringComparer.InvariantCultureIgnoreCase).ToList();
 
     private static List<string> KaartOptions(IQuizQuestion q, KaartData d) => IsStadiumPart(q) ? KaartStadiums(d) : KaartClubs(d);
+
+    /// <summary>
+    /// Kaart: wat bij een gespeelde kaart vastligt, per speld in de volgorde van het bestand: het stadion en de clubs.
+    /// Pogingen onthouden spelden op hun plaats in de geschudde volgorde, en die hangt van het aantal spelden af. Een
+    /// capaciteit, stad of coördinaat bijwerken mag dus wel.
+    /// </summary>
+    public static List<string> KaartAnswers(string data) =>
+        Parse<KaartData>(data).Pins.Select(p => $"{p.Stadium}{QuestionRules.KaartSeparator}{string.Join(QuestionRules.KaartSeparator, p.Clubs)}").ToList();
+
+    /// <summary>
+    /// Kaart, deel 2: de stadions zoals de keuzelijst ze toont, met de capaciteit (zelfde volgorde als de opties). Alle
+    /// stadions staan er met hun capaciteit, dus het verraadt niet welke speld welk stadion is.
+    /// </summary>
+    private static List<string> KaartStadiumLabels(KaartData d, List<string> stadiums) =>
+        stadiums.Select(s => QuestionRules.KaartStadionLabel(s,
+            d.Pins.FirstOrDefault(p => string.Equals(p.Stadium, s, StringComparison.OrdinalIgnoreCase))?.Capacity)).ToList();
 
     /// <summary>Kaart: hoeveel keuzelijsten een speld heeft: één per club in deel 1, één stadion in deel 2.</summary>
     private static int KaartChoices(IQuizQuestion q, KaartStadion pin) => IsStadiumPart(q) ? 1 : pin.Clubs.Count;
@@ -883,6 +901,8 @@ public static class QuestionEngine
             .Concat(Check(pins.Count == QuestionRules.KaartPins, $"Een kaart heeft precies {QuestionRules.KaartPins} spelden (nu {pins.Count})."))
             .Concat(Check(pins.All(p => !string.IsNullOrWhiteSpace(p.Stadium) && p.Clubs is { Count: > 0 } && p.Clubs.All(c => !string.IsNullOrWhiteSpace(c))),
                 "Elke speld heeft een stadion en minstens één club."))
+            // De capaciteit is de hint in de keuzelijst van deel 2: zonder zou één stadion opvallen.
+            .Concat(Check(pins.All(p => p.Capacity is > 0), "Elke speld heeft een capaciteit (aantal plaatsen) groter dan 0."))
             // Een naam is een keuze in de lijst en gaat zo terug in de gok: geen scheidingsteken, geen spaties rond.
             .Concat(Check(pins.SelectMany(p => (p.Clubs ?? []).Append(p.Stadium ?? ""))
                     .All(n => !n.Contains(QuestionRules.KaartSeparator) && n == n.Trim()),

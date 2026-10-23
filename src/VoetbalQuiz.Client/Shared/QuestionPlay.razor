@@ -139,9 +139,9 @@
                             aria-label="@SelectLabel(pin, index, stadiums)"
                             @onchange="e => SetKaartChoice(index, e.Value?.ToString())">
                         <option value="">@(stadiums ? "Kies een stadion…" : pin.Choices > 1 ? $"Club {index + 1}…" : "Kies een club…")</option>
-                        @foreach (var option in View.Options ?? [])
+                        @foreach (var (option, o) in (View.Options ?? []).Select((option, o) => (option, o)))
                         {
-                            <option value="@option">@option</option>
+                            <option value="@option">@(View.OptionLabels?.ElementAtOrDefault(o) ?? option)</option>
                         }
                     </select>
                 }

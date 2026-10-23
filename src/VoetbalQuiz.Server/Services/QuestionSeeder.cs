@@ -75,8 +75,9 @@ public class QuestionSeeder(QuizDbContext db, IWebHostEnvironment env, ILogger<Q
                     updated++;
                 }
 
-                if (!playedMaps.Contains(item.Id)) item.Data = data;
-                else if (item.Data != data) logger.LogWarning("Kaart {Key} is al gespeeld: de nieuwe spelden worden niet overgenomen. Een gewijzigde kaart heeft een nieuwe sleutel nodig (land, competitie en seizoen), bv. een ander seizoen.", key);
+                // Een gespeelde kaart neemt enkel wijzigingen over die de antwoorden niet raken (bv. een capaciteit).
+                if (!playedMaps.Contains(item.Id) || QuestionEngine.KaartAnswers(item.Data).SequenceEqual(QuestionEngine.KaartAnswers(data))) item.Data = data;
+                else logger.LogWarning("Kaart {Key} is al gespeeld: de nieuwe spelden worden niet overgenomen. Een gewijzigde kaart heeft een nieuwe sleutel nodig (land, competitie en seizoen), bv. een ander seizoen.", key);
                 item.Difficulty = Difficulty.Clamp(meta.Difficulty);
                 item.Status = meta.Status?.ToLowerInvariant() switch
                 {

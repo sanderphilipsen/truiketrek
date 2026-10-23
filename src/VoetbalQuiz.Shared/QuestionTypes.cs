@@ -303,6 +303,13 @@ public static class QuestionRules
     /// <summary>Kaart: een kaart zonder land (van vóór de landkaarten) is een kaart van België.</summary>
     public const string KaartDefaultCountry = "BE";
 
+    /// <summary>
+    /// Kaart, deel 2: hoe een stadion in de keuzelijst staat, met de capaciteit als hint ("Signal Iduna Park · 81.365").
+    /// De stad staat er bewust niet bij: die zou bij de club meteen het antwoord geven.
+    /// </summary>
+    public static string KaartStadionLabel(string stadium, int? capacity) =>
+        capacity is > 0 ? $"{stadium} · {capacity.Value.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("nl-BE"))}" : stadium;
+
     /// <summary>Counter: zoveel spelers per vraag, elk goed voor <see cref="CounterPointsPerPlayer"/> punten.</summary>
     public const int CounterPlayers = 10;
     public const int CounterPointsPerPlayer = 20;
@@ -499,8 +506,11 @@ public record VolgordeItem(string Label, string Value);
 /// <summary>Op volgorde: de opdracht en de kaartjes in de juiste volgorde (de server husselt ze).</summary>
 public record VolgordeData(string Question, List<VolgordeItem> Items);
 
-/// <summary>Kaart: een stadion met de club(s) die er thuis spelen (meer dan één bij een gedeeld stadion).</summary>
-public record KaartStadion(string Stadium, string City, double Lat, double Lon, List<string> Clubs);
+/// <summary>
+/// Kaart: een stadion met de club(s) die er thuis spelen (meer dan één bij een gedeeld stadion). Capacity: het aantal
+/// plaatsen, als hint in de keuzelijst van deel 2.
+/// </summary>
+public record KaartStadion(string Stadium, string City, double Lat, double Lon, List<string> Clubs, int? Capacity = null);
 
 /// <summary>
 /// Kaart: één competitie op de kaart van een land (Country: ISO-code, zie <see cref="KaartProjection.Landen"/>; leeg = België).

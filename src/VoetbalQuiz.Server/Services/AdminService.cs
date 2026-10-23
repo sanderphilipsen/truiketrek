@@ -325,8 +325,11 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
         var item = existing ?? db.QuizItems.Add(new QuizItem { Type = edit.Type, Key = key, Data = edit.Data }).Entity;
 
         // Een kaart die al in een reeks zit, verandert niet meer van spelden of clubs: de pogingen bewaren posities in de
-        // geschudde volgorde (QuestionEngine.KaartOrder), en die hangt van de spelden af. Status, bronnen en thema's mogen wel.
-        if (item.Type == QuestionType.Kaart && item.Id != 0 && item.Data != edit.Data && await db.DailyQuestions.AnyAsync(q => q.QuizItemId == item.Id))
+        // geschudde volgorde (QuestionEngine.KaartOrder), en die hangt van de spelden af. Status, bronnen en thema's mogen wel,
+        // en ook wat de antwoorden niet raakt (capaciteit, stad, coördinaten).
+        if (item.Type == QuestionType.Kaart && item.Id != 0 && item.Data != edit.Data
+            && !QuestionEngine.KaartAnswers(item.Data).SequenceEqual(QuestionEngine.KaartAnswers(edit.Data))
+            && await db.DailyQuestions.AnyAsync(q => q.QuizItemId == item.Id))
             throw new QuizException("Deze kaart is al gespeeld: de spelden en clubs kunnen niet meer wijzigen. Maak een nieuwe kaart (bv. voor een nieuw seizoen).");
 
         item.Key = key;

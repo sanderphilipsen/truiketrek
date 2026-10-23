@@ -117,7 +117,10 @@ public record QuestionView(
     // Kaart: welk deel (QuestionRules.KaartClubsPart of KaartStadiumsPart); 0 bij de andere types.
     int Part = 0,
     // Kaart: het land van de kaart (ISO-code, voor LandKaart). Geen geheim: de kaart zelf toont het land.
-    string? Country = null);
+    string? Country = null,
+    // Kaart, deel 2: wat de keuzelijst toont, in dezelfde volgorde als Options (stadion met capaciteit). De gok blijft
+    // de waarde uit Options. Null = Options zelf tonen.
+    List<string>? OptionLabels = null);
 
 /// <summary>
 /// Kaart: een speld zoals de speler ze ziet. Choices = hoeveel keuzelijsten (deel 1: één per club die er speelt; deel 2: één).
