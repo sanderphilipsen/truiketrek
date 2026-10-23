@@ -229,7 +229,7 @@ public sealed class SpecialAndProgressTests : IDisposable
         await PlayAllAsync(_me, null, correct: true); // zondag
         var profile = await _progress.GetProfileAsync(_me, "sander");
         Assert.Contains(profile.Badges, b => b.Id == "volle-week" && b.Earned);
-        Assert.Contains(profile.Badges, b => b.Id == "allrounder" && !b.Earned && b.Progress == $"1/{QuestionTypes.All.Count}");
+        Assert.Contains(profile.Badges, b => b.Id == "allrounder" && !b.Earned && b.Progress == $"1/{QuestionTypes.All.Count(t => !t.Alone)}");
     }
 
     public void Dispose() => _t.Dispose();

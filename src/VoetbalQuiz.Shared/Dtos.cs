@@ -96,7 +96,10 @@ public record QuestionView(
     int? Shirt = null,
     // Counter: al gevonden en het totaal aantal spelers.
     int Found = 0,
-    int Total = 0);
+    int Total = 0,
+    // De Krant: de alinea's met de gaten (Prompt is de kop, Note het intro). Found/Total: ingevulde gaten.
+    List<List<KrantPiece>>? Article = null,
+    string? ArticleKind = null);
 
 public record AnswerRequest(string Guess);
 
@@ -114,6 +117,8 @@ public record AnswerResult(
     List<LineupSlot>? FullLineup = null,
     // Op volgorde: de gekozen volgorde (indexen in de juiste volgorde), null als de speler niets instuurde.
     List<int>? MyOrder = null,
+    // De Krant: het hele artikel met per gat het antwoord, wat jij invulde en je score.
+    List<List<KrantPiece>>? FullArticle = null,
     // De vraag liep af omdat de tijd om was (niet omdat de speler paste of antwoordde).
     bool TimedOut = false);
 

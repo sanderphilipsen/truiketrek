@@ -2156,3 +2156,57 @@ details.derby-intro[open] { padding-bottom: 10px; }
     .derby-redcard, .derby-redcard .rc-card { animation: none; }
     .derby-redcard .rc-card { transform: rotate(-8deg); }
 }
+
+/* ---------- De Krant: een krantenartikel met gaten (bewust papier, in beide thema's) ---------- */
+.krant {
+    --paper: #f6f1e4;
+    --paper-text: #1d1a14;
+    --paper-muted: #5b5446;
+    --paper-rule: #2b261c;
+    background: var(--paper);
+    color: var(--paper-text);
+    border-radius: var(--radius);
+    padding: 14px 16px 6px;
+    margin-bottom: 12px;
+    font-family: Georgia, "Times New Roman", serif;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .25);
+}
+.krant-masthead {
+    display: flex; justify-content: space-between; gap: 8px;
+    font-family: inherit; font-size: .78rem; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--paper-muted);
+    border-bottom: 3px double var(--paper-rule);
+    padding-bottom: 6px; margin-bottom: 10px;
+}
+.krant-kop { font-size: 1.35rem; line-height: 1.2; margin: 0 0 6px; color: var(--paper-text); }
+.krant-intro { font-style: italic; color: var(--paper-muted); margin: 0 0 10px; }
+.krant-par { line-height: 2.1; margin: 0 0 12px; hyphens: auto; }
+.krant-gap {
+    display: inline-block; min-width: 4.5em; padding: 3px 8px; margin: 0 1px;
+    border-radius: 6px; line-height: 1.5; font-family: system-ui, sans-serif; font-size: .92em;
+    vertical-align: baseline;
+}
+.krant-gap.open {
+    min-height: 0; border: 1.5px dashed var(--paper-rule); background: transparent; color: var(--paper-muted);
+    font-style: italic; cursor: pointer;
+}
+.krant-gap.open.selected { border-style: solid; background: #fff3b0; color: var(--paper-text); box-shadow: 0 0 0 2px #e0b100; }
+.krant-gap.filled { background: #d7ecdf; color: #12462a; font-weight: 600; }
+.krant-gap.filled.number { background: #e6e1d3; color: var(--paper-text); border: 1.5px solid #8a8170; }
+.krant-gap.filled.number::after { content: " 🔒"; font-size: .8em; }
+.krant-gap.right { background: #d7ecdf; color: #12462a; font-weight: 600; }
+.krant-gap.partial { background: #fbe7b8; color: #5c3d00; font-weight: 600; }
+.krant-gap.wrong { background: #f6d3d3; color: #7a1d1d; font-weight: 600; }
+.krant-gap small { font-weight: 400; margin-left: 4px; }
+/* Een open gat staat in lopende tekst: de knop zelf is laag, maar het tikvlak loopt boven en onder door. */
+.krant-gap.open { position: relative; }
+.krant-gap.open::before { content: ""; position: absolute; inset: -9px -2px; }
+/* De reactie, het invoerveld en "Klaar" blijven onderaan in beeld terwijl je door een lang artikel scrolt. */
+.krant-dock {
+    position: sticky; bottom: 0; z-index: 2;
+    background: var(--card); padding: 8px; margin: 0 -8px 10px; border-radius: var(--radius);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, .25);
+}
+.krant-dock .answer { margin-bottom: 0; }
+.krant-dock .play-feedback { min-height: 0; margin-bottom: 6px; font-size: .9rem; }
+.krant-dock .play-feedback:empty { display: none; }

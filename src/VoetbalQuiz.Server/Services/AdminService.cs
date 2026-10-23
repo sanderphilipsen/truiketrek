@@ -219,7 +219,9 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
         }
         else if (row is null)
         {
-            if (await db.DisabledQuestionTypes.CountAsync() >= QuestionTypes.All.Count - 1)
+            // Een type dat alleen een dag vult (De Krant) kan geen gewone dag maken: er moet een ander type aan blijven.
+            var disabledRegular = (await db.DisabledQuestionTypes.Select(d => d.Type).ToListAsync()).Count(t => !QuestionTypes.Get(t).Alone);
+            if (!QuestionTypes.Get(type).Alone && disabledRegular >= QuestionTypes.All.Count(t => !t.Alone) - 1)
                 throw new QuizException("Er moet minstens één vraagtype aan staan.");
             db.DisabledQuestionTypes.Add(new DisabledQuestionType { Type = type });
         }
@@ -259,6 +261,9 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
             await InPlayAsync(q => q.QuizItemId == id));
     }
 
+    private static IEnumerable<(string Answer, int? Number)> KrantGaps(string data) =>
+        KrantText.Parse(QuestionEngine.Parse<KrantData>(data).Text).Gaps.Select(g => (g.Answer, g.Number));
+
     public async Task<int> SaveQuizItemAsync(QuizItemEdit edit, string adminName)
     {
         if (QuestionTypes.Get(edit.Type).FromPlayers)
@@ -267,6 +272,13 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
         var sources = edit.Sources.Select(s => s.Trim()).Where(s => Uri.TryCreate(s, UriKind.Absolute, out _)).Distinct().ToList();
         if (edit.Status == PlayerStatus.Approved && sources.Count == 0) problems.Add("Voeg minstens één bron (URL) toe voor je goedkeurt.");
         if (problems.Count > 0) throw new QuizException(string.Join(" ", problems));
+
+        // De Krant: pogingen onthouden gaten op hun plaats. Is het artikel al gespeeld, dan mag de tekst nog bijgewerkt
+        // worden (ook hints en wat ook goed is), maar niet welke gaten er zijn of wat erin hoort.
+        if (edit.Type == QuestionType.Krant && edit.Id != 0 && await db.QuizItems.FindAsync(edit.Id) is { } played
+            && await db.Attempts.AnyAsync(a => a.DailyQuestion.QuizItemId == edit.Id)
+            && !KrantGaps(played.Data).SequenceEqual(KrantGaps(edit.Data)))
+            throw new QuizException("Dit artikel is al gespeeld: de gaten (aantal, volgorde en antwoorden) kunnen niet meer wijzigen. Maak een nieuw artikel.");
 
         var key = QuestionEngine.KeyFor(edit.Type, edit.Data);
         if (await db.QuizItems.AnyAsync(i => i.Type == edit.Type && i.Key == key && i.Id != edit.Id))

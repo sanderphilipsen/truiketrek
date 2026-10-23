@@ -208,9 +208,13 @@
     private string Mix() => _types.Count == 0 ? "kies minstens één type"
         : string.Join(", ", MixCounts().Select(kv => $"{kv.Value}× {QuestionTypes.Get(kv.Key).Icon} {QuestionTypes.Get(kv.Key).Name}"));
 
+    /// <summary>Een type dat de hele dag vult (De Krant) staat alleen: kies je het, dan gaan de andere uit, en omgekeerd.</summary>
     private void ToggleType(QuestionType type)
     {
-        if (!_types.Remove(type)) _types.Add(type);
+        if (_types.Remove(type)) return;
+        if (QuestionTypes.Get(type).Alone) _types.Clear();
+        else _types.RemoveWhere(t => QuestionTypes.Get(t).Alone);
+        _types.Add(type);
     }
 
     protected override async Task OnParametersSetAsync()
@@ -244,7 +248,7 @@
         _tags = [.. PlayerTags.Split(t.Tag)];
         _manual = t.Tag is null;
         // De types van het sjabloon; anders alle vraagtypes, behalve de lange opstelling.
-        _types = [.. t.Types ?? QuestionTypes.All.Select(x => x.Type).Where(x => x != QuestionType.Opstelling)];
+        _types = [.. t.Types ?? QuestionTypes.All.Where(x => !x.Alone).Select(x => x.Type).Where(x => x != QuestionType.Opstelling)];
         var date = t.Month is { } m && t.Day is { } d ? NextDate(m, d) : Today;
         (_start, _end) = (date, date);
     }

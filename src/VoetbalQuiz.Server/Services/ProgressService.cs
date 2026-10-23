@@ -44,7 +44,7 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
         new("gokker", "🎲", "Gokker van dienst", "50 foute pogingen (gewaagd!)", BadgeTier.Brons, f => f.WrongGuesses, 50),
 
         // Vraagtypes
-        new("allrounder", "🧠", "Allrounder", $"Speel elk van de {QuestionTypes.All.Count} vraagtypes", BadgeTier.Zilver, f => f.TypesPlayed, QuestionTypes.All.Count),
+        new("allrounder", "🧠", "Allrounder", $"Speel elk van de {QuestionTypes.All.Count(t => !t.Alone)} vraagtypes", BadgeTier.Zilver, f => f.TypesPlayed, QuestionTypes.All.Count(t => !t.Alone)),
         new("jaartallenkenner", "📆", "Jaartallenkenner", "10 keer het exacte jaar", BadgeTier.Brons, f => f.ExactYears, 10),
         new("historicus", "📜", "Historicus", "50 keer het exacte jaar", BadgeTier.Goud, f => f.ExactYears, 50),
         new("supersnel", "💨", "Supersnel", "25 keer 90+ punten bij Snelvuur", BadgeTier.Zilver, f => f.FastSnelvuur, 25),
@@ -214,7 +214,7 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
             days.Count,
             LongestRun(dates),
             days.Count(d => d.Count(a => a.Correct) == sizes.GetValueOrDefault(d.Key)),
-            daily.Count(a => a.Points == 100),
+            daily.Count(a => a.Points == 100 && !QuestionTypes.Get(a.Type).Alone),
             challengeWins.Count(special => !special),
             days.Count == 0 ? 0 : days.Max(d => d.Sum(a => a.Points)),
             attempts.Sum(a => a.WrongGuesses),
@@ -228,7 +228,7 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
             goldenBalls.Count,
             LongestMonthRun(goldenBalls),
             trophies.Count(t => t.Kind == TrophyKind.Month && t.Place == 2),
-            attempts.Select(a => a.Type).Distinct().Count(),
+            attempts.Select(a => a.Type).Distinct().Count(t => !QuestionTypes.Get(t).Alone),
             Hits(QuestionType.Jaar, p => p == 100),
             Hits(QuestionType.Snelvuur, p => p >= 90),
             Hits(QuestionType.NietBij),

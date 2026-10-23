@@ -29,11 +29,11 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock)
     public async Task<List<QuestionType>> SpecialTypesAsync(SpecialEvent special) =>
         QuestionTypes.ResolveSpecial(special.Types, await DisabledTypesAsync());
 
-    /// <summary>De types die nu aan staan: enkel die kan je kiezen voor een online partijtje.</summary>
+    /// <summary>De types die nu aan staan: enkel die kan je kiezen voor een online partijtje (geen types die een hele dag vullen).</summary>
     public async Task<List<QuestionType>> ActiveTypesAsync()
     {
         var disabled = await DisabledTypesAsync();
-        return QuestionTypes.All.Select(t => t.Type).Where(t => !disabled.Contains(t)).ToList();
+        return QuestionTypes.All.Where(t => !t.Alone).Select(t => t.Type).Where(t => !disabled.Contains(t)).ToList();
     }
 
     // ---------- Daily en specials ----------

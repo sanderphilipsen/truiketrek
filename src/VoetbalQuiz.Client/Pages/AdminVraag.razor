@@ -144,6 +144,30 @@
                                 </div>
                             }
                             break;
+
+                        case QuestionType.Krant:
+                            var article = KrantText.Parse(_lines);
+                            <div class="row-2">
+                                <label>Soort
+                                    <select @bind="_krantKind" @bind:after="Touch">
+                                        <option value="verslag">Matchverslag</option><option value="interview">Interview</option><option value="dossier">Dossier</option>
+                                    </select>
+                                </label>
+                                <label>Kop (zonder antwoorden) <input @bind="_text" @bind:event="oninput" @bind:after="Touch" placeholder="Van 0-2 naar 3-2" /></label>
+                            </div>
+                            <label>Intro (optioneel, zonder gaten) <input @bind="_explanation" @bind:event="oninput" @bind:after="Touch" placeholder="Achtste finale WK 2018 · België – Japan" /></label>
+                            <p class="muted">
+                                Zet elk gat tussen dubbele haken: <code>[[Jan Vertonghen / Vertonghen : speler]]</code> (eerst het antwoord, dan wat ook
+                                goed is, na de dubbele punt de hint), of een getal: <code>[[#69 : minuut]]</code>, met een stap voor deelpunten:
+                                <code>[[#115~5 : miljoen euro]]</code>. Een lege lijn begint een nieuwe alinea.
+                                Tip: de tekst rond een gat mag het antwoord van een ander gat niet verraden.
+                            </p>
+                            <label>Artikel <textarea rows="14" @bind="_lines" @bind:event="oninput" @bind:after="Touch"></textarea></label>
+                            <p class="muted">@article.Gaps.Count gaten (@QuestionRules.KrantMinGaps tot @QuestionRules.KrantMaxGaps) · klok @QuestionRules.KrantLimit(article.Gaps.Count) seconden</p>
+                            @foreach (var problem in article.Problems) { <p class="error">@problem</p> }
+                            <KrantArticle Headline="@_text" Intro="@_explanation" Kind="@_krantKind" Reveal="true"
+                                          Paragraphs="Preview(article)" />
+                            break;
                     }
 
                     <label>Moeilijkheid
@@ -217,7 +241,7 @@
 
     private QuizItemEdit? _original;
     private QuestionType _type = QuestionType.Snelvuur;
-    private string _text = "", _answer = "", _aliases = "", _explanation = "", _lines = "", _kind = "speler", _newSource = "";
+    private string _text = "", _answer = "", _aliases = "", _explanation = "", _lines = "", _kind = "speler", _krantKind = "verslag", _newSource = "";
     private string? _note;
     private int _difficulty = Difficulty.Default, _correct, _year = 2010, _number = 10;
     private string _when = "", _fee = "", _from = "", _to = "", _extra = "", _position = "", _country = "", _club = "", _avatar = Avatars.All[0].Id;
@@ -310,8 +334,19 @@
                 _options = [.. Enumerable.Range(0, QuestionRules.VolgordeCards).Select(i => v.Items.ElementAtOrDefault(i)?.Label ?? "")];
                 _values = [.. Enumerable.Range(0, QuestionRules.VolgordeCards).Select(i => v.Items.ElementAtOrDefault(i)?.Value ?? "")];
                 break;
+            case QuestionType.Krant:
+                var k = System.Text.Json.JsonSerializer.Deserialize<KrantData>(data, Json)!;
+                (_krantKind, _text, _explanation, _lines) = (k.Kind, k.Headline, k.Intro, k.Text);
+                break;
         }
     }
+
+    /// <summary>De Krant: het artikel zoals na afloop, met elk antwoord ingevuld.</summary>
+    private static List<List<KrantPiece>> Preview(KrantText.Article article) =>
+        article.Paragraphs.Select(p => p.Select(s => s.Gap < 0
+            ? new KrantPiece(s.Text)
+            : new KrantPiece("", s.Gap, article.Gaps[s.Gap].Hint, article.Gaps[s.Gap].Number is not null,
+                Answer: article.Gaps[s.Gap].Answer, Score: 1)).ToList()).ToList();
 
     private static List<string> Split(string s, char sep) =>
         s.Split(sep, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToList();
@@ -330,6 +365,7 @@
         QuestionType.Mannetje => Serialize(new MannetjeData(_answer.Trim(), Split(_aliases, ','), _avatar, Split(_lines, '\n'))),
         QuestionType.Volgorde => Serialize(new VolgordeData(_text.Trim(),
             _options.Zip(_values, (label, value) => new VolgordeItem(label.Trim(), value.Trim())).ToList())),
+        QuestionType.Krant => Serialize(new KrantData(_krantKind, _text.Trim(), _explanation.Trim(), _lines.Trim())),
         _ => "{}",
     };
 
@@ -374,6 +410,13 @@
             case QuestionType.Volgorde:
                 if (string.IsNullOrWhiteSpace(_text)) missing.Add("Opdracht ontbreekt.");
                 if (_options.Concat(_values).Any(string.IsNullOrWhiteSpace)) missing.Add($"Vul alle {QuestionRules.VolgordeCards} kaartjes en waarden in.");
+                break;
+            case QuestionType.Krant:
+                if (string.IsNullOrWhiteSpace(_text)) missing.Add("Kop ontbreekt.");
+                var gaps = KrantText.Parse(_lines);
+                if (gaps.Problems.Count > 0) missing.Add("Een gat is ongeldig.");
+                if (gaps.Gaps.Count is < QuestionRules.KrantMinGaps or > QuestionRules.KrantMaxGaps)
+                    missing.Add($"{QuestionRules.KrantMinGaps} tot {QuestionRules.KrantMaxGaps} gaten nodig.");
                 break;
         }
         return missing;

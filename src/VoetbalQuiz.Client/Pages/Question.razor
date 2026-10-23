@@ -5,9 +5,11 @@
 @implements IDisposable
 @inject ApiClient Api
 @inject NavigationManager Nav
+@inject IJSRuntime JS
 
 <PageTitle>Vraag @Number – Truitje Trek</PageTitle>
 <PitchFx Mood="@PitchMood" Teams="_affiche" />
+<ConfirmSheet @ref="_confirm" />
 
 <PageHeader Title="@($"Vraag {Number} / {_total}")" Label="@(_state is null ? null : Info.Name)" BackHref="@OverviewUrl" Up="true" />
 @if (RunId is not null)
@@ -72,11 +74,12 @@ else
         <div class="timebar"><div style="width:@QuestionDisplay.Percent(LocalElapsed / _state.TimeLimit)"></div></div>
     </div>
 
-    <QuestionPlay @key="Number" Type="_state.Type" View="_state.View" Hints="_state.Hints" Busy="_busy" SecondsLeft="SecondsLeft" Send="PlayAsync" />
+    <QuestionPlay @key="Number" Type="_state.Type" View="_state.View" Hints="_state.Hints" Busy="_busy" SecondsLeft="SecondsLeft" Send="PlayAsync"
+                  GiveUp="@(_state.Type == QuestionType.Krant ? GiveUpAsync : null)" />
 
     <div class="actions">
         <button class="linkish" @onclick="GiveUpAsync" disabled="@_busy">
-            @(_state.Type == QuestionType.Opstelling ? "Ik ben klaar" : _state.Type == QuestionType.Counter ? "Ik stop" : "Ik pas")
+            @(_state.Type is QuestionType.Opstelling or QuestionType.Krant ? "Ik ben klaar" : _state.Type == QuestionType.Counter ? "Ik stop" : "Ik pas")
         </button>
     </div>
 }
@@ -183,7 +186,16 @@ else
         return _state is null ? null : new(_state.LastWrongGuess, _state.View, _state.Result is not null);
     }
 
-    private Task GiveUpAsync() => RunAsync(() => Api.GiveUpAsync(QuizApi, Number), busy: true);
+    private ConfirmSheet _confirm = null!;
+
+    private async Task GiveUpAsync()
+    {
+        // De Krant is de hele dag: per ongeluk stoppen kost veel, dus eerst vragen.
+        if (_state?.Type == QuestionType.Krant && !await _confirm.AskAsync("Klaar met de krant?",
+                "Open gaten tellen dan niet meer mee. Je kan het artikel niet opnieuw spelen.", "Ja, ik ben klaar", danger: false))
+            return;
+        await RunAsync(() => Api.GiveUpAsync(QuizApi, Number), busy: true);
+    }
 
     private async Task RunAsync(Func<Task<QuestionState>> call, bool busy = false)
     {
@@ -193,7 +205,10 @@ else
             var state = await call();
             _syncedAt = DateTime.UtcNow;
             _syncedElapsed = state.ElapsedSeconds;
+            // De Krant: na afloop terug naar boven, naar de score (je zat ergens midden in het artikel).
+            var scrollUp = _state is { Result: null, Type: QuestionType.Krant } && state.Result is not null;
             _state = state;
+            if (scrollUp) await JS.InvokeVoidAsync("scrollTo", 0, 0);
         }
         catch (ApiException ex)
         {

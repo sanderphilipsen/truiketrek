@@ -14,7 +14,7 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
     /// <summary>Eén beantwoorde vraag, plat gemaakt voor berekeningen.</summary>
     private record Row(
         string UserId, string UserName, int ChallengeId, DateOnly Date, string? PlayerName,
-        int Points, bool Correct, int WrongGuesses, DateTime StartedAt, DateTime AnsweredAt);
+        int Points, bool Correct, int WrongGuesses, DateTime StartedAt, DateTime AnsweredAt, QuestionType Type);
 
     /// <summary>Totaal van één gebruiker op één dag.</summary>
     private record DayTotal(
@@ -29,7 +29,8 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
             .Where(filter)
             .Select(a => new Row(
                 a.UserId, a.User.UserName!, a.DailyQuestion.DailyChallengeId, a.DailyQuestion.DailyChallenge.Date,
-                a.DailyQuestion.Player != null ? a.DailyQuestion.Player.Name : null, a.Points, a.Correct, a.WrongGuesses, a.StartedAt, a.AnsweredAt!.Value))
+                a.DailyQuestion.Player != null ? a.DailyQuestion.Player.Name : null, a.Points, a.Correct, a.WrongGuesses, a.StartedAt, a.AnsweredAt!.Value,
+                a.DailyQuestion.Type))
             .ToListAsync();
 
     private static IEnumerable<DayTotal> DayTotals(IEnumerable<Row> rows) =>
@@ -92,8 +93,10 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
             var days = mine.GroupBy(r => r.ChallengeId).ToList();
             var online = matches.GetValueOrDefault(id);
             return new XpInput(
-                mine.Count,
-                mine.Where(r => r.Correct).Sum(r => r.Points),
+                // Een type dat de hele dag vult (De Krant) is één vraag, maar telt als een volle dag vragen, en ook zijn
+                // deelpunten tellen (zelden alles juist): anders levert zo'n dag amper XP op.
+                mine.Sum(r => QuestionTypes.Get(r.Type).Alone ? GameRules.QuestionsPerDay : 1),
+                mine.Where(r => r.Correct || QuestionTypes.Get(r.Type).Alone).Sum(r => r.Points),
                 days.Count(d => d.Count() == sizes.GetValueOrDefault(d.Key)),
                 days.Count(d => d.Count(r => r.Correct) == sizes.GetValueOrDefault(d.Key)),
                 wins.GetValueOrDefault(id),
@@ -353,7 +356,7 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
             Add("🥈", "Eeuwige tweede", "Vaakst net naast de dagzege", seconds.User, $"{seconds.Count}×");
 
         // Snelste vinger: juist bij de eerste tip zonder foute poging
-        var fastest = rows.Where(r => r.Points == 100).GroupBy(r => r.UserId)
+        var fastest = rows.Where(r => r.Points == 100 && !QuestionTypes.Get(r.Type).Alone).GroupBy(r => r.UserId)
             .Select(g => (User: g.Key, Count: g.Count())).OrderByDescending(x => x.Count).FirstOrDefault();
         if (fastest.User is not null)
             Add("⚡", "Snelste vinger", "Meeste antwoorden bij de eerste tip", fastest.User, $"{fastest.Count}×");
@@ -415,7 +418,7 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
             myDays.Count == 0 ? 0 : myDays.Max(d => d.Points),
             myDays.Count == 0 ? 0 : (int)Math.Round(myDays.Average(d => d.Points)),
             Percent(mine.Count(r => r.Correct), mine.Count),
-            mine.Count(r => r.Points == 100),
+            mine.Count(r => r.Points == 100 && !QuestionTypes.Get(r.Type).Alone),
             current,
             longest);
     }

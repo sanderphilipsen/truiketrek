@@ -37,7 +37,7 @@
                         @if (d.IsMix)
                         {
                             <div class="mix-chips">
-                                @foreach (var t in QuestionTypes.All)
+                                @foreach (var t in QuestionTypes.All.Where(t => !t.Alone))
                                 {
                                     var type = t.Type;
                                     <button type="button" class="mix-chip @(d.Mix!.Contains(type) ? "on" : "") @(_disabled.Contains(type) ? "off" : "")"
@@ -133,8 +133,10 @@
         if (value == MixValue)
         {
             // Begin de mix met het huidige type en het volgende, zodat het meteen een echte mix is.
-            var current = _days[i].Type;
-            var next = QuestionTypes.All[(QuestionTypes.All.FindIndex(t => t.Type == current) + 1) % QuestionTypes.All.Count].Type;
+            // Een type dat de hele dag vult (De Krant) kan niet in een mix.
+            var regular = QuestionTypes.All.Where(t => !t.Alone).Select(t => t.Type).ToList();
+            var current = QuestionTypes.Get(_days[i].Type).Alone ? regular[0] : _days[i].Type;
+            var next = regular[(regular.IndexOf(current) + 1) % regular.Count];
             _days[i] = _days[i] with { Mix = [current, next] };
         }
         else if (Enum.TryParse<QuestionType>(value, out var type))
@@ -162,7 +164,7 @@
 
     private static string MixLabel(List<QuestionType> types)
     {
-        if (types.Count == 1) return $"{QuestionTypes.Get(types[0]).PerDay} vragen";
+        if (types.Count == 1) return QuestionTypes.Get(types[0]).PerDay is var n && n == 1 ? "1 vraag" : $"{n} vragen";
         var mix = QuestionTypes.Mix(types);
         return $"Mix: {string.Join(" · ", mix.Select(m => $"{m.Value}× {QuestionTypes.Get(m.Key).Icon}"))}";
     }

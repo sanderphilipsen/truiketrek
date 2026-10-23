@@ -1,13 +1,15 @@
 namespace VoetbalQuiz.Shared;
 
-public enum QuestionType { WieBenIk, Snelvuur, Carriere, NietBij, Jaar, Emoji, Opstelling, Wissel, Rugnummer, Mannetje, Kluts, Counter, Volgorde }
+public enum QuestionType { WieBenIk, Snelvuur, Carriere, NietBij, Jaar, Emoji, Opstelling, Wissel, Rugnummer, Mannetje, Kluts, Counter, Volgorde, Krant }
 
 /// <summary>
 /// Vaste eigenschappen per vraagtype. Een dag is altijd maximaal 1000 punten waard.
 /// FromPlayers: de vragen komen uit de spelersdatabase (zoals "Wie ben ik?"), niet uit de vragenbank.
+/// Alone: één vraag is de hele dag (zoals De Krant). Zo'n type komt nooit in een mix of online, enkel als dag op zich.
 /// </summary>
 public record QuestionTypeInfo(
-    QuestionType Type, string Name, string Icon, string HowTo, int PerDay, int MaxPoints, string FileName, bool FromPlayers = false);
+    QuestionType Type, string Name, string Icon, string HowTo, int PerDay, int MaxPoints, string FileName, bool FromPlayers = false,
+    bool Alone = false);
 
 public static class QuestionTypes
 {
@@ -26,6 +28,8 @@ public static class QuestionTypes
         new(QuestionType.Kluts, "Kluts in de zestien", "🌀", "De letters van een naam liggen door elkaar. Om de paar seconden valt er één juist.", 10, 100, "", FromPlayers: true),
         new(QuestionType.Counter, "Counter", "🏃", "Zoveel mogelijk spelers in 60 seconden, met één tip per speler. Raden of doorspelen!", 5, 200, "", FromPlayers: true),
         new(QuestionType.Volgorde, "Op volgorde", "🔀", "Tik de kaartjes aan in de juiste volgorde. Hoe dichter, hoe meer punten.", 10, 100, "volgorde"),
+        new(QuestionType.Krant, "De Krant", "📰", "Een krantenartikel met gaten. Tik op een gat en vul het in, in de volgorde die je wil.", 1, 1000, "krant",
+            Alone: true),
     ];
 
     public static QuestionTypeInfo Get(QuestionType type) => All.First(t => t.Type == type);
@@ -36,8 +40,7 @@ public static class QuestionTypes
     /// </summary>
     public static Dictionary<QuestionType, int> Mix(IEnumerable<QuestionType> types)
     {
-        var list = types.Distinct().ToList();
-        if (list.Count == 0) list = [QuestionType.WieBenIk];
+        var list = Playable(types);
         var mix = list.ToDictionary(t => t, _ => 0);
         int points = 0, count = 0;
         for (var added = true; added;)
@@ -62,10 +65,21 @@ public static class QuestionTypes
     /// </summary>
     public static Dictionary<QuestionType, int> Mix(IEnumerable<QuestionType> types, int questions)
     {
-        var list = types.Distinct().ToList();
-        if (list.Count == 0) list = [QuestionType.WieBenIk];
+        var list = Playable(types);
         return list.Select((t, i) => (t, n: questions / list.Count + (i < questions % list.Count ? 1 : 0)))
             .Where(x => x.n > 0).ToDictionary(x => x.t, x => x.n);
+    }
+
+    /// <summary>
+    /// De types die samen kunnen: een type dat alleen een dag vult (<see cref="QuestionTypeInfo.Alone"/>) valt weg zodra er
+    /// een ander type bij is, want hij zou de hele dag opeisen. Enkel zo'n type (bv. een special "De Krant") mag wel.
+    /// </summary>
+    private static List<QuestionType> Playable(IEnumerable<QuestionType> types)
+    {
+        var list = types.Distinct().ToList();
+        if (list.Any(t => !Get(t).Alone)) list = list.Where(t => !Get(t).Alone).ToList();
+        else if (list.Count > 1) list = list.Take(1).ToList();
+        return list.Count == 0 ? [QuestionType.WieBenIk] : list;
     }
 
     public const int DayMaxPoints = 1000;
@@ -188,6 +202,20 @@ public static class QuestionRules
     public const double CarriereClubSeconds = 4;
     public const double CarriereExtraSeconds = 6;
 
+    /// <summary>De Krant: zoveel seconden per gat, voor één klok over het hele artikel.</summary>
+    public const double KrantSecondsPerGap = 20;
+    public const double KrantMinSeconds = 60;
+
+    /// <summary>De Krant: zoveel gaten mag een artikel hebben.</summary>
+    public const int KrantMinGaps = 4;
+    public const int KrantMaxGaps = 12;
+
+    /// <summary>
+    /// De Krant: zoveel pogingen voor het hele artikel. Een foute naam kost niets, dus je probeert er meer dan bij één
+    /// vraag; het blijft een rem op scripts die namen afvuren.
+    /// </summary>
+    public const int KrantMaxGuesses = 100;
+
     /// <summary>Opstelling: zoveel namen van de elf moet je aanvullen.</summary>
     public const int OpstellingBlanks = 6;
 
@@ -238,6 +266,25 @@ public static class QuestionRules
     public static int CarrierePoints(double elapsed, int clubs, int wrongGuesses) => RevealPointsAt(elapsed, clubs, wrongGuesses);
 
     public static int CounterPoints(int found) => found * CounterPointsPerPlayer;
+
+    /// <summary>Zoveel pogingen mag je op één vraag doen; daarna stopt ze (zie <see cref="GameRules.MaxGuessesPerQuestion"/>).</summary>
+    public static int MaxGuesses(QuestionType type) => type == QuestionType.Krant ? KrantMaxGuesses : GameRules.MaxGuessesPerQuestion;
+
+    public static double KrantLimit(int gaps) => Math.Max(KrantMinSeconds, gaps * KrantSecondsPerGap);
+
+    /// <summary>
+    /// De Krant, een getal: welk deel van de punten van het gat. Exact 1, één stap ernaast 0,75, twee 0,5, drie 0,25
+    /// (zoals "Raad het jaar"). Een stap is <paramref name="tolerance"/> (bv. 1 minuut, of 5 bij een bedrag in miljoen).
+    /// </summary>
+    public static double KrantNumberScore(int guess, int answer, int tolerance)
+    {
+        var steps = (int)Math.Ceiling(Math.Abs((long)guess - answer) / (double)Math.Max(1, tolerance));
+        return steps switch { 0 => 1, 1 => 0.75, 2 => 0.5, 3 => 0.25, _ => 0 };
+    }
+
+    /// <summary>De Krant: het maximum verdeeld over de gaten; <paramref name="score"/> is de som van de delen per gat.</summary>
+    public static int KrantPoints(double score, int gaps) =>
+        gaps == 0 ? 0 : (int)Math.Round(QuestionTypes.Get(QuestionType.Krant).MaxPoints * score / gaps);
 
     public static int EmojiPoints(double elapsed, int wrongGuesses) =>
         Math.Max(0, SpeedPoints(elapsed, EmojiSeconds) - wrongGuesses * GameRules.WrongGuessPenalty);
@@ -296,6 +343,19 @@ public record VolgordeItem(string Label, string Value);
 
 /// <summary>Op volgorde: de opdracht en de kaartjes in de juiste volgorde (de server husselt ze).</summary>
 public record VolgordeData(string Question, List<VolgordeItem> Items);
+
+/// <summary>
+/// De Krant: een artikel. Text bevat de gaten als [[antwoord / ook goed : hint]] of, voor een getal, [[#69 : minuut]]
+/// (met een stap: [[#115~5 : miljoen euro]]). Een lege lijn begint een nieuwe alinea. Kind: verslag, interview of dossier.
+/// </summary>
+public record KrantData(string Kind, string Headline, string Intro, string Text);
+
+/// <summary>
+/// De Krant: een stuk van een alinea zoals de speler het ziet. Gap = -1 is gewone tekst, anders een gat met een hint.
+/// Filled: wat er al staat (een gevonden naam, of het getal dat je gokte). Na afloop ook Answer en Score (0..1).
+/// </summary>
+public record KrantPiece(string Text, int Gap = -1, string? Hint = null, bool IsNumber = false, string? Filled = null,
+    string? Answer = null, double? Score = null);
 
 /// <summary>Een plaats in een opstelling zoals de speler hem ziet (Name null = nog in te vullen).</summary>
 public record LineupSlot(string Position, string? Name, bool IsBlank);

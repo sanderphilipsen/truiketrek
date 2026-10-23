@@ -67,7 +67,7 @@ public static class AttemptFlow
             attempt.AnsweredAt = now;
             attempt.Correct = outcome.Correct;
         }
-        else if (attempt.Guesses >= GameRules.MaxGuessesPerQuestion)
+        else if (attempt.Guesses >= QuestionRules.MaxGuesses(question.Type))
         {
             attempt.AnsweredAt = now;
             attempt.Correct = false;

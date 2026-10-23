@@ -155,7 +155,7 @@ public abstract class AttemptState
     /// </summary>
     public List<int> Found { get; set; } = [];
 
-    /// <summary>Counter: welke spelers (index) overgeslagen zijn.</summary>
+    /// <summary>Counter: welke spelers (index) overgeslagen zijn. De Krant: de gegokte getallen, als paren (gat, gok).</summary>
     public List<int> Skipped { get; set; } = [];
 }
 
