@@ -23,7 +23,7 @@ Alle huidige types zijn intypen, meerkeuze of een getal schatten. Een kaart met 
 - **De keuzelijst toont altijd alle clubs** van de competitie, ook de clubs die al geplaatst zijn. Zo is de laatste speld geen weggever en lukt gokken door eliminatie niet.
 - **Gedeeld stadion** (bv. Jan Breydelstadion voor Club Brugge en Cercle Brugge, als beide in die competitie spelen): **één speld waarbij je beide clubs moet noemen**. Elke juiste club telt.
 - **Punten per juiste speld en een tijdslimiet voor de hele kaart.**
-- **Competities:** de **huidige eerste klasse** en de **Challenger Pro League** (tweede klasse). Historische seizoenen nu niet.
+- **Competities:** de **huidige eerste klasse** en de **Challenger Pro League** (tweede klasse), en sinds de uitbreiding ook Ligue 1, Serie A, LaLiga, Bundesliga en Premier League. Historische seizoenen nu niet.
 - Het eerdere voorstel om te tikken op de kaart (afstand in km, puntenschijven) is vervallen.
 
 ### Beslissingen (2026-10-23, tweede ronde)
@@ -37,12 +37,12 @@ Alle huidige types zijn intypen, meerkeuze of een getal schatten. Een kaart met 
 - **Niet online**, wel in de academie. Telt niet mee voor de badge Allrounder.
 - **Enkel goedgekeurde kaarten** worden gespeeld. Een kaart die al in een reeks zit, verandert niet meer van spelden of clubs (admin en seeder); een nieuw seizoen is een nieuwe kaart.
 - **XP (beslist door de eigenaar):** voor types met deelpunten (`QuestionRules.PartialScores`: kaart, opstelling, counter) tellen de behaalde punten mee voor "Juiste antwoorden", ook als de vraag niet volledig juist is. Een kaartdag van 900 punten levert zo evenveel XP voor juiste antwoorden als 900 punten op een gewone dag; het verschil zit enkel in "Gespeelde vragen" (2 tegenover 10 vragen). Het dagoverzicht toont zo'n deelscore als ½ in plaats van ✗. Raad het jaar en Op volgorde geven ook deelpunten, maar vallen (nog) niet onder deze regel.
-- **Rotatie aanvaard:** er is voorlopig maar één goedgekeurde kaart per competitie, dus elke kaartdag kan dezelfde kaart zijn. Daar doen we nu niets aan.
+- **Rotatie opgelost (zes landen):** zeven kaarten in zes landen (BE: Jupiler Pro League en Challenger Pro League, FR, IT, ES, DE, GB), elk met precies 10 spelden (`QuestionRules.KaartPins`, 50 punten per speld). De admin kiest per kaartdag in de weekplanning en per kaartspecial het land, of willekeurig (migratie `KaartLand`). De server neemt een goedgekeurde kaart van dat land; is er geen land gekozen of geen goedgekeurde kaart van dat land, dan een willekeurige goedgekeurde kaart, liefst niet van het land van de vorige kaartdag. De admin toont per land hoeveel goedgekeurde kaarten er zijn. De kaart zelf is `LandKaart` met een projectie per land (`KaartProjection.For(land)`), die ook de controle op de spelden gebruikt.
 
 ## Open vragen
 
 - Hoe vaak komt de kaartdag: vaste dag in een special (derbyweekend), maandelijks, of handmatig via het admin-paneel? (Nu: via de weekplanning of een special.)
-- Meer kaarten (Challenger Pro League, vorige seizoenen) zodat de rotatie zin krijgt.
+- Meer kaarten per land (vorige seizoenen, tweede klasses) zodat een land niet altijd dezelfde kaart geeft.
 
 ## Aanpak (optioneel)
 
@@ -54,6 +54,7 @@ Alle huidige types zijn intypen, meerkeuze of een getal schatten. Een kaart met 
 
 ## Notities
 
+- 2026-10-23, review landenkaarten: de sleutel van een kaart is land|competitie|seizoen (oude kaarten zonder land gaan via de seeder netjes op afgewezen); een speld moet binnen de grens van haar land liggen (`KaartGrenzen`, vereenvoudigde omtrek met 5 km marge, gegenereerd uit de buitenlijn van `KaartPaden`); de picker speelt nooit een kaart met problemen en kiest eerst het land, dan het thema van de special, dan een ander land dan de vorige kaartdag; een ongewijzigde kaart blijft in de admin beheersbaar, ook als ze niet meer aan de regels voldoet.
 - **Bekende hints (aanvaard):**
   - Deel 2: wie de stadions kent die al geplaatst zijn, kan de laatste spelden door eliminatie raden (de lijst toont wel altijd alle stadions).
   - Deel 1: twee keuzelijsten bij een speld verraden een gedeeld stadion, en dus vrijwel altijd Brugge (Club en Cercle).

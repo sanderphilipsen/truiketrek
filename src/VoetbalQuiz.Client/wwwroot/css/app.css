@@ -1697,8 +1697,9 @@ button.choice:active { transform: scale(.97); }
 .btn.skip { width: 100%; margin-bottom: 10px; }
 
 /* ---------- Kaart: spelden één voor één, per speld een keuzelijst (de kaart zelf staat in kaart.css) ---------- */
-/* De kaart krimpt op een laag scherm, zodat kaart, vraag en het vaste paneel samen in beeld passen (381/326 = de viewBox). */
-.kaart-q .belgie-kaart { max-width: min(480px, calc((100svh - 440px) * 1.1687)); min-width: 180px; }
+/* De kaart krimpt op een laag scherm, zodat kaart, vraag en het vaste paneel samen in beeld passen. --kaart-ratio
+   (breedte / hoogte van de viewBox van het land) zet LandKaart zelf inline. */
+.kaart-q .land-kaart { max-width: min(480px, calc((100svh - 440px) * var(--kaart-ratio))); min-width: 180px; }
 .kaart-prompt { margin-bottom: 6px; }
 /* Vast paneel onderaan: keuzelijst(en) en knoppen altijd in beeld, ook bij een gedeeld stadion op 320 px hoog genoeg.
    Het groeit naar boven (twee keuzelijsten), zodat de knoppen nooit verspringen. */

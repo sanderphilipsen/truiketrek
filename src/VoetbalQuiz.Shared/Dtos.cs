@@ -113,7 +113,9 @@ public record QuestionView(
     // stadions in deel 2) staat in Options.
     List<KaartSpeld>? Pins = null,
     // Kaart: welk deel (QuestionRules.KaartClubsPart of KaartStadiumsPart); 0 bij de andere types.
-    int Part = 0);
+    int Part = 0,
+    // Kaart: het land van de kaart (ISO-code, voor LandKaart). Geen geheim: de kaart zelf toont het land.
+    string? Country = null);
 
 /// <summary>
 /// Kaart: een speld zoals de speler ze ziet. Choices = hoeveel keuzelijsten (deel 1: één per club die er speelt; deel 2: één).

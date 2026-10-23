@@ -364,6 +364,9 @@ public class SpecialEvent
 
     /// <summary>Welke vraagtypes de special mengt (leeg = enkel "Wie ben ik?").</summary>
     public List<QuestionType> Types { get; set; } = [];
+
+    /// <summary>Kaart: het land van de kaart (ISO-code); null = willekeurig (zie QuestionPicker).</summary>
+    public string? KaartCountry { get; set; }
     public DateTime CreatedAt { get; set; }
 }
 
@@ -397,6 +400,9 @@ public class DailyScheduleDay
 
     /// <summary>Twee of meer types: die dag is een mix (Type wordt dan niet gebruikt).</summary>
     public List<QuestionType> MixTypes { get; set; } = [];
+
+    /// <summary>Kaart: het land van de kaart (ISO-code); null = willekeurig (zie QuestionPicker).</summary>
+    public string? KaartCountry { get; set; }
 }
 
 /// <summary>Een vraagtype dat de admin (tijdelijk) uitgeschakeld heeft. Het komt niet in dailies of specials.</summary>

@@ -99,7 +99,7 @@
         var stadiums = View?.Part == QuestionRules.KaartStadiumsPart;
         <div class="kaart-q">
             <p class="prompt kaart-prompt">@View?.Prompt</p>
-            <BelgieKaart Pins="KaartPins(View)" LabelHuidig="stadiums" />
+            <LandKaart Land="@(View?.Country ?? QuestionRules.KaartDefaultCountry)" Pins="KaartPins(View)" LabelHuidig="stadiums" />
         </div>
         @if (!ReadOnly && CurrentPin is { } pin)
         {

@@ -1,9 +1,9 @@
-/* Kaart van België (Shared/BelgieKaart.razor) voor het vraagtype Kaart.
+/* Landkaart (Shared/LandKaart.razor; BelgieKaart is een wrapper) voor het vraagtype Kaart.
    Gebruikt de tokens uit app.css, zodat de kaart zowel op een donkere tegel als in .surface-light klopt.
-   Eigen tokens staan op .belgie-kaart zelf (niet in :root), zodat een ouder ze kan overschrijven. */
-.belgie-kaart {
-    --kaart-land: var(--surface-soft);        /* vulling van de provincies */
-    --kaart-grens-binnen: var(--sb-line-strong); /* provinciegrenzen */
+   Eigen tokens staan op .land-kaart zelf (niet in :root), zodat een ouder ze kan overschrijven. */
+.land-kaart {
+    --kaart-land: var(--surface-soft);        /* vulling van de regio's */
+    --kaart-grens-binnen: var(--sb-line-strong); /* regiogrenzen */
     --kaart-grens-buiten: var(--control-border); /* landsgrens en kust (≥ 3:1) */
     --kaart-huidig: var(--accent);            /* de speld die nu gevraagd wordt */
     --kaart-juist: var(--ok);
@@ -18,21 +18,30 @@
     margin: 0 auto;
 }
 /* Op een lichte tegel: grenzen donkerder, ring in donkergoud. */
-.surface-light .belgie-kaart,
-.belgie-kaart.surface-light {
+.surface-light .land-kaart,
+.land-kaart.surface-light {
     --kaart-grens-binnen: var(--control-border);
     --kaart-grens-buiten: var(--muted);
     --kaart-ring: var(--accent-text);
 }
-.belgie-kaart svg {
+.land-kaart svg {
     display: block;
     width: 100%;
     height: auto;
     overflow: visible;
 }
 
-.kaart-provincies path {
+/* Geen kaart voor dit land (onbekende code): rustig melden in plaats van te crashen. */
+.land-kaart-leeg {
+    margin: 0;
+    padding: 24px 16px;
+    text-align: center;
+    color: var(--muted);
+}
+
+.kaart-regios path {
     fill: var(--kaart-land);
+    fill-rule: evenodd;       /* enclaves (Brussel in Vlaams-Brabant, Treviño) zijn gaten in de regio rond */
     stroke: var(--kaart-grens-binnen);
     stroke-width: .7;
     stroke-linejoin: round;

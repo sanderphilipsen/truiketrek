@@ -74,9 +74,15 @@ public static class PlayerTags
         ("duitsland", "Duits voetbal"),
         ("turkije", "Turks voetbal"),
         ("portugal", "Portugees voetbal"),
+        ("verenigd-koninkrijk", "Brits voetbal"),
         // Competities (o.a. de kaarten van de kaartdag).
         ("jupiler-pro-league", "Jupiler Pro League"),
         ("challenger-pro-league", "Challenger Pro League"),
+        ("premier-league", "Premier League"),
+        ("ligue-1", "Ligue 1"),
+        ("serie-a", "Serie A"),
+        ("la-liga", "LaLiga"),
+        ("bundesliga", "Bundesliga"),
     ];
 
     /// <summary>Een special kan meerdere thema's combineren, bv. "anderlecht,club-brugge" voor de topper.</summary>
@@ -224,7 +230,9 @@ public static class SpecialTemplates
 
 public record SpecialEdit(
     int Id, string Theme, string Name, string Icon, string Description,
-    DateOnly StartDate, DateOnly EndDate, string? Tag, List<int> PlayerIds, List<QuestionType>? Types = null);
+    DateOnly StartDate, DateOnly EndDate, string? Tag, List<int> PlayerIds, List<QuestionType>? Types = null,
+    // Kaart: het land van de kaart (ISO-code); null = willekeurig.
+    string? KaartCountry = null);
 
 public record SpecialAdminItem(
     int Id, string Theme, string Name, string Icon, DateOnly StartDate, DateOnly EndDate, string? Tag,
@@ -283,8 +291,11 @@ public record QuizItemEdit(
     int Id, QuestionType Type, string Data, int Difficulty, List<string> Sources, List<string> Tags,
     PlayerStatus Status, string? ReviewNote, DateOnly? CheckedAt, string? UpdatedBy, int TimesUsed, string? InPlay = null);
 
-/// <summary>Een weekdag: één type, of een mix als Mix twee of meer types bevat.</summary>
-public record ScheduleDay(DayOfWeek Day, QuestionType Type, List<QuestionType>? Mix = null)
+/// <summary>
+/// Een weekdag: één type, of een mix als Mix twee of meer types bevat. KaartCountry: bij een kaartdag het land van de kaart
+/// (ISO-code, zie <see cref="KaartProjection.Landen"/>); null = willekeurig.
+/// </summary>
+public record ScheduleDay(DayOfWeek Day, QuestionType Type, List<QuestionType>? Mix = null, string? KaartCountry = null)
 {
     [System.Text.Json.Serialization.JsonIgnore] public bool IsMix => Mix is { Count: > 1 };
 
@@ -295,5 +306,9 @@ public record ScheduleDay(DayOfWeek Day, QuestionType Type, List<QuestionType>? 
 /// <summary>Hoeveel goedgekeurde vragen er per type klaarliggen.</summary>
 public record TypeStock(QuestionType Type, int Approved, int Review, int NeverUsed, int WeeksLeft, int PerWeek = 0);
 
-/// <summary>Disabled: types die de admin uitgeschakeld heeft.</summary>
-public record ScheduleOverview(List<ScheduleDay> Days, List<TypeStock> Stock, List<QuestionType>? Disabled = null);
+/// <summary>
+/// Disabled: types die de admin uitgeschakeld heeft. KaartMaps: per land (ISO-code) hoeveel goedgekeurde kaarten er zijn,
+/// voor de keuze van het land bij een kaartdag of kaartspecial.
+/// </summary>
+public record ScheduleOverview(List<ScheduleDay> Days, List<TypeStock> Stock, List<QuestionType>? Disabled = null,
+    Dictionary<string, int>? KaartMaps = null);

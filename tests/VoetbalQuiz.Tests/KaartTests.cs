@@ -24,7 +24,7 @@ public sealed class KaartTests : IDisposable
     private readonly string _me;
     private readonly string _other;
 
-    // Vijf spelden, waarvan één gedeeld stadion: zes clubs in totaal.
+    // Tien spelden (zoals elke kaart), waarvan één gedeeld stadion: elf clubs in totaal. Een kaart van België.
     private static readonly KaartData Map = new("Eerste klasse: welke club speelt hier thuis?", "Testcompetitie", "2026-27",
     [
         new("Jan Breydelstadion", "Brugge", 51.1931, 3.1806, ["Club Brugge", "Cercle Brugge"]),
@@ -32,9 +32,24 @@ public sealed class KaartTests : IDisposable
         new("Bosuilstadion", "Antwerpen", 51.2325, 4.4722, ["Antwerp"]),
         new("Cegeka Arena", "Genk", 51.0051, 5.5333, ["Genk"]),
         new("Stade Maurice Dufrasne", "Luik", 50.6101, 5.5434, ["Standard"]),
-    ]);
+        new("Planet Group Arena", "Gent", 51.0161, 3.7342, ["Gent"]),
+        new("Guldensporen Stadion", "Kortrijk", 50.8304, 3.2489, ["Kortrijk"]),
+        new("Stayen", "Sint-Truiden", 50.8135, 5.1663, ["Sint-Truiden"]),
+        new("AFAS-stadion Achter de Kazerne", "Mechelen", 51.0372, 4.4864, ["Mechelen"]),
+        new("Den Dreef", "Leuven", 50.8683, 4.6942, ["OH Leuven"]),
+    ], "BE");
 
-    private const int TotalClubs = 6, TotalPins = 5;
+    private const int TotalClubs = 11, TotalPins = QuestionRules.KaartPins;
+
+    /// <summary>Een geldige kaart van <paramref name="land"/>: tien spelden rond het midden van de kaart van dat land.</summary>
+    private static KaartData MapIn(string land, string competition)
+    {
+        var k = KaartProjection.For(land);
+        var (lat, lon) = ((k.MinLat + k.MaxLat) / 2, (k.MinLon + k.MaxLon) / 2);
+        return new KaartData($"{competition}: welke club speelt hier thuis?", competition, "2026-27",
+            [.. Enumerable.Range(0, QuestionRules.KaartPins).Select(i =>
+                new KaartStadion($"{land} stadion {i}", $"{land} stad {i}", lat + i * 0.02, lon + i * 0.02, [$"{land} club {i}"]))], land);
+    }
 
     public KaartTests()
     {
@@ -114,9 +129,12 @@ public sealed class KaartTests : IDisposable
         Assert.Equal(180, QuestionRules.KaartSeconds);
         // De uitleg volgt de regels (geen vaste "2 minuten" meer).
         Assert.Contains($"{(int)QuestionRules.KaartSeconds / 60} minuten", info.HowTo);
-        Assert.Contains($"{QuestionRules.KaartPartPoints} punten", info.HowTo);
+        Assert.Contains($"{QuestionRules.KaartPins} spelden", info.HowTo);
         Assert.Equal(QuestionType.Kaart, Enum.GetValues<QuestionType>()[^1]); // achteraan in de enum
-        Assert.True(QuestionRules.KaartMaxPins < GameRules.MaxGuessesPerQuestion);
+        Assert.True(QuestionRules.KaartPins < QuestionRules.MaxGuesses(QuestionType.Kaart));
+        Assert.Equal(50, QuestionRules.KaartPointsPerPin);
+        Assert.Equal(QuestionRules.KaartPartPoints, QuestionRules.KaartPins * QuestionRules.KaartPointsPerPin);
+        Assert.Contains($"{QuestionRules.KaartPointsPerPin} punten per speld", QuestionTypes.Get(QuestionType.Kaart).HowTo);
     }
 
     // ---------- Twee delen ----------
@@ -153,11 +171,12 @@ public sealed class KaartTests : IDisposable
         Assert.Equal(QuestionRules.KaartClubsPart, state.View!.Part);
         Assert.Equal(TotalPins, state.View.Total);
         Assert.Single(state.View.Pins!);
-        Assert.Equal(["Anderlecht", "Antwerp", "Cercle Brugge", "Club Brugge", "Genk", "Standard"], state.View.Options);
+        Assert.Equal(Map.Pins.SelectMany(p => p.Clubs).Order(StringComparer.InvariantCultureIgnoreCase), state.View.Options);
+        Assert.Equal("BE", state.View.Country);
 
         for (var n = 1; n <= TotalPins; n++)
         {
-            Assert.Equal($"Deel 1 · speld {n} van {TotalPins}", state.View!.Note);
+            Assert.Equal($"Deel 1 · België · speld {n} van {TotalPins}", state.View!.Note);
             state = await _quiz.GuessAsync(_me, 1, Right(state));
             if (n == TotalPins) break;
             Assert.Equal(n + 1, state.View!.Pins!.Count);
@@ -333,9 +352,9 @@ public sealed class KaartTests : IDisposable
         var late = await _quiz.GuessAsync(_me, 1, Right(state));
         Assert.True(late.Result!.TimedOut);
         Assert.Equal(QuestionRules.KaartPoints(rightClubs, TotalClubs), late.Result.Points);
-        Assert.Equal(3, late.Result.AllHints.Count(h => h.StartsWith("⌛")));
+        Assert.Equal(TotalPins - 2, late.Result.AllHints.Count(h => h.StartsWith("⌛")));
         Assert.Equal(TotalPins, late.View!.Pins!.Count);
-        Assert.Equal(3, late.View.Pins.Count(p => p.Hits == 0));
+        Assert.Equal(TotalPins - 2, late.View.Pins.Count(p => p.Hits == 0));
 
         // Deel 2 heeft een eigen klok: die start pas als de speler eraan begint.
         _clock.Advance(TimeSpan.FromMinutes(10));
@@ -356,28 +375,29 @@ public sealed class KaartTests : IDisposable
     }
 
     [Fact]
-    public async Task Eighteen_clubs_like_the_real_first_division()
+    public async Task Ten_pins_of_fifty_points_like_the_real_maps()
     {
-        // 17 spelden, één gedeeld stadion: 18 clubs, zoals de echte eerste klasse.
-        var big = new KaartData("Eerste klasse?", "Groot", "2026-27",
-            [.. Enumerable.Range(0, 17).Select(i => new KaartStadion($"Stadion {i}", $"Stad {i}", 50.2 + i * 0.07, 3.0 + i * 0.15,
-                i == 0 ? ["Club 0", "Club 0b"] : [$"Club {i}"]))]);
-        Assert.Empty(QuestionEngine.Problems(QuestionType.Kaart, QuestionEngine.Serialize(big)));
+        // Tien spelden met elk één club, zoals de echte kaarten: elke speld is 50 punten.
+        var ten = Map with { Competition = "Tien", Pins = [Map.Pins[0] with { Clubs = ["Club Brugge"] }, .. Map.Pins.Skip(1)] };
+        Assert.Empty(QuestionEngine.Problems(QuestionType.Kaart, QuestionEngine.Serialize(ten)));
         MapItem.Status = PlayerStatus.Rejected;
-        Add(QuestionType.Kaart, "Groot|2026-27", big);
+        Add(QuestionType.Kaart, "Tien|2026-27", ten);
         _db.SaveChanges();
         await PlanKaartAsync();
 
         var missed = false;
         var state = await PlayAsync(1, s =>
         {
-            if (missed || Current(s).Choices > 1) return Right(s, big);
+            if (missed) return Right(s, ten);
             missed = true;
-            return Wrong(s, big);
+            return Wrong(s, ten);
         });
-        Assert.Equal(472, state.Result!.Points); // floor(500 × 17 / 18)
-        Assert.Equal("17 van de 18 clubs juist geplaatst", state.Result.Explanation);
+        Assert.Equal(9 * QuestionRules.KaartPointsPerPin, state.Result!.Points); // floor(500 × 9 / 10) = 450
+        Assert.Equal("9 van de 10 clubs juist geplaatst", state.Result.Explanation);
         Assert.Contains(Commentary.ForResult(state.Result, 500, 1), Commentary.Almost);
+
+        var part2 = await PlayAsync(2, s => Right(s, ten));
+        Assert.Equal(QuestionRules.KaartPins * QuestionRules.KaartPointsPerPin, part2.Result!.Points); // 10 × 50
     }
 
     [Fact]
@@ -411,39 +431,183 @@ public sealed class KaartTests : IDisposable
         var item = MapItem;
         var edit = new QuizItemEdit(item.Id, QuestionType.Kaart, item.Data, 4, ["https://example.org"], [], PlayerStatus.Approved, null, null, null, 0);
 
-        var fewer = QuestionEngine.Serialize(Map with { Pins = Map.Pins.Skip(1).ToList() });
+        var fewer = QuestionEngine.Serialize(Map with { Pins = [.. Map.Pins.SkipLast(1), Map.Pins[^1] with { Stadium = "Nieuw stadion" }] });
         await Assert.ThrowsAsync<QuizException>(() => _t.Admin.SaveQuizItemAsync(edit with { Data = fewer }, "sander"));
 
         await _t.Admin.SaveQuizItemAsync(edit, "sander"); // zelfde spelden, andere moeilijkheid: mag
         Assert.Equal(4, MapItem.Difficulty);
     }
 
-    [Fact]
-    public async Task The_seeder_does_not_overwrite_the_pins_of_a_played_map()
+    /// <summary>Draait de seeder op een tijdelijke map met enkel deze kaarten in kaart.json.</summary>
+    private async Task SeedMapsAsync(params object[] maps)
     {
-        await PlanKaartAsync();
-        await _quiz.GetOrCreateChallengeAsync(_quiz.Today);
-        var before = MapItem.Data;
-
         var root = Directory.CreateTempSubdirectory("kaart-seed-").FullName;
         try
         {
             Directory.CreateDirectory(Path.Combine(root, "Data", "questions"));
-            var changed = Map with { Pins = Map.Pins.Skip(1).ToList() };
-            var json = JsonSerializer.Serialize(new[]
-            {
-                new { changed.Question, changed.Competition, changed.Season, changed.Pins, difficulty = 4, status = "approved", sources = new[] { "https://example.org" } },
-            }, new JsonSerializerOptions(JsonSerializerDefaults.Web));
-            await File.WriteAllTextAsync(Path.Combine(root, "Data", "questions", "kaart.json"), json);
-
+            await File.WriteAllTextAsync(Path.Combine(root, "Data", "questions", "kaart.json"),
+                JsonSerializer.Serialize(maps, new JsonSerializerOptions(JsonSerializerDefaults.Web)));
             await new QuestionSeeder(_db, new Env(root), NullLogger<QuestionSeeder>.Instance).SeedAsync();
-            Assert.Equal(before, MapItem.Data);       // de spelden liggen vast
-            Assert.Equal(4, MapItem.Difficulty);      // de rest wordt wel bijgewerkt
         }
         finally
         {
             Directory.Delete(root, recursive: true);
         }
+    }
+
+    private static object InFile(KaartData d, int difficulty = 2) => new
+    {
+        d.Question, d.Competition, d.Season, d.Pins, d.Country, difficulty, status = "approved", sources = new[] { "https://example.org" },
+    };
+
+    private static KaartData Changed => Map with { Pins = [.. Map.Pins.SkipLast(1), Map.Pins[^1] with { Stadium = "Nieuw stadion" }] };
+
+    [Fact]
+    public async Task The_seeder_does_not_overwrite_the_pins_of_a_played_map_with_the_same_key()
+    {
+        MapItem.Key = QuestionEngine.KeyFor(QuestionType.Kaart, MapItem.Data); // "BE|Testcompetitie|2026-27"
+        _db.SaveChanges();
+        await PlanKaartAsync();
+        await _quiz.GetOrCreateChallengeAsync(_quiz.Today);
+        var before = MapItem.Data;
+
+        await SeedMapsAsync(InFile(Changed, difficulty: 4));
+        Assert.Equal(before, MapItem.Data);       // de spelden liggen vast
+        Assert.Equal(4, MapItem.Difficulty);      // de rest wordt wel bijgewerkt
+    }
+
+    [Fact]
+    public async Task A_played_map_with_an_old_key_is_retired_and_the_new_map_is_played()
+    {
+        // MapItem heeft de oude sleutel "Testcompetitie|2026-27" (zonder land), zoals de kaarten van vóór de landen.
+        await PlanKaartAsync();
+        var old = MapItem;
+        var day1 = await _quiz.GetOrCreateChallengeAsync(_quiz.Today);
+        Assert.Equal(old.Id, day1.Questions.First().QuizItemId);
+        var before = old.Data;
+
+        // Het bestand heeft nu een gewijzigde kaart: met het land in de sleutel is dat een nieuw item.
+        await SeedMapsAsync(InFile(Changed));
+        Assert.Equal(PlayerStatus.Rejected, old.Status);  // de oude kaart verdwijnt netjes uit de quiz
+        Assert.Equal(before, old.Data);                   // zonder dat haar spelden wijzigen
+        var fresh = _db.QuizItems.Single(i => i.Type == QuestionType.Kaart && i.Key == "BE|Testcompetitie|2026-27");
+        Assert.Equal(PlayerStatus.Approved, fresh.Status);
+
+        // De volgende kaartdag kiest de oude kaart niet meer.
+        await _t.Admin.SaveScheduleAsync([new ScheduleDay(DayOfWeek.Sunday, QuestionType.Kaart)]);
+        _clock.Advance(TimeSpan.FromDays(1));
+        var day2 = await _quiz.GetOrCreateChallengeAsync(_quiz.Today);
+        Assert.Equal(fresh.Id, day2.Questions.First().QuizItemId);
+    }
+
+    [Fact]
+    public async Task An_old_map_that_breaks_the_rules_can_still_be_managed_but_is_never_played()
+    {
+        // Een oude kaart van 17 spelden (goedgekeurd, in de admin bewerkt), naast een geldige kaart.
+        var big = Map with
+        {
+            Competition = "Oud", Pins = [.. Enumerable.Range(0, 17).Select(i => new KaartStadion($"Stadion {i}", $"Stad {i}", 50.6 + i * 0.03, 3.5 + i * 0.1, [$"Club {i}"]))],
+        };
+        Assert.NotEmpty(QuestionEngine.Problems(QuestionType.Kaart, QuestionEngine.Serialize(big)));
+        var oldItem = new QuizItem { Type = QuestionType.Kaart, Key = "Oud|2026-27", Data = QuestionEngine.Serialize(big), Status = PlayerStatus.Approved, EditedInAdmin = true };
+        _db.QuizItems.Add(oldItem);
+        MapItem.Status = PlayerStatus.Rejected;
+        _db.SaveChanges();
+
+        // De picker slaat ze over: geen kaart, dus "Wie ben ik?".
+        await PlanKaartAsync();
+        Assert.DoesNotContain((await _quiz.GetOrCreateChallengeAsync(_quiz.Today)).Questions, q => q.Type == QuestionType.Kaart);
+        Assert.Equal(0, (await _t.Admin.KaartMapsAsync())["BE"]);
+
+        // De admin kan ze wel afwijzen of haar metadata aanpassen (de data blijft dezelfde).
+        var edit = new QuizItemEdit(oldItem.Id, QuestionType.Kaart, oldItem.Data, 4, ["https://example.org"], [], PlayerStatus.Rejected, "17 spelden", null, null, 0);
+        await _t.Admin.SaveQuizItemAsync(edit, "sander");
+        Assert.Equal((PlayerStatus.Rejected, 4, "Oud|2026-27"), (oldItem.Status, oldItem.Difficulty, oldItem.Key));
+        // Een gewijzigde, nog steeds ongeldige inhoud wordt wel geweigerd.
+        await Assert.ThrowsAsync<QuizException>(() => _t.Admin.SaveQuizItemAsync(
+            edit with { Data = QuestionEngine.Serialize(big with { Season = "2025-26" }) }, "sander"));
+    }
+
+    [Fact]
+    public async Task A_broken_row_does_not_break_the_kaartdag()
+    {
+        var good = MapItem.Id;
+        _db.QuizItems.Add(new QuizItem { Type = QuestionType.Kaart, Key = "Kapot", Data = "{ niet: json", Status = PlayerStatus.Approved });
+        _db.SaveChanges();
+        await PlanKaartAsync();
+        var challenge = await _quiz.GetOrCreateChallengeAsync(_quiz.Today);
+        Assert.Equal(good, challenge.Questions.First().QuizItemId);
+        Assert.Equal(1, (await _t.Admin.KaartMapsAsync())["BE"]);
+    }
+
+    [Fact]
+    public async Task The_theme_of_a_special_goes_before_avoiding_the_previous_country()
+    {
+        // Gisteren een kaartdag van het VK; vandaag een special "Premier League-avond" op willekeurig.
+        var premier = MapIn("GB", "Premier League");
+        _db.QuizItems.Add(new QuizItem { Type = QuestionType.Kaart, Key = "GB|Premier League|2026-27", Data = QuestionEngine.Serialize(premier),
+            Status = PlayerStatus.Approved, Tags = ["premier-league"] });
+        Add(QuestionType.Kaart, "IT|Serie A|2026-27", MapIn("IT", "Serie A"));
+        MapItem.Status = PlayerStatus.Rejected;
+        _db.SaveChanges();
+        await _t.Admin.SaveScheduleAsync([new ScheduleDay(DayOfWeek.Saturday, QuestionType.Kaart, KaartCountry: "GB")]);
+        Assert.Equal("GB", LandOf(await _quiz.GetOrCreateChallengeAsync(_quiz.Today)));
+
+        _clock.Advance(TimeSpan.FromDays(1));
+        var id = await _t.Admin.SaveSpecialAsync(new SpecialEdit(0, "eigen", "Premier League-avond", "🗺️", "", _quiz.Today, _quiz.Today,
+            "premier-league", [], [QuestionType.Kaart]));
+        Assert.Equal("GB", LandOf(await _quiz.GetOrCreateSpecialChallengeAsync(id)));
+
+        // Zonder thema wint de rotatie: een ander land dan het VK.
+        var plain = await _t.Admin.SaveSpecialAsync(new SpecialEdit(0, "eigen", "Kaartavond", "🗺️", "", _quiz.Today, _quiz.Today,
+            null, [], [QuestionType.Kaart]));
+        Assert.Equal("IT", LandOf(await _quiz.GetOrCreateSpecialChallengeAsync(plain)));
+    }
+
+    [Fact]
+    public async Task The_country_is_cleared_when_a_kaartdag_becomes_another_type_or_a_mix()
+    {
+        await _t.Admin.SaveScheduleAsync([new ScheduleDay(DayOfWeek.Saturday, QuestionType.Kaart, KaartCountry: "FR")]);
+        Assert.Equal("FR", (await _t.Admin.ScheduleAsync()).Days.Single(d => d.Day == DayOfWeek.Saturday).KaartCountry);
+
+        await _t.Admin.SaveScheduleAsync([new ScheduleDay(DayOfWeek.Saturday, QuestionType.Snelvuur, KaartCountry: "FR")]);
+        Assert.Null((await _t.Admin.ScheduleAsync()).Days.Single(d => d.Day == DayOfWeek.Saturday).KaartCountry);
+
+        await _t.Admin.SaveScheduleAsync([new ScheduleDay(DayOfWeek.Saturday, QuestionType.Kaart, KaartCountry: "FR")]);
+        await _t.Admin.SaveScheduleAsync(
+            [new ScheduleDay(DayOfWeek.Saturday, QuestionType.Snelvuur, [QuestionType.Snelvuur, QuestionType.Jaar], KaartCountry: "FR")]);
+        Assert.Null((await _t.Admin.ScheduleAsync()).Days.Single(d => d.Day == DayOfWeek.Saturday).KaartCountry);
+    }
+
+    [Fact]
+    public async Task A_special_that_is_being_played_refuses_another_country()
+    {
+        AddCountries();
+        var special = new SpecialEdit(0, "eigen", "Kaartspecial", "🗺️", "", _quiz.Today, _quiz.Today, null, [], [QuestionType.Kaart], KaartCountry: "FR");
+        var id = await _t.Admin.SaveSpecialAsync(special);
+        await _quiz.GetOrCreateSpecialChallengeAsync(id); // nu gespeeld
+        await Assert.ThrowsAsync<QuizException>(() => _t.Admin.SaveSpecialAsync(special with { Id = id, KaartCountry = "DE" }));
+        await _t.Admin.SaveSpecialAsync(special with { Id = id, Name = "Nieuwe naam" }); // de naam mag nog
+    }
+
+    [Fact]
+    public void Every_real_pin_lies_inside_its_country_and_obvious_mistakes_do_not()
+    {
+        var file = Path.Combine(ServerContent.Root, "Data", "questions", "kaart.json");
+        var maps = JsonSerializer.Deserialize<List<KaartData>>(File.ReadAllText(file), new JsonSerializerOptions(JsonSerializerDefaults.Web))!;
+        foreach (var map in maps)
+            foreach (var pin in map.Pins)
+                Assert.True(KaartGrenzen.Contains(map.Land, pin.Lat, pin.Lon), $"{map.Land} {pin.Stadium} ({pin.Lat}, {pin.Lon}) valt buiten het land");
+
+        Assert.False(KaartGrenzen.Contains("BE", 50.6292, 3.0573));    // Rijsel op de kaart van België
+        Assert.True(KaartGrenzen.Contains("FR", 50.6292, 3.0573));     // maar wel in Frankrijk
+        Assert.False(KaartGrenzen.Contains("GB", 54.9756, 1.6216));    // Newcastle met +1,62 in plaats van -1,62: de Noordzee
+        Assert.True(KaartGrenzen.Contains("GB", 54.9756, -1.6216));
+        Assert.False(KaartGrenzen.Contains("NL", 52.37, 4.9));         // geen omtrek: nooit binnen
+
+        // En de inhoudscontrole weigert ze.
+        Assert.NotEmpty(QuestionEngine.Problems(QuestionType.Kaart,
+            QuestionEngine.Serialize(Map with { Pins = [.. Map.Pins.SkipLast(1), new("Stade Pierre-Mauroy", "Rijsel", 50.6119, 3.1305, ["LOSC"])] })));
     }
 
     private sealed class Env(string root) : IWebHostEnvironment
@@ -604,30 +768,37 @@ public sealed class KaartTests : IDisposable
         static List<string> Problems(KaartData d) => QuestionEngine.Problems(QuestionType.Kaart, QuestionEngine.Serialize(d));
 
         Assert.Empty(Problems(Map));
-        Assert.NotEmpty(Problems(Map with { Pins = Map.Pins.Take(QuestionRules.KaartMinPins - 1).ToList() }));    // te weinig spelden
-        Assert.NotEmpty(Problems(Map with                                                                           // te veel spelden
-        {
-            Pins = [.. Enumerable.Range(0, QuestionRules.KaartMaxPins + 1).Select(i => new KaartStadion($"S{i}", "Gent", 51.0, 3.0 + i * 0.05, [$"C{i}"]))],
-        }));
-        Assert.NotEmpty(Problems(Map with { Pins = [.. Map.Pins, new("Elders", "Parijs", 48.85, 2.35, ["PSG"])] })); // buiten de kaart
-        Assert.NotEmpty(Problems(Map with { Pins = [.. Map.Pins, new("Noord", "Breda", 51.59, 4.78, ["NAC"])] }));   // net boven de kaart
-        Assert.NotEmpty(Problems(Map with { Pins = [.. Map.Pins, new("Tweede", "Gent", 51.01, 3.73, ["Genk"])] }));  // club bij twee spelden
-        Assert.NotEmpty(Problems(Map with { Pins = [.. Map.Pins, new("Lotto Park", "Gent", 51.01, 3.73, ["Gent"])] })); // stadionnaam dubbel
-        Assert.NotEmpty(Problems(Map with { Pins = [.. Map.Pins, new("Leeg", "Gent", 51.01, 3.73, [])] }));         // speld zonder club
+        KaartData Replace(KaartStadion pin) => Map with { Pins = [.. Map.Pins.SkipLast(1), pin] };
+        Assert.NotEmpty(Problems(Map with { Pins = Map.Pins.Take(QuestionRules.KaartPins - 1).ToList() }));          // 9 spelden
+        Assert.NotEmpty(Problems(Map with { Pins = [.. Map.Pins, new("Elfde", "Lier", 51.13, 4.57, ["Lierse"])] })); // 11 spelden
+        Assert.NotEmpty(Problems(Replace(new("Elders", "Parijs", 48.85, 2.35, ["PSG"]))));                          // buiten de kaart
+        Assert.NotEmpty(Problems(Replace(new("Noord", "Breda", 51.59, 4.78, ["NAC"]))));                            // net boven de kaart
+        Assert.NotEmpty(Problems(Replace(new("Tweede", "Lier", 51.13, 4.57, ["Genk"]))));                           // club bij twee spelden
+        Assert.NotEmpty(Problems(Replace(new("Lotto Park", "Lier", 51.13, 4.57, ["Lierse"]))));                     // stadionnaam dubbel
+        Assert.NotEmpty(Problems(Replace(new("Leeg", "Lier", 51.13, 4.57, []))));                                   // speld zonder club
+        Assert.Empty(Problems(Replace(new("Herman Vanderpoortenstadion", "Lier", 51.13, 4.57, ["Lierse"]))));     // dezelfde, maar geldig
+        Assert.NotEmpty(Problems(Map with { Country = "NL" }));                                                     // onbekend land
+        Assert.Empty(Problems(Map with { Country = null }));                                                        // geen land = België
+        foreach (var land in KaartProjection.Landen) Assert.Empty(Problems(MapIn(land.Code, $"Competitie {land.Code}")));
         Assert.NotEmpty(Problems(Map with { Competition = "" }));
 
-        Assert.Equal("Testcompetitie|2026-27", QuestionEngine.KeyFor(QuestionType.Kaart, QuestionEngine.Serialize(Map)));
+        Assert.Equal("BE|Testcompetitie|2026-27", QuestionEngine.KeyFor(QuestionType.Kaart, QuestionEngine.Serialize(Map)));
     }
 
     [Fact]
     public void The_map_and_the_content_check_use_the_same_edges()
     {
-        Assert.Equal((0, 0), KaartProjection.Project(KaartProjection.MaxLat, KaartProjection.MinLon));
-        var (x, y) = KaartProjection.Project(KaartProjection.MinLat, KaartProjection.MaxLon);
-        Assert.Equal(KaartProjection.Width, x, 6);
-        Assert.Equal(KaartProjection.Height, y, 6);
-        Assert.True(KaartProjection.Contains(KaartProjection.MaxLat, KaartProjection.MinLon));
-        Assert.False(KaartProjection.Contains(KaartProjection.MaxLat + 0.01, 4));
+        foreach (var k in KaartProjection.Landen)
+        {
+            Assert.Equal((0, 0), k.Project(k.MaxLat, k.MinLon));
+            var (x, y) = k.Project(k.MinLat, k.MaxLon);
+            Assert.Equal(k.Width, x, 6);
+            Assert.Equal(k.Height, y, 6);
+            Assert.True(k.Contains(k.MaxLat, k.MinLon));
+            Assert.False(k.Contains(k.MaxLat + 0.01, (k.MinLon + k.MaxLon) / 2));
+        }
+        Assert.Null(KaartProjection.Find("NL"));
+        Assert.Same(KaartProjection.FR, KaartProjection.Find("fr"));
     }
 
     // ---------- Laatste ronde: XP, tijd, namen, gelijktijdige gokken ----------
@@ -640,13 +811,13 @@ public sealed class KaartTests : IDisposable
         var missed = false;
         var part2 = await PlayAsync(2, s => { if (missed) return Right(s); missed = true; return Wrong(s); });
         Assert.False(part2.Result!.Correct);
-        Assert.Equal(400, part2.Result.Points);                             // 4 van de 5 stadions
+        Assert.Equal(450, part2.Result.Points);                             // 9 van de 10 stadions
 
-        // 900 punten, waarvan 400 uit een deel dat niet volledig juist is: alles telt voor "Juiste antwoorden",
-        // net als 900 punten uit juiste antwoorden op een gewone dag (900 / 5 = 180 XP).
+        // 950 punten, waarvan 450 uit een deel dat niet volledig juist is: alles telt voor "Juiste antwoorden",
+        // net als 950 punten uit juiste antwoorden op een gewone dag (950 / 5 = 190 XP).
         var input = (await _t.Results.XpInputsAsync())[_me];
-        Assert.Equal(900, input.CorrectPoints);
-        Assert.Equal(900 / Levels.CorrectPointsPerXp, Levels.Breakdown(input).Single(p => p.Label == "Juiste antwoorden").Xp);
+        Assert.Equal(950, input.CorrectPoints);
+        Assert.Equal(950 / Levels.CorrectPointsPerXp, Levels.Breakdown(input).Single(p => p.Label == "Juiste antwoorden").Xp);
         // "Gespeelde vragen": de twee delen tellen samen als een volle dag, net als een gewone dag van 10 vragen.
         Assert.Equal(GameRules.QuestionsPerDay, input.QuestionsPlayed);
         Assert.Equal(GameRules.QuestionsPerDay * Levels.XpPerQuestion, Levels.Breakdown(input).Single(p => p.Label == "Gespeelde vragen").Xp);
@@ -724,13 +895,13 @@ public sealed class KaartTests : IDisposable
     public void Names_cannot_contain_the_separator_or_surrounding_spaces()
     {
         static List<string> Problems(KaartData d) => QuestionEngine.Problems(QuestionType.Kaart, QuestionEngine.Serialize(d));
-        KaartData With(KaartStadion extra) => Map with { Pins = [.. Map.Pins, extra] };
+        KaartData With(KaartStadion extra) => Map with { Pins = [.. Map.Pins.SkipLast(1), extra] };
 
-        Assert.NotEmpty(Problems(With(new("Ghelamco", "Gent", 51.01, 3.73, ["KAA|Gent"]))));
-        Assert.NotEmpty(Problems(With(new("Ghelamco|Arena", "Gent", 51.01, 3.73, ["Gent"]))));
-        Assert.NotEmpty(Problems(With(new("Ghelamco", "Gent", 51.01, 3.73, [" Gent"]))));
-        Assert.NotEmpty(Problems(With(new("Ghelamco ", "Gent", 51.01, 3.73, ["Gent"]))));
-        Assert.Empty(Problems(With(new("Ghelamco", "Gent", 51.01, 3.73, ["Gent"]))));
+        Assert.NotEmpty(Problems(With(new("Ghelamco", "Gent", 51.01, 3.73, ["Beveren|Waasland"]))));
+        Assert.NotEmpty(Problems(With(new("Ghelamco|Arena", "Gent", 51.01, 3.73, ["Beveren"]))));
+        Assert.NotEmpty(Problems(With(new("Ghelamco", "Gent", 51.01, 3.73, [" Beveren"]))));
+        Assert.NotEmpty(Problems(With(new("Ghelamco ", "Gent", 51.01, 3.73, ["Beveren"]))));
+        Assert.Empty(Problems(With(new("Ghelamco", "Gent", 51.01, 3.73, ["Beveren"]))));
     }
 
     [Fact]
@@ -750,7 +921,7 @@ public sealed class KaartTests : IDisposable
             await File.WriteAllTextAsync(Path.Combine(root, "Data", "questions", "kaart.json"), json);
 
             await new QuestionSeeder(_db, new Env(root), NullLogger<QuestionSeeder>.Instance).SeedAsync();
-            var item = _db.QuizItems.Single(i => i.Type == QuestionType.Kaart && i.Key == "Testcompetitie|2027-28");
+            var item = _db.QuizItems.Single(i => i.Type == QuestionType.Kaart && i.Key == "BE|Testcompetitie|2027-28");
             var data = QuestionEngine.Parse<KaartData>(item.Data);
             Assert.Equal(Map.Pins.Select(p => p.Stadium), data.Pins.Select(p => p.Stadium));
             Assert.Equal(Map.Pins.SelectMany(p => p.Clubs), data.Pins.SelectMany(p => p.Clubs));
@@ -768,6 +939,94 @@ public sealed class KaartTests : IDisposable
         var state = await PlayAsync(1, s => Right(s));
         Assert.Contains("✅ Genk", state.Result!.AllHints);                       // niet "Genk · Genk"
         Assert.Contains("✅ Standard · Luik", state.Result.AllHints);
+    }
+
+    // ---------- Landen: de admin kiest het land ----------
+
+    /// <summary>Goedgekeurde kaarten van Frankrijk en Duitsland erbij, en een te keuren kaart van Italië.</summary>
+    private void AddCountries()
+    {
+        Add(QuestionType.Kaart, "Ligue 1|2026-27", MapIn("FR", "Ligue 1"));
+        Add(QuestionType.Kaart, "Bundesliga|2026-27", MapIn("DE", "Bundesliga"));
+        _db.QuizItems.Add(new QuizItem { Type = QuestionType.Kaart, Key = "Serie A|2026-27", Status = PlayerStatus.Review,
+            Data = QuestionEngine.Serialize(MapIn("IT", "Serie A")) });
+        _db.SaveChanges();
+    }
+
+    private string LandOf(DailyChallenge challenge) =>
+        QuestionEngine.Parse<KaartData>(_db.QuizItems.Single(i => i.Id == challenge.Questions.First().QuizItemId).Data).Land;
+
+    [Fact]
+    public async Task The_daily_takes_a_map_of_the_country_the_admin_chose()
+    {
+        AddCountries();
+        await _t.Admin.SaveScheduleAsync([new ScheduleDay(DayOfWeek.Saturday, QuestionType.Kaart, KaartCountry: "fr")]);
+        var schedule = await _t.Admin.ScheduleAsync();
+        Assert.Equal("FR", schedule.Days.Single(d => d.Day == DayOfWeek.Saturday).KaartCountry);
+        // Per land het aantal goedgekeurde kaarten (Italië is nog te keuren).
+        Assert.Equal((1, 1, 1, 0, 0), (schedule.KaartMaps!["BE"], schedule.KaartMaps["FR"], schedule.KaartMaps["DE"],
+            schedule.KaartMaps["IT"], schedule.KaartMaps["GB"]));
+
+        var challenge = await _quiz.GetOrCreateChallengeAsync(_quiz.Today);
+        Assert.Equal("FR", LandOf(challenge));
+        var state = await _quiz.StartAsync(_me, 1);
+        Assert.Equal("FR", state.View!.Country);
+        Assert.Contains("Frankrijk", state.View.Note);
+    }
+
+    [Fact]
+    public async Task A_country_without_an_approved_map_falls_back_to_a_random_approved_map()
+    {
+        AddCountries();
+        await _t.Admin.SaveScheduleAsync([new ScheduleDay(DayOfWeek.Saturday, QuestionType.Kaart, KaartCountry: "IT")]);
+        var challenge = await _quiz.GetOrCreateChallengeAsync(_quiz.Today);
+        Assert.Contains(LandOf(challenge), new[] { "BE", "FR", "DE" }); // de Italiaanse kaart is nog te keuren
+    }
+
+    [Fact]
+    public async Task A_random_map_prefers_another_country_than_the_previous_kaartdag()
+    {
+        Add(QuestionType.Kaart, "Ligue 1|2026-27", MapIn("FR", "Ligue 1"));
+        _db.SaveChanges();
+        await _t.Admin.SaveScheduleAsync(
+            [new ScheduleDay(DayOfWeek.Saturday, QuestionType.Kaart), new ScheduleDay(DayOfWeek.Sunday, QuestionType.Kaart)]);
+
+        var first = LandOf(await _quiz.GetOrCreateChallengeAsync(_quiz.Today));
+        _clock.Advance(TimeSpan.FromDays(1));
+        var second = LandOf(await _quiz.GetOrCreateChallengeAsync(_quiz.Today));
+        Assert.NotEqual(first, second);
+    }
+
+    [Fact]
+    public async Task A_kaart_special_takes_the_chosen_country_and_the_admin_refuses_an_unknown_one()
+    {
+        AddCountries();
+        var special = new SpecialEdit(0, "eigen", "Bundesliga-special", "🗺️", "", _quiz.Today, _quiz.Today, null, [],
+            [QuestionType.Kaart], KaartCountry: "DE");
+        await Assert.ThrowsAsync<QuizException>(() => _t.Admin.SaveSpecialAsync(special with { KaartCountry = "NL" }));
+        await Assert.ThrowsAsync<QuizException>(() => _t.Admin.SaveScheduleAsync(
+            [new ScheduleDay(DayOfWeek.Saturday, QuestionType.Kaart, KaartCountry: "NL")]));
+
+        var id = await _t.Admin.SaveSpecialAsync(special);
+        Assert.Equal("DE", (await _t.Admin.GetSpecialAsync(id)).KaartCountry);
+        Assert.Equal("DE", LandOf(await _quiz.GetOrCreateSpecialChallengeAsync(id)));
+
+        // Zonder kaart verdwijnt het land: het geldt enkel voor een kaartspecial.
+        var other = await _t.Admin.SaveSpecialAsync(special with { Name = "Snelvuur", Types = [QuestionType.Snelvuur] });
+        Assert.Null((await _t.Admin.GetSpecialAsync(other)).KaartCountry);
+    }
+
+    [Fact]
+    public async Task The_real_maps_load_with_their_country_and_ten_pins()
+    {
+        await new QuestionSeeder(_db, ServerContent.Environment(), NullLogger<QuestionSeeder>.Instance).SeedAsync();
+        var maps = _db.QuizItems.Where(i => i.Type == QuestionType.Kaart && i.Key != "Testcompetitie|2026-27").ToList()
+            .Select(i => (i.Status, Data: QuestionEngine.Parse<KaartData>(i.Data))).ToList();
+        Assert.Equal(7, maps.Count);
+        Assert.Equal(["BE", "DE", "ES", "FR", "GB", "IT"], maps.Select(m => m.Data.Land).Distinct().Order());
+        Assert.All(maps, m => Assert.Equal(QuestionRules.KaartPins, m.Data.Pins.Count));
+        Assert.All(maps, m => Assert.Empty(QuestionEngine.Problems(QuestionType.Kaart, QuestionEngine.Serialize(m.Data))));
+        Assert.Equal(6, maps.Count(m => m.Status == PlayerStatus.Approved));
     }
 
     public void Dispose() => _t.Dispose();

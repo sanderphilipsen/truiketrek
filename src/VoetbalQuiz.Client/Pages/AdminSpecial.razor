@@ -82,6 +82,10 @@
                         }
                     </div>
                     <small class="muted">Verdeling: @Mix()</small>
+                    @if (_types.Contains(QuestionType.Kaart))
+                    {
+                        <KaartLandSelect @bind-Value="_kaartCountry" Maps="_kaartMaps" Disabled="_locked" />
+                    }
                 </section>
 
                 <section class="card stack">
@@ -192,6 +196,10 @@
     private static DateOnly Today => QuizDay.Today();
     private HashSet<QuestionType> _types = [];
 
+    /// <summary>Kaartspecial: het land van de kaart (null = willekeurig) en per land het aantal goedgekeurde kaarten.</summary>
+    private string? _kaartCountry;
+    private Dictionary<string, int>? _kaartMaps;
+
     /// <summary>Zelfde verdeling als de server (QuestionTypes.Mix): om beurten, max. 10 vragen en 1000 punten.</summary>
     private Dictionary<QuestionType, int> MixCounts() =>
         _types.Count == 0 ? [] : QuestionTypes.Mix(QuestionTypes.All.Select(x => x.Type).Where(_types.Contains));
@@ -226,6 +234,7 @@
         try
         {
             _all = await Api.GetAdminPlayersAsync(null, null, null);
+            _kaartMaps = (await Api.GetScheduleAsync()).KaartMaps;
             if (Id == 0)
             {
                 var theme = System.Web.HttpUtility.ParseQueryString(Nav.ToAbsoluteUri(Nav.Uri).Query)["theme"];
@@ -237,6 +246,7 @@
             (_theme, _name, _icon, _description, _start, _end, _tags) = (s.Theme, s.Name, s.Icon, s.Description, s.StartDate, s.EndDate, [.. PlayerTags.Split(s.Tag)]);
             _types = s.Types is { Count: > 0 } types ? [.. types] : [QuestionType.WieBenIk];
             _picked = [.. s.PlayerIds];
+            _kaartCountry = s.KaartCountry;
             _manual = _picked.Count > 0;
         }
         catch (ApiException ex) { _loadError = ex.Message; }
@@ -308,7 +318,8 @@
         try
         {
             var edit = new SpecialEdit(Id, _theme, _name, _icon, _description, _start, _end,
-                _manual ? null : PlayerTags.Join(_tags), _manual ? [.. _picked] : [], [.. QuestionTypes.All.Select(x => x.Type).Where(_types.Contains)]);
+                _manual ? null : PlayerTags.Join(_tags), _manual ? [.. _picked] : [], [.. QuestionTypes.All.Select(x => x.Type).Where(_types.Contains)],
+                _types.Contains(QuestionType.Kaart) ? _kaartCountry : null);
             var id = await Api.SaveAdminSpecialAsync(edit);
             _saved = true;
             if (Id == 0) Nav.NavigateTo($"admin/specials/{id}");

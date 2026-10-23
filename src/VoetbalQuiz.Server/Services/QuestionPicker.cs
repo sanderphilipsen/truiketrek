@@ -9,7 +9,7 @@ namespace VoetbalQuiz.Server.Services;
 /// partijtje en voor een derby-wissel (willekeurig, nooit iets uit de daily van vandaag). Bewaart zelf niets:
 /// de reeks aanmaken doet <see cref="QuizService"/>, een partijtje <see cref="MatchService"/>.
 /// </summary>
-public class QuestionPicker(QuizDbContext db, TimeProvider clock)
+public class QuestionPicker(QuizDbContext db, TimeProvider clock, ILogger<QuestionPicker>? logger = null)
 {
     private DateOnly Today => QuizClock.Today(clock);
 
@@ -48,14 +48,16 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock)
     public async Task<List<DailyQuestion>?> BuildDailyAsync(DateOnly date)
     {
         var types = await TypesForAsync(date);
-        return await BuildMixAsync(types, null)
+        // Een kaartdag: het land dat de admin in de weekplanning koos (null = willekeurig).
+        var country = (await db.DailySchedule.SingleOrDefaultAsync(d => d.Day == date.DayOfWeek))?.KaartCountry;
+        return await BuildMixAsync(types, null, kaartCountry: country)
                ?? await BuildAsync(QuestionType.WieBenIk, GameRules.QuestionsPerDay, null,
                    targets: Difficulty.Plan(GameRules.QuestionsPerDay));
     }
 
     /// <summary>De vragen van een special (thema en spelerspool van de special); null als een type te weinig vragen heeft.</summary>
     public async Task<List<DailyQuestion>?> BuildSpecialAsync(SpecialEvent special) =>
-        await BuildMixAsync(await SpecialTypesAsync(special), special.Tag, await SpecialPoolAsync(special));
+        await BuildMixAsync(await SpecialTypesAsync(special), special.Tag, await SpecialPoolAsync(special), kaartCountry: special.KaartCountry);
 
     /// <summary>
     /// Spelers voor de spelersvragen van een special (wie ben ik, kluts, counter): de handmatig gekozen spelers,
@@ -129,7 +131,8 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock)
 
     /// <summary>Stelt een reeks samen volgens <see cref="QuestionTypes.Mix"/>; null als een type te weinig vragen heeft.</summary>
     private async Task<List<DailyQuestion>?> BuildMixAsync(
-        List<QuestionType> types, string? tag, List<Player>? playerPool = null, HashSet<int>? excludeItems = null, int? questions = null)
+        List<QuestionType> types, string? tag, List<Player>? playerPool = null, HashSet<int>? excludeItems = null, int? questions = null,
+        string? kaartCountry = null)
     {
         var all = new List<DailyQuestion>();
         var usedPlayers = new HashSet<int>();
@@ -141,7 +144,8 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock)
         foreach (var (type, count) in mix)
         {
             var targets = plan is null ? null : Enumerable.Range(0, count).Select(_ => plan.Dequeue()).ToList();
-            var part = await BuildAsync(type, count, tag, QuestionTypes.Get(type).FromPlayers ? playerPool : null, usedPlayers, excludeItems, targets);
+            var part = await BuildAsync(type, count, tag, QuestionTypes.Get(type).FromPlayers ? playerPool : null, usedPlayers, excludeItems, targets,
+                kaartCountry);
             if (part is null) return null;
             all.AddRange(part);
         }
@@ -157,7 +161,7 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock)
     /// </summary>
     private async Task<List<DailyQuestion>?> BuildAsync(
         QuestionType type, int count, string? tag, List<Player>? playerPool = null, HashSet<int>? usedPlayers = null,
-        HashSet<int>? excludeItems = null, List<int>? targets = null)
+        HashSet<int>? excludeItems = null, List<int>? targets = null, string? kaartCountry = null)
     {
         if (QuestionTypes.Get(type).FromPlayers)
         {
@@ -181,10 +185,9 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock)
         if (type == QuestionType.Kaart)
         {
             // Kaartdag: één kaart, gespeeld in twee delen (twee vragen op hetzelfde item): eerst de clubs, dan de stadions.
-            var maps = await PickItemsAsync(type, QuestionTypes.ItemsFor(type, count), tag, excludeItems, targets?.Take(1).ToList());
-            if (maps.Count < QuestionTypes.ItemsFor(type, count)) return null;
-            return maps.SelectMany(map => Enumerable.Range(1, QuestionRules.KaartParts)
-                    .Select(part => new DailyQuestion { Type = type, QuizItemId = map.Id, Part = part }))
+            if (await PickMapAsync(tag, kaartCountry, excludeItems) is not { } map) return null;
+            return Enumerable.Range(1, QuestionRules.KaartParts)
+                .Select(part => new DailyQuestion { Type = type, QuizItemId = map.Id, Part = part })
                 .Take(count).ToList();
         }
 
@@ -286,6 +289,57 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock)
                 (picked, i) => picked.All(p => Subject(p) != Subject(i)));
 
         return ordered.DistinctBy(Subject).Take(count).ToList();
+    }
+
+    /// <summary>
+    /// Kaart: een goedgekeurde, geldige kaart (<see cref="QuestionEngine.Problems"/> leeg: een oude kaart die niet meer aan de
+    /// regels voldoet, wordt nooit gespeeld). De voorkeur, in deze volgorde:
+    /// 1. het land dat de admin koos (<paramref name="country"/>);
+    /// 2. anders de kaarten met het thema van de special (<paramref name="tag"/>), ook als dat het land van de vorige kaartdag is;
+    /// 3. anders een ander land dan de vorige kaartdag;
+    /// 4. anders alle kaarten.
+    /// Daarbinnen eerst een ander land dan de vorige kaartdag, dan de langst niet gebruikte kaart. Null = geen kaart.
+    /// </summary>
+    private async Task<QuizItem?> PickMapAsync(string? tag, string? country, HashSet<int>? exclude)
+    {
+        var maps = new List<(QuizItem Item, string Land)>();
+        foreach (var item in await db.QuizItems.Where(i => i.Type == QuestionType.Kaart && i.Status == PlayerStatus.Approved).ToListAsync())
+        {
+            if (exclude?.Contains(item.Id) == true) continue;
+            // Eén kapotte of ongeldige rij legt de kaartdag niet plat: die kaart slaan we over.
+            if (QuestionEngine.Problems(QuestionType.Kaart, item.Data) is [var problem, ..])
+            {
+                logger?.LogWarning("Kaart {Id} ({Key}) wordt overgeslagen: {Problem}", item.Id, item.Key, problem);
+                continue;
+            }
+            maps.Add((item, QuestionEngine.Parse<KaartData>(item.Data).Land));
+        }
+        if (maps.Count == 0) return null;
+
+        var played = await db.DailyQuestions.Where(q => q.Type == QuestionType.Kaart && q.QuizItemId != null)
+            .Select(q => new { ItemId = q.QuizItemId!.Value, q.DailyChallenge.Date, QuestionId = q.Id }).ToListAsync();
+        var lastUsed = played.GroupBy(x => x.ItemId).ToDictionary(g => g.Key, g => g.Max(x => x.Date));
+        var previousId = played.OrderByDescending(x => x.Date).ThenByDescending(x => x.QuestionId).Select(x => (int?)x.ItemId).FirstOrDefault();
+        var previousLand = previousId is { } id ? LandOf(await db.QuizItems.FindAsync(id)) : null;
+
+        var wanted = KaartProjection.Find(country)?.Code;
+        List<(QuizItem Item, string Land)> themed = tag is null ? [] : maps.Where(m => PlayerTags.Any(m.Item.Tags, tag)).ToList();
+        var pool = wanted is not null && maps.Any(m => m.Land == wanted) ? maps.Where(m => m.Land == wanted).ToList()
+            : themed.Count > 0 ? themed
+            : maps.Any(m => m.Land != previousLand) ? maps.Where(m => m.Land != previousLand).ToList()
+            : maps;
+        return pool.OrderBy(m => m.Land == previousLand ? 1 : 0)
+            .ThenBy(m => lastUsed.TryGetValue(m.Item.Id, out var d) ? d : DateOnly.MinValue)
+            .ThenBy(_ => Random.Shared.Next())
+            .First().Item;
+    }
+
+    /// <summary>Het land van een kaart, of null als de kaart weg of niet te lezen is.</summary>
+    private static string? LandOf(QuizItem? item)
+    {
+        if (item is null) return null;
+        try { return QuestionEngine.Parse<KaartData>(item.Data).Land; }
+        catch (System.Text.Json.JsonException) { return null; }
     }
 
     /// <summary>

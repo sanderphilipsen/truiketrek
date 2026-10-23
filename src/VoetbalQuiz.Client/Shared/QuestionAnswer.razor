@@ -66,7 +66,7 @@
            met bij een fout wat jij koos. *@
         <p class="center light-text">@View?.Note</p>
         <p class="prompt">@View?.Prompt</p>
-        <BelgieKaart Pins="QuestionPlay.KaartPins(View)" />
+        <LandKaart Land="@(View?.Country ?? QuestionRules.KaartDefaultCountry)" Pins="QuestionPlay.KaartPins(View)" />
         @if (Result.TimedOut) { <p class="center light-text">De tijd was om: de rest van de spelden telt als fout.</p> }
         <ol class="hints">
             @for (var i = 0; i < Result.AllHints.Count; i++)

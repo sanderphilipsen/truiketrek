@@ -47,6 +47,10 @@
                                 }
                             </div>
                         }
+                        else if (d.Type == QuestionType.Kaart)
+                        {
+                            <KaartLandSelect Value="@d.KaartCountry" Maps="_overview.KaartMaps" ValueChanged="c => SetKaartCountry(d.Day, c)" />
+                        }
                         <small class="muted day-result">
                             @if (changed)
                             {
@@ -146,6 +150,14 @@
         {
             _days[i] = _days[i] with { Type = type, Mix = null };
         }
+        (_dirty, _saved) = (true, false);
+    }
+
+    /// <summary>Kaartdag: het land van de kaart (null = willekeurig).</summary>
+    private void SetKaartCountry(DayOfWeek day, string? country)
+    {
+        var i = _days.FindIndex(d => d.Day == day);
+        _days[i] = _days[i] with { KaartCountry = country };
         (_dirty, _saved) = (true, false);
     }
 

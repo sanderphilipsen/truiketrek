@@ -178,8 +178,8 @@
                             else
                             {
                                 <p><b>@_kaart.Question</b></p>
-                                <p class="muted">@_kaart.Competition @_kaart.Season · @_kaart.Pins.Count spelden · @_kaart.Pins.Sum(p => p.Clubs.Count) clubs. De spelden pas je aan in <code>Data/questions/kaart.json</code>.</p>
-                                <BelgieKaart Pins="KaartPreview()" />
+                                <p class="muted">@(KaartProjection.Find(_kaart.Land)?.Naam ?? _kaart.Land) · @_kaart.Competition @_kaart.Season · @_kaart.Pins.Count spelden · @_kaart.Pins.Sum(p => p.Clubs.Count) clubs. De spelden pas je aan in <code>Data/questions/kaart.json</code>.</p>
+                                <LandKaart Land="@_kaart.Land" Pins="KaartPreview()" />
                                 <ul class="kaart-admin-list">
                                     @foreach (var p in _kaart.Pins)
                                     {

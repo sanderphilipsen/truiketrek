@@ -34,8 +34,9 @@ public static class QuestionTypes
         new(QuestionType.Krant, "De Krant", "📰", "Een krantenartikel met gaten. Tik op een gat en vul het in, in de volgorde die je wil.", 1, 1000, "krant",
             Alone: true),
         new(QuestionType.Kaart, "Kaart", "🗺️",
-            $"Twee delen op dezelfde kaart: eerst kies je bij elke speld de club, daarna bij elke club het stadion. " +
-            $"Per deel {(int)QuestionRules.KaartSeconds / 60} minuten en {QuestionRules.KaartPartPoints} punten.",
+            $"Twee delen op dezelfde kaart van een land: eerst kies je bij elke speld de club, daarna bij elke club het stadion. " +
+            $"Per deel {QuestionRules.KaartPins} spelden, {(int)QuestionRules.KaartSeconds / 60} minuten en " +
+            $"{QuestionRules.KaartPointsPerPin} punten per speld.",
             QuestionRules.KaartParts, QuestionRules.KaartPartPoints, "kaart", Alone: true),
     ];
 
@@ -269,14 +270,21 @@ public static class QuestionRules
     public static bool PartialScores(QuestionType type) =>
         QuestionTypes.Get(type).Alone || type is QuestionType.Opstelling or QuestionType.Counter;
 
-    /// <summary>Kaart: een kaart heeft minstens zoveel spelden.</summary>
-    public const int KaartMinPins = 4;
+    /// <summary>
+    /// Kaart: elke kaart heeft precies zoveel spelden, in elk land (10 clubs van een competitie, geen volledige reeks).
+    /// Zo is een kaart in elk land even lang en is een speld in deel 2 altijd <see cref="KaartPointsPerPin"/> punten waard.
+    /// Elke geldige gok zet één speld vast, dus ruim onder <see cref="GameRules.MaxGuessesPerQuestion"/>.
+    /// </summary>
+    public const int KaartPins = 10;
 
     /// <summary>
-    /// Kaart: en hoogstens zoveel. Elke geldige gok zet één speld vast, dus ruim onder
-    /// <see cref="GameRules.MaxGuessesPerQuestion"/>: een kaart kan nooit vastlopen op het maximum aantal pogingen.
+    /// Kaart: een speld is zoveel punten waard (500 / 10). In deel 1 verdeelt een gedeeld stadion zijn speld over de
+    /// clubs, zodat het totaal per deel <see cref="KaartPartPoints"/> blijft (zie <see cref="KaartPoints"/>).
     /// </summary>
-    public const int KaartMaxPins = 24;
+    public const int KaartPointsPerPin = KaartPartPoints / KaartPins;
+
+    /// <summary>Kaart: een kaart zonder land (van vóór de landkaarten) is een kaart van België.</summary>
+    public const string KaartDefaultCountry = "BE";
 
     /// <summary>Counter: zoveel spelers per vraag, elk goed voor <see cref="CounterPointsPerPlayer"/> punten.</summary>
     public const int CounterPlayers = 10;
@@ -444,8 +452,16 @@ public record VolgordeData(string Question, List<VolgordeItem> Items);
 /// <summary>Kaart: een stadion met de club(s) die er thuis spelen (meer dan één bij een gedeeld stadion).</summary>
 public record KaartStadion(string Stadium, string City, double Lat, double Lon, List<string> Clubs);
 
-/// <summary>Kaart: één competitie op de kaart. De server schudt de spelden en geeft ze één voor één vrij.</summary>
-public record KaartData(string Question, string Competition, string Season, List<KaartStadion> Pins);
+/// <summary>
+/// Kaart: één competitie op de kaart van een land (Country: ISO-code, zie <see cref="KaartProjection.Landen"/>; leeg = België).
+/// De server schudt de spelden en geeft ze één voor één vrij.
+/// </summary>
+public record KaartData(string Question, string Competition, string Season, List<KaartStadion> Pins, string? Country = null)
+{
+    /// <summary>Het land van de kaart (ISO-code in hoofdletters); een kaart zonder land is een kaart van België.</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public string Land => string.IsNullOrWhiteSpace(Country) ? QuestionRules.KaartDefaultCountry : Country.Trim().ToUpperInvariant();
+}
 
 /// <summary>
 /// De Krant: een artikel. Text bevat de gaten als [[antwoord / ook goed : hint]] of, voor een getal, [[#69 : minuut]]

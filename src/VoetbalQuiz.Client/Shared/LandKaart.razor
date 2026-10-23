@@ -1,0 +1,224 @@
+@*
+    Landkaart met regiogrenzen en spelden (vraagtype Kaart): België, Frankrijk, Italië, Spanje, Duitsland en het VK.
+
+    Grenzen: Natural Earth, "Admin 1 – States, Provinces" 1:10m (publiek domein), per land in Kaarten/KaartPaden.XX.cs.
+    Projectie en viewBox per land: KaartProjection.For(Land) in VoetbalQuiz.Shared.
+
+    De component toont enkel wat hij krijgt: welke club bij welke speld hoort, beslist de server.
+*@
+@using System.Globalization
+@using VoetbalQuiz.Client.Shared.Kaarten
+@if (kaart is null || vorm is null)
+{
+    <p class="land-kaart-leeg">Geen kaart voor dit land.</p>
+}
+else
+{
+    <div class="land-kaart land-kaart-@kaart.Code.ToLowerInvariant() @Class" style="--kaart-ratio: @Ratio()">
+        <svg viewBox="0 0 @Fmt(kaart.Width) @Fmt(kaart.Height)" role="img" aria-label="@(AriaLabel ?? StandaardAriaLabel())">
+            <g class="kaart-regios">
+                @foreach (var r in vorm.Regios)
+                {
+                    <path data-id="@r.Id" d="@r.D" />
+                }
+            </g>
+            <path class="kaart-grens" d="@vorm.Buitenlijn" />
+            @{ var labels = PlaatsLabels(); }
+            <g class="kaart-spelden">
+                @for (var i = 0; i < Pins.Count; i++)
+                {
+                    var pin = Pins[i];
+                    if (pin.State == KaartPinState.Wacht) continue;
+                    var (x, y) = kaart.Project(pin.Lat, pin.Lon);
+                    <g @key="i" class="kaart-pin kaart-pin-@pin.State.ToString().ToLowerInvariant()" transform="translate(@Fmt(x) @Fmt(y))">
+                        @switch (pin.State)
+                        {
+                            case KaartPinState.Huidig:
+                                <circle class="kaart-pin-ring" r="5" />
+                                <g class="kaart-pin-vorm">
+                                    <path class="kaart-pin-kop" d="M0 0C-2-5.8-10-10.8-10-18.5a10 10 0 0 1 20 0c0 7.7-8 12.7-10 18.5z" />
+                                    <circle class="kaart-pin-oog" cy="-18.5" r="3.8" />
+                                </g>
+                                break;
+                            case KaartPinState.Juist:
+                                <g class="kaart-pin-vorm">
+                                    <circle class="kaart-pin-bol" r="6" />
+                                    <path class="kaart-pin-teken" d="M-2.8 .2l1.9 1.9 3.8-4" />
+                                </g>
+                                break;
+                            case KaartPinState.Deels:
+                                <g class="kaart-pin-vorm">
+                                    <circle class="kaart-pin-bol" r="6" />
+                                    @* half juist: de helft van de bol gevuld *@
+                                    <path class="kaart-pin-half" d="M0-3.6a3.6 3.6 0 0 1 0 7.2z" />
+                                </g>
+                                break;
+                            default:
+                                <g class="kaart-pin-vorm">
+                                    <circle class="kaart-pin-bol" r="6" />
+                                    <path class="kaart-pin-teken" d="M-2.2-2.2l4.4 4.4m0-4.4l-4.4 4.4" />
+                                </g>
+                                break;
+                        }
+                    </g>
+                }
+            </g>
+            <g class="kaart-labels" aria-hidden="true">
+                @foreach (var l in labels)
+                {
+                    @* <text> direct in een codeblok is voor Razor een speciale tag; binnen <g> is het gewone markup. *@
+                    <g @key="l.Index"><text x="@Fmt(l.X)" y="@Fmt(l.Y)" text-anchor="@l.Anchor">@l.Tekst</text></g>
+                }
+            </g>
+        </svg>
+    </div>
+}
+
+@code {
+    /// <summary>ISO-code van het land: BE, FR, IT, ES, DE of GB (zie <see cref="KaartProjection.Landen"/>).</summary>
+    [Parameter, EditorRequired] public string Land { get; set; } = "";
+
+    /// <summary>Alle spelden van de kaart, in de volgorde van de vraag. Spelden in <see cref="KaartPinState.Wacht"/> worden niet getoond.</summary>
+    [Parameter, EditorRequired] public IReadOnlyList<KaartPin> Pins { get; set; } = [];
+
+    /// <summary>
+    /// Hoeveel clubnamen er tegelijk bij de beantwoorde spelden staan: de laatst beantwoorde eerst (volgorde van <see cref="Pins"/>).
+    /// Standaard 3, zodat drukke zones (Brussel, het Ruhrgebied, Noord-Engeland) leesbaar blijven. 0 = geen labels, null = alle labels.
+    /// Een oudere naam die nergens vrij past (andere naam of speld in de weg) valt weg; de laatst beantwoorde staat er altijd.
+    /// </summary>
+    [Parameter] public int? MaxLabels { get; set; } = 3;
+
+    /// <summary>Eigen omschrijving voor schermlezers; standaard het land en een samenvatting van de spelden.</summary>
+    [Parameter] public string? AriaLabel { get; set; }
+
+    /// <summary>Extra CSS-klasse op de buitenste div.</summary>
+    [Parameter] public string? Class { get; set; }
+
+    /// <summary>
+    /// Toon de clubnaam (<see cref="KaartPin.Label"/>) ook bij de huidige speld, vóór het antwoord: in deel 2 van de
+    /// kaartdag staat de club erbij en zoek je het stadion. Dat label komt altijd eerst.
+    /// </summary>
+    [Parameter] public bool LabelHuidig { get; set; }
+
+    KaartLand? kaart;
+    KaartVorm? vorm;
+
+    protected override void OnParametersSet()
+    {
+        kaart = KaartProjection.Find(Land);
+        vorm = KaartPaden.Find(Land);
+    }
+
+    static string Fmt(double v) => Math.Round(v, 1).ToString("0.#", CultureInfo.InvariantCulture);
+
+    /// <summary>Breedte/hoogte van de viewBox, als CSS-variabele --kaart-ratio (om de hoogte van de kaart te begrenzen).</summary>
+    string Ratio() => (kaart!.Width / kaart.Height).ToString("0.####", CultureInfo.InvariantCulture);
+
+    string StandaardAriaLabel()
+    {
+        int juist = 0, deels = 0, fout = 0, huidig = -1;
+        for (var i = 0; i < Pins.Count; i++)
+        {
+            switch (Pins[i].State)
+            {
+                case KaartPinState.Juist: juist++; break;
+                case KaartPinState.Deels: deels++; break;
+                case KaartPinState.Fout: fout++; break;
+                case KaartPinState.Huidig: huidig = i; break;
+            }
+        }
+        var tekst = $"Kaart van {kaart!.Naam} met {vorm!.Grenzen}.";
+        if (huidig >= 0) tekst += $" Speld {huidig + 1} van {Pins.Count} staat klaar.";
+        if (juist + deels + fout > 0)
+        {
+            tekst += $" {juist} juist";
+            if (deels > 0) tekst += $", {deels} half juist";
+            tekst += $", {fout} fout.";
+        }
+        return tekst;
+    }
+
+    record struct Label(int Index, double X, double Y, string Anchor, string Tekst);
+    record struct Kader(double L, double T, double R, double B)
+    {
+        public bool Raakt(Kader o) => o.L < R && L < o.R && o.T < B && T < o.B;
+    }
+
+    const double LabelGrootte = 12;   // moet gelijk zijn aan font-size in kaart.css
+    const double TekenBreedte = 6.8;  // geschatte breedte per letter bij 600-gewicht
+
+    /// <summary>
+    /// Kiest welke clubnamen er staan (de laatste <see cref="MaxLabels"/> beantwoorde spelden, met <see cref="LabelHuidig"/>
+    /// eerst de huidige) en waar: rechts, links, boven, onder of schuin bij de speld, de eerste plaats die binnen de kaart
+    /// valt en geen ander label of speld raakt. De viewBox is bij elk land ±380 breed, dus de maten zijn overal gelijk.
+    /// </summary>
+    List<Label> PlaatsLabels()
+    {
+        var result = new List<Label>();
+        if (MaxLabels == 0 || kaart is null) return result;
+
+        var kandidaten = new List<int>();
+        if (LabelHuidig)
+            for (var i = 0; i < Pins.Count; i++)
+                if (Pins[i].State == KaartPinState.Huidig && !string.IsNullOrWhiteSpace(Pins[i].Label)) kandidaten.Add(i);
+        for (var i = Pins.Count - 1; i >= 0; i--)
+        {
+            var p = Pins[i];
+            if (p.State is KaartPinState.Juist or KaartPinState.Deels or KaartPinState.Fout && !string.IsNullOrWhiteSpace(p.Label))
+                kandidaten.Add(i);
+        }
+        if (kandidaten.Count == 0) return result;
+
+        // Obstakels: alle zichtbare spelden (de huidige speld is groter).
+        var bezet = new List<Kader>();
+        foreach (var p in Pins)
+        {
+            if (p.State == KaartPinState.Wacht) continue;
+            var (x, y) = kaart.Project(p.Lat, p.Lon);
+            bezet.Add(p.State == KaartPinState.Huidig ? new(x - 11, y - 30, x + 11, y + 3) : new(x - 6, y - 6, x + 6, y + 6));
+        }
+
+        foreach (var i in kandidaten)
+        {
+            if (MaxLabels is { } max && result.Count >= max) break;
+            var p = Pins[i];
+            var (x, y) = kaart.Project(p.Lat, p.Lon);
+            var tekst = p.Label!.Trim();
+            var w = tekst.Length * TekenBreedte;
+            var h = LabelGrootte;
+            // Bij de huidige speld zit de punaise boven het punt (kader x±11, tot 30 hoog) en dijt de ring uit: meer afstand.
+            var huidig = p.State == KaartPinState.Huidig;
+            var boven = huidig ? 30 : 10;
+            var opzij = huidig ? 13 : 9;
+            var onder = huidig ? 22 : 18;
+            // (ankerpunt x, basislijn y, text-anchor, kader)
+            var opties = new (double X, double Y, string A, Kader K)[]
+            {
+                (x + opzij, y + 4, "start", new(x + opzij - 1, y - 7, x + opzij + w, y + 6)), // rechts
+                (x - opzij, y + 4, "end", new(x - opzij - w, y - 7, x - opzij + 1, y + 6)),   // links
+                (x, y - boven, "middle", new(x - w / 2, y - boven - h, x + w / 2, y - boven + 3)), // boven
+                (x, y + onder, "middle", new(x - w / 2, y + onder - 11, x + w / 2, y + onder + 3)), // onder
+                (x + 6, y - 8, "start", new(x + 5, y - 8 - h, x + 6 + w, y - 5)),             // rechtsboven
+                (x + 6, y + 16, "start", new(x + 5, y + 5, x + 6 + w, y + 19)),               // rechtsonder
+                (x - 6, y - 8, "end", new(x - 6 - w, y - 8 - h, x - 5, y - 5)),               // linksboven
+                (x - 6, y + 16, "end", new(x - 6 - w, y + 5, x - 5, y + 19)),                 // linksonder
+            };
+            var gekozen = -1;
+            var binnen = -1;
+            for (var o = 0; o < opties.Length; o++)
+            {
+                var k = opties[o].K;
+                if (k.L < 1 || k.T < 1 || k.R > kaart.Width - 1 || k.B > kaart.Height - 1) continue;
+                if (binnen < 0) binnen = o;
+                if (!bezet.Any(b => b.Raakt(k))) { gekozen = o; break; }
+            }
+            // Past een oudere naam nergens vrij, dan valt hij weg; de eerste (laatst beantwoorde of huidige) staat er altijd.
+            if (gekozen < 0 && result.Count > 0) continue;
+            if (gekozen < 0) gekozen = binnen >= 0 ? binnen : (x > kaart.Width / 2 ? 1 : 0);
+            var c = opties[gekozen];
+            bezet.Add(c.K);
+            result.Add(new Label(i, c.X, c.Y, c.A, tekst));
+        }
+        return result;
+    }
+}

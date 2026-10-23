@@ -164,8 +164,8 @@ public static class QuestionEngine
                 return ([], new QuestionView(stadiums ? $"{d.Competition} {d.Season}: in welk stadion speelt deze club thuis?" : d.Question,
                     KaartOptions(q, d),
                     MaxPoints: QuestionRules.KaartPartPoints,
-                    Note: over || passed >= order.Count ? $"Deel {part}" : $"Deel {part} · speld {passed + 1} van {order.Count}",
-                    Found: passed, Total: order.Count, Pins: pins, Part: part));
+                    Note: over || passed >= order.Count ? $"Deel {part} · {LandNaam(d)}" : $"Deel {part} · {LandNaam(d)} · speld {passed + 1} van {order.Count}",
+                    Found: passed, Total: order.Count, Pins: pins, Part: part, Country: d.Land));
             }
             default:
                 return ([], new QuestionView());
@@ -333,6 +333,9 @@ public static class QuestionEngine
         var rng = new Random(q.Id * 31 + 11);
         return [.. Enumerable.Range(0, count).OrderBy(_ => rng.Next())];
     }
+
+    /// <summary>Kaart: de naam van het land van de kaart ("Frankrijk", "het Verenigd Koninkrijk").</summary>
+    private static string LandNaam(KaartData d) => KaartProjection.Find(d.Land)?.Naam ?? d.Land;
 
     /// <summary>Kaart: deel 2 (bij de clubs het stadion zoeken)? Anders deel 1.</summary>
     private static bool IsStadiumPart(IQuizQuestion q) => q.Part == QuestionRules.KaartStadiumsPart;
@@ -701,7 +704,7 @@ public static class QuestionEngine
         QuestionType.Volgorde => Parse<VolgordeData>(data) is var d ? (d.Question, string.Join(" → ", d.Items.Select(i => i.Label))) : ("", ""),
         QuestionType.Krant => Parse<KrantData>(data) is var d ? (d.Headline, $"{KrantText.Parse(d.Text).Gaps.Count} gaten") : ("", ""),
         QuestionType.Kaart => Parse<KaartData>(data) is var d
-            ? ($"{d.Competition} {d.Season} ({d.Pins?.Count ?? 0} spelden)", string.Join(", ", (d.Pins ?? []).SelectMany(p => p.Clubs ?? [])))
+            ? ($"{d.Land} · {d.Competition} {d.Season} ({d.Pins?.Count ?? 0} spelden)", string.Join(", ", (d.Pins ?? []).SelectMany(p => p.Clubs ?? [])))
             : ("", ""),
         _ => ("", ""),
     };
@@ -712,9 +715,10 @@ public static class QuestionEngine
         QuestionType.Emoji => Parse<EmojiData>(data) is var d ? $"{d.Emojis}|{d.Answer}" : "",
         QuestionType.Carriere or QuestionType.Mannetje => Describe(type, data).Answer,
         QuestionType.Volgorde => Describe(type, data) is var v ? $"{v.Label}|{v.Answer}" : "",
-        // Eén kaart per competitie en seizoen. Een nieuw seizoen is een nieuw item: een kaart die al in een reeks zit,
-        // verandert niet meer van spelden of clubs (zie AdminService.SaveQuizItemAsync en QuestionSeeder).
-        QuestionType.Kaart => Parse<KaartData>(data) is var d ? $"{d.Competition}|{d.Season}" : "",
+        // Eén kaart per land, competitie en seizoen ("BE|Jupiler Pro League|2026-27"). Een kaart die al in een reeks zit,
+        // verandert niet meer van spelden of clubs (zie AdminService.SaveQuizItemAsync en QuestionSeeder): een gewijzigde kaart
+        // krijgt een nieuwe sleutel (bv. een ander seizoen), en de oude verdwijnt dan uit de bestanden en gaat op afgewezen.
+        QuestionType.Kaart => Parse<KaartData>(data) is var d ? $"{d.Land}|{d.Competition}|{d.Season}" : "",
         _ => Describe(type, data).Label,
     };
 
@@ -801,19 +805,26 @@ public static class QuestionEngine
     {
         var pins = d.Pins ?? [];
         var clubs = pins.SelectMany(p => p.Clubs ?? []).Select(c => c.Trim()).ToList();
+        // Binnen de kaart zelf (LandKaart: de speld valt nooit van de kaart) én binnen de grens van het land (KaartGrenzen,
+        // met een kleine marge voor stadions aan de kust): Rijsel op de kaart van België of een tekenfout in de lengtegraad
+        // valt zo af.
+        var land = KaartProjection.Find(d.Land);
+        List<string> outside = land is null ? [] : pins
+            .Where(p => !(land.Contains(p.Lat, p.Lon) && KaartGrenzen.Contains(land.Code, p.Lat, p.Lon)))
+            .Select(p => p.Stadium).ToList();
         return Check(!string.IsNullOrWhiteSpace(d.Question), "Vul de vraag in.")
             .Concat(Check(!string.IsNullOrWhiteSpace(d.Competition) && !string.IsNullOrWhiteSpace(d.Season), "Vul de competitie en het seizoen in."))
-            .Concat(Check(pins.Count is >= QuestionRules.KaartMinPins and <= QuestionRules.KaartMaxPins,
-                $"Een kaart heeft {QuestionRules.KaartMinPins} tot {QuestionRules.KaartMaxPins} spelden."))
+            .Concat(Check(KaartProjection.Find(d.Land) is not null,
+                $"Onbekend land '{d.Land}': kies een van {string.Join(", ", KaartProjection.Landen.Select(l => l.Code))}."))
+            .Concat(Check(pins.Count == QuestionRules.KaartPins, $"Een kaart heeft precies {QuestionRules.KaartPins} spelden (nu {pins.Count})."))
             .Concat(Check(pins.All(p => !string.IsNullOrWhiteSpace(p.Stadium) && p.Clubs is { Count: > 0 } && p.Clubs.All(c => !string.IsNullOrWhiteSpace(c))),
                 "Elke speld heeft een stadion en minstens één club."))
             // Een naam is een keuze in de lijst en gaat zo terug in de gok: geen scheidingsteken, geen spaties rond.
             .Concat(Check(pins.SelectMany(p => (p.Clubs ?? []).Append(p.Stadium ?? ""))
                     .All(n => !n.Contains(QuestionRules.KaartSeparator) && n == n.Trim()),
                 $"Een club- of stadionnaam bevat '{QuestionRules.KaartSeparator}' of begint of eindigt met een spatie."))
-            // Dezelfde grenzen als de kaart zelf (BelgieKaart): een speld die hier doorkomt, valt nooit van de kaart.
-            .Concat(Check(pins.All(p => KaartProjection.Contains(p.Lat, p.Lon)),
-                "Een speld ligt buiten de kaart van België: controleer de coördinaten."))
+            .Concat(Check(outside.Count == 0,
+                $"Buiten {land?.Naam}: {string.Join(", ", outside)}. Controleer de coördinaten."))
             .Concat(Check(clubs.Distinct(StringComparer.OrdinalIgnoreCase).Count() == clubs.Count,
                 "Een club staat bij twee spelden: elke club hoort bij één stadion."))
             // Deel 2 kiest het stadion uit een lijst: twee spelden met dezelfde naam zijn niet uit elkaar te houden.

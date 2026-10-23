@@ -167,7 +167,7 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
     {
         var stored = await db.DailySchedule.ToDictionaryAsync(d => d.Day);
         var days = QuestionTypes.Week.Select(d => stored.TryGetValue(d, out var row)
-            ? new ScheduleDay(d, row.Type, row.MixTypes.Count > 1 ? row.MixTypes : null)
+            ? new ScheduleDay(d, row.Type, row.MixTypes.Count > 1 ? row.MixTypes : null, row.KaartCountry)
             : new ScheduleDay(d, QuestionTypes.DefaultFor(d))).ToList();
         var disabled = await picker.DisabledTypesAsync();
         // Hoeveel vragen van elk type een week vraagt, zoals de dagen er werkelijk uitzien (mix, uitgeschakelde types).
@@ -192,8 +192,23 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
             return new TypeStock(info.Type, approved, review, neverUsed, perWeek == 0 ? 0 : neverUsed / perWeek, perWeek);
         }).ToList();
 
-        return new ScheduleOverview(days, stock, [.. disabled.Order()]);
+        return new ScheduleOverview(days, stock, [.. disabled.Order()], await KaartMapsAsync());
     }
+
+    /// <summary>Kaart: per land (ISO-code) hoeveel goedgekeurde kaarten er zijn; elk land met een kaart staat erin, ook met 0.</summary>
+    public async Task<Dictionary<string, int>> KaartMapsAsync()
+    {
+        // Enkel kaarten die gespeeld kunnen worden: goedgekeurd en zonder problemen (zoals de picker).
+        var maps = (await db.QuizItems.Where(i => i.Type == QuestionType.Kaart && i.Status == PlayerStatus.Approved).Select(i => i.Data).ToListAsync())
+            .Where(data => QuestionEngine.Problems(QuestionType.Kaart, data).Count == 0)
+            .Select(data => QuestionEngine.Parse<KaartData>(data).Land).ToList();
+        return KaartProjection.Landen.ToDictionary(l => l.Code, l => maps.Count(m => m == l.Code));
+    }
+
+    /// <summary>Kaart: het gekozen land als geldige ISO-code, of null (willekeurig). Een onbekend land is een fout.</summary>
+    private static string? KaartCountry(string? country) =>
+        string.IsNullOrWhiteSpace(country) ? null
+        : KaartProjection.Find(country)?.Code ?? throw new QuizException($"Er is geen kaart van land '{country}'.");
 
     public async Task SaveScheduleAsync(List<ScheduleDay> days)
     {
@@ -208,6 +223,8 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
             if (row is null) db.DailySchedule.Add(row = new DailyScheduleDay { Day = day.Day });
             row.Type = mix.Count > 0 ? mix[0] : day.Type;
             row.MixTypes = mix;
+            // Het land van de kaart geldt enkel voor een kaartdag.
+            row.KaartCountry = mix.Count == 0 && day.Type == QuestionType.Kaart ? KaartCountry(day.KaartCountry) : null;
         }
         await db.SaveChangesAsync();
     }
@@ -274,7 +291,12 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
     {
         if (QuestionTypes.Get(edit.Type).FromPlayers)
             throw new QuizException($"Vragen van het type '{QuestionTypes.Get(edit.Type).Name}' komen uit de spelers: die beheer je bij Spelers.");
-        var problems = QuestionEngine.Problems(edit.Type, edit.Data);
+        var existing = edit.Id == 0 ? null : await db.QuizItems.FindAsync(edit.Id) ?? throw new QuizException("Vraag niet gevonden.");
+        // Ongewijzigde inhoud: geen inhoudscontrole en geen nieuwe sleutel. Zo blijft een oude vraag die niet meer aan de regels
+        // voldoet (bv. een kaart van 17 spelden) beheersbaar: afwijzen of de metadata aanpassen kan altijd. De picker speelt
+        // zo'n kaart nooit (zie QuestionPicker).
+        var unchanged = existing is not null && existing.Data == edit.Data;
+        var problems = unchanged ? [] : QuestionEngine.Problems(edit.Type, edit.Data);
         var sources = edit.Sources.Select(s => s.Trim()).Where(s => Uri.TryCreate(s, UriKind.Absolute, out _)).Distinct().ToList();
         if (edit.Status == PlayerStatus.Approved && sources.Count == 0) problems.Add("Voeg minstens één bron (URL) toe voor je goedkeurt.");
         if (problems.Count > 0) throw new QuizException(string.Join(" ", problems));
@@ -286,13 +308,11 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
             && !KrantGaps(played.Data).SequenceEqual(KrantGaps(edit.Data)))
             throw new QuizException("Dit artikel is al gespeeld: de gaten (aantal, volgorde en antwoorden) kunnen niet meer wijzigen. Maak een nieuw artikel.");
 
-        var key = QuestionEngine.KeyFor(edit.Type, edit.Data);
-        if (await db.QuizItems.AnyAsync(i => i.Type == edit.Type && i.Key == key && i.Id != edit.Id))
+        var key = unchanged ? existing!.Key : QuestionEngine.KeyFor(edit.Type, edit.Data);
+        if (!unchanged && await db.QuizItems.AnyAsync(i => i.Type == edit.Type && i.Key == key && i.Id != edit.Id))
             throw new QuizException("Deze vraag bestaat al.");
 
-        var item = edit.Id == 0
-            ? db.QuizItems.Add(new QuizItem { Type = edit.Type, Key = key, Data = edit.Data }).Entity
-            : await db.QuizItems.FindAsync(edit.Id) ?? throw new QuizException("Vraag niet gevonden.");
+        var item = existing ?? db.QuizItems.Add(new QuizItem { Type = edit.Type, Key = key, Data = edit.Data }).Entity;
 
         // Een kaart die al in een reeks zit, verandert niet meer van spelden of clubs: de pogingen bewaren posities in de
         // geschudde volgorde (QuestionEngine.KaartOrder), en die hangt van de spelden af. Status, bronnen en thema's mogen wel.
@@ -339,7 +359,7 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
     public async Task<SpecialEdit> GetSpecialAsync(int id)
     {
         var s = await db.SpecialEvents.FindAsync(id) ?? throw new QuizException("Special niet gevonden.");
-        return new SpecialEdit(s.Id, s.Theme, s.Name, s.Icon, s.Description, s.StartDate, s.EndDate, s.Tag, s.PlayerIds, s.Types);
+        return new SpecialEdit(s.Id, s.Theme, s.Name, s.Icon, s.Description, s.StartDate, s.EndDate, s.Tag, s.PlayerIds, s.Types, s.KaartCountry);
     }
 
     public async Task<int> SaveSpecialAsync(SpecialEdit edit)
@@ -356,8 +376,10 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
         var locked = special.Id != 0 && await db.DailyChallenges.AnyAsync(c => c.SpecialEventId == special.Id);
         var types = (edit.Types ?? []).Distinct().ToList();
         if (QuestionTypes.AloneProblem(types) is { } solo) throw new QuizException(solo);
+        // Het land van de kaart geldt enkel voor een kaartspecial.
+        var kaartCountry = types.Contains(QuestionType.Kaart) ? KaartCountry(edit.KaartCountry) : null;
         if (locked && (special.Tag != edit.Tag || !special.PlayerIds.SequenceEqual(edit.PlayerIds) || special.StartDate != edit.StartDate
-                       || !special.Types.SequenceEqual(types)))
+                       || !special.Types.SequenceEqual(types) || special.KaartCountry != kaartCountry))
             throw new QuizException("Deze special wordt al gespeeld: enkel de naam, beschrijving, icoon en einddatum kunnen nog wijzigen.");
 
         special.Theme = edit.Theme;
@@ -369,6 +391,7 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
         special.Tag = edit.Tag;
         special.PlayerIds = edit.PlayerIds.Distinct().ToList();
         special.Types = types;
+        special.KaartCountry = kaartCountry;
 
         var shortages = await picker.SpecialShortagesAsync(special);
         if (shortages.Count > 0) throw new QuizException("Niet genoeg vragen: " + string.Join(" ", shortages));

@@ -420,6 +420,9 @@ namespace VoetbalQuiz.Server.Data.Migrations
                     b.Property<int>("Day")
                         .HasColumnType("integer");
 
+                    b.Property<string>("KaartCountry")
+                        .HasColumnType("text");
+
                     b.PrimitiveCollection<int[]>("MixTypes")
                         .IsRequired()
                         .HasColumnType("integer[]");
@@ -951,6 +954,9 @@ namespace VoetbalQuiz.Server.Data.Migrations
 
                     b.Property<string>("Icon")
                         .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("KaartCountry")
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
