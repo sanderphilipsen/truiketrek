@@ -1,0 +1,69 @@
+@* De Krant: het artikel met zijn gaten. Tijdens het spelen tik je een open gat aan (OnSelect); na afloop (Reveal) toont
+   elk gat het juiste antwoord, groen, oranje (een getal dat er net naast zat) of rood. *@
+
+<article class="krant">
+    <div class="krant-masthead">
+        <span>📰 De Krant</span>
+        <span>@KindLabel(Kind)</span>
+    </div>
+    <h2 class="krant-kop">@Headline</h2>
+    @if (!string.IsNullOrWhiteSpace(Intro))
+    {
+        <p class="krant-intro">@Intro</p>
+    }
+    @foreach (var paragraph in Paragraphs)
+    {
+        <p class="krant-par">
+            @foreach (var piece in paragraph)
+            {
+                if (piece.Gap < 0)
+                {
+                    @Unbroken(piece.Text)
+                }
+                else if (Reveal)
+                {
+                    var css = piece.Score >= 1 ? "right" : piece.Score > 0 ? "partial" : "wrong";
+                    <span class="krant-gap @css" title="@piece.Hint">
+                        @piece.Answer
+                        @if (piece.IsNumber && piece.Filled is not null && piece.Score < 1)
+                        {
+                            <small>jij: @piece.Filled</small>
+                        }
+                    </span>
+                }
+                else if (piece.Filled is not null)
+                {
+                    <span class="krant-gap filled @(piece.IsNumber ? "number" : "")">@piece.Filled</span>
+                }
+                else
+                {
+                    var gap = piece.Gap;
+                    <button type="button" class="krant-gap open @(gap == Selected ? "selected" : "")" disabled="@(OnSelect is null)"
+                            @onclick="() => SelectAsync(gap)" aria-label="Gat @(gap + 1): @piece.Hint">@piece.Hint</button>
+                }
+            }
+        </p>
+    }
+</article>
+
+@code {
+    [Parameter] public string? Headline { get; set; }
+    [Parameter] public string? Intro { get; set; }
+    [Parameter] public string? Kind { get; set; }
+    [Parameter] public List<List<KrantPiece>> Paragraphs { get; set; } = [];
+    [Parameter] public int? Selected { get; set; }
+    [Parameter] public Func<int, Task>? OnSelect { get; set; }
+    [Parameter] public bool Reveal { get; set; }
+
+    /// <summary>Een stand als "3-2" breekt niet over twee regels: een niet-afbrekend koppelteken tussen cijfers.</summary>
+    private static string Unbroken(string text) => System.Text.RegularExpressions.Regex.Replace(text, @"(?<=\d)-(?=\d)", "‑");
+
+    private Task SelectAsync(int gap) => OnSelect?.Invoke(gap) ?? Task.CompletedTask;
+
+    public static string KindLabel(string? kind) => kind switch
+    {
+        "interview" => "Interview",
+        "dossier" => "Dossier",
+        _ => "Matchverslag",
+    };
+}

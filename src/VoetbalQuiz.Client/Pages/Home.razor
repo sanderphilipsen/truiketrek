@@ -20,6 +20,39 @@
     }
 </div>
 
+@* De uitreiking groot over Home, één keer per speler. Niet in een quiz, waar de klok loopt. *@
+<GoldenBallCeremony />
+
+@if (GoldenBall.Overview is { Announce: true, Holders.Count: > 0 } gb)
+{
+    @* De eerste dag van de maand: de Gouden Bal van vorige maand bovenaan, als compacte strook die openklapt. *@
+    var mine = gb.Holders.Any(h => h.IsMe);
+    <details class="gb-strip @(mine ? "me" : "")">
+        <summary>
+            <span class="gb-strip-ball" aria-hidden="true"><Icon Name="soccer-ball" /></span>
+            <span class="gb-strip-text">
+                <b>@gb.Holders[0].Title</b>
+                <small>@(mine ? "Jij wint de Gouden Bal!" : string.Join(" & ", gb.Holders.Select(h => h.UserName)))</small>
+            </span>
+            <span class="gb-strip-chevron" aria-hidden="true">›</span>
+        </summary>
+        <div class="gb-winners">
+            @foreach (var h in gb.Holders)
+            {
+                <a class="gb-winner" href="speler/@Uri.EscapeDataString(h.UserName)">
+                    <Avatar Id="@h.AvatarId" User="@h.UserName" Size="64" />
+                    <b>@(h.IsMe ? "Jij!" : h.UserName)</b>
+                    <small>@h.Points maandpunten · @StarsText(GoldenBall.StarsOf(h.UserName))</small>
+                </a>
+            }
+        </div>
+        @if (mine)
+        {
+            <p>Proficiat! Een ster op je shirt.</p>
+        }
+    </details>
+}
+
 @foreach (var t in _myTables)
 {
     @* Je speelt mee in een partijtje: meteen terug naar je wachtkamer of je lopende wedstrijd. *@
@@ -144,36 +177,6 @@ else
         1 => "Statistieken: 1 dag op rij gespeeld",
         var s => $"Statistieken: {s} dagen op rij gespeeld",
     };
-}
-
-@if (GoldenBall.Overview is { Announce: true, Holders.Count: > 0 } gb)
-{
-    @* Aankondigingsdag: de Gouden Bal van vorige maand als compacte strook die openklapt. *@
-    var mine = gb.Holders.Any(h => h.IsMe);
-    <details class="gb-strip @(mine ? "me" : "")">
-        <summary>
-            <span class="gb-strip-ball" aria-hidden="true"><Icon Name="soccer-ball" /></span>
-            <span class="gb-strip-text">
-                <b>@gb.Holders[0].Title</b>
-                <small>@(mine ? "Jij wint de Gouden Bal!" : string.Join(" & ", gb.Holders.Select(h => h.UserName)))</small>
-            </span>
-            <span class="gb-strip-chevron" aria-hidden="true">›</span>
-        </summary>
-        <div class="gb-winners">
-            @foreach (var h in gb.Holders)
-            {
-                <a class="gb-winner" href="speler/@Uri.EscapeDataString(h.UserName)">
-                    <Avatar Id="@h.AvatarId" User="@h.UserName" Size="64" />
-                    <b>@(h.IsMe ? "Jij!" : h.UserName)</b>
-                    <small>@h.Points maandpunten · @StarsText(GoldenBall.StarsOf(h.UserName))</small>
-                </a>
-            }
-        </div>
-        @if (mine)
-        {
-            <p>Proficiat! Een ster op je shirt.</p>
-        }
-    </details>
 }
 
 @if (_specialsError is not null)

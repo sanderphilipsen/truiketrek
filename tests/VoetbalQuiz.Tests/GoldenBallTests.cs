@@ -86,7 +86,7 @@ public sealed class GoldenBallTests : IDisposable
         Assert.Equal(1, overview.Stars["a"]);
         Assert.False(overview.Stars.ContainsKey("b"));
 
-        // Enkel op de eerste dag groot op het dashboard; de rand blijft de hele maand.
+        // Enkel op de eerste dag de strook bovenaan Home; de rand blijft de hele maand.
         GoTo(2026, 10, 2);
         overview = await _goldenBall.GetAsync(a);
         Assert.False(overview.Announce);
@@ -196,14 +196,12 @@ public sealed class GoldenBallTests : IDisposable
         GoTo(2026, 10, 1);
         Assert.Empty((await _goldenBall.GetAsync(a)).History);
 
-        // De dag nadat de special afliep: toegekend, en dan ook die dag groot op het dashboard.
+        // De dag nadat de special afliep: toegekend. Geen strook meer (enkel op de eerste), wel nog de uitreiking.
         GoTo(2026, 10, 3);
         var overview = await _goldenBall.GetAsync(a);
         Assert.Equal("a", Assert.Single(overview.Holders).UserName);
-        Assert.True(overview.Announce);
-
-        GoTo(2026, 10, 4);
-        Assert.False((await _goldenBall.GetAsync(a)).Announce);
+        Assert.False(overview.Announce);
+        Assert.NotNull(overview.Ceremony);
     }
 
     /// <summary>Sinds oktober 2026 telt online niet meer mee: de maand wordt met de daily gewonnen.</summary>
@@ -225,6 +223,63 @@ public sealed class GoldenBallTests : IDisposable
         Assert.Contains("titelverdediger", badges);
         Assert.DoesNotContain("messi-niveau", badges);
         Assert.Equal(3, (await _goldenBall.GetAsync(a)).Stars["a"]);
+    }
+
+    [Fact]
+    public async Task Ceremony_is_shown_once_per_player_with_the_podium()
+    {
+        var a = User("a"); var b = User("b"); var c = User("c"); var d = User("d");
+        Match((a, 1), (b, 2), (c, 3), (d, 4));
+        GoTo(2026, 10, 12); // ook wie pas later in de maand binnenkomt, krijgt de uitreiking
+
+        var ceremony = (await _goldenBall.GetAsync(b)).Ceremony;
+        Assert.NotNull(ceremony);
+        Assert.Equal((2026, 9), (ceremony.Year, ceremony.Month));
+        var winner = Assert.Single(ceremony.Winners);
+        Assert.Equal("a", winner.UserName);
+        Assert.False(winner.IsMe);
+        Assert.Equal([(2, "b", true), (3, "c", false)], ceremony.RunnersUp.Select(r => (r.Rank, r.UserName, r.IsMe)));
+
+        // Gezien: niet meer voor b, wel nog voor de anderen.
+        await _goldenBall.MarkCeremonySeenAsync(b);
+        Assert.Null((await _goldenBall.GetAsync(b)).Ceremony);
+        Assert.True(Assert.Single((await _goldenBall.GetAsync(a)).Ceremony!.Winners).IsMe);
+
+        // Volgende maand een nieuwe uitreiking.
+        await PlayDailyAsync(b, correct: true);
+        GoTo(2026, 11, 3);
+        Assert.Equal("b", Assert.Single((await _goldenBall.GetAsync(b)).Ceremony!.Winners).UserName);
+    }
+
+    [Fact]
+    public async Task No_ceremony_for_accounts_made_after_the_award_or_months_without_winner()
+    {
+        var a = User("a"); var b = User("b");
+        Match((a, 1), (b, 2));
+        GoTo(2026, 10, 1);
+        Assert.NotNull((await _goldenBall.GetAsync(a)).Ceremony); // legt september vast
+
+        _clock.Advance(TimeSpan.FromHours(1));
+        var late = new AppUser { UserName = "nieuw", CreatedAt = _clock.GetUtcNow().UtcDateTime };
+        _db.Users.Add(late);
+        await _db.SaveChangesAsync();
+        Assert.Null((await _goldenBall.GetAsync(late.Id)).Ceremony);
+
+        // Oktober zonder spel: geen winnaar, dus ook geen uitreiking.
+        GoTo(2026, 11, 2);
+        Assert.Null((await _goldenBall.GetAsync(a)).Ceremony);
+    }
+
+    [Fact]
+    public async Task Shared_first_place_is_one_ceremony_with_both_winners()
+    {
+        var a = User("a"); var b = User("b"); var c = User("c");
+        Match((a, 1), (b, 1), (c, 3));
+        GoTo(2026, 10, 1);
+
+        var ceremony = (await _goldenBall.GetAsync(c)).Ceremony!;
+        Assert.Equal(["a", "b"], ceremony.Winners.Select(w => w.UserName).Order());
+        Assert.Equal([(3, "c")], ceremony.RunnersUp.Select(r => (r.Rank, r.UserName)));
     }
 
     public void Dispose() => _t.Dispose();

@@ -57,6 +57,10 @@
         <Lineup Slots="Result.FullLineup ?? []" Found="FoundNames()" />
         break;
 
+    case QuestionType.Krant:
+        <KrantArticle Headline="@View?.Prompt" Intro="@View?.Note" Kind="@View?.ArticleKind" Paragraphs="Result.FullArticle ?? []" Reveal="true" />
+        break;
+
     case QuestionType.Kaart:
         @* De volle kaart: elke speld groen, oranje (deels) of rood met de club(s), daaronder dezelfde lijst als tekst,
            met bij een fout wat jij koos. *@
@@ -88,6 +92,7 @@
         QuestionType.Snelvuur or QuestionType.NietBij => r.Correct ? "Juist!" : $"Het was: {r.PlayerName}",
         QuestionType.Jaar => r.Correct ? "Exact juist!" : r.Points > 0 ? "Dichtbij!" : $"Het was {r.CorrectYear}",
         QuestionType.Opstelling => r.PlayerName,
+        QuestionType.Krant => r.Correct ? "Foutloos ingevuld!" : r.PlayerName,
         QuestionType.Counter => "Counter",
         QuestionType.Volgorde => r.Correct ? "Helemaal juist!" : r.Points > 0 ? "Bijna!" : "Helemaal omgekeerd",
         QuestionType.Kaart => r.Correct ? "Foutloze kaart!" : r.PlayerName,

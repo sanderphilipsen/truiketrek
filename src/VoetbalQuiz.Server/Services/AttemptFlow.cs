@@ -55,7 +55,7 @@ public static class AttemptFlow
         string? lastWrong = null;
         var outcome = QuestionEngine.Guess(question, attempt, trimmed, elapsed);
         // Een gok die niet telt (kaart: een andere speld dan de huidige, of een ongeldig antwoord) wijzigt niets, ook
-        // niet het aantal pogingen: zo kan een dubbele tik of een script de grens van MaxGuessesPerQuestion niet opsouperen.
+        // niet het aantal pogingen: zo kan een dubbele tik of een script de grens van QuestionRules.MaxGuesses niet opsouperen.
         if (outcome.Ignored) return null;
         attempt.Guesses++;
         attempt.LastGuess = trimmed;
@@ -70,7 +70,7 @@ public static class AttemptFlow
             attempt.AnsweredAt = now;
             attempt.Correct = outcome.Correct;
         }
-        else if (attempt.Guesses >= GameRules.MaxGuessesPerQuestion)
+        else if (attempt.Guesses >= QuestionRules.MaxGuesses(question.Type))
         {
             attempt.AnsweredAt = now;
             attempt.Correct = false;

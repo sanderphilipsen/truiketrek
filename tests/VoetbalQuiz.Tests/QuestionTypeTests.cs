@@ -358,8 +358,8 @@ public sealed class QuestionTypeTests : IDisposable
         Assert.Equal(4, withLineups[QuestionType.WieBenIk]);
         Assert.Equal(3, withLineups[QuestionType.Opstelling]); // 4×100 + 3×200 = 1000
 
-        // Alle types die in een mix kunnen (de kaart is een dag op zich, zie KaartTests).
-        var all = QuestionTypes.Mix(QuestionTypes.All.Select(t => t.Type).Where(t => !QuestionTypes.IsSolo(t)));
+        // Alle types: de solo-types (De Krant, de kaart) vallen weg, zie KrantTests en KaartTests.
+        var all = QuestionTypes.Mix(QuestionTypes.All.Select(t => t.Type));
         Assert.True(all.Values.Sum() <= GameRules.QuestionsPerDay);
         Assert.Equal(QuestionTypes.DayMaxPoints, all.Sum(m => m.Value * QuestionTypes.Get(m.Key).MaxPoints));
         Assert.All(all.Values, count => Assert.Equal(1, count)); // geen type twee keer zolang er nog andere aan bod moeten komen

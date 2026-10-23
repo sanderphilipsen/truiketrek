@@ -17,8 +17,8 @@
             <h2>Weekplanning van de daily</h2>
             <p class="muted">
                 Kies per weekdag één vraagtype of een <b>mix</b>. Een mix verdeelt de vragen om beurten over de gekozen types
-                (max. 1000 punten, een opstelling telt voor twee). Een <b>kaartdag</b> (🗺️ Kaart: twee delen op dezelfde kaart, samen 1000 punten) is een dag op zich en
-                kan niet in een mix. Een wijziging geldt vanaf de eerstvolgende dag die nog niet gestart is.
+                (max. 1000 punten, een opstelling telt voor twee). 📰 De Krant en 🗺️ Kaart (twee delen op dezelfde kaart) vullen elk een hele dag van 1000 punten en zijn een dag op zich: ze
+                kunnen niet in een mix. Een wijziging geldt vanaf de eerstvolgende dag die nog niet gestart is.
             </p>
             <div class="week">
                 @foreach (var day in _days)
@@ -38,8 +38,8 @@
                         @if (d.IsMix)
                         {
                             <div class="mix-chips">
-                                @* Solo-types (de kaart) passen niet in een mix: die kies je als type van de dag. *@
-                                @foreach (var t in QuestionTypes.All.Where(t => !QuestionTypes.IsSolo(t.Type)))
+                                @* Solo-types (De Krant, de kaart) passen niet in een mix: die kies je als type van de dag. *@
+                                @foreach (var t in QuestionTypes.All.Where(t => !t.Alone))
                                 {
                                     var type = t.Type;
                                     <button type="button" class="mix-chip @(d.Mix!.Contains(type) ? "on" : "") @(_disabled.Contains(type) ? "off" : "")"
@@ -135,10 +135,11 @@
         var i = _days.FindIndex(d => d.Day == day);
         if (value == MixValue)
         {
-            // Begin de mix met het huidige type en het volgende, zodat het meteen een echte mix is (zonder solo-types).
-            var mixable = QuestionTypes.All.Select(t => t.Type).Where(t => !QuestionTypes.IsSolo(t)).ToList();
-            var current = mixable.Contains(_days[i].Type) ? _days[i].Type : mixable[0];
-            var next = mixable[(mixable.IndexOf(current) + 1) % mixable.Count];
+            // Begin de mix met het huidige type en het volgende, zodat het meteen een echte mix is.
+            // Een solo-type (De Krant, de kaart) kan niet in een mix.
+            var regular = QuestionTypes.All.Where(t => !t.Alone).Select(t => t.Type).ToList();
+            var current = QuestionTypes.Get(_days[i].Type).Alone ? regular[0] : _days[i].Type;
+            var next = regular[(regular.IndexOf(current) + 1) % regular.Count];
             _days[i] = _days[i] with { Mix = [current, next] };
         }
         else if (Enum.TryParse<QuestionType>(value, out var type))
@@ -169,7 +170,7 @@
         if (types.Count == 1)
         {
             var info = QuestionTypes.Get(types[0]);
-            return QuestionTypes.IsSolo(info.Type) ? $"{info.PerDay} delen van {info.MaxPoints} punten" : $"{info.PerDay} vragen";
+            return info.PerDay == 1 ? "1 vraag" : info.Alone ? $"{info.PerDay} delen van {info.MaxPoints} punten" : $"{info.PerDay} vragen";
         }
         var mix = QuestionTypes.Mix(types);
         return $"Mix: {string.Join(" · ", mix.Select(m => $"{m.Value}× {QuestionTypes.Get(m.Key).Icon}"))}";

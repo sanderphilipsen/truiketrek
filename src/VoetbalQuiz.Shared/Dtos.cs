@@ -106,6 +106,9 @@ public record QuestionView(
     // Counter: al gevonden en het totaal aantal spelers. Kaart: al beantwoorde spelden en het totaal aantal spelden.
     int Found = 0,
     int Total = 0,
+    // De Krant: de alinea's met de gaten (Prompt is de kop, Note het intro). Found/Total: ingevulde gaten.
+    List<List<KrantPiece>>? Article = null,
+    string? ArticleKind = null,
     // Kaart: de beantwoorde spelden en de huidige, nooit de volgende. De keuzelijst (alle clubs in deel 1, alle
     // stadions in deel 2) staat in Options.
     List<KaartSpeld>? Pins = null,
@@ -144,6 +147,8 @@ public record AnswerResult(
     List<LineupSlot>? FullLineup = null,
     // Op volgorde: de gekozen volgorde (indexen in de juiste volgorde), null als de speler niets instuurde.
     List<int>? MyOrder = null,
+    // De Krant: het hele artikel met per gat het antwoord, wat jij invulde en je score.
+    List<List<KrantPiece>>? FullArticle = null,
     // Kaart: wat de speler per beantwoorde speld koos (leeg = overgeslagen), null als hij geen enkele speld beantwoordde.
     List<string>? MyPicks = null,
     // De vraag liep af omdat de tijd om was (niet omdat de speler paste of antwoordde).

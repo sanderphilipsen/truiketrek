@@ -38,6 +38,22 @@ public class GoldenBallState(ApiClient api)
         return _loading;
     }
 
+    /// <summary>De uitreiking is weggeklikt: meteen weg, en de server onthoudt het voor alle toestellen.</summary>
+    public async Task DismissCeremonyAsync()
+    {
+        if (Overview?.Ceremony is null) return;
+        Overview = Overview with { Ceremony = null };
+        Changed?.Invoke();
+        try
+        {
+            await api.MarkGoldenBallCeremonySeenAsync();
+        }
+        catch (Exception ex) when (ex is ApiException or HttpRequestException)
+        {
+            // Lukt het niet, dan komt de uitreiking bij een volgende lading nog eens: geen ramp.
+        }
+    }
+
     /// <summary>Na afmelden: niets meer tonen tot de volgende aanmelding.</summary>
     public void Clear()
     {

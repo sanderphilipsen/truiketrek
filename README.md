@@ -32,7 +32,7 @@ Een mobiele quiz-app (Blazor WebAssembly PWA) om met vrienden te spelen. Elke da
 
 ### Vraagtypes en weekplanning
 
-Er zijn 14 vraagtypes. Elke weekdag heeft in de daily een vast type **of een mix van types**, in te stellen via Admin → **Planning**:
+Er zijn 15 vraagtypes. Elke weekdag heeft in de daily een vast type **of een mix van types**, in te stellen via Admin → **Planning**:
 
 | Type | Werking | Tijd | Punten |
 |---|---|---|---|
@@ -49,11 +49,14 @@ Er zijn 14 vraagtypes. Elke weekdag heeft in de daily een vast type **of een mix
 | 🌀 Kluts in de zestien | de letters van een spelersnaam door elkaar; elke 4 s valt per woord een letter juist | 26 s | 100 → 50 |
 | 🏃 Counter | zoveel mogelijk spelers in 60 s, met telkens hun duidelijkste tip; doorspelen mag, fout kost niets | 60 s | 20 per speler, tot 200 (5 per dag) |
 | 🔀 Op volgorde | tik 4 kaartjes aan in de juiste volgorde (bv. van oud naar jong); de waarden verschijnen na afloop | 30 s | 100 × juiste paren / 6 |
+| 📰 De Krant | een krantenartikel (verslag, interview of dossier) met 4 tot 12 gaten; tik een gat aan en vul het in, in de volgorde die je wil. Namen opnieuw proberen mag, een getal gok je één keer | 20 s per gat, één klok | 1000 × (som van de gaten) / gaten; getal: exact 1, per stap ernaast 0,75 / 0,5 / 0,25 |
 | 🗺️ Kaart | kaartdag in twee delen op dezelfde kaart van België, de spelden één voor één. Deel 1: kies per speld de club (gedeeld stadion: alle clubs). Deel 2: de club staat bij de speld, kies het stadion. Overslaan = fout | 180 s per deel | per deel 500 × juist / totaal (deel 1: clubs, deel 2: spelden); samen 1000 |
 
 - **Mix:** de vragen gaan om beurten over de gekozen types, zolang de dag onder 10 vragen en 1000 punten blijft (een opstelling en een counter tellen voor twee). Een mix van álle types geeft 9 vragen en laat de laatste types van de lijst vallen; kies dus liever een paar types. De verdeling staat in `QuestionTypes.Mix`.
 - **Kluts en counter** gebruiken de spelers (net als "Wie ben ik?"), niet de vragenbank. Een speler komt nooit twee keer voor in dezelfde reeks. Wissel, rugnummer en mannetje staan in de vragenbank (`wissel.json`, `rugnummer.json`, `mannetje.json`), nog met status "te keuren". Op volgorde staat in `volgorde.json` en zit niet in de vaste weekplanning, wel in specials, online en de mix (niet in een derby).
-- **Kaartdag:** twee vragen (deel 1 de clubs, deel 2 de stadions) op dezelfde kaart, elk met een eigen klok; deel 2 heeft een andere geschudde volgorde, maar voor iedereen dezelfde. Deel 1 noemt nooit een stadion. De kaart is een dag (of special) op zich: in de planning en bij een special kan ze niet samen met andere types (het admin-paneel weigert dat, en komt er toch een combinatie binnen, dan wordt het enkel de kaart; staat de kaart uit, dan wordt een kaartspecial "Wie ben ik?"). Niet online, wel in de academie, enkel goedgekeurde kaarten. De kaarten staan in `kaart.json` (één per competitie en seizoen, max. 24 spelden); een kaart die al gespeeld is, verandert niet meer van spelden of clubs (een nieuw seizoen is een nieuwe kaart). Elke gok draagt het nummer van de speld mee, zodat een dubbele tik niet voor de volgende speld telt.
+- **Solo-types** (`QuestionTypeInfo.Alone`: De Krant en Kaart) vullen in hun eentje een hele dag van 1000 punten: als dag in de weekplanning of als special met enkel dat type. Ze komen nooit in een mix (het admin-paneel weigert de combinatie; komt ze toch binnen, dan valt het solo-type weg), niet online of in een derby, niet in de badge Allrounder. Staat zo'n type uit, dan wordt een special met enkel dat type "Wie ben ik?". Enkel goedgekeurde artikels en kaarten worden gespeeld. XP: hun vragen tellen samen als een volle dag en ook hun deelpunten tellen mee.
+- **De Krant** (`krant.json`) is één vraag van 1000 punten. Gaten schrijf je als `[[Jan Vertonghen / Vertonghen : speler]]` of `[[#69 : minuut]]` (stap voor deelpunten: `[[#115~5 : miljoen euro]]`).
+- **Kaartdag:** twee vragen van 500 punten (deel 1 de clubs, deel 2 de stadions) op dezelfde kaart, elk met een eigen klok; deel 2 heeft een andere geschudde volgorde, maar voor iedereen dezelfde. Deel 1 noemt nooit een stadion. De kaarten staan in `kaart.json` (één per competitie en seizoen, max. 24 spelden); een kaart die al gespeeld is, verandert niet meer van spelden of clubs (een nieuw seizoen is een nieuwe kaart). Elke gok draagt het nummer van de speld mee, zodat een dubbele tik niet voor de volgende speld telt.
 - **Feedback in voetbaltaal:** een foute gok is "Voorlangs!", "Naast!", …; juist is "Binnen!" of "Zitten!", met de maximumscore "In de winkelhaak!", deelpunten "Tegen de lat!" en niets "Afgefloten." ([Commentary.cs](src/VoetbalQuiz.Shared/Commentary.cs)).
 - **Type uitschakelen:** in Planning zet je een type aan of uit. Een type dat uit staat, komt niet meer in de daily of specials (de vragen blijven bewaard). Een dag met enkel dat type wordt een mix van de types die nog aan staan. Minstens één type blijft altijd aan. Een daily die al gestart is, verandert niet.
 
@@ -78,7 +81,7 @@ Specials houden hun eigen klassement op de specialpagina; hun punten tellen mee 
 - Wie op het einde van de maand **bovenaan het maandklassement** staat, wint de **Gouden Bal**. Bij een gedeelde eerste plaats krijgen ze hem allebei.
 - Elke Gouden Bal is voor altijd een **kleine ster op het shirt** van je avatar (drie per rij, max. 9 getekend).
 - De winnaar draagt de **hele volgende maand een gouden rand** rond de avatar; daarna gaat die over naar de volgende winnaar.
-- Op de **eerste dag van de maand** staat de nieuwe Gouden Bal groot op het dashboard ("Gouden Bal oktober"). Op Stats staat de lijst van alle Gouden Ballen.
+- De eerste keer dat je na de toekenning Home opent, komt de **uitreiking** groot over het scherm: de winnaar met de nummers 2 en 3 (één keer per speler, enkel als je toen al een account had). Op de **eerste dag van de maand** staat de nieuwe Gouden Bal ook als strook bovenaan Home ("Gouden Bal oktober"). Op Stats staat de lijst van alle Gouden Ballen.
 - De server legt de winnaar één keer vast bij het eerste verzoek nadat de maand ook in UTC voorbij is (in België tussen 1 en 2 uur op de eerste). Loopt er nog een special die in die maand startte, dan wacht hij tot die afgelopen is; de aankondiging komt dan op de dag van toekenning. De winnaar wordt bewaard in de tabellen `GoldenBalls` en `GoldenBallMonths` ([GoldenBallService.cs](src/VoetbalQuiz.Server/Services/GoldenBallService.cs)), zodat sterren niet meer verschuiven. Badges: Gouden Bal, Zilveren Bal (tweede), Titelverdediger (twee maanden na elkaar), Gouden hattrick (3) en Messi-niveau (8).
 
 ### Specials

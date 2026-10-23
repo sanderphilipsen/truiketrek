@@ -34,6 +34,7 @@ public static class QuestionEngine
         QuestionType.Kluts => q.Player!.Name,
         QuestionType.Counter => $"Counter ({q.CounterPlayers.Count} spelers)",
         QuestionType.Volgorde => string.Join(" → ", Data<VolgordeData>(q).Items.Select(i => i.Label)),
+        QuestionType.Krant => Data<KrantData>(q).Headline,
         QuestionType.Kaart => Data<KaartData>(q) is var k
             ? $"{k.Competition} {k.Season}: {(IsStadiumPart(q) ? "de stadions" : "de clubs")}"
             : "",
@@ -53,6 +54,7 @@ public static class QuestionEngine
             QuestionRules.RevealLimit(QuestionRules.RevealSteps),
         QuestionType.Counter => QuestionRules.CounterSeconds,
         QuestionType.Volgorde => QuestionRules.VolgordeSeconds,
+        QuestionType.Krant => QuestionRules.KrantLimit(Krant(q).Gaps.Count),
         QuestionType.Kaart => QuestionRules.KaartSeconds,
         _ => GameRules.TimeLimitSeconds,
     };
@@ -132,6 +134,14 @@ public static class QuestionEngine
             {
                 var d = Data<VolgordeData>(q);
                 return ([], new QuestionView(d.Question, VolgordeShown(q).Select(i => d.Items[i].Label).ToList()));
+            }
+            case QuestionType.Krant:
+            {
+                var d = Data<KrantData>(q);
+                var article = KrantText.Parse(d.Text);
+                return ([], new QuestionView(d.Headline, Note: d.Intro, MaxPoints: QuestionTypes.Get(QuestionType.Krant).MaxPoints,
+                    Found: article.Gaps.Count - KrantOpen(article, a), Total: article.Gaps.Count,
+                    Article: KrantPieces(article, a, reveal: false), ArticleKind: d.Kind));
             }
             case QuestionType.Kaart:
             {
@@ -259,6 +269,57 @@ public static class QuestionEngine
         return [.. tapped.Concat(Enumerable.Range(0, shown.Count).Except(tapped)).Select(i => shown[i])];
     }
 
+    private static KrantText.Article Krant(IQuizQuestion q) => KrantText.Parse(Data<KrantData>(q).Text);
+
+    /// <summary>
+    /// De Krant: de getallen die je al gokte, per gat. Bewaard als paren (gat, gok) in <see cref="AttemptState.Skipped"/>;
+    /// een getal gok je maar één keer, anders zoek je het gewoon op en neer.
+    /// </summary>
+    public static Dictionary<int, int> KrantNumbers(AttemptState a)
+    {
+        var numbers = new Dictionary<int, int>();
+        for (var i = 0; i + 1 < a.Skipped.Count; i += 2) numbers.TryAdd(a.Skipped[i], a.Skipped[i + 1]);
+        return numbers;
+    }
+
+    /// <summary>De Krant: welk deel van de punten van gat <paramref name="i"/> je hebt (0..1).</summary>
+    private static double KrantGapScore(KrantGap gap, int i, AttemptState a, Dictionary<int, int> numbers) =>
+        gap.Number is { } answer
+            ? numbers.TryGetValue(i, out var guess) ? QuestionRules.KrantNumberScore(guess, answer, gap.Tolerance) : 0
+            : a.Found.Contains(i) ? 1 : 0;
+
+    private static int KrantPointsOf(KrantText.Article article, AttemptState a)
+    {
+        var numbers = KrantNumbers(a);
+        return QuestionRules.KrantPoints(article.Gaps.Select((g, i) => KrantGapScore(g, i, a, numbers)).Sum(), article.Gaps.Count);
+    }
+
+    /// <summary>De Krant: hoeveel gaten nog open zijn (een naam die nog niet gevonden is, een getal dat nog niet gegokt is).</summary>
+    private static int KrantOpen(KrantText.Article article, AttemptState a)
+    {
+        var numbers = KrantNumbers(a);
+        return article.Gaps.Where((g, i) => g.Number is null ? !a.Found.Contains(i) : !numbers.ContainsKey(i)).Count();
+    }
+
+    /// <summary>
+    /// De Krant: de alinea's zoals de speler ze ziet. Een gat toont wat er al staat (een gevonden naam, een gegokt getal);
+    /// pas met <paramref name="reveal"/> (na afloop) ook het juiste antwoord en de score.
+    /// </summary>
+    private static List<List<KrantPiece>> KrantPieces(KrantText.Article article, AttemptState a, bool reveal)
+    {
+        var numbers = KrantNumbers(a);
+        return article.Paragraphs.Select(p => p.Select(s =>
+        {
+            if (s.Gap < 0) return new KrantPiece(s.Text);
+            var gap = article.Gaps[s.Gap];
+            var filled = gap.Number is null
+                ? a.Found.Contains(s.Gap) ? gap.Answer : null
+                : numbers.TryGetValue(s.Gap, out var guess) ? guess.ToString() : null;
+            return new KrantPiece("", s.Gap, gap.Hint, gap.Number is not null, filled,
+                reveal ? gap.Answer : null, reveal ? KrantGapScore(gap, s.Gap, a, numbers) : null);
+        }).ToList()).ToList();
+    }
+
     /// <summary>
     /// Kaart: in welke volgorde de spelden verschijnen (indexen in de data). Geschud, maar vast per vraag: voor iedereen
     /// die dezelfde daily speelt dezelfde volgorde, en herladen verandert niets. De twee delen zijn twee vragen (eigen id),
@@ -326,7 +387,7 @@ public static class QuestionEngine
 
     /// <summary>
     /// De uitkomst van een poging. Ignored: de poging telt niet (een kaartgok voor een andere speld dan de huidige, of een
-    /// ongeldig antwoord): ze wijzigt niets en telt niet mee voor <see cref="GameRules.MaxGuessesPerQuestion"/>.
+    /// ongeldig antwoord): ze wijzigt niets en telt niet mee voor <see cref="QuestionRules.MaxGuesses"/>.
     /// </summary>
     public record Outcome(bool Done, bool Correct, int Points, bool Wrong, bool Ignored = false);
 
@@ -430,6 +491,31 @@ public static class QuestionEngine
                 return new(true, points == QuestionTypes.Get(QuestionType.Volgorde).MaxPoints, points, false);
             }
 
+            case QuestionType.Krant:
+            {
+                // De gok is "gat|tekst": de speler kiest zelf welk gat hij invult. Fout kost niets (zoals bij een opstelling).
+                var article = Krant(q);
+                var before = KrantPointsOf(article, a);
+                var bar = guess.IndexOf('|');
+                if (bar < 0 || !int.TryParse(guess[..bar], out var i) || i < 0 || i >= article.Gaps.Count)
+                    return new(false, false, before, false);
+                var text = guess[(bar + 1)..].Trim();
+                var gap = article.Gaps[i];
+                if (gap.Number is null)
+                {
+                    if (a.Found.Contains(i) || !AnswerMatcher.IsMatch(text, gap.Answer, gap.Aliases)) return new(false, false, before, false);
+                    a.Found = [.. a.Found, i];
+                }
+                else
+                {
+                    if (KrantNumbers(a).ContainsKey(i) || KrantText.ParseNumber(text) is not { } number) return new(false, false, before, false);
+                    a.Skipped = [.. a.Skipped, i, number];
+                }
+                var points = KrantPointsOf(article, a);
+                var done = KrantOpen(article, a) == 0;
+                return new(done, done && points == QuestionTypes.Get(QuestionType.Krant).MaxPoints, points, false);
+            }
+
             case QuestionType.Kaart:
             {
                 // Found: per beantwoorde speld (in de geschudde volgorde) hoeveel juist was; Picks: wat de speler koos.
@@ -494,6 +580,7 @@ public static class QuestionEngine
     {
         QuestionType.Opstelling => QuestionRules.OpstellingPoints(a.Found.Count, q.Blanks.Count),
         QuestionType.Counter => QuestionRules.CounterPoints(a.Found.Count),
+        QuestionType.Krant => KrantPointsOf(Krant(q), a),
         QuestionType.Kaart => QuestionRules.KaartPoints(a.Found.Sum(), KaartTotal(q, Data<KaartData>(q))),
         _ => 0,
     };
@@ -541,6 +628,13 @@ public static class QuestionEngine
                         (a.Found.Count == 0 ? "" : a.Found.ElementAtOrDefault(i) == i ? "✅ " : "❌ ") + $"{item.Label} · {item.Value}").ToList(),
                     Explanation = a.Found.Count == 0 ? null : $"{a.Points} van de {QuestionTypes.Get(QuestionType.Volgorde).MaxPoints} punten: hoe dichter bij de juiste volgorde, hoe meer",
                     MyOrder = a.Found.Count == 0 ? null : a.Found,
+                }
+                : baseResult,
+            QuestionType.Krant => Krant(q) is var k
+                ? baseResult with
+                {
+                    FullArticle = KrantPieces(k, a, reveal: true),
+                    Explanation = $"{k.Gaps.Where((g, i) => KrantGapScore(g, i, a, KrantNumbers(a)) >= 1).Count()} van de {k.Gaps.Count} gaten juist",
                 }
                 : baseResult,
             QuestionType.Kaart => Data<KaartData>(q) is var k
@@ -605,6 +699,7 @@ public static class QuestionEngine
         QuestionType.Rugnummer => Parse<RugnummerData>(data) is var d ? ($"#{d.Number} – {d.Club}", d.Answer) : ("", ""),
         QuestionType.Mannetje => Parse<MannetjeData>(data) is var d ? (string.Join(" · ", d.Clues), d.Answer) : ("", ""),
         QuestionType.Volgorde => Parse<VolgordeData>(data) is var d ? (d.Question, string.Join(" → ", d.Items.Select(i => i.Label))) : ("", ""),
+        QuestionType.Krant => Parse<KrantData>(data) is var d ? (d.Headline, $"{KrantText.Parse(d.Text).Gaps.Count} gaten") : ("", ""),
         QuestionType.Kaart => Parse<KaartData>(data) is var d
             ? ($"{d.Competition} {d.Season} ({d.Pins?.Count ?? 0} spelden)", string.Join(", ", (d.Pins ?? []).SelectMany(p => p.Clubs ?? [])))
             : ("", ""),
@@ -683,6 +778,15 @@ public static class QuestionEngine
                         .Concat(Check(d.Items.Select(i => i.Value.Trim()).Distinct(StringComparer.OrdinalIgnoreCase).Count() == d.Items.Count,
                             "Twee kaartjes hebben dezelfde waarde: dan is de volgorde niet eenduidig.")).ToList()
                     : [],
+                QuestionType.Krant => Parse<KrantData>(data) is var d && KrantText.Parse(d.Text) is var k
+                    ? Check(!string.IsNullOrWhiteSpace(d.Headline), "Geef het artikel een kop.")
+                        .Concat(Check(d.Kind is "verslag" or "interview" or "dossier", "Kies de soort: verslag, interview of dossier."))
+                        .Concat(k.Problems)
+                        .Concat(Check(k.Gaps.Count is >= QuestionRules.KrantMinGaps and <= QuestionRules.KrantMaxGaps,
+                            $"Een artikel heeft {QuestionRules.KrantMinGaps} tot {QuestionRules.KrantMaxGaps} gaten (nu {k.Gaps.Count})."))
+                        .Concat(Check(k.Gaps.All(g => !string.IsNullOrWhiteSpace(g.Hint)), "Geef elk gat een hint (bv. [[Vertonghen : speler]])."))
+                        .Concat(KrantLeaks(d, k)).ToList()
+                    : [],
                 QuestionType.Kaart => Parse<KaartData>(data) is var d ? KaartProblems(d) : [],
                 _ => ["Dit type hoort niet in de vragenbank."],
             };
@@ -718,4 +822,26 @@ public static class QuestionEngine
     }
 
     private static IEnumerable<string> Check(bool ok, string problem) => ok ? [] : [problem];
+
+    /// <summary>
+    /// De Krant: antwoorden die de speler al ziet vóór hij begint, in de kop, het intro, een hint of de gewone tekst.
+    /// Telt als los woord ("69" niet in "1969"); getallen van één cijfer niet in de gewone tekst (een "3-2" mag).
+    /// </summary>
+    private static IEnumerable<string> KrantLeaks(KrantData d, KrantText.Article k)
+    {
+        static bool Has(string text, string word) =>
+            System.Text.RegularExpressions.Regex.IsMatch(text, $@"(?<!\w){System.Text.RegularExpressions.Regex.Escape(word)}(?!\w)",
+                System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+
+        var top = $"{d.Headline} {d.Intro}";
+        var plain = string.Join(" ", k.Paragraphs.SelectMany(p => p).Where(s => s.Gap < 0).Select(s => s.Text));
+        foreach (var gap in k.Gaps)
+            foreach (var answer in gap.Aliases.Prepend(gap.Answer).Where(a => a.Length > 0))
+            {
+                if (Has(top, answer)) yield return $"\"{answer}\" staat al in de kop of het intro.";
+                else if (Has(gap.Hint, answer)) yield return $"De hint van een gat verraadt \"{answer}\".";
+                else if ((gap.Number is null || answer.Length > 1) && Has(plain, answer))
+                    yield return $"\"{answer}\" staat ook als gewone tekst in het artikel.";
+            }
+    }
 }

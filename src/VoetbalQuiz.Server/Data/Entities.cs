@@ -27,6 +27,9 @@ public class AppUser : IdentityUser
     /// bijgewerkt (zie LastSeenTracker). Null = nog nooit gezien sinds deze kolom bestaat.
     /// </summary>
     public DateTime? LastSeenAt { get; set; }
+
+    /// <summary>De maand (eerste dag) waarvan de speler de uitreiking van de Gouden Bal al zag. Null = nog nooit.</summary>
+    public DateOnly? GoldenBallSeenMonth { get; set; }
 }
 
 public class Player
@@ -161,7 +164,7 @@ public abstract class AttemptState
     /// </summary>
     public List<int> Found { get; set; } = [];
 
-    /// <summary>Counter: welke spelers (index) overgeslagen zijn.</summary>
+    /// <summary>Counter: welke spelers (index) overgeslagen zijn. De Krant: de gegokte getallen, als paren (gat, gok).</summary>
     public List<int> Skipped { get; set; } = [];
 
     /// <summary>
@@ -295,7 +298,7 @@ public class MatchQuestion : IQuizQuestion
     [System.ComponentModel.DataAnnotations.Schema.NotMapped]
     public List<Player> CounterPlayers { get; set; } = [];
 
-    /// <summary>Online is er geen kaart (zie <see cref="MatchRules.AllowedOnline"/>), dus nooit een deel.</summary>
+    /// <summary>Online is er geen kaart (een solo-type, zie <see cref="QuestionTypeInfo.Alone"/>), dus nooit een deel.</summary>
     [System.ComponentModel.DataAnnotations.Schema.NotMapped]
     public int Part => 0;
 

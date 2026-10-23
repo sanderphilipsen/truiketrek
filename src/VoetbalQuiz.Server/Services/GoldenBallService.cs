@@ -60,7 +60,6 @@ public class GoldenBallService(QuizDbContext db, TimeProvider clock, MonthRankin
         var cards = await results.UserCardsAsync();
         var settledAt = await db.GoldenBallMonths.Where(m => m.Year == holderYear && m.Month == holderMonth)
             .Select(m => (DateTime?)m.SettledAt).FirstOrDefaultAsync();
-        DateOnly? awardedOn = settledAt is { } at ? QuizClock.ToBrusselsDate(at) : null;
 
         var history = (await db.GoldenBalls
                 .OrderByDescending(g => g.Year).ThenByDescending(g => g.Month).ThenBy(g => g.User.UserName)
@@ -69,12 +68,39 @@ public class GoldenBallService(QuizDbContext db, TimeProvider clock, MonthRankin
             .Select(g => new GoldenBallWinner(g.Year, g.Month, g.UserName!, cards.GetValueOrDefault(g.UserId)?.AvatarId, g.Points, g.UserId == userId))
             .ToList();
 
+        var holders = history.Where(g => g.Year == holderYear && g.Month == holderMonth).ToList();
         return new GoldenBallOverview(
-            history.Where(g => g.Year == holderYear && g.Month == holderMonth).ToList(),
-            GoldenBallRules.IsAnnounceDay(today, awardedOn),
+            holders,
+            GoldenBallRules.IsAnnounceDay(today),
             history.GroupBy(g => g.UserName).ToDictionary(g => g.Key, g => g.Count()),
             history,
-            GoldenBallRules.Explanation);
+            GoldenBallRules.Explanation,
+            settledAt is { } awarded && holders.Count > 0 ? await CeremonyAsync(userId, holderYear, holderMonth, awarded, holders) : null);
+    }
+
+    /// <summary>De uitreiking, als de speler ze nog niet zag en al een account had toen de Gouden Bal toegekend werd.</summary>
+    private async Task<GoldenBallCeremony?> CeremonyAsync(string userId, int year, int month, DateTime awardedAt, List<GoldenBallWinner> winners)
+    {
+        var user = await db.Users.Where(u => u.Id == userId).Select(u => new { u.CreatedAt, u.GoldenBallSeenMonth }).SingleAsync();
+        var first = new DateOnly(year, month, 1);
+        if (user.CreatedAt >= awardedAt || user.GoldenBallSeenMonth >= first) return null;
+
+        // De nummers 2 en 3 uit het maandklassement; de winnaars zelf staan al vast in GoldenBalls.
+        var standing = await ranking.GetAsync(userId, year, month);
+        var runnersUp = standing.Entries
+            .Where(e => e.Rank > 1 && e.Rank <= MonthRules.PrizeZone && !winners.Any(w => w.UserName == e.UserName))
+            .Select(e => new GoldenBallRunnerUp(e.Rank, e.UserName, e.AvatarId, e.Total, e.IsMe))
+            .ToList();
+        return new GoldenBallCeremony(year, month, winners, runnersUp);
+    }
+
+    /// <summary>De speler zag de uitreiking van vorige maand: niet meer tonen, ook niet op een ander toestel.</summary>
+    public async Task MarkCeremonySeenAsync(string userId)
+    {
+        var (year, month) = GoldenBallRules.HolderMonth(QuizClock.Today(clock));
+        var first = new DateOnly(year, month, 1);
+        await db.Users.Where(u => u.Id == userId && (u.GoldenBallSeenMonth == null || u.GoldenBallSeenMonth < first))
+            .ExecuteUpdateAsync(s => s.SetProperty(u => u.GoldenBallSeenMonth, first));
     }
 
     /// <summary>De Gouden Ballen van één speler (jaar, maand), oudste eerst. Voor de badges.</summary>

@@ -1,13 +1,18 @@
 namespace VoetbalQuiz.Shared;
 
-public enum QuestionType { WieBenIk, Snelvuur, Carriere, NietBij, Jaar, Emoji, Opstelling, Wissel, Rugnummer, Mannetje, Kluts, Counter, Volgorde, Kaart }
+public enum QuestionType { WieBenIk, Snelvuur, Carriere, NietBij, Jaar, Emoji, Opstelling, Wissel, Rugnummer, Mannetje, Kluts, Counter, Volgorde, Krant, Kaart }
 
 /// <summary>
 /// Vaste eigenschappen per vraagtype. Een dag is altijd maximaal 1000 punten waard.
 /// FromPlayers: de vragen komen uit de spelersdatabase (zoals "Wie ben ik?"), niet uit de vragenbank.
+/// Alone: een solo-type. Het vult in zijn eentje de hele dag, met één of meer vragen (De Krant: 1 × 1000, Kaart: 2 × 500).
+/// Zo'n type komt nooit in een mix (<see cref="QuestionTypes.Mix(IEnumerable{QuestionType})"/> laat het vallen zodra er een
+/// ander type bij is, en het admin-paneel weigert de combinatie), niet online, niet in de badge Allrounder en niet in de
+/// "100 punten"-statistieken. XP: zijn vragen tellen samen als een volle dag en zijn deelpunten tellen mee.
 /// </summary>
 public record QuestionTypeInfo(
-    QuestionType Type, string Name, string Icon, string HowTo, int PerDay, int MaxPoints, string FileName, bool FromPlayers = false);
+    QuestionType Type, string Name, string Icon, string HowTo, int PerDay, int MaxPoints, string FileName, bool FromPlayers = false,
+    bool Alone = false);
 
 public static class QuestionTypes
 {
@@ -26,10 +31,12 @@ public static class QuestionTypes
         new(QuestionType.Kluts, "Kluts in de zestien", "🌀", "De letters van een naam liggen door elkaar. Om de paar seconden valt er één juist.", 10, 100, "", FromPlayers: true),
         new(QuestionType.Counter, "Counter", "🏃", "Zoveel mogelijk spelers in 60 seconden, met één tip per speler. Raden of doorspelen!", 5, 200, "", FromPlayers: true),
         new(QuestionType.Volgorde, "Op volgorde", "🔀", "Tik de kaartjes aan in de juiste volgorde. Hoe dichter, hoe meer punten.", 10, 100, "volgorde"),
+        new(QuestionType.Krant, "De Krant", "📰", "Een krantenartikel met gaten. Tik op een gat en vul het in, in de volgorde die je wil.", 1, 1000, "krant",
+            Alone: true),
         new(QuestionType.Kaart, "Kaart", "🗺️",
             $"Twee delen op dezelfde kaart: eerst kies je bij elke speld de club, daarna bij elke club het stadion. " +
             $"Per deel {(int)QuestionRules.KaartSeconds / 60} minuten en {QuestionRules.KaartPartPoints} punten.",
-            QuestionRules.KaartParts, QuestionRules.KaartPartPoints, "kaart"),
+            QuestionRules.KaartParts, QuestionRules.KaartPartPoints, "kaart", Alone: true),
     ];
 
     public static QuestionTypeInfo Get(QuestionType type) => All.First(t => t.Type == type);
@@ -46,37 +53,33 @@ public static class QuestionTypes
     };
 
     /// <summary>
-    /// Solo-types vullen in hun eentje een hele dag (de kaart is 1000 punten): ze passen niet in een mix, niet in een
-    /// special met andere types en niet online (zie <see cref="MatchRules.AllowedOnline"/>).
+    /// De solo-regel voor de weekplanning en de specials: een type met <see cref="QuestionTypeInfo.Alone"/> staat altijd
+    /// alleen. Geeft de foutmelding voor het admin-paneel, of null als de keuze klopt. Komt er toch een combinatie binnen
+    /// (oude data), dan valt het solo-type weg (zie <see cref="Playable"/>).
     /// </summary>
-    public static bool IsSolo(QuestionType type) => type == QuestionType.Kaart;
-
-    /// <summary>
-    /// De solo-regel voor de weekplanning en de specials: een solo-type staat altijd alleen. Geeft de foutmelding voor het
-    /// admin-paneel, of null als de keuze klopt. Komt er toch een combinatie binnen (oude data), dan wint het solo-type
-    /// (zie <see cref="Mix(IEnumerable{QuestionType})"/>): het valt nooit stilletjes weg.
-    /// </summary>
-    public static string? SoloProblem(IEnumerable<QuestionType> types)
+    public static string? AloneProblem(IEnumerable<QuestionType> types)
     {
         var list = types.Distinct().ToList();
-        return list.Count > 1 && list.Where(IsSolo).ToList() is [var solo, ..]
-            ? $"{Get(solo).Name} is een dag op zich: combineer het niet met andere vraagtypes."
+        return list.Count > 1 && list.Where(t => Get(t).Alone).ToList() is [var alone, ..]
+            ? $"{Get(alone).Name} is een dag op zich: combineer het niet met andere vraagtypes."
             : null;
     }
 
-    /// <summary>Zit er een solo-type tussen, dan enkel dat (het eerste); anders de types zelf.</summary>
-    private static List<QuestionType> SoloOrAll(List<QuestionType> types) =>
-        types.Where(IsSolo).Take(1).ToList() is [_] solo ? solo : types;
+    /// <summary>
+    /// "Gespeelde vragen" voor de XP: een vraag telt als één, maar de vragen van een solo-type tellen samen als een volle
+    /// dag (<see cref="GameRules.QuestionsPerDay"/>): De Krant (1 vraag) telt 10, elk deel van de kaart (2 vragen) 5.
+    /// </summary>
+    public static int PlayedWeight(QuestionType type) =>
+        Get(type) is { Alone: true } info ? GameRules.QuestionsPerDay / Math.Max(1, info.PerDay) : 1;
 
     /// <summary>
     /// Hoeveel vragen van elk type een mix krijgt: om beurten één vraag per type, zolang de dag onder
     /// 1000 punten en 10 vragen blijft. Een opstelling (200 punten) telt dus voor twee gewone vragen.
-    /// Een solo-type (de kaart) is de hele dag: zit het erbij, dan wordt het enkel dat type.
+    /// Een solo-type vult de dag alleen: het valt weg zodra er een ander type bij is (<see cref="Playable"/>).
     /// </summary>
     public static Dictionary<QuestionType, int> Mix(IEnumerable<QuestionType> types)
     {
-        var list = SoloOrAll(types.Distinct().ToList());
-        if (list.Count == 0) list = [QuestionType.WieBenIk];
+        var list = Playable(types);
         var mix = list.ToDictionary(t => t, _ => 0);
         int points = 0, count = 0;
         for (var added = true; added;)
@@ -101,22 +104,33 @@ public static class QuestionTypes
     /// </summary>
     public static Dictionary<QuestionType, int> Mix(IEnumerable<QuestionType> types, int questions)
     {
-        var list = types.Distinct().ToList();
-        if (list.Count == 0) list = [QuestionType.WieBenIk];
+        var list = Playable(types);
         return list.Select((t, i) => (t, n: questions / list.Count + (i < questions % list.Count ? 1 : 0)))
             .Where(x => x.n > 0).ToDictionary(x => x.t, x => x.n);
+    }
+
+    /// <summary>
+    /// De types die samen kunnen: een type dat alleen een dag vult (<see cref="QuestionTypeInfo.Alone"/>) valt weg zodra er
+    /// een ander type bij is, want hij zou de hele dag opeisen. Enkel zo'n type (bv. een special "De Krant") mag wel.
+    /// </summary>
+    private static List<QuestionType> Playable(IEnumerable<QuestionType> types, bool fallback = true)
+    {
+        var list = types.Distinct().ToList();
+        if (list.Any(t => !Get(t).Alone)) list = list.Where(t => !Get(t).Alone).ToList();
+        else if (list.Count > 1) list = list.Take(1).ToList();
+        return list.Count == 0 && fallback ? [QuestionType.WieBenIk] : list;
     }
 
     public const int DayMaxPoints = 1000;
     /// <summary>
     /// Wat een dag werkelijk wordt: de geplande types zonder de uitgeschakelde. Blijft er niets over
     /// (het type van die dag staat uit), dan wordt het een mix van alle types die nog aan staan, zonder de solo-types.
-    /// Een solo-type (de kaart) staat altijd alleen: zit het in de planning, dan is de dag enkel dat type.
+    /// Zit een solo-type samen met andere types in de planning (oude data), dan valt het weg, zoals in <see cref="Playable"/>.
     /// </summary>
     public static List<QuestionType> ResolveDay(IEnumerable<QuestionType> planned, ICollection<QuestionType> disabled)
     {
-        var types = SoloOrAll(planned.Where(t => !disabled.Contains(t)).Distinct().Order().ToList());
-        if (types.Count == 0) types = All.Select(i => i.Type).Where(t => !disabled.Contains(t) && !IsSolo(t)).ToList();
+        var types = Playable(planned.Where(t => !disabled.Contains(t)).Distinct().Order(), fallback: false);
+        if (types.Count == 0) types = All.Where(i => !disabled.Contains(i.Type) && !i.Alone).Select(i => i.Type).ToList();
         return types.Count == 0 ? [QuestionType.WieBenIk] : types;
     }
 
@@ -130,17 +144,17 @@ public static class QuestionTypes
 
     /// <summary>
     /// De types van een special, zonder de uitgeschakelde. Geen keuze = "Wie ben ik?"; staan ze allemaal uit, dan toch
-    /// de gekozen types (een special wordt niet plots een mix van iets anders). Een solo-type (de kaart) staat altijd
-    /// alleen: zit het erbij, dan is de special enkel dat type. Een solo-type dat uit staat, wordt nooit "toch" gespeeld:
-    /// een special met enkel de kaart wordt dan "Wie ben ik?".
+    /// de gekozen types (een special wordt niet plots een mix van iets anders). Een solo-type samen met andere types valt
+    /// weg (<see cref="Playable"/>). Een solo-type dat uit staat, wordt nooit "toch" gespeeld: een special met enkel
+    /// De Krant of de kaart wordt dan "Wie ben ik?".
     /// </summary>
     public static List<QuestionType> ResolveSpecial(IReadOnlyCollection<QuestionType> types, ICollection<QuestionType> disabled)
     {
         IReadOnlyCollection<QuestionType> chosen = types.Count > 0 ? types : [QuestionType.WieBenIk];
-        var enabled = SoloOrAll(chosen.Where(t => !disabled.Contains(t)).Distinct().Order().ToList());
+        var enabled = Playable(chosen.Where(t => !disabled.Contains(t)).Distinct().Order(), fallback: false);
         if (enabled.Count > 0) return enabled;
-        var fallback = chosen.Where(t => !IsSolo(t)).Distinct().ToList();
-        return fallback.Count > 0 ? fallback : [QuestionType.WieBenIk];
+        var regular = chosen.Where(t => !Get(t).Alone).Distinct().ToList();
+        return regular.Count > 0 ? regular : [QuestionType.WieBenIk];
     }
 
     /// <summary>"🕵️ ⚡ 📅" voor een mix.</summary>
@@ -247,12 +261,13 @@ public static class QuestionRules
     public static string KaartGuess(int pin, string answer) => $"{pin}{KaartPinPrefix}{answer}";
 
     /// <summary>
-    /// Types met deelpunten: de vraag is zelden helemaal juist, maar wat je vindt, telt (kaart, opstelling, counter).
-    /// Hun punten tellen mee voor de XP ("Juiste antwoorden") ook als de vraag niet volledig juist is, en het dagoverzicht
-    /// toont een deelscore als deels juist (½) in plaats van fout.
+    /// Types met deelpunten: de vraag is zelden helemaal juist, maar wat je vindt, telt. Alle solo-types
+    /// (<see cref="QuestionTypeInfo.Alone"/>: De Krant, de kaart) plus opstelling en counter.
+    /// Hun punten tellen mee voor de XP ("Juiste antwoorden") ook als de vraag niet volledig juist is, en de dag- en
+    /// special-overzichten tonen een deelscore als deels juist (½) in plaats van fout.
     /// </summary>
     public static bool PartialScores(QuestionType type) =>
-        type is QuestionType.Kaart or QuestionType.Opstelling or QuestionType.Counter;
+        QuestionTypes.Get(type).Alone || type is QuestionType.Opstelling or QuestionType.Counter;
 
     /// <summary>Kaart: een kaart heeft minstens zoveel spelden.</summary>
     public const int KaartMinPins = 4;
@@ -276,6 +291,20 @@ public static class QuestionRules
     /// <summary>Carrièrepad: elke zoveel seconden een club erbij, daarna nog even tijd.</summary>
     public const double CarriereClubSeconds = 4;
     public const double CarriereExtraSeconds = 6;
+
+    /// <summary>De Krant: zoveel seconden per gat, voor één klok over het hele artikel.</summary>
+    public const double KrantSecondsPerGap = 20;
+    public const double KrantMinSeconds = 60;
+
+    /// <summary>De Krant: zoveel gaten mag een artikel hebben.</summary>
+    public const int KrantMinGaps = 4;
+    public const int KrantMaxGaps = 12;
+
+    /// <summary>
+    /// De Krant: zoveel pogingen voor het hele artikel. Een foute naam kost niets, dus je probeert er meer dan bij één
+    /// vraag; het blijft een rem op scripts die namen afvuren.
+    /// </summary>
+    public const int KrantMaxGuesses = 100;
 
     /// <summary>Opstelling: zoveel namen van de elf moet je aanvullen.</summary>
     public const int OpstellingBlanks = 6;
@@ -327,6 +356,25 @@ public static class QuestionRules
     public static int CarrierePoints(double elapsed, int clubs, int wrongGuesses) => RevealPointsAt(elapsed, clubs, wrongGuesses);
 
     public static int CounterPoints(int found) => found * CounterPointsPerPlayer;
+
+    /// <summary>Zoveel pogingen mag je op één vraag doen; daarna stopt ze (zie <see cref="GameRules.MaxGuessesPerQuestion"/>).</summary>
+    public static int MaxGuesses(QuestionType type) => type == QuestionType.Krant ? KrantMaxGuesses : GameRules.MaxGuessesPerQuestion;
+
+    public static double KrantLimit(int gaps) => Math.Max(KrantMinSeconds, gaps * KrantSecondsPerGap);
+
+    /// <summary>
+    /// De Krant, een getal: welk deel van de punten van het gat. Exact 1, één stap ernaast 0,75, twee 0,5, drie 0,25
+    /// (zoals "Raad het jaar"). Een stap is <paramref name="tolerance"/> (bv. 1 minuut, of 5 bij een bedrag in miljoen).
+    /// </summary>
+    public static double KrantNumberScore(int guess, int answer, int tolerance)
+    {
+        var steps = (int)Math.Ceiling(Math.Abs((long)guess - answer) / (double)Math.Max(1, tolerance));
+        return steps switch { 0 => 1, 1 => 0.75, 2 => 0.5, 3 => 0.25, _ => 0 };
+    }
+
+    /// <summary>De Krant: het maximum verdeeld over de gaten; <paramref name="score"/> is de som van de delen per gat.</summary>
+    public static int KrantPoints(double score, int gaps) =>
+        gaps == 0 ? 0 : (int)Math.Round(QuestionTypes.Get(QuestionType.Krant).MaxPoints * score / gaps);
 
     public static int EmojiPoints(double elapsed, int wrongGuesses) =>
         Math.Max(0, SpeedPoints(elapsed, EmojiSeconds) - wrongGuesses * GameRules.WrongGuessPenalty);
@@ -398,6 +446,19 @@ public record KaartStadion(string Stadium, string City, double Lat, double Lon, 
 
 /// <summary>Kaart: één competitie op de kaart. De server schudt de spelden en geeft ze één voor één vrij.</summary>
 public record KaartData(string Question, string Competition, string Season, List<KaartStadion> Pins);
+
+/// <summary>
+/// De Krant: een artikel. Text bevat de gaten als [[antwoord / ook goed : hint]] of, voor een getal, [[#69 : minuut]]
+/// (met een stap: [[#115~5 : miljoen euro]]). Een lege lijn begint een nieuwe alinea. Kind: verslag, interview of dossier.
+/// </summary>
+public record KrantData(string Kind, string Headline, string Intro, string Text);
+
+/// <summary>
+/// De Krant: een stuk van een alinea zoals de speler het ziet. Gap = -1 is gewone tekst, anders een gat met een hint.
+/// Filled: wat er al staat (een gevonden naam, of het getal dat je gokte). Na afloop ook Answer en Score (0..1).
+/// </summary>
+public record KrantPiece(string Text, int Gap = -1, string? Hint = null, bool IsNumber = false, string? Filled = null,
+    string? Answer = null, double? Score = null);
 
 /// <summary>Een plaats in een opstelling zoals de speler hem ziet (Name null = nog in te vullen).</summary>
 public record LineupSlot(string Position, string? Name, bool IsBlank);

@@ -30,13 +30,13 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock)
         QuestionTypes.ResolveSpecial(special.Types, await DisabledTypesAsync());
 
     /// <summary>
-    /// De types die je nu kan kiezen voor een online partijtje: die aan staan en online passen
-    /// (<see cref="MatchRules.AllowedOnline"/>: de kaart niet).
+    /// De types die nu aan staan en die je kan kiezen voor een online partijtje: geen solo-types
+    /// (<see cref="QuestionTypeInfo.Alone"/>: De Krant, de kaart), want die vullen een hele dag.
     /// </summary>
     public async Task<List<QuestionType>> ActiveTypesAsync()
     {
         var disabled = await DisabledTypesAsync();
-        return QuestionTypes.All.Select(t => t.Type).Where(t => !disabled.Contains(t) && MatchRules.AllowedOnline(t)).ToList();
+        return QuestionTypes.All.Where(t => !t.Alone).Select(t => t.Type).Where(t => !disabled.Contains(t)).ToList();
     }
 
     // ---------- Daily en specials ----------
@@ -288,8 +288,11 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock)
         return ordered.DistinctBy(Subject).Take(count).ToList();
     }
 
-    /// <summary>Een kaart enkel als ze goedgekeurd is: een kaart is een hele dag, een fout stadion of club weegt dan te zwaar.</summary>
-    private static bool ApprovedOnly(QuestionType type) => type == QuestionType.Kaart;
+    /// <summary>
+    /// Een solo-type (<see cref="QuestionTypeInfo.Alone"/>: een artikel van De Krant, een kaart) enkel als het goedgekeurd is:
+    /// het is een hele dag, een fout weegt dan te zwaar.
+    /// </summary>
+    private static bool ApprovedOnly(QuestionType type) => QuestionTypes.Get(type).Alone;
 
     /// <summary>
     /// Kiest per gewenste moeilijkheid uit <paramref name="targets"/> één kandidaat: eerst de laagste <paramref name="tier"/>

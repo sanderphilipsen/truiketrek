@@ -20,12 +20,6 @@ public static class MatchRules
 
     public static int MinQuestionsFor(int types) => Math.Clamp(types, MinQuestions, MaxQuestions);
 
-    /// <summary>
-    /// Vraagtypes die online gespeeld kunnen worden. De solo-types (de kaart, zie <see cref="QuestionTypes.IsSolo"/>) niet:
-    /// één kaart van twee minuten past niet in een partijtje met een gedeelde klok per vraag.
-    /// </summary>
-    public static bool AllowedOnline(QuestionType type) => !QuestionTypes.IsSolo(type);
-
     public const int MinSeats = 2;
 
     /// <summary>

@@ -62,8 +62,8 @@ else
                 else
                 {
                     <div class="tafel-types">
-                        @* De server geeft enkel de types die online kunnen (de kaart niet); de filter hier is een vangnet. *@
-                        @foreach (var t in QuestionTypes.All.Where(t => _active.Contains(t.Type) && MatchRules.AllowedOnline(t.Type) && (!_derby || DerbyRules.AllowedIn(t.Type))))
+                        @* De server geeft enkel de types die online kunnen (geen solo-types zoals De Krant of de kaart); de filter hier is een vangnet. *@
+                        @foreach (var t in QuestionTypes.All.Where(t => _active.Contains(t.Type) && !t.Alone && (!_derby || DerbyRules.AllowedIn(t.Type))))
                         {
                             var type = t.Type;
                             var on = _chosen.Contains(type);

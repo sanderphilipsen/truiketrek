@@ -476,24 +476,31 @@ public sealed class KaartTests : IDisposable
     // ---------- De solo-regel ----------
 
     [Fact]
-    public void Kaart_never_mixes_and_never_silently_drops_out()
+    public void Kaart_is_a_solo_type_that_never_joins_a_mix()
     {
-        Assert.Equal(new Dictionary<QuestionType, int> { [QuestionType.Kaart] = 2 }, QuestionTypes.Mix([QuestionType.WieBenIk, QuestionType.Kaart]));
-        Assert.Equal([QuestionType.Kaart], QuestionTypes.ResolveDay([QuestionType.Snelvuur, QuestionType.Kaart], []));
-        Assert.Equal([QuestionType.Kaart], QuestionTypes.ResolveSpecial([QuestionType.Snelvuur, QuestionType.Kaart], []));
+        // Kaart volgt dezelfde regel als De Krant (QuestionTypeInfo.Alone): alleen de hele dag, in een mix valt ze weg.
+        Assert.True(QuestionTypes.Get(QuestionType.Kaart).Alone);
+        Assert.Equal(new Dictionary<QuestionType, int> { [QuestionType.Kaart] = 2 }, QuestionTypes.Mix([QuestionType.Kaart]));
+        Assert.Equal(new Dictionary<QuestionType, int> { [QuestionType.WieBenIk] = 10 }, QuestionTypes.Mix([QuestionType.WieBenIk, QuestionType.Kaart]));
+        Assert.DoesNotContain(QuestionType.Kaart, QuestionTypes.Mix([QuestionType.Snelvuur, QuestionType.Kaart], 7).Keys);
+        Assert.Equal([QuestionType.Snelvuur], QuestionTypes.ResolveDay([QuestionType.Snelvuur, QuestionType.Kaart], []));
+        Assert.Equal([QuestionType.Snelvuur], QuestionTypes.ResolveSpecial([QuestionType.Snelvuur, QuestionType.Kaart], []));
         // Staat de kaart uit, dan blijven de andere types; een dag met enkel de kaart wordt een mix zonder kaart.
         Assert.Equal([QuestionType.Snelvuur], QuestionTypes.ResolveDay([QuestionType.Snelvuur, QuestionType.Kaart], [QuestionType.Kaart]));
         Assert.DoesNotContain(QuestionType.Kaart, QuestionTypes.ResolveDay([QuestionType.Kaart], [QuestionType.Kaart]));
         // Ook de terugval "mix van alles wat aan staat" neemt de kaart niet op (anders werd die mix enkel de kaart).
         Assert.DoesNotContain(QuestionType.Kaart, QuestionTypes.ResolveDay([QuestionType.Snelvuur], [QuestionType.Snelvuur]));
-        // Een special met enkel de kaart terwijl de kaart uit staat: "Wie ben ik?", nooit toch de kaart.
+        // Een special met enkel een solo-type terwijl dat uit staat: "Wie ben ik?", nooit toch de kaart of De Krant.
         Assert.Equal([QuestionType.WieBenIk], QuestionTypes.ResolveSpecial([QuestionType.Kaart], [QuestionType.Kaart]));
+        Assert.Equal([QuestionType.WieBenIk], QuestionTypes.ResolveSpecial([QuestionType.Krant], [QuestionType.Krant]));
         // Andere types blijven bij die terugval wel "toch de gekozen types".
         Assert.Equal([QuestionType.Snelvuur], QuestionTypes.ResolveSpecial([QuestionType.Snelvuur], [QuestionType.Snelvuur]));
 
-        Assert.NotNull(QuestionTypes.SoloProblem([QuestionType.Kaart, QuestionType.Snelvuur]));
-        Assert.Null(QuestionTypes.SoloProblem([QuestionType.Kaart]));
-        Assert.Null(QuestionTypes.SoloProblem([QuestionType.Snelvuur, QuestionType.Jaar]));
+        Assert.NotNull(QuestionTypes.AloneProblem([QuestionType.Kaart, QuestionType.Snelvuur]));
+        Assert.NotNull(QuestionTypes.AloneProblem([QuestionType.Krant, QuestionType.Snelvuur]));
+        Assert.NotNull(QuestionTypes.AloneProblem([QuestionType.Krant, QuestionType.Kaart]));
+        Assert.Null(QuestionTypes.AloneProblem([QuestionType.Kaart]));
+        Assert.Null(QuestionTypes.AloneProblem([QuestionType.Snelvuur, QuestionType.Jaar]));
     }
 
     [Fact]
@@ -561,8 +568,19 @@ public sealed class KaartTests : IDisposable
         await PlanKaartAsync();
         await PlayAsync(1, s => Right(s));
         var profile = await _t.Progress.GetProfileAsync(_me, "sander");
-        var mixable = QuestionTypes.All.Count(t => !QuestionTypes.IsSolo(t.Type));
+        var mixable = QuestionTypes.All.Count(t => !t.Alone);
         Assert.Contains(profile.Badges, b => b.Id == "allrounder" && b.Progress == $"0/{mixable}");
+    }
+
+    [Fact]
+    public void Every_solo_type_counts_as_a_full_day_of_questions()
+    {
+        // De Krant (1 vraag) en de kaart (2 vragen) tellen elk samen als een volle dag; een gewone vraag telt als één.
+        Assert.Equal(GameRules.QuestionsPerDay, QuestionTypes.PlayedWeight(QuestionType.Krant) * QuestionTypes.Get(QuestionType.Krant).PerDay);
+        Assert.Equal(GameRules.QuestionsPerDay, QuestionTypes.PlayedWeight(QuestionType.Kaart) * QuestionTypes.Get(QuestionType.Kaart).PerDay);
+        Assert.Equal(1, QuestionTypes.PlayedWeight(QuestionType.Snelvuur));
+        Assert.All(QuestionTypes.All.Where(t => t.Alone), t => Assert.True(QuestionRules.PartialScores(t.Type)));
+        Assert.True(QuestionRules.PartialScores(QuestionType.Opstelling) && QuestionRules.PartialScores(QuestionType.Counter));
     }
 
     // ---------- Niet online ----------
@@ -570,7 +588,6 @@ public sealed class KaartTests : IDisposable
     [Fact]
     public async Task Kaart_cannot_be_played_online()
     {
-        Assert.False(MatchRules.AllowedOnline(QuestionType.Kaart));
         Assert.DoesNotContain(QuestionType.Kaart, await _t.Picker.ActiveTypesAsync());
 
         var matches = _t.Matches();
@@ -630,8 +647,9 @@ public sealed class KaartTests : IDisposable
         var input = (await _t.Results.XpInputsAsync())[_me];
         Assert.Equal(900, input.CorrectPoints);
         Assert.Equal(900 / Levels.CorrectPointsPerXp, Levels.Breakdown(input).Single(p => p.Label == "Juiste antwoorden").Xp);
-        // Het verschil met een gewone dag zit enkel in "Gespeelde vragen": een kaartdag zijn er 2, een gewone dag 10.
-        Assert.Equal(2 * Levels.XpPerQuestion, Levels.Breakdown(input).Single(p => p.Label == "Gespeelde vragen").Xp);
+        // "Gespeelde vragen": de twee delen tellen samen als een volle dag, net als een gewone dag van 10 vragen.
+        Assert.Equal(GameRules.QuestionsPerDay, input.QuestionsPlayed);
+        Assert.Equal(GameRules.QuestionsPerDay * Levels.XpPerQuestion, Levels.Breakdown(input).Single(p => p.Label == "Gespeelde vragen").Xp);
     }
 
     [Fact]

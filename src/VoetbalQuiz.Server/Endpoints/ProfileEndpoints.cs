@@ -18,6 +18,14 @@ public static class ProfileEndpoints
                 goldenBall.GetAsync(user.UserId()))
             .RequireAuthorization();
 
+        // De uitreiking van de Gouden Bal is gezien: niet meer tonen, ook niet op een ander toestel.
+        app.MapPost("/api/gouden-bal/gezien", async (ClaimsPrincipal user, GoldenBallService goldenBall) =>
+            {
+                await goldenBall.MarkCeremonySeenAsync(user.UserId());
+                return Results.NoContent();
+            })
+            .RequireAuthorization();
+
         // Na een daily, special of wedstrijd: welke XP en badges kwamen erbij sinds de vorige keer?
         app.MapPost("/api/progress/reward", (ClaimsPrincipal user, ProgressService progress) =>
                 progress.ClaimRewardAsync(user.UserId()))

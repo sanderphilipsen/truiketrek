@@ -60,6 +60,40 @@
         }
         break;
 
+    case QuestionType.Krant:
+        <KrantArticle Headline="@View?.Prompt" Intro="@View?.Note" Kind="@View?.ArticleKind" Paragraphs="View?.Article ?? []"
+                      Selected="SelectedGap?.Gap" OnSelect="@(ReadOnly ? null : SelectGapAsync)" />
+        @if (!ReadOnly && SelectedGap is { } open)
+        {
+            @* Vast onderaan in beeld: de reactie op je laatste antwoord, het invoerveld en "Klaar", ook midden in een lang artikel. *@
+            <div class="krant-dock">
+                <div class="play-feedback" role="status" aria-live="polite">
+                    @if (_goal is not null)
+                    {
+                        <div class="goal" @key="_goal"><Icon Name="soccer-ball" /> @_goal</div>
+                    }
+                    @if (_notInLineup is not null)
+                    {
+                        <div class="wrong" @key="_wrongKey"><Icon Name="x-circle" /> @Commentary.Pick(Commentary.Wrong, _wrongKey) “@_notInLineup” past niet in dit gat</div>
+                    }
+                    @if (open.IsNumber && _goal is null && _notInLineup is null)
+                    {
+                        <div class="light-text">Een getal gok je één keer: hoe dichter, hoe meer punten.</div>
+                    }
+                </div>
+                <form class="answer" @onsubmit="TypeGapAsync">
+                    <input @ref="_input" @bind="_guess" @bind:event="oninput" placeholder="@open.Hint…" aria-label="Gat @(open.Gap + 1): @open.Hint"
+                           inputmode="@(open.IsNumber ? "numeric" : "text")" autocomplete="off" autocapitalize="words" spellcheck="false" enterkeyhint="send" />
+                    <button class="btn primary" disabled="@Busy">OK</button>
+                    @if (GiveUp is not null)
+                    {
+                        <button type="button" class="btn" @onclick="GiveUp" disabled="@Busy">Klaar</button>
+                    }
+                </form>
+            </div>
+        }
+        break;
+
     case QuestionType.Kaart:
         @* Deel 1: bij elke speld de club(s) kiezen. Deel 2: de club staat bij de speld, kies het stadion. *@
         var stadiums = View?.Part == QuestionRules.KaartStadiumsPart;
@@ -234,6 +268,9 @@
     /// <summary>Stuurt een poging (een naam, een optie "0".."3", een jaartal of een volgorde "2,0,3,1"); null als het mislukte.</summary>
     [Parameter, EditorRequired] public Func<string, Task<Feedback?>> Send { get; set; } = null!;
 
+    /// <summary>De Krant: stoppen vanuit de vaste balk onderaan (anders moet je eerst het hele artikel door).</summary>
+    [Parameter] public Func<Task>? GiveUp { get; set; }
+
     private string _guess = "";
     private string? _wrongGuess, _notInLineup, _goal;
 
@@ -406,6 +443,45 @@
         {
             // Bij een opstelling is een naam die niet past geen fout, maar we tonen het wel.
             _notInLineup = QuestionDisplay.LineupFound(feedback.View) > foundBefore || feedback.Finished ? null : guess;
+            _guess = "";
+        }
+    }
+
+    /// <summary>De Krant: het gat dat de speler nu invult (standaard het eerste open gat).</summary>
+    private int? _gap;
+
+    private IEnumerable<KrantPiece> OpenGaps => (View?.Article ?? []).SelectMany(p => p).Where(p => p.Gap >= 0 && p.Filled is null);
+
+    private KrantPiece? SelectedGap => OpenGaps.FirstOrDefault(p => p.Gap == _gap) ?? OpenGaps.FirstOrDefault();
+
+    private async Task SelectGapAsync(int gap)
+    {
+        (_gap, _goal, _notInLineup) = (gap, null, null);
+        await Task.Yield();
+        try { await _input.FocusAsync(); } catch { /* al weg */ }
+    }
+
+    /// <summary>De Krant: stuurt "gat|tekst". Juist (of een getal gegokt): door naar het volgende open gat.</summary>
+    private async Task TypeGapAsync()
+    {
+        if (string.IsNullOrWhiteSpace(_guess) || Busy || SelectedGap is not { } open) return;
+        var guess = _guess;
+        (_goal, _notInLineup) = (null, null);
+
+        var feedback = await Send($"{open.Gap}|{guess}");
+        if (feedback is null) return;
+        var filled = feedback.View?.Article?.SelectMany(p => p).Any(p => p.Gap == open.Gap && p.Filled is not null) ?? feedback.Finished;
+        if (filled)
+        {
+            if (!open.IsNumber) _goal = Commentary.Pick(Commentary.Goal, ++_wrongKey);
+            _guess = "";
+            // Het volgende open gat na dit, anders het eerste dat nog open is.
+            var stillOpen = (feedback.View?.Article ?? []).SelectMany(p => p).Where(p => p.Gap >= 0 && p.Filled is null).ToList();
+            _gap = (stillOpen.FirstOrDefault(p => p.Gap > open.Gap) ?? stillOpen.FirstOrDefault())?.Gap;
+        }
+        else
+        {
+            (_notInLineup, _wrongKey) = (guess, _wrongKey + 1);
             _guess = "";
         }
     }

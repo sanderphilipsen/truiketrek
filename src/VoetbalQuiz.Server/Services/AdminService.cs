@@ -197,8 +197,8 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
 
     public async Task SaveScheduleAsync(List<ScheduleDay> days)
     {
-        // De solo-regel: een kaartdag is een dag op zich, niet een type in een mix.
-        if (days.Where(d => d.IsMix).Select(d => QuestionTypes.SoloProblem(d.Mix!)).FirstOrDefault(p => p is not null) is { } solo)
+        // De solo-regel: De Krant of de kaart is een dag op zich, niet een type in een mix.
+        if (days.Where(d => d.IsMix).Select(d => QuestionTypes.AloneProblem(d.Mix!)).FirstOrDefault(p => p is not null) is { } solo)
             throw new QuizException(solo);
         var stored = await db.DailySchedule.ToListAsync();
         foreach (var day in days)
@@ -214,7 +214,7 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
 
     /// <summary>
     /// Zet een vraagtype aan of uit voor de dailies en specials. Er moet altijd minstens één type aan staan dat geen
-    /// solo-type is: de terugval voor een dag of special waarvan alles uit staat, is een mix zonder de kaart.
+    /// solo-type is (<see cref="QuestionTypeInfo.Alone"/>): de terugval voor een dag of special waarvan alles uit staat, is een mix zonder solo-types.
     /// </summary>
     public async Task SetTypeEnabledAsync(QuestionType type, bool enabled)
     {
@@ -225,9 +225,10 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
         }
         else if (row is null)
         {
-            var disabled = await picker.DisabledTypesAsync();
-            if (QuestionTypes.All.Count(t => !QuestionTypes.IsSolo(t.Type) && !disabled.Contains(t.Type) && t.Type != type) == 0)
-                throw new QuizException("Er moet minstens één vraagtype aan staan (naast de kaart).");
+            // Een solo-type (De Krant, de kaart) kan geen gewone dag maken: er moet een ander type aan blijven.
+            var disabledRegular = (await db.DisabledQuestionTypes.Select(d => d.Type).ToListAsync()).Count(t => !QuestionTypes.Get(t).Alone);
+            if (!QuestionTypes.Get(type).Alone && disabledRegular >= QuestionTypes.All.Count(t => !t.Alone) - 1)
+                throw new QuizException("Er moet minstens één vraagtype aan staan.");
             db.DisabledQuestionTypes.Add(new DisabledQuestionType { Type = type });
         }
         await db.SaveChangesAsync();
@@ -266,6 +267,9 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
             await InPlayAsync(q => q.QuizItemId == id));
     }
 
+    private static IEnumerable<(string Answer, int? Number)> KrantGaps(string data) =>
+        KrantText.Parse(QuestionEngine.Parse<KrantData>(data).Text).Gaps.Select(g => (g.Answer, g.Number));
+
     public async Task<int> SaveQuizItemAsync(QuizItemEdit edit, string adminName)
     {
         if (QuestionTypes.Get(edit.Type).FromPlayers)
@@ -274,6 +278,13 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
         var sources = edit.Sources.Select(s => s.Trim()).Where(s => Uri.TryCreate(s, UriKind.Absolute, out _)).Distinct().ToList();
         if (edit.Status == PlayerStatus.Approved && sources.Count == 0) problems.Add("Voeg minstens één bron (URL) toe voor je goedkeurt.");
         if (problems.Count > 0) throw new QuizException(string.Join(" ", problems));
+
+        // De Krant: pogingen onthouden gaten op hun plaats. Is het artikel al gespeeld, dan mag de tekst nog bijgewerkt
+        // worden (ook hints en wat ook goed is), maar niet welke gaten er zijn of wat erin hoort.
+        if (edit.Type == QuestionType.Krant && edit.Id != 0 && await db.QuizItems.FindAsync(edit.Id) is { } played
+            && await db.Attempts.AnyAsync(a => a.DailyQuestion.QuizItemId == edit.Id)
+            && !KrantGaps(played.Data).SequenceEqual(KrantGaps(edit.Data)))
+            throw new QuizException("Dit artikel is al gespeeld: de gaten (aantal, volgorde en antwoorden) kunnen niet meer wijzigen. Maak een nieuw artikel.");
 
         var key = QuestionEngine.KeyFor(edit.Type, edit.Data);
         if (await db.QuizItems.AnyAsync(i => i.Type == edit.Type && i.Key == key && i.Id != edit.Id))
@@ -344,7 +355,7 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
 
         var locked = special.Id != 0 && await db.DailyChallenges.AnyAsync(c => c.SpecialEventId == special.Id);
         var types = (edit.Types ?? []).Distinct().ToList();
-        if (QuestionTypes.SoloProblem(types) is { } solo) throw new QuizException(solo);
+        if (QuestionTypes.AloneProblem(types) is { } solo) throw new QuizException(solo);
         if (locked && (special.Tag != edit.Tag || !special.PlayerIds.SequenceEqual(edit.PlayerIds) || special.StartDate != edit.StartDate
                        || !special.Types.SequenceEqual(types)))
             throw new QuizException("Deze special wordt al gespeeld: enkel de naam, beschrijving, icoon en einddatum kunnen nog wijzigen.");

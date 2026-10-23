@@ -73,7 +73,7 @@
 
                 <section class="card stack">
                     <h2>@(Id == 0 ? "4. " : "")Welke vraagtypes?</h2>
-                    <p class="muted">De vragen worden om beurten over de gekozen types verdeeld (max. @GameRules.QuestionsPerDay vragen en 1000 punten; een opstelling telt voor twee). Vragen met het thema van de special krijgen voorrang. Een type dat in Planning uitgeschakeld is, wordt overgeslagen. De 🗺️ kaart is een special op zich: kies je ze, dan gaan de andere types uit.</p>
+                    <p class="muted">De vragen worden om beurten over de gekozen types verdeeld (max. @GameRules.QuestionsPerDay vragen en 1000 punten; een opstelling telt voor twee). Vragen met het thema van de special krijgen voorrang. Een type dat in Planning uitgeschakeld is, wordt overgeslagen. 📰 De Krant en 🗺️ Kaart vullen elk een hele special: kies je er een, dan gaan de andere types uit.</p>
                     <div class="tag-toggle">
                         @foreach (var t in QuestionTypes.All)
                         {
@@ -209,14 +209,14 @@
         : string.Join(", ", MixCounts().Select(kv => $"{kv.Value}× {QuestionTypes.Get(kv.Key).Icon} {QuestionTypes.Get(kv.Key).Name}"));
 
     /// <summary>
-    /// De solo-regel (zie <see cref="QuestionTypes.IsSolo"/>): de kaart staat altijd alleen. Kies je ze, dan gaan de andere
-    /// types uit; kies je daarna een ander type, dan gaat de kaart uit.
+    /// De solo-regel (<see cref="QuestionTypeInfo.Alone"/>): De Krant en de kaart staan alleen. Kies je er een, dan gaan de
+    /// andere types uit; kies je daarna een ander type, dan gaat het solo-type uit.
     /// </summary>
     private void ToggleType(QuestionType type)
     {
         if (_types.Remove(type)) return;
-        if (QuestionTypes.IsSolo(type)) _types.Clear();
-        else _types.RemoveWhere(QuestionTypes.IsSolo);
+        if (QuestionTypes.Get(type).Alone) _types.Clear();
+        else _types.RemoveWhere(t => QuestionTypes.Get(t).Alone);
         _types.Add(type);
     }
 
@@ -250,8 +250,8 @@
         _description = t.Description;
         _tags = [.. PlayerTags.Split(t.Tag)];
         _manual = t.Tag is null;
-        // De types van het sjabloon; anders alle vraagtypes, behalve de lange opstelling en de solo-types (de kaart).
-        _types = [.. t.Types ?? QuestionTypes.All.Select(x => x.Type).Where(x => x != QuestionType.Opstelling && !QuestionTypes.IsSolo(x))];
+        // De types van het sjabloon; anders alle vraagtypes, behalve de lange opstelling en de solo-types.
+        _types = [.. t.Types ?? QuestionTypes.All.Where(x => !x.Alone).Select(x => x.Type).Where(x => x != QuestionType.Opstelling)];
         var date = t.Month is { } m && t.Day is { } d ? NextDate(m, d) : Today;
         (_start, _end) = (date, date);
     }
