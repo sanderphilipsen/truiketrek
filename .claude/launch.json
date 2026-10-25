@@ -84,6 +84,12 @@
       "runtimeExecutable": "pwsh",
       "runtimeArgs": ["-NoProfile", "-Command", "$env:ASPNETCORE_ENVIRONMENT='Development'; $env:ASPNETCORE_URLS='http://localhost:5208'; $env:Admins__0='proeflijst'; $env:ConnectionStrings__Quiz=((Get-Content src/VoetbalQuiz.Server/appsettings.Development.json | ConvertFrom-Json).ConnectionStrings.Quiz -replace 'Database=voetbalquiz;','Database=voetbalquiz_lijst;'); dotnet run --project src/VoetbalQuiz.Server -c Lijst --no-launch-profile"],
       "port": 5208
+    },
+    {
+      "name": "voetbalquiz-clubhuis",
+      "runtimeExecutable": "pwsh",
+      "runtimeArgs": ["-NoProfile", "-Command", "$env:ASPNETCORE_ENVIRONMENT='Development'; $env:ASPNETCORE_URLS='http://localhost:5210'; $env:Admins__0='proefclub'; $env:ConnectionStrings__Quiz=((Get-Content src/VoetbalQuiz.Server/appsettings.Development.json | ConvertFrom-Json).ConnectionStrings.Quiz -replace 'Database=voetbalquiz;','Database=voetbalquiz_clubhuis;'); dotnet run --project src/VoetbalQuiz.Server -c Clubhuis --no-launch-profile"],
+      "port": 5210
     }
   ]
 }

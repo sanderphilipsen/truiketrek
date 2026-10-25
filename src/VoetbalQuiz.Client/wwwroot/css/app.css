@@ -1159,6 +1159,21 @@ body:has(.sheet) { overflow: hidden; }
 /* Helemaal onderaan: de eerstvolgende special als één rustige regel; niets om op te tikken. */
 .home-soon-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin: 4px 2px 0; color: var(--on-field-muted); font-size: .9rem; }
 .home-soon-line b { color: #fff; }
+/* Clubhuis onderaan Home: instellingen, VAR, FAQ, admin. Geen spel, dus geen tegels of geel: ronde knoppen met een
+   groene lijn op het veld, in gelijke kolommen naast elkaar. */
+.home-club { margin: 24px 0 8px; }
+.home-club .sb-label { margin: 0 4px 10px; color: var(--on-field-muted); }
+.club-buttons { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 4px; }
+.club-button {
+    display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 0; padding: 4px 0;
+    color: var(--on-field-muted); font-size: .8rem; text-align: center; text-decoration: none; border-radius: var(--radius);
+}
+.club-icon {
+    display: flex; align-items: center; justify-content: center; width: 48px; height: 48px;
+    border: 1px solid var(--sb-line-strong); border-radius: 50%; font-size: 1.25rem; color: var(--muted);
+}
+.club-button:active .club-icon { background: rgba(255, 255, 255, .06); }
+@media (hover: hover) { .club-button:hover .club-icon { background: rgba(255, 255, 255, .06); } }
 
 /* ---------- Specials ---------- */
 /* Een special is een gewone tegel: geel blijft voor de hoofdknop en de cijfers. */

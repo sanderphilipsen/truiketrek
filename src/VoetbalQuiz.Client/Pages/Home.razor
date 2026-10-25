@@ -199,7 +199,7 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
     @SpecialCard(active, isNew: false)
 }
 
-@* Daaronder brede stroken, allemaal in dezelfde vorm: klassement, academie, prijzenkast, instellingen, VAR, persconferentie (FAQ), bestuurskamer. *@
+@* Daaronder brede stroken, allemaal in dezelfde vorm: klassement, academie, prijzenkast. *@
 <a class="card sb-strip" href="klassement">
     <Icon Name="trophy" Class="sb-icon" />
     <span class="sb-label">Klassement</span>
@@ -216,48 +216,41 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
     <span class="sb-digits" aria-hidden="true">@(_badges is { } b ? $"{b.Earned}/{b.Total}" : "–")</span>
     <span class="sb-go" aria-hidden="true">›</span>
 </a>
-<a class="card sb-strip" href="profiel?tab=account">
-    <Icon Name="sliders-horizontal" Class="sb-icon" />
-    <span class="sb-label">Instellingen</span>
-    <span class="sb-go" aria-hidden="true">›</span>
-</a>
-@* Voetbalnamen met de gewone naam eronder, zodat ze duidelijk blijven. *@
-<a class="card sb-strip" href="feedback" aria-label="Naar de VAR: bug of idee melden">
-    <Icon Name="bug" Class="sb-icon" />
-    <span class="sb-strip-text" aria-hidden="true">
-        <span class="sb-label">Naar de VAR</span>
-        <small>Bug of idee melden</small>
-    </span>
-    <span class="sb-go" aria-hidden="true">›</span>
-</a>
-<a class="card sb-strip" href="faq" aria-label="Persconferentie: veelgestelde vragen">
-    <Icon Name="chat-circle" Class="sb-icon" />
-    <span class="sb-strip-text" aria-hidden="true">
-        <span class="sb-label">Persconferentie</span>
-        <small>Veelgestelde vragen</small>
-    </span>
-    <span class="sb-go" aria-hidden="true">›</span>
-</a>
-@if (Auth.User?.IsAdmin == true)
-{
-    <a class="card sb-strip" href="admin" aria-label="Bestuurskamer: admin">
-        <Icon Name="gear-six" Class="sb-icon" />
-        <span class="sb-strip-text" aria-hidden="true">
-            <span class="sb-label">Bestuurskamer</span>
-            <small>Admin</small>
-        </span>
-        <span class="sb-go" aria-hidden="true">›</span>
-    </a>
-}
-
 @if (TopReady && UpcomingSpecials.FirstOrDefault() is { } soon)
 {
-    @* Helemaal onderaan: de eerstvolgende special als één rustige regel; nog niets om op te tikken. *@
+    @* Onder de stroken: de eerstvolgende special als één rustige regel; nog niets om op te tikken. *@
     <p class="home-soon-line">
         <span class="sb-label">Binnenkort</span>
         <span><b>@soon.Name</b> · @StartsInText(soon)</span>
     </p>
 }
+
+@* Helemaal onderaan het clubhuis: wat over de app gaat en geen spel is. Ronde snelknoppen onder een eigen kop,
+   rustiger dan de stroken erboven (groen in plaats van geel, zonder tegel). *@
+<nav class="home-club" aria-labelledby="club-title">
+    <h2 id="club-title" class="sb-label">Clubhuis</h2>
+    <div class="club-buttons">
+        <a class="club-button" href="profiel?tab=account">
+            <span class="club-icon" aria-hidden="true"><Icon Name="sliders-horizontal" /></span>
+            Instellingen
+        </a>
+        <a class="club-button" href="feedback" aria-label="Naar de VAR: bug of idee melden">
+            <span class="club-icon" aria-hidden="true"><Icon Name="bug" /></span>
+            <span aria-hidden="true">VAR</span>
+        </a>
+        <a class="club-button" href="faq" aria-label="Persconferentie: veelgestelde vragen">
+            <span class="club-icon" aria-hidden="true"><Icon Name="chat-circle" /></span>
+            <span aria-hidden="true">FAQ</span>
+        </a>
+        @if (Auth.User?.IsAdmin == true)
+        {
+            <a class="club-button" href="admin" aria-label="Bestuurskamer: admin">
+                <span class="club-icon" aria-hidden="true"><Icon Name="gear-six" /></span>
+                <span aria-hidden="true">Admin</span>
+            </a>
+        }
+    </div>
+</nav>
 
 @code {
     private const string IntroHiddenKey = "tt-intro-hidden";
