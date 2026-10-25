@@ -168,15 +168,15 @@
     "checkedAt": "2026-10-17"
   },
   {
-    "question": "Wie scoorde de 1-0 in Brazilië-België op WK 2018?",
+    "question": "Wie bepaalde de 1-0 in Brazilië-België op WK 2018?",
     "options": [
       "Vincent Kompany",
       "Romelu Lukaku",
-      "Marouane Fellaini",
-      "Fernandinho (eigen doelpunt)"
+      "Kevin De Bruyne",
+      "Fernandinho"
     ],
     "correct": 3,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"
@@ -1813,7 +1813,7 @@
     "checkedAt": "2026-10-18"
   },
   {
-    "question": "Welke Tunesiër werd drie keer topschutter in België?",
+    "question": "Welke spits werd drie keer topschutter in België?",
     "options": [
       "Jérémy Perbet",
       "Łukasz Teodorczyk",
@@ -1887,7 +1887,7 @@
     "checkedAt": "2026-10-18"
   },
   {
-    "question": "Welke Nederlander won de Gouden Schoen 2017?",
+    "question": "Wie won de Gouden Schoen 2017?",
     "options": [
       "José Izquierdo",
       "Ruud Vormer",
@@ -1895,7 +1895,7 @@
       "Hans Vanaken"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://nl.wikipedia.org/wiki/Gouden_Schoen_(Belgi%C3%AB)",
@@ -2298,15 +2298,15 @@
     "checkedAt": "2026-10-19"
   },
   {
-    "question": "Wie was de vader van AC Milan-icoon Paolo en trainde hem ook bij Italië?",
+    "question": "Hoe heette de vader van Paolo Maldini, die hem ook trainde bij Italië?",
     "options": [
-      "Franco Baresi",
+      "Carlo Maldini",
       "Cesare Maldini",
-      "Fabio Capello",
-      "Arrigo Sacchi"
+      "Giuseppe Maldini",
+      "Christian Maldini"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Paolo_Maldini",
@@ -2402,15 +2402,15 @@
     "checkedAt": "2026-10-19"
   },
   {
-    "question": "Welke broer van Rode Duivel Émile speelde ook voor België?",
+    "question": "Hoe heet de broer van Émile Mpenza die ook Rode Duivel was?",
     "options": [
-      "Bart Goor",
-      "Mbo Mpenza",
-      "Gaëtan Englebert",
-      "Wesley Sonck"
+      "Mamadou",
+      "Mbo",
+      "Kevin",
+      "Junior"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Mbo_Mpenza",
@@ -3412,13 +3412,13 @@
   {
     "question": "Wat stelt La'eeb, de mascotte van het WK 2022 in Qatar, voor?",
     "options": [
-      "Een kameel",
-      "Een valk",
-      "Een parel",
-      "Een zwevend traditioneel hoofddeksel"
+      "Een vliegende kameel",
+      "Een gouden valk",
+      "Een glinsterende parel",
+      "Een zwevende hoofddoek"
     ],
     "correct": 3,
-    "difficulty": 4,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_official_mascots"
@@ -5639,7 +5639,7 @@
     "checkedAt": "2026-10-19"
   },
   {
-    "question": "Welke Beveren-speler won de Gouden Schoen van 1978?",
+    "question": "Wie won de Gouden Schoen van 1978?",
     "options": [
       "Julien Cools",
       "Jean-Marie Pfaff",
@@ -5647,7 +5647,7 @@
       "Erwin Vandenbergh"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://nl.wikipedia.org/wiki/Gouden_Schoen_(België)",
@@ -7831,7 +7831,7 @@
     "checkedAt": "2026-10-19"
   },
   {
-    "question": "Welke Oostenrijkse trainer leidde Club Brugge in 1976 en 1978 naar een Europese finale?",
+    "question": "Welke trainer leidde Club Brugge in 1976 en 1978 naar een Europese finale?",
     "options": [
       "Hennes Weisweiler",
       "Ernst Happel",
@@ -7839,7 +7839,7 @@
       "Otto Rehhagel"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1976_UEFA_Cup_final",
@@ -8420,7 +8420,7 @@
     "tags": ["frankrijk"]
   },
   {
-    "question": "Welke Rode Duivel scoorde in 2019 in de Champions League-finale de 2-0 voor Liverpool tegen Tottenham?",
+    "question": "Wie scoorde in 2019 in de Champions League-finale de 2-0 voor Liverpool tegen Tottenham?",
     "options": [
       "Mohamed Salah",
       "Sadio Mané",
@@ -8428,7 +8428,7 @@
       "Divock Origi"
     ],
     "correct": 3,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": ["https://en.wikipedia.org/wiki/2019_UEFA_Champions_League_final", "https://en.wikipedia.org/wiki/Divock_Origi"],
     "tags": ["champions-league", "rode-duivels", "belgie"]
@@ -8546,7 +8546,7 @@
     "tags": ["belgie"]
   },
   {
-    "question": "Welke club speelt zijn thuiswedstrijden op Den Dreef in Heverlee?",
+    "question": "Welke club speelt zijn thuiswedstrijden op Den Dreef?",
     "options": [
       "Union SG",
       "Beerschot",
@@ -8554,13 +8554,13 @@
       "KV Mechelen"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": ["https://en.wikipedia.org/wiki/List_of_football_stadiums_in_Belgium", "https://en.wikipedia.org/wiki/Oud-Heverlee_Leuven"],
     "tags": ["belgie"]
   },
   {
-    "question": "Welke Duitse trainer won in 2013 met Bayern München de treble?",
+    "question": "Welke trainer won in 2013 met Bayern München de treble?",
     "options": [
       "Jupp Heynckes",
       "Pep Guardiola",
@@ -8588,7 +8588,7 @@
     "tags": ["wk"]
   },
   {
-    "question": "Welke club werd in 2001 Italiaans kampioen met Francesco Totti en Gabriel Batistuta?",
+    "question": "Welke club werd in 2001 Italiaans kampioen met Gabriel Batistuta?",
     "options": [
       "Lazio",
       "AS Roma",
@@ -8596,13 +8596,13 @@
       "Juventus"
     ],
     "correct": 1,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": ["https://en.wikipedia.org/wiki/2000%E2%80%9301_Serie_A", "https://en.wikipedia.org/wiki/AS_Roma"],
     "tags": ["italie"]
   },
   {
-    "question": "Welke Nederlander scoorde in 1992 in de verlenging de winnende vrije trap voor Barcelona in de Europacup I-finale?",
+    "question": "Wie scoorde in 1992 in de verlenging de winnende vrije trap voor Barcelona in de Europacup I-finale?",
     "options": [
       "Michael Laudrup",
       "Hristo Stoichkov",
@@ -8610,13 +8610,13 @@
       "Pep Guardiola"
     ],
     "correct": 2,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "review",
     "sources": ["https://en.wikipedia.org/wiki/1992_European_Cup_final", "https://en.wikipedia.org/wiki/Ronald_Koeman"],
     "tags": ["champions-league", "oranje"]
   },
   {
-    "question": "Welke Rode Duivel won op het WK 2018 de Gouden Handschoen voor beste doelman?",
+    "question": "Welke doelman won op het WK 2018 de Gouden Handschoen?",
     "options": [
       "Thibaut Courtois",
       "Hugo Lloris",
@@ -8624,7 +8624,7 @@
       "Jordan Pickford"
     ],
     "correct": 0,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "review",
     "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup", "https://en.wikipedia.org/wiki/Thibaut_Courtois"],
     "tags": ["rode-duivels", "wk", "belgie"]
@@ -8855,7 +8855,7 @@
     "tags": ["rode-duivels", "wk", "belgie"]
   },
   {
-    "question": "Welke Kempense club promoveerde in 2022 als kampioen van eerste klasse B naar de hoogste klasse?",
+    "question": "Welke club promoveerde in 2022 als kampioen van eerste klasse B naar de hoogste klasse?",
     "options": [
       "KV Mechelen",
       "Beerschot",
@@ -8863,7 +8863,7 @@
       "Westerlo"
     ],
     "correct": 3,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "review",
     "sources": ["https://en.wikipedia.org/wiki/Challenger_Pro_League"],
     "tags": ["belgie"]
@@ -8883,15 +8883,15 @@
     "tags": ["club-brugge", "belgie"]
   },
   {
-    "question": "Welke Brusselse club promoveerde in 2023 als winnaar van de reguliere competitie in de Challenger Pro League naar de hoogste klasse?",
+    "question": "Welke club promoveerde in 2023 als winnaar van de reguliere competitie in de Challenger Pro League naar de hoogste klasse?",
     "options": [
-      "Union SG",
+      "SK Beveren",
       "RWD Molenbeek",
       "Lommel SK",
       "Patro Eisden"
     ],
     "correct": 1,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "review",
     "sources": ["https://en.wikipedia.org/wiki/Challenger_Pro_League"],
     "tags": ["belgie"]
