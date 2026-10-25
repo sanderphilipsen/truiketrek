@@ -50,6 +50,7 @@ Dezelfde lijst (`LeaderboardList`) krijgt daarvoor optionele kolommen: verschuiv
 ### Fase 2: uitklappen en samenvatten (optioneel)
 
 - Tik op een rij om ze uit te klappen: daily / specials / bonussen, dagen gespeeld, podiums, link naar het spelersprofiel.
+  - 2026-10-25: de data zit al in `MonthEntry` (`Daily`, `Specials`, `Bonus`, `DaysPlayed`, `Podiums`, `DaysWon`), dus enkel Client-werk. De naam opent nu het profiel; bij uitklappen verhuist die link naar het uitgeklapte deel.
 - Samenvatting boven de lijst: "Je staat 7e, 140 punten achter de top 3, +2 sinds gisteren".
 
 ### Later (fase 3, apart item als het zover is)
@@ -60,6 +61,7 @@ Dezelfde lijst (`LeaderboardList`) krijgt daarvoor optionele kolommen: verschuiv
 
 - 2026-10-22: online telt niet meer mee in de maand; enkel dag en maand als periodes (geen week/seizoen); online als tab op het klassementscherm; divisies later.
 - 2026-10-22: top 3 groen met bekertje; onderste 3 rood vanaf 10 spelers; online uit de maand vanaf 1 oktober 2026 (dus ook de lopende maand; enkel september houdt de oude telling); online-maandbeker geschrapt; geen pijltjes bij afgelopen maanden. Fase 1 wordt gebouwd.
+- 2026-10-25: uitklappen bevestigd voor de backlog; "Rond mij" (enkel je buren tonen) apart in [034](034-klassement-rond-mij.md). Losse verbeteringen zonder eigen item gebouwd: stand blijft staan bij een tabwissel en ververst op de achtergrond, skeleton bij laden, tab en maand in het adres, knop "Speel" als je vandaag nog niet speelde, aantal juist onder de naam bij Vandaag.
 - 2026-10-22: eigen rij duidelijk gemarkeerd in Vandaag en Maand; in Maand pijltjes gestegen/gedaald tegenover gisteren; top 3 (of 5) groen met bekertje, onderste rijen rood met pijltje omlaag.
 
 ## Open vragen

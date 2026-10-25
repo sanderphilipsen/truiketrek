@@ -1,6 +1,8 @@
 @page "/klassement"
 @attribute [Authorize]
 @inject ApiClient Api
+@inject AuthState Auth
+@inject NavigationManager Nav
 
 <PageTitle>Klassement – Truitje Trek</PageTitle>
 
@@ -15,11 +17,12 @@
     </Aside>
 </PageHeader>
 
-@* De vaste set: drie klassementen, meer komt er niet bij (backlog 002). Specials hebben hun eigen klassement op hun pagina. *@
+@* De vaste set: drie klassementen, meer komt er niet bij (backlog 002). Specials hebben hun eigen klassement op hun pagina.
+   Tab en maand staan in het adres, zodat je na een spelersprofiel en "terug" op dezelfde plek uitkomt. *@
 <div class="tabs">
-    <button class="@(_tab == Tab.Vandaag ? "active" : "")" aria-pressed="@(_tab == Tab.Vandaag ? "true" : "false")" @onclick="() => ShowAsync(Tab.Vandaag)">Vandaag</button>
-    <button class="@(_tab == Tab.Maand ? "active" : "")" aria-pressed="@(_tab == Tab.Maand ? "true" : "false")" @onclick="() => ShowAsync(Tab.Maand)">Maand</button>
-    <button class="@(_tab == Tab.Online ? "active" : "")" aria-pressed="@(_tab == Tab.Online ? "true" : "false")" @onclick="() => ShowAsync(Tab.Online)">Online</button>
+    <button class="@(_tab == Tab.Vandaag ? "active" : "")" aria-pressed="@(_tab == Tab.Vandaag ? "true" : "false")" @onclick="() => Go(Tab.Vandaag)">Vandaag</button>
+    <button class="@(_tab == Tab.Maand ? "active" : "")" aria-pressed="@(_tab == Tab.Maand ? "true" : "false")" @onclick="() => Go(Tab.Maand)">Maand</button>
+    <button class="@(_tab == Tab.Online ? "active" : "")" aria-pressed="@(_tab == Tab.Online ? "true" : "false")" @onclick="() => Go(Tab.Online)">Online</button>
 </div>
 
 @if (_error is not null)
@@ -31,52 +34,71 @@ else if (_tab == Tab.Vandaag)
     @* ---------- Dagklassement: enkel de daily van vandaag ---------- *@
     @if (_today is null)
     {
-        <div class="center-msg"><Spinner /></div>
-    }
-    else if (_today.Entries.Count == 0)
-    {
-        <div class="card center muted">Nog niemand gespeeld vandaag.</div>
+        @BoardSkeleton
     }
     else
     {
-        <LeaderboardList Entries="@_today.Entries.Select(e => new LeaderboardList.Row(e.Rank, e.UserName, e.AvatarId, e.Points, e.IsMe)).ToList()" />
+        @if (!_today.Entries.Any(e => e.IsMe) && Auth.User is { } user)
+        {
+            @* Nog niet gespeeld: je ontbreekt in de lijst, dus hier de knop om erin te komen. *@
+            <div class="card board-cta">
+                <Avatar Id="@user.AvatarId" User="@user.UserName" Size="38" />
+                <div class="board-cta-text">
+                    <b>@(_today.Entries.Count == 0 ? "Nog niemand gespeeld vandaag" : "Jij staat er nog niet bij")</b>
+                    <small>@(_today.Entries.Count == 0 ? "Speel als eerste de daily en pak de leiding." : "Speel de daily van vandaag en pak je plaats.")</small>
+                </div>
+                <a class="btn primary small" href="daily">Speel</a>
+            </div>
+        }
+        @if (_today.Entries.Count == 0)
+        {
+            @if (Auth.User is null)
+            {
+                <div class="card center muted">Nog niemand gespeeld vandaag.</div>
+            }
+        }
+        else
+        {
+            <LeaderboardList Entries="@_today.Entries.Select(e => new LeaderboardList.Row(e.Rank, e.UserName, e.AvatarId, e.Points, e.IsMe,
+                                 Sub: $"{e.CorrectAnswers} juist")).ToList()" />
+        }
     }
 }
 else if (_tab == Tab.Maand)
 {
     @* ---------- Maandklassement (daily + specials + bonussen), als de stand op tv: zones en pijltjes ---------- *@
     <div class="month-nav">
-        <button class="linkish" aria-label="Vorige maand" @onclick="() => MoveMonthAsync(-1)">‹</button>
+        <button class="linkish" aria-label="Vorige maand" @onclick="() => MoveMonth(-1)">‹</button>
         <span>@DutchDates.MonthYear(_year, _month)</span>
-        <button class="linkish" aria-label="Volgende maand" @onclick="() => MoveMonthAsync(1)" disabled="@IsCurrentMonth">›</button>
+        <button class="linkish" aria-label="Volgende maand" @onclick="() => MoveMonth(1)" disabled="@IsCurrentMonth">›</button>
     </div>
 
-    @if (_ranking is null)
+    @if (Ranking is null)
     {
-        <div class="center-msg"><Spinner /></div>
+        @BoardSkeleton
     }
-    else if (_ranking.Entries.Count == 0)
+    else if (Ranking.Entries.Count == 0)
     {
         <div class="card center muted">Nog niemand gespeeld deze maand.</div>
     }
     else
     {
-        var players = _ranking.Entries.Count;
-        <LeaderboardList ShowMovement="@_ranking.ShowMovement"
-                         Entries="@_ranking.Entries.Select(e => new LeaderboardList.Row(e.Rank, e.UserName, e.AvatarId, e.Total, e.IsMe,
-                             _ranking.ShowMovement ? e.Change : null, MonthRules.Zone(e.Rank, players))).ToList()" />
+        var players = Ranking.Entries.Count;
+        <LeaderboardList ShowMovement="@Ranking.ShowMovement"
+                         Entries="@Ranking.Entries.Select(e => new LeaderboardList.Row(e.Rank, e.UserName, e.AvatarId, e.Total, e.IsMe,
+                             Ranking.ShowMovement ? e.Change : null, MonthRules.Zone(e.Rank, players))).ToList()" />
         <p class="section-note board-legend">
             <span class="zone-prize">Top @MonthRules.PrizeZone: beker, de eerste de Gouden Bal.</span>
             @if (players >= MonthRules.DropZoneMinPlayers)
             {
                 <span class="zone-drop">Onderste @MonthRules.DropZone: degradatiezone.</span>
             }
-            @if (_ranking.ShowMovement)
+            @if (Ranking.ShowMovement)
             {
                 <span>Pijltjes: tegenover gisteren.</span>
             }
         </p>
-        <p class="section-note">@_ranking.Explanation</p>
+        <p class="section-note">@Ranking.Explanation</p>
     }
 }
 else
@@ -84,7 +106,7 @@ else
     @* ---------- Online: de rating, los van de maand ---------- *@
     @if (_online is null)
     {
-        <div class="center-msg"><Spinner /></div>
+        @BoardSkeleton
     }
     else if (_online.Entries.Count == 0)
     {
@@ -93,7 +115,7 @@ else
     else
     {
         <LeaderboardList Entries="@_online.Entries.Select(e => new LeaderboardList.Row(e.Rank, e.UserName, e.AvatarId, e.Value, e.IsMe,
-                             Sub: $"{e.Played} gespeeld · {e.Wins} gewonnen")).ToList()" />
+                             Sub: $"{e.Played} gespeeld")).ToList()" />
         @if (_online.Note is not null)
         {
             <p class="section-note">@_online.Note</p>
@@ -106,16 +128,19 @@ else
 
     private Tab _tab;
     private int _year = QuizDay.Today().Year, _month = QuizDay.Today().Month;
+    // Wat al geladen is blijft staan: bij een tabwissel zie je meteen de vorige stand, en die wordt op de achtergrond ververst.
     private Leaderboard? _today;
-    private MonthRanking? _ranking;
+    private readonly Dictionary<(int Year, int Month), MonthRanking> _months = [];
     private OnlineLeaderboard? _online;
     private string? _error;
 
-    /// <summary>Open meteen een tabblad, bv. <c>/klassement?tab=maand</c> vanaf Home.</summary>
+    /// <summary>Het tabblad, bv. <c>/klassement?tab=maand</c> vanaf Home.</summary>
     [SupplyParameterFromQuery(Name = "tab")] public string? StartTab { get; set; }
 
-    /// <summary>Open het maandklassement op een afgelopen maand, bv. <c>?tab=maand&amp;maand=2026-10</c> vanaf de Gouden Bal.</summary>
+    /// <summary>Een afgelopen maand in het maandklassement, bv. <c>?tab=maand&amp;maand=2026-10</c> vanaf de Gouden Bal.</summary>
     [SupplyParameterFromQuery(Name = "maand")] public string? StartMonth { get; set; }
+
+    private MonthRanking? Ranking => _months.GetValueOrDefault((_year, _month));
 
     private bool IsCurrentMonth => _year == QuizDay.Today().Year && _month == QuizDay.Today().Month;
 
@@ -124,53 +149,82 @@ else
     /// <summary>Jouw plaats in het getoonde klassement, voor het kerngetal in de kop (null als je er niet in staat).</summary>
     private (int Rank, int Count)? Me => _tab switch
     {
-        Tab.Maand => _ranking?.Entries.FirstOrDefault(e => e.IsMe) is { } m ? (m.Rank, _ranking.Entries.Count) : null,
+        Tab.Maand => Ranking?.Entries.FirstOrDefault(e => e.IsMe) is { } m ? (m.Rank, Ranking.Entries.Count) : null,
         Tab.Online => _online?.Entries.FirstOrDefault(e => e.IsMe) is { } o ? (o.Rank, _online.Entries.Count) : null,
         _ => _today?.Entries.FirstOrDefault(e => e.IsMe) is { } t ? (t.Rank, _today.Entries.Count) : null,
     };
 
-    protected override Task OnInitializedAsync()
+    /// <summary>Het adres bepaalt wat je ziet: een tab of maand kiezen past enkel het adres aan.</summary>
+    protected override Task OnParametersSetAsync()
     {
-        if (Enum.TryParse<Tab>(StartTab, ignoreCase: true, out var start)) _tab = start;
-        if (DateOnly.TryParseExact(StartMonth + "-01", "yyyy-MM-dd", out var month) && month <= QuizDay.Today())
-            (_year, _month) = (month.Year, month.Month);
+        _tab = Enum.TryParse<Tab>(StartTab, ignoreCase: true, out var tab) ? tab : Tab.Vandaag;
+        var today = QuizDay.Today();
+        (_year, _month) = _tab == Tab.Maand && DateOnly.TryParseExact(StartMonth + "-01", "yyyy-MM-dd", out var month) && month <= today
+            ? (month.Year, month.Month)
+            : (today.Year, today.Month);
+        _error = null;
         return LoadAsync();
     }
 
-    private async Task ShowAsync(Tab tab)
+    private void Go(Tab tab, int? year = null, int? month = null)
     {
-        _tab = tab;
-        await LoadAsync();
+        var today = QuizDay.Today();
+        var pastMonth = tab == Tab.Maand && year is { } y && month is { } m && (y, m) != (today.Year, today.Month);
+        Nav.NavigateTo(Nav.GetUriWithQueryParameters(new Dictionary<string, object?>
+        {
+            ["tab"] = tab == Tab.Vandaag ? null : tab.ToString().ToLowerInvariant(),
+            ["maand"] = pastMonth ? $"{year:0000}-{month:00}" : null,
+        }), replace: true);
     }
 
-    private async Task MoveMonthAsync(int delta)
+    private void MoveMonth(int delta)
     {
         var d = new DateTime(_year, _month, 1).AddMonths(delta);
-        (_year, _month) = (d.Year, d.Month);
-        await LoadAsync();
+        Go(Tab.Maand, d.Year, d.Month);
     }
 
     private async Task LoadAsync()
     {
-        _error = null;
+        var (tab, key) = (_tab, (_year, _month));
         try
         {
-            switch (_tab)
+            switch (tab)
             {
                 case Tab.Maand:
-                    _ranking = null;
-                    _ranking = await Api.GetMonthRankingAsync(_year, _month);
+                    // Een afgelopen maand ligt vast: eens geladen hoeft ze niet opnieuw.
+                    if (_months.ContainsKey(key) && !IsCurrentMonth) return;
+                    _months[key] = await Api.GetMonthRankingAsync(key.Item1, key.Item2);
                     break;
                 case Tab.Online:
-                    _online = null;
                     _online = await Api.GetOnlineLeaderboardAsync();
                     break;
                 default:
-                    _today = null;
                     _today = await Api.GetTodayLeaderboardAsync();
                     break;
             }
         }
-        catch (ApiException ex) { _error = ex.Message; }
+        catch (ApiException ex)
+        {
+            // Een mislukte verversing laat de oude stand staan; enkel zonder stand tonen we de fout.
+            if (tab == _tab && !HasData) _error = ex.Message;
+        }
     }
+
+    private bool HasData => _tab switch { Tab.Maand => Ranking is not null, Tab.Online => _online is not null, _ => _today is not null };
+
+    // Plaatshouders in de vorm van de lijst, zodat er niets verspringt als de stand binnenkomt.
+    private RenderFragment BoardSkeleton => @<div aria-busy="true">
+        <ol class="board board-skeleton" aria-hidden="true">
+            @for (var i = 0; i < 6; i++)
+            {
+                <li>
+                    <span class="skeleton sk-rank"></span>
+                    <span class="skeleton sk-avatar"></span>
+                    <span class="skeleton sk-name"></span>
+                    <span class="skeleton sk-pts"></span>
+                </li>
+            }
+        </ol>
+        <span class="sr-only" role="status">Klassement laden…</span>
+    </div>;
 }

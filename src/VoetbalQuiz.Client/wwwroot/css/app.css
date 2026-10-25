@@ -529,6 +529,16 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent); box-sha
 .board .pts { font-weight: 800; font-size: 1.1rem; font-variant-numeric: tabular-nums; }
 /* Legende onder het maandklassement: een gekleurd blokje per zone. */
 .board-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; }
+/* Plaatshouders terwijl een klassement laadt: dezelfde rijhoogte als een echte rij. */
+.board-skeleton li { min-height: 58px; }
+.board-skeleton .sk-rank { width: 28px; height: 18px; flex: none; }
+.board-skeleton .sk-avatar { width: 38px; height: 38px; border-radius: 50%; flex: none; }
+.board-skeleton .sk-name { flex: 1; max-width: 55%; height: 14px; }
+.board-skeleton .sk-pts { width: 42px; height: 18px; margin-left: auto; flex: none; }
+/* Nog niet gespeeld vandaag: jouw plaats in spe, met de knop naar de daily. */
+.board-cta { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; box-shadow: inset 0 0 0 1px var(--control-border); }
+.board-cta-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.board-cta-text small { color: var(--muted); }
 .board-legend .zone-prize::before, .board-legend .zone-drop::before {
     content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; background: var(--ok);
 }
