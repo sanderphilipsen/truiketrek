@@ -83,6 +83,21 @@ public sealed class MatchServiceTests : IDisposable
     }
 
     [Fact]
+    public async Task Outsider_cannot_open_a_started_or_finished_match()
+    {
+        var id = await _matches.CreateAsync(_host, "host", new CreateMatchRequest(null, 4));
+        await _matches.JoinAsync(_guest, id);
+        Assert.Equal(MatchPhase.Lobby, (await _matches.GetStateAsync(_third, id)).Phase); // de kleedkamer mag je zien
+
+        await _matches.StartAsync(_host, id);
+        await Assert.ThrowsAsync<QuizException>(() => _matches.GetStateAsync(_third, id));
+        await Assert.ThrowsAsync<QuizException>(() => _matches.JoinAsync(_third, id));
+
+        await _matches.LeaveAsync(_guest, id); // wie vertrok, blijft de wedstrijd wel zien
+        Assert.Equal(MatchStatus.Running, (await _matches.GetStateAsync(_guest, id)).Status);
+    }
+
+    [Fact]
     public async Task First_correct_answer_gets_the_biggest_bonus()
     {
         var id = await StartedMatchAsync(_guest);

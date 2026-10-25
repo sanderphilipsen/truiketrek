@@ -27,14 +27,26 @@
     }
 </div>
 
-@if (_error is not null)
+@if (_state is null && _error is not null)
+{
+    @* Niet te openen, bv. een uitnodigingslink naar een wedstrijd die al begonnen is. *@
+    <div class="card center">
+        <h1>Niet beschikbaar</h1>
+        <p class="muted" role="alert">@_error</p>
+        <a class="btn primary" href="">Naar Home</a>
+    </div>
+}
+else if (_error is not null)
 {
     <p class="error" role="alert">@_error</p>
 }
 
 @if (_state is null)
 {
-    <div class="center-msg"><Spinner /></div>
+    @if (_error is null)
+    {
+        <div class="center-msg"><Spinner /></div>
+    }
 }
 else
 {

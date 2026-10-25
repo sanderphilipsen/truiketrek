@@ -343,6 +343,9 @@ public class MatchService(
     public async Task<MatchState> GetStateAsync(string userId, int matchId, string? lastWrong = null)
     {
         var match = await LoadAsync(matchId);
+        // Wie niet meedeed, kan een gestarte of gespeelde wedstrijd niet openen (ook niet via de uitnodigingslink).
+        if (match.Status is MatchStatus.Running or MatchStatus.Finished && match.Players.All(p => p.UserId != userId))
+            throw new QuizException("Deze wedstrijd is al begonnen. Je kan niet meer aansluiten.");
         var question = CurrentQuestion(match);
         var phase = PhaseOf(match, question, Now);
         var cards = await results.UserCardsAsync();
