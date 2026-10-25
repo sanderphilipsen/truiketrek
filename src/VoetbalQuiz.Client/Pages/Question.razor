@@ -43,6 +43,10 @@ else if (_state.Result is { } result)
         {
             <div class="muted">@result.WrongGuesses foute @(result.WrongGuesses == 1 ? "poging" : "pogingen")</div>
         }
+        @if (_leftScreen)
+        {
+            <div class="muted"><Icon Name="warning" /> Je verliet de app: daarom stopte de vraag.</div>
+        }
         @if (result.Explanation is not null)
         {
             <p class="explanation @(_state.Type is QuestionType.Emoji ? "" : "plain")">@result.Explanation</p>
@@ -89,11 +93,12 @@ else
         @* Bij de kaart staat "Ik stop" bovenaan (in de stake): onderaan zit het vaste paneel met de keuzelijsten. *@
         <div class="actions">
             <button class="linkish" @onclick="GiveUpAsync" disabled="@_busy">
-                @(_state.Type is QuestionType.Opstelling or QuestionType.Krant ? "Ik ben klaar"
+                @(_state.Type is QuestionType.Opstelling or QuestionType.Krant or QuestionType.Lijst ? "Ik ben klaar"
                     : _state.Type == QuestionType.Counter ? "Ik stop" : _state.Type == QuestionType.Detective ? "Ik geef de zaak op" : "Ik pas")
             </button>
         </div>
     }
+    <p class="center light-text leave-note"><Icon Name="warning" /> Blijf in de app: wie ze verlaat, stopt de vraag.</p>
 }
 
 @code {
@@ -160,8 +165,29 @@ else
             try { _affiche = SpecialId is { } id ? (await Api.GetSpecialsAsync()).FirstOrDefault(s => s.Id == id)?.Affiche : null; }
             catch (ApiException) { _affiche = null; }
         }
+        _leftScreen = false;
         await RunAsync(() => Api.StartAsync(QuizApi, Number));
         StartTimer();
+    }
+
+    private DotNetObjectReference<Question>? _self;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender) return;
+        _self = DotNetObjectReference.Create(this);
+        try { await JS.InvokeVoidAsync("truitje.watchLeave", _self); } catch (JSException) { }
+    }
+
+    /// <summary>Wie tijdens een vraag de app verlaat (opzoeken!), stopt de vraag: zoals "Ik pas", met de deelpunten tot dan.</summary>
+    private bool _leftScreen;
+
+    [JSInvokable]
+    public async Task LeftScreen()
+    {
+        if (_state is not { Status: QuestionStatus.InProgress, Result: null }) return;
+        _leftScreen = true;
+        await RunAsync(() => Api.GiveUpAsync(QuizApi, Number), busy: true);
     }
 
     private void StartTimer()
@@ -210,6 +236,9 @@ else
         if (_state?.Type == QuestionType.Krant && !await _confirm.AskAsync("Klaar met de krant?",
                 "Open gaten tellen dan niet meer mee. Je kan het artikel niet opnieuw spelen.", "Ja, ik ben klaar", danger: false))
             return;
+        if (_state?.Type == QuestionType.Lijst && !await _confirm.AskAsync("Klaar met de lijst?",
+                "Wat je nu gevonden hebt, telt. Je kan de lijst niet opnieuw spelen.", "Ja, ik ben klaar", danger: false))
+            return;
         if (_state?.Type == QuestionType.Detective && !await _confirm.AskAsync("Zaak opgeven?",
                 "Je krijgt dan 0 punten en ziet meteen wie de dader was. Je kan de zaak niet opnieuw spelen.", "Ja, geef op"))
             return;
@@ -244,5 +273,6 @@ else
     {
         _cts.Cancel();
         _timer?.Dispose();
+        _ = JS.InvokeVoidAsync("truitje.unwatchLeave").AsTask().ContinueWith(_ => _self?.Dispose());
     }
 }

@@ -169,6 +169,25 @@
                                           Paragraphs="Preview(article)" />
                             break;
 
+                        case QuestionType.Lijst:
+                            var lijst = ParseList(_lines);
+                            <p class="muted">
+                                Een lijst als JSON: <code>question</code>, <code>rows</code> (in volgorde, elk met een <code>label</code> zoals een jaartal
+                                en een <code>answer</code>, of zonder answer een <code>note</code> zoals "niet uitgereikt") en <code>names</code> (elke naam
+                                één keer, met <code>aliases</code>). Een naam die in meerdere rijen staat, vult ze allemaal en telt één keer.
+                            </p>
+                            <label>Lijst (JSON) <textarea rows="20" style="font-family: var(--digits)" @bind="_lines" @bind:event="oninput" @bind:after="Touch"></textarea></label>
+                            @if (lijst is null)
+                            {
+                                @if (!string.IsNullOrWhiteSpace(_lines)) { <p class="error">Geen geldige JSON.</p> }
+                            }
+                            else
+                            {
+                                <p class="muted">@lijst.Names.Count namen, @lijst.Rows.Count rijen · klok @QuestionRules.LijstSeconds seconden</p>
+                                <LijstGrid Slots="@(lijst.Rows.Select(r => new LijstSlot(r.Label, r.Answer ?? r.Note, r.Answer is not null)).ToList())" />
+                            }
+                            break;
+
                         case QuestionType.Detective:
                             var zaak = ParseCase(_lines);
                             <p class="muted">
@@ -398,6 +417,9 @@
             case QuestionType.Detective:
                 _lines = Pretty(System.Text.Json.JsonSerializer.Deserialize<DetectiveData>(data, Json)!);
                 break;
+            case QuestionType.Lijst:
+                _lines = System.Text.Json.JsonSerializer.Serialize(System.Text.Json.JsonSerializer.Deserialize<LijstData>(data, Json)!, PrettyJson);
+                break;
             case QuestionType.Kaart:
                 (_raw, _kaart) = (data, System.Text.Json.JsonSerializer.Deserialize<KaartData>(data, Json));
                 break;
@@ -413,6 +435,13 @@
     private static DetectiveData? ParseCase(string json)
     {
         try { return System.Text.Json.JsonSerializer.Deserialize<DetectiveData>(json, Json) is { Suspects: not null, Clues: not null } d ? d : null; }
+        catch (System.Text.Json.JsonException) { return null; }
+    }
+
+    /// <summary>Lijst: de lijst uit het tekstvak, of null als het (nog) geen geldige JSON is.</summary>
+    private static LijstData? ParseList(string json)
+    {
+        try { return System.Text.Json.JsonSerializer.Deserialize<LijstData>(json, Json) is { Rows: not null, Names: not null } d ? d : null; }
         catch (System.Text.Json.JsonException) { return null; }
     }
 
@@ -460,6 +489,7 @@
         QuestionType.Krant => Serialize(new KrantData(_krantKind, _text.Trim(), _explanation.Trim(), _lines.Trim())),
         QuestionType.Detective => ParseCase(_lines) is { } d ? Serialize(d) : _lines,
         QuestionType.Kaart => _raw,
+        QuestionType.Lijst => ParseList(_lines) is { } l ? Serialize(l) : _lines,
         _ => "{}",
     };
 
@@ -517,6 +547,9 @@
                 break;
             case QuestionType.Kaart:
                 if (_kaart is null) missing.Add("Voeg kaarten toe in kaart.json.");
+                break;
+            case QuestionType.Lijst:
+                if (ParseList(_lines) is null) missing.Add("De lijst is geen geldige JSON.");
                 break;
         }
         return missing;

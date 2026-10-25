@@ -157,6 +157,14 @@ public class QuestionSeeder(QuizDbContext db, IWebHostEnvironment env, ILogger<Q
                            }).ToList(),
                        }))
                     : (null, ""),
+                // Lijst: namen getrimd, zodat een rij en een naam altijd bij elkaar passen.
+                QuestionType.Lijst => e.Deserialize<LijstData>(Json) is { Rows: not null, Names: not null } d
+                    ? (d.Question, QuestionEngine.Serialize(d with
+                    {
+                        Rows = d.Rows.Select(r => r with { Answer = string.IsNullOrWhiteSpace(r.Answer) ? null : r.Answer.Trim() }).ToList(),
+                        Names = d.Names.Select(n => new LijstNaam(n.Name?.Trim() ?? "", n.Aliases ?? [])).ToList(),
+                    }))
+                    : (null, ""),
                 _ => (null, ""),
             };
         }

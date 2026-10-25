@@ -57,6 +57,11 @@
         <Lineup Slots="Result.FullLineup ?? []" Found="FoundNames()" />
         break;
 
+    case QuestionType.Lijst:
+        <p class="prompt">@View?.Prompt</p>
+        <LijstGrid Slots="Result.FullList ?? []" />
+        break;
+
     case QuestionType.Krant:
         <KrantArticle Headline="@View?.Prompt" Intro="@View?.Note" Kind="@View?.ArticleKind" Paragraphs="Result.FullArticle ?? []" Reveal="true" />
         break;
@@ -134,6 +139,7 @@
         QuestionType.Counter => "Counter",
         QuestionType.Volgorde => r.Correct ? "Helemaal juist!" : r.Points > 0 ? "Bijna!" : "Helemaal omgekeerd",
         QuestionType.Kaart => r.Correct ? "Foutloze kaart!" : r.PlayerName,
+        QuestionType.Lijst => r.Correct ? "De hele lijst!" : r.PlayerName,
         _ => r.PlayerName,
     };
 }

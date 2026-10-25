@@ -161,7 +161,7 @@
             <div class="emoji-big">@View?.Prompt</div>
             <p class="center light-text">@View?.Note</p>
         }
-        else if (Type == QuestionType.Opstelling)
+        else if (Type is QuestionType.Opstelling or QuestionType.Lijst)
         {
             <p class="prompt">@View?.Prompt</p>
         }
@@ -229,7 +229,7 @@
                 }
                 @if (_notInLineup is not null)
                 {
-                    <div class="wrong" @key="_notInLineup"><Icon Name="shield" /> @Commentary.Pick(Commentary.Blocked, _notInLineup.Length) “@_notInLineup” staat niet (meer) op een open plaats</div>
+                    <div class="wrong" @key="_notInLineup"><Icon Name="shield" /> @Commentary.Pick(Commentary.Blocked, _notInLineup.Length) “@_notInLineup” @(Type == QuestionType.Lijst ? "staat niet in de lijst of is al gevonden" : "staat niet (meer) op een open plaats")</div>
                 }
             </div>
         }
@@ -237,6 +237,10 @@
         @if (Type == QuestionType.Opstelling)
         {
             <Lineup Slots="View?.Lineup ?? []" />
+        }
+        else if (Type == QuestionType.Lijst)
+        {
+            <LijstGrid Slots="View?.Rows ?? []" />
         }
         else
         {
@@ -285,7 +289,7 @@
 
     private string Placeholder => Type switch
     {
-        QuestionType.Opstelling => "Typ een naam…",
+        QuestionType.Opstelling or QuestionType.Lijst => "Typ een naam…",
         QuestionType.Wissel => "Wie maakte de transfer?",
         QuestionType.Rugnummer => "Wie droeg dit shirt?",
         QuestionType.Mannetje => "Wie is dit mannetje?",
@@ -447,6 +451,14 @@
         {
             // Bij een opstelling is een naam die niet past geen fout, maar we tonen het wel.
             _notInLineup = QuestionDisplay.LineupFound(feedback.View) > foundBefore || feedback.Finished ? null : guess;
+            _guess = "";
+        }
+        else if (Type == QuestionType.Lijst)
+        {
+            // Een naam die niet (meer) in de lijst staat, kost niets; we tonen het enkel.
+            var hit = (feedback.View?.Found ?? 0) > counterBefore;
+            if (hit) _goal = Commentary.Pick(Commentary.Goal, ++_wrongKey);
+            _notInLineup = hit || feedback.Finished ? null : guess;
             _guess = "";
         }
     }

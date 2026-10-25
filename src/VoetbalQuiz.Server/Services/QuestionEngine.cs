@@ -39,6 +39,7 @@ public static class QuestionEngine
         QuestionType.Kaart => Data<KaartData>(q) is var k
             ? $"{k.Competition} {k.Season}: {(IsStadiumPart(q) ? "de stadions" : "de clubs")}"
             : "",
+        QuestionType.Lijst => Data<LijstData>(q).Question,
         _ => "",
     };
 
@@ -58,6 +59,7 @@ public static class QuestionEngine
         QuestionType.Krant => QuestionRules.KrantLimit(Krant(q).Gaps.Count),
         QuestionType.Detective => QuestionRules.DetectiveSeconds,
         QuestionType.Kaart => QuestionRules.KaartSeconds,
+        QuestionType.Lijst => QuestionRules.LijstSeconds,
         _ => GameRules.TimeLimitSeconds,
     };
 
@@ -185,6 +187,13 @@ public static class QuestionEngine
                     Found: passed, Total: order.Count, Pins: pins, Part: part, Country: d.Land,
                     OptionLabels: stadiums ? KaartStadiumLabels(d, options) : null));
             }
+            case QuestionType.Lijst:
+            {
+                // Enkel de gevonden namen; de open rijen tonen enkel hun label.
+                var d = Data<LijstData>(q);
+                return ([], new QuestionView(d.Question, MaxPoints: QuestionTypes.Get(QuestionType.Lijst).MaxPoints,
+                    Found: a.Found.Count, Total: d.Names.Count, Rows: LijstSlots(d, a, reveal: false)));
+            }
             default:
                 return ([], new QuestionView());
         }
@@ -195,6 +204,23 @@ public static class QuestionEngine
         {
             var blank = blanks.Contains(i);
             return new LineupSlot(p.Position, !blank || found.Contains(i) || revealAll ? p.Name : null, blank);
+        }).ToList();
+
+    /// <summary>Lijst: de index in Names van de naam op deze rij, of -1 (een rij zonder antwoord).</summary>
+    private static int LijstName(LijstData d, LijstRij row) =>
+        row.Answer is { } answer ? d.Names.FindIndex(n => string.Equals(n.Name, answer, StringComparison.OrdinalIgnoreCase)) : -1;
+
+    /// <summary>
+    /// Lijst: de rijen zoals de speler ze ziet. Tijdens het spelen enkel de gevonden namen; met <paramref name="reveal"/>
+    /// (na afloop) alle namen en per rij of jij die naam vond.
+    /// </summary>
+    private static List<LijstSlot> LijstSlots(LijstData d, AttemptState a, bool reveal) =>
+        d.Rows.Select(row =>
+        {
+            var name = LijstName(d, row);
+            if (name < 0) return new LijstSlot(row.Label, row.Note ?? "", false);
+            var found = a.Found.Contains(name);
+            return new LijstSlot(row.Label, found || reveal ? d.Names[name].Name : null, true, reveal ? found : null);
         }).ToList();
 
     private static int Step(double elapsed) => QuestionRules.RevealStep(elapsed, QuestionRules.RevealSteps);
@@ -614,6 +640,24 @@ public static class QuestionEngine
                 return new(done, done && right == total, QuestionRules.KaartPoints(right, total), false);
             }
 
+            case QuestionType.Lijst:
+            {
+                // Een naam vult al zijn rijen en telt één keer. Fout of al gevonden kost niets (zoals bij een opstelling).
+                // Wie exact een naam typt, bedoelt die naam: "Ronaldo" is Ronaldo, ook als hij al gevonden is, en dan niet
+                // via de achternaam Cristiano Ronaldo. Pas zonder exacte naam telt de speling van AnswerMatcher.
+                var d = Data<LijstData>(q);
+                var typed = AnswerMatcher.Normalize(guess);
+                var exact = d.Names.FindIndex(n => n.Aliases.Prepend(n.Name).Any(x => AnswerMatcher.Normalize(x) == typed));
+                var hit = exact >= 0
+                    ? a.Found.Contains(exact) ? -1 : exact
+                    : Enumerable.Range(0, d.Names.Count).Where(i => !a.Found.Contains(i))
+                        .FirstOrDefault(i => AnswerMatcher.IsMatch(guess, d.Names[i].Name, d.Names[i].Aliases), -1);
+                if (hit < 0) return new(false, false, QuestionRules.LijstPoints(a.Found.Count, d.Names.Count), false);
+                a.Found = [.. a.Found, hit];
+                var all = a.Found.Count == d.Names.Count;
+                return new(all, all, QuestionRules.LijstPoints(a.Found.Count, d.Names.Count), false);
+            }
+
             default:
                 return new(false, false, 0, false);
         }
@@ -659,6 +703,7 @@ public static class QuestionEngine
         QuestionType.Counter => QuestionRules.CounterPoints(a.Found.Count),
         QuestionType.Krant => KrantPointsOf(Krant(q), a),
         QuestionType.Kaart => QuestionRules.KaartPoints(a.Found.Sum(), KaartTotal(q, Data<KaartData>(q))),
+        QuestionType.Lijst => QuestionRules.LijstPoints(a.Found.Count, Data<LijstData>(q).Names.Count),
         _ => 0,
     };
 
@@ -739,6 +784,13 @@ public static class QuestionEngine
                     MyPicks = a.Picks.Count == 0 ? null : a.Picks,
                 }
                 : baseResult,
+            QuestionType.Lijst => Data<LijstData>(q) is var l
+                ? baseResult with
+                {
+                    FullList = LijstSlots(l, a, reveal: true),
+                    Explanation = $"{a.Found.Count} van de {l.Names.Count} namen gevonden",
+                }
+                : baseResult,
             _ => baseResult,
         };
     }
@@ -794,6 +846,7 @@ public static class QuestionEngine
         QuestionType.Kaart => Parse<KaartData>(data) is var d
             ? ($"{d.Land} · {d.Competition} {d.Season} ({d.Pins?.Count ?? 0} spelden)", string.Join(", ", (d.Pins ?? []).SelectMany(p => p.Clubs ?? [])))
             : ("", ""),
+        QuestionType.Lijst => Parse<LijstData>(data) is var d ? (d.Question, $"{d.Names?.Count ?? 0} namen, {d.Rows?.Count ?? 0} rijen") : ("", ""),
         _ => ("", ""),
     };
 
@@ -881,6 +934,7 @@ public static class QuestionEngine
                     : [],
                 QuestionType.Detective => DetectiveProblems(Parse<DetectiveData>(data)).ToList(),
                 QuestionType.Kaart => Parse<KaartData>(data) is var d ? KaartProblems(d) : [],
+                QuestionType.Lijst => Parse<LijstData>(data) is var d ? LijstProblems(d) : [],
                 _ => ["Dit type hoort niet in de vragenbank."],
             };
         }
@@ -921,6 +975,24 @@ public static class QuestionEngine
             // Deel 2 kiest het stadion uit een lijst: twee spelden met dezelfde naam zijn niet uit elkaar te houden.
             .Concat(Check(pins.Select(p => p.Stadium?.Trim()).Distinct(StringComparer.OrdinalIgnoreCase).Count() == pins.Count,
                 "Twee spelden hebben dezelfde stadionnaam.")).ToList();
+    }
+
+    private static List<string> LijstProblems(LijstData d)
+    {
+        var rows = d.Rows ?? [];
+        var names = d.Names ?? [];
+        var answers = rows.Where(r => !string.IsNullOrWhiteSpace(r.Answer)).Select(r => r.Answer!.Trim()).ToList();
+        var known = names.Select(n => n.Name?.Trim() ?? "").ToList();
+        var unknown = answers.Where(a => !known.Contains(a, StringComparer.OrdinalIgnoreCase)).Distinct().ToList();
+        var unused = known.Where(n => !answers.Contains(n, StringComparer.OrdinalIgnoreCase)).ToList();
+        return Check(!string.IsNullOrWhiteSpace(d.Question), "Vul de opdracht in.")
+            .Concat(Check(rows.Count >= 2 && rows.All(r => !string.IsNullOrWhiteSpace(r.Label)), "Geef minstens 2 rijen, elk met een label."))
+            .Concat(Check(names.Count >= 2 && known.All(n => n.Length > 0), "Geef minstens 2 namen."))
+            .Concat(Check(known.Distinct(StringComparer.OrdinalIgnoreCase).Count() == known.Count, "Een naam staat twee keer bij de namen."))
+            .Concat(Check(unknown.Count == 0, $"Niet bij de namen: {string.Join(", ", unknown)}."))
+            .Concat(Check(unused.Count == 0, $"Staat in geen enkele rij: {string.Join(", ", unused)}."))
+            .Concat(Check(rows.All(r => !string.IsNullOrWhiteSpace(r.Answer) || !string.IsNullOrWhiteSpace(r.Note)),
+                "Een rij zonder naam heeft een uitleg nodig (bv. \"niet uitgereikt\").")).ToList();
     }
 
     private static IEnumerable<string> Check(bool ok, string problem) => ok ? [] : [problem];

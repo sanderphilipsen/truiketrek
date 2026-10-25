@@ -123,7 +123,9 @@ public record QuestionView(
     string? Country = null,
     // Kaart, deel 2: wat de keuzelijst toont, in dezelfde volgorde als Options (stadion met capaciteit). De gok blijft
     // de waarde uit Options. Null = Options zelf tonen.
-    List<string>? OptionLabels = null);
+    List<string>? OptionLabels = null,
+    // Lijst: de rijen (Found/Total: gevonden namen en het aantal namen).
+    List<LijstSlot>? Rows = null);
 
 /// <summary>
 /// Kaart: een speld zoals de speler ze ziet. Choices = hoeveel keuzelijsten (deel 1: één per club die er speelt; deel 2: één).
@@ -163,6 +165,8 @@ public record AnswerResult(
     List<DetectiveVerdict>? Dossier = null,
     // Kaart: wat de speler per beantwoorde speld koos (leeg = overgeslagen), null als hij geen enkele speld beantwoordde.
     List<string>? MyPicks = null,
+    // Lijst: alle rijen ingevuld, met per rij of jij die naam vond.
+    List<LijstSlot>? FullList = null,
     // De vraag liep af omdat de tijd om was (niet omdat de speler paste of antwoordde).
     bool TimedOut = false);
 

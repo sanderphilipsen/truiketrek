@@ -1,6 +1,6 @@
 namespace VoetbalQuiz.Shared;
 
-public enum QuestionType { WieBenIk, Snelvuur, Carriere, NietBij, Jaar, Emoji, Opstelling, Wissel, Rugnummer, Mannetje, Kluts, Counter, Volgorde, Krant, Detective, Kaart }
+public enum QuestionType { WieBenIk, Snelvuur, Carriere, NietBij, Jaar, Emoji, Opstelling, Wissel, Rugnummer, Mannetje, Kluts, Counter, Volgorde, Krant, Detective, Kaart, Lijst }
 
 /// <summary>
 /// Vaste eigenschappen per vraagtype. Een dag is altijd maximaal 1000 punten waard.
@@ -41,6 +41,10 @@ public static class QuestionTypes
             $"Per deel {QuestionRules.KaartPins} spelden, {(int)QuestionRules.KaartSeconds / 60} minuten en " +
             $"{QuestionRules.KaartPointsPerPin} punten per speld.",
             QuestionRules.KaartParts, QuestionRules.KaartPartPoints, "kaart", Alone: true),
+        new(QuestionType.Lijst, "Lijst", "clipboard-text",
+            $"Vul een hele lijst aan, bv. alle winnaars van een prijs. Eén naam vult al zijn jaren en telt als één juist antwoord. " +
+            $"Je hebt {(int)QuestionRules.LijstSeconds} seconden.",
+            1, QuestionTypes.DayMaxPoints, "lijst", Alone: true),
     ];
 
     public static QuestionTypeInfo Get(QuestionType type) => All.First(t => t.Type == type);
@@ -355,6 +359,19 @@ public static class QuestionRules
     /// <summary>Detectivedag: deze "gok" roept de volgende getuige op; een getal is een beschuldiging (de verdachte).</summary>
     public const string DetectiveNextClue = "/getuige";
 
+    /// <summary>Lijst: één klok voor de hele lijst.</summary>
+    public const double LijstSeconds = 200;
+
+    /// <summary>
+    /// Lijst: zoveel pogingen voor de hele lijst. Een foute naam kost niets, dus je probeert er veel; het blijft een rem op
+    /// scripts die namen afvuren.
+    /// </summary>
+    public const int LijstMaxGuesses = 150;
+
+    /// <summary>Lijst: het maximum naar rato van de gevonden namen (een naam die meerdere rijen vult, telt één keer).</summary>
+    public static int LijstPoints(int found, int names) =>
+        names == 0 ? 0 : (int)Math.Round((double)QuestionTypes.Get(QuestionType.Lijst).MaxPoints * found / names);
+
     /// <summary>Opstelling: zoveel namen van de elf moet je aanvullen.</summary>
     public const int OpstellingBlanks = 6;
 
@@ -411,6 +428,7 @@ public static class QuestionRules
     {
         QuestionType.Krant => KrantMaxGuesses,
         QuestionType.Counter => CounterMaxGuesses,
+        QuestionType.Lijst => LijstMaxGuesses,
         _ => GameRules.MaxGuessesPerQuestion,
     };
 
@@ -571,6 +589,27 @@ public record DetectiveVerdict(string Name, string Card, bool IsCulprit, bool Ac
 
 /// <summary>Een plaats in een opstelling zoals de speler hem ziet (Name null = nog in te vullen).</summary>
 public record LineupSlot(string Position, string? Name, bool IsBlank);
+
+/// <summary>
+/// Lijst: een rij (bv. een jaartal). Answer verwijst naar een naam uit <see cref="LijstData.Names"/>; zonder Answer valt er
+/// niets in te vullen en toont de rij Note (bv. "niet uitgereikt").
+/// </summary>
+public record LijstRij(string Label, string? Answer = null, string? Note = null);
+
+/// <summary>Lijst: een naam die in de lijst staat, met wat ook goed is.</summary>
+public record LijstNaam(string Name, List<string> Aliases);
+
+/// <summary>
+/// Lijst: de opdracht, de rijen in volgorde en de namen. Een naam die in meerdere rijen staat, vult ze allemaal en telt één keer.
+/// Pogingen onthouden namen op hun plaats in Names: een gespeelde lijst verandert die volgorde niet meer.
+/// </summary>
+public record LijstData(string Question, List<LijstRij> Rows, List<LijstNaam> Names);
+
+/// <summary>
+/// Lijst: een rij zoals de speler ze ziet. Name: de gevonden naam, of de Note van een rij zonder antwoord (null = nog open).
+/// Open: er valt iets in te vullen. Mine: na afloop, of jij die naam vond.
+/// </summary>
+public record LijstSlot(string Label, string? Name, bool Open, bool? Mine = null);
 
 /// <summary>Kluts in de zestien: één letter. Fixed = staat al op de juiste plaats.</summary>
 public record LetterTile(string Letter, bool Fixed);

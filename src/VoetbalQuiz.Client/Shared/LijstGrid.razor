@@ -1,0 +1,17 @@
+@* Een lijst (bv. de winnaars per jaar): label links, naam rechts. Een open rij blijft leeg tot de naam gevonden is;
+   na afloop zijn de rijen die jij vond groen en de gemiste gedimd. *@
+<ol class="lijst" aria-label="De lijst">
+    @foreach (var slot in Slots)
+    {
+        var css = !slot.Open ? "given" : slot.Mine is { } mine ? (mine ? "found mine" : "missed") : slot.Name is null ? "open" : "found new";
+        @* De sleutel wijzigt zodra de naam verschijnt: zo speelt de animatie op die rij, ook als één naam meerdere rijen vult. *@
+        <li class="lijst-row @css" @key="(slot.Label, slot.Name)">
+            <span class="lijst-label">@slot.Label</span>
+            <span class="lijst-name">@(slot.Name ?? "")</span>
+        </li>
+    }
+</ol>
+
+@code {
+    [Parameter, EditorRequired] public List<LijstSlot> Slots { get; set; } = [];
+}

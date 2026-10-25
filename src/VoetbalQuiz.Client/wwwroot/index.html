@@ -47,6 +47,23 @@
                 try { await navigator.clipboard.writeText(text); return true; }
                 catch { return false; }
             },
+            // Tijdens een vraag: wie de app verlaat (andere app, ander tabblad, scherm uit), meldt dat aan Blazor. Bij het
+            // verbergen meteen; lukte dat niet meer (de gsm bevriest de pagina), dan nog eens bij het terugkeren.
+            watchLeave: ref => {
+                window.truitje.unwatchLeave();
+                let left = false;
+                const handler = () => {
+                    if (document.visibilityState === 'hidden') left = true;
+                    else if (!left) return;
+                    ref.invokeMethodAsync('LeftScreen').catch(() => { });
+                };
+                document.addEventListener('visibilitychange', handler);
+                window.truitje._leave = handler;
+            },
+            unwatchLeave: () => {
+                if (window.truitje._leave) document.removeEventListener('visibilitychange', window.truitje._leave);
+                window.truitje._leave = null;
+            },
         };
 
         // Navigatie in de app: hoeveel schermen terug er nog binnen de app liggen (voor de terugknop van PageHeader),

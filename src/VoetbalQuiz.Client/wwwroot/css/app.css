@@ -452,6 +452,32 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent); box-sha
     to { opacity: 1; transform: none; }
 }
 
+/* Lijst: twee kolommen van boven naar onder (1990, 1991, … links, de rest rechts), zodat een lange lijst op één gsm-scherm past. */
+.lijst { list-style: none; padding: 0; margin: 0 0 16px; columns: 2; column-gap: 6px; }
+.lijst-row {
+    break-inside: avoid;
+    display: flex; gap: 8px; align-items: baseline;
+    min-height: 32px; padding: 6px 8px; margin-bottom: 4px;
+    background: var(--tile-bg); border-radius: 8px; box-shadow: inset 0 0 0 1px var(--sb-line);
+    font-size: .85rem; line-height: 1.25;
+}
+.lijst-label { flex: none; font-family: var(--digits); color: var(--sb-digit); font-size: .8rem; }
+.lijst-name { min-width: 0; overflow-wrap: anywhere; }
+.lijst-row.open .lijst-name::before { content: "…"; color: var(--muted); }
+.lijst-row.given { opacity: .6; font-style: italic; }
+.lijst-row.found { box-shadow: inset 0 0 0 1px var(--ok); background: var(--success-bg); }
+.lijst-row.found.new { animation: lijst-in .5s ease-out; }
+/* Na afloop: wat je miste gedimd met een ✗, wat je vond met een ✓ (niet enkel kleur). */
+.lijst-row.missed { opacity: .7; }
+.lijst-row.missed .lijst-name::before { content: "✗ "; color: var(--fail-text); font-weight: 900; }
+.lijst-row.mine .lijst-name::before { content: "✓ "; color: var(--ok-text); font-weight: 900; }
+@keyframes lijst-in {
+    0% { transform: scale(.92); box-shadow: inset 0 0 0 999px rgba(31, 157, 85, .5); }
+    100% { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) { .lijst-row.found.new { animation: none; } }
+.leave-note { font-size: .8rem; display: flex; gap: 6px; justify-content: center; align-items: center; }
+
 .actions { display: flex; justify-content: center; }
 .actions .linkish { color: rgba(255, 255, 255, .75); display: inline-flex; align-items: center; min-height: var(--tap); padding: 0 16px; }
 

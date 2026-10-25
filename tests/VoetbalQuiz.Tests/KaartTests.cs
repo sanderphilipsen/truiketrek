@@ -130,7 +130,7 @@ public sealed class KaartTests : IDisposable
         // De uitleg volgt de regels (geen vaste "2 minuten" meer).
         Assert.Contains($"{(int)QuestionRules.KaartSeconds / 60} minuten", info.HowTo);
         Assert.Contains($"{QuestionRules.KaartPins} spelden", info.HowTo);
-        Assert.Equal(QuestionType.Kaart, Enum.GetValues<QuestionType>()[^1]); // achteraan in de enum
+        Assert.Equal(15, (int)QuestionType.Kaart); // nieuwe types komen er achter, de kaart schuift nooit op
         Assert.True(QuestionRules.KaartPins < QuestionRules.MaxGuesses(QuestionType.Kaart));
         Assert.Equal(50, QuestionRules.KaartPointsPerPin);
         Assert.Equal(QuestionRules.KaartPartPoints, QuestionRules.KaartPins * QuestionRules.KaartPointsPerPin);
