@@ -5,7 +5,7 @@
     <ul class="derby-ticker" aria-live="polite">
         @foreach (var e in Derby.Events)
         {
-            <li class="@(e.TargetIsMe ? "hit" : "")"><Icon Name="megaphone" /> @Line(e)</li>
+            <li class="@(e.TargetIsMe ? "hit" : "")"><Icon Name="@DerbyRules.Get(e.Weapon).Icon" /> @Line(e)</li>
         }
     </ul>
 }
@@ -16,7 +16,7 @@
     <div class="derby-weapon @(Derby.MyWeaponUsed ? "used" : "") @(Picking ? "picking" : "")">
         <button type="button" class="derby-weapon-btn" disabled="@(Busy || !Derby.CanUseWeapon)" @onclick="OnUse"
                 title="@info.HowTo">
-            <span class="dw-icon">@if (Derby.Ceasefire && !Derby.MyWeaponUsed) { <Icon Name="lock" /> } else { @info.Icon }</span>
+            <span class="dw-icon"><Icon Name="@(Derby.Ceasefire && !Derby.MyWeaponUsed ? "lock" : info.Icon)" /></span>
             <span class="dw-text">
                 <b>@info.Name</b>
                 <small>@Status(weapon)</small>
@@ -63,17 +63,17 @@
         var pending = e.Since < 0 ? " (klaargezet)" : "";
         return e.Weapon switch
         {
-            DerbyWeapon.RodeKaart => $"🟥 {by} geeft rood aan {(e.TargetIsMe ? "jou" : e.Target)}{pending}"
+            DerbyWeapon.RodeKaart => $"{by} geeft rood aan {(e.TargetIsMe ? "jou" : e.Target)}{pending}"
                                      + (e.Effect is > 0 ? $": −{e.Effect} punten" : ""),
-            DerbyWeapon.BengaalsVuur => $"🎆 {by} steekt bengaals vuur af{pending}",
-            DerbyWeapon.Wissel => $"🔁 {by} vraagt een wissel aan: nieuwe vraag voor iedereen",
-            DerbyWeapon.Trump => $"🟨 {by} zet de Trump booster in{pending}"
+            DerbyWeapon.BengaalsVuur => $"{by} steekt bengaals vuur af{pending}",
+            DerbyWeapon.Wissel => $"{by} vraagt een wissel aan: nieuwe vraag voor iedereen",
+            DerbyWeapon.Trump => $"{by} zet de Trump booster in{pending}"
                                  + (e.Effect is > 0 ? $": tegenstanders −{e.Effect} punten" : ""),
-            DerbyWeapon.Gokchinees => $"🎲 {by} gokt dubbel of niks{pending}"
+            DerbyWeapon.Gokchinees => $"{by} gokt dubbel of niks{pending}"
                                       + (e.Effect switch { > 0 => $": gewonnen, +{e.Effect} punten", < 0 => $": verloren, {e.Effect} punten", _ => "" }),
-            DerbyWeapon.PropereHanden => $"🧤 {by} steelt de helft van de punten van {(e.TargetIsMe ? "jou" : e.Target)}{pending}"
+            DerbyWeapon.PropereHanden => $"{by} steelt de helft van de punten van {(e.TargetIsMe ? "jou" : e.Target)}{pending}"
                                          + (e.Effect is > 0 ? $": {(e.TargetIsMe ? "jij verliest" : "buit")} {e.Effect} punten" : ""),
-            DerbyWeapon.Verlenging => $"⏱️ {by} krijgt verlenging: +{DerbyRules.ExtensionSeconds} seconden{pending}",
+            DerbyWeapon.Verlenging => $"{by} krijgt verlenging: +{DerbyRules.ExtensionSeconds} seconden{pending}",
             _ => "",
         };
     }

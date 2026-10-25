@@ -11,7 +11,7 @@
         @foreach (var t in QuestionTypes.All.Where(t => !t.FromPlayers))
         {
             var type = t.Type;
-            <button class="@(_type == type ? "on" : "")" @onclick="() => TypeAsync(type)">@t.Icon @t.Name</button>
+            <button class="@(_type == type ? "on" : "")" @onclick="() => TypeAsync(type)"><Icon Name="@t.Icon" /> @t.Name</button>
         }
     </div>
     <p class="muted light-text">"Wie ben ik?"-vragen zijn spelers: die beheer je bij <a href="admin/spelers" class="light-link">Spelers</a>.</p>

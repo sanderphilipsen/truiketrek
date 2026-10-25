@@ -22,7 +22,7 @@
     }
     else if (LocalSince(flare) < 2)
     {
-        <div class="derby-toast">🎆 Afgestoken! Je tegenstanders zien even niets.</div>
+        <div class="derby-toast"><Icon Name="@DerbyRules.Get(DerbyWeapon.BengaalsVuur).Icon" /> Afgestoken! Je tegenstanders zien even niets.</div>
     }
 }
 
@@ -81,7 +81,7 @@
                     </g>
                     <path d="M45 81 L56 84 M75 81 L64 84" stroke="#031a10" stroke-width="3" stroke-linecap="round" fill="none" />
                 </svg>
-                <figcaption>🎆 Vuur van @(f.ByMe ? "jou" : f.By)</figcaption>
+                <figcaption><Icon Name="@DerbyRules.Get(DerbyWeapon.BengaalsVuur).Icon" /> Vuur van @(f.ByMe ? "jou" : f.By)</figcaption>
             </figure>
         }
         @if (Trump is { } t)
@@ -120,7 +120,7 @@
                     </g>
                     <path d="M43 56 L56 57 M64 57 L77 56" stroke="#031a10" stroke-width="3" stroke-linecap="round" fill="none" />
                 </svg>
-                <figcaption>🟨 Booster van @(t.ByMe ? "jou" : t.By)</figcaption>
+                <figcaption><Icon Name="@DerbyRules.Get(DerbyWeapon.Trump).Icon" /> Booster van @(t.ByMe ? "jou" : t.By)</figcaption>
             </figure>
         }
         @foreach (var b in Gambles)
@@ -157,7 +157,7 @@
                     <path d="M40 46 L80 46 L76 36 L44 36 Z" fill="#f4f1ea" />
                     <rect x="38" y="44" width="44" height="5" rx="2" fill="#1d1d22" />
                 </svg>
-                <figcaption>🎲 @(b.ByMe ? "Jij gokt" : $"{b.By} gokt"): dubbel of niks</figcaption>
+                <figcaption><Icon Name="@DerbyRules.Get(DerbyWeapon.Gokchinees).Icon" /> @(b.ByMe ? "Jij gokt" : $"{b.By} gokt"): dubbel of niks</figcaption>
             </figure>
         }
         @foreach (var s in Steals)
@@ -196,7 +196,7 @@
                     <circle cx="44" cy="78" r="3.5" fill="#f0a0a0" opacity=".6" />
                     <circle cx="72" cy="78" r="3.5" fill="#f0a0a0" opacity=".6" />
                 </svg>
-                <figcaption>🧤 @(s.ByMe ? "Jij steelt" : $"{s.By} steelt") van @(s.TargetIsMe ? "jou" : s.Target)</figcaption>
+                <figcaption><Icon Name="@DerbyRules.Get(DerbyWeapon.PropereHanden).Icon" /> @(s.ByMe ? "Jij steelt" : $"{s.By} steelt") van @(s.TargetIsMe ? "jou" : s.Target)</figcaption>
             </figure>
         }
         @foreach (var x in Extensions)
@@ -229,7 +229,7 @@
 
 @if (Steals.FirstOrDefault(s => s.TargetIsMe && LocalSince(s) < 4) is { } steal)
 {
-    <div class="derby-toast" role="alert">🧤 @steal.By steelt de helft van je punten bij deze vraag!</div>
+    <div class="derby-toast" role="alert"><Icon Name="@DerbyRules.Get(DerbyWeapon.PropereHanden).Icon" /> @steal.By steelt de helft van je punten bij deze vraag!</div>
 }
 
 @if (RedCardOnMe is { } card)

@@ -42,7 +42,7 @@
                 @foreach (var s in items)
                 {
                     <a class="admin-row-card" href="admin/specials/@s.Id">
-                        <span class="table-icon">@s.Icon</span>
+                        <span class="table-icon"><Icon Name="@s.Icon" /></span>
                         <div class="table-info">
                             <b>@s.Name</b>
                             <small>@SpecialStatus.Period(s) · @s.PoolSize spelers in de pool · @s.Participants deelnemer(s)</small>

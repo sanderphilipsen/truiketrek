@@ -22,7 +22,7 @@ else
     var next = _overview.Questions.FirstOrDefault(q => q.Status != QuestionStatus.Answered);
 
     <section class="card hero">
-        <div class="type-banner">@QuestionTypes.DayLabel(_overview)</div>
+        <div class="type-banner"><TypesLabel Types="QuestionTypes.DayTypes(_overview)" /></div>
         <div class="score-big">@_overview.TotalPoints <small>punten</small></div>
         <div class="muted">@answered / @_overview.Questions.Count gespeeld</div>
 

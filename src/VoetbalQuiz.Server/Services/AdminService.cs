@@ -397,7 +397,7 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
 
         special.Theme = edit.Theme;
         special.Name = edit.Name.Trim();
-        special.Icon = string.IsNullOrWhiteSpace(edit.Icon) ? "✨" : edit.Icon.Trim()[..Math.Min(edit.Icon.Trim().Length, 8)];
+        special.Icon = SpecialIcons.Normalize(edit.Icon);
         special.Description = edit.Description?.Trim() ?? "";
         special.StartDate = edit.StartDate;
         special.EndDate = edit.EndDate;

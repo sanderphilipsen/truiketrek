@@ -56,7 +56,7 @@ else
                             <div class="teaser-icons">
                                 @foreach (var b in earned.Take(6))
                                 {
-                                    <span title="@b.Name">@b.Icon</span>
+                                    <span class="tier-@b.Tier.ToString().ToLowerInvariant()" title="@b.Name"><Icon Name="@b.Icon" /></span>
                                 }
                             </div>
                         }

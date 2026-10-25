@@ -16,82 +16,83 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
         int FullLineups, int MonthPodiums, int OnlineWinStreak, bool FullWeek, int RedDevilHits, int ChampionsHits,
         int CleanDays, int TotalPoints, int CorrectTotal, int Stubborn, int LastSecond, int BigTableWins, int Rating);
 
+    /// <summary>Icon is de naam van een lijnicoon in de client (Shared/Icon.razor), geen emoji.</summary>
     private record BadgeDef(string Id, string Icon, string Name, string Description, BadgeTier Tier, Func<Facts, int> Value, int Goal);
 
     private static readonly BadgeDef[] Badges =
     [
-        new("aftrap", "🎯", "Aftrap", "Speel je eerste daily", BadgeTier.Brons, f => f.DaysPlayed, 1),
-        new("vaste-waarde", "📅", "Vaste waarde", "Speel 30 dagen de daily", BadgeTier.Zilver, f => f.DaysPlayed, 30),
-        new("clubicoon", "🏟️", "Clubicoon", "Speel 100 dagen de daily", BadgeTier.Goud, f => f.DaysPlayed, 100),
-        new("op-dreef", "🔥", "Op dreef", "Speel 7 dagen op rij", BadgeTier.Zilver, f => f.LongestStreak, 7),
-        new("onstuitbaar", "☄️", "Onstuitbaar", "Speel 30 dagen op rij", BadgeTier.Goud, f => f.LongestStreak, 30),
-        new("perfecte-dag", "💯", "Perfecte dag", "Alle vragen van een daily juist", BadgeTier.Zilver, f => f.PerfectDays, 1),
-        new("snelle-vinger", "⚡", "Snelle vinger", "10 keer juist bij de eerste tip", BadgeTier.Zilver, f => f.FirstHintHits, 10),
-        new("bliksem", "🚀", "Bliksem", "50 keer juist bij de eerste tip", BadgeTier.Goud, f => f.FirstHintHits, 50),
-        new("topdag", "🔝", "Topdag", "Haal 800 punten op één dag", BadgeTier.Zilver, f => f.BestDay, 800),
-        new("dagwinnaar", "👑", "Dagwinnaar", "Win een daily", BadgeTier.Brons, f => f.DaysWon, 1),
-        new("dagkoning", "🏅", "Dagkoning", "Win 10 keer de daily", BadgeTier.Goud, f => f.DaysWon, 10),
-        new("online-debuut", "⚔️", "Online debuut", "Speel een online wedstrijd uit", BadgeTier.Brons, f => f.MatchesPlayed, 1),
-        new("eerste-zege", "🥇", "Eerste zege", "Win een online wedstrijd", BadgeTier.Brons, f => f.MatchesWon, 1),
-        new("tafelkampioen", "🏆", "Partijtjeskampioen", "Win 10 online wedstrijden", BadgeTier.Goud, f => f.MatchesWon, 10),
-        new("feestganger", "✨", "Feestganger", "Speel een special", BadgeTier.Brons, f => f.SpecialsPlayed, 1),
-        new("specialist", "🎉", "Specialist", "Win een special", BadgeTier.Goud, f => f.SpecialsWon, 1),
-        new("seizoenskampioen", "⚽", "Gouden Bal", "Win de Gouden Bal: word nummer 1 van een maand", BadgeTier.Goud, f => f.GoldenBalls, 1),
-        new("basisspeler", "⭐", "Basisspeler", "Bereik level 10", BadgeTier.Zilver, f => f.Level, 10),
-        new("rode-duivel", "🌟", "Rode Duivel", "Bereik level 20", BadgeTier.Goud, f => f.Level, 20),
-        new("nachtuil", "🦉", "Nachtuil", "Speel een vraag tussen middernacht en 5 uur", BadgeTier.Brons, f => f.NightOwl ? 1 : 0, 1),
-        new("vroege-vogel", "🐦", "Vroege vogel", "Speel een vraag tussen 5 en 7 uur 's ochtends", BadgeTier.Brons, f => f.EarlyBird ? 1 : 0, 1),
-        new("gokker", "🎲", "Gokker van dienst", "50 foute pogingen (gewaagd!)", BadgeTier.Brons, f => f.WrongGuesses, 50),
+        new("aftrap", "play-circle", "Aftrap", "Speel je eerste daily", BadgeTier.Brons, f => f.DaysPlayed, 1),
+        new("vaste-waarde", "calendar-blank", "Vaste waarde", "Speel 30 dagen de daily", BadgeTier.Zilver, f => f.DaysPlayed, 30),
+        new("clubicoon", "flag-pennant", "Clubicoon", "Speel 100 dagen de daily", BadgeTier.Goud, f => f.DaysPlayed, 100),
+        new("op-dreef", "flame", "Op dreef", "Speel 7 dagen op rij", BadgeTier.Zilver, f => f.LongestStreak, 7),
+        new("onstuitbaar", "meteor", "Onstuitbaar", "Speel 30 dagen op rij", BadgeTier.Goud, f => f.LongestStreak, 30),
+        new("perfecte-dag", "seal-check", "Perfecte dag", "Alle vragen van een daily juist", BadgeTier.Zilver, f => f.PerfectDays, 1),
+        new("snelle-vinger", "lightning", "Snelle vinger", "10 keer juist bij de eerste tip", BadgeTier.Zilver, f => f.FirstHintHits, 10),
+        new("bliksem", "rocket-launch", "Bliksem", "50 keer juist bij de eerste tip", BadgeTier.Goud, f => f.FirstHintHits, 50),
+        new("topdag", "arrow-fat-lines-up", "Topdag", "Haal 800 punten op één dag", BadgeTier.Zilver, f => f.BestDay, 800),
+        new("dagwinnaar", "crown-simple", "Dagwinnaar", "Win een daily", BadgeTier.Brons, f => f.DaysWon, 1),
+        new("dagkoning", "crown", "Dagkoning", "Win 10 keer de daily", BadgeTier.Goud, f => f.DaysWon, 10),
+        new("online-debuut", "sword", "Online debuut", "Speel een online wedstrijd uit", BadgeTier.Brons, f => f.MatchesPlayed, 1),
+        new("eerste-zege", "number-circle-one", "Eerste zege", "Win een online wedstrijd", BadgeTier.Brons, f => f.MatchesWon, 1),
+        new("tafelkampioen", "trophy", "Partijtjeskampioen", "Win 10 online wedstrijden", BadgeTier.Goud, f => f.MatchesWon, 10),
+        new("feestganger", "sparkle", "Feestganger", "Speel een special", BadgeTier.Brons, f => f.SpecialsPlayed, 1),
+        new("specialist", "confetti", "Specialist", "Win een special", BadgeTier.Goud, f => f.SpecialsWon, 1),
+        new("seizoenskampioen", "soccer-ball", "Gouden Bal", "Win de Gouden Bal: word nummer 1 van een maand", BadgeTier.Goud, f => f.GoldenBalls, 1),
+        new("basisspeler", "star", "Basisspeler", "Bereik level 10", BadgeTier.Zilver, f => f.Level, 10),
+        new("rode-duivel", "star-four", "Rode Duivel", "Bereik level 20", BadgeTier.Goud, f => f.Level, 20),
+        new("nachtuil", "moon-stars", "Nachtuil", "Speel een vraag tussen middernacht en 5 uur", BadgeTier.Brons, f => f.NightOwl ? 1 : 0, 1),
+        new("vroege-vogel", "bird", "Vroege vogel", "Speel een vraag tussen 5 en 7 uur 's ochtends", BadgeTier.Brons, f => f.EarlyBird ? 1 : 0, 1),
+        new("gokker", "dice-five", "Gokker van dienst", "50 foute pogingen (gewaagd!)", BadgeTier.Brons, f => f.WrongGuesses, 50),
 
         // Vraagtypes
         // Solo-types (De Krant, de kaart) tellen niet mee: ze komen niet elke week, de badge mag daar niet op wachten.
-        new("allrounder", "🧠", "Allrounder", $"Speel elk van de {QuestionTypes.All.Count(t => !t.Alone)} vraagtypes", BadgeTier.Zilver, f => f.TypesPlayed, QuestionTypes.All.Count(t => !t.Alone)),
-        new("jaartallenkenner", "📆", "Jaartallenkenner", "10 keer het exacte jaar", BadgeTier.Brons, f => f.ExactYears, 10),
-        new("historicus", "📜", "Historicus", "50 keer het exacte jaar", BadgeTier.Goud, f => f.ExactYears, 50),
-        new("supersnel", "💨", "Supersnel", "25 keer 90+ punten bij Snelvuur", BadgeTier.Zilver, f => f.FastSnelvuur, 25),
-        new("vreemde-eend", "🦆", "Vreemde eend", "25 keer juist bij Wie hoort er niet bij?", BadgeTier.Zilver, f => f.NietBijHits, 25),
-        new("scout", "🔭", "Scout", "10 keer een carrièrepad geraden bij de eerste club", BadgeTier.Zilver, f => f.FirstClubHits, 10),
-        new("emoji-expert", "😎", "Emoji-expert", "25 emoji-raadsels opgelost", BadgeTier.Zilver, f => f.EmojiHits, 25),
-        new("bondscoach", "📋", "Bondscoach", "Vul een opstelling volledig aan", BadgeTier.Brons, f => f.FullLineups, 1),
-        new("trainer-van-het-jaar", "🧥", "Trainer van het jaar", "10 opstellingen volledig aangevuld", BadgeTier.Goud, f => f.FullLineups, 10),
+        new("allrounder", "brain", "Allrounder", $"Speel elk van de {QuestionTypes.All.Count(t => !t.Alone)} vraagtypes", BadgeTier.Zilver, f => f.TypesPlayed, QuestionTypes.All.Count(t => !t.Alone)),
+        new("jaartallenkenner", "hourglass", "Jaartallenkenner", "10 keer het exacte jaar", BadgeTier.Brons, f => f.ExactYears, 10),
+        new("historicus", "scroll", "Historicus", "50 keer het exacte jaar", BadgeTier.Goud, f => f.ExactYears, 50),
+        new("supersnel", "wind", "Supersnel", "25 keer 90+ punten bij Snelvuur", BadgeTier.Zilver, f => f.FastSnelvuur, 25),
+        new("vreemde-eend", "puzzle-piece", "Vreemde eend", "25 keer juist bij Wie hoort er niet bij?", BadgeTier.Zilver, f => f.NietBijHits, 25),
+        new("scout", "binoculars", "Scout", "10 keer een carrièrepad geraden bij de eerste club", BadgeTier.Zilver, f => f.FirstClubHits, 10),
+        new("emoji-expert", "smiley-wink", "Emoji-expert", "25 emoji-raadsels opgelost", BadgeTier.Zilver, f => f.EmojiHits, 25),
+        new("bondscoach", "clipboard-text", "Bondscoach", "Vul een opstelling volledig aan", BadgeTier.Brons, f => f.FullLineups, 1),
+        new("trainer-van-het-jaar", "strategy", "Trainer van het jaar", "10 opstellingen volledig aangevuld", BadgeTier.Goud, f => f.FullLineups, 10),
 
         // Thema's
-        new("rode-duivels-fan", "😈", "Rode Duivels-fan", "50 juiste antwoorden over de Rode Duivels", BadgeTier.Zilver, f => f.RedDevilHits, 50),
-        new("cl-kenner", "🌌", "Champions League-kenner", "25 juiste antwoorden over de Champions League", BadgeTier.Zilver, f => f.ChampionsHits, 25),
+        new("rode-duivels-fan", "heart", "Rode Duivels-fan", "50 juiste antwoorden over de Rode Duivels", BadgeTier.Zilver, f => f.RedDevilHits, 50),
+        new("cl-kenner", "globe", "Champions League-kenner", "25 juiste antwoorden over de Champions League", BadgeTier.Zilver, f => f.ChampionsHits, 25),
 
         // Regelmaat en klassement
-        new("volle-week", "🗓️", "Volle week", "Speel elke dag van een kalenderweek (ma–zo)", BadgeTier.Brons, f => f.FullWeek ? 1 : 0, 1),
-        new("maandpodium", "🥉", "Maandpodium", "Eindig in de top 3 van een maand", BadgeTier.Zilver, f => f.MonthPodiums, 1),
+        new("volle-week", "calendar-check", "Volle week", "Speel elke dag van een kalenderweek (ma–zo)", BadgeTier.Brons, f => f.FullWeek ? 1 : 0, 1),
+        new("maandpodium", "ranking", "Maandpodium", "Eindig in de top 3 van een maand", BadgeTier.Zilver, f => f.MonthPodiums, 1),
         // Gouden Bal (de nummer 1 van een maand, zie GoldenBallService)
-        new("zilveren-bal", "🥈", "Zilveren Bal", "Eindig als tweede in het maandklassement", BadgeTier.Zilver, f => f.SilverBalls, 1),
-        new("titelverdediger", "🛡️", "Titelverdediger", "Win de Gouden Bal twee maanden na elkaar", BadgeTier.Goud, f => f.GoldenBallStreak, 2),
-        new("gouden-hattrick", "🎩", "Gouden hattrick", "Win 3 Gouden Ballen", BadgeTier.Goud, f => f.GoldenBalls, 3),
-        new("messi-niveau", "💫", "Messi-niveau", "Win 8 Gouden Ballen, net als Messi", BadgeTier.Goud, f => f.GoldenBalls, 8),
+        new("zilveren-bal", "soccer-ball", "Zilveren Bal", "Eindig als tweede in het maandklassement", BadgeTier.Zilver, f => f.SilverBalls, 1),
+        new("titelverdediger", "shield-star", "Titelverdediger", "Win de Gouden Bal twee maanden na elkaar", BadgeTier.Goud, f => f.GoldenBallStreak, 2),
+        new("gouden-hattrick", "number-circle-three", "Gouden hattrick", "Win 3 Gouden Ballen", BadgeTier.Goud, f => f.GoldenBalls, 3),
+        new("messi-niveau", "shooting-star", "Messi-niveau", "Win 8 Gouden Ballen, net als Messi", BadgeTier.Goud, f => f.GoldenBalls, 8),
 
-        new("specials-verzamelaar", "🎁", "Specials-verzamelaar", "Speel 5 specials", BadgeTier.Zilver, f => f.SpecialsPlayed, 5),
+        new("specials-verzamelaar", "gift", "Specials-verzamelaar", "Speel 5 specials", BadgeTier.Zilver, f => f.SpecialsPlayed, 5),
 
         // Online
-        new("vaste-gast", "🪑", "Vaste gast", "Speel 25 online wedstrijden", BadgeTier.Zilver, f => f.MatchesPlayed, 25),
-        new("online-veteraan", "🎖️", "Online veteraan", "Speel 100 online wedstrijden", BadgeTier.Goud, f => f.MatchesPlayed, 100),
-        new("tafelkoning", "🤴", "Partijtjeskoning", "Win 3 online wedstrijden op rij", BadgeTier.Goud, f => f.OnlineWinStreak, 3),
-        new("volle-tafel", "👥", "Vol partijtje", "Win een online wedstrijd tegen minstens 3 tegenstanders", BadgeTier.Zilver, f => f.BigTableWins, 1),
-        new("elo-meester", "📈", "Elo-meester", "Bereik een online rating van 1200", BadgeTier.Goud, f => f.Rating, 1200),
+        new("vaste-gast", "chair", "Vaste gast", "Speel 25 online wedstrijden", BadgeTier.Zilver, f => f.MatchesPlayed, 25),
+        new("online-veteraan", "medal-military", "Online veteraan", "Speel 100 online wedstrijden", BadgeTier.Goud, f => f.MatchesPlayed, 100),
+        new("tafelkoning", "crown-cross", "Partijtjeskoning", "Win 3 online wedstrijden op rij", BadgeTier.Goud, f => f.OnlineWinStreak, 3),
+        new("volle-tafel", "users-three", "Vol partijtje", "Win een online wedstrijd tegen minstens 3 tegenstanders", BadgeTier.Zilver, f => f.BigTableWins, 1),
+        new("elo-meester", "chart-line-up", "Elo-meester", "Bereik een online rating van 1200", BadgeTier.Goud, f => f.Rating, 1200),
 
         // Lange adem
-        new("eeuwfeest", "🎂", "Seizoenkaart", "Speel 365 dagen de daily", BadgeTier.Goud, f => f.DaysPlayed, 365),
-        new("ijzeren-man", "🦾", "IJzeren man", "Speel 100 dagen op rij", BadgeTier.Goud, f => f.LongestStreak, 100),
-        new("legende", "🐐", "GOAT", "Bereik level 50", BadgeTier.Goud, f => f.Level, 50),
-        new("puntenmachine", "🧮", "Puntenmachine", "Verzamel 10.000 punten (daily en specials)", BadgeTier.Zilver, f => f.TotalPoints, 10_000),
-        new("puntenkanon", "💣", "Puntenkanon", "Verzamel 50.000 punten (daily en specials)", BadgeTier.Goud, f => f.TotalPoints, 50_000),
-        new("scherpschutter", "🎯", "Scherpschutter", "100 juiste antwoorden", BadgeTier.Brons, f => f.CorrectTotal, 100),
-        new("encyclopedie", "📚", "Wandelende encyclopedie", "1000 juiste antwoorden", BadgeTier.Goud, f => f.CorrectTotal, 1000),
+        new("eeuwfeest", "ticket", "Seizoenkaart", "Speel 365 dagen de daily", BadgeTier.Goud, f => f.DaysPlayed, 365),
+        new("ijzeren-man", "barbell", "IJzeren man", "Speel 100 dagen op rij", BadgeTier.Goud, f => f.LongestStreak, 100),
+        new("legende", "mountains", "GOAT", "Bereik level 50", BadgeTier.Goud, f => f.Level, 50),
+        new("puntenmachine", "calculator", "Puntenmachine", "Verzamel 10.000 punten (daily en specials)", BadgeTier.Zilver, f => f.TotalPoints, 10_000),
+        new("puntenkanon", "bomb", "Puntenkanon", "Verzamel 50.000 punten (daily en specials)", BadgeTier.Goud, f => f.TotalPoints, 50_000),
+        new("scherpschutter", "target", "Scherpschutter", "100 juiste antwoorden", BadgeTier.Brons, f => f.CorrectTotal, 100),
+        new("encyclopedie", "books", "Wandelende encyclopedie", "1000 juiste antwoorden", BadgeTier.Goud, f => f.CorrectTotal, 1000),
 
         // Topprestaties en karakter
-        new("perfectionist", "💎", "Perfectionist", "5 perfecte dagen", BadgeTier.Goud, f => f.PerfectDays, 5),
-        new("foutloos", "🧼", "Clean sheet", "Een volledige daily alles juist, zonder één foute poging", BadgeTier.Zilver, f => f.CleanDays, 1),
-        new("topdag-plus", "🌠", "Sterrendag", "Haal 900 punten op één dag", BadgeTier.Goud, f => f.BestDay, 900),
-        new("doorzetter", "🐂", "Doorzetter", "Toch nog juist na 3 of meer foute pogingen", BadgeTier.Brons, f => f.Stubborn, 1),
-        new("op-de-valreep", "⏱️", "Op de valreep", "10 keer juist in de allerlaatste seconden van Wie ben ik?", BadgeTier.Brons, f => f.LastSecond, 10),
+        new("perfectionist", "diamond", "Perfectionist", "5 perfecte dagen", BadgeTier.Goud, f => f.PerfectDays, 5),
+        new("foutloos", "shield-check", "Clean sheet", "Een volledige daily alles juist, zonder één foute poging", BadgeTier.Zilver, f => f.CleanDays, 1),
+        new("topdag-plus", "sun", "Sterrendag", "Haal 900 punten op één dag", BadgeTier.Goud, f => f.BestDay, 900),
+        new("doorzetter", "hand-fist", "Doorzetter", "Toch nog juist na 3 of meer foute pogingen", BadgeTier.Brons, f => f.Stubborn, 1),
+        new("op-de-valreep", "timer", "Op de valreep", "10 keer juist in de allerlaatste seconden van Wie ben ik?", BadgeTier.Brons, f => f.LastSecond, 10),
     ];
 
     // ---------- Profiel ----------
@@ -309,10 +310,10 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
 
         var specialWins = await db.DailyChallenges
             .Where(c => c.SpecialEventId != null && c.WinnerUserId != null)
-            .Select(c => new { c.Winner!.UserName, c.SpecialEvent!.Name, c.SpecialEvent.Icon, c.WinnerPoints })
+            .Select(c => new { c.Winner!.UserName, c.SpecialEvent!.Name, c.WinnerPoints })
             .ToListAsync();
         foreach (var w in specialWins)
-            Add(w.UserName!, new Trophy(TrophyKind.Special, $"{w.Icon} {w.Name}", 1, w.WinnerPoints ?? 0));
+            Add(w.UserName!, new Trophy(TrophyKind.Special, w.Name, 1, w.WinnerPoints ?? 0));
 
         return trophies;
     }

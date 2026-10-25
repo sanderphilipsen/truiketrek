@@ -68,7 +68,7 @@ else
                             var type = t.Type;
                             var on = _chosen.Contains(type);
                             <button type="button" class="tafel-type @(on ? "active" : "")" aria-pressed="@(on ? "true" : "false")" @onclick="() => Toggle(type)">
-                                <span class="tafel-type-icon" aria-hidden="true">@t.Icon</span>
+                                <span class="tafel-type-icon"><Icon Name="@t.Icon" /></span>
                                 <span class="tafel-type-name">@t.Name</span>
                                 <span class="tafel-type-check" aria-hidden="true">@(on ? "✓" : "")</span>
                             </button>
@@ -115,7 +115,7 @@ else
                     <ul class="derby-arsenal" aria-label="De wapens">
                         @foreach (var w in DerbyRules.All)
                         {
-                            <li title="@w.HowTo"><span aria-hidden="true">@w.Icon</span> @w.Name</li>
+                            <li title="@w.HowTo"><Icon Name="@w.Icon" /> @w.Name</li>
                         }
                     </ul>
                     @if (_chosen.Count > 0 && !_chosen.Any(DerbyRules.TrumpWorksOn))
@@ -183,7 +183,7 @@ else
 
     private string FootSummary => _chosen.Count == 0
         ? "Kies eerst een spelvorm."
-        : $"{QuestionTypes.Label(_chosen)} · {Questions} vragen · {_seats} plaatsen{(_derby ? " · Derby" : "")}";
+        : $"{QuestionTypes.Name(_chosen)} · {Questions} vragen · {_seats} plaatsen{(_derby ? " · Derby" : "")}";
 
     protected override async Task OnInitializedAsync()
     {

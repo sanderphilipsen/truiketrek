@@ -18,25 +18,25 @@ public static class QuestionTypes
 {
     public static readonly List<QuestionTypeInfo> All =
     [
-        new(QuestionType.WieBenIk, "Wie ben ik?", "🕵️", "Een speler beschrijft zichzelf in 5 tips. Typ zijn naam.", 10, 100, "", FromPlayers: true),
-        new(QuestionType.Snelvuur, "Snelvuur", "⚡", "Kies het juiste antwoord uit 4. Je hebt 15 seconden.", 10, 100, "snelvuur"),
-        new(QuestionType.Carriere, "Carrièrepad", "🧭", "De clubs verschijnen één voor één. Wie is de speler?", 10, 100, "carriere"),
-        new(QuestionType.NietBij, "Wie hoort er niet bij?", "🧩", "Tik op de vreemde eend. Je hebt 15 seconden.", 10, 100, "niet-bij"),
-        new(QuestionType.Jaar, "Raad het jaar", "📅", "Kies het jaartal. Hoe dichter, hoe meer punten.", 10, 100, "jaar"),
-        new(QuestionType.Emoji, "Emoji-raadsel", "😀", "Welke speler of club zit er in deze emoji's?", 10, 100, "emoji"),
-        new(QuestionType.Opstelling, "Opstelling", "📋", "Vul de ontbrekende spelers van een bekende basiself aan.", 5, 200, "opstelling"),
-        new(QuestionType.Wissel, "Wissel", "🔄", "Een spraakmakende transfer, feit per feit. Wie maakte de overstap?", 10, 100, "wissel"),
-        new(QuestionType.Rugnummer, "Rugnummer", "🔢", "Een rugnummer, dan positie, land en club. Wie droeg dit shirt?", 10, 100, "rugnummer"),
-        new(QuestionType.Mannetje, "Mannetje", "👤", "Van zwart silhouet tot volledig mannetje. Herken jij de speler?", 10, 100, "mannetje"),
-        new(QuestionType.Kluts, "Kluts in de zestien", "🌀", "De letters van een naam liggen door elkaar. Om de paar seconden valt er één juist.", 10, 100, "", FromPlayers: true),
-        new(QuestionType.Counter, "Counter", "🏃", $"Zoveel mogelijk van {QuestionRules.CounterPlayers} spelers in {(int)QuestionRules.CounterSeconds} seconden, met één tip per speler. Raden of doorspelen!",
+        new(QuestionType.WieBenIk, "Wie ben ik?", "question", "Een speler beschrijft zichzelf in 5 tips. Typ zijn naam.", 10, 100, "", FromPlayers: true),
+        new(QuestionType.Snelvuur, "Snelvuur", "lightning", "Kies het juiste antwoord uit 4. Je hebt 15 seconden.", 10, 100, "snelvuur"),
+        new(QuestionType.Carriere, "Carrièrepad", "path", "De clubs verschijnen één voor één. Wie is de speler?", 10, 100, "carriere"),
+        new(QuestionType.NietBij, "Wie hoort er niet bij?", "puzzle-piece", "Tik op de vreemde eend. Je hebt 15 seconden.", 10, 100, "niet-bij"),
+        new(QuestionType.Jaar, "Raad het jaar", "calendar-dots", "Kies het jaartal. Hoe dichter, hoe meer punten.", 10, 100, "jaar"),
+        new(QuestionType.Emoji, "Emoji-raadsel", "smiley", "Welke speler of club zit er in deze emoji's?", 10, 100, "emoji"),
+        new(QuestionType.Opstelling, "Opstelling", "strategy", "Vul de ontbrekende spelers van een bekende basiself aan.", 5, 200, "opstelling"),
+        new(QuestionType.Wissel, "Wissel", "arrows-left-right", "Een spraakmakende transfer, feit per feit. Wie maakte de overstap?", 10, 100, "wissel"),
+        new(QuestionType.Rugnummer, "Rugnummer", "t-shirt", "Een rugnummer, dan positie, land en club. Wie droeg dit shirt?", 10, 100, "rugnummer"),
+        new(QuestionType.Mannetje, "Mannetje", "user", "Van zwart silhouet tot volledig mannetje. Herken jij de speler?", 10, 100, "mannetje"),
+        new(QuestionType.Kluts, "Kluts in de zestien", "text-aa", "De letters van een naam liggen door elkaar. Om de paar seconden valt er één juist.", 10, 100, "", FromPlayers: true),
+        new(QuestionType.Counter, "Counter", "person-simple-run", $"Zoveel mogelijk van {QuestionRules.CounterPlayers} spelers in {(int)QuestionRules.CounterSeconds} seconden, met één tip per speler. Raden of doorspelen!",
             QuestionRules.CounterPerDay, QuestionRules.CounterPlayers * QuestionRules.CounterPointsPerPlayer, "", FromPlayers: true),
-        new(QuestionType.Volgorde, "Op volgorde", "🔀", "Tik de kaartjes aan in de juiste volgorde. Hoe dichter, hoe meer punten.", 10, 100, "volgorde"),
-        new(QuestionType.Krant, "De Zondag", "📰", "Elke zondag vier krantenartikels met elk drie gaten. Tik op een gat en vul het in, in de volgorde die je wil.", 4, 250, "krant",
+        new(QuestionType.Volgorde, "Op volgorde", "list-numbers", "Tik de kaartjes aan in de juiste volgorde. Hoe dichter, hoe meer punten.", 10, 100, "volgorde"),
+        new(QuestionType.Krant, "De Zondag", "newspaper", "Elke zondag vier krantenartikels met elk drie gaten. Tik op een gat en vul het in, in de volgorde die je wil.", 4, 250, "krant",
             Alone: true),
-        new(QuestionType.Detective, "Detectivedag", "🔎", "Wie is de dader? Open de getuigen één voor één, schrap verdachten en wijs de dader aan. Vier zaken per dag: hoe minder getuigen, hoe meer punten.",
+        new(QuestionType.Detective, "Detectivedag", "detective", "Wie is de dader? Open de getuigen één voor één, schrap verdachten en wijs de dader aan. Vier zaken per dag: hoe minder getuigen, hoe meer punten.",
             4, 250, "detective", Alone: true),
-        new(QuestionType.Kaart, "Kaart", "🗺️",
+        new(QuestionType.Kaart, "Kaart", "map-trifold",
             $"Twee delen op dezelfde kaart van een land: eerst kies je bij elke speld de club, daarna bij elke club het stadion. " +
             $"Per deel {QuestionRules.KaartPins} spelden, {(int)QuestionRules.KaartSeconds / 60} minuten en " +
             $"{QuestionRules.KaartPointsPerPin} punten per speld.",
@@ -175,13 +175,13 @@ public static class QuestionTypes
         return regular.Count > 0 ? regular : [QuestionType.WieBenIk];
     }
 
-    /// <summary>"🕵️ ⚡ 📅" voor een mix.</summary>
-    public static string Icons(IEnumerable<QuestionType> types) => string.Join(" ", types.Select(t => Get(t).Icon));
-    /// <summary>"⚡ Snelvuur" of "🎲 Mix 🕵️ ⚡ 📅" voor de banner van een dag.</summary>
-    public static string DayLabel(DailyOverview day) =>
-        day.IsMix ? $"🎲 Mix {Icons(day.Types!)}" : $"{Get(day.Type).Icon} {Get(day.Type).Name}";
+    /// <summary>Het icoon van een mix (de iconen zijn namen van lijniconen in de client, zie Shared/Icon.razor).</summary>
+    public const string MixIcon = "shuffle";
 
-    /// <summary>Hetzelfde zonder iconen ("Snelvuur" of "Mix"), voor de rustige daily-tegel op Home.</summary>
+    /// <summary>De types van een dag: die van de mix, of het ene type.</summary>
+    public static IReadOnlyCollection<QuestionType> DayTypes(DailyOverview day) => day.IsMix ? day.Types! : [day.Type];
+
+    /// <summary>De naam van een dag ("Snelvuur" of "Mix"); de iconen tekent de client (TypesLabel).</summary>
     public static string DayName(DailyOverview day) => day.IsMix ? "Mix" : Get(day.Type).Name;
 
     /// <summary>Enkel de naam van een lijst types, zonder iconen: "Snelvuur" of "Mix"; leeg = "Wie ben ik?".</summary>
@@ -190,14 +190,6 @@ public static class QuestionTypes
         { Count: > 1 } => "Mix",
         { Count: 1 } => Get(types.First()).Name,
         _ => Get(QuestionType.WieBenIk).Name,
-    };
-
-    /// <summary>Zelfde label voor een lijst types (bv. van een online partijtje); leeg = "Wie ben ik?".</summary>
-    public static string Label(IReadOnlyCollection<QuestionType>? types) => types switch
-    {
-        { Count: > 1 } => $"🎲 Mix {Icons(types)}",
-        { Count: 1 } => $"{Get(types.First()).Icon} {Get(types.First()).Name}",
-        _ => Label([QuestionType.WieBenIk]),
     };
 
     /// <summary>Standaard weekplanning (aanpasbaar in het admin-paneel).</summary>

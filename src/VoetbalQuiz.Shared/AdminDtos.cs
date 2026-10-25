@@ -160,72 +160,91 @@ public static class SpecialTemplates
     public static readonly List<SpecialTemplate> All =
     [
         // Affiches
-        new("topper", "De Topper: Anderlecht – Club Brugge", "🔥", "Paars-wit tegen blauw-zwart. Ken jij de spelers van beide kampen?",
+        new("topper", "De Topper: Anderlecht – Club Brugge", "flame", "Paars-wit tegen blauw-zwart. Ken jij de spelers van beide kampen?",
             "anderlecht,club-brugge", null, null, PlayerRounds, new("Anderlecht", "#5b2a86", "Club Brugge", "#1f4fa3")),
-        new("clasico", "Clasico: Standard – Anderlecht", "⚔️", "De Clasico van het Belgische voetbal: Sclessin tegen het Lotto Park.",
+        new("clasico", "Clasico: Standard – Anderlecht", "sword", "De Clasico van het Belgische voetbal: Sclessin tegen het Lotto Park.",
             "standard,anderlecht", null, null, PlayerRounds, new("Standard", "#d81f26", "Anderlecht", "#5b2a86")),
-        new("lage-landen", "Derby der Lage Landen: België – Nederland", "🦁", "Rode Duivels tegen Oranje: wie kent zijn buren het best?",
+        new("lage-landen", "Derby der Lage Landen: België – Nederland", "flag-banner", "Rode Duivels tegen Oranje: wie kent zijn buren het best?",
             "rode-duivels,oranje", null, null, [.. PlayerRounds, QuestionType.Rugnummer, QuestionType.Mannetje], new("België", "#d81f26", "Nederland", "#f36c21")),
 
         // Thema's
-        new("rode-duivels", "Rode Duivels Special", "😈", "Alles over onze nationale ploeg: van Mexico '86 tot de gouden generatie.",
+        new("rode-duivels", "Rode Duivels Special", "heart", "Alles over onze nationale ploeg: van Mexico '86 tot de gouden generatie.",
             "rode-duivels", null, null,
             [QuestionType.WieBenIk, QuestionType.Emoji, QuestionType.Rugnummer, QuestionType.Mannetje, QuestionType.Kluts, QuestionType.Counter]),
-        new("legendes", "Legendes Special", "🏛️", "Den dezen van vroeger: de grootste namen uit de voetbalgeschiedenis.",
+        new("legendes", "Legendes Special", "bank", "Den dezen van vroeger: de grootste namen uit de voetbalgeschiedenis.",
             "legende", null, null, [QuestionType.WieBenIk, QuestionType.Carriere, QuestionType.Jaar, QuestionType.Mannetje, QuestionType.Kluts]),
-        new("croky-cup", "Croky Cup Special", "🏆", "Bekervoetbal! Van Lierse in '99 tot Union in 2026: ken jij de finales van de Beker van België?",
+        new("croky-cup", "Croky Cup Special", "trophy", "Bekervoetbal! Van Lierse in '99 tot Union in 2026: ken jij de finales van de Beker van België?",
             "beker-van-belgie", null, null,
             [QuestionType.Opstelling, QuestionType.Snelvuur, QuestionType.NietBij, QuestionType.Jaar, QuestionType.WieBenIk]),
-        new("deadline-day", "Transfer Deadline Day", "⏰", "De transfermarkt sluit! Raad de spraakmakendste transfers en carrières.",
+        new("deadline-day", "Transfer Deadline Day", "alarm", "De transfermarkt sluit! Raad de spraakmakendste transfers en carrières.",
             null, 9, 1, [QuestionType.Wissel, QuestionType.Carriere]),
 
-        new("champions-league", "Champions League Special", "⭐", "Speeldag in de Champions League: raad de winnaars van de grootste beker.", "champions-league", null, null),
-        new("kerst", "Christmas Special", "🎄", "Boxing Day, kerstmatchen en voetballers die met Kerstmis jarig zijn.", "kerst", 12, 25, ThemedRounds),
-        new("nieuwjaar", "New Year Special", "🎆", "Nieuwjaarsmatchen, de wintermercato en voetballers die op oudjaar of nieuwjaar geboren zijn.",
+        new("champions-league", "Champions League Special", "star", "Speeldag in de Champions League: raad de winnaars van de grootste beker.", "champions-league", null, null),
+        new("kerst", "Christmas Special", "tree-evergreen", "Boxing Day, kerstmatchen en voetballers die met Kerstmis jarig zijn.", "kerst", 12, 25, ThemedRounds),
+        new("nieuwjaar", "New Year Special", "champagne", "Nieuwjaarsmatchen, de wintermercato en voetballers die op oudjaar of nieuwjaar geboren zijn.",
             "nieuwjaar", 1, 1, ThemedRounds),
-        new("halloween", "Halloween Special", "🎃", "Griezelig goed: spookgoals, vervloekingen, duivels en voetballers die op Halloween geboren zijn.",
+        new("halloween", "Halloween Special", "ghost", "Griezelig goed: spookgoals, vervloekingen, duivels en voetballers die op Halloween geboren zijn.",
             "halloween", 10, 31, ThemedRounds),
-        new("sinterklaas", "Sinterklaas Special", "🎁", "Cadeaugoals, Spaans voetbal en voetballers die rond Sinterklaas jarig zijn.", "sinterklaas", 12, 6, ThemedRounds),
-        new("gouden-schoen", "Gouden Schoen Special", "👟", "Op de avond van de Gouden Schoen: alle winnaars.", "gouden-schoen", null, null),
-        new("ballon-dor", "Ballon d'Or Special", "🏅", "Op de avond van de Gouden Bal: de winnaars van Matthews tot Dembélé en de geschiedenis van de prijs.",
+        new("sinterklaas", "Sinterklaas Special", "gift", "Cadeaugoals, Spaans voetbal en voetballers die rond Sinterklaas jarig zijn.", "sinterklaas", 12, 6, ThemedRounds),
+        new("gouden-schoen", "Gouden Schoen Special", "sneaker", "Op de avond van de Gouden Schoen: alle winnaars.", "gouden-schoen", null, null),
+        new("ballon-dor", "Ballon d'Or Special", "soccer-ball", "Op de avond van de Gouden Bal: de winnaars van Matthews tot Dembélé en de geschiedenis van de prijs.",
             "ballon-dor", null, null,
             [QuestionType.WieBenIk, QuestionType.Kluts, QuestionType.Counter, QuestionType.Snelvuur, QuestionType.Jaar, QuestionType.NietBij]),
-        new("wk", "WK Special", "🌍", "Van Mexico '70 tot Noord-Amerika 2026: finales, helden en drama op het wereldkampioenschap.", "wk", null, null,
+        new("wk", "WK Special", "globe", "Van Mexico '70 tot Noord-Amerika 2026: finales, helden en drama op het wereldkampioenschap.", "wk", null, null,
             [.. ThemedRounds, QuestionType.Opstelling]),
-        new("vaderdag", "Vaderdag Special", "👨‍👦", "Vaders, zonen en broers: de grootste voetbalfamilies.", "familie", null, null, ThemedRounds),
-        new("1-april", "1 april Special", "🤡", "Geen grap: de gekste momenten, blunders en curiosa uit de voetbalgeschiedenis.", "curiosa", 4, 1,
+        new("vaderdag", "Vaderdag Special", "users", "Vaders, zonen en broers: de grootste voetbalfamilies.", "familie", null, null, ThemedRounds),
+        new("1-april", "1 april Special", "mask-happy", "Geen grap: de gekste momenten, blunders en curiosa uit de voetbalgeschiedenis.", "curiosa", 4, 1,
             [QuestionType.Snelvuur, QuestionType.NietBij, QuestionType.Jaar, QuestionType.Emoji]),
 
         // Persoonsspecials op de verjaardag: vragen over de hoofdfiguur, plus zijn ploegmaats voor de spelersrondes.
-        new("maradona", "Maradona Special", "🔟", "El Pibe de Oro: de Hand van God, Napoli en de ploegmaats van Diego.",
+        new("maradona", "Maradona Special", "hand", "El Pibe de Oro: de Hand van God, Napoli en de ploegmaats van Diego.",
             "maradona", 10, 30, [.. PersonRounds, QuestionType.Emoji]),
-        new("pele", "Pelé Special", "👑", "O Rei: drie wereldtitels, Santos, de Cosmos en de ploegmaats van de Koning.",
+        new("pele", "Pelé Special", "crown", "O Rei: drie wereldtitels, Santos, de Cosmos en de ploegmaats van de Koning.",
             "pele", 10, 23, [.. PersonRounds, QuestionType.Emoji]),
-        new("messi", "Messi Special", "🐐", "Van het servetcontract bij Barcelona tot de wereldtitel: alles over Lionel Messi.", "messi", 6, 24, PersonRounds),
-        new("pfaff", "Pfaff Special", "🧤", "Beveren, Bayern, Mexico '86 en 'De Pfaffs': een quiz rond Jean-Marie Pfaff.", "pfaff", 12, 4, PersonRounds),
-        new("lukaku", "Lukaku Special", "💪", "De recordschutter van de Rode Duivels: zijn goals, zijn clubs en zijn ploegmaats.", "lukaku", 5, 13, PersonRounds),
-        new("de-bruyne", "De Bruyne Special", "🎯", "Van Genk tot Napoli: alles over Kevin De Bruyne en zijn ploegmaats.", "de-bruyne", 6, 28, PersonRounds),
-        new("deschacht", "Deschacht Special", "💜", "Meer dan 600 wedstrijden voor Anderlecht: een quiz rond Olivier Deschacht.", "deschacht", 2, 16, PersonRounds),
-        new("stijnen", "Stijnen Special", "🛡️", "Doelman van Club Brugge en de Rode Duivels, later trainer van Patro Eisden: Stijn Stijnen.",
+        new("messi", "Messi Special", "shooting-star", "Van het servetcontract bij Barcelona tot de wereldtitel: alles over Lionel Messi.", "messi", 6, 24, PersonRounds),
+        new("pfaff", "Pfaff Special", "hand-palm", "Beveren, Bayern, Mexico '86 en 'De Pfaffs': een quiz rond Jean-Marie Pfaff.", "pfaff", 12, 4, PersonRounds),
+        new("lukaku", "Lukaku Special", "hand-fist", "De recordschutter van de Rode Duivels: zijn goals, zijn clubs en zijn ploegmaats.", "lukaku", 5, 13, PersonRounds),
+        new("de-bruyne", "De Bruyne Special", "target", "Van Genk tot Napoli: alles over Kevin De Bruyne en zijn ploegmaats.", "de-bruyne", 6, 28, PersonRounds),
+        new("deschacht", "Deschacht Special", "heart", "Meer dan 600 wedstrijden voor Anderlecht: een quiz rond Olivier Deschacht.", "deschacht", 2, 16, PersonRounds),
+        new("stijnen", "Stijnen Special", "shield", "Doelman van Club Brugge en de Rode Duivels, later trainer van Patro Eisden: Stijn Stijnen.",
             "stijnen", 4, 7, [QuestionType.WieBenIk, QuestionType.Kluts, QuestionType.Counter, QuestionType.Snelvuur, QuestionType.Jaar, QuestionType.NietBij]),
-        new("propere-handen", "Propere Handen Special", "⚖️", "Op 10 oktober 2018 begon het grootste gerechtelijk onderzoek naar het Belgische profvoetbal.",
+        new("propere-handen", "Propere Handen Special", "scales", "Op 10 oktober 2018 begon het grootste gerechtelijk onderzoek naar het Belgische profvoetbal.",
             "propere-handen", 10, 10, [QuestionType.Snelvuur, QuestionType.Jaar, QuestionType.NietBij]),
 
         // Nationale feestdagen: de spelers van dat land en vragen over zijn voetbal.
-        new("feestdag-belgie", "Nationale Feestdag: België", "🇧🇪", "21 juli: de Rode Duivels, onze competitie en de grote Europese avonden van onze clubs.",
+        new("feestdag-belgie", "Nationale Feestdag: België", "flag", "21 juli: de Rode Duivels, onze competitie en de grote Europese avonden van onze clubs.",
             "belgie,rode-duivels", 7, 21, PersonRounds),
-        new("feestdag-frankrijk", "Quatorze Juillet: Frankrijk", "🇫🇷", "14 juli: Les Bleus, de Ligue 1 en de Franse wereldtitels.", "frankrijk", 7, 14, PersonRounds),
-        new("feestdag-spanje", "Fiesta Nacional: Spanje", "🇪🇸", "12 oktober: La Roja, La Liga en de gouden jaren van het Spaanse voetbal.", "spanje", 10, 12, PersonRounds),
-        new("feestdag-italie", "Festa della Repubblica: Italië", "🇮🇹", "2 juni: de Azzurri, de Serie A en vier wereldtitels.", "italie", 6, 2, PersonRounds),
-        new("feestdag-duitsland", "Tag der Deutschen Einheit: Duitsland", "🇩🇪", "3 oktober: de Mannschaft, de Bundesliga en vier wereldtitels.", "duitsland", 10, 3, PersonRounds),
-        new("feestdag-nederland", "Koningsdag: Nederland", "🇳🇱", "27 april: Oranje, de Eredivisie en het totaalvoetbal van onze noorderburen.", "oranje", 4, 27, PersonRounds),
-        new("feestdag-turkije", "Dag van de Republiek: Turkije", "🇹🇷", "29 oktober: de Turkse nationale ploeg, de Süper Lig en de Istanbul-derby's.", "turkije", 10, 29, PersonRounds),
-        new("feestdag-portugal", "Dia de Portugal", "🇵🇹", "10 juni: de Seleção, Benfica, Porto en Sporting, en natuurlijk Cristiano Ronaldo.", "portugal", 6, 10, PersonRounds),
+        new("feestdag-frankrijk", "Quatorze Juillet: Frankrijk", "flag", "14 juli: Les Bleus, de Ligue 1 en de Franse wereldtitels.", "frankrijk", 7, 14, PersonRounds),
+        new("feestdag-spanje", "Fiesta Nacional: Spanje", "flag", "12 oktober: La Roja, La Liga en de gouden jaren van het Spaanse voetbal.", "spanje", 10, 12, PersonRounds),
+        new("feestdag-italie", "Festa della Repubblica: Italië", "flag", "2 juni: de Azzurri, de Serie A en vier wereldtitels.", "italie", 6, 2, PersonRounds),
+        new("feestdag-duitsland", "Tag der Deutschen Einheit: Duitsland", "flag", "3 oktober: de Mannschaft, de Bundesliga en vier wereldtitels.", "duitsland", 10, 3, PersonRounds),
+        new("feestdag-nederland", "Koningsdag: Nederland", "flag", "27 april: Oranje, de Eredivisie en het totaalvoetbal van onze noorderburen.", "oranje", 4, 27, PersonRounds),
+        new("feestdag-turkije", "Dag van de Republiek: Turkije", "flag", "29 oktober: de Turkse nationale ploeg, de Süper Lig en de Istanbul-derby's.", "turkije", 10, 29, PersonRounds),
+        new("feestdag-portugal", "Dia de Portugal", "flag", "10 juni: de Seleção, Benfica, Porto en Sporting, en natuurlijk Cristiano Ronaldo.", "portugal", 6, 10, PersonRounds),
 
-        new("custom", "Eigen special", "✨", "", null, null, null),
+        new("custom", "Eigen special", "sparkle", "", null, null, null),
     ];
 
     public static SpecialTemplate? Find(string? theme) => All.FirstOrDefault(t => t.Theme == theme);
+}
+
+/// <summary>
+/// De iconen waaruit de admin kiest voor een special: namen van lijniconen in de client (Shared/Icon.razor), geen emoji.
+/// Alle iconen van de sjablonen staan erbij. Een ander icoon wordt bij het opslaan <see cref="Default"/>.
+/// </summary>
+public static class SpecialIcons
+{
+    public const string Default = "sparkle";
+
+    public static readonly List<string> All =
+    [
+        Default, "star", "shooting-star", "trophy", "medal", "crown", "soccer-ball", "sneaker", "t-shirt", "target",
+        "flame", "lightning", "sword", "shield", "scales", "hand", "hand-palm", "hand-fist", "heart", "users",
+        "flag", "flag-banner", "globe", "bank", "alarm", "calendar-blank", "confetti", "gift", "champagne",
+        "tree-evergreen", "ghost", "mask-happy",
+    ];
+
+    public static string Normalize(string? icon) => icon?.Trim() is { } name && All.Contains(name) ? name : Default;
 }
 
 public record SpecialEdit(

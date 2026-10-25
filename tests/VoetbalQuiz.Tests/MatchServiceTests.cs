@@ -398,7 +398,8 @@ public sealed class MatchServiceTests : IDisposable
         Assert.All(types.Zip(types.Skip(1)), pair => Assert.NotEqual(pair.First, pair.Second));
 
         var lobby = await _matches.GetLobbyAsync(_host);
-        Assert.Equal("🎲 Mix 🕵️ ⚡", QuestionTypes.Label(Assert.Single(lobby.Mine).Types));
+        Assert.Equal(new[] { QuestionType.WieBenIk, QuestionType.Snelvuur }, Assert.Single(lobby.Mine).Types);
+        Assert.Equal("Mix", QuestionTypes.Name(Assert.Single(lobby.Mine).Types));
     }
 
     public void Dispose() => _t.Dispose();

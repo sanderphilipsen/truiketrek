@@ -30,7 +30,7 @@
                             @foreach (var t in SpecialTemplates.All)
                             {
                                 <button class="template @(_theme == t.Theme ? "on" : "")" @onclick="() => ApplyTemplate(t)">
-                                    <span>@t.Icon</span><small>@t.Name</small>
+                                    <span><Icon Name="@t.Icon" /></span><small>@t.Name</small>
                                 </button>
                             }
                         </div>
@@ -43,10 +43,16 @@
                     {
                         <p class="note"><Icon Name="lock" /> Deze special wordt al gespeeld. Enkel naam, icoon, beschrijving en einddatum kunnen nog wijzigen.</p>
                     }
-                    <div class="row-icon">
-                        <label>Icoon <input @bind="_icon" maxlength="8" class="icon-input" /></label>
-                        <label class="grow">Naam <input @bind="_name" @bind:event="oninput" /></label>
-                    </div>
+                    <label>Naam <input @bind="_name" @bind:event="oninput" /></label>
+                    <fieldset class="icon-picker">
+                        <legend>Icoon</legend>
+                        @foreach (var icon in SpecialIcons.All)
+                        {
+                            var name = icon;
+                            <button type="button" class="@(_icon == name ? "on" : "")" aria-pressed="@(_icon == name ? "true" : "false")"
+                                    aria-label="@name" title="@name" @onclick="() => _icon = name"><Icon Name="@name" /></button>
+                        }
+                    </fieldset>
                     <label>Beschrijving <textarea rows="2" @bind="_description" @bind:event="oninput"></textarea></label>
                 </section>
 
@@ -78,7 +84,7 @@
                         @foreach (var t in QuestionTypes.All)
                         {
                             var type = t.Type;
-                            <button class="@(_types.Contains(type) ? "on" : "")" disabled="@_locked" @onclick="() => ToggleType(type)">@t.Icon @t.Name</button>
+                            <button class="@(_types.Contains(type) ? "on" : "")" disabled="@_locked" @onclick="() => ToggleType(type)"><Icon Name="@t.Icon" /> @t.Name</button>
                         }
                     </div>
                     <small class="muted">Verdeling: @Mix()</small>
@@ -146,7 +152,7 @@
             <aside class="editor-side">
                 <section class="card stack sticky">
                     <div class="special-preview">
-                        <span class="special-icon">@_icon</span>
+                        <span class="special-icon"><Icon Name="@_icon" /></span>
                         <div><b>@_name</b><small>@_description</small></div>
                     </div>
                     <ul class="checklist">
@@ -186,7 +192,7 @@
     [Parameter] public int Id { get; set; }
 
     private List<PlayerListItem>? _all;
-    private string _theme = "custom", _name = "", _icon = "✨", _description = "", _filter = "";
+    private string _theme = "custom", _name = "", _icon = SpecialIcons.Default, _description = "", _filter = "";
     private HashSet<string> _tags = [];
     private DateOnly _start, _end;
     private bool _manual, _locked, _busy, _saved;
@@ -214,7 +220,7 @@
     }
 
     private string Mix() => _types.Count == 0 ? "kies minstens één type"
-        : string.Join(", ", MixCounts().Select(kv => $"{kv.Value}× {QuestionTypes.Get(kv.Key).Icon} {QuestionTypes.Get(kv.Key).Name}"));
+        : string.Join(", ", MixCounts().Select(kv => $"{kv.Value}× {QuestionTypes.Get(kv.Key).Name}"));
 
     /// <summary>
     /// De solo-regel (<see cref="QuestionTypeInfo.Alone"/>): De Zondag, Detectivedag en de kaart staan alleen. Kies je er een, dan gaan de

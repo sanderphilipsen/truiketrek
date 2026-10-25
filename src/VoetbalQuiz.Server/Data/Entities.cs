@@ -390,7 +390,8 @@ public class SpecialEvent
     public int Id { get; set; }
     public required string Theme { get; set; }
     public required string Name { get; set; }
-    public string Icon { get; set; } = "✨";
+    /// <summary>Een lijnicoon uit <see cref="SpecialIcons"/> (naam, geen emoji).</summary>
+    public string Icon { get; set; } = SpecialIcons.Default;
     public string Description { get; set; } = "";
     public DateOnly StartDate { get; set; }
     public DateOnly EndDate { get; set; }

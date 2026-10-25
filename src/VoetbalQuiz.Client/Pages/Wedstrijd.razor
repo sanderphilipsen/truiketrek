@@ -20,7 +20,7 @@
         <h1 class="question-title">
             @if (_state.Phase != MatchPhase.Countdown)
             {
-                <span class="type-tag">@QuestionTypes.Get(_state.Type).Icon @QuestionTypes.Get(_state.Type).Name</span>
+                <span class="type-tag"><TypesLabel Types="[_state.Type]" /></span>
             }
             <span class="q-count">Vraag <b>@Math.Max(1, _state.CurrentNumber)</b> / @_state.TotalQuestions</span>
         </h1>
@@ -140,11 +140,11 @@ else
                             {
                                 @if (w.Weapon == DerbyWeapon.Trump && !_state.Types.Any(DerbyRules.TrumpWorksOn))
                                 {
-                                    <li class="muted">@w.Icon <s>@w.Name</s>: zit niet in deze derby, want er zijn geen vragen met antwoordopties of een jaartal.</li>
+                                    <li class="muted"><Icon Name="@w.Icon" /> <s>@w.Name</s>: zit niet in deze derby, want er zijn geen vragen met antwoordopties of een jaartal.</li>
                                 }
                                 else
                                 {
-                                    <li>@w.Icon <b>@w.Name</b>: @w.HowTo</li>
+                                    <li><Icon Name="@w.Icon" /> <b>@w.Name</b>: @w.HowTo</li>
                                 }
                             }
                         </ul>
@@ -178,7 +178,7 @@ else
                 <div class="countdown">
                     <div class="weapon-reveal" role="status">
                         <span class="sb-label">Jouw geheime wapen</span>
-                        <span class="wr-icon" aria-hidden="true">@DerbyRules.Get(weapon).Icon</span>
+                        <span class="wr-icon"><Icon Name="@DerbyRules.Get(weapon).Icon" /></span>
                         <b>@DerbyRules.Get(weapon).Name</b>
                         <small>@DerbyRules.Get(weapon).HowTo</small>
                     </div>
@@ -370,7 +370,7 @@ else
                     @foreach (var r in report)
                     {
                         <li class="@(r.IsMe ? "me" : "") @(r.Question is null ? "left" : "")">
-                            <span class="rank">@DerbyRules.Get(r.Weapon).Icon</span>
+                            <span class="rank"><Icon Name="@DerbyRules.Get(r.Weapon).Icon" /></span>
                             <Avatar Id="@r.AvatarId" User="@r.UserName" Size="36" />
                             <span class="player"><b>@r.UserName</b><small>@ReportLine(r)</small></span>
                             @if (r.Effect != 0)
@@ -532,12 +532,12 @@ else
     /// <summary>Rode kaart of gokchinees: eerst een tegenstander kiezen in de spelersrij.</summary>
     private bool _picking;
 
-    /// <summary>Per speler de kaartjes bij zijn avatar: 🟥 rood, 💰 omgekocht.</summary>
-    private IReadOnlyDictionary<string, string> Marks =>
+    /// <summary>Per speler de iconen van de wapens tegen hem bij zijn avatar (rode kaart, propere handen).</summary>
+    private IReadOnlyDictionary<string, IReadOnlyList<string>> Marks =>
         (_state?.Derby?.Events ?? [])
             .Where(e => e.Since >= 0 && e.Target is not null && e.Weapon is DerbyWeapon.RodeKaart or DerbyWeapon.PropereHanden)
             .GroupBy(e => e.Target!)
-            .ToDictionary(g => g.Key, g => string.Concat(g.Select(e => DerbyRules.Get(e.Weapon).Icon)));
+            .ToDictionary(g => g.Key, g => (IReadOnlyList<string>)g.Select(e => DerbyRules.Get(e.Weapon).Icon).ToList());
 
     /// <summary>Wie je niet meer kan kiezen: die heeft dit wapen al tegen zich bij deze vraag.</summary>
     private IReadOnlyCollection<string> Unpickable =>

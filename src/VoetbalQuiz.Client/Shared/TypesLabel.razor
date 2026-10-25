@@ -1,0 +1,22 @@
+@* Een of meer vraagtypes met hun lijnicoon: "<icoon> Snelvuur", of bij een mix "<mix> Mix" met de iconen van de types erna.
+   Leeg = "Wie ben ik?". De iconen zijn decoratief; bij een mix staan de namen voor schermlezers erbij. *@
+@if (Types is { Count: > 1 })
+{
+    <span class="types-label"><Icon Name="@QuestionTypes.MixIcon" /> Mix</span>
+    <span class="types-icons" title="@string.Join(", ", Types.Select(t => QuestionTypes.Get(t).Name))">
+        @foreach (var t in Types)
+        {
+            <Icon Name="@QuestionTypes.Get(t).Icon" />
+        }
+        <span class="sr-only">@string.Join(", ", Types.Select(t => QuestionTypes.Get(t).Name))</span>
+    </span>
+}
+else
+{
+    var info = QuestionTypes.Get(Types?.FirstOrDefault() ?? QuestionType.WieBenIk);
+    <span class="types-label"><Icon Name="@info.Icon" /> @info.Name</span>
+}
+
+@code {
+    [Parameter, EditorRequired] public IReadOnlyCollection<QuestionType>? Types { get; set; }
+}

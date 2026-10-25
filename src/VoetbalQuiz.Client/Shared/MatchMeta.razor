@@ -1,15 +1,15 @@
 @* Spelvorm, aantal vragen en derby van een partijtje, netjes afgebroken op een smal scherm:
-   "🎲 Mix" en "10 vragen" blijven elk één geheel en de mix-icoontjes breken enkel tussen twee icoontjes.
+   "Mix" en "10 vragen" blijven elk één geheel en de mix-icoontjes breken enkel tussen twee icoontjes.
    Het "·" komt uit de CSS (.sep) en valt weg aan het begin van een regel. *@
 <span class="match-meta @Class">
     @if (Types is { Count: > 1 })
     {
-        <span class="match-meta-chunk"><Icon Name="shuffle" /> Mix</span>
-        <span class="match-meta-icons">@QuestionTypes.Icons(Types)</span>
+        <span class="match-meta-chunk"><Icon Name="@QuestionTypes.MixIcon" /> Mix</span>
+        <span class="match-meta-icons">@foreach (var t in Types) { <Icon Name="@QuestionTypes.Get(t).Icon" /> }</span>
     }
     else
     {
-        <span class="match-meta-chunk">@QuestionTypes.Label(Types)</span>
+        <span class="match-meta-chunk"><TypesLabel Types="Types" /></span>
     }
     <span class="match-meta-chunk sep">@Questions vragen</span>
     @if (Derby)

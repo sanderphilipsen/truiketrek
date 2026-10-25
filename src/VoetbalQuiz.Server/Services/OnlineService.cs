@@ -120,27 +120,27 @@ public class OnlineService(QuizDbContext db, ResultsService results)
         if (byUser.Count > 0)
         {
             var wins = byUser.Select(kv => (User: kv.Key, Wins: kv.Value.Count(p => p.Won))).MaxBy(x => x.Wins);
-            if (wins.Wins > 0) Add("🏅", "Meeste wedstrijdzeges", "Vaakst eerste in een partijtje", wins.User, $"{wins.Wins}×");
+            if (wins.Wins > 0) Add("trophy", "Meeste wedstrijdzeges", "Vaakst eerste in een partijtje", wins.User, $"{wins.Wins}×");
 
             var top = rating.MaxBy(kv => kv.Value);
-            Add("📊", "Hoogste rating", "Sterkste online speler", top.Key, $"{Math.Round(top.Value)}");
+            Add("chart-bar", "Hoogste rating", "Sterkste online speler", top.Key, $"{Math.Round(top.Value)}");
 
             var sniper = byUser.Select(kv => (User: kv.Key, Count: kv.Value.Sum(p => p.FirstCorrect))).MaxBy(x => x.Count);
-            if (sniper.Count > 0) Add("🎯", "Snelste schutter", "Vaakst als eerste het juiste antwoord", sniper.User, $"{sniper.Count}×");
+            if (sniper.Count > 0) Add("crosshair", "Snelste schutter", "Vaakst als eerste het juiste antwoord", sniper.User, $"{sniper.Count}×");
 
             var bestScore = all.MaxBy(p => p.Score)!;
-            if (bestScore.Score > 0) Add("💥", "Hoogste wedstrijdscore", "Meeste punten in één wedstrijd", bestScore.UserId, $"{bestScore.Score}");
+            if (bestScore.Score > 0) Add("arrow-fat-lines-up", "Hoogste wedstrijdscore", "Meeste punten in één wedstrijd", bestScore.UserId, $"{bestScore.Score}");
 
             var unbeaten = longestStreak.MaxBy(kv => kv.Value);
-            if (unbeaten.Value >= 2) Add("🔥", "Onklopbaar", "Langste reeks gewonnen wedstrijden", unbeaten.Key, $"{unbeaten.Value} op rij");
+            if (unbeaten.Value >= 2) Add("flame", "Onklopbaar", "Langste reeks gewonnen wedstrijden", unbeaten.Key, $"{unbeaten.Value} op rij");
 
             var winRate = byUser.Where(kv => kv.Value.Count >= 5)
                 .Select(kv => (User: kv.Key, Pct: Percent(kv.Value.Count(p => p.Won), kv.Value.Count)))
                 .OrderByDescending(x => x.Pct).FirstOrDefault();
-            if (winRate.User is not null) Add("📈", "Winnaarsmentaliteit", "Hoogste winstpercentage (min. 5 wedstrijden)", winRate.User, $"{winRate.Pct}%");
+            if (winRate.User is not null) Add("percent", "Winnaarsmentaliteit", "Hoogste winstpercentage (min. 5 wedstrijden)", winRate.User, $"{winRate.Pct}%");
 
             var busiest = byUser.MaxBy(kv => kv.Value.Count);
-            Add("🎮", "Vaste waarde", "Meeste online wedstrijden gespeeld", busiest.Key, $"{busiest.Value.Count}");
+            Add("game-controller", "Vaste waarde", "Meeste online wedstrijden gespeeld", busiest.Key, $"{busiest.Value.Count}");
         }
 
         var mine = byUser.GetValueOrDefault(userId) ?? [];

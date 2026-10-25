@@ -24,7 +24,7 @@ else
     @foreach (var b in Profile.Badges)
     {
         <div class="badge @(b.Earned ? "earned" : "") tier-@b.Tier.ToString().ToLowerInvariant()" title="@b.Description">
-            <div class="badge-icon">@b.Icon</div>
+            <div class="badge-icon"><Icon Name="@b.Icon" /></div>
             <b>@b.Name</b>@if (!b.Earned) { <span class="sr-only"> (nog niet verdiend)</span> }
             <small>@b.Description</small>
             @if (!b.Earned && b.Progress is not null) { <small class="progress">@b.Progress</small> }

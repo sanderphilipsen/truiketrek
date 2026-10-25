@@ -2,7 +2,7 @@
    Per land staat erbij hoeveel goedgekeurde kaarten er zijn; zonder goedgekeurde kaart kiest de server toch willekeurig. *@
 <label class="kaart-land-select">Land van de kaart
     <select value="@(Value ?? "")" disabled="@Disabled" @onchange="e => Changed(e.Value?.ToString())">
-        <option value="">🎲 Willekeurig (liefst een ander land dan de vorige kaartdag)</option>
+        <option value="">Willekeurig (liefst een ander land dan de vorige kaartdag)</option>
         @foreach (var land in KaartProjection.Landen)
         {
             var count = Maps?.GetValueOrDefault(land.Code) ?? 0;

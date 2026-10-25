@@ -80,7 +80,7 @@
                     @foreach (var s in _d.ActiveSpecials.Concat(_d.UpcomingSpecials))
                     {
                         <a class="admin-row-card plain" href="admin/specials/@s.Id">
-                            <span class="table-icon">@s.Icon</span>
+                            <span class="table-icon"><Icon Name="@s.Icon" /></span>
                             <div class="table-info"><b>@s.Name</b><small>@SpecialStatus.Period(s)</small></div>
                             <SpecialStatus Item="s" />
                         </a>

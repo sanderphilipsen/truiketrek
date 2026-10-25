@@ -339,12 +339,12 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
         var winCounts = winners.GroupBy(w => w.UserId).Select(g => (User: g.Key, Count: g.Count()))
             .OrderByDescending(x => x.Count).ToList();
         if (winCounts.Count > 0)
-            Add("👑", "Meeste dagzeges", "Vaakst de beste van de dag", winCounts[0].User, $"{winCounts[0].Count}×");
+            Add("crown", "Meeste dagzeges", "Vaakst de beste van de dag", winCounts[0].User, $"{winCounts[0].Count}×");
 
         // Hoogste dagscore
         var bestDay = days.OrderByDescending(d => d.Points).ThenBy(d => d.FinishedAt).FirstOrDefault();
         if (bestDay is { Points: > 0 })
-            Add("🔥", "Hoogste dagscore", $"Op {DutchDates.DayMonth(bestDay.Date)}", bestDay.UserId, $"{bestDay.Points}");
+            Add("flame", "Hoogste dagscore", $"Op {DutchDates.DayMonth(bestDay.Date)}", bestDay.UserId, $"{bestDay.Points}");
 
         // Eeuwige tweede
         var settledIds = winners.Select(w => w.Id).ToHashSet();
@@ -355,55 +355,55 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
             .GroupBy(d => d!.UserId).Select(g => (User: g.Key, Count: g.Count()))
             .OrderByDescending(x => x.Count).FirstOrDefault();
         if (seconds.User is not null)
-            Add("🥈", "Eeuwige tweede", "Vaakst net naast de dagzege", seconds.User, $"{seconds.Count}×");
+            Add("number-circle-two", "Eeuwige tweede", "Vaakst net naast de dagzege", seconds.User, $"{seconds.Count}×");
 
         // Snelste vinger: juist bij de eerste tip zonder foute poging
         var fastest = rows.Where(r => r.Points == 100 && !QuestionTypes.Get(r.Type).Alone).GroupBy(r => r.UserId)
             .Select(g => (User: g.Key, Count: g.Count())).OrderByDescending(x => x.Count).FirstOrDefault();
         if (fastest.User is not null)
-            Add("⚡", "Snelste vinger", "Meeste antwoorden bij de eerste tip", fastest.User, $"{fastest.Count}×");
+            Add("lightning", "Snelste vinger", "Meeste antwoorden bij de eerste tip", fastest.User, $"{fastest.Count}×");
 
         // Perfecte dagen: 10 op 10
         var sizes = await ChallengeSizesAsync();
         var perfect = days.Where(d => d.Correct == sizes.GetValueOrDefault(d.ChallengeId)).GroupBy(d => d.UserId)
             .Select(g => (User: g.Key, Count: g.Count())).OrderByDescending(x => x.Count).FirstOrDefault();
         if (perfect.User is not null)
-            Add("💯", "Perfecte dagen", "Alle vragen van de dag juist", perfect.User, $"{perfect.Count}×");
+            Add("seal-check", "Perfecte dagen", "Alle vragen van de dag juist", perfect.User, $"{perfect.Count}×");
 
         // Scherpschutter: hoogste raakpercentage
         var sharp = rows.GroupBy(r => r.UserId).Where(g => g.Count() >= 20)
             .Select(g => (User: g.Key, Pct: Percent(g.Count(r => r.Correct), g.Count())))
             .OrderByDescending(x => x.Pct).FirstOrDefault();
         if (sharp.User is not null)
-            Add("🎯", "Scherpschutter", "Hoogste % juist (min. 20 vragen)", sharp.User, $"{sharp.Pct}%");
+            Add("target", "Scherpschutter", "Hoogste % juist (min. 20 vragen)", sharp.User, $"{sharp.Pct}%");
 
         // Hoogste gemiddelde dagscore
         var average = days.GroupBy(d => d.UserId).Where(g => g.Count() >= 3)
             .Select(g => (User: g.Key, Avg: (int)Math.Round(g.Average(d => d.Points))))
             .OrderByDescending(x => x.Avg).FirstOrDefault();
         if (average.User is not null)
-            Add("📈", "Constantste speler", "Hoogste gemiddelde per dag (min. 3 dagen)", average.User, $"{average.Avg}");
+            Add("chart-line-up", "Constantste speler", "Hoogste gemiddelde per dag (min. 3 dagen)", average.User, $"{average.Avg}");
 
         // Snelste gemiddelde reactietijd
         var quick = rows.Where(r => r.Correct).GroupBy(r => r.UserId).Where(g => g.Count() >= 10)
             .Select(g => (User: g.Key, Sec: g.Average(r => (r.AnsweredAt - r.StartedAt).TotalSeconds)))
             .OrderBy(x => x.Sec).FirstOrDefault();
         if (quick.User is not null)
-            Add("⏱️", "Bliksemsnel", "Snelste gemiddelde tijd per juist antwoord", quick.User, $"{quick.Sec:0.0} s");
+            Add("timer", "Bliksemsnel", "Snelste gemiddelde tijd per juist antwoord", quick.User, $"{quick.Sec:0.0} s");
 
         // Langste reeks
         var streak = days.GroupBy(d => d.UserId)
             .Select(g => (User: g.Key, Streak: Streaks(g.Select(d => d.Date), today).Longest))
             .OrderByDescending(x => x.Streak).FirstOrDefault();
         if (streak is { User: not null, Streak: >= 2 })
-            Add("📅", "Trouwste speler", "Langste reeks dagen na elkaar gespeeld", streak.User, $"{streak.Streak} dagen");
+            Add("calendar-check", "Trouwste speler", "Langste reeks dagen na elkaar gespeeld", streak.User, $"{streak.Streak} dagen");
 
         // Gokker van dienst
         var gambler = rows.GroupBy(r => r.UserId)
             .Select(g => (User: g.Key, Wrong: g.Sum(r => r.WrongGuesses)))
             .OrderByDescending(x => x.Wrong).FirstOrDefault();
         if (gambler is { User: not null, Wrong: > 0 })
-            Add("🎲", "Gokker van dienst", "Meeste foute pogingen", gambler.User, $"{gambler.Wrong}");
+            Add("dice-five", "Gokker van dienst", "Meeste foute pogingen", gambler.User, $"{gambler.Wrong}");
 
         return new StatsOverview(MyStatsFor(userId, rows, days, winners.Count(w => w.UserId == userId), today),
             cards, Hardest(rows, today)); // maandwinnaars: zie GoldenBallService

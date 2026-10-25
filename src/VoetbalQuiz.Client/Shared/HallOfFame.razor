@@ -9,7 +9,7 @@ else
         @foreach (var card in Cards)
         {
             <div class="record @(card.IsMe ? "me" : "")">
-                <div class="record-icon">@card.Icon</div>
+                <div class="record-icon"><Icon Name="@card.Icon" /></div>
                 <Avatar Id="@card.AvatarId" User="@card.UserName" Size="38" />
                 <div class="record-body">
                     <div class="record-title">@card.Title</div>

@@ -23,8 +23,8 @@
     [Parameter, EditorRequired] public List<MatchPlayerState> Players { get; set; } = [];
     [Parameter] public bool ShowAnswered { get; set; }
 
-    /// <summary>Derby: per speler de kaartjes bij zijn avatar (🟥 rood, 💰 omgekocht).</summary>
-    [Parameter] public IReadOnlyDictionary<string, string>? Marks { get; set; }
+    /// <summary>Derby: per speler de iconen van de wapens tegen hem (rode kaart, propere handen), bij zijn avatar.</summary>
+    [Parameter] public IReadOnlyDictionary<string, IReadOnlyList<string>>? Marks { get; set; }
 
     /// <summary>Derby: een doelwit kiezen voor de rode kaart of de gokchinees.</summary>
     [Parameter] public bool Picking { get; set; }
@@ -36,7 +36,7 @@
             <div class="strip-avatar">
                 <Avatar Id="@p.AvatarId" User="@p.UserName" Size="40" />
                 @if (ShowAnswered && p.AnsweredCurrent) { <span class="check">✓</span> }
-                @if (Marks?.GetValueOrDefault(p.UserName) is { } marks) { <span class="strip-card">@marks</span> }
+                @if (Marks?.GetValueOrDefault(p.UserName) is { } marks) { <span class="strip-card">@foreach (var m in marks) { <Icon Name="@m" /> }</span> }
             </div>
             <small>@p.UserName</small>
             <b>@p.Score</b>
