@@ -56,6 +56,8 @@ public class QuizDbContext(DbContextOptions<QuizDbContext> options) : IdentityDb
         builder.Entity<Notification>().Property(n => n.Kind).HasConversion<string>();
         builder.Entity<Notification>().HasIndex(n => new { n.UserId, n.CreatedAt });
         builder.Entity<Announcement>().HasIndex(a => a.CreatedAt);
+        builder.Entity<Announcement>().Property(a => a.Version).HasMaxLength(40);
+        builder.Entity<Announcement>().HasIndex(a => a.Version).IsUnique();
         builder.Entity<Match>().Property(m => m.Status).HasConversion<string>();
         builder.Entity<Match>().HasIndex(m => m.Status);
         builder.Entity<Match>().Property(m => m.Version).IsConcurrencyToken();

@@ -6,6 +6,9 @@ using VoetbalQuiz.Shared;
 
 namespace VoetbalQuiz.Server.Services;
 
+/// <summary>Inhoud van release-note.json, die deploy-azure.ps1 met de app meepubliceert.</summary>
+public record ReleaseNote(string Version, string Title, string Text, string? Link);
+
 /// <summary>
 /// Het meldingencentrum: persoonlijke meldingen (<see cref="Notification"/>) en releasenota's voor iedereen
 /// (<see cref="Announcement"/>). Wie de lijst opent, heeft alles gezien.
@@ -86,7 +89,18 @@ public partial class NotificationService(QuizDbContext db, TimeProvider clock, I
             .Select(a => new AnnouncementItem(a.Id, a.Title, a.Text, a.Link, a.CreatedAt))
             .ToListAsync();
 
-    public async Task AddAnnouncementAsync(AnnouncementRequest req)
+    /// <summary>
+    /// De releasenota die deploy-azure.ps1 meegaf (release-note.json): één keer per versie, ook als de app herstart.
+    /// False als die versie al verstuurd was.
+    /// </summary>
+    public async Task<bool> AddReleaseNoteAsync(AnnouncementRequest req, string version)
+    {
+        if (await db.Announcements.AnyAsync(a => a.Version == version)) return false;
+        await AddAnnouncementAsync(req, version);
+        return true;
+    }
+
+    public async Task AddAnnouncementAsync(AnnouncementRequest req, string? version = null)
     {
         var title = req.Title?.Trim() ?? "";
         var text = req.Text?.Trim() ?? "";
@@ -99,7 +113,7 @@ public partial class NotificationService(QuizDbContext db, TimeProvider clock, I
         if (link is not null && !AppLink().IsMatch(link))
             throw new QuizException("De link moet een pagina in de app zijn, bv. academie of online.");
 
-        db.Announcements.Add(new Announcement { Title = title, Text = text, Link = link, CreatedAt = Now });
+        db.Announcements.Add(new Announcement { Title = title, Text = text, Link = link, CreatedAt = Now, Version = version });
         await db.SaveChangesAsync();
     }
 

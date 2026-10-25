@@ -107,5 +107,21 @@ public sealed class NotificationTests : IDisposable
         Assert.Empty(await _t.Notifications.ListAnnouncementsAsync());
     }
 
+    [Fact]
+    public async Task A_release_note_from_the_deploy_is_sent_once_per_version()
+    {
+        var tom = _t.AddUser("tom");
+        _t.Clock.Advance(TimeSpan.FromMinutes(1));
+        var note = new AnnouncementRequest("Nieuw: raad het rugnummer", "Een nieuw vraagtype in de daily.", "academie");
+
+        Assert.True(await _t.Notifications.AddReleaseNoteAsync(note, "20261025.120000"));
+        // De app herstart met dezelfde versie: geen tweede melding.
+        Assert.False(await _t.Notifications.AddReleaseNoteAsync(note, "20261025.120000"));
+
+        var news = Assert.Single(await _t.Notifications.ListAsync(tom));
+        Assert.Equal((NotificationKind.Nieuws, "Nieuw: raad het rugnummer"), (news.Kind, news.Title));
+        Assert.Equal("20261025.120000", _t.Db.Announcements.Single().Version);
+    }
+
     public void Dispose() => _t.Dispose();
 }

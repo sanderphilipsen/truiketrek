@@ -1,15 +1,16 @@
-# Maakt de Azure-omgeving aan: een PostgreSQL Flexible Server (B1ms) en een web-app op het bestaande App Service-plan.
+# Maakt de Azure-omgeving aan: een App Service-plan (B1), een PostgreSQL Flexible Server (B1ms) en een web-app.
 # Je kan het script opnieuw uitvoeren: wat al bestaat wordt overgeslagen, de instellingen worden opnieuw gezet.
 # Het databasewachtwoord wordt alleen aangemaakt bij een nieuwe server en enkel in de app-instellingen bewaard.
 # Daarna deployen: pwsh scripts/deploy-azure.ps1
 
 param(
-    [string]$Subscription = "39873856-b08e-4af0-91a3-8ffb5a44fcd6",  # Azure subscription 1
-    [string]$ResourceGroup = "tbooking-rg",
-    [string]$Plan = "tbooking-plan",
-    [string]$Location = "westeurope",
+    [string]$Subscription = "11e4a1ec-68c0-4790-a7dc-34fc2144ad23",  # Visual Studio Enterprise Subscription
+    [string]$ResourceGroup = "rg-truitje-trek",
+    [string]$Plan = "truitjetrek-plan",
+    # West Europe is geblokkeerd voor PostgreSQL, North Europe en UK South hebben geen B1-quotum, Belgium Central geen capaciteit.
+    [string]$Location = "francecentral",
     [string]$AppName = "truitjetrek",
-    [string]$DbServer = "truitjetrek-db",
+    [string]$DbServer = "truitjetrek-database",
     [string]$DbName = "voetbalquiz",
     [string]$DbAdmin = "quizadmin",
     [string[]]$Admins = @("sander", "sangolan")
@@ -20,7 +21,17 @@ $PSNativeCommandUseErrorActionPreference = $true
 $tags = "app=truitjetrek"
 
 az account set --subscription $Subscription
-az provider register --namespace Microsoft.DBforPostgreSQL --wait
+# Registreren vraagt rechten op de hele subscription; met Contributor op enkel de resource group moet de eigenaar dit doen.
+if ((az provider show -n Microsoft.DBforPostgreSQL --query registrationState -o tsv) -ne "Registered") {
+    az provider register --namespace Microsoft.DBforPostgreSQL --wait
+}
+
+# ---------- App Service-plan ----------
+$planExists = (az appservice plan list -g $ResourceGroup --query "[?name=='$Plan'] | length(@)" -o tsv) -ne "0"
+if (-not $planExists) {
+    Write-Host "App Service-plan '$Plan' aanmaken..."
+    az appservice plan create -g $ResourceGroup -n $Plan -l $Location --sku B1 --is-linux --tags $tags -o none
+}
 
 # ---------- Database ----------
 $serverExists = (az postgres flexible-server list -g $ResourceGroup --query "[?name=='$DbServer'] | length(@)" -o tsv) -ne "0"

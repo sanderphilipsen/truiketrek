@@ -6,10 +6,12 @@
 # weg zodra de nieuwe versie antwoordt. Zolang het er staat, zien spelers enkel een onderhoudsmelding.
 
 param(
-    [string]$Subscription = "39873856-b08e-4af0-91a3-8ffb5a44fcd6",  # Azure subscription 1
-    [string]$ResourceGroup = "tbooking-rg",
+    [string]$Subscription = "11e4a1ec-68c0-4790-a7dc-34fc2144ad23",  # Visual Studio Enterprise Subscription
+    [string]$ResourceGroup = "rg-truitje-trek",
     [string]$AppName = "truitjetrek",
-    [int]$WarnMinutes = 1  # 0 voor een dringende hotfix
+    [int]$WarnMinutes = 1,  # 0 voor een dringende hotfix
+    # JSON met title, text en optioneel link: komt na de deploy bij elke speler binnen als "Wat is er nieuw".
+    [string]$ReleaseNote = ""
 )
 
 $ErrorActionPreference = "Stop"
@@ -24,6 +26,15 @@ Remove-Item $work -Recurse -Force -ErrorAction SilentlyContinue
 # Een eigen versie per publicatie: zo ziet het script verderop dat de nieuwe versie draait en niet nog de vorige.
 $deployId = Get-Date -Format "yyyyMMdd.HHmmss"
 dotnet publish (Join-Path $root "src/VoetbalQuiz.Server") -c Release -o $out -p:InformationalVersion=$deployId
+
+# De app verstuurt de releasenota bij het opstarten, één keer per versie (zie Program.cs).
+if ($ReleaseNote) {
+    $note = Get-Content $ReleaseNote -Raw | ConvertFrom-Json
+    if (-not $note.title -or -not $note.text) { throw "De releasenota mist title of text." }
+    @{ version = $deployId; title = $note.title; text = $note.text; link = $note.link } | ConvertTo-Json |
+        Set-Content (Join-Path $out "release-note.json") -Encoding utf8
+    Write-Host "Releasenota mee: $($note.title)"
+}
 
 # ZipFile gebruikt voorwaartse slashes, zodat de paden kloppen op de Linux-server.
 Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -66,5 +77,9 @@ finally {
     Remove-Item $work -Recurse -Force -ErrorAction SilentlyContinue
 }
 
-if ($deployed) { Write-Host "Gedeployed: $url (versie $deployId)" }
+if ($deployed) {
+    # De volgende releasenota beschrijft de commits vanaf hier (git log deploy/<vorige>..HEAD).
+    git -C $root tag "deploy/$deployId"
+    Write-Host "Gedeployed: $url (versie $deployId, tag deploy/$deployId)"
+}
 else { Write-Error "De nieuwe versie reageert niet na 5 minuten. Bekijk de logs: az webapp log tail -g $ResourceGroup -n $AppName" }

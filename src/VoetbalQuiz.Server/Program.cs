@@ -2,10 +2,12 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
+using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
 using VoetbalQuiz.Server.Data;
 using VoetbalQuiz.Server.Endpoints;
 using VoetbalQuiz.Server.Services;
+using VoetbalQuiz.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -108,6 +110,23 @@ using (var scope = app.Services.CreateScope())
     await db.Database.MigrateAsync();
     await scope.ServiceProvider.GetRequiredService<PlayerSeeder>().SeedAsync();
     await scope.ServiceProvider.GetRequiredService<QuestionSeeder>().SeedAsync();
+
+    // Releasenota die het deployscript meegaf: als "Wat is er nieuw" naar alle spelers. Een fout hierin mag de app niet tegenhouden.
+    var releaseNote = Path.Combine(app.Environment.ContentRootPath, "release-note.json");
+    if (File.Exists(releaseNote))
+    {
+        try
+        {
+            var note = JsonSerializer.Deserialize<ReleaseNote>(await File.ReadAllTextAsync(releaseNote), JsonSerializerOptions.Web);
+            if (note is not { Version.Length: > 0 }) throw new JsonException("Geen versie in de releasenota.");
+            if (await scope.ServiceProvider.GetRequiredService<NotificationService>().AddReleaseNoteAsync(new AnnouncementRequest(note.Title, note.Text, note.Link), note.Version))
+                app.Logger.LogInformation("Releasenota {Version} verstuurd: {Title}", note.Version, note.Title);
+        }
+        catch (Exception ex) when (ex is JsonException or QuizException)
+        {
+            app.Logger.LogWarning(ex, "Releasenota in {File} niet verstuurd", releaseNote);
+        }
+    }
 }
 
 if (app.Environment.IsDevelopment())

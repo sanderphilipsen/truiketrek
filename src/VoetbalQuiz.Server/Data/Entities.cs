@@ -251,6 +251,8 @@ public class Announcement
     public required string Text { get; set; }
     public string? Link { get; set; }
     public DateTime CreatedAt { get; set; }
+    /// <summary>Versie van de deploy waarmee deze releasenota automatisch meekwam; null als een admin ze zelf schreef.</summary>
+    public string? Version { get; set; }
 }
 
 // ---------- Online wedstrijden ----------
