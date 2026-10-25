@@ -169,6 +169,20 @@ body::before {
 }
 
 a { color: inherit; }
+/* Wie met het toetsenbord navigeert, ziet waar hij staat: een gele ring (de standaardring valt weg op het groen).
+   Invoervelden hebben hun eigen gele rand bij :focus. */
+:focus-visible { outline: 3px solid var(--sb-digit); outline-offset: 2px; }
+/* Tikfeedback: een knop veert even in, zodat een tik nooit "dood" aanvoelt, ook als het antwoord van de server even duurt.
+   :where houdt de regel zwak, zodat knoppen met een eigen :active-effect (keuzes, derby-wapens) dat houden.
+   manipulation haalt de wachttijd voor dubbeltikken weg. */
+:where(button, a, .btn) { touch-action: manipulation; }
+:where(.btn, .tabs button, .page-back, .sheet-close, .linkish) { transition: transform .08s ease-out; }
+:where(.btn, .tabs button, .page-back, .sheet-close, .linkish):active:not(:disabled) { transform: scale(.96); }
+/* Tegels en lijstrijen veren niet (dat oogt wiebelig over de volle breedte), ze lichten even op. */
+:where(.sb-strip, .tafel-banner, .menu-list a, .menu-list button, .board .player):active { background-color: rgba(255, 255, 255, .06); }
+@media (prefers-reduced-motion: reduce) {
+    :where(.btn, .tabs button, .page-back, .sheet-close, .linkish):active:not(:disabled) { transform: none; opacity: .8; }
+}
 h1 { margin: .2rem 0 .4rem; font-size: 1.5rem; }
 
 .app {
@@ -188,7 +202,7 @@ h1 { margin: .2rem 0 .4rem; font-size: 1.5rem; }
     flex: none; display: grid; place-items: center; width: var(--tap); height: var(--tap); border-radius: 50%;
     background: rgba(6, 41, 27, .8); box-shadow: inset 0 0 0 1px rgba(93, 202, 165, .45); color: #fff; font-size: 1.25rem; text-decoration: none;
 }
-.page-back:hover { background: rgba(6, 41, 27, .95); }
+@media (hover: hover) { .page-back:hover { background: rgba(6, 41, 27, .95); } }
 .page-head-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 .page-head .sb-label { color: var(--on-field-muted); }
 .page-head .page-title { margin: 0; font-size: 1.5rem; font-weight: 800; line-height: 1.15; overflow-wrap: anywhere; }
@@ -295,7 +309,7 @@ h1 { margin: .2rem 0 .4rem; font-size: 1.5rem; }
 /* Hoofdknop in scorebordstijl: een donkere tegel met een gele lijn en gele letters, als een opgelicht segment van het bord.
    Vol geel blijft voor cijfers, de klok en het levelbolletje. */
 .btn.primary { background: rgba(250, 199, 117, .1); color: var(--sb-digit); box-shadow: inset 0 0 0 1.5px var(--sb-digit); }
-.btn.primary:hover { background: rgba(250, 199, 117, .18); }
+@media (hover: hover) { .btn.primary:hover { background: rgba(250, 199, 117, .18); } }
 .btn.big { display: block; width: 100%; padding: 16px; font-size: 1.1rem; margin-top: 16px; }
 .btn:disabled { opacity: .6; }
 .linkish { background: none; border: 0; color: inherit; font: inherit; cursor: pointer; text-decoration: underline; }
@@ -325,7 +339,7 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent); box-sha
     width: 100%; min-height: 48px; margin-top: 16px;
     background: #131314; color: #e3e3e3; box-shadow: inset 0 0 0 1px #8e918f;
 }
-.btn.google-btn:hover { background: #1f1f20; }
+@media (hover: hover) { .btn.google-btn:hover { background: #1f1f20; } }
 .google-g { width: 20px; height: 20px; flex: none; }
 .or-line { display: flex; align-items: center; gap: 10px; margin: 16px 0 0; color: var(--muted); font-size: .85rem; }
 .or-line::before, .or-line::after { content: ""; flex: 1; height: 1px; background: var(--sb-line-strong); }
@@ -494,7 +508,7 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent); box-sha
 .board li.zone-prize { border-left-color: var(--ok); }
 .board li.zone-drop { border-left-color: var(--fail); }
 .board li.zone-drop .rank { color: var(--fail-text); }
-.board .rank i { font-style: normal; font-size: .55rem; margin-left: 1px; vertical-align: 2px; }
+.board .rank i { font-style: normal; font-size: .65rem; margin-left: 1px; vertical-align: 2px; }
 /* Jouw rij: een zachte gele tint, de groene tegellijn en een "jij"-label (geen felle gele rand: geel blijft voor
    de hoofdknop en de cijfers), en ze blijft boven- of onderaan in beeld plakken tot je ze bereikt. */
 .board li.me {
@@ -505,7 +519,7 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent); box-sha
 .board li.me:first-child, .board li.me:last-child { border-radius: var(--radius); }
 .board .you {
     display: inline-block; margin-left: 6px; padding: 1px 6px; border-radius: 999px; vertical-align: 2px;
-    background: var(--accent); color: #13241b; font-size: .62rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+    background: var(--accent); color: #13241b; font-size: .7rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
 }
 .board .rank { width: 28px; text-align: center; font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
 /* Een icoon in de plaats van een cijfer (Gouden Ballen, academie): in het scorebordgeel. */
@@ -580,7 +594,7 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent); box-sha
     min-width: 18px; height: 18px; padding: 0 4px; border-radius: 9px;
     display: grid; place-items: center;
     background: var(--accent); color: #1b1600; border: 2px solid var(--pitch);
-    font-size: .68rem; font-weight: 800; line-height: 1;
+    font-size: .7rem; font-weight: 800; line-height: 1;
 }
 .lvl {
     display: inline-block;
@@ -651,7 +665,7 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent); box-sha
 .light-text { color: rgba(255, 255, 255, .8); }
 .field-label { font-weight: 600; font-size: .9rem; margin-bottom: 6px; }
 .tag { margin-left: auto; font-size: .72rem; background: var(--surface-soft); border-radius: 999px; padding: 2px 8px; color: var(--muted); }
-.pts .unit { display: block; font-size: .65rem; font-weight: 600; color: var(--muted); text-align: right; }
+.pts .unit { display: block; font-size: .7rem; font-weight: 600; color: var(--muted); text-align: right; }
 textarea {
     font: inherit;
     font-size: 1rem;
@@ -684,7 +698,7 @@ body:has(.sheet) { overflow: hidden; }
     flex: none; width: var(--tap); height: var(--tap); border: 0; border-radius: 50%;
     background: none; color: var(--muted); font: inherit; font-size: 1.15rem; cursor: pointer;
 }
-.sheet-close:hover { background: var(--surface-soft); }
+@media (hover: hover) { .sheet-close:hover { background: var(--surface-soft); } }
 .sheet-body { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; display: flex; flex-direction: column; gap: 18px; padding: 8px 16px 18px; }
 .sheet-foot { padding: 10px 16px calc(env(safe-area-inset-bottom) + 12px); border-top: 1px solid var(--divider); background: var(--card); }
 .sheet-foot .error { margin: 0 0 8px; }
@@ -801,7 +815,7 @@ body:has(.sheet) { overflow: hidden; }
 .tafel-banner-go { font-weight: 800; white-space: nowrap; color: var(--sb-digit, var(--text)); }
 .tafel-banner.live { border-color: #f09595; }
 .tafel-banner.live .sb-icon { color: #f09595; }
-.tafel-banner:hover { background: rgba(255, 255, 255, .04); }
+@media (hover: hover) { .tafel-banner:hover { background: rgba(255, 255, 255, .04); } }
 .table-card.done { opacity: .85; }
 .table-icon { font-size: 1.6rem; width: 40px; text-align: center; }
 .table-info { flex: 1; display: flex; flex-direction: column; min-width: 0; }
@@ -863,7 +877,7 @@ body:has(.sheet) { overflow: hidden; }
 .kleedkamer-captain {
     position: absolute; right: -2px; bottom: -2px; display: grid; place-items: center;
     width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--card);
-    background: var(--accent); color: #1b1600; font-size: .65rem; font-weight: 900;
+    background: var(--accent); color: #1b1600; font-size: .7rem; font-weight: 900;
 }
 @keyframes kleedkamer-in {
     from { opacity: 0; transform: translateY(14px) scale(.6); }
@@ -1009,7 +1023,7 @@ body:has(.sheet) { overflow: hidden; }
     cursor: pointer;
     font: inherit;
 }
-.mini small { font-size: .66rem; color: var(--muted); text-align: center; line-height: 1.1; }
+.mini small { font-size: .7rem; color: var(--muted); text-align: center; line-height: 1.1; }
 .mini.on { border-color: var(--accent); background: rgba(250, 199, 117, .12); }
 .number-picker { display: flex; align-items: center; gap: 8px; }
 .number-picker input { width: 70px; text-align: center; font-weight: 800; }
@@ -1029,7 +1043,7 @@ body:has(.sheet) { overflow: hidden; }
     min-width: 18px; height: 18px; padding: 0 4px; border-radius: 9px;
     display: grid; place-items: center;
     background: var(--accent); color: #1b1600; border: 2px solid var(--pitch);
-    font-size: .68rem; font-weight: 800; line-height: 1;
+    font-size: .7rem; font-weight: 800; line-height: 1;
 }
 
 /* ---------- Meldingen ---------- */
@@ -1059,7 +1073,7 @@ body:has(.sheet) { overflow: hidden; }
     color: var(--text); font-size: .95rem; font-weight: 600; text-decoration: none; white-space: nowrap;
 }
 .home-fact .sb-icon { font-size: 1.1rem; }
-.home-fact:hover span { text-decoration: underline; }
+@media (hover: hover) { .home-fact:hover span { text-decoration: underline; } }
 .btn.home-daily-play { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; min-height: 48px; margin-top: 12px; }
 .sb-label { margin: 0; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 .sb-digits {
@@ -1086,11 +1100,11 @@ body:has(.sheet) { overflow: hidden; }
 .sb-strip .sb-go { font-size: 1.3rem; line-height: 1; }
 .sb-strip-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
 .sb-strip-text small { font-size: .8rem; color: var(--muted); }
-.sb-strip:hover { background: rgba(255, 255, 255, .04); }
+@media (hover: hover) { .sb-strip:hover { background: rgba(255, 255, 255, .04); } }
 /* "Nieuwe match", net onder de daily: zwaarder dan de stroken (groot icoon, titel met ondertitel, lichter groen),
    maar zonder geel, want de daily blijft de hoofdactie. */
 .sb-strip.sb-match { min-height: 68px; padding: 12px 16px; margin-bottom: 16px; background: var(--pitch-2); color: #fff; }
-.sb-strip.sb-match:hover { background: color-mix(in srgb, var(--pitch-2) 85%, #fff); }
+@media (hover: hover) { .sb-strip.sb-match:hover { background: color-mix(in srgb, var(--pitch-2) 85%, #fff); } }
 .sb-match .sb-icon { font-size: 2rem; }
 .sb-match-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
 .sb-match-text b { font-size: 1.1rem; line-height: 1.2; }
@@ -1312,7 +1326,7 @@ label.check input { width: auto; }
     background: var(--card); border-radius: var(--radius); padding: 16px;
     text-decoration: none; color: inherit; border: 3px solid transparent;
 }
-.dash-card:hover { border-color: rgba(15, 81, 50, .25); }
+@media (hover: hover) { .dash-card:hover { border-color: rgba(15, 81, 50, .25); } }
 .dash-card.attention { border-color: var(--accent); }
 .dash-card b { font-size: 2.2rem; line-height: 1.1; }
 .dash-card span:not(.dash-icon) { font-weight: 700; }
@@ -1355,7 +1369,7 @@ label.check input { width: auto; }
     gap: 12px; align-items: center; padding: 10px 16px;
     border-bottom: 1px solid #eef2ef; text-decoration: none; color: inherit;
 }
-.pt-row:hover:not(.pt-head) { background: #f6faf7; }
+@media (hover: hover) { .pt-row:hover:not(.pt-head) { background: #f6faf7; } }
 .pt-head { font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .4px; color: var(--muted); background: #f6f8f7; }
 .pt-name { display: flex; flex-direction: column; }
 .pt-meta { color: var(--muted); font-size: .85rem; }
@@ -1412,7 +1426,7 @@ label.check input { width: auto; }
 .chip.removable { font-size: .8rem; padding: 4px 6px 4px 10px; background: #e6f2eb; }
 .chip.removable button { border: 0; background: none; cursor: pointer; color: var(--muted); }
 .pick-row { display: block; width: 100%; text-align: left; border: 0; background: none; padding: 8px; border-radius: 8px; cursor: pointer; font: inherit; }
-.pick-row:hover { background: #f6faf7; }
+@media (hover: hover) { .pick-row:hover { background: #f6faf7; } }
 .pool-list { columns: 2; padding-left: 18px; margin: 8px 0 0; font-size: .85rem; }
 .special-preview { display: flex; gap: 10px; align-items: center; background: linear-gradient(135deg, #fff7d1, #fff); border: 2px solid var(--accent); border-radius: 12px; padding: 10px; }
 .special-preview > div { display: flex; flex-direction: column; }
@@ -1485,7 +1499,7 @@ button.choice:active { transform: scale(.97); }
     width: 30px; height: 30px; border-radius: 8px 8px 6px 6px; background: #fff;
     display: grid; place-items: center; font-weight: 900; color: var(--pitch);
 }
-.pitch-player small { color: #fff; font-size: .68rem; line-height: 1.15; font-weight: 600; text-shadow: 0 1px 2px rgba(0, 0, 0, .5); }
+.pitch-player small { color: #fff; font-size: .7rem; line-height: 1.15; font-weight: 600; text-shadow: 0 1px 2px rgba(0, 0, 0, .5); }
 .pitch-player.open .shirt { background: var(--accent); }
 .pitch-player.found .shirt { background: var(--ok); }
 .pitch-player.missed .shirt { background: var(--fail); }
@@ -1657,7 +1671,7 @@ button.choice:active { transform: scale(.97); }
 .menu-list > * + * { border-top: 1px solid var(--divider); }
 .menu-list span { display: inline-flex; font-size: 1.2rem; color: var(--sb-digit); }
 .menu-list i { margin-left: auto; font-style: normal; color: var(--muted); font-size: 1.3rem; }
-.menu-list a:hover, .menu-list button:hover { background: var(--surface-soft); }
+@media (hover: hover) { .menu-list a:hover, .menu-list button:hover { background: var(--surface-soft); } }
 .member-since { color: rgba(255, 255, 255, .65); text-align: center; font-size: .85rem; margin: 4px 0 0; overflow-wrap: anywhere; }
 
 /* Privacyverklaring, voorwaarden en FAQ: leesbare lopende tekst. */
@@ -1899,7 +1913,7 @@ button.choice:active { transform: scale(.97); }
     transform: translateX(-120%); animation: reward-glint 1s ease-out calc(var(--d, 0ms) + 600ms) forwards;
 }
 .reward-badge b { font-size: .8rem; }
-.reward-badge small { color: var(--muted); font-size: .68rem; line-height: 1.2; }
+.reward-badge small { color: var(--muted); font-size: .7rem; line-height: 1.2; }
 .reward-card .btn.big { margin-top: 16px; width: 100%; }
 .confetti { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
 .confetti i {
@@ -1989,7 +2003,7 @@ button.choice:active { transform: scale(.97); }
 .gb-ceremony-podium li.me .gb-ceremony-name { font-weight: 800; }
 .gb-ceremony-pts { flex: none; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--muted); }
 .btn.big.gb-ceremony-go { margin-top: 16px; background: var(--accent); color: #1b1600; box-shadow: none; font-weight: 800; }
-.btn.big.gb-ceremony-go:hover { background: #ffd21f; }
+@media (hover: hover) { .btn.big.gb-ceremony-go:hover { background: #ffd21f; } }
 .gb-ceremony-link { display: inline-flex; align-items: center; min-height: var(--tap); margin-top: 4px; color: var(--sb-digit); font-weight: 700; font-size: .92rem; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
     .gb-ceremony-ball { animation: none; }
@@ -2064,7 +2078,7 @@ button.choice:active { transform: scale(.97); }
 
 .derby-badge {
     display: inline-block; margin-left: 6px; padding: 1px 7px; border-radius: 999px;
-    background: var(--fail); color: #fff; font-size: .68rem; font-weight: 800; letter-spacing: .02em;
+    background: var(--fail); color: #fff; font-size: .7rem; font-weight: 800; letter-spacing: .02em;
 }
 
 .derby-intro { background: var(--derby-bg); border: 1px solid var(--derby-line); border-radius: 12px; padding: 10px 12px; margin: 8px 0 12px; font-size: .88rem; }
@@ -2160,7 +2174,7 @@ details.derby-intro[open] { padding-bottom: 10px; }
 .derby-figure { margin: 0; display: flex; flex-direction: column; align-items: center; animation: figure-in .5s cubic-bezier(.2, .9, .3, 1.3) both; }
 .derby-figure svg { display: block; filter: drop-shadow(0 6px 10px rgba(0, 0, 0, .45)); }
 .derby-figure figcaption {
-    margin-top: -4px; background: rgba(0, 0, 0, .75); color: #fff; font-size: .66rem; font-weight: 700;
+    margin-top: -4px; background: rgba(0, 0, 0, .75); color: #fff; font-size: .7rem; font-weight: 700;
     padding: 2px 7px; border-radius: 10px; text-align: center; max-width: 110px;
 }
 @keyframes figure-in { from { transform: translateY(120%); } }
@@ -2377,7 +2391,7 @@ details.derby-intro[open] { padding-bottom: 10px; }
 .suspect.struck .suspect-name { text-decoration: line-through; text-decoration-color: var(--fail); text-decoration-thickness: 2px; }
 .suspect.accused { opacity: .4; cursor: default; }
 .suspect-tag {
-    display: inline-block; padding: 1px 6px; border-radius: 999px; font-size: .68rem; font-weight: 600;
+    display: inline-block; padding: 1px 6px; border-radius: 999px; font-size: .7rem; font-weight: 600;
     background: var(--error-bg); color: var(--error-text);
 }
 .suspect .suspect-tag { position: absolute; top: 4px; right: 4px; }
