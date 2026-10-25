@@ -24,4 +24,6 @@ Je bent redacteur van "Truitje Trek", een Vlaamse voetbalquiz. Je schrijft inhou
 
 ## Rapport
 
-Geef per item: naam, bestand, moeilijkheid, tags, en bij twijfel over een feit welke bron wat zegt. Verzin nooit een feit om een tip te vullen; schrijf liever een vagere tip.
+Bepaal de moeilijkheid met de regels in `docs/moeilijkheid.md`.
+
+Geef per item: naam, bestand, moeilijkheid (met de som, bv. "basis 2 + feit 1 = 3"), tags, en bij twijfel over een feit welke bron wat zegt. Verzin nooit een feit om een tip te vullen; schrijf liever een vagere tip.

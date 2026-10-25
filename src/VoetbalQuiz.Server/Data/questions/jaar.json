@@ -2,7 +2,7 @@
   {
     "event": "Pelé en Brazilië winnen de WK-finale in Mexico met 4-1 van Italië.",
     "year": 1970,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1970_FIFA_World_Cup_final"
@@ -51,7 +51,7 @@
   {
     "event": "Anderlecht wint de Europacup II met 4-2 tegen West Ham in de Heizel.",
     "year": 1976,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1976_European_Cup_Winners'_Cup_final"
@@ -73,7 +73,7 @@
   {
     "event": "Club Brugge verliest de Europacup I-finale op Wembley van Liverpool.",
     "year": 1978,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1978_European_Cup_final"
@@ -88,7 +88,7 @@
     "event": "Mario Kempes leidt gastland Argentinië naar de wereldtitel.",
     "year": 1978,
     "difficulty": 3,
-    "status": "approved",
+    "status": "rejected",
     "sources": [
       "https://en.wikipedia.org/wiki/1978_FIFA_World_Cup_final"
     ],
@@ -111,9 +111,9 @@
     "checkedAt": "2026-10-17"
   },
   {
-    "event": "Erwin Vandenbergh bezorgt België een zege tegen titelverdediger Argentinië in de WK-opener.",
+    "event": "Erwin Vandenbergh bezorgt België een 1-0-zege tegen Argentinië in de openingsmatch van het WK.",
     "year": 1982,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1982_FIFA_World_Cup_Group_3"
@@ -139,7 +139,7 @@
   {
     "event": "Anderlecht wint de UEFA Cup na een finale tegen Benfica.",
     "year": 1983,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1983_UEFA_Cup_final"
@@ -150,7 +150,7 @@
   {
     "event": "Michel Platini scoort een hattrick in Frankrijks 5-0 tegen België op het EK.",
     "year": 1984,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_1984"
@@ -164,7 +164,7 @@
   {
     "event": "Heizeldrama: 39 doden voor de Europacupfinale Liverpool – Juventus in Brussel.",
     "year": 1985,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Heysel_Stadium_disaster"
@@ -230,7 +230,7 @@
   {
     "event": "Marco van Basten scoort zijn legendarische volley in de EK-finale tegen de Sovjet-Unie.",
     "year": 1988,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_1988_final"
@@ -275,9 +275,9 @@
     "checkedAt": "2026-10-17"
   },
   {
-    "event": "Olympique Marseille wint de eerste Champions League-finale tegen AC Milan.",
+    "event": "Olympique Marseille wint de Champions League-finale met 1-0 tegen AC Milan, met een kopbal van Basile Boli.",
     "year": 1993,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1993_UEFA_Champions_League_final"
@@ -318,18 +318,18 @@
   {
     "event": "Het Bosman-arrest maakt spelers transfervrij na hun contract.",
     "year": 1995,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Bosman_ruling"
     ],
-    "tags": [],
+    "tags": ["sinterklaas"],
     "checkedAt": "2026-10-17"
   },
   {
     "event": "Oliver Bierhoff beslist de EK-finale op Wembley met een golden goal.",
     "year": 1996,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_1996_final"
@@ -340,7 +340,7 @@
   {
     "event": "Frankrijk wordt wereldkampioen in eigen land met twee goals van Zidane.",
     "year": 1998,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1998_FIFA_World_Cup_final"
@@ -364,7 +364,7 @@
   {
     "event": "Racing Genk wordt voor het eerst landskampioen.",
     "year": 1999,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1998%E2%80%9399_Belgian_First_Division"
@@ -373,9 +373,9 @@
     "checkedAt": "2026-10-17"
   },
   {
-    "event": "Bart Goor en Émile Mpenza scoren in de openingsmatch van het thuis-EK tegen Zweden.",
+    "event": "Bart Goor en Émile Mpenza scoren in de openingsmatch van het EK tegen Zweden (2-1).",
     "year": 2000,
-    "difficulty": 5,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2000"
@@ -388,7 +388,7 @@
   {
     "event": "Een kopgoal van Marc Wilmots tegen Brazilië wordt afgekeurd op het WK.",
     "year": 2002,
-    "difficulty": 5,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_knockout_stage"
@@ -402,7 +402,7 @@
   {
     "event": "Ronaldo scoort twee keer in de WK-finale tegen Duitsland in Yokohama.",
     "year": 2002,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2002_FIFA_World_Cup_final"
@@ -413,7 +413,7 @@
   {
     "event": "David Beckham ruilt Manchester United in voor Real Madrid.",
     "year": 2003,
-    "difficulty": 5,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/David_Beckham"
@@ -422,9 +422,9 @@
     "checkedAt": "2026-10-17"
   },
   {
-    "event": "Griekenland wint verrassend het EK in Portugal.",
+    "event": "Griekenland wint verrassend het EK na een 1-0 in de finale tegen Portugal.",
     "year": 2004,
-    "difficulty": 1,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2004_final"
@@ -435,7 +435,7 @@
   {
     "event": "Arsenal wordt ongeslagen Engels kampioen: de 'Invincibles'.",
     "year": 2004,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2003%E2%80%9304_Arsenal_F.C._season"
@@ -446,21 +446,18 @@
   {
     "event": "Liverpool wint in Istanbul de CL-finale na 3-0 achterstand tegen Milan.",
     "year": 2005,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2005_UEFA_Champions_League_final"
     ],
-    "tags": [
-      "champions-league",
-      "italie"
-    ],
+    "tags": ["champions-league", "italie", "halloween"],
     "checkedAt": "2026-10-17"
   },
   {
     "event": "Club Brugge wordt kampioen en moet daarna elf jaar wachten op een nieuwe titel.",
     "year": 2005,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2004%E2%80%9305_Belgian_First_Division",
@@ -472,7 +469,7 @@
   {
     "event": "Zidane geeft Materazzi een kopstoot in de WK-finale.",
     "year": 2006,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2006_FIFA_World_Cup_final"
@@ -494,8 +491,8 @@
   {
     "event": "AC Milan neemt in Athene revanche op Liverpool in de CL-finale.",
     "year": 2007,
-    "difficulty": 5,
-    "status": "approved",
+    "difficulty": 3,
+    "status": "rejected",
     "sources": [
       "https://en.wikipedia.org/wiki/2007_UEFA_Champions_League_final"
     ],
@@ -519,18 +516,18 @@
   {
     "event": "Fernando Torres bezorgt Spanje de Europese titel in Wenen.",
     "year": 2008,
-    "difficulty": 5,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2008_final"
     ],
-    "tags": ["spanje"],
+    "tags": ["spanje", "sinterklaas", "duitsland"],
     "checkedAt": "2026-10-17"
   },
   {
-    "event": "Eden Hazard maakt als 17-jarige zijn debuut bij de Rode Duivels.",
+    "event": "Eden Hazard maakt zijn debuut bij de Rode Duivels.",
     "year": 2008,
-    "difficulty": 5,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Eden_Hazard"
@@ -556,7 +553,7 @@
   {
     "event": "Cristiano Ronaldo trekt voor een recordbedrag naar Real Madrid.",
     "year": 2009,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Cristiano_Ronaldo"
@@ -567,7 +564,7 @@
   {
     "event": "Standard verlengt zijn titel na een beslissende dubbele testmatch tegen Anderlecht.",
     "year": 2009,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2008%E2%80%9309_Belgian_First_Division"
@@ -593,12 +590,12 @@
   {
     "event": "Spanje wordt in Johannesburg voor het eerst wereldkampioen.",
     "year": 2010,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_final"
     ],
-    "tags": ["wk", "spanje"],
+    "tags": ["wk", "spanje", "sinterklaas", "oranje"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -655,7 +652,7 @@
   {
     "event": "Agüero scoort in de slotminuut: Manchester City voor het eerst Premier League-kampioen.",
     "year": 2012,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2011%E2%80%9312_Premier_League"
@@ -718,7 +715,7 @@
   {
     "event": "Sir Alex Ferguson stopt als manager van Manchester United.",
     "year": 2013,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Alex_Ferguson"
@@ -745,7 +742,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Brazil_v_Germany_(2014_FIFA_World_Cup)"
     ],
-    "tags": ["wk", "duitsland"],
+    "tags": ["wk", "duitsland", "halloween"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -805,7 +802,7 @@
   {
     "event": "KAA Gent wordt voor het eerst in zijn geschiedenis landskampioen.",
     "year": 2015,
-    "difficulty": 1,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2014%E2%80%9315_Belgian_Pro_League"
@@ -840,7 +837,7 @@
   {
     "event": "Leicester City wordt sensationeel kampioen in de Premier League.",
     "year": 2016,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2015%E2%80%9316_Premier_League"
@@ -865,7 +862,7 @@
   {
     "event": "Portugal wint het EK na een finale tegen gastland Frankrijk.",
     "year": 2016,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2016_final"
@@ -915,7 +912,7 @@
   {
     "event": "Neymar verhuist voor 222 miljoen euro van Barcelona naar PSG.",
     "year": 2017,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Neymar"
@@ -937,7 +934,7 @@
   {
     "event": "Thomas Meunier en Eden Hazard scoren in de WK-troostfinale tegen Engeland.",
     "year": 2018,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"
@@ -962,7 +959,7 @@
   {
     "event": "Nacer Chadli scoort in de slotseconden de 3-2 tegen Japan.",
     "year": 2018,
-    "difficulty": 3,
+    "difficulty": 1,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"
@@ -975,7 +972,7 @@
   {
     "event": "Cristiano Ronaldo verruilt Real Madrid voor Juventus.",
     "year": 2018,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Cristiano_Ronaldo"
@@ -986,7 +983,7 @@
   {
     "event": "Eden Hazard verlaat Chelsea voor Real Madrid.",
     "year": 2019,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Eden_Hazard"
@@ -1000,7 +997,7 @@
   {
     "event": "Liverpool wordt voor het eerst in dertig jaar Engels kampioen.",
     "year": 2020,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2019%E2%80%9320_Premier_League"
@@ -1011,7 +1008,7 @@
   {
     "event": "Club Brugge wordt kampioen nadat de competitie stopt door corona.",
     "year": 2020,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2019%E2%80%9320_Belgian_First_Division_A"
@@ -1035,9 +1032,9 @@
     "checkedAt": "2026-10-17"
   },
   {
-    "event": "Italië wint het uitgestelde EK na penalty's op Wembley.",
+    "event": "Italië wint het EK na penalty's tegen Engeland op Wembley.",
     "year": 2021,
-    "difficulty": 1,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2020_final"
@@ -1048,7 +1045,7 @@
   {
     "event": "Lionel Messi verlaat Barcelona en tekent bij Paris Saint-Germain.",
     "year": 2021,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Lionel_Messi"
@@ -1057,7 +1054,7 @@
     "checkedAt": "2026-10-17"
   },
   {
-    "event": "Thorgan Hazard schakelt titelverdediger Portugal uit op het uitgestelde EK.",
+    "event": "Thorgan Hazard schakelt Portugal uit in de achtste finale van het EK (1-0, Sevilla).",
     "year": 2021,
     "difficulty": 3,
     "status": "approved",
@@ -1100,7 +1097,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_final"
     ],
-    "tags": ["wk", "messi", "frankrijk"],
+    "tags": ["wk", "messi", "frankrijk", "kerst"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1121,7 +1118,7 @@
   {
     "event": "Marokko verslaat België met 2-0 op het WK in Qatar.",
     "year": 2022,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_Group_F"
@@ -1147,7 +1144,7 @@
   {
     "event": "Manchester City wint voor het eerst de Champions League, tegen Inter.",
     "year": 2023,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2023_UEFA_Champions_League_final"
@@ -1173,7 +1170,7 @@
   {
     "event": "Domenico Tedesco wordt aangesteld als bondscoach van België.",
     "year": 2023,
-    "difficulty": 5,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Domenico_Tedesco"
@@ -1199,7 +1196,7 @@
   {
     "event": "Lionel Messi tekent bij Inter Miami.",
     "year": 2023,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Lionel_Messi"
@@ -1221,7 +1218,7 @@
   {
     "event": "Harry Kane ruilt Tottenham in voor Bayern München.",
     "year": 2023,
-    "difficulty": 1,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Harry_Kane"
@@ -1232,7 +1229,7 @@
   {
     "event": "Vincent Kompany wordt hoofdtrainer van Bayern München.",
     "year": 2024,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Vincent_Kompany"
@@ -1246,7 +1243,7 @@
   {
     "event": "Spanje wint het EK in Duitsland na een finale tegen Engeland.",
     "year": 2024,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2024_final"
@@ -1257,7 +1254,7 @@
   {
     "event": "Bayer Leverkusen wordt ongeslagen Duits kampioen onder Xabi Alonso.",
     "year": 2024,
-    "difficulty": 1,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2023%E2%80%9324_Bundesliga"
@@ -1268,7 +1265,7 @@
   {
     "event": "Kylian Mbappé tekent transfervrij bij Real Madrid.",
     "year": 2024,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Kylian_Mbapp%C3%A9"
@@ -1301,9 +1298,9 @@
     "checkedAt": "2026-10-17"
   },
   {
-    "event": "Met 7-0 tegen Liechtenstein plaatst België zich ongeslagen voor het WK in Noord-Amerika.",
+    "event": "Met 7-0 tegen Liechtenstein plaatst België zich ongeslagen voor het WK.",
     "year": 2025,
-    "difficulty": 5,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_qualification_%E2%80%93_UEFA_Group_J",
@@ -1317,7 +1314,7 @@
   {
     "event": "PSG wint voor het eerst de Champions League met 5-0 tegen Inter.",
     "year": 2025,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2025_UEFA_Champions_League_final"
@@ -1332,7 +1329,7 @@
   {
     "event": "Arsenal wordt voor het eerst in 22 jaar Engels kampioen.",
     "year": 2026,
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2025%E2%80%9326_Premier_League"
@@ -1355,7 +1352,7 @@
     "event": "Barbados scoort bewust in eigen doel tegen Grenada om via een golden goal die telde voor twee de volgende ronde van de Caraïbische Cup te halen.",
     "year": 1994,
     "difficulty": 5,
-    "status": "approved",
+    "status": "rejected",
     "sources": [
       "https://en.wikipedia.org/wiki/1994_Caribbean_Cup"
     ],
@@ -1367,7 +1364,7 @@
   {
     "event": "West-Duitsland en Oostenrijk spelen na een vroege goal bijna zonder tegenstand naar de beide gewenste 1-0; Algerije is uitgeschakeld (de 'Schande van Gijón').",
     "year": 1982,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Disgrace_of_Gij%C3%B3n"
@@ -1394,7 +1391,7 @@
   {
     "event": "De Champions League-derby AC Milan–Inter wordt gestaakt nadat doelman Dida door een fakkel geraakt wordt.",
     "year": 2005,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://www.rferl.org/a/1058456.html",
@@ -1408,9 +1405,9 @@
     "checkedAt": "2026-10-19"
   },
   {
-    "event": "Op het WK in Zuid-Afrika staan de halfbroers Kevin-Prince en Jérôme Boateng voor het eerst tegenover elkaar op een WK (Ghana–Duitsland, 0-1).",
+    "event": "De halfbroers Kevin-Prince en Jérôme Boateng staan voor het eerst tegenover elkaar op een WK (Ghana–Duitsland, 0-1).",
     "year": 2010,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/J%C3%A9r%C3%B4me_Boateng"
@@ -1452,17 +1449,13 @@
   {
     "event": "Pippo Inzaghi scoort twee keer in de Champions League-finale in Athene tegen Liverpool; zijn broer Simone speelde toen bij Lazio.",
     "year": 2007,
-    "difficulty": 5,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Filippo_Inzaghi",
       "https://en.wikipedia.org/wiki/Simone_Inzaghi"
     ],
-    "tags": [
-      "familie",
-      "champions-league",
-      "italie"
-    ],
+    "tags": ["familie", "champions-league", "italie"],
     "checkedAt": "2026-10-19"
   },
   {
@@ -1482,7 +1475,7 @@
     "event": "Duitsland bezorgt Brazilië in de WK-halve finale in Belo Horizonte een horrornederlaag van 7-1.",
     "year": 2014,
     "difficulty": 1,
-    "status": "approved",
+    "status": "rejected",
     "sources": [
       "https://en.wikipedia.org/wiki/Brazil_v_Germany_(2014_FIFA_World_Cup)"
     ],
@@ -1509,8 +1502,8 @@
   {
     "event": "Horror voor AC Milan in Istanbul: de Rossoneri leiden met 3-0 aan de rust, maar Liverpool komt terug en wint na strafschoppen de Champions League.",
     "year": 2005,
-    "difficulty": 3,
-    "status": "approved",
+    "difficulty": 2,
+    "status": "rejected",
     "sources": [
       "https://en.wikipedia.org/wiki/2005_UEFA_Champions_League_final"
     ],
@@ -1524,7 +1517,7 @@
     "event": "Argentinië wint na strafschoppen de WK-finale tegen Frankrijk, een week voor Kerst.",
     "year": 2022,
     "difficulty": 1,
-    "status": "approved",
+    "status": "rejected",
     "sources": [
       "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_final"
     ],
@@ -1551,7 +1544,7 @@
   {
     "event": "Real Madrid wint met 4-1 van Al Ain en pakt in december voor het derde jaar op rij het WK voor clubs.",
     "year": 2018,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_Club_World_Cup_final"
@@ -1566,7 +1559,7 @@
   {
     "event": "Manchester City wint drie dagen voor Kerst in Jeddah met 4-0 van Fluminense het WK voor clubs.",
     "year": 2023,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2023_FIFA_Club_World_Cup_final"
@@ -1579,7 +1572,7 @@
   {
     "event": "Voetballegende Pelé overlijdt op 29 december, enkele dagen voor het nieuwe jaar.",
     "year": 2022,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Pel%C3%A9"
@@ -1608,7 +1601,7 @@
   {
     "event": "Chelsea betaalt in de wintermercato 50 miljoen pond voor Fernando Torres, toen een Brits transferrecord.",
     "year": 2011,
-    "difficulty": 5,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Fernando_Torres"
@@ -1636,8 +1629,8 @@
   {
     "event": "Het Bosman-arrest van het Europees Hof van Justitie maakt spelers vrij na afloop van hun contract, waardoor 'cadeautjes' van gratis transfers mogelijk worden.",
     "year": 1995,
-    "difficulty": 3,
-    "status": "approved",
+    "difficulty": 4,
+    "status": "rejected",
     "sources": [
       "https://en.wikipedia.org/wiki/Bosman_ruling"
     ],
@@ -1650,7 +1643,7 @@
     "event": "Spanje, het land van de Sint, wint in Wenen met 1-0 van Duitsland het EK en pakt zijn eerste grote titel sinds 1964.",
     "year": 2008,
     "difficulty": 3,
-    "status": "approved",
+    "status": "rejected",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2008_final"
     ],
@@ -1664,8 +1657,8 @@
   {
     "event": "Spanje wordt voor het eerst wereldkampioen na een 1-0 tegen Nederland in de verlenging, met een doelpunt van Andrés Iniesta.",
     "year": 2010,
-    "difficulty": 1,
-    "status": "approved",
+    "difficulty": 2,
+    "status": "rejected",
     "sources": [
       "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_final"
     ],
@@ -1679,7 +1672,7 @@
   {
     "event": "Royal Antwerp (rood-wit) wint de Beker van België met 1-0 tegen Club Brugge, dankzij een doelpunt van Lior Refaelov.",
     "year": 2020,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Royal_Antwerp_F.C.",
@@ -1700,16 +1693,13 @@
     "sources": [
       "https://en.wikipedia.org/wiki/1978_FIFA_World_Cup_final"
     ],
-    "tags": [
-      "wk",
-      "oranje"
-    ],
+    "tags": ["wk", "oranje"],
     "checkedAt": "2026-10-19"
   },
   {
     "event": "Kameroen verrast titelverdediger Argentinië in de openingswedstrijd van het WK in Milaan.",
     "year": 1990,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1990_FIFA_World_Cup"
@@ -1736,7 +1726,7 @@
   {
     "event": "Titelverdediger Duitsland wordt in de groepsfase van het WK uitgeschakeld na een 0-2 nederlaag tegen Zuid-Korea.",
     "year": 2018,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_Group_F"
@@ -1750,7 +1740,7 @@
   {
     "event": "Saoedi-Arabië verslaat Argentinië met 2-1 in de groepsfase van het WK.",
     "year": 2022,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_Group_C"
@@ -1778,7 +1768,7 @@
   {
     "event": "Anderlecht wint in Parijs met 4-0 van Austria Wenen de Europacup II.",
     "year": 1978,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/1978_European_Cup_Winners%27_Cup_final"
@@ -1817,7 +1807,7 @@
   {
     "event": "Franky Vercauteren wordt in zijn eerste volledige seizoen als hoofdtrainer van Anderlecht landskampioen, na een beslissing op de laatste speeldag.",
     "year": 2006,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Franky_Vercauteren",
@@ -1832,7 +1822,7 @@
   {
     "event": "Anderlecht prolongeert onder Franky Vercauteren zijn landstitel, één speeldag voor het einde.",
     "year": 2007,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/2006%E2%80%9307_Belgian_First_Division",
@@ -1948,7 +1938,7 @@
   {
     "event": "De Russische zakenman Roman Abramovich neemt Chelsea over.",
     "year": 2003,
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Roman_Abramovich",
@@ -2004,7 +1994,7 @@
     "event": "De kamer van inbeschuldigingstelling keurt een minnelijke schikking goed waarmee tien verdachten in het voetbaldossier Propere Handen aan een proces ontsnappen.",
     "year": 2022,
     "difficulty": 5,
-    "status": "approved",
+    "status": "rejected",
     "sources": [
       "https://www.vrt.be/vrtnws/nl/2022/12/22/tien-belgische-voetbalbonzen-ontsnappen-definitief-aan-vervolgin/",
       "https://www.vrt.be/vrtnws/nl/2022/12/01/tien-verdachten-in-voetbaldossier-propere-handne-kunnen-vervol/",
@@ -2034,7 +2024,7 @@
     "event": "Op de wedstrijd tussen Sint-Truiden en La Louvière wordt massaal ingezet, volgens Sporza voor 600.000 euro, een wedstrijd die later in de omkoopzaak rond zakenman Zheyun Ye opduikt.",
     "year": 2005,
     "difficulty": 5,
-    "status": "approved",
+    "status": "rejected",
     "sources": [
       "https://en.wikipedia.org/wiki/Ye_Zheyun",
       "https://sporza.be/nl/2025/10/29/600000-euro-inzet-op-stvv-la-louviere-20-jaar-geleden-ging-de-gokchinees-zheyun-ye-als-een-parasiet-door-het-belgische-voetbal~1761751474910/"
@@ -2047,7 +2037,7 @@
   {
     "event": "Stijn Stijnen debuteert in eerste klasse voor Club Brugge, met een 0-3 overwinning op bezoek bij Genk.",
     "year": 2003,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Stijn_Stijnen"
@@ -2076,7 +2066,7 @@
   {
     "event": "Stijn Stijnen stopt als international van de Rode Duivels.",
     "year": 2009,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Stijn_Stijnen",
@@ -2091,7 +2081,7 @@
   {
     "event": "Beerschot AC, de laatste club van doelman Stijn Stijnen, wordt failliet verklaard.",
     "year": 2013,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Beerschot_AC",
@@ -2119,7 +2109,7 @@
   {
     "event": "Olivier Deschacht debuteert onder Aimé Anthuenis in het eerste elftal van Anderlecht.",
     "year": 2001,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Olivier_Deschacht"
@@ -2133,7 +2123,7 @@
   {
     "event": "Olivier Deschacht speelt zijn eerste interland voor de Rode Duivels, een 3-1-zege tegen Polen.",
     "year": 2003,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://nl.wikipedia.org/wiki/Olivier_Deschacht"
@@ -2207,7 +2197,7 @@
   {
     "event": "Na negentien seizoenen neemt Pelé afscheid van Santos.",
     "year": 1974,
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Pel%C3%A9"
@@ -2278,7 +2268,7 @@
   {
     "event": "Het IOC kiest Pelé tot Atleet van de Eeuw.",
     "year": 1999,
-    "difficulty": 5,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Pel%C3%A9"
@@ -2293,7 +2283,7 @@
     "event": "België keurt de wet goed die spijtoptanten mogelijk maakt, een regeling die kort daarna voor het eerst wordt toegepast in het voetbaldossier Propere Handen.",
     "year": 2018,
     "difficulty": 5,
-    "status": "approved",
+    "status": "rejected",
     "sources": [
       "https://www.vrt.be/vrtnws/nl/2018/11/20/veljkovic/",
       "https://en.wikipedia.org/wiki/2017%E2%80%932019_Belgian_football_fraud_scandal"
@@ -2322,7 +2312,7 @@
   {
     "event": "Het BAS vernietigt de degradatie van KV Mechelen, maar de club blijft een seizoen uitgesloten van Europees voetbal en de beker.",
     "year": 2019,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2017%E2%80%932019_Belgian_football_fraud_scandal",
@@ -2338,7 +2328,7 @@
     "event": "De kamer van inbeschuldigingstelling keurt het akkoord goed waarmee makelaar Dejan Veljković de eerste spijtoptant van België wordt.",
     "year": 2021,
     "difficulty": 5,
-    "status": "approved",
+    "status": "rejected",
     "sources": [
       "https://nl.wikipedia.org/wiki/Operatie_Propere_Handen",
       "https://sporza.be/nl/2021/10/28/makelaar-veljkovic-weet-op-25-november-meer-over-status-spijtopt~1635411468213/"
@@ -2353,7 +2343,7 @@
     "event": "Een wrakingsverzoek tegen de voorzitter van de kamer van inbeschuldigingstelling legt de behandeling van het dossier Propere Handen stil.",
     "year": 2026,
     "difficulty": 5,
-    "status": "approved",
+    "status": "rejected",
     "sources": [
       "https://www.vrt.be/vrtnws/nl/2026/09/10/zaak-propere-handen-33-verdachten-voor-ki/",
       "https://www.voetbalprimeur.be/nieuws/2134109/zaak-propere-handen-stilgelegd-na-wraking-van-voorzitter.html"
@@ -2382,7 +2372,7 @@
   {
     "event": "Doelman Jean-Marie Pfaff verlaat SK Beveren voor Bayern München.",
     "year": 1982,
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Jean-Marie_Pfaff",
@@ -2397,7 +2387,7 @@
   {
     "event": "Bayern München wordt met Pfaff in doel de eerste van drie opeenvolgende keren landskampioen van Duitsland.",
     "year": 1985,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Jean-Marie_Pfaff",
@@ -2412,7 +2402,7 @@
   {
     "event": "Bayern München verliest in Wenen met 1-2 de Europacup I-finale van FC Porto, na twee late goals van Madjer en Juary.",
     "year": 1987,
-    "difficulty": 4,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1987_European_Cup_final"
@@ -2456,7 +2446,7 @@
     "checkedAt": "2026-10-19"
   },
   {
-    "event": "Chelsea haalt de achttienjarige Lukaku weg bij Anderlecht.",
+    "event": "Chelsea haalt Lukaku weg bij Anderlecht.",
     "year": 2011,
     "difficulty": 3,
     "status": "approved",
@@ -2487,7 +2477,7 @@
   {
     "event": "Lukaku wordt in Brugge met een kopbal tegen Japan de recordschutter van de Rode Duivels.",
     "year": 2017,
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://www.beinsports.com/en-mena/articles/belgium-1-japan-0-lukaku-breaks-scoring-rec-1",
@@ -2502,7 +2492,7 @@
   {
     "event": "Inter betaalt een clubrecord van 80 miljoen euro voor Lukaku.",
     "year": 2019,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Romelu_Lukaku"
@@ -2544,7 +2534,7 @@
     "checkedAt": "2026-10-19"
   },
   {
-    "event": "Barcelona-directeur Carles Rexach schrijft het eerste contract van de 13-jarige Lionel Messi op een servet.",
+    "event": "Barcelona-directeur Carles Rexach schrijft het eerste contract van Lionel Messi op een servet.",
     "year": 2000,
     "difficulty": 4,
     "status": "approved",
@@ -2557,7 +2547,7 @@
     "checkedAt": "2026-10-19"
   },
   {
-    "event": "Lionel Messi maakt als 17-jarige zijn officiële debuut voor FC Barcelona in La Liga.",
+    "event": "Lionel Messi maakt zijn officiële debuut voor FC Barcelona in La Liga.",
     "year": 2004,
     "difficulty": 4,
     "status": "approved",
@@ -2572,7 +2562,7 @@
   {
     "event": "Lionel Messi scoort zijn eerste officiële doelpunt voor FC Barcelona.",
     "year": 2005,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Lionel_Messi"
@@ -2626,7 +2616,7 @@
   {
     "event": "Lionel Messi wint de Ballon d'Or voor de achtste keer.",
     "year": 2023,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Lionel_Messi"
@@ -2727,7 +2717,7 @@
     "checkedAt": "2026-10-19"
   },
   {
-    "event": "Maradona wordt op het WK in de Verenigde Staten naar huis gestuurd na een positieve dopingtest.",
+    "event": "Maradona wordt op het WK naar huis gestuurd na een positieve dopingtest.",
     "year": 1994,
     "difficulty": 3,
     "status": "approved",
@@ -2743,7 +2733,7 @@
   {
     "event": "Maradona wint met FC Barcelona de Copa del Rey-finale tegen Real Madrid.",
     "year": 1983,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Diego_Maradona"
@@ -2771,7 +2761,7 @@
   {
     "event": "Chelsea haalt De Bruyne weg bij Genk, maar leent hem meteen terug.",
     "year": 2012,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
@@ -2802,7 +2792,7 @@
   {
     "event": "Manchester City haalt De Bruyne voor een clubrecord weg bij Wolfsburg.",
     "year": 2015,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
@@ -2849,7 +2839,7 @@
   {
     "event": "Johan Cruijff wint zijn derde Ballon d'Or.",
     "year": 1974,
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Ballon_d%27Or"
@@ -2863,7 +2853,7 @@
   {
     "event": "Marco van Basten wint zijn derde Ballon d'Or.",
     "year": 1992,
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Ballon_d%27Or"
@@ -2918,7 +2908,7 @@
   {
     "event": "Ada Hegerberg wint de allereerste Ballon d'Or Féminin.",
     "year": 2018,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Ballon_d%27Or_F%C3%A9minin"
@@ -2931,7 +2921,7 @@
   {
     "event": "De Ballon d'Or wordt voor het eerst niet uitgereikt, door de coronapandemie.",
     "year": 2020,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Ballon_d%27Or"
@@ -2944,7 +2934,7 @@
   {
     "event": "Kevin De Bruyne eindigt als derde bij de Ballon d'Or.",
     "year": 2022,
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2022_Ballon_d%27Or"
@@ -2983,7 +2973,7 @@
     "checkedAt": "2026-10-19"
   },
   {
-    "event": "Een golden goal beslist de EK-finale tegen Italië in Rotterdam, nadat Frankrijk in de blessuretijd gelijkmaakte.",
+    "event": "Een golden goal van Trezeguet beslist de EK-finale tussen Frankrijk en Italië, nadat Frankrijk in de blessuretijd gelijkmaakte.",
     "year": 2000,
     "difficulty": 3,
     "status": "approved",
@@ -2998,7 +2988,7 @@
   {
     "event": "Thierry Henry controleert twee keer met de hand, waarna Gallas in de WK-barrage tegen Ierland de beslissende goal maakt.",
     "year": 2009,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Thierry_Henry"
@@ -3009,7 +2999,7 @@
     "checkedAt": "2026-10-19"
   },
   {
-    "event": "Frankrijk wordt op het WK in Zuid-Afrika allerlaatste in zijn groep, na het wegsturen van Anelka en een boycot van de training door de spelers.",
+    "event": "Frankrijk wordt allerlaatste in zijn WK-groep, na het wegsturen van Anelka en een boycot van de training door de spelers.",
     "year": 2010,
     "difficulty": 3,
     "status": "approved",
@@ -3039,7 +3029,7 @@
   {
     "event": "België leidt in de halve finale van de Nations League in Turijn met 2-0, maar verliest met 3-2 van Frankrijk.",
     "year": 2021,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2021_UEFA_Nations_League_Finals"
@@ -3051,9 +3041,9 @@
     "checkedAt": "2026-10-19"
   },
   {
-    "event": "PSG wint voor de tweede keer op rij de Champions League, na strafschoppen in de finale in Boedapest.",
+    "event": "PSG wint de Champions League na strafschoppen in de finale in Boedapest.",
     "year": 2026,
-    "difficulty": 1,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2026_UEFA_Champions_League_final"
@@ -3082,7 +3072,7 @@
   {
     "event": "FC Porto van Mourinho wint de UEFA Cup na een finale tegen Celtic.",
     "year": 2003,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Jos%C3%A9_Mourinho"
@@ -3121,7 +3111,7 @@
   {
     "event": "Sporting CP wordt voor het eerst sinds 2002 opnieuw kampioen van Portugal.",
     "year": 2021,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Primeira_Liga",
@@ -3146,7 +3136,7 @@
     "checkedAt": "2026-10-19"
   },
   {
-    "event": "Turkije wint in Zuid-Korea de troostfinale van het WK met 3-2 en wordt derde; Hakan Şükür scoort na amper 11 seconden.",
+    "event": "Turkije wordt derde op het WK; Hakan Şükür scoort in de troostfinale na amper 11 seconden.",
     "year": 2002,
     "difficulty": 3,
     "status": "approved",
@@ -3163,7 +3153,7 @@
   {
     "event": "Galatasaray wint als eerste Turkse club een Europese prijs: de UEFA Cup, na strafschoppen tegen Arsenal in Kopenhagen.",
     "year": 2000,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2000_UEFA_Cup_final",
@@ -3175,7 +3165,7 @@
     "checkedAt": "2026-10-19"
   },
   {
-    "event": "Mede-gastland België verliest op het EK in Brussel met 0-2 van Turkije en valt na de groepsfase af; doelman Filip De Wilde krijgt rood.",
+    "event": "België verliest op het EK met 0-2 van Turkije en valt na de groepsfase af; doelman Filip De Wilde krijgt rood.",
     "year": 2000,
     "difficulty": 3,
     "status": "approved",
@@ -3220,7 +3210,7 @@
     "event": "Fenerbahçe verslaat Galatasaray met 6-0 in het Şükrü Saracoğlu-stadion, de grootste uitslag in de Süper Lig-geschiedenis van de derby.",
     "year": 2002,
     "difficulty": 5,
-    "status": "approved",
+    "status": "rejected",
     "sources": [
       "https://en.wikipedia.org/wiki/Intercontinental_Derby"
     ],
@@ -3232,7 +3222,7 @@
   {
     "event": "Dries Mertens verlaat Napoli en tekent transfervrij bij Galatasaray.",
     "year": 2022,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Dries_Mertens"
@@ -3259,7 +3249,7 @@
   {
     "event": "Feyenoord wordt de eerste Nederlandse club die de Europacup I wint, met 2-1 na verlenging tegen Celtic in Milaan.",
     "year": 1970,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1970_European_Cup_final"
@@ -3273,7 +3263,7 @@
   {
     "event": "PSV wint in Stuttgart na strafschoppen de Europacup I-finale tegen Benfica.",
     "year": 1988,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1988_European_Cup_final"
@@ -3383,7 +3373,7 @@
   {
     "event": "Dries Mertens wordt met een goal tegen Inter de topschutter aller tijden van Napoli.",
     "year": 2020,
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Dries_Mertens"
@@ -3422,7 +3412,7 @@
     "checkedAt": "2026-10-19"
   },
   {
-    "event": "Italië schakelt België in München uit in de kwartfinale van het uitgestelde EK.",
+    "event": "Italië schakelt België in München uit in de kwartfinale van het EK (2-1).",
     "year": 2021,
     "difficulty": 3,
     "status": "approved",
@@ -3451,7 +3441,7 @@
   {
     "event": "Jürgen Sparwasser bezorgt Oost-Duitsland in Hamburg een 1-0 zege op West-Duitsland op het WK.",
     "year": 1974,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/East_Germany_national_football_team"
@@ -3465,7 +3455,7 @@
   {
     "event": "Oost-Duitsland speelt zijn allerlaatste interland en wint in Brussel met 2-0 van België, met twee goals van Matthias Sammer.",
     "year": 1990,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/East_Germany_national_football_team",
@@ -3507,7 +3497,7 @@
   {
     "event": "Jamal Musiala scoort in de 89e minuut tegen Keulen en geeft Bayern de elfde titel op rij, terwijl Dortmund thuis tegen Mainz gelijkspeelt.",
     "year": 2023,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2022–23_Bundesliga"
@@ -3520,7 +3510,7 @@
   {
     "event": "Royal Antwerp verliest op Wembley de finale van de Europacup II van Parma.",
     "year": 1993,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/1993_European_Cup_Winners%27_Cup_final"
@@ -3559,9 +3549,9 @@
     "checkedAt": "2026-10-19"
   },
   {
-    "event": "Een jaar na zijn Europacup II-zege wordt KV Mechelen landskampioen, de voorlopig laatste titel van de club.",
+    "event": "KV Mechelen wordt landskampioen, de voorlopig laatste titel van de club.",
     "year": 1989,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions",
@@ -3588,7 +3578,7 @@
   {
     "event": "Barcelona maakt in de Champions League een 4-0 achterstand goed tegen PSG en wint de terugmatch met 6-1.",
     "year": 2017,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Champions_League_knockout_phase"
@@ -3615,7 +3605,7 @@
   {
     "event": "Villarreal wint de Europa League na een strafschoppenreeks van 11-10 tegen Manchester United.",
     "year": 2021,
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2021_UEFA_Europa_League_final"
@@ -3626,9 +3616,9 @@
     "checkedAt": "2026-10-19"
   },
   {
-    "event": "Spanje wordt wereldkampioen op het WK in de VS, Canada en Mexico, na een verlenging in de finale tegen Argentinië.",
+    "event": "Spanje wordt wereldkampioen na een verlenging in de finale tegen Argentinië.",
     "year": 2026,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_final"
@@ -3650,7 +3640,7 @@
   {
     "event": "Leeds-supporters breken de boel af in Parijs nadat een goal van Lorimer wordt afgekeurd in de Europacup I-finale tegen Bayern München.",
     "year": 1975,
-    "difficulty": 4,
+    "difficulty": 5,
     "status": "review",
     "sources": ["https://en.wikipedia.org/wiki/1975_European_Cup_final"],
     "tags": ["champions-league", "duitsland"]
@@ -3658,7 +3648,7 @@
   {
     "event": "Liverpool wint in Rome zijn eerste Europacup I, met 3-1 tegen Borussia Mönchengladbach.",
     "year": 1977,
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "review",
     "sources": ["https://en.wikipedia.org/wiki/1977_European_Cup_final"],
     "tags": ["champions-league"]
@@ -3722,7 +3712,7 @@
   {
     "event": "Het Heizelstadion in Brussel gaat open als nieuw gebouwd Koning Boudewijnstadion, thuis van de Rode Duivels.",
     "year": 1995,
-    "difficulty": 4,
+    "difficulty": 5,
     "status": "review",
     "sources": ["https://en.wikipedia.org/wiki/King_Baudouin_Stadium"],
     "tags": ["rode-duivels", "belgie"]
@@ -3754,7 +3744,7 @@
   {
     "event": "Zinédine Zidane verlaat Juventus voor Real Madrid in een wereldrecordtransfer.",
     "year": 2001,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "review",
     "sources": ["https://en.wikipedia.org/wiki/Zinedine_Zidane"],
     "tags": ["frankrijk", "italie", "spanje"]
@@ -3770,7 +3760,7 @@
   {
     "event": "Zidane knalt in Glasgow een volley in de kruising en bezorgt Real Madrid de Champions League tegen Bayer Leverkusen.",
     "year": 2002,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "review",
     "sources": ["https://en.wikipedia.org/wiki/2002_UEFA_Champions_League_final"],
     "tags": ["champions-league", "frankrijk", "spanje", "duitsland"]
@@ -3794,7 +3784,7 @@
   {
     "event": "Zlatan Ibrahimović verlaat Inter voor Barcelona in een ruildeal waarin Samuel Eto'o de andere richting uitgaat.",
     "year": 2009,
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "review",
     "sources": ["https://en.wikipedia.org/wiki/Zlatan_Ibrahimovi%C4%87"],
     "tags": ["italie", "spanje"]
@@ -3808,7 +3798,7 @@
     "tags": ["belgie"]
   },
   {
-    "event": "België komt in Belo Horizonte op het WK terug van achter tegen Algerije en wint met 2-1 dankzij Fellaini en Mertens.",
+    "event": "België komt op het WK terug van achter tegen Algerije en wint met 2-1 dankzij Fellaini en Mertens.",
     "year": 2014,
     "difficulty": 3,
     "status": "review",
@@ -3818,7 +3808,7 @@
   {
     "event": "Thibaut Courtois verlaat Chelsea voor Real Madrid.",
     "year": 2018,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "review",
     "sources": ["https://en.wikipedia.org/wiki/Thibaut_Courtois"],
     "tags": ["rode-duivels", "spanje"]
@@ -3826,7 +3816,7 @@
   {
     "event": "In Kazan verslaat België vijfvoudig wereldkampioen Brazilië met 2-1 in de WK-kwartfinale, met een goal van De Bruyne.",
     "year": 2018,
-    "difficulty": 3,
+    "difficulty": 1,
     "status": "review",
     "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"],
     "tags": ["rode-duivels", "wk", "de-bruyne"]
@@ -3834,7 +3824,7 @@
   {
     "event": "Een kopbal van Samuel Umtiti in Sint-Petersburg beslist de WK-halve finale tegen België.",
     "year": 2018,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "review",
     "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage"],
     "tags": ["rode-duivels", "wk", "frankrijk"]
@@ -3858,7 +3848,7 @@
   {
     "event": "Christian Eriksen zakt tijdens Denemarken – Finland op het EK in elkaar en wordt op het veld gereanimeerd.",
     "year": 2021,
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "review",
     "sources": ["https://en.wikipedia.org/wiki/Christian_Eriksen"],
     "tags": []
@@ -3866,7 +3856,7 @@
   {
     "event": "Club Brugge overleeft voor het eerst in zijn geschiedenis de groepsfase van de Champions League, na een 0-0 bij Atlético Madrid.",
     "year": 2022,
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "review",
     "sources": [
       "https://en.wikipedia.org/wiki/2022%E2%80%9323_Club_Brugge_KV_season",
@@ -3875,7 +3865,7 @@
     "tags": ["club-brugge", "champions-league", "belgie"]
   },
   {
-    "event": "Een afgeweken schot van Kolo Muani via Jan Vertonghen schakelt België uit in de achtste finale van het EK in Duitsland.",
+    "event": "Een afgeweken schot van Kolo Muani via Jan Vertonghen schakelt België uit in de achtste finale van een EK.",
     "year": 2024,
     "difficulty": 3,
     "status": "review",

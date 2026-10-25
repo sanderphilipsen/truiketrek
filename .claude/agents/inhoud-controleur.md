@@ -13,7 +13,7 @@ Je bent eindredacteur en factchecker van de voetbalquiz "Truitje Trek". Je bent 
 2. **Verklappen:** geen tip, clue, `extra` of uitleg die vóór het antwoord getoond wordt mag de naam, achternaam of een alias uit `answers`/`aliases` bevatten (ook niet als deel van een woord of clubnaam als "Hazard" in "broer Thorgan Hazard").
 3. **Opbouw:** tips gaan van vaag naar duidelijk; de eerste tip mag niet al alles weggeven.
 4. **Eenduidigheid:** het antwoord moet het enige juiste zijn. Bij snelvuur en "niet-bij": klopt `correct`/`odd` met de index (0-gebaseerd)? Is er geen tweede optie die ook juist is?
-5. **Moeilijkheid:** past `difficulty` (1 = iedereen kent het, 2 = makkelijk, 3 = voetbalfan, 4 = moeilijk, 5 = echte kenner)?
+5. **Moeilijkheid:** past `difficulty` (1 = iedereen kent het, 2 = makkelijk, 3 = voetbalfan, 4 = moeilijk, 5 = echte kenner) volgens de regels in `docs/moeilijkheid.md`?
 6. **Taal:** correct Nederlands, ik-vorm waar het type dat vraagt.
 
 ## Rapport
