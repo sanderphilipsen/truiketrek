@@ -1,0 +1,116 @@
+@page "/faq"
+
+<PageTitle>Veelgestelde vragen – Truitje Trek</PageTitle>
+
+<PageHeader Title="Veelgestelde vragen" Label="Persconferentie" />
+
+@* Zonder [Authorize]: ook te lezen vanaf het aanmeldscherm. De getallen komen uit Shared, zodat ze meeveranderen met de regels. *@
+<section class="card faq">
+    <h2>Spelen</h2>
+    <details>
+        <summary>Hoe werkt de daily?</summary>
+        <p>
+            Elke dag staat er een nieuwe quiz klaar, voor iedereen dezelfde. Om middernacht (Belgische tijd) begint een nieuwe
+            dag. Meestal zijn het @GameRules.QuestionsPerDay vragen, maar op sommige themadagen zijn het er minder: dan is elke
+            vraag groter, zoals een krantenartikel of een detectivezaak. Je kan elke dag hoogstens @QuestionTypes.DayMaxPoints
+            punten halen. Je speelt elke vraag één keer: wie snel en juist antwoordt, scoort het meest.
+        </p>
+    </details>
+    <details>
+        <summary>Hoe krijg je punten?</summary>
+        <p>
+            Dat hangt af van het soort vraag; bij sommige soorten krijg je ook deelpunten. Bij een vraag met tips geldt: een
+            juist antwoord met alleen de eerste tip is 100 punten waard. Elke @GameRules.HintIntervalSeconds seconden komt er
+            een tip bij en zakt het met 10 punten, tot 60. Na de laatste tip heb je nog @GameRules.LastChanceSeconds seconden voor
+            @GameRules.LastChancePoints punten. Elke foute poging kost @GameRules.WrongGuessPenalty punten.
+        </p>
+    </details>
+    <details>
+        <summary>Ik heb een daily gemist. Kan ik die nog spelen?</summary>
+        <p>
+            Ja, in de Academie kan je oude dailies en afgelopen specials opnieuw spelen. Dat is om te oefenen: het telt niet
+            voor de klassementen, XP, reeksen of badges.
+        </p>
+    </details>
+    <details>
+        <summary>Wat zijn specials?</summary>
+        <p>
+            Een special is een extra quiz rond een thema, een match of een speler, die één of meer dagen loopt. De score telt mee
+            voor het maandklassement.
+        </p>
+    </details>
+
+    <h2>Klassementen en beloningen</h2>
+    <details>
+        <summary>Hoe werkt het maandklassement?</summary>
+        <p>
+            Je maandpunten zijn de som van je dailies en je specials van die maand, plus een bonus voor elk podium:
+            @MonthRules.PodiumBonus[0], @MonthRules.PodiumBonus[1] en @MonthRules.PodiumBonus[2] punten voor de top 3 van een
+            daily of special. Wie op het einde van de maand bovenaan staat, wint de Gouden Bal: een ster op je shirt voor
+            altijd, en een maand lang een gouden rand rond je avatar.
+        </p>
+    </details>
+    <details>
+        <summary>Telt online ook voor het maandklassement?</summary>
+        <p>
+            Nee. Sinds oktober 2026 tellen online wedstrijden niet meer mee voor het maandklassement; alleen dailies en specials
+            tellen. Online heeft een eigen klassement met een rating, en uitgespeelde en gewonnen wedstrijden leveren wel XP en
+            badges op.
+        </p>
+    </details>
+    <details>
+        <summary>Hoe verdien je XP?</summary>
+        <p>
+            Met elke gespeelde vraag, met juiste antwoorden, met volledige dagen, een dag zonder fout, dagzeges en online wedstrijden.
+            Het volledige overzicht staat in je Spelersfiche onder <i>Level</i>.
+        </p>
+    </details>
+
+    <h2>Online</h2>
+    <details>
+        <summary>Hoe speel ik online tegen anderen?</summary>
+        <p>
+            Kies <i>Online</i> op de startpagina. Je maakt een wedstrijd en deelt de link, of je stapt in bij een wedstrijd van
+            iemand anders. Er kunnen @MatchRules.MinSeats tot @MatchRules.MaxSeats spelers meedoen. Een zege telt pas als er
+            minstens @MatchRules.StayersForWin spelers tot het einde bleven.
+        </p>
+    </details>
+
+    <h2>Account</h2>
+    <details>
+        <summary>Ik ben mijn wachtwoord vergeten.</summary>
+        <p>
+            De app verstuurt geen e-mails. Laat de beheerder weten dat je je wachtwoord vergeten bent: je krijgt een tijdelijk
+            wachtwoord, waarmee je je aanmeldt en daarna in <i>Instellingen</i> zelf een nieuw kiest.
+        </p>
+    </details>
+    <details>
+        <summary>Hoe verwijder ik mijn account?</summary>
+        <p>
+            Ga naar <i>Instellingen</i> en kies <i>Account verwijderen</i>. De beheerder verwerkt je aanvraag. Je resultaten in
+            eerdere klassementen blijven bestaan onder een anonieme naam. Meer daarover in de <a href="privacy">privacyverklaring</a>.
+        </p>
+    </details>
+    <details>
+        <summary>Kan ik Truitje Trek als app op mijn gsm zetten?</summary>
+        <p>
+            Ja. Open de site in je browser en kies <i>Toevoegen aan beginscherm</i> (Safari: via de deelknop; Chrome: via het
+            menu met de drie puntjes). Daarna opent Truitje Trek als een gewone app.
+        </p>
+    </details>
+
+    <h2>Overige</h2>
+    <details>
+        <summary>Ik vond een fout in een vraag. Wat nu?</summary>
+        <p>Meld het via de VAR op de startpagina. De beheerder bekijkt het en past de vraag aan of corrigeert de scores.</p>
+    </details>
+    <details>
+        <summary>Wie maakt Truitje Trek?</summary>
+        <p>
+            Truitje Trek is een hobbyproject van één voetbalfan, zonder advertenties en zonder winstoogmerk. Ideeën zijn altijd
+            welkom via de VAR.
+        </p>
+    </details>
+
+    <p class="legal-links"><a href="privacy">Privacyverklaring</a> · <a href="voorwaarden">Gebruiksvoorwaarden</a></p>
+</section>

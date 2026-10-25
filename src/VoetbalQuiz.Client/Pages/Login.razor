@@ -9,7 +9,7 @@
 
 <section class="card auth">
     <h1>@(_register ? "Account maken" : "Aanmelden")</h1>
-    <p class="muted">Elke dag 10 voetbalvragen. Hoe sneller, hoe meer punten.</p>
+    <p class="muted">Elke dag een nieuwe voetbalquiz. Hoe sneller, hoe meer punten.</p>
 
     @if (_google)
     {
@@ -46,6 +46,13 @@
         }
 
         <button class="btn primary" disabled="@_busy">@(_register ? "Registreren" : "Aanmelden")</button>
+        @if (_register)
+        {
+            <p class="auth-legal">
+                Door te registreren ga je akkoord met de <a href="voorwaarden">gebruiksvoorwaarden</a>.
+                Lees ook hoe we met je gegevens omgaan in de <a href="privacy">privacyverklaring</a>.
+            </p>
+        }
     </form>
 
     @if (!_register)
@@ -61,6 +68,10 @@
         @(_register ? "Al een account? Meld je aan" : "Nog geen account? Registreer je")
     </button>
 </section>
+
+<nav class="info-links" aria-label="Info">
+    <a href="faq">Veelgestelde vragen</a> · <a href="privacy">Privacy</a> · <a href="voorwaarden">Voorwaarden</a>
+</nav>
 
 @code {
     /// <summary>Waar je na het aanmelden heen gaat, bv. een gedeeld partijtje (online/12).</summary>

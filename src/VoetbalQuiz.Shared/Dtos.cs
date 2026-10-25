@@ -16,7 +16,10 @@ public record ResetPasswordResult(string UserName, string TemporaryPassword);
 
 public record ProfileInfo(
     string UserName, string Email, string? AvatarId, DateOnly MemberSince,
-    LevelInfo Level, List<XpPart> XpBreakdown, bool HasPassword = true);
+    LevelInfo Level, List<XpPart> XpBreakdown, bool HasPassword = true, DateTime? DeletionRequestedAt = null);
+
+/// <summary>Een admin verwijdert het account van een speler die daarom vroeg.</summary>
+public record DeleteUserRequest(string UserName);
 public record ErrorResponse(string Message);
 
 /// <summary>

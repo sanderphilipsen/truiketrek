@@ -1,0 +1,128 @@
+@page "/privacy"
+
+<PageTitle>Privacyverklaring – Truitje Trek</PageTitle>
+
+<PageHeader Title="Privacyverklaring" Label="Info" />
+
+@* Zonder [Authorize]: ook te lezen vanaf het aanmeldscherm, vóór je een account maakt.
+   Houd deze tekst in lijn met wat de app echt bewaart (Data/Entities.cs, cookies in Program.cs). *@
+<article class="card legal">
+    <p class="legal-updated">Laatst bijgewerkt: @LegalInfo.Updated</p>
+
+    <p>
+        Truitje Trek is een voetbalquiz die als hobbyproject door één persoon wordt ontwikkeld en beheerd. Er is geen bedrijf
+        achter en er is geen winstoogmerk. Deze verklaring legt uit welke persoonsgegevens de app verwerkt, waarom, hoe lang
+        en welke rechten je hebt, in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG/GDPR).
+    </p>
+
+    <h2>1. Verantwoordelijke</h2>
+    <p>
+        De verantwoordelijke voor de verwerking is de beheerder van Truitje Trek. @LegalInfo.ContactSentence
+    </p>
+
+    <h2>2. Welke gegevens we verwerken</h2>
+    <h3>Account</h3>
+    <ul>
+        <li>Je <b>gebruikersnaam</b> en <b>e-mailadres</b>.</li>
+        <li>Je <b>wachtwoord</b>, uitsluitend als versleutelde hash: niemand, ook de beheerder niet, kan het lezen.</li>
+        <li>Meld je je aan met <b>Google</b>, dan bewaren we de koppeling met je Google-account (een technisch nummer) en je
+            e-mailadres. We krijgen geen toegang tot je Google-wachtwoord, contacten of andere gegevens.</li>
+        <li>De datum van registratie, je gekozen avatar en het tijdstip waarop je de app laatst gebruikte.</li>
+    </ul>
+    <h3>Spelgegevens</h3>
+    <ul>
+        <li>Je antwoorden en pogingen per vraag, met het tijdstip, en je punten, badges, XP en plaatsen in de klassementen.</li>
+        <li>Je deelname aan online wedstrijden, met je antwoorden, scores en gebruikte acties.</li>
+        <li>Je trainingen in de Academie.</li>
+    </ul>
+    <h3>Wat je zelf stuurt</h3>
+    <ul>
+        <li>Meldingen via de VAR (bugs en ideeën) en het antwoord van de beheerder.</li>
+        <li>Meldingen in de app die voor jou bestemd zijn.</li>
+    </ul>
+    <h3>Wat we níét doen</h3>
+    <ul>
+        <li>We gebruiken geen analytics, advertenties of trackers en bouwen geen profielen op.</li>
+        <li>We bewaren je IP-adres niet in de database. De webserver kan het, zoals elke website, tijdelijk in technische
+            logbestanden opnemen om fouten op te sporen.</li>
+        <li>We versturen geen e-mails en verkopen of verhuren geen gegevens.</li>
+    </ul>
+
+    <h2>3. Waarom en op welke grond</h2>
+    <ul>
+        <li><b>Om de app te laten werken</b> (aanmelden, je scores bijhouden, klassementen en online wedstrijden): dit is
+            nodig om de dienst te leveren waarvoor je je registreert (art. 6.1.b AVG).</li>
+        <li><b>Om de app veilig en eerlijk te houden</b> (misbruik en valsspelen opsporen, fouten herstellen, het tijdstip
+            van je laatste bezoek): op grond van ons gerechtvaardigd belang (art. 6.1.f AVG).</li>
+    </ul>
+
+    <h2>4. Wie je gegevens ziet</h2>
+    <ul>
+        <li><b>Andere spelers</b> zien je gebruikersnaam, avatar, scores, badges en plaatsen in de klassementen, en je
+            spelersfiche. Je e-mailadres is nooit zichtbaar voor andere spelers.</li>
+        <li><b>De beheerder</b> kan je accountgegevens, het tijdstip van je laatste bezoek en je meldingen inzien.</li>
+        <li><b>Microsoft Azure</b> host de app en de database in een datacenter in West-Europa (Nederland). Microsoft treedt op
+            als verwerker en heeft geen eigen gebruik van je gegevens.</li>
+        <li><b>Google</b> verwerkt je gegevens alleen als je zelf kiest voor "Doorgaan met Google". Daarvoor geldt ook het
+            privacybeleid van Google.</li>
+    </ul>
+
+    <h2>5. Hoe lang we gegevens bewaren</h2>
+    <p>
+        We bewaren je gegevens zolang je account bestaat. Gelezen meldingen in de app worden na
+        @NotificationRules.KeepReadDays dagen automatisch gewist. Vraag je de verwijdering van je account aan, dan verwerkt de
+        beheerder die aanvraag (zie punt 7).
+    </p>
+
+    <h2>6. Cookies en opslag op je toestel</h2>
+    <p>Truitje Trek gebruikt uitsluitend wat strikt noodzakelijk is om de app te laten werken. Daarvoor is geen toestemming nodig.</p>
+    <ul>
+        <li><b>voetbalquiz</b>: houdt je aangemeld. Geldig tot 60 dagen na je laatste gebruik.</li>
+        <li><b>Tijdelijke aanmeldcookies</b> (<code>Identity.External</code>, <code>.AspNetCore.Correlation.*</code>,
+            <code>.AspNetCore.Nonce.*</code>): alleen tijdens het aanmelden met Google, en daarna verwijderd.</li>
+        <li><b>Lokale opslag</b>: onthoudt of je de uitleg op de startpagina verborgen hebt.</li>
+        <li><b>App-cache</b>: de bestanden van de app worden op je toestel bewaard, zodat ze snel laden en de app als
+            geïnstalleerde app werkt. Hierin staan geen persoonsgegevens.</li>
+    </ul>
+    <p>Er zijn geen cookies van derden, geen advertentiecookies en geen analysecookies.</p>
+
+    <h2>7. Je rechten</h2>
+    <p>Je hebt het recht om:</p>
+    <ul>
+        <li>je gegevens in te zien en een kopie te vragen;</li>
+        <li>onjuiste gegevens te laten verbeteren;</li>
+        <li>je account en je gegevens te laten verwijderen;</li>
+        <li>bezwaar te maken tegen een verwerking of die te laten beperken.</li>
+    </ul>
+    <p>
+        <b>Account verwijderen:</b> vraag dit aan via <i>Instellingen › Account verwijderen</i>. De beheerder verwijdert dan
+        je e-mailadres, je aanmeldgegevens, je meldingen en je trainingen. Je resultaten in eerdere klassementen blijven
+        bestaan onder een anonieme naam, zodat de standen van andere spelers niet veranderen; ze zijn dan niet meer aan jou
+        te koppelen.
+    </p>
+    <p>
+        Voor de andere rechten: @LegalInfo.ContactShort We antwoorden binnen één maand. Ben je niet tevreden, dan kan je een
+        klacht indienen bij de Gegevensbeschermingsautoriteit (<a href="https://www.gegevensbeschermingsautoriteit.be" target="_blank" rel="noopener">gegevensbeschermingsautoriteit.be</a>).
+    </p>
+
+    <h2>8. Leeftijd</h2>
+    <p>
+        Truitje Trek is bedoeld voor spelers vanaf @LegalInfo.MinimumAge jaar. Ben je jonger, dan mag je je alleen registreren
+        met toestemming van een ouder of voogd.
+    </p>
+
+    <h2>9. Beveiliging</h2>
+    <p>
+        Wachtwoorden worden versleuteld opgeslagen, de verbinding verloopt altijd via HTTPS en alleen de beheerder heeft
+        toegang tot de database. Als hobbyproject kunnen we geen absolute veiligheid garanderen: gebruik daarom een
+        wachtwoord dat je nergens anders gebruikt.
+    </p>
+
+    <h2>10. Wijzigingen</h2>
+    <p>
+        Deze verklaring kan worden aangepast als de app verandert. De datum bovenaan toont de laatste versie. Bij belangrijke
+        wijzigingen melden we dat in de app.
+    </p>
+
+    <p class="legal-links"><a href="voorwaarden">Gebruiksvoorwaarden</a> · <a href="faq">Veelgestelde vragen</a></p>
+</article>

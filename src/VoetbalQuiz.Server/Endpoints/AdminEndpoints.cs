@@ -53,6 +53,18 @@ public static class AdminEndpoints
             return Results.Ok(result);
         });
 
+        // Accounts: een admin verwijdert het account van een speler die daarom vroeg (anonimiseren, zie AccountDeletionService).
+        admin.MapPost("/users/delete", async (DeleteUserRequest req, ClaimsPrincipal user,
+            AccountDeletionService svc, ILogger<AccountDeletionService> log) =>
+        {
+            var deleted = await svc.DeleteAsync(req.UserName);
+            if (deleted is null)
+                return Results.NotFound(new ErrorResponse("Er is geen verwijderaanvraag van een speler met die naam."));
+
+            log.LogInformation("Account van {User} verwijderd door {Admin}", deleted, user.Identity!.Name);
+            return Results.Ok();
+        });
+
         // Specials
         admin.MapGet("/specials", (AdminService svc) => svc.SpecialsAsync());
         admin.MapGet("/specials/{id:int}", (int id, AdminService svc) => svc.GetSpecialAsync(id));

@@ -26,7 +26,7 @@ public record PlayerCounts(int Review, int Approved, int Rejected);
 public record UserCounts(int Total, int ActiveDay, int ActiveWeek);
 
 /// <summary>Een geregistreerde speler in het admin-paneel. LastSeenAt (UTC) is null als die nog nooit gezien is.</summary>
-public record AdminUserItem(string UserName, string? AvatarId, DateTime CreatedAt, DateTime? LastSeenAt);
+public record AdminUserItem(string UserName, string? AvatarId, DateTime CreatedAt, DateTime? LastSeenAt, DateTime? DeletionRequestedAt = null);
 
 /// <summary>Startscherm van het admin-paneel: wat vraagt aandacht?</summary>
 public record AdminDashboard(

@@ -4,6 +4,7 @@
 @inject AuthState Auth
 
 <PageTitle>Leden – Bestuurskamer</PageTitle>
+<ConfirmSheet @ref="_confirm" />
 
 <AdminGuard>
     @if (_error is not null)
@@ -35,6 +36,28 @@
             </div>
         </div>
 
+        @if (_users.Where(u => u.DeletionRequestedAt is not null).OrderBy(u => u.DeletionRequestedAt).ToList() is { Count: > 0 } requests)
+        {
+            <section class="card">
+                <h2>Verwijderaanvragen</h2>
+                <p class="muted">Deze spelers vroegen om hun account te verwijderen. Verwijderen wist hun e-mail, aanmeldgegevens, meldingen, feedback en trainingen; hun oude resultaten blijven onder een anonieme naam.</p>
+                <div class="admin-list">
+                    @foreach (var u in requests)
+                    {
+                        <div class="admin-row-card">
+                            <Avatar Id="@u.AvatarId" User="@u.UserName" Size="36" />
+                            <div class="table-info">
+                                <b>@u.UserName</b>
+                                <small>Aangevraagd op @MemberSince(u.DeletionRequestedAt!.Value)</small>
+                            </div>
+                            <button class="btn small danger" @onclick="() => DeleteAsync(u.UserName)" disabled="@_deleting">Verwijderen</button>
+                        </div>
+                    }
+                </div>
+                @if (_deleteError is not null) { <p class="error" role="alert">@_deleteError</p> }
+            </section>
+        }
+
         <section class="card">
             <h2>Alle leden</h2>
             <div class="admin-list">
@@ -56,7 +79,27 @@
 
 @code {
     private List<AdminUserItem>? _users;
-    private string? _error;
+    private string? _error, _deleteError;
+    private bool _deleting;
+    private ConfirmSheet _confirm = null!;
+
+    private async Task DeleteAsync(string userName)
+    {
+        if (!await _confirm.AskAsync($"{userName} verwijderen?",
+                "E-mail, aanmeldgegevens, meldingen, feedback en trainingen worden gewist en de naam wordt anoniem. Dit kan je niet ongedaan maken.",
+                "Account verwijderen"))
+            return;
+
+        _deleting = true;
+        _deleteError = null;
+        try
+        {
+            await Api.DeleteUserAsync(userName);
+            _users = await Api.GetAdminUsersAsync();
+        }
+        catch (ApiException ex) { _deleteError = ex.Message; }
+        finally { _deleting = false; }
+    }
 
     protected override async Task OnInitializedAsync()
     {

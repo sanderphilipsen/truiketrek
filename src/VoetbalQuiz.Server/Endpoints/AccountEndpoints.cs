@@ -145,7 +145,20 @@ public static class AccountEndpoints
             var input = inputs.GetValueOrDefault(user.Id) ?? new XpInput(0, 0, 0, 0, 0);
             return Results.Ok(new ProfileInfo(
                 user.UserName!, user.Email ?? "", user.AvatarId, QuizClock.ToBrusselsDate(user.CreatedAt),
-                Levels.For(Levels.Xp(input)), Levels.Breakdown(input), await users.HasPasswordAsync(user)));
+                Levels.For(Levels.Xp(input)), Levels.Breakdown(input), await users.HasPasswordAsync(user), user.DeletionRequestedAt));
+        }).RequireAuthorization();
+
+        // Account verwijderen: de speler vraagt het aan (of trekt het in), een admin voert het uit.
+        group.MapPost("/deletion-request", async (ClaimsPrincipal principal, AccountDeletionService deletion) =>
+        {
+            await deletion.RequestAsync(principal.UserId());
+            return Results.Ok();
+        }).RequireAuthorization();
+
+        group.MapDelete("/deletion-request", async (ClaimsPrincipal principal, AccountDeletionService deletion) =>
+        {
+            await deletion.CancelAsync(principal.UserId());
+            return Results.Ok();
         }).RequireAuthorization();
 
         group.MapPost("/password", async (ChangePasswordRequest req, ClaimsPrincipal principal,

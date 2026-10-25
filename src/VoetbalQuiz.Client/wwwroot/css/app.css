@@ -1637,6 +1637,27 @@ button.choice:active { transform: scale(.97); }
 .menu-list a:hover, .menu-list button:hover { background: var(--surface-soft); }
 .member-since { color: rgba(255, 255, 255, .65); text-align: center; font-size: .85rem; margin: 4px 0 0; overflow-wrap: anywhere; }
 
+/* Privacyverklaring, voorwaarden en FAQ: leesbare lopende tekst. */
+.legal, .faq { line-height: 1.55; font-size: .95rem; }
+.legal h2, .faq h2 { font-size: 1.05rem; margin: 22px 0 6px; }
+.faq h2:first-child { margin-top: 0; }
+.legal h3 { font-size: .95rem; margin: 14px 0 4px; }
+.legal p { margin: 0 0 10px; }
+.legal ul { margin: 0 0 10px; padding-left: 20px; display: grid; gap: 4px; }
+.legal code { font-size: .85em; overflow-wrap: anywhere; }
+.legal a, .faq a, .auth-legal a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.legal-updated { color: var(--muted); font-size: .85rem; }
+.legal-links { margin: 20px 0 0; text-align: center; font-size: .9rem; color: var(--muted); }
+.legal-links a { color: inherit; display: inline-block; min-height: var(--tap); line-height: var(--tap); padding: 0 4px; }
+.faq details { border-bottom: 1px solid var(--divider); }
+.faq summary { min-height: var(--tap); display: flex; align-items: center; padding: 8px 0; font-weight: 700; cursor: pointer; }
+.faq details p { margin: 0 0 12px; }
+.auth-legal { margin: 4px 0 0; font-size: .8rem; color: var(--muted); text-align: center; line-height: 1.45; }
+.info-links { margin: 12px 0 0; text-align: center; font-size: .85rem; color: rgba(255, 255, 255, .7); }
+.admin-row-card > .btn { margin-left: auto; flex: none; }
+.deletion-request .btn { margin-top: 4px; }
+.info-links a { color: inherit; display: inline-block; min-height: var(--tap); line-height: var(--tap); padding: 0 6px; }
+
 @media (min-width: 560px) {
     .form-row { grid-template-columns: 1fr 1fr; }
 }

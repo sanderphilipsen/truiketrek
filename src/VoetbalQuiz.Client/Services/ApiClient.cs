@@ -94,6 +94,8 @@ public class ApiClient(HttpClient http)
         PostAsync<ResetPasswordResult>("api/admin/users/reset-password", new ResetPasswordRequest(userName));
     public Task<AdminDashboard> GetAdminDashboardAsync() => GetAsync<AdminDashboard>("api/admin/dashboard");
     public Task<List<AdminUserItem>> GetAdminUsersAsync() => GetAsync<List<AdminUserItem>>("api/admin/users");
+    public async Task DeleteUserAsync(string userName) =>
+        await EnsureOkAsync(await http.PostAsJsonAsync("api/admin/users/delete", new DeleteUserRequest(userName)));
     public Task<PlayerCounts> GetPlayerCountsAsync() => GetAsync<PlayerCounts>("api/admin/players/counts");
     public Task<List<PlayerListItem>> GetAdminPlayersAsync(PlayerStatus? status, string? search, string? tag)
     {
@@ -123,6 +125,10 @@ public class ApiClient(HttpClient http)
     public async Task ChangePasswordAsync(ChangePasswordRequest req) =>
         await EnsureOkAsync(await http.PostAsJsonAsync("api/account/password", req));
     public Task<UserInfo> SetAvatarAsync(string avatarId) => PostAsync<UserInfo>("api/account/avatar", new SetAvatarRequest(avatarId));
+    public async Task RequestDeletionAsync() =>
+        await EnsureOkAsync(await http.PostAsync("api/account/deletion-request", null));
+    public async Task CancelDeletionAsync() =>
+        await EnsureOkAsync(await http.DeleteAsync("api/account/deletion-request"));
 
     public Task<FeedbackOverview> GetFeedbackAsync() => GetAsync<FeedbackOverview>("api/feedback");
     public async Task SendFeedbackAsync(FeedbackRequest req) => await EnsureOkAsync(await http.PostAsJsonAsync("api/feedback", req));

@@ -199,7 +199,7 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
     @SpecialCard(active, isNew: false)
 }
 
-@* Daaronder brede stroken, allemaal in dezelfde vorm: klassement, academie, prijzenkast, instellingen, VAR, bestuurskamer. *@
+@* Daaronder brede stroken, allemaal in dezelfde vorm: klassement, academie, prijzenkast, instellingen, VAR, persconferentie (FAQ), bestuurskamer. *@
 <a class="card sb-strip" href="klassement">
     <Icon Name="trophy" Class="sb-icon" />
     <span class="sb-label">Klassement</span>
@@ -227,6 +227,14 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
     <span class="sb-strip-text" aria-hidden="true">
         <span class="sb-label">Naar de VAR</span>
         <small>Bug of idee melden</small>
+    </span>
+    <span class="sb-go" aria-hidden="true">›</span>
+</a>
+<a class="card sb-strip" href="faq" aria-label="Persconferentie: veelgestelde vragen">
+    <Icon Name="chat-circle" Class="sb-icon" />
+    <span class="sb-strip-text" aria-hidden="true">
+        <span class="sb-label">Persconferentie</span>
+        <small>Veelgestelde vragen</small>
     </span>
     <span class="sb-go" aria-hidden="true">›</span>
 </a>

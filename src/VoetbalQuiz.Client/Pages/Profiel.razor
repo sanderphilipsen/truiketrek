@@ -7,6 +7,7 @@
 <PageTitle>Spelersfiche – Truitje Trek</PageTitle>
 
 <PageHeader Title="Spelersfiche" />
+<ConfirmSheet @ref="_confirm" />
 
 @if (_error is not null)
 {
@@ -167,6 +168,29 @@ else
                         <button @onclick="LogoutAsync"><span><Icon Name="sign-out" /></span>Afmelden<i>›</i></button>
                     </section>
 
+                    <section class="card menu-list">
+                        <a href="faq"><span><Icon Name="chat-circle" /></span>Veelgestelde vragen<i>›</i></a>
+                        <a href="privacy"><span><Icon Name="shield" /></span>Privacyverklaring<i>›</i></a>
+                        <a href="voorwaarden"><span><Icon Name="handshake" /></span>Gebruiksvoorwaarden<i>›</i></a>
+                        @if (_profile.DeletionRequestedAt is null)
+                        {
+                            <button @onclick="RequestDeletionAsync" disabled="@_saving"><span><Icon Name="trash" /></span>Account verwijderen<i>›</i></button>
+                        }
+                    </section>
+
+                    @if (_profile.DeletionRequestedAt is { } requested)
+                    {
+                        <section class="card deletion-request" role="status">
+                            <h3 class="card-title">Verwijdering aangevraagd</h3>
+                            <p class="muted">
+                                Je vroeg op @DutchDates.DayMonth(LocalDate(requested)) om je account te verwijderen. De beheerder
+                                verwerkt je aanvraag; tot dan kan je gewoon verder spelen.
+                            </p>
+                            <button class="btn small" @onclick="CancelDeletionAsync" disabled="@_saving">Aanvraag intrekken</button>
+                        </section>
+                    }
+                    @if (_deletionError is not null) { <p class="error" role="alert">@_deletionError</p> }
+
                     <p class="member-since">Lid sinds @DutchDates.DayMonth(_profile.MemberSince) @_profile.MemberSince.Year · @_profile.Email</p>
                     break;
             }
@@ -179,7 +203,8 @@ else
 
     private ProfileInfo? _profile;
     private PublicProfile? _public;
-    private string? _error, _pwError;
+    private string? _error, _pwError, _deletionError;
+    private ConfirmSheet _confirm = null!;
     private string _current = "", _new = "", _repeat = "";
     private bool _saving, _pwOk, _build, _avatarSaved;
     private ProfileTab _tab = ProfileTab.Avatar;
@@ -233,6 +258,40 @@ else
         catch (ApiException ex) { _pwError = ex.Message; }
         finally { _saving = false; }
     }
+
+    private async Task RequestDeletionAsync()
+    {
+        if (!await _confirm.AskAsync("Account verwijderen?",
+                "De beheerder verwijdert dan je e-mailadres, je aanmeldgegevens, je meldingen en je trainingen. Je resultaten in " +
+                "eerdere klassementen blijven bestaan onder een anonieme naam. Dit kan je niet ongedaan maken.",
+                "Verwijdering aanvragen"))
+            return;
+
+        _saving = true;
+        _deletionError = null;
+        try
+        {
+            await Api.RequestDeletionAsync();
+            _profile = _profile! with { DeletionRequestedAt = DateTime.UtcNow };
+        }
+        catch (ApiException ex) { _deletionError = ex.Message; }
+        finally { _saving = false; }
+    }
+
+    private async Task CancelDeletionAsync()
+    {
+        _saving = true;
+        _deletionError = null;
+        try
+        {
+            await Api.CancelDeletionAsync();
+            _profile = _profile! with { DeletionRequestedAt = null };
+        }
+        catch (ApiException ex) { _deletionError = ex.Message; }
+        finally { _saving = false; }
+    }
+
+    private static DateOnly LocalDate(DateTime utc) => DateOnly.FromDateTime(utc.ToLocalTime());
 
     private async Task LogoutAsync()
     {

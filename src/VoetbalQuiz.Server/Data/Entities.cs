@@ -33,6 +33,15 @@ public class AppUser : IdentityUser
 
     /// <summary>De maand (eerste dag) waarvan de speler de uitreiking van de Gouden Bal al zag. Null = nog nooit.</summary>
     public DateOnly? GoldenBallSeenMonth { get; set; }
+
+    /// <summary>Wanneer de speler vroeg om zijn account te verwijderen (UTC). Null = geen lopende aanvraag.</summary>
+    public DateTime? DeletionRequestedAt { get; set; }
+
+    /// <summary>
+    /// Wanneer een admin het account verwijderde (UTC). De rij blijft bestaan onder een anonieme naam, zonder e-mail of
+    /// aanmeldgegevens, zodat oude klassementen niet verschuiven (zie AccountDeletionService).
+    /// </summary>
+    public DateTime? DeletedAt { get; set; }
 }
 
 public class Player
