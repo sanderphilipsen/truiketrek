@@ -149,9 +149,11 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock, ILogger<Questi
             if (part is null) return null;
             all.AddRange(part);
         }
-        // Afwisselen tussen de types in plaats van ze te groeperen.
-        return all.Select((q, i) => (q, i)).GroupBy(x => x.q.Type)
-            .SelectMany(g => g.Select((x, n) => (x.q, n))).OrderBy(x => x.n).Select(x => x.q).ToList();
+        // Afwisselen tussen de types in plaats van ze te groeperen. Daily en specials lopen op van makkelijk naar moeilijk
+        // (stabiel gesorteerd: binnen dezelfde moeilijkheid blijven de types afwisselen en de delen van een kaart op volgorde).
+        var alternated = all.Select((q, i) => (q, i)).GroupBy(x => x.q.Type)
+            .SelectMany(g => g.Select((x, n) => (x.q, n))).OrderBy(x => x.n).Select(x => x.q);
+        return (plan is null ? alternated : alternated.OrderBy(QuizService.DifficultyOf)).ToList();
     }
 
     /// <summary>
@@ -179,7 +181,7 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock, ILogger<Questi
                     .ToList();
 
             return players.OrderBy(p => p.Difficulty).ThenBy(_ => Random.Shared.Next())
-                .Select(p => new DailyQuestion { Type = type, PlayerId = p.Id }).ToList();
+                .Select(p => new DailyQuestion { Type = type, PlayerId = p.Id, Player = p }).ToList();
         }
 
         if (type == QuestionType.Kaart)
@@ -187,7 +189,7 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock, ILogger<Questi
             // Kaartdag: één kaart, gespeeld in twee delen (twee vragen op hetzelfde item): eerst de clubs, dan de stadions.
             if (await PickMapAsync(tag, kaartCountry, excludeItems) is not { } map) return null;
             return Enumerable.Range(1, QuestionRules.KaartParts)
-                .Select(part => new DailyQuestion { Type = type, QuizItemId = map.Id, Part = part })
+                .Select(part => new DailyQuestion { Type = type, QuizItemId = map.Id, QuizItem = map, Part = part })
                 .Take(count).ToList();
         }
 
@@ -199,6 +201,7 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock, ILogger<Questi
                 {
                     Type = type,
                     QuizItemId = i.Id,
+                    QuizItem = i,
                     Blanks = type == QuestionType.Opstelling ? QuestionEngine.PickBlanks(i) : [],
                 })
                 .ToList();

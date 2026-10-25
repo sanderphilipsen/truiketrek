@@ -116,9 +116,12 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
     }
 
     /// <summary>Gemiddelde moeilijkheid van een reeks (0–5 sterren); een counter telt als het gemiddelde van zijn spelers.</summary>
-    public static double DifficultyOf(DailyChallenge challenge) => Difficulty.Average(challenge.Questions.Select(q =>
+    public static double DifficultyOf(DailyChallenge challenge) => Difficulty.Average(challenge.Questions.Select(DifficultyOf));
+
+    /// <summary>De moeilijkheid van één vraag: die van de speler of de vraag, bij een counter het gemiddelde van de spelers.</summary>
+    public static double DifficultyOf(DailyQuestion q) =>
         q.Player?.Difficulty ?? q.QuizItem?.Difficulty
-        ?? (q.CounterPlayers.Count > 0 ? q.CounterPlayers.Average(p => p.Difficulty) : Difficulty.Default)));
+        ?? (q.CounterPlayers.Count > 0 ? q.CounterPlayers.Average(p => p.Difficulty) : Difficulty.Default);
 
     /// <summary>De specials (zie <see cref="ResultsService.GetSpecialsAsync"/>), met de moeilijkheid van de lopende.</summary>
     public async Task<List<SpecialSummary>> GetSpecialsAsync(string userId)

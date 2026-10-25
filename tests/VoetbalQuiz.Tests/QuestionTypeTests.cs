@@ -387,6 +387,23 @@ public sealed class QuestionTypeTests : IDisposable
     }
 
     [Fact]
+    public async Task Mixed_daily_goes_from_easy_to_hard()
+    {
+        var n = 0;
+        foreach (var p in _db.Players) p.Difficulty = n++ % 5 + 1;
+        foreach (var i in _db.QuizItems) i.Difficulty = n++ % 5 + 1;
+        await _db.SaveChangesAsync();
+        await _admin.SaveScheduleAsync([new ScheduleDay(DayOfWeek.Saturday, QuestionType.Jaar, [QuestionType.Snelvuur, QuestionType.Jaar, QuestionType.WieBenIk])]);
+
+        var challenge = await _quiz.GetOrCreateChallengeAsync(_quiz.Today);
+
+        var difficulties = challenge.Questions.OrderBy(q => q.Number).Select(QuizService.DifficultyOf).ToList();
+        Assert.Equal(difficulties.Order(), difficulties);
+        Assert.Equal(Difficulty.Min, difficulties[0]);
+        Assert.Equal(Difficulty.Max, difficulties[^1]);
+    }
+
+    [Fact]
     public async Task Disabled_type_is_skipped_and_its_day_becomes_a_mix_of_the_rest()
     {
         await PlanTodayAsync(QuestionType.Snelvuur);
