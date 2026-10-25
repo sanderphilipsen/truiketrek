@@ -56,5 +56,6 @@ Lopende planning: [planning-2026-10-23.md](planning-2026-10-23.md) (week 44 t/m 
 | [028](028-vraagtype-buitenspel.md) | Vraagtype "Buitenspel?" | feature | idee | midden | S | niet gepland |
 | [029](029-vraagtype-estafette.md) | Vraagtype "Estafette" | feature | idee | midden | M | niet gepland |
 | [030](030-vraagtype-schat-het-getal.md) | Vraagtype "Schat het getal" | feature | idee | midden | S | niet gepland |
+| [031](031-correctie-gespeelde-dag.md) | Correctie op een gespeelde dag: vraag schrappen of neutraliseren (admin) | feature | concept | midden | M | niet gepland |
 
 Recent gedaan: [002](002-herwerking-klassementen.md) fase 1 (`97fad5a`), [007](007-gemiste-daily-naspelen.md) Academie (`0e18e7b`), [011](011-vraagtype-op-volgorde.md) Op volgorde (`4803333`), [022](022-detectivedag.md) Detectivedag (`5471602`).
