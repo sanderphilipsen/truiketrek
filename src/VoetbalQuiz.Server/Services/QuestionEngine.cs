@@ -390,6 +390,13 @@ public static class QuestionEngine
         Parse<KaartData>(data).Pins.Select(p => $"{p.Stadium}{QuestionRules.KaartSeparator}{string.Join(QuestionRules.KaartSeparator, p.Clubs)}").ToList();
 
     /// <summary>
+    /// De Krant: wat bij een gespeeld artikel vastligt, de gaten (aantal, volgorde, antwoorden). Pogingen onthouden gaten
+    /// op hun plaats; de tekst, hints en wat ook goed is mogen nog wijzigen.
+    /// </summary>
+    public static List<(string Answer, int? Number)> KrantGaps(string data) =>
+        KrantText.Parse(Parse<KrantData>(data).Text).Gaps.Select(g => (g.Answer, g.Number)).ToList();
+
+    /// <summary>
     /// Kaart, deel 2: de stadions zoals de keuzelijst ze toont, met de capaciteit (zelfde volgorde als de opties). Alle
     /// stadions staan er met hun capaciteit, dus het verraadt niet welke speld welk stadion is.
     /// </summary>

@@ -284,8 +284,7 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
             await InPlayAsync(q => q.QuizItemId == id));
     }
 
-    private static IEnumerable<(string Answer, int? Number)> KrantGaps(string data) =>
-        KrantText.Parse(QuestionEngine.Parse<KrantData>(data).Text).Gaps.Select(g => (g.Answer, g.Number));
+    private static List<(string Answer, int? Number)> KrantGaps(string data) => QuestionEngine.KrantGaps(data);
 
     private static IEnumerable<string> DetectiveCast(string data) =>
         QuestionEngine.Parse<DetectiveData>(data) is var d ? d.Suspects.Select(s => s.Key).Append("dader:" + d.Culprit) : [];

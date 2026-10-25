@@ -26,6 +26,9 @@ public class QuestionSeeder(QuizDbContext db, IWebHostEnvironment env, ILogger<Q
         // Kaarten die al in een reeks zitten: hun spelden en clubs liggen vast (zie QuestionEngine.KaartOrder).
         var playedMaps = (await db.DailyQuestions.Where(q => q.Type == QuestionType.Kaart && q.QuizItemId != null)
             .Select(q => q.QuizItemId!.Value).ToListAsync()).ToHashSet();
+        // Krantenartikels die al gespeeld zijn: pogingen onthouden de gaten op hun plaats (zie QuestionEngine.KrantGaps).
+        var playedArticles = (await db.Attempts.Where(a => a.DailyQuestion.Type == QuestionType.Krant && a.DailyQuestion.QuizItemId != null)
+            .Select(a => a.DailyQuestion.QuizItemId!.Value).Distinct().ToListAsync()).ToHashSet();
         int added = 0, updated = 0, kept = 0, skipped = 0, retired = 0;
         var seen = new HashSet<(QuestionType, string)>();
         var readTypes = new HashSet<QuestionType>();
@@ -76,7 +79,10 @@ public class QuestionSeeder(QuizDbContext db, IWebHostEnvironment env, ILogger<Q
                 }
 
                 // Een gespeelde kaart neemt enkel wijzigingen over die de antwoorden niet raken (bv. een capaciteit).
-                if (!playedMaps.Contains(item.Id) || QuestionEngine.KaartAnswers(item.Data).SequenceEqual(QuestionEngine.KaartAnswers(data))) item.Data = data;
+                // Een gespeeld artikel idem: nieuwe tekst mag, maar niet als de gaten wijzigen (dan blijft het oude staan).
+                if (playedArticles.Contains(item.Id) && !QuestionEngine.KrantGaps(item.Data).SequenceEqual(QuestionEngine.KrantGaps(data)))
+                    logger.LogWarning("Artikel {Key} is al gespeeld: de nieuwe gaten worden niet overgenomen.", key);
+                else if (!playedMaps.Contains(item.Id) || QuestionEngine.KaartAnswers(item.Data).SequenceEqual(QuestionEngine.KaartAnswers(data))) item.Data = data;
                 else logger.LogWarning("Kaart {Key} is al gespeeld: de nieuwe spelden worden niet overgenomen. Een gewijzigde kaart heeft een nieuwe sleutel nodig (land, competitie en seizoen), bv. een ander seizoen.", key);
                 item.Difficulty = Difficulty.Clamp(meta.Difficulty);
                 item.Status = meta.Status?.ToLowerInvariant() switch

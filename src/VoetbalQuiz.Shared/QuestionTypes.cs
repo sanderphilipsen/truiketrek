@@ -32,7 +32,7 @@ public static class QuestionTypes
         new(QuestionType.Counter, "Counter", "🏃", $"Zoveel mogelijk van {QuestionRules.CounterPlayers} spelers in {(int)QuestionRules.CounterSeconds} seconden, met één tip per speler. Raden of doorspelen!",
             QuestionRules.CounterPerDay, QuestionRules.CounterPlayers * QuestionRules.CounterPointsPerPlayer, "", FromPlayers: true),
         new(QuestionType.Volgorde, "Op volgorde", "🔀", "Tik de kaartjes aan in de juiste volgorde. Hoe dichter, hoe meer punten.", 10, 100, "volgorde"),
-        new(QuestionType.Krant, "De Zondag", "📰", "Elke zondag vier krantenartikels met elk vijf gaten. Tik op een gat en vul het in, in de volgorde die je wil.", 4, 250, "krant",
+        new(QuestionType.Krant, "De Zondag", "📰", "Elke zondag vier krantenartikels met elk drie gaten. Tik op een gat en vul het in, in de volgorde die je wil.", 4, 250, "krant",
             Alone: true),
         new(QuestionType.Detective, "Detectivedag", "🔎", "Wie is de dader? Open de getuigen één voor één, schrap verdachten en wijs de dader aan. Vier zaken per dag: hoe minder getuigen, hoe meer punten.",
             4, 250, "detective", Alone: true),
@@ -332,8 +332,8 @@ public static class QuestionRules
     public const double KrantSecondsPerGap = 20;
     public const double KrantMinSeconds = 60;
 
-    /// <summary>De Krant: elk artikel heeft precies zoveel gaten (4 artikels × 5 gaten × 50 punten = 1000).</summary>
-    public const int KrantGaps = 5;
+    /// <summary>De Krant: elk artikel heeft precies zoveel gaten (4 artikels van 250 punten = 1000, dus ruim 83 per gat).</summary>
+    public const int KrantGaps = 3;
 
     /// <summary>
     /// De Krant: zoveel pogingen voor het hele artikel. Een foute naam kost niets, dus je probeert er meer dan bij één
@@ -428,13 +428,13 @@ public static class QuestionRules
     public static double KrantLimit(int gaps) => Math.Max(KrantMinSeconds, gaps * KrantSecondsPerGap);
 
     /// <summary>
-    /// De Krant, een getal: welk deel van de punten van het gat. Exact 1, één stap ernaast 0,75, twee 0,5, drie 0,25
-    /// (zoals "Raad het jaar"). Een stap is <paramref name="tolerance"/> (bv. 1 minuut, of 5 bij een bedrag in miljoen).
+    /// De Krant, een getal: welk deel van de punten van het gat. Exact 1, één stap ernaast 0,4, twee 0,2, verder niets:
+    /// er zijn maar drie gaten, dus bijna juist is veel minder waard dan juist. Een stap is <paramref name="tolerance"/> (bv. 1 minuut, of 5 bij een bedrag in miljoen).
     /// </summary>
     public static double KrantNumberScore(int guess, int answer, int tolerance)
     {
         var steps = (int)Math.Ceiling(Math.Abs((long)guess - answer) / (double)Math.Max(1, tolerance));
-        return steps switch { 0 => 1, 1 => 0.75, 2 => 0.5, 3 => 0.25, _ => 0 };
+        return steps switch { 0 => 1, 1 => 0.4, 2 => 0.2, _ => 0 };
     }
 
     /// <summary>De Krant: het maximum verdeeld over de gaten; <paramref name="score"/> is de som van de delen per gat.</summary>

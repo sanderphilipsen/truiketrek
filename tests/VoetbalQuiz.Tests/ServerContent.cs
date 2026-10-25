@@ -11,6 +11,9 @@ public static class ServerContent
 
     public static IWebHostEnvironment Environment() => new Env(Root);
 
+    /// <summary>Een andere map met een eigen Data/questions, voor tests met enkel hun eigen inhoud.</summary>
+    public static IWebHostEnvironment Environment(string root) => new Env(root);
+
     private static string FindRoot()
     {
         var dir = new DirectoryInfo(AppContext.BaseDirectory);

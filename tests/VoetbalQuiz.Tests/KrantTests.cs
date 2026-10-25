@@ -4,18 +4,18 @@ using VoetbalQuiz.Shared;
 
 namespace VoetbalQuiz.Tests;
 
-/// <summary>De Krant: de vaste rubriek "De Zondag", vier artikels met elk vijf gaten.</summary>
+/// <summary>De Krant: de vaste rubriek "De Zondag", vier artikels met elk drie gaten.</summary>
 public sealed class KrantTests : IDisposable
 {
     private readonly TestDb _t = new();
     private readonly QuizDbContext _db;
     private readonly string _me;
 
-    // Vijf gaten: vier namen en één getal (een minuut, met deelpunten per minuut ernaast).
+    // Drie gaten: twee namen en één getal (een minuut, met deelpunten per minuut ernaast).
     private const string Text = """
         In de [[#69 : minuut]]e minuut kopte [[Jan Vertonghen / Vertonghen : speler]] de 1-2 binnen.
 
-        Daarna scoorden [[Marouane Fellaini / Fellaini : speler]] en [[Nacer Chadli / Chadli : speler]], na werk van [[Eden Hazard / Hazard : speler]].
+        Daarna scoorde [[Nacer Chadli / Chadli : speler]] de 3-2.
         """;
 
     public KrantTests()
@@ -51,7 +51,7 @@ public sealed class KrantTests : IDisposable
 
         Assert.Empty(article.Problems);
         Assert.Equal(2, article.Paragraphs.Count);
-        Assert.Equal(5, article.Gaps.Count);
+        Assert.Equal(3, article.Gaps.Count);
         Assert.Equal(("69", "minuut", 69, 1), (article.Gaps[0].Answer, article.Gaps[0].Hint, article.Gaps[0].Number, article.Gaps[0].Tolerance));
         Assert.Equal("Jan Vertonghen", article.Gaps[1].Answer);
         Assert.Equal(["Vertonghen"], article.Gaps[1].Aliases);
@@ -65,11 +65,12 @@ public sealed class KrantTests : IDisposable
 
     [Theory]
     [InlineData(69, 1, 1)]
-    [InlineData(70, 1, 0.75)]
-    [InlineData(66, 1, 0.25)]
-    [InlineData(65, 1, 0)]
-    [InlineData(110, 5, 0.75)] // 115 met een stap van 5
-    [InlineData(101, 5, 0.25)]
+    [InlineData(70, 1, 0.4)]
+    [InlineData(67, 1, 0.2)]
+    [InlineData(66, 1, 0)]
+    [InlineData(110, 5, 0.4)] // 115 met een stap van 5
+    [InlineData(106, 5, 0.2)]
+    [InlineData(101, 5, 0)]
     public void A_number_close_to_the_answer_earns_part_of_the_gap(int guess, int tolerance, double score)
     {
         var answer = tolerance == 1 ? 69 : 115;
@@ -98,15 +99,15 @@ public sealed class KrantTests : IDisposable
         Assert.Equal(4, challenge.Questions.Count);
         Assert.All(challenge.Questions, q => Assert.Equal(QuestionType.Krant, q.Type));
         Assert.Equal(QuestionTypes.DayMaxPoints, 4 * Max);
-        Assert.Equal(50, Max / QuestionRules.KrantGaps);
+        Assert.Equal(83, Max / QuestionRules.KrantGaps);
 
         // Op een andere dag volgt de planning gewoon (hier: niets ingepland, dus de standaard voor maandag).
         Assert.DoesNotContain(QuestionType.Krant, await _t.Picker.TypesForAsync(_t.Quiz.Today.AddDays(1)));
 
         var state = await _t.Quiz.StartAsync(_me, 1);
-        Assert.Equal(QuestionRules.KrantLimit(5), state.TimeLimit);
+        Assert.Equal(QuestionRules.KrantLimit(3), state.TimeLimit);
         Assert.Equal(Max, state.View!.MaxPoints);
-        Assert.Equal((0, 5), (state.View.Found, state.View.Total));
+        Assert.Equal((0, 3), (state.View.Found, state.View.Total));
     }
 
     [Fact]
@@ -116,7 +117,7 @@ public sealed class KrantTests : IDisposable
         var state = await _t.Quiz.StartAsync(_me, 1);
 
         var gaps = state.View!.Article!.SelectMany(p => p).Where(p => p.Gap >= 0).ToList();
-        Assert.Equal(5, gaps.Count);
+        Assert.Equal(3, gaps.Count);
         Assert.All(gaps, g => Assert.True(g.Filled is null && g.Answer is null && g.Score is null));
         Assert.DoesNotContain(state.View.Article!.SelectMany(p => p), p => p.Text.Contains("Vertonghen") || p.Text.Contains("69"));
         Assert.Null(state.Result);
@@ -128,14 +129,14 @@ public sealed class KrantTests : IDisposable
         await ToSundayAsync();
         await _t.Quiz.StartAsync(_me, 1);
 
-        var wrong = await _t.Quiz.GuessAsync(_me, 1, "3|Fellaini"); // gat 3 is Chadli
+        var wrong = await _t.Quiz.GuessAsync(_me, 1, "2|Fellaini"); // gat 2 is Chadli
         Assert.Equal((0, 0), (wrong.WrongGuesses, wrong.View!.Found));
 
-        var right = await _t.Quiz.GuessAsync(_me, 1, "3|chadli");
+        var right = await _t.Quiz.GuessAsync(_me, 1, "2|chadli");
         Assert.Equal(1, right.View!.Found);
-        Assert.Equal("Nacer Chadli", right.View.Article!.SelectMany(p => p).Single(p => p.Gap == 3).Filled);
+        Assert.Equal("Nacer Chadli", right.View.Article!.SelectMany(p => p).Single(p => p.Gap == 2).Filled);
 
-        var again = await _t.Quiz.GuessAsync(_me, 1, "3|Chadli"); // al ingevuld: telt niet dubbel
+        var again = await _t.Quiz.GuessAsync(_me, 1, "2|Chadli"); // al ingevuld: telt niet dubbel
         Assert.Equal(1, again.View!.Found);
         Assert.Null(again.Result);
     }
@@ -152,10 +153,10 @@ public sealed class KrantTests : IDisposable
         await _t.Quiz.GuessAsync(_me, 1, "0|69"); // tweede gok op hetzelfde getal telt niet
         var done = await _t.Quiz.GiveUpAsync(_me, 1);
 
-        // 0,75 van één gat uit vijf: 250 × 0,75 / 5.
-        Assert.Equal(QuestionRules.KrantPoints(0.75, 5), done.Result!.Points);
+        // 0,4 van één gat uit drie: 250 × 0,4 / 3.
+        Assert.Equal(QuestionRules.KrantPoints(0.4, 3), done.Result!.Points);
         var minute = done.Result.FullArticle!.SelectMany(p => p).Single(p => p.Gap == 0);
-        Assert.Equal(("69", "70", 0.75), (minute.Answer, minute.Filled, minute.Score));
+        Assert.Equal(("69", "70", 0.4), (minute.Answer, minute.Filled, minute.Score));
     }
 
     [Fact]
@@ -164,9 +165,9 @@ public sealed class KrantTests : IDisposable
         await ToSundayAsync();
         await _t.Quiz.StartAsync(_me, 1);
 
-        foreach (var guess in new[] { "1|Vertonghen", "2|Marouane Fellaini", "4|Hazard", "0|69" })
+        foreach (var guess in new[] { "1|Vertonghen", "0|69" })
             Assert.Null((await _t.Quiz.GuessAsync(_me, 1, guess)).Result);
-        var last = await _t.Quiz.GuessAsync(_me, 1, "3|Chadli");
+        var last = await _t.Quiz.GuessAsync(_me, 1, "2|Chadli");
 
         Assert.True(last.Result!.Correct);
         Assert.Equal(Max, last.Result.Points);
@@ -183,10 +184,10 @@ public sealed class KrantTests : IDisposable
         var stopped = await _t.Quiz.GiveUpAsync(_me, 1);
 
         Assert.False(stopped.Result!.Correct);
-        Assert.Equal(Max / 5, stopped.Result.Points);
+        Assert.Equal(QuestionRules.KrantPoints(1, 3), stopped.Result.Points);
         var gaps = stopped.Result.FullArticle!.SelectMany(p => p).Where(p => p.Gap >= 0).ToList();
-        Assert.Equal(["69", "Jan Vertonghen", "Marouane Fellaini", "Nacer Chadli", "Eden Hazard"], gaps.Select(g => g.Answer));
-        Assert.Equal([0, 1, 0, 0, 0], gaps.Select(g => g.Score ?? -1));
+        Assert.Equal(["69", "Jan Vertonghen", "Nacer Chadli"], gaps.Select(g => g.Answer));
+        Assert.Equal([0, 1, 0], gaps.Select(g => g.Score ?? -1));
     }
 
     [Fact]
@@ -194,13 +195,13 @@ public sealed class KrantTests : IDisposable
     {
         await ToSundayAsync();
         var state = await _t.Quiz.StartAsync(_me, 1);
-        await _t.Quiz.GuessAsync(_me, 1, "2|Fellaini");
+        await _t.Quiz.GuessAsync(_me, 1, "2|Chadli");
 
         _t.Clock.Advance(TimeSpan.FromSeconds(state.TimeLimit + 2));
         var after = await _t.Quiz.GetStateAsync(_me, 1);
 
         Assert.True(after.Result!.TimedOut);
-        Assert.Equal(Max / 5, after.Result.Points);
+        Assert.Equal(QuestionRules.KrantPoints(1, 3), after.Result.Points);
     }
 
     [Fact]
@@ -237,7 +238,7 @@ public sealed class KrantTests : IDisposable
     [InlineData("Kop", "", "[[Fellaini : speler]] en Fellaini nog eens.")]
     public void Answers_that_are_already_visible_are_flagged(string headline, string intro, string text)
     {
-        // Enkel de meldingen over verklappen (het extra gat maakt er zes, dat is een andere melding).
+        // Enkel de meldingen over verklappen (het extra gat maakt er vier, dat is een andere melding).
         var leaks = QuestionEngine.Problems(QuestionType.Krant,
                 QuestionEngine.Serialize(new KrantData("verslag", headline, intro, Text + "\n\n" + text)))
             .Where(p => p.Contains("staat") || p.Contains("verraadt")).ToList();
@@ -273,7 +274,7 @@ public sealed class KrantTests : IDisposable
 
         var xp = (await _t.Results.XpInputsAsync())[_me];
         Assert.Equal(GameRules.QuestionsPerDay, xp.QuestionsPlayed); // vier artikels tellen samen als een volle dag
-        Assert.Equal(Max / 5, xp.CorrectPoints); // ook deelpunten tellen, al is het artikel niet foutloos
+        Assert.Equal(QuestionRules.KrantPoints(1, 3), xp.CorrectPoints); // ook deelpunten tellen, al is het artikel niet foutloos
     }
 
     [Fact]
@@ -291,6 +292,42 @@ public sealed class KrantTests : IDisposable
         await _t.Admin.SaveQuizItemAsync(Edit(Text.Replace("Vertonghen / Vertonghen : speler", "Vertonghen / Vertonghen / Jan V. : verdediger")), "admin");
         // Een gat vooraan erbij niet: dan schuiven de gevonden gaten op.
         await Assert.ThrowsAsync<QuizException>(() => _t.Admin.SaveQuizItemAsync(Edit("Vooraf [[Hazard : speler]]. " + Text), "admin"));
+    }
+
+    [Fact]
+    public async Task The_seeder_does_not_change_the_gaps_of_a_played_article()
+    {
+        await ToSundayAsync();
+        await _t.Quiz.StartAsync(_me, 1);
+        await _t.Quiz.GuessAsync(_me, 1, "1|Vertonghen");
+        var played = _db.Attempts.Select(a => a.DailyQuestion.QuizItem!).Single(); // het artikel van vraag 1 (de volgorde is willekeurig)
+        var before = played.Data;
+
+        async Task SeedAsync(string text)
+        {
+            var root = Directory.CreateTempSubdirectory("krant-seed-").FullName;
+            try
+            {
+                Directory.CreateDirectory(Path.Combine(root, "Data", "questions"));
+                var article = new { kind = "verslag", headline = played.Key, intro = "WK 2018", text, difficulty = 4, status = "approved", sources = new[] { "https://example.org" } };
+                await File.WriteAllTextAsync(Path.Combine(root, "Data", "questions", "krant.json"),
+                    System.Text.Json.JsonSerializer.Serialize(new[] { article }));
+                await new QuestionSeeder(_db, ServerContent.Environment(root), Microsoft.Extensions.Logging.Abstractions.NullLogger<QuestionSeeder>.Instance).SeedAsync();
+            }
+            finally
+            {
+                Directory.Delete(root, recursive: true);
+            }
+        }
+
+        // Andere gaten: de oude blijven, want de poging onthoudt gat 1 als Vertonghen. De rest wordt wel bijgewerkt.
+        await SeedAsync(Text.Replace("[[Jan Vertonghen / Vertonghen : speler]]", "Jan Vertonghen").Replace("de 3-2", "de 3-2 na werk van [[Eden Hazard / Hazard : speler]]"));
+        Assert.Equal(before, played.Data);
+        Assert.Equal(4, played.Difficulty);
+
+        // Dezelfde gaten met een andere hint: dat neemt het artikel wel over.
+        await SeedAsync(Text.Replace(" : speler]] de 1-2", " : verdediger]] de 1-2"));
+        Assert.Contains("verdediger", played.Data);
     }
 
     /// <summary>
