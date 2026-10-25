@@ -1,6 +1,6 @@
 ---
 name: deploy
-description: Publiceert Truitje Trek naar Azure (https://truitjetrek.azurewebsites.net) na een build en de tests, en controleert daarna of de app draait.
+description: Publiceert Truitje Trek naar Azure (https://truitje-trek.azurewebsites.net) na een build en de tests, en controleert daarna of de app draait.
 disable-model-invocation: true
 ---
 
@@ -22,7 +22,7 @@ Enkel uitvoeren wanneer de gebruiker er zelf om vraagt (`/deploy`). Dit verander
 
 Schrijf de nota zelf en vraag er niet naar: de admin wil dit niet bij elke deploy doen.
 
-1. **Wat is er veranderd?** Neem de jongste tag `deploy/*` (`git tag -l "deploy/*" --sort=-creatordate | head -1`) en lees `git log <tag>..HEAD`. Is er nog geen tag, gebruik dan de live versie: `version` uit https://truitjetrek.azurewebsites.net/api/status is de deploytijd (`yyyyMMdd.HHmmss`, UTC), dus `git log --since="<die tijd>Z"`. Kijk ook naar niet-gecommitte wijzigingen die mee gaan.
+1. **Wat is er veranderd?** Neem de jongste tag `deploy/*` (`git tag -l "deploy/*" --sort=-creatordate | head -1`) en lees `git log <tag>..HEAD`. Is er nog geen tag, gebruik dan de live versie: `version` uit https://truitje-trek.azurewebsites.net/api/status is de deploytijd (`yyyyMMdd.HHmmss`, UTC), dus `git log --since="<die tijd>Z"`. Kijk ook naar niet-gecommitte wijzigingen die mee gaan.
 2. **Merkt een speler het?** Tel enkel mee wat een speler ziet of voelt: nieuwe vraagtypes, specials, badges, schermen, spelregels, zichtbare bugfixes, meer vragen of spelers. Laat weg: refactors, tests, scripts, deploy, pakketupgrades, beveiliging achter de schermen, admin-only wijzigingen en het herlabelen of herschrijven van bestaande vragen. Blijft er niets over, deploy dan zonder nota.
 3. **Schrijf** `release-note.json` in de scratchpad (niet in de repo):
    ```json
@@ -43,6 +43,6 @@ Het script publiceert, zet de app dicht (spelers zien enkel "Er worden momenteel
 
 ## Nadien
 
-- Open https://truitjetrek.azurewebsites.net in de browser en controleer dat de homepagina laadt en er geen consolefouten zijn.
-- Lukt het niet: bekijk de logs met `az webapp log tail -g rg-truitje-trek -n truitjetrek --subscription "Visual Studio Enterprise Subscription"` (stop na een minuut) en meld de fout.
+- Open https://truitje-trek.azurewebsites.net in de browser en controleer dat de homepagina laadt en er geen consolefouten zijn.
+- Lukt het niet: bekijk de logs met `az webapp log tail -g rg-truitje-trek -n truitje-trek --subscription "Visual Studio Enterprise Subscription"` (stop na een minuut) en meld de fout.
 - Meld welke commit live staat en welke releasenota verstuurd werd, of dat er geen was en waarom. Is ze niet goed, dan kan de admin ze wissen onder Bestuurskamer → Meldingen.

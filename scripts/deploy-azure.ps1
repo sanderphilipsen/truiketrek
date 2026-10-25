@@ -8,7 +8,7 @@
 param(
     [string]$Subscription = "11e4a1ec-68c0-4790-a7dc-34fc2144ad23",  # Visual Studio Enterprise Subscription
     [string]$ResourceGroup = "rg-truitje-trek",
-    [string]$AppName = "truitjetrek",
+    [string]$AppName = "truitje-trek",
     [int]$WarnMinutes = 1,  # 0 voor een dringende hotfix
     # JSON met title, text en optioneel link: komt na de deploy bij elke speler binnen als "Wat is er nieuw".
     [string]$ReleaseNote = ""

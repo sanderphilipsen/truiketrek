@@ -178,12 +178,14 @@ Bij een nieuwe dag worden 10 spelers gekozen die nog het minst gevraagd zijn. De
 
 ## Hosten op Azure
 
-De app draait op https://truitjetrek.azurewebsites.net (abonnement "Visual Studio Enterprise Subscription" in de tenant `claestomoutlook.onmicrosoft.com`, resourcegroep `rg-truitje-trek`, waarop je Contributor bent). Alles staat in France Central: in deze subscription is West Europe geblokkeerd voor PostgreSQL en hebben North Europe en UK South geen quotum voor B1.
+De app draait op https://truitje-trek.azurewebsites.net (abonnement "Visual Studio Enterprise Subscription" in de tenant `claestomoutlook.onmicrosoft.com`, resourcegroep `rg-truitje-trek`, waarop je Contributor bent). Alles staat in France Central: in deze subscription is West Europe geblokkeerd voor PostgreSQL en hebben North Europe en UK South geen quotum voor B1.
 
 | Onderdeel | Resource | Kost |
 |---|---|---|
-| Web-app | `truitjetrek` op het Linux-plan `truitjetrek-plan` (B1) | ±€12 per maand |
+| Web-app | `truitje-trek` op het Linux-plan `truitjetrek-plan` (B1) | ±€12 per maand |
 | Database | PostgreSQL Flexible Server `truitjetrek-database` (Burstable B1ms, 32 GB, versie 17), database `voetbalquiz` | ±€15–16 per maand |
+
+Het oude adres https://truitjetrek.azurewebsites.net (web-app `truitjetrek` in `tbooking-rg`, "Azure subscription 1") toont enkel nog een verhuispagina met een link naar het nieuwe adres. Die pagina schakelt ook de oude geïnstalleerde PWA uit. De naam `truitjetrek` kon niet mee: na het verwijderen houdt Azure een naam voor andere tenants dagen tot maanden vast.
 
 Een nieuwe versie publiceren:
 
@@ -197,14 +199,14 @@ De omgeving opnieuw opzetten of de instellingen herstellen: `pwsh scripts/setup-
 - **Always On** staat aan. Anders slaapt de app in en lopen de online wedstrijden en de dagafsluiting niet. **WebSockets** staan aan voor SignalR, en de app werkt alleen via HTTPS (nodig voor de PWA).
 - **Eén instantie, niet uitschalen.** De app gaat ervan uit dat er precies één serverinstantie draait: `MatchEngine` zet de wedstrijden verder in die ene instantie, de SignalR-groepen hebben geen backplane en een paar gegevens (avatars, levels) staan in een geheugencache. Gelijktijdige schrijvers binnen die instantie (de engine en verzoeken) vangt `Match.Version` op: wie botst, begint opnieuw vanaf een verse toestand. Met twee instanties kan een vraag twee keer afgerekend worden en missen spelers seintjes; dat vraagt eerst een backplane en een gedeelde cache.
 - De connection string (`ConnectionStrings__Quiz`) en de admins (`Admins__0`, …) staan in de app-instellingen van de web-app, niet in git. Alleen Azure-diensten mogen met de database verbinden.
-- Logs bekijken: `az webapp log tail -g rg-truitje-trek -n truitjetrek --subscription "Visual Studio Enterprise Subscription"`.
+- Logs bekijken: `az webapp log tail -g rg-truitje-trek -n truitje-trek --subscription "Visual Studio Enterprise Subscription"`.
 
 ### Aanmelden met Google
 
 De knop "Doorgaan met Google" verschijnt pas wanneer `Authentication:Google:ClientId` en `Authentication:Google:ClientSecret` ingesteld zijn. Een bestaand account wordt **niet** automatisch gekoppeld op basis van het e-mailadres: bij registreren wordt dat adres niet bevestigd, dus het kan dat van iemand anders zijn. Bestaat er al een account met het Google-adres, dan meldt de speler zich één keer aan met gebruikersnaam en wachtwoord en wordt Google daarna gekoppeld (enkel als het door Google bevestigde adres dat van het account is). Een Google-account zonder bevestigd e-mailadres wordt geweigerd. Na het aanmelden ga je enkel naar een pad binnen de app (`ReturnPath.Safe` in Shared, gebruikt door client en server). Een nieuwe speler kiest eerst een gebruikersnaam en kan later in Profiel een wachtwoord instellen.
 
 1. In de [Google Cloud Console](https://console.cloud.google.com/), project **Truitje Trek**: stel onder *Google Auth Platform* het toestemmingsscherm in (extern, app-naam "Truitje Trek") en maak een OAuth-client van het type *Webapplicatie* aan met als redirect-URI's:
-   - `https://truitjetrek.azurewebsites.net/signin-google`
+   - `https://truitje-trek.azurewebsites.net/signin-google`
    - `http://localhost:5174/signin-google`
 2. Lokaal (bewaard buiten git):
    ```bash
@@ -213,5 +215,5 @@ De knop "Doorgaan met Google" verschijnt pas wanneer `Authentication:Google:Clie
    ```
 3. Op Azure als app-instellingen `Authentication__Google__ClientId` en `Authentication__Google__ClientSecret`:
    ```bash
-   az webapp config appsettings set -g rg-truitje-trek -n truitjetrek --subscription "Visual Studio Enterprise Subscription" --settings Authentication__Google__ClientId="<client-id>" Authentication__Google__ClientSecret="<client-secret>"
+   az webapp config appsettings set -g rg-truitje-trek -n truitje-trek --subscription "Visual Studio Enterprise Subscription" --settings Authentication__Google__ClientId="<client-id>" Authentication__Google__ClientSecret="<client-secret>"
    ```

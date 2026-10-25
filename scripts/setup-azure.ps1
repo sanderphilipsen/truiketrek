@@ -9,7 +9,7 @@ param(
     [string]$Plan = "truitjetrek-plan",
     # West Europe is geblokkeerd voor PostgreSQL, North Europe en UK South hebben geen B1-quotum, Belgium Central geen capaciteit.
     [string]$Location = "francecentral",
-    [string]$AppName = "truitjetrek",
+    [string]$AppName = "truitje-trek",
     [string]$DbServer = "truitjetrek-database",
     [string]$DbName = "voetbalquiz",
     [string]$DbAdmin = "quizadmin",
