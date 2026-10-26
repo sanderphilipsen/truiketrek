@@ -8345,9 +8345,10 @@
     ],
     "correct": 1,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_1992"],
-    "tags": []
+    "tags": [],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie miste in 1994 de laatste strafschop in de WK-finale tussen Brazilië en Italië?",
@@ -8359,9 +8360,10 @@
     ],
     "correct": 3,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1994_FIFA_World_Cup_final"],
-    "tags": ["wk", "italie"]
+    "tags": ["wk", "italie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club won in 1967 als eerste Britse club de Europacup I?",
@@ -8373,9 +8375,10 @@
     ],
     "correct": 2,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1967_European_Cup_final"],
-    "tags": ["champions-league"]
+    "tags": ["champions-league"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie scoorde in 1999 in blessuretijd de winnende goal voor Manchester United in de Champions League-finale tegen Bayern?",
@@ -8387,9 +8390,10 @@
     ],
     "correct": 0,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1999_UEFA_Champions_League_final"],
-    "tags": ["champions-league"]
+    "tags": ["champions-league"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Tegen welke club scoorde Agüero in 2012 diep in blessuretijd de goal die Manchester City de titel bezorgde?",
@@ -8401,9 +8405,10 @@
     ],
     "correct": 2,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2011%E2%80%9312_Manchester_City_F.C._season"],
-    "tags": []
+    "tags": [],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van welke club kwam Zinédine Zidane in 2001 naar Real Madrid?",
@@ -8415,9 +8420,10 @@
     ],
     "correct": 1,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Zinedine_Zidane"],
-    "tags": ["frankrijk"]
+    "tags": ["frankrijk"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie scoorde in 2019 in de Champions League-finale de 2-0 voor Liverpool tegen Tottenham?",
@@ -8429,9 +8435,10 @@
     ],
     "correct": 3,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2019_UEFA_Champions_League_final", "https://en.wikipedia.org/wiki/Divock_Origi"],
-    "tags": ["champions-league", "rode-duivels", "belgie"]
+    "tags": ["champions-league", "rode-duivels", "belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Hoeveel Premier League-goals scoorde Erling Haaland in zijn debuutseizoen 2022-23 bij Manchester City?",
@@ -8443,9 +8450,10 @@
     ],
     "correct": 2,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Erling_Haaland"],
-    "tags": []
+    "tags": [],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie staat na Cristiano Ronaldo tweede in de lijst met topschutters aller tijden in de Champions League?",
@@ -8457,9 +8465,10 @@
     ],
     "correct": 1,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/List_of_UEFA_Champions_League_top_scorers"],
-    "tags": ["champions-league", "messi"]
+    "tags": ["champions-league", "messi"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club won in 2018 de Beker van België in de finale tegen Genk?",
@@ -8471,9 +8480,10 @@
     ],
     "correct": 1,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Belgian_Cup"],
-    "tags": ["beker-van-belgie", "standard", "belgie"]
+    "tags": ["beker-van-belgie", "standard", "belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie was bondscoach van België op het WK 1998 in Frankrijk?",
@@ -8485,9 +8495,10 @@
     ],
     "correct": 1,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/List_of_Belgium_national_football_team_managers"],
-    "tags": ["rode-duivels", "wk", "belgie"]
+    "tags": ["rode-duivels", "wk", "belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welk land verliet in 1920 in Antwerpen tijdens de olympische finale tegen België het veld?",
@@ -8499,9 +8510,10 @@
     ],
     "correct": 2,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Football_at_the_1920_Summer_Olympics"],
-    "tags": ["rode-duivels", "belgie"]
+    "tags": ["rode-duivels", "belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club speelt zijn thuiswedstrijden op Stayen?",
@@ -8513,9 +8525,10 @@
     ],
     "correct": 0,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/List_of_football_stadiums_in_Belgium", "https://en.wikipedia.org/wiki/Sint-Truidense_V.V."],
-    "tags": ["belgie"]
+    "tags": ["belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club speelt zijn thuiswedstrijden in het Guldensporenstadion?",
@@ -8527,9 +8540,10 @@
     ],
     "correct": 3,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/List_of_football_stadiums_in_Belgium", "https://en.wikipedia.org/wiki/K.V._Kortrijk"],
-    "tags": ["belgie"]
+    "tags": ["belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club speelt zijn thuiswedstrijden in het Regenboogstadion?",
@@ -8541,9 +8555,10 @@
     ],
     "correct": 0,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/List_of_football_stadiums_in_Belgium", "https://en.wikipedia.org/wiki/S.V._Zulte_Waregem"],
-    "tags": ["belgie"]
+    "tags": ["belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club speelt zijn thuiswedstrijden op Den Dreef?",
@@ -8555,9 +8570,10 @@
     ],
     "correct": 2,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/List_of_football_stadiums_in_Belgium", "https://en.wikipedia.org/wiki/Oud-Heverlee_Leuven"],
-    "tags": ["belgie"]
+    "tags": ["belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke trainer won in 2013 met Bayern München de treble?",
@@ -8569,9 +8585,10 @@
     ],
     "correct": 0,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2012%E2%80%9313_FC_Bayern_Munich_season", "https://en.wikipedia.org/wiki/Jupp_Heynckes"],
-    "tags": ["champions-league", "duitsland"]
+    "tags": ["champions-league", "duitsland"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke Colombiaan werd topschutter van het WK 2014 in Brazilië?",
@@ -8583,9 +8600,10 @@
     ],
     "correct": 3,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2014_FIFA_World_Cup", "https://en.wikipedia.org/wiki/James_Rodr%C3%ADguez"],
-    "tags": ["wk"]
+    "tags": ["wk"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club werd in 2001 Italiaans kampioen met Gabriel Batistuta?",
@@ -8597,9 +8615,10 @@
     ],
     "correct": 1,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2000%E2%80%9301_Serie_A", "https://en.wikipedia.org/wiki/AS_Roma"],
-    "tags": ["italie"]
+    "tags": ["italie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie scoorde in 1992 in de verlenging de winnende vrije trap voor Barcelona in de Europacup I-finale?",
@@ -8611,9 +8630,10 @@
     ],
     "correct": 2,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1992_European_Cup_final", "https://en.wikipedia.org/wiki/Ronald_Koeman"],
-    "tags": ["champions-league", "oranje"]
+    "tags": ["champions-league", "oranje"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke doelman won op het WK 2018 de Gouden Handschoen?",
@@ -8625,9 +8645,10 @@
     ],
     "correct": 0,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup", "https://en.wikipedia.org/wiki/Thibaut_Courtois"],
-    "tags": ["rode-duivels", "wk", "belgie"]
+    "tags": ["rode-duivels", "wk", "belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke trainer werd in 2020 en 2021 met Club Brugge landskampioen?",
@@ -8639,9 +8660,10 @@
     ],
     "correct": 3,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Philippe_Clement", "https://en.wikipedia.org/wiki/Club_Brugge_KV"],
-    "tags": ["club-brugge", "belgie"]
+    "tags": ["club-brugge", "belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke Duitser scoorde in 1996 de eerste golden goal in een EK-finale?",
@@ -8653,9 +8675,10 @@
     ],
     "correct": 1,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_1996"],
-    "tags": ["duitsland"]
+    "tags": ["duitsland"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke trainer leidde Standard in 2009 naar de tweede landstitel op rij?",
@@ -8667,9 +8690,10 @@
     ],
     "correct": 2,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/L%C3%A1szl%C3%B3_B%C3%B6l%C3%B6ni", "https://en.wikipedia.org/wiki/2008%E2%80%9309_Belgian_First_Division"],
-    "tags": ["standard", "belgie"]
+    "tags": ["standard", "belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club won in 1999 de allerlaatste Europacup II?",
@@ -8681,9 +8705,10 @@
     ],
     "correct": 1,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1999_UEFA_Cup_Winners%27_Cup_final"],
-    "tags": []
+    "tags": [],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club werd in 2021 kampioen van eerste klasse B en promoveerde naar de hoogste klasse?",
@@ -8695,9 +8720,10 @@
     ],
     "correct": 2,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Challenger_Pro_League"],
-    "tags": ["belgie"]
+    "tags": ["belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club werd in 2000 voor het eerst Spaans kampioen?",
@@ -8709,9 +8735,10 @@
     ],
     "correct": 3,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1999%E2%80%932000_La_Liga", "https://en.wikipedia.org/wiki/Deportivo_de_La_Coru%C3%B1a"],
-    "tags": ["spanje"]
+    "tags": ["spanje"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club werd in 2009 voor het eerst Duits kampioen?",
@@ -8723,9 +8750,10 @@
     ],
     "correct": 1,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2008%E2%80%9309_Bundesliga", "https://en.wikipedia.org/wiki/VfL_Wolfsburg"],
-    "tags": ["duitsland"]
+    "tags": ["duitsland"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club werd in 2012 voor het eerst Frans kampioen?",
@@ -8737,9 +8765,10 @@
     ],
     "correct": 3,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2011%E2%80%9312_Ligue_1", "https://en.wikipedia.org/wiki/Montpellier_HSC"],
-    "tags": ["frankrijk"]
+    "tags": ["frankrijk"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke Engelse trainer leidde FC Twente in 2010 naar de eerste landstitel?",
@@ -8751,9 +8780,10 @@
     ],
     "correct": 0,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/FC_Twente", "https://en.wikipedia.org/wiki/Steve_McClaren"],
-    "tags": ["oranje"]
+    "tags": ["oranje"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club werd in 2018 kampioen van eerste klasse B en promoveerde naar de hoogste klasse?",
@@ -8765,9 +8795,10 @@
     ],
     "correct": 0,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Challenger_Pro_League", "https://en.wikipedia.org/wiki/Cercle_Brugge_K.S.V."],
-    "tags": ["belgie"]
+    "tags": ["belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club werd in 1997 voor de vierde en laatste keer Belgisch kampioen?",
@@ -8779,9 +8810,10 @@
     ],
     "correct": 1,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/List_of_Belgian_football_champions", "https://en.wikipedia.org/wiki/K._Lierse_S.K."],
-    "tags": ["belgie"]
+    "tags": ["belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Met welke trainer won Genk in 1999 zijn eerste landstitel?",
@@ -8793,9 +8825,10 @@
     ],
     "correct": 2,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/K.R.C._Genk"],
-    "tags": ["belgie"]
+    "tags": ["belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club werd in 1896 de eerste Belgische landskampioen?",
@@ -8822,9 +8855,10 @@
     ],
     "correct": 0,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1976_European_Cup_Winners%27_Cup_final"],
-    "tags": ["anderlecht", "belgie"]
+    "tags": ["anderlecht", "belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie scoorde in 1978 op Wembley het enige doelpunt in de Europacup I-finale tussen Liverpool en Club Brugge?",
@@ -8836,9 +8870,10 @@
     ],
     "correct": 1,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1978_European_Cup_final"],
-    "tags": ["club-brugge", "champions-league", "belgie"]
+    "tags": ["club-brugge", "champions-league", "belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie scoorde in 1982 de enige goal in de openingswedstrijd van het WK, Argentinië tegen België?",
@@ -8850,9 +8885,10 @@
     ],
     "correct": 2,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1982_FIFA_World_Cup_Group_3"],
-    "tags": ["rode-duivels", "wk", "belgie"]
+    "tags": ["rode-duivels", "wk", "belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club promoveerde in 2022 als kampioen van eerste klasse B naar de hoogste klasse?",
@@ -8864,9 +8900,10 @@
     ],
     "correct": 3,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Challenger_Pro_League"],
-    "tags": ["belgie"]
+    "tags": ["belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke Engelse club versloeg Club Brugge in de UEFA Cup-finale van 1976?",
@@ -8878,9 +8915,10 @@
     ],
     "correct": 0,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1976_UEFA_Cup_final"],
-    "tags": ["club-brugge", "belgie"]
+    "tags": ["club-brugge", "belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club promoveerde in 2023 als winnaar van de reguliere competitie in de Challenger Pro League naar de hoogste klasse?",
@@ -8892,908 +8930,1009 @@
     ],
     "correct": 1,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Challenger_Pro_League"],
-    "tags": ["belgie"]
+    "tags": ["belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welk land won het WK 2022 in Qatar?",
     "options": ["Argentinië", "Frankrijk", "Kroatië", "Marokko"],
     "correct": 0,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2022_FIFA_World_Cup"],
-    "tags": ["wk"]
+    "tags": ["wk"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club speelt zijn thuiswedstrijden in het Santiago Bernabéu?",
     "options": ["FC Barcelona", "Real Madrid", "Atlético Madrid", "Sevilla"],
     "correct": 1,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Santiago_Bernab%C3%A9u_Stadium"],
-    "tags": ["spanje"]
+    "tags": ["spanje"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club speelt zijn thuiswedstrijden in het Etihad Stadium?",
     "options": ["Liverpool", "Chelsea", "Manchester City", "Tottenham Hotspur"],
     "correct": 2,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Etihad_Stadium_(Manchester)"],
-    "tags": []
+    "tags": [],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welk land won het WK voetbal het vaakst?",
     "options": ["Duitsland", "Italië", "Argentinië", "Brazilië"],
     "correct": 3,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/FIFA_World_Cup"],
-    "tags": ["wk"]
+    "tags": ["wk"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke Londense club heeft 'The Gunners' als bijnaam?",
     "options": ["Arsenal", "Chelsea", "West Ham United", "Tottenham Hotspur"],
     "correct": 0,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Arsenal_F.C."],
-    "tags": []
+    "tags": [],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie scoorde tot en met 2026 de meeste doelpunten ooit in interlands bij de mannen?",
     "options": ["Lionel Messi", "Cristiano Ronaldo", "Ali Daei", "Robert Lewandowski"],
     "correct": 1,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_50_or_more_international_goals"],
-    "tags": ["portugal"]
+    "tags": ["portugal"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Voor welk land speelt Erling Haaland?",
     "options": ["Zweden", "Denemarken", "Noorwegen", "Finland"],
     "correct": 2,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Erling_Haaland"],
-    "tags": []
+    "tags": [],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke twee clubs spelen El Clásico?",
     "options": ["Barcelona en Atlético Madrid", "Real Madrid en Sevilla", "Valencia en Real Madrid", "Real Madrid en Barcelona"],
     "correct": 3,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/El_Cl%C3%A1sico"],
-    "tags": ["spanje"]
+    "tags": ["spanje"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "In welke Duitse stad staat de Allianz Arena?",
     "options": ["München", "Berlijn", "Dortmund", "Keulen"],
     "correct": 0,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Allianz_Arena"],
-    "tags": ["duitsland"]
+    "tags": ["duitsland"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Voor welk land speelt Mohamed Salah?",
     "options": ["Marokko", "Egypte", "Nigeria", "Senegal"],
     "correct": 1,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Mohamed_Salah"],
-    "tags": []
+    "tags": [],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie won in 2022 de Ballon d'Or?",
     "options": ["Sadio Mané", "Kylian Mbappé", "Karim Benzema", "Luka Modrić"],
     "correct": 2,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2022_Ballon_d%27Or"],
-    "tags": ["ballon-dor", "frankrijk"]
+    "tags": ["ballon-dor", "frankrijk"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club won van 2020-21 tot en met 2023-24 vier keer op rij de Premier League?",
     "options": ["Liverpool", "Chelsea", "Arsenal", "Manchester City"],
     "correct": 3,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/List_of_English_football_champions"],
-    "tags": []
+    "tags": [],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Naar welke Amerikaanse club vertrok David Beckham in 2007 bij Real Madrid?",
     "options": ["LA Galaxy", "New York Red Bulls", "Chicago Fire", "DC United"],
     "correct": 0,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/David_Beckham"],
-    "tags": []
+    "tags": [],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie werd met zes goals topschutter van het WK 2018?",
     "options": ["Kylian Mbappé", "Harry Kane", "Antoine Griezmann", "Cristiano Ronaldo"],
     "correct": 1,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup"],
-    "tags": ["wk"]
+    "tags": ["wk"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke Uruguayaan beet op het WK 2014 Giorgio Chiellini in de schouder?",
     "options": ["Edinson Cavani", "Diego Forlán", "Luis Suárez", "Diego Godín"],
     "correct": 2,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Luis_Su%C3%A1rez#Biting_incidents"],
-    "tags": ["wk", "curiosa"]
+    "tags": ["wk", "curiosa"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie scoorde in de verlenging het winnende doelpunt in de WK-finale van 2010?",
     "options": ["David Villa", "Fernando Torres", "Xavi", "Andrés Iniesta"],
     "correct": 3,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_final"],
-    "tags": ["wk", "spanje"]
+    "tags": ["wk", "spanje"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welk Afrikaans land haalde in 2022 als eerste de halve finale van een WK?",
     "options": ["Marokko", "Senegal", "Ghana", "Kameroen"],
     "correct": 0,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_knockout_stage"],
-    "tags": ["wk"]
+    "tags": ["wk"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Tegen welk land scoorde Zlatan Ibrahimović in 2012 een omhaal van dertig meter in een vriendschappelijke wedstrijd?",
     "options": ["Duitsland", "Engeland", "Frankrijk", "Nederland"],
     "correct": 1,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Zlatan_Ibrahimovi%C4%87#International_career"],
-    "tags": []
+    "tags": [],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke Nederlander maakte op het WK 2014 met een vliegende kopbal de 1-1 tegen Spanje?",
     "options": ["Arjen Robben", "Wesley Sneijder", "Robin van Persie", "Klaas-Jan Huntelaar"],
     "correct": 2,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Spain_v_Netherlands_(2014_FIFA_World_Cup)"],
-    "tags": ["wk", "oranje", "spanje"]
+    "tags": ["wk", "oranje", "spanje"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie maakte in de 93e minuut de gelijkmaker voor Real Madrid in de Champions League-finale van 2014 tegen Atlético?",
     "options": ["Gareth Bale", "Cristiano Ronaldo", "Marcelo", "Sergio Ramos"],
     "correct": 3,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2014_UEFA_Champions_League_final"],
-    "tags": ["champions-league", "spanje"]
+    "tags": ["champions-league", "spanje"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke trainer won van 2016 tot 2018 drie keer op rij de Champions League met Real Madrid?",
     "options": ["Zinédine Zidane", "Carlo Ancelotti", "José Mourinho", "Rafael Benítez"],
     "correct": 0,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Zin%C3%A9dine_Zidane#Managerial_career"],
-    "tags": ["champions-league", "spanje", "frankrijk"]
+    "tags": ["champions-league", "spanje", "frankrijk"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke trainer won tot en met 2026 als enige vijf keer de Champions League of Europacup I?",
     "options": ["Pep Guardiola", "Carlo Ancelotti", "Zinédine Zidane", "Alex Ferguson"],
     "correct": 1,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Carlo_Ancelotti", "https://www.cbssports.com/soccer/news/why-carlo-ancelotti-is-the-top-manager-in-the-world-as-he-chases-champions-league-title-with-real-madrid/"],
-    "tags": ["champions-league", "italie"]
+    "tags": ["champions-league", "italie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke Fransman werd wereldkampioen als aanvoerder in 1998 én als trainer in 2018?",
     "options": ["Zinédine Zidane", "Laurent Blanc", "Didier Deschamps", "Marcel Desailly"],
     "correct": 2,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Didier_Deschamps"],
-    "tags": ["wk", "frankrijk"]
+    "tags": ["wk", "frankrijk"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie is de recordschutter aller tijden van Manchester United?",
     "options": ["Bobby Charlton", "Denis Law", "Paul Scholes", "Wayne Rooney"],
     "correct": 3,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Wayne_Rooney", "https://www.90min.com/posts/manchester-united-all-time-top-scorers"],
-    "tags": []
+    "tags": [],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie is de recordschutter aller tijden van Arsenal?",
     "options": ["Thierry Henry", "Ian Wright", "Dennis Bergkamp", "Robin van Persie"],
     "correct": 0,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Thierry_Henry"],
-    "tags": ["frankrijk"]
+    "tags": ["frankrijk"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke twee clubs spelen de Derby della Madonnina?",
     "options": ["Juventus en Torino", "AC Milan en Inter", "Genoa en Sampdoria", "AS Roma en Lazio"],
     "correct": 1,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Derby_della_Madonnina"],
-    "tags": ["italie"]
+    "tags": ["italie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club speelt zijn thuiswedstrijden in het Mestalla?",
     "options": ["Villarreal", "Sevilla", "Valencia", "Real Betis"],
     "correct": 2,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Mestalla_Stadium"],
-    "tags": ["spanje"]
+    "tags": ["spanje"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie was bondscoach van Kroatië bij de WK-finale van 2018 en het brons van 2022?",
     "options": ["Slaven Bilić", "Niko Kovač", "Ante Čačić", "Zlatko Dalić"],
     "correct": 3,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Zlatko_Dali%C4%87"],
-    "tags": ["wk"]
+    "tags": ["wk"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke Liverpool-doelman scoorde in 2021 in blessuretijd met het hoofd tegen West Bromwich Albion?",
     "options": ["Alisson", "Adrián", "Caoimhín Kelleher", "Jordan Pickford"],
     "correct": 0,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Alisson_Becker"],
-    "tags": ["curiosa"]
+    "tags": ["curiosa"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke Duitse verdediger kreeg de bijnaam 'Der Kaiser'?",
     "options": ["Gerd Müller", "Franz Beckenbauer", "Lothar Matthäus", "Karl-Heinz Rummenigge"],
     "correct": 1,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Franz_Beckenbauer"],
-    "tags": ["duitsland", "legende"]
+    "tags": ["duitsland", "legende"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke doelman verhuisde in 2001 van Parma naar Juventus voor een toenmalig wereldrecord voor doelmannen?",
     "options": ["Fabien Barthez", "Francesco Toldo", "Angelo Peruzzi", "Gianluigi Buffon"],
     "correct": 3,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Gianluigi_Buffon"],
-    "tags": ["italie"]
+    "tags": ["italie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie gaf tot en met 2025-26 de meeste assists ooit in de Premier League?",
     "options": ["Ryan Giggs", "Cesc Fàbregas", "Kevin De Bruyne", "Frank Lampard"],
     "correct": 0,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Ryan_Giggs", "https://theanalyst.com/articles/most-premier-league-assists/"],
-    "tags": []
+    "tags": [],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke Roemeense middenvelder werd 'de Maradona van de Karpaten' genoemd?",
     "options": ["Adrian Mutu", "Gheorghe Hagi", "Gheorghe Popescu", "Florin Răducioiu"],
     "correct": 1,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Gheorghe_Hagi"],
-    "tags": ["legende"]
+    "tags": ["legende"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke Bulgaar won in 1994 de Ballon d'Or?",
     "options": ["Roberto Baggio", "Romário", "Hristo Stoichkov", "George Weah"],
     "correct": 2,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1994_Ballon_d%27Or"],
-    "tags": ["ballon-dor", "wk"]
+    "tags": ["ballon-dor", "wk"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke trainer won in 1979 en 1980 met Nottingham Forest de Europacup I?",
     "options": ["Bill Shankly", "Bob Paisley", "Don Revie", "Brian Clough"],
     "correct": 3,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Brian_Clough"],
-    "tags": ["legende"]
+    "tags": ["legende"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke Franse verdediger scoorde twee keer in de WK-halve finale van 1998 tegen Kroatië?",
     "options": ["Lilian Thuram", "Marcel Desailly", "Laurent Blanc", "Bixente Lizarazu"],
     "correct": 0,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1998_FIFA_World_Cup_knockout_stage"],
-    "tags": ["wk", "frankrijk"]
+    "tags": ["wk", "frankrijk"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke Engelse middenvelder huilde in 1990 na een gele kaart in de WK-halve finale tegen West-Duitsland?",
     "options": ["Gary Lineker", "Paul Gascoigne", "Chris Waddle", "David Platt"],
     "correct": 1,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Paul_Gascoigne"],
-    "tags": ["wk", "duitsland"]
+    "tags": ["wk", "duitsland"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie scoorde vier goals in de Europacup I-finale van 1960, het 7-3 van Real Madrid tegen Eintracht Frankfurt?",
     "options": ["Alfredo Di Stéfano", "Francisco Gento", "Ferenc Puskás", "Luis del Sol"],
     "correct": 2,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1960_European_Cup_final"],
-    "tags": ["champions-league", "spanje", "legende"]
+    "tags": ["champions-league", "spanje", "legende"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie rondde op het WK 2006 een Argentijnse aanval van 24 passes af tegen Servië en Montenegro (6-0)?",
     "options": ["Juan Román Riquelme", "Hernán Crespo", "Carlos Tevez", "Esteban Cambiasso"],
     "correct": 3,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Esteban_Cambiasso"],
-    "tags": ["wk", "curiosa"]
+    "tags": ["wk", "curiosa"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welk land won in 1960 in Parijs het allereerste EK?",
     "options": ["Sovjet-Unie", "Tsjecho-Slowakije", "Spanje", "Frankrijk"],
     "correct": 0,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1960_European_Nations%27_Cup"],
-    "tags": []
+    "tags": [],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke Franse club verloor in 1956 de allereerste Europacup I-finale van Real Madrid (4-3)?",
     "options": ["Olympique Marseille", "Stade de Reims", "AS Saint-Étienne", "OGC Nice"],
     "correct": 1,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1956_European_Cup_final"],
-    "tags": ["champions-league", "frankrijk"]
+    "tags": ["champions-league", "frankrijk"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie scoorde in 2019 na 7,69 seconden het snelste doelpunt uit de Premier League-geschiedenis?",
     "options": ["Ledley King", "Christian Eriksen", "Shane Long", "Alan Shearer"],
     "correct": 2,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://www.guinnessworldrecords.com/world-records/411353-fastest-goal-scored-in-the-football-soccer-premier-league", "https://theanalyst.com/2025/02/fastest-premier-league-goals"],
-    "tags": ["curiosa"]
+    "tags": ["curiosa"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie scoorde in 1950 in het Maracanã de winnende goal voor Uruguay tegen Brazilië?",
     "options": ["Obdulio Varela", "Juan Schiaffino", "Óscar Míguez", "Alcides Ghiggia"],
     "correct": 3,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1950_FIFA_World_Cup_final_round"],
-    "tags": ["wk", "legende"]
+    "tags": ["wk", "legende"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie scoorde in 1954 het winnende doelpunt voor West-Duitsland in de WK-finale tegen Hongarije, het 'Wunder von Bern'?",
     "options": ["Helmut Rahn", "Fritz Walter", "Max Morlock", "Ottmar Walter"],
     "correct": 0,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1954_FIFA_World_Cup_final"],
-    "tags": ["wk", "duitsland", "legende"]
+    "tags": ["wk", "duitsland", "legende"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke Rus scoorde op het WK 1994 vijf goals in één wedstrijd, tegen Kameroen?",
     "options": ["Igor Kolyvanov", "Oleg Salenko", "Dmitri Radtsjenko", "Valeri Karpin"],
     "correct": 1,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Oleg_Salenko"],
-    "tags": ["wk", "curiosa"]
+    "tags": ["wk", "curiosa"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club versloeg in 1988 Liverpool in de FA Cup-finale en stond bekend als 'The Crazy Gang'?",
     "options": ["Coventry City", "Luton Town", "Wimbledon", "Norwich City"],
     "correct": 2,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1988_FA_Cup_final"],
-    "tags": ["curiosa"]
+    "tags": ["curiosa"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Tegen welk land scoorde Hongarije in 1982 op het WK tien keer (10-1)?",
     "options": ["Peru", "Honduras", "Kameroen", "El Salvador"],
     "correct": 3,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Hungary_v_El_Salvador_(1982_FIFA_World_Cup)"],
-    "tags": ["wk", "curiosa"]
+    "tags": ["wk", "curiosa"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club won in januari 2000 het allereerste officiële FIFA WK voor clubs?",
     "options": ["Corinthians", "Real Madrid", "Manchester United", "Vasco da Gama"],
     "correct": 0,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2000_FIFA_Club_World_Championship_final"],
-    "tags": []
+    "tags": [],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Tegen welk land won Tsjecho-Slowakije in 1976 de EK-finale na strafschoppen?",
     "options": ["Nederland", "West-Duitsland", "Joegoslavië", "Spanje"],
     "correct": 1,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_1976"],
-    "tags": ["duitsland"]
+    "tags": ["duitsland"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Hoeveel keer op rij won Michel Platini in de jaren tachtig de Ballon d'Or?",
     "options": ["2", "3", "4", "5"],
     "correct": 1,
-    "difficulty": 5,
-    "status": "review",
+    "difficulty": 3,
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Michel_Platini"],
-    "tags": ["ballon-dor", "frankrijk"]
+    "tags": ["ballon-dor", "frankrijk"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke bijnaam heeft het Belgische nationale voetbalelftal?",
     "options": ["Rode Duivels", "Rode Leeuwen", "Gouden Duivels", "Zwarte Duivels"],
     "correct": 0,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Belgium_national_football_team"],
-    "tags": ["rode-duivels", "belgie"]
+    "tags": ["rode-duivels", "belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Op welke plaats eindigde België op het WK 2018?",
     "options": ["Vierde", "Derde", "Tweede", "Eerste"],
     "correct": 1,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Belgium_national_football_team"],
-    "tags": ["wk", "rode-duivels"]
+    "tags": ["wk", "rode-duivels"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke Rode Duivel heeft de meeste doelpunten voor de nationale ploeg gemaakt?",
     "options": ["Eden Hazard", "Kevin De Bruyne", "Romelu Lukaku", "Marc Wilmots"],
     "correct": 2,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Belgium_national_football_team"],
-    "tags": ["rode-duivels", "lukaku"]
+    "tags": ["rode-duivels", "lukaku"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie was bondscoach toen België in 2018 brons won op het WK?",
     "options": ["Marc Wilmots", "Georges Leekens", "Rudi Garcia", "Roberto Martínez"],
     "correct": 3,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Belgium_national_football_team"],
-    "tags": ["wk", "rode-duivels"]
+    "tags": ["wk", "rode-duivels"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke Rode Duivel speelde voor Lille, Chelsea én Real Madrid?",
     "options": ["Eden Hazard", "Thibaut Courtois", "Romelu Lukaku", "Kevin De Bruyne"],
     "correct": 0,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Eden_Hazard"],
-    "tags": ["rode-duivels"]
+    "tags": ["rode-duivels"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke Rode Duivel staat bekend onder de afkorting 'KDB'?",
     "options": ["Eden Hazard", "Kevin De Bruyne", "Romelu Lukaku", "Thibaut Courtois"],
     "correct": 1,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Kevin_De_Bruyne"],
-    "tags": ["de-bruyne", "rode-duivels"]
+    "tags": ["de-bruyne", "rode-duivels"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke Belgische topclub speelt in paars-wit?",
     "options": ["Club Brugge", "KRC Genk", "RSC Anderlecht", "Standard"],
     "correct": 2,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/R.S.C._Anderlecht"],
-    "tags": ["anderlecht", "belgie"]
+    "tags": ["anderlecht", "belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "In welke stad speelt Standard thuis?",
     "options": ["Charleroi", "Namen", "Doornik", "Luik"],
     "correct": 3,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Standard_Li%C3%A8ge"],
-    "tags": ["standard", "belgie"]
+    "tags": ["standard", "belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Bij welke club werd Vincent Kompany in 2024 trainer?",
     "options": ["Bayern München", "Borussia Dortmund", "Manchester City", "Real Madrid"],
     "correct": 0,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Vincent_Kompany"],
-    "tags": ["rode-duivels", "duitsland"]
+    "tags": ["rode-duivels", "duitsland"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Bij welke Londense club speelden Jan Vertonghen en Toby Alderweireld samen?",
     "options": ["Chelsea", "Tottenham Hotspur", "Arsenal", "West Ham United"],
     "correct": 1,
     "difficulty": 1,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Jan_Vertonghen", "https://en.wikipedia.org/wiki/Toby_Alderweireld"],
-    "tags": ["rode-duivels"]
+    "tags": ["rode-duivels"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke individuele prijs won Eden Hazard op het WK 2018?",
     "options": ["Gouden Bal", "Gouden Handschoen", "Zilveren Bal", "Gouden Schoen"],
     "correct": 2,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://plus.fifa.com/en/content/eden-hazard-silver-ball-award-2018-fifa-world-cup-russia/a162800d-5a0e-4ca9-93a2-40eb39471560", "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup"],
-    "tags": ["wk", "rode-duivels"]
+    "tags": ["wk", "rode-duivels"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke Rode Duivel kreeg bij Napoli de bijnaam 'Ciro'?",
     "options": ["Radja Nainggolan", "Axel Witsel", "Kevin De Bruyne", "Dries Mertens"],
     "correct": 3,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Dries_Mertens"],
-    "tags": ["rode-duivels", "italie"]
+    "tags": ["rode-duivels", "italie"],
+    "checkedAt": "2026-10-26"
   },
   {
-    "question": "Welke club werd in 2024 Belgisch kampioen?",
+    "question": "Welke club werd in het seizoen 2023-24 Belgisch kampioen?",
     "options": ["Club Brugge", "Union Saint-Gilloise", "KRC Genk", "Royal Antwerp"],
     "correct": 0,
     "difficulty": 2,
-    "status": "review",
-    "sources": ["https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"],
-    "tags": ["club-brugge", "belgie"]
+    "status": "approved",
+    "sources": ["https://en.wikipedia.org/wiki/2023%E2%80%9324_Belgian_Pro_League", "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"],
+    "tags": ["club-brugge", "belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Naar welke club trok Thomas Meunier in 2016 vanuit Club Brugge?",
     "options": ["Olympique Lyon", "Paris Saint-Germain", "AS Monaco", "Borussia Dortmund"],
     "correct": 1,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Thomas_Meunier"],
-    "tags": ["rode-duivels", "club-brugge", "frankrijk"]
+    "tags": ["rode-duivels", "club-brugge", "frankrijk"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Bij welke Duitse club speelde Axel Witsel van 2018 tot 2022?",
     "options": ["Bayern München", "Schalke 04", "Borussia Dortmund", "Bayer Leverkusen"],
     "correct": 2,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Axel_Witsel"],
-    "tags": ["rode-duivels", "duitsland"]
+    "tags": ["rode-duivels", "duitsland"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Met welke club werd Romelu Lukaku in 2021 Italiaans kampioen?",
     "options": ["Juventus", "AS Roma", "AC Milan", "Inter"],
     "correct": 3,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Romelu_Lukaku"],
-    "tags": ["lukaku", "rode-duivels", "italie"]
+    "tags": ["lukaku", "rode-duivels", "italie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Met welke club werd Thibaut Courtois in 2011 Belgisch kampioen?",
     "options": ["KRC Genk", "RSC Anderlecht", "Standard", "Club Brugge"],
     "correct": 0,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Thibaut_Courtois", "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"],
-    "tags": ["rode-duivels", "belgie"]
+    "tags": ["rode-duivels", "belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Naar welke club trok Simon Mignolet in 2013 vanuit Sunderland?",
     "options": ["Everton", "Liverpool", "Newcastle United", "Tottenham Hotspur"],
     "correct": 1,
     "difficulty": 2,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Simon_Mignolet"],
-    "tags": ["rode-duivels"]
+    "tags": ["rode-duivels"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie won in 2014 de Gouden Schoen?",
     "options": ["Aleksandar Mitrović", "Cheikhou Kouyaté", "Dennis Praet", "Leander Dendoncker"],
     "correct": 2,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Belgian_Golden_Shoe", "https://nl.wikipedia.org/wiki/Gouden_Schoen_(België)"],
-    "tags": ["gouden-schoen", "belgie", "anderlecht"]
+    "tags": ["gouden-schoen", "belgie", "anderlecht"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Naar welk land verhuisde Yannick Carrasco in 2018 vanuit Atlético Madrid?",
     "options": ["Qatar", "Verenigde Staten", "Turkije", "China"],
     "correct": 3,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Yannick_Carrasco"],
-    "tags": ["rode-duivels", "spanje"]
+    "tags": ["rode-duivels", "spanje"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van welke club kwam Thomas Vermaelen in 2014 naar FC Barcelona?",
     "options": ["Arsenal", "Ajax", "Manchester City", "Chelsea"],
     "correct": 0,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Thomas_Vermaelen"],
-    "tags": ["rode-duivels", "spanje"]
+    "tags": ["rode-duivels", "spanje"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Hoeveel keer werd Vincent Kompany als speler Engels kampioen met Manchester City?",
     "options": ["3", "4", "5", "6"],
     "correct": 1,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Vincent_Kompany"],
-    "tags": ["rode-duivels"]
+    "tags": ["rode-duivels"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Met welke Duitse club won Marc Wilmots in 1997 de UEFA Cup?",
     "options": ["Borussia Dortmund", "Bayern München", "Schalke 04", "Bayer Leverkusen"],
     "correct": 2,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Marc_Wilmots"],
-    "tags": ["rode-duivels", "duitsland"]
+    "tags": ["rode-duivels", "duitsland"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club won in 2022 de Beker van België?",
     "options": ["Club Brugge", "Standard", "Royal Antwerp", "KAA Gent"],
     "correct": 3,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2021%E2%80%9322_Belgian_Cup", "https://en.wikipedia.org/wiki/Hein_Vanhaezebrouck"],
-    "tags": ["belgie"]
+    "tags": ["belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Bij welke Duitse club speelde Thorgan Hazard van 2014 tot 2019?",
     "options": ["Borussia Mönchengladbach", "Borussia Dortmund", "Bayer Leverkusen", "VfL Wolfsburg"],
     "correct": 0,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Thorgan_Hazard"],
-    "tags": ["rode-duivels", "duitsland"]
+    "tags": ["rode-duivels", "duitsland"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Met welke club won Youri Tielemans in 2021 de FA Cup?",
     "options": ["Chelsea", "Leicester City", "Aston Villa", "AS Monaco"],
     "correct": 1,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Youri_Tielemans"],
-    "tags": ["rode-duivels"]
+    "tags": ["rode-duivels"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Met welke trainer werd Gent in 2015 voor het eerst landskampioen?",
     "options": ["Michel Preud'homme", "Peter Maes", "Hein Vanhaezebrouck", "Yannick Ferrera"],
     "correct": 2,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Hein_Vanhaezebrouck", "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"],
-    "tags": ["belgie"]
+    "tags": ["belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club won in 2021 de Beker van België?",
     "options": ["Standard", "KAA Gent", "Club Brugge", "KRC Genk"],
     "correct": 3,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/2020%E2%80%9321_Belgian_Cup", "https://en.wikipedia.org/wiki/Belgian_Cup"],
-    "tags": ["belgie"]
+    "tags": ["belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van welke club trok Jérémy Doku in 2023 naar Manchester City?",
     "options": ["Stade Rennais", "Olympique Lyon", "RSC Anderlecht", "AS Monaco"],
     "correct": 0,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/J%C3%A9r%C3%A9my_Doku"],
-    "tags": ["rode-duivels", "frankrijk"]
+    "tags": ["rode-duivels", "frankrijk"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke Nederlander was in 2009-2010 bondscoach van België?",
     "options": ["Louis van Gaal", "Dick Advocaat", "Guus Hiddink", "Leo Beenhakker"],
     "correct": 1,
     "difficulty": 3,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Dick_Advocaat"],
-    "tags": ["rode-duivels", "oranje"]
+    "tags": ["rode-duivels", "oranje"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie won in 2009 de Gouden Schoen?",
     "options": ["Sébastien Pocognoli", "Igor de Camargo", "Milan Jovanović", "Mbark Boussoufa"],
     "correct": 2,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Belgian_Golden_Shoe", "https://nl.wikipedia.org/wiki/Gouden_Schoen_(België)"],
-    "tags": ["gouden-schoen", "belgie", "standard"]
+    "tags": ["gouden-schoen", "belgie", "standard"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie won in 2000 de Gouden Schoen?",
     "options": ["Bart Goor", "Gert Verheyen", "Walter Baseggio", "Jan Koller"],
     "correct": 3,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Belgian_Golden_Shoe", "https://nl.wikipedia.org/wiki/Gouden_Schoen_(België)"],
-    "tags": ["gouden-schoen", "belgie", "anderlecht"]
+    "tags": ["gouden-schoen", "belgie", "anderlecht"],
+    "checkedAt": "2026-10-26"
   },
   {
-    "question": "Wie won in 2015 de Gouden Schoen?",
+    "question": "Wie won de Gouden Schoen voor het kalenderjaar 2015?",
     "options": ["Sven Kums", "Laurent Depoitre", "Dennis Praet", "Ruud Vormer"],
     "correct": 0,
     "difficulty": 4,
-    "status": "review",
-    "sources": ["https://en.wikipedia.org/wiki/Belgian_Golden_Shoe", "https://nl.wikipedia.org/wiki/Gouden_Schoen_(België)"],
-    "tags": ["gouden-schoen", "belgie"]
+    "status": "approved",
+    "sources": ["https://nl.wikipedia.org/wiki/Gouden_Schoen_(België)", "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"],
+    "tags": ["gouden-schoen", "belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke doelman werd op het WK 1994 uitgeroepen tot beste doelman van het toernooi?",
     "options": ["Gianluca Pagliuca", "Michel Preud'homme", "Bodo Illgner", "Claudio Taffarel"],
     "correct": 1,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Michel_Preud%27homme"],
-    "tags": ["wk", "rode-duivels"]
+    "tags": ["wk", "rode-duivels"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke Belgische trainer won in 1993 de Champions League met Olympique Marseille?",
     "options": ["Guy Thys", "Robert Waseige", "Raymond Goethals", "Paul Van Himst"],
     "correct": 2,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Raymond_Goethals"],
-    "tags": ["champions-league", "belgie", "frankrijk"]
+    "tags": ["champions-league", "belgie", "frankrijk"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club won in 2014 de Beker van België tegen Zulte Waregem?",
     "options": ["KV Kortrijk", "KAA Gent", "Cercle Brugge", "Sporting Lokeren"],
     "correct": 3,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Belgian_Cup"],
-    "tags": ["belgie"]
+    "tags": ["belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Tegen welke club verloor Standard in 1982 de finale van de Europacup II?",
     "options": ["FC Barcelona", "Real Madrid", "Valencia CF", "Atlético Madrid"],
     "correct": 0,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1981%E2%80%9382_European_Cup_Winners%27_Cup", "https://en.wikipedia.org/wiki/Raymond_Goethals"],
-    "tags": ["standard", "belgie", "spanje"]
+    "tags": ["standard", "belgie", "spanje"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Met welke trainer werd Club Brugge in 1996 kampioen?",
     "options": ["Georges Leekens", "Hugo Broos", "Robert Waseige", "Eric Gerets"],
     "correct": 1,
     "difficulty": 4,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Hugo_Broos", "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"],
-    "tags": ["club-brugge", "belgie"]
+    "tags": ["club-brugge", "belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie scoorde in 1988 het enige doelpunt in de Europacup II-finale tussen KV Mechelen en Ajax?",
     "options": ["Eli Ohana", "Lei Clijsters", "Piet den Boer", "Marc Emmers"],
     "correct": 2,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/KV_Mechelen", "https://en.wikipedia.org/wiki/1988_European_Cup_Winners%27_Cup_final"],
-    "tags": ["belgie"]
+    "tags": ["belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Met welke club werd Josip Weber in 1992, 1993 en 1994 drie keer op rij topschutter van België?",
     "options": ["Anderlecht", "KV Mechelen", "Lierse", "Cercle Brugge"],
     "correct": 3,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Josip_Weber", "https://en.wikipedia.org/wiki/Belgian_Pro_League"],
-    "tags": ["belgie", "rode-duivels"]
+    "tags": ["belgie", "rode-duivels"],
+    "checkedAt": "2026-10-26"
   },
   {
-    "question": "Welke club werd in 1975 voor het enige keer landskampioen?",
+    "question": "Welke club werd in 1975 voor de enige keer landskampioen?",
     "options": ["RWD Molenbeek", "Beerschot", "Lierse", "Cercle Brugge"],
     "correct": 0,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/1974%E2%80%9375_Belgian_First_Division", "https://en.wikipedia.org/wiki/R.W.D._Molenbeek_(1909)"],
-    "tags": ["belgie"]
+    "tags": ["belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke Nederlander werd in 1966-67 als eerste buitenlander topschutter van België?",
     "options": ["Rob Rensenbrink", "Jan Mulder", "Johan Boskamp", "Arie Haan"],
     "correct": 1,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Belgian_Pro_League"],
-    "tags": ["belgie", "anderlecht"]
+    "tags": ["belgie", "anderlecht"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Tegen welk land speelde België op het WK 1930 zijn allereerste WK-wedstrijd?",
     "options": ["Paraguay", "Uruguay", "Verenigde Staten", "Argentinië"],
     "correct": 2,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup", "https://www.footballhistory.org/world-cup/1930-uruguay.html"],
-    "tags": ["wk", "rode-duivels"]
+    "tags": ["wk", "rode-duivels"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Tegen welk land boekte België in 1970 zijn allereerste WK-overwinning?",
     "options": ["Mexico", "Peru", "Marokko", "El Salvador"],
     "correct": 3,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"],
-    "tags": ["wk", "rode-duivels"]
+    "tags": ["wk", "rode-duivels"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Met welke trainer won Genk in 2002 zijn tweede landstitel?",
     "options": ["Sef Vergoossen", "Aimé Anthuenis", "Frank Vercauteren", "Ronny Van Geneugden"],
     "correct": 0,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://nl.wikipedia.org/wiki/Sef_Vergoossen", "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"],
-    "tags": ["belgie"]
+    "tags": ["belgie"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie scoorde in 1934 het eerste Belgische doelpunt ooit op een WK, tegen Duitsland?",
     "options": ["Raymond Braine", "Bernard Voorhoof", "Rik Coppens", "Paul Van Himst"],
     "correct": 1,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"],
-    "tags": ["wk", "rode-duivels"]
+    "tags": ["wk", "rode-duivels"],
+    "checkedAt": "2026-10-26"
   },
   {
-    "question": "Wie won in 1992 de Gouden Schoen?",
+    "question": "Wie won de Gouden Schoen voor het kalenderjaar 1992?",
     "options": ["Marc Degryse", "Luc Nilis", "Philippe Albert", "Enzo Scifo"],
     "correct": 2,
     "difficulty": 5,
-    "status": "review",
-    "sources": ["https://en.wikipedia.org/wiki/Belgian_Golden_Shoe", "https://en.wikipedia.org/wiki/Philippe_Albert"],
-    "tags": ["gouden-schoen", "belgie", "rode-duivels"]
+    "status": "approved",
+    "sources": ["https://nl.wikipedia.org/wiki/Gouden_Schoen_(België)", "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"],
+    "tags": ["gouden-schoen", "belgie", "rode-duivels"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie won in 2001 de Gouden Schoen?",
     "options": ["Branko Strupar", "Gert Verheyen", "Bart Goor", "Wesley Sonck"],
     "correct": 3,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Belgian_Golden_Shoe", "https://nl.wikipedia.org/wiki/Gouden_Schoen_(België)"],
-    "tags": ["gouden-schoen", "belgie", "rode-duivels"]
+    "tags": ["gouden-schoen", "belgie", "rode-duivels"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie won in 1993 én 1997 de Gouden Schoen?",
     "options": ["Pär Zetterberg", "Johan Walem", "Enzo Scifo", "Luc Nilis"],
     "correct": 0,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Belgian_Golden_Shoe", "https://nl.wikipedia.org/wiki/Gouden_Schoen_(België)"],
-    "tags": ["gouden-schoen", "belgie", "anderlecht"]
+    "tags": ["gouden-schoen", "belgie", "anderlecht"],
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie won in 1990 de Gouden Schoen?",
     "options": ["Marc Degryse", "Franky Van der Elst", "Enzo Scifo", "Jan Ceulemans"],
     "correct": 1,
     "difficulty": 5,
-    "status": "review",
+    "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Belgian_Golden_Shoe", "https://en.wikipedia.org/wiki/Franky_Van_der_Elst"],
-    "tags": ["gouden-schoen", "belgie", "club-brugge"]
+    "tags": ["gouden-schoen", "belgie", "club-brugge"],
+    "checkedAt": "2026-10-26"
   }
 ]
