@@ -25,6 +25,23 @@ public class LevelsTests
         Assert.Equal(300, info.XpForNextLevel);
     }
 
+    [Theory]
+    [InlineData(true, 100, true, true)]
+    [InlineData(false, 30, true, true)]     // deelpunten
+    [InlineData(false, 0, true, true)]      // fout gegokt
+    [InlineData(false, 0, false, false)]    // gepast of tijd op
+    public void Only_tried_questions_count_as_played(bool correct, int points, bool guessed, bool expected) =>
+        Assert.Equal(expected, Levels.Tried(correct, points, guessed));
+
+    [Theory]
+    [InlineData(10, 10, 10, true)]
+    [InlineData(10, 5, 10, true)]
+    [InlineData(10, 4, 10, false)]
+    [InlineData(10, 0, 10, false)]     // alles overgeslagen
+    [InlineData(9, 9, 10, false)]      // niet afgewerkt
+    public void Completed_day_needs_half_of_the_questions_tried(int answered, int tried, int size, bool expected) =>
+        Assert.Equal(expected, Levels.CompletedDay(answered, tried, size));
+
     [Fact]
     public void Xp_rewards_playing_and_playing_well()
     {

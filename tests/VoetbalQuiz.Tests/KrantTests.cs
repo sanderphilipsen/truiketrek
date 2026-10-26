@@ -268,7 +268,8 @@ public sealed class KrantTests : IDisposable
         for (var n = 1; n <= 4; n++)
         {
             await _t.Quiz.StartAsync(_me, n);
-            if (n == 1) await _t.Quiz.GuessAsync(_me, 1, "1|Vertonghen");
+            // Elk artikel geprobeerd (ook een foute gok telt), anders telt het niet als gespeeld (Levels.Tried).
+            await _t.Quiz.GuessAsync(_me, n, n == 1 ? "1|Vertonghen" : "1|Niemand");
             await _t.Quiz.GiveUpAsync(_me, n);
         }
 

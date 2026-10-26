@@ -168,6 +168,7 @@ public sealed class MatchServiceTests : IDisposable
 
         var level = await _results.LevelOfAsync(_host);
         Assert.Equal(Levels.XpPerMatch + Levels.XpPerMatchWon, level.Xp);
+        Assert.Equal(0, (await _results.LevelOfAsync(_guest)).Xp); // enkel gepast: geen XP
     }
 
     [Fact]
@@ -302,8 +303,9 @@ public sealed class MatchServiceTests : IDisposable
         var board = await _online.GetRatingLeaderboardAsync(_host);
         Assert.All(board.Entries, e => Assert.Equal((MatchRules.StartRating, 1, 0), (e.Value, e.Played, e.Wins)));
         Assert.Equal(0, (await _online.GetStatsAsync(_host)).Me.Wins);
-        Assert.Equal(Levels.XpPerMatch, (await _results.LevelOfAsync(_host)).Xp);
-        Assert.Equal(Levels.XpPerMatch, (await _results.LevelOfAsync(_guest)).Xp);
+        // Niemand probeerde iets: geen XP, ook niet voor het uitspelen.
+        Assert.Equal(0, (await _results.LevelOfAsync(_host)).Xp);
+        Assert.Equal(0, (await _results.LevelOfAsync(_guest)).Xp);
         var profile = await _t.Progress.GetProfileAsync(_host, "host");
         Assert.Equal(0, profile.MatchesWon);
         Assert.False(profile.Badges.Single(b => b.Id == "eerste-zege").Earned);

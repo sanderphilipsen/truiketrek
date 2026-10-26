@@ -14,7 +14,7 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
     /// <summary>Eén beantwoorde vraag, plat gemaakt voor berekeningen.</summary>
     private record Row(
         string UserId, string UserName, int ChallengeId, DateOnly Date, string? PlayerName,
-        int Points, bool Correct, int WrongGuesses, DateTime StartedAt, DateTime AnsweredAt, QuestionType Type);
+        int Points, bool Correct, int WrongGuesses, DateTime StartedAt, DateTime AnsweredAt, QuestionType Type, bool Guessed);
 
     /// <summary>Totaal van één gebruiker op één dag.</summary>
     private record DayTotal(
@@ -30,7 +30,7 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
             .Select(a => new Row(
                 a.UserId, a.User.UserName!, a.DailyQuestion.DailyChallengeId, a.DailyQuestion.DailyChallenge.Date,
                 a.DailyQuestion.Player != null ? a.DailyQuestion.Player.Name : null, a.Points, a.Correct, a.WrongGuesses, a.StartedAt, a.AnsweredAt!.Value,
-                a.DailyQuestion.Type))
+                a.DailyQuestion.Type, a.LastGuess != null))
             .ToListAsync();
 
     private static IEnumerable<DayTotal> DayTotals(IEnumerable<Row> rows) =>
@@ -138,9 +138,13 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
                 p.UserId, p.Rank,
                 Stayers = p.Match.Players.Count(o => o.LeftAt == null),
                 Firsts = p.Match.Players.Count(o => o.Rank == 1),
+                Answers = p.Match.Questions.SelectMany(q => q.Answers).Where(a => a.UserId == p.UserId)
+                    .Select(a => new { a.Correct, a.Points, Guessed = a.LastGuess != null }).ToList(),
             })
             .ToListAsync();
-        var matches = matchRows.GroupBy(p => p.UserId)
+        // Een wedstrijd waarin je enkel paste of alles liet verlopen, levert geen XP op (Levels.Tried).
+        var matches = matchRows.Where(p => p.Answers.Any(a => Levels.Tried(a.Correct, a.Points, a.Guessed)))
+            .GroupBy(p => p.UserId)
             .Select(g => new { UserId = g.Key, Played = g.Count(), Won = g.Count(p => MatchRules.IsWin(p.Rank, p.Stayers, p.Firsts)) })
             .ToDictionary(x => x.UserId);
 
@@ -156,15 +160,18 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
                 // als een volle dag vragen (QuestionTypes.PlayedWeight). Juiste antwoorden, plus de deelpunten van types die zelden
                 // helemaal juist zijn (QuestionRules.PartialScores: de solo-types, opstelling en counter); anders levert zo'n dag
                 // amper XP op.
-                (int)Math.Round(mine.Sum(r => QuestionTypes.PlayedWeight(r.Type))),
+                // Overgeslagen vragen tellen niet als gespeeld (Levels.Tried).
+                (int)Math.Round(mine.Where(Tried).Sum(r => QuestionTypes.PlayedWeight(r.Type))),
                 mine.Where(r => r.Correct || QuestionRules.PartialScores(r.Type)).Sum(r => r.Points),
-                days.Count(d => d.Count() == sizes.GetValueOrDefault(d.Key)),
+                days.Count(d => Levels.CompletedDay(d.Count(), d.Count(Tried), sizes.GetValueOrDefault(d.Key))),
                 days.Count(d => d.Count(r => r.Correct) == sizes.GetValueOrDefault(d.Key)),
                 wins.GetValueOrDefault(id),
                 online?.Played ?? 0,
                 online?.Won ?? 0);
         });
     }
+
+    private static bool Tried(Row r) => Levels.Tried(r.Correct, r.Points, r.Guessed);
 
     /// <summary>Hoeveel vragen elke reeks heeft (een opstellingsdag of mix heeft er minder dan 10).</summary>
     public Task<Dictionary<int, int>> ChallengeSizesAsync() =>

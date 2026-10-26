@@ -381,6 +381,19 @@ public sealed class QuizServiceTests : IDisposable
     }
 
     [Fact]
+    public async Task Passing_every_question_earns_no_xp()
+    {
+        for (var n = 1; n <= GameRules.QuestionsPerDay; n++)
+        {
+            await _quiz.StartAsync(_userId, n);
+            await _quiz.GiveUpAsync(_userId, n);
+        }
+        _clock.Advance(TimeSpan.FromDays(1));
+
+        Assert.Equal(0, (await _results.LevelOfAsync(_userId)).Xp);
+    }
+
+    [Fact]
     public async Task Announced_update_blocks_new_questions_but_lets_you_finish_the_current_one()
     {
         var other = AddUser("jan");

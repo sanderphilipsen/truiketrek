@@ -14,12 +14,12 @@ public record XpInput(
 /// </summary>
 public static class Levels
 {
-    public const int XpPerQuestion = 10;        // elke gespeelde vraag
+    public const int XpPerQuestion = 10;        // elke geprobeerde vraag (zie Tried)
     public const int CorrectPointsPerXp = 5;    // juist antwoord: punten / 5 (100 punten = 20 XP)
-    public const int XpPerCompletedDay = 50;    // alle 10 vragen gespeeld
+    public const int XpPerCompletedDay = 50;    // alle 10 vragen afgewerkt, minstens de helft geprobeerd (zie CompletedDay)
     public const int XpPerPerfectDay = 50;      // 10 op 10 juist
     public const int XpPerDayWon = 100;         // dagwinnaar
-    public const int XpPerMatch = 25;           // online wedstrijd uitgespeeld
+    public const int XpPerMatch = 25;           // online wedstrijd uitgespeeld, minstens één vraag geprobeerd
     public const int XpPerMatchWon = 75;        // online wedstrijd gewonnen
 
     public static List<XpPart> Breakdown(XpInput input) =>
@@ -34,6 +34,15 @@ public static class Levels
     ];
 
     public static int Xp(XpInput input) => Breakdown(input).Sum(p => p.Xp);
+
+    /// <summary>
+    /// Een vraag telt als gespeeld als je iets probeerde: juist, deelpunten of minstens één gok (ook een foute). Wie enkel
+    /// "Ik pas" tikt of de tijd laat aflopen, krijgt er geen XP voor; anders levert alles overslaan toch 150 XP op.
+    /// </summary>
+    public static bool Tried(bool correct, int points, bool guessed) => correct || points > 0 || guessed;
+
+    /// <summary>Volledige dag: alle vragen afgewerkt en minstens de helft ervan geprobeerd (<see cref="Tried"/>).</summary>
+    public static bool CompletedDay(int answered, int tried, int size) => answered == size && tried * 2 >= size;
 
     /// <summary>Totale XP die nodig is om <paramref name="level"/> te bereiken.</summary>
     /// <summary>Nieuwe speler: nog op level 1 (een volledige daily brengt je al naar level 2). Home toont dan "Zo werkt het".</summary>
