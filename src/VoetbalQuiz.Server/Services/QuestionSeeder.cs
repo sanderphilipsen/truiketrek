@@ -140,7 +140,7 @@ public class QuestionSeeder(QuizDbContext db, IWebHostEnvironment env, ILogger<Q
                 QuestionType.Mannetje => e.Deserialize<MannetjeData>(Json) is { } d
                     ? (d.Answer, QuestionEngine.Serialize(d with { Aliases = d.Aliases ?? [], Clues = d.Clues ?? [] })) : (null, ""),
                 QuestionType.Fiche => e.Deserialize<FicheData>(Json) is { } d
-                    ? (d.Answer, QuestionEngine.Serialize(d with { Aliases = d.Aliases ?? [], Foot = d.Foot?.Trim().ToLowerInvariant()! })) : (null, ""),
+                    ? (d.Answer, QuestionEngine.Serialize(d with { Aliases = d.Aliases ?? [] })) : (null, ""),
                 QuestionType.Volgorde => e.Deserialize<VolgordeData>(Json) is { Items: not null } d
                     ? (QuestionEngine.KeyFor(type, QuestionEngine.Serialize(d)), QuestionEngine.Serialize(d)) : (null, ""),
                 QuestionType.Krant => e.Deserialize<KrantData>(Json) is { Text: not null } d

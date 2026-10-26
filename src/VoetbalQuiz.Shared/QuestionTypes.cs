@@ -444,7 +444,7 @@ public static class QuestionRules
     public static int CarrierePoints(double elapsed, int clubs, int wrongGuesses) => RevealPointsAt(elapsed, clubs, wrongGuesses);
 
     /// <summary>
-    /// Spelersfiche: zoveel velden klappen open (lengte en voet, geboortejaar, positie, interlands, land, club).
+    /// Spelersfiche: zoveel velden klappen open (lengte, geboortejaar, positie, interlands, land, club).
     /// Elke <see cref="CarriereClubSeconds"/> seconden een veld erbij, en elke foute naam opent er ook een.
     /// </summary>
     public const int FicheSteps = 6;
@@ -571,12 +571,12 @@ public record WisselData(string Answer, List<string> Aliases, string When, strin
 public record RugnummerData(string Answer, List<string> Aliases, int Number, string Position, string Country, string Club, string Extra);
 
 /// <summary>
-/// Spelersfiche: een fiche zonder naam. Height in cm, Foot "rechts", "links" of "beide", Caps en Goals in A-interlands voor
+/// Spelersfiche: een fiche zonder naam. Height in cm, Caps en Goals in A-interlands voor
 /// Country, Club de huidige of laatste club. AsOf: bij een actieve speler (nog interlands of een transfer mogelijk) de datum
 /// waarop interlands en club klopten; null = gestopt, dan verandert het fiche niet meer. Het is dezelfde "asOf" als de
 /// peildatum van de vraag (<see cref="QuestionRules.MaxAgeDays"/>): de seeder en het admin-paneel houden ze gelijk.
 /// </summary>
-public record FicheData(string Answer, List<string> Aliases, int Height, string Foot, int BirthYear, string Position, int Caps,
+public record FicheData(string Answer, List<string> Aliases, int Height, int BirthYear, string Position, int Caps,
     int Goals, string Country, string Club, DateOnly? AsOf = null);
 
 /// <summary>Spelersfiche: een veld van het fiche. Value null = nog dicht.</summary>

@@ -44,7 +44,7 @@ public sealed class NewRoundTests : IDisposable
             Add(QuestionType.Wissel, new WisselData($"Wissel Speler {i}", [], "Zomer 2019", "€100 miljoen", $"Club {i}", "Real Madrid", "Een tip"));
             Add(QuestionType.Rugnummer, new RugnummerData($"Nummer Speler {i}", [], 7, "Aanvaller", "België", $"Club {i}", "Een tip"));
             Add(QuestionType.Mannetje, new MannetjeData($"Mannetje Speler {i}", [], Avatars.All[i].Id, ["Tip een", "Tip twee"]));
-            Add(QuestionType.Fiche, new FicheData($"Fiche Speler {i}", [], 189, "links", 1987, "Centrale verdediger", 157, 10, "België",
+            Add(QuestionType.Fiche, new FicheData($"Fiche Speler {i}", [], 189, 1987, "Centrale verdediger", 157, 10, "België",
                 $"Club {i}", new DateOnly(2026, 10, 1)));
         }
 
@@ -140,7 +140,7 @@ public sealed class NewRoundTests : IDisposable
         var start = await _quiz.StartAsync(_me, 1);
         var fields = start.View!.Fiche!;
         Assert.Equal(QuestionRules.FicheSteps, fields.Count);
-        Assert.Equal("1,89 m · links", fields[0].Value);
+        Assert.Equal("1,89 m", fields[0].Value);
         Assert.All(fields.Skip(1), f => Assert.Null(f.Value));
         Assert.Null(start.View.Note); // de peildatum verraadt "nog actief": pas bij het veld met de interlands
 

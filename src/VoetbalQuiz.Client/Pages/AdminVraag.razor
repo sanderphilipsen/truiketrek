@@ -120,18 +120,9 @@
                             </div>
                             <div class="row-2">
                                 <label>1. Lengte (cm) <input type="number" min="@QuestionRules.FicheMinHeight" max="@QuestionRules.FicheMaxHeight" @bind="_height" @bind:after="Touch" /></label>
-                                <label>1. Voet
-                                    <select @bind="_foot" @bind:after="Touch">
-                                        <option value="rechts">rechts</option>
-                                        <option value="links">links</option>
-                                        <option value="beide">beide</option>
-                                    </select>
-                                </label>
-                            </div>
-                            <div class="row-2">
                                 <label>2. Geboortejaar <input type="number" min="@QuestionRules.FicheMinBirthYear" max="@QuestionRules.FicheMaxBirthYear" @bind="_birthYear" @bind:after="Touch" /></label>
-                                <label>3. Positie <input @bind="_position" @bind:event="oninput" @bind:after="Touch" placeholder="Centrale verdediger" /></label>
                             </div>
+                            <label>3. Positie <input @bind="_position" @bind:event="oninput" @bind:after="Touch" placeholder="Centrale verdediger" /></label>
                             <div class="row-2">
                                 <label>4. Interlands <input type="number" min="0" @bind="_caps" @bind:after="Touch" /></label>
                                 <label>4. Interlandgoals <input type="number" min="0" @bind="_goals" @bind:after="Touch" /></label>
@@ -363,7 +354,6 @@
     private int _difficulty = Difficulty.Default, _correct, _year = 2010, _number = 10;
     // Spelersfiche
     private int _height = 180, _birthYear = 1990, _caps, _goals;
-    private string _foot = "rechts";
     private DateOnly? _asOf;
     private string _when = "", _fee = "", _from = "", _to = "", _extra = "", _position = "", _country = "", _club = "", _avatar = Avatars.All[0].Id;
     private List<string> _options = ["", "", "", ""];
@@ -447,7 +437,7 @@
                 break;
             case QuestionType.Fiche:
                 var f = System.Text.Json.JsonSerializer.Deserialize<FicheData>(data, Json)!;
-                (_answer, _aliases, _height, _foot, _birthYear, _position) = (f.Answer, string.Join(", ", f.Aliases), f.Height, f.Foot, f.BirthYear, f.Position);
+                (_answer, _aliases, _height, _birthYear, _position) = (f.Answer, string.Join(", ", f.Aliases), f.Height, f.BirthYear, f.Position);
                 (_caps, _goals, _country, _club, _asOf) = (f.Caps, f.Goals, f.Country, f.Club, f.AsOf);
                 break;
             case QuestionType.Mannetje:
@@ -534,7 +524,7 @@
         QuestionType.Wissel => Serialize(new WisselData(_answer.Trim(), Split(_aliases, ','), _when.Trim(), _fee.Trim(), _from.Trim(), _to.Trim(), _extra.Trim())),
         QuestionType.Rugnummer => Serialize(new RugnummerData(_answer.Trim(), Split(_aliases, ','), _number, _position.Trim(), _country.Trim(), _club.Trim(), _extra.Trim())),
         QuestionType.Mannetje => Serialize(new MannetjeData(_answer.Trim(), Split(_aliases, ','), _avatar, Split(_lines, '\n'))),
-        QuestionType.Fiche => Serialize(new FicheData(_answer.Trim(), Split(_aliases, ','), _height, _foot, _birthYear, _position.Trim(), _caps, _goals,
+        QuestionType.Fiche => Serialize(new FicheData(_answer.Trim(), Split(_aliases, ','), _height, _birthYear, _position.Trim(), _caps, _goals,
             _country.Trim(), _club.Trim(), _asOf)),
         QuestionType.Volgorde => Serialize(new VolgordeData(_text.Trim(),
             _options.Zip(_values, (label, value) => new VolgordeItem(label.Trim(), value.Trim())).ToList())),

@@ -25,7 +25,7 @@ De gebruiker zegt welke. Standaard doe je **onderhoud**.
 
 | Type (bestand) | Wat je nakijkt |
 |---|---|
-| Spelersfiche (`fiche.json`) | `caps` en `goals` voor `country` tot en met de laatste interland, de huidige `club` (een uitleenbeurt telt), gestopt als international of als speler? Lengte, voet, geboortejaar, positie en nationaliteit laat je staan. |
+| Spelersfiche (`fiche.json`) | `caps` en `goals` voor `country` tot en met de laatste interland, de huidige `club` (een uitleenbeurt telt), gestopt als international of als speler? Lengte, geboortejaar, positie en nationaliteit laat je staan. |
 | Op volgorde (`volgorde.json`) | Klopt de volgorde en elke `value` nog (titels "stand na seizoen …", meeste interlands, duurste transfers, meeste Gouden Ballen)? Pas de tekst "stand na seizoen …" in de vraag mee aan. |
 | Lijst (`lijst.json`) | Is er een nieuwe winnaar of rij? Voeg ze toe (rij + naam met aliassen) in dezelfde stijl. |
 | Rugnummer (`rugnummer.json`) | Draagt de speler dat nummer nog bij die club (`"Club (2015–)"`)? Vertrokken of ander nummer: sluit de periode af (`"Club (2015–2026)"`). Dan is het historisch en mag `asOf` op `null`. |

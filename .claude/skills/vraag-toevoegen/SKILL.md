@@ -39,7 +39,7 @@ De velden komen overeen met de records in `src/VoetbalQuiz.Shared/QuestionTypes.
 | `wissel.json` | `answer`, `aliases`, `when`, `fee`, `from`, `to`, `extra` | inhoud | `extra` is de laatste tip en mag de naam niet bevatten. |
 | `rugnummer.json` | `answer`, `aliases`, `number`, `position`, `country`, `club` (met jaren), `extra` | inhoud | Het nummer moet dat van die club in die periode zijn. |
 | `mannetje.json` | `answer`, `aliases`, `avatar` (id uit `Avatars.cs`), `clues` (2) | answer | De avatar-id moet bestaan in de lijst bekende voetballers in `src/VoetbalQuiz.Shared/Avatars.cs`. |
-| `fiche.json` | `answer`, `aliases`, `height` (cm), `foot` (`rechts`/`links`/`beide`), `birthYear`, `position`, `caps`, `goals`, `country`, `club`, `asOf` | answer | `asOf` = peildatum van interlands én club bij een actieve speler, `null` bij een gestopte. Voorkeursvoet uit een bron, niet uit het hoofd. |
+| `fiche.json` | `answer`, `aliases`, `height` (cm), `birthYear`, `position`, `caps`, `goals`, `country`, `club`, `asOf` | answer | `asOf` = peildatum van interlands én club bij een actieve speler, `null` bij een gestopte. |
 
 ## Na afloop
 

@@ -246,7 +246,7 @@ public static class QuestionEngine
     /// <summary>Spelersfiche: de velden in de volgorde waarin ze openklappen (van vaag naar verraderlijk).</summary>
     public static List<FicheVeld> FicheVelden(FicheData d) =>
     [
-        new("Lengte · voet", $"{(d.Height / 100.0).ToString("0.00", System.Globalization.CultureInfo.GetCultureInfo("nl-BE"))} m · {d.Foot}"),
+        new("Lengte", $"{(d.Height / 100.0).ToString("0.00", System.Globalization.CultureInfo.GetCultureInfo("nl-BE"))} m"),
         new("Geboren", d.BirthYear.ToString()),
         new("Positie", d.Position),
         new("Interlands", d.Caps == 0 ? "geen" : $"{d.Caps} {(d.Caps == 1 ? "cap" : "caps")} · {d.Goals} {(d.Goals == 1 ? "goal" : "goals")}"),
@@ -972,7 +972,6 @@ public static class QuestionEngine
                     ? Check(!string.IsNullOrWhiteSpace(d.Answer), "Vul de speler in.")
                         .Concat(Check(d.Height is >= QuestionRules.FicheMinHeight and <= QuestionRules.FicheMaxHeight,
                             $"De lengte moet tussen {QuestionRules.FicheMinHeight} en {QuestionRules.FicheMaxHeight} cm liggen."))
-                        .Concat(Check(d.Foot is "rechts" or "links" or "beide", "Kies de voet: rechts, links of beide."))
                         .Concat(Check(d.BirthYear is >= QuestionRules.FicheMinBirthYear and <= QuestionRules.FicheMaxBirthYear,
                             $"Het geboortejaar moet tussen {QuestionRules.FicheMinBirthYear} en {QuestionRules.FicheMaxBirthYear} liggen."))
                         .Concat(Check(d.Caps >= 0 && d.Goals >= 0 && d.Goals <= d.Caps * 5, "Controleer de interlands en goals."))

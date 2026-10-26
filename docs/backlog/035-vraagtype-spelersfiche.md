@@ -19,7 +19,7 @@ Een fiche zonder naam en foto, zoals op Transfermarkt of in een Panini-album, la
 
 | # | Veld | Punten bij juist antwoord |
 |---|---|---|
-| 1 | Lengte · voorkeursvoet | 100 |
+| 1 | Lengte | 100 |
 | 2 | Geboortejaar | 90 |
 | 3 | Positie | 80 |
 | 4 | Caps · interlandgoals | 70 |
@@ -32,7 +32,7 @@ Een fiche zonder naam en foto, zoals op Transfermarkt of in een Panini-album, la
 
 ## Beslissingen
 
-- Gewicht valt weg (bronnen spreken elkaar tegen, het verandert tijdens een carrière); voorkeursvoet komt in de plaats naast de lengte.
+- Gewicht valt weg (bronnen spreken elkaar tegen, het verandert tijdens een carrière); eerst kwam voorkeursvoet in de plaats, maar die viel ook weg (zie notities).
 - De club komt als laatste veld, omdat die meestal alles verraadt.
 - Overlap met Rugnummer (positie, land, club) is aanvaardbaar: daar draait het om het nummer, hier om de cijfers.
 
@@ -50,3 +50,4 @@ Een fiche zonder naam en foto, zoals op Transfermarkt of in een Panini-album, la
 - 2026-10-26: gebouwd. Velden openen elke 4 s (zoals Rugnummer) of na een foute naam; 30 s per vraag. Eerste 30 fiches in `fiche.json`, 13 goedgekeurd (bij de andere 17 staat de voorkeursvoet nog in geen bron).
 - 2026-10-26: onderhoud. `asOf` = peildatum van interlands én club bij elke actieve speler. Veralgemeend naar alle vragen en spelers (kolom `AsOf`, migratie `Peildatum`): ouder dan `QuestionRules.MaxAgeDays` (120) = verouderd, speelt niet en staat als "verouderd" in het admin-paneel. Bijwerken met de agent `inhoud-onderhoud` na elke interland- en transferperiode, na het seizoen en na prijsuitreikingen.
 - Open: de badge Allrounder telt nu 14 types in plaats van 13; wie hem had, verliest hem tot hij een fiche speelde.
+- 2026-10-26: voorkeursvoet geschrapt: die staat zelden in een bron. Het eerste veld is enkel de lengte. Alle 30 fiches goedgekeurd; 50 nieuwe in de maak, vooral 3 tot 5 sterren.
