@@ -105,7 +105,7 @@ public sealed class KrantTests : IDisposable
         Assert.DoesNotContain(QuestionType.Krant, await _t.Picker.TypesForAsync(_t.Quiz.Today.AddDays(1)));
 
         var state = await _t.Quiz.StartAsync(_me, 1);
-        Assert.Equal(QuestionRules.KrantLimit(3), state.TimeLimit);
+        Assert.Equal(QuestionRules.KrantSeconds, state.TimeLimit);
         Assert.Equal(Max, state.View!.MaxPoints);
         Assert.Equal((0, 3), (state.View.Found, state.View.Total));
     }

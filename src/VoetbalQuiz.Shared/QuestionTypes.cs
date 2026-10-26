@@ -19,9 +19,9 @@ public static class QuestionTypes
     public static readonly List<QuestionTypeInfo> All =
     [
         new(QuestionType.WieBenIk, "Wie ben ik?", "question", "Een speler beschrijft zichzelf in 5 tips. Typ zijn naam.", 10, 100, "", FromPlayers: true),
-        new(QuestionType.Snelvuur, "Snelvuur", "lightning", "Kies het juiste antwoord uit 4. Je hebt 15 seconden.", 10, 100, "snelvuur"),
+        new(QuestionType.Snelvuur, "Snelvuur", "lightning", $"Kies het juiste antwoord uit 4. Je hebt {(int)QuestionRules.SnelvuurSeconds} seconden.", 10, 100, "snelvuur"),
         new(QuestionType.Carriere, "Carrièrepad", "path", "De clubs verschijnen één voor één. Wie is de speler?", 10, 100, "carriere"),
-        new(QuestionType.NietBij, "Wie hoort er niet bij?", "puzzle-piece", "Tik op de vreemde eend. Je hebt 15 seconden.", 10, 100, "niet-bij"),
+        new(QuestionType.NietBij, "Wie hoort er niet bij?", "puzzle-piece", $"Tik op de vreemde eend. Je hebt {(int)QuestionRules.NietBijSeconds} seconden.", 10, 100, "niet-bij"),
         new(QuestionType.Jaar, "Raad het jaar", "calendar-dots", "Kies het jaartal. Hoe dichter, hoe meer punten.", 10, 100, "jaar"),
         new(QuestionType.Emoji, "Emoji-raadsel", "smiley", "Welke speler of club zit er in deze emoji's?", 10, 100, "emoji"),
         new(QuestionType.Opstelling, "Opstelling", "strategy", "Vul de ontbrekende spelers van een bekende basiself aan.", 5, 200, "opstelling"),
@@ -38,7 +38,7 @@ public static class QuestionTypes
             4, 250, "detective", Alone: true),
         new(QuestionType.Kaart, "Kaart", "map-trifold",
             $"Twee delen op dezelfde kaart van een land: eerst kies je bij elke speld de club, daarna bij elke club het stadion. " +
-            $"Per deel {QuestionRules.KaartPins} spelden, {(int)QuestionRules.KaartSeconds / 60} minuten en " +
+            $"Per deel {QuestionRules.KaartPins} spelden, {(int)QuestionRules.KaartSeconds} seconden en " +
             $"{QuestionRules.KaartPointsPerPin} punten per speld.",
             QuestionRules.KaartParts, QuestionRules.KaartPartPoints, "kaart", Alone: true),
         new(QuestionType.Lijst, "Lijst", "clipboard-text",
@@ -230,16 +230,16 @@ public static class QuestionTypes
 public static class QuestionRules
 {
     /// <summary>Geen enkele vraag geeft minder tijd dan dit.</summary>
-    public const double MinSeconds = 15;
+    public const double MinSeconds = 20;
 
-    public const double SnelvuurSeconds = 15;
-    public const double NietBijSeconds = 15;
-    public const double JaarSeconds = 15;
-    public const double EmojiSeconds = 15;
-    public const double OpstellingSeconds = 60;
-    /// <summary>Counter: 6 seconden per speler, zoals toen een counter nog 10 spelers in 60 seconden had.</summary>
-    public const double CounterSeconds = CounterPlayers * 6;
-    public const double VolgordeSeconds = 30;
+    public const double SnelvuurSeconds = 20;
+    public const double NietBijSeconds = 20;
+    public const double JaarSeconds = 20;
+    public const double EmojiSeconds = 20;
+    public const double OpstellingSeconds = 100;
+    /// <summary>Counter: 10 seconden per speler.</summary>
+    public const double CounterSeconds = CounterPlayers * 10;
+    public const double VolgordeSeconds = 60;
 
     /// <summary>Op volgorde: zoveel kaartjes per vraag.</summary>
     public const int VolgordeCards = 4;
@@ -260,8 +260,8 @@ public static class QuestionRules
     /// <summary>Kaart: zoveel punten per deel; de twee delen samen zijn de hele dag (<see cref="QuestionTypes.DayMaxPoints"/>).</summary>
     public const int KaartPartPoints = QuestionTypes.DayMaxPoints / KaartParts;
 
-    /// <summary>Kaart: de tijd voor één deel (alle spelden samen). Daarna zijn de resterende spelden fout.</summary>
-    public const double KaartSeconds = 180;
+    /// <summary>Kaart: de tijd voor één deel (alle spelden samen, 20 seconden per speld). Daarna zijn de resterende spelden fout.</summary>
+    public const double KaartSeconds = KaartPins * 20;
 
     /// <summary>Kaart: deze "gok" slaat de huidige speld over (telt als fout).</summary>
     public const string KaartSkip = "/overslaan";
@@ -326,13 +326,16 @@ public static class QuestionRules
     /// <summary>Wissel, rugnummer, mannetje en kluts onthullen in 5 stappen, net als de clubs van een carrièrepad.</summary>
     public const int RevealSteps = 5;
 
-    /// <summary>Carrièrepad: elke zoveel seconden een club erbij, daarna nog even tijd.</summary>
-    public const double CarriereClubSeconds = 4;
-    public const double CarriereExtraSeconds = 6;
+    /// <summary>Wissel, rugnummer, mannetje en kluts: elke zoveel seconden een stap erbij, daarna nog even tijd.</summary>
+    public const double RevealStepSeconds = 7;
+    public const double RevealExtraSeconds = 10;
 
-    /// <summary>De Krant: zoveel seconden per gat, voor één klok over het hele artikel.</summary>
-    public const double KrantSecondsPerGap = 20;
-    public const double KrantMinSeconds = 60;
+    /// <summary>Carrièrepad en spelersfiche: elke zoveel seconden een club (of veld) erbij, daarna nog even tijd.</summary>
+    public const double CarriereClubSeconds = 7;
+    public const double CarriereExtraSeconds = 10;
+
+    /// <summary>De Krant: één klok over het hele artikel.</summary>
+    public const double KrantSeconds = 100;
 
     /// <summary>De Krant: elk artikel heeft precies zoveel gaten (4 artikels van 250 punten = 1000, dus ruim 83 per gat).</summary>
     public const int KrantGaps = 3;
@@ -344,7 +347,7 @@ public static class QuestionRules
     public const int KrantMaxGuesses = 100;
 
     /// <summary>Detectivedag: één klok per zaak (vier zaken per dag).</summary>
-    public const double DetectiveSeconds = 180;
+    public const double DetectiveSeconds = 210;
 
     /// <summary>Detectivedag: zoveel verklaringen staan open bij de start (met nul kan je enkel gokken).</summary>
     public const int DetectiveOpenAtStart = 2;
@@ -366,7 +369,7 @@ public static class QuestionRules
     public const string DetectiveNextClue = "/getuige";
 
     /// <summary>Lijst: één klok voor de hele lijst.</summary>
-    public const double LijstSeconds = 200;
+    public const double LijstSeconds = 240;
 
     /// <summary>
     /// Lijst: zoveel pogingen voor de hele lijst. Een foute naam kost niets, dus je probeert er veel; het blijft een rem op
@@ -419,29 +422,39 @@ public static class QuestionRules
 
     /// <summary>
     /// Types die stap voor stap onthullen (carrièrepad, wissel, rugnummer, mannetje, kluts):
-    /// elke <see cref="CarriereClubSeconds"/> seconden een stap erbij, daarna nog even tijd.
+    /// elke <see cref="StepSeconds"/> seconden een stap erbij, daarna nog even tijd (<see cref="ExtraSeconds"/>).
     /// </summary>
     public static bool Reveals(QuestionType type) =>
         type is QuestionType.Carriere or QuestionType.Wissel or QuestionType.Rugnummer or QuestionType.Mannetje or QuestionType.Kluts;
 
-    public static int RevealStep(double elapsed, int steps) =>
-        Math.Clamp(1 + (int)Math.Floor(Math.Max(0, elapsed) / CarriereClubSeconds), 1, steps);
+    /// <summary>Om de hoeveel seconden een onthullend type (ook de spelersfiche) een stap bijgeeft.</summary>
+    public static double StepSeconds(QuestionType type) =>
+        type is QuestionType.Carriere or QuestionType.Fiche ? CarriereClubSeconds : RevealStepSeconds;
 
-    public static double RevealLimit(int steps) => Math.Max(MinSeconds, steps * CarriereClubSeconds + CarriereExtraSeconds);
+    /// <summary>Hoe lang je na de laatste stap van een onthullend type nog kan antwoorden.</summary>
+    public static double ExtraSeconds(QuestionType type) =>
+        type is QuestionType.Carriere or QuestionType.Fiche ? CarriereExtraSeconds : RevealExtraSeconds;
+
+    public static int RevealStep(double elapsed, int steps, double stepSeconds = RevealStepSeconds) =>
+        Math.Clamp(1 + (int)Math.Floor(Math.Max(0, elapsed) / stepSeconds), 1, steps);
+
+    public static double RevealLimit(int steps, double stepSeconds = RevealStepSeconds, double extraSeconds = RevealExtraSeconds) =>
+        Math.Max(MinSeconds, steps * stepSeconds + extraSeconds);
 
     /// <summary>100 bij de eerste stap, 10 minder per extra stap, minimum 50; min strafpunten.</summary>
     public static int RevealPoints(int step, int wrongGuesses) =>
         Math.Max(0, Math.Max(50, 100 - (step - 1) * 10) - wrongGuesses * GameRules.WrongGuessPenalty);
 
-    public static int RevealPointsAt(double elapsed, int steps, int wrongGuesses) =>
-        RevealPoints(RevealStep(Math.Max(0, elapsed - GameRules.LatencyGraceSeconds), steps), wrongGuesses);
+    public static int RevealPointsAt(double elapsed, int steps, int wrongGuesses, double stepSeconds = RevealStepSeconds) =>
+        RevealPoints(RevealStep(Math.Max(0, elapsed - GameRules.LatencyGraceSeconds), steps, stepSeconds), wrongGuesses);
 
-    public static int CarriereVisible(double elapsed, int clubs) => RevealStep(elapsed, clubs);
+    public static int CarriereVisible(double elapsed, int clubs) => RevealStep(elapsed, clubs, CarriereClubSeconds);
 
-    public static double CarriereLimit(int clubs) => RevealLimit(clubs);
+    public static double CarriereLimit(int clubs) => RevealLimit(clubs, CarriereClubSeconds, CarriereExtraSeconds);
 
     /// <summary>100 bij de eerste club, 10 minder per extra club, minimum 50; min strafpunten.</summary>
-    public static int CarrierePoints(double elapsed, int clubs, int wrongGuesses) => RevealPointsAt(elapsed, clubs, wrongGuesses);
+    public static int CarrierePoints(double elapsed, int clubs, int wrongGuesses) =>
+        RevealPointsAt(elapsed, clubs, wrongGuesses, CarriereClubSeconds);
 
     /// <summary>
     /// Spelersfiche: zoveel velden klappen open (lengte, geboortejaar, positie, interlands, land, club).
@@ -454,7 +467,9 @@ public static class QuestionRules
     /// foute naam.
     /// </summary>
     public static int FicheStep(double elapsed, int wrongGuesses) =>
-        Math.Clamp(RevealStep(elapsed, FicheSteps) + wrongGuesses, 1, FicheSteps);
+        Math.Clamp(RevealStep(elapsed, FicheSteps, CarriereClubSeconds) + wrongGuesses, 1, FicheSteps);
+
+    public static double FicheLimit => RevealLimit(FicheSteps, CarriereClubSeconds, CarriereExtraSeconds);
 
     /// <summary>Spelersfiche: een foute naam terwijl alle velden al open stonden, beëindigt de vraag (0 punten).</summary>
     public static bool FicheEndsOnWrong(double elapsed, int wrongGuesses) => FicheStep(elapsed, wrongGuesses) >= FicheSteps;
@@ -485,8 +500,6 @@ public static class QuestionRules
 
     /// <summary>Counter: elke speler kost minstens één poging (raden of doorspelen), dus ruimer dan de gewone limiet.</summary>
     public const int CounterMaxGuesses = CounterPlayers * 4;
-
-    public static double KrantLimit(int gaps) => Math.Max(KrantMinSeconds, gaps * KrantSecondsPerGap);
 
     /// <summary>
     /// De Krant, een getal: welk deel van de punten van het gat. Exact 1, één stap ernaast 0,4, twee 0,2, verder niets:

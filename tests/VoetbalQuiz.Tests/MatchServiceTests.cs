@@ -104,7 +104,7 @@ public sealed class MatchServiceTests : IDisposable
         var answer = await CurrentAnswerAsync(id);
 
         await _matches.GuessAsync(_guest, id, answer);     // eerst: 100 + 50
-        _clock.Advance(TimeSpan.FromSeconds(6));
+        _clock.Advance(TimeSpan.FromSeconds(GameRules.HintIntervalSeconds + 1));
         await _matches.GuessAsync(_host, id, "fout");
         await _matches.GuessAsync(_host, id, answer);      // tweede: 90 - 5 + 30
         await _matches.AdvanceAllAsync();                  // iedereen klaar: vraag stopt meteen

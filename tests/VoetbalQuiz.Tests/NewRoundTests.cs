@@ -68,7 +68,8 @@ public sealed class NewRoundTests : IDisposable
     private async Task<DailyQuestion> FirstQuestionAsync() =>
         (await _quiz.GetOrCreateChallengeAsync(_quiz.Today)).Questions.Single(q => q.Number == 1);
 
-    private void NextStep() => _clock.Advance(TimeSpan.FromSeconds(QuestionRules.CarriereClubSeconds + 0.5));
+    private void NextStep(QuestionType type = QuestionType.Wissel) =>
+        _clock.Advance(TimeSpan.FromSeconds(QuestionRules.StepSeconds(type) + 0.5));
 
     [Fact]
     public async Task Wissel_reveals_one_fact_per_step()
@@ -161,7 +162,7 @@ public sealed class NewRoundTests : IDisposable
         var data = QuestionEngine.Parse<FicheData>((await FirstQuestionAsync()).QuizItem!.Data);
 
         await _quiz.StartAsync(_me, 1);
-        for (var i = 0; i < QuestionRules.FicheSteps; i++) NextStep();
+        for (var i = 0; i < QuestionRules.FicheSteps; i++) NextStep(QuestionType.Fiche);
         var state = await _quiz.GetStateAsync(_me, 1);
         Assert.All(state.View!.Fiche!, f => Assert.NotNull(f.Value));
 
@@ -176,8 +177,8 @@ public sealed class NewRoundTests : IDisposable
         var data = QuestionEngine.Parse<FicheData>((await FirstQuestionAsync()).QuizItem!.Data);
 
         await _quiz.StartAsync(_me, 1);
-        NextStep();
-        NextStep();
+        NextStep(QuestionType.Fiche);
+        NextStep(QuestionType.Fiche);
         var wrong = await _quiz.GuessAsync(_me, 1, "Iemand Anders");
         Assert.Equal(4, wrong.View!.Step);
         Assert.Equal("Interlands en club: stand op 1/10/2026", wrong.View.Note);
@@ -209,7 +210,7 @@ public sealed class NewRoundTests : IDisposable
     {
         await PlanTodayAsync(QuestionType.Fiche);
         await _quiz.StartAsync(_me, 1);
-        for (var i = 0; i < QuestionRules.FicheSteps; i++) NextStep();
+        for (var i = 0; i < QuestionRules.FicheSteps; i++) NextStep(QuestionType.Fiche);
 
         var state = await _quiz.GuessAsync(_me, 1, "Fout");
         Assert.Equal(QuestionStatus.Answered, state.Status);

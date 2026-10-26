@@ -57,11 +57,11 @@ public static class QuestionEngine
             QuestionRules.RevealLimit(QuestionRules.RevealSteps),
         QuestionType.Counter => QuestionRules.CounterSeconds,
         QuestionType.Volgorde => QuestionRules.VolgordeSeconds,
-        QuestionType.Krant => QuestionRules.KrantLimit(Krant(q).Gaps.Count),
+        QuestionType.Krant => QuestionRules.KrantSeconds,
         QuestionType.Detective => QuestionRules.DetectiveSeconds,
         QuestionType.Kaart => QuestionRules.KaartSeconds,
         QuestionType.Lijst => QuestionRules.LijstSeconds,
-        QuestionType.Fiche => QuestionRules.RevealLimit(QuestionRules.FicheSteps),
+        QuestionType.Fiche => QuestionRules.FicheLimit,
         _ => GameRules.TimeLimitSeconds,
     };
 

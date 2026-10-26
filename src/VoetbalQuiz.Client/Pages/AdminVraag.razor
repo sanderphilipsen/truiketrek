@@ -184,7 +184,7 @@
                                 Tip: de tekst rond een gat mag het antwoord van een ander gat niet verraden.
                             </p>
                             <label>Artikel <textarea rows="14" @bind="_lines" @bind:event="oninput" @bind:after="Touch"></textarea></label>
-                            <p class="muted">@article.Gaps.Count van de @QuestionRules.KrantGaps gaten · klok @QuestionRules.KrantLimit(article.Gaps.Count) seconden</p>
+                            <p class="muted">@article.Gaps.Count van de @QuestionRules.KrantGaps gaten · klok @QuestionRules.KrantSeconds seconden</p>
                             @foreach (var problem in article.Problems) { <p class="error">@problem</p> }
                             <KrantArticle Headline="@_text" Intro="@_explanation" Kind="@_krantKind" Reveal="true"
                                           Paragraphs="Preview(article)" />

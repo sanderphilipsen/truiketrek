@@ -7,15 +7,15 @@ public class GameRulesTests
 {
     [Theory]
     [InlineData(0.0, 100)]
-    [InlineData(4.9, 100)]
-    [InlineData(5.4, 100)] // netwerkspeling
-    [InlineData(5.6, 90)]
-    [InlineData(10.6, 80)]
-    [InlineData(15.6, 70)]
-    [InlineData(20.6, 60)]
-    [InlineData(25.6, 50)]
-    [InlineData(30.4, 50)]
-    [InlineData(30.6, 0)]
+    [InlineData(6.9, 100)]
+    [InlineData(7.4, 100)] // netwerkspeling
+    [InlineData(7.6, 90)]
+    [InlineData(14.6, 80)]
+    [InlineData(21.6, 70)]
+    [InlineData(28.6, 60)]
+    [InlineData(35.6, 50)]
+    [InlineData(45.4, 50)]
+    [InlineData(45.6, 0)]
     public void Points_drop_per_hint(double seconds, int expected) =>
         Assert.Equal(expected, GameRules.PointsForAnswer(seconds, wrongGuesses: 0));
 
@@ -29,9 +29,9 @@ public class GameRulesTests
 
     [Theory]
     [InlineData(0.0, 1)]
-    [InlineData(5.0, 2)]
-    [InlineData(19.9, 4)]
-    [InlineData(20.0, 5)]
+    [InlineData(7.0, 2)]
+    [InlineData(27.9, 4)]
+    [InlineData(28.0, 5)]
     [InlineData(60, 5)]
     public void Hints_appear_every_interval(double seconds, int expected) =>
         Assert.Equal(expected, GameRules.VisibleHints(seconds));

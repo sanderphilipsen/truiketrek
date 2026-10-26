@@ -60,7 +60,7 @@ public sealed class QuizServiceTests : IDisposable
         var state = await _quiz.StartAsync(_userId, 1);
         Assert.Single(state.Hints);
 
-        _clock.Advance(TimeSpan.FromSeconds(11));
+        _clock.Advance(TimeSpan.FromSeconds(2 * GameRules.HintIntervalSeconds + 1));
         state = await _quiz.GetStateAsync(_userId, 1);
         Assert.Equal(3, state.Hints.Count);
     }
@@ -69,7 +69,7 @@ public sealed class QuizServiceTests : IDisposable
     public async Task Correct_guess_scores_points_of_that_moment()
     {
         await _quiz.StartAsync(_userId, 1);
-        _clock.Advance(TimeSpan.FromSeconds(7));
+        _clock.Advance(TimeSpan.FromSeconds(GameRules.HintIntervalSeconds + 2));
         var answered = await _quiz.GuessAsync(_userId, 1, await NameOfQuestion(1));
 
         Assert.True(answered.Result!.Correct);
@@ -103,7 +103,7 @@ public sealed class QuizServiceTests : IDisposable
     public async Task Restarting_does_not_reset_the_clock()
     {
         await _quiz.StartAsync(_userId, 1);
-        _clock.Advance(TimeSpan.FromSeconds(16));
+        _clock.Advance(TimeSpan.FromSeconds(3 * GameRules.HintIntervalSeconds + 1));
         var state = await _quiz.StartAsync(_userId, 1);
         Assert.Equal(4, state.Hints.Count);
     }
@@ -315,7 +315,7 @@ public sealed class QuizServiceTests : IDisposable
         await _quiz.StartAsync(_userId, 1);
         await _quiz.StartAsync(other, 1);
         await _quiz.GuessAsync(_userId, 1, await NameOfQuestion(1)); // 100
-        _clock.Advance(TimeSpan.FromSeconds(6));
+        _clock.Advance(TimeSpan.FromSeconds(GameRules.HintIntervalSeconds + 1));
         await _quiz.GuessAsync(other, 1, await NameOfQuestion(1));   // 90
 
         // Vandaag is er nog geen winnaar.
@@ -349,9 +349,9 @@ public sealed class QuizServiceTests : IDisposable
         await _quiz.StartAsync(_userId, 1);
         await _quiz.StartAsync(other, 1);
         await _quiz.GuessAsync(_userId, 1, "fout");
-        _clock.Advance(TimeSpan.FromSeconds(6));
+        _clock.Advance(TimeSpan.FromSeconds(GameRules.HintIntervalSeconds + 1));
         await _quiz.GuessAsync(_userId, 1, await NameOfQuestion(1)); // 90 - 5 = 85
-        _clock.Advance(TimeSpan.FromSeconds(5));
+        _clock.Advance(TimeSpan.FromSeconds(GameRules.HintIntervalSeconds));
         await _quiz.GuessAsync(other, 1, "fout");
         await _quiz.GuessAsync(other, 1, "fout");
         await _quiz.GuessAsync(other, 1, await NameOfQuestion(1));   // 80 - 10 = 70

@@ -68,7 +68,7 @@ public sealed class LijstTests : IDisposable
         var info = QuestionTypes.Get(QuestionType.Lijst);
         Assert.True(info.Alone);
         Assert.Equal(QuestionTypes.DayMaxPoints, info.PerDay * info.MaxPoints);
-        Assert.Equal(200, QuestionRules.LijstSeconds);
+        Assert.Equal(240, QuestionRules.LijstSeconds);
         Assert.True(QuestionRules.PartialScores(QuestionType.Lijst));
         Assert.Equal(500, QuestionRules.LijstPoints(2, 4));
     }

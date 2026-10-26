@@ -60,8 +60,8 @@ public static class QuestionDisplay
     {
         QuestionType.WieBenIk => GameRules.VisibleHints(elapsed) > visibleHints,
         _ when QuestionRules.Reveals(type) || type == QuestionType.Fiche =>
-            QuestionRules.RevealStep(elapsed, view?.Steps ?? 1) > (view?.Step ?? 1)
-            && elapsed < timeLimit - QuestionRules.CarriereExtraSeconds,
+            QuestionRules.RevealStep(elapsed, view?.Steps ?? 1, QuestionRules.StepSeconds(type)) > (view?.Step ?? 1)
+            && elapsed < timeLimit - QuestionRules.ExtraSeconds(type),
         _ => false,
     };
 

@@ -9,10 +9,10 @@ public static class GameRules
     public const int HintCount = 5;
 
     /// <summary>Elke zoveel seconden verschijnt er een nieuwe tip.</summary>
-    public const double HintIntervalSeconds = 5;
+    public const double HintIntervalSeconds = 7;
 
     /// <summary>Hoe lang je na het laatste tipniveau nog kan antwoorden voor 50 punten.</summary>
-    public const double LastChanceSeconds = 5;
+    public const double LastChanceSeconds = 10;
 
     /// <summary>Punten die er per foute poging afgaan.</summary>
     public const int WrongGuessPenalty = 5;
@@ -28,7 +28,7 @@ public static class GameRules
     /// </summary>
     public const int MaxGuessesPerQuestion = 40;
 
-    /// <summary>Totale tijd per vraag (30 seconden).</summary>
+    /// <summary>Totale tijd per vraag (45 seconden).</summary>
     public static double TimeLimitSeconds => HintCount * HintIntervalSeconds + LastChanceSeconds;
 
     /// <summary>Aantal zichtbare tips na <paramref name="elapsedSeconds"/> seconden (1..5).</summary>

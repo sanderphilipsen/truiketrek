@@ -257,7 +257,7 @@ public sealed class TrainingTests : IDisposable
         Assert.Single(state.Hints);
         Assert.Null(state.Result);
 
-        _clock.Advance(TimeSpan.FromSeconds(7));
+        _clock.Advance(TimeSpan.FromSeconds(GameRules.HintIntervalSeconds + 2));
         await _training.GuessAsync(_me, run.Id, 1, "Iemand anders");
         var answered = await _training.GuessAsync(_me, run.Id, 1, await NameOf(1));
         Assert.True(answered.Result!.Correct);

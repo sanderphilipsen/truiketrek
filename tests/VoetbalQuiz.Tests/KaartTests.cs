@@ -126,9 +126,9 @@ public sealed class KaartTests : IDisposable
         var info = QuestionTypes.Get(QuestionType.Kaart);
         Assert.Equal((2, 500, "kaart"), (info.PerDay, info.MaxPoints, info.FileName));
         Assert.Equal(QuestionTypes.DayMaxPoints, info.PerDay * info.MaxPoints);
-        Assert.Equal(180, QuestionRules.KaartSeconds);
+        Assert.Equal(200, QuestionRules.KaartSeconds);
         // De uitleg volgt de regels (geen vaste "2 minuten" meer).
-        Assert.Contains($"{(int)QuestionRules.KaartSeconds / 60} minuten", info.HowTo);
+        Assert.Contains($"{(int)QuestionRules.KaartSeconds} seconden", info.HowTo);
         Assert.Contains($"{QuestionRules.KaartPins} spelden", info.HowTo);
         Assert.Equal(15, (int)QuestionType.Kaart); // nieuwe types komen er achter, de kaart schuift nooit op
         Assert.True(QuestionRules.KaartPins < QuestionRules.MaxGuesses(QuestionType.Kaart));
