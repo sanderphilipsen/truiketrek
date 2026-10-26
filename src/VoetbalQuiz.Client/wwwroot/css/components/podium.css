@@ -1,0 +1,19 @@
+/* Mini-podium: de top 3 in een tegel (Shared/MiniPodium). */
+
+/* De top 3 rechts in de specialtegel. Lange namen worden afgekapt. */
+.mini-podium { display: block; text-decoration: none; color: inherit; max-width: 100%; }
+/* minmax(0, 1fr): een lange naam krijgt een beletselteken in plaats van de tegel open te duwen (320 px). */
+.mini-podium ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px; }
+.mini-podium li { display: flex; align-items: center; gap: 4px; font-size: .8rem; line-height: 1.25; }
+/* De plaats als cijfer op een goud, zilver of brons blokje (zoals in het klassement), geen medaille-emoji. */
+.mini-podium .mp-medal {
+    flex: none; display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 5px;
+    font-family: var(--digits); font-size: .7rem; font-weight: 800; color: #13241b;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .35);
+}
+.mp-medal.top-1 { background: linear-gradient(160deg, #ffe27a, #e0b100 55%, #b58900); }
+.mp-medal.top-2 { background: linear-gradient(160deg, #f4f6f8, #c5cbd1 55%, #9aa3ab); }
+.mp-medal.top-3 { background: linear-gradient(160deg, #f0b97f, #c97a3a 55%, #9b5a2a); }
+.mini-podium .mp-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mini-podium .mp-pts { flex: none; margin-left: auto; padding-left: 6px; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--muted); }
+.mini-podium li.me .mp-name { font-weight: 800; }

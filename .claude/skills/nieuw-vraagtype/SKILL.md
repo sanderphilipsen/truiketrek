@@ -35,7 +35,7 @@ Een vraagtype raakt veel plekken. Zoek eerst hoe een bestaand type met dezelfde 
 - [ ] `Shared/QuestionAnswer.razor`: het antwoord nadien.
 - [ ] `Pages/Question.razor` en `Pages/Wedstrijd.razor` (online).
 - [ ] Admin: `AdminVraag.razor`/`AdminVragen.razor`, en `AdminSpecial.razor` als specials het type moeten voorstellen.
-- [ ] CSS in `wwwroot/css/app.css`, getest op 375 px breed.
+- [ ] CSS in `wwwroot/css/screens/vraagtypes.css` (of een eigen bestand in `screens/`, dan ook in `index.html` opnemen), getest op 375 px breed.
 
 **Rest**
 - [ ] Badges per vraagtype, als dat past.

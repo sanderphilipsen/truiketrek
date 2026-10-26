@@ -33,7 +33,7 @@ Het huidige uitzicht ("Veld") blijft de standaard.
 
 ## Open vragen
 
-- **Hoe ver gaat een thema?** Enkel kleuren, lettertypes en texturen (een "skin" via de CSS-variabelen in `app.css`)? Of ook andere layouts en mechanieken, zoals het stickeralbum dat stickers inplakt, het tactiekbord met magneetjes of de gele kaart bij een fout? Die tweede soort is per thema veel meer werk.
+- **Hoe ver gaat een thema?** Enkel kleuren, lettertypes en texturen (een "skin" via de CSS-variabelen in `css/tokens.css`)? Of ook andere layouts en mechanieken, zoals het stickeralbum dat stickers inplakt, het tactiekbord met magneetjes of de gele kaart bij een fout? Die tweede soort is per thema veel meer werk.
 - **Welke thema's eerst?** Elf is veel. Starten we met 2-3 die vooral een skin zijn, zoals Stadionbord, Teletekst of Matchprogramma?
 - **Gratis of vrij te spelen?** Iedereen kiest vrij, of je verdient thema's met XP, badges, reeksen of de Gouden Bal?
 - **Waar bewaren we de keuze?** Op het account (nieuw veld op `AppUser` + migratie, zodat de keuze meegaat naar elk toestel) of lokaal in de browser?
@@ -43,7 +43,7 @@ Het huidige uitzicht ("Veld") blijft de standaard.
 
 ## Aanpak (optioneel)
 
-- **Client:** de kleuren staan al als variabelen op `:root` in `app.css` (± 240 keer `var(--…)` gebruikt). Een thema kan als `[data-theme="stadionbord"]` die variabelen overschrijven, eventueel met een eigen klein CSS-bestand per thema. Harde kleuren die nu nog in de CSS staan, moeten eerst variabelen worden.
+- **Client:** de kleuren staan al als variabelen op `:root` in `css/tokens.css` (± 240 keer `var(--…)` gebruikt). Een thema kan als `[data-theme="stadionbord"]` die variabelen overschrijven, eventueel met een eigen klein CSS-bestand per thema. Harde kleuren die nu nog in de CSS staan, moeten eerst variabelen worden.
 - **Profiel:** een kiezer met een voorbeeldkaartje per thema.
 - **Server/Data:** eventueel een veld voor het gekozen thema op de gebruiker + EF-migratie (skill `ef-migratie`).
 - **Ontwerp en test:** uitwerken met `ux-designer`, testen op gsm met `mobiel-tester`, effecten (sticker, gele kaart) via `animatie-bouwer`.

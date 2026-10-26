@@ -13,7 +13,7 @@ Lees eerst de code om de huidige stand te kennen:
 - `src/VoetbalQuiz.Client/Layout/MainLayout.razor`: de schil (navigatie, wat rond elke pagina staat).
 - `src/VoetbalQuiz.Client/Pages/*.razor`: alle schermen, vooral `Home.razor`.
 - `src/VoetbalQuiz.Client/Shared/*.razor`: herbruikbare onderdelen (`PageSheet`, `Icon`, `SectionHeader`, kaarten, lijsten).
-- `src/VoetbalQuiz.Client/wwwroot/css/app.css`: tokens (`:root`), de stijl "Home als scorebord" (`.is-home`), en hoe de rest van de app gestyled is.
+- `src/VoetbalQuiz.Client/wwwroot/css/`: `tokens.css` (`:root`), `base.css`, gedeelde onderdelen in `components/` en één bestand per scherm in `screens/` (zie README, "CSS").
 - `src/VoetbalQuiz.Client/wwwroot/pitch.js`: het levende voetbalveld op de achtergrond.
 
 ## Waarop je beoordeelt

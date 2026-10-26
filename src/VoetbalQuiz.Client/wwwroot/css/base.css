@@ -1,0 +1,231 @@
+/* Basis: reset, html/body, het voetbalveld achter alles, focusring, tikfeedback, paginaovergangen, hulpklassen en de Blazor-standaard (foutbalk, update). */
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    min-height: 100%;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--text);
+    -webkit-tap-highlight-color: transparent;
+}
+/* Alleen op html: een eigen achtergrond op body zou over het veld (body::before) heen schilderen */
+html { background: linear-gradient(180deg, var(--pitch) 0%, var(--pitch-2) 100%) fixed; }
+
+/* ---------- Voetbalveld achter alles (pitch.js) ----------
+   Gemaaide banen in CSS; lijnen, aanvallen en reacties in de SVG van .pitch-fx. Overdag een zonnegloed,
+   na zonsondergang (html.pitch-night) een donkerder veld met stadionlichten uit de vier hoeken. */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: repeating-linear-gradient(180deg, rgba(255, 255, 255, .035) 0 10vh, transparent 10vh 20vh);
+}
+.pitch-fx { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+.pitch-fx svg { display: block; width: 100%; height: 100%; }
+.pitch-fx::before {
+    content: ""; position: absolute; inset: 0; transition: opacity 4s ease;
+    background: radial-gradient(ellipse 90% 55% at 12% -8%, rgba(255, 238, 180, .11), transparent 70%);
+}
+.pitch-night .pitch-fx::before { opacity: 0; }
+
+/* Avond: het veld wordt donkerder en uit elke hoek schijnt een lichtmast (lamp + bundel) naar de middenstip.
+   De richting (--tl, --tr, --bl, --br) zet pitch.js volgens de vorm van het scherm.
+   De bundels staan stil: een geanimeerd element met mask-image flikkert in Chrome op Mali-GPU's (Samsung Galaxy S21
+   Ultra), zeker op een OLED-scherm bij lage helderheid. Alleen de kleine lampen ademen, op een eigen laag zonder masker. */
+.pf-lights {
+    position: absolute; inset: 0; overflow: hidden; opacity: 0; transition: opacity 4s ease;
+    background: radial-gradient(ellipse 70% 55% at 50% 50%, rgba(0, 6, 3, .3), rgba(0, 4, 2, .62));
+}
+.pitch-night .pf-lights { opacity: 1; }
+.pf-beam, .pf-lamp, .pf-bank { position: absolute; }
+.pf-beam, .pf-lamp { border-radius: 50%; }
+.pf-beam {
+    --dir: 135deg;
+    /* Straal 80vmax reikt vanuit elke hoek ruim voorbij de middenstip (hoogstens 71vmax ver). */
+    width: 160vmax; height: 160vmax; margin: -80vmax 0 0 -80vmax;
+    background: conic-gradient(from calc(var(--dir) - 22deg),
+        transparent 0deg, rgba(255, 244, 205, .12) 7deg, rgba(255, 248, 220, .30) 16deg, rgba(255, 253, 240, .45) 22deg,
+        rgba(255, 248, 220, .30) 28deg, rgba(255, 244, 205, .12) 37deg, transparent 44deg);
+    -webkit-mask-image: radial-gradient(circle closest-side, #000 0, rgba(0, 0, 0, .75) 30%, rgba(0, 0, 0, .25) 60%, transparent 85%);
+    mask-image: radial-gradient(circle closest-side, #000 0, rgba(0, 0, 0, .75) 30%, rgba(0, 0, 0, .25) 60%, transparent 85%);
+}
+/* De gloed rond de lichtmast. */
+.pf-lamp {
+    width: 60vmin; height: 60vmin; margin: -30vmin 0 0 -30vmin;
+    background: radial-gradient(circle closest-side, rgba(255, 255, 245, .85), rgba(255, 248, 215, .35) 22%, rgba(255, 244, 205, .1) 55%, transparent);
+    will-change: opacity;
+    animation: pf-breathe 7s ease-in-out infinite;
+}
+/* De lampenbank zelf: een raster van felle lampjes, gekanteld naar de middenstip. */
+.pf-bank {
+    --dir: 135deg;
+    width: 46px; height: 28px; margin: -14px 0 0 -23px; border-radius: 4px;
+    background: radial-gradient(circle, #fff 0 2.4px, rgba(255, 250, 225, .6) 3.2px, transparent 4.4px) 1px 0 / 11px 9px, rgba(20, 30, 25, .55);
+    box-shadow: 0 0 18px 6px rgba(255, 250, 225, .55), 0 0 60px 24px rgba(255, 246, 210, .25);
+    transform: rotate(calc(var(--dir) - 180deg)) translateY(22px);
+}
+.tl:is(.pf-beam, .pf-bank) { --dir: var(--tl); }
+.tr:is(.pf-beam, .pf-bank) { --dir: var(--tr); }
+.bl:is(.pf-beam, .pf-bank) { --dir: var(--bl); }
+.br:is(.pf-beam, .pf-bank) { --dir: var(--br); }
+.tl:is(.pf-beam, .pf-lamp, .pf-bank) { left: 0; top: 0; }
+.tr:is(.pf-beam, .pf-lamp, .pf-bank) { left: 100%; top: 0; animation-delay: -2.1s; }
+.bl:is(.pf-beam, .pf-lamp, .pf-bank) { left: 0; top: 100%; animation-delay: -4.3s; }
+.br:is(.pf-beam, .pf-lamp, .pf-bank) { left: 100%; top: 100%; animation-delay: -5.6s; }
+/* De lampen ademen elk op hun eigen ritme, zoals echte stadionlampen die nooit helemaal even fel branden.
+   Zacht genoeg om op een OLED-scherm niet in stapjes te springen. */
+@keyframes pf-breathe { 0%, 100% { opacity: 1; } 50% { opacity: .8; } }
+@media (prefers-reduced-motion: reduce) { .pf-lamp { animation: none; } }
+
+.pf-lines { fill: none; stroke: #fff; stroke-opacity: .13; stroke-width: 1.5; }
+.pf-lines *, .pf-trail, .pf-ring, .pf-ripple { vector-effect: non-scaling-stroke; }
+.pf-spots { fill: #fff; fill-opacity: .16; }
+.pf-ring { fill: none; stroke-opacity: .3; stroke-width: 1.5; }
+.pf-trail { fill: none; stroke-opacity: .32; stroke-width: 1.5; stroke-dasharray: 5 6; stroke-linecap: round; }
+.pf-trail.run { stroke-dasharray: none; stroke-opacity: .22; }
+.pf-ripple { fill: none; stroke: #fff; stroke-width: 1.5; }
+.pf-ball-fill { fill: #fff; fill-opacity: .6; }
+.pf-ball-edge { fill: none; stroke: #0b3d24; stroke-opacity: .35; stroke-width: .25; }
+.pf-bounce { animation: pf-bounce 1.1s ease-in-out infinite; }
+/* Van bovenaf gezien: een hupje is een bal die even groter wordt (ook juist op een gedraaid veld). */
+@keyframes pf-bounce { 0%, 100% { transform: scale(1); } 45% { transform: scale(1.35); } }
+
+/* Liggend scherm: de banen lopen mee met het gedraaide veld. */
+@media (orientation: landscape) and (min-width: 768px) {
+    body::before { background: repeating-linear-gradient(90deg, rgba(255, 255, 255, .035) 0 10vw, transparent 10vw 20vw); }
+}
+
+a { color: inherit; }
+/* Wie met het toetsenbord navigeert, ziet waar hij staat: een gele ring (de standaardring valt weg op het groen).
+   Invoervelden hebben hun eigen gele rand bij :focus. */
+:focus-visible { outline: 3px solid var(--sb-digit); outline-offset: 2px; }
+/* Tikfeedback: een knop veert even in, zodat een tik nooit "dood" aanvoelt, ook als het antwoord van de server even duurt.
+   :where houdt de regel zwak, zodat knoppen met een eigen :active-effect (keuzes, derby-wapens) dat houden.
+   manipulation haalt de wachttijd voor dubbeltikken weg. */
+:where(button, a, .btn) { touch-action: manipulation; }
+:where(.btn, .tabs button, .page-back, .sheet-close, .linkish) { transition: transform .08s ease-out; }
+:where(.btn, .tabs button, .page-back, .sheet-close, .linkish):active:not(:disabled) { transform: scale(.96); }
+/* Tegels en lijstrijen veren niet (dat oogt wiebelig over de volle breedte), ze lichten even op. */
+:where(.sb-strip, .tafel-banner, .menu-list a, .menu-list button, .board .player):active { background-color: rgba(255, 255, 255, .06); }
+@media (prefers-reduced-motion: reduce) {
+    :where(.btn, .tabs button, .page-back, .sheet-close, .linkish):active:not(:disabled) { transform: none; opacity: .8; }
+}
+h1 { margin: .2rem 0 .4rem; font-size: 1.5rem; }
+
+.app {
+    max-width: 560px;
+    margin: 0 auto;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---------- Zonder topbar en tabbalk ---------- */
+/* Home is de enige hub: geen vaste balken, het veld vult het hele scherm. */
+.content { flex: 1; padding: calc(env(safe-area-inset-top) + 14px) 16px calc(env(safe-area-inset-bottom) + 28px); }
+
+/* Schuifovergang bij navigeren (zie index.html): vooruit van rechts, terug van links; het veld erachter blijft staan. */
+.content.nav-fwd { animation: nav-in-fwd .26s cubic-bezier(.2, .8, .3, 1); }
+.content.nav-back { animation: nav-in-back .26s cubic-bezier(.2, .8, .3, 1); }
+.content.nav-fade { animation: nav-fade .12s ease-out; }
+@keyframes nav-in-fwd { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: none; } }
+@keyframes nav-in-back { from { opacity: 0; transform: translateX(-28px); } to { opacity: 1; transform: none; } }
+@keyframes nav-fade { from { opacity: 0; } to { opacity: 1; } }
+
+.center { text-align: center; }
+.muted { color: var(--muted); font-size: .9rem; }
+.center-msg { color: #fff; text-align: center; padding: 48px 0; opacity: .8; }
+
+.sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+.muted.light { color: rgba(255, 255, 255, .7); margin-top: 16px; }
+
+.center-block { display: block; margin: 14px auto 0; color: var(--muted); }
+.light-text { color: rgba(255, 255, 255, .8); }
+.field-label { font-weight: 600; font-size: .9rem; margin-bottom: 6px; }
+.tag { margin-left: auto; font-size: .72rem; background: var(--surface-soft); border-radius: 999px; padding: 2px 8px; color: var(--muted); }
+.pts .unit { display: block; font-size: .7rem; font-weight: 600; color: var(--muted); text-align: right; }
+
+/* ---------- Blazor standaard ---------- */
+#blazor-error-ui {
+    color-scheme: light only;
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+#blazor-error-ui .dismiss { cursor: pointer; position: absolute; right: 0.75rem; top: 0.5rem; }
+
+#update-banner {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    top: calc(env(safe-area-inset-top) + 12px);
+    z-index: 1000;
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    background: var(--pitch);
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .3);
+    font-weight: 600;
+}
+#update-banner[hidden] { display: none; }
+
+/* Tijdens een update (zie MainLayout): enkel de boodschap. */
+.maintenance-screen {
+    flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 12px; padding: 32px 24px; text-align: center; color: #fff;
+}
+.maintenance-screen h1 { margin: 0; font-size: 1.6rem; }
+.maintenance-screen p { margin: 0; max-width: 22rem; font-size: 1.1rem; line-height: 1.45; color: rgba(255, 255, 255, .85); }
+.maintenance-logo { width: 88px; height: 88px; }
+
+/* Op een vraag die nog afgewerkt mag worden (zie UpdateBanner). */
+.update-notice {
+    display: flex; gap: 8px; align-items: flex-start;
+    margin: 0 0 12px; padding: 10px 12px; border-radius: 10px;
+    background: var(--warn-bg); color: var(--warn-text); border: 1px solid var(--warn-line);
+    font-size: .9rem; font-weight: 600; line-height: 1.35;
+}#update-banner .reload { color: var(--accent); margin-left: 6px; }
+
+.loading-progress {
+    position: absolute;
+    display: block;
+    width: 8rem;
+    height: 8rem;
+    inset: 20vh 0 auto 0;
+    margin: 0 auto;
+}
+.loading-progress circle {
+    fill: none;
+    stroke: var(--sb-line);
+    stroke-width: 0.6rem;
+    transform-origin: 50% 50%;
+    transform: rotate(-90deg);
+}
+.loading-progress circle:last-child {
+    stroke: var(--sb-digit);
+    stroke-dasharray: calc(3.141 * var(--blazor-load-percentage, 0%) * 0.8), 500%;
+    transition: stroke-dasharray 0.05s ease-in-out;
+}
+.loading-progress-text {
+    position: absolute;
+    text-align: center;
+    font-family: var(--digits);
+    font-weight: bold;
+    color: var(--sb-digit);
+    inset: calc(20vh + 3.25rem) 0 auto 0.2rem;
+}
+.loading-progress-text:after { content: var(--blazor-load-percentage-text, "Laden"); }

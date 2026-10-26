@@ -1,0 +1,59 @@
+/* Detectivedag (Shared/DetectiveBoard). */
+
+/* ---------- Detectivedag: verdachten, getuigen en het dossier ---------- */
+.detective { display: grid; gap: 12px; }
+.detective-title { font-size: 1.25rem; margin: 0; }
+.detective-intro { margin: 0; color: var(--muted); font-style: italic; }
+.detective-clues { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.detective-clue {
+    display: grid; gap: 2px; padding: 10px 12px; border-radius: var(--radius);
+    background: var(--tile-bg); border: 1px solid var(--sb-line); border-left: 4px solid var(--accent);
+}
+.detective-clue.new { animation: clue-in .35s ease-out; }
+.detective-clue.unopened { opacity: .65; border-left-color: var(--sb-line); }
+.detective-witness { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--accent-text); }
+@keyframes clue-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+.detective-next { min-height: var(--tap); }
+.detective-next small { color: var(--muted); font-weight: 400; }
+.detective-status { min-height: 1.4em; font-size: .9rem; text-align: center; }
+.detective-status .wrong { color: var(--fail-text); }
+.detective-suspects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.suspect {
+    position: relative; display: grid; grid-template-columns: 36px 1fr; grid-template-rows: auto auto; column-gap: 8px;
+    align-items: center; text-align: left; min-height: 64px; padding: 8px; border-radius: var(--radius);
+    background: var(--tile-bg); border: 1px solid var(--sb-line-strong); color: var(--text); font: inherit; cursor: pointer;
+}
+.suspect-initials {
+    grid-row: span 2; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%;
+    background: var(--surface-soft); font-weight: 700; font-size: .85rem;
+}
+.suspect-name { font-weight: 600; line-height: 1.2; overflow-wrap: anywhere; }
+.suspect small { color: var(--muted); font-size: .72rem; line-height: 1.2; }
+.suspect.struck { opacity: .45; }
+.suspect.struck .suspect-name { text-decoration: line-through; text-decoration-color: var(--fail); text-decoration-thickness: 2px; }
+.suspect.accused { opacity: .4; cursor: default; }
+.suspect-tag {
+    display: inline-block; padding: 1px 6px; border-radius: 999px; font-size: .7rem; font-weight: 600;
+    background: var(--error-bg); color: var(--error-text);
+}
+.suspect .suspect-tag { position: absolute; top: 4px; right: 4px; }
+.suspect-tag.culprit { background: var(--warn-bg); color: var(--warn-text); }
+.suspect-tag.right { background: var(--success-bg); color: var(--ok-text); }
+.detective-suspects.accusing .suspect:not(:disabled) { border-color: var(--accent); }
+.suspect.target { box-shadow: 0 0 0 3px var(--accent); opacity: 1; }
+.detective-dock {
+    position: sticky; bottom: 0; z-index: 2;
+    background: var(--card); padding: 8px; margin: 0 -8px; border-radius: var(--radius);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, .25);
+}
+.detective-dock > .btn { width: 100%; }
+.detective-confirm { margin: 0 0 8px; text-align: center; }
+.detective-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.detective-actions:has(> :only-child) { grid-template-columns: 1fr; }
+.dossier-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.dossier-row { padding: 8px 12px; border-radius: var(--radius); background: var(--tile-bg); border: 1px solid var(--sb-line); display: grid; gap: 2px; }
+.dossier-row.culprit { border-color: var(--warn-line); background: var(--warn-bg); }
+.dossier-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.dossier-clue { font-size: .75rem; color: var(--muted); }
+.dossier-row small { color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { .detective-clue.new { animation: none; } }

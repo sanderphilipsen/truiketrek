@@ -1,0 +1,10 @@
+/* Meldingen (Pages/Meldingen). */
+
+/* ---------- Meldingen ---------- */
+.notif-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.notif { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 0; padding: 14px 16px; text-decoration: none; }
+.notif.new { border-color: var(--accent); }
+.notif-icon { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--surface-soft); font-size: 1.15rem; }
+.notif-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.notif-text { white-space: pre-wrap; line-height: 1.4; overflow-wrap: anywhere; }
+.notif-new { flex: none; width: 10px; height: 10px; margin-top: 6px; border-radius: 50%; background: var(--accent); }

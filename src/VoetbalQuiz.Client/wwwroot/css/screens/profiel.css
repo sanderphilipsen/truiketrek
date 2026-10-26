@@ -1,0 +1,97 @@
+/* Spelersfiche (Pages/Profiel). */
+
+.profile-head { display: flex; gap: 16px; align-items: center; }
+.profile-head > div { flex: 1; min-width: 0; }
+.profile-head h1 { margin: 0 0 4px; overflow-wrap: anywhere; }
+.level-line { font-weight: 700; margin-bottom: 8px; }
+.xpbar { height: 10px; background: var(--skeleton); border-radius: 5px; overflow: hidden; margin-bottom: 4px; }
+.xpbar div { height: 100%; background: linear-gradient(90deg, var(--accent), #ffdd55); }
+
+.xp-details summary { cursor: pointer; font-weight: 700; }
+.xp-details table { width: 100%; margin: 12px 0 8px; border-collapse: collapse; }
+.xp-details td { padding: 6px 0; border-bottom: 1px solid var(--divider); }
+.xp-details td:last-child { text-align: right; font-weight: 700; }
+
+.avatar-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 8px; }
+.avatar-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    background: var(--card);
+    border: 3px solid transparent;
+    border-radius: 14px;
+    padding: 8px 4px;
+    cursor: pointer;
+    font: inherit;
+}
+.avatar-option small { font-size: .7rem; line-height: 1.15; text-align: center; color: var(--muted); }
+.avatar-option.selected { border-color: var(--accent); }
+
+.profile-actions { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+
+/* ---------- Profielpagina ---------- */
+.profile-layout { display: flex; flex-direction: column; gap: 16px; }
+.profile-side, .profile-main { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.profile-side > .card, .profile-main > .card { margin-bottom: 0; }
+.profile-main .tabs { margin-bottom: 0; }
+.profile-main .card .tabs.light { margin: 0 0 14px; }
+.profile-main .success, .profile-main .error { margin: 0 0 12px; }
+.profile-main form .success, .profile-main form .error { margin: 0; }
+
+.profile-hero { display: flex; gap: 16px; align-items: center; }
+.hero-avatar { position: relative; border: 0; background: none; padding: 0; cursor: pointer; flex-shrink: 0; }
+.hero-edit {
+    position: absolute; right: -2px; bottom: -2px;
+    width: 30px; height: 30px; border-radius: 50%;
+    display: grid; place-items: center; font-size: .95rem; color: #1b1600;
+    background: var(--accent); box-shadow: 0 2px 6px rgba(0, 0, 0, .25);
+}
+.hero-main { flex: 1; min-width: 0; }
+.hero-main h1 { margin: 0 0 4px; overflow-wrap: anywhere; }
+
+.badge-teaser { display: flex; align-items: center; gap: 12px; text-decoration: none; padding: 14px 16px; }
+.badge-teaser .sb-icon { font-size: 1.1rem; vertical-align: -.2em; }
+.teaser-text { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+.teaser-icons { display: flex; gap: 4px; font-size: 1.3rem; margin-top: 4px; flex-wrap: wrap; }
+.teaser-go { font-size: 1.6rem; color: var(--muted); line-height: 1; }
+
+/* Voetballer kiezen: donkere tegels zoals de rest van het profiel; de gekozen krijgt de gele rand en een zachte tint. */
+.profile-main .avatar-option { background: var(--surface-soft); border-width: 2px; }
+.profile-main .avatar-option.selected { background: rgba(250, 199, 117, .12); }
+
+.card-title { margin: 0 0 12px; font-size: 1.05rem; }
+.form-row { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.form-row label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: .9rem; }
+
+.xp-total { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.xp-total b { font-size: 1.4rem; }
+.xp-table { width: 100%; margin: 14px 0; border-collapse: collapse; }
+.xp-table td { padding: 8px 0; border-bottom: 1px solid #eef2ef; }
+.xp-table td:last-child { text-align: right; font-weight: 700; }
+.xp-card h3 { margin: 6px 0 8px; font-size: 1rem; }
+.xp-rules { margin: 0 0 10px; padding-left: 18px; line-height: 1.7; }
+
+.menu-list { padding: 4px 0; overflow: hidden; }
+.menu-list a, .menu-list button {
+    display: flex; align-items: center; gap: 12px; width: 100%;
+    padding: 14px 20px; border: 0; background: none; font: inherit; font-weight: 600;
+    text-decoration: none; color: var(--text); cursor: pointer; text-align: left;
+}
+.menu-list > * + * { border-top: 1px solid var(--divider); }
+.menu-list span { display: inline-flex; font-size: 1.2rem; color: var(--sb-digit); }
+.menu-list i { margin-left: auto; font-style: normal; color: var(--muted); font-size: 1.3rem; }
+@media (hover: hover) { .menu-list a:hover, .menu-list button:hover { background: var(--surface-soft); } }
+.member-since { color: rgba(255, 255, 255, .65); text-align: center; font-size: .85rem; margin: 4px 0 0; overflow-wrap: anywhere; }
+
+/* Groot scherm: links een vaste kolom met je profiel, rechts de tabbladen. */
+@media (min-width: 780px) {
+    .profile-layout { display: grid; grid-template-columns: 290px 1fr; gap: 20px; align-items: start; }
+    .profile-side { position: sticky; top: 12px; }
+    .profile-hero { flex-direction: column; text-align: center; }
+    .profile-hero .level-line { justify-content: center; }
+    .profile-stats { grid-template-columns: 1fr 1fr; }
+}
+.card-link { display: flex; align-items: center; justify-content: center; min-height: var(--tap); margin-top: 4px; font-weight: 700; font-size: .9rem; color: var(--sb-digit); text-decoration: none; }
+.home-card-head .card-link { margin-top: 0; white-space: nowrap; }
+.profile-main .tabs.light button { font-size: .88rem; padding: 9px 6px; white-space: nowrap; }

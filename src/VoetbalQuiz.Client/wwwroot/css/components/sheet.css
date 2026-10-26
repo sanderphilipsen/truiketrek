@@ -1,0 +1,33 @@
+/* Bottom sheet en bevestiging (Shared/ConfirmSheet). */
+
+/* Bottom sheet: schuift van onderen over het scherm, met de hoofdknop altijd in duimbereik.
+   Herbruikbaar (sheet-…); de tabbalk en de pagina eronder blijven op hun plaats. */
+.sheet-backdrop { position: fixed; inset: 0; z-index: 60; background: var(--scrim); animation: sheet-fade .2s ease-out; }
+.sheet {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 61;
+    width: 100%; max-width: 560px; max-height: calc(100dvh - 24px); margin: 0 auto;
+    display: flex; flex-direction: column;
+    background: var(--card); border-radius: 20px 20px 0 0; box-shadow: 0 -10px 40px rgba(0, 0, 0, .35);
+    animation: sheet-up .28s cubic-bezier(.2, .9, .3, 1);
+}
+body:has(.sheet) { overflow: hidden; }
+.sheet-head { position: relative; display: flex; align-items: center; gap: 8px; padding: 18px 8px 4px 16px; }
+.sheet-grip { position: absolute; top: 7px; left: 50%; width: 40px; height: 4px; margin-left: -20px; border-radius: 2px; background: var(--border); }
+.sheet-head h2 { flex: 1; margin: 0; font-size: 1.25rem; outline: none; }
+.sheet-close {
+    flex: none; width: var(--tap); height: var(--tap); border: 0; border-radius: 50%;
+    background: none; color: var(--muted); font: inherit; font-size: 1.15rem; cursor: pointer;
+}
+@media (hover: hover) { .sheet-close:hover { background: var(--surface-soft); } }
+.sheet-body { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; display: flex; flex-direction: column; gap: 18px; padding: 8px 16px 18px; }
+.sheet-foot { padding: 10px 16px calc(env(safe-area-inset-bottom) + 12px); border-top: 1px solid var(--divider); background: var(--card); }
+.sheet-foot .error { margin: 0 0 8px; }
+.sheet-foot .btn.big { margin-top: 8px; }
+/* Bevestiging (Shared/ConfirmSheet): korte vraag, een duidelijke rode knop voor iets dat je niet ongedaan maakt. */
+.confirm-text { margin: 0; color: var(--muted); }
+.confirm-sheet .btn.danger { background: var(--fail); color: #fff; }
+@keyframes sheet-up { from { transform: translateY(100%); } to { transform: none; } }
+@keyframes sheet-fade { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+    .sheet, .sheet-backdrop { animation: none; }
+}

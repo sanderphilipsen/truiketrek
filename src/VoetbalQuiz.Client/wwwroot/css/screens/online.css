@@ -1,0 +1,255 @@
+/* Online: lobby, partijtjes, kleedkamer en wedstrijd (Pages/Online, Pages/Wedstrijd). */
+
+/* ---------- Online lobby ---------- */
+.btn.big.tafel-new { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 12px; }
+
+/* Het formulier in de sheet. */
+.tafel-field { display: flex; flex-direction: column; }
+.tafel-field-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.tafel-hint { color: var(--muted); font-size: .78rem; }
+.tafel-name { display: flex; gap: 6px; }
+.tafel-name input { flex: 1; min-width: 0; }
+.tafel-reroll {
+    flex: none; width: 48px; min-height: var(--tap); border: 1.5px solid var(--control-border); border-radius: 10px;
+    background: var(--card); font-size: 1.3rem; cursor: pointer; touch-action: manipulation;
+}
+.tafel-reroll:active { transform: rotate(-20deg) scale(.95); }
+.tafel-types { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.tafel-type {
+    -webkit-appearance: none; appearance: none;
+    display: flex; align-items: center; gap: 6px; min-width: 0; min-height: var(--tap); padding: 6px 8px 6px 10px;
+    border-radius: 12px; border: 1.5px solid var(--control-border); background: var(--card); color: var(--text);
+    font: inherit; font-size: .85rem; font-weight: 600; text-align: left; line-height: 1.2; cursor: pointer;
+    touch-action: manipulation; transition: background .12s, border-color .12s;
+}
+.tafel-type-icon { flex: none; font-size: 1.1rem; }
+.tafel-type-name { flex: 1; min-width: 0; }
+.tafel-type-check { flex: none; width: 1em; font-weight: 900; }
+.tafel-type.active { background: var(--active-bg); border-color: var(--control-border); color: #fff; }
+.tafel-type-summary { display: block; margin-top: 6px; font-size: .8rem; color: var(--muted); }
+.tafel-type-summary.warn, .tafel-summary.warn { color: var(--warn-text); font-weight: 700; }
+.tafel-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.tafel-row .field-label { margin: 0; }
+.tafel-stepper { display: inline-flex; align-items: center; gap: 4px; padding: 4px; border-radius: 999px; background: var(--surface-soft); }
+.tafel-stepper button {
+    -webkit-appearance: none; appearance: none;
+    display: grid; place-items: center; width: var(--tap); height: var(--tap); padding: 0;
+    border: 0; border-radius: 50%; background: var(--card); color: var(--text); box-shadow: 0 1px 2px rgba(0, 0, 0, .18);
+    font: inherit; font-size: 1.4rem; font-weight: 700; line-height: 1; cursor: pointer; touch-action: manipulation;
+}
+.tafel-stepper button:disabled { opacity: .35; cursor: default; box-shadow: none; }
+.tafel-stepper output { min-width: 2.2ch; text-align: center; font-size: 1.2rem; font-weight: 800; }
+.tafel-count { display: flex; gap: 4px; padding: 4px; border-radius: 12px; background: var(--surface-soft); }
+.tafel-count button {
+    -webkit-appearance: none; appearance: none;
+    flex: 1 1 0; min-width: 0; min-height: var(--tap); padding: 0;
+    border: 0; border-radius: 9px; background: none; color: var(--text);
+    font: inherit; font-size: 1rem; font-weight: 800; cursor: pointer; touch-action: manipulation;
+}
+.tafel-count button.active { background: var(--active-bg); color: #fff; box-shadow: inset 0 0 0 1px var(--control-border); }
+.tafel-count button:disabled { opacity: .35; cursor: default; }
+.tafel-summary { margin: 0; text-align: center; font-size: .85rem; color: var(--muted); }
+.btn.tafel-submit { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: var(--tap); }
+@media (prefers-reduced-motion: reduce) {
+    .tafel-type { transition: none; }
+    .tafel-reroll:active { transform: none; }
+}
+.table-type { font-size: .78rem; }
+
+/* Open partijtjes ("rooms"): levendig en met één tik erin. */
+.rooms-title { display: flex; align-items: center; gap: 8px; }
+.rooms-live { display: inline-flex; align-items: center; gap: 6px; padding-left: 4px; color: var(--on-field-muted); font-size: .85rem; font-weight: 600; }
+.live-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--fail); box-shadow: 0 0 0 0 rgba(214, 69, 69, .6); animation: live-pulse 1.8s ease-out infinite; }
+.live-dot.inline { display: inline-block; width: 8px; height: 8px; vertical-align: 1px; }
+@keyframes live-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(214, 69, 69, .6); }
+    70%, 100% { box-shadow: 0 0 0 8px rgba(214, 69, 69, 0); }
+}
+/* minmax(0, 1fr): een kaart wordt nooit breder dan het scherm, ook niet met acht plaatsbolletjes. */
+.tables { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
+.table-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--tile-bg);
+    border-radius: 12px;
+    padding: 12px 14px;
+    text-decoration: none;
+}
+.table-card.mine { background: linear-gradient(rgba(250, 199, 117, .16), rgba(250, 199, 117, .16)), var(--card); border-color: var(--control-border); }
+.table-card.room { border-left: 4px solid var(--ok); padding-left: 12px; box-shadow: 0 1px 3px rgba(0, 0, 0, .2); }
+.room-seats { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin-top: 6px; }
+.room-seats .seat { width: 14px; height: 14px; }
+.room-free { margin-left: 6px; font-size: .78rem; font-weight: 700; color: var(--ok-text); }
+.room-free.last { color: var(--warn-text); }
+.btn.small.room-join { min-width: 84px; }
+/* Smal scherm (320 px): wat minder rand en tussenruimte, zodat de titel en de spelvorm meer plaats krijgen. */
+@media (max-width: 359px) {
+    .table-card { gap: 8px; padding: 10px; }
+    .table-card.room { padding-left: 8px; }
+    .btn.small.room-join { min-width: 0; padding-left: 10px; padding-right: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .live-dot { animation: none; }
+}
+/* Home: je speelt mee in een partijtje, met één tik terug naar je lobby of lopende wedstrijd. */
+/* Jouw partijtje bovenaan Home, in scorebordstijl: bezetting in gele cijfers, een lopende wedstrijd met een rode lijn. */
+.tafel-banner {
+    display: flex; align-items: center; gap: 12px;
+    min-height: 56px; padding: 10px 14px; margin-bottom: 10px;
+    border-radius: 12px; background: var(--tile-bg); color: var(--text); text-decoration: none;
+}
+.tafel-banner-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.tafel-banner-text small { color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tafel-banner .sb-digits { font-size: 1.2rem; }
+.tafel-banner-go { font-weight: 800; white-space: nowrap; color: var(--sb-digit, var(--text)); }
+.tafel-banner.live { border-color: #f09595; }
+.tafel-banner.live .sb-icon { color: #f09595; }
+@media (hover: hover) { .tafel-banner:hover { background: rgba(255, 255, 255, .04); } }
+.table-card.done { opacity: .85; }
+.table-icon { font-size: 1.6rem; width: 40px; text-align: center; }
+.table-info { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+/* Titel hoogstens twee regels, dan een beletselteken. */
+.table-info b { overflow-wrap: anywhere; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; }
+.table-info small { color: var(--muted); }
+.seats { display: flex; gap: 4px; margin-top: 4px; }
+.seat { display: inline-block; width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--control-border); }
+.seat.taken { background: var(--ok); border-color: var(--ok); }
+.table-card .btn.small { min-height: var(--tap); flex: none; }
+.tables-empty { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 16px; margin-bottom: 0; }
+.tables-empty p { margin: 0; color: var(--muted); }
+.skeleton-card { min-height: 72px; }
+.tables-retry { min-height: var(--tap); margin-top: 8px; }
+
+/* ---------- Wedstrijd ---------- */
+/* Kleedkamer: de wachtruimte voor de aftrap. Plaatsen als een rij truitjes, één statusregel en één gele hoofdknop. */
+.kleedkamer { padding: 18px 16px; }
+.kleedkamer-kicker { margin: 0; font-size: .75rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--ok-text); }
+.kleedkamer-title { margin: 2px 0 4px; font-size: 1.4rem; line-height: 1.2; overflow-wrap: anywhere; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; }
+.kleedkamer-meta { margin: 0; color: var(--muted); font-size: .9rem; }
+@media (max-width: 359px) {
+    .kleedkamer { padding: 14px 12px; }
+    .kleedkamer-title { font-size: 1.2rem; }
+}
+/* Spelvorm, vragen en derby (MatchMeta): elk stukje blijft heel, afbreken kan enkel tussen de stukjes. */
+/* Elk stukje heeft links een vaste strook: "·" bij .sep, leeg bij de rest. De strook van het eerste stukje op een regel
+   valt in de weggeknipte rand links (negatieve marge + clip-path), dus een regel begint nooit met "·". */
+.match-meta {
+    --sep: .7em;
+    display: inline-flex; flex-wrap: wrap; align-items: center; row-gap: 2px;
+    margin-left: calc(-1 * var(--sep)); clip-path: inset(-6px -6px -6px var(--sep));
+}
+.match-meta > *, .match-meta > .derby-badge { margin-left: var(--sep); }
+.match-meta > .sep { margin-left: 0; }
+.match-meta > .sep::before { content: "·"; display: inline-block; width: var(--sep); text-align: center; }
+.match-meta-chunk { display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: bottom; }
+.kleedkamer-seats {
+    list-style: none; margin: 18px 0 0; padding: 0;
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px 6px;
+}
+.kleedkamer-seat { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 0; text-align: center; }
+.kleedkamer-seat b { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .82rem; margin-top: 4px; }
+.kleedkamer-seat small { color: var(--muted); font-size: .72rem; }
+.kleedkamer-avatar { position: relative; display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; }
+/* Meer dan vier plaatsen: kleinere truitjes zonder level-regel, zodat de hoofdknop eronder in beeld blijft. */
+.kleedkamer-seats.many { margin-top: 14px; gap: 8px 4px; }
+.kleedkamer-seats.many .kleedkamer-avatar { width: 44px; height: 44px; }
+.kleedkamer-seats.many .kleedkamer-seat b { font-size: .75rem; margin-top: 2px; }
+.kleedkamer-seats.many .kleedkamer-seat.taken small { display: none; }
+.kleedkamer-seats.many .kleedkamer-seat.free small { margin-top: 2px; }
+.kleedkamer-seats.many .kleedkamer-plus { font-size: 1.2rem; }
+.kleedkamer-seats.many ~ .kleedkamer-status { margin-top: 12px; padding: 8px 10px; }
+.kleedkamer-seat.me .kleedkamer-avatar { box-shadow: 0 0 0 3px var(--control-border); }
+.kleedkamer-seat.taken .kleedkamer-avatar { animation: kleedkamer-in .5s cubic-bezier(.2, 1.4, .4, 1) both; }
+.kleedkamer-seat.free .kleedkamer-avatar { border: 2px dashed var(--border); background: var(--surface-soft); }
+.kleedkamer-seat.free small { margin-top: 4px; }
+.kleedkamer-plus { font-size: 1.5rem; font-weight: 300; color: var(--muted); line-height: 1; }
+.kleedkamer-captain {
+    position: absolute; right: -2px; bottom: -2px; display: grid; place-items: center;
+    width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--card);
+    background: var(--accent); color: #1b1600; font-size: .7rem; font-weight: 900;
+}
+@keyframes kleedkamer-in {
+    from { opacity: 0; transform: translateY(14px) scale(.6); }
+    to { opacity: 1; transform: none; }
+}
+.kleedkamer-status {
+    margin: 18px 0 0; padding: 10px 12px; border-radius: 10px; text-align: center; font-weight: 700; font-size: .92rem;
+    background: var(--warn-bg); color: var(--warn-text);
+}
+.kleedkamer-status.ready { background: var(--surface-soft); color: var(--ok-text); }
+.kleedkamer-wait {
+    display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 16px;
+    padding: 14px 12px; border-radius: 12px; background: var(--surface-soft); text-align: center;
+}
+.kleedkamer-wait-ball { font-size: 1.4rem; animation: kleedkamer-bounce 1.4s ease-in-out infinite; }
+@keyframes kleedkamer-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+.kleedkamer-full { margin: 16px 0 0; text-align: center; color: var(--muted); }
+.kleedkamer .derby-intro { margin: 16px 0 0; }
+.btn.kleedkamer-leave {
+    display: block; width: 100%; min-height: var(--tap); margin-top: 12px;
+    background: none; color: var(--muted); font-weight: 600; text-decoration: underline;
+}
+@media (prefers-reduced-motion: reduce) {
+    .kleedkamer-seat.taken .kleedkamer-avatar, .kleedkamer-wait-ball { animation: none; }
+}
+
+/* Uitnodigen: één grote knop (deelmenu van de gsm) of de losse knoppen; Primary maakt het de gele hoofdknop. */
+.share { margin-top: 12px; }
+.share .btn.big.share-btn { margin-top: 0; }
+.share-label { margin: 0 0 6px; color: var(--muted); font-size: .9rem; text-align: center; }
+/* Past het niet op één regel (320 px), dan schuift de laatste knop over de volle breedte naar onder. */
+.share-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.share-row .btn {
+    flex: 1 1 auto; min-height: var(--tap); padding: 6px 10px; display: grid; place-items: center;
+    font-size: .9rem; line-height: 1.15; white-space: nowrap;
+}
+.share-row .btn.copied { background: var(--ok); color: #fff; }
+.share-hint { margin: 8px 0 0; font-size: .85rem; color: var(--muted); }
+.share-link { width: 100%; margin-top: 6px; padding: 10px; border: 1px solid var(--border); border-radius: 10px; font: inherit; font-size: .9rem; }
+
+.countdown { text-align: center; color: #fff; padding: 40px 0 24px; font-weight: 700; }
+.countdown-number { font-size: 6rem; font-weight: 900; color: var(--accent); line-height: 1; animation: pop .9s ease-out infinite; }
+
+.player-strip { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 10px; }
+.strip-player {
+    flex: none;
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    background: rgba(255, 255, 255, .08);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 8px 4px;
+    color: #fff;
+}
+.strip-player.me { border-color: var(--control-border); background: rgba(250, 199, 117, .16); }
+.strip-player small { max-width: 64px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .7rem; opacity: .85; }
+.strip-avatar { position: relative; }
+.check {
+    position: absolute;
+    right: -4px; bottom: -2px;
+    background: var(--ok);
+    color: #fff;
+    border-radius: 50%;
+    width: 18px; height: 18px;
+    display: grid; place-items: center;
+    font-size: .7rem;
+    font-weight: 900;
+}
+.result.small { padding: 12px; font-weight: 700; }
+/* Online tussenscherm: naam, jouw punten en plaats en de aftelling bovenaan; de tips ingeklapt onderaan. */
+.reveal-me { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.reveal-me span { background: var(--surface-soft); border-radius: 999px; padding: 4px 12px; font-weight: 800; font-size: 1.05rem; }
+.reveal-next { color: var(--muted); font-size: .9rem; margin-top: 10px; font-variant-numeric: tabular-nums; }
+.reveal-head .timebar { margin-top: 6px; }
+.reveal-tips { margin-top: 12px; }
+.reveal-tips summary { color: #fff; font-weight: 700; cursor: pointer; padding: 12px 0; }
+.reveal-tips[open] summary { margin-bottom: 4px; }
+.board li.left { opacity: .5; }
+.podium-card .trophy { font-size: 3.5rem; line-height: 1; color: var(--accent); }

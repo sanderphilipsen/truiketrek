@@ -1,0 +1,16 @@
+/* Lijniconen (Shared/Icon), vraagtype-iconen en moeilijkheidssterren (Shared/DifficultyStars). */
+
+/* Lijniconen (Shared/Icon.razor): even groot als de tekst, op de basislijn. */
+.icon { flex: none; vertical-align: -.15em; }
+/* De rode kaart (derby) is overal rood. */
+.icon-card { color: #e5484d; }
+/* Vraagtypes (TypesLabel): bij een mix de iconen van de types naast elkaar. */
+.types-icons { display: inline-flex; gap: 4px; margin-left: 6px; vertical-align: -.15em; }
+.types-icons .icon { vertical-align: 0; }
+
+/* Moeilijkheid van de daily of een special: 0–5 sterren, halve sterren door de volle laag af te knippen. */
+.difficulty-stars { position: relative; display: inline-block; font-size: .95rem; line-height: 1; letter-spacing: 1px; white-space: nowrap; }
+.difficulty-stars .ds-empty { color: var(--muted); opacity: .35; }
+.difficulty-stars .ds-full { position: absolute; inset: 0 auto 0 0; overflow: hidden; color: var(--accent); text-shadow: 0 0 1px rgba(0, 0, 0, .45); }
+.special-hero .special-icon { font-size: 3rem; }
+.special-kicker { font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; color: var(--accent-text) !important; }

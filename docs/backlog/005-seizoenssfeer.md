@@ -43,7 +43,7 @@ Mogelijke momenten:
 
 - **Shared:** een kalender van sfeermomenten (sleutel, start/eind of berekeningsregel, prioriteit), met tests voor de datums (vooral carnaval/Pasen en overlap).
 - **Server/Client:** de server geeft het actieve moment mee (servertijd, zoals bij de daily). De client zet een `data-sfeer="halloween"`-attribuut op de app.
-- **CSS:** per moment een klein blok dat enkele variabelen uit `app.css` overschrijft en een decoratie toevoegt; effecten via `animatie-bouwer`, met `prefers-reduced-motion`.
+- **CSS:** per moment een klein blok dat enkele variabelen uit `css/tokens.css` overschrijft en een decoratie toevoegt; effecten via `animatie-bouwer`, met `prefers-reduced-motion`.
 - **Admin:** eventueel datums beheren voor wisselende momenten (CL-speeldagen, interlandperiodes, toernooien).
 - Verwant aan [004 – Weergavemodussen](004-weergavethemas.md) en de specials (`SpecialTemplates`).
 

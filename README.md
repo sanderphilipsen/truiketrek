@@ -128,6 +128,21 @@ Alle regels staan op één plek: [GameRules.cs](src/VoetbalQuiz.Shared/GameRules
 | `src/VoetbalQuiz.Server/Data/players/*.json` | De spelersdatabase met de tips |
 | `tests/VoetbalQuiz.Tests` | Unit tests (puntentelling, antwoordherkenning, quizverloop) |
 
+### CSS
+
+De stijl staat in `src/VoetbalQuiz.Client/wwwroot/css`, opgesplitst per onderdeel. Elk bestand zegt bovenaan wat erin hoort.
+
+| Bestand | Inhoud |
+|---|---|
+| `tokens.css` | Kleuren, maten en lettertypes als variabelen op `:root`, en `.surface-light` |
+| `base.css` | Reset, html/body, het voetbalveld, focusring, tikfeedback, paginaovergangen, hulpklassen, Blazor-standaard |
+| `components/*.css` | Gedeelde onderdelen: knoppen, tegels, koppen, formulieren, laden en fouten, avatar, sheet, iconen, podium, beloningspopup, kaart |
+| `screens/*.css` | Eén bestand per scherm of spelonderdeel (home, vraag, vraagtypes, klassement, online, admin, derby, ...) |
+
+- **De volgorde in `index.html` telt**: tokens, base, components en dan screens. Een schermregel mag een componentregel overschrijven, niet omgekeerd. Een nieuw bestand voeg je daar toe; de service worker cachet elk `.css`-bestand vanzelf.
+- **Waar zet je iets?** Stijl voor één scherm gaat naar `screens/`. Iets wat op meerdere schermen terugkomt, gaat naar `components/`. Een nieuwe kleur of maat die vaker terugkomt, wordt een variabele in `tokens.css`.
+- **Naar component-CSS (stap 2):** stijl die maar bij één Razor-component hoort, verhuist geleidelijk naar een `Component.razor.css` (Blazor CSS-isolatie). Dat gebeurt wanneer we dat component toch aanpassen.
+
 ## Lokaal draaien
 
 Vereist: .NET 10 SDK en Podman.

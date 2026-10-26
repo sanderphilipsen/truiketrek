@@ -1,0 +1,28 @@
+/* Koppen: paginakop (Shared/PageHeader) en sectiekop (Shared/SectionHeader). */
+
+/* Paginakop (Shared/PageHeader.razor): ronde terugknop, label en titel, rechts eventueel het kerngetal. */
+.page-head { display: flex; align-items: center; gap: 12px; margin: -2px 0 16px; color: #fff; }
+.page-back {
+    flex: none; display: grid; place-items: center; width: var(--tap); height: var(--tap); border-radius: 50%;
+    background: rgba(6, 41, 27, .8); box-shadow: inset 0 0 0 1px rgba(93, 202, 165, .45); color: #fff; font-size: 1.25rem; text-decoration: none;
+}
+@media (hover: hover) { .page-back:hover { background: rgba(6, 41, 27, .95); } }
+.page-head-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.page-head .sb-label { color: var(--on-field-muted); }
+.page-head .page-title { margin: 0; font-size: 1.5rem; font-weight: 800; line-height: 1.15; overflow-wrap: anywhere; }
+.page-head-aside { flex: none; display: flex; flex-direction: column; align-items: flex-end; text-align: right; }
+
+/* Sectiekop: titel links, "Alles ›" rechts. Wit op het veld, donker in een kaart. */
+.section-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 18px 0 8px; color: #fff; }
+.section-head-text { min-width: 0; }
+.section-head-title { margin: 0; font-size: 1.05rem; }
+.section-head-sub { margin: 2px 0 0; font-size: .85rem; color: var(--on-field-muted); }
+.section-head-link {
+    display: inline-flex; align-items: center; gap: 4px; flex: none;
+    min-height: var(--tap); min-width: var(--tap); padding: 0 4px 0 12px; margin-right: -4px;
+    font-weight: 700; font-size: .9rem; color: inherit; text-decoration: none; white-space: nowrap;
+}
+.card .section-head { color: var(--text); margin: -10px 0 4px; }
+.card .section-head-title { font-size: 1.15rem; }
+.card .section-head-sub { color: var(--muted); }
+.card .section-head-link { color: var(--sb-digit); }

@@ -1,0 +1,24 @@
+/* Aanmelden: Pages/Login, Pages/LoginNaam. */
+
+/* ---------- Login ---------- */
+.auth { margin-top: 24px; }
+.auth form { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+.auth label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: .9rem; }
+
+/* "Doorgaan met Google" in de donkere variant uit Googles eigen richtlijnen (het logo blijft in kleur). */
+.btn.google-btn {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%; min-height: 48px; margin-top: 16px;
+    background: #131314; color: #e3e3e3; box-shadow: inset 0 0 0 1px #8e918f;
+}
+@media (hover: hover) { .btn.google-btn:hover { background: #1f1f20; } }
+.google-g { width: 20px; height: 20px; flex: none; }
+.or-line { display: flex; align-items: center; gap: 10px; margin: 16px 0 0; color: var(--muted); font-size: .85rem; }
+.or-line::before, .or-line::after { content: ""; flex: 1; height: 1px; background: var(--sb-line-strong); }
+.switch { display: block; margin: 16px auto 0; min-height: var(--tap); padding: 0 12px; color: var(--muted); }
+
+/* ---------- Logo op de aanmeldpagina ---------- */
+.auth-logo { text-align: center; color: #fff; margin: 12px 0 18px; }
+.auth-logo img { width: 112px; height: 112px; filter: drop-shadow(0 8px 18px rgba(0, 0, 0, .35)); }
+.auth-logo div { font-weight: 900; font-size: 1.7rem; letter-spacing: .5px; margin-top: 6px; }
+.auth-logo small { opacity: .75; }

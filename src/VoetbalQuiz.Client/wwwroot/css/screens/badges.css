@@ -1,0 +1,42 @@
+/* Badges en bekers (Pages/Badges, Shared/BadgesAndTrophies). */
+
+/* ---------- Badges & bekers ---------- */
+.trophies { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }
+.trophy-item { background: var(--tile-bg); border-radius: 12px; padding: 10px 6px; text-align: center; display: flex; flex-direction: column; gap: 2px; }
+.trophy-item.place-1 { border: 2px solid var(--accent); }
+/* Eén lijnicoon per beker, in goud, zilver of brons. */
+.trophy-icon { font-size: 2rem; line-height: 1; color: #c97a3a; }
+.trophy-item.place-1 .trophy-icon { color: var(--accent); }
+.trophy-item.place-2 .trophy-icon { color: #c5cbd1; }
+.trophy-item small { color: var(--muted); font-size: .72rem; }
+/* Minstens 140 px per tegel: bij 100 px liep "Partijtjeskampioen" op 375 px buiten zijn tegel. */
+.badges { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
+.badge {
+    /* Nog niet verdiend: lichte kaart met stippelrand en een grijs icoon, maar volle tekstkleur zodat je leest hoe je hem haalt. */
+    background: var(--surface-soft);
+    border: 2px dashed var(--border);
+    border-radius: 12px;
+    padding: 10px 6px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.badge:not(.earned) .badge-icon { color: var(--muted); opacity: .5; }
+.badge.earned { background: var(--tile-bg); border-style: solid; border-color: transparent; }
+.badge.earned.tier-goud { border: 2px solid #e2b100; }
+.badge.earned.tier-zilver { border: 2px solid #b8c0c7; }
+.badge.earned.tier-brons { border: 2px solid #c98b52; }
+/* Badges: hetzelfde lijnicoon als op home, in de kleur van hun tier (zoals de bekers). */
+.badge-icon { font-size: 1.8rem; line-height: 1; margin-bottom: 2px; }
+.tier-goud .badge-icon, .teaser-icons .tier-goud { color: #e2b100; }
+.tier-zilver .badge-icon, .teaser-icons .tier-zilver { color: #c5cbd1; }
+.tier-brons .badge-icon, .teaser-icons .tier-brons { color: #c98b52; }
+.badge b { font-size: .85rem; overflow-wrap: anywhere; }
+.badge small { color: var(--muted); font-size: .82rem; line-height: 1.25; }
+.badge .progress { font-weight: 800; color: var(--text); }
+
+/* ---------- Badges-pagina ---------- */
+.badge-summary p { margin: 10px 0 0; }
+.badge-meter { height: 10px; border-radius: 99px; background: var(--skeleton); overflow: hidden; }
+.badge-meter span { display: block; height: 100%; background: var(--accent); border-radius: 99px; }
