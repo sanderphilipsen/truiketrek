@@ -1,14 +1,14 @@
 /* Seizoenssfeer (Sfeer.razor zet data-sfeer op <html>) en de kamers van het Spookhuis (Halloween Special).
    Een sfeer overschrijft enkel variabelen uit tokens.css; juist/fout (--ok, --fail) blijven zoals altijd. */
 
-/* ---------- Halloween: een veld bij volle maan ---------- */
+/* ---------- Halloween: zwart en pompoenoranje, een veld bij volle maan ---------- */
 html[data-sfeer="halloween"] {
-    --pitch: #1a0f24;
-    --pitch-2: #2b1538;
-    --card: #140b1c;
-    --tile-bg: rgba(20, 11, 28, .88);
+    --pitch: #0b0906;
+    --pitch-2: #2a1606;        /* onderaan gloeit het veld oranje, als kaarslicht */
+    --card: #120d08;
+    --tile-bg: rgba(18, 13, 8, .9);
     --text: #f6ece0;
-    --muted: #c9b5d8;          /* ≥ 4,5:1 op --card */
+    --muted: #d4b48c;          /* ≥ 4,5:1 op --card */
     --accent: #ff8a1f;         /* pompoen */
     --accent-text: #ffb066;
     --sb-digit: #ffb066;
@@ -18,8 +18,8 @@ html[data-sfeer="halloween"] {
     --control-border: #ff9d47;
     --divider: rgba(255, 138, 31, .18);
     --active-bg: rgba(255, 138, 31, .24);
-    --input-bg: #0c0612;
-    --scrim: rgba(10, 4, 16, .75);
+    --input-bg: #080604;
+    --scrim: rgba(8, 6, 4, .78);
     --special: #ffb066;
 }
 
@@ -79,10 +79,10 @@ html[data-sfeer="halloween"] .content { padding-bottom: 72px; }
 
 /* Home: het special-kaartje van Halloween in pompoenkleuren, ook zonder data-sfeer op de pagina. */
 .home-special.sfeer-halloween .special-card {
-    background: linear-gradient(160deg, #2b1538, #140b1c 70%);
+    background: linear-gradient(160deg, #3a1d06, #120d08 70%);
     border-color: rgba(255, 138, 31, .62);
 }
 .home-special.sfeer-halloween .home-special-name::after { content: " 🎃"; }
 .home-special.sfeer-halloween .home-special-play:not(.primary) {
-    background: #2b1538; border-color: rgba(255, 138, 31, .62); color: #ffb066;
+    background: #1f1408; border-color: rgba(255, 138, 31, .62); color: #ffb066;
 }
