@@ -63,5 +63,6 @@ Lopende planning: [planning-2026-10-23.md](planning-2026-10-23.md) (week 44 t/m 
 | [035](035-vraagtype-spelersfiche.md) | Vraagtype "Spelersfiche" | feature | bezig | midden | M | gebouwd, inhoud in review |
 | [036](036-schaakklok.md) | Schaakklok: om beurten een naam noemen (online) | feature | idee | midden | M | niet gepland |
 | [037](037-academie-kalender.md) | Academie als maandkalender met onderblad en dagklassement | ux | bezig | midden | L | nu |
+| [038](038-modus-wielrennen.md) | Modus Wielrennen | feature | idee | laag | L | niet gepland |
 
 Recent gedaan: [002](002-herwerking-klassementen.md) fase 1 (`97fad5a`), [007](007-gemiste-daily-naspelen.md) Academie (`0e18e7b`), [011](011-vraagtype-op-volgorde.md) Op volgorde (`4803333`), [022](022-detectivedag.md) Detectivedag (`5471602`).

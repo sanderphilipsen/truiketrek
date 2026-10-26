@@ -43,12 +43,17 @@ Divisies geven iedereen een klassement met mensen van zijn niveau, een daily op 
 
 ### Groepen in grote divisies
 
-Een divisie met 80 spelers en 3 stijgers voelt hopeloos. Twee mogelijkheden (nog te kiezen):
+Een divisie met 80 spelers en 3 stijgers voelt hopeloos. Daarom wordt een grote divisie gesplitst in **parallelle groepen van ongeveer 20** (5a, 5b, 5c, …), zoals provinciale A en B.
 
-- **A. Procentueel stijgen en dalen:** bv. de bovenste en onderste 15 % van een divisie, met minimum 3. Eén lange lijst per divisie.
-- **B. Parallelle groepen:** een grote divisie wordt gesplitst in groepen van ongeveer 20 (5a, 5b, 5c, …), zoals provinciale A en B. Spelers van dat niveau worden willekeurig over de groepen verdeeld. Elke groep heeft zijn eigen klassement en eigen 3 stijgers en 3 dalers. Alle groepen van een divisie spelen dezelfde daily.
+- Spelers van dat niveau worden **willekeurig** over de groepen verdeeld, **elke maand opnieuw**.
+- Elke groep heeft zijn eigen dag- en maandklassement, met **3 stijgers en 3 dalers per groep**.
+- Alle groepen van een divisie spelen **dezelfde daily**. Hun punten zijn dus onderling vergelijkbaar.
+- Een divisie wordt opnieuw in groepen verdeeld op het einde van de maand: aantal groepen = aantal spelers / 20, afgerond.
 
-Voorkeur: **B**. Elke lijst blijft rond 20 spelers, zoals divisie 1, en "3 omhoog, 3 omlaag" blijft overal dezelfde regel. Wel nodig: een regel voor de aantallen tussen twee niveaus (uit 5a, 5b en 5c stijgen 9 spelers naar divisie 4, dus moeten er uit divisie 4 ook 9 dalen) en een nieuwe willekeurige verdeling over de groepen elke maand.
+**Evenwicht tussen twee niveaus.** Stijgen er uit 5a, 5b en 5c samen 9 spelers naar divisie 4, die maar 2 groepen heeft, dan moeten er uit divisie 4 ook 9 dalen in plaats van 6. Voorstel: omdat alle groepen van een niveau dezelfde daily spelen, kijken we voor de extra plaatsen over de groepen heen naar de punten.
+
+- **Dalers:** uit elke groep dalen de 3 laatsten. Zijn er meer dalers nodig, dan de spelers met de minste punten over alle groepen van dat niveau.
+- **Naar divisie 1** (vast 20 spelers, 3 erin): heeft divisie 2 meerdere groepen, dan promoveren eerst de groepswinnaars. Zijn er meer winnaars dan 3, dan gaan de 3 winnaars met de meeste punten. Zijn er minder, dan worden de plaatsen aangevuld met de spelers met de meeste punten in divisie 2.
 
 ### Inschaling via het instapklassement
 
@@ -79,7 +84,7 @@ Voorkeur: **B**. Elke lijst blijft rond 20 spelers, zoals divisie 1, en "3 omhoo
 ### Stijgen en dalen
 
 - **Wanneer komt er een derde, vierde, … divisie bij?** Voorstel: telkens als de laagste divisie 40 spelers telt, wordt ze gesplitst (zelfde regel als bij de eerste splitsing). Na 6 divisies worden het groepen.
-- **Procentueel of groepen** (zie "Groepen in grote divisies")? En bij groepen: hoe groot is een groep (bv. 20, splitsen vanaf 40)?
+- **Evenwichtsregel voor groepen** (zie "Groepen in grote divisies"): klopt de regel met punten over de groepen heen?
 - **Splitsen midden in de maand?** Voorstel: enkel op het einde van de maand, ook als de grens van 40 eerder bereikt is.
 - **Inactieve spelers:** wie een maand niet speelt, zakt dan automatisch? Telt die mee in de grootte van een divisie? En wat als er 3 inactieven in divisie 1 zitten: dalen die naast de 3 onderste, of in hun plaats?
 - **Spelers vallen weg:** divisies samenvoegen, of de laagste divisie gewoon kleiner laten worden?
@@ -110,7 +115,7 @@ Nog niet uitgewerkt. Raakt waarschijnlijk: regels in Shared (aantal divisies, gr
 - 2026-10-25: daily = 3 vragen gedeeld met de divisie erboven, 3 met die eronder, 4 eigen. Gemiddelde moeilijkheid van ~4,5 (divisie 1) naar ~1,5 (divisie 6).
 - 2026-10-25: elke maand 3 stijgers en 3 dalers per divisie. Divisie 1 telt altijd maximaal 20 spelers; de andere divisies groeien mee met het aantal spelers.
 - 2026-10-25: vanaf 40 spelers wordt er gesplitst. De moeilijkheid groeit mee met het aantal divisies; de volle spreiding (4,5 tot 1,5) pas met alle 6 divisies.
-- 2026-10-25: grote divisies krijgen meer stijgers en dalers, procentueel of via parallelle groepen (5a, 5b, …, willekeurig ingedeeld). Keuze nog open.
+- 2026-10-26: grote divisies worden parallelle groepen van ongeveer 20 (5a, 5b, …), willekeurig ingedeeld, met 3 stijgers en 3 dalers per groep. Niet procentueel.
 - 2026-10-25: bij twijfel wordt een nieuwkomer in de laagste van de twee divisies ingedeeld.
 - 2026-10-25: bij de start van de divisies worden de bestaande spelers ingedeeld op het maandklassement van de vorige maand.
 
