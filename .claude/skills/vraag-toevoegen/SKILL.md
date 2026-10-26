@@ -22,6 +22,8 @@ Voor veel vragen of veel opzoekwerk: laat de agent `speler-redacteur` schrijven 
 
 Elk item heeft naast de inhoud ook: `difficulty` (1–5, te bepalen met de regels in `docs/moeilijkheid.md`), `status`, `sources` (URL's), `tags` (zie `speler-toevoegen` voor de lijst) en optioneel `checkedAt`.
 
+**Peildatum (`asOf`, "JJJJ-MM-DD"):** zet die bij elke vraag die kan verouderen: een record of "de meeste …", "stand na seizoen …", een lijst die nog aangroeit, een actieve speler (huidige club, rugnummer met open periode `(jaar–)`, "nooit voor … gespeeld" bij iemand die nog speelt). De datum is de dag waarop het klopte. Ouder dan `QuestionRules.MaxAgeDays` (120 dagen) = verouderd: de vraag speelt niet tot de agent `inhoud-onderhoud` ze bijwerkt. Een afgelopen gebeurtenis of een gestopte speler krijgt géén `asOf`: die veroudert nooit en de agent slaat ze over.
+
 ## Formaat per type
 
 De velden komen overeen met de records in `src/VoetbalQuiz.Shared/QuestionTypes.cs`.
@@ -37,6 +39,7 @@ De velden komen overeen met de records in `src/VoetbalQuiz.Shared/QuestionTypes.
 | `wissel.json` | `answer`, `aliases`, `when`, `fee`, `from`, `to`, `extra` | inhoud | `extra` is de laatste tip en mag de naam niet bevatten. |
 | `rugnummer.json` | `answer`, `aliases`, `number`, `position`, `country`, `club` (met jaren), `extra` | inhoud | Het nummer moet dat van die club in die periode zijn. |
 | `mannetje.json` | `answer`, `aliases`, `avatar` (id uit `Avatars.cs`), `clues` (2) | answer | De avatar-id moet bestaan in de lijst bekende voetballers in `src/VoetbalQuiz.Shared/Avatars.cs`. |
+| `fiche.json` | `answer`, `aliases`, `height` (cm), `foot` (`rechts`/`links`/`beide`), `birthYear`, `position`, `caps`, `goals`, `country`, `club`, `asOf` | answer | `asOf` = peildatum van interlands én club bij een actieve speler, `null` bij een gestopte. Voorkeursvoet uit een bron, niet uit het hoofd. |
 
 ## Na afloop
 

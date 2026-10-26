@@ -44,6 +44,8 @@ public sealed class NewRoundTests : IDisposable
             Add(QuestionType.Wissel, new WisselData($"Wissel Speler {i}", [], "Zomer 2019", "€100 miljoen", $"Club {i}", "Real Madrid", "Een tip"));
             Add(QuestionType.Rugnummer, new RugnummerData($"Nummer Speler {i}", [], 7, "Aanvaller", "België", $"Club {i}", "Een tip"));
             Add(QuestionType.Mannetje, new MannetjeData($"Mannetje Speler {i}", [], Avatars.All[i].Id, ["Tip een", "Tip twee"]));
+            Add(QuestionType.Fiche, new FicheData($"Fiche Speler {i}", [], 189, "links", 1987, "Centrale verdediger", 157, 10, "België",
+                $"Club {i}", new DateOnly(2026, 10, 1)));
         }
 
         var user = new AppUser { UserName = "sander" };
@@ -127,6 +129,145 @@ public sealed class NewRoundTests : IDisposable
 
         NextStep();
         Assert.Single((await _quiz.GetStateAsync(_me, 1)).Hints);
+    }
+
+    [Fact]
+    public async Task Fiche_shows_only_the_open_fields_and_a_wrong_name_opens_the_next_without_penalty()
+    {
+        await PlanTodayAsync(QuestionType.Fiche);
+        var data = QuestionEngine.Parse<FicheData>((await FirstQuestionAsync()).QuizItem!.Data);
+
+        var start = await _quiz.StartAsync(_me, 1);
+        var fields = start.View!.Fiche!;
+        Assert.Equal(QuestionRules.FicheSteps, fields.Count);
+        Assert.Equal("1,89 m · links", fields[0].Value);
+        Assert.All(fields.Skip(1), f => Assert.Null(f.Value));
+        Assert.Null(start.View.Note); // de peildatum verraadt "nog actief": pas bij het veld met de interlands
+
+        var wrong = await _quiz.GuessAsync(_me, 1, "Iemand Anders");
+        Assert.Equal(2, wrong.View!.Step);
+        Assert.Equal("1987", wrong.View.Fiche![1].Value);
+        Assert.Null(wrong.View.Fiche[2].Value);
+
+        var done = await _quiz.GuessAsync(_me, 1, data.Answer);
+        Assert.Equal(90, done.Result!.Points);
+        Assert.Contains($"Club: {data.Club}", done.Result.AllHints);
+    }
+
+    [Fact]
+    public async Task Fiche_gives_at_least_50_with_every_field_open()
+    {
+        await PlanTodayAsync(QuestionType.Fiche);
+        var data = QuestionEngine.Parse<FicheData>((await FirstQuestionAsync()).QuizItem!.Data);
+
+        await _quiz.StartAsync(_me, 1);
+        for (var i = 0; i < QuestionRules.FicheSteps; i++) NextStep();
+        var state = await _quiz.GetStateAsync(_me, 1);
+        Assert.All(state.View!.Fiche!, f => Assert.NotNull(f.Value));
+
+        var done = await _quiz.GuessAsync(_me, 1, data.Answer);
+        Assert.Equal(50, done.Result!.Points);
+    }
+
+    [Fact]
+    public async Task Fiche_wrong_name_opens_a_field_on_top_of_the_clock()
+    {
+        await PlanTodayAsync(QuestionType.Fiche);
+        var data = QuestionEngine.Parse<FicheData>((await FirstQuestionAsync()).QuizItem!.Data);
+
+        await _quiz.StartAsync(_me, 1);
+        NextStep();
+        NextStep();
+        var wrong = await _quiz.GuessAsync(_me, 1, "Iemand Anders");
+        Assert.Equal(4, wrong.View!.Step);
+        Assert.Equal("Interlands en club: stand op 1/10/2026", wrong.View.Note);
+
+        var done = await _quiz.GuessAsync(_me, 1, data.Answer);
+        Assert.Equal(70, done.Result!.Points);
+    }
+
+    [Fact]
+    public async Task Fiche_ends_after_a_wrong_name_with_every_field_open()
+    {
+        await PlanTodayAsync(QuestionType.Fiche);
+        await _quiz.StartAsync(_me, 1);
+
+        // Vijf foute namen openen de velden 2 tot 6; de vraag loopt nog.
+        QuestionState state = null!;
+        for (var i = 1; i < QuestionRules.FicheSteps; i++) state = await _quiz.GuessAsync(_me, 1, $"Fout {i}");
+        Assert.Equal(QuestionStatus.InProgress, state.Status);
+        Assert.Equal(QuestionRules.FicheSteps, state.View!.Step);
+
+        state = await _quiz.GuessAsync(_me, 1, "Nog eens fout");
+        Assert.Equal(QuestionStatus.Answered, state.Status);
+        Assert.False(state.Result!.Correct);
+        Assert.Equal(0, state.Result.Points);
+    }
+
+    [Fact]
+    public async Task Fiche_ends_on_the_first_wrong_name_once_the_clock_opened_every_field()
+    {
+        await PlanTodayAsync(QuestionType.Fiche);
+        await _quiz.StartAsync(_me, 1);
+        for (var i = 0; i < QuestionRules.FicheSteps; i++) NextStep();
+
+        var state = await _quiz.GuessAsync(_me, 1, "Fout");
+        Assert.Equal(QuestionStatus.Answered, state.Status);
+        Assert.Equal(0, state.Result!.Points);
+        // Geen "Gepast.": de speler gokte fout.
+        Assert.True(state.Result.EndedOnWrong);
+        Assert.NotEqual("Gepast.", Commentary.ForResult(state.Result, 100, 1));
+    }
+
+    [Fact]
+    public async Task Fiche_pass_after_a_wrong_name_still_counts_as_passing()
+    {
+        await PlanTodayAsync(QuestionType.Fiche);
+        await _quiz.StartAsync(_me, 1);
+        await _quiz.GuessAsync(_me, 1, "Fout");
+        var state = await _quiz.GiveUpAsync(_me, 1);
+
+        Assert.False(state.Result!.EndedOnWrong);
+        Assert.Equal("Gepast.", Commentary.ForResult(state.Result, 100, 1));
+    }
+
+    [Fact]
+    public async Task Question_with_an_old_peildatum_is_stale_and_never_picked()
+    {
+        // Twee vragen die al lang niet meer nagekeken zijn; de andere tien hebben geen of een verse peildatum (vandaag 17/10/2026).
+        var items = _db.QuizItems.Where(i => i.Type == QuestionType.Fiche).OrderBy(i => i.Id).ToList();
+        foreach (var item in items.Take(2)) item.AsOf = new DateOnly(2026, 1, 1);
+        items[2].AsOf = new DateOnly(2026, 10, 1);
+        await _db.SaveChangesAsync();
+        var stale = items.Take(2).Select(i => i.Id).ToList();
+
+        await PlanTodayAsync(QuestionType.Fiche);
+        var challenge = await _quiz.GetOrCreateChallengeAsync(_quiz.Today);
+        Assert.Equal(GameRules.QuestionsPerDay, challenge.Questions.Count);
+        Assert.DoesNotContain(challenge.Questions, q => stale.Contains(q.QuizItemId ?? 0));
+        Assert.Contains(challenge.Questions, q => q.QuizItemId == items[2].Id);
+    }
+
+    [Fact]
+    public async Task Player_with_an_old_peildatum_is_stale_and_never_picked()
+    {
+        var stale = _db.Players.OrderBy(p => p.Id).Take(40).ToList();
+        foreach (var p in stale) p.AsOf = new DateOnly(2026, 1, 1);
+        await _db.SaveChangesAsync();
+
+        await PlanTodayAsync(QuestionType.WieBenIk);
+        var challenge = await _quiz.GetOrCreateChallengeAsync(_quiz.Today);
+        Assert.NotEmpty(challenge.Questions);
+        Assert.DoesNotContain(challenge.Questions, q => stale.Any(p => p.Id == q.PlayerId));
+    }
+
+    [Fact]
+    public void Peildatum_rule_counts_days_and_no_peildatum_never_goes_stale()
+    {
+        var asOf = new DateOnly(2026, 10, 1);
+        Assert.False(QuestionRules.IsStale(null, new DateOnly(2040, 1, 1)));
+        Assert.False(QuestionRules.IsStale(asOf, asOf.AddDays(QuestionRules.MaxAgeDays)));
+        Assert.True(QuestionRules.IsStale(asOf, asOf.AddDays(QuestionRules.MaxAgeDays + 1)));
     }
 
     [Fact]

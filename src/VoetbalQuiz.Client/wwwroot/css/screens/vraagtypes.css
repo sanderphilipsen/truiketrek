@@ -176,3 +176,27 @@
 .kaart-actions .btn { min-height: 48px; margin: 0; width: 100%; }
 @media (max-height: 680px) { .kaart-select, .kaart-actions .btn { min-height: 44px; padding-top: 8px; padding-bottom: 8px; } }
 .kaart-admin-list { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 4px; }
+
+/* ---------- Spelersfiche: een scorebordtegel met zes rijen; dichte rijen tonen enkel hun label en een slot ---------- */
+.fiche {
+    background: var(--tile-bg); border: 1px solid var(--sb-line); border-radius: var(--radius);
+    padding: 12px 14px; margin: 6px 0 12px;
+}
+.fiche-head { display: flex; align-items: center; gap: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--divider); }
+.fiche-photo {
+    width: 44px; height: 44px; flex: none; display: grid; place-items: center; border-radius: 10px;
+    background: var(--surface-soft); color: var(--muted); font-size: 1.5rem;
+}
+.fiche-name { font-size: 1.15rem; letter-spacing: .04em; }
+.fiche-rows { margin: 4px 0 0; }
+.fiche-row {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+    padding: 8px 0; border-bottom: 1px solid var(--divider);
+}
+.fiche-row:last-child { border-bottom: 0; }
+.fiche-row dt { color: var(--muted); font-weight: 700; font-size: .9rem; }
+.fiche-row dd { margin: 0; text-align: right; font-weight: 800; color: var(--sb-digit); font-family: var(--digits); }
+.fiche-row.closed dd { color: var(--muted); font-family: inherit; opacity: .6; }
+.fiche-row.newest dd { animation: pop .35s; }
+.fiche-note { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; }
+@media (prefers-reduced-motion: reduce) { .fiche-row.newest dd { animation: none; } }

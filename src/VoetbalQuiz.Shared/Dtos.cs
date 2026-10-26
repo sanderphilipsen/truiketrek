@@ -125,7 +125,9 @@ public record QuestionView(
     // de waarde uit Options. Null = Options zelf tonen.
     List<string>? OptionLabels = null,
     // Lijst: de rijen (Found/Total: gevonden namen en het aantal namen).
-    List<LijstSlot>? Rows = null);
+    List<LijstSlot>? Rows = null,
+    // Spelersfiche: alle velden, de nog dichte zonder waarde (Note: de peildatum van de interlands).
+    List<FicheVeld>? Fiche = null);
 
 /// <summary>
 /// Kaart: een speld zoals de speler ze ziet. Choices = hoeveel keuzelijsten (deel 1: één per club die er speelt; deel 2: één).
@@ -168,7 +170,9 @@ public record AnswerResult(
     // Lijst: alle rijen ingevuld, met per rij of jij die naam vond.
     List<LijstSlot>? FullList = null,
     // De vraag liep af omdat de tijd om was (niet omdat de speler paste of antwoordde).
-    bool TimedOut = false);
+    bool TimedOut = false,
+    // De vraag liep af op een foute gok (spelersfiche: fout met alle velden open, of de pogingen waren op), niet omdat de speler paste.
+    bool EndedOnWrong = false);
 
 // Leaderboard
 public record LeaderboardEntry(

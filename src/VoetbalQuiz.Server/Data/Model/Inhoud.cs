@@ -21,6 +21,12 @@ public class Player
     public string? ReviewNote { get; set; }
     public DateOnly? CheckedAt { get; set; }
 
+    /// <summary>
+    /// Peildatum van tijdgevoelige tips (huidige club, aanvoerder, een record): ouder dan <see cref="QuestionRules.MaxAgeDays"/>
+    /// = verouderd, de speler speelt dan niet. Null = de tips zijn tijdloos.
+    /// </summary>
+    public DateOnly? AsOf { get; set; }
+
     /// <summary>Aangepast in het admin-paneel: de JSON-seed overschrijft deze speler dan niet meer.</summary>
     public bool EditedInAdmin { get; set; }
     public string? UpdatedBy { get; set; }
@@ -43,6 +49,12 @@ public class QuizItem
     public List<string> Tags { get; set; } = [];
     public string? ReviewNote { get; set; }
     public DateOnly? CheckedAt { get; set; }
+
+    /// <summary>
+    /// Peildatum van tijdgevoelige inhoud (een record, "stand na seizoen …", een actieve speler): ouder dan
+    /// <see cref="QuestionRules.MaxAgeDays"/> = verouderd, de vraag speelt dan niet. Null = tijdloos.
+    /// </summary>
+    public DateOnly? AsOf { get; set; }
     public bool EditedInAdmin { get; set; }
     public string? UpdatedBy { get; set; }
 }

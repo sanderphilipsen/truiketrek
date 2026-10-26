@@ -12,13 +12,15 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://nl.wikipedia.org/wiki/Gouden_Schoen_(België)"
+      "https://nl.wikipedia.org/wiki/Gouden_Schoen_(België)",
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
     ],
     "tags": [
       "gouden-schoen",
       "de-bruyne"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welke club werd nooit Belgisch landskampioen?",
@@ -36,7 +38,8 @@
       "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
     ],
     "tags": ["belgie"],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie scoorde niet voor België op het WK 2018?",
@@ -141,12 +144,14 @@
     "difficulty": 2,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals",
+      "https://en.wikipedia.org/wiki/2026_UEFA_Champions_League_final"
     ],
     "tags": [
       "champions-league"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welk land werd nooit wereldkampioen?",
@@ -161,10 +166,12 @@
     "difficulty": 1,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals"
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals",
+      "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup"
     ],
     "tags": ["wk", "oranje"],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Op welk EK was België niet van de partij?",
@@ -202,7 +209,8 @@
       "https://en.wikipedia.org/wiki/Ballon_d%27Or"
     ],
     "tags": ["ballon-dor"],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welke club komt niet uit Brussel?",
@@ -277,10 +285,12 @@
     "difficulty": 4,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals"
+      "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals",
+      "https://en.wikipedia.org/wiki/Belgian_Cup"
     ],
     "tags": ["beker-van-belgie", "belgie"],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie was nooit hoofdtrainer van FC Barcelona?",
@@ -296,10 +306,12 @@
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/José_Mourinho",
-      "https://en.wikipedia.org/wiki/List_of_FC_Barcelona_managers"
+      "https://en.wikipedia.org/wiki/List_of_FC_Barcelona_managers",
+      "https://en.wikipedia.org/wiki/2026%E2%80%9327_Real_Madrid_CF_season"
     ],
     "tags": ["spanje"],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie speelde nooit voor Real Madrid?",
@@ -317,7 +329,8 @@
       "https://en.wikipedia.org/wiki/Lionel_Messi"
     ],
     "tags": ["messi", "spanje"],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie speelde nooit voor Ajax?",
@@ -419,10 +432,12 @@
     "difficulty": 2,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals"
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals",
+      "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup"
     ],
     "tags": ["wk", "messi"],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welke club werd nooit kampioen in de Premier League?",
@@ -440,7 +455,8 @@
       "https://en.wikipedia.org/wiki/List_of_English_football_champions"
     ],
     "tags": [],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welke club werd nooit Bundesliga-kampioen?",
@@ -458,7 +474,8 @@
       "https://en.wikipedia.org/wiki/List_of_German_football_champions"
     ],
     "tags": ["duitsland"],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welke club komt niet uit de regio Madrid?",
@@ -493,10 +510,12 @@
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Hein_Vanhaezebrouck",
-      "https://olympia.clubbrugge.be/en/timeline/2010"
+      "https://olympia.clubbrugge.be/en/timeline/2010",
+      "https://www.voetbalkrant.com/nieuws/2026-08-07/wordt-hij-opnieuw-trainer-hein-vanhaezebrouck-zet-de-deur-op-een-kier"
     ],
     "tags": ["belgie"],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welke Belg won nooit de Champions League?",
@@ -512,14 +531,16 @@
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Vincent_Kompany",
-      "https://en.wikipedia.org/wiki/2023_UEFA_Champions_League_final"
+      "https://en.wikipedia.org/wiki/2023_UEFA_Champions_League_final",
+      "https://en.wikipedia.org/wiki/2026_UEFA_Champions_League_final"
     ],
     "tags": [
       "champions-league",
       "rode-duivels",
       "de-bruyne"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie won de Gouden Schoen niet bij Anderlecht?",
@@ -593,10 +614,12 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Axel_Witsel",
       "https://en.wikipedia.org/wiki/Steven_Defour",
-      "https://en.wikipedia.org/wiki/Marouane_Fellaini"
+      "https://en.wikipedia.org/wiki/Marouane_Fellaini",
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne"
     ],
     "tags": ["de-bruyne", "belgie"],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie speelde nooit voor KRC Genk?",
@@ -615,7 +638,8 @@
       "https://en.wikipedia.org/wiki/Axel_Witsel"
     ],
     "tags": ["de-bruyne", "belgie"],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie hoorde niet bij de Duitse wereldkampioenen van 2014?",
@@ -666,10 +690,12 @@
     "difficulty": 2,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/List_of_UEFA_Cup_and_Europa_League_finals"
+      "https://en.wikipedia.org/wiki/List_of_UEFA_Cup_and_Europa_League_finals",
+      "https://en.wikipedia.org/wiki/2026_UEFA_Europa_League_final"
     ],
     "tags": [],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie speelde nooit voor Inter?",
@@ -728,7 +754,8 @@
       "https://en.wikipedia.org/wiki/1988_European_Cup_Winners'_Cup_final"
     ],
     "tags": ["belgie"],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welke trainer won nooit de Champions League?",
@@ -819,10 +846,12 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/List_of_R.S.C._Anderlecht_managers"
+      "https://en.wikipedia.org/wiki/List_of_R.S.C._Anderlecht_managers",
+      "https://sporza.be/nl/2025/11/18/philippe-clement-gaat-verrassende-uitdaging-aan-bij-engelse-twee~1763462500697/"
     ],
     "tags": ["belgie"],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie speelde nooit voor AS Monaco?",
@@ -878,14 +907,16 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku",
+      "https://www.espn.com/soccer/story/_/id/49591252/fenerbahce-sign-romelu-lukaku-napoli"
     ],
     "tags": [
       "rode-duivels",
       "lukaku",
       "de-bruyne"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welk land was geen groepstegenstander van België op het WK 2014?",
@@ -1168,7 +1199,8 @@
     "tags": [
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie speelde nooit voor Atlético Madrid?",
@@ -1210,13 +1242,15 @@
       "https://en.wikipedia.org/wiki/Axel_Witsel",
       "https://en.wikipedia.org/wiki/Thorgan_Hazard",
       "https://en.wikipedia.org/wiki/Thomas_Meunier",
-      "https://en.wikipedia.org/wiki/Youri_Tielemans"
+      "https://en.wikipedia.org/wiki/Youri_Tielemans",
+      "https://www.tsn.ca/soccer/fifa-world-cup/article/report-tielemans-set-to-join-united-from-villa/"
     ],
     "tags": [
       "rode-duivels",
       "duitsland"
     ],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie speelde nooit voor VfL Wolfsburg?",
@@ -1259,12 +1293,14 @@
       "https://en.wikipedia.org/wiki/Youri_Tielemans",
       "https://en.wikipedia.org/wiki/Leandro_Trossard",
       "https://en.wikipedia.org/wiki/Christian_Benteke",
-      "https://en.wikipedia.org/wiki/Amadou_Onana"
+      "https://en.wikipedia.org/wiki/Amadou_Onana",
+      "https://www.thestar.com.my/sport/football/2026/07/16/soccer-besiktas-sign-winger-trossard-from-arsenal"
     ],
     "tags": [
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie speelde nooit voor Leicester City?",
@@ -1288,7 +1324,8 @@
       "rode-duivels",
       "de-bruyne"
     ],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie speelde nooit voor Lille?",
@@ -1306,14 +1343,16 @@
       "https://en.wikipedia.org/wiki/Romelu_Lukaku",
       "https://en.wikipedia.org/wiki/Eden_Hazard",
       "https://en.wikipedia.org/wiki/Divock_Origi",
-      "https://en.wikipedia.org/wiki/Jonathan_David"
+      "https://en.wikipedia.org/wiki/Jonathan_David",
+      "https://www.espn.com/soccer/story/_/id/49591252/fenerbahce-sign-romelu-lukaku-napoli"
     ],
     "tags": [
       "rode-duivels",
       "lukaku",
       "frankrijk"
     ],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie speelde nooit voor Hamburger SV?",
@@ -1337,7 +1376,8 @@
       "rode-duivels",
       "duitsland"
     ],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie speelde nooit voor AC Milan?",
@@ -1355,14 +1395,16 @@
       "https://en.wikipedia.org/wiki/Charles_De_Ketelaere",
       "https://en.wikipedia.org/wiki/Divock_Origi",
       "https://en.wikipedia.org/wiki/Romelu_Lukaku",
-      "https://en.wikipedia.org/wiki/Kak%C3%A1"
+      "https://en.wikipedia.org/wiki/Kak%C3%A1",
+      "https://www.espn.com/soccer/story/_/id/49591252/fenerbahce-sign-romelu-lukaku-napoli"
     ],
     "tags": [
       "rode-duivels",
       "lukaku",
       "italie"
     ],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie speelde nooit voor Bayern München?",
@@ -1383,7 +1425,8 @@
       "https://en.wikipedia.org/wiki/Kevin_De_Bruyne"
     ],
     "tags": ["de-bruyne", "duitsland"],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie speelde nooit voor Juventus?",
@@ -1404,7 +1447,8 @@
       "https://en.wikipedia.org/wiki/Andrea_Pirlo"
     ],
     "tags": ["italie"],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welke club werd nooit Italiaans kampioen?",
@@ -1422,7 +1466,8 @@
       "https://en.wikipedia.org/wiki/List_of_Italian_football_champions"
     ],
     "tags": ["italie"],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welke club werd nooit Spaans kampioen?",
@@ -1440,7 +1485,8 @@
       "https://en.wikipedia.org/wiki/List_of_Spanish_football_champions"
     ],
     "tags": ["spanje"],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welke club werd nooit Frans kampioen?",
@@ -1458,7 +1504,8 @@
       "https://en.wikipedia.org/wiki/List_of_French_football_champions"
     ],
     "tags": ["frankrijk"],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welk land won nooit het EK?",
@@ -1476,7 +1523,8 @@
       "https://en.wikipedia.org/wiki/UEFA_European_Championship"
     ],
     "tags": [],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welke buitenlander won nooit de Gouden Schoen?",
@@ -1491,13 +1539,15 @@
     "difficulty": 4,
     "status": "approved",
     "sources": [
-      "https://nl.wikipedia.org/wiki/Gouden_Schoen_(Belgi%C3%AB)"
+      "https://nl.wikipedia.org/wiki/Gouden_Schoen_(Belgi%C3%AB)",
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
     ],
     "tags": [
       "gouden-schoen",
       "belgie"
     ],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie werd nooit topschutter van de Belgische hoogste klasse?",
@@ -1512,10 +1562,12 @@
     "difficulty": 4,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Belgian_Pro_League_top_scorers"
+      "https://en.wikipedia.org/wiki/Belgian_Pro_League_top_scorers",
+      "https://en.wikipedia.org/wiki/2025%E2%80%9326_Belgian_Pro_League"
     ],
     "tags": ["belgie"],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welke club won sinds 2010 geen Beker van België?",
@@ -1534,7 +1586,8 @@
       "https://nl.wikipedia.org/wiki/Beker_van_Belgi%C3%AB_(voetbal)"
     ],
     "tags": ["beker-van-belgie", "belgie"],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie was nooit hoofdtrainer van KAA Gent?",
@@ -1552,10 +1605,12 @@
       "https://en.wikipedia.org/wiki/Philippe_Clement",
       "https://en.wikipedia.org/wiki/Michel_Preud%27homme",
       "https://en.wikipedia.org/wiki/Trond_Sollied",
-      "https://en.wikipedia.org/wiki/Jess_Thorup"
+      "https://en.wikipedia.org/wiki/Jess_Thorup",
+      "https://sporza.be/nl/2025/11/18/philippe-clement-gaat-verrassende-uitdaging-aan-bij-engelse-twee~1763462500697/"
     ],
     "tags": ["belgie"],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie was nooit hoofdtrainer van KRC Genk?",
@@ -1594,10 +1649,12 @@
       "https://en.wikipedia.org/wiki/Hein_Vanhaezebrouck",
       "https://en.wikipedia.org/wiki/L%C3%A1szl%C3%B3_B%C3%B6l%C3%B6ni",
       "https://en.wikipedia.org/wiki/Michel_Preud%27homme",
-      "https://en.wikipedia.org/wiki/Ivan_Leko"
+      "https://en.wikipedia.org/wiki/Ivan_Leko",
+      "https://www.voetbalkrant.com/nieuws/2026-08-07/wordt-hij-opnieuw-trainer-hein-vanhaezebrouck-zet-de-deur-op-een-kier"
     ],
     "tags": ["belgie"],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welk land was geen groepstegenstander van België op EK 2000?",
@@ -1739,10 +1796,12 @@
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Premier_League_clubs",
-      "https://en.wikipedia.org/wiki/Millwall_F.C."
+      "https://en.wikipedia.org/wiki/Millwall_F.C.",
+      "https://en.wikipedia.org/wiki/2026_EFL_play-offs"
     ],
     "tags": [],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welke doelman scoorde nooit in de Premier League?",
@@ -2235,7 +2294,8 @@
       "de-bruyne",
       "spanje"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welke Nederlander speelde nooit voor FC Barcelona?",
@@ -2329,7 +2389,8 @@
       "wk",
       "messi"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welk land organiseerde nooit een WK?",
@@ -2479,7 +2540,8 @@
     "tags": [
       "champions-league"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie won nooit de Belgische landstitel als hoofdtrainer?",
@@ -2497,10 +2559,12 @@
       "https://en.wikipedia.org/wiki/Philippe_Clement",
       "https://en.wikipedia.org/wiki/Michel_Preud%27homme",
       "https://en.wikipedia.org/wiki/Hein_Vanhaezebrouck",
-      "https://en.wikipedia.org/wiki/Vincent_Kompany"
+      "https://en.wikipedia.org/wiki/Vincent_Kompany",
+      "https://en.wikipedia.org/wiki/2025%E2%80%9326_Belgian_Pro_League"
     ],
     "tags": ["belgie"],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welke stad was geen speelstad van het EK 2000?",
@@ -2557,14 +2621,16 @@
     "difficulty": 4,
     "status": "approved",
     "sources": [
-      "https://nl.wikipedia.org/wiki/Gouden_Schoen_(Belgi%C3%AB)"
+      "https://nl.wikipedia.org/wiki/Gouden_Schoen_(Belgi%C3%AB)",
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
     ],
     "tags": [
       "gouden-schoen",
       "pfaff",
       "belgie"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welke bal was nooit een WK-bal?",
@@ -2618,12 +2684,14 @@
     "difficulty": 4,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals",
+      "https://en.wikipedia.org/wiki/2026_UEFA_Champions_League_final"
     ],
     "tags": [
       "champions-league"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welke club speelt in 2026-27 niet in de Premier League?",
@@ -2722,7 +2790,8 @@
       "https://en.wikipedia.org/wiki/Copa_Am%C3%A9rica"
     ],
     "tags": [],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welk land won nooit de Afrika Cup?",
@@ -2737,10 +2806,12 @@
     "difficulty": 4,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Africa_Cup_of_Nations"
+      "https://en.wikipedia.org/wiki/Africa_Cup_of_Nations",
+      "https://gulfnews.com/sport/football/morocco-crowned-champions-of-africa-cup-of-nations-2025-after-title-stripped-from-senegal-1.500478065"
     ],
     "tags": [],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welke stad was geen speelstad van het WK 2026?",
@@ -2841,12 +2912,14 @@
     "difficulty": 2,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals"
+      "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals",
+      "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup"
     ],
     "tags": [
       "wk"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Bij welke club speelde Stijn Stijnen nooit als profdoelman?",
@@ -3095,7 +3168,8 @@
       "propere-handen",
       "curiosa"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie was geen spelersmakelaar?",
@@ -3245,13 +3319,15 @@
     "difficulty": 2,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku",
+      "https://www.espn.com/soccer/story/_/id/49591252/fenerbahce-sign-romelu-lukaku-napoli"
     ],
     "tags": [
       "lukaku",
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie was nooit ploegmaat van Lukaku bij Inter?",
@@ -3293,13 +3369,15 @@
       "https://en.wikipedia.org/wiki/Romelu_Lukaku",
       "https://en.wikipedia.org/wiki/Antonio_Conte",
       "https://en.wikipedia.org/wiki/Jos%C3%A9_Mourinho",
-      "https://en.wikipedia.org/wiki/Roberto_Mart%C3%ADnez"
+      "https://en.wikipedia.org/wiki/Roberto_Mart%C3%ADnez",
+      "https://www.espn.com/soccer/story/_/id/49591252/fenerbahce-sign-romelu-lukaku-napoli"
     ],
     "tags": [
       "lukaku",
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welke prijs won Lukaku nooit?",
@@ -3315,14 +3393,16 @@
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Romelu_Lukaku",
-      "https://en.wikipedia.org/wiki/2022%E2%80%9323_Inter_Milan_season"
+      "https://en.wikipedia.org/wiki/2022%E2%80%9323_Inter_Milan_season",
+      "https://en.wikipedia.org/wiki/2026_UEFA_Champions_League_final"
     ],
     "tags": [
       "lukaku",
       "rode-duivels",
       "champions-league"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Voor welke club speelde Messi nooit?",
@@ -3342,7 +3422,8 @@
     "tags": [
       "messi"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie speelde nooit samen met Messi bij Paris Saint-Germain?",
@@ -3384,7 +3465,8 @@
       "champions-league",
       "wk"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "In welk jaar won Messi géén Ballon d'Or?",
@@ -3512,12 +3594,14 @@
       "https://en.wikipedia.org/wiki/David_Silva",
       "https://en.wikipedia.org/wiki/Sergio_Ag%C3%BCero",
       "https://en.wikipedia.org/wiki/Erling_Haaland",
-      "https://en.wikipedia.org/wiki/Mohamed_Salah"
+      "https://en.wikipedia.org/wiki/Mohamed_Salah",
+      "https://www.lanacion.com.ar/deportes/futbol/mohamed-salah-se-muda-a-turquia-su-nuevo-club-anuncio-el-acuerdo-y-el-crack-egipcio-firmara-por-dos-nid04082026/"
     ],
     "tags": [
       "de-bruyne"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welke trainer coachte De Bruyne nooit bij een club?",
@@ -3534,12 +3618,14 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
       "https://nl.wikipedia.org/wiki/Kevin_De_Bruyne",
-      "https://en.wikipedia.org/wiki/2025%E2%80%9326_SSC_Napoli_season"
+      "https://en.wikipedia.org/wiki/2025%E2%80%9326_SSC_Napoli_season",
+      "https://www.beinsports.com/en-us/soccer/serie-a/articles/de-bruyne-reassures-napoli-fans-of-return-to-full-fitness-2026-07-11"
     ],
     "tags": [
       "de-bruyne"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welke trofee won De Bruyne nooit?",
@@ -3554,13 +3640,15 @@
     "difficulty": 2,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne"
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
+      "https://en.wikipedia.org/wiki/2026_UEFA_Europa_League_final"
     ],
     "tags": [
       "de-bruyne",
       "champions-league"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Op welk toernooi stond De Bruyne niet met België?",
@@ -3687,7 +3775,8 @@
     "tags": [
       "ballon-dor"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie won tot en met 2025 nooit de Kopa Trofee?",
@@ -3752,7 +3841,8 @@
       "frankrijk",
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welk land was geen tegenstander van Frankrijk in de knock-outfase van het WK 2018?",
@@ -3949,13 +4039,15 @@
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_foreign_S%C3%BCper_Lig_players",
       "https://en.wikipedia.org/wiki/Michy_Batshuayi",
-      "https://en.wikipedia.org/wiki/Dries_Mertens"
+      "https://en.wikipedia.org/wiki/Dries_Mertens",
+      "https://www.beinsports.com/en-us/soccer/serie-a/articles/de-bruyne-reassures-napoli-fans-of-return-to-full-fitness-2026-07-11"
     ],
     "tags": [
       "turkije",
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welke club werd nooit Turks landskampioen?",
@@ -3971,12 +4063,14 @@
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/S%C3%BCper_Lig",
-      "https://en.wikipedia.org/wiki/Arda_Turan"
+      "https://en.wikipedia.org/wiki/Arda_Turan",
+      "https://en.wikipedia.org/wiki/2025%E2%80%9326_S%C3%BCper_Lig"
     ],
     "tags": [
       "turkije"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie speelde nooit voor Galatasaray?",
@@ -4171,13 +4265,15 @@
     "difficulty": 2,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals",
+      "https://en.wikipedia.org/wiki/2026_UEFA_Champions_League_final"
     ],
     "tags": [
       "italie",
       "champions-league"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie werd nooit wereldkampioen met (West-)Duitsland?",
@@ -4263,13 +4359,15 @@
       "https://en.wikipedia.org/wiki/Vincent_Kompany",
       "https://en.wikipedia.org/wiki/Marc_Wilmots",
       "https://en.wikipedia.org/wiki/Daniel_Van_Buyten",
-      "https://en.wikipedia.org/wiki/J%C3%A9r%C3%A9my_Doku"
+      "https://en.wikipedia.org/wiki/J%C3%A9r%C3%A9my_Doku",
+      "https://www.mancity.com/news/mens/jeremy-doku-signs-new-manchester-city-contract-63922209"
     ],
     "tags": [
       "duitsland",
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welke Duitse club won nooit de Europacup I of de Champions League?",
@@ -4284,13 +4382,15 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_winning_managers"
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_winning_managers",
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
     ],
     "tags": [
       "duitsland",
       "champions-league"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Welke club werd in de jaren tachtig geen Belgisch landskampioen?",
@@ -4368,13 +4468,15 @@
     "difficulty": 2,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/R.S.C._Anderlecht"
+      "https://en.wikipedia.org/wiki/R.S.C._Anderlecht",
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
     ],
     "tags": [
       "belgie",
       "anderlecht"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "prompt": "Wie speelde nooit voor FC Barcelona?",
@@ -4481,6 +4583,7 @@
     "explanation": "Vardy (2019-20), Son (2021-22, gedeeld met Salah) en Aubameyang (2018-19, gedeeld met Mané en Salah) wonnen de Gouden Schoen; Lukaku nooit.",
     "difficulty": 2,
     "status": "review",
+    "asOf": "2026-10-26",
     "sources": ["https://en.wikipedia.org/wiki/Premier_League_Golden_Boot"],
     "tags": []
   },
@@ -4506,7 +4609,8 @@
     "explanation": "Heynckes (1997-98), Benítez (2015-16) en Zidane (2016-18 en 2019-21) trainden Real Madrid; Klopp nooit.",
     "difficulty": 2,
     "status": "review",
-    "sources": ["https://en.wikipedia.org/wiki/List_of_Real_Madrid_CF_managers"],
+    "asOf": "2026-10-26",
+    "sources": ["https://en.wikipedia.org/wiki/List_of_Real_Madrid_CF_managers", "https://en.wikipedia.org/wiki/2026%E2%80%9327_Real_Madrid_CF_season"],
     "tags": []
   },
   {
@@ -4526,6 +4630,7 @@
     "explanation": "Haaland (2020-21 en 2022-23), Lewandowski (2019-20) en Benzema (2021-22) waren topschutter van de Champions League; Salah nooit.",
     "difficulty": 4,
     "status": "review",
+    "asOf": "2026-10-26",
     "sources": ["https://en.wikipedia.org/wiki/List_of_UEFA_Champions_League_top_scorers"],
     "tags": ["champions-league"]
   },
@@ -4533,9 +4638,10 @@
     "prompt": "Wie won nooit de Europese Gouden Schoen?",
     "options": ["Luis Suárez", "Mohamed Salah", "Harry Kane", "Lionel Messi"],
     "odd": 1,
-    "explanation": "Suárez (2013-14 gedeeld en 2015-16), Kane (2023-24) en Messi (zes keer) wonnen de Europese Gouden Schoen; Salah nooit.",
+    "explanation": "Suárez (2013-14 gedeeld en 2015-16), Kane (2023-24 en 2025-26) en Messi (zes keer) wonnen de Europese Gouden Schoen; Salah nooit.",
     "difficulty": 4,
     "status": "review",
+    "asOf": "2026-10-26",
     "sources": ["https://en.wikipedia.org/wiki/European_Golden_Shoe"],
     "tags": []
   },
@@ -4546,6 +4652,7 @@
     "explanation": "Wimbledon (1988), Coventry City (1987) en Wigan Athletic (2013) wonnen de FA Cup; Fulham verloor in 1975 als enige finale van West Ham.",
     "difficulty": 4,
     "status": "review",
+    "asOf": "2026-10-26",
     "sources": ["https://en.wikipedia.org/wiki/List_of_FA_Cup_winners"],
     "tags": []
   },
@@ -4579,7 +4686,8 @@
     "explanation": "Zidane (2006), Forlán (2010) en Modrić (2018) wonnen de Gouden Bal; Mbappé won enkel de Gouden Schoen als topschutter.",
     "difficulty": 3,
     "status": "review",
-    "sources": ["https://en.wikipedia.org/wiki/FIFA_World_Cup_awards"],
+    "asOf": "2026-10-26",
+    "sources": ["https://en.wikipedia.org/wiki/FIFA_World_Cup_awards", "https://www.irishtimes.com/sport/soccer/2026/07/20/rodri-wins-world-cup-golden-ball-as-kylian-mbappe-wins-second-golden-boot/"],
     "tags": ["wk"]
   },
   {
@@ -4589,6 +4697,7 @@
     "explanation": "Emery (2016-18), Tuchel (2018-20) en Blanc (2013-16) trainden PSG; Conte nooit.",
     "difficulty": 2,
     "status": "review",
+    "asOf": "2026-10-26",
     "sources": ["https://en.wikipedia.org/wiki/List_of_Paris_Saint-Germain_F.C._managers"],
     "tags": ["frankrijk"]
   },
@@ -4599,7 +4708,8 @@
     "explanation": "Van Gaal (2014-16), Solskjær (2018-21) en Van Nistelrooy (tijdelijk in 2024) leidden United; Pochettino nooit.",
     "difficulty": 2,
     "status": "review",
-    "sources": ["https://en.wikipedia.org/wiki/List_of_Manchester_United_F.C._managers"],
+    "asOf": "2026-10-26",
+    "sources": ["https://en.wikipedia.org/wiki/List_of_Manchester_United_F.C._managers", "https://citizen.digital/article/michael-carrick-given-permanent-deal-as-man-utd-manager-n383225"],
     "tags": []
   },
   {
@@ -4609,6 +4719,7 @@
     "explanation": "Kompany was hoofdtrainer van Anderlecht (eerst als speler-trainer), Burnley (2022-24) en Bayern München (vanaf 2024); Standard trainde hij nooit.",
     "difficulty": 2,
     "status": "review",
+    "asOf": "2026-10-26",
     "sources": ["https://en.wikipedia.org/wiki/Vincent_Kompany"],
     "tags": ["belgie"]
   },
@@ -4642,6 +4753,7 @@
     "explanation": "Lewandowski (zeven keer), Kane (2023-24 en 2024-25) en Aubameyang (2016-17) waren topschutter van de Bundesliga; Haaland nooit.",
     "difficulty": 3,
     "status": "review",
+    "asOf": "2026-10-26",
     "sources": ["https://en.wikipedia.org/wiki/Torj%C3%A4gerkanone"],
     "tags": ["duitsland"]
   },
@@ -4652,6 +4764,7 @@
     "explanation": "Higuaín (2015-16, 36 goals), Ronaldo (2020-21, 29 goals) en Osimhen (2022-23, 26 goals) werden topschutter van de Serie A; Lukaku nooit.",
     "difficulty": 3,
     "status": "review",
+    "asOf": "2026-10-26",
     "sources": ["https://en.wikipedia.org/wiki/Capocannoniere"],
     "tags": ["italie"]
   },
@@ -4662,6 +4775,7 @@
     "explanation": "Ranieri (Leicester, 2015-16), Pellegrini (Manchester City, 2013-14) en Conte (Chelsea, 2016-17) werden kampioen; Benítez nooit.",
     "difficulty": 3,
     "status": "review",
+    "asOf": "2026-10-26",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Premier_League_winning_managers",
       "https://en.wikipedia.org/wiki/Rafael_Ben%C3%ADtez"
@@ -4685,6 +4799,7 @@
     "explanation": "Kane werd als jonge speler van Tottenham uitgeleend aan Leyton Orient, Millwall, Norwich City en Leicester City; voor Crystal Palace speelde hij nooit.",
     "difficulty": 4,
     "status": "review",
+    "asOf": "2026-10-26",
     "sources": ["https://en.wikipedia.org/wiki/Harry_Kane"],
     "tags": []
   },
@@ -4695,6 +4810,7 @@
     "explanation": "Tielemans, Dendoncker en Lukaku speelden bij Anderlecht; De Bruyne ging van Genk naar Chelsea en speelde nooit voor Anderlecht.",
     "difficulty": 2,
     "status": "review",
+    "asOf": "2026-10-26",
     "sources": [
       "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
       "https://en.wikipedia.org/wiki/Youri_Tielemans",

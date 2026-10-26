@@ -101,7 +101,8 @@
       "champions-league",
       "italie"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Zlatan Ibrahimović",
@@ -129,7 +130,8 @@
       "https://www.funkidslive.com/sport/5-facts-probably-didnt-know-zlatan-ibrahimovic/"
     ],
     "tags": ["lukaku", "messi"],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Kaká",
@@ -228,10 +230,12 @@
     ],
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Edin_D%C5%BEeko"
+      "https://en.wikipedia.org/wiki/Edin_D%C5%BEeko",
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_50_or_more_international_goals"
     ],
     "tags": ["lukaku"],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Victor Osimhen",
@@ -275,10 +279,12 @@
     ],
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Lautaro_Mart%C3%ADnez"
+      "https://en.wikipedia.org/wiki/Lautaro_Mart%C3%ADnez",
+      "https://www.beinsports.com/en-au/football/serie-a/articles/chivu-backs-martinez-to-have-big-season-for-inter-2026-08-29"
     ],
     "tags": ["wk", "lukaku", "messi"],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Nicolò Barella",
@@ -346,14 +352,16 @@
     ],
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Wesley_Sneijder"
+      "https://en.wikipedia.org/wiki/Wesley_Sneijder",
+      "https://rsssf.org/miscellaneous/ned-recintlp.html"
     ],
     "tags": [
       "familie",
       "champions-league",
       "oranje"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Khvicha Kvaratskhelia",
@@ -717,7 +725,8 @@
       "https://www.fotmob.com/fi/news/196p63lrzty7g13mh2gd5v31w5/Marseille-legend-Mandanda-departs-after-record-613-games-for-Ligue-1-giants"
     ],
     "tags": ["familie", "frankrijk"],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Achraf Hakimi",

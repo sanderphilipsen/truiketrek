@@ -140,12 +140,14 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Belgium_national_football_team"
+      "https://en.wikipedia.org/wiki/Belgium_national_football_team",
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_100_or_more_international_caps"
     ],
     "tags": [
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie opende de score in de troostfinale van WK 2018?",
@@ -834,10 +836,12 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Premier_League_records_and_statistics"
+      "https://en.wikipedia.org/wiki/Premier_League_records_and_statistics",
+      "https://en.wikipedia.org/wiki/List_of_Premier_League_players_with_100_or_more_goals"
     ],
     "tags": [],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke club won de Champions League het vaakst?",
@@ -2944,13 +2948,15 @@
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_top_goalscorers",
-      "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup"
+      "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup",
+      "https://www.thestar.com.my/sport/football/2026/07/19/factbox-soccer-list-of-all-time-top-scorers-at-world-cup"
     ],
     "tags": [
       "wk",
       "messi"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welk land werd in 1978 in eigen land wereldkampioen?",
@@ -4641,7 +4647,8 @@
     "tags": [
       "curiosa"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "In welke stad is doelman Stijn Stijnen geboren?",
@@ -6368,14 +6375,16 @@
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
-      "https://en.wikipedia.org/wiki/2025%E2%80%9326_SSC_Napoli_season"
+      "https://en.wikipedia.org/wiki/2025%E2%80%9326_SSC_Napoli_season",
+      "https://sport.virgilio.it/calcio/giocatori/kevin-de-bruyne/7/"
     ],
     "tags": [
       "de-bruyne",
       "rode-duivels",
       "italie"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Tegen welk land debuteerde De Bruyne in 2010 bij de Rode Duivels?",
@@ -6455,7 +6464,8 @@
     "tags": [
       "ballon-dor"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie won in 2018 de allereerste Ballon d'Or Féminin?",
@@ -6669,7 +6679,8 @@
     "tags": [
       "ballon-dor"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie scoorde de 3-0 in de WK-finale van 1998 tegen Brazilië?",
@@ -7045,12 +7056,14 @@
     "difficulty": 2,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Primeira_Liga"
+      "https://en.wikipedia.org/wiki/Primeira_Liga",
+      "https://www.rtp.pt/noticias/fc-porto/fc-porto-campeao-apos-epoca-a-liderar_d1738570"
     ],
     "tags": [
       "portugal"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Hoe snel scoorde Hakan Şükür tegen Zuid-Korea op het WK 2002 het snelste doelpunt uit de WK-geschiedenis?",
@@ -7124,12 +7137,15 @@
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Turkey_national_football_team",
-      "https://en.wikipedia.org/wiki/R%C3%BC%C5%9Ft%C3%BC_Re%C3%A7ber"
+      "https://en.wikipedia.org/wiki/R%C3%BC%C5%9Ft%C3%BC_Re%C3%A7ber",
+      "https://en.wikipedia.org/wiki/List_of_Turkey_international_footballers",
+      "https://www.11v11.com/teams/turkey/tab/stats/option/appearances/"
     ],
     "tags": [
       "turkije"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welk land schakelde Turkije in 2008 in de EK-halve finale uit met een goal in de laatste minuut?",
@@ -7321,12 +7337,14 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Netherlands_national_football_team"
+      "https://en.wikipedia.org/wiki/Netherlands_national_football_team",
+      "https://rsssf.org/miscellaneous/ned-recintlp.html"
     ],
     "tags": [
       "oranje"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie is de topscorer aller tijden van de Eredivisie?",
@@ -7345,7 +7363,8 @@
     "tags": [
       "oranje"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Welke twee clubs spelen 'De Klassieker'?",
@@ -8069,7 +8088,8 @@
       "belgie",
       "anderlecht"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Wie was bondscoach van Spanje bij de EK-titel van 2008?",
@@ -8468,6 +8488,7 @@
     "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/List_of_UEFA_Champions_League_top_scorers"],
     "tags": ["champions-league", "messi"],
+    "asOf": "2026-10-26",
     "checkedAt": "2026-10-26"
   },
   {
@@ -8991,8 +9012,9 @@
     "correct": 1,
     "difficulty": 1,
     "status": "approved",
-    "sources": ["https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_50_or_more_international_goals"],
+    "sources": ["https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_50_or_more_international_goals", "https://www.guinnessworldrecords.com/world-records/64289-most-international-caps-for-football-soccer-by-an-individual-male"],
     "tags": ["portugal"],
+    "asOf": "2026-10-26",
     "checkedAt": "2026-10-26"
   },
   {
@@ -9153,6 +9175,7 @@
     "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Carlo_Ancelotti", "https://www.cbssports.com/soccer/news/why-carlo-ancelotti-is-the-top-manager-in-the-world-as-he-chases-champions-league-title-with-real-madrid/"],
     "tags": ["champions-league", "italie"],
+    "asOf": "2026-10-26",
     "checkedAt": "2026-10-26"
   },
   {
@@ -9173,6 +9196,7 @@
     "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Wayne_Rooney", "https://www.90min.com/posts/manchester-united-all-time-top-scorers"],
     "tags": [],
+    "asOf": "2026-10-26",
     "checkedAt": "2026-10-26"
   },
   {
@@ -9183,6 +9207,7 @@
     "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Thierry_Henry"],
     "tags": ["frankrijk"],
+    "asOf": "2026-10-26",
     "checkedAt": "2026-10-26"
   },
   {
@@ -9201,8 +9226,9 @@
     "correct": 2,
     "difficulty": 3,
     "status": "approved",
-    "sources": ["https://en.wikipedia.org/wiki/Mestalla_Stadium"],
+    "sources": ["https://en.wikipedia.org/wiki/Mestalla_Stadium", "https://stadiumdb.com/news/2026/04/spain_valencia_accelerates_nou_mestalla_works_and_prepares_sale_of_old_stadium"],
     "tags": ["spanje"],
+    "asOf": "2026-10-26",
     "checkedAt": "2026-10-26"
   },
   {
@@ -9253,6 +9279,7 @@
     "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Ryan_Giggs", "https://theanalyst.com/articles/most-premier-league-assists/"],
     "tags": [],
+    "asOf": "2026-10-26",
     "checkedAt": "2026-10-26"
   },
   {
@@ -9461,8 +9488,9 @@
     "correct": 2,
     "difficulty": 1,
     "status": "approved",
-    "sources": ["https://en.wikipedia.org/wiki/Belgium_national_football_team"],
+    "sources": ["https://en.wikipedia.org/wiki/Belgium_national_football_team", "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_50_or_more_international_goals"],
     "tags": ["rode-duivels", "lukaku"],
+    "asOf": "2026-10-26",
     "checkedAt": "2026-10-26"
   },
   {

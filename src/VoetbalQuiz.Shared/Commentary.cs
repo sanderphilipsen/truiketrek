@@ -35,6 +35,7 @@ public static class Commentary
     public static string ForResult(AnswerResult result, int maxPoints, int seed) => result switch
     {
         { Correct: false, Points: 0, TimedOut: true } => "Tijd is om!",
+        { Correct: false, Points: 0, EndedOnWrong: true } => Pick(Missed, seed),
         { Correct: false, Points: 0, MyChoice: null, MyYear: null, MyOrder: null, MyPicks: null } => "Gepast.",
         _ => ForResult(result.Correct, result.Points, maxPoints, seed),
     };

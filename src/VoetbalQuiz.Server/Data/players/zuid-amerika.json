@@ -200,14 +200,17 @@
     ],
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Javier_Mascherano"
+      "https://en.wikipedia.org/wiki/Javier_Mascherano",
+      "https://en.wikipedia.org/wiki/Argentina_national_football_team_records_and_statistics",
+      "https://worldsoccertalk.com/news/nicolas-otamendi-retires-from-argentina-with-139-caps-how-many-does-lionel-messi-boast/"
     ],
     "tags": [
       "messi",
       "champions-league",
       "wk"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Dani Alves",

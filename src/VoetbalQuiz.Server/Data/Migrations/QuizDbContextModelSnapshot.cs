@@ -908,6 +908,9 @@ namespace VoetbalQuiz.Server.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text[]");
 
+                    b.Property<DateOnly?>("AsOf")
+                        .HasColumnType("date");
+
                     b.Property<DateOnly?>("CheckedAt")
                         .HasColumnType("date");
 
@@ -970,6 +973,9 @@ namespace VoetbalQuiz.Server.Data.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateOnly?>("AsOf")
+                        .HasColumnType("date");
 
                     b.Property<DateOnly?>("CheckedAt")
                         .HasColumnType("date");

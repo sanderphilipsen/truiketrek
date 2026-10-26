@@ -4,7 +4,7 @@
     "when": "Zomer 2017", "fee": "€222 miljoen, nog altijd het wereldrecord",
     "from": "FC Barcelona", "to": "Paris Saint-Germain",
     "extra": "Braziliaanse aanvaller die zijn afkoopclausule liet lichten",
-    "difficulty": 1, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/List_of_most_expensive_association_football_transfers"], "tags": []
+    "difficulty": 1, "status": "approved", "asOf": "2026-10-26", "checkedAt": "2026-10-26", "sources": ["https://en.wikipedia.org/wiki/List_of_most_expensive_association_football_transfers", "https://www.football365.com/news/summer-transfer-window-2026-most-expensive-players-biggest-deals"], "tags": []
   },
   {
     "answer": "Kylian Mbappé", "aliases": ["Mbappe"],
@@ -95,7 +95,7 @@
     "when": "Zomer 2018", "fee": "Ongeveer €100 miljoen",
     "from": "Real Madrid", "to": "Juventus",
     "extra": "Portugese recordschutter van de Champions League",
-    "difficulty": 2, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Cristiano_Ronaldo"], "tags": ["champions-league"]
+    "difficulty": 2, "status": "approved", "asOf": "2026-10-26", "checkedAt": "2026-10-26", "sources": ["https://en.wikipedia.org/wiki/Cristiano_Ronaldo", "https://en.wikipedia.org/wiki/List_of_UEFA_Champions_League_top_scorers"], "tags": ["champions-league"]
   },
   {
     "answer": "Gareth Bale", "aliases": ["Bale"],
@@ -172,7 +172,7 @@
     "when": "Zomer 2021", "fee": "Transfervrij, na 21 jaar bij dezelfde club",
     "from": "FC Barcelona", "to": "Paris Saint-Germain",
     "extra": "Argentijn met een recordaantal Ballons d'Or",
-    "difficulty": 1, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Lionel_Messi"], "tags": ["champions-league", "messi"]
+    "difficulty": 1, "status": "approved", "asOf": "2026-10-26", "checkedAt": "2026-10-26", "sources": ["https://en.wikipedia.org/wiki/Lionel_Messi", "https://en.wikipedia.org/wiki/Ballon_d%27Or"], "tags": ["champions-league", "messi"]
   },
   {
     "answer": "Kylian Mbappé", "aliases": ["Mbappe"],

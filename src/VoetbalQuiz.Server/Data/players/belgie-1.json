@@ -78,7 +78,8 @@
     ],
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku",
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_50_or_more_international_goals"
     ],
     "tags": [
       "familie",
@@ -89,7 +90,8 @@
       "de-bruyne",
       "belgie"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Thibaut Courtois",
@@ -173,7 +175,8 @@
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Jan_Vertonghen",
-      "https://en.wikipedia.org/wiki/2019_UEFA_Champions_League_final"
+      "https://en.wikipedia.org/wiki/2019_UEFA_Champions_League_final",
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_100_or_more_international_caps"
     ],
     "tags": [
       "rode-duivels",
@@ -183,7 +186,8 @@
       "de-bruyne",
       "belgie"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Toby Alderweireld",
@@ -267,7 +271,8 @@
     ],
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Dries_Mertens"
+      "https://en.wikipedia.org/wiki/Dries_Mertens",
+      "https://sporza.be/nl/2025/08/23/overal-waar-hij-ging-werd-hij-op-handen-gedragen-dries-mertens-de-hartendief-die-onmeetbaar-groot-werd~1755979288047/"
     ],
     "tags": [
       "rode-duivels",
@@ -275,7 +280,8 @@
       "de-bruyne",
       "belgie"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Marouane Fellaini",

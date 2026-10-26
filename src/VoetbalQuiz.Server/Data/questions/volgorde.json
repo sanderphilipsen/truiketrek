@@ -214,7 +214,8 @@
       "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
     ],
     "tags": ["belgie"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: Belgische landstitels (stand na seizoen 2025-26).",
@@ -230,7 +231,8 @@
       "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
     ],
     "tags": ["anderlecht", "club-brugge", "standard", "belgie"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: Bekers van België gewonnen (stand na 2026).",
@@ -246,7 +248,8 @@
       "https://en.wikipedia.org/wiki/Belgian_Cup"
     ],
     "tags": ["beker-van-belgie", "club-brugge", "anderlecht", "belgie"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van duur naar goedkoop: enkele van de duurste transfers ooit.",
@@ -392,7 +395,8 @@
       "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
     ],
     "tags": ["champions-league", "spanje", "italie", "oranje"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: enkele WK-uitschakelingen van de Rode Duivels, van vroeg naar laat.",
@@ -564,7 +568,8 @@
       "https://en.wikipedia.org/wiki/List_of_English_football_champions"
     ],
     "tags": [],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: Italiaanse landstitels (stand na seizoen 2025-26).",
@@ -580,7 +585,8 @@
       "https://en.wikipedia.org/wiki/List_of_Italian_football_champions"
     ],
     "tags": ["italie"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: Spaanse landstitels (stand na seizoen 2025-26).",
@@ -596,7 +602,8 @@
       "https://en.wikipedia.org/wiki/List_of_Spanish_football_champions"
     ],
     "tags": ["spanje"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: Nederlandse landstitels (stand na seizoen 2025-26).",
@@ -612,7 +619,8 @@
       "https://en.wikipedia.org/wiki/List_of_Dutch_football_champions"
     ],
     "tags": ["oranje"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: momenten van Oranje, van vroeg naar laat.",
@@ -773,10 +781,12 @@
     "difficulty": 1,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Belgium_national_football_team"
+      "https://en.wikipedia.org/wiki/Belgium_national_football_team",
+      "https://www.footyheadlines.com/5472946959/belgium-2026-world-cup-squad-numbers-released.html"
     ],
     "tags": ["rode-duivels", "lukaku", "de-bruyne"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: mijlpalen van Kylian Mbappé.",
@@ -856,7 +866,8 @@
       "https://en.wikipedia.org/wiki/List_of_UEFA_Champions_League_winning_managers"
     ],
     "tags": ["champions-league", "italie", "spanje", "portugal", "duitsland"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: mijlpalen van Vincent Kompany.",
@@ -907,7 +918,8 @@
       "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
     ],
     "tags": ["standard", "anderlecht", "club-brugge", "belgie"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: landstitels van deze clubs (stand na seizoen 2025-26).",
@@ -923,7 +935,8 @@
       "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
     ],
     "tags": ["belgie"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: in welk seizoen won deze club haar eerste landstitel?",
@@ -972,7 +985,8 @@
       "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals"
     ],
     "tags": ["beker-van-belgie", "standard", "belgie"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: deze verrassende bekerwinnaars, van vroeg naar laat (jaar van de finale).",
@@ -1061,17 +1075,19 @@
     "question": "Van veel naar weinig: Gouden Schoenen per club (stand na de editie van 2025).",
     "items": [
       { "label": "Anderlecht", "value": "22 (+2 gedeeld met een andere club)" },
-      { "label": "Club Brugge", "value": "17" },
+      { "label": "Club Brugge", "value": "16 (+1 gedeeld met een andere club)" },
       { "label": "Standard", "value": "9" },
       { "label": "Racing Genk", "value": "3" }
     ],
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe",
+      "https://nl.wikipedia.org/wiki/Gouden_Schoen_(Belgi%C3%AB)"
     ],
     "tags": ["gouden-schoen", "anderlecht", "club-brugge", "standard", "belgie"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van oud naar jong: welke Gouden Schoen-winnaar werd het eerst geboren?",
@@ -1595,10 +1611,12 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Belgian_Super_Cup"
+      "https://en.wikipedia.org/wiki/Belgian_Super_Cup",
+      "https://en.wikipedia.org/wiki/2026_Belgian_Super_Cup"
     ],
     "tags": ["club-brugge", "anderlecht", "standard", "belgie"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: punten na de reguliere competitie 2025-26 (voor de play-offs).",
@@ -1662,7 +1680,8 @@
       "https://en.wikipedia.org/wiki/Ebony_Shoe"
     ],
     "tags": ["anderlecht", "club-brugge", "belgie"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: verloren bekerfinales (stand na 2026).",
@@ -1679,7 +1698,8 @@
       "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals"
     ],
     "tags": ["beker-van-belgie", "anderlecht", "standard", "belgie"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: bekerfinales die op strafschoppen beslist werden (jaar van de finale).",
@@ -2739,7 +2759,8 @@
       "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup"
     ],
     "tags": ["wk", "spanje", "duitsland"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: doelpunten op het WK (stand na het WK 2026).",
@@ -2753,10 +2774,12 @@
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/FIFA_World_Cup_top_goalscorers",
-      "https://en.wikipedia.org/wiki/Miroslav_Klose"
+      "https://en.wikipedia.org/wiki/Miroslav_Klose",
+      "https://www.thestar.com.my/sport/football/2026/07/19/factbox-soccer-list-of-all-time-top-scorers-at-world-cup"
     ],
     "tags": ["wk", "messi", "frankrijk", "duitsland"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: aantal doelpunten op het hele WK.",
@@ -3016,10 +3039,11 @@
     "status": "approved",
     "sources": [
       "https://theanalyst.com/2024/06/european-championship-top-scorers/",
-      "https://theanalyst.com/2024/06/european-championship-top-scorers/"
+      "https://en.wikipedia.org/wiki/UEFA_European_Championship_records_and_statistics"
     ],
     "tags": ["portugal", "frankrijk"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: in welk stadion werd de EK-finale gespeeld?",
@@ -3089,7 +3113,8 @@
       "https://en.wikipedia.org/wiki/Copa_Am%C3%A9rica"
     ],
     "tags": ["messi"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: wie won de Afrika Cup?",
@@ -3134,10 +3159,12 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Africa_Cup_of_Nations"
+      "https://en.wikipedia.org/wiki/Africa_Cup_of_Nations",
+      "https://gulfnews.com/sport/football/morocco-crowned-champions-of-africa-cup-of-nations-2025-after-title-stripped-from-senegal-1.500478065"
     ],
     "tags": [],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: titels in de Asian Cup (stand na 2023).",
@@ -3153,7 +3180,8 @@
       "https://en.wikipedia.org/wiki/AFC_Asian_Cup"
     ],
     "tags": [],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: wie won de Asian Cup?",
@@ -3234,7 +3262,8 @@
       "https://theanalyst.com/2023/06/most-womens-world-cup-goals/"
     ],
     "tags": ["wk"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: wie werd Europees kampioen bij de vrouwen?",
@@ -3263,10 +3292,12 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_50_or_more_international_goals"
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_50_or_more_international_goals",
+      "https://www.guinnessworldrecords.com/world-records/64289-most-international-caps-for-football-soccer-by-an-individual-male"
     ],
     "tags": ["messi", "portugal"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: interlands van deze spelers (stand 6 oktober 2026).",
@@ -3279,10 +3310,12 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_100_or_more_international_caps"
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_100_or_more_international_caps",
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_50_or_more_international_goals"
     ],
     "tags": ["messi", "portugal", "spanje"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: interlanddoelpunten voor Duitsland van deze spelers.",
@@ -3343,10 +3376,12 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/England_national_football_team_records_and_statistics"
+      "https://en.wikipedia.org/wiki/England_national_football_team_records_and_statistics",
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_50_or_more_international_goals"
     ],
     "tags": ["legende"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: interlanddoelpunten voor Brazilië (stand 25 september 2026).",
@@ -3359,10 +3394,12 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Brazil_national_football_team_records_and_statistics"
+      "https://en.wikipedia.org/wiki/Brazil_national_football_team_records_and_statistics",
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_50_or_more_international_goals"
     ],
     "tags": ["pele", "legende"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: interlanddoelpunten voor Argentinië van deze spelers (stand 6 oktober 2026).",
@@ -3489,10 +3526,12 @@
     "difficulty": 2,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals",
+      "https://en.wikipedia.org/wiki/2026_UEFA_Champions_League_final"
     ],
     "tags": ["champions-league"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: Europacup I- en Champions League-titels per land (stand na seizoen 2025-26).",
@@ -3505,10 +3544,12 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals",
+      "https://en.wikipedia.org/wiki/2026_UEFA_Champions_League_final"
     ],
     "tags": ["champions-league", "spanje", "italie", "duitsland"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: PSG in Europa, van vroeg naar laat.",
@@ -3638,10 +3679,12 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/List_of_UEFA_Cup_and_Europa_League_finals"
+      "https://en.wikipedia.org/wiki/List_of_UEFA_Cup_and_Europa_League_finals",
+      "https://en.wikipedia.org/wiki/2026_UEFA_Europa_League_final"
     ],
     "tags": ["spanje"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: winnaars van de Conference League, van vroeg naar laat.",
@@ -3676,7 +3719,8 @@
       "https://en.wikipedia.org/wiki/FC_Bayern_Munich"
     ],
     "tags": ["duitsland"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: Franse landstitels (stand na seizoen 2025-26).",
@@ -3692,7 +3736,8 @@
       "https://en.wikipedia.org/wiki/List_of_French_football_champions"
     ],
     "tags": ["frankrijk"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: Portugese landstitels (stand na seizoen 2025-26).",
@@ -3708,10 +3753,12 @@
       "https://en.wikipedia.org/wiki/List_of_Portuguese_football_champions",
       "https://en.wikipedia.org/wiki/S.L._Benfica",
       "https://en.wikipedia.org/wiki/FC_Porto",
-      "https://en.wikipedia.org/wiki/Sporting_CP"
+      "https://en.wikipedia.org/wiki/Sporting_CP",
+      "https://www.rtp.pt/noticias/fc-porto/fc-porto-campeao-apos-epoca-a-liderar_d1738570"
     ],
     "tags": ["portugal"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: wanneer pakten deze Turkse clubs hun laatste landstitel (stand na seizoen 2025-26)?",
@@ -3724,10 +3771,12 @@
     "difficulty": 4,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/List_of_Turkish_football_champions"
+      "https://en.wikipedia.org/wiki/List_of_Turkish_football_champions",
+      "https://en.wikipedia.org/wiki/2025%E2%80%9326_S%C3%BCper_Lig"
     ],
     "tags": ["turkije"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: wanneer pakten deze Nederlandse clubs hun laatste landstitel (stand na seizoen 2025-26)?",
@@ -3740,10 +3789,12 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/List_of_Dutch_football_champions"
+      "https://en.wikipedia.org/wiki/List_of_Dutch_football_champions",
+      "https://en.wikipedia.org/wiki/2025%E2%80%9326_Eredivisie"
     ],
     "tags": ["oranje"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: Premier League-kampioenen, van vroeg naar laat.",
@@ -3775,7 +3826,8 @@
       "https://en.wikipedia.org/wiki/List_of_Spanish_football_champions"
     ],
     "tags": ["spanje"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: wanneer pakten deze Italiaanse clubs hun laatste scudetto (stand na seizoen 2025-26)?",
@@ -3791,7 +3843,8 @@
       "https://en.wikipedia.org/wiki/List_of_Italian_football_champions"
     ],
     "tags": ["italie"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: wanneer pakten deze Duitse clubs hun laatste landstitel (stand na seizoen 2025-26)?",
@@ -3807,7 +3860,8 @@
       "https://en.wikipedia.org/wiki/List_of_German_football_champions"
     ],
     "tags": ["duitsland"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: doelpunten in de Premier League (alle tijden, stand half oktober 2026).",
@@ -3871,7 +3925,8 @@
       "https://en.wikipedia.org/wiki/European_Golden_Shoe"
     ],
     "tags": ["messi", "portugal", "frankrijk"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: wanneer won deze speler voor het eerst de Europese Gouden Schoen?",

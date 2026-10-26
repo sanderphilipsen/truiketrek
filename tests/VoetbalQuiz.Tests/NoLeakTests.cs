@@ -39,6 +39,7 @@ public sealed class NoLeakTests : IDisposable
         QuestionType.Wissel => [Data<WisselData>(q).Answer],
         QuestionType.Rugnummer => [Data<RugnummerData>(q).Answer],
         QuestionType.Mannetje => [Data<MannetjeData>(q).Answer],
+        QuestionType.Fiche => Data<FicheData>(q) is var f ? [f.Answer, .. f.Aliases] : [],
         QuestionType.Opstelling => q.Blanks.Select(i => Data<OpstellingData>(q).Players[i].Name),
         // Een waarde die de opdracht zelf al noemt ("sinds 2004") verraadt niet welk kaartje erbij hoort.
         QuestionType.Volgorde => Data<VolgordeData>(q) is var v ? v.Items.Select(i => i.Value).Where(x => !Contains(v.Question, x)) : [],
@@ -120,6 +121,7 @@ public sealed class NoLeakTests : IDisposable
             if (view.Pins?.Any(p => p.Answer is not null) == true) yield return $"{where}: een speld toont zijn antwoord";
             if (view.Article?.SelectMany(p => p).Any(p => p.Answer is not null) == true) yield return $"{where}: een gat toont zijn antwoord";
             if (view.Rows?.Any(r => r.Mine is not null) == true) yield return $"{where}: een rij toont wie ze vond";
+            if (view.Fiche?.Skip(view.Step).Any(v => v.Value is not null) == true) yield return $"{where}: een dicht veld van het fiche toont zijn waarde";
         }
     }
 

@@ -103,6 +103,10 @@
         </div>
         break;
 
+    case QuestionType.Fiche:
+        <FicheKaart Velden="View?.Fiche ?? []" Note="@View?.Note" Name="@Result.PlayerName" Reveal="true" />
+        break;
+
     case QuestionType.Kaart:
         @* De volle kaart: elke speld groen, oranje (deels) of rood met de club(s), daaronder dezelfde lijst als tekst,
            met bij een fout wat jij koos. *@

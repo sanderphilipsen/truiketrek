@@ -15,7 +15,7 @@ public class PlayerSeeder(QuizDbContext db, IWebHostEnvironment env, ILogger<Pla
     private record PlayerJson(
         string Name, List<string>? Answers, string? Country, string? Competition,
         string? Era, int? Difficulty, List<string> Hints,
-        string? Status, List<string>? Sources, List<string>? Tags, string? ReviewNote, DateOnly? CheckedAt);
+        string? Status, List<string>? Sources, List<string>? Tags, string? ReviewNote, DateOnly? CheckedAt, DateOnly? AsOf);
 
     private static readonly JsonSerializerOptions JsonOptions = new() { PropertyNameCaseInsensitive = true };
 
@@ -87,6 +87,7 @@ public class PlayerSeeder(QuizDbContext db, IWebHostEnvironment env, ILogger<Pla
                 player.Tags = item.Tags ?? [];
                 player.ReviewNote = item.ReviewNote;
                 player.CheckedAt = item.CheckedAt;
+                player.AsOf = item.AsOf;
             }
         }
 

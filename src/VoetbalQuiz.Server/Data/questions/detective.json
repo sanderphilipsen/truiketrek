@@ -118,12 +118,15 @@
       "https://nl.wikipedia.org/wiki/Wesley_Sonck",
       "https://nl.wikipedia.org/wiki/Timmy_Simons",
       "https://nl.wikipedia.org/wiki/Vincent_Kompany",
-      "https://nl.wikipedia.org/wiki/Axel_Witsel"
+      "https://nl.wikipedia.org/wiki/Axel_Witsel",
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe",
+      "https://en.wikipedia.org/wiki/Hans_Vanaken"
     ],
     "tags": [
       "gouden-schoen"
     ],
-    "checkedAt": "2026-10-23"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "story": "gestolen-trofee",

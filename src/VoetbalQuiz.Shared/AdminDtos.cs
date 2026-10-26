@@ -7,7 +7,9 @@ public enum PlayerStatus { Review, Approved, Rejected }
 
 public record PlayerListItem(
     int Id, string Name, PlayerStatus Status, string Country, string Competition, string Era, int Difficulty,
-    List<string> Tags, int Sources, DateOnly? CheckedAt, int TimesUsed, DateOnly? LastUsed, string? ReviewNote);
+    List<string> Tags, int Sources, DateOnly? CheckedAt, int TimesUsed, DateOnly? LastUsed, string? ReviewNote,
+    // De peildatum is te oud (QuestionRules.IsStale): de speler speelt niet tot hij bijgewerkt is.
+    bool Stale = false, DateOnly? AsOf = null);
 
 /// <summary>
 /// Een speler in het admin-paneel. <paramref name="InPlay"/>: waar de speler nu in het spel zit ("de daily van vandaag",
@@ -16,7 +18,9 @@ public record PlayerListItem(
 public record PlayerEdit(
     int Id, string Name, List<string> Answers, string Country, string Competition, string Era, int Difficulty,
     List<string> Hints, List<string> Sources, List<string> Tags, PlayerStatus Status, string? ReviewNote,
-    DateOnly? CheckedAt, string? UpdatedBy, int TimesUsed, string? InPlay = null);
+    DateOnly? CheckedAt, string? UpdatedBy, int TimesUsed, string? InPlay = null,
+    // Peildatum van tijdgevoelige tips (QuestionRules.MaxAgeDays); null = tijdloos.
+    DateOnly? AsOf = null);
 
 public record PlayerCounts(int Review, int Approved, int Rejected);
 
@@ -299,7 +303,9 @@ public record PublicProfile(
 
 public record QuizItemListItem(
     int Id, QuestionType Type, string Label, string Answer, PlayerStatus Status, int Difficulty, List<string> Tags,
-    int Sources, DateOnly? CheckedAt, int TimesUsed, DateOnly? LastUsed, string? ReviewNote);
+    int Sources, DateOnly? CheckedAt, int TimesUsed, DateOnly? LastUsed, string? ReviewNote,
+    // De peildatum is te oud (QuestionRules.IsStale): de vraag speelt niet tot ze bijgewerkt is.
+    bool Stale = false, DateOnly? AsOf = null);
 
 /// <summary>
 /// Een vraag uit de vragenbank. Data is de inhoud als JSON (formaat per type, zie QuestionTypes.cs).
@@ -307,7 +313,9 @@ public record QuizItemListItem(
 /// </summary>
 public record QuizItemEdit(
     int Id, QuestionType Type, string Data, int Difficulty, List<string> Sources, List<string> Tags,
-    PlayerStatus Status, string? ReviewNote, DateOnly? CheckedAt, string? UpdatedBy, int TimesUsed, string? InPlay = null);
+    PlayerStatus Status, string? ReviewNote, DateOnly? CheckedAt, string? UpdatedBy, int TimesUsed, string? InPlay = null,
+    // Peildatum van tijdgevoelige inhoud (QuestionRules.MaxAgeDays); null = tijdloos. Bij een spelersfiche die van het fiche.
+    DateOnly? AsOf = null);
 
 /// <summary>
 /// Een weekdag: één type, of een mix als Mix twee of meer types bevat. KaartCountry: bij een kaartdag het land van de kaart

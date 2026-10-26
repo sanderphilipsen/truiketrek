@@ -28,12 +28,13 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
             .ToListAsync();
 
         var term = AnswerMatcher.Normalize(search);
+        var today = QuizClock.Today(clock);
         return players
             .Where(p => term.Length == 0 || AnswerMatcher.Normalize(p.Name).Contains(term))
             .Where(p => string.IsNullOrEmpty(tag) || p.Tags.Contains(tag))
             .Select(p => new PlayerListItem(p.Id, p.Name, p.Status, p.Country, p.Competition, p.Era, p.Difficulty,
                 p.Tags, p.Sources.Count, p.CheckedAt, usage.GetValueOrDefault(p.Id),
-                lastUsed.TryGetValue(p.Id, out var last) ? last : null, p.ReviewNote))
+                lastUsed.TryGetValue(p.Id, out var last) ? last : null, p.ReviewNote, QuestionRules.IsStale(p.AsOf, today), p.AsOf))
             .ToList();
     }
 
@@ -43,7 +44,7 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
         var usage = await UsageAsync();
         return new PlayerEdit(p.Id, p.Name, p.Answers, p.Country, p.Competition, p.Era, p.Difficulty, p.Hints,
             p.Sources, p.Tags, p.Status, p.ReviewNote, p.CheckedAt, p.UpdatedBy, usage.GetValueOrDefault(p.Id),
-            await InPlayAsync(q => QuestionContent.PlayersOf(q).Contains(p.Id)));
+            await InPlayAsync(q => QuestionContent.PlayersOf(q).Contains(p.Id)), p.AsOf);
     }
 
     /// <summary>
@@ -92,6 +93,7 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
         player.Status = clean.Status;
         player.ReviewNote = clean.Status == PlayerStatus.Approved ? null : clean.ReviewNote;
         if (clean.Status == PlayerStatus.Approved) player.CheckedAt = DateOnly.FromDateTime(Now);
+        player.AsOf = clean.AsOf;
         player.EditedInAdmin = true;
         player.UpdatedBy = adminName;
 
@@ -265,12 +267,13 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
             .ToListAsync();
 
         var term = AnswerMatcher.Normalize(search);
+        var today = QuizClock.Today(clock);
         return items.Select(i =>
             {
                 var (label, answer) = QuestionEngine.Describe(i.Type, i.Data);
                 var u = usage.GetValueOrDefault(i.Id);
                 return new QuizItemListItem(i.Id, i.Type, label, answer, i.Status, i.Difficulty, i.Tags, i.Sources.Count,
-                    i.CheckedAt, u?.Count ?? 0, u?.Last, i.ReviewNote);
+                    i.CheckedAt, u?.Count ?? 0, u?.Last, i.ReviewNote, QuestionRules.IsStale(i.AsOf, today), i.AsOf);
             })
             .Where(i => term.Length == 0 || AnswerMatcher.Normalize(i.Label + " " + i.Answer).Contains(term))
             .OrderBy(i => i.Type).ThenBy(i => i.Label)
@@ -282,7 +285,7 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
         var i = await db.QuizItems.FindAsync(id) ?? throw new QuizException("Vraag niet gevonden.");
         var used = await db.DailyQuestions.CountAsync(q => q.QuizItemId == id);
         return new QuizItemEdit(i.Id, i.Type, i.Data, i.Difficulty, i.Sources, i.Tags, i.Status, i.ReviewNote, i.CheckedAt, i.UpdatedBy, used,
-            await InPlayAsync(q => q.QuizItemId == id));
+            await InPlayAsync(q => q.QuizItemId == id), i.AsOf);
     }
 
     private static List<(string Answer, int? Number)> KrantGaps(string data) => QuestionEngine.KrantGaps(data);
@@ -340,6 +343,7 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
         item.Status = edit.Status;
         item.ReviewNote = edit.Status == PlayerStatus.Approved ? null : edit.ReviewNote;
         if (edit.Status == PlayerStatus.Approved) item.CheckedAt = DateOnly.FromDateTime(Now);
+        item.AsOf = QuestionEngine.AsOfFor(edit.Type, edit.Data, edit.AsOf);
         item.EditedInAdmin = true;
         item.UpdatedBy = adminName;
         await db.SaveChangesAsync();

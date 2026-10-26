@@ -65,7 +65,7 @@
       { "name": "Ousmane Dembélé", "aliases": ["Dembélé", "Dembele"] }
     ],
     "difficulty": 3, "status": "approved",
-    "sources": ["https://en.wikipedia.org/wiki/Ballon_d%27Or"],
-    "tags": ["ballon-dor"], "checkedAt": "2026-10-25"
+    "sources": ["https://en.wikipedia.org/wiki/Ballon_d%27Or", "https://www.beinsports.com/en-us/american-football/articles/when-is-the-2026-ballon-d-or-ceremony-2026-08-24"],
+    "tags": ["ballon-dor"], "asOf": "2026-10-26", "checkedAt": "2026-10-26"
   }
 ]

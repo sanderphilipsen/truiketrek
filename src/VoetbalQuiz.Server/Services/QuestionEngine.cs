@@ -40,6 +40,7 @@ public static class QuestionEngine
             ? $"{k.Competition} {k.Season}: {(IsStadiumPart(q) ? "de stadions" : "de clubs")}"
             : "",
         QuestionType.Lijst => Data<LijstData>(q).Question,
+        QuestionType.Fiche => Data<FicheData>(q).Answer,
         _ => "",
     };
 
@@ -60,6 +61,7 @@ public static class QuestionEngine
         QuestionType.Detective => QuestionRules.DetectiveSeconds,
         QuestionType.Kaart => QuestionRules.KaartSeconds,
         QuestionType.Lijst => QuestionRules.LijstSeconds,
+        QuestionType.Fiche => QuestionRules.RevealLimit(QuestionRules.FicheSteps),
         _ => GameRules.TimeLimitSeconds,
     };
 
@@ -194,6 +196,15 @@ public static class QuestionEngine
                 return ([], new QuestionView(d.Question, MaxPoints: QuestionTypes.Get(QuestionType.Lijst).MaxPoints,
                     Found: a.Found.Count, Total: d.Names.Count, Rows: LijstSlots(d, a, reveal: false)));
             }
+            case QuestionType.Fiche:
+            {
+                // De dichte velden gaan mee zonder waarde: de speler ziet wat er nog komt, nooit wat erin staat.
+                var d = Data<FicheData>(q);
+                var step = QuestionRules.FicheStep(elapsed, a.WrongGuesses);
+                return ([], new QuestionView("Van wie is dit fiche?", Step: step, Steps: QuestionRules.FicheSteps,
+                    // De peildatum zegt "nog actief": pas tonen als de interlands open staan.
+                    Note: step >= QuestionRules.FicheCapsStep ? FicheAsOf(d) : null, Fiche: FicheVelden(d).Select((v, i) => i < step ? v : v with { Value = null }).ToList()));
+            }
             default:
                 return ([], new QuestionView());
         }
@@ -231,6 +242,31 @@ public static class QuestionEngine
     /// <summary>Het rugnummer staat op het shirt; deze tips komen erbij.</summary>
     private static List<string> RugnummerFacts(RugnummerData d) =>
         [$"🧭 {d.Position}", $"🌍 {d.Country}", $"🏟️ {d.Club}", $"💬 {d.Extra}"];
+
+    /// <summary>Spelersfiche: de velden in de volgorde waarin ze openklappen (van vaag naar verraderlijk).</summary>
+    public static List<FicheVeld> FicheVelden(FicheData d) =>
+    [
+        new("Lengte · voet", $"{(d.Height / 100.0).ToString("0.00", System.Globalization.CultureInfo.GetCultureInfo("nl-BE"))} m · {d.Foot}"),
+        new("Geboren", d.BirthYear.ToString()),
+        new("Positie", d.Position),
+        new("Interlands", d.Caps == 0 ? "geen" : $"{d.Caps} {(d.Caps == 1 ? "cap" : "caps")} · {d.Goals} {(d.Goals == 1 ? "goal" : "goals")}"),
+        new("Nationaliteit", d.Country),
+        new("Club", d.Club),
+    ];
+
+    /// <summary>
+    /// De peildatum die een vraag uit de bank krijgt: bij een spelersfiche altijd die van het fiche zelf (die staat op het
+    /// scherm), anders de opgegeven <paramref name="asOf"/>.
+    /// </summary>
+    public static DateOnly? AsOfFor(QuestionType type, string data, DateOnly? asOf)
+    {
+        if (type != QuestionType.Fiche) return asOf;
+        try { return Parse<FicheData>(data).AsOf; }
+        catch (JsonException) { return asOf; }
+    }
+
+    /// <summary>Spelersfiche: de peildatum van interlands en club bij een actieve speler, of null.</summary>
+    private static string? FicheAsOf(FicheData d) => d.AsOf is { } asOf ? $"Interlands en club: stand op {asOf.Day}/{asOf.Month}/{asOf.Year}" : null;
 
     /// <summary>
     /// Mannetje: stap 1 is een donker silhouet (de echte kleuren gaan niet eens mee), stap 2 de kleuren (wazig getoond),
@@ -520,6 +556,15 @@ public static class QuestionEngine
             case QuestionType.Kluts:
                 return Typed(guess, q.Player!.Name, q.Player.Answers, elapsed, a);
 
+            case QuestionType.Fiche:
+            {
+                // Een foute naam opent het volgende veld; fout met alle velden open, dan is de vraag voorbij.
+                var d = Data<FicheData>(q);
+                if (AnswerMatcher.IsMatch(guess, d.Answer, d.Aliases))
+                    return new(true, true, QuestionRules.FichePoints(elapsed, a.WrongGuesses), false);
+                return new(QuestionRules.FicheEndsOnWrong(Math.Max(0, elapsed - GameRules.LatencyGraceSeconds), a.WrongGuesses), false, 0, true);
+            }
+
             case QuestionType.Counter:
             {
                 var current = CounterCurrent(q, a);
@@ -714,7 +759,10 @@ public static class QuestionEngine
         var timedOut = !a.Correct && a.AnsweredAt is { } at && (at - a.StartedAt).TotalSeconds >= TimeLimit(q) - 0.001
                        // Kaart: wie alle spelden binnen de speling beantwoordde, liep niet tegen de tijd aan.
                        && (q.Type != QuestionType.Kaart || a.Found.Count < Data<KaartData>(q).Pins.Count);
-        var baseResult = new AnswerResult(a.Correct, a.Points, AnswerLabel(q), a.WrongGuesses, [], TimedOut: timedOut);
+        // Passen telt als poging maar niet als foute gok: waren alle pogingen fout, dan eindigde de vraag op een foute gok.
+        var endedOnWrong = !a.Correct && !timedOut && a.AnsweredAt is not null && a.WrongGuesses > 0 && a.Guesses == a.WrongGuesses;
+        var baseResult = new AnswerResult(a.Correct, a.Points, AnswerLabel(q), a.WrongGuesses, [], TimedOut: timedOut,
+            EndedOnWrong: endedOnWrong);
         return q.Type switch
         {
             QuestionType.WieBenIk => baseResult with { AllHints = q.Player!.Hints },
@@ -735,6 +783,8 @@ public static class QuestionEngine
                 ? baseResult with { AllHints = [$"🔢 Rugnummer {r.Number}", .. RugnummerFacts(r)] }
                 : baseResult,
             QuestionType.Mannetje => baseResult with { AllHints = Data<MannetjeData>(q).Clues },
+            // De peildatum staat op het fiche zelf (Note van het volledig open fiche), niet nog eens als uitleg.
+            QuestionType.Fiche => baseResult with { AllHints = FicheVelden(Data<FicheData>(q)).Select(v => $"{v.Label}: {v.Value}").ToList() },
             QuestionType.Kluts => baseResult with { AllHints = q.Player!.Hints },
             QuestionType.Counter => baseResult with
             {
@@ -840,6 +890,7 @@ public static class QuestionEngine
         QuestionType.Wissel => Parse<WisselData>(data) is var d ? ($"{d.From} → {d.To} ({d.When})", d.Answer) : ("", ""),
         QuestionType.Rugnummer => Parse<RugnummerData>(data) is var d ? ($"#{d.Number} – {d.Club}", d.Answer) : ("", ""),
         QuestionType.Mannetje => Parse<MannetjeData>(data) is var d ? (string.Join(" · ", d.Clues), d.Answer) : ("", ""),
+        QuestionType.Fiche => Parse<FicheData>(data) is var d ? ($"{d.Position} · {d.Country} · {d.Club}", d.Answer) : ("", ""),
         QuestionType.Volgorde => Parse<VolgordeData>(data) is var d ? (d.Question, string.Join(" → ", d.Items.Select(i => i.Label))) : ("", ""),
         QuestionType.Krant => Parse<KrantData>(data) is var d ? (d.Headline, $"{KrantText.Parse(d.Text).Gaps.Count} gaten") : ("", ""),
         QuestionType.Detective => Parse<DetectiveData>(data) is var d ? (d.Title, CulpritName(d)) : ("", ""),
@@ -854,7 +905,7 @@ public static class QuestionEngine
     public static string KeyFor(QuestionType type, string data) => type switch
     {
         QuestionType.Emoji => Parse<EmojiData>(data) is var d ? $"{d.Emojis}|{d.Answer}" : "",
-        QuestionType.Carriere or QuestionType.Mannetje => Describe(type, data).Answer,
+        QuestionType.Carriere or QuestionType.Mannetje or QuestionType.Fiche => Describe(type, data).Answer,
         QuestionType.Volgorde => Describe(type, data) is var v ? $"{v.Label}|{v.Answer}" : "",
         // Eén kaart per land, competitie en seizoen ("BE|Jupiler Pro League|2026-27"). Een kaart die al in een reeks zit,
         // verandert niet meer van spelden of clubs (zie AdminService.SaveQuizItemAsync en QuestionSeeder): een gewijzigde kaart
@@ -912,6 +963,17 @@ public static class QuestionEngine
                     ? Check(!string.IsNullOrWhiteSpace(d.Answer), "Vul de speler in.")
                         .Concat(Check(Avatars.IsValid(d.Avatar), "Kies een geldige avatar."))
                         .Concat(Check(d.Clues.Count(c => !string.IsNullOrWhiteSpace(c)) >= 2, "Geef minstens 2 tips.")).ToList()
+                    : [],
+                QuestionType.Fiche => Parse<FicheData>(data) is var d
+                    ? Check(!string.IsNullOrWhiteSpace(d.Answer), "Vul de speler in.")
+                        .Concat(Check(d.Height is >= QuestionRules.FicheMinHeight and <= QuestionRules.FicheMaxHeight,
+                            $"De lengte moet tussen {QuestionRules.FicheMinHeight} en {QuestionRules.FicheMaxHeight} cm liggen."))
+                        .Concat(Check(d.Foot is "rechts" or "links" or "beide", "Kies de voet: rechts, links of beide."))
+                        .Concat(Check(d.BirthYear is >= QuestionRules.FicheMinBirthYear and <= QuestionRules.FicheMaxBirthYear,
+                            $"Het geboortejaar moet tussen {QuestionRules.FicheMinBirthYear} en {QuestionRules.FicheMaxBirthYear} liggen."))
+                        .Concat(Check(d.Caps >= 0 && d.Goals >= 0 && d.Goals <= d.Caps * 5, "Controleer de interlands en goals."))
+                        .Concat(Check(new[] { d.Position, d.Country, d.Club }.All(x => !string.IsNullOrWhiteSpace(x)),
+                            "Vul positie, nationaliteit en club in.")).ToList()
                     : [],
                 QuestionType.Volgorde => Parse<VolgordeData>(data) is var d
                     ? Check(!string.IsNullOrWhiteSpace(d.Question), "Vul de opdracht in.")

@@ -113,6 +113,36 @@
                             <label>Extra tip (zonder naam) <input @bind="_extra" @bind:event="oninput" @bind:after="Touch" /></label>
                             break;
 
+                        case QuestionType.Fiche:
+                            <div class="row-2">
+                                <label>Speler <input @bind="_answer" @bind:event="oninput" @bind:after="Touch" placeholder="Bv. Jan Vertonghen" /></label>
+                                <label>Ook goed als antwoord <input @bind="_aliases" @bind:after="Touch" placeholder="Bv. Vertonghen" /></label>
+                            </div>
+                            <div class="row-2">
+                                <label>1. Lengte (cm) <input type="number" min="@QuestionRules.FicheMinHeight" max="@QuestionRules.FicheMaxHeight" @bind="_height" @bind:after="Touch" /></label>
+                                <label>1. Voet
+                                    <select @bind="_foot" @bind:after="Touch">
+                                        <option value="rechts">rechts</option>
+                                        <option value="links">links</option>
+                                        <option value="beide">beide</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="row-2">
+                                <label>2. Geboortejaar <input type="number" min="@QuestionRules.FicheMinBirthYear" max="@QuestionRules.FicheMaxBirthYear" @bind="_birthYear" @bind:after="Touch" /></label>
+                                <label>3. Positie <input @bind="_position" @bind:event="oninput" @bind:after="Touch" placeholder="Centrale verdediger" /></label>
+                            </div>
+                            <div class="row-2">
+                                <label>4. Interlands <input type="number" min="0" @bind="_caps" @bind:after="Touch" /></label>
+                                <label>4. Interlandgoals <input type="number" min="0" @bind="_goals" @bind:after="Touch" /></label>
+                            </div>
+                            <div class="row-2">
+                                <label>5. Nationaliteit <input @bind="_country" @bind:event="oninput" @bind:after="Touch" placeholder="België" /></label>
+                                <label>6. Laatste of huidige club <input @bind="_club" @bind:event="oninput" @bind:after="Touch" placeholder="RSC Anderlecht" /></label>
+                            </div>
+                            <label>Peildatum interlands en club (enkel bij een actieve speler; leeg = gestopt) <input type="date" @bind="_asOf" @bind:after="Touch" /></label>
+                            break;
+
                         case QuestionType.Mannetje:
                             <div class="row-2">
                                 <label>Speler <input @bind="_answer" @bind:event="oninput" @bind:after="Touch" /></label>
@@ -277,6 +307,17 @@
                         }
                     </div>
                     <label>Notitie <input @bind="_note" @bind:after="Touch" /></label>
+                    @if (_type != QuestionType.Fiche)
+                    {
+                        @* Bij een spelersfiche staat de peildatum bij de fichevelden. *@
+                        <label>Peildatum <small class="muted">(enkel als de vraag kan verouderen: een record, "stand na seizoen …", een actieve speler; leeg = tijdloos)</small>
+                            <input type="date" @bind="_asOf" @bind:after="Touch" />
+                        </label>
+                    }
+                    @if (QuestionRules.IsStale(_asOf, DateOnly.FromDateTime(DateTime.Today)))
+                    {
+                        <small class="note"><Icon Name="warning" /> Verouderd: ouder dan @QuestionRules.MaxAgeDays dagen, deze vraag speelt niet tot je ze nakijkt en de peildatum bijwerkt.</small>
+                    }
                 </section>
             </div>
 
@@ -320,6 +361,10 @@
     private string _text = "", _answer = "", _aliases = "", _explanation = "", _lines = "", _kind = "speler", _krantKind = "verslag", _newSource = "";
     private string? _note;
     private int _difficulty = Difficulty.Default, _correct, _year = 2010, _number = 10;
+    // Spelersfiche
+    private int _height = 180, _birthYear = 1990, _caps, _goals;
+    private string _foot = "rechts";
+    private DateOnly? _asOf;
     private string _when = "", _fee = "", _from = "", _to = "", _extra = "", _position = "", _country = "", _club = "", _avatar = Avatars.All[0].Id;
     private List<string> _options = ["", "", "", ""];
     private List<string> _values = ["", "", "", ""];
@@ -350,7 +395,7 @@
             {
                 var q = _original = await Api.GetQuizItemAsync(Id);
                 _type = q.Type;
-                (_difficulty, _note) = (q.Difficulty, q.ReviewNote);
+                (_difficulty, _note, _asOf) = (q.Difficulty, q.ReviewNote, q.AsOf);
                 _sources = [.. q.Sources];
                 _tags = [.. q.Tags];
                 Load(q.Data);
@@ -399,6 +444,11 @@
             case QuestionType.Rugnummer:
                 var r = System.Text.Json.JsonSerializer.Deserialize<RugnummerData>(data, Json)!;
                 (_answer, _aliases, _number, _position, _country, _club, _extra) = (r.Answer, string.Join(", ", r.Aliases), r.Number, r.Position, r.Country, r.Club, r.Extra);
+                break;
+            case QuestionType.Fiche:
+                var f = System.Text.Json.JsonSerializer.Deserialize<FicheData>(data, Json)!;
+                (_answer, _aliases, _height, _foot, _birthYear, _position) = (f.Answer, string.Join(", ", f.Aliases), f.Height, f.Foot, f.BirthYear, f.Position);
+                (_caps, _goals, _country, _club, _asOf) = (f.Caps, f.Goals, f.Country, f.Club, f.AsOf);
                 break;
             case QuestionType.Mannetje:
                 var m = System.Text.Json.JsonSerializer.Deserialize<MannetjeData>(data, Json)!;
@@ -484,6 +534,8 @@
         QuestionType.Wissel => Serialize(new WisselData(_answer.Trim(), Split(_aliases, ','), _when.Trim(), _fee.Trim(), _from.Trim(), _to.Trim(), _extra.Trim())),
         QuestionType.Rugnummer => Serialize(new RugnummerData(_answer.Trim(), Split(_aliases, ','), _number, _position.Trim(), _country.Trim(), _club.Trim(), _extra.Trim())),
         QuestionType.Mannetje => Serialize(new MannetjeData(_answer.Trim(), Split(_aliases, ','), _avatar, Split(_lines, '\n'))),
+        QuestionType.Fiche => Serialize(new FicheData(_answer.Trim(), Split(_aliases, ','), _height, _foot, _birthYear, _position.Trim(), _caps, _goals,
+            _country.Trim(), _club.Trim(), _asOf)),
         QuestionType.Volgorde => Serialize(new VolgordeData(_text.Trim(),
             _options.Zip(_values, (label, value) => new VolgordeItem(label.Trim(), value.Trim())).ToList())),
         QuestionType.Krant => Serialize(new KrantData(_krantKind, _text.Trim(), _explanation.Trim(), _lines.Trim())),
@@ -526,6 +578,14 @@
             case QuestionType.Rugnummer:
                 if (new[] { _answer, _position, _country, _club, _extra }.Any(string.IsNullOrWhiteSpace)) missing.Add("Vul alle velden in.");
                 if (_number is < 1 or > 99) missing.Add("Rugnummer tussen 1 en 99.");
+                break;
+            case QuestionType.Fiche:
+                if (new[] { _answer, _position, _country, _club }.Any(string.IsNullOrWhiteSpace)) missing.Add("Vul alle velden in.");
+                if (_height < QuestionRules.FicheMinHeight || _height > QuestionRules.FicheMaxHeight)
+                    missing.Add($"Lengte tussen {QuestionRules.FicheMinHeight} en {QuestionRules.FicheMaxHeight} cm.");
+                if (_birthYear < QuestionRules.FicheMinBirthYear || _birthYear > QuestionRules.FicheMaxBirthYear)
+                    missing.Add($"Geboortejaar tussen {QuestionRules.FicheMinBirthYear} en {QuestionRules.FicheMaxBirthYear}.");
+                if (_caps < 0 || _goals < 0) missing.Add("Interlands en goals kunnen niet negatief zijn.");
                 break;
             case QuestionType.Mannetje:
                 if (string.IsNullOrWhiteSpace(_answer)) missing.Add("Speler ontbreekt.");
@@ -588,7 +648,7 @@
         (_busy, _error, _message) = (true, null, null);
         try
         {
-            var id = await Api.SaveQuizItemAsync(new QuizItemEdit(Id, _type, Data(), _difficulty, [.. _sources], [.. _tags], status, _note, null, null, 0));
+            var id = await Api.SaveQuizItemAsync(new QuizItemEdit(Id, _type, Data(), _difficulty, [.. _sources], [.. _tags], status, _note, null, null, 0, AsOf: _asOf));
             _dirty = false;
             _message = status == PlayerStatus.Approved ? "Opgeslagen en goedgekeurd." : "Opgeslagen.";
             if (Id == 0) Nav.NavigateTo($"admin/vragen/{id}");

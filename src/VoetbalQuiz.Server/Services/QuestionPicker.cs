@@ -13,6 +13,9 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock, ILogger<Questi
 {
     private DateOnly Today => QuizClock.Today(clock);
 
+    /// <summary>De oudste peildatum die vandaag nog geldt: verouderde vragen en spelers (QuestionRules.IsStale) spelen niet.</summary>
+    private DateOnly Fresh => QuestionRules.FreshFrom(Today);
+
     // ---------- Types ----------
 
     public async Task<HashSet<QuestionType>> DisabledTypesAsync() =>
@@ -65,7 +68,8 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock, ILogger<Questi
     /// </summary>
     public async Task<List<Player>> SpecialPoolAsync(SpecialEvent special)
     {
-        var query = db.Players.Where(p => p.Status != PlayerStatus.Rejected);
+        var fresh = Fresh;
+        var query = db.Players.Where(p => p.Status != PlayerStatus.Rejected && (p.AsOf == null || p.AsOf >= fresh));
         if (special.PlayerIds.Count > 0) return await query.Where(p => special.PlayerIds.Contains(p.Id)).ToListAsync();
         if (special.Tag is null) return [];
         return (await query.ToListAsync()).Where(p => PlayerTags.Any(p.Tags, special.Tag)).ToList();
@@ -82,7 +86,7 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock, ILogger<Questi
             var approvedOnly = ApprovedOnly(type);
             var available = fromPlayers
                 ? (await SpecialPoolAsync(special)).Count
-                : await db.QuizItems.CountAsync(i => i.Type == type && i.Status != PlayerStatus.Rejected
+                : await db.QuizItems.CountAsync(i => i.Type == type && i.Status != PlayerStatus.Rejected && (i.AsOf == null || i.AsOf >= Fresh)
                     && (!approvedOnly || i.Status == PlayerStatus.Approved));
             if (available < needed)
                 problems.Add($"{QuestionTypes.Get(type).Name}: {available} {(fromPlayers ? "spelers" : "vragen")} beschikbaar, {needed} nodig.");
@@ -123,7 +127,8 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock, ILogger<Questi
         var daily = await db.DailyQuestions.Where(q => q.DailyChallenge.Date == Today).ToListAsync();
         var dailyPlayers = daily.SelectMany(QuestionContent.PlayersOf).ToHashSet();
         var dailyItems = daily.Where(q => q.QuizItemId != null).Select(q => q.QuizItemId!.Value).ToHashSet();
-        var pool = await db.Players.Where(p => p.Status != PlayerStatus.Rejected && !dailyPlayers.Contains(p.Id)).ToListAsync();
+        var fresh = Fresh;
+        var pool = await db.Players.Where(p => p.Status != PlayerStatus.Rejected && (p.AsOf == null || p.AsOf >= fresh) && !dailyPlayers.Contains(p.Id)).ToListAsync();
         return (pool, dailyItems);
     }
 
@@ -236,7 +241,8 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock, ILogger<Questi
             .GroupBy(x => x.PlayerId)
             .ToDictionary(g => g.Key, g => g.Max(x => x.Date));
 
-        var candidates = (await db.Players.Where(p => p.Status != PlayerStatus.Rejected).ToListAsync())
+        var freshFrom = Fresh;
+        var candidates = (await db.Players.Where(p => p.Status != PlayerStatus.Rejected && (p.AsOf == null || p.AsOf >= freshFrom)).ToListAsync())
             .Where(p => !exclude.Contains(p.Id))
             .OrderBy(p => p.Status == PlayerStatus.Approved ? 0 : 1)
             .ThenBy(p => lastUsed.TryGetValue(p.Id, out var d) ? d : DateOnly.MinValue)
@@ -271,7 +277,8 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock, ILogger<Questi
             .ToDictionaryAsync(x => x.Id, x => x.LastUsed);
 
         var approvedOnly = ApprovedOnly(type);
-        var ordered = (await db.QuizItems.Where(i => i.Type == type && i.Status != PlayerStatus.Rejected
+        var fresh = Fresh;
+        var ordered = (await db.QuizItems.Where(i => i.Type == type && i.Status != PlayerStatus.Rejected && (i.AsOf == null || i.AsOf >= fresh)
                 && (!approvedOnly || i.Status == PlayerStatus.Approved)).ToListAsync())
             .Where(i => exclude?.Contains(i.Id) != true)
             .OrderBy(i => PlayerTags.Any(i.Tags, tag) ? 0 : 1)
