@@ -113,7 +113,7 @@ Na fases 2 en 4: `spelregel-reviewer` laten meekijken.
 |---|---|---|
 | Fase 0 | uitgevoerd (4e2c6f4) | `NoLeakTests` over de echte inhoud, alle types, bij start/halverwege/einde; faalt voor een type zonder geheimen. Warnings opgelost |
 | Fase 1 | uitgevoerd (4e2c6f4) | `Data/Model/` met per context de entiteiten en hun EF-configuratie; namespace gelijk, geen migratie |
-| Fase 3 (deels) | uitgevoerd | `QuestionTypes.cs` gesplitst, badge-catalogus apart, doorgeefluiken in `QuizService` weg, `AdminService` verdeeld |
+| Fase 3 (deels) | gepland | `QuestionTypes.cs` splitsen, badge-catalogus apart, doorgeefluiken in `QuizService` weg, `AdminService` verdelen. Wacht tot het vraagtype Spelersfiche (backlog 035) gecommit is, dat dezelfde bestanden wijzigt |
 
 Niet gecontroleerd in de analyse: de Razor-pagina's, de migraties, `MonthRankingService`, `OnlineService`,
 `NotificationService` en de seeders (enkel op hoofdlijnen), en de migraties tegen een echte PostgreSQL.
