@@ -294,9 +294,15 @@ public class QuestionPicker(QuizDbContext db, TimeProvider clock, ILogger<Questi
                 : i.Id.ToString();
 
         if (targets is not null)
-            return PickByPlan(ordered, targets, i => i.Difficulty,
+        {
+            List<QuizItem> Plan(bool apart) => PickByPlan(ordered, targets, i => i.Difficulty,
                 i => (PlayerTags.Any(i.Tags, tag) ? 0 : 2) + (i.Status == PlayerStatus.Approved ? 0 : 1),
-                (picked, i) => picked.All(p => Subject(p) != Subject(i)));
+                (picked, i) => picked.All(p => Subject(p) != Subject(i) && (!apart || !QuestionEngine.KrantClash(p.Data, i.Data))));
+            // De Zondag: geen twee artikels die elkaars antwoorden tonen. Lukt dat niet (bv. een kleine special), dan toch.
+            if (type != QuestionType.Krant) return Plan(apart: false);
+            var apart = Plan(apart: true);
+            return apart.Count >= targets.Count ? apart : Plan(apart: false);
+        }
 
         return ordered.DistinctBy(Subject).Take(count).ToList();
     }

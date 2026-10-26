@@ -1109,19 +1109,41 @@ public static class QuestionEngine
     /// </summary>
     private static IEnumerable<string> KrantLeaks(KrantData d, KrantText.Article k)
     {
-        static bool Has(string text, string word) =>
-            System.Text.RegularExpressions.Regex.IsMatch(text, $@"(?<!\w){System.Text.RegularExpressions.Regex.Escape(word)}(?!\w)",
-                System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-
         var top = $"{d.Headline} {d.Intro}";
-        var plain = string.Join(" ", k.Paragraphs.SelectMany(p => p).Where(s => s.Gap < 0).Select(s => s.Text));
+        var plain = KrantPlain(k);
         foreach (var gap in k.Gaps)
             foreach (var answer in gap.Aliases.Prepend(gap.Answer).Where(a => a.Length > 0))
             {
-                if (Has(top, answer)) yield return $"\"{answer}\" staat al in de kop of het intro.";
-                else if (Has(gap.Hint, answer)) yield return $"De hint van een gat verraadt \"{answer}\".";
-                else if ((gap.Number is null || answer.Length > 1) && Has(plain, answer))
+                if (HasWord(top, answer)) yield return $"\"{answer}\" staat al in de kop of het intro.";
+                else if (HasWord(gap.Hint, answer)) yield return $"De hint van een gat verraadt \"{answer}\".";
+                else if ((gap.Number is null || answer.Length > 1) && HasWord(plain, answer))
                     yield return $"\"{answer}\" staat ook als gewone tekst in het artikel.";
             }
     }
+
+    /// <summary>
+    /// De Zondag: de antwoorden van <paramref name="data"/> die <paramref name="other"/> toont (kop, intro, gewone tekst of
+    /// een hint). Zo'n twee artikels komen nooit op dezelfde zondag (zie QuestionPicker). Getallen van één cijfer tellen niet.
+    /// </summary>
+    public static List<string> KrantShownBy(string data, string other)
+    {
+        var o = Parse<KrantData>(other);
+        var k = KrantText.Parse(o.Text);
+        var visible = string.Join(" ", new[] { o.Headline, o.Intro, KrantPlain(k) }.Concat(k.Gaps.Select(g => g.Hint)));
+        return KrantText.Parse(Parse<KrantData>(data).Text).Gaps
+            .SelectMany(g => g.Aliases.Prepend(g.Answer))
+            .Where(a => a.Length > 1 && HasWord(visible, a))
+            .Distinct().ToList();
+    }
+
+    /// <summary>De Zondag: verraden twee artikels elkaars antwoorden (in één van beide richtingen)?</summary>
+    public static bool KrantClash(string a, string b) => KrantShownBy(a, b).Count > 0 || KrantShownBy(b, a).Count > 0;
+
+    private static string KrantPlain(KrantText.Article k) =>
+        string.Join(" ", k.Paragraphs.SelectMany(p => p).Where(s => s.Gap < 0).Select(s => s.Text));
+
+    /// <summary>Staat <paramref name="word"/> als los woord in <paramref name="text"/> ("69" niet in "1969")?</summary>
+    private static bool HasWord(string text, string word) =>
+        System.Text.RegularExpressions.Regex.IsMatch(text, $@"(?<!\w){System.Text.RegularExpressions.Regex.Escape(word)}(?!\w)",
+            System.Text.RegularExpressions.RegexOptions.IgnoreCase);
 }
