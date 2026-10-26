@@ -11,7 +11,7 @@
     "when": "Zomer 2017", "fee": "€180 miljoen, eerst gehuurd en een jaar later definitief",
     "from": "AS Monaco", "to": "Paris Saint-Germain",
     "extra": "Een jaar later werd hij als tiener wereldkampioen met Frankrijk",
-    "difficulty": 3, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Kylian_Mbapp%C3%A9"], "tags": []
+    "difficulty": 2, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Kylian_Mbapp%C3%A9"], "tags": []
   },
   {
     "answer": "João Félix", "aliases": ["Joao Felix", "Felix"],
@@ -39,7 +39,7 @@
     "when": "Zomer 2012", "fee": "Ongeveer €40 miljoen",
     "from": "Lille", "to": "Chelsea",
     "extra": "Belgische dribbelaar die twee jaar op rij uitgeroepen werd tot beste speler van de Franse competitie",
-    "difficulty": 3, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Eden_Hazard"], "tags": ["rode-duivels"]
+    "difficulty": 2, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Eden_Hazard"], "tags": ["rode-duivels"]
   },
   {
     "answer": "Romelu Lukaku", "aliases": ["Lukaku"],
@@ -67,7 +67,7 @@
     "when": "Deadline day, september 2013", "fee": "£27,5 miljoen",
     "from": "Everton", "to": "Manchester United",
     "extra": "Belgische middenvelder met de bekendste haardos van de Premier League",
-    "difficulty": 3, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Marouane_Fellaini"], "tags": ["rode-duivels", "standard"]
+    "difficulty": 2, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Marouane_Fellaini"], "tags": ["rode-duivels", "standard"]
   },
   {
     "answer": "Mesut Özil", "aliases": ["Ozil"],
@@ -109,14 +109,14 @@
     "when": "Zomer 2001", "fee": "Ruim €70 miljoen, toen een wereldrecord",
     "from": "Juventus", "to": "Real Madrid",
     "extra": "Franse wereldkampioen van 1998",
-    "difficulty": 3, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Zin%C3%A9dine_Zidane"], "tags": ["champions-league", "legende"]
+    "difficulty": 2, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Zin%C3%A9dine_Zidane"], "tags": ["champions-league", "legende"]
   },
   {
     "answer": "Luís Figo", "aliases": ["Figo", "Luis Figo"],
     "when": "Zomer 2000", "fee": "€62 miljoen, de afkoopclausule",
     "from": "FC Barcelona", "to": "Real Madrid",
     "extra": "Portugese flankaanvaller; bij zijn tweede terugkeer in Camp Nou (2002) vloog er een varkenskop het veld op",
-    "difficulty": 3, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Lu%C3%ADs_Figo"], "tags": ["champions-league", "legende"]
+    "difficulty": 2, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Lu%C3%ADs_Figo"], "tags": ["champions-league", "legende"]
   },
   {
     "answer": "Diego Maradona", "aliases": ["Maradona"],
@@ -137,14 +137,14 @@
     "when": "Januari 2018", "fee": "£75 miljoen, toen een record voor een verdediger",
     "from": "Southampton", "to": "Liverpool",
     "extra": "Nederlandse centrale verdediger en later aanvoerder van Oranje",
-    "difficulty": 3, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Virgil_van_Dijk"], "tags": ["oranje", "champions-league"]
+    "difficulty": 2, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Virgil_van_Dijk"], "tags": ["oranje", "champions-league"]
   },
   {
     "answer": "Luis Suárez", "aliases": ["Suarez"],
     "when": "Zomer 2014", "fee": "Ongeveer £65 miljoen",
     "from": "Liverpool", "to": "FC Barcelona",
     "extra": "Uruguayaanse spits die net geschorst was na een bijtincident op het WK",
-    "difficulty": 3, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Luis_Su%C3%A1rez"], "tags": ["champions-league"]
+    "difficulty": 2, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Luis_Su%C3%A1rez"], "tags": ["champions-league"]
   },
   {
     "answer": "Jude Bellingham", "aliases": ["Bellingham"],
@@ -200,70 +200,70 @@
     "when": "Zomer 2012", "fee": "€40 miljoen",
     "from": "Benfica", "to": "Zenit Sint-Petersburg",
     "extra": "Belgische middenvelder met een opvallend kapsel, opgeleid bij Standard",
-    "difficulty": 4, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Axel_Witsel"], "tags": ["rode-duivels", "standard"]
+    "difficulty": 1, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Axel_Witsel"], "tags": ["rode-duivels", "standard"]
   },
   {
     "answer": "Jérémy Doku", "aliases": ["Doku"],
     "when": "Zomer 2023", "fee": "Ongeveer €65 miljoen (£55 miljoen)",
     "from": "Stade Rennais", "to": "Manchester City",
     "extra": "Explosieve Belgische dribbelaar, doorgebroken bij Anderlecht",
-    "difficulty": 3, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/J%C3%A9r%C3%A9my_Doku"], "tags": ["rode-duivels", "anderlecht"]
+    "difficulty": 2, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/J%C3%A9r%C3%A9my_Doku"], "tags": ["rode-duivels", "anderlecht"]
   },
   {
     "answer": "Vincent Kompany", "aliases": ["Kompany", "Vince"],
     "when": "Zomer 2008", "fee": "Officieel niet bekendgemaakt, naar verluidt ongeveer £6 miljoen",
     "from": "Hamburger SV", "to": "Manchester City",
     "extra": "Brusselse verdediger die later kapitein en kampioen werd in Manchester",
-    "difficulty": 3, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Vincent_Kompany"], "tags": ["rode-duivels", "anderlecht"]
+    "difficulty": 2, "status": "approved", "checkedAt": "2026-10-18", "sources": ["https://en.wikipedia.org/wiki/Vincent_Kompany"], "tags": ["rode-duivels", "anderlecht"]
   },
   {
     "answer": "Yannick Carrasco", "aliases": ["Carrasco", "Yannick Ferreira Carrasco"],
     "when": "Februari 2018", "fee": "Niet officieel bekendgemaakt, in de pers ongeveer €30 miljoen",
     "from": "Atlético Madrid", "to": "Dalian Yifang",
     "extra": "Belgische flankspeler die bij Monaco doorbrak en in 2016 scoorde in een Champions League-finale",
-    "difficulty": 4, "status": "approved", "checkedAt": "2026-10-20", "sources": ["https://en.wikipedia.org/wiki/Yannick_Carrasco", "https://www.eurosport.com/football/liga/2017-2018/atletico-sell-carrasco-gaitan-to-dalian-yifang-in-china_sto6656824/story.shtml"], "tags": ["rode-duivels"]
+    "difficulty": 3, "status": "approved", "checkedAt": "2026-10-20", "sources": ["https://en.wikipedia.org/wiki/Yannick_Carrasco", "https://www.eurosport.com/football/liga/2017-2018/atletico-sell-carrasco-gaitan-to-dalian-yifang-in-china_sto6656824/story.shtml"], "tags": ["rode-duivels"]
   },
   {
     "answer": "Kevin Mirallas", "aliases": ["Mirallas"],
     "when": "Augustus 2012", "fee": "Naar verluidt £6 miljoen",
     "from": "Olympiacos", "to": "Everton",
     "extra": "Belgische buitenspeler, opgeleid bij Standard, die ook in Lille en Saint-Étienne speelde",
-    "difficulty": 4, "status": "approved", "checkedAt": "2026-10-20", "sources": ["https://en.wikipedia.org/wiki/Kevin_Mirallas"], "tags": ["rode-duivels", "standard"]
+    "difficulty": 3, "status": "approved", "checkedAt": "2026-10-20", "sources": ["https://en.wikipedia.org/wiki/Kevin_Mirallas"], "tags": ["rode-duivels", "standard"]
   },
   {
     "answer": "Mbark Boussoufa", "aliases": ["Boussoufa"],
     "when": "Maart 2011", "fee": "Naar verluidt tussen €8 en €12 miljoen",
     "from": "Anderlecht", "to": "Anzhi Makhachkala",
     "extra": "Nederlands-Marokkaanse spelmaker en kampioenenmaker bij paars-wit, een eerdere deal met Terek Grozny ging op het laatste nippertje niet door",
-    "difficulty": 4, "status": "approved", "checkedAt": "2026-10-20", "sources": ["https://en.wikipedia.org/wiki/Mbark_Boussoufa", "https://www.lavenir.net/sports/football/d1a/2011/03/11/boussoufa-heureux-et-malheureux-S64IP4Y5AJHRTBOOSCFSBN5TJA/"], "tags": ["anderlecht"]
+    "difficulty": 3, "status": "approved", "checkedAt": "2026-10-20", "sources": ["https://en.wikipedia.org/wiki/Mbark_Boussoufa", "https://www.lavenir.net/sports/football/d1a/2011/03/11/boussoufa-heureux-et-malheureux-S64IP4Y5AJHRTBOOSCFSBN5TJA/"], "tags": ["anderlecht"]
   },
   {
     "answer": "Mousa Dembélé", "aliases": ["Dembele", "Dembélé", "Mousa Dembele"],
     "when": "Augustus 2010", "fee": "Naar verluidt £5 miljoen",
     "from": "AZ Alkmaar", "to": "Fulham",
     "extra": "Antwerpse middenvelder die in 2009 met zijn ploeg de Eredivisie won",
-    "difficulty": 4, "status": "approved", "checkedAt": "2026-10-20", "sources": ["https://en.wikipedia.org/wiki/Mousa_Demb%C3%A9l%C3%A9_(Belgian_footballer)"], "tags": ["rode-duivels"]
+    "difficulty": 3, "status": "approved", "checkedAt": "2026-10-20", "sources": ["https://en.wikipedia.org/wiki/Mousa_Demb%C3%A9l%C3%A9_(Belgian_footballer)"], "tags": ["rode-duivels"]
   },
   {
     "answer": "Christian Benteke", "aliases": ["Benteke"],
     "when": "Augustus 2012", "fee": "Naar verluidt ongeveer £7 miljoen",
     "from": "KRC Genk", "to": "Aston Villa",
     "extra": "Belgische spits die eerder ook al bij Standard speelde",
-    "difficulty": 4, "status": "approved", "checkedAt": "2026-10-20", "sources": ["https://en.wikipedia.org/wiki/Christian_Benteke"], "tags": ["rode-duivels", "standard"]
+    "difficulty": 3, "status": "approved", "checkedAt": "2026-10-20", "sources": ["https://en.wikipedia.org/wiki/Christian_Benteke"], "tags": ["rode-duivels", "standard"]
   },
   {
     "answer": "Michy Batshuayi", "aliases": ["Batshuayi"],
     "when": "Juli 2016", "fee": "Ongeveer €40 miljoen (£33 miljoen)",
     "from": "Olympique de Marseille", "to": "Chelsea",
     "extra": "Belgische spits, opgeleid bij Standard, die zijn medische keuring deed tijdens het EK in Frankrijk",
-    "difficulty": 4, "status": "approved", "checkedAt": "2026-10-20", "sources": ["https://en.wikipedia.org/wiki/Michy_Batshuayi"], "tags": ["rode-duivels", "standard"]
+    "difficulty": 3, "status": "approved", "checkedAt": "2026-10-20", "sources": ["https://en.wikipedia.org/wiki/Michy_Batshuayi"], "tags": ["rode-duivels", "standard"]
   },
   {
     "answer": "Philippe Albert", "aliases": ["Albert"],
     "when": "Augustus 1994", "fee": "Ongeveer £2,6 miljoen",
     "from": "Anderlecht", "to": "Newcastle United",
     "extra": "Belgische verdediger die in 1996 scoorde in een 5-0-zege tegen Manchester United",
-    "difficulty": 5, "status": "approved", "checkedAt": "2026-10-20", "sources": ["https://en.wikipedia.org/wiki/Philippe_Albert", "https://newcastleunited.com/en/news/everyone-knows-his-name"], "tags": ["rode-duivels", "anderlecht", "legende"]
+    "difficulty": 4, "status": "approved", "checkedAt": "2026-10-20", "sources": ["https://en.wikipedia.org/wiki/Philippe_Albert", "https://newcastleunited.com/en/news/everyone-knows-his-name"], "tags": ["rode-duivels", "anderlecht", "legende"]
   },
   {
     "answer": "Luc Nilis", "aliases": ["Nilis"],
@@ -277,14 +277,14 @@
     "when": "Zomer 1996", "fee": "Bedrag niet bekendgemaakt",
     "from": "Standard Luik", "to": "Schalke 04",
     "extra": "Belgische middenvelder die in zijn eerste seizoen in Duitsland de UEFA Cup won en later bondscoach werd",
-    "difficulty": 5, "status": "approved", "checkedAt": "2026-10-20", "sources": ["https://en.wikipedia.org/wiki/Marc_Wilmots", "https://nl.wikipedia.org/wiki/Marc_Wilmots"], "tags": ["rode-duivels", "standard", "legende"]
+    "difficulty": 2, "status": "approved", "checkedAt": "2026-10-20", "sources": ["https://en.wikipedia.org/wiki/Marc_Wilmots", "https://nl.wikipedia.org/wiki/Marc_Wilmots"], "tags": ["rode-duivels", "standard", "legende"]
   },
   {
     "answer": "Eric Gerets", "aliases": ["Gerets"],
     "when": "Zomer 1983", "fee": "Bedrag niet bekendgemaakt",
     "from": "Standard Luik", "to": "AC Milan",
     "extra": "Belgische verdediger met baard en manen, die na een omkoopschandaal een jaar werd geschorst en in 1985 naar Eindhoven trok",
-    "difficulty": 5, "status": "approved", "checkedAt": "2026-10-20", "sources": ["https://nl.wikipedia.org/wiki/Eric_Gerets", "https://en.wikipedia.org/wiki/Eric_Gerets"], "tags": ["rode-duivels", "standard", "legende"]
+    "difficulty": 4, "status": "approved", "checkedAt": "2026-10-20", "sources": ["https://nl.wikipedia.org/wiki/Eric_Gerets", "https://en.wikipedia.org/wiki/Eric_Gerets"], "tags": ["rode-duivels", "standard", "legende"]
   },
   {
     "answer": "Yaya Touré", "aliases": ["Toure", "Yaya Toure"],
@@ -305,7 +305,7 @@
     "when": "Augustus 2022", "fee": "Gemeld ongeveer €35 miljoen",
     "from": "Club Brugge", "to": "AC Milan",
     "extra": "Belgisch toptalent dat bij Club Brugge doorbrak en naar Italië trok",
-    "difficulty": 3, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Charles_De_Ketelaere"], "tags": ["rode-duivels", "club-brugge"]
+    "difficulty": 2, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Charles_De_Ketelaere"], "tags": ["rode-duivels", "club-brugge"]
   },
   {
     "answer": "Lois Openda", "aliases": ["Openda"],
@@ -326,7 +326,7 @@
     "when": "Januari 2023", "fee": "£20 miljoen gegarandeerd, tot £27 miljoen met bonussen",
     "from": "Brighton & Hove Albion", "to": "Arsenal",
     "extra": "Belgische flankaanvaller uit Limburg die bij Genk kampioen werd",
-    "difficulty": 3, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Leandro_Trossard"], "tags": ["rode-duivels"]
+    "difficulty": 2, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Leandro_Trossard"], "tags": ["rode-duivels"]
   },
   {
     "answer": "Jonathan David", "aliases": ["David"],
@@ -340,7 +340,7 @@
     "when": "Juli 2015", "fee": "Gemeld £13 miljoen",
     "from": "Anderlecht", "to": "Newcastle United",
     "extra": "Servische spits die twee jaar eerder voor een clubrecord van €5 miljoen uit Belgrado kwam",
-    "difficulty": 4, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Aleksandar_Mitrovi%C4%87"], "tags": ["anderlecht"]
+    "difficulty": 3, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Aleksandar_Mitrovi%C4%87"], "tags": ["anderlecht"]
   },
   {
     "answer": "Cheikhou Kouyaté", "aliases": ["Kouyate"],
@@ -375,7 +375,7 @@
     "when": "Juni 2013", "fee": "Gemeld £9 miljoen",
     "from": "Sunderland", "to": "Liverpool",
     "extra": "Belgische doelman uit Limburg die later terugkeerde naar zijn land en bij Club Brugge speelde",
-    "difficulty": 4, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Simon_Mignolet"], "tags": ["rode-duivels", "club-brugge"]
+    "difficulty": 3, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Simon_Mignolet"], "tags": ["rode-duivels", "club-brugge"]
   },
   {
     "answer": "Simon Mignolet", "aliases": ["Mignolet"],
@@ -389,6 +389,6 @@
     "when": "1987", "fee": "7,5 miljard lire, destijds een recordbedrag",
     "from": "Anderlecht", "to": "Inter",
     "extra": "Belgische spelmaker van Italiaanse origine die in Milaan maar vier competitiedoelpunten maakte en daarna naar Frankrijk trok",
-    "difficulty": 4, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Enzo_Scifo"], "tags": ["rode-duivels", "anderlecht", "legende"]
+    "difficulty": 3, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Enzo_Scifo"], "tags": ["rode-duivels", "anderlecht", "legende"]
   }
 ]

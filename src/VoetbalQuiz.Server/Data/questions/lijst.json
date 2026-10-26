@@ -64,7 +64,7 @@
       { "name": "Rodri", "aliases": ["Rodrigo Hernández", "Rodrigo Hernandez"] },
       { "name": "Ousmane Dembélé", "aliases": ["Dembélé", "Dembele"] }
     ],
-    "difficulty": 4, "status": "approved",
+    "difficulty": 3, "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Ballon_d%27Or"],
     "tags": ["ballon-dor"], "checkedAt": "2026-10-25"
   }

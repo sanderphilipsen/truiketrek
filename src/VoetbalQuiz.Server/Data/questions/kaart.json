@@ -187,7 +187,7 @@
       { "stadium": "MKM Stadium", "capacity": 24983, "city": "Hull", "lat": 53.7461, "lon": -0.3678, "clubs": ["Hull City"] },
       { "stadium": "Portman Road", "capacity": 30056, "city": "Ipswich", "lat": 52.0550, "lon": 1.1453, "clubs": ["Ipswich Town"] }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2026%E2%80%9327_Premier_League",

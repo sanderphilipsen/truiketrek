@@ -80,7 +80,7 @@
       { "label": "Wesley Sonck", "value": "2001" },
       { "label": "Hans Vanaken", "value": "2018" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
@@ -96,7 +96,7 @@
       { "label": "Brazilië in de Verenigde Staten", "value": "1994" },
       { "label": "Frankrijk in eigen land", "value": "1998" }
     ],
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals"
@@ -112,7 +112,7 @@
       { "label": "Spanje (goal van Iniesta in de verlenging)", "value": "2010" },
       { "label": "Duitsland (goal van Götze in de verlenging)", "value": "2014" }
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals"
@@ -144,7 +144,7 @@
       { "label": "Michel Platini", "value": "3" },
       { "label": "Zinédine Zidane", "value": "1" }
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Ballon_d%27Or"
@@ -224,7 +224,7 @@
       { "label": "Union Sint-Gillis", "value": "12" },
       { "label": "Standard", "value": "10" }
     ],
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
@@ -256,7 +256,7 @@
       { "label": "João Félix van Benfica naar Atlético", "value": "€ 126 mln" },
       { "label": "Jack Grealish van Aston Villa naar Man City", "value": "± € 118 mln" }
     ],
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_most_expensive_association_football_transfers"
@@ -542,7 +542,7 @@
       { "label": "Pär Zetterberg", "value": "2" },
       { "label": "Vincent Kompany", "value": "1" }
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
@@ -687,7 +687,7 @@
       { "label": "Europees kampioen met 4-0 tegen Italië", "value": "2012" },
       { "label": "Europees kampioen in Duitsland", "value": "2024" }
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Spain_national_football_team"
@@ -786,7 +786,7 @@
       { "label": "Wereldkampioen met Frankrijk", "value": "2018" },
       { "label": "Transfervrij naar Real Madrid", "value": "2024" }
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Kylian_Mbapp%C3%A9"
@@ -1048,7 +1048,7 @@
       { "label": "Simon Mignolet", "value": "2022" },
       { "label": "Ardon Jashari", "value": "2025" }
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe",
@@ -1365,7 +1365,7 @@
       { "label": "Met PSG, Leipzig en Manchester City", "value": "2021-22" },
       { "label": "Met Leverkusen, Porto en Atlético (naar de laatste zestien)", "value": "2022-23" }
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Club_Brugge_KV_in_European_football"
@@ -1433,7 +1433,7 @@
       { "label": "Laatste bekerwinst (na strafschoppen tegen Beveren)", "value": "1985" },
       { "label": "Kévin Denkey wordt topschutter", "value": "2024" }
     ],
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Cercle_Brugge_K.S.V.",
@@ -1535,7 +1535,7 @@
       { "label": "Brugge (Club Brugge en Cercle)", "value": "± 120.000" },
       { "label": "Genk (Racing Genk)", "value": "± 66.000" }
     ],
-    "difficulty": 2,
+    "difficulty": 1,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Antwerp",
@@ -1554,7 +1554,7 @@
       { "label": "Sint-Truiden (STVV)", "value": "± 41.000" },
       { "label": "Westerlo (KVC Westerlo)", "value": "± 25.000" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Li%C3%A8ge",
@@ -1656,7 +1656,7 @@
       { "label": "Club Brugge", "value": "5" },
       { "label": "KAA Gent", "value": "3" }
     ],
-    "difficulty": 4,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Ebony_Shoe"
@@ -1672,7 +1672,7 @@
       { "label": "Beveren", "value": "3" },
       { "label": "Racing Genk", "value": "1" }
     ],
-    "difficulty": 4,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgian_Cup",
@@ -1705,7 +1705,7 @@
       { "label": "Axel Witsel", "value": "2008" },
       { "label": "Milan Jovanović", "value": "2009" }
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
@@ -1807,7 +1807,7 @@
       { "label": "2-1 tegen Brazilië", "value": "6 juli 2018" },
       { "label": "0-1 tegen Frankrijk", "value": "10 juli 2018" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_Group_G",
@@ -1842,7 +1842,7 @@
       { "label": "0-0 tegen Italië", "value": "18 juni 1980" },
       { "label": "1-2 tegen West-Duitsland in de finale", "value": "22 juni 1980" }
     ],
-    "difficulty": 4,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_at_the_UEFA_European_Championship"
@@ -1978,7 +1978,7 @@
       { "label": "Mousa Dembélé", "value": "82" },
       { "label": "Paul Van Himst", "value": "81" }
     ],
-    "difficulty": 4,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Belgium_international_footballers"
@@ -2010,7 +2010,7 @@
       { "label": "Marc Degryse", "value": "23" },
       { "label": "Dries Mertens", "value": "21" }
     ],
-    "difficulty": 4,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Belgium_international_footballers",
@@ -2157,7 +2157,7 @@
       { "label": "Transfer naar Borussia Dortmund", "value": "2018" },
       { "label": "Transfer naar Atlético Madrid", "value": "2022" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Axel_Witsel"
@@ -2430,7 +2430,7 @@
       { "label": "Marouane Fellaini", "value": "22 november 1987" },
       { "label": "Axel Witsel", "value": "12 januari 1989" }
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Vincent_Kompany",
@@ -2544,7 +2544,7 @@
       { "label": "Youri Tielemans", "value": "19 jaar" },
       { "label": "Dries Mertens", "value": "23 jaar" }
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Eden_Hazard",
@@ -2601,7 +2601,7 @@
       { "label": "Argentinië", "value": "1978" },
       { "label": "Spanje", "value": "1982" }
     ],
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals",
@@ -2635,7 +2635,7 @@
       { "label": "WK 1998 in Frankrijk", "value": "32" },
       { "label": "WK 2026 in de VS, Canada en Mexico", "value": "48" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/FIFA_World_Cup",
@@ -2716,7 +2716,7 @@
       { "label": "Luzhniki-stadion in Moskou", "value": "2018" },
       { "label": "MetLife Stadium in New Jersey", "value": "2026" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals"
@@ -2749,7 +2749,7 @@
       { "label": "Miroslav Klose", "value": "16" },
       { "label": "Ronaldo (Brazilië)", "value": "15" }
     ],
-    "difficulty": 2,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/FIFA_World_Cup_top_goalscorers",
@@ -2798,7 +2798,7 @@
       { "label": "Frankrijk-Paraguay (1958)", "value": "10" },
       { "label": "Hongarije-Zuid-Korea (1954)", "value": "9" }
     ],
-    "difficulty": 4,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_records_and_statistics"
@@ -2863,7 +2863,7 @@
       { "label": "Carlos Alberto Parreira (Brazilië)", "value": "1994" },
       { "label": "Luis de la Fuente (Spanje)", "value": "2026" }
     ],
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_winning_managers"
@@ -2879,7 +2879,7 @@
       { "label": "Brazilië verliest met 1-7 van Duitsland", "value": "2014" },
       { "label": "Saoedi-Arabië klopt Argentinië met 2-1", "value": "2022" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/England_national_football_team",
@@ -2980,7 +2980,7 @@
       { "label": "Oostenrijk en Zwitserland", "value": "2008" },
       { "label": "Polen en Oekraïne", "value": "2012" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_European_Championship"
@@ -2996,7 +2996,7 @@
       { "label": "EK 1996", "value": "16" },
       { "label": "EK 2016", "value": "24" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_European_Championship"
@@ -3029,7 +3029,7 @@
       { "label": "Ernst-Happel-Stadion in Wenen", "value": "2008" },
       { "label": "Olympiastadion in Kiev", "value": "2012" }
     ],
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2000",
@@ -3083,7 +3083,7 @@
       { "label": "Brazilië", "value": "9" },
       { "label": "Chili", "value": "2" }
     ],
-    "difficulty": 2,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Copa_Am%C3%A9rica"
@@ -3195,7 +3195,7 @@
       { "label": "Japan, na strafschoppen tegen de VS", "value": "2011" },
       { "label": "Spanje, met 1-0 tegen Engeland", "value": "2023" }
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup"
@@ -3211,7 +3211,7 @@
       { "label": "WK 2015 in Canada", "value": "24" },
       { "label": "WK 2023 in Australië en Nieuw-Zeeland", "value": "32" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup"
@@ -3260,7 +3260,7 @@
       { "label": "Ali Daei (Iran)", "value": "108" },
       { "label": "Robert Lewandowski", "value": "92" }
     ],
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_50_or_more_international_goals"
@@ -3276,7 +3276,7 @@
       { "label": "Luka Modrić", "value": "206" },
       { "label": "Sergio Ramos", "value": "180" }
     ],
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_100_or_more_international_caps"
@@ -3308,7 +3308,7 @@
       { "label": "Paolo Maldini", "value": "126" },
       { "label": "Andrea Pirlo", "value": "116" }
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Italy_national_football_team_records_and_statistics"
@@ -3356,7 +3356,7 @@
       { "label": "Ronaldo", "value": "62" },
       { "label": "Romário", "value": "55" }
     ],
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Brazil_national_football_team_records_and_statistics"
@@ -3686,7 +3686,7 @@
       { "label": "Monaco", "value": "8" },
       { "label": "Lyon", "value": "7" }
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_French_football_champions"
@@ -3721,7 +3721,7 @@
       { "label": "Trabzonspor", "value": "2021-22" },
       { "label": "Galatasaray", "value": "2025-26" }
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Turkish_football_champions"
@@ -3833,7 +3833,7 @@
       { "label": "Giuseppe Meazza", "value": "216" },
       { "label": "Roberto Baggio", "value": "205" }
     ],
-    "difficulty": 4,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Serie_A_players_with_100_or_more_goals"
@@ -3849,7 +3849,7 @@
       { "label": "Klaus Fischer", "value": "268" },
       { "label": "Jupp Heynckes", "value": "220" }
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Bundesliga_players_with_100_or_more_goals"
@@ -3929,7 +3929,7 @@
       { "label": "Alexia Putellas", "value": "2021" },
       { "label": "Aitana Bonmatí", "value": "2023" }
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Ballon_d%27Or_F%C3%A9minin"
@@ -3983,7 +3983,7 @@
       { "label": "Arsenal: Emirates Stadium", "value": "± 61.000" },
       { "label": "Chelsea: Stamford Bridge", "value": "± 40.000" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Real_Madrid_CF",
@@ -4131,7 +4131,7 @@
       { "label": "Transfer naar Barcelona", "value": "2007" },
       { "label": "Transfer naar New York Red Bulls", "value": "2010" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Thierry_Henry"
@@ -4179,7 +4179,7 @@
       { "label": "Transfer naar Bayern München", "value": "2023" },
       { "label": "Eerste prijs: landskampioen met Bayern", "value": "2025" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Harry_Kane"
@@ -4211,7 +4211,7 @@
       { "label": "Treble met United", "value": "1999" },
       { "label": "Stopt als trainer", "value": "2013" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Alex_Ferguson",
