@@ -70,7 +70,9 @@ public record QuestionSummary(
     int? Points,
     bool? Correct,
     string? PlayerName,
-    QuestionType Type = QuestionType.WieBenIk)
+    QuestionType Type = QuestionType.WieBenIk,
+    // Halloween Special: de kamer van het Spookhuis (zie Spookhuis); null bij alle andere reeksen.
+    Kamer? Kamer = null)
 {
     /// <summary>
     /// Niet helemaal juist, maar wel punten bij een type met deelpunten (<see cref="QuestionRules.PartialScores"/>):
@@ -91,7 +93,9 @@ public record QuestionState(
     AnswerResult? Result,
     QuestionType Type = QuestionType.WieBenIk,
     double TimeLimit = 30,
-    QuestionView? View = null);
+    QuestionView? View = null,
+    // Halloween Special: de kamer van het Spookhuis (zie Spookhuis); null bij alle andere reeksen.
+    Kamer? Kamer = null);
 
 /// <summary>Wat er van een vraag zichtbaar is, afhankelijk van het type (Hints in QuestionState voor tips en clubs).</summary>
 public record QuestionView(

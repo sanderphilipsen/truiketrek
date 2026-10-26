@@ -494,7 +494,7 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
     /// De knop is donkergroen, of geel als hij de hoofdactie is (zie <see cref="SpecialIsMain"/>).
     /// </summary>
     private RenderFragment SpecialCard(SpecialSummary sp, bool isNew) =>
-        @<section class="home-special @(isNew ? "is-new" : "")" aria-labelledby="special-title-@sp.Id">
+        @<section class="home-special @(isNew ? "is-new" : "") @(sp.Theme == Spookhuis.Theme ? "sfeer-halloween" : "")" aria-labelledby="special-title-@sp.Id">
             @if (sp.Affiche is { } affiche)
             {
                 <a class="affiche-link" href="special/@sp.Id" tabindex="-1" aria-hidden="true"><AfficheBanner Affiche="affiche" /></a>

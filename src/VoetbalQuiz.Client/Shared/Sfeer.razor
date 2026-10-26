@@ -1,0 +1,45 @@
+@implements IAsyncDisposable
+@inject IJSRuntime JS
+@* Seizoenssfeer van een special (eerste stap van backlog 005): zet data-sfeer op <html>, zodat css/screens/sfeer.css de
+   kleuren overschrijft, en tekent een kleine decoratie. Weg zodra de pagina sluit. Null of leeg = geen sfeer. *@
+@if (Name == Spookhuis.Theme)
+{
+    <div class="sfeer-deco" aria-hidden="true">
+        <span class="sfeer-maan"></span>
+        <span class="sfeer-vleermuis v1">🦇</span>
+        <span class="sfeer-vleermuis v2">🦇</span>
+        <span class="sfeer-vleermuis v3">🦇</span>
+    </div>
+}
+
+@code {
+    /// <summary>De sfeer, bv. "halloween" (het thema van de special); enkel de bekende sferen doen iets.</summary>
+    [Parameter] public string? Name { get; set; }
+
+    private static readonly HashSet<string> Known = [Spookhuis.Theme];
+    private string? _applied;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        var wanted = Name is not null && Known.Contains(Name) ? Name : null;
+        if (wanted == _applied) return;
+        _applied = wanted;
+        await SetAsync(wanted);
+    }
+
+    private async Task SetAsync(string? sfeer)
+    {
+        try
+        {
+            if (sfeer is null) await JS.InvokeVoidAsync("document.documentElement.removeAttribute", "data-sfeer");
+            else await JS.InvokeVoidAsync("document.documentElement.setAttribute", "data-sfeer", sfeer);
+        }
+        catch (JSException) { } // geen sfeer: de pagina werkt gewoon
+        catch (JSDisconnectedException) { }
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (_applied is not null) await SetAsync(null);
+    }
+}

@@ -9,12 +9,18 @@
 
 <PageTitle>Vraag @Number – Truitje Trek</PageTitle>
 <PitchFx Mood="@PitchMood" Teams="_affiche" />
+<Sfeer Name="@_theme" />
 <ConfirmSheet @ref="_confirm" />
 
 <PageHeader Title="@($"Vraag {Number} / {_total}")" Label="@(_state is null ? null : Info.Name)" BackHref="@OverviewUrl" Up="true" />
 @if (RunId is not null)
 {
     <p class="training-label"><Icon Name="graduation-cap" /> @TrainingRules.Label</p>
+}
+@if (_state?.Kamer is { } kamer)
+{
+    @* Halloween Special: in welke kamer van het Spookhuis deze vraag speelt. *@
+    <p class="kamer-chip"><span aria-hidden="true">@kamer.Emoji</span> <span class="kamer-label">Kamer:</span> @kamer.Name</p>
 }
 
 @* Altijd aanwezig: schermlezers horen zo het resultaat ("GOAL! Ronaldo, 80 punten") zodra de vraag afgelopen is. *@
@@ -181,8 +187,9 @@ else
         _ => "question",
     };
 
-    // De clubkleuren van een special met een affiche (bv. Anderlecht – Club Brugge).
+    // De clubkleuren van een special met een affiche (bv. Anderlecht – Club Brugge), en het thema voor de sfeer (Halloween).
     private Affiche? _affiche;
+    private string? _theme;
     private int? _afficheFor;
 
     private string ResultAnnouncement => _state?.Result is { } r
@@ -226,8 +233,12 @@ else
     {
         if (SpecialId == _afficheFor) return;
         _afficheFor = SpecialId;
-        try { _affiche = SpecialId is { } id ? (await Api.GetSpecialsAsync()).FirstOrDefault(s => s.Id == id)?.Affiche : null; }
-        catch (ApiException) { _affiche = null; }
+        try
+        {
+            var special = SpecialId is { } id ? (await Api.GetSpecialsAsync()).FirstOrDefault(s => s.Id == id) : null;
+            (_affiche, _theme) = (special?.Affiche, special?.Theme);
+        }
+        catch (ApiException) { (_affiche, _theme) = (null, null); }
     }
 
     private async Task StartQuestionAsync()

@@ -2443,6 +2443,7 @@
     ],
     "tags": [
       "halloween",
+      "spookgoal",
       "duitsland"
     ],
     "checkedAt": "2026-10-19"
@@ -2463,6 +2464,7 @@
     ],
     "tags": [
       "halloween",
+      "vloek",
       "champions-league"
     ],
     "checkedAt": "2026-10-19"
@@ -2484,6 +2486,7 @@
     ],
     "tags": [
       "halloween",
+      "monster",
       "turkije"
     ],
     "checkedAt": "2026-10-19"
@@ -2504,7 +2507,8 @@
       "https://en.wikipedia.org/wiki/Phantom_goal"
     ],
     "tags": [
-      "halloween"
+      "halloween",
+      "spookgoal"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -2546,6 +2550,7 @@
     ],
     "tags": [
       "halloween",
+      "duivels",
       "rode-duivels"
     ],
     "checkedAt": "2026-10-19"
@@ -9962,5 +9967,68 @@
     "sources": ["https://en.wikipedia.org/wiki/Belgian_Golden_Shoe", "https://en.wikipedia.org/wiki/Franky_Van_der_Elst"],
     "tags": ["gouden-schoen", "belgie", "club-brugge"],
     "checkedAt": "2026-10-26"
+  },
+  {
+    "question": "Welke doelman van Manchester United viste in 2005 tegen Tottenham een bal van achter de lijn, zodat de goal niet telde?",
+    "options": ["Tim Howard", "Edwin van der Sar", "Roy Carroll", "Fabien Barthez"],
+    "correct": 2,
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Phantom_goal"],
+    "tags": ["halloween", "spookgoal"]
+  },
+  {
+    "question": "Welke Spaanse topclub strandde van 2005 tot 2010 zes jaar op rij in de achtste finales van de Champions League, de 'achtstefinalevloek'?",
+    "options": ["FC Barcelona", "Real Madrid", "Atlético Madrid", "Valencia"],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Real_Madrid_CF_in_international_football"],
+    "tags": ["halloween", "vloek", "champions-league", "spanje"]
+  },
+  {
+    "question": "Welke Chelsea-verdediger werd in 2013 op Anfield door Luis Suárez gebeten?",
+    "options": ["John Terry", "Gary Cahill", "Branislav Ivanović", "César Azpilicueta"],
+    "correct": 2,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Luis_Su%C3%A1rez_(Uruguayan_footballer)"],
+    "tags": ["halloween", "monster"]
+  },
+  {
+    "question": "Welke Argentijnse ster brak in 1983 zijn enkel na een tackle van Andoni Goikoetxea, 'de Slager van Bilbao'?",
+    "options": ["Jorge Valdano", "Mario Kempes", "Daniel Passarella", "Diego Maradona"],
+    "correct": 3,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Andoni_Goikoetxea"],
+    "tags": ["halloween", "monster", "spanje"]
+  },
+  {
+    "question": "Welke Duitse club draagt de bijnaam 'Die Roten Teufel', de Rode Duivels?",
+    "options": ["1. FC Köln", "FSV Mainz 05", "1. FC Kaiserslautern", "Eintracht Frankfurt"],
+    "correct": 2,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/1._FC_Kaiserslautern"],
+    "tags": ["halloween", "duivels", "duitsland"]
+  },
+  {
+    "question": "Hoe heten de Rode Duivels in het Frans?",
+    "options": ["Les Lions Rouges", "Les Diables Rouges", "Les Coqs Rouges", "Les Aigles Rouges"],
+    "correct": 1,
+    "difficulty": 1,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Belgium_national_football_team"],
+    "tags": ["halloween", "duivels", "rode-duivels", "belgie"]
+  },
+  {
+    "question": "Welke Belg scoorde in 2019 twee keer voor Liverpool in de 4-0 tegen Barcelona, de 'remontada' op Anfield?",
+    "options": ["Dries Mertens", "Divock Origi", "Christian Benteke", "Thorgan Hazard"],
+    "correct": 1,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/2019_UEFA_Champions_League_final", "https://en.wikipedia.org/wiki/Divock_Origi"],
+    "tags": ["halloween", "remontade", "champions-league", "belgie"]
   }
 ]

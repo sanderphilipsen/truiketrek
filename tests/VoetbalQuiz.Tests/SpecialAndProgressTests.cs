@@ -78,6 +78,31 @@ public sealed class SpecialAndProgressTests : IDisposable
     }
 
     [Fact]
+    public async Task Halloween_special_puts_every_question_in_a_room_of_the_spookhuis()
+    {
+        var id = await HalloweenAsync();
+
+        var state = await _quiz.StartAsync(_me, 1, id);
+        Assert.Equal(Spookhuis.Jarig, state.Kamer); // Wie ben ik: de spelers die op Halloween jarig zijn
+        Assert.All((await _quiz.GetOverviewAsync(_me, id)).Questions, q => Assert.Equal(Spookhuis.Jarig, q.Kamer));
+
+        // Een andere special en de daily hebben geen kamers.
+        var kerst = await _admin.SaveSpecialAsync(new SpecialEdit(0, "kerst", "Kerst", "🎄", "", _quiz.Today, _quiz.Today, "halloween", []));
+        Assert.Null((await _quiz.StartAsync(_me, 1, kerst)).Kamer);
+        Assert.Null((await _quiz.StartAsync(_me, 1)).Kamer);
+        Assert.All((await _quiz.GetOverviewAsync(_me)).Questions, q => Assert.Null(q.Kamer));
+    }
+
+    [Theory]
+    [InlineData(new[] { "halloween", "vloek" }, false, "vloek")]
+    [InlineData(new[] { "wk", "halloween", "spookgoal" }, false, "spookgoal")]
+    [InlineData(new[] { "halloween" }, false, "halloween")]   // themavraag zonder kamertag: jarig op Halloween
+    [InlineData(new string[0], false, "zolder")]              // gewone vraag die de voorraad aanvult
+    [InlineData(new[] { "remontade" }, true, "halloween")]    // spelersrondes: altijd jarig op Halloween
+    public void Spookhuis_room_follows_the_tags(string[] tags, bool fromPlayers, string room) =>
+        Assert.Equal(room, Spookhuis.KamerVan(tags, fromPlayers).Tag);
+
+    [Fact]
     public async Task Special_leaderboard_ranks_only_that_special()
     {
         var id = await HalloweenAsync();

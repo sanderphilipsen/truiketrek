@@ -2001,6 +2001,7 @@
     ],
     "tags": [
       "halloween",
+      "duivels",
       "rode-duivels",
       "lukaku"
     ],
@@ -2025,7 +2026,8 @@
       "https://en.wikipedia.org/wiki/ACF_Fiorentina"
     ],
     "tags": [
-      "halloween"
+      "halloween",
+      "vloek"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -2046,6 +2048,7 @@
     ],
     "tags": [
       "halloween",
+      "remontade",
       "duitsland"
     ],
     "checkedAt": "2026-10-19"
@@ -2067,6 +2070,7 @@
     ],
     "tags": [
       "halloween",
+      "vloek",
       "champions-league",
       "portugal"
     ],
@@ -4828,5 +4832,45 @@
     "status": "review",
     "sources": ["https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"],
     "tags": ["belgie"]
+  },
+  {
+    "prompt": "Welke club versloeg Benfica, de club van de vloek van Guttmann, nooit in een Europacup I-finale?",
+    "options": ["AC Milan", "PSV", "Real Madrid", "Manchester United"],
+    "odd": 2,
+    "explanation": "Na de beruchte vloek verloor Benfica finales van AC Milan (1963, 1990), Inter (1965), Manchester United (1968) en PSV (1988, na strafschoppen); Real Madrid werd in 1962 net door Benfica met 5-3 verslagen.",
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/B%C3%A9la_Guttmann", "https://en.wikipedia.org/wiki/S.L._Benfica_in_international_football"],
+    "tags": ["halloween", "vloek", "champions-league", "portugal"]
+  },
+  {
+    "prompt": "Welke club heeft geen 'duivel' in zijn bijnaam?",
+    "options": ["Manchester United", "AC Milan", "Borussia Dortmund", "1. FC Kaiserslautern"],
+    "odd": 2,
+    "explanation": "Manchester United zijn de Red Devils, AC Milan is 'Il Diavolo' en Kaiserslautern heet 'Die Roten Teufel'; Dortmund staat bekend als 'Die Schwarzgelben'.",
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Manchester_United_F.C.", "https://en.wikipedia.org/wiki/AC_Milan", "https://en.wikipedia.org/wiki/1._FC_Kaiserslautern", "https://en.wikipedia.org/wiki/Borussia_Dortmund"],
+    "tags": ["halloween", "duivels", "duitsland"]
+  },
+  {
+    "prompt": "Wie werd nooit gebeten door Luis Suárez?",
+    "options": ["Otman Bakkal", "Branislav Ivanović", "Sergio Ramos", "Giorgio Chiellini"],
+    "odd": 2,
+    "explanation": "Suárez beet PSV-middenvelder Bakkal (2010, bij Ajax), Chelsea-verdediger Ivanović (2013, bij Liverpool) en Chiellini (WK 2014); Sergio Ramos werd nooit het slachtoffer.",
+    "difficulty": 4,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Luis_Su%C3%A1rez_(Uruguayan_footballer)"],
+    "tags": ["halloween", "monster"]
+  },
+  {
+    "prompt": "Welk beroemd doelpunt was géén 'spookgoal', waar twijfel was over de doellijn of het zijnet?",
+    "options": ["Geoff Hurst (WK-finale 1966)", "Diego Maradona (WK 1986, 'Hand van God')", "Frank Lampard (WK 2010)", "Stefan Kießling (Bundesliga 2013)"],
+    "odd": 1,
+    "explanation": "Bij Hurst (lat, 1966), Lampard (afgekeurd, 2010) en Kießling (via een gat in het zijnet, 2013) draaide alles om de doellijn of het net; bij Maradona ging de bal wél legitiem binnen, maar met de hand.",
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Phantom_goal", "https://en.wikipedia.org/wiki/Hand_of_God_(football)"],
+    "tags": ["halloween", "spookgoal"]
   }
 ]

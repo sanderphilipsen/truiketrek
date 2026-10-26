@@ -93,6 +93,7 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
     {
         var challenge = await ChallengeAsync(specialId);
         var attempts = await AttemptsForAsync(userId, challenge);
+        var spookhuis = await IsSpookhuisAsync(specialId);
 
         var questions = challenge.Questions.OrderBy(q => q.Number).Select(q =>
         {
@@ -104,7 +105,7 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
                 status == QuestionStatus.Answered ? a!.Points : null,
                 status == QuestionStatus.Answered ? a!.Correct : null,
                 status == QuestionStatus.Answered ? QuestionEngine.AnswerLabel(q) : null,
-                q.Type);
+                q.Type, spookhuis ? KamerVan(q) : null);
         }).ToList();
 
         await SaveAsync();
@@ -236,8 +237,15 @@ public class QuizService(QuizDbContext db, TimeProvider clock, ResultsService re
     {
         AttemptFlow.CloseIfExpired(question, attempt, Now);
         await SaveAsync();
-        return AttemptFlow.State(question, attempt, Now, lastWrong);
+        var kamer = await IsSpookhuisAsync(question.DailyChallenge.SpecialEventId) ? KamerVan(question) : null;
+        return AttemptFlow.State(question, attempt, Now, lastWrong) with { Kamer = kamer };
     }
+
+    /// <summary>Is dit de Halloween Special (het Spookhuis)? Dan krijgt elke vraag een kamer.</summary>
+    private async Task<bool> IsSpookhuisAsync(int? specialId) =>
+        specialId is { } id && await db.SpecialEvents.AnyAsync(s => s.Id == id && s.Theme == Spookhuis.Theme);
+
+    private static Kamer KamerVan(DailyQuestion q) => Spookhuis.KamerVan(q.QuizItem?.Tags ?? [], QuestionTypes.Get(q.Type).FromPlayers);
 
     private async Task<(DailyQuestion, Attempt?)> FindAsync(string userId, int number, int? specialId)
     {

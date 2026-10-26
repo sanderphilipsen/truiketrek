@@ -1,0 +1,71 @@
+/* Seizoenssfeer (Sfeer.razor zet data-sfeer op <html>) en de kamers van het Spookhuis (Halloween Special).
+   Een sfeer overschrijft enkel variabelen uit tokens.css; juist/fout (--ok, --fail) blijven zoals altijd. */
+
+/* ---------- Halloween: een veld bij volle maan ---------- */
+html[data-sfeer="halloween"] {
+    --pitch: #1a0f24;
+    --pitch-2: #2b1538;
+    --card: #140b1c;
+    --tile-bg: rgba(20, 11, 28, .88);
+    --text: #f6ece0;
+    --muted: #c9b5d8;          /* ≥ 4,5:1 op --card */
+    --accent: #ff8a1f;         /* pompoen */
+    --accent-text: #ffb066;
+    --sb-digit: #ffb066;
+    --sb-line: rgba(255, 138, 31, .3);
+    --sb-line-strong: rgba(255, 138, 31, .62);
+    --border: rgba(255, 138, 31, .35);
+    --control-border: #ff9d47;
+    --divider: rgba(255, 138, 31, .18);
+    --active-bg: rgba(255, 138, 31, .24);
+    --input-bg: #0c0612;
+    --scrim: rgba(10, 4, 16, .75);
+    --special: #ffb066;
+}
+
+.sfeer-deco { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.sfeer-maan {
+    position: absolute; top: 72px; right: 18px; width: 64px; height: 64px; border-radius: 50%;
+    background: radial-gradient(circle at 38% 38%, #fff6dc, #f3d9a0 60%, #d9b56f);
+    box-shadow: 0 0 40px 12px rgba(255, 230, 170, .25);
+    opacity: .85;
+}
+.sfeer-vleermuis {
+    position: absolute; font-size: 1.4rem; opacity: .55; filter: grayscale(1) brightness(.35);
+    animation: sfeer-fladder 14s ease-in-out infinite;
+}
+.sfeer-vleermuis.v1 { top: 22%; left: -10%; }
+.sfeer-vleermuis.v2 { top: 48%; left: -10%; font-size: 1rem; animation-delay: -5s; animation-duration: 18s; }
+.sfeer-vleermuis.v3 { top: 70%; left: -10%; font-size: 1.2rem; animation-delay: -10s; animation-duration: 22s; }
+@keyframes sfeer-fladder {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(35vw, -4vh); }
+    50% { transform: translate(65vw, 3vh); }
+    75% { transform: translate(90vw, -2vh); }
+    100% { transform: translate(120vw, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .sfeer-vleermuis { animation: none; }
+    .sfeer-vleermuis.v1 { left: 12%; }
+    .sfeer-vleermuis.v2 { left: 70%; }
+    .sfeer-vleermuis.v3 { left: 40%; }
+}
+
+/* ---------- Kamers van het Spookhuis ---------- */
+.kamer-chip {
+    display: flex; align-items: center; gap: 8px; width: fit-content; margin: 0 auto 10px;
+    padding: 4px 12px; border-radius: 999px; border: 1px solid var(--sb-line-strong);
+    background: var(--tile-bg); color: var(--accent-text); font-size: .85rem; font-weight: 700;
+}
+.kamer-chip .kamer-label { color: var(--muted); font-weight: 600; }
+.question-list .kamer { font-size: 1rem; margin-right: 2px; }
+
+/* Home: het special-kaartje van Halloween in pompoenkleuren, ook zonder data-sfeer op de pagina. */
+.home-special.sfeer-halloween .special-card {
+    background: linear-gradient(160deg, #2b1538, #140b1c 70%);
+    border-color: rgba(255, 138, 31, .62);
+}
+.home-special.sfeer-halloween .home-special-name::after { content: " 🎃"; }
+.home-special.sfeer-halloween .home-special-play:not(.primary) {
+    background: #2b1538; border-color: rgba(255, 138, 31, .62); color: #ffb066;
+}

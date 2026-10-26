@@ -352,10 +352,10 @@
     "difficulty": 1, "status": "rejected", "sources": ["https://en.wikipedia.org/wiki/Manchester_United_F.C."], "tags": ["halloween"] },
   { "emojis": "🔥🦁🟡🔴", "answer": "Galatasaray", "aliases": ["Gala"], "kind": "club",
     "explanation": "Turkse club met een leeuw (🦁) als symbool, geel-rode kleuren (🟡🔴) en een vuurspuwende, gevreesde sfeer (🔥): 'Welcome to Hell'.",
-    "difficulty": 3, "status": "approved", "sources": ["https://en.wikipedia.org/wiki/Galatasaray_S.K._(football)"], "tags": ["halloween", "turkije"], "checkedAt": "2026-10-19" },
+    "difficulty": 3, "status": "approved", "sources": ["https://en.wikipedia.org/wiki/Galatasaray_S.K._(football)"], "tags": ["halloween", "monster", "turkije"], "checkedAt": "2026-10-19" },
   { "emojis": "🐆🖤🇵🇹🦅", "answer": "Eusébio", "aliases": ["Eusebio"], "kind": "speler",
     "explanation": "Portugese spits met de bijnamen 'Zwarte Panter' (🐆🖤) en 'Zwarte Parel', ster van Benfica (🦅), de club van de vloek van Guttmann.",
-    "difficulty": 3, "status": "approved", "sources": ["https://en.wikipedia.org/wiki/Eus%C3%A9bio"], "tags": ["halloween", "legende", "portugal"], "checkedAt": "2026-10-19" },
+    "difficulty": 3, "status": "approved", "sources": ["https://en.wikipedia.org/wiki/Eus%C3%A9bio"], "tags": ["halloween", "vloek", "legende", "portugal"], "checkedAt": "2026-10-19" },
   { "emojis": "🎅🇧🇷🌪️🏆", "answer": "Jairzinho", "aliases": ["Jair", "Jair Ventura Filho"], "kind": "speler",
     "explanation": "Geboren op eerste kerstdag (🎅), Braziliaanse (🇧🇷) vleugelspeler met de bijnaam 'Furacão' (de Orkaan, 🌪️) die in 1970 wereldkampioen (🏆) werd.",
     "difficulty": 5, "status": "approved", "sources": ["https://en.wikipedia.org/wiki/Jairzinho"], "tags": ["kerst", "legende", "pele"], "checkedAt": "2026-10-19" },
@@ -484,5 +484,14 @@
     "difficulty": 3, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Jamie_Vardy"], "tags": [] },
   { "emojis": "🇨🇮🐘🩵4️⃣", "answer": "Yaya Touré", "aliases": ["Touré", "Toure", "Yaya Toure", "Yaya"], "kind": "speler",
     "explanation": "Ivoriaan (🇨🇮, 'Les Éléphants', 🐘) die bij Manchester City (🩵) speelde, in België bij Beveren terechtkwam en vier (4️⃣) keer op rij Afrikaans Voetballer van het Jaar werd (2011–2014).",
-    "difficulty": 3, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Yaya_Tour%C3%A9", "https://en.wikipedia.org/wiki/K.S.K._Beveren"], "tags": [] }
+    "difficulty": 3, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Yaya_Tour%C3%A9", "https://en.wikipedia.org/wiki/K.S.K._Beveren"], "tags": [] },
+  { "emojis": "🇺🇾🦷😬⚽", "answer": "Luis Suárez", "aliases": ["Suárez", "Suarez", "Luis Suarez"], "kind": "speler",
+    "explanation": "Uruguayaanse (🇺🇾) spits die meermaals zijn tanden (🦷😬) gebruikte op het veld, onder meer tegen Chiellini op het WK 2014, en toch een gevreesde doelpuntenmaker (⚽) was.",
+    "difficulty": 2, "status": "review", "sources": ["https://en.wikipedia.org/wiki/Luis_Su%C3%A1rez_(Uruguayan_footballer)"], "tags": ["halloween", "monster"] },
+  { "emojis": "🔴😈🇩🇪⛰️", "answer": "1. FC Kaiserslautern", "aliases": ["Kaiserslautern", "FC Kaiserslautern", "FCK", "Die Roten Teufel"], "kind": "club",
+    "explanation": "Rode (🔴) Duitse (🇩🇪) club met als bijnaam 'Die Roten Teufel', de rode duivels (😈), die thuis speelt op de Betzenberg (⛰️).",
+    "difficulty": 4, "status": "review", "sources": ["https://en.wikipedia.org/wiki/1._FC_Kaiserslautern"], "tags": ["halloween", "duivels", "duitsland"] },
+  { "emojis": "🔴🐦🕌3️⃣0️⃣⚽🏆", "answer": "Liverpool", "aliases": ["Liverpool FC", "The Reds"], "kind": "club",
+    "explanation": "Rode (🔴) club met een Liver bird (🐦) in het logo die in 2005 in Istanbul (🕌) na een 3-0 (3️⃣0️⃣) achterstand tegen Milan de Champions League won (🏆).",
+    "difficulty": 2, "status": "review", "sources": ["https://en.wikipedia.org/wiki/2005_UEFA_Champions_League_final", "https://en.wikipedia.org/wiki/Liverpool_F.C."], "tags": ["halloween", "remontade", "champions-league"] }
 ]
