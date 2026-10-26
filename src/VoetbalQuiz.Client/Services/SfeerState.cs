@@ -12,7 +12,7 @@ namespace VoetbalQuiz.Client.Services;
 public sealed class SfeerState(IJSRuntime js)
 {
     /// <summary>De sferen waarvoor sfeer.css iets doet.</summary>
-    public static readonly HashSet<string> Known = [Spookhuis.Theme];
+    public static readonly HashSet<string> Known = [.. SfeerKalender.Alle];
 
     private string? _app;
     private readonly List<(object Owner, string Name)> _pages = [];

@@ -7,18 +7,7 @@
 @implements IDisposable
 
 @* De decoratie van de seizoenssfeer (de kleuren zet sfeer.css via data-sfeer): één keer, voor de hele app. *@
-@if (Sfeer.Current == Spookhuis.Theme)
-{
-    <div class="sfeer-deco" aria-hidden="true">
-        <span class="sfeer-maan"></span>
-        <span class="sfeer-vleermuis v1">🦇</span>
-        <span class="sfeer-vleermuis v2">🦇</span>
-        <span class="sfeer-vleermuis v3">🦇</span>
-        <span class="sfeer-pompoen p1">🎃</span>
-        <span class="sfeer-pompoen p2">🎃</span>
-        <span class="sfeer-pompoen p3">🎃</span>
-    </div>
-}
+<SfeerDeco Name="@Sfeer.Current" />
 
 @* Tijdens een update is de app dicht. Wie midden in een vraag zit, mag die afmaken (de klok loopt op de server);
    een volgende vraag start de server niet meer. *@
