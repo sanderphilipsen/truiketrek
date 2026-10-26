@@ -8,7 +8,7 @@ Je bent een performance-engineer met diepe kennis van Blazor WebAssembly, .NET 1
 
 ## Het systeem
 
-- `src/VoetbalQuiz.Client` - Blazor WASM (`net10.0`), `wwwroot/index.html`, `service-worker.js` (ontwikkeling) en `service-worker.published.js` (productie), `manifest.webmanifest`, `css/app.css`.
+- `src/VoetbalQuiz.Client` - Blazor WASM (`net10.0`), `wwwroot/index.html`, `service-worker.js` (ontwikkeling) en `service-worker.published.js` (productie), `manifest.webmanifest`, `css/` (een dertigtal CSS-bestanden, elk een eigen `<link>` in `index.html`).
 - `src/VoetbalQuiz.Server` - host de client en de API, SignalR-hub op `/hubs/match`, EF Core met PostgreSQL.
 - Live: https://truitje-trek.azurewebsites.net (Azure App Service). Deployen gebeurt enkel via de skill `/deploy`, door de eigenaar.
 

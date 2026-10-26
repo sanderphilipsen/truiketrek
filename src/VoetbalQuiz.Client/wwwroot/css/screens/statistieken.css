@@ -1,0 +1,28 @@
+/* Statistieken en eregalerij (Pages/Statistieken, Shared/HallOfFame). */
+
+/* ---------- Statistieken ---------- */
+.section-title { color: #fff; font-size: 1.05rem; margin: 18px 0 10px; }
+.section-title:first-child { margin-top: 4px; }
+.section-note { color: rgba(255, 255, 255, .8); font-size: .85rem; margin: 8px 2px 0; }
+.my-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.my-stats div {
+    background: var(--tile-bg);
+    border-radius: 12px;
+    padding: 10px 4px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.my-stats b { font-size: 1.3rem; }
+.my-stats small { color: var(--muted); font-size: .7rem; line-height: 1.2; }
+
+.hall { display: grid; gap: 8px; }
+.record { display: flex; align-items: center; gap: 12px; background: var(--tile-bg); border-radius: 12px; padding: 12px 14px; }
+.record.me { background: linear-gradient(rgba(250, 199, 117, .16), rgba(250, 199, 117, .16)), var(--tile-bg); border-color: var(--control-border); }
+.record-icon { font-size: 1.6rem; line-height: 1; color: var(--sb-digit); }
+.record-body { flex: 1; display: flex; flex-direction: column; }
+.record-title { font-size: .8rem; text-transform: uppercase; letter-spacing: .4px; color: var(--muted); font-weight: 700; }
+.record-who { font-weight: 800; }
+.record-body small { color: var(--muted); }
+.record-value { font-weight: 900; font-size: 1.2rem; white-space: nowrap; }
+.cap:first-letter { text-transform: uppercase; }

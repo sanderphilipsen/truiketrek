@@ -241,7 +241,8 @@
     ],
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/David_Villa"
+      "https://en.wikipedia.org/wiki/David_Villa",
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_50_or_more_international_goals"
     ],
     "tags": [
       "wk",
@@ -249,7 +250,8 @@
       "messi",
       "spanje"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Sergio Busquets",
@@ -326,13 +328,15 @@
     ],
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Neymar"
+      "https://en.wikipedia.org/wiki/Neymar",
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_50_or_more_international_goals"
     ],
     "tags": [
       "champions-league",
       "messi"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Lamine Yamal",
@@ -478,10 +482,12 @@
     ],
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Koke_(footballer,_born_1992)"
+      "https://en.wikipedia.org/wiki/Koke_(footballer,_born_1992)",
+      "https://en.atleticodemadrid.com/noticias/koke-to-continue-making-history-at-atletico-de-madrid"
     ],
     "tags": ["spanje"],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Gerard Piqué",
@@ -699,10 +705,12 @@
     ],
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Nico_Williams"
+      "https://en.wikipedia.org/wiki/Nico_Williams",
+      "https://www.coastreporter.net/soccer/spain-winger-nico-williams-agrees-to-stay-at-athletic-bilbao-for-the-coming-decade-10900375"
     ],
     "tags": ["spanje"],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Thiago Alcántara",
@@ -747,13 +755,15 @@
     ],
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Mikel_Oyarzabal"
+      "https://en.wikipedia.org/wiki/Mikel_Oyarzabal",
+      "https://www.beinsports.com/en-us/soccer/la-liga/articles/spain-star-oyarzabal-of-course-you-can-say-no-to-barcelona-2026-07-09"
     ],
     "tags": [
       "spanje",
       "wk"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Dani Olmo",

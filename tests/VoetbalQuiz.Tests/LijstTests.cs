@@ -22,6 +22,17 @@ public sealed class LijstTests : IDisposable
         new("Ronaldo", ["R9"]), new("Cristiano Ronaldo", ["CR7"]), new("Luka Modrić", ["Modric"]), new("Lionel Messi", ["Messi"]),
     ]);
 
+    // Clubs en stadions: "Brugge", "Arena" en "Stadion" horen elk bij twee namen, "Luik" enkel bij Standard.
+    private static readonly LijstData Grounds = new("Clubs en stadions",
+    [
+        new("1", "Club Brugge"), new("2", "Cercle Brugge"), new("3", "Standard Luik"),
+        new("4", "Cegeka Arena"), new("5", "Easi Arena"), new("6", "Freethiel Stadion"), new("7", "AFAS-stadion"),
+    ],
+    [
+        new("Club Brugge", ["Club"]), new("Cercle Brugge", ["Cercle"]), new("Standard Luik", ["Standard"]),
+        new("Cegeka Arena", []), new("Easi Arena", []), new("Freethiel Stadion", ["Freethiel"]), new("AFAS-stadion", []),
+    ]);
+
     public LijstTests()
     {
         (_db, _clock) = (_t.Db, _t.Clock);
@@ -32,6 +43,11 @@ public sealed class LijstTests : IDisposable
             Type = QuestionType.Lijst, Key = Winners.Question, Data = QuestionEngine.Serialize(Winners), Status = PlayerStatus.Approved,
             Tags = ["ballon-dor"],
         });
+        _db.QuizItems.Add(new QuizItem
+        {
+            Type = QuestionType.Lijst, Key = Grounds.Question, Data = QuestionEngine.Serialize(Grounds), Status = PlayerStatus.Approved,
+            Tags = ["belgie"],
+        });
         var user = new AppUser { UserName = "sander" };
         _db.Users.Add(user);
         _db.SaveChanges();
@@ -40,9 +56,9 @@ public sealed class LijstTests : IDisposable
 
     public void Dispose() => _t.Dispose();
 
-    private async Task<int> SpecialAsync() =>
-        await _t.Admin.SaveSpecialAsync(new SpecialEdit(0, "ballon-dor", "Ballon d'Or Special", "⚽", "", _quiz.Today, _quiz.Today,
-            "ballon-dor", [], [QuestionType.Lijst]));
+    private async Task<int> SpecialAsync(string tag = "ballon-dor") =>
+        await _t.Admin.SaveSpecialAsync(new SpecialEdit(0, tag, $"Special {tag}", "⚽", "", _quiz.Today, _quiz.Today,
+            tag, [], [QuestionType.Lijst]));
 
     private static int Found(QuestionState s) => s.View!.Found;
 
@@ -72,10 +88,11 @@ public sealed class LijstTests : IDisposable
         var start = await _quiz.StartAsync(_me, 1, id);
         Assert.Equal(QuestionRules.LijstSeconds, start.TimeLimit);
         Assert.Equal((0, 4), (start.View!.Found, start.View.Total));
-        Assert.Equal(["2016", "2017", "2018", "2019", "2020", "2021", "2022"], start.View.Rows!.Select(r => r.Label));
+        var rows = start.View.Rows!;
+        Assert.Equal(["2016", "2017", "2018", "2019", "2020", "2021", "2022"], rows.Select(r => r.Label));
         // Enkel de rij zonder winnaar toont iets; geen enkele naam lekt.
-        Assert.Equal(["niet uitgereikt"], start.View.Rows.Where(r => r.Name is not null).Select(r => r.Name));
-        Assert.False(start.View.Rows.Single(r => r.Label == "2020").Open);
+        Assert.Equal(["niet uitgereikt"], rows.Where(r => r.Name is not null).Select(r => r.Name));
+        Assert.False(rows.Single(r => r.Label == "2020").Open);
     }
 
     [Fact]
@@ -85,8 +102,9 @@ public sealed class LijstTests : IDisposable
         await _quiz.StartAsync(_me, 1, id);
         var messi = await _quiz.GuessAsync(_me, 1, "messi", id);
         Assert.Equal(1, Found(messi));
-        Assert.Equal(["2019", "2021"], messi.View!.Rows!.Where(r => r.Name == "Lionel Messi").Select(r => r.Label));
-        Assert.Equal(3, messi.View.Rows.Count(r => r.Name is not null)); // twee keer Messi en "niet uitgereikt"
+        var rows = messi.View!.Rows!;
+        Assert.Equal(["2019", "2021"], rows.Where(r => r.Name == "Lionel Messi").Select(r => r.Label));
+        Assert.Equal(3, rows.Count(r => r.Name is not null)); // twee keer Messi en "niet uitgereikt"
 
         // Nog eens Messi of een naam die er niet in staat: niets erbij, en geen strafpunten.
         var again = await _quiz.GuessAsync(_me, 1, "Lionel Messi", id);
@@ -101,13 +119,45 @@ public sealed class LijstTests : IDisposable
         var id = await SpecialAsync();
         await _quiz.StartAsync(_me, 1, id);
         var r9 = await _quiz.GuessAsync(_me, 1, "Ronaldo", id);
-        Assert.Equal("Ronaldo", r9.View!.Rows!.Single(r => r.Label == "2022").Name);
-        Assert.Null(r9.View.Rows.Single(r => r.Label == "2016").Name);
+        var rows = r9.View!.Rows!;
+        Assert.Equal("Ronaldo", rows.Single(r => r.Label == "2022").Name);
+        Assert.Null(rows.Single(r => r.Label == "2016").Name);
 
         var twice = await _quiz.GuessAsync(_me, 1, "ronaldo", id);
         Assert.Equal(1, Found(twice));
         var cr7 = await _quiz.GuessAsync(_me, 1, "Cristiano Ronaldo", id);
         Assert.Equal(2, Found(cr7));
+    }
+
+    [Fact]
+    public async Task A_surname_shared_by_two_names_finds_neither()
+    {
+        var id = await SpecialAsync("belgie");
+        await _quiz.StartAsync(_me, 1, id);
+        foreach (var guess in new[] { "Brugge", "Arena", "arena", "Stadion", "stadion" })
+            Assert.Equal(0, Found(await _quiz.GuessAsync(_me, 1, guess, id)));
+
+        // De volledige naam, een alias en een tikfout blijven werken.
+        Assert.Equal(1, Found(await _quiz.GuessAsync(_me, 1, "Cercle Brugge", id)));
+        Assert.Equal(2, Found(await _quiz.GuessAsync(_me, 1, "Easi Arena", id)));
+        Assert.Equal(3, Found(await _quiz.GuessAsync(_me, 1, "Afas stadoin", id)));
+    }
+
+    [Fact]
+    public async Task A_surname_that_belongs_to_one_name_still_counts()
+    {
+        var id = await SpecialAsync("belgie");
+        await _quiz.StartAsync(_me, 1, id);
+        var luik = await _quiz.GuessAsync(_me, 1, "Luik", id);
+        Assert.Equal("Standard Luik", luik.View!.Rows!.Single(r => r.Label == "3").Name);
+    }
+
+    [Fact]
+    public void The_surname_can_be_switched_off()
+    {
+        Assert.True(AnswerMatcher.IsMatch("Arena", "Easi Arena", []));
+        Assert.False(AnswerMatcher.IsMatch("Arena", "Easi Arena", [], surname: false));
+        Assert.True(AnswerMatcher.IsMatch("Easi Arena", "Easi Arena", [], surname: false));
     }
 
     [Fact]

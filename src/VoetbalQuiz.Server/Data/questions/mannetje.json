@@ -130,7 +130,7 @@
       "Kopbalspecialist van Everton en Manchester United",
       "Ik kopte de gelijkmaker tegen Japan op het WK 2018"
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Marouane_Fellaini"
@@ -150,7 +150,7 @@
       "Kleine aanvaller met een grote reputatie in Napels",
       "Ik speelde eerder bij AGOVV, Utrecht en PSV"
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Dries_Mertens"
@@ -169,10 +169,11 @@
       "Verdediger met de meeste interlands voor België",
       "Opgeleid bij Ajax, jarenlang bij Tottenham"
     ],
-    "difficulty": 3,
-    "status": "approved", "checkedAt": "2026-10-18",
+    "difficulty": 2,
+    "status": "approved", "asOf": "2026-10-26", "checkedAt": "2026-10-26",
     "sources": [
-      "https://en.wikipedia.org/wiki/Jan_Vertonghen"
+      "https://en.wikipedia.org/wiki/Jan_Vertonghen",
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_100_or_more_international_caps"
     ],
     "tags": [
       "rode-duivels",
@@ -229,7 +230,7 @@
       "Technische middenvelder van het WK 1986",
       "Van Italiaanse afkomst, opgegroeid in La Louvière"
     ],
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Enzo_Scifo"
@@ -250,7 +251,7 @@
       "Aanvoerder van de Rode Duivels in Mexico 1986",
       "Clubicoon van Club Brugge"
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Jan_Ceulemans"
@@ -272,7 +273,7 @@
       "Beste doelman van het WK 1994",
       "Later trainer van Standard, Gent en Club Brugge"
     ],
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Michel_Preud%27homme"
@@ -315,9 +316,10 @@
       "Recordinternational van Portugal"
     ],
     "difficulty": 1,
-    "status": "approved", "checkedAt": "2026-10-18",
+    "status": "approved", "asOf": "2026-10-26", "checkedAt": "2026-10-26",
     "sources": [
-      "https://en.wikipedia.org/wiki/Cristiano_Ronaldo"
+      "https://en.wikipedia.org/wiki/Cristiano_Ronaldo",
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_100_or_more_international_caps"
     ],
     "tags": [
       "champions-league"
@@ -390,7 +392,7 @@
       "Centrale verdediger en aanvoerder van Liverpool",
       "Tweede bij de Ballon d'Or van 2019"
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved", "checkedAt": "2026-10-18",
     "sources": [
       "https://en.wikipedia.org/wiki/Virgil_van_Dijk"
@@ -549,7 +551,7 @@
       "Verdediger die van Standard naar AC Milan en PSV trok",
       "Later trainer van onder meer Club Brugge, Galatasaray en Marseille"
     ],
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved", "checkedAt": "2026-10-20",
     "sources": ["https://en.wikipedia.org/wiki/Eric_Gerets"],
     "tags": ["rode-duivels", "standard", "legende"]
@@ -601,7 +603,7 @@
       "Aanvaller die zestien seizoenen bij één Brusselse club speelde",
       "Later bondscoach van de Rode Duivels op het WK 1994"
     ],
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved", "checkedAt": "2026-10-20",
     "sources": ["https://en.wikipedia.org/wiki/Paul_Van_Himst"],
     "tags": ["rode-duivels", "anderlecht", "legende"]
@@ -627,7 +629,7 @@
       "Duitse spits bij Bayern München, Inter en Servette",
       "Twee keer Ballon d'Or-winnaar en later bestuursvoorzitter van Bayern"
     ],
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved", "checkedAt": "2026-10-20",
     "sources": ["https://en.wikipedia.org/wiki/Karl-Heinz_Rummenigge"],
     "tags": ["legende", "champions-league"]

@@ -11,7 +11,8 @@ namespace VoetbalQuiz.Server.Services;
 /// </summary>
 public class QuestionSeeder(QuizDbContext db, IWebHostEnvironment env, ILogger<QuestionSeeder> logger)
 {
-    private record Meta(string? Status, List<string>? Sources, List<string>? Tags, int? Difficulty, string? ReviewNote, DateOnly? CheckedAt);
+    private record Meta(string? Status, List<string>? Sources, List<string>? Tags, int? Difficulty, string? ReviewNote, DateOnly? CheckedAt,
+        DateOnly? AsOf);
 
     private static readonly JsonSerializerOptions Json = new(JsonSerializerDefaults.Web);
 
@@ -95,6 +96,7 @@ public class QuestionSeeder(QuizDbContext db, IWebHostEnvironment env, ILogger<Q
                 item.Tags = meta.Tags ?? [];
                 item.ReviewNote = meta.ReviewNote;
                 item.CheckedAt = meta.CheckedAt;
+                item.AsOf = QuestionEngine.AsOfFor(info.Type, item.Data, meta.AsOf);
             }
         }
 
@@ -137,6 +139,8 @@ public class QuestionSeeder(QuizDbContext db, IWebHostEnvironment env, ILogger<Q
                     ? (QuestionEngine.KeyFor(type, QuestionEngine.Serialize(d)), QuestionEngine.Serialize(d with { Aliases = d.Aliases ?? [] })) : (null, ""),
                 QuestionType.Mannetje => e.Deserialize<MannetjeData>(Json) is { } d
                     ? (d.Answer, QuestionEngine.Serialize(d with { Aliases = d.Aliases ?? [], Clues = d.Clues ?? [] })) : (null, ""),
+                QuestionType.Fiche => e.Deserialize<FicheData>(Json) is { } d
+                    ? (d.Answer, QuestionEngine.Serialize(d with { Aliases = d.Aliases ?? [] })) : (null, ""),
                 QuestionType.Volgorde => e.Deserialize<VolgordeData>(Json) is { Items: not null } d
                     ? (QuestionEngine.KeyFor(type, QuestionEngine.Serialize(d)), QuestionEngine.Serialize(d)) : (null, ""),
                 QuestionType.Krant => e.Deserialize<KrantData>(Json) is { Text: not null } d

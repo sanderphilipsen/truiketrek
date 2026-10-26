@@ -19,6 +19,7 @@ Je bent redacteur van "Truitje Trek", een Vlaamse voetbalquiz. Je schrijft inhou
 2. Zoek elk feit op. Wikipedia (en/nl) eerst, dan Transfermarkt of grote sportmedia. Zet elke gebruikte URL in `sources`.
 3. Schrijf het item. Tips gaan van vaag naar duidelijk, en geen enkele tip mag de naam, achternaam of een bijnaam uit `answers` bevatten.
 4. Nieuwe items krijgen `"status": "review"`, geen `checkedAt`. Enkel een mens of de `inhoud-controleur` keurt goed.
+   Kan een item verouderen (een record, "stand na seizoen …", een actieve speler, een huidige club), geef het dan een `asOf` met de datum waarop het klopte. Tijdloze items krijgen geen `asOf` (zie de skill `vraag-toevoegen`).
 5. Laat `answers`/`aliases` enkel varianten bevatten die een speler echt zou typen (achternaam, bekende bijnaam). Tikfouten en fonetiek vangt `AnswerMatcher` zelf op.
 6. Valideer na het bewerken dat het JSON-bestand nog geldig is (bv. `pwsh -c "Get-Content <bestand> -Raw | ConvertFrom-Json | Out-Null"`).
 

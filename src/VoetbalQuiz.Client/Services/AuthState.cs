@@ -5,7 +5,7 @@ using VoetbalQuiz.Shared;
 namespace VoetbalQuiz.Client.Services;
 
 /// <summary>Houdt bij wie er aangemeld is, op basis van /api/account/me.</summary>
-public class AuthState(ApiClient api) : AuthenticationStateProvider
+public class AuthState(ApiClient api, PushClient push) : AuthenticationStateProvider
 {
     private UserInfo? _user;
     private bool _loaded;
@@ -48,6 +48,7 @@ public class AuthState(ApiClient api) : AuthenticationStateProvider
 
     public async Task LogoutAsync()
     {
+        await push.ForgetDeviceAsync(); // anders krijgt dit toestel nog herinneringen voor wie afmeldde
         await api.LogoutAsync();
         SetUser(null);
     }

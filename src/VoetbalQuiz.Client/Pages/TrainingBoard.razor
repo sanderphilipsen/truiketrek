@@ -1,0 +1,94 @@
+@page "/academie/{Date}/klassement"
+@page "/academie/special/{SpecialId:int}/klassement"
+@attribute [Authorize]
+@inject ApiClient Api
+@inject NavigationManager Nav
+
+<PageTitle>Klassement – Academie – Truitje Trek</PageTitle>
+
+@* Het klassement van een voorbije daily of special, vanuit de academie. Wie haar later voor het eerst speelde, staat erbij als
+   "nagespeeld": met een petje in plaats van een plaats, zodat de echte spelers hun nummer houden. Punten en XP worden nooit herberekend. *@
+<PageHeader Title="Klassement" Label="@_label" BackHref="@_back" Up="true">
+    <Aside>
+        @if (_board?.Entries.FirstOrDefault(e => e.IsMe) is { } me)
+        {
+            @if (me.Replayed)
+            {
+                <span class="sb-digits replayed" aria-hidden="true"><Icon Name="graduation-cap" /></span>
+                <span class="sb-label">nagespeeld</span>
+            }
+            else
+            {
+                <span class="sb-digits">@me.Rank@DutchDates.OrdinalSuffix(me.Rank)</span>
+                <span class="sb-label">van @_board.Entries.Count(e => !e.Replayed)</span>
+            }
+        }
+    </Aside>
+</PageHeader>
+
+@if (_error is not null)
+{
+    <p class="error" role="alert">@_error</p>
+}
+else if (_board is null)
+{
+    <div class="center-msg"><Spinner /></div>
+}
+else
+{
+    @if (!_board.Entries.Any(e => e.IsMe))
+    {
+        <div class="card board-cta">
+            <span class="training-special-icon" aria-hidden="true"><Icon Name="graduation-cap" /></span>
+            <div class="board-cta-text">
+                <b>Jij staat er nog niet bij</b>
+                <small>Speel @(SpecialId is null ? "deze daily" : "deze special") in de academie en kom erbij.</small>
+            </div>
+            <a class="btn primary small" href="@_back">Speel</a>
+        </div>
+    }
+    @if (_board.Entries.Count == 0)
+    {
+        <div class="card center muted">Niemand speelde @(SpecialId is null ? "deze daily" : "deze special").</div>
+    }
+    else
+    {
+        <LeaderboardList Entries="@_board.Entries.Select(e => LeaderboardList.Row.From(e, $"{e.CorrectAnswers} juist")).ToList()" />
+        @if (_board.Entries.Any(e => e.Replayed))
+        {
+            <p class="section-note"><Icon Name="graduation-cap" /> Nagespeeld in de academie: staat erbij zonder eigen plaats, en telt niet voor de dagwinnaar, het maandklassement of XP.</p>
+        }
+    }
+}
+
+@code {
+    [Parameter] public string? Date { get; set; }
+    [Parameter] public int? SpecialId { get; set; }
+
+    private Leaderboard? _board;
+    private string? _error, _label;
+    private string _back = "academie";
+
+    protected override async Task OnParametersSetAsync()
+    {
+        (_board, _error) = (null, null);
+        try
+        {
+            if (SpecialId is { } id)
+            {
+                _back = $"academie/special/{id}";
+                var special = await Api.GetTrainingSpecialAsync(id); // controleert ook dat ze afgelopen is
+                _label = special.Special is { } sp ? $"{sp.Name} · {Training.SpecialDates(sp)}" : "Special";
+                _board = await Api.GetSpecialLeaderboardAsync(id);
+            }
+            else if (DateOnly.TryParseExact(Date, "yyyy-MM-dd", out var date))
+            {
+                _back = $"academie/{date:yyyy-MM-dd}";
+                _label = DutchDates.DayMonth(date);
+                _board = await Api.GetTrainingDayBoardAsync(date);
+            }
+            else _error = "Deze dag bestaat niet.";
+        }
+        catch (ApiException ex) { _error = ex.Message; }
+    }
+}

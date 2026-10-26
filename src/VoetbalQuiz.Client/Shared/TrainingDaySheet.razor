@@ -1,0 +1,195 @@
+@* Academie: het onderblad van één daily of special. Facts, je drie cijfers (klassement, beste oefening, pogingen), een mini-stand van
+   het klassement van die dag, al je pogingen, en onderaan de knop om te spelen. Bladeren met ‹ › zonder het blad te sluiten. *@
+@using VoetbalQuiz.Client.Pages
+@inject ApiClient Api
+@inject NavigationManager Nav
+
+@if (Day is { } day)
+{
+    <div class="sheet-backdrop" @onclick="Close"></div>
+    <section class="sheet training-sheet" role="dialog" aria-modal="true" aria-labelledby="training-sheet-title" @onkeydown="OnKeyDown">
+        <div class="sheet-head">
+            <span class="sheet-grip" aria-hidden="true"></span>
+            <button type="button" class="sheet-close training-step" aria-label="Vorige dag" disabled="@(!CanPrev)" @onclick="() => OnStep.InvokeAsync(-1)"><Icon Name="caret-left" /></button>
+            <h2 id="training-sheet-title" tabindex="-1" @ref="_heading">@Training.Title(day)</h2>
+            <button type="button" class="sheet-close training-step" aria-label="Volgende dag" disabled="@(!CanNext)" @onclick="() => OnStep.InvokeAsync(1)"><Icon Name="caret-right" /></button>
+            <button type="button" class="sheet-close" aria-label="Sluiten" @onclick="Close">✕</button>
+        </div>
+
+        <div class="sheet-body">
+            <div class="training-facts">
+                <p>
+                    @if (day.Special is { } sp) { <span>Special · @Training.SpecialDates(sp) · </span> }
+                    @day.Questions vragen · @(day.Players == 0 ? "nog niemand speelde" : $"{Training.PlayersText(day.Players)} {(day.Special is null ? (day.Players == 1 ? "speelde die dag" : "speelden die dag") : (day.Players == 1 ? "deed mee" : "deden mee"))}")
+                </p>
+                <p class="training-chips"><TypesLabel Types="day.Types" /> <DifficultyStars Value="day.Difficulty" /></p>
+            </div>
+
+            <div class="training-stats">
+                <div class="training-stat">
+                    @if (day.Real is { } real)
+                    {
+                        <span class="sb-digits">@real.Rank@DutchDates.OrdinalSuffix(real.Rank)</span>
+                        <small>van @real.Players · @real.Points ptn</small>
+                    }
+                    else if (day.Replayed is { } rep)
+                    {
+                        <span class="sb-digits replayed"><Icon Name="graduation-cap" /> @rep.Points</span>
+                        <small>nagespeeld · @Training.Between(rep)</small>
+                    }
+                    else
+                    {
+                        <span class="sb-digits none">–</span>
+                        <small>klassement</small>
+                    }
+                </div>
+                <div class="training-stat">
+                    <span class="sb-digits @(day.BestTraining is null ? "none" : "best")">@(day.BestTraining?.ToString() ?? "–")</span>
+                    <small>beste oefening</small>
+                </div>
+                <div class="training-stat">
+                    <span class="sb-digits @(day.Runs == 0 ? "none" : "")">@day.Runs</span>
+                    <small>@(day.Runs == 1 ? "poging" : "pogingen")</small>
+                </div>
+            </div>
+
+            <div class="training-mini">
+                <h3 class="sb-label">Klassement @(day.Special is null ? "van die dag" : "van de special")</h3>
+                @if (_board is null)
+                {
+                    <div class="training-mini-loading" aria-hidden="true"></div>
+                }
+                else if (_board.Entries.Count == 0)
+                {
+                    <p class="muted">Niemand speelde @(day.Special is null ? "deze daily" : "deze special").</p>
+                }
+                else
+                {
+                    var (top, mine) = Mini(_board.Entries);
+                    <LeaderboardList Entries="top" />
+                    @if (mine.Count > 0)
+                    {
+                        <p class="training-gap" aria-hidden="true">⋯</p>
+                        <LeaderboardList Entries="mine" />
+                    }
+                    @if (!_board.Entries.Any(e => e.IsMe))
+                    {
+                        <p class="muted training-join">Speel om erbij te komen.</p>
+                    }
+                }
+                <a class="sb-go training-board-link" href="@Training.BoardPath(day)">Volledig klassement ›</a>
+            </div>
+
+            @if (_detail is { } detail && (detail.Real is not null || detail.Runs.Count > 0))
+            {
+                <details class="training-runs">
+                    <summary>Alle pogingen</summary>
+                    <TrainingScores Real="detail.Real" Runs="detail.Runs" Questions="detail.Questions" />
+                </details>
+            }
+        </div>
+
+        <div class="sheet-foot">
+            @if (_error is not null)
+            {
+                <p class="error" role="alert">@_error</p>
+            }
+            @if (day.Blocked)
+            {
+                @* Een vraag komt vandaag terug in de daily: eerst die spelen, anders ken je het antwoord al. *@
+                <p class="training-blocked"><Icon Name="lock" /> Een van deze vragen zit ook in de daily van vandaag. Speel eerst die.</p>
+                <a class="btn primary big" href="daily">Naar de daily ›</a>
+            }
+            else
+            {
+                <button type="button" class="btn primary big training-play" @onclick="StartAsync" disabled="@_starting">
+                    @(day.Played ? "Opnieuw spelen ›" : "Spelen ›")
+                    <small>@(day.Played ? "Oefenen, telt niet mee" : $"Je komt in het klassement van {(day.Special is null ? "die dag" : "de special")}")</small>
+                </button>
+            }
+        </div>
+    </section>
+}
+
+@code {
+    /// <summary>De dag in het blad; null = dicht.</summary>
+    [Parameter] public TrainingDay? Day { get; set; }
+    [Parameter] public bool CanPrev { get; set; }
+    [Parameter] public bool CanNext { get; set; }
+    [Parameter] public EventCallback OnClose { get; set; }
+
+    /// <summary>-1 of +1: de vorige of volgende dag.</summary>
+    [Parameter] public EventCallback<int> OnStep { get; set; }
+
+    private TrainingDay? _loaded;
+    private TrainingDayDetail? _detail;
+    private Leaderboard? _board;
+    private string? _error;
+    private bool _starting, _focus;
+    private ElementReference _heading;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Day == _loaded) return;
+        var opening = _loaded is null;
+        (_loaded, _detail, _board, _error, _starting) = (Day, null, null, null, false);
+        if (Day is not { } day) return;
+        _focus = opening;
+        try
+        {
+            var detail = day.Special is { } sp ? Api.GetTrainingSpecialAsync(sp.Id) : Api.GetTrainingDayAsync(day.Date);
+            var board = day.Special is { } s ? Api.GetSpecialLeaderboardAsync(s.Id) : Api.GetTrainingDayBoardAsync(day.Date);
+            await Task.WhenAll(detail, board);
+            // Intussen naar een andere dag gebladerd: dit antwoord is niet meer nodig.
+            if (Day == day) (_detail, _board) = (detail.Result, board.Result);
+        }
+        catch (ApiException ex) { if (Day == day) _error = ex.Message; }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!_focus || Day is null) return;
+        _focus = false;
+        await _heading.FocusAsync();
+    }
+
+    /// <summary>
+    /// De mini-stand: alles tot en met de echte 3de (met wie daartussen naspeelde), en daaronder jouw rij met je buren
+    /// als je niet bij die eersten staat.
+    /// </summary>
+    private static (List<LeaderboardList.Row> Top, List<LeaderboardList.Row> Mine) Mini(List<LeaderboardEntry> entries)
+    {
+        var lastTop = entries.FindLastIndex(e => !e.Replayed && e.Rank <= 3);
+        if (lastTop < 0) lastTop = Math.Min(2, entries.Count - 1);
+        var me = entries.FindIndex(e => e.IsMe);
+        var top = entries.Take(lastTop + 1).Select(e => LeaderboardList.Row.From(e)).ToList();
+        if (me <= lastTop) return (top, []);
+        var from = Math.Max(lastTop + 1, me - 1);
+        // Sluit je rij meteen aan op de top, dan geen "⋯" maar één lijst.
+        var mine = entries.Skip(from).Take(me + 2 - from).Select(e => LeaderboardList.Row.From(e)).ToList();
+        return from == lastTop + 1 ? ([.. top, .. mine], []) : (top, mine);
+    }
+
+    private async Task StartAsync()
+    {
+        _starting = true;
+        _error = null;
+        try
+        {
+            var run = Day!.Special is { } sp ? await Api.StartTrainingSpecialRunAsync(sp.Id) : await Api.StartTrainingRunAsync(Day.Date);
+            Nav.NavigateTo($"academie/poging/{run.Id}/vraag/1");
+        }
+        catch (ApiException ex)
+        {
+            _error = ex.Message;
+            _starting = false;
+        }
+    }
+
+    private Task Close() => OnClose.InvokeAsync();
+
+    private async Task OnKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Escape") await Close();
+    }
+}

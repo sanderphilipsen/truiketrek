@@ -3,7 +3,11 @@
 @inject NavigationManager Nav
 @inject GoldenBallState GoldenBall
 @inject UpdateNotice UpdateNotice
+@inject SfeerState Sfeer
 @implements IDisposable
+
+@* De decoratie van de seizoenssfeer (de kleuren zet sfeer.css via data-sfeer): één keer, voor de hele app. *@
+<SfeerDeco Name="@Sfeer.Current" />
 
 @* Tijdens een update is de app dicht. Wie midden in een vraag zit, mag die afmaken (de klok loopt op de server);
    een volgende vraag start de server niet meer. *@
@@ -20,7 +24,7 @@
 }
 
 @* Het admin-paneel gebruikt de volle breedte van een groot scherm. *@
-<div class="app @(IsAdminPage ? "wide surface-light" : IsProfilePage ? "medium" : "")">
+<div class="app @(IsAdminPage ? "wide" : IsProfilePage ? "medium" : "")">
     @* Geen topbar en geen tabbalk: Home is de enige hub. Elke andere pagina heeft een eigen kop met terugknop (PageHeader). *@
     <main class="content">
         <UpdateBanner />
@@ -35,6 +39,7 @@
         Auth.AuthenticationStateChanged += OnAuthChanged;
         Nav.LocationChanged += OnLocationChanged; // de klassen van .app (admin, profiel) bijwerken
         UpdateNotice.Changed += OnUpdateNoticeChanged;
+        Sfeer.Changed += OnUpdateNoticeChanged;
         UpdateNotice.Start();
         await Auth.GetAuthenticationStateAsync();
         await LoadGoldenBallAsync();
@@ -55,6 +60,7 @@
         Auth.AuthenticationStateChanged -= OnAuthChanged;
         Nav.LocationChanged -= OnLocationChanged;
         UpdateNotice.Changed -= OnUpdateNoticeChanged;
+        Sfeer.Changed -= OnUpdateNoticeChanged;
     }
 
     private void OnUpdateNoticeChanged() => InvokeAsync(StateHasChanged);

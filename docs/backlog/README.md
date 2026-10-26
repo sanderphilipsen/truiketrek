@@ -41,7 +41,7 @@ Lopende planning: [planning-2026-10-23.md](planning-2026-10-23.md) (week 44 t/m 
 | [012](012-vraagtype-wie-zei-het.md) | Vraagtype "Wie zei het?" | feature | klaar | midden | M | inhoud wk 45-46, bouwen wk 47 |
 | [013](013-daag-uit.md) | Daag uit (asynchroon duel) | feature | idee | midden | L | concept wk 45, bouwen wk 48-49 |
 | [014](014-verzamelalbum.md) | Verzamelalbum (Panini-stijl) | feature | idee | midden | L | niet nu |
-| [015](015-pushmeldingen.md) | Pushmeldingen | feature | idee | laag | L | niet nu (januari?) |
+| [015](015-pushmeldingen.md) | Pushmeldingen | feature | bezig | midden | M | gebouwd, sleutels op Azure nog te zetten |
 | [016](016-revanche-online-wedstrijd.md) | Revanche na een online wedstrijd | feature | idee | midden | S | wk 45 |
 | [017](017-vraagtype-clubraadsel.md) | Vraagtype "Clubraadsel" | feature | concept | midden | M | na 012, of terugval |
 | [018](018-lijstdag.md) | Lijstdag: "Noem ze allemaal" | feature | concept | midden | S | niet gepland |
@@ -60,5 +60,8 @@ Lopende planning: [planning-2026-10-23.md](planning-2026-10-23.md) (week 44 t/m 
 | [032](032-vraag-betwisten.md) | Een vraag betwisten vanuit de daily | feature | concept | midden | M | samen met 031 |
 | [033](033-divisies.md) | Divisies met promotie en degradatie | feature | concept | midden | L | niet gepland |
 | [034](034-klassement-rond-mij.md) | Klassement: weergave "Rond mij" | ux | idee | laag | S | niet gepland |
+| [035](035-vraagtype-spelersfiche.md) | Vraagtype "Spelersfiche" | feature | bezig | midden | M | gebouwd, inhoud in review |
+| [036](036-schaakklok.md) | Schaakklok: om beurten een naam noemen (online) | feature | idee | midden | M | niet gepland |
+| [037](037-academie-kalender.md) | Academie als maandkalender met onderblad en dagklassement | ux | bezig | midden | L | nu |
 
 Recent gedaan: [002](002-herwerking-klassementen.md) fase 1 (`97fad5a`), [007](007-gemiste-daily-naspelen.md) Academie (`0e18e7b`), [011](011-vraagtype-op-volgorde.md) Op volgorde (`4803333`), [022](022-detectivedag.md) Detectivedag (`5471602`).

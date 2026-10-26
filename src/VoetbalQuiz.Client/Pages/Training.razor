@@ -1,26 +1,24 @@
 @page "/academie"
+@page "/academie/{Date}"
+@page "/academie/special/{SpecialId:int}"
 @attribute [Authorize]
 @inject ApiClient Api
+@inject NavigationManager Nav
 
 <PageTitle>Academie – Truitje Trek</PageTitle>
 
+@* Backlog 037: bovenaan wat je best nu speelt, dan de maand als kalender, de specials eronder. Een dag aantikken opent het onderblad;
+   /academie/2026-10-14 en /academie/special/12 openen de kalender met dat blad al open. "Telt niet mee" staat enkel hier in de kop. *@
 <PageHeader Title="Academie" Label="Oefenen · telt niet mee">
     <Aside>
         @if (_archive is { Days.Count: > 0 })
         {
-            @* Rechts in de kop: hoeveel dagen van deze maand je nog niet speelde. *@
-            var open = _archive.Days.Count(d => !d.Played);
-            <span class="sb-digits" aria-label="@(open == 0 ? "Alles gespeeld deze maand" : $"{open} nog te spelen deze maand")">@open</span>
-            <span class="sb-label" aria-hidden="true">@(open == 0 ? "alles gespeeld" : "nog te spelen")</span>
+            var missed = _archive.Days.Count(d => d.Missed);
+            <span class="sb-digits" aria-label="@(missed == 0 ? "Niets gemist deze maand" : $"{missed} gemist deze maand")">@missed</span>
+            <span class="sb-label" aria-hidden="true">gemist</span>
         }
     </Aside>
 </PageHeader>
-
-<div class="month-nav">
-    <button class="linkish" aria-label="Vorige maand" @onclick="() => MoveMonthAsync(-1)" disabled="@(_archive is not { HasEarlier: true })">‹</button>
-    <span>@(_archive is null ? "" : DutchDates.MonthYear(_archive.Year, _archive.Month))</span>
-    <button class="linkish" aria-label="Volgende maand" @onclick="() => MoveMonthAsync(1)" disabled="@(_archive is not { HasLater: true })">›</button>
-</div>
 
 @if (_error is not null)
 {
@@ -30,71 +28,182 @@ else if (_archive is null)
 {
     <div class="center-msg"><Spinner /></div>
 }
-else if (_archive.Days.Count == 0)
-{
-    <div class="card center muted">Geen dailies in deze maand.</div>
-}
 else
 {
-    @* Per dag één strook in de vorm van Home: de dag (zonder vraagtype), rechts je echte score in gele cijfers.
-       Nog niet gespeeld springt eruit: een gele "Spelen"-knop rechts en een gele stip voor de dag; gespeelde dagen zijn rustig. *@
-    <ul class="training-days">
-        @foreach (var day in _archive.Days)
-        {
-            <li>
-                <a class="card sb-strip training-day @(day.Played ? "played" : "open")" href="@DayUrl(day)" aria-label="@AriaLabel(day)">
-                    <span class="training-day-text" aria-hidden="true">
-                        @if (day.Special is { } sp)
-                        {
-                            <b>@sp.Name</b>
-                            <small>Special · @SpecialDates(sp) · @Sub(day)</small>
-                        }
-                        else
-                        {
-                            <b class="cap">@DutchDates.DayMonth(day.Date)</b>
-                            <small>@Sub(day)</small>
-                        }
-                    </span>
-                    @if (day.Real is { } real)
+    @if (_archive.Suggestion is { } s)
+    {
+        var day = s.Day;
+        <section class="card training-suggest">
+            <div class="training-suggest-text">
+                <span class="sb-label">@(s.Revenge ? "Revanche" : "Bijspelen")</span>
+                <b>@Title(day)</b>
+                <small>
+                    @if (s.Revenge && day.Real is { } real)
                     {
-                        <span class="sb-digits" aria-hidden="true">@real.Points</span>
-                    }
-                    @if (day.Played)
-                    {
-                        <span class="sb-go" aria-hidden="true">›</span>
+                        @($"Je werd {real.Rank}{DutchDates.OrdinalSuffix(real.Rank)} van {real.Players} · {day.Questions} vragen")
                     }
                     else
                     {
-                        <span class="btn small training-play" aria-hidden="true">Spelen</span>
+                        @($"Gemist · {day.Questions} vragen · {PlayersText(day.Players)}")
                     }
-                </a>
-            </li>
-        }
-    </ul>
-}
-
-@code {
-    private TrainingArchive? _archive;
-    private string? _error;
-
-    // Zonder maand kiest de server (Belgische tijd) de maand van de laatste daily die je kan spelen; de klok van de browser telt niet.
-    protected override Task OnInitializedAsync() => LoadAsync(null, null);
-
-    private Task MoveMonthAsync(int delta)
-    {
-        var d = new DateOnly(_archive!.Year, _archive.Month, 1).AddMonths(delta);
-        return LoadAsync(d.Year, d.Month);
+                </small>
+            </div>
+            <button type="button" class="btn primary training-suggest-play" @onclick="() => StartAsync(day)" disabled="@_starting">
+                Speel <span aria-hidden="true">›</span>
+            </button>
+        </section>
     }
 
-    private async Task LoadAsync(int? year, int? month)
+    @if (_archive.Days.Count == 0)
     {
-        (_archive, _error) = (null, null);
-        try { _archive = await Api.GetTrainingArchiveAsync(year, month); }
+        <div class="card center muted">Geen dailies in @DutchDates.MonthYear(_archive.Year, _archive.Month).</div>
+        <div class="cal-empty-nav">
+            <button type="button" class="btn small" disabled="@(!_archive.HasEarlier)" @onclick="() => MoveMonth(-1)">‹ Vorige maand</button>
+            <button type="button" class="btn small" disabled="@(!_archive.HasLater)" @onclick="() => MoveMonth(1)">Volgende maand ›</button>
+        </div>
+    }
+    else
+    {
+        <TrainingCalendar Year="_archive.Year" Month="_archive.Month" Days="_archive.Days" HasEarlier="_archive.HasEarlier" HasLater="_archive.HasLater"
+                          Flash="Played" OnMove="MoveMonth" OnPick="Open" />
+
+        var specials = _archive.Days.Where(d => d.Special is not null).OrderBy(d => d.Date).ToList();
+        @if (specials.Count > 0)
+        {
+            <h2 class="section-title">Specials in @DutchDates.Month(_archive.Month)</h2>
+            @foreach (var day in specials)
+            {
+                var sp = day.Special!;
+                <button type="button" class="card sb-strip training-special" @onclick="() => Open(day)" aria-label="@($"{sp.Name}, {SpecialDates(sp)}, {Sub(day)}")">
+                    <span class="training-special-icon" aria-hidden="true"><Icon Name="@sp.Icon" /></span>
+                    <span class="sb-strip-text" aria-hidden="true">
+                        <b>@sp.Name</b>
+                        <small>@SpecialDates(sp) · @Sub(day)</small>
+                    </span>
+                    @if (day.Board is { } board)
+                    {
+                        <span class="sb-digits @(day.Real is null ? "replayed" : "")" aria-hidden="true">@board.Points</span>
+                    }
+                    <span class="sb-go" aria-hidden="true">›</span>
+                </button>
+            }
+        }
+    }
+}
+
+<TrainingDaySheet Day="_open" CanPrev="Neighbour(-1) is not null" CanNext="Neighbour(1) is not null" OnClose="Close" OnStep="Step" />
+
+@code {
+    /// <summary>Een daily (yyyy-MM-dd) waarvan het onderblad open staat...</summary>
+    [Parameter] public string? Date { get; set; }
+
+    /// <summary>...of een afgelopen special.</summary>
+    [Parameter] public int? SpecialId { get; set; }
+
+    /// <summary>Een maand zonder blad open, bv. <c>?maand=2026-09</c>.</summary>
+    [SupplyParameterFromQuery(Name = "maand")] public string? MonthQuery { get; set; }
+
+    /// <summary>De dag die je net speelde (na een poging): die licht even op, bv. <c>?net=2026-10-14</c>.</summary>
+    [SupplyParameterFromQuery(Name = "net")] public string? PlayedQuery { get; set; }
+
+    private TrainingArchive? _archive;
+    private TrainingDay? _open;
+    private string? _error;
+    private bool _starting;
+
+    private DateOnly? Played => DateOnly.TryParseExact(PlayedQuery, "yyyy-MM-dd", out var d) ? d : null;
+
+    /// <summary>Het adres bepaalt wat je ziet: een andere maand laadt opnieuw, een dag openen in dezelfde maand niet.</summary>
+    protected override async Task OnParametersSetAsync()
+    {
+        _error = null;
+        try
+        {
+            (int Year, int Month)? month = null;
+            if (DateOnly.TryParseExact(Date, "yyyy-MM-dd", out var date)) month = (date.Year, date.Month);
+            else if (Date is not null) { _error = "Deze dag bestaat niet."; return; }
+            else if (SpecialId is { } id)
+            {
+                var known = _archive?.Days.FirstOrDefault(d => d.Special?.Id == id);
+                var start = known?.Date ?? (await Api.GetTrainingSpecialAsync(id)).Date; // een special staat in de maand waarin ze start
+                month = (start.Year, start.Month);
+            }
+            else if (DateOnly.TryParseExact(MonthQuery + "-01", "yyyy-MM-dd", out var m)) month = (m.Year, m.Month);
+            else if (Played is { } p) month = (p.Year, p.Month);
+
+            if (_archive is null || (month is { } want && want != (_archive.Year, _archive.Month)))
+            {
+                _archive = null;
+                _archive = await Api.GetTrainingArchiveAsync(month?.Year, month?.Month);
+            }
+
+            _open = SpecialId is { } sid ? _archive.Days.FirstOrDefault(d => d.Special?.Id == sid)
+                : Date is not null ? _archive.Days.FirstOrDefault(d => d.Special is null && d.Date == date)
+                : null;
+            if (_open is null && Date is not null) _error = "Op deze dag was er geen daily om te spelen.";
+        }
         catch (ApiException ex) { _error = ex.Message; }
     }
 
-    private static string DayUrl(TrainingDay day) =>
+    // Het blad openen, sluiten en een maand verder gaan, gebeurt zonder navigatie: die zou de pagina laten schuiven en naar boven springen.
+    private void Open(TrainingDay day) => _open = day;
+
+    private void Close() => _open = null;
+
+    private async Task MoveMonth(int delta)
+    {
+        var d = new DateOnly(_archive!.Year, _archive.Month, 1).AddMonths(delta);
+        (_open, _error) = (null, null);
+        try { _archive = await Api.GetTrainingArchiveAsync(d.Year, d.Month); }
+        catch (ApiException ex) { _error = ex.Message; }
+    }
+
+    /// <summary>De vorige of volgende speelbare dag (in tijd) van deze maand, specials meegerekend.</summary>
+    private TrainingDay? Neighbour(int delta)
+    {
+        if (_open is null || _archive is null) return null;
+        var days = _archive.Days.OrderBy(d => d.Date).ThenBy(d => d.Special is null ? 0 : 1).ToList();
+        var i = days.IndexOf(_open) + delta;
+        return i >= 0 && i < days.Count ? days[i] : null;
+    }
+
+    private void Step(int delta)
+    {
+        if (Neighbour(delta) is { } day) Open(day);
+    }
+
+    /// <summary>De aanrader start meteen een poging, zonder onderblad.</summary>
+    private async Task StartAsync(TrainingDay day)
+    {
+        _starting = true;
+        try
+        {
+            var run = day.Special is { } sp ? await Api.StartTrainingSpecialRunAsync(sp.Id) : await Api.StartTrainingRunAsync(day.Date);
+            Nav.NavigateTo($"academie/poging/{run.Id}/vraag/1");
+        }
+        catch (ApiException ex)
+        {
+            _error = ex.Message;
+            _starting = false;
+        }
+    }
+
+    // ---------- Gedeeld met het onderblad, het klassement en het resultaat van een poging ----------
+
+    public static string DayPath(TrainingDay day) =>
         day.Special is { } sp ? $"academie/special/{sp.Id}" : $"academie/{day.Date:yyyy-MM-dd}";
+
+    public static string BoardPath(TrainingDay day) => DayPath(day) + "/klassement";
+
+    public static string MonthPath(int year, int month) => $"academie?maand={year}-{month:00}";
+
+    /// <summary>"Dinsdag 14 oktober", of de naam van de special.</summary>
+    public static string Title(TrainingDay day) => day.Special?.Name ?? Capitalize(DutchDates.DayMonth(day.Date));
+
+    /// <summary>"nog niemand gespeeld", "1 speler", "12 spelers".</summary>
+    public static string PlayersText(int players) => players switch { 0 => "nog niemand gespeeld", 1 => "1 speler", _ => $"{players} spelers" };
+
+    public static string Capitalize(string s) => s.Length == 0 ? s : char.ToUpperInvariant(s[0]) + s[1..];
 
     /// <summary>"25 december" voor een special van één dag, anders "1 – 3 oktober".</summary>
     public static string SpecialDates(TrainingSpecial sp) => sp.StartDate == sp.EndDate
@@ -103,19 +212,25 @@ else
             ? $"{sp.StartDate.Day} – {sp.EndDate.Day} {DutchDates.Month(sp.EndDate.Month)}"
             : $"{sp.StartDate.Day} {DutchDates.Month(sp.StartDate.Month)} – {sp.EndDate.Day} {DutchDates.Month(sp.EndDate.Month)}";
 
-    /// <summary>Je plaats toen ("3de van 12"), hoe vaak je al oefende, of "nog niet gespeeld".</summary>
+    /// <summary>
+    /// Waar een nagespeelde score staat tussen de echte spelers (die houden hun plaats): "bovenaan", "tussen de 3de en de 4de",
+    /// of "na de 12de" als je onder iedereen staat.
+    /// </summary>
+    public static string Between(RealResult replayed)
+    {
+        static string Ord(int n) => $"{n}{DutchDates.OrdinalSuffix(n)}";
+        return replayed.Rank <= 1 ? "bovenaan"
+            : replayed.Rank >= replayed.Players ? $"na de {Ord(replayed.Rank - 1)}"
+            : $"tussen de {Ord(replayed.Rank - 1)} en de {Ord(replayed.Rank)}";
+    }
+
+    /// <summary>Je plaats toen ("3de van 12"), nagespeeld, hoe vaak je al oefende, of "nog niet gespeeld".</summary>
     private static string Sub(TrainingDay day)
     {
         var parts = new List<string>();
         if (day.Real is { } real) parts.Add($"{real.Rank}{DutchDates.OrdinalSuffix(real.Rank)} van {real.Players}");
+        else if (day.Replayed is not null) parts.Add("nagespeeld");
         if (day.Runs > 0) parts.Add(day.Runs == 1 ? "1× geoefend" : $"{day.Runs}× geoefend");
-        return parts.Count == 0 ? "Nog niet gespeeld" : string.Join(" · ", parts);
-    }
-
-    private static string AriaLabel(TrainingDay day)
-    {
-        var what = day.Special is { } sp ? $"Special {sp.Name}, {SpecialDates(sp)}" : DutchDates.DayMonth(day.Date);
-        var score = day.Real is { } real ? $", {real.Points} punten" : "";
-        return $"{what}, {Sub(day)}{score}";
+        return parts.Count == 0 ? (day.BeforeYourTime ? "Vóór je tijd" : "Gemist") : string.Join(" · ", parts);
     }
 }

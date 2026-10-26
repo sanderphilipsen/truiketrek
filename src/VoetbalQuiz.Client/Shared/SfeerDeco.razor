@@ -1,0 +1,99 @@
+@* De decoratie van een seizoenssfeer, achter alles (de kleuren zet css/screens/sfeer.css via data-sfeer).
+   Puur versiering: aria-hidden, geen klikken, en zonder beweging bij "minder beweging". MainLayout tekent ze één keer. *@
+@if (Name is not null && SfeerKalender.Alle.Contains(Name))
+{
+    <div class="sfeer-deco sfeer-deco-@Name" aria-hidden="true">
+        @switch (Name)
+        {
+            case SfeerKalender.Pasen:
+                @* Pasen: beschilderde eitjes verstopt in het gras, een vlinder, en onderaan de paashaas. *@
+                @for (var i = 1; i <= 6; i++)
+                {
+                    <span class="paasei e@(i)"></span>
+                }
+                <span class="sfeer-vlinder">🦋</span>
+                <span class="sfeer-onder o1">🐰</span>
+                <span class="sfeer-onder o2">🐣</span>
+                <span class="sfeer-onder o3">🌷</span>
+                break;
+            case SfeerKalender.Verjaardag:
+                @* De verjaardag van Truitje Trek: confetti, opstijgende ballonnen en onderaan een taart. *@
+                @for (var i = 1; i <= 12; i++)
+                {
+                    <span class="sfeer-val confetti f@(i)"></span>
+                }
+                <span class="sfeer-ballon b1">🎈</span>
+                <span class="sfeer-ballon b2">🎈</span>
+                <span class="sfeer-ballon b3">🎈</span>
+                <span class="sfeer-onder o1">🎂</span>
+                <span class="sfeer-onder o2">🎁</span>
+                <span class="sfeer-onder o3">🥳</span>
+                break;
+            case SfeerKalender.Halloween:
+                <span class="sfeer-maan"></span>
+                <span class="sfeer-vleermuis v1">🦇</span>
+                <span class="sfeer-vleermuis v2">🦇</span>
+                <span class="sfeer-vleermuis v3">🦇</span>
+                <span class="sfeer-onder sfeer-gloed o1">🎃</span>
+                <span class="sfeer-onder sfeer-gloed o2">🎃</span>
+                <span class="sfeer-onder sfeer-gloed o3">🎃</span>
+                break;
+            case SfeerKalender.Sinterklaas:
+                @* Vallende pepernoten, en onderaan de schoen met een wortel voor het paard en een cadeautje. *@
+                @for (var i = 1; i <= 8; i++)
+                {
+                    <span class="sfeer-val pepernoot f@(i)"></span>
+                }
+                @* Onderaan: de schoen met een wortel voor het paard en een cadeautje links, de Sint met staf rechts. *@
+                <span class="sfeer-onder o1 sint-schoen">👞🥕</span>
+                <span class="sfeer-onder o2 sint-cadeau">🎁</span>
+                <svg class="sfeer-figuur sfeer-sint" viewBox="0 0 64 84">
+                    <path d="M52 84 L52 22" stroke="#e8b923" stroke-width="3" stroke-linecap="round" />
+                    <path d="M52 22 Q52 10 59 11 Q64 13 60 19 Q57 21 56 17" stroke="#e8b923" stroke-width="3" fill="none" stroke-linecap="round" />
+                    <path d="M8 84 L14 46 Q28 38 42 46 L48 84 Z" fill="#c8102e" />
+                    <path d="M22 84 L25 50 L31 50 L34 84 Z" fill="#f6f1e7" />
+                    <path d="M27 52 L29 52 L29 80 L27 80 Z M24 60 L32 60 L32 62 L24 62 Z" fill="#e8b923" />
+                    <path d="M11 64 Q8 54 14 46 L18 52 Z" fill="#a50d25" /><path d="M45 64 Q48 54 42 46 L38 52 Z" fill="#a50d25" />
+                    <circle cx="48" cy="58" r="3.5" fill="#f6f1e7" />
+                    <circle cx="28" cy="31" r="8.5" fill="#f1c7a3" />
+                    <path d="M19 31 Q20 52 28 54 Q36 52 37 31 Q34 38 28 38 Q22 38 19 31 Z" fill="#fff" />
+                    <path d="M23 36 Q28 33 33 36" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" />
+                    <circle cx="25" cy="29.5" r="1.1" fill="#2a1d14" /><circle cx="31" cy="29.5" r="1.1" fill="#2a1d14" />
+                    <path d="M18 24 L18 15 Q28 -2 38 15 L38 24 Z" fill="#c8102e" />
+                    <path d="M18 21 L38 21 L38 24 L18 24 Z" fill="#e8b923" />
+                    <path d="M27 8 L29 8 L29 19 L27 19 Z M23.5 12 L32.5 12 L32.5 14 L23.5 14 Z" fill="#e8b923" />
+                </svg>
+                break;
+            case SfeerKalender.Kerst:
+                @* Sneeuw, en onderaan een kerstboom met cadeautjes. *@
+                @for (var i = 1; i <= 12; i++)
+                {
+                    <span class="sfeer-val sneeuw f@(i)"></span>
+                }
+                <span class="sfeer-onder sfeer-gloed o1">🎄</span>
+                <span class="sfeer-onder o2">🎁</span>
+                <span class="sfeer-onder o3 kerstman">🎅</span>
+                break;
+            case SfeerKalender.Nieuwjaar:
+                @* Vuurwerk dat openspat, en onderaan klinken we. *@
+                @for (var i = 1; i <= 4; i++)
+                {
+                    <span class="sfeer-vuurwerk w@(i)"></span>
+                }
+                <span class="sfeer-onder sfeer-gloed o1">🥂</span>
+                <span class="sfeer-onder o2">🎉</span>
+                <span class="sfeer-onder o3">🍾</span>
+                break;
+        }
+    </div>
+    @if (Name == SfeerKalender.Kerst)
+    {
+        @* De kerstman vliegt met zijn rendieren boven alles langs de bovenrand (achter de tegels zou je hem niet zien). *@
+        <div class="sfeer-lucht" aria-hidden="true"><span class="sfeer-slee">🦌🦌🛷🎅</span></div>
+    }
+}
+
+@code {
+    /// <summary>De sfeer (zie <see cref="SfeerKalender"/>); null = niets.</summary>
+    [Parameter] public string? Name { get; set; }
+}

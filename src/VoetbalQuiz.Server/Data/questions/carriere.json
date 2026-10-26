@@ -17,14 +17,16 @@
     "difficulty": 1,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Romelu_Lukaku"
+      "https://en.wikipedia.org/wiki/Romelu_Lukaku",
+      "https://www.espn.com/soccer/story/_/id/49591252/fenerbahce-sign-romelu-lukaku-napoli"
     ],
     "tags": [
       "rode-duivels",
       "lukaku",
       "turkije"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Dries Mertens",
@@ -119,7 +121,8 @@
     "tags": [
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Marouane Fellaini",
@@ -156,13 +159,15 @@
     "difficulty": 1,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Thibaut_Courtois"
+      "https://en.wikipedia.org/wiki/Thibaut_Courtois",
+      "https://www.eldebate.com/deportes/futbol/20260612/courtois-afirma-le-queda-poco-tiempo-real-madrid-algun-momento-tendra-pensar-sucesor_427985.html"
     ],
     "tags": [
       "rode-duivels",
       "spanje"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Simon Mignolet",
@@ -175,7 +180,7 @@
       "Liverpool (2013–2019)",
       "Club Brugge (2019–2026)"
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Simon_Mignolet"
@@ -197,7 +202,7 @@
       "Atlético Madrid (2020–2023)",
       "Al-Shabab (2023–)"
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Yannick_Carrasco"
@@ -205,7 +210,8 @@
     "tags": [
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Michy Batshuayi",
@@ -236,7 +242,8 @@
       "turkije",
       "spanje"
     ],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Christian Benteke",
@@ -263,7 +270,8 @@
     "tags": [
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Divock Origi",
@@ -304,13 +312,15 @@
     "difficulty": 2,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Youri_Tielemans"
+      "https://en.wikipedia.org/wiki/Youri_Tielemans",
+      "https://en.wikipedia.org/wiki/List_of_English_football_transfers_summer_2026"
     ],
     "tags": [
       "rode-duivels",
       "frankrijk"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Leandro Trossard",
@@ -329,13 +339,15 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Leandro_Trossard"
+      "https://en.wikipedia.org/wiki/Leandro_Trossard",
+      "https://en.wikipedia.org/wiki/List_of_English_football_transfers_summer_2026"
     ],
     "tags": [
       "rode-duivels",
       "turkije"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Thomas Vermaelen",
@@ -422,7 +434,7 @@
       "Moreirense (2022)",
       "AEL Limassol (2022–2023)"
     ],
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Kevin_Mirallas"
@@ -446,7 +458,7 @@
       "Royal Antwerp (2019–2020)",
       "KV Mechelen (2020–2021)"
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Steven_Defour"
@@ -474,7 +486,7 @@
       "Lokeren (2025–2026)",
       "Patro Eisden (2026–)"
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Radja_Nainggolan"
@@ -482,7 +494,8 @@
     "tags": [
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Daniel Van Buyten",
@@ -497,7 +510,7 @@
       "Hamburger SV (2004–2006)",
       "Bayern München (2006–2014)"
     ],
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Daniel_Van_Buyten"
@@ -524,13 +537,15 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Thomas_Meunier"
+      "https://en.wikipedia.org/wiki/Thomas_Meunier",
+      "https://en.wikipedia.org/wiki/List_of_English_football_transfers_summer_2026"
     ],
     "tags": [
       "rode-duivels",
       "frankrijk"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Thorgan Hazard",
@@ -553,7 +568,8 @@
     "tags": [
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Enzo Scifo",
@@ -593,7 +609,7 @@
       "Bordeaux (2000–2001)",
       "Schalke 04 (2001–2003)"
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Marc_Wilmots"
@@ -617,7 +633,7 @@
       "Hertha BSC (2019–2022)",
       "Club Brugge (2022–2025)"
     ],
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Dedryck_Boyata"
@@ -646,7 +662,8 @@
       "https://en.wikipedia.org/wiki/Robert_Lewandowski"
     ],
     "tags": [],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Luis Suárez",
@@ -670,7 +687,8 @@
       "https://en.wikipedia.org/wiki/Luis_Su%C3%A1rez_(Uruguayan_footballer)"
     ],
     "tags": [],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Edinson Cavani",
@@ -716,7 +734,8 @@
       "https://en.wikipedia.org/wiki/%C3%81ngel_Di_Mar%C3%ADa"
     ],
     "tags": [],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Arjen Robben",
@@ -799,10 +818,12 @@
     "difficulty": 2,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Mohamed_Salah"
+      "https://en.wikipedia.org/wiki/Mohamed_Salah",
+      "https://www.lanacion.com.ar/deportes/futbol/mohamed-salah-se-muda-a-turquia-su-nuevo-club-anuncio-el-acuerdo-y-el-crack-egipcio-firmara-por-dos-nid04082026/"
     ],
     "tags": [],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Carlos Tevez",
@@ -944,7 +965,8 @@
       "https://en.wikipedia.org/wiki/Mario_Balotelli"
     ],
     "tags": [],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Edin Džeko",
@@ -968,7 +990,8 @@
       "https://en.wikipedia.org/wiki/Edin_D%C5%BEeko"
     ],
     "tags": ["turkije"],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Pierre-Emerick Aubameyang",
@@ -993,7 +1016,8 @@
       "https://en.wikipedia.org/wiki/Pierre-Emerick_Aubameyang"
     ],
     "tags": [],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Olivier Giroud",
@@ -1013,10 +1037,12 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Olivier_Giroud"
+      "https://en.wikipedia.org/wiki/Olivier_Giroud",
+      "https://www.beinsports.com/en-us/soccer/ligue-1/articles/giroud-extends-lille-contract-until-2027-2026-06-09"
     ],
     "tags": ["frankrijk"],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Kalidou Koulibaly",
@@ -1033,10 +1059,12 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Kalidou_Koulibaly"
+      "https://en.wikipedia.org/wiki/Kalidou_Koulibaly",
+      "https://africasoccer.com/?p=491894"
     ],
     "tags": [],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Sadio Mané",
@@ -1055,10 +1083,12 @@
     "difficulty": 2,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Sadio_Man%C3%A9"
+      "https://en.wikipedia.org/wiki/Sadio_Man%C3%A9",
+      "https://africasoccer.com/sadio-mane-joins-al-nassrs-portugal-build-up-as-new-season-draws-closer/"
     ],
     "tags": [],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Aleksandar Mitrović",
@@ -1080,7 +1110,8 @@
       "https://en.wikipedia.org/wiki/Aleksandar_Mitrovi%C4%87"
     ],
     "tags": [],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Victor Osimhen",
@@ -1100,7 +1131,8 @@
       "https://en.wikipedia.org/wiki/Victor_Osimhen"
     ],
     "tags": ["turkije"],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Alexis Sánchez",
@@ -1129,7 +1161,8 @@
       "https://en.wikipedia.org/wiki/Alexis_S%C3%A1nchez"
     ],
     "tags": [],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Gareth Bale",
@@ -1191,13 +1224,15 @@
     "difficulty": 1,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne"
+      "https://en.wikipedia.org/wiki/Kevin_De_Bruyne",
+      "https://www.beinsports.com/en-us/soccer/serie-a/articles/de-bruyne-reassures-napoli-fans-of-return-to-full-fitness-2026-07-11"
     ],
     "tags": [
       "rode-duivels",
       "de-bruyne"
     ],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Adnan Januzaj",
@@ -1263,7 +1298,7 @@
       "Real Oviedo (2025–2026)",
       "Hajduk Split (2026–)"
     ],
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Leander_Dendoncker"
@@ -1271,7 +1306,8 @@
     "tags": [
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Amadou Onana",
@@ -1292,7 +1328,8 @@
     "tags": [
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Dennis Praet",
@@ -1315,7 +1352,8 @@
     "tags": [
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Timmy Simons",
@@ -1330,7 +1368,7 @@
       "1. FC Nürnberg (2010–2013)",
       "Club Brugge (2013–2018)"
     ],
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Timmy_Simons"
@@ -1379,7 +1417,7 @@
       "Zulte Waregem (2020–2026)",
       "Beerschot (2026–)"
     ],
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Jelle_Vossen"
@@ -1387,7 +1425,8 @@
     "tags": [
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Laurent Depoitre",
@@ -1433,7 +1472,8 @@
     "tags": [
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Thomas Buffel",
@@ -1448,7 +1488,7 @@
       "KRC Genk (2009–2018)",
       "Zulte Waregem (2018–2019)"
     ],
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Thomas_Buffel"
@@ -1471,7 +1511,7 @@
       "Olympiacos (2017–2018)",
       "Lazio (2018–2021)"
     ],
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Silvio_Proto"
@@ -1496,7 +1536,7 @@
       "Al-Shabab (2019)",
       "Al-Sailiya (2019–2020)"
     ],
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Mbark_Boussoufa"
@@ -1523,10 +1563,12 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Ivan_Peri%C5%A1i%C4%87"
+      "https://en.wikipedia.org/wiki/Ivan_Peri%C5%A1i%C4%87",
+      "https://www.omroepbrabant.nl/nieuws/4714670/hongerige-perisic-verlengt-bij-psv-zo-maximaal-mogelijk-knallen"
     ],
     "tags": [],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Paul Onuachu",
@@ -1546,7 +1588,8 @@
       "https://en.wikipedia.org/wiki/Paul_Onuachu"
     ],
     "tags": [],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Jonathan David",
@@ -1560,10 +1603,12 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Jonathan_David"
+      "https://en.wikipedia.org/wiki/Jonathan_David",
+      "https://en.atleticodemadrid.com/noticias/welcome-jonathan-david"
     ],
     "tags": [],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Ruud Vormer",
@@ -1599,7 +1644,7 @@
       "Liverpool (2010–2011)",
       "Anderlecht (2011–2013)"
     ],
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Milan_Jovanovi%C4%87_(footballer,_born_1981)"
@@ -1627,7 +1672,8 @@
       "https://en.wikipedia.org/wiki/Cristiano_Ronaldo"
     ],
     "tags": ["portugal"],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Neymar",
@@ -1645,10 +1691,12 @@
     "difficulty": 1,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Neymar"
+      "https://en.wikipedia.org/wiki/Neymar",
+      "https://www.gulf-times.com/article/729411/sport/football/neymar-returns-to-santos-with-questions-hanging-over-his-future"
     ],
     "tags": [],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Harry Kane",
@@ -1666,10 +1714,12 @@
     "difficulty": 2,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Harry_Kane"
+      "https://en.wikipedia.org/wiki/Harry_Kane",
+      "https://fcbayern.com/en/news/2026/05/europes-best-goalscorer-harry-kane-wins-golden-shoe"
     ],
     "tags": [],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Paul Pogba",
@@ -1706,10 +1756,12 @@
     "difficulty": 1,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Erling_Haaland"
+      "https://en.wikipedia.org/wiki/Erling_Haaland",
+      "https://chaseyoursport.com/football/haaland-premier-league-record-liverpool-man-city/13607"
     ],
     "tags": [],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Antoine Griezmann",
@@ -1729,7 +1781,8 @@
       "https://en.wikipedia.org/wiki/Antoine_Griezmann"
     ],
     "tags": ["frankrijk"],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Riyad Mahrez",
@@ -1750,7 +1803,8 @@
       "https://en.wikipedia.org/wiki/Riyad_Mahrez"
     ],
     "tags": [],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Christian Eriksen",
@@ -1794,7 +1848,8 @@
       "https://en.wikipedia.org/wiki/Hakim_Ziyech"
     ],
     "tags": ["turkije"],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "N'Golo Kanté",
@@ -1817,7 +1872,8 @@
       "https://en.wikipedia.org/wiki/N%27Golo_Kant%C3%A9"
     ],
     "tags": ["frankrijk"],
-    "checkedAt": "2026-10-18"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Kaká",
@@ -1901,7 +1957,8 @@
       "https://en.wikipedia.org/wiki/Lionel_Messi"
     ],
     "tags": ["messi"],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Kylian Mbappé",
@@ -1917,10 +1974,12 @@
     "difficulty": 1,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Kylian_Mbapp%C3%A9"
+      "https://en.wikipedia.org/wiki/Kylian_Mbapp%C3%A9",
+      "https://en.wikipedia.org/wiki/2026%E2%80%9327_Real_Madrid_CF_season"
     ],
     "tags": ["frankrijk"],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Zlatan Ibrahimović",
@@ -2031,10 +2090,12 @@
     "difficulty": 2,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Luka_Modri%C4%87"
+      "https://en.wikipedia.org/wiki/Luka_Modri%C4%87",
+      "https://www.croatiaweek.com/luka-modric-extends-ac-milan-contract-until-2027/"
     ],
     "tags": [],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Sergio Agüero",
@@ -2117,13 +2178,15 @@
     "difficulty": 2,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/J%C3%A9r%C3%A9my_Doku"
+      "https://en.wikipedia.org/wiki/J%C3%A9r%C3%A9my_Doku",
+      "https://www.mancity.com/news/mens/jeremy-doku-signs-new-manchester-city-contract-63922209"
     ],
     "tags": [
       "rode-duivels",
       "anderlecht"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Charles De Ketelaere",
@@ -2137,7 +2200,7 @@
       "Atalanta (2023–2024, huur)",
       "Atalanta (2024–)"
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Charles_De_Ketelaere"
@@ -2146,7 +2209,8 @@
       "rode-duivels",
       "club-brugge"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Lois Openda",
@@ -2172,7 +2236,8 @@
       "rode-duivels",
       "club-brugge"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Johan Bakayoko",
@@ -2192,7 +2257,8 @@
     "tags": [
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Roméo Lavia",
@@ -2213,7 +2279,8 @@
     "tags": [
       "rode-duivels"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Ivan Rakitić",
@@ -2379,7 +2446,7 @@
       "FC Sion (2009–2010)",
       "Neftchi Bakoe (2010–2012)"
     ],
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/%C3%89mile_Mpenza"
@@ -2403,7 +2470,7 @@
       "KAA Gent (1998–1999)",
       "Germinal Beerschot (1999–2002)"
     ],
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Marc_Degryse"
@@ -2425,7 +2492,7 @@
       "Anderlecht (1988–1992)",
       "Club Brugge (1992–2006)"
     ],
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Gert_Verheyen"
@@ -2452,7 +2519,7 @@
       "KVC Westerlo (2011–2013)",
       "Dessel Sport (2013–2014)"
     ],
-    "difficulty": 5,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Bart_Goor"
@@ -2474,7 +2541,7 @@
       "Lierse (1988–1989)",
       "Trabzonspor (1989–1990)"
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Jean-Marie_Pfaff"
@@ -2499,7 +2566,7 @@
       "MVV Maastricht (1984–1985)",
       "PSV (1985–1992)"
     ],
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Eric_Gerets"
@@ -2593,7 +2660,9 @@
     "difficulty": 3,
     "status": "approved",
     "sources": ["https://en.wikipedia.org/wiki/Wilfred_Ndidi"],
-    "tags": []
+    "tags": [],
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Guillaume Gillet",
@@ -2791,7 +2860,8 @@
       "rode-duivels",
       "duitsland"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Matz Sels",
@@ -2816,7 +2886,8 @@
       "anderlecht",
       "frankrijk"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Jason Denayer",
@@ -2861,7 +2932,7 @@
       "Sevilla (2023–2025)",
       "Benfica (2025–)"
     ],
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Dodi_Lukebakio"
@@ -2874,7 +2945,8 @@
       "spanje",
       "portugal"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Jordan Lukaku",
@@ -2927,7 +2999,8 @@
       "rode-duivels",
       "italie"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Sebastiaan Bornauw",
@@ -2951,7 +3024,8 @@
       "anderlecht",
       "duitsland"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Alexis Saelemaekers",
@@ -2965,7 +3039,7 @@
       "Roma (2024–2025, huur)",
       "AC Milan (2025–)"
     ],
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Alexis_Saelemaekers"
@@ -2975,7 +3049,8 @@
       "anderlecht",
       "italie"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Albert Sambi Lokonga",
@@ -3002,7 +3077,8 @@
       "duitsland",
       "spanje"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Ritchie De Laet",
@@ -3087,7 +3163,8 @@
       "rode-duivels",
       "anderlecht"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Aaron Leya Iseka",
@@ -3116,7 +3193,8 @@
       "anderlecht",
       "frankrijk"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Wout Faes",
@@ -3145,7 +3223,8 @@
       "frankrijk",
       "oranje"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Arthur Theate",
@@ -3172,7 +3251,8 @@
       "duitsland",
       "italie"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Sven Kums",
@@ -3370,7 +3450,8 @@
       "frankrijk",
       "spanje"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Elias Cobbaut",
@@ -3397,7 +3478,8 @@
       "anderlecht",
       "italie"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Philippe Albert",
@@ -3437,7 +3519,7 @@
       "Cercle Brugge (1993–1994)",
       "Sporting Braga (1994–1995)"
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/St%C3%A9phane_Demol",
@@ -3491,7 +3573,7 @@
       "Anderlecht (2001–2003)",
       "Lierse (2003–2004)"
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Gilles_De_Bilde"
@@ -4043,7 +4125,7 @@
       "Cercle Brugge (2015–2017)",
       "Royal Antwerp (2017–2023)"
     ],
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Faris_Haroun",
@@ -4094,7 +4176,8 @@
       "Ramsel (2020–)"
     ],
     "difficulty": 3,
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Inhoud-onderhoud 2026-10-26 (markeren): open periode 'Ramsel (2020–)' bij een speler van 43. Enkel Wikipedia vermeldt Ramsel nog als huidige club; geen tweede bron gevonden dat hij er in 2026-27 nog speelt (eurodbfoot.com noemt verouderd Westerlo). Nakijken: speelt hij nog (dan asOf zetten) of is hij gestopt (dan periode afsluiten en asOf null).",
     "sources": [
       "https://en.wikipedia.org/wiki/Kevin_Vandenbergh",
       "https://nl.wikipedia.org/wiki/Kevin_Vandenbergh",
@@ -4223,7 +4306,7 @@
       "Fenerbahçe (2015–2018)",
       "Feyenoord (2018–2019)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Robin_van_Persie"
@@ -4353,12 +4436,14 @@
     "difficulty": 1,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Virgil_van_Dijk"
+      "https://en.wikipedia.org/wiki/Virgil_van_Dijk",
+      "https://www.flashscore.dk/news/soccer-premier-league-virgil-van-dijk-signs-new-contract-to-remain-at-liverpool-until-2027/WnN5FaxA"
     ],
     "tags": [
       "oranje"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Edgar Davids",
@@ -4633,7 +4718,7 @@
       "FC Utrecht (1979–1981)",
       "Feyenoord (1981–1983)"
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Wim_van_Hanegem"
@@ -4703,7 +4788,7 @@
       "Napoli (1980–1984)",
       "Cannes (1984–1986)"
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Ruud_Krol"
@@ -4729,7 +4814,7 @@
       "Bordeaux (1990–1991)",
       "PSV (1991–1994)"
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Wim_Kieft"
@@ -4755,7 +4840,7 @@
       "Portland Timbers (1980)",
       "Toulouse (1981–1982)"
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Rob_Rensenbrink"
@@ -4782,7 +4867,7 @@
       "PSV (1983–1984)",
       "Seiko (1984–1985)"
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Arie_Haan"
@@ -4837,7 +4922,7 @@
       "PSV (1990–1994)",
       "Groningen (1994–1998)"
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Erwin_Koeman"
@@ -4924,7 +5009,8 @@
       "belgie",
       "turkije"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Wesley Hoedt",
@@ -4956,7 +5042,8 @@
       "italie",
       "spanje"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Bram Nuytinck",
@@ -4970,7 +5057,7 @@
       "Sampdoria (2023)",
       "NEC (2023–)"
     ],
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Bram_Nuytinck"
@@ -4981,7 +5068,8 @@
       "anderlecht",
       "italie"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Lucas Biglia",
@@ -4997,7 +5085,7 @@
       "Fatih Karagümrük (2020–2022)",
       "İstanbul Başakşehir (2022–2023)"
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Lucas_Biglia"
@@ -5034,7 +5122,8 @@
       "frankrijk",
       "portugal"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Marcin Wasilewski",
@@ -5051,7 +5140,7 @@
       "Leicester City (2013–2017)",
       "Wisła Kraków (2017–2020)"
     ],
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Marcin_Wasilewski"
@@ -5194,7 +5283,8 @@
     "tags": [
       "belgie"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Lior Refaelov",
@@ -5209,7 +5299,7 @@
       "Anderlecht (2021–2023)",
       "Maccabi Haifa (2023–2025)"
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Lior_Refaelov",
@@ -5250,7 +5340,8 @@
       "spanje",
       "italie"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Frank Arnesen",
@@ -5263,7 +5354,7 @@
       "Anderlecht (1983–1985)",
       "PSV (1985–1988)"
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Frank_Arnesen"
@@ -5317,7 +5408,7 @@
       "Germinal Beerschot (2009, huur)",
       "Lokeren (2009–2014)"
     ],
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Ivan_Leko"
@@ -5417,7 +5508,8 @@
       "frankrijk",
       "turkije"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Gary Lineker",
@@ -5791,7 +5883,7 @@
       "Real Madrid (2000–2005)",
       "Inter (2005–2009)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Lu%C3%ADs_Figo"
@@ -6027,7 +6119,7 @@
       "Manchester City (2014–2015)",
       "New York City FC (2015–2016)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Frank_Lampard"
@@ -6575,7 +6667,8 @@
     "tags": [
       "duitsland"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Jamie Vardy",
@@ -6599,7 +6692,8 @@
     "tags": [
       "italie"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Arda Turan",
@@ -6873,7 +6967,8 @@
       "frankrijk",
       "spanje"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Marcelo",
@@ -7005,7 +7100,8 @@
       "portugal",
       "frankrijk"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Bebeto",
@@ -7280,12 +7376,14 @@
     "difficulty": 2,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Paulo_Dybala"
+      "https://en.wikipedia.org/wiki/Paulo_Dybala",
+      "https://www.beinsports.com/en-us/soccer/serie-a/articles/dybala-signs-new-roma-deal-2026-07-13"
     ],
     "tags": [
       "italie"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Esteban Cambiasso",
@@ -7389,7 +7487,8 @@
       "portugal",
       "duitsland"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Faustino Asprilla",
@@ -7446,7 +7545,8 @@
       "italie",
       "spanje"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Iván Zamorano",
@@ -7585,7 +7685,8 @@
       "spanje",
       "frankrijk"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Tim Howard",
@@ -7623,7 +7724,7 @@
       "Montreal Impact (2015–2016)",
       "Phoenix Rising (2017–2018)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Didier_Drogba"
@@ -7654,7 +7755,7 @@
       "Antalyaspor (2015–2018)",
       "Qatar SC (2018–2019)"
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Samuel_Eto%27o"
@@ -7840,7 +7941,8 @@
     "difficulty": 2,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Achraf_Hakimi"
+      "https://en.wikipedia.org/wiki/Achraf_Hakimi",
+      "https://en.wikipedia.org/wiki/2026_UEFA_Champions_League_final"
     ],
     "tags": [
       "champions-league",
@@ -7850,7 +7952,8 @@
       "frankrijk",
       "messi"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Seydou Keita",
@@ -7901,7 +8004,8 @@
     "tags": [
       "oranje"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Hidetoshi Nakata",
@@ -7948,7 +8052,8 @@
     "tags": [
       "duitsland"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Park Ji-sung",
@@ -7996,7 +8101,8 @@
       "italie",
       "duitsland"
     ],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "answer": "Harry Kewell",

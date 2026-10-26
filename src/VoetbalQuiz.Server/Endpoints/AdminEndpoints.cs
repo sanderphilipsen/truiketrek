@@ -13,7 +13,7 @@ public static class AdminEndpoints
             .AddEndpointFilter(EndpointFilters.HandleQuizErrors);
 
         admin.MapGet("/dashboard", (AdminService svc, TimeProvider clock) => svc.DashboardAsync(QuizClock.Today(clock)));
-        admin.MapGet("/users", (AdminService svc) => svc.UsersAsync());
+        admin.MapGet("/users", (AdminService svc, IConfiguration config) => svc.UsersAsync(CurrentUser.AdminNames(config)));
 
         // Spelers
         admin.MapGet("/players/counts", (AdminService svc) => svc.CountsAsync());
@@ -53,13 +53,42 @@ public static class AdminEndpoints
             return Results.Ok(result);
         });
 
-        // Accounts: een admin verwijdert het account van een speler die daarom vroeg (anonimiseren, zie AccountDeletionService).
-        admin.MapPost("/users/delete", async (DeleteUserRequest req, ClaimsPrincipal user,
+        // Accounts: een admin past naam of e-mail van een speler aan. Admins staan op naam in de configuratie: een admin
+        // hernoemen zou hem zijn rechten afnemen, een speler een admin-naam geven zou hem ze geven.
+        admin.MapPost("/users/edit", async (EditUserRequest req, ClaimsPrincipal user, IConfiguration config,
+            MemberEditService svc, ILogger<MemberEditService> log) =>
+        {
+            var oldName = req.UserName?.Trim() ?? "";
+            var newName = req.NewUserName?.Trim() ?? "";
+            if (newName.Length is < 2 or > 20)
+                return Results.BadRequest(new ErrorResponse("Kies een gebruikersnaam van 2 tot 20 tekens."));
+            var (wasAdmin, becomesAdmin) = (CurrentUser.IsAdminName(oldName, config), CurrentUser.IsAdminName(newName, config));
+            if (wasAdmin && !becomesAdmin)
+                return Results.BadRequest(new ErrorResponse("De naam van een admin pas je aan in de configuratie, niet hier."));
+            if (!wasAdmin && becomesAdmin)
+                return Results.BadRequest(new ErrorResponse("Die naam is voorbehouden voor een admin."));
+
+            var result = await svc.EditAsync(oldName, newName, req.Email);
+            if (result is null)
+                return Results.NotFound(new ErrorResponse("Er bestaat geen speler met die naam."));
+            if (!result.Succeeded)
+                return Results.BadRequest(new ErrorResponse(AccountEndpoints.Translate(result.Errors)));
+
+            log.LogInformation("Account {User} aangepast door {Admin} (naam nu {NewName})", oldName, user.Identity!.Name, newName);
+            return Results.Ok();
+        });
+
+        // Accounts: een admin verwijdert het account van een speler, met of zonder aanvraag (anonimiseren, zie
+        // AccountDeletionService). Admins zelf niet: die staan in de configuratie en zouden zich zo buitensluiten.
+        admin.MapPost("/users/delete", async (DeleteUserRequest req, ClaimsPrincipal user, IConfiguration config,
             AccountDeletionService svc, ILogger<AccountDeletionService> log) =>
         {
-            var deleted = await svc.DeleteAsync(req.UserName);
+            if (CurrentUser.IsAdminName(req.UserName?.Trim(), config))
+                return Results.BadRequest(new ErrorResponse("Een admin kan je niet verwijderen."));
+
+            var deleted = await svc.DeleteAsync(req.UserName, onlyRequested: false);
             if (deleted is null)
-                return Results.NotFound(new ErrorResponse("Er is geen verwijderaanvraag van een speler met die naam."));
+                return Results.NotFound(new ErrorResponse("Er bestaat geen speler met die naam."));
 
             log.LogInformation("Account van {User} verwijderd door {Admin}", deleted, user.Identity!.Name);
             return Results.Ok();

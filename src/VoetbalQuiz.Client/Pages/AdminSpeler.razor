@@ -129,6 +129,13 @@
                     <label>Notitie <small class="muted">(bv. wat nog gecontroleerd moet worden)</small>
                         <input @bind="_note" @bind:after="Touch" />
                     </label>
+                    <label>Peildatum <small class="muted">(enkel als een tip kan verouderen: huidige club, aanvoerder, een record; leeg = tijdloos)</small>
+                        <input type="date" @bind="_asOf" @bind:after="Touch" />
+                    </label>
+                    @if (QuestionRules.IsStale(_asOf, DateOnly.FromDateTime(DateTime.Today)))
+                    {
+                        <small class="note"><Icon Name="warning" /> Verouderd: ouder dan @QuestionRules.MaxAgeDays dagen, deze speler speelt niet tot je de tips nakijkt en de peildatum bijwerkt.</small>
+                    }
                 </section>
             </div>
 
@@ -201,6 +208,7 @@
     private PlayerEdit? _original;
     private string _name = "", _answers = "", _country = "", _competition = "", _era = "modern", _newSource = "";
     private string? _note;
+    private DateOnly? _asOf;
     private int _difficulty = Difficulty.Default;
     private string[] _hints = new string[GameRules.HintCount];
     private List<string> _sources = [];
@@ -215,7 +223,7 @@
         _hints = Enumerable.Repeat("", GameRules.HintCount).ToArray();
         if (Id == 0)
         {
-            (_original, _name, _answers, _country, _competition, _era, _difficulty, _note) = (null, "", "", "", "", "modern", Difficulty.Default, null);
+            (_original, _name, _answers, _country, _competition, _era, _difficulty, _note, _asOf) = (null, "", "", "", "", "modern", Difficulty.Default, null, null);
             (_sources, _tags) = ([], []);
             _loaded = true;
             return;
@@ -223,8 +231,8 @@
         try
         {
             var p = _original = await Api.GetAdminPlayerAsync(Id);
-            (_name, _answers, _country, _competition, _era, _difficulty, _note) =
-                (p.Name, string.Join(", ", p.Answers), p.Country, p.Competition, p.Era, p.Difficulty, p.ReviewNote);
+            (_name, _answers, _country, _competition, _era, _difficulty, _note, _asOf) =
+                (p.Name, string.Join(", ", p.Answers), p.Country, p.Competition, p.Era, p.Difficulty, p.ReviewNote, p.AsOf);
             for (var i = 0; i < Math.Min(p.Hints.Count, GameRules.HintCount); i++) _hints[i] = p.Hints[i];
             _sources = [.. p.Sources];
             _tags = [.. p.Tags];
@@ -242,7 +250,7 @@
     private PlayerEdit Current(PlayerStatus status) => new(
         Id, _name,
         _answers.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToList(),
-        _country, _competition, _era, _difficulty, [.. _hints], [.. _sources], [.. _tags], status, _note, null, null, 0);
+        _country, _competition, _era, _difficulty, [.. _hints], [.. _sources], [.. _tags], status, _note, null, null, 0, AsOf: _asOf);
 
     /// <summary>Wat er nog moet gebeuren, live terwijl je typt.</summary>
     private List<Check> Checks()

@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Academie – kalender (mockup)</title>
+<!-- Mockup bij docs/backlog/037-academie-kalender.md. Statisch, met verzonnen gegevens voor oktober 2026 (vandaag = 26 oktober). -->
+<style>
+:root {
+    --pitch: #0b3d24; --pitch-2: #0f5132; --card: #06291b; --tile-bg: rgba(6, 41, 27, .85);
+    --text: #e3f4ea; --muted: #8cc7ab; --accent: #f5c400; --ok: #1f9d55; --ok-text: #6fdc9f;
+    --radius: 12px; --tap: 44px; --sb-line: rgba(93, 202, 165, .3); --sb-line-strong: rgba(93, 202, 165, .62);
+    --sb-digit: #fac775; --digits: ui-monospace, "Cascadia Mono", Consolas, monospace;
+    --divider: rgba(93, 202, 165, .18); --surface-soft: rgba(255, 255, 255, .08); --scrim: rgba(5, 25, 15, .72);
+    --warn-bg: rgba(250, 199, 117, .12); --special: #b48cf0; --me-bg: rgba(245, 196, 0, .12);
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; background: #151515; color: var(--text);
+    font: 15px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; display: flex; justify-content: center; padding: 24px 16px; gap: 32px; flex-wrap: wrap; }
+.phone { position: relative; width: 375px; height: 812px; overflow: hidden; border-radius: 36px; box-shadow: 0 0 0 10px #2a2a2a, 0 20px 60px rgba(0,0,0,.6);
+    background: repeating-linear-gradient(180deg, var(--pitch) 0 64px, var(--pitch-2) 64px 128px); }
+.screen { height: 100%; overflow-y: auto; padding: 16px 16px 90px; }
+.notes { max-width: 340px; color: #ccc; font-size: 14px; }
+.notes h1 { font-size: 18px; color: #fff; margin-top: 0; }
+.notes li { margin-bottom: 8px; }
+
+/* Kop */
+.head { display: flex; align-items: flex-end; gap: 12px; margin: 8px 0 14px; }
+.head h1 { margin: 0; font-size: 1.6rem; line-height: 1.1; }
+.head .label { display: block; color: rgba(255,255,255,.78); font-size: .85rem; }
+.head .aside { margin-left: auto; text-align: right; }
+.back { background: none; border: 0; color: var(--text); font-size: 1.5rem; width: var(--tap); height: var(--tap); margin-left: -12px; cursor: pointer; }
+.digits { font-family: var(--digits); color: var(--sb-digit); font-weight: 700; }
+.head .digits { font-size: 1.6rem; display: block; line-height: 1; }
+.small-label { font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+
+/* Tegels */
+.card { background: var(--tile-bg); border: 1px solid var(--sb-line); border-radius: var(--radius); padding: 14px 16px; }
+.suggest { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.suggest .txt { flex: 1; min-width: 0; }
+.suggest b { display: block; font-size: 1rem; }
+.suggest small { color: var(--muted); }
+.btn { display: inline-grid; place-items: center; min-height: var(--tap); padding: 0 18px; border: 0; border-radius: 999px; font: inherit; font-weight: 800; cursor: pointer; }
+.btn.primary { background: var(--accent); color: #1b1600; }
+.btn.full { display: grid; width: 100%; }
+.btn small { display: block; font-weight: 600; font-size: .75rem; opacity: .75; }
+.linkish { background: none; border: 0; color: var(--sb-digit); font: inherit; font-weight: 700; cursor: pointer; padding: 10px 0 0; min-height: 32px; }
+
+/* Kalender */
+.cal { padding: 10px 8px 12px; }
+.cal-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.cal-nav span { font-weight: 800; }
+.cal-nav button { width: var(--tap); height: var(--tap); border-radius: 50%; border: 0; background: none; color: var(--text); font-size: 1.4rem; cursor: pointer; }
+.cal-nav button:disabled { opacity: .3; }
+.grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.dow { text-align: center; font-size: .7rem; color: var(--muted); padding-bottom: 2px; }
+.day { position: relative; height: 52px; border-radius: 10px; border: 0; padding: 4px 0 0; background: none; color: var(--text); font: inherit;
+    display: flex; flex-direction: column; align-items: center; gap: 1px; cursor: pointer; }
+.day .n { font-size: .78rem; line-height: 1.2; }
+.day .s { font-family: var(--digits); font-size: .78rem; font-weight: 700; }
+.day.missed { box-shadow: inset 0 0 0 2px var(--sb-digit); }
+.day.missed .n { color: var(--sb-digit); font-weight: 800; font-size: .95rem; margin-top: 8px; }
+.day.played { background: rgba(255,255,255,.07); }
+.day.played .s { color: var(--sb-digit); }
+.day.replayed { box-shadow: inset 0 0 0 2px var(--ok); }
+.day.replayed .s { color: var(--ok-text); }
+.day.blocked { opacity: .55; box-shadow: inset 0 0 0 2px rgba(250,199,117,.5); }
+.day.future { opacity: .3; cursor: default; }
+.day.today .n { text-decoration: underline 2px var(--accent); text-underline-offset: 3px; }
+.day.empty { visibility: hidden; }
+.day.sp::after { content: ""; position: absolute; left: -2px; right: -2px; bottom: 0; height: 4px; background: var(--special); }
+.day.sp.sp-start::after { left: 4px; border-radius: 2px 0 0 2px; }
+.day.sp.sp-end::after { right: 4px; border-radius: 0 2px 2px 0; }
+.day.flash { animation: flash 1.2s ease-out; }
+@keyframes flash { 0% { background: rgba(245,196,0,.5); } 100% { background: none; } }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 10px; font-size: .75rem; color: var(--muted); justify-content: center; }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -2px; margin-right: 4px; }
+
+h2.section { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: rgba(255,255,255,.78); margin: 18px 0 8px; }
+.strip { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; color: var(--text); font: inherit; cursor: pointer; }
+.strip .ico { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: rgba(180,140,240,.18); box-shadow: inset 0 0 0 1.5px var(--special); }
+.strip .txt { flex: 1; } .strip small { color: var(--muted); display: block; }
+
+/* Klassement (mini in het onderblad en volledig) */
+.board { list-style: none; padding: 0; margin: 0; }
+.board li { display: flex; align-items: center; gap: 10px; padding: 7px 8px; border-bottom: 1px solid var(--divider); font-size: .9rem; }
+.board .rank { width: 26px; text-align: center; font-family: var(--digits); font-weight: 700; color: var(--muted); flex: none; }
+.board .who { flex: 1; min-width: 0; }
+.board .who small { display: block; color: var(--muted); font-size: .72rem; }
+.board .pts { font-family: var(--digits); font-weight: 700; color: var(--sb-digit); }
+.board li.top .rank { color: var(--sb-digit); }
+.board li.me { background: var(--me-bg); border-radius: 8px; }
+.board li.rep .pts { color: var(--ok-text); }
+.board li.gap { justify-content: center; color: var(--muted); padding: 2px; border: 0; }
+.board-note { color: var(--muted); font-size: .8rem; margin: 12px 4px 0; }
+.mini { margin-top: 14px; }
+.mini h3 { margin: 0 0 4px; font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 700; }
+
+/* Volledig klassement: een eigen scherm over de kalender */
+.page { position: absolute; inset: 0; z-index: 8; background: repeating-linear-gradient(180deg, var(--pitch) 0 64px, var(--pitch-2) 64px 128px);
+    transform: translateX(100%); transition: transform .25s ease-out; }
+.page.on { transform: none; }
+
+/* Onderblad */
+.scrim { position: absolute; inset: 0; background: var(--scrim); display: none; z-index: 5; }
+.sheet { position: absolute; left: 0; right: 0; bottom: 0; z-index: 6; max-height: 92%; display: flex; flex-direction: column; background: var(--card); border-radius: 20px 20px 0 0;
+    transform: translateY(100%); transition: transform .28s cubic-bezier(.2,.9,.3,1); box-shadow: 0 -10px 40px rgba(0,0,0,.35); }
+.open .scrim { display: block; } .open .sheet { transform: none; }
+.sheet-grip { width: 40px; height: 4px; border-radius: 2px; background: var(--sb-line-strong); margin: 8px auto 0; flex: none; }
+.sheet-head { display: flex; align-items: center; padding: 6px 4px 0 4px; flex: none; }
+.sheet-head h2 { flex: 1; text-align: center; margin: 0; font-size: 1.15rem; }
+.sheet-head button { width: var(--tap); height: var(--tap); border: 0; background: none; color: var(--muted); font-size: 1.3rem; border-radius: 50%; cursor: pointer; }
+.sheet-head button:disabled { opacity: .25; }
+.sheet-body { padding: 4px 16px 12px; overflow-y: auto; }
+.facts { text-align: center; color: var(--muted); font-size: .88rem; margin: 2px 0 10px; }
+.chips { display: flex; justify-content: center; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+.chip { background: var(--surface-soft); border-radius: 999px; padding: 3px 10px; font-size: .8rem; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.stat { background: rgba(255,255,255,.05); border: 1px solid var(--sb-line); border-radius: 10px; padding: 8px 4px; text-align: center; }
+.stat .digits { display: block; font-size: 1.3rem; }
+.stat .digits.ok { color: var(--ok-text); }
+.stat .digits.none { color: var(--muted); }
+.stat small { color: var(--muted); font-size: .72rem; }
+.warn { background: var(--warn-bg); border-radius: 10px; padding: 10px 12px; font-size: .88rem; margin: 0 0 8px; }
+.sheet-foot { padding: 10px 16px 18px; border-top: 1px solid var(--divider); flex: none; }
+
+/* Melding na een poging */
+.toast { position: absolute; left: 12px; right: 12px; bottom: 78px; z-index: 7; background: var(--card); border: 1px solid var(--ok); border-radius: 14px;
+    padding: 12px 14px; display: none; gap: 10px; align-items: center; box-shadow: 0 8px 30px rgba(0,0,0,.5); }
+.toast.on { display: flex; }
+.toast .txt { flex: 1; font-size: .9rem; }
+
+/* Tabbalk, enkel als decor */
+.tabbar { position: absolute; left: 0; right: 0; bottom: 0; height: 66px; background: #04200f; border-top: 1px solid var(--sb-line); display: flex; justify-content: space-around; align-items: center; font-size: .7rem; color: var(--muted); z-index: 4; }
+.tabbar .on { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<div class="phone" id="phone">
+    <div class="screen">
+        <div class="head">
+            <div><h1>Academie</h1><span class="label">Oefenen · telt niet mee</span></div>
+            <div class="aside"><span class="digits" id="missedCount">6</span><span class="small-label">gemist</span></div>
+        </div>
+
+        <section class="card suggest">
+            <div class="txt">
+                <span class="small-label">Bijspelen</span>
+                <b>Donderdag 22 oktober</b>
+                <small>Gemist · 8 vragen · 19 spelers</small>
+            </div>
+            <button class="btn primary" onclick="current = 22; play()">Speel ›</button>
+        </section>
+
+        <section class="card cal">
+            <div class="cal-nav">
+                <button aria-label="Vorige maand" onclick="alert('September 2026')">‹</button>
+                <span>Oktober 2026</span>
+                <button aria-label="Volgende maand" disabled>›</button>
+            </div>
+            <div class="grid" id="grid"></div>
+            <div class="legend">
+                <span><i style="box-shadow: inset 0 0 0 2px var(--sb-digit)"></i>gemist</span>
+                <span><i style="background: rgba(255,255,255,.14)"></i>gespeeld</span>
+                <span><i style="box-shadow: inset 0 0 0 2px var(--ok)"></i>nagespeeld</span>
+                <span><i style="background: var(--special); height: 4px; vertical-align: 2px"></i>special</span>
+            </div>
+        </section>
+
+        <h2 class="section">Specials in oktober</h2>
+        <button class="card strip" onclick="openSpecial()">
+            <span class="ico">⚔️</span>
+            <span class="txt"><b>Derbyweekend</b><small>17 – 18 oktober · 6de van 27</small></span>
+            <span class="digits">812</span>
+        </button>
+    </div>
+
+    <nav class="tabbar"><span>Home</span><span>Klassement</span><span class="on">Academie</span><span>Online</span><span>Profiel</span></nav>
+
+    <div class="scrim" onclick="closeSheet()"></div>
+    <section class="sheet" role="dialog" aria-labelledby="sheetTitle">
+        <div class="sheet-grip"></div>
+        <div class="sheet-head">
+            <button id="prev" aria-label="Vorige dag" onclick="step(-1)">‹</button>
+            <h2 id="sheetTitle"></h2>
+            <button id="next" aria-label="Volgende dag" onclick="step(1)">›</button>
+        </div>
+        <div class="sheet-body" id="sheetBody"></div>
+        <div class="sheet-foot" id="sheetFoot"></div>
+    </section>
+
+    <div class="toast" id="toast" role="status"></div>
+
+    <section class="page" id="boardPage">
+        <div class="screen">
+            <div class="head">
+                <button class="back" aria-label="Terug naar de academie" onclick="closeBoard()">‹</button>
+                <div><h1>Klassement</h1><span class="label" id="boardLabel"></span></div>
+                <div class="aside" id="boardAside"></div>
+            </div>
+            <div class="card" style="padding: 6px 8px"><ol class="board" id="boardFull"></ol></div>
+            <p class="board-note">🎓 Nagespeeld in de academie. Die scores staan erbij, maar tellen niet voor de dagwinnaar, het maandklassement of XP. De echte spelers houden hun plaats.</p>
+        </div>
+    </section>
+</div>
+
+<div class="notes">
+    <h1>Mockup: academie als kalender</h1>
+    <p>Bij <code>docs/backlog/037-academie-kalender.md</code>. Verzonnen gegevens, vandaag = maandag 26 oktober.</p>
+    <ul>
+        <li><b>Tik op een dag</b> voor het onderblad. Probeer 14 (gemist), 11 (nagespeeld), 6 (echt gespeeld) en 24 (geblokkeerd).</li>
+        <li>In het onderblad staat een <b>mini-klassement</b> van die dag. <b>"Volledig klassement ›"</b> opent het hele dagklassement.</li>
+        <li><b>Spelen</b> op een gemiste dag doet alsof je de poging afwerkt: de cel wordt "nagespeeld", en een melding zegt waar je in het klassement staat. De gele knop "Speel" bovenaan doet hetzelfde voor 22 oktober.</li>
+        <li>Nummering volgens voorstel (b): echte spelers houden hun plaats, nagespeelde rijen krijgen een petje in plaats van een nummer.</li>
+        <li>‹ › in het onderblad bladert naar de vorige of volgende dag.</li>
+    </ul>
+</div>
+
+<script>
+// Oktober 2026: de 1ste is een donderdag. Toestanden: missed, played (echt), replayed (eerste keer in de academie), blocked.
+const DOW = ["ma", "di", "wo", "do", "vr", "za", "zo"];
+const NAMES = ["maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag", "zondag"];
+const PLAYERS = ["Jens", "Lotte", "Bram", "Sofie", "Wout", "Ellen", "Kobe", "Nina", "Arne", "Fien", "Tibo", "Lies", "Ruben", "Mats", "Hanne", "Senne", "Jolien", "Pieter", "Emma", "Lars", "Noor", "Seppe"];
+const TODAY = 26, FIRST_DOW = 3; // donderdag = index 3
+const types = ["Mix", "Snelvuur", "Carrièrepad", "Wie ben ik?", "Emoji", "Raad het jaar", "Opstelling", "Lijst"];
+const ord = n => n + (n === 1 || n === 8 || n >= 20 ? "ste" : "de");
+
+// Per dag: de echte stand (zonder mij), en mijn score in het klassement (echt of nagespeeld).
+const days = {};
+for (let d = 1; d < TODAY; d++) {
+    const n = 12 + (d * 3) % 9;
+    const real = Array.from({ length: n }, (_, i) => ({ name: PLAYERS[(d + i) % PLAYERS.length], pts: 940 - i * 38 - ((d * (i + 3)) % 25) }));
+    // Iemand anders speelde deze dag ook later na.
+    const others = d % 3 === 0 ? [{ name: PLAYERS[(d + n) % PLAYERS.length], pts: 700 - (d * 7) % 200, rep: true }] : [];
+    days[d] = { state: "played", real, others, my: null, runs: d % 4 === 0 ? 1 : 0, best: null, type: types[d % types.length], stars: 1 + (d % 5), questions: 8 };
+    // Echt gespeeld: ik neem een plaats in tussen de echte spelers.
+    const at = 1 + (d * 5) % n;
+    days[d].my = { pts: real[at - 1].pts + 5, real: true };
+}
+const resetMissed = d => Object.assign(days[d], { state: "missed", my: null, runs: 0 });
+for (const d of [4, 9, 14, 20, 22]) resetMissed(d);
+resetMissed(24); days[24].state = "blocked";
+for (const d of [11, 18]) Object.assign(days[d], { state: "replayed", my: { pts: d === 11 ? 540 : 610, real: false }, runs: d === 11 ? 2 : 1, best: d === 11 ? 600 : null });
+for (const d of Object.keys(days)) if (days[d].runs && days[d].state === "played") days[d].best = days[d].my.pts - 40;
+
+/** Het dagklassement: echte spelers genummerd, nagespeelde rijen ertussen zonder nummer (voorstel b). */
+function board(d) {
+    const x = days[d];
+    const rows = [...x.real.map(r => ({ ...r, rep: false })), ...x.others];
+    if (x.my) rows.push({ name: "Jij", pts: x.my.pts, rep: !x.my.real, me: true });
+    rows.sort((a, b) => b.pts - a.pts);
+    let rank = 0;
+    for (const r of rows) if (!r.rep) r.rank = ++rank;
+    return rows;
+}
+/** Mijn plaats: echt, of "zou Nde zijn" tegenover de echte spelers. */
+function myPlace(d) {
+    const x = days[d]; if (!x.my) return null;
+    const better = x.real.filter(r => r.pts > x.my.pts).length;
+    return { rank: better + 1, of: x.real.length + 1, real: x.my.real };
+}
+
+const grid = document.getElementById("grid");
+function render() {
+    grid.innerHTML = DOW.map(d => `<div class="dow">${d}</div>`).join("");
+    for (let i = 0; i < FIRST_DOW; i++) grid.insertAdjacentHTML("beforeend", `<span class="day empty"></span>`);
+    for (let d = 1; d <= 31; d++) {
+        const x = days[d];
+        const sp = d === 17 || d === 18 ? ` sp ${d === 17 ? "sp-start" : "sp-end"}` : "";
+        if (!x) {
+            grid.insertAdjacentHTML("beforeend", `<button class="day future${d === TODAY ? " today" : ""}" disabled aria-label="${d} oktober, nog niet speelbaar"><span class="n">${d}</span></button>`);
+            continue;
+        }
+        const score = x.my ? x.my.pts : x.state === "blocked" ? "🔒" : "";
+        const label = { missed: "gemist", played: `gespeeld, ${score} punten`, replayed: `nagespeeld, ${score} punten`, blocked: "geblokkeerd tot je de daily van vandaag speelt" }[x.state];
+        grid.insertAdjacentHTML("beforeend",
+            `<button class="day ${x.state}${sp}" id="d${d}" aria-label="${d} oktober, ${label}" onclick="openDay(${d})"><span class="n">${d}</span><span class="s">${score}</span></button>`);
+    }
+    document.getElementById("missedCount").textContent = Object.values(days).filter(x => x.state === "missed" || x.state === "blocked").length;
+}
+
+function rowHtml(r) {
+    const rank = r.rep ? "🎓" : r.rank;
+    const sub = r.rep ? "<small>nagespeeld</small>" : "";
+    return `<li class="${r.rank <= 3 && !r.rep ? "top" : ""} ${r.me ? "me" : ""} ${r.rep ? "rep" : ""}">
+        <span class="rank" aria-label="${r.rep ? "nagespeeld" : "plaats " + r.rank}">${rank}</span>
+        <span class="who">${r.name}${sub}</span><span class="pts">${r.pts}</span></li>`;
+}
+/** Top 3 (echte spelers) en mijn rij met de buren. */
+function miniBoard(d) {
+    const rows = board(d);
+    const me = rows.findIndex(r => r.me);
+    const top = rows.filter(r => !r.rep).slice(0, 3);
+    const lastTop = rows.indexOf(top[top.length - 1]);
+    let html = rows.slice(0, lastTop + 1).filter(r => !r.rep || r.me).map(rowHtml).join("");
+    if (me > lastTop) {
+        if (me - 1 > lastTop + 1) html += `<li class="gap">⋯</li>`;
+        html += rows.slice(Math.max(lastTop + 1, me - 1), me + 2).map(rowHtml).join("");
+    }
+    return `<div class="mini"><h3>Klassement van die dag</h3><ol class="board">${html}</ol>
+        ${me < 0 ? `<p class="board-note">Speel om erbij te komen.</p>` : ""}
+        <button class="linkish" onclick="openBoard(${d})">Volledig klassement ›</button></div>`;
+}
+
+let current = null;
+const phone = document.getElementById("phone");
+const dayName = d => NAMES[(FIRST_DOW + d - 1) % 7];
+const cap = s => s[0].toUpperCase() + s.slice(1);
+
+function openDay(d) {
+    current = d;
+    const x = days[d], p = myPlace(d);
+    document.getElementById("sheetTitle").textContent = `${cap(dayName(d))} ${d} oktober`;
+    document.getElementById("prev").disabled = d <= 1;
+    document.getElementById("next").disabled = d >= TODAY - 1;
+    const stars = "★".repeat(x.stars) + "☆".repeat(5 - x.stars);
+    const place = !p ? `<span class="digits none">–</span><small>Klassement</small>`
+        : p.real ? `<span class="digits">${ord(p.rank)}</span><small>van ${p.of} · ${x.my.pts}</small>`
+        : `<span class="digits ok">🎓${ord(p.rank)}</span><small>zou zijn · ${x.my.pts}</small>`;
+    const best = x.best != null ? `<span class="digits ok">${x.best}</span><small>Beste oefening</small>` : `<span class="digits none">–</span><small>Beste oefening</small>`;
+    const runs = `<span class="digits${x.runs ? "" : " none"}">${x.runs}</span><small>Pogingen</small>`;
+    document.getElementById("sheetBody").innerHTML = `
+        <p class="facts">${x.questions} vragen · ${x.real.length} spelers speelden die dag</p>
+        <div class="chips"><span class="chip">${x.type}</span><span class="chip" aria-label="Moeilijkheid ${x.stars} van 5">${stars}</span></div>
+        <div class="stats"><div class="stat">${place}</div><div class="stat">${best}</div><div class="stat">${runs}</div></div>
+        ${miniBoard(d)}`;
+    document.getElementById("sheetFoot").innerHTML = x.state === "blocked"
+        ? `<p class="warn">Een van deze vragen zit ook in de daily van vandaag. Speel eerst die.</p><button class="btn primary full" onclick="alert('Naar de daily')">Naar de daily ›</button>`
+        : x.my ? `<button class="btn primary full" onclick="play()">Opnieuw spelen ›<small>Oefenen, telt niet mee</small></button>`
+        : `<button class="btn primary full" onclick="play()">Spelen ›<small>Je komt in het klassement van die dag</small></button>`;
+    phone.classList.add("open");
+}
+
+function openSpecial() {
+    current = null;
+    document.getElementById("sheetTitle").textContent = "Derbyweekend";
+    document.getElementById("prev").disabled = document.getElementById("next").disabled = true;
+    document.getElementById("sheetBody").innerHTML = `
+        <p class="facts">Special · 17 – 18 oktober · 16 vragen · 27 spelers deden mee</p>
+        <div class="stats"><div class="stat"><span class="digits">6de</span><small>van 27 · 812</small></div>
+        <div class="stat"><span class="digits ok">880</span><small>Beste oefening</small></div>
+        <div class="stat"><span class="digits">1</span><small>Pogingen</small></div></div>
+        <div class="mini"><h3>Klassement van de special</h3><p class="board-note">Zelfde mini-stand als bij een dag.</p></div>`;
+    document.getElementById("sheetFoot").innerHTML = `<button class="btn primary full" onclick="closeSheet()">Opnieuw spelen ›<small>Oefenen, telt niet mee</small></button>`;
+    phone.classList.add("open");
+}
+
+function openBoard(d) {
+    const rows = board(d), p = myPlace(d);
+    document.getElementById("boardLabel").textContent = `${cap(dayName(d))} ${d} oktober`;
+    document.getElementById("boardAside").innerHTML = p
+        ? `<span class="digits${p.real ? "" : " ok"}" style="${p.real ? "" : "color: var(--ok-text)"}">${p.real ? "" : "🎓"}${ord(p.rank)}</span><span class="small-label">${p.real ? "van " + p.of : "zou zijn"}</span>`
+        : "";
+    document.getElementById("boardFull").innerHTML = rows.map(rowHtml).join("");
+    closeSheet();
+    document.getElementById("boardPage").classList.add("on");
+}
+function closeBoard() {
+    document.getElementById("boardPage").classList.remove("on");
+    if (current) openDay(current);
+}
+
+function step(delta) { const d = current + delta; if (days[d]) openDay(d); }
+function closeSheet() { phone.classList.remove("open"); }
+
+// Doet alsof je de poging afwerkte. De eerste keer kom je in het klassement; daarna is het oefening.
+function play() {
+    const d = current, x = days[d];
+    const pts = 480 + (d * 53) % 400;
+    x.runs++;
+    const first = !x.my;
+    if (first) { x.my = { pts, real: false }; x.state = "replayed"; }
+    else x.best = Math.max(x.best ?? 0, pts);
+    closeSheet();
+    render();
+    document.getElementById("d" + d).classList.add("flash");
+    const p = myPlace(d);
+    const toast = document.getElementById("toast");
+    toast.innerHTML = first
+        ? `<span class="txt">Je staat in het klassement van ${d} oktober, ${p.rank === 1 ? "<b>bovenaan</b>" : `<b>tussen de ${ord(p.rank - 1)} en de ${ord(p.rank)}</b>`} (nagespeeld).</span><button class="linkish" style="padding:0" onclick="hideToast(); current=${d}; openBoard(${d})">Bekijk ›</button>`
+        : `<span class="txt">Oefening: ${pts} punten. Daarmee was je ${ord(x.real.filter(r => r.pts > pts).length + 1)} geweest.</span>`;
+    toast.classList.add("on");
+    clearTimeout(window.toastTimer);
+    window.toastTimer = setTimeout(hideToast, 6000);
+}
+function hideToast() { document.getElementById("toast").classList.remove("on"); }
+
+document.addEventListener("keydown", e => { if (e.key === "Escape") { closeSheet(); document.getElementById("boardPage").classList.remove("on"); } });
+render();
+</script>
+</body>
+</html>

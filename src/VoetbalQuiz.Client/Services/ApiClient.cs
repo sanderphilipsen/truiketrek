@@ -39,7 +39,7 @@ public class ApiClient(HttpClient http)
     public static string TrainingRun(int runId) => $"api/training/runs/{runId}";
 
     public Task<DailyOverview> GetDailyAsync(int? specialId = null) => GetOverviewAsync(Quiz(specialId));
-    /// <summary>Je plaats van vandaag en die bij je vorige bezoek; de server onthoudt dit bezoek (enkel Home roept dit op).</summary>
+    /// <summary>Je plaats van vandaag en die bij je vorige bezoek; de server onthoudt dit bezoek (Home en het eindscherm van de daily roepen dit op).</summary>
     public Task<DailyRank> VisitDailyRankAsync() => PostAsync<DailyRank>("api/daily/rank", null);
 
     /// <summary>Overzicht van een reeks; <paramref name="quiz"/> is <see cref="Quiz"/> of <see cref="TrainingRun"/>.</summary>
@@ -58,6 +58,8 @@ public class ApiClient(HttpClient http)
     public Task<TrainingArchive> GetTrainingArchiveAsync(int? year = null, int? month = null) =>
         GetAsync<TrainingArchive>(year is { } y && month is { } m ? $"api/training/archive/{y}/{m}" : "api/training/archive");
     public Task<TrainingDayDetail> GetTrainingDayAsync(DateOnly date) => GetAsync<TrainingDayDetail>($"api/training/days/{date:yyyy-MM-dd}");
+    /// <summary>Het klassement van een voorbije daily, met wie haar naspeelde erbij.</summary>
+    public Task<Leaderboard> GetTrainingDayBoardAsync(DateOnly date) => GetAsync<Leaderboard>($"api/training/days/{date:yyyy-MM-dd}/board");
     public Task<TrainingRunInfo> StartTrainingRunAsync(DateOnly date) =>
         PostAsync<TrainingRunInfo>($"api/training/days/{date:yyyy-MM-dd}/runs", null);
     public Task<TrainingDayDetail> GetTrainingSpecialAsync(int specialId) => GetAsync<TrainingDayDetail>($"api/training/specials/{specialId}");
@@ -94,6 +96,8 @@ public class ApiClient(HttpClient http)
         PostAsync<ResetPasswordResult>("api/admin/users/reset-password", new ResetPasswordRequest(userName));
     public Task<AdminDashboard> GetAdminDashboardAsync() => GetAsync<AdminDashboard>("api/admin/dashboard");
     public Task<List<AdminUserItem>> GetAdminUsersAsync() => GetAsync<List<AdminUserItem>>("api/admin/users");
+    public async Task EditUserAsync(string userName, string newUserName, string email) =>
+        await EnsureOkAsync(await http.PostAsJsonAsync("api/admin/users/edit", new EditUserRequest(userName, newUserName, email)));
     public async Task DeleteUserAsync(string userName) =>
         await EnsureOkAsync(await http.PostAsJsonAsync("api/admin/users/delete", new DeleteUserRequest(userName)));
     public Task<PlayerCounts> GetPlayerCountsAsync() => GetAsync<PlayerCounts>("api/admin/players/counts");
@@ -138,6 +142,12 @@ public class ApiClient(HttpClient http)
     public Task<List<NotificationItem>> GetNotificationsAsync() => GetAsync<List<NotificationItem>>("api/notifications");
     public Task<NotificationCount> GetNotificationCountAsync() => GetAsync<NotificationCount>("api/notifications/count");
     public async Task MarkNotificationsReadAsync() => await EnsureOkAsync(await http.PostAsync("api/notifications/read", null));
+
+    // Pushmeldingen (zie PushClient)
+    public Task<PushConfig> GetPushConfigAsync() => GetAsync<PushConfig>("api/push");
+    public async Task SubscribePushAsync(PushSubscribeRequest req) => await EnsureOkAsync(await http.PostAsJsonAsync("api/push/subscribe", req));
+    public async Task UnsubscribePushAsync(PushUnsubscribeRequest req) => await EnsureOkAsync(await http.PostAsJsonAsync("api/push/unsubscribe", req));
+    public async Task SetDailyReminderAsync(bool on) => await EnsureOkAsync(await http.PutAsJsonAsync("api/push/daily-reminder", new DailyReminderRequest(on)));
     public Task<List<AnnouncementItem>> GetAnnouncementsAsync() => GetAsync<List<AnnouncementItem>>("api/admin/announcements");
     public async Task AddAnnouncementAsync(AnnouncementRequest req) => await EnsureOkAsync(await http.PostAsJsonAsync("api/admin/announcements", req));
     public async Task DeleteAnnouncementAsync(int id) => await EnsureOkAsync(await http.DeleteAsync($"api/admin/announcements/{id}"));

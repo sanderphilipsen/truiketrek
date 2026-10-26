@@ -1,0 +1,20 @@
+@implements IAsyncDisposable
+@inject SfeerState State
+@* De sfeer van een pagina (bv. het thema van een special): geldt zolang de pagina openstaat, daarna weer die van de dag.
+   Tekent zelf niets: MainLayout tekent de decoratie (zie SfeerState). Null of een onbekende naam = geen eigen sfeer. *@
+
+@code {
+    /// <summary>De sfeer, bv. "halloween" (het thema van de special).</summary>
+    [Parameter] public string? Name { get; set; }
+
+    private string? _set;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Name == _set) return;
+        _set = Name;
+        await State.SetPageAsync(this, Name);
+    }
+
+    public async ValueTask DisposeAsync() => await State.ClearPageAsync(this);
+}

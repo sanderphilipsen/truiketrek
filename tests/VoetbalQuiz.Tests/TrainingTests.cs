@@ -217,7 +217,8 @@ public sealed class TrainingTests : IDisposable
 
         var archived = (await _training.GetArchiveAsync(_me, _day.Year, _day.Month)).Days.Single();
         Assert.True(archived.Played);
-        Assert.Equal(3, archived.Runs);
+        Assert.Equal(2, archived.Runs); // de lege run (geen vraag gestart) telt niet
+
         Assert.Equal(day.Runs.Single(r => r.IsBest).Points, archived.BestTraining);
     }
 
@@ -373,5 +374,237 @@ public sealed class TrainingTests : IDisposable
         }
         // Volledig gelijk met b: in de academie ben je later klaar dan wie echt speelde.
         Assert.Equal(3, TrainingService.WouldBeRank(standings, 150, 1, 0));
+    }
+
+    // ---------- Nagespeeld: je eerste keer in de academie komt in het klassement van die dag (backlog 037) ----------
+
+    [Fact]
+    public async Task A_replay_shows_in_the_day_board_but_never_changes_winner_podium_month_or_xp()
+    {
+        await PlayRealAsync(_other, 3);
+        await NextDayAsync();
+        var challenge = await _quiz.GetOrCreateChallengeAsync(_day);
+        await _results.SettleFinishedDaysAsync();
+        var monthBefore = (await _ranking.GetAsync(_me, _day.Year, _day.Month)).Entries.Single(e => e.IsMe);
+        var xpBefore = (await _results.XpInputsAsync())[_me];
+        var podiumBefore = (await _results.PodiumsAsync(_day, _day.AddDays(1))).Single(p => p.ChallengeId == challenge.Id).UserIds;
+
+        await TrainAsync(_me, 10);
+
+        // In het klassement: bovenaan, maar zonder eigen plaats; jan blijft 1ste.
+        var board = await _training.GetDayBoardAsync(_me, _day);
+        Assert.Equal([("sander", 1, true), ("jan", 1, false)], board.Entries.Select(e => (e.UserName, e.Rank, e.Replayed)));
+        Assert.True(board.Entries[0].IsMe);
+
+        // Nergens anders.
+        await _db.Entry(challenge).ReloadAsync();
+        Assert.Equal(_other, challenge.WinnerUserId);
+        Assert.Equal(podiumBefore, (await _results.PodiumsAsync(_day, _day.AddDays(1))).Single(p => p.ChallengeId == challenge.Id).UserIds);
+        Assert.Equal([_other], (await _results.DayStandingsAsync([challenge.Id]))[challenge.Id].Select(s => s.UserId));
+        Assert.Equal(monthBefore, (await _ranking.GetAsync(_me, _day.Year, _day.Month)).Entries.Single(e => e.IsMe));
+        Assert.Equal(xpBefore, (await _results.XpInputsAsync())[_me]);
+    }
+
+    [Fact]
+    public async Task Real_players_keep_their_place_and_replays_slot_in_between()
+    {
+        var third = _t.AddUser("piet");
+        await PlayRealAsync(_other, 6);
+        await PlayRealAsync(third, 2);
+        await NextDayAsync();
+
+        await TrainAsync(_me, 4);
+
+        var board = await _training.GetDayBoardAsync(_me, _day);
+        Assert.Equal([("jan", 1, false), ("sander", 2, true), ("piet", 2, false)], board.Entries.Select(e => (e.UserName, e.Rank, e.Replayed)));
+    }
+
+    [Fact]
+    public async Task Only_the_first_run_counts_even_unfinished_and_never_after_a_real_attempt()
+    {
+        await PlayRealAsync(_other, 3);
+        await NextDayAsync();
+
+        // Eerste run: één vraag juist, dan gestopt. Die telt, met de punten tot dan.
+        var first = await _training.StartRunAsync(_me, _day);
+        await _training.StartAsync(_me, first.Id, 1);
+        await _training.GuessAsync(_me, first.Id, 1, await NameOf(1));
+        var second = await TrainAsync(_me, 10);
+
+        var firstSummary = await _training.GetSummaryAsync(_me, first.Id);
+        var day = await _training.GetDayAsync(_me, _day);
+        Assert.NotNull(day.Replayed);
+        Assert.Equal(firstSummary.Points, day.Replayed.Points);
+        Assert.Equal(1, day.Replayed.Correct);
+        Assert.Equal(2, day.Replayed.Players);
+        Assert.True(firstSummary.CountsForBoard);
+        Assert.False((await _training.GetSummaryAsync(_me, second)).CountsForBoard);
+
+        var archived = (await _training.GetArchiveAsync(_me, _day.Year, _day.Month)).Days.Single();
+        Assert.Equal(day.Replayed, archived.Replayed);
+        Assert.False(archived.Missed);
+
+        // Jan speelde echt: zijn runs komen er nooit bij.
+        await PlayRealAsync(_other, 0); // de daily van vandaag, anders blijft gisteren dicht
+        await TrainAsync(_other, 10);
+        var board = await _training.GetDayBoardAsync(_me, _day);
+        Assert.Equal([("jan", false), ("sander", true)], board.Entries.Select(e => (e.UserName, e.Replayed)));
+        Assert.False((await _training.GetDayAsync(_other, _day)).Replayed is not null);
+    }
+
+    [Fact]
+    public async Task Archive_suggests_the_most_recent_missed_day_then_nothing()
+    {
+        var day0 = _day;
+        await _quiz.GetOrCreateChallengeAsync(day0);
+        _clock.Advance(TimeSpan.FromDays(1));
+        var day1 = _quiz.Today;
+        await _quiz.GetOrCreateChallengeAsync(day1);
+        _clock.Advance(TimeSpan.FromDays(1));
+        await PlayRealAsync(_me, 0);
+
+        var archive = await _training.GetArchiveAsync(_me);
+        Assert.Equal((day1, false), (archive.Suggestion!.Day.Date, archive.Suggestion.Revenge));
+        Assert.True(archive.Suggestion.Day.Missed);
+
+        var run = await _training.StartRunAsync(_me, day1);
+        await _training.StartAsync(_me, run.Id, 1);
+        Assert.Equal(day0, (await _training.GetArchiveAsync(_me)).Suggestion!.Day.Date);
+
+        run = await _training.StartRunAsync(_me, day0);
+        await _training.StartAsync(_me, run.Id, 1);
+        Assert.Null((await _training.GetArchiveAsync(_me)).Suggestion);
+    }
+
+    [Fact]
+    public async Task Archive_suggests_a_revenge_when_nothing_is_missed()
+    {
+        await PlayRealAsync(_other, 5);
+        await PlayRealAsync(_me, 1);
+        await NextDayAsync();
+
+        var suggestion = (await _training.GetArchiveAsync(_me, _day.Year, _day.Month)).Suggestion;
+        Assert.NotNull(suggestion);
+        Assert.True(suggestion.Revenge);
+        Assert.Equal(_day, suggestion.Day.Date);
+        Assert.Equal(2, suggestion.Day.Real!.Rank);
+    }
+
+    [Fact]
+    public async Task Archive_marks_blocked_days_and_skips_them_as_suggestion()
+    {
+        await _quiz.GetOrCreateChallengeAsync(_day);
+        _clock.Advance(TimeSpan.FromDays(1));
+
+        var archive = await _training.GetArchiveAsync(_me, _day.Year, _day.Month);
+        Assert.True(archive.Days.Single().Blocked);
+        Assert.Null(archive.Suggestion);
+
+        await PlayRealAsync(_me, 0);
+        archive = await _training.GetArchiveAsync(_me, _day.Year, _day.Month);
+        Assert.False(archive.Days.Single().Blocked);
+        Assert.Equal(_day, archive.Suggestion!.Day.Date);
+    }
+
+    [Fact]
+    public async Task Days_before_you_registered_are_not_missed()
+    {
+        await PlayRealAsync(_other, 3);
+        await NextDayAsync();
+        var me = await _db.Users.FindAsync(_me);
+        me!.CreatedAt = _clock.GetUtcNow().UtcDateTime; // ingeschreven vandaag, de dag na de daily
+        await _db.SaveChangesAsync();
+
+        var archive = await _training.GetArchiveAsync(_me, _day.Year, _day.Month);
+        var day = archive.Days.Single();
+        Assert.True(day.BeforeYourTime);
+        Assert.False(day.Missed);
+        Assert.Null(archive.Suggestion);
+        Assert.True((await _training.StartRunAsync(_me, _day)).Id > 0); // wel speelbaar
+    }
+
+    [Fact]
+    public async Task A_replay_with_the_same_score_comes_after_the_real_player()
+    {
+        await PlayRealAsync(_other, 3);
+        await NextDayAsync();
+
+        await TrainAsync(_me, 3); // zelfde punten, juist en fout als jan
+
+        var board = await _training.GetDayBoardAsync(_me, _day);
+        Assert.Equal(board.Entries[0].Points, board.Entries[1].Points);
+        Assert.Equal([("jan", 1, false), ("sander", 2, true)], board.Entries.Select(e => (e.UserName, e.Rank, e.Replayed)));
+    }
+
+    [Fact]
+    public async Task The_board_of_today_is_not_available_in_the_academy()
+    {
+        await PlayRealAsync(_other, 3);
+        await Assert.ThrowsAsync<QuizException>(() => _training.GetDayBoardAsync(_me, _day));
+        await Assert.ThrowsAsync<QuizException>(() => _training.GetDayBoardAsync(_me, _day.AddDays(1)));
+    }
+
+    [Fact]
+    public async Task An_empty_run_does_not_count_as_played_and_the_next_real_run_counts()
+    {
+        await PlayRealAsync(_other, 3);
+        await NextDayAsync();
+
+        await _training.StartRunAsync(_me, _day); // op "Spelen" getikt, geen vraag gestart
+        var archived = (await _training.GetArchiveAsync(_me, _day.Year, _day.Month)).Days.Single();
+        Assert.Equal(0, archived.Runs);
+        Assert.True(archived.Missed);
+
+        var run = await TrainAsync(_me, 2);
+        Assert.True((await _training.GetSummaryAsync(_me, run)).CountsForBoard);
+    }
+
+    [Fact]
+    public async Task A_real_daily_started_but_never_answered_is_not_missed_and_never_replayed()
+    {
+        await PlayRealAsync(_other, 3);
+        await _quiz.StartAsync(_me, 1); // vlak voor middernacht begonnen, de tips gezien
+        await NextDayAsync();
+
+        var archived = (await _training.GetArchiveAsync(_me, _day.Year, _day.Month)).Days.Single();
+        Assert.True(archived.Started);
+        Assert.False(archived.Missed);
+        Assert.Null(archived.Real);
+
+        await TrainAsync(_me, 10);
+        Assert.DoesNotContain((await _training.GetDayBoardAsync(_me, _day)).Entries, e => e.Replayed);
+    }
+
+    [Fact]
+    public async Task A_special_board_shows_replays_after_it_ended_but_not_when_it_runs_again()
+    {
+        var id = await AddSpecialAsync(_day, _day);
+        var special = await _quiz.GetOrCreateSpecialChallengeAsync(id);
+        foreach (var q in special.Questions.OrderBy(q => q.Number))
+        {
+            await _quiz.StartAsync(_other, q.Number, id);
+            await _quiz.GuessAsync(_other, q.Number, q.Player!.Name, id);
+        }
+        await NextDayAsync();
+        await _results.SettleFinishedDaysAsync();
+
+        var run = await _training.StartSpecialRunAsync(_me, id);
+        foreach (var q in special.Questions.OrderBy(q => q.Number))
+        {
+            await _training.StartAsync(_me, run.Id, q.Number);
+            await _training.GiveUpAsync(_me, run.Id, q.Number);
+        }
+
+        var board = await _results.GetSpecialLeaderboardAsync(_me, id);
+        Assert.Equal([("jan", 1, false), ("sander", 2, true)], board.Entries.Select(e => (e.UserName, e.Rank, e.Replayed)));
+        await _db.Entry(special).ReloadAsync();
+        Assert.Equal(_other, special.WinnerUserId);
+        Assert.Equal([_other], (await _results.PodiumsAsync(_day, _day.AddDays(1))).Single(p => p.ChallengeId == special.Id).UserIds);
+
+        // Een admin verlengt de special: zolang ze weer loopt, geen nagespeelde rijen (ook niet op het podium op Home).
+        var ev = await _db.SpecialEvents.FindAsync(id);
+        ev!.EndDate = _quiz.Today.AddDays(3);
+        await _db.SaveChangesAsync();
+        Assert.DoesNotContain((await _results.GetSpecialLeaderboardAsync(_me, id)).Entries, e => e.Replayed);
     }
 }

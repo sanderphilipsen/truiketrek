@@ -1,0 +1,49 @@
+/* Toestanden: laden (spinner, skeleton), fout- en succesmeldingen, "klaar". */
+
+/* Laden in scorebordstijl: drie gele segmenten (zoals de lampjes van een bord) die na elkaar oplichten.
+   Bij minder beweging staan ze stil, met het middelste aan. */
+.spinner { display: inline-flex; align-items: center; gap: 6px; vertical-align: middle; }
+.spinner i {
+    width: 12px; height: 12px; border-radius: 3px; background: var(--sb-digit); opacity: .25;
+    animation: sb-blink 1.2s ease-in-out infinite;
+}
+.spinner i:nth-child(2) { animation-delay: .2s; }
+.spinner i:nth-child(3) { animation-delay: .4s; }
+.spinner.small { gap: 4px; }
+.spinner.small i { width: 7px; height: 7px; border-radius: 2px; }
+@keyframes sb-blink { 0%, 100% { opacity: .25; } 40% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+    .spinner i { animation: none; }
+    .spinner i:nth-child(2) { opacity: 1; }
+}
+
+.error { background: var(--error-bg); color: var(--error-text); border-radius: 10px; padding: 10px 12px; }
+
+/* Skeleton: vaste plaatshouders terwijl een blok laadt, zodat het scherm niet verspringt.
+   Zachte shimmer: een gloed die over de plaatshouder schuift (enkel transform, dus vloeiend en zonder layout shift).
+   Bij minder beweging blijft hij statisch. */
+.skeleton { display: block; position: relative; overflow: hidden; background: var(--skeleton); border-radius: 8px; }
+.skeleton::after {
+    content: ""; position: absolute; inset: 0; transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--card) 60%, transparent), transparent);
+    animation: skeleton-shimmer 1.6s ease-in-out infinite;
+}
+@keyframes skeleton-shimmer { to { transform: translateX(100%); } }
+@media (prefers-reduced-motion: reduce) {
+    .skeleton::after { animation: none; display: none; }
+}
+.skeleton-lines { display: flex; flex-direction: column; gap: 10px; flex: 1; min-width: 0; }
+.skeleton-line { height: 14px; width: 80%; }
+.skeleton-line.short { width: 45%; }
+.skeleton-circle { width: 40px; height: 40px; border-radius: 50%; flex: none; }
+.skeleton-dots { height: 18px; margin-top: 4px; }
+.skeleton-button { height: 54px; border-radius: 12px; margin-top: 6px; }
+
+/* Een blok dat niet laadde: zeg wat er is, met een knop om het opnieuw te proberen. Raakt enkel dat blok. */
+.block-error { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; background: var(--error-bg); color: var(--error-text); border-radius: 10px; padding: 12px; }
+.block-error p { margin: 0; }
+.block-error .btn { min-height: var(--tap); background: var(--card); }
+
+.done { font-weight: 700; color: var(--ok-text); }
+
+.success { background: var(--success-bg); color: var(--ok-text); border-radius: 10px; padding: 10px 12px; margin: 0; }

@@ -6,9 +6,10 @@ namespace VoetbalQuiz.Client.Services;
 /// <summary>
 /// Kondigt de server een update aan (het deployscript zet dat vlak voor het publiceren)? Elke halve minuut opnieuw
 /// gevraagd, zodat een app die openstaat het op tijd toont. Antwoordt de server even niet (de herstart zelf),
-/// dan blijft de laatste toestand staan.
+/// dan blijft de laatste toestand staan. Geeft ook de sfeer van de dag door aan <see cref="SfeerState"/>, zodat een app
+/// die openstaat om middernacht mee omschakelt.
 /// </summary>
-public sealed class UpdateNotice(ApiClient api) : IDisposable
+public sealed class UpdateNotice(ApiClient api, SfeerState sfeer) : IDisposable
 {
     private static readonly TimeSpan Interval = TimeSpan.FromSeconds(30);
 
@@ -41,7 +42,9 @@ public sealed class UpdateNotice(ApiClient api) : IDisposable
     {
         try
         {
-            var updateAt = (await api.GetStatusAsync()).UpdateAt;
+            var status = await api.GetStatusAsync();
+            await sfeer.SetAppAsync(status.Sfeer);
+            var updateAt = status.UpdateAt;
             if (updateAt == UpdateAt) return;
             UpdateAt = updateAt;
             Changed?.Invoke();

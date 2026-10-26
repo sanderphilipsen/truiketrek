@@ -80,7 +80,7 @@
       { "label": "Wesley Sonck", "value": "2001" },
       { "label": "Hans Vanaken", "value": "2018" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
@@ -96,7 +96,7 @@
       { "label": "Brazilië in de Verenigde Staten", "value": "1994" },
       { "label": "Frankrijk in eigen land", "value": "1998" }
     ],
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals"
@@ -112,7 +112,7 @@
       { "label": "Spanje (goal van Iniesta in de verlenging)", "value": "2010" },
       { "label": "Duitsland (goal van Götze in de verlenging)", "value": "2014" }
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals"
@@ -144,7 +144,7 @@
       { "label": "Michel Platini", "value": "3" },
       { "label": "Zinédine Zidane", "value": "1" }
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Ballon_d%27Or"
@@ -214,7 +214,8 @@
       "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
     ],
     "tags": ["belgie"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: Belgische landstitels (stand na seizoen 2025-26).",
@@ -224,13 +225,14 @@
       { "label": "Union Sint-Gillis", "value": "12" },
       { "label": "Standard", "value": "10" }
     ],
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
     ],
     "tags": ["anderlecht", "club-brugge", "standard", "belgie"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: Bekers van België gewonnen (stand na 2026).",
@@ -246,7 +248,8 @@
       "https://en.wikipedia.org/wiki/Belgian_Cup"
     ],
     "tags": ["beker-van-belgie", "club-brugge", "anderlecht", "belgie"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van duur naar goedkoop: enkele van de duurste transfers ooit.",
@@ -256,7 +259,7 @@
       { "label": "João Félix van Benfica naar Atlético", "value": "€ 126 mln" },
       { "label": "Jack Grealish van Aston Villa naar Man City", "value": "± € 118 mln" }
     ],
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_most_expensive_association_football_transfers"
@@ -392,7 +395,8 @@
       "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
     ],
     "tags": ["champions-league", "spanje", "italie", "oranje"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: enkele WK-uitschakelingen van de Rode Duivels, van vroeg naar laat.",
@@ -542,7 +546,7 @@
       { "label": "Pär Zetterberg", "value": "2" },
       { "label": "Vincent Kompany", "value": "1" }
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
@@ -564,7 +568,8 @@
       "https://en.wikipedia.org/wiki/List_of_English_football_champions"
     ],
     "tags": [],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: Italiaanse landstitels (stand na seizoen 2025-26).",
@@ -580,7 +585,8 @@
       "https://en.wikipedia.org/wiki/List_of_Italian_football_champions"
     ],
     "tags": ["italie"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: Spaanse landstitels (stand na seizoen 2025-26).",
@@ -596,7 +602,8 @@
       "https://en.wikipedia.org/wiki/List_of_Spanish_football_champions"
     ],
     "tags": ["spanje"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: Nederlandse landstitels (stand na seizoen 2025-26).",
@@ -612,7 +619,8 @@
       "https://en.wikipedia.org/wiki/List_of_Dutch_football_champions"
     ],
     "tags": ["oranje"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: momenten van Oranje, van vroeg naar laat.",
@@ -687,7 +695,7 @@
       { "label": "Europees kampioen met 4-0 tegen Italië", "value": "2012" },
       { "label": "Europees kampioen in Duitsland", "value": "2024" }
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Spain_national_football_team"
@@ -773,10 +781,12 @@
     "difficulty": 1,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Belgium_national_football_team"
+      "https://en.wikipedia.org/wiki/Belgium_national_football_team",
+      "https://www.footyheadlines.com/5472946959/belgium-2026-world-cup-squad-numbers-released.html"
     ],
     "tags": ["rode-duivels", "lukaku", "de-bruyne"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: mijlpalen van Kylian Mbappé.",
@@ -786,7 +796,7 @@
       { "label": "Wereldkampioen met Frankrijk", "value": "2018" },
       { "label": "Transfervrij naar Real Madrid", "value": "2024" }
     ],
-    "difficulty": 1,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Kylian_Mbapp%C3%A9"
@@ -856,7 +866,8 @@
       "https://en.wikipedia.org/wiki/List_of_UEFA_Champions_League_winning_managers"
     ],
     "tags": ["champions-league", "italie", "spanje", "portugal", "duitsland"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: mijlpalen van Vincent Kompany.",
@@ -907,7 +918,8 @@
       "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
     ],
     "tags": ["standard", "anderlecht", "club-brugge", "belgie"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: landstitels van deze clubs (stand na seizoen 2025-26).",
@@ -923,7 +935,8 @@
       "https://en.wikipedia.org/wiki/List_of_Belgian_football_champions"
     ],
     "tags": ["belgie"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: in welk seizoen won deze club haar eerste landstitel?",
@@ -972,7 +985,8 @@
       "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals"
     ],
     "tags": ["beker-van-belgie", "standard", "belgie"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: deze verrassende bekerwinnaars, van vroeg naar laat (jaar van de finale).",
@@ -1048,7 +1062,7 @@
       { "label": "Simon Mignolet", "value": "2022" },
       { "label": "Ardon Jashari", "value": "2025" }
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe",
@@ -1061,17 +1075,19 @@
     "question": "Van veel naar weinig: Gouden Schoenen per club (stand na de editie van 2025).",
     "items": [
       { "label": "Anderlecht", "value": "22 (+2 gedeeld met een andere club)" },
-      { "label": "Club Brugge", "value": "17" },
+      { "label": "Club Brugge", "value": "16 (+1 gedeeld met een andere club)" },
       { "label": "Standard", "value": "9" },
       { "label": "Racing Genk", "value": "3" }
     ],
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe",
+      "https://nl.wikipedia.org/wiki/Gouden_Schoen_(Belgi%C3%AB)"
     ],
     "tags": ["gouden-schoen", "anderlecht", "club-brugge", "standard", "belgie"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van oud naar jong: welke Gouden Schoen-winnaar werd het eerst geboren?",
@@ -1365,7 +1381,7 @@
       { "label": "Met PSG, Leipzig en Manchester City", "value": "2021-22" },
       { "label": "Met Leverkusen, Porto en Atlético (naar de laatste zestien)", "value": "2022-23" }
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Club_Brugge_KV_in_European_football"
@@ -1433,7 +1449,7 @@
       { "label": "Laatste bekerwinst (na strafschoppen tegen Beveren)", "value": "1985" },
       { "label": "Kévin Denkey wordt topschutter", "value": "2024" }
     ],
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Cercle_Brugge_K.S.V.",
@@ -1535,7 +1551,7 @@
       { "label": "Brugge (Club Brugge en Cercle)", "value": "± 120.000" },
       { "label": "Genk (Racing Genk)", "value": "± 66.000" }
     ],
-    "difficulty": 2,
+    "difficulty": 1,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Antwerp",
@@ -1554,7 +1570,7 @@
       { "label": "Sint-Truiden (STVV)", "value": "± 41.000" },
       { "label": "Westerlo (KVC Westerlo)", "value": "± 25.000" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Li%C3%A8ge",
@@ -1595,10 +1611,12 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Belgian_Super_Cup"
+      "https://en.wikipedia.org/wiki/Belgian_Super_Cup",
+      "https://en.wikipedia.org/wiki/2026_Belgian_Super_Cup"
     ],
     "tags": ["club-brugge", "anderlecht", "standard", "belgie"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: punten na de reguliere competitie 2025-26 (voor de play-offs).",
@@ -1656,13 +1674,14 @@
       { "label": "Club Brugge", "value": "5" },
       { "label": "KAA Gent", "value": "3" }
     ],
-    "difficulty": 4,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Ebony_Shoe"
     ],
     "tags": ["anderlecht", "club-brugge", "belgie"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: verloren bekerfinales (stand na 2026).",
@@ -1672,14 +1691,15 @@
       { "label": "Beveren", "value": "3" },
       { "label": "Racing Genk", "value": "1" }
     ],
-    "difficulty": 4,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgian_Cup",
       "https://en.wikipedia.org/wiki/List_of_Belgian_Cup_finals"
     ],
     "tags": ["beker-van-belgie", "anderlecht", "standard", "belgie"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: bekerfinales die op strafschoppen beslist werden (jaar van de finale).",
@@ -1705,7 +1725,7 @@
       { "label": "Axel Witsel", "value": "2008" },
       { "label": "Milan Jovanović", "value": "2009" }
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe"
@@ -1807,7 +1827,7 @@
       { "label": "2-1 tegen Brazilië", "value": "6 juli 2018" },
       { "label": "0-1 tegen Frankrijk", "value": "10 juli 2018" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_Group_G",
@@ -1842,7 +1862,7 @@
       { "label": "0-0 tegen Italië", "value": "18 juni 1980" },
       { "label": "1-2 tegen West-Duitsland in de finale", "value": "22 juni 1980" }
     ],
-    "difficulty": 4,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Belgium_at_the_UEFA_European_Championship"
@@ -1978,7 +1998,7 @@
       { "label": "Mousa Dembélé", "value": "82" },
       { "label": "Paul Van Himst", "value": "81" }
     ],
-    "difficulty": 4,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Belgium_international_footballers"
@@ -2010,7 +2030,7 @@
       { "label": "Marc Degryse", "value": "23" },
       { "label": "Dries Mertens", "value": "21" }
     ],
-    "difficulty": 4,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Belgium_international_footballers",
@@ -2157,7 +2177,7 @@
       { "label": "Transfer naar Borussia Dortmund", "value": "2018" },
       { "label": "Transfer naar Atlético Madrid", "value": "2022" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Axel_Witsel"
@@ -2430,7 +2450,7 @@
       { "label": "Marouane Fellaini", "value": "22 november 1987" },
       { "label": "Axel Witsel", "value": "12 januari 1989" }
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Vincent_Kompany",
@@ -2544,7 +2564,7 @@
       { "label": "Youri Tielemans", "value": "19 jaar" },
       { "label": "Dries Mertens", "value": "23 jaar" }
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Eden_Hazard",
@@ -2601,7 +2621,7 @@
       { "label": "Argentinië", "value": "1978" },
       { "label": "Spanje", "value": "1982" }
     ],
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals",
@@ -2635,7 +2655,7 @@
       { "label": "WK 1998 in Frankrijk", "value": "32" },
       { "label": "WK 2026 in de VS, Canada en Mexico", "value": "48" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/FIFA_World_Cup",
@@ -2716,7 +2736,7 @@
       { "label": "Luzhniki-stadion in Moskou", "value": "2018" },
       { "label": "MetLife Stadium in New Jersey", "value": "2026" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals"
@@ -2739,7 +2759,8 @@
       "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup"
     ],
     "tags": ["wk", "spanje", "duitsland"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: doelpunten op het WK (stand na het WK 2026).",
@@ -2749,14 +2770,16 @@
       { "label": "Miroslav Klose", "value": "16" },
       { "label": "Ronaldo (Brazilië)", "value": "15" }
     ],
-    "difficulty": 2,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/FIFA_World_Cup_top_goalscorers",
-      "https://en.wikipedia.org/wiki/Miroslav_Klose"
+      "https://en.wikipedia.org/wiki/Miroslav_Klose",
+      "https://www.thestar.com.my/sport/football/2026/07/19/factbox-soccer-list-of-all-time-top-scorers-at-world-cup"
     ],
     "tags": ["wk", "messi", "frankrijk", "duitsland"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: aantal doelpunten op het hele WK.",
@@ -2798,7 +2821,7 @@
       { "label": "Frankrijk-Paraguay (1958)", "value": "10" },
       { "label": "Hongarije-Zuid-Korea (1954)", "value": "9" }
     ],
-    "difficulty": 4,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_records_and_statistics"
@@ -2863,7 +2886,7 @@
       { "label": "Carlos Alberto Parreira (Brazilië)", "value": "1994" },
       { "label": "Luis de la Fuente (Spanje)", "value": "2026" }
     ],
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_winning_managers"
@@ -2879,7 +2902,7 @@
       { "label": "Brazilië verliest met 1-7 van Duitsland", "value": "2014" },
       { "label": "Saoedi-Arabië klopt Argentinië met 2-1", "value": "2022" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/England_national_football_team",
@@ -2980,7 +3003,7 @@
       { "label": "Oostenrijk en Zwitserland", "value": "2008" },
       { "label": "Polen en Oekraïne", "value": "2012" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_European_Championship"
@@ -2996,7 +3019,7 @@
       { "label": "EK 1996", "value": "16" },
       { "label": "EK 2016", "value": "24" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_European_Championship"
@@ -3016,10 +3039,11 @@
     "status": "approved",
     "sources": [
       "https://theanalyst.com/2024/06/european-championship-top-scorers/",
-      "https://theanalyst.com/2024/06/european-championship-top-scorers/"
+      "https://en.wikipedia.org/wiki/UEFA_European_Championship_records_and_statistics"
     ],
     "tags": ["portugal", "frankrijk"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: in welk stadion werd de EK-finale gespeeld?",
@@ -3029,7 +3053,7 @@
       { "label": "Ernst-Happel-Stadion in Wenen", "value": "2008" },
       { "label": "Olympiastadion in Kiev", "value": "2012" }
     ],
-    "difficulty": 4,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/UEFA_Euro_2000",
@@ -3083,13 +3107,14 @@
       { "label": "Brazilië", "value": "9" },
       { "label": "Chili", "value": "2" }
     ],
-    "difficulty": 2,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Copa_Am%C3%A9rica"
     ],
     "tags": ["messi"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: wie won de Afrika Cup?",
@@ -3134,10 +3159,12 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Africa_Cup_of_Nations"
+      "https://en.wikipedia.org/wiki/Africa_Cup_of_Nations",
+      "https://gulfnews.com/sport/football/morocco-crowned-champions-of-africa-cup-of-nations-2025-after-title-stripped-from-senegal-1.500478065"
     ],
     "tags": [],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: titels in de Asian Cup (stand na 2023).",
@@ -3153,7 +3180,8 @@
       "https://en.wikipedia.org/wiki/AFC_Asian_Cup"
     ],
     "tags": [],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: wie won de Asian Cup?",
@@ -3195,7 +3223,7 @@
       { "label": "Japan, na strafschoppen tegen de VS", "value": "2011" },
       { "label": "Spanje, met 1-0 tegen Engeland", "value": "2023" }
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup"
@@ -3211,7 +3239,7 @@
       { "label": "WK 2015 in Canada", "value": "24" },
       { "label": "WK 2023 in Australië en Nieuw-Zeeland", "value": "32" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/FIFA_Women%27s_World_Cup"
@@ -3234,7 +3262,8 @@
       "https://theanalyst.com/2023/06/most-womens-world-cup-goals/"
     ],
     "tags": ["wk"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: wie werd Europees kampioen bij de vrouwen?",
@@ -3260,13 +3289,15 @@
       { "label": "Ali Daei (Iran)", "value": "108" },
       { "label": "Robert Lewandowski", "value": "92" }
     ],
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_50_or_more_international_goals"
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_50_or_more_international_goals",
+      "https://www.guinnessworldrecords.com/world-records/64289-most-international-caps-for-football-soccer-by-an-individual-male"
     ],
     "tags": ["messi", "portugal"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: interlands van deze spelers (stand 6 oktober 2026).",
@@ -3276,13 +3307,15 @@
       { "label": "Luka Modrić", "value": "206" },
       { "label": "Sergio Ramos", "value": "180" }
     ],
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_100_or_more_international_caps"
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_100_or_more_international_caps",
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_50_or_more_international_goals"
     ],
     "tags": ["messi", "portugal", "spanje"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: interlanddoelpunten voor Duitsland van deze spelers.",
@@ -3308,7 +3341,7 @@
       { "label": "Paolo Maldini", "value": "126" },
       { "label": "Andrea Pirlo", "value": "116" }
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Italy_national_football_team_records_and_statistics"
@@ -3343,10 +3376,12 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/England_national_football_team_records_and_statistics"
+      "https://en.wikipedia.org/wiki/England_national_football_team_records_and_statistics",
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_50_or_more_international_goals"
     ],
     "tags": ["legende"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: interlanddoelpunten voor Brazilië (stand 25 september 2026).",
@@ -3356,13 +3391,15 @@
       { "label": "Ronaldo", "value": "62" },
       { "label": "Romário", "value": "55" }
     ],
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Brazil_national_football_team_records_and_statistics"
+      "https://en.wikipedia.org/wiki/Brazil_national_football_team_records_and_statistics",
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_50_or_more_international_goals"
     ],
     "tags": ["pele", "legende"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: interlanddoelpunten voor Argentinië van deze spelers (stand 6 oktober 2026).",
@@ -3489,10 +3526,12 @@
     "difficulty": 2,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals",
+      "https://en.wikipedia.org/wiki/2026_UEFA_Champions_League_final"
     ],
     "tags": ["champions-league"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: Europacup I- en Champions League-titels per land (stand na seizoen 2025-26).",
@@ -3505,10 +3544,12 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
+      "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals",
+      "https://en.wikipedia.org/wiki/2026_UEFA_Champions_League_final"
     ],
     "tags": ["champions-league", "spanje", "italie", "duitsland"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: PSG in Europa, van vroeg naar laat.",
@@ -3638,10 +3679,12 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/List_of_UEFA_Cup_and_Europa_League_finals"
+      "https://en.wikipedia.org/wiki/List_of_UEFA_Cup_and_Europa_League_finals",
+      "https://en.wikipedia.org/wiki/2026_UEFA_Europa_League_final"
     ],
     "tags": ["spanje"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: winnaars van de Conference League, van vroeg naar laat.",
@@ -3676,7 +3719,8 @@
       "https://en.wikipedia.org/wiki/FC_Bayern_Munich"
     ],
     "tags": ["duitsland"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: Franse landstitels (stand na seizoen 2025-26).",
@@ -3686,13 +3730,14 @@
       { "label": "Monaco", "value": "8" },
       { "label": "Lyon", "value": "7" }
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_French_football_champions"
     ],
     "tags": ["frankrijk"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: Portugese landstitels (stand na seizoen 2025-26).",
@@ -3708,10 +3753,12 @@
       "https://en.wikipedia.org/wiki/List_of_Portuguese_football_champions",
       "https://en.wikipedia.org/wiki/S.L._Benfica",
       "https://en.wikipedia.org/wiki/FC_Porto",
-      "https://en.wikipedia.org/wiki/Sporting_CP"
+      "https://en.wikipedia.org/wiki/Sporting_CP",
+      "https://www.rtp.pt/noticias/fc-porto/fc-porto-campeao-apos-epoca-a-liderar_d1738570"
     ],
     "tags": ["portugal"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: wanneer pakten deze Turkse clubs hun laatste landstitel (stand na seizoen 2025-26)?",
@@ -3721,13 +3768,15 @@
       { "label": "Trabzonspor", "value": "2021-22" },
       { "label": "Galatasaray", "value": "2025-26" }
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/List_of_Turkish_football_champions"
+      "https://en.wikipedia.org/wiki/List_of_Turkish_football_champions",
+      "https://en.wikipedia.org/wiki/2025%E2%80%9326_S%C3%BCper_Lig"
     ],
     "tags": ["turkije"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: wanneer pakten deze Nederlandse clubs hun laatste landstitel (stand na seizoen 2025-26)?",
@@ -3740,10 +3789,12 @@
     "difficulty": 3,
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/List_of_Dutch_football_champions"
+      "https://en.wikipedia.org/wiki/List_of_Dutch_football_champions",
+      "https://en.wikipedia.org/wiki/2025%E2%80%9326_Eredivisie"
     ],
     "tags": ["oranje"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: Premier League-kampioenen, van vroeg naar laat.",
@@ -3775,7 +3826,8 @@
       "https://en.wikipedia.org/wiki/List_of_Spanish_football_champions"
     ],
     "tags": ["spanje"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: wanneer pakten deze Italiaanse clubs hun laatste scudetto (stand na seizoen 2025-26)?",
@@ -3791,7 +3843,8 @@
       "https://en.wikipedia.org/wiki/List_of_Italian_football_champions"
     ],
     "tags": ["italie"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: wanneer pakten deze Duitse clubs hun laatste landstitel (stand na seizoen 2025-26)?",
@@ -3807,7 +3860,8 @@
       "https://en.wikipedia.org/wiki/List_of_German_football_champions"
     ],
     "tags": ["duitsland"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Van veel naar weinig: doelpunten in de Premier League (alle tijden, stand half oktober 2026).",
@@ -3833,7 +3887,7 @@
       { "label": "Giuseppe Meazza", "value": "216" },
       { "label": "Roberto Baggio", "value": "205" }
     ],
-    "difficulty": 4,
+    "difficulty": 5,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Serie_A_players_with_100_or_more_goals"
@@ -3849,7 +3903,7 @@
       { "label": "Klaus Fischer", "value": "268" },
       { "label": "Jupp Heynckes", "value": "220" }
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/List_of_Bundesliga_players_with_100_or_more_goals"
@@ -3871,7 +3925,8 @@
       "https://en.wikipedia.org/wiki/European_Golden_Shoe"
     ],
     "tags": ["messi", "portugal", "frankrijk"],
-    "checkedAt": "2026-10-22"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "question": "Chronologisch: wanneer won deze speler voor het eerst de Europese Gouden Schoen?",
@@ -3929,7 +3984,7 @@
       { "label": "Alexia Putellas", "value": "2021" },
       { "label": "Aitana Bonmatí", "value": "2023" }
     ],
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Ballon_d%27Or_F%C3%A9minin"
@@ -3983,7 +4038,7 @@
       { "label": "Arsenal: Emirates Stadium", "value": "± 61.000" },
       { "label": "Chelsea: Stamford Bridge", "value": "± 40.000" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Real_Madrid_CF",
@@ -4131,7 +4186,7 @@
       { "label": "Transfer naar Barcelona", "value": "2007" },
       { "label": "Transfer naar New York Red Bulls", "value": "2010" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Thierry_Henry"
@@ -4179,7 +4234,7 @@
       { "label": "Transfer naar Bayern München", "value": "2023" },
       { "label": "Eerste prijs: landskampioen met Bayern", "value": "2025" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Harry_Kane"
@@ -4211,7 +4266,7 @@
       { "label": "Treble met United", "value": "1999" },
       { "label": "Stopt als trainer", "value": "2013" }
     ],
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Alex_Ferguson",

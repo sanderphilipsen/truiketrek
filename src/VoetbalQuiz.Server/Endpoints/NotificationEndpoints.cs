@@ -20,6 +20,29 @@ public static class NotificationEndpoints
             return Results.Ok();
         });
 
+        // Pushmeldingen: de publieke sleutel en je voorkeur, een toestel aan- of afmelden, de herinnering aan/uit.
+        var push = app.MapGroup("/api/push").RequireAuthorization().AddEndpointFilter(EndpointFilters.HandleQuizErrors);
+
+        push.MapGet("/", (ClaimsPrincipal user, PushService pushes) => pushes.GetConfigAsync(user.UserId()));
+
+        push.MapPost("/subscribe", async (PushSubscribeRequest req, ClaimsPrincipal user, PushService pushes) =>
+        {
+            await pushes.SubscribeAsync(user.UserId(), req);
+            return Results.NoContent();
+        });
+
+        push.MapPost("/unsubscribe", async (PushUnsubscribeRequest req, ClaimsPrincipal user, PushService pushes) =>
+        {
+            await pushes.UnsubscribeAsync(user.UserId(), req.Endpoint);
+            return Results.NoContent();
+        });
+
+        push.MapPut("/daily-reminder", async (DailyReminderRequest req, ClaimsPrincipal user, PushService pushes) =>
+        {
+            await pushes.SetDailyReminderAsync(user.UserId(), req.On);
+            return Results.NoContent();
+        });
+
         // Releasenota's ("Wat is er nieuw") schrijven en wissen: enkel admins.
         var admin = app.MapGroup("/api/admin/announcements")
             .RequireAuthorization(CurrentUser.AdminPolicy)

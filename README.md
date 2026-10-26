@@ -48,6 +48,7 @@ Er zijn 16 vraagtypes. Elke weekdag (behalve zondag, zie De Zondag) heeft in de 
 | 👤 Mannetje | een getekende avatar: donker silhouet → wazig in kleur → scherp → 2 tips | 26 s | 100 → 50 |
 | 🌀 Kluts in de zestien | de letters van een spelersnaam door elkaar; elke 4 s valt per woord een letter juist | 26 s | 100 → 50 |
 | 🏃 Counter | zoveel mogelijk van 25 spelers in 150 s, met telkens hun duidelijkste tip; doorspelen mag, fout kost niets | 150 s | 20 per speler, tot 500 (2 per dag) |
+| 🪪 Spelersfiche | een fiche zonder naam: lengte, geboortejaar, positie, interlands, nationaliteit en club klappen elke 4 s open; een foute naam opent meteen het volgende veld (geen strafpunten), fout met alle 6 velden open = 0 | 30 s | 100 → 50 (10 per veld) |
 | 🔀 Op volgorde | tik 4 kaartjes aan in de juiste volgorde (bv. van oud naar jong); de waarden verschijnen na afloop | 30 s | 100 × juiste paren / 6 |
 | 📰 De Zondag | vaste rubriek elke zondag: 4 krantenartikels (verslag, interview of dossier) met elk precies 3 gaten; tik een gat aan en vul het in, in de volgorde die je wil. Namen opnieuw proberen mag, een getal gok je één keer | 20 s per gat (60 s per artikel) | ruim 83 per gat, 250 per artikel; getal: exact 83, één stap ernaast 33, twee 17, verder 0 |
 | 🔎 Detectivedag | 6 tot 8 verdachten en 4 tot 8 getuigenverklaringen (voetbalfeiten over de dader) in vaste volgorde; 2 staan open bij de start. Schrap verdachten met een tik (enkel een hulpmiddel) en wijs de dader aan. Twee beschuldigingen per zaak | 180 s per zaak | vier zaken per dag; 250 met de 2 eerste getuigen, 35 minder per extra getuige (min. 75); de helft na een foute beschuldiging, 0 na twee |
@@ -56,7 +57,7 @@ Er zijn 16 vraagtypes. Elke weekdag (behalve zondag, zie De Zondag) heeft in de 
 
 - **Mix:** de vragen gaan om beurten over de gekozen types, zolang de dag onder 10 vragen en 1000 punten blijft (een opstelling en een counter tellen voor twee). Een mix van álle types geeft 9 vragen en laat de laatste types van de lijst vallen; kies dus liever een paar types. De verdeling staat in `QuestionTypes.Mix`.
 - **Kluts en counter** gebruiken de spelers (net als "Wie ben ik?"), niet de vragenbank. Een speler komt nooit twee keer voor in dezelfde reeks. Wissel, rugnummer en mannetje staan in de vragenbank (`wissel.json`, `rugnummer.json`, `mannetje.json`), nog met status "te keuren". Op volgorde staat in `volgorde.json` en zit niet in de vaste weekplanning, wel in specials, online en de mix (niet in een derby).
-- **Solo-types** (`QuestionTypeInfo.Alone`: De Zondag, Detectivedag, Kaart en Lijst) vullen in hun eentje een hele dag van 1000 punten, met één of meer vragen. Ze komen nooit in een mix (het admin-paneel weigert de combinatie; komt ze toch binnen, dan valt het solo-type weg), niet online of in een derby, niet in de badge Allrounder. Staat zo'n type uit, dan wordt een special met enkel dat type "Wie ben ik?". Enkel goedgekeurde items worden gespeeld. XP: hun vragen tellen samen als een volle dag en ook hun deelpunten tellen mee; het dagoverzicht toont een deelscore als ½. In de weekplanning kies je van de solo-types enkel de kaart: De Zondag staat vast op zondag, de Detectivedag speel je als special.
+- **Solo-types** (`QuestionTypeInfo.Alone`: De Zondag, Detectivedag, Kaart en Lijst) vullen in hun eentje een hele dag van 1000 punten, met één of meer vragen. Ze komen nooit in een mix (het admin-paneel weigert de combinatie; komt ze toch binnen, dan valt het solo-type weg), niet online of in een derby, niet in de badge Allrounder. Staat zo'n type uit, dan wordt een special met enkel dat type "Wie ben ik?". Enkel goedgekeurde items worden gespeeld. XP: hun vragen tellen samen als een volle dag en ook hun deelpunten tellen mee; het dagoverzicht toont een deelscore als "deels". In de weekplanning kies je van de solo-types enkel de kaart: De Zondag staat vast op zondag, de Detectivedag speel je als special.
 - **De Zondag** (type `Krant`, `krant.json`) is de vaste daily van elke zondag: 4 artikels van 250 punten, samen 1000. De planning kan zondag niet wijzigen (`QuestionTypes.ResolveSchedule`); staat het type uit, dan wordt zondag een mix. Het komt nooit in een mix, online of een derby, wel in een special met enkel dit type. Gaten schrijf je als `[[Jan Vertonghen / Vertonghen : speler]]` of `[[#69 : minuut]]` (stap voor deelpunten: `[[#115~5 : miljoen euro]]`). Elk artikel heeft precies 3 gaten (zo weinig mogelijk jaartallen: liever namen), en een test controleert dat geen artikel een antwoord van een ander toont. Voor 5 zondagen zijn 20 artikels nodig.
 - **Detectivedag** (`detective.json`) is een dag van vier zaken van 250 punten (samen 1000), als dag in de weekplanning of als special, nooit in een mix of online. Elke verklaring zegt zelf welke verdachten ze uitsluit (`excludes`); de controle eist dat na alle verklaringen enkel de dader overblijft, dat geen verklaring de dader uitsluit en dat de dader na de 2 eerste verklaringen nog niet vastligt. Een gespeelde zaak houdt haar verdachten (volgorde) en dader.
 - **Scherm verlaten:** wie tijdens een vraag van de daily, een special of de academie de app verlaat (andere app, ander tabblad, scherm uit; `visibilitychange`), stopt die vraag: zoals "Ik pas", met de deelpunten tot dan. Dat gebeurt in de client: het houdt opzoeken op hetzelfde toestel tegen, niet op een tweede toestel. Online geldt het (nog) niet.
@@ -127,6 +128,21 @@ Alle regels staan op één plek: [GameRules.cs](src/VoetbalQuiz.Shared/GameRules
 | `src/VoetbalQuiz.Shared` | Spelregels en gedeelde datatypes |
 | `src/VoetbalQuiz.Server/Data/players/*.json` | De spelersdatabase met de tips |
 | `tests/VoetbalQuiz.Tests` | Unit tests (puntentelling, antwoordherkenning, quizverloop) |
+
+### CSS
+
+De stijl staat in `src/VoetbalQuiz.Client/wwwroot/css`, opgesplitst per onderdeel. Elk bestand zegt bovenaan wat erin hoort.
+
+| Bestand | Inhoud |
+|---|---|
+| `tokens.css` | Kleuren, maten en lettertypes als variabelen op `:root`, en `.surface-light` |
+| `base.css` | Reset, html/body, het voetbalveld, focusring, tikfeedback, paginaovergangen, hulpklassen, Blazor-standaard |
+| `components/*.css` | Gedeelde onderdelen: knoppen, tegels, koppen, formulieren, laden en fouten, avatar, sheet, iconen, podium, beloningspopup, kaart |
+| `screens/*.css` | Eén bestand per scherm of spelonderdeel (home, vraag, vraagtypes, klassement, online, admin, derby, ...) |
+
+- **De volgorde in `index.html` telt**: tokens, base, components en dan screens. Een schermregel mag een componentregel overschrijven, niet omgekeerd. Een nieuw bestand voeg je daar toe; de service worker cachet elk `.css`-bestand vanzelf.
+- **Waar zet je iets?** Stijl voor één scherm gaat naar `screens/`. Iets wat op meerdere schermen terugkomt, gaat naar `components/`. Een nieuwe kleur of maat die vaker terugkomt, wordt een variabele in `tokens.css`.
+- **Naar component-CSS (stap 2):** stijl die maar bij één Razor-component hoort, verhuist geleidelijk naar een `Component.razor.css` (Blazor CSS-isolatie). Dat gebeurt wanneer we dat component toch aanpassen.
 
 ## Lokaal draaien
 
@@ -219,3 +235,25 @@ De knop "Doorgaan met Google" verschijnt pas wanneer `Authentication:Google:Clie
    ```bash
    az webapp config appsettings set -g rg-truitje-trek -n truitje-trek --subscription "Visual Studio Enterprise Subscription" --settings Authentication__Google__ClientId="<client-id>" Authentication__Google__ClientSecret="<client-secret>"
    ```
+
+### Pushmeldingen
+
+Om 19u (Belgische tijd, tot 23u) krijgt elke speler die de daily die dag nog niet speelde één pushmelding: "De daily wacht op je", met de reeks erbij als die loopt ([PushRules](src/VoetbalQuiz.Shared/PushDtos.cs)). Een special telt niet als gespeeld. De herinnering staat standaard aan en gaat uit in de spelersfiche, tab Account. Een browser stuurt pas meldingen na "Toestaan" van de speler, en die vraag mag enkel na een tik komen: daarom toont Home bovenaan een kaartje "Mis geen daily meer" zolang dit toestel nog niets koos. Op een iPhone werkt het enkel als de app op het beginscherm staat (iOS 16.4+); het kaartje legt dat uit.
+
+- `DailyReminderService` kijkt om de 5 minuten wie aan de beurt is en onthoudt per speler de dag van de laatste herinnering (`AppUser.DailyReminderSent`), zodat niemand er twee krijgt. Dat kan enkel omdat er precies één instantie draait.
+- Toestellen staan in `PushSubscriptions` (hooguit 10 per speler). Een toestel dat de pushdienst niet meer kent (404/410), wordt opgeruimd. Bij afmelden wordt het toestel losgekoppeld van de speler.
+- De server stuurt enkel naar de pushdiensten van de grote browsers (Google, Mozilla, Apple, Microsoft).
+- In de service worker staat de afhandeling in `wwwroot/push-sw.js` (geladen door beide service workers).
+
+Pushmeldingen staan pas aan wanneer `Push:PublicKey` en `Push:PrivateKey` (VAPID) ingesteld zijn. Zonder sleutels toont de app er niets over.
+
+1. Sleutels maken en lokaal zetten (bewaard buiten git):
+   ```bash
+   pwsh scripts/vapid-keys.ps1 -UserSecrets
+   ```
+2. Op Azure een **eigen** paar maken (`pwsh scripts/vapid-keys.ps1`) en als app-instellingen zetten:
+   ```bash
+   az webapp config appsettings set -g rg-truitje-trek -n truitje-trek --subscription "Visual Studio Enterprise Subscription" --settings Push__PublicKey="<publiek>" Push__PrivateKey="<privé>" Push__Subject="mailto:<adres van de beheerder>"
+   ```
+
+**De sleutels nooit wijzigen.** Elk abonnement hoort bij de publieke sleutel waarmee het gemaakt werd; met nieuwe sleutels krijgt geen enkel toestel nog meldingen tot de speler Home opnieuw opent. Testen kan enkel via HTTPS of localhost, en op een iPhone enkel vanuit de geïnstalleerde app.

@@ -1,0 +1,37 @@
+/* Tegels in scorebordstijl: .card, de gedeelde tegellijn, scorebordlabels en -cijfers, stroken. */
+
+/* ---------- Basis ---------- */
+.card {
+    background: var(--tile-bg);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+    margin-bottom: 16px;
+}
+
+/* ---------- Scorebordtegels ---------- */
+/* Elke tegel heeft een dunne groene lijn en geen schaduw; de kleuren komen uit de variabelen op :root. */
+.card, .table-card, .tafel-banner, .gb-strip, .result, .stake, .record, .board {
+    border: 1px solid var(--sb-line); box-shadow: none; color: var(--text);
+}
+
+.sb-label { margin: 0; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.sb-digits {
+    font-family: var(--digits); font-variant-numeric: tabular-nums;
+    font-weight: 800; font-size: 1.5rem; line-height: 1.1; color: var(--sb-digit); white-space: nowrap;
+}
+.sb-go { color: var(--sb-digit); font-weight: 700; font-size: .92rem; }
+.sb-icon { font-size: 1.4rem; color: var(--sb-digit); }
+
+/* Onder de daily: brede, lage stroken in één vorm (klassement, academie, nieuwe match, badges, instellingen, admin).
+   Ook als <button> (nieuwe match): dan zonder knopstijl van de browser. */
+.sb-strip {
+    display: flex; align-items: center; gap: 12px; width: 100%; min-height: 52px; padding: 8px 16px; margin: 0 0 10px;
+    font: inherit; text-align: left; text-decoration: none; cursor: pointer;
+}
+.sb-strip .sb-label { flex: 1; font-size: .8rem; }
+.sb-strip .sb-digits { font-size: 1.15rem; }
+.sb-strip .sb-go { font-size: 1.3rem; line-height: 1; }
+.sb-strip-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.sb-strip-text small { font-size: .8rem; color: var(--muted); }
+@media (hover: hover) { .sb-strip:hover { background: rgba(255, 255, 255, .04); } }

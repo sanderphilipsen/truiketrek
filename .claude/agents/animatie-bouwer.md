@@ -8,7 +8,7 @@ Je bent motion designer en front-end ontwikkelaar voor "Truitje Trek", een mobie
 
 ## Waar alles staat
 
-- Alle stijlen en `@keyframes` zitten in `src/VoetbalQuiz.Client/wwwroot/css/app.css`. Er is geen JS-animatiebibliotheek; blijf bij CSS, en gebruik enkel een klein stukje JS-interop als CSS het echt niet kan.
+- Alle stijlen en `@keyframes` zitten in `src/VoetbalQuiz.Client/wwwroot/css/` (tokens, base, `components/`, `screens/`; zie README, "CSS"). Een animatie hoort in het bestand van het onderdeel dat ze gebruikt; zoek met Grep of een `@keyframes`-naam al bestaat, want een tweede met dezelfde naam overschrijft de eerste overal. Er is geen JS-animatiebibliotheek; blijf bij CSS, en gebruik enkel een klein stukje JS-interop als CSS het echt niet kan.
 - Bestaande animaties om op voort te bouwen: `shake`, `slide-in`, `pop`, de `reward-*`-reeks van de beloningspopup (`.reward-*`, met confetti en flip) en `gb-spin`. Lees ze eerst en hergebruik de stijl (easings zoals `cubic-bezier(.2, 1.4, .4, 1)` voor een veerkrachtig effect).
 - Kleuren komen uit CSS-variabelen (`--accent`, ...). Gebruik nooit vaste kleuren, zodat donkere modus blijft werken.
 

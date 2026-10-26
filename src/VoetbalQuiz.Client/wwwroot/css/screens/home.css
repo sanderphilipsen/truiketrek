@@ -1,0 +1,152 @@
+/* Home: begroeting, daily-tegel, stroken, lopende special, clubhuis. */
+
+/* ---------- Home ---------- */
+.hero { text-align: center; }
+.hero .date { color: var(--muted); font-size: .9rem; }
+.hero .date::first-letter { text-transform: uppercase; }
+.score-big { font-family: var(--digits); font-size: 3rem; font-weight: 800; line-height: 1; margin: 8px 0 4px; color: var(--sb-digit); font-variant-numeric: tabular-nums; }
+.score-big small { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; font-size: 1rem; font-weight: 600; color: var(--muted); }
+
+/* Daily klaar: je plaats en je reeks als twee scorebordvakjes naast elkaar, je beste dag, en de aftelling naar morgen. */
+.daily-end { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+.daily-end-fact {
+    display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 10px 6px;
+    background: rgba(0, 0, 0, .25); box-shadow: inset 0 0 0 1px var(--sb-line-strong); border-radius: 10px;
+    color: var(--text); text-decoration: none;
+}
+.daily-end-fact .sb-digits { font-size: 1.9rem; display: inline-flex; align-items: center; gap: 4px; }
+.daily-end-fact small { color: var(--muted); font-size: .85rem; }
+.daily-end-best { margin: 12px 0 0; font-weight: 600; }
+.daily-end-best.is-best { color: var(--sb-digit); }
+.daily-end-next { margin: 10px 0 0; font-size: .9rem; }
+.home-daily-next { margin: 12px 0 0; color: var(--muted); font-size: .92rem; }
+.home-fact.warn { color: var(--sb-digit); }
+.home-daily-play small { font-weight: 600; opacity: .8; }
+
+/* ---------- Home ---------- */
+/* Bovenaan Home, in plaats van een topbar: de begroeting (een naam van 20 tekens mag breken) en je avatar. */
+.home-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.home-hello { flex: 1; margin: 0; font-size: 1.25rem; font-weight: 800; color: #fff; overflow-wrap: anywhere; }
+/* Het belletje naast je avatar; het gele bolletje telt de ongelezen meldingen. */
+.bell {
+    position: relative; flex: none; display: grid; place-items: center;
+    min-width: var(--tap); min-height: var(--tap); color: #fff; font-size: 1.45rem; text-decoration: none;
+}
+.bell-dot {
+    position: absolute; top: 4px; right: 2px;
+    min-width: 18px; height: 18px; padding: 0 4px; border-radius: 9px;
+    display: grid; place-items: center;
+    background: var(--accent); color: #1b1600; border: 2px solid var(--pitch);
+    font-size: .7rem; font-weight: 800; line-height: 1;
+}
+
+/* Bovenaan Home: de daily als scorebordtegel. Kop met je punten van vandaag, een regel met je plaats en je reeks,
+   en onderaan de enige gele knop van het scherm. */
+.home-daily { padding: 14px; margin-bottom: 16px; }
+.home-daily.home-loading { min-height: 150px; }
+.home-daily .block-error { margin-top: 10px; }
+.home-daily-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 1.65rem; }
+.home-daily-facts { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 8px; }
+.home-fact {
+    display: inline-flex; align-items: center; gap: 6px; min-height: 32px;
+    color: var(--text); font-size: .95rem; font-weight: 600; text-decoration: none; white-space: nowrap;
+}
+.home-fact .sb-icon { font-size: 1.1rem; }
+@media (hover: hover) { .home-fact:hover span { text-decoration: underline; } }
+.btn.home-daily-play { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; min-height: 48px; margin-top: 12px; }
+
+/* "Nieuwe match", net onder de daily: zwaarder dan de stroken (groot icoon, titel met ondertitel, lichter groen),
+   maar zonder geel, want de daily blijft de hoofdactie. */
+.sb-strip.sb-match { min-height: 68px; padding: 12px 16px; margin-bottom: 16px; background: var(--pitch-2); color: #fff; }
+@media (hover: hover) { .sb-strip.sb-match:hover { background: color-mix(in srgb, var(--pitch-2) 85%, #fff); } }
+.sb-match .sb-icon { font-size: 2rem; }
+.sb-match-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.sb-match-text b { font-size: 1.1rem; line-height: 1.2; }
+.sb-match-text small { font-size: .85rem; color: var(--on-field-muted); }
+.sb-match .sb-go { font-size: 1.6rem; line-height: 1; }
+.card > h2 { margin: 0 0 8px; font-size: 1.15rem; }
+
+/* "Zo werkt het" voor nieuwe spelers: één regel; "Meer" klapt de uitleg open, "Begrepen" haalt ze weg. */
+.home-intro { padding: 0; margin-bottom: 16px; }
+.home-intro summary {
+    display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 10px 16px;
+    list-style: none; cursor: pointer; font-size: .9rem; line-height: 1.35;
+}
+.home-intro summary::-webkit-details-marker { display: none; }
+.home-intro-line { flex: 1; }
+.home-intro summary .sb-go { white-space: nowrap; }
+.home-intro[open] summary .sb-go { visibility: hidden; }
+.home-intro ul { margin: 0; padding: 0 16px 12px; list-style: none; display: grid; gap: 6px; font-size: .92rem; line-height: 1.35; }
+.home-intro li { display: flex; gap: 8px; }
+.home-intro .btn { min-height: var(--tap); margin: 0 16px 14px; }
+
+/* Online: compact, zonder kop; de open partijtjes staan tussen de stroken. */
+.home-online .tables { margin-bottom: 10px; }
+.card-link.light { color: #fff; }
+
+/* Helemaal onderaan: de eerstvolgende special als één rustige regel; niets om op te tikken. */
+.sb-strip.home-soon, .sb-strip.home-soon:hover, .sb-strip.home-soon:active { cursor: default; background: transparent; border-style: dashed; }
+.home-soon .sb-icon { color: var(--muted); }
+.home-soon .sb-strip-text .sb-label { font-size: .7rem; }
+.home-soon .sb-strip-text b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.home-soon-when { flex: none; font-size: .85rem; color: var(--muted); white-space: nowrap; }
+/* Clubhuis onderaan Home: instellingen, VAR, FAQ, admin. Geen spel, dus geen tegels of geel: ronde knoppen met een
+   groene lijn op het veld, in gelijke kolommen naast elkaar. */
+.home-club { margin: 24px 0 8px; }
+.home-club .sb-label { margin: 0 4px 10px; color: var(--on-field-muted); }
+.club-buttons { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 4px; }
+.club-button {
+    display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 0; padding: 4px 0;
+    color: var(--on-field-muted); font-size: .8rem; text-align: center; text-decoration: none; border-radius: var(--radius);
+}
+.club-icon {
+    display: flex; align-items: center; justify-content: center; width: 48px; height: 48px;
+    border: 1px solid var(--sb-line-strong); border-radius: 50%; font-size: 1.25rem; color: var(--muted);
+}
+.club-button:active .club-icon { background: rgba(255, 255, 255, .06); }
+@media (hover: hover) { .club-button:hover .club-icon { background: rgba(255, 255, 255, .06); } }
+
+/* Home: de (enige) lopende special als kaart over de volle breedte: links de naam met daaronder de stand,
+   rechts bovenaan de top 3, onderaan een brede knop zoals bij de daily.
+   Op de startdag (.is-new) staat ze boven de daily, anders eronder. */
+.home-special { margin-bottom: 16px; }
+.home-special-card { margin-bottom: 0; padding: 14px 16px; }
+.home-special-card.done { border-color: var(--ok); }
+/* min-height = drie podiumregels, zodat de kaart niet verspringt als de top 3 later binnenkomt. */
+.home-special-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; min-height: 62px; }
+.home-special-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.home-special-name { margin: 0; font-size: 1.15rem; line-height: 1.2; overflow-wrap: anywhere; }
+.home-special.is-new .home-special-name { font-size: 1.25rem; }
+.home-special-card small.home-special-meta { font-size: .85rem; }
+.home-special-card small.home-special-meta.is-done { color: var(--ok-text); font-weight: 700; }
+.home-special-card small.home-special-new { font-size: .85rem; font-weight: 800; color: var(--accent-text); white-space: nowrap; }
+/* De top 3 is hier de blikvanger naast de naam: groter dan in de dailytegel, punten in de tekstkleur. */
+.home-special-head .mini-podium { flex: 0 1 148px; min-width: 0; }
+.home-special-head .mini-podium ol { gap: 3px; grid-template-columns: minmax(0, 1fr); }
+.home-special-head .mini-podium li { font-size: .9rem; line-height: 1.3; gap: 6px; }
+.home-special-head .mini-podium .mp-medal { width: 20px; height: 20px; font-size: .78rem; }
+.home-special-head .mini-podium .mp-pts { color: var(--text); }
+.home-special-head .mini-podium li:first-child .mp-name { font-weight: 700; }
+.home-special-first { flex: 0 1 140px; font-size: .85rem; text-align: right; }
+/* Smalle gsm: de naam krijgt wat meer plaats, zodat ze niet over drie regels loopt. */
+@media (max-width: 359px) {
+    .home-special-head { gap: 10px; }
+    .home-special-head .mini-podium { flex-basis: 128px; }
+    .home-special-first { flex-basis: 108px; }
+    .home-special-name, .home-special.is-new .home-special-name { font-size: 1.05rem; }
+}
+/* Brede knop onderaan: donkergroen naast de gele hoofdknop van de daily; geel (.primary) zodra de special de hoofdactie is. */
+.btn.home-special-play { display: flex; justify-content: center; align-items: center; width: 100%; min-height: var(--tap);
+    margin-top: 12px; background: var(--pitch-2); color: #fff; }
+.btn.home-special-play.primary { background: rgba(250, 199, 117, .1); color: var(--sb-digit); box-shadow: inset 0 0 0 1.5px var(--sb-digit); }
+.btn.home-special-play.done { background: var(--surface-soft); color: var(--text); }
+.home-special-error { margin-bottom: 16px; }
+
+/* Bovenaan Home: meldingen toelaten (PushPrompt). Rustig, geen geel: het is geen spel. */
+.push-prompt { display: flex; gap: 14px; align-items: flex-start; padding: 16px; }
+.push-prompt-icon { font-size: 1.5rem; color: var(--sb-digit); line-height: 1; padding-top: 2px; }
+.push-prompt-text { flex: 1; min-width: 0; }
+.push-prompt h2 { margin: 0 0 4px; font-size: 1rem; }
+.push-prompt p { margin: 0 0 10px; font-size: .92rem; line-height: 1.4; color: var(--muted); }
+.push-prompt p b { color: inherit; }
+.push-prompt-actions { display: flex; flex-wrap: wrap; gap: 8px; }

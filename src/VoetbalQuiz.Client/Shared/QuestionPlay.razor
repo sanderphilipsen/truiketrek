@@ -155,7 +155,7 @@
         break;
 
     default:
-        @* Getypte types: Wie ben ik?, Carrièrepad, Emoji, Opstelling, Wissel, Rugnummer, Mannetje, Kluts en Counter *@
+        @* Getypte types: Wie ben ik?, Carrièrepad, Emoji, Opstelling, Wissel, Rugnummer, Mannetje, Kluts, Counter en Spelersfiche *@
         @if (Type == QuestionType.Emoji)
         {
             <div class="emoji-big">@View?.Prompt</div>
@@ -195,6 +195,10 @@
             </div>
             <p class="center light-text">Om de @QuestionRules.CarriereClubSeconds seconden valt er per woord een letter juist.</p>
         }
+        else if (Type == QuestionType.Fiche)
+        {
+            <FicheKaart Velden="View?.Fiche ?? []" Note="@View?.Note" />
+        }
         else if (Type == QuestionType.Counter)
         {
             <div class="counter-card">
@@ -225,7 +229,7 @@
                 }
                 @if (_wrongGuess is not null)
                 {
-                    <div class="wrong" @key="_wrongKey"><Icon Name="x-circle" /> @Commentary.Pick(Commentary.Wrong, _wrongKey) “@_wrongGuess” is fout@(Type == QuestionType.Counter ? "" : $" (−{GameRules.WrongGuessPenalty})")</div>
+                    <div class="wrong" @key="_wrongKey"><Icon Name="x-circle" /> @Commentary.Pick(Commentary.Wrong, _wrongKey) “@_wrongGuess” is fout@(Type switch { QuestionType.Counter => "", QuestionType.Fiche => ": er gaat een veld open", _ => $" (−{GameRules.WrongGuessPenalty})" })</div>
                 }
                 @if (_notInLineup is not null)
                 {
@@ -294,6 +298,7 @@
         QuestionType.Rugnummer => "Wie droeg dit shirt?",
         QuestionType.Mannetje => "Wie is dit mannetje?",
         QuestionType.Kluts => "Ontwar de naam…",
+        QuestionType.Fiche => "Van wie is dit fiche?",
         QuestionType.Counter => "Typ snel een naam…",
         _ => "Wie ben ik?",
     };

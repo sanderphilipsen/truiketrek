@@ -20,13 +20,17 @@ public record ProfileInfo(
 
 /// <summary>Een admin verwijdert het account van een speler die daarom vroeg.</summary>
 public record DeleteUserRequest(string UserName);
+
+/// <summary>Een admin past de gebruikersnaam en/of het e-mailadres van een speler aan.</summary>
+public record EditUserRequest(string UserName, string NewUserName, string Email);
 public record ErrorResponse(string Message);
 
 /// <summary>
 /// Toestand van de server: <paramref name="UpdateAt"/> (UTC) is gezet zolang er zo een update komt. Aan
-/// <paramref name="Version"/> ziet het deployscript dat de nieuwe versie draait.
+/// <paramref name="Version"/> ziet het deployscript dat de nieuwe versie draait. <paramref name="Sfeer"/>: de seizoenssfeer
+/// van vandaag voor de hele app (zie <see cref="SfeerKalender"/>), null op een gewone dag.
 /// </summary>
-public record ServerStatus(DateTime? UpdateAt, string? Version = null);
+public record ServerStatus(DateTime? UpdateAt, string? Version = null, string? Sfeer = null);
 
 /// <summary>Wat je bijkreeg sinds de vorige beloningspopup (na een daily, special of online wedstrijd).</summary>
 public record RewardSummary(LevelInfo Before, LevelInfo After, List<XpPart> Gained, List<BadgeState> NewBadges)
@@ -67,14 +71,16 @@ public record QuestionSummary(
     int? Points,
     bool? Correct,
     string? PlayerName,
-    QuestionType Type = QuestionType.WieBenIk)
+    QuestionType Type = QuestionType.WieBenIk,
+    // Halloween Special: de kamer van het Spookhuis (zie Spookhuis); null bij alle andere reeksen.
+    Kamer? Kamer = null)
 {
     /// <summary>
     /// Niet helemaal juist, maar wel punten bij een type met deelpunten (<see cref="QuestionRules.PartialScores"/>):
     /// deels juist, geen fout.
     /// </summary>
     [System.Text.Json.Serialization.JsonIgnore]
-    public bool Partial => Correct == false && Points > 0 && QuestionRules.PartialScores(Type);
+    public bool Partial => Correct == false && QuestionRules.IsPartial(false, Points ?? 0, Type);
 }
 
 /// <summary>Huidige toestand van één vraag zoals de server die ziet.</summary>
@@ -88,7 +94,9 @@ public record QuestionState(
     AnswerResult? Result,
     QuestionType Type = QuestionType.WieBenIk,
     double TimeLimit = 30,
-    QuestionView? View = null);
+    QuestionView? View = null,
+    // Halloween Special: de kamer van het Spookhuis (zie Spookhuis); null bij alle andere reeksen.
+    Kamer? Kamer = null);
 
 /// <summary>Wat er van een vraag zichtbaar is, afhankelijk van het type (Hints in QuestionState voor tips en clubs).</summary>
 public record QuestionView(
@@ -125,7 +133,9 @@ public record QuestionView(
     // de waarde uit Options. Null = Options zelf tonen.
     List<string>? OptionLabels = null,
     // Lijst: de rijen (Found/Total: gevonden namen en het aantal namen).
-    List<LijstSlot>? Rows = null);
+    List<LijstSlot>? Rows = null,
+    // Spelersfiche: alle velden, de nog dichte zonder waarde (Note: de peildatum van de interlands).
+    List<FicheVeld>? Fiche = null);
 
 /// <summary>
 /// Kaart: een speld zoals de speler ze ziet. Choices = hoeveel keuzelijsten (deel 1: één per club die er speelt; deel 2: één).
@@ -168,12 +178,19 @@ public record AnswerResult(
     // Lijst: alle rijen ingevuld, met per rij of jij die naam vond.
     List<LijstSlot>? FullList = null,
     // De vraag liep af omdat de tijd om was (niet omdat de speler paste of antwoordde).
-    bool TimedOut = false);
+    bool TimedOut = false,
+    // De vraag liep af op een foute gok (spelersfiche: fout met alle velden open, of de pogingen waren op), niet omdat de speler paste.
+    bool EndedOnWrong = false);
 
 // Leaderboard
 public record LeaderboardEntry(
     int Rank, string UserName, string? AvatarId, int Level, int Points,
-    int DaysPlayed, int CorrectAnswers, int DaysWon, bool IsMe);
+    int DaysPlayed, int CorrectAnswers, int DaysWon, bool IsMe,
+    // Deels juist (QuestionRules.IsPartial): bv. een artikel van De Zondag met een paar gaten fout.
+    int PartialAnswers = 0,
+    // Nagespeeld in de academie (backlog 037): staat erbij zonder eigen plaats; Rank is dan de plaats die de speler zou hebben
+    // tussen de echte spelers. Telt nergens voor (dagwinnaar, podium, maandklassement, XP).
+    bool Replayed = false);
 public record Leaderboard(string Title, string? Note, List<LeaderboardEntry> Entries);
 
 // Statistieken

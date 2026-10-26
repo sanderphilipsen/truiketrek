@@ -1,0 +1,49 @@
+/* Knoppen: .btn en varianten, tabbladen en de modusschakelaar. */
+
+.btn {
+    display: inline-block;
+    border: 0;
+    border-radius: 12px;
+    padding: 12px 18px;
+    font: inherit; /* een <button class="btn"> krijgt anders het systeemlettertype (Arial) */
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    background: rgba(255, 255, 255, .06);
+    box-shadow: inset 0 0 0 1px var(--sb-line-strong);
+    color: var(--text);
+    cursor: pointer;
+}
+.surface-light .btn:not(.primary) { background: var(--surface-soft); box-shadow: none; }
+/* Hoofdknop in scorebordstijl: een donkere tegel met een gele lijn en gele letters, als een opgelicht segment van het bord.
+   Vol geel blijft voor cijfers, de klok en het levelbolletje. */
+.btn.primary { background: rgba(250, 199, 117, .1); color: var(--sb-digit); box-shadow: inset 0 0 0 1.5px var(--sb-digit); }
+@media (hover: hover) { .btn.primary:hover { background: rgba(250, 199, 117, .18); } }
+.btn.big { display: block; width: 100%; padding: 16px; font-size: 1.1rem; margin-top: 16px; }
+.btn:disabled { opacity: .6; }
+.linkish { background: none; border: 0; color: inherit; font: inherit; cursor: pointer; text-decoration: underline; }
+
+/* ---------- Klassement ---------- */
+.tabs { display: flex; background: rgba(255, 255, 255, .1); border-radius: 12px; padding: 4px; margin-bottom: 12px; }
+.tabs button {
+    flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    border: 0; background: none; color: #fff; padding: 10px; border-radius: 9px; font-weight: 700; font-size: .95rem;
+}
+.tabs button.active { background: var(--card); color: var(--text); }
+
+/* ---------- Gedeeld ---------- */
+.mode-switch { display: flex; gap: 8px; margin-bottom: 10px; }
+.mode-switch button {
+    flex: 1;
+    border: 2px solid rgba(255, 255, 255, .25);
+    background: none;
+    color: #fff;
+    border-radius: 12px;
+    padding: 10px;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.mode-switch button.active { background: var(--active-bg); border-color: var(--control-border); color: #fff; }
+.btn.small { padding: 8px 14px; font-size: .9rem; min-height: var(--tap); }

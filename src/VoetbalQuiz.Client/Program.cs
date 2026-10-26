@@ -15,6 +15,8 @@ builder.Services.AddScoped<RealtimeClient>();
 builder.Services.AddScoped<AdminState>();
 builder.Services.AddScoped<GoldenBallState>();
 builder.Services.AddScoped<UpdateNotice>();
+builder.Services.AddScoped<SfeerState>();
+builder.Services.AddScoped<PushClient>();
 builder.Services.AddScoped<AuthenticationStateProvider>(sp => sp.GetRequiredService<AuthState>());
 builder.Services.AddAuthorizationCore();
 builder.Services.AddCascadingAuthenticationState();

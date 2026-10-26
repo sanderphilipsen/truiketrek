@@ -9,12 +9,18 @@
 
 <PageTitle>Vraag @Number – Truitje Trek</PageTitle>
 <PitchFx Mood="@PitchMood" Teams="_affiche" />
+<Sfeer Name="@_theme" />
 <ConfirmSheet @ref="_confirm" />
 
 <PageHeader Title="@($"Vraag {Number} / {_total}")" Label="@(_state is null ? null : Info.Name)" BackHref="@OverviewUrl" Up="true" />
 @if (RunId is not null)
 {
     <p class="training-label"><Icon Name="graduation-cap" /> @TrainingRules.Label</p>
+}
+@if (_state?.Kamer is { } kamer)
+{
+    @* Halloween Special: in welke kamer van het Spookhuis deze vraag speelt. *@
+    <p class="kamer-chip"><span aria-hidden="true">@kamer.Emoji</span> <span class="kamer-label">Kamer:</span> @kamer.Name</p>
 }
 
 @* Altijd aanwezig: schermlezers horen zo het resultaat ("GOAL! Ronaldo, 80 punten") zodra de vraag afgelopen is. *@
@@ -25,9 +31,44 @@
     <p class="error" role="alert">@_error</p>
     <a class="btn" href="@OverviewUrl" @onclick="() => Go(OverviewUrl)" @onclick:preventDefault="true">Terug naar overzicht</a>
 }
+else if (_howTo is { } howTo)
+{
+    @* Een type dat je op dit toestel nog niet speelde: eerst de uitleg, de klok start pas na "Start". *@
+    <section class="card howto" aria-labelledby="howto-title">
+        <h2 id="howto-title" class="sb-label">Zo werkt het</h2>
+        @foreach (var type in howTo)
+        {
+            var info = QuestionTypes.Get(type);
+            <div class="howto-type">
+                <Icon Name="@info.Icon" Class="sb-icon" />
+                <div>
+                    <b>@info.Name</b>
+                    <p>@info.HowTo</p>
+                </div>
+            </div>
+        }
+        <p class="muted howto-note">De klok start pas als je op Start tikt.</p>
+        <button type="button" class="btn primary big" @onclick="StartAfterHowToAsync">Start <span aria-hidden="true">›</span></button>
+    </section>
+}
 else if (_state is null)
 {
-    <div class="center-msg"><Spinner /></div>
+    @* Laden in de vorm van het vraagscherm (de klok en de opgave), zodat er niets verspringt als de vraag er is. *@
+    <div class="stake question-loading" aria-busy="true">
+        <div class="stake-row" aria-hidden="true">
+            <span class="skeleton sk-points"></span>
+            <span class="skeleton sk-clock"></span>
+        </div>
+        <div class="timebar" aria-hidden="true"></div>
+    </div>
+    <div class="card question-loading-body" aria-hidden="true">
+        <div class="skeleton-lines">
+            <span class="skeleton skeleton-line short"></span>
+            <span class="skeleton skeleton-line"></span>
+            <span class="skeleton skeleton-line"></span>
+        </div>
+    </div>
+    <span class="sr-only" role="status">Vraag laden…</span>
 }
 else if (_state.Result is { } result)
 {
@@ -146,28 +187,93 @@ else
         _ => "question",
     };
 
-    // De clubkleuren van een special met een affiche (bv. Anderlecht – Club Brugge).
+    // De clubkleuren van een special met een affiche (bv. Anderlecht – Club Brugge), en het thema voor de sfeer (Halloween).
     private Affiche? _affiche;
+    private string? _theme;
     private int? _afficheFor;
 
     private string ResultAnnouncement => _state?.Result is { } r
         ? $"{Commentary.ForResult(r, _state.View?.MaxPoints ?? 100, Number)} {QuestionAnswer.Title(_state.Type, r)}. Plus {r.Points} punten."
         : "";
 
+    // Het overzicht (aantal vragen, types) halen we één keer per quiz: bij "Volgende vraag" enkel nog de vraag zelf.
+    private string? _overviewFor;
+
+    /// <summary>De types die we eerst uitleggen, vóór de klok start; null = meteen spelen.</summary>
+    private List<QuestionType>? _howTo;
+    private const string HowToSeenKey = "tt-howto-seen";
+
     protected override async Task OnParametersSetAsync()
     {
         // Bij "Volgende vraag" hergebruikt Blazor deze component met een nieuw nummer.
-        (_state, _error) = (null, null);
-        try { _total = (await Api.GetOverviewAsync(QuizApi)).Questions.Count; } catch (ApiException) { }
-        if (SpecialId != _afficheFor)
-        {
-            _afficheFor = SpecialId;
-            try { _affiche = SpecialId is { } id ? (await Api.GetSpecialsAsync()).FirstOrDefault(s => s.Id == id)?.Affiche : null; }
-            catch (ApiException) { _affiche = null; }
-        }
+        (_state, _error, _howTo) = (null, null, null);
         _leftScreen = false;
+        if (_overviewFor != QuizApi)
+        {
+            _overviewFor = QuizApi;
+            DailyOverview? overview = null;
+            var afficheTask = LoadAfficheAsync();
+            try { overview = await Api.GetOverviewAsync(QuizApi); _total = overview.Questions.Count; } catch (ApiException) { }
+            await afficheTask;
+            // Enkel vóór een vraag die nog niet liep: bij een lopende vraag tikt de klok op de server al.
+            if (overview?.Questions.FirstOrDefault(q => q.Number == Number) is { Status: QuestionStatus.NotStarted })
+            {
+                var unseen = await UnseenTypesAsync(QuestionTypes.DayTypes(overview));
+                if (unseen.Count > 0)
+                {
+                    _howTo = unseen;
+                    return;
+                }
+            }
+        }
+        await StartQuestionAsync();
+    }
+
+    private async Task LoadAfficheAsync()
+    {
+        if (SpecialId == _afficheFor) return;
+        _afficheFor = SpecialId;
+        try
+        {
+            var special = SpecialId is { } id ? (await Api.GetSpecialsAsync()).FirstOrDefault(s => s.Id == id) : null;
+            (_affiche, _theme) = (special?.Affiche, special?.Theme);
+        }
+        catch (ApiException) { (_affiche, _theme) = (null, null); }
+    }
+
+    private async Task StartQuestionAsync()
+    {
         await RunAsync(() => Api.StartAsync(QuizApi, Number));
         StartTimer();
+    }
+
+    private async Task StartAfterHowToAsync()
+    {
+        var shown = _howTo ?? [];
+        _howTo = null;
+        await RememberSeenAsync(shown);
+        await StartQuestionAsync();
+    }
+
+    /// <summary>De types die op dit toestel nog nooit uitgelegd werden (een geblokkeerde opslag telt als "nog niet").</summary>
+    private async Task<List<QuestionType>> UnseenTypesAsync(IEnumerable<QuestionType> types)
+    {
+        var seen = await SeenTypesAsync();
+        return types.Where(t => !seen.Contains(t.ToString())).ToList();
+    }
+
+    private async Task<HashSet<string>> SeenTypesAsync()
+    {
+        try { return (await JS.InvokeAsync<string?>("localStorage.getItem", HowToSeenKey) ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries).ToHashSet(); }
+        catch (Exception) { return []; }
+    }
+
+    private async Task RememberSeenAsync(IEnumerable<QuestionType> types)
+    {
+        var seen = await SeenTypesAsync();
+        seen.UnionWith(types.Select(t => t.ToString()));
+        try { await JS.InvokeVoidAsync("localStorage.setItem", HowToSeenKey, string.Join(',', seen)); }
+        catch (Exception) { } // niet bewaard: dan verschijnt de uitleg een volgende keer opnieuw, niet erg
     }
 
     private DotNetObjectReference<Question>? _self;

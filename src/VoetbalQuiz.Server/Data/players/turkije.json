@@ -19,13 +19,15 @@
     "status": "approved",
     "sources": [
       "https://en.wikipedia.org/wiki/Hakan_%C5%9E%C3%BCk%C3%BCr",
-      "https://en.wikipedia.org/wiki/S%C3%BCper_Lig"
+      "https://en.wikipedia.org/wiki/S%C3%BCper_Lig",
+      "https://en.wikipedia.org/wiki/List_of_Turkey_international_footballers"
     ],
     "tags": [
       "turkije",
       "legende"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Rüştü Reçber",
@@ -48,13 +50,16 @@
     ],
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/R%C3%BC%C5%9Ft%C3%BC_Re%C3%A7ber"
+      "https://en.wikipedia.org/wiki/R%C3%BC%C5%9Ft%C3%BC_Re%C3%A7ber",
+      "https://en.wikipedia.org/wiki/List_of_Turkey_international_footballers",
+      "https://www.11v11.com/teams/turkey/tab/stats/option/appearances/"
     ],
     "tags": [
       "turkije",
       "legende"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Arda Turan",
@@ -100,13 +105,15 @@
     ],
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Hakan_%C3%87alhano%C4%9Flu"
+      "https://en.wikipedia.org/wiki/Hakan_%C3%87alhano%C4%9Flu",
+      "https://www.fanatik.com.tr/en/vincenzo-montella-praises-the-national-star-hes-an-extraordinary-player-2595188"
     ],
     "tags": [
       "turkije",
       "champions-league"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Arda Güler",
@@ -154,12 +161,14 @@
     ],
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Kenan_Y%C4%B1ld%C4%B1z"
+      "https://en.wikipedia.org/wiki/Kenan_Y%C4%B1ld%C4%B1z",
+      "https://www.fanatik.com.tr/juventus/kenan-yildizin-del-piero-hayali-gercek-oluyor-juventustan-buyuk-jest-2538900"
     ],
     "tags": [
       "turkije"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Emre Belözoğlu",
@@ -291,12 +300,14 @@
     ],
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Burak_Y%C4%B1lmaz"
+      "https://en.wikipedia.org/wiki/Burak_Y%C4%B1lmaz",
+      "https://en.wikipedia.org/wiki/List_of_Turkey_international_footballers"
     ],
     "tags": [
       "turkije"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Merih Demiral",

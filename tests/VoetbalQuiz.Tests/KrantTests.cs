@@ -278,6 +278,20 @@ public sealed class KrantTests : IDisposable
     }
 
     [Fact]
+    public async Task The_day_leaderboard_counts_a_partly_filled_article_as_partly_correct()
+    {
+        await ToSundayAsync();
+        await _t.Quiz.StartAsync(_me, 1);
+        await _t.Quiz.GuessAsync(_me, 1, "1|Vertonghen");
+        await _t.Quiz.GiveUpAsync(_me, 1);
+        await _t.Quiz.StartAsync(_me, 2);
+        await _t.Quiz.GiveUpAsync(_me, 2); // niets gevonden: fout, niet deels juist
+
+        var me = Assert.Single((await _t.Results.GetDailyLeaderboardAsync(_me)).Entries);
+        Assert.Equal((0, 1), (me.CorrectAnswers, me.PartialAnswers));
+    }
+
+    [Fact]
     public async Task A_played_article_keeps_its_gaps_in_the_admin()
     {
         await ToSundayAsync();
@@ -330,32 +344,72 @@ public sealed class KrantTests : IDisposable
         Assert.Contains("verdediger", played.Data);
     }
 
+    [Fact]
+    public void An_article_that_shows_an_answer_of_another_clashes_with_it()
+    {
+        var hazard = QuestionEngine.Serialize(new KrantData("verslag", "Een solo", "", HazardText));
+        var mentions = QuestionEngine.Serialize(new KrantData("verslag", "Een assist", "", "Een pass van Hazard. " + LukakuText));
+
+        Assert.Equal(["Hazard"], QuestionEngine.KrantShownBy(hazard, mentions));
+        Assert.True(QuestionEngine.KrantClash(hazard, mentions));
+        Assert.True(QuestionEngine.KrantClash(mentions, hazard)); // in beide richtingen
+        Assert.False(QuestionEngine.KrantClash(hazard, QuestionEngine.Serialize(new KrantData("verslag", "Een kopbal", "", LukakuText))));
+    }
+
+    private const string HazardText = "[[Eden Hazard / Hazard : speler]] dribbelde langs [[#3 : verdedigers]] en scoorde in [[Kazan : stad]].";
+    private const string LukakuText = "[[Romelu Lukaku / Lukaku : speler]] kopte binnen tegen [[Panama : land]] in [[Sotsji : stad]].";
+
     /// <summary>
-    /// De echte artikels (krant.json): op een zondag komen er vier in willekeurige volgorde, dus geen enkel artikel mag
-    /// een antwoord van een ander tonen (in de kop, het intro, een hint of de gewone tekst). Getallen van één cijfer tellen niet.
+    /// Op een zondag komen er vier artikels in willekeurige volgorde: twee artikels die elkaars antwoorden tonen, komen nooit
+    /// samen. Hier kan dat: vijf kandidaten, waarvan één van het botsende paar mag blijven liggen.
     /// </summary>
     [Fact]
-    public void No_article_in_the_bank_gives_away_an_answer_of_another()
+    public async Task Two_articles_that_give_away_each_others_answers_never_share_a_sunday()
+    {
+        foreach (var item in _db.QuizItems.Where(i => i.Key == "Artikel 3" || i.Key == "Artikel 4")) item.Status = PlayerStatus.Rejected;
+        foreach (var (key, text) in new[] { ("Hazard", HazardText), ("Pass", "Een pass van Hazard. " + LukakuText),
+                     ("Courtois", "[[Thibaut Courtois / Courtois : keeper]] stopte [[#9 : reddingen]] in [[Parijs : stad]].") })
+            _db.QuizItems.Add(new QuizItem
+            {
+                Type = QuestionType.Krant, Key = key, Status = PlayerStatus.Approved,
+                Data = QuestionEngine.Serialize(new KrantData("verslag", key, "", text)),
+            });
+        await _db.SaveChangesAsync();
+
+        await ToSundayAsync();
+        var ids = (await _t.Quiz.GetOrCreateChallengeAsync(_t.Quiz.Today)).Questions.Select(q => q.QuizItemId).ToList();
+        var keys = ids.Select(id => _db.QuizItems.Single(i => i.Id == id).Key).ToList();
+
+        Assert.Equal(4, keys.Count);
+        Assert.Contains("Courtois", keys);
+        Assert.Single(keys, k => k is "Hazard" or "Pass");
+    }
+
+    /// <summary>
+    /// De echte artikels (krant.json): elk artikel is geldig, en elk kan op een zondag komen met drie andere die zijn
+    /// antwoorden niet tonen (en omgekeerd). Botsende artikels houdt de kiezer uit elkaar.
+    /// </summary>
+    [Fact]
+    public void Every_article_in_the_bank_is_valid_and_fits_a_sunday_without_clashes()
     {
         var file = Path.Combine(ServerContent.Root, "Data", "questions", "krant.json");
         var articles = System.Text.Json.JsonSerializer.Deserialize<List<KrantData>>(File.ReadAllText(file),
                 new System.Text.Json.JsonSerializerOptions(System.Text.Json.JsonSerializerDefaults.Web))!
-            .Select(d => (Data: d, Article: KrantText.Parse(d.Text))).ToList();
+            .Select(d => (d.Headline, Data: QuestionEngine.Serialize(d with { Intro = d.Intro ?? "" }))).ToList();
 
-        static bool Has(string text, string word) => System.Text.RegularExpressions.Regex.IsMatch(text,
-            $@"(?<!\w){System.Text.RegularExpressions.Regex.Escape(word)}(?!\w)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+        var problems = articles.SelectMany(a => QuestionEngine.Problems(QuestionType.Krant, a.Data).Select(p => $"\"{a.Headline}\": {p}")).ToList();
+        Assert.True(problems.Count == 0, string.Join("\n", problems));
+        Assert.Equal(articles.Count, articles.DistinctBy(a => a.Headline).Count());
 
-        var leaks = new List<string>();
+        var lonely = new List<string>();
         foreach (var a in articles)
-            foreach (var b in articles.Where(b => b.Data.Headline != a.Data.Headline))
-            {
-                var visible = string.Join(" ", new[] { b.Data.Headline, b.Data.Intro }
-                    .Concat(b.Article.Paragraphs.SelectMany(p => p).Where(s => s.Gap < 0).Select(s => s.Text))
-                    .Concat(b.Article.Gaps.Select(g => g.Hint)));
-                foreach (var answer in a.Article.Gaps.SelectMany(g => g.Aliases.Prepend(g.Answer)).Where(x => x.Length > 1))
-                    if (Has(visible, answer)) leaks.Add($"\"{b.Data.Headline}\" toont \"{answer}\" (antwoord in \"{a.Data.Headline}\")");
-            }
-        Assert.True(leaks.Count == 0, string.Join("\n", leaks));
+        {
+            var sunday = new List<string> { a.Data };
+            foreach (var b in articles.Where(b => b.Headline != a.Headline))
+                if (sunday.Count < 4 && sunday.All(s => !QuestionEngine.KrantClash(s, b.Data))) sunday.Add(b.Data);
+            if (sunday.Count < 4) lonely.Add(a.Headline);
+        }
+        Assert.True(lonely.Count == 0, "Geen zondag zonder botsing voor: " + string.Join("\n", lonely));
     }
 
     public void Dispose() => _t.Dispose();

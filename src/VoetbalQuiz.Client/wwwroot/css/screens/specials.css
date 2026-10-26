@@ -1,0 +1,21 @@
+/* Specials en affiches (Pages/Special, Shared/AfficheBanner). */
+
+/* ---------- Specials ---------- */
+/* Een special is een gewone tegel: geel blijft voor de hoofdknop en de cijfers. */
+.special-card { text-decoration: none; color: inherit; }
+.special-card small { color: var(--muted); }
+.special-icon { font-size: 2.2rem; line-height: 1; }
+
+/* ---------- Affiche (derby-specials) ---------- */
+.affiche-link { display: block; text-decoration: none; margin-bottom: -6px; }
+.affiche {
+    display: flex; align-items: stretch; border-radius: var(--radius) var(--radius) 0 0; overflow: hidden;
+    color: #fff; font-weight: 900; text-transform: uppercase; letter-spacing: .03em;
+}
+.affiche-team { flex: 1; padding: 10px 12px; font-size: .95rem; overflow-wrap: anywhere; }
+.affiche-team.home { background: var(--home); }
+.affiche-team.away { background: var(--away); text-align: right; }
+.affiche-vs { display: grid; place-items: center; padding: 0 10px; background: #13241b; color: var(--accent); font-size: .85rem; }
+.affiche.big { border-radius: 12px; margin-bottom: 10px; }
+.affiche.big .affiche-team { font-size: 1.15rem; padding: 14px; }
+.special-card.with-affiche { border-top-left-radius: 0; border-top-right-radius: 0; }

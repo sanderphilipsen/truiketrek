@@ -46,14 +46,16 @@
     ],
     "status": "approved",
     "sources": [
-      "https://nl.wikipedia.org/wiki/Jan_Koller"
+      "https://nl.wikipedia.org/wiki/Jan_Koller",
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_50_or_more_international_goals"
     ],
     "tags": [
       "gouden-schoen",
       "anderlecht",
       "legende"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Aruna Dindane",
@@ -468,9 +470,12 @@
       "Ik werd Italiaans kampioen met zowel Lazio als Juventus.",
       "Ik scoorde vier keer op het WK 1998 en ben met 37 goals topschutter aller tijden van Chili."
     ],
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Inhoud-onderhoud 2026-10-26 (markeren): de laatste tip klopt niet meer. Alexis Sánchez brak het Chileense record van Salas (37) op 22 juni 2017 en staat nu op ruim 44 goals (ESPN, Reuters/TNT Sports, 11v11). Voorstel: 'Ik scoorde vier keer op het WK 1998 en was met 37 goals lang topschutter aller tijden van Chili.' Daarna is de tip tijdloos (geen asOf nodig).",
     "sources": [
-      "https://nl.wikipedia.org/wiki/Marcelo_Salas"
+      "https://nl.wikipedia.org/wiki/Marcelo_Salas",
+      "https://www.espnfc.com/chile/story/3147182/alexis-sanchez-becomes-chiles-all-time-top-scorer-with-38th-goal",
+      "https://www.11v11.com/teams/chile/tab/stats/option/scorers/"
     ],
     "tags": [
       "kerst",
@@ -598,7 +603,8 @@
       "In december 2019 creëerde ik 29 kansen, het meeste ooit in één Premier League-maand.",
       "In 2021 werd ik Speler van het Seizoen in de Championship en Aston Villa betaalde een clubrecord voor mij."
     ],
-    "status": "approved",
+    "status": "review",
+    "reviewNote": "Inhoud-onderhoud 2026-10-26 (markeren): tip 4 noemt een record ('het meeste ooit in één Premier League-maand') dat kan sneuvelen. De bronnen (premierleague.com, december 2019; Wikipedia) bevestigen het record enkel op het moment zelf; geen recente bron gevonden die zegt dat het in 2026 nog staat. Voorstel: 'In december 2019 creëerde ik 29 kansen, toen het meeste ooit in één Premier League-maand.' Dan is de tip tijdloos.",
     "sources": [
       "https://en.wikipedia.org/wiki/Emiliano_Buend%C3%ADa"
     ],
@@ -691,7 +697,8 @@
       "legende",
       "maradona"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Lilian Thuram",
@@ -954,7 +961,8 @@
     "tags": [
       "nieuwjaar"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Mahmoud Dahoud",
@@ -1382,12 +1390,14 @@
     ],
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Tim_Cahill"
+      "https://en.wikipedia.org/wiki/Tim_Cahill",
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_50_or_more_international_goals"
     ],
     "tags": [
       "sinterklaas"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Davide Calabria",
@@ -1545,13 +1555,15 @@
     ],
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Samuel_Eto%27o"
+      "https://en.wikipedia.org/wiki/Samuel_Eto%27o",
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_50_or_more_international_goals"
     ],
     "tags": [
       "messi",
       "champions-league"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Scott McTominay",

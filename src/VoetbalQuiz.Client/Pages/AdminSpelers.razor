@@ -71,6 +71,10 @@
                     <span class="pt-name">
                         <b>@p.Name</b>
                         @if (p.ReviewNote is not null) { <small class="note"><Icon Name="warning" /> @p.ReviewNote</small> }
+                        @if (p.Stale)
+                        {
+                            <small class="note"><Icon Name="warning" /> Verouderd: peildatum @p.AsOf?.ToString("dd/MM/yyyy") is ouder dan @QuestionRules.MaxAgeDays dagen, speelt niet tot hij bijgewerkt is.</small>
+                        }
                     </span>
                     <span><span class="pill @StatusCss(p.Status)">@StatusLabel(p.Status)</span></span>
                     <span class="pt-meta">@p.Country · @p.Competition@(p.Era == "classic" ? " · klassieker" : "")</span>

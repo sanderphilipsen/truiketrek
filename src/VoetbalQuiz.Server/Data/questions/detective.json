@@ -105,7 +105,7 @@
       }
     ],
     "solution": "Hans Vanaken speelde in het eerste elftal enkel voor Belgische clubs (Lommel United, Lokeren en Club Brugge) en won de Gouden Schoen in 2018, 2019 en 2024.",
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "reviewNote": "Nagekeken door inhoud-controleur (23/10/2026): waterdicht na correcties (Van der Elst 1990 en 1996, Vanaken ook 2024). Vanaken is actief: vóór elke inzet controleren of hij nog geen buitenlandse club had.",
     "sources": [
@@ -118,12 +118,15 @@
       "https://nl.wikipedia.org/wiki/Wesley_Sonck",
       "https://nl.wikipedia.org/wiki/Timmy_Simons",
       "https://nl.wikipedia.org/wiki/Vincent_Kompany",
-      "https://nl.wikipedia.org/wiki/Axel_Witsel"
+      "https://nl.wikipedia.org/wiki/Axel_Witsel",
+      "https://en.wikipedia.org/wiki/Belgian_Golden_Shoe",
+      "https://en.wikipedia.org/wiki/Hans_Vanaken"
     ],
     "tags": [
       "gouden-schoen"
     ],
-    "checkedAt": "2026-10-23"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "story": "gestolen-trofee",
@@ -1355,7 +1358,7 @@
       }
     ],
     "solution": "George Weah won in 1995 als eerste Afrikaan de Ballon d'Or, speelde onder meer voor Monaco, PSG en AC Milan en werd later president van Liberia.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "reviewNote": "Dader is gestopt (2003). Check: Papin bij Club Brugge 1985-86, Van Basten Ajax, Baggio Juventus 1990-95, Sammer Dortmund 1993-98, Matthäus nooit PSG. Weah won de Ballon d'Or in 1995 en was president van Liberia (2018-2024).",
     "sources": [
@@ -1480,7 +1483,7 @@
       }
     ],
     "solution": "Philippe Clement speelde voor Beerschot, Genk, Coventry City, Club Brugge (1999-2009) en Germinal Beerschot, en was 38 keer Rode Duivel.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "reviewNote": "Controleer: (1) Clement speelde voor Club Brugge ook na 1 januari 2001 (1999-2009, ruim 250 competitiewedstrijden); (2) Simons stond 2000-2005 bij Club Brugge (dus ook 21e eeuw, doet er niet toe voor de uitsluiting maar klopt); (3) Verlinden speelde nooit buiten België (Lierse en Club Brugge) volgens Wikipedia; (4) Clement speelde minstens één officiële wedstrijd voor Coventry City (12 competitiewedstrijden). Alle spelers zijn gestopt.",
     "sources": [
@@ -1977,7 +1980,7 @@
       }
     ],
     "solution": "Danijel Milićević speelde voor Lugano, Yverdon, Eupen, Charleroi, Gent, Metz (uitleen), Eupen en Seraing, en stopte in 2021.",
-    "difficulty": 3,
+    "difficulty": 4,
     "status": "approved",
     "reviewNote": "Controleer: (1) Kums stond 2006-08 bij Anderlecht zonder wedstrijden, maar speelde er wel in 2017-20 (dus waar voor de uitsluiting); (2) Gershon bij Standard en Celtic (uitleen): enkel Standard wordt gebruikt; (3) Milićević speelde nooit voor Lille, Toulouse, Club Brugge, Nantes, Standard of Anderlecht; (4) Gent-periodes in de kaartjes volgens de Wikipedia-infoboxen (Boussoufa 2004-06 en uitleen 2016; Kums 2014-16, uitleen 2019-20 en 2020-25). David en Dejaegere zijn actief maar enkel 'nooit'-uitsluitingen die onveranderlijk onwaar blijven.",
     "sources": [
@@ -2099,7 +2102,7 @@
       }
     ],
     "solution": "Jelle Van Damme speelde voor onder meer Ajax, Anderlecht, Standard, LA Galaxy en Antwerp en zette in februari 2021 een punt achter zijn loopbaan, na een laatste seizoen bij Lokeren.",
-    "difficulty": 2,
+    "difficulty": 3,
     "status": "approved",
     "reviewNote": "Controleer: (1) Van Damme speelde nooit voor Genk, Italië, Mechelen, Manchester United of Dynamo Kiev (Wikipedia-loopbaan: Lokeren, Germinal Beerschot, Ajax, Southampton, Werder Bremen uitleen, Anderlecht, Wolves, Standard, LA Galaxy, Antwerp, Lokeren); (2) Mbokani, Haroun, De Laet en Nainggolan zijn mogelijk nog actief, maar alle verklaringen over hen zijn onveranderlijke 'nooit'-uitsluitingen; (3) Nainggolan: Antwerp 2021-22 (Wikipedia); (4) Antwerp-periodes in de kaartjes: De Laet speelde er meermaals (2006-07, uitleen 2018, 2019-24).",
     "sources": [
@@ -3219,7 +3222,7 @@
       }
     ],
     "solution": "Eden Hazard speelde enkel voor Lille, Chelsea en Real Madrid en kondigde zijn afscheid als speler aan op 10 oktober 2023.",
-    "difficulty": 2,
+    "difficulty": 1,
     "status": "approved",
     "reviewNote": "Hazard is gestopt (10/10/2023). Voor de actieve of recent gestopte spelers (De Bruyne, Witsel, Lukaku) steunen de 'nooit'-verklaringen op bestaand verleden, maar 'nooit voor Ajax' en 'nooit voor Everton' moeten ook waar blijven voor de nog niet uitgesloten spelers; De Bruyne/Lukaku/Witsel zijn actief. Lukaku's Anderlecht-jaren (2009-11) komen niet uit een door mij geopende bron: controleer https://en.wikipedia.org/wiki/Romelu_Lukaku. Alle acht stonden in de WK 2014- en 2018-selectie.",
     "sources": [
@@ -3344,7 +3347,7 @@
       }
     ],
     "solution": "Vincent Kompany speelde voor Anderlecht, Hamburger SV en Manchester City en stopte als speler op 17 augustus 2020.",
-    "difficulty": 3,
+    "difficulty": 2,
     "status": "approved",
     "reviewNote": "Kompany is gestopt (17/08/2020). Hij miste het EK 2016 door een blessure, maar dat staat niet in de verklaringen. Alle acht waren WK 2018-selectieleden (Chadli en Vermaelen per en.wikipedia). Witsel is nog actief: 'nooit voor Everton' enz. zijn waar voor hem; enkel 'Standard Luik' sluit hem uit, een feit uit het verleden. Het derdeplaatsmatch was in Sint-Petersburg (titel).",
     "sources": [

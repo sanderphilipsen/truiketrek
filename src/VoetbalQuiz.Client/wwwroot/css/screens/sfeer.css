@@ -1,0 +1,308 @@
+/* Seizoenssfeer (SfeerState zet data-sfeer op <html>, SfeerDeco tekent de versiering) en de kamers van het Spookhuis.
+   Een sfeer overschrijft enkel variabelen uit tokens.css; juist/fout (--ok, --fail) blijven zoals altijd.
+   Elke tekstkleur houdt ≥ 4,5:1 op --card, elke lijn ≥ 3:1 (zoals tokens.css). */
+
+/* ---------- Kleuren per sfeer ---------- */
+
+/* Verjaardag van Truitje Trek: het gewone groene veld, maar feestelijk (enkel de versiering). */
+
+/* Pasen: een frisgroen lenteveld met pasteltinten (zachtgeel als een eidooier, lila lijnen). */
+html[data-sfeer="pasen"] {
+    --pitch: #0f4a2c;
+    --pitch-2: #2f7a3e;
+    --card: #0c3321;
+    --tile-bg: rgba(12, 51, 33, .88);
+    --text: #f4fbf3;
+    --muted: #c4e3c9;
+    --accent: #ffe07a;
+    --accent-text: #ffe69a;
+    --sb-digit: #ffe69a;
+    --sb-line: rgba(214, 186, 255, .35);
+    --sb-line-strong: #c9a8ff;
+    --border: rgba(214, 186, 255, .4);
+    --control-border: #c9a8ff;
+    --divider: rgba(214, 186, 255, .2);
+    --active-bg: rgba(214, 186, 255, .24);
+    --special: #ffe69a;
+}
+
+/* Halloween: zwart en pompoenoranje; onderaan gloeit het veld als kaarslicht. */
+html[data-sfeer="halloween"] {
+    --pitch: #0b0906;
+    --pitch-2: #2a1606;
+    --card: #120d08;
+    --tile-bg: rgba(18, 13, 8, .9);
+    --text: #f6ece0;
+    --muted: #d4b48c;
+    --accent: #ff8a1f;
+    --accent-text: #ffb066;
+    --sb-digit: #ffb066;
+    --sb-line: rgba(255, 138, 31, .3);
+    --sb-line-strong: rgba(255, 138, 31, .62);
+    --border: rgba(255, 138, 31, .35);
+    --control-border: #ff9d47;
+    --divider: rgba(255, 138, 31, .18);
+    --active-bg: rgba(255, 138, 31, .24);
+    --input-bg: #080604;
+    --scrim: rgba(8, 6, 4, .78);
+    --special: #ffb066;
+    --sfeer-gloed: rgba(255, 138, 31, .55);
+}
+
+/* Sinterklaas: mijterrood en goud. */
+html[data-sfeer="sinterklaas"] {
+    --pitch: #2a0507;
+    --pitch-2: #520c10;
+    --card: #1e0405;
+    --tile-bg: rgba(30, 4, 5, .9);
+    --text: #fbefe6;
+    --muted: #e6b9ae;
+    --accent: #e8b923;
+    --accent-text: #f2cd5c;
+    --sb-digit: #f2cd5c;
+    --sb-line: rgba(232, 185, 35, .3);
+    --sb-line-strong: rgba(232, 185, 35, .62);
+    --border: rgba(232, 185, 35, .35);
+    --control-border: #e8b923;
+    --divider: rgba(232, 185, 35, .18);
+    --active-bg: rgba(232, 185, 35, .24);
+    --input-bg: #140203;
+    --scrim: rgba(20, 2, 3, .78);
+    --special: #f2cd5c;
+}
+
+/* Kerst: dennengroen bij nacht, goud en kerstrood. */
+html[data-sfeer="kerst"] {
+    --pitch: #04140c;
+    --pitch-2: #0a2c1b;
+    --card: #061a10;
+    --tile-bg: rgba(6, 26, 16, .9);
+    --text: #f1f7f2;
+    --muted: #b9d6c4;
+    --accent: #f2c14e;
+    --accent-text: #f6d47e;
+    --sb-digit: #f6d47e;
+    --sb-line: rgba(224, 72, 79, .35);
+    --sb-line-strong: #e0484f;
+    --border: rgba(224, 72, 79, .4);
+    --control-border: #e0484f;
+    --divider: rgba(224, 72, 79, .2);
+    --active-bg: rgba(224, 72, 79, .24);
+    --input-bg: #03100a;
+    --scrim: rgba(3, 16, 10, .78);
+    --special: #f6d47e;
+    --sfeer-gloed: rgba(255, 214, 102, .55);
+}
+
+/* Nieuwjaar: middernachtblauw en champagne. */
+html[data-sfeer="nieuwjaar"] {
+    --pitch: #020611;
+    --pitch-2: #0a1c38;
+    --card: #06101f;
+    --tile-bg: rgba(6, 16, 31, .9);
+    --text: #f2f3fb;
+    --muted: #b7c6dc;
+    --accent: #e9c46a;
+    --accent-text: #f1d58a;
+    --sb-digit: #f1d58a;
+    --sb-line: rgba(233, 196, 106, .3);
+    --sb-line-strong: rgba(233, 196, 106, .62);
+    --border: rgba(233, 196, 106, .35);
+    --control-border: #e9c46a;
+    --divider: rgba(233, 196, 106, .18);
+    --active-bg: rgba(233, 196, 106, .24);
+    --input-bg: #030914;
+    --scrim: rgba(2, 6, 17, .78);
+    --special: #f1d58a;
+    --sfeer-gloed: rgba(241, 213, 138, .55);
+}
+
+/* ---------- Versiering: gedeelde bouwstenen ---------- */
+
+.sfeer-deco { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+
+/* Onderaan op het gras: drie figuren. Extra ruimte onder de pagina, zodat ze na het scrollen vrij staan. */
+html[data-sfeer] .content { padding-bottom: 72px; }
+.sfeer-onder { position: absolute; bottom: 10px; line-height: 1; }
+.sfeer-onder.o1 { left: 14px; font-size: 2.6rem; }
+.sfeer-onder.o2 { left: 62px; font-size: 1.7rem; }
+.sfeer-onder.o3 { right: 16px; font-size: 2.2rem; }
+.sfeer-gloed { animation: sfeer-kaars 3.2s ease-in-out infinite; filter: drop-shadow(0 0 10px var(--sfeer-gloed, transparent)); }
+.sfeer-gloed.o2 { animation-delay: -1.1s; }
+.sfeer-gloed.o3 { animation-delay: -2.3s; }
+@keyframes sfeer-kaars {
+    0%, 100% { filter: drop-shadow(0 0 10px var(--sfeer-gloed, transparent)); }
+    40% { filter: drop-shadow(0 0 18px var(--sfeer-gloed, transparent)); }
+    60% { filter: drop-shadow(0 0 6px var(--sfeer-gloed, transparent)); }
+}
+
+/* Wat naar beneden valt (sneeuw, pepernoten, confetti): elk op een eigen plaats en tempo. */
+.sfeer-val { position: absolute; top: -20px; animation: sfeer-val 12s linear infinite; }
+.sfeer-val.f1 { left: 4%; animation-duration: 11s; animation-delay: -1s; }
+.sfeer-val.f2 { left: 13%; animation-duration: 15s; animation-delay: -7s; }
+.sfeer-val.f3 { left: 22%; animation-duration: 12s; animation-delay: -3s; }
+.sfeer-val.f4 { left: 31%; animation-duration: 17s; animation-delay: -11s; }
+.sfeer-val.f5 { left: 40%; animation-duration: 13s; animation-delay: -5s; }
+.sfeer-val.f6 { left: 49%; animation-duration: 16s; animation-delay: -9s; }
+.sfeer-val.f7 { left: 58%; animation-duration: 12s; animation-delay: -2s; }
+.sfeer-val.f8 { left: 67%; animation-duration: 14s; animation-delay: -8s; }
+.sfeer-val.f9 { left: 76%; animation-duration: 18s; animation-delay: -4s; }
+.sfeer-val.f10 { left: 85%; animation-duration: 13s; animation-delay: -10s; }
+.sfeer-val.f11 { left: 92%; animation-duration: 15s; animation-delay: -6s; }
+.sfeer-val.f12 { left: 97%; animation-duration: 11s; animation-delay: -12s; }
+@keyframes sfeer-val {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(14px, 55vh) rotate(180deg); }
+    100% { transform: translate(-6px, 110vh) rotate(360deg); }
+}
+
+/* ---------- Versiering per sfeer ---------- */
+
+/* Verjaardag: confetti in de kleuren van de app, en ballonnen die opstijgen. */
+.confetti { width: 7px; height: 11px; border-radius: 2px; opacity: .8; background: var(--accent); }
+.confetti:nth-child(3n + 1) { background: #5dcaa5; }
+.confetti:nth-child(3n + 2) { background: #f09595; }
+.confetti:nth-child(4n) { background: #8fb8ff; }
+.sfeer-ballon { position: absolute; bottom: -60px; font-size: 2rem; opacity: .85; animation: sfeer-stijg 16s ease-in-out infinite; }
+.sfeer-ballon.b1 { left: 10%; }
+.sfeer-ballon.b2 { left: 55%; font-size: 1.6rem; animation-delay: -6s; animation-duration: 20s; }
+.sfeer-ballon.b3 { left: 82%; animation-delay: -12s; animation-duration: 18s; }
+@keyframes sfeer-stijg {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(-12px, -60vh); }
+    100% { transform: translate(8px, -120vh); }
+}
+
+/* Pasen: beschilderde eieren in het gras die even wiebelen, en een vlinder. */
+.paasei {
+    position: absolute; width: 22px; height: 28px; border-radius: 50% 50% 46% 46% / 60% 60% 40% 40%;
+    background: repeating-linear-gradient(170deg, #ffd1e8 0 6px, #fff3b0 6px 12px, #c9e8ff 12px 18px);
+    box-shadow: inset -3px -4px 0 rgba(0, 0, 0, .12);
+    opacity: .8; animation: sfeer-wiebel 4s ease-in-out infinite; transform-origin: 50% 90%;
+}
+.paasei.e1 { top: 18%; left: 6%; }
+.paasei.e2 { top: 30%; right: 8%; background: repeating-linear-gradient(10deg, #d6c2ff 0 5px, #fff 5px 9px); animation-delay: -1s; }
+.paasei.e3 { top: 47%; left: 4%; width: 18px; height: 23px; animation-delay: -2s; }
+.paasei.e4 { top: 58%; right: 5%; background: radial-gradient(circle at 50% 40%, #ffe07a 25%, #ff9fc6 26% 50%, #9fd8ff 51%); animation-delay: -3s; }
+.paasei.e5 { top: 72%; left: 9%; width: 18px; height: 23px; animation-delay: -.5s; }
+.paasei.e6 { top: 80%; right: 12%; animation-delay: -2.5s; }
+@keyframes sfeer-wiebel {
+    0%, 70%, 100% { transform: rotate(0deg); }
+    78% { transform: rotate(-10deg); }
+    86% { transform: rotate(8deg); }
+    92% { transform: rotate(-4deg); }
+}
+.sfeer-vlinder { position: absolute; top: 24%; left: -10%; font-size: 1.3rem; opacity: .8; animation: sfeer-fladder 20s ease-in-out infinite; }
+
+/* Halloween: maan en vleermuizen. */
+.sfeer-maan {
+    position: absolute; top: 72px; right: 18px; width: 64px; height: 64px; border-radius: 50%;
+    background: radial-gradient(circle at 38% 38%, #fff6dc, #f3d9a0 60%, #d9b56f);
+    box-shadow: 0 0 40px 12px rgba(255, 230, 170, .25);
+    opacity: .85;
+}
+.sfeer-vleermuis {
+    position: absolute; left: -10%; font-size: 1.4rem; opacity: .55; filter: grayscale(1) brightness(.35);
+    animation: sfeer-fladder 14s ease-in-out infinite;
+}
+.sfeer-vleermuis.v1 { top: 22%; }
+.sfeer-vleermuis.v2 { top: 48%; font-size: 1rem; animation-delay: -5s; animation-duration: 18s; }
+.sfeer-vleermuis.v3 { top: 70%; font-size: 1.2rem; animation-delay: -10s; animation-duration: 22s; }
+@keyframes sfeer-fladder {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(35vw, -4vh); }
+    50% { transform: translate(65vw, 3vh); }
+    75% { transform: translate(90vw, -2vh); }
+    100% { transform: translate(120vw, 0); }
+}
+
+/* Sinterklaas: pepernoten. */
+.pepernoot {
+    width: 10px; height: 9px; border-radius: 50% 50% 45% 45%;
+    background: radial-gradient(circle at 35% 30%, #c98a4b, #8a5226 70%);
+    opacity: .85;
+}
+
+/* Sinterklaas: de Sint als getekend figuurtje onderaan (de pagina krijgt daarvoor iets meer ruimte). */
+html[data-sfeer="sinterklaas"] .content { padding-bottom: 92px; }
+.sfeer-figuur { position: absolute; bottom: 6px; height: 88px; width: auto; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .45)); }
+.sfeer-sint { right: 10px; }
+.sint-schoen.o1 { font-size: 1.8rem; }
+.sint-cadeau.o2 { left: 92px; font-size: 1.8rem; }
+
+/* Kerst: de kerstman met zijn slee vliegt af en toe over (van rechts naar links), en staat onderaan. */
+.sfeer-lucht { position: fixed; inset: 0 0 auto 0; height: 40px; z-index: 50; pointer-events: none; overflow: hidden; }
+.sfeer-slee {
+    position: absolute; top: 4px; left: 100%; font-size: 1.3rem; line-height: 1; white-space: nowrap;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .5));
+    animation: sfeer-slee 24s linear infinite;
+}
+/* Een derde van de tijd onderweg (van rechts naar links, licht golvend), daarna even niets. */
+@keyframes sfeer-slee {
+    0% { transform: translate(0, 0); }
+    15% { transform: translate(-60vw, 6px); }
+    33%, 100% { transform: translate(calc(-100vw - 160px), 0); }
+}
+.kerstman.o3 { font-size: 2.6rem; }
+
+/* Kerst: sneeuw. */
+.sneeuw { width: 6px; height: 6px; border-radius: 50%; background: #fff; opacity: .75; box-shadow: 0 0 6px rgba(255, 255, 255, .6); }
+.sneeuw:nth-child(even) { width: 4px; height: 4px; opacity: .55; }
+
+/* Nieuwjaar: vuurwerk dat openspat (een stip met een krans van vonken die uitdijt en uitdooft). */
+.sfeer-vuurwerk {
+    position: absolute; width: 6px; height: 6px; border-radius: 50%; background: transparent;
+    --v: #f1d58a;
+    box-shadow:
+        0 -40px 0 0 var(--v), 28px -28px 0 0 var(--v), 40px 0 0 0 var(--v), 28px 28px 0 0 var(--v),
+        0 40px 0 0 var(--v), -28px 28px 0 0 var(--v), -40px 0 0 0 var(--v), -28px -28px 0 0 var(--v),
+        0 -22px 0 -1px #fff, 22px 0 0 -1px #fff, 0 22px 0 -1px #fff, -22px 0 0 -1px #fff;
+    animation: sfeer-knal 3.6s ease-out infinite;
+    opacity: 0;
+}
+.sfeer-vuurwerk.w1 { top: 52%; left: 24%; }
+.sfeer-vuurwerk.w2 { top: 64%; left: 76%; --v: #f09595; animation-delay: -.9s; }
+.sfeer-vuurwerk.w3 { top: 80%; left: 52%; --v: #8fb8ff; animation-delay: -1.8s; }
+.sfeer-vuurwerk.w4 { top: 38%; left: 70%; --v: #5dcaa5; animation-delay: -2.7s; }
+@keyframes sfeer-knal {
+    0% { transform: scale(.1); opacity: 0; }
+    8% { opacity: 1; }
+    45% { transform: scale(1.6); opacity: .9; }
+    70%, 100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* Minder beweging: alles staat stil, op een vaste plaats. */
+@media (prefers-reduced-motion: reduce) {
+    .sfeer-gloed, .sfeer-val, .sfeer-ballon, .sfeer-vleermuis, .paasei { animation: none; }
+    .sfeer-vlinder { animation: none; left: 64%; }
+    .sfeer-lucht { display: none; } /* stilstaand boven de kop zou in de weg staan: de kerstman staat al onderaan */
+    .sfeer-val { top: auto; }
+    .sfeer-val.f1, .sfeer-val.f5, .sfeer-val.f9 { top: 12%; }
+    .sfeer-val.f2, .sfeer-val.f6, .sfeer-val.f10 { top: 38%; }
+    .sfeer-val.f3, .sfeer-val.f7, .sfeer-val.f11 { top: 60%; }
+    .sfeer-val.f4, .sfeer-val.f8, .sfeer-val.f12 { top: 82%; }
+    .sfeer-ballon { bottom: 90px; }
+    .sfeer-vleermuis.v1 { left: 12%; }
+    .sfeer-vleermuis.v2 { left: 70%; }
+    .sfeer-vleermuis.v3 { left: 40%; }
+    .sfeer-vuurwerk { animation: none; opacity: .7; transform: scale(1.4); }
+}
+
+/* ---------- Kamers van het Spookhuis ---------- */
+.kamer-chip {
+    display: flex; align-items: center; gap: 8px; width: fit-content; margin: 0 auto 10px;
+    padding: 4px 12px; border-radius: 999px; border: 1px solid var(--sb-line-strong);
+    background: var(--tile-bg); color: var(--accent-text); font-size: .85rem; font-weight: 700;
+}
+.kamer-chip .kamer-label { color: var(--muted); font-weight: 600; }
+.question-list .kamer { font-size: 1rem; margin-right: 2px; }
+
+/* Home: het special-kaartje van Halloween in pompoenkleuren, ook zonder data-sfeer op de pagina. */
+.home-special.sfeer-halloween .special-card {
+    background: linear-gradient(160deg, #3a1d06, #120d08 70%);
+    border-color: rgba(255, 138, 31, .62);
+}
+.home-special.sfeer-halloween .home-special-name::after { content: " 🎃"; }
+.home-special.sfeer-halloween .home-special-play:not(.primary) {
+    background: #1f1408; border-color: rgba(255, 138, 31, .62); color: #ffb066;
+}

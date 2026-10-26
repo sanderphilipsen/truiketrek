@@ -72,6 +72,15 @@ public sealed class LastSeenTests : IDisposable
         Assert.Equal("1 september 2026", DutchDates.Ago(now.AddDays(-46), now));
     }
 
+    [Fact]
+    public void Aftelling_naar_de_volgende_daily()
+    {
+        Assert.Equal("1 min", DutchDates.Countdown(TimeSpan.FromSeconds(20)));
+        Assert.Equal("34 min", DutchDates.Countdown(TimeSpan.FromMinutes(33.5)));
+        Assert.Equal("1u 00m", DutchDates.Countdown(TimeSpan.FromMinutes(60)));
+        Assert.Equal("5u 12m", DutchDates.Countdown(new TimeSpan(5, 11, 30)));
+    }
+
     private Task SetAsync(string id, DateTime at) =>
         _db.Db.Users.Where(u => u.Id == id).ExecuteUpdateAsync(s => s.SetProperty(u => u.LastSeenAt, at));
 

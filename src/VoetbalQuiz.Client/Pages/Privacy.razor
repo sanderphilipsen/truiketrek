@@ -5,7 +5,7 @@
 <PageHeader Title="Privacyverklaring" Label="Info" />
 
 @* Zonder [Authorize]: ook te lezen vanaf het aanmeldscherm, vóór je een account maakt.
-   Houd deze tekst in lijn met wat de app echt bewaart (Data/Entities.cs, cookies in Program.cs). *@
+   Houd deze tekst in lijn met wat de app echt bewaart (Server/Data/Model, cookies in Program.cs). *@
 <article class="card legal">
     <p class="legal-updated">Laatst bijgewerkt: @LegalInfo.Updated</p>
 
@@ -39,6 +39,8 @@
     <ul>
         <li>Meldingen via de VAR (bugs en ideeën) en het antwoord van de beheerder.</li>
         <li>Meldingen in de app die voor jou bestemd zijn.</li>
+        <li>Laat je <b>pushmeldingen</b> toe, dan bewaren we per toestel het adres en de sleutels die je browser daarvoor
+            geeft, en de dag van je laatste herinnering. Je zet de herinnering uit in je spelersfiche (tab Account).</li>
     </ul>
     <h3>Wat we níét doen</h3>
     <ul>
@@ -65,6 +67,8 @@
             als verwerker en heeft geen eigen gebruik van je gegevens.</li>
         <li><b>Google</b> verwerkt je gegevens alleen als je zelf kiest voor "Doorgaan met Google". Daarvoor geldt ook het
             privacybeleid van Google.</li>
+        <li><b>De pushdienst van je browser</b> (Google, Mozilla, Apple of Microsoft) bezorgt een pushmelding op je toestel,
+            alleen als je die toeliet. De inhoud van de melding is versleuteld en enkel leesbaar op je toestel.</li>
     </ul>
 
     <h2>5. Hoe lang we gegevens bewaren</h2>
@@ -80,7 +84,8 @@
         <li><b>voetbalquiz</b>: houdt je aangemeld. Geldig tot 60 dagen na je laatste gebruik.</li>
         <li><b>Tijdelijke aanmeldcookies</b> (<code>Identity.External</code>, <code>.AspNetCore.Correlation.*</code>,
             <code>.AspNetCore.Nonce.*</code>): alleen tijdens het aanmelden met Google, en daarna verwijderd.</li>
-        <li><b>Lokale opslag</b>: onthoudt of je de uitleg op de startpagina verborgen hebt.</li>
+        <li><b>Lokale opslag</b>: onthoudt of je de uitleg op de startpagina verborgen hebt, en tot wanneer je de vraag om
+            meldingen toe te laten weggeklikt hebt.</li>
         <li><b>App-cache</b>: de bestanden van de app worden op je toestel bewaard, zodat ze snel laden en de app als
             geïnstalleerde app werkt. Hierin staan geen persoonsgegevens.</li>
     </ul>

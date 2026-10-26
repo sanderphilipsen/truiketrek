@@ -30,12 +30,15 @@ public class AccountDeletionService(QuizDbContext db, TimeProvider clock, Notifi
     public async Task CancelAsync(string userId) =>
         await db.Users.Where(u => u.Id == userId).ExecuteUpdateAsync(s => s.SetProperty(u => u.DeletionRequestedAt, (DateTime?)null));
 
-    /// <summary>Verwijdert het account van een speler met een lopende aanvraag. Null als er geen zo een speler is.</summary>
-    public async Task<string?> DeleteAsync(string? userName)
+    /// <summary>
+    /// Verwijdert het account van een speler, standaard enkel met een lopende aanvraag; een admin kan met
+    /// <paramref name="onlyRequested"/> = false ook zonder aanvraag verwijderen. Null als er geen zo een speler is.
+    /// </summary>
+    public async Task<string?> DeleteAsync(string? userName, bool onlyRequested = true)
     {
         var normalized = userName?.Trim().ToUpperInvariant() ?? "";
         var user = await db.Users.SingleOrDefaultAsync(u => u.NormalizedUserName == normalized
-            && u.DeletionRequestedAt != null && u.DeletedAt == null);
+            && (!onlyRequested || u.DeletionRequestedAt != null) && u.DeletedAt == null);
         if (user is null) return null;
 
         var oldName = user.UserName!;
@@ -62,6 +65,7 @@ public class AccountDeletionService(QuizDbContext db, TimeProvider clock, Notifi
         await db.UserRoles.Where(r => r.UserId == user.Id).ExecuteDeleteAsync();
         await db.Feedback.Where(f => f.UserId == user.Id).ExecuteDeleteAsync();
         await db.Notifications.Where(n => n.UserId == user.Id).ExecuteDeleteAsync();
+        await db.PushSubscriptions.Where(p => p.UserId == user.Id).ExecuteDeleteAsync();
         await db.TrainingRuns.Where(r => r.UserId == user.Id).ExecuteDeleteAsync(); // de pogingen volgen via cascade
         await db.SaveChangesAsync();
 

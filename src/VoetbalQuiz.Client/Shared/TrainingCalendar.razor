@@ -1,0 +1,180 @@
+@* Academie: één maand als rooster (maandag eerst). Elke daily is een knop; de toestand zit in vorm én kleur:
+   gemist = gele ring, echt gespeeld = gevuld vak met je score, nagespeeld = groene rand met je score, geblokkeerd = slotje,
+   vóór je inschrijving = rustig. Specials zijn een band onder hun dagen (aantikken kan via de stroken onder de kalender).
+   Pijltjestoetsen bewegen tussen de dagen; links of rechts vegen wisselt de maand. *@
+
+<section class="card training-cal" aria-label="Kalender @DutchDates.MonthYear(Year, Month)">
+    <div class="cal-nav">
+        <button type="button" class="cal-move" aria-label="Vorige maand" disabled="@(!HasEarlier)" @onclick="() => OnMove.InvokeAsync(-1)"><Icon Name="caret-left" /></button>
+        <h2 class="cal-month" aria-live="polite">@DutchDates.MonthYear(Year, Month)</h2>
+        <button type="button" class="cal-move" aria-label="Volgende maand" disabled="@(!HasLater)" @onclick="() => OnMove.InvokeAsync(1)"><Icon Name="caret-right" /></button>
+    </div>
+
+    <table class="cal-grid" @ontouchstart="TouchStart" @ontouchend="TouchEnd" @onkeydown="KeyDownAsync">
+        <thead>
+            <tr>
+                @foreach (var (abbr, full) in Weekdays)
+                {
+                    <th scope="col"><abbr title="@full">@abbr</abbr></th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var week in Weeks())
+            {
+                <tr>
+                    @foreach (var date in week)
+                    {
+                        <td class="@BandClass(date)">
+                            @if (date is not { } d)
+                            {
+                            }
+                            else if (Dailies.TryGetValue(d, out var day))
+                            {
+                                <button type="button" class="cal-day @StateClass(day) @(d == Flash ? "flash" : "")" aria-label="@AriaLabel(day)"
+                                        tabindex="@(d == _focus ? 0 : -1)" @ref="_buttons[d.Day]" @onclick="() => Pick(day)">
+                                    <span class="n">@d.Day</span>
+                                    @if (day.Board is { } board)
+                                    {
+                                        <span class="s">@board.Points</span>
+                                    }
+                                    else if (day.Blocked)
+                                    {
+                                        <span class="s"><Icon Name="lock" /></span>
+                                    }
+                                </button>
+                            }
+                            else
+                            {
+                                @* Vandaag of later (nog niet speelbaar), of een dag zonder daily. *@
+                                <span class="cal-day none @(d >= Today ? "later" : "") @(d == Today ? "today" : "")">
+                                    <span class="n">@d.Day</span>
+                                </span>
+                            }
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <p class="cal-legend" aria-hidden="true">
+        <span><i class="lg-missed"></i>gemist</span>
+        <span><i class="lg-played"></i>gespeeld</span>
+        <span><i class="lg-replayed"></i>nagespeeld</span>
+        @if (Specials.Count > 0)
+        {
+            <span><i class="lg-special"></i>special</span>
+        }
+    </p>
+</section>
+
+@code {
+    [Parameter, EditorRequired] public int Year { get; set; }
+    [Parameter, EditorRequired] public int Month { get; set; }
+    [Parameter, EditorRequired] public List<TrainingDay> Days { get; set; } = [];
+    [Parameter] public bool HasEarlier { get; set; }
+    [Parameter] public bool HasLater { get; set; }
+
+    /// <summary>-1 of +1: een maand terug of verder.</summary>
+    [Parameter] public EventCallback<int> OnMove { get; set; }
+    [Parameter] public EventCallback<TrainingDay> OnPick { get; set; }
+
+    /// <summary>De dag die je net speelde: licht even op.</summary>
+    [Parameter] public DateOnly? Flash { get; set; }
+
+    private static readonly (string, string)[] Weekdays =
+        [("ma", "maandag"), ("di", "dinsdag"), ("wo", "woensdag"), ("do", "donderdag"), ("vr", "vrijdag"), ("za", "zaterdag"), ("zo", "zondag")];
+
+    private static DateOnly Today => QuizDay.Today();
+
+    private Dictionary<DateOnly, TrainingDay> Dailies => Days.Where(d => d.Special is null).ToDictionary(d => d.Date);
+    private List<TrainingSpecial> Specials => Days.Select(d => d.Special).OfType<TrainingSpecial>().ToList();
+
+    private readonly Dictionary<int, ElementReference> _buttons = [];
+    private DateOnly? _focus;
+    private double? _touchX;
+
+    protected override void OnParametersSet()
+    {
+        // Eén dag is bereikbaar met Tab (de rest met de pijltjes): de dag die oplicht, anders de meest recente.
+        var dailies = Dailies;
+        if (_focus is not { } f || !dailies.ContainsKey(f))
+            _focus = Flash is { } fl && dailies.ContainsKey(fl) ? fl : dailies.Count > 0 ? dailies.Keys.Max() : null;
+    }
+
+    /// <summary>De weken van de maand, maandag eerst; null vult de lege vakjes voor de 1ste en na de laatste.</summary>
+    private IEnumerable<DateOnly?[]> Weeks()
+    {
+        var first = new DateOnly(Year, Month, 1);
+        var offset = ((int)first.DayOfWeek + 6) % 7;
+        var days = DateTime.DaysInMonth(Year, Month);
+        var cells = Enumerable.Repeat<DateOnly?>(null, offset)
+            .Concat(Enumerable.Range(0, days).Select(i => (DateOnly?)first.AddDays(i)))
+            .ToList();
+        while (cells.Count % 7 != 0) cells.Add(null);
+        return cells.Chunk(7);
+    }
+
+    private static string StateClass(TrainingDay day) =>
+        day.Real is not null ? "played"
+        : day.Replayed is not null ? "replayed"
+        : day.Blocked ? "blocked"
+        : day.Played || day.BeforeYourTime ? "before" // geoefend of echt begonnen zonder plaats, of van vóór je tijd: rustig
+        : "missed";
+
+    private static string AriaLabel(TrainingDay day)
+    {
+        var what = day.Real is { } real ? $"gespeeld, {real.Points} punten, {real.Rank}{DutchDates.OrdinalSuffix(real.Rank)} van {real.Players}"
+            : day.Replayed is { } rep ? $"nagespeeld, {rep.Points} punten"
+            : day.Blocked ? "dicht tot je de daily van vandaag speelt"
+            : day.Started ? "begonnen, maar geen vraag afgewerkt"
+            : day.Runs > 0 ? "geoefend"
+            : day.BeforeYourTime ? "van vóór je inschrijving"
+            : "gemist";
+        return $"{DutchDates.DayMonth(day.Date)}, {what}";
+    }
+
+    /// <summary>Een special loopt als band onder haar dagen; het eerste en laatste vakje krijgen een afgerond uiteinde.</summary>
+    private string BandClass(DateOnly? date)
+    {
+        if (date is not { } d) return "";
+        var sp = Specials.FirstOrDefault(s => s.StartDate <= d && d <= s.EndDate);
+        if (sp is null) return "";
+        return "sp" + (d == sp.StartDate ? " sp-start" : "") + (d == sp.EndDate ? " sp-end" : "");
+    }
+
+    private Task Pick(TrainingDay day)
+    {
+        _focus = day.Date;
+        return OnPick.InvokeAsync(day);
+    }
+
+    private async Task KeyDownAsync(KeyboardEventArgs e)
+    {
+        var step = e.Key switch { "ArrowLeft" => -1, "ArrowRight" => 1, "ArrowUp" => -7, "ArrowDown" => 7, _ => 0 };
+        if (step == 0 || _focus is not { } from) return;
+        // Naar de dichtstbijzijnde speelbare dag in die richting (dagen zonder daily overslaan).
+        var dailies = Dailies;
+        for (var d = from.AddDays(step); d.Month == Month && d.Year == Year; d = d.AddDays(step))
+        {
+            if (!dailies.ContainsKey(d)) continue;
+            _focus = d;
+            StateHasChanged();
+            await Task.Yield();
+            if (_buttons.TryGetValue(d.Day, out var button)) await button.FocusAsync();
+            return;
+        }
+    }
+
+    private void TouchStart(TouchEventArgs e) => _touchX = e.ChangedTouches.FirstOrDefault()?.ClientX;
+
+    private async Task TouchEnd(TouchEventArgs e)
+    {
+        if (_touchX is not { } start || e.ChangedTouches.FirstOrDefault() is not { } end) return;
+        _touchX = null;
+        var dx = end.ClientX - start;
+        if (dx > 60 && HasEarlier) await OnMove.InvokeAsync(-1);
+        else if (dx < -60 && HasLater) await OnMove.InvokeAsync(1);
+    }
+}

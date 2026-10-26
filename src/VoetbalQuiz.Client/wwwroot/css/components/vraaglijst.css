@@ -1,0 +1,30 @@
+/* Vraaglijst: de genummerde lijst met vragen en scores (Home, daily, special, academie). */
+
+.question-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.question-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, .08);
+    color: #fff;
+    border: 1px solid var(--line);
+}
+.question-list .num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    background: rgba(255, 255, 255, .15);
+    font-weight: 700; font-size: .85rem;
+}
+.question-list .name { flex: 1; }
+.question-list .pts { font-weight: 800; }
+/* Donkerdere tinten dan --ok/--fail, zodat het witte nummer leesbaar blijft (≥ 4,5:1); ✓/✗ zegt het ook zonder kleur. */
+.question-list li.ok .num { background: #157a43; }
+.question-list li.fail .num { background: #b83232; }
+/* Deels juist (deelscore bij kaart, opstelling, counter): donker oranje, wit blijft leesbaar. */
+.question-list li.partial .num { background: #8a5a00; }
+.question-list .mark { font-weight: 800; width: 1.2em; text-align: center; }
+.question-list li.partial .mark { width: auto; font-size: .8rem; font-weight: 700; color: var(--muted); }
+.question-list li.todo { opacity: .6; }

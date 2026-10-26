@@ -37,5 +37,17 @@ public sealed class QuestionBankTests : IDisposable
         Assert.Empty(unknownTags);
     }
 
+    [Fact]
+    public async Task Peildatum_comes_from_the_seed_and_a_fiche_keeps_its_own()
+    {
+        await new QuestionSeeder(_db, ServerContent.Environment(), NullLogger<QuestionSeeder>.Instance).SeedAsync();
+
+        // Bij een spelersfiche is de peildatum van de vraag altijd die op het fiche.
+        var fiches = await _db.QuizItems.Where(i => i.Type == QuestionType.Fiche).ToListAsync();
+        Assert.NotEmpty(fiches);
+        Assert.All(fiches, f => Assert.Equal(QuestionEngine.Parse<FicheData>(f.Data).AsOf, f.AsOf));
+        Assert.Contains(fiches, f => f.AsOf is not null);
+    }
+
     public void Dispose() => _t.Dispose();
 }

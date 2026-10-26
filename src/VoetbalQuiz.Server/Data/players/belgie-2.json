@@ -166,13 +166,15 @@
     ],
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Aleksandar_Mitrovi%C4%87"
+      "https://en.wikipedia.org/wiki/Aleksandar_Mitrovi%C4%87",
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_50_or_more_international_goals"
     ],
     "tags": [
       "anderlecht",
       "deschacht"
     ],
-    "checkedAt": "2026-10-17"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Dieumerci Mbokani",

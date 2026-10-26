@@ -1210,7 +1210,8 @@
     ],
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Lothar_Matth%C3%A4us"
+      "https://en.wikipedia.org/wiki/Lothar_Matth%C3%A4us",
+      "https://en.wikipedia.org/wiki/List_of_men%27s_footballers_with_100_or_more_international_caps"
     ],
     "tags": [
       "pfaff",
@@ -1219,7 +1220,8 @@
       "ballon-dor",
       "duitsland"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Karl-Heinz Rummenigge",

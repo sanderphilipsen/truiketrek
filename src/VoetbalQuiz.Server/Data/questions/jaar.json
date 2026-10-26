@@ -451,7 +451,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/2005_UEFA_Champions_League_final"
     ],
-    "tags": ["champions-league", "italie", "halloween"],
+    "tags": ["champions-league", "italie", "halloween", "remontade"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -742,7 +742,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Brazil_v_Germany_(2014_FIFA_World_Cup)"
     ],
-    "tags": ["wk", "duitsland", "halloween"],
+    "tags": ["wk", "duitsland", "halloween", "remontade"],
     "checkedAt": "2026-10-17"
   },
   {
@@ -1467,7 +1467,8 @@
       "https://en.wikipedia.org/wiki/Phantom_goal"
     ],
     "tags": [
-      "halloween"
+      "halloween",
+      "spookgoal"
     ],
     "checkedAt": "2026-10-19"
   },
@@ -1495,6 +1496,7 @@
     ],
     "tags": [
       "halloween",
+      "spookgoal",
       "duitsland"
     ],
     "checkedAt": "2026-10-19"
@@ -3871,5 +3873,45 @@
     "status": "review",
     "sources": ["https://en.wikipedia.org/wiki/UEFA_Euro_2024_knockout_stage"],
     "tags": ["rode-duivels", "frankrijk"]
+  },
+  {
+    "event": "Luis García scoort het 'spookdoelpunt' waarmee Liverpool Chelsea in de halve finale van de Champions League uitschakelt; José Mourinho spreekt van een doelpunt 'dat van de maan kwam'.",
+    "year": 2005,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Phantom_goal"],
+    "tags": ["halloween", "spookgoal", "champions-league"]
+  },
+  {
+    "event": "Luis Suárez zet op het WK tijdens Uruguay–Italië zijn tanden in de schouder van Giorgio Chiellini en wordt voor negen interlands geschorst.",
+    "year": 2014,
+    "difficulty": 2,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/Luis_Su%C3%A1rez_(Uruguayan_footballer)"],
+    "tags": ["halloween", "monster", "wk"]
+  },
+  {
+    "event": "De 'Red Devils' van Manchester United scoren twee keer in blessuretijd tegen Bayern München en winnen in Camp Nou de Champions League, goed voor de treble.",
+    "year": 1999,
+    "difficulty": 2,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/1999_UEFA_Champions_League_final"],
+    "tags": ["halloween", "duivels", "champions-league"]
+  },
+  {
+    "event": "De Rode Duivels pakken op het WK in Rusland brons na een 2-0 tegen Engeland, hun beste resultaat ooit op een WK.",
+    "year": 2018,
+    "difficulty": 1,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_knockout_stage", "https://en.wikipedia.org/wiki/Belgium_at_the_FIFA_World_Cup"],
+    "tags": ["halloween", "duivels", "rode-duivels", "wk", "belgie"]
+  },
+  {
+    "event": "Na een 0-4 in de heenmatch wint Barcelona de terugmatch tegen PSG met 6-1, met in de 95e minuut de beslissende goal van Sergi Roberto.",
+    "year": 2017,
+    "difficulty": 3,
+    "status": "review",
+    "sources": ["https://en.wikipedia.org/wiki/2016%E2%80%9317_UEFA_Champions_League_knockout_phase"],
+    "tags": ["halloween", "remontade", "champions-league", "spanje"]
   }
 ]

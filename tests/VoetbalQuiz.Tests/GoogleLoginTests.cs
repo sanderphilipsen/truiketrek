@@ -58,16 +58,46 @@ public sealed class GoogleLoginTests : IDisposable
     }
 
     [Fact]
-    public async Task Existing_account_with_a_confirmed_email_links_automatically()
+    public async Task Existing_account_with_a_confirmed_email_is_not_linked_automatically()
     {
+        // Ook een bevestigd adres kan later bij iemand anders terechtkomen: altijd eerst het wachtwoord.
         var user = new AppUser { UserName = "jan", Email = "jan@voorbeeld.be", EmailConfirmed = true };
         Assert.True((await _users.CreateAsync(user, "Wachtwoord1!")).Succeeded);
 
         var (next, found) = await _google.FindOrLinkAsync(Info("g-1", "JAN@voorbeeld.be"));
 
-        Assert.Equal(GoogleNext.SignIn, next);
-        Assert.Equal(user.Id, found?.Id);
-        Assert.Equal(user.Id, (await _users.FindByLoginAsync("Google", "g-1"))?.Id);
+        Assert.Equal(GoogleNext.SignInWithPasswordFirst, next);
+        Assert.Null(found);
+        Assert.Null(await _users.FindByLoginAsync("Google", "g-1"));
+    }
+
+    [Fact]
+    public async Task Second_google_account_with_the_same_email_never_links()
+    {
+        // Heruitgegeven mailbox: een nieuwe Google-account (andere sub) op het adres van een bestaande Google-speler.
+        var (user, _) = await _google.CreateAsync(Info("g-1", "jan@voorbeeld.be"), "jan");
+        Assert.True((await _users.AddPasswordAsync(user!, "Wachtwoord1!")).Succeeded);
+        var intruder = Info("g-2", "jan@voorbeeld.be");
+
+        var (next, found) = await _google.FindOrLinkAsync(intruder);
+
+        Assert.Equal(GoogleNext.EmailInUse, next);
+        Assert.Null(found);
+        Assert.False(await _google.LinkAfterPasswordAsync(user!, intruder));
+        Assert.Null(await _users.FindByLoginAsync("Google", "g-2"));
+    }
+
+    [Fact]
+    public async Task Existing_account_without_password_is_refused()
+    {
+        // Zonder wachtwoord kan de speler niet bewijzen dat het account van hem is.
+        Assert.True((await _users.CreateAsync(new AppUser { UserName = "jan", Email = "jan@voorbeeld.be", EmailConfirmed = true })).Succeeded);
+
+        var (next, found) = await _google.FindOrLinkAsync(Info("g-1", "jan@voorbeeld.be"));
+
+        Assert.Equal(GoogleNext.EmailInUse, next);
+        Assert.Null(found);
+        Assert.Null(await _users.FindByLoginAsync("Google", "g-1"));
     }
 
     [Fact]

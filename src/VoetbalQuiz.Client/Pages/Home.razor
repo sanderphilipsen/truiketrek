@@ -4,6 +4,7 @@
 @inject AuthState Auth
 @inject GoldenBallState GoldenBall
 @inject IJSRuntime JS
+@inject NavigationManager Nav
 @implements IDisposable
 
 <PageTitle>Truitje Trek – Voetbalquiz</PageTitle>
@@ -29,6 +30,9 @@
 
 @* De uitreiking groot over Home, één keer per speler. Niet in een quiz, waar de klok loopt. *@
 <GoldenBallCeremony />
+
+@* Bovenaan: meldingen toelaten voor de daily-herinnering (enkel als dit toestel dat nog niet deed). *@
+<PushPrompt />
 
 @if (GoldenBall.Overview is { Announce: true, Holders.Count: > 0 } gb)
 {
@@ -118,7 +122,20 @@ else
     @DailyCard()
 }
 
-@* Meteen onder de daily: online spelen, zonder kop of uitleg. Open partijtjes (enkel als die er zijn) en de tegel
+@if (_specialsError is not null)
+{
+    <div class="block-error home-special-error" role="alert">
+        <p>@_specialsError</p>
+        <button type="button" class="btn small" @onclick="RetrySpecialsAsync" disabled="@_retryingSpecials">Opnieuw proberen</button>
+    </div>
+}
+else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id)
+{
+    @* Er loopt hooguit één special tegelijk: een kaart over de volle breedte, zonder eigen kop, meteen onder de daily. *@
+    @SpecialCard(active, isNew: false)
+}
+
+@* Onder de daily en de special: online spelen, zonder kop of uitleg. Open partijtjes (enkel als die er zijn) en de tegel
    "Nieuwe match", iets zwaarder dan de stroken eronder maar zonder geel. Home is de lobby. *@
 <section class="home-online" aria-label="Online spelen">
     @* Jouw partijtjes staan als banner bovenaan; hier alle open partijtjes om aan mee te doen (er is geen aparte lobby meer). *@
@@ -157,16 +174,34 @@ else
                 <Icon Name="trophy" Class="sb-icon" />
                 <span aria-hidden="true">@RankText</span>
             </a>
-            <a class="home-fact" href="statistieken" aria-label="@StreakLabel">
+            @{ var atRisk = StreakAtRisk(answered); }
+            <a class="home-fact @(atRisk ? "warn" : "")" href="statistieken" aria-label="@(atRisk ? $"{StreakLabel}. Speel vandaag nog om je reeks te houden" : StreakLabel)">
                 <Icon Name="flame" Class="sb-icon" />
-                <span aria-hidden="true">@StreakText</span>
+                <span aria-hidden="true">@(atRisk ? $"{StreakText}: speel vandaag nog" : StreakText)</span>
             </a>
         </div>
-        @* De enige gele knop op Home, tenzij de special na de daily de hoofdactie is. *@
-        <a class="btn home-daily-play @(SpecialIsMain ? "" : "primary")" href="@(next is null ? "daily" : $"vraag/{next.Number}")">
-            @(next is null ? "Bekijk je score" : started ? $"Verder met vraag {next.Number}" : "Start de daily")
-            <span aria-hidden="true">›</span>
-        </a>
+        @if (next is not null)
+        {
+            @* De enige gele knop op Home, tenzij de special na de daily de hoofdactie is. *@
+            <a class="btn home-daily-play @(SpecialIsMain ? "" : "primary")" href="vraag/@next.Number">
+                @(started ? $"Verder met vraag {next.Number}" : "Start de daily")
+                <span aria-hidden="true">›</span>
+            </a>
+        }
+        else
+        {
+            @* Klaar: een rustig resultaat met de aftelling naar morgen. De gele knop gaat naar wat de academie aanraadt,
+               tenzij de special nog open staat (dan is die de hoofdactie). *@
+            <p class="home-daily-next">Nieuwe daily over @DutchDates.Countdown(QuizDay.UntilTomorrow()) · <a href="daily">je score</a></p>
+            @if (!SpecialIsMain && _suggestion is { } s)
+            {
+                <button type="button" class="btn primary home-daily-play" @onclick="() => StartTrainingAsync(s.Day)" disabled="@_startingTraining">
+                    <Icon Name="graduation-cap" />
+                    <span>@(s.Revenge ? "Revanche" : "Bijspelen"): @Training.Title(s.Day) <small>· telt niet mee</small></span>
+                    <span aria-hidden="true">›</span>
+                </button>
+            }
+        }
     }
 </section>;
 
@@ -177,6 +212,9 @@ else
         : "Klassement: nog geen plaats vandaag";
 
     private int Streak => _rank?.Streak ?? 0;
+
+    /// <summary>'s Avonds, met een reeks en nog geen vraag gespeeld vandaag: je reeks loopt om middernacht af (zoals de pushmelding van 19u).</summary>
+    private bool StreakAtRisk(int answered) => Streak > 0 && answered == 0 && QuizDay.HourNow() >= 18;
     private string StreakText => Streak switch { 0 => "start je reeks", 1 => "1 dag op rij", var s => $"{s} dagen op rij" };
     private string StreakLabel => Streak switch
     {
@@ -186,20 +224,7 @@ else
     };
 }
 
-@if (_specialsError is not null)
-{
-    <div class="block-error home-special-error" role="alert">
-        <p>@_specialsError</p>
-        <button type="button" class="btn small" @onclick="RetrySpecialsAsync" disabled="@_retryingSpecials">Opnieuw proberen</button>
-    </div>
-}
-else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id)
-{
-    @* Er loopt hooguit één special tegelijk: een kaart over de volle breedte, zonder eigen kop. *@
-    @SpecialCard(active, isNew: false)
-}
-
-@* Daaronder brede stroken, allemaal in dezelfde vorm: klassement, academie, prijzenkast, instellingen, VAR, persconferentie (FAQ), bestuurskamer. *@
+@* Daaronder brede stroken, allemaal in dezelfde vorm: klassement, academie, prijzenkast. *@
 <a class="card sb-strip" href="klassement">
     <Icon Name="trophy" Class="sb-icon" />
     <span class="sb-label">Klassement</span>
@@ -216,48 +241,46 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
     <span class="sb-digits" aria-hidden="true">@(_badges is { } b ? $"{b.Earned}/{b.Total}" : "–")</span>
     <span class="sb-go" aria-hidden="true">›</span>
 </a>
-<a class="card sb-strip" href="profiel?tab=account">
-    <Icon Name="sliders-horizontal" Class="sb-icon" />
-    <span class="sb-label">Instellingen</span>
-    <span class="sb-go" aria-hidden="true">›</span>
-</a>
-@* Voetbalnamen met de gewone naam eronder, zodat ze duidelijk blijven. *@
-<a class="card sb-strip" href="feedback" aria-label="Naar de VAR: bug of idee melden">
-    <Icon Name="bug" Class="sb-icon" />
-    <span class="sb-strip-text" aria-hidden="true">
-        <span class="sb-label">Naar de VAR</span>
-        <small>Bug of idee melden</small>
-    </span>
-    <span class="sb-go" aria-hidden="true">›</span>
-</a>
-<a class="card sb-strip" href="faq" aria-label="Persconferentie: veelgestelde vragen">
-    <Icon Name="chat-circle" Class="sb-icon" />
-    <span class="sb-strip-text" aria-hidden="true">
-        <span class="sb-label">Persconferentie</span>
-        <small>Veelgestelde vragen</small>
-    </span>
-    <span class="sb-go" aria-hidden="true">›</span>
-</a>
-@if (Auth.User?.IsAdmin == true)
-{
-    <a class="card sb-strip" href="admin" aria-label="Bestuurskamer: admin">
-        <Icon Name="gear-six" Class="sb-icon" />
-        <span class="sb-strip-text" aria-hidden="true">
-            <span class="sb-label">Bestuurskamer</span>
-            <small>Admin</small>
-        </span>
-        <span class="sb-go" aria-hidden="true">›</span>
-    </a>
-}
-
 @if (TopReady && UpcomingSpecials.FirstOrDefault() is { } soon)
 {
-    @* Helemaal onderaan: de eerstvolgende special als één rustige regel; nog niets om op te tikken. *@
-    <p class="home-soon-line">
-        <span class="sb-label">Binnenkort</span>
-        <span><b>@soon.Name</b> · @StartsInText(soon)</span>
-    </p>
+    @* Onder de stroken: de eerstvolgende special in dezelfde vorm, maar met een stippellijn en zonder pijl:
+       nog niets om op te tikken. *@
+    <div class="card sb-strip home-soon">
+        <Icon Name="calendar-dots" Class="sb-icon" />
+        <span class="sb-strip-text">
+            <span class="sb-label">Binnenkort</span>
+            <b>@soon.Name</b>
+        </span>
+        <span class="home-soon-when">@StartsInText(soon)</span>
+    </div>
 }
+
+@* Helemaal onderaan het clubhuis: wat over de app gaat en geen spel is. Ronde snelknoppen onder een eigen kop,
+   rustiger dan de stroken erboven (groen in plaats van geel, zonder tegel). *@
+<nav class="home-club" aria-labelledby="club-title">
+    <h2 id="club-title" class="sb-label">Clubhuis</h2>
+    <div class="club-buttons">
+        <a class="club-button" href="profiel?tab=account">
+            <span class="club-icon" aria-hidden="true"><Icon Name="sliders-horizontal" /></span>
+            Instellingen
+        </a>
+        <a class="club-button" href="feedback" aria-label="Naar de VAR: bug of idee melden">
+            <span class="club-icon" aria-hidden="true"><Icon Name="bug" /></span>
+            <span aria-hidden="true">VAR</span>
+        </a>
+        <a class="club-button" href="faq" aria-label="Persconferentie: veelgestelde vragen">
+            <span class="club-icon" aria-hidden="true"><Icon Name="chat-circle" /></span>
+            <span aria-hidden="true">FAQ</span>
+        </a>
+        @if (Auth.User?.IsAdmin == true)
+        {
+            <a class="club-button" href="admin" aria-label="Bestuurskamer: admin">
+                <span class="club-icon" aria-hidden="true"><Icon Name="gear-six" /></span>
+                <span aria-hidden="true">Admin</span>
+            </a>
+        }
+    </div>
+</nav>
 
 @code {
     private const string IntroHiddenKey = "tt-intro-hidden";
@@ -301,16 +324,45 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
     {
         try
         {
-            _daily = await Api.GetDailyAsync();
-            _dailyError = null;
-            if (_daily.Questions.Count > 0 && _daily.Questions.All(q => q.Status == QuestionStatus.Answered))
+            var daily = await Api.GetDailyAsync();
+            if (daily.Questions.Count > 0 && daily.Questions.All(q => q.Status == QuestionStatus.Answered))
+            {
                 await RememberIntroHiddenAsync(); // eerste daily gespeeld: de uitleg is niet meer nodig
+                await LoadSuggestionAsync(); // vóór de tegel verschijnt, zodat de knop er niet achteraf onder schuift
+            }
+            _daily = daily;
+            _dailyError = null;
         }
         catch (Exception ex) when (ex is ApiException or HttpRequestException)
         {
             _dailyError = ex is ApiException api ? api.Message : "De daily kon niet geladen worden. Controleer je verbinding.";
         }
         StateHasChanged();
+    }
+
+    // Na de daily: wat de academie aanraadt (een gemiste dag of een revanche). Een extraatje: lukt het niet, dan geen knop.
+    private TrainingSuggestion? _suggestion;
+    private bool _startingTraining;
+
+    private async Task LoadSuggestionAsync()
+    {
+        try { _suggestion = (await Api.GetTrainingArchiveAsync()).Suggestion; }
+        catch (Exception ex) when (ex is ApiException or HttpRequestException) { _suggestion = null; }
+    }
+
+    private async Task StartTrainingAsync(TrainingDay day)
+    {
+        _startingTraining = true;
+        try
+        {
+            var run = day.Special is { } sp ? await Api.StartTrainingSpecialRunAsync(sp.Id) : await Api.StartTrainingRunAsync(day.Date);
+            Nav.NavigateTo($"academie/poging/{run.Id}/vraag/1");
+        }
+        catch (Exception ex) when (ex is ApiException or HttpRequestException)
+        {
+            // Niet gelukt (bv. de dag zit intussen in een special): dan naar de academie zelf.
+            Nav.NavigateTo("academie");
+        }
     }
 
     private async Task LoadSpecialsAsync()
@@ -442,7 +494,7 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
     /// De knop is donkergroen, of geel als hij de hoofdactie is (zie <see cref="SpecialIsMain"/>).
     /// </summary>
     private RenderFragment SpecialCard(SpecialSummary sp, bool isNew) =>
-        @<section class="home-special @(isNew ? "is-new" : "")" aria-labelledby="special-title-@sp.Id">
+        @<section class="home-special @(isNew ? "is-new" : "") @(sp.Theme == Spookhuis.Theme ? "sfeer-halloween" : "")" aria-labelledby="special-title-@sp.Id">
             @if (sp.Affiche is { } affiche)
             {
                 <a class="affiche-link" href="special/@sp.Id" tabindex="-1" aria-hidden="true"><AfficheBanner Affiche="affiche" /></a>

@@ -191,14 +191,16 @@
     ],
     "status": "approved",
     "sources": [
-      "https://en.wikipedia.org/wiki/Clarence_Seedorf"
+      "https://en.wikipedia.org/wiki/Clarence_Seedorf",
+      "https://en.wikipedia.org/wiki/2026_UEFA_Champions_League_final"
     ],
     "tags": [
       "oranje",
       "legende",
       "champions-league"
     ],
-    "checkedAt": "2026-10-19"
+    "asOf": "2026-10-26",
+    "checkedAt": "2026-10-26"
   },
   {
     "name": "Ruud van Nistelrooy",

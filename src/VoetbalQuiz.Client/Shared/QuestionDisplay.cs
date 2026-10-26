@@ -13,6 +13,8 @@ public static class QuestionDisplay
         QuestionType.WieBenIk => GameRules.PointsAt(elapsed, wrongGuesses).ToString(),
         // Carrièrepad, wissel, rugnummer, mannetje en kluts: 100 bij de eerste stap, 10 minder per extra stap, minimum 50.
         _ when QuestionRules.Reveals(type) => QuestionRules.RevealPoints(Math.Max(1, view?.Step ?? 1), wrongGuesses).ToString(),
+        // Spelersfiche: hetzelfde, maar een foute naam kost niets (die opent al een veld).
+        QuestionType.Fiche => QuestionRules.RevealPoints(Math.Max(1, view?.Step ?? 1), 0).ToString(),
         QuestionType.Counter => $"{view?.Found ?? 0}/{view?.Total ?? 0}",
         // Kaart: wat al juist staat (clubs in deel 1, stadions in deel 2); de server rekent de punten.
         QuestionType.Kaart => (view?.Pins?.Sum(p => p.Hits ?? 0) ?? 0).ToString(),
@@ -49,6 +51,7 @@ public static class QuestionDisplay
         QuestionType.Counter => $"spelers geraden (+{QuestionRules.CounterPointsPerPlayer} per speler)",
         QuestionType.WieBenIk or QuestionType.Emoji => "punten",
         _ when QuestionRules.Reveals(type) => "punten",
+        QuestionType.Fiche => "punten, elk veld −10",
         _ => "punten, sneller = meer",
     };
 
@@ -56,20 +59,20 @@ public static class QuestionDisplay
     public static bool MoreHintsDue(QuestionType type, QuestionView? view, int visibleHints, double elapsed, double timeLimit) => type switch
     {
         QuestionType.WieBenIk => GameRules.VisibleHints(elapsed) > visibleHints,
-        _ when QuestionRules.Reveals(type) =>
+        _ when QuestionRules.Reveals(type) || type == QuestionType.Fiche =>
             QuestionRules.RevealStep(elapsed, view?.Steps ?? 1) > (view?.Step ?? 1)
             && elapsed < timeLimit - QuestionRules.CarriereExtraSeconds,
         _ => false,
     };
 
     /// <summary>
-    /// Het teken in een vragenlijst (daily, special, academie): ✓ juist, ½ deels juist (een deelscore bij een type met
-    /// deelpunten, zie <see cref="QuestionRules.PartialScores"/>), ✗ fout.
+    /// Het teken in een vragenlijst (daily, special, academie): ✓ juist, "deels" deels juist (een deelscore bij een type
+    /// met deelpunten, zie <see cref="QuestionRules.PartialScores"/>), ✗ fout.
     /// </summary>
     public static (string Symbol, string Label) Mark(QuestionSummary q) => q switch
     {
         { Correct: true } => ("✓", "juist"),
-        { Partial: true } => ("½", "deels juist"),
+        { Partial: true } => ("deels", "deels juist"),
         _ => ("✗", "fout"),
     };
 

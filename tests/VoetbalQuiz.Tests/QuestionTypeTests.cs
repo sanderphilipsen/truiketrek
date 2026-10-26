@@ -409,7 +409,7 @@ public sealed class QuestionTypeTests : IDisposable
         await PlanTodayAsync(QuestionType.Snelvuur);
         foreach (var t in new[] { QuestionType.Snelvuur, QuestionType.NietBij, QuestionType.Opstelling, QuestionType.Carriere, QuestionType.Emoji,
                      QuestionType.Wissel, QuestionType.Rugnummer, QuestionType.Mannetje, QuestionType.Kluts, QuestionType.Counter, QuestionType.Volgorde,
-                     QuestionType.Kaart })
+                     QuestionType.Kaart, QuestionType.Fiche })
             await _admin.SetTypeEnabledAsync(t, false);
 
         var challenge = await _quiz.GetOrCreateChallengeAsync(_quiz.Today);

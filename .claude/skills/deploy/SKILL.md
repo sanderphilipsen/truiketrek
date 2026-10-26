@@ -30,6 +30,7 @@ Schrijf de nota zelf en vraag er niet naar: de admin wil dit niet bij elke deplo
    ```
    - `title`: 3 tot 80 tekens, de grootste nieuwigheid. Bijvoorbeeld "Nieuw: raad het rugnummer".
    - `text`: 5 tot 1000 tekens, in spelerstaal en in de jij-vorm. Het belangrijkste eerst, kort, eventueel als "• "-regels. Geen commitjargon, klassenamen of interne termen.
+   - **Verklap nooit inhoud.** Geen voorbeeld dat uit de vragenbank komt (een lijst, speler, kaart, artikel, zaak, thema van een special): spelers kunnen het dan vooraf opzoeken. Beschrijf een nieuw vraagtype in het algemeen ("vul een hele lijst aan"), niet met de vraag die gespeeld zal worden.
    - `link`: optioneel, een pagina in de app waar het nieuwe te zien is (zonder `/`). Laat het weg als er geen duidelijke pagina is.
 
 ## Publiceren

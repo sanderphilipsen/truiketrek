@@ -1,0 +1,19 @@
+/* VAR-meldingen (Pages/Feedback, Shared/AdminFeedback). */
+
+/* ---------- Feedback ---------- */
+.tabs.light { background: var(--surface-soft); margin: 12px 0; }
+.tabs.light button { color: var(--text); }
+.tabs.light button.active { background: var(--active-bg); color: #fff; }
+.feedback-list { display: grid; gap: 8px; }
+.feedback-item { margin-bottom: 0; padding: 14px 16px; }
+.feedback-head { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
+.feedback-text { white-space: pre-wrap; margin: 8px 0; line-height: 1.4; }
+.status { font-size: .72rem; font-weight: 800; border-radius: 999px; padding: 3px 9px; background: var(--surface-soft); white-space: nowrap; }
+.status-nieuw, .status-gepland, .status-opgelost, .status-afgewezen { color: #13241b; }
+.status-nieuw { background: #fff3c4; }
+.status-gepland { background: #dbe9ff; }
+.status-opgelost { background: #d6f3e0; }
+.status-afgewezen { background: #f6dede; }
+.reply { background: var(--surface-soft); border-radius: 10px; padding: 8px 12px; margin: 8px 0 0; }
+.admin-row { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+.admin-row input { flex: 1; min-width: 140px; padding: 8px 10px; }

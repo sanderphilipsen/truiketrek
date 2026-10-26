@@ -17,6 +17,7 @@ public static class TrainingEndpoints
                 ? Results.BadRequest(new ErrorResponse("Ongeldige maand."))
                 : Results.Ok(await service.GetArchiveAsync(user.UserId(), year, month)));
         training.MapGet("/days/{date}", (DateOnly date, ClaimsPrincipal user, TrainingService service) => service.GetDayAsync(user.UserId(), date));
+        training.MapGet("/days/{date}/board", (DateOnly date, ClaimsPrincipal user, TrainingService service) => service.GetDayBoardAsync(user.UserId(), date));
         training.MapPost("/days/{date}/runs", (DateOnly date, ClaimsPrincipal user, TrainingService service) => service.StartRunAsync(user.UserId(), date));
         training.MapGet("/specials/{specialId:int}", (int specialId, ClaimsPrincipal user, TrainingService service) => service.GetSpecialAsync(user.UserId(), specialId));
         training.MapPost("/specials/{specialId:int}/runs", (int specialId, ClaimsPrincipal user, TrainingService service) =>

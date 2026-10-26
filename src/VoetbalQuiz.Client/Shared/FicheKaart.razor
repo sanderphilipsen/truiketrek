@@ -1,0 +1,36 @@
+@* Spelersfiche: een fiche zonder naam. De dichte velden tonen hun label met een slot; het laatst geopende veld licht op.
+   Tijdens het spelen (Question/Wedstrijd) en na afloop (QuestionAnswer, dan staan alle velden open). *@
+
+<div class="fiche" role="group" aria-label="Spelersfiche">
+    <div class="fiche-head">
+        <span class="fiche-photo" aria-hidden="true"><Icon Name="user" /></span>
+        <b class="fiche-name">@(Name ?? "? ? ?")</b>
+    </div>
+    <dl class="fiche-rows">
+        @for (var i = 0; i < Velden.Count; i++)
+        {
+            var veld = Velden[i];
+            var newest = !Reveal && veld.Value is not null && (i + 1 == Velden.Count || Velden[i + 1].Value is null);
+            <div class="fiche-row @(veld.Value is null ? "closed" : "") @(newest ? "newest" : "")" @key="i">
+                <dt>@veld.Label</dt>
+                <dd>@(veld.Value ?? "🔒")</dd>
+            </div>
+        }
+    </dl>
+    @if (Note is not null)
+    {
+        <small class="fiche-note">@Note</small>
+    }
+</div>
+
+@code {
+    [Parameter] public List<FicheVeld> Velden { get; set; } = [];
+
+    /// <summary>De peildatum van de interlands (actieve speler), of null.</summary>
+    [Parameter] public string? Note { get; set; }
+
+    /// <summary>Na afloop: de naam bovenaan en geen "nieuwste" veld meer.</summary>
+    [Parameter] public string? Name { get; set; }
+
+    [Parameter] public bool Reveal { get; set; }
+}

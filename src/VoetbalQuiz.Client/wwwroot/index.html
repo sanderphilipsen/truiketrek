@@ -12,8 +12,42 @@
     <link rel="preload" id="webassembly" />
     <!-- Kleuren-emoji (o.a. vlaggen, die Windows anders als letters toont) voor de emoji-raadsels -->
     <link rel="stylesheet" href="fonts/noto-color-emoji/noto-color-emoji.css" />
-    <link rel="stylesheet" href="css/app.css" />
-    <link rel="stylesheet" href="css/kaart.css" />
+    <!-- Volgorde telt (cascade): variabelen, basis, gedeelde componenten, dan de schermen. Zie README, "CSS". -->
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components/koppen.css" />
+    <link rel="stylesheet" href="css/components/knoppen.css" />
+    <link rel="stylesheet" href="css/components/status.css" />
+    <link rel="stylesheet" href="css/components/tegels.css" />
+    <link rel="stylesheet" href="css/components/formulieren.css" />
+    <link rel="stylesheet" href="css/components/vraaglijst.css" />
+    <link rel="stylesheet" href="css/components/avatar.css" />
+    <link rel="stylesheet" href="css/components/sheet.css" />
+    <link rel="stylesheet" href="css/components/iconen.css" />
+    <link rel="stylesheet" href="css/components/podium.css" />
+    <link rel="stylesheet" href="css/components/beloning.css" />
+    <link rel="stylesheet" href="css/screens/login.css" />
+    <link rel="stylesheet" href="css/screens/home.css" />
+    <link rel="stylesheet" href="css/screens/vraag.css" />
+    <link rel="stylesheet" href="css/screens/vraagtypes.css" />
+    <link rel="stylesheet" href="css/screens/klassement.css" />
+    <link rel="stylesheet" href="css/screens/statistieken.css" />
+    <link rel="stylesheet" href="css/screens/profiel.css" />
+    <link rel="stylesheet" href="css/screens/admin.css" />
+    <link rel="stylesheet" href="css/screens/online.css" />
+    <link rel="stylesheet" href="css/screens/feedback.css" />
+    <link rel="stylesheet" href="css/screens/meldingen.css" />
+    <link rel="stylesheet" href="css/screens/specials.css" />
+    <link rel="stylesheet" href="css/screens/academie.css" />
+    <link rel="stylesheet" href="css/screens/badges.css" />
+    <link rel="stylesheet" href="css/screens/speler.css" />
+    <link rel="stylesheet" href="css/screens/juridisch.css" />
+    <link rel="stylesheet" href="css/screens/gouden-bal.css" />
+    <link rel="stylesheet" href="css/screens/derby.css" />
+    <link rel="stylesheet" href="css/screens/krant.css" />
+    <link rel="stylesheet" href="css/screens/detective.css" />
+    <link rel="stylesheet" href="css/components/kaart.css" />
+    <link rel="stylesheet" href="css/screens/sfeer.css" />
     <link rel="icon" type="image/svg+xml" href="logo.svg" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <link href="manifest.webmanifest" rel="manifest" />
@@ -63,6 +97,40 @@
             unwatchLeave: () => {
                 if (window.truitje._leave) document.removeEventListener('visibilitychange', window.truitje._leave);
                 window.truitje._leave = null;
+            },
+            // Pushmeldingen (zie PushClient). Wat dit toestel kan: 'unsupported', 'ios-install' (iPhone of iPad in de
+            // browser: push werkt daar enkel vanaf het beginscherm), of de toestemming: 'default', 'granted', 'denied'.
+            pushState: () => {
+                const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+                const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+                if (!('serviceWorker' in navigator) || !('PushManager' in window) || !('Notification' in window))
+                    return ios && !standalone ? 'ios-install' : 'unsupported';
+                return Notification.permission;
+            },
+            // Abonneren met de publieke sleutel van de server. Met ask vraagt de browser toestemming (enkel na een tik).
+            // Geeft { endpoint, p256dh, auth } of null als er geen toestemming is.
+            pushSubscribe: async (publicKey, ask) => {
+                if (Notification.permission !== 'granted'
+                    && (!ask || await Notification.requestPermission() !== 'granted')) return null;
+                const pad = '='.repeat((4 - publicKey.length % 4) % 4);
+                const key = Uint8Array.from(atob((publicKey + pad).replace(/-/g, '+').replace(/_/g, '/')), c => c.charCodeAt(0));
+                const reg = await navigator.serviceWorker.ready;
+                let sub = await reg.pushManager.getSubscription();
+                // Gemaakt met een andere sleutel: dat abonnement krijgt niets meer van deze server.
+                const old = sub?.options.applicationServerKey;
+                if (old && !(old.byteLength === key.length && new Uint8Array(old).every((b, i) => b === key[i]))) {
+                    await sub.unsubscribe();
+                    sub = null;
+                }
+                sub ??= await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: key });
+                const json = sub.toJSON();
+                return { endpoint: json.endpoint, p256dh: json.keys.p256dh, auth: json.keys.auth };
+            },
+            // Het abonnement van dit toestel, om het bij het afmelden los te koppelen van de speler.
+            pushEndpoint: async () => {
+                if (!('serviceWorker' in navigator) || !('PushManager' in window)) return null;
+                const reg = await navigator.serviceWorker.getRegistration();
+                return (await reg?.pushManager.getSubscription())?.endpoint ?? null;
             },
         };
 

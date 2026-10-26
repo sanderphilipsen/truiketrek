@@ -7,7 +7,9 @@ public enum PlayerStatus { Review, Approved, Rejected }
 
 public record PlayerListItem(
     int Id, string Name, PlayerStatus Status, string Country, string Competition, string Era, int Difficulty,
-    List<string> Tags, int Sources, DateOnly? CheckedAt, int TimesUsed, DateOnly? LastUsed, string? ReviewNote);
+    List<string> Tags, int Sources, DateOnly? CheckedAt, int TimesUsed, DateOnly? LastUsed, string? ReviewNote,
+    // De peildatum is te oud (QuestionRules.IsStale): de speler speelt niet tot hij bijgewerkt is.
+    bool Stale = false, DateOnly? AsOf = null);
 
 /// <summary>
 /// Een speler in het admin-paneel. <paramref name="InPlay"/>: waar de speler nu in het spel zit ("de daily van vandaag",
@@ -16,7 +18,9 @@ public record PlayerListItem(
 public record PlayerEdit(
     int Id, string Name, List<string> Answers, string Country, string Competition, string Era, int Difficulty,
     List<string> Hints, List<string> Sources, List<string> Tags, PlayerStatus Status, string? ReviewNote,
-    DateOnly? CheckedAt, string? UpdatedBy, int TimesUsed, string? InPlay = null);
+    DateOnly? CheckedAt, string? UpdatedBy, int TimesUsed, string? InPlay = null,
+    // Peildatum van tijdgevoelige tips (QuestionRules.MaxAgeDays); null = tijdloos.
+    DateOnly? AsOf = null);
 
 public record PlayerCounts(int Review, int Approved, int Rejected);
 
@@ -25,8 +29,12 @@ public record PlayerCounts(int Review, int Approved, int Rejected);
 /// <summary>Hoeveel spelers er geregistreerd zijn en hoeveel er de laatste 24 uur en 7 dagen online waren.</summary>
 public record UserCounts(int Total, int ActiveDay, int ActiveWeek);
 
-/// <summary>Een geregistreerde speler in het admin-paneel. LastSeenAt (UTC) is null als die nog nooit gezien is.</summary>
-public record AdminUserItem(string UserName, string? AvatarId, DateTime CreatedAt, DateTime? LastSeenAt, DateTime? DeletionRequestedAt = null);
+/// <summary>
+/// Een geregistreerde speler in het admin-paneel. LastSeenAt (UTC) is null als die nog nooit gezien is.
+/// HasPassword/HasGoogle: hoe de speler aanmeldt. Een admin kan je niet verwijderen.
+/// </summary>
+public record AdminUserItem(string UserName, string? AvatarId, DateTime CreatedAt, DateTime? LastSeenAt, DateTime? DeletionRequestedAt = null,
+    string? Email = null, bool HasPassword = false, bool HasGoogle = false, bool IsAdmin = false);
 
 /// <summary>Startscherm van het admin-paneel: wat vraagt aandacht?</summary>
 public record AdminDashboard(
@@ -46,6 +54,12 @@ public static class PlayerTags
         ("kerst", "Geboren rond Kerstmis (24–26/12)"),
         ("nieuwjaar", "Geboren op oudjaar/nieuwjaar"),
         ("halloween", "Geboren op Halloween (31/10)"),
+        // De kamers van het Spookhuis (Halloween Special, zie Spookhuis): enkel op vragen, naast de tag halloween.
+        ("spookgoal", "Spookhuis: spookgoals"),
+        ("vloek", "Spookhuis: vervloekingen"),
+        ("duivels", "Spookhuis: duivels"),
+        ("monster", "Spookhuis: monsters"),
+        ("remontade", "Spookhuis: uit de dood opgestaan"),
         ("sinterklaas", "Geboren rond Sinterklaas (5–6/12)"),
         ("anderlecht", "Speelde bij Anderlecht"),
         ("club-brugge", "Speelde bij Club Brugge"),
@@ -183,7 +197,8 @@ public static class SpecialTemplates
         new("kerst", "Christmas Special", "tree-evergreen", "Boxing Day, kerstmatchen en voetballers die met Kerstmis jarig zijn.", "kerst", 12, 25, ThemedRounds),
         new("nieuwjaar", "New Year Special", "champagne", "Nieuwjaarsmatchen, de wintermercato en voetballers die op oudjaar of nieuwjaar geboren zijn.",
             "nieuwjaar", 1, 1, ThemedRounds),
-        new("halloween", "Halloween Special", "ghost", "Griezelig goed: spookgoals, vervloekingen, duivels en voetballers die op Halloween geboren zijn.",
+        new("halloween", "Halloween Special", "ghost",
+            "Welkom in het Spookhuis: spookgoals, vervloekingen, duivels, monsters, remontades en wie op Halloween jarig is. Durf jij alle kamers door?",
             "halloween", 10, 31, ThemedRounds),
         new("sinterklaas", "Sinterklaas Special", "gift", "Cadeaugoals, Spaans voetbal en voetballers die rond Sinterklaas jarig zijn.", "sinterklaas", 12, 6, ThemedRounds),
         new("gouden-schoen", "Gouden Schoen Special", "sneaker", "Op de avond van de Gouden Schoen: alle winnaars.", "gouden-schoen", null, null),
@@ -299,7 +314,9 @@ public record PublicProfile(
 
 public record QuizItemListItem(
     int Id, QuestionType Type, string Label, string Answer, PlayerStatus Status, int Difficulty, List<string> Tags,
-    int Sources, DateOnly? CheckedAt, int TimesUsed, DateOnly? LastUsed, string? ReviewNote);
+    int Sources, DateOnly? CheckedAt, int TimesUsed, DateOnly? LastUsed, string? ReviewNote,
+    // De peildatum is te oud (QuestionRules.IsStale): de vraag speelt niet tot ze bijgewerkt is.
+    bool Stale = false, DateOnly? AsOf = null);
 
 /// <summary>
 /// Een vraag uit de vragenbank. Data is de inhoud als JSON (formaat per type, zie QuestionTypes.cs).
@@ -307,7 +324,9 @@ public record QuizItemListItem(
 /// </summary>
 public record QuizItemEdit(
     int Id, QuestionType Type, string Data, int Difficulty, List<string> Sources, List<string> Tags,
-    PlayerStatus Status, string? ReviewNote, DateOnly? CheckedAt, string? UpdatedBy, int TimesUsed, string? InPlay = null);
+    PlayerStatus Status, string? ReviewNote, DateOnly? CheckedAt, string? UpdatedBy, int TimesUsed, string? InPlay = null,
+    // Peildatum van tijdgevoelige inhoud (QuestionRules.MaxAgeDays); null = tijdloos. Bij een spelersfiche die van het fiche.
+    DateOnly? AsOf = null);
 
 /// <summary>
 /// Een weekdag: één type, of een mix als Mix twee of meer types bevat. KaartCountry: bij een kaartdag het land van de kaart

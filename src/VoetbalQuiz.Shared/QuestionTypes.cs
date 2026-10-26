@@ -1,6 +1,6 @@
 namespace VoetbalQuiz.Shared;
 
-public enum QuestionType { WieBenIk, Snelvuur, Carriere, NietBij, Jaar, Emoji, Opstelling, Wissel, Rugnummer, Mannetje, Kluts, Counter, Volgorde, Krant, Detective, Kaart, Lijst }
+public enum QuestionType { WieBenIk, Snelvuur, Carriere, NietBij, Jaar, Emoji, Opstelling, Wissel, Rugnummer, Mannetje, Kluts, Counter, Volgorde, Krant, Detective, Kaart, Lijst, Fiche }
 
 /// <summary>
 /// Vaste eigenschappen per vraagtype. Een dag is altijd maximaal 1000 punten waard.
@@ -45,6 +45,9 @@ public static class QuestionTypes
             $"Vul een hele lijst aan, bv. alle winnaars van een prijs. Eén naam vult al zijn jaren en telt als één juist antwoord. " +
             $"Je hebt {(int)QuestionRules.LijstSeconds} seconden.",
             1, QuestionTypes.DayMaxPoints, "lijst", Alone: true),
+        new(QuestionType.Fiche, "Spelersfiche", "identification-card",
+            "Een fiche zonder naam: lengte, geboortejaar, positie, interlands, land en club klappen één voor één open. Een foute naam opent het volgende veld.",
+            10, 100, "fiche"),
     ];
 
     public static QuestionTypeInfo Get(QuestionType type) => All.First(t => t.Type == type);
@@ -279,10 +282,13 @@ public static class QuestionRules
     /// Types met deelpunten: de vraag is zelden helemaal juist, maar wat je vindt, telt. Alle solo-types
     /// (<see cref="QuestionTypeInfo.Alone"/>: De Zondag, Detectivedag, de kaart) plus opstelling en counter.
     /// Hun punten tellen mee voor de XP ("Juiste antwoorden") ook als de vraag niet volledig juist is, en de dag- en
-    /// special-overzichten tonen een deelscore als deels juist (½) in plaats van fout.
+    /// special-overzichten tonen een deelscore als "deels" in plaats van fout, en het dagklassement telt ze apart als deels juist.
     /// </summary>
     public static bool PartialScores(QuestionType type) =>
         QuestionTypes.Get(type).Alone || type is QuestionType.Opstelling or QuestionType.Counter;
+
+    /// <summary>Niet helemaal juist, maar wel punten bij een type met deelpunten (<see cref="PartialScores"/>): deels juist, geen fout.</summary>
+    public static bool IsPartial(bool correct, int points, QuestionType type) => !correct && points > 0 && PartialScores(type);
 
     /// <summary>
     /// Kaart: elke kaart heeft precies zoveel spelden, in elk land (10 clubs van een competitie, geen volledige reeks).
@@ -372,6 +378,21 @@ public static class QuestionRules
     public static int LijstPoints(int found, int names) =>
         names == 0 ? 0 : (int)Math.Round((double)QuestionTypes.Get(QuestionType.Lijst).MaxPoints * found / names);
 
+    /// <summary>
+    /// Peildatum (<c>asOf</c> op een vraag of speler): tijdgevoelige inhoud (een record, "stand na seizoen …", een actieve
+    /// speler, de huidige club) klopte op die datum. Is ze ouder dan dit, dan is de inhoud verouderd: ze speelt niet meer
+    /// (daily, specials, online) en het admin-paneel toont ze als verouderd, tot de agent inhoud-onderhoud ze bijwerkt.
+    /// Ruim één interland- en transferperiode, zodat inhoud die na elke periode nagekeken wordt nooit uitvalt.
+    /// Geen peildatum = tijdloos (een afgelopen gebeurtenis, een gestopte speler): veroudert nooit.
+    /// </summary>
+    public const int MaxAgeDays = 120;
+
+    /// <summary>Is inhoud met deze peildatum verouderd op <paramref name="today"/>? Zonder peildatum nooit.</summary>
+    public static bool IsStale(DateOnly? asOf, DateOnly today) => asOf is { } d && d < FreshFrom(today);
+
+    /// <summary>De oudste peildatum die op <paramref name="today"/> nog geldt (voor een query: AsOf == null || AsOf >= dit).</summary>
+    public static DateOnly FreshFrom(DateOnly today) => today.AddDays(-MaxAgeDays);
+
     /// <summary>Opstelling: zoveel namen van de elf moet je aanvullen.</summary>
     public const int OpstellingBlanks = 6;
 
@@ -389,7 +410,8 @@ public static class QuestionRules
     /// (bv. een feit- én een rebus-raadsel over dezelfde speler). Bij de andere types mag een antwoord terugkomen.
     /// </summary>
     public static bool AnswerIsSubject(QuestionType type) =>
-        type is QuestionType.Emoji or QuestionType.Carriere or QuestionType.Wissel or QuestionType.Rugnummer or QuestionType.Mannetje;
+        type is QuestionType.Emoji or QuestionType.Carriere or QuestionType.Wissel or QuestionType.Rugnummer or QuestionType.Mannetje
+            or QuestionType.Fiche;
 
     /// <summary>Juist antwoord: 100 bij een bliksemsnel antwoord, 50 op de valreep.</summary>
     public static int SpeedPoints(double elapsed, double limit) =>
@@ -420,6 +442,35 @@ public static class QuestionRules
 
     /// <summary>100 bij de eerste club, 10 minder per extra club, minimum 50; min strafpunten.</summary>
     public static int CarrierePoints(double elapsed, int clubs, int wrongGuesses) => RevealPointsAt(elapsed, clubs, wrongGuesses);
+
+    /// <summary>
+    /// Spelersfiche: zoveel velden klappen open (lengte, geboortejaar, positie, interlands, land, club).
+    /// Elke <see cref="CarriereClubSeconds"/> seconden een veld erbij, en elke foute naam opent er ook een.
+    /// </summary>
+    public const int FicheSteps = 6;
+
+    /// <summary>
+    /// Spelersfiche: het veld dat nu openstaat (1..<see cref="FicheSteps"/>): de velden die de klok opende, plus één per
+    /// foute naam.
+    /// </summary>
+    public static int FicheStep(double elapsed, int wrongGuesses) =>
+        Math.Clamp(RevealStep(elapsed, FicheSteps) + wrongGuesses, 1, FicheSteps);
+
+    /// <summary>Spelersfiche: een foute naam terwijl alle velden al open stonden, beëindigt de vraag (0 punten).</summary>
+    public static bool FicheEndsOnWrong(double elapsed, int wrongGuesses) => FicheStep(elapsed, wrongGuesses) >= FicheSteps;
+
+    /// <summary>Spelersfiche: het veld met de interlands (1 = het eerste); pas dan mag de peildatum zichtbaar zijn.</summary>
+    public const int FicheCapsStep = 4;
+
+    /// <summary>Spelersfiche: de grenzen die het admin-paneel en de server controleren.</summary>
+    public const int FicheMinHeight = 150, FicheMaxHeight = 215, FicheMinBirthYear = 1900, FicheMaxBirthYear = MaxYear - 15;
+
+    /// <summary>
+    /// Spelersfiche: 100 bij het eerste veld, 10 minder per veld, dus minstens 50 als je het weet. Een foute naam kost geen
+    /// strafpunten: die opent al het volgende veld.
+    /// </summary>
+    public static int FichePoints(double elapsed, int wrongGuesses) =>
+        RevealPoints(FicheStep(Math.Max(0, elapsed - GameRules.LatencyGraceSeconds), wrongGuesses), 0);
 
     public static int CounterPoints(int found) => found * CounterPointsPerPlayer;
 
@@ -518,6 +569,18 @@ public record WisselData(string Answer, List<string> Aliases, string When, strin
 
 /// <summary>Een rugnummer met wie het droeg. Club: waar (en wanneer) hij dat nummer droeg.</summary>
 public record RugnummerData(string Answer, List<string> Aliases, int Number, string Position, string Country, string Club, string Extra);
+
+/// <summary>
+/// Spelersfiche: een fiche zonder naam. Height in cm, Caps en Goals in A-interlands voor
+/// Country, Club de huidige of laatste club. AsOf: bij een actieve speler (nog interlands of een transfer mogelijk) de datum
+/// waarop interlands en club klopten; null = gestopt, dan verandert het fiche niet meer. Het is dezelfde "asOf" als de
+/// peildatum van de vraag (<see cref="QuestionRules.MaxAgeDays"/>): de seeder en het admin-paneel houden ze gelijk.
+/// </summary>
+public record FicheData(string Answer, List<string> Aliases, int Height, int BirthYear, string Position, int Caps,
+    int Goals, string Country, string Club, DateOnly? AsOf = null);
+
+/// <summary>Spelersfiche: een veld van het fiche. Value null = nog dicht.</summary>
+public record FicheVeld(string Label, string? Value);
 
 /// <summary>Een getekend mannetje: Avatar is een avatar-id (bv. "debruyne") of een zelfgemaakte code ("c1:…").</summary>
 public record MannetjeData(string Answer, List<string> Aliases, string Avatar, List<string> Clues);

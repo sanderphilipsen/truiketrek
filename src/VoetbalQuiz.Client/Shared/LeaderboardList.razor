@@ -5,10 +5,18 @@
     @foreach (var e in Entries)
     {
         <li class="@Classes(e)">
-            <span class="rank @(e.Rank is >= 1 and <= 3 ? $"top top-{e.Rank}" : "")" aria-label="@($"{e.Rank}{DutchDates.OrdinalSuffix(e.Rank)}")">
-                @e.Rank
-                @if (e.Zone == RankZone.Drop) { <i aria-hidden="true">▼</i> }
-            </span>
+            @if (e.Replayed)
+            {
+                @* Nagespeeld in de academie: geen eigen plaats, de echte spelers houden hun nummer. *@
+                <span class="rank replayed" aria-label="Nagespeeld"><Icon Name="graduation-cap" /></span>
+            }
+            else
+            {
+                <span class="rank @(e.Rank is >= 1 and <= 3 ? $"top top-{e.Rank}" : "")" aria-label="@($"{e.Rank}{DutchDates.OrdinalSuffix(e.Rank)}")">
+                    @e.Rank
+                    @if (e.Zone == RankZone.Drop) { <i aria-hidden="true">▼</i> }
+                </span>
+            }
             @if (ShowMovement)
             {
                 <span class="@MoveClass(e.Change)" aria-label="@MoveLabel(e.Change)">@MoveText(e.Change)</span>
@@ -31,13 +39,20 @@
 
     /// <summary>
     /// Eén rij. <paramref name="Change"/>: plaatsen gestegen sinds gisteren (negatief = gezakt, null = nieuw);
-    /// <paramref name="Zone"/>: prijzen- of degradatiezone; <paramref name="Sub"/>: regeltje onder de naam.
+    /// <paramref name="Zone"/>: prijzen- of degradatiezone; <paramref name="Sub"/>: regeltje onder de naam;
+    /// <paramref name="Replayed"/>: nagespeeld in de academie (een petje in plaats van een plaats).
     /// </summary>
     public record Row(int Rank, string UserName, string? AvatarId, int Points, bool IsMe,
-        int? Change = null, RankZone Zone = RankZone.None, string? Sub = null);
+        int? Change = null, RankZone Zone = RankZone.None, string? Sub = null, bool Replayed = false)
+    {
+        /// <summary>Een rij uit een dag- of specialklassement; een nagespeelde rij zegt dat ook onder de naam.</summary>
+        public static Row From(LeaderboardEntry e, string? sub = null) =>
+            new(e.Rank, e.UserName, e.AvatarId, e.Points, e.IsMe, Sub: e.Replayed ? (sub is null ? "nagespeeld" : $"nagespeeld · {sub}") : sub, Replayed: e.Replayed);
+    }
 
     private static string Classes(Row e) =>
-        string.Join(' ', new[] { e.IsMe ? "me" : null, e.Zone switch { RankZone.Prize => "zone-prize", RankZone.Drop => "zone-drop", _ => null } }
+        string.Join(' ', new[] { e.IsMe ? "me" : null, e.Replayed ? "replayed" : null,
+                e.Zone switch { RankZone.Prize => "zone-prize", RankZone.Drop => "zone-drop", _ => null } }
             .Where(c => c is not null));
 
     private static string MoveClass(int? change) => "move " + change switch { null => "new", > 0 => "up", < 0 => "down", _ => "same" };

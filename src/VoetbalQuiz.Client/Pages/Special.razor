@@ -6,6 +6,7 @@
 <PageTitle>Special – Truitje Trek</PageTitle>
 <PageHeader Title="@(_info?.Name ?? "Special")" Label="Special" Up="true" />
 <PitchFx Teams="_info?.Affiche" />
+<Sfeer Name="@_info?.Theme" />
 
 @if (_error is not null)
 {
@@ -54,6 +55,10 @@ else
         {
             <li class="@QuestionDisplay.ListCss(q)">
                 <span class="num">@q.Number</span>
+                @if (q.Kamer is { } kamer)
+                {
+                    <span class="kamer" title="@kamer.Name">@kamer.Emoji</span>
+                }
                 <span class="name">@(q.PlayerName ?? (q.Status == QuestionStatus.NotStarted ? "?" : "bezig…"))</span>
                 @if (q.Correct is not null) { var mark = QuestionDisplay.Mark(q); <span class="mark" role="img" aria-label="@mark.Label">@mark.Symbol</span> }
                 <span class="pts">@(q.Points is { } p ? $"{p}" : "")</span>
@@ -74,7 +79,7 @@ else
         }
         else
         {
-            <LeaderboardList Entries="@_board.Entries.Select(e => new LeaderboardList.Row(e.Rank, e.UserName, e.AvatarId, e.Points, e.IsMe)).ToList()" />
+            <LeaderboardList Entries="@_board.Entries.Select(e => LeaderboardList.Row.From(e)).ToList()" />
             <p class="section-note">@_board.Note</p>
         }
     }

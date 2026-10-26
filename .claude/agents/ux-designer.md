@@ -18,10 +18,10 @@ Je bent een senior product designer met sterke front-end skills. Je ontwerpt én
 
 ## Het design system van de app
 
-- Alle stijl zit in `src/VoetbalQuiz.Client/wwwroot/css/app.css`. Lees vooral de `:root`-variabelen (`--pitch`, `--pitch-2`, `--line`, `--card`, `--text`, `--muted`, `--accent`, `--ok`, `--fail`, `--radius`) en de bestaande klassen voor kaarten, knoppen en lijsten.
+- Alle stijl zit in `src/VoetbalQuiz.Client/wwwroot/css/` (zie README, "CSS"): variabelen in `tokens.css`, gedeelde onderdelen in `components/`, één bestand per scherm in `screens/`. Lees vooral de `:root`-variabelen (`--pitch`, `--pitch-2`, `--line`, `--card`, `--text`, `--muted`, `--accent`, `--ok`, `--fail`, `--radius`) en de bestaande klassen voor kaarten, knoppen en lijsten.
 - Gebruik altijd de CSS-variabelen, nooit losse hex-kleuren. Heb je een nieuwe kleur, spacing of schaduw nodig die vaker zal terugkomen, voeg dan een variabele toe aan `:root` en meld dat in je rapport.
 - Herbruikbare componenten staan in `src/VoetbalQuiz.Client/Shared/` (o.a. `Avatar`, `Spinner`, `LeaderboardList`, `PlayerStrip`, `DifficultyStars`, `RewardPopup`, `QuestionPlay`). Pagina's staan in `Pages/`. Zoek met Grep of er al een klasse of component bestaat voor wat je nodig hebt.
-- Nieuwe klassen krijgen een prefix per onderdeel (bv. `daily-…`, `tafel-…`) en worden bij het verwante blok in `app.css` gezet, niet onderaan gedumpt.
+- Nieuwe klassen krijgen een prefix per onderdeel (bv. `daily-…`, `tafel-…`) en gaan naar het bestand van dat scherm in `screens/` (of naar `components/` als ze op meerdere schermen terugkomen), bij het verwante blok, niet onderaan gedumpt. Een nieuw CSS-bestand moet ook in `index.html` op de juiste plaats in de volgorde.
 - De app heeft momenteel enkel een lichte modus (`color-scheme: light`); ontwerp dus niet stilzwijgend een donkere modus bij.
 
 ## Grenzen

@@ -21,32 +21,32 @@
         <div class="dash-grid">
             <a class="dash-card" href="admin/leden">
                 <Icon Name="users" Class="dash-icon" />
-                <b>@_d.Users.Total</b>
-                <span>leden</span>
+                <b class="sb-digits">@_d.Users.Total</b>
+                <span class="sb-label">leden</span>
                 <small>@_d.Users.ActiveDay online in de laatste 24 uur · @_d.Users.ActiveWeek deze week</small>
             </a>
             <a class="dash-card @(_d.Players.Review > 0 ? "attention" : "")" href="admin/spelers" @onclick="() => State.Status = PlayerStatus.Review">
                 <Icon Name="magnifying-glass" Class="dash-icon" />
-                <b>@_d.Players.Review</b>
-                <span>spelers te keuren</span>
+                <b class="sb-digits">@_d.Players.Review</b>
+                <span class="sb-label">spelers te keuren</span>
                 <small>@(_d.Players.Review == 0 ? "Alles is nagekeken" : "Controleer de tips met een bron en keur goed")</small>
             </a>
             <a class="dash-card" href="admin/spelers" @onclick="() => State.Status = null">
                 <Icon Name="check-circle" Class="dash-icon" />
-                <b>@_d.Players.Approved</b>
-                <span>spelers in de quiz</span>
+                <b class="sb-digits">@_d.Players.Approved</b>
+                <span class="sb-label">spelers in de quiz</span>
                 <small>Nog ±@_d.DailyDaysLeft dagen tot een speler voor het eerst terugkomt</small>
             </a>
             <a class="dash-card @(_d.NewFeedback > 0 ? "attention" : "")" href="admin/feedback">
                 <Icon Name="bug" Class="dash-icon" />
-                <b>@_d.NewFeedback</b>
-                <span>nieuwe meldingen</span>
+                <b class="sb-digits">@_d.NewFeedback</b>
+                <span class="sb-label">nieuwe meldingen</span>
                 <small>@_d.OpenFeedback nog open in totaal</small>
             </a>
             <a class="dash-card" href="admin/specials">
                 <Icon Name="sparkle" Class="dash-icon" />
-                <b>@(_d.ActiveSpecials.Count + _d.UpcomingSpecials.Count)</b>
-                <span>specials actief of gepland</span>
+                <b class="sb-digits">@(_d.ActiveSpecials.Count + _d.UpcomingSpecials.Count)</b>
+                <span class="sb-label">specials actief of gepland</span>
                 <small>@(_d.UpcomingSpecials.FirstOrDefault() is { } next ? $"Volgende: {next.Name} op {next.StartDate:dd/MM}" : "Nog niets gepland")</small>
             </a>
         </div>

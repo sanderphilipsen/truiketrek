@@ -1,0 +1,8 @@
+/* Spelerspagina met head-to-head (Pages/Speler). */
+
+/* ---------- Head-to-head ---------- */
+.h2h-row { display: grid; grid-template-columns: 70px auto 1fr; gap: 10px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--divider); }
+.h2h-label { font-weight: 700; }
+.h2h-score { font-size: 1.4rem; }
+.h2h-verdict { margin: 10px 0 0; font-weight: 700; }
+a.player { text-decoration: none; color: inherit; }

@@ -60,6 +60,10 @@
                     <span class="pt-name">
                         <b>@q.Label</b>
                         @if (q.ReviewNote is not null) { <small class="note"><Icon Name="warning" /> @q.ReviewNote</small> }
+                        @if (q.Stale)
+                        {
+                            <small class="note"><Icon Name="warning" /> Verouderd: peildatum @q.AsOf?.ToString("dd/MM/yyyy") is ouder dan @QuestionRules.MaxAgeDays dagen, speelt niet tot ze bijgewerkt is.</small>
+                        }
                     </span>
                     <span class="pt-meta">@q.Answer</span>
                     <span><span class="pill @AdminSpelers.StatusCss(q.Status)">@AdminSpelers.StatusLabel(q.Status)</span></span>

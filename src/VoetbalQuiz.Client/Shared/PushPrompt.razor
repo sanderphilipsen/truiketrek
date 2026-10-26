@@ -1,0 +1,92 @@
+@inject PushClient Push
+@inject ApiClient Api
+@inject IJSRuntime JS
+
+@* Op Home: vraagt om meldingen toe te laten voor de daily-herinnering (standaard aan). Een browser stuurt pas meldingen
+   na "Toestaan", en die vraag mag enkel na een tik komen; daarom dit kaartje. Gaf dit toestel al toestemming, dan meldt
+   het zich stil aan bij de server en is er niets te zien. "Later" verbergt het kaartje een week. *@
+@if (_state is PushDeviceState.Default or PushDeviceState.IosInstall && !_hidden)
+{
+    <section class="card push-prompt" aria-labelledby="push-prompt-title">
+        <span class="push-prompt-icon" aria-hidden="true"><Icon Name="bell" /></span>
+        <div class="push-prompt-text">
+            <h2 id="push-prompt-title">Mis geen daily meer</h2>
+            @if (_state == PushDeviceState.IosInstall)
+            {
+                <p>Op een iPhone krijg je meldingen enkel als Truitje Trek op je beginscherm staat: tik op <b>Deel</b> en kies <b>Zet op beginscherm</b>. Open de app daarna van daar.</p>
+            }
+            else
+            {
+                <p>Krijg om @(PushRules.DailyReminderHour)u een seintje als je de daily nog niet speelde.</p>
+            }
+            @if (_error is not null) { <p class="error" role="alert">@_error</p> }
+            <div class="push-prompt-actions">
+                @if (_state == PushDeviceState.Default)
+                {
+                    <button type="button" class="btn primary small" @onclick="EnableAsync" disabled="@_busy">Zet meldingen aan</button>
+                }
+                <button type="button" class="btn small" @onclick="LaterAsync">@(_state == PushDeviceState.IosInstall ? "Begrepen" : "Later")</button>
+            </div>
+        </div>
+    </section>
+}
+
+@code {
+    private const string HiddenUntilKey = "push-prompt-hidden-until";
+    private const int HideDays = 7;
+
+    private PushDeviceState? _state;
+    private PushConfig? _config;
+    private bool _hidden = true, _busy;
+    private string? _error;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try { _config = await Api.GetPushConfigAsync(); }
+        catch (Exception ex) when (ex is ApiException or HttpRequestException) { return; }
+        if (_config is not { PublicKey: { } key, DailyReminder: true }) return;
+
+        var state = await Push.GetDeviceStateAsync();
+        if (state == PushDeviceState.Granted)
+        {
+            // Toestemming is er al (bv. een tweede account of een nieuwe sleutel): dit toestel stil aanmelden.
+            try { await Push.EnableDeviceAsync(key, ask: false); }
+            catch (Exception ex) when (ex is ApiException or HttpRequestException) { }
+            return;
+        }
+
+        _hidden = await HiddenAsync();
+        _state = state;
+    }
+
+    private async Task EnableAsync()
+    {
+        _busy = true;
+        _error = null;
+        try
+        {
+            await Push.EnableDeviceAsync(_config!.PublicKey!, ask: true);
+            _state = await Push.GetDeviceStateAsync(); // toegestaan of geweigerd: het kaartje verdwijnt
+        }
+        catch (Exception ex) when (ex is ApiException or HttpRequestException) { _error = "Meldingen aanzetten lukte niet. Probeer het later opnieuw."; }
+        finally { _busy = false; }
+    }
+
+    private async Task LaterAsync()
+    {
+        _hidden = true;
+        try { await JS.InvokeVoidAsync("localStorage.setItem", HiddenUntilKey, DateTime.UtcNow.AddDays(HideDays).ToString("O")); }
+        catch (JSException) { }
+    }
+
+    private async Task<bool> HiddenAsync()
+    {
+        try
+        {
+            return await JS.InvokeAsync<string?>("localStorage.getItem", HiddenUntilKey) is { } until
+                && DateTime.TryParse(until, null, System.Globalization.DateTimeStyles.RoundtripKind, out var at)
+                && at > DateTime.UtcNow;
+        }
+        catch (JSException) { return false; }
+    }
+}
