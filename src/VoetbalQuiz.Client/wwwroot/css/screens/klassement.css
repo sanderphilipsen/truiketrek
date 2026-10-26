@@ -60,6 +60,8 @@
 .board-cta { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
 .board-cta-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 .board-cta-text small { color: var(--muted); }
+/* .btn.small is minstens 44 px hoog; als inline-block zou "Speel" dan bovenaan plakken. */
+.board-cta .btn { flex: none; display: inline-flex; align-items: center; justify-content: center; }
 .board-legend .zone-prize::before, .board-legend .zone-drop::before {
     content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; background: var(--ok);
 }
