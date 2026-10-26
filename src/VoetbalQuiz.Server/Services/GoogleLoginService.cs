@@ -8,9 +8,9 @@ using VoetbalQuiz.Shared;
 namespace VoetbalQuiz.Server.Services;
 
 /// <summary>
-/// Aanmelden met Google: een bestaande koppeling vinden, een account met hetzelfde bevestigde e-mailadres koppelen,
-/// of een nieuwe speler aanmaken met een zelfgekozen gebruikersnaam. Een account waarvan het e-mailadres nooit
-/// bevestigd is, wordt pas gekoppeld nadat de speler zich er met het wachtwoord op aanmeldde.
+/// Aanmelden met Google: een bestaande koppeling vinden (op de Google-`sub`), of een nieuwe speler aanmaken met een
+/// zelfgekozen gebruikersnaam. Een bestaand account met hetzelfde e-mailadres wordt nooit automatisch gekoppeld, pas
+/// nadat de speler zich er met het wachtwoord op aanmeldde, en nooit als er al een Google-account aan hangt.
 /// </summary>
 public sealed class GoogleLoginService(UserManager<AppUser> users, TimeProvider clock)
 {
@@ -35,12 +35,12 @@ public sealed class GoogleLoginService(UserManager<AppUser> users, TimeProvider 
         user = await users.FindByEmailAsync(email);
         if (user is null) return (GoogleNext.ChooseUserName, null);
 
-        // Bij /register wordt het e-mailadres niet bevestigd: het kan dat van iemand anders zijn. Automatisch koppelen
-        // zou die persoon het account geven, dus eerst aanmelden met het wachtwoord (LinkAfterPasswordAsync).
-        if (!user.EmailConfirmed) return (GoogleNext.SignInWithPasswordFirst, null);
-
-        var result = await users.AddLoginAsync(user, new UserLoginInfo(info.LoginProvider, info.ProviderKey, Provider));
-        return result.Succeeded ? (GoogleNext.SignIn, user) : (GoogleNext.SignInWithPasswordFirst, null);
+        // Nooit automatisch koppelen op e-mailadres: bij /register wordt het adres niet bevestigd, en ook een door Google
+        // bevestigd adres kan later bij iemand anders terechtkomen (heruitgegeven mailbox, werkadres). Google raadt aan
+        // enkel op `sub` te vertrouwen. Dus eerst aanmelden met het wachtwoord (LinkAfterPasswordAsync). Hoort er al een
+        // ander Google-account bij of is er geen wachtwoord, dan kan dat niet en moet de beheerder kijken.
+        if (await HasGoogleLoginAsync(user) || !await users.HasPasswordAsync(user)) return (GoogleNext.EmailInUse, null);
+        return (GoogleNext.SignInWithPasswordFirst, null);
     }
 
     /// <summary>
@@ -51,7 +51,8 @@ public sealed class GoogleLoginService(UserManager<AppUser> users, TimeProvider 
     {
         var email = Email(info);
         if (info.LoginProvider != Provider || email is null || !IsEmailVerified(info)
-            || !string.Equals(email, user.Email, StringComparison.OrdinalIgnoreCase))
+            || !string.Equals(email, user.Email, StringComparison.OrdinalIgnoreCase)
+            || await HasGoogleLoginAsync(user))
             return false;
 
         var result = await users.AddLoginAsync(user, new UserLoginInfo(info.LoginProvider, info.ProviderKey, Provider));
@@ -110,6 +111,9 @@ public sealed class GoogleLoginService(UserManager<AppUser> users, TimeProvider 
     public static string? Email(ExternalLoginInfo info) =>
         info.Principal.FindFirstValue(ClaimTypes.Email) is { Length: > 0 } email ? email.Trim() : null;
 
+    private async Task<bool> HasGoogleLoginAsync(AppUser user) =>
+        (await users.GetLoginsAsync(user)).Any(l => l.LoginProvider == Provider);
+
     private static bool IsEmailVerified(ExternalLoginInfo info) =>
         string.Equals(info.Principal.FindFirstValue(EmailVerifiedClaim), "true", StringComparison.OrdinalIgnoreCase);
 
@@ -129,12 +133,14 @@ public sealed class GoogleLoginService(UserManager<AppUser> users, TimeProvider 
 /// <summary>Wat er na een Google-aanmelding moet gebeuren.</summary>
 public enum GoogleNext
 {
-    /// <summary>Gekende of net gekoppelde speler: meteen aanmelden.</summary>
+    /// <summary>Gekende speler (deze Google-account is al gekoppeld): meteen aanmelden.</summary>
     SignIn,
     /// <summary>Nog geen account met dit e-mailadres: een gebruikersnaam kiezen.</summary>
     ChooseUserName,
-    /// <summary>Er is een account met dit adres, maar dat adres is nooit bevestigd: eerst aanmelden met het wachtwoord.</summary>
+    /// <summary>Er is een account met dit adres: eerst aanmelden met het wachtwoord, dan wordt Google gekoppeld.</summary>
     SignInWithPasswordFirst,
+    /// <summary>Er is een account met dit adres waar al een ander Google-account aan hangt, of zonder wachtwoord: weigeren.</summary>
+    EmailInUse,
     /// <summary>Google gaf geen bevestigd e-mailadres mee.</summary>
     EmailNotVerified,
 }

@@ -94,6 +94,9 @@ public static class AccountEndpoints
                 case GoogleNext.EmailNotVerified:
                     await http.SignOutAsync(IdentityConstants.ExternalScheme);
                     return Results.LocalRedirect("~/login?fout=onbevestigd");
+                case GoogleNext.EmailInUse:
+                    await http.SignOutAsync(IdentityConstants.ExternalScheme);
+                    return Results.LocalRedirect("~/login?fout=adresbezet");
             }
 
             await http.SignOutAsync(IdentityConstants.ExternalScheme);
