@@ -1,7 +1,7 @@
 /* Ontwerpvariabelen: kleuren, maten en lettertypes op :root, en .surface-light voor lichte vlakken. */
 
 /* De hele app is een scorebord: donkere tegels (--card) met een dunne groene lijn (--sb-line) en gele cijfers
-   (--sb-digit) op het levende veld. Wat bewust licht blijft (admin, de beloningspopup, invoervelden) krijgt
+   (--sb-digit) op het levende veld. Wat bewust licht blijft (de beloningspopup, invoervelden) krijgt
    .surface-light: die zet dezelfde variabelen terug op licht, zodat componenten in beide werken. */
 :root {
     --pitch: #0b3d24;

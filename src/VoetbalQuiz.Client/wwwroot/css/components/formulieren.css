@@ -1,7 +1,7 @@
 /* Formulieren: invoervelden, keuzelijsten, tekstvakken en gestapelde labels. */
 
 /* Invoervelden in scorebordstijl: iets donkerder dan de tegel, met de dunne groene lijn; bij typen een gele lijn.
-   In het admin-paneel (.surface-light) blijven ze wit. */
+   Binnen .surface-light blijven ze wit. */
 input, textarea, select { background: var(--input-bg); color: var(--text); color-scheme: dark; }
 input::placeholder, textarea::placeholder { color: var(--muted); opacity: 1; }
 input:-webkit-autofill { -webkit-text-fill-color: var(--text); box-shadow: 0 0 0 1000px var(--input-bg) inset; caret-color: var(--text); }

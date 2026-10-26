@@ -20,7 +20,7 @@
 }
 
 @* Het admin-paneel gebruikt de volle breedte van een groot scherm. *@
-<div class="app @(IsAdminPage ? "wide surface-light" : IsProfilePage ? "medium" : "")">
+<div class="app @(IsAdminPage ? "wide" : IsProfilePage ? "medium" : "")">
     @* Geen topbar en geen tabbalk: Home is de enige hub. Elke andere pagina heeft een eigen kop met terugknop (PageHeader). *@
     <main class="content">
         <UpdateBanner />
