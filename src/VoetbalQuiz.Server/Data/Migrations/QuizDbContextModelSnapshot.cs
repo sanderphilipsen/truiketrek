@@ -231,6 +231,12 @@ namespace VoetbalQuiz.Server.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<bool>("DailyReminder")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateOnly?>("DailyReminderSent")
+                        .HasColumnType("date");
+
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("timestamp with time zone");
 
@@ -966,6 +972,46 @@ namespace VoetbalQuiz.Server.Data.Migrations
                     b.ToTable("Players");
                 });
 
+            modelBuilder.Entity("VoetbalQuiz.Server.Data.PushSubscription", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Auth")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Endpoint")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)");
+
+                    b.Property<string>("P256dh")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Endpoint")
+                        .IsUnique();
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("PushSubscriptions");
+                });
+
             modelBuilder.Entity("VoetbalQuiz.Server.Data.QuizItem", b =>
                 {
                     b.Property<int>("Id")
@@ -1371,6 +1417,17 @@ namespace VoetbalQuiz.Server.Data.Migrations
                 });
 
             modelBuilder.Entity("VoetbalQuiz.Server.Data.Notification", b =>
+                {
+                    b.HasOne("VoetbalQuiz.Server.Data.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("VoetbalQuiz.Server.Data.PushSubscription", b =>
                 {
                     b.HasOne("VoetbalQuiz.Server.Data.AppUser", "User")
                         .WithMany()

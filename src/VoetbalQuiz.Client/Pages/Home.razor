@@ -30,6 +30,9 @@
 @* De uitreiking groot over Home, één keer per speler. Niet in een quiz, waar de klok loopt. *@
 <GoldenBallCeremony />
 
+@* Bovenaan: meldingen toelaten voor de daily-herinnering (enkel als dit toestel dat nog niet deed). *@
+<PushPrompt />
+
 @if (GoldenBall.Overview is { Announce: true, Holders.Count: > 0 } gb)
 {
     @* De eerste dag van de maand: de Gouden Bal van vorige maand bovenaan, als compacte strook die openklapt. *@

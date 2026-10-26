@@ -122,3 +122,12 @@
 .btn.home-special-play.primary { background: rgba(250, 199, 117, .1); color: var(--sb-digit); box-shadow: inset 0 0 0 1.5px var(--sb-digit); }
 .btn.home-special-play.done { background: var(--surface-soft); color: var(--text); }
 .home-special-error { margin-bottom: 16px; }
+
+/* Bovenaan Home: meldingen toelaten (PushPrompt). Rustig, geen geel: het is geen spel. */
+.push-prompt { display: flex; gap: 14px; align-items: flex-start; padding: 16px; }
+.push-prompt-icon { font-size: 1.5rem; color: var(--sb-digit); line-height: 1; padding-top: 2px; }
+.push-prompt-text { flex: 1; min-width: 0; }
+.push-prompt h2 { margin: 0 0 4px; font-size: 1rem; }
+.push-prompt p { margin: 0 0 10px; font-size: .92rem; line-height: 1.4; color: var(--muted); }
+.push-prompt p b { color: inherit; }
+.push-prompt-actions { display: flex; flex-wrap: wrap; gap: 8px; }

@@ -92,6 +92,7 @@ public sealed class AccountDeletionTests : IDisposable
         _t.Db.Feedback.Add(new Feedback { UserId = me, Type = FeedbackType.Bug, Title = "Fout", Description = "Iets is fout." });
         _t.Db.Feedback.Add(new Feedback { UserId = other, Type = FeedbackType.Bug, Title = "Ook fout", Description = "Nog iets." });
         _t.Db.Notifications.Add(new Notification { UserId = me, Kind = NotificationKind.Nieuws, Title = "Hallo" });
+        _t.Db.PushSubscriptions.Add(new PushSubscription { UserId = me, Endpoint = "https://fcm.googleapis.com/fcm/send/x", P256dh = "p", Auth = "a" });
         var daily = new DailyChallenge { Date = new DateOnly(2026, 10, 16), WinnerUserId = me };
         _t.Db.DailyChallenges.Add(daily);
         await _t.Db.SaveChangesAsync();
@@ -116,6 +117,7 @@ public sealed class AccountDeletionTests : IDisposable
         Assert.Empty(await _t.Db.UserLogins.Where(l => l.UserId == me).ToListAsync());
         Assert.Equal("Ook fout", Assert.Single(await _t.Db.Feedback.ToListAsync()).Title);
         Assert.Empty(await _t.Db.Notifications.Where(n => n.UserId == me).ToListAsync());
+        Assert.Empty(await _t.Db.PushSubscriptions.ToListAsync()); // geen herinneringen meer naar dat toestel
         Assert.Empty(await _t.Db.TrainingRuns.ToListAsync());
         // De dagzege blijft, nu op naam van de anonieme speler.
         Assert.Equal(me, (await _t.Db.DailyChallenges.SingleAsync()).WinnerUserId);

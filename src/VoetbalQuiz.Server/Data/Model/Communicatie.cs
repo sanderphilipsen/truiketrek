@@ -43,6 +43,29 @@ public class Announcement
     public string? Version { get; set; }
 }
 
+/// <summary>
+/// Een toestel (browser) dat pushmeldingen krijgt: het abonnement dat de browser gaf. Een speler kan er meerdere hebben;
+/// hetzelfde toestel (endpoint) hoort bij hooguit één speler, de laatste die er zich aanmeldde.
+/// </summary>
+public class PushSubscription
+{
+    public int Id { get; set; }
+    public required string UserId { get; set; }
+    public AppUser User { get; set; } = null!;
+    /// <summary>Het adres bij de pushdienst van de browser (Google, Mozilla, Apple, Microsoft).</summary>
+    public required string Endpoint { get; set; }
+    public required string P256dh { get; set; }
+    public required string Auth { get; set; }
+    public DateTime CreatedAt { get; set; }
+}
+
+/// <summary>Hoe lang de velden van een pushabonnement mogen zijn (ruim boven wat browsers geven).</summary>
+public static class PushSubscriptionLimits
+{
+    public const int Endpoint = 1000;
+    public const int Key = 200;
+}
+
 /// <summary>Indexen, conversies en relaties van feedback, meldingen en releasenota's.</summary>
 internal static class CommunicatieModel
 {
@@ -55,5 +78,10 @@ internal static class CommunicatieModel
         builder.Entity<Announcement>().HasIndex(a => a.CreatedAt);
         builder.Entity<Announcement>().Property(a => a.Version).HasMaxLength(40);
         builder.Entity<Announcement>().HasIndex(a => a.Version).IsUnique();
+        builder.Entity<PushSubscription>().Property(p => p.Endpoint).HasMaxLength(PushSubscriptionLimits.Endpoint);
+        builder.Entity<PushSubscription>().Property(p => p.P256dh).HasMaxLength(PushSubscriptionLimits.Key);
+        builder.Entity<PushSubscription>().Property(p => p.Auth).HasMaxLength(PushSubscriptionLimits.Key);
+        builder.Entity<PushSubscription>().HasIndex(p => p.Endpoint).IsUnique();
+        builder.Entity<PushSubscription>().HasIndex(p => p.UserId);
     }
 }

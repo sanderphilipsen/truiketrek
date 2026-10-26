@@ -65,6 +65,7 @@ public class AccountDeletionService(QuizDbContext db, TimeProvider clock, Notifi
         await db.UserRoles.Where(r => r.UserId == user.Id).ExecuteDeleteAsync();
         await db.Feedback.Where(f => f.UserId == user.Id).ExecuteDeleteAsync();
         await db.Notifications.Where(n => n.UserId == user.Id).ExecuteDeleteAsync();
+        await db.PushSubscriptions.Where(p => p.UserId == user.Id).ExecuteDeleteAsync();
         await db.TrainingRuns.Where(r => r.UserId == user.Id).ExecuteDeleteAsync(); // de pogingen volgen via cascade
         await db.SaveChangesAsync();
 

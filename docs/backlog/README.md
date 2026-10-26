@@ -41,7 +41,7 @@ Lopende planning: [planning-2026-10-23.md](planning-2026-10-23.md) (week 44 t/m 
 | [012](012-vraagtype-wie-zei-het.md) | Vraagtype "Wie zei het?" | feature | klaar | midden | M | inhoud wk 45-46, bouwen wk 47 |
 | [013](013-daag-uit.md) | Daag uit (asynchroon duel) | feature | idee | midden | L | concept wk 45, bouwen wk 48-49 |
 | [014](014-verzamelalbum.md) | Verzamelalbum (Panini-stijl) | feature | idee | midden | L | niet nu |
-| [015](015-pushmeldingen.md) | Pushmeldingen | feature | idee | laag | L | niet nu (januari?) |
+| [015](015-pushmeldingen.md) | Pushmeldingen | feature | bezig | midden | M | gebouwd, sleutels op Azure nog te zetten |
 | [016](016-revanche-online-wedstrijd.md) | Revanche na een online wedstrijd | feature | idee | midden | S | wk 45 |
 | [017](017-vraagtype-clubraadsel.md) | Vraagtype "Clubraadsel" | feature | concept | midden | M | na 012, of terugval |
 | [018](018-lijstdag.md) | Lijstdag: "Noem ze allemaal" | feature | concept | midden | S | niet gepland |

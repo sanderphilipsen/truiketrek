@@ -142,6 +142,12 @@ public class ApiClient(HttpClient http)
     public Task<List<NotificationItem>> GetNotificationsAsync() => GetAsync<List<NotificationItem>>("api/notifications");
     public Task<NotificationCount> GetNotificationCountAsync() => GetAsync<NotificationCount>("api/notifications/count");
     public async Task MarkNotificationsReadAsync() => await EnsureOkAsync(await http.PostAsync("api/notifications/read", null));
+
+    // Pushmeldingen (zie PushClient)
+    public Task<PushConfig> GetPushConfigAsync() => GetAsync<PushConfig>("api/push");
+    public async Task SubscribePushAsync(PushSubscribeRequest req) => await EnsureOkAsync(await http.PostAsJsonAsync("api/push/subscribe", req));
+    public async Task UnsubscribePushAsync(PushUnsubscribeRequest req) => await EnsureOkAsync(await http.PostAsJsonAsync("api/push/unsubscribe", req));
+    public async Task SetDailyReminderAsync(bool on) => await EnsureOkAsync(await http.PutAsJsonAsync("api/push/daily-reminder", new DailyReminderRequest(on)));
     public Task<List<AnnouncementItem>> GetAnnouncementsAsync() => GetAsync<List<AnnouncementItem>>("api/admin/announcements");
     public async Task AddAnnouncementAsync(AnnouncementRequest req) => await EnsureOkAsync(await http.PostAsJsonAsync("api/admin/announcements", req));
     public async Task DeleteAnnouncementAsync(int id) => await EnsureOkAsync(await http.DeleteAsync($"api/admin/announcements/{id}"));

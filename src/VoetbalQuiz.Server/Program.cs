@@ -98,6 +98,10 @@ builder.Services.AddScoped<GoogleLoginService>();
 builder.Services.AddSingleton<LastSeenTracker>();
 builder.Services.AddSingleton<IMatchNotifier, MatchNotifier>();
 builder.Services.AddHostedService<MatchEngine>();
+// Pushmeldingen staan pas aan wanneer Push:PublicKey en Push:PrivateKey ingesteld zijn (zie WebPushSender).
+builder.Services.AddSingleton<IPushSender, WebPushSender>();
+builder.Services.AddScoped<PushService>();
+builder.Services.AddHostedService<DailyReminderService>();
 builder.Services.AddMemoryCache();
 builder.Services.AddSignalR();
 builder.Services.AddScoped<PlayerSeeder>();

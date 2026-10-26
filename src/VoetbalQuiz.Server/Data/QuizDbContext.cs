@@ -15,6 +15,7 @@ public class QuizDbContext(DbContextOptions<QuizDbContext> options) : IdentityDb
     public DbSet<Feedback> Feedback => Set<Feedback>();
     public DbSet<Notification> Notifications => Set<Notification>();
     public DbSet<Announcement> Announcements => Set<Announcement>();
+    public DbSet<PushSubscription> PushSubscriptions => Set<PushSubscription>();
     public DbSet<SpecialEvent> SpecialEvents => Set<SpecialEvent>();
     public DbSet<QuizItem> QuizItems => Set<QuizItem>();
     public DbSet<DailyScheduleDay> DailySchedule => Set<DailyScheduleDay>();

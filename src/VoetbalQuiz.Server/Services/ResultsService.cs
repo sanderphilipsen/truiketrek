@@ -510,7 +510,7 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
     private static int Percent(int part, int total) => total == 0 ? 0 : (int)Math.Round(100.0 * part / total);
 
     /// <summary>Huidige reeks (tot vandaag of gisteren) en langste reeks opeenvolgende speeldagen.</summary>
-    private static (int Current, int Longest) Streaks(IEnumerable<DateOnly> dates, DateOnly today)
+    internal static (int Current, int Longest) Streaks(IEnumerable<DateOnly> dates, DateOnly today)
     {
         var sorted = dates.Distinct().Order().ToList();
         int longest = 0, run = 0;

@@ -3,6 +3,7 @@
 @inject ApiClient Api
 @inject AuthState Auth
 @inject NavigationManager Nav
+@inject PushClient Push
 
 <PageTitle>Spelersfiche – Truitje Trek</PageTitle>
 
@@ -159,6 +160,30 @@ else
                         </form>
                     </section>
 
+                    @if (_push is { PublicKey: not null } push)
+                    {
+                        <section class="card push-settings" aria-labelledby="push-settings-title">
+                            <h3 id="push-settings-title" class="card-title">Meldingen</h3>
+                            <label class="push-toggle">
+                                <span>
+                                    <b>Herinnering voor de daily</b>
+                                    <small class="muted">Om @(PushRules.DailyReminderHour)u, als je de daily nog niet speelde.</small>
+                                </span>
+                                <input type="checkbox" class="toggle" checked="@push.DailyReminder" disabled="@_pushBusy"
+                                       @onchange="e => SetReminderAsync(e.Value is true)" />
+                            </label>
+                            @if (push.DailyReminder)
+                            {
+                                <p class="muted push-device" role="status">@DeviceText</p>
+                                @if (_device == PushDeviceState.Default)
+                                {
+                                    <button type="button" class="btn small" @onclick="EnableDeviceAsync" disabled="@_pushBusy">Zet aan op dit toestel</button>
+                                }
+                            }
+                            @if (_pushError is not null) { <p class="error" role="alert">@_pushError</p> }
+                        </section>
+                    }
+
                     <section class="card menu-list">
                         @if (Auth.User?.IsAdmin == true)
                         {
@@ -221,6 +246,62 @@ else
             _public = await Api.GetPlayerProfileAsync(_profile.UserName);
         }
         catch (ApiException ex) { _error = ex.Message; }
+
+        // Meldingen zijn bijzaak: lukt dit niet, dan verschijnt het blok gewoon niet.
+        try
+        {
+            _push = await Api.GetPushConfigAsync();
+            _device = await Push.GetDeviceStateAsync();
+        }
+        catch (Exception ex) when (ex is ApiException or HttpRequestException) { _push = null; }
+    }
+
+    // ---------- Meldingen ----------
+
+    private PushConfig? _push;
+    private PushDeviceState _device;
+    private bool _pushBusy;
+    private string? _pushError;
+
+    private string DeviceText => _device switch
+    {
+        PushDeviceState.Granted => "Op dit toestel staan meldingen aan.",
+        PushDeviceState.Default => "Op dit toestel staan meldingen nog niet aan.",
+        PushDeviceState.Denied => "Je browser blokkeert meldingen van Truitje Trek. Laat ze toe in de instellingen van je browser, bij deze site.",
+        PushDeviceState.IosInstall => "Op een iPhone krijg je meldingen enkel als Truitje Trek op je beginscherm staat: tik op Deel en kies Zet op beginscherm.",
+        _ => "Deze browser kan geen meldingen tonen. Op een ander toestel kan het wel.",
+    };
+
+    private async Task SetReminderAsync(bool on)
+    {
+        _pushBusy = true;
+        _pushError = null;
+        try
+        {
+            // Eerst de toestemming: de browser vraagt ze enkel meteen na een tik.
+            if (on && _device == PushDeviceState.Default)
+            {
+                await Push.EnableDeviceAsync(_push!.PublicKey!, ask: true);
+                _device = await Push.GetDeviceStateAsync();
+            }
+            await Api.SetDailyReminderAsync(on);
+            _push = _push! with { DailyReminder = on };
+        }
+        catch (Exception ex) when (ex is ApiException or HttpRequestException) { _pushError = "Opslaan lukte niet. Probeer het opnieuw."; }
+        finally { _pushBusy = false; }
+    }
+
+    private async Task EnableDeviceAsync()
+    {
+        _pushBusy = true;
+        _pushError = null;
+        try
+        {
+            await Push.EnableDeviceAsync(_push!.PublicKey!, ask: true);
+            _device = await Push.GetDeviceStateAsync();
+        }
+        catch (Exception ex) when (ex is ApiException or HttpRequestException) { _pushError = "Meldingen aanzetten lukte niet. Probeer het later opnieuw."; }
+        finally { _pushBusy = false; }
     }
 
     private async Task PickAsync(string id)

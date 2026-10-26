@@ -33,6 +33,12 @@ public class AppUser : IdentityUser
     /// <summary>De maand (eerste dag) waarvan de speler de uitreiking van de Gouden Bal al zag. Null = nog nooit.</summary>
     public DateOnly? GoldenBallSeenMonth { get; set; }
 
+    /// <summary>Pushmelding om 19u als je de daily nog niet speelde (zie PushRules). Standaard aan, ook voor bestaande spelers.</summary>
+    public bool DailyReminder { get; set; } = true;
+
+    /// <summary>De dag (Belgische datum) waarvoor de speler al een herinnering kreeg. Null = nog nooit.</summary>
+    public DateOnly? DailyReminderSent { get; set; }
+
     /// <summary>Wanneer de speler vroeg om zijn account te verwijderen (UTC). Null = geen lopende aanvraag.</summary>
     public DateTime? DeletionRequestedAt { get; set; }
 

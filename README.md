@@ -235,3 +235,25 @@ De knop "Doorgaan met Google" verschijnt pas wanneer `Authentication:Google:Clie
    ```bash
    az webapp config appsettings set -g rg-truitje-trek -n truitje-trek --subscription "Visual Studio Enterprise Subscription" --settings Authentication__Google__ClientId="<client-id>" Authentication__Google__ClientSecret="<client-secret>"
    ```
+
+### Pushmeldingen
+
+Om 19u (Belgische tijd, tot 23u) krijgt elke speler die de daily die dag nog niet speelde één pushmelding: "De daily wacht op je", met de reeks erbij als die loopt ([PushRules](src/VoetbalQuiz.Shared/PushDtos.cs)). Een special telt niet als gespeeld. De herinnering staat standaard aan en gaat uit in de spelersfiche, tab Account. Een browser stuurt pas meldingen na "Toestaan" van de speler, en die vraag mag enkel na een tik komen: daarom toont Home bovenaan een kaartje "Mis geen daily meer" zolang dit toestel nog niets koos. Op een iPhone werkt het enkel als de app op het beginscherm staat (iOS 16.4+); het kaartje legt dat uit.
+
+- `DailyReminderService` kijkt om de 5 minuten wie aan de beurt is en onthoudt per speler de dag van de laatste herinnering (`AppUser.DailyReminderSent`), zodat niemand er twee krijgt. Dat kan enkel omdat er precies één instantie draait.
+- Toestellen staan in `PushSubscriptions` (hooguit 10 per speler). Een toestel dat de pushdienst niet meer kent (404/410), wordt opgeruimd. Bij afmelden wordt het toestel losgekoppeld van de speler.
+- De server stuurt enkel naar de pushdiensten van de grote browsers (Google, Mozilla, Apple, Microsoft).
+- In de service worker staat de afhandeling in `wwwroot/push-sw.js` (geladen door beide service workers).
+
+Pushmeldingen staan pas aan wanneer `Push:PublicKey` en `Push:PrivateKey` (VAPID) ingesteld zijn. Zonder sleutels toont de app er niets over.
+
+1. Sleutels maken en lokaal zetten (bewaard buiten git):
+   ```bash
+   pwsh scripts/vapid-keys.ps1 -UserSecrets
+   ```
+2. Op Azure een **eigen** paar maken (`pwsh scripts/vapid-keys.ps1`) en als app-instellingen zetten:
+   ```bash
+   az webapp config appsettings set -g rg-truitje-trek -n truitje-trek --subscription "Visual Studio Enterprise Subscription" --settings Push__PublicKey="<publiek>" Push__PrivateKey="<privé>" Push__Subject="mailto:<adres van de beheerder>"
+   ```
+
+**De sleutels nooit wijzigen.** Elk abonnement hoort bij de publieke sleutel waarmee het gemaakt werd; met nieuwe sleutels krijgt geen enkel toestel nog meldingen tot de speler Home opnieuw opent. Testen kan enkel via HTTPS of localhost, en op een iPhone enkel vanuit de geïnstalleerde app.
