@@ -121,7 +121,20 @@ else
     @DailyCard()
 }
 
-@* Meteen onder de daily: online spelen, zonder kop of uitleg. Open partijtjes (enkel als die er zijn) en de tegel
+@if (_specialsError is not null)
+{
+    <div class="block-error home-special-error" role="alert">
+        <p>@_specialsError</p>
+        <button type="button" class="btn small" @onclick="RetrySpecialsAsync" disabled="@_retryingSpecials">Opnieuw proberen</button>
+    </div>
+}
+else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id)
+{
+    @* Er loopt hooguit één special tegelijk: een kaart over de volle breedte, zonder eigen kop, meteen onder de daily. *@
+    @SpecialCard(active, isNew: false)
+}
+
+@* Onder de daily en de special: online spelen, zonder kop of uitleg. Open partijtjes (enkel als die er zijn) en de tegel
    "Nieuwe match", iets zwaarder dan de stroken eronder maar zonder geel. Home is de lobby. *@
 <section class="home-online" aria-label="Online spelen">
     @* Jouw partijtjes staan als banner bovenaan; hier alle open partijtjes om aan mee te doen (er is geen aparte lobby meer). *@
@@ -189,19 +202,6 @@ else
     };
 }
 
-@if (_specialsError is not null)
-{
-    <div class="block-error home-special-error" role="alert">
-        <p>@_specialsError</p>
-        <button type="button" class="btn small" @onclick="RetrySpecialsAsync" disabled="@_retryingSpecials">Opnieuw proberen</button>
-    </div>
-}
-else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id)
-{
-    @* Er loopt hooguit één special tegelijk: een kaart over de volle breedte, zonder eigen kop. *@
-    @SpecialCard(active, isNew: false)
-}
-
 @* Daaronder brede stroken, allemaal in dezelfde vorm: klassement, academie, prijzenkast. *@
 <a class="card sb-strip" href="klassement">
     <Icon Name="trophy" Class="sb-icon" />
@@ -221,11 +221,16 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
 </a>
 @if (TopReady && UpcomingSpecials.FirstOrDefault() is { } soon)
 {
-    @* Onder de stroken: de eerstvolgende special als één rustige regel; nog niets om op te tikken. *@
-    <p class="home-soon-line">
-        <span class="sb-label">Binnenkort</span>
-        <span><b>@soon.Name</b> · @StartsInText(soon)</span>
-    </p>
+    @* Onder de stroken: de eerstvolgende special in dezelfde vorm, maar met een stippellijn en zonder pijl:
+       nog niets om op te tikken. *@
+    <div class="card sb-strip home-soon">
+        <Icon Name="calendar-dots" Class="sb-icon" />
+        <span class="sb-strip-text">
+            <span class="sb-label">Binnenkort</span>
+            <b>@soon.Name</b>
+        </span>
+        <span class="home-soon-when">@StartsInText(soon)</span>
+    </div>
 }
 
 @* Helemaal onderaan het clubhuis: wat over de app gaat en geen spel is. Ronde snelknoppen onder een eigen kop,

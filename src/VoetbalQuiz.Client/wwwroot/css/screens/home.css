@@ -69,8 +69,11 @@
 .card-link.light { color: #fff; }
 
 /* Helemaal onderaan: de eerstvolgende special als één rustige regel; niets om op te tikken. */
-.home-soon-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin: 4px 2px 0; color: var(--on-field-muted); font-size: .9rem; }
-.home-soon-line b { color: #fff; }
+.sb-strip.home-soon, .sb-strip.home-soon:hover, .sb-strip.home-soon:active { cursor: default; background: transparent; border-style: dashed; }
+.home-soon .sb-icon { color: var(--muted); }
+.home-soon .sb-strip-text .sb-label { font-size: .7rem; }
+.home-soon .sb-strip-text b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.home-soon-when { flex: none; font-size: .85rem; color: var(--muted); white-space: nowrap; }
 /* Clubhuis onderaan Home: instellingen, VAR, FAQ, admin. Geen spel, dus geen tegels of geel: ronde knoppen met een
    groene lijn op het veld, in gelijke kolommen naast elkaar. */
 .home-club { margin: 24px 0 8px; }
