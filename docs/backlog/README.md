@@ -61,5 +61,6 @@ Lopende planning: [planning-2026-10-23.md](planning-2026-10-23.md) (week 44 t/m 
 | [033](033-divisies.md) | Divisies met promotie en degradatie | feature | concept | midden | L | niet gepland |
 | [034](034-klassement-rond-mij.md) | Klassement: weergave "Rond mij" | ux | idee | laag | S | niet gepland |
 | [035](035-vraagtype-spelersfiche.md) | Vraagtype "Spelersfiche" | feature | bezig | midden | M | gebouwd, inhoud in review |
+| [036](036-schaakklok.md) | Schaakklok: om beurten een naam noemen (online) | feature | idee | midden | M | niet gepland |
 
 Recent gedaan: [002](002-herwerking-klassementen.md) fase 1 (`97fad5a`), [007](007-gemiste-daily-naspelen.md) Academie (`0e18e7b`), [011](011-vraagtype-op-volgorde.md) Op volgorde (`4803333`), [022](022-detectivedag.md) Detectivedag (`5471602`).

@@ -690,13 +690,17 @@ public static class QuestionEngine
                 // Een naam vult al zijn rijen en telt één keer. Fout of al gevonden kost niets (zoals bij een opstelling).
                 // Wie exact een naam typt, bedoelt die naam: "Ronaldo" is Ronaldo, ook als hij al gevonden is, en dan niet
                 // via de achternaam Cristiano Ronaldo. Pas zonder exacte naam telt de speling van AnswerMatcher.
+                // Een achternaam die bij meerdere namen van de lijst hoort, wijst niemand aan: "Brugge" naast Club en Cercle
+                // Brugge, "Arena" bij twee stadions, "Müller" bij Gerd en Thomas.
                 var d = Data<LijstData>(q);
                 var typed = AnswerMatcher.Normalize(guess);
                 var exact = d.Names.FindIndex(n => n.Aliases.Prepend(n.Name).Any(x => AnswerMatcher.Normalize(x) == typed));
+                var surnames = d.Names.Select(n => AnswerMatcher.Surname(AnswerMatcher.Normalize(n.Name))).ToList();
                 var hit = exact >= 0
                     ? a.Found.Contains(exact) ? -1 : exact
                     : Enumerable.Range(0, d.Names.Count).Where(i => !a.Found.Contains(i))
-                        .FirstOrDefault(i => AnswerMatcher.IsMatch(guess, d.Names[i].Name, d.Names[i].Aliases), -1);
+                        .FirstOrDefault(i => AnswerMatcher.IsMatch(guess, d.Names[i].Name, d.Names[i].Aliases,
+                            surname: surnames.Count(s => s == surnames[i]) == 1), -1);
                 if (hit < 0) return new(false, false, QuestionRules.LijstPoints(a.Found.Count, d.Names.Count), false);
                 a.Found = [.. a.Found, hit];
                 var all = a.Found.Count == d.Names.Count;

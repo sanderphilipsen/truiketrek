@@ -10,13 +10,14 @@ namespace VoetbalQuiz.Server.Services;
 /// </summary>
 public static partial class AnswerMatcher
 {
-    public static bool IsMatch(string? guess, string name, IEnumerable<string> alternatives)
+    /// <param name="surname">Ook de achternaam aanvaarden (zie <see cref="Surname"/>); uit bij een lijst waarin ze meerdere namen aanwijst.</param>
+    public static bool IsMatch(string? guess, string name, IEnumerable<string> alternatives, bool surname = true)
     {
         var g = Normalize(guess);
         if (g.Length < 2) return false;
 
         var candidates = alternatives.Prepend(name).Select(Normalize).Where(c => c.Length > 0).ToList();
-        if (Surname(Normalize(name)) is { } surname) candidates.Add(surname);
+        if (surname && Surname(Normalize(name)) is { } last) candidates.Add(last);
 
         // 1. Zoals geschreven, met een paar tikfouten speling.
         if (candidates.Any(c => g == c || Levenshtein(g, c) <= AllowedTypos(c.Length))) return true;
@@ -31,7 +32,7 @@ public static partial class AnswerMatcher
     /// De achternaam telt altijd, ook zonder alias en ook als ze dubbelzinnig is
     /// ("Onana" voor Amadou Onana, "De Bruyne" voor Kevin De Bruyne, "Hazard" voor Eden én Thorgan).
     /// </summary>
-    private static string? Surname(string name)
+    public static string? Surname(string name)
     {
         var space = name.IndexOf(' ');
         return space < 0 ? null : name[(space + 1)..];
