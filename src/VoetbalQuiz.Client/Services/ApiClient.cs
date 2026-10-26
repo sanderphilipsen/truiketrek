@@ -58,6 +58,8 @@ public class ApiClient(HttpClient http)
     public Task<TrainingArchive> GetTrainingArchiveAsync(int? year = null, int? month = null) =>
         GetAsync<TrainingArchive>(year is { } y && month is { } m ? $"api/training/archive/{y}/{m}" : "api/training/archive");
     public Task<TrainingDayDetail> GetTrainingDayAsync(DateOnly date) => GetAsync<TrainingDayDetail>($"api/training/days/{date:yyyy-MM-dd}");
+    /// <summary>Het klassement van een voorbije daily, met wie haar naspeelde erbij.</summary>
+    public Task<Leaderboard> GetTrainingDayBoardAsync(DateOnly date) => GetAsync<Leaderboard>($"api/training/days/{date:yyyy-MM-dd}/board");
     public Task<TrainingRunInfo> StartTrainingRunAsync(DateOnly date) =>
         PostAsync<TrainingRunInfo>($"api/training/days/{date:yyyy-MM-dd}/runs", null);
     public Task<TrainingDayDetail> GetTrainingSpecialAsync(int specialId) => GetAsync<TrainingDayDetail>($"api/training/specials/{specialId}");

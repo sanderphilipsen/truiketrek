@@ -59,6 +59,64 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
             g => RankDay(g).Select(t => new DayStanding(t.UserId, t.Points, t.Correct, t.Wrong)).ToList());
     }
 
+    // ---------- Nagespeeld in de academie (backlog 037) ----------
+
+    /// <summary>
+    /// Een nagespeelde plaats: de eerste trainingsrun van iemand die de reeks nooit echt speelde. "Eerste" is de run waarin hij het eerst
+    /// een vraag startte (een lege run telt niet: die wordt hergebruikt). Ook onafgewerkt telt ze, met de punten tot dan: anders kan je de
+    /// vragen bekijken, stoppen en daarna met de antwoorden in je hoofd in het klassement komen.
+    /// </summary>
+    public record Replay(int RunId, string UserId, string UserName, int Points, int Correct, int Wrong);
+
+    /// <summary>
+    /// De nagespeelde plaatsen per reeks, in de volgorde van <see cref="DayScore"/>. Enkel voor de weergave: dagwinnaar, podium,
+    /// maandklassement en XP lezen alleen <see cref="QuizDbContext.Attempts"/>, en zien dit dus nooit.
+    /// </summary>
+    public async Task<Dictionary<int, List<Replay>>> ReplaysAsync(ICollection<int> challengeIds)
+    {
+        // Wie de echte reeks ooit begon (ook zonder één vraag af te sluiten, bv. vlak voor middernacht), zag de tips al: die speelde echt.
+        var real = (await db.Attempts
+                .Where(a => challengeIds.Contains(a.DailyQuestion.DailyChallengeId))
+                .Select(a => new { a.UserId, a.DailyQuestion.DailyChallengeId })
+                .Distinct()
+                .ToListAsync())
+            .Select(a => (a.UserId, a.DailyChallengeId)).ToHashSet();
+        var runs = await db.TrainingRuns
+            .Where(r => challengeIds.Contains(r.DailyChallengeId) && r.Attempts.Any())
+            .Select(r => new
+            {
+                r.Id, r.UserId, r.User.UserName, r.DailyChallengeId, First = r.Attempts.Min(a => a.StartedAt),
+                Points = r.Attempts.Sum(a => a.Points), Correct = r.Attempts.Count(a => a.Correct), Wrong = r.Attempts.Sum(a => a.WrongGuesses),
+            })
+            .ToListAsync();
+        return runs
+            .Where(r => !real.Contains((r.UserId, r.DailyChallengeId)))
+            .GroupBy(r => (r.DailyChallengeId, r.UserId))
+            .Select(g => g.OrderBy(r => r.First).ThenBy(r => r.Id).First())
+            .GroupBy(r => r.DailyChallengeId)
+            .ToDictionary(g => g.Key, g => g
+                .OrderBy(r => new DayScore(r.Points, r.Correct, r.Wrong)).ThenBy(r => r.First)
+                .Select(r => new Replay(r.Id, r.UserId, r.UserName!, r.Points, r.Correct, r.Wrong))
+                .ToList());
+    }
+
+    /// <summary>
+    /// De rijen van een dag- of specialklassement. Echte spelers zijn genummerd; nagespeelde rijen staan ertussen zonder eigen plaats
+    /// (Rank = de plaats die ze zouden hebben, zoals <see cref="TrainingService.WouldBeRank"/>): wie toen 3de werd, blijft 3de.
+    /// </summary>
+    private async Task<List<LeaderboardEntry>> EntriesAsync(List<DayTotal> ranked, IEnumerable<Replay> replays, string userId)
+    {
+        var cards = await UserCardsAsync();
+        var real = ranked.Select((t, i) => new LeaderboardEntry(
+            i + 1, t.UserName, cards[t.UserId].AvatarId, cards[t.UserId].Level, t.Points, 1, t.Correct, 0, t.UserId == userId, t.Partial));
+        var standings = ranked.Select(t => new DayStanding(t.UserId, t.Points, t.Correct, t.Wrong)).ToList();
+        var replayed = replays.Select(r => new LeaderboardEntry(
+            TrainingService.WouldBeRank(standings, r.Points, r.Correct, r.Wrong), r.UserName, cards[r.UserId].AvatarId, cards[r.UserId].Level,
+            r.Points, 1, r.Correct, 0, r.UserId == userId, Replayed: true));
+        // Een nagespeelde rij met plaats 4 komt vóór de echte 4de; bij gelijkstand gaat wie echt speelde voor (zie WouldBeRank).
+        return real.Concat(replayed).OrderBy(e => e.Replayed ? e.Rank - .5 : e.Rank).ToList();
+    }
+
     // ---------- Avatar en level ----------
 
     public record UserCard(string? AvatarId, int Level);
@@ -265,20 +323,33 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
     {
         var today = Today;
         var ranked = RankDay(DayTotals(await RowsAsync(a => a.DailyQuestion.DailyChallenge.Date == today)));
-        var cards = await UserCardsAsync();
-        var entries = ranked.Select((t, i) => new LeaderboardEntry(
-            i + 1, t.UserName, cards[t.UserId].AvatarId, cards[t.UserId].Level, t.Points, 1, t.Correct, 0, t.UserId == userId, t.Partial)).ToList();
-        return new Leaderboard("Vandaag", $"Top 3 van de dag krijgt +{MonthRules.PodiumBonus[0]} / +{MonthRules.PodiumBonus[1]} / +{MonthRules.PodiumBonus[2]} in het maandklassement.", entries);
+        return new Leaderboard("Vandaag", $"Top 3 van de dag krijgt +{MonthRules.PodiumBonus[0]} / +{MonthRules.PodiumBonus[1]} / +{MonthRules.PodiumBonus[2]} in het maandklassement.",
+            await EntriesAsync(ranked, [], userId));
     }
 
-    /// <summary>Het klassement van één special, met dezelfde volgorde als de dagwinnaar.</summary>
+    /// <summary>
+    /// Het klassement van één special, met dezelfde volgorde als de dagwinnaar. Na afloop staan wie haar in de academie naspeelde erbij.
+    /// Zolang ze loopt niet, ook niet als een admin een afgelopen special verlengt: dan kan er al nagespeeld zijn.
+    /// </summary>
     public async Task<Leaderboard> GetSpecialLeaderboardAsync(string userId, int specialId)
     {
         var ranked = RankDay(DayTotals(await RowsAsync(a => a.DailyQuestion.DailyChallenge.SpecialEventId == specialId, includeSpecials: true)));
-        var cards = await UserCardsAsync();
-        var entries = ranked.Select((t, i) => new LeaderboardEntry(
-            i + 1, t.UserName, cards[t.UserId].AvatarId, cards[t.UserId].Level, t.Points, 1, t.Correct, 0, t.UserId == userId, t.Partial)).ToList();
-        return new Leaderboard("Klassement", $"Top 3 krijgt na afloop +{MonthRules.PodiumBonus[0]} / +{MonthRules.PodiumBonus[1]} / +{MonthRules.PodiumBonus[2]} in het maandklassement.", entries);
+        var challenge = await db.DailyChallenges.Where(c => c.SpecialEventId == specialId)
+            .Select(c => new { c.Id, c.SpecialEvent!.EndDate }).FirstOrDefaultAsync();
+        var replays = challenge is not null && TrainingRules.CanTrainSpecial(challenge.EndDate, Today)
+            ? (await ReplaysAsync([challenge.Id])).GetValueOrDefault(challenge.Id) ?? []
+            : [];
+        return new Leaderboard("Klassement", $"Top 3 krijgt na afloop +{MonthRules.PodiumBonus[0]} / +{MonthRules.PodiumBonus[1]} / +{MonthRules.PodiumBonus[2]} in het maandklassement.",
+            await EntriesAsync(ranked, replays, userId));
+    }
+
+    /// <summary>Het klassement van een voorbije daily (vanuit de academie), met wie haar naspeelde erbij.</summary>
+    public async Task<Leaderboard> GetPastDayLeaderboardAsync(string userId, int challengeId)
+    {
+        var ranked = RankDay(DayTotals(await RowsAsync(a => a.DailyQuestion.DailyChallengeId == challengeId)));
+        var replays = (await ReplaysAsync([challengeId])).GetValueOrDefault(challengeId) ?? [];
+        return new Leaderboard("Klassement", "Nagespeelde scores staan erbij, maar tellen niet voor de dagwinnaar, het maandklassement of XP.",
+            await EntriesAsync(ranked, replays, userId));
     }
 
     /// <summary>

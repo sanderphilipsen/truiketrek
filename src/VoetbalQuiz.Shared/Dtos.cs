@@ -182,7 +182,10 @@ public record LeaderboardEntry(
     int Rank, string UserName, string? AvatarId, int Level, int Points,
     int DaysPlayed, int CorrectAnswers, int DaysWon, bool IsMe,
     // Deels juist (QuestionRules.IsPartial): bv. een artikel van De Zondag met een paar gaten fout.
-    int PartialAnswers = 0);
+    int PartialAnswers = 0,
+    // Nagespeeld in de academie (backlog 037): staat erbij zonder eigen plaats; Rank is dan de plaats die de speler zou hebben
+    // tussen de echte spelers. Telt nergens voor (dagwinnaar, podium, maandklassement, XP).
+    bool Replayed = false);
 public record Leaderboard(string Title, string? Note, List<LeaderboardEntry> Entries);
 
 // Statistieken

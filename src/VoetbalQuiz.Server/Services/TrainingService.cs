@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using VoetbalQuiz.Server.Data;
 using VoetbalQuiz.Shared;
@@ -7,7 +8,8 @@ namespace VoetbalQuiz.Server.Services;
 /// <summary>
 /// Academie (in de code: training): oude dailies en afgelopen specials opnieuw spelen, zo vaak je wil. De pogingen staan in
 /// <see cref="QuizDbContext.TrainingRuns"/>, los van <see cref="QuizDbContext.Attempts"/>: klassementen, XP, reeksen, badges
-/// en statistieken zien ze dus nooit. De klok draait op de server, met dezelfde regels als de daily (<see cref="AttemptFlow"/>).
+/// en statistieken zien ze dus nooit. Enkel ter weergave staat je eerste run op een dag die je nooit echt speelde als "nagespeeld" in het
+/// klassement van die dag (<see cref="ResultsService.ReplaysAsync"/>). De klok draait op de server, met dezelfde regels als de daily (<see cref="AttemptFlow"/>).
 /// </summary>
 public class TrainingService(QuizDbContext db, TimeProvider clock, QuizService quiz, ResultsService results)
 {
@@ -28,31 +30,95 @@ public class TrainingService(QuizDbContext db, TimeProvider clock, QuizService q
         var latest = new DateOnly(yesterday.Year, yesterday.Month, 1);
         var (from, to) = year is { } y && month is { } m ? MonthRules.Days(y, m) : MonthRules.Days(latest.Year, latest.Month);
 
+        var open = await OpenTodayAsync(userId);
+        var since = await SinceAsync(userId);
+        var challenges = await LoadAsync(c => c.Date >= from && c.Date < to
+                                              && (c.SpecialEventId == null ? c.Date < today : c.SpecialEvent!.EndDate < today));
+        var days = (await DaysAsync(userId, challenges, open, since))
+            .OrderByDescending(d => d.Date).ThenBy(d => d.Special is null ? 0 : 1).ToList();
+
+        var hasEarlier = await db.DailyChallenges.AnyAsync(c => c.Date < from && (c.SpecialEventId == null || c.SpecialEvent!.EndDate < today));
+        return new TrainingArchive(from.Year, from.Month, days, hasEarlier, from < latest, await SuggestAsync(userId, days, open, since));
+    }
+
+    /// <summary>Reeksen met alles wat de academie toont (vragen, spelers, special); ook de counter-spelers, nodig voor de moeilijkheid.</summary>
+    private async Task<List<DailyChallenge>> LoadAsync(Expression<Func<DailyChallenge, bool>> filter)
+    {
         var challenges = await db.DailyChallenges
-            .Where(c => c.Date >= from && c.Date < to
-                        && (c.SpecialEventId == null ? c.Date < today : c.SpecialEvent!.EndDate < today))
+            .Where(filter)
             .Include(c => c.SpecialEvent)
             .Include(c => c.Questions).ThenInclude(q => q.Player)
             .Include(c => c.Questions).ThenInclude(q => q.QuizItem)
             .AsSplitQuery()
             .ToListAsync();
-        await db.LoadCounterPlayersAsync(challenges.SelectMany(c => c.Questions)); // nodig voor de moeilijkheid
+        await db.LoadCounterPlayersAsync(challenges.SelectMany(c => c.Questions));
+        return challenges;
+    }
 
+    private async Task<List<TrainingDay>> DaysAsync(string userId, List<DailyChallenge> challenges, OpenToday open, DateOnly since)
+    {
         var ids = challenges.Select(c => c.Id).ToList();
         var standings = await results.DayStandingsAsync(ids);
+        var replays = await results.ReplaysAsync(ids);
         var runs = (await RunsAsync(userId, ids)).ToLookup(r => r.ChallengeId);
+        // Echt begonnen zonder één vraag af te sluiten: niet in het klassement, maar ook niet gemist (je zag de tips al).
+        var started = (await db.Attempts.Where(a => a.UserId == userId && ids.Contains(a.DailyQuestion.DailyChallengeId))
+            .Select(a => a.DailyQuestion.DailyChallengeId).Distinct().ToListAsync()).ToHashSet();
 
-        var days = challenges.Select(c =>
+        return challenges.Select(c =>
         {
             var infos = RunInfos(runs[c.Id]);
-            var special = SpecialOf(c.SpecialEvent);
-            return new TrainingDay(c.Date, QuizService.DifficultyOf(c), TypesOf(c),
-                RealOf(userId, standings.GetValueOrDefault(c.Id)), infos.Count, infos.FirstOrDefault(r => r.IsBest)?.Points, special);
-        }).OrderByDescending(d => d.Date).ThenBy(d => d.Special is null ? 0 : 1).ToList();
-
-        var hasEarlier = await db.DailyChallenges.AnyAsync(c => c.Date < from && (c.SpecialEventId == null || c.SpecialEvent!.EndDate < today));
-        return new TrainingArchive(from.Year, from.Month, days, hasEarlier, from < latest);
+            var real = standings.GetValueOrDefault(c.Id) ?? [];
+            // Een lege run (op "Spelen" getikt, geen vraag gestart) telt niet als gespeeld.
+            var played = runs[c.Id].Count(r => r.Started);
+            var seen = started.Contains(c.Id) || played > 0;
+            return new TrainingDay(c.Date, QuizService.DifficultyOf(c), TypesOf(c), RealOf(userId, real), played,
+                infos.FirstOrDefault(r => r.IsBest)?.Points, SpecialOf(c.SpecialEvent), ReplayOf(userId, real, replays.GetValueOrDefault(c.Id)),
+                // Dicht enkel tonen voor dagen die je nooit zag: bij een gespeelde dag zou "dicht" verraden welke antwoorden vandaag terugkomen.
+                !seen && SharesWithToday(c, open), c.Date < since && !seen, c.Questions.Count, real.Count,
+                Started: started.Contains(c.Id) && standings.GetValueOrDefault(c.Id)?.Any(s => s.UserId == userId) != true);
+        }).ToList();
     }
+
+    /// <summary>
+    /// Bovenaan de academie: de meest recente gemiste dag of special (over alle maanden heen) die je nu kan spelen. Mis je niets meer,
+    /// dan een revanche: de dag van deze maand waar je toen het laagst eindigde.
+    /// </summary>
+    private async Task<TrainingSuggestion?> SuggestAsync(string userId, List<TrainingDay> month, OpenToday open, DateOnly since)
+    {
+        var today = Today;
+        var candidates = await db.DailyChallenges
+            .Where(c => (c.SpecialEventId == null ? c.Date < today : c.SpecialEvent!.EndDate < today) && c.Date >= since)
+            .Where(c => !db.Attempts.Any(a => a.UserId == userId && a.DailyQuestion.DailyChallengeId == c.Id))
+            .Where(c => !db.TrainingRuns.Any(r => r.UserId == userId && r.DailyChallengeId == c.Id && r.Attempts.Any()))
+            .OrderByDescending(c => c.Date)
+            .Select(c => c.Id)
+            .Take(20) // ruim, want gemiste dagen kunnen dicht zijn door de daily van vandaag (die deelt spelers met de laatste weken)
+            .ToListAsync();
+        if (candidates.Count > 0)
+        {
+            var days = await DaysAsync(userId, await LoadAsync(c => candidates.Contains(c.Id)), open, since);
+            var missed = days.Where(d => d.Missed && !d.Blocked).OrderByDescending(d => d.Date).FirstOrDefault();
+            if (missed is not null) return new TrainingSuggestion(missed, Revenge: false);
+        }
+
+        var revenge = month
+            .Where(d => d.Real is { Rank: > 1 } && !d.Blocked)
+            .OrderByDescending(d => (d.Real!.Rank - 1) / (double)d.Real.Players).ThenByDescending(d => d.Date)
+            .FirstOrDefault();
+        return revenge is null ? null : new TrainingSuggestion(revenge, Revenge: true);
+    }
+
+    /// <summary>De Belgische dag waarop je je inschreef: dagen ervoor tellen niet als gemist.</summary>
+    private async Task<DateOnly> SinceAsync(string userId)
+    {
+        var created = await db.Users.Where(u => u.Id == userId).Select(u => u.CreatedAt).SingleOrDefaultAsync();
+        return created == default ? DateOnly.MinValue : QuizClock.ToBrusselsDate(created);
+    }
+
+    /// <summary>Het klassement van een voorbije daily, met wie haar naspeelde erbij.</summary>
+    public async Task<Leaderboard> GetDayBoardAsync(string userId, DateOnly date) =>
+        await results.GetPastDayLeaderboardAsync(userId, (await TrainableAsync(date)).Id);
 
     /// <summary>Eén daily met al je scores: je echte poging en elke trainingsrun.</summary>
     public async Task<TrainingDayDetail> GetDayAsync(string userId, DateOnly date) =>
@@ -68,10 +134,11 @@ public class TrainingService(QuizDbContext db, TimeProvider clock, QuizService q
     private async Task<TrainingDayDetail> DetailAsync(string userId, DailyChallenge challenge, SpecialEvent? special)
     {
         var standings = (await results.DayStandingsAsync([challenge.Id])).GetValueOrDefault(challenge.Id) ?? [];
+        var replays = (await results.ReplaysAsync([challenge.Id])).GetValueOrDefault(challenge.Id);
         var runs = RunInfos(await RunsAsync(userId, [challenge.Id]));
         return new TrainingDayDetail(challenge.Date, QuizService.DifficultyOf(challenge), TypesOf(challenge),
             challenge.Questions.Count, MaxPointsOf(challenge), standings.Count, RealOf(userId, standings), runs,
-            SharesWithToday(challenge, await OpenTodayAsync(userId)), SpecialOf(special));
+            SharesWithToday(challenge, await OpenTodayAsync(userId)), SpecialOf(special), ReplayOf(userId, standings, replays));
     }
 
     /// <summary>Start een nieuwe run op deze daily.</summary>
@@ -174,10 +241,13 @@ public class TrainingService(QuizDbContext db, TimeProvider clock, QuizService q
         var standings = (await results.DayStandingsAsync([challenge.Id])).GetValueOrDefault(challenge.Id) ?? [];
         var others = standings.Where(s => s.UserId != userId).ToList();
         var runs = RunInfos(await RunsAsync(userId, [challenge.Id]));
+        var replays = (await results.ReplaysAsync([challenge.Id])).GetValueOrDefault(challenge.Id);
+        var real = RealOf(userId, standings);
 
         return new TrainingSummary(run.Id, challenge.Date, run.FinishedAt is not null, points, correct, challenge.Questions.Count,
-            MaxPointsOf(challenge), WouldBeRank(others, points, correct, wrong), others.Count + 1, RealOf(userId, standings), runs,
-            SpecialOf(challenge.SpecialEventId is { } sid ? await db.SpecialEvents.FindAsync(sid) : null));
+            MaxPointsOf(challenge), WouldBeRank(others, points, correct, wrong), others.Count + 1, real, runs,
+            SpecialOf(challenge.SpecialEventId is { } sid ? await db.SpecialEvents.FindAsync(sid) : null),
+            CountsForBoard: real is null && replays?.Any(r => r.UserId == userId && r.RunId == run.Id) == true);
     }
 
     /// <summary>Start de vraag (of geeft de lopende toestand terug: herladen zet de klok niet terug).</summary>
@@ -250,13 +320,13 @@ public class TrainingService(QuizDbContext db, TimeProvider clock, QuizService q
 
     // ---------- Hulp ----------
 
-    private record RunRow(int Id, int ChallengeId, DateTime StartedAt, DateTime? FinishedAt, int Points, int Correct);
+    private record RunRow(int Id, int ChallengeId, DateTime StartedAt, DateTime? FinishedAt, int Points, int Correct, bool Started);
 
     private Task<List<RunRow>> RunsAsync(string userId, ICollection<int> challengeIds) =>
         db.TrainingRuns
             .Where(r => r.UserId == userId && challengeIds.Contains(r.DailyChallengeId))
             .Select(r => new RunRow(r.Id, r.DailyChallengeId, r.StartedAt, r.FinishedAt,
-                r.Attempts.Sum(a => a.Points), r.Attempts.Count(a => a.Correct)))
+                r.Attempts.Sum(a => a.Points), r.Attempts.Count(a => a.Correct), r.Attempts.Any()))
             .ToListAsync();
 
     /// <summary>Nieuwste eerst; de beste is de hoogste afgewerkte run (bij gelijkstand de eerste).</summary>
@@ -275,6 +345,12 @@ public class TrainingService(QuizDbContext db, TimeProvider clock, QuizService q
         var index = standings?.FindIndex(s => s.UserId == userId) ?? -1;
         return index < 0 ? null : new RealResult(standings![index].Points, standings[index].Correct, index + 1, standings.Count);
     }
+
+    /// <summary>Je nagespeelde plaats: je eerste run, met de plaats die je zou hebben tussen de echte spelers.</summary>
+    private static RealResult? ReplayOf(string userId, List<ResultsService.DayStanding> real, List<ResultsService.Replay>? replays) =>
+        replays?.FirstOrDefault(r => r.UserId == userId) is { } mine
+            ? new RealResult(mine.Points, mine.Correct, WouldBeRank(real, mine.Points, mine.Correct, mine.Wrong), real.Count + 1)
+            : null;
 
     private static List<QuestionType> TypesOf(DailyChallenge c) => c.Questions.Select(q => q.Type).Distinct().Order().ToList();
 

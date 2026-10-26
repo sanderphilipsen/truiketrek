@@ -38,19 +38,49 @@ else
         }
         else
         {
-            <p class="training-result" aria-live="polite">
-                Daarmee was je <b>@_summary.WouldBeRank@DutchDates.OrdinalSuffix(_summary.WouldBeRank) van @_summary.Players</b>
-                geweest @(sp is null ? $"op {DutchDates.DayMonth(_summary.Date)}" : $"in de {sp.Name}").
-            </p>
-            @if (_summary.Real is { } real)
+            var where = sp is null ? DutchDates.DayMonth(_summary.Date) : $"de {sp.Name}";
+            var board = sp is null ? $"academie/{_summary.Date:yyyy-MM-dd}/klassement" : $"academie/special/{sp.Id}/klassement";
+            @if (_summary.CountsForBoard)
             {
-                var diff = _summary.Points - real.Points;
-                <p class="muted">Echt: @real.Points · Nu: @_summary.Points (@(diff >= 0 ? "+" : "")@diff)</p>
+                @* Je eerste keer op een dag die je niet echt speelde: zo sta je (nagespeeld) in het klassement van die dag. *@
+                var place = new RealResult(_summary.Points, _summary.Correct, _summary.WouldBeRank, _summary.Players);
+                <p class="training-result" aria-live="polite">
+                    Je staat in het klassement van @where, <b>@Training.Between(place)</b>.
+                </p>
+                <p class="muted">Nagespeeld: telt niet voor de dagwinnaar, het maandklassement of XP.</p>
             }
-            <button class="btn primary big" @onclick="AgainAsync" disabled="@_starting">Opnieuw spelen</button>
-            <a class="btn" href="academie">Iets anders kiezen</a>
+            else
+            {
+                <p class="training-result" aria-live="polite">
+                    Daarmee was je <b>@_summary.WouldBeRank@DutchDates.OrdinalSuffix(_summary.WouldBeRank) van @_summary.Players</b>
+                    geweest @(sp is null ? $"op {DutchDates.DayMonth(_summary.Date)}" : $"in de {sp.Name}").
+                </p>
+                @if (_summary.Real is { } real)
+                {
+                    var diff = _summary.Points - real.Points;
+                    <p class="muted">Echt: @real.Points · Nu: @_summary.Points (@(diff >= 0 ? "+" : "")@diff)</p>
+                }
+            }
+            <a class="sb-go training-board-link" href="@board">Bekijk het klassement ›</a>
+
+            @if (NextMissed is { } nextDay)
+            {
+                <button class="btn primary big" @onclick="() => StartNextAsync(nextDay)" disabled="@_starting">
+                    Volgende gemiste dag <span aria-hidden="true">›</span>
+                    <small class="training-next-day">@Training.Title(nextDay)</small>
+                </button>
+                <button class="btn big" @onclick="AgainAsync" disabled="@_starting">Opnieuw spelen</button>
+            }
+            else
+            {
+                <button class="btn primary big" @onclick="AgainAsync" disabled="@_starting">Opnieuw spelen</button>
+            }
+            <a class="btn big" href="@CalendarPath">Terug naar de kalender</a>
         }
-        <p class="muted training-note">@TrainingRules.Label</p>
+        @if (next is not null || !_summary.CountsForBoard)
+        {
+            <p class="muted training-note">@TrainingRules.Label</p>
+        }
     </section>
 
     @if (next is null)
@@ -81,18 +111,43 @@ else
 
     private DailyOverview? _overview;
     private TrainingSummary? _summary;
+    private TrainingSuggestion? _suggestion;
     private string? _error;
     private bool _starting;
 
+    /// <summary>De aanrader van de academie, als dat een gemiste dag is (geen revanche, en niet deze dag zelf).</summary>
+    private TrainingDay? NextMissed => _suggestion is { Revenge: false, Day: var day }
+                                       && !(day.Date == _summary?.Date && day.Special?.Id == _summary?.Special?.Id) ? day : null;
+
+    /// <summary>Terug naar de maand van deze dag, waar de net gespeelde dag even oplicht.</summary>
+    private string CalendarPath => _summary is { Special: null } s ? $"academie?net={s.Date:yyyy-MM-dd}"
+        : _summary is { } t ? Training.MonthPath(t.Date.Year, t.Date.Month) : "academie";
+
     protected override async Task OnParametersSetAsync()
     {
-        (_overview, _summary, _error) = (null, null, null);
+        (_overview, _summary, _suggestion, _error) = (null, null, null, null);
         try
         {
             _overview = await Api.GetOverviewAsync(ApiClient.TrainingRun(RunId));
             _summary = await Api.GetTrainingSummaryAsync(RunId);
+            if (_summary.Finished) _suggestion = (await Api.GetTrainingArchiveAsync()).Suggestion;
         }
         catch (ApiException ex) { _error = ex.Message; }
+    }
+
+    private async Task StartNextAsync(TrainingDay day)
+    {
+        _starting = true;
+        try
+        {
+            var run = day.Special is { } sp ? await Api.StartTrainingSpecialRunAsync(sp.Id) : await Api.StartTrainingRunAsync(day.Date);
+            Nav.NavigateTo($"academie/poging/{run.Id}/vraag/1", replace: true);
+        }
+        catch (ApiException ex)
+        {
+            _error = ex.Message;
+            _starting = false;
+        }
     }
 
     private async Task AgainAsync()

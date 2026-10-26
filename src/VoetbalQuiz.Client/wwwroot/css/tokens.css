@@ -40,6 +40,7 @@
     --error-text: #f4a3a3;
     --success-bg: rgba(31, 157, 85, .18); /* gelukt of juist */
     --active-bg: rgba(93, 202, 165, .24); /* gekozen chip of tab */
+    --special: #b48cf0;       /* specials in de academie: de band in de kalender en het icoon (≥ 3:1 op een tegel) */
     color-scheme: dark;
 }
 .surface-light {

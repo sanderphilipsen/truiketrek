@@ -5,6 +5,8 @@ namespace VoetbalQuiz.Server.Data;
 /// <summary>
 /// Eén trainingsrun: een gebruiker speelt een oude daily opnieuw. Telt nergens mee (geen klassement, XP, reeks of badges),
 /// en staat daarom in een eigen tabel: alles wat <see cref="QuizDbContext.Attempts"/> leest, blijft zo vanzelf competitie.
+/// De eerste run op een dag die je nooit echt speelde, toont het klassement van die dag wel als "nagespeeld"
+/// (zie <c>ResultsService.ReplaysAsync</c>); die wordt afgeleid, niet bewaard.
 /// </summary>
 public class TrainingRun
 {

@@ -74,7 +74,7 @@ else
         }
         else
         {
-            <LeaderboardList Entries="@_board.Entries.Select(e => new LeaderboardList.Row(e.Rank, e.UserName, e.AvatarId, e.Points, e.IsMe)).ToList()" />
+            <LeaderboardList Entries="@_board.Entries.Select(e => LeaderboardList.Row.From(e)).ToList()" />
             <p class="section-note">@_board.Note</p>
         }
     }
