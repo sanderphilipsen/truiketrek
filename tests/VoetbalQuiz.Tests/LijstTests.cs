@@ -72,10 +72,11 @@ public sealed class LijstTests : IDisposable
         var start = await _quiz.StartAsync(_me, 1, id);
         Assert.Equal(QuestionRules.LijstSeconds, start.TimeLimit);
         Assert.Equal((0, 4), (start.View!.Found, start.View.Total));
-        Assert.Equal(["2016", "2017", "2018", "2019", "2020", "2021", "2022"], start.View.Rows!.Select(r => r.Label));
+        var rows = start.View.Rows!;
+        Assert.Equal(["2016", "2017", "2018", "2019", "2020", "2021", "2022"], rows.Select(r => r.Label));
         // Enkel de rij zonder winnaar toont iets; geen enkele naam lekt.
-        Assert.Equal(["niet uitgereikt"], start.View.Rows.Where(r => r.Name is not null).Select(r => r.Name));
-        Assert.False(start.View.Rows.Single(r => r.Label == "2020").Open);
+        Assert.Equal(["niet uitgereikt"], rows.Where(r => r.Name is not null).Select(r => r.Name));
+        Assert.False(rows.Single(r => r.Label == "2020").Open);
     }
 
     [Fact]
@@ -85,8 +86,9 @@ public sealed class LijstTests : IDisposable
         await _quiz.StartAsync(_me, 1, id);
         var messi = await _quiz.GuessAsync(_me, 1, "messi", id);
         Assert.Equal(1, Found(messi));
-        Assert.Equal(["2019", "2021"], messi.View!.Rows!.Where(r => r.Name == "Lionel Messi").Select(r => r.Label));
-        Assert.Equal(3, messi.View.Rows.Count(r => r.Name is not null)); // twee keer Messi en "niet uitgereikt"
+        var rows = messi.View!.Rows!;
+        Assert.Equal(["2019", "2021"], rows.Where(r => r.Name == "Lionel Messi").Select(r => r.Label));
+        Assert.Equal(3, rows.Count(r => r.Name is not null)); // twee keer Messi en "niet uitgereikt"
 
         // Nog eens Messi of een naam die er niet in staat: niets erbij, en geen strafpunten.
         var again = await _quiz.GuessAsync(_me, 1, "Lionel Messi", id);
@@ -101,8 +103,9 @@ public sealed class LijstTests : IDisposable
         var id = await SpecialAsync();
         await _quiz.StartAsync(_me, 1, id);
         var r9 = await _quiz.GuessAsync(_me, 1, "Ronaldo", id);
-        Assert.Equal("Ronaldo", r9.View!.Rows!.Single(r => r.Label == "2022").Name);
-        Assert.Null(r9.View.Rows.Single(r => r.Label == "2016").Name);
+        var rows = r9.View!.Rows!;
+        Assert.Equal("Ronaldo", rows.Single(r => r.Label == "2022").Name);
+        Assert.Null(rows.Single(r => r.Label == "2016").Name);
 
         var twice = await _quiz.GuessAsync(_me, 1, "ronaldo", id);
         Assert.Equal(1, Found(twice));

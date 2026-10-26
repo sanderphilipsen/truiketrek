@@ -5,7 +5,7 @@ description: Zet een special van Truitje Trek klaar rond een match, speler, jubi
 
 # Special voorbereiden
 
-Een special is een `SpecialEvent` (`src/VoetbalQuiz.Server/Data/Entities.cs`). De vragenpool komt uit spelers en vragen met een bepaalde **tag** (of uit handmatig gekozen spelers), gemengd over de gekozen vraagtypes volgens `QuestionTypes.Mix`.
+Een special is een `SpecialEvent` (`src/VoetbalQuiz.Server/Data/Model/Daily.cs`). De vragenpool komt uit spelers en vragen met een bepaalde **tag** (of uit handmatig gekozen spelers), gemengd over de gekozen vraagtypes volgens `QuestionTypes.Mix`.
 
 Nog geen idee voor een special? Laat eerst de agent `special-scout` zoeken.
 

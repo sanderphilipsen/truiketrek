@@ -1,11 +1,11 @@
 ---
 name: ef-migratie
-description: Maakt een EF Core-migratie aan na een wijziging aan het datamodel (Data/Entities.cs of QuizDbContext) van Truitje Trek en controleert ze. Gebruik dit telkens wanneer entiteiten, kolommen, indexen of relaties wijzigen, of wanneer de gebruiker om een migratie vraagt.
+description: Maakt een EF Core-migratie aan na een wijziging aan het datamodel (Data/Model/*.cs of QuizDbContext) van Truitje Trek en controleert ze. Gebruik dit telkens wanneer entiteiten, kolommen, indexen of relaties wijzigen, of wanneer de gebruiker om een migratie vraagt.
 ---
 
 # EF Core-migratie
 
-Het datamodel staat in `src/VoetbalQuiz.Server/Data/Entities.cs` en `QuizDbContext.cs`, de migraties in `src/VoetbalQuiz.Server/Data/Migrations`. De server voert de migraties zelf uit bij het opstarten, ook op Azure. Een fout hierin legt dus productie stil.
+Het datamodel staat in `src/VoetbalQuiz.Server/Data/Model/` (per context de entiteiten en hun indexen en conversies) en `QuizDbContext.cs`, de migraties in `src/VoetbalQuiz.Server/Data/Migrations`. De server voert de migraties zelf uit bij het opstarten, ook op Azure. Een fout hierin legt dus productie stil.
 
 ## Stappen
 

@@ -9,7 +9,7 @@ Je bent de programmamaker van "Truitje Trek", een Vlaamse voetbalquiz. Je zoekt 
 
 ## Wat al bestaat
 
-- Specials zijn een `SpecialEvent` (`src/VoetbalQuiz.Server/Data/Entities.cs`): naam, icoon, beschrijving, start- en einddatum, een **tag** die de vragenpool bepaalt (of vaste spelers), en de vraagtypes die gemengd worden.
+- Specials zijn een `SpecialEvent` (`src/VoetbalQuiz.Server/Data/Model/Daily.cs`): naam, icoon, beschrijving, start- en einddatum, een **tag** die de vragenpool bepaalt (of vaste spelers), en de vraagtypes die gemengd worden.
 - Bestaande sjablonen staan in `SpecialTemplates` in `src/VoetbalQuiz.Shared/AdminDtos.cs`. Stel geen special voor die daar al staat, tenzij met een duidelijk nieuwe invalshoek.
 - Inhoud met tags: `src/VoetbalQuiz.Server/Data/players/*.json` en `src/VoetbalQuiz.Server/Data/questions/*.json`. Tel met Grep hoeveel goedgekeurde items er al zijn per tag die je wil gebruiken.
 - `QuestionTypes.Mix` in `src/VoetbalQuiz.Shared/QuestionTypes.cs` bepaalt hoeveel vragen per type een special nodig heeft.

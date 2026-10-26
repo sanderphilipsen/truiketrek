@@ -16,7 +16,7 @@ Je reviewt wijzigingen in "Truitje Trek" (Blazor WebAssembly + ASP.NET Core + EF
 5. **Eén keer spelen.** Herladen of opnieuw verbinden mag de klok niet terugzetten en geen tweede poging geven.
 6. **Daily niet verklappen.** Online wedstrijden gebruiken geen spelers of vragen uit de daily van vandaag en verstoren de rotatie niet.
 7. **Enkel goedgekeurd.** Alleen items met status Approved komen in daily, specials en online; uitgeschakelde types worden overgeslagen.
-8. **Datamodel.** Wijzigingen aan `Data/Entities.cs` of `QuizDbContext` hebben een bijhorende migratie in `Data/Migrations` (en de snapshot is mee aangepast).
+8. **Datamodel.** Wijzigingen aan `Data/Model/*.cs` of `QuizDbContext` hebben een bijhorende migratie in `Data/Migrations` (en de snapshot is mee aangepast).
 9. **Tests.** Nieuwe of gewijzigde regels hebben tests in `tests/VoetbalQuiz.Tests`. Draai `dotnet test` en meld het resultaat.
 10. **Tijdzone.** De dag wisselt om middernacht Belgische tijd; let op `DateTime.Now`/`UtcNow` waar een Belgische datum bedoeld is.
 
