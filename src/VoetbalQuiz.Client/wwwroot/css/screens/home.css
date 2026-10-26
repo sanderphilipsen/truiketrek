@@ -7,6 +7,22 @@
 .score-big { font-family: var(--digits); font-size: 3rem; font-weight: 800; line-height: 1; margin: 8px 0 4px; color: var(--sb-digit); font-variant-numeric: tabular-nums; }
 .score-big small { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; font-size: 1rem; font-weight: 600; color: var(--muted); }
 
+/* Daily klaar: je plaats en je reeks als twee scorebordvakjes naast elkaar, je beste dag, en de aftelling naar morgen. */
+.daily-end { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+.daily-end-fact {
+    display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 10px 6px;
+    background: rgba(0, 0, 0, .25); box-shadow: inset 0 0 0 1px var(--sb-line-strong); border-radius: 10px;
+    color: var(--text); text-decoration: none;
+}
+.daily-end-fact .sb-digits { font-size: 1.9rem; display: inline-flex; align-items: center; gap: 4px; }
+.daily-end-fact small { color: var(--muted); font-size: .85rem; }
+.daily-end-best { margin: 12px 0 0; font-weight: 600; }
+.daily-end-best.is-best { color: var(--sb-digit); }
+.daily-end-next { margin: 10px 0 0; font-size: .9rem; }
+.home-daily-next { margin: 12px 0 0; color: var(--muted); font-size: .92rem; }
+.home-fact.warn { color: var(--sb-digit); }
+.home-daily-play small { font-weight: 600; opacity: .8; }
+
 /* ---------- Home ---------- */
 /* Bovenaan Home, in plaats van een topbar: de begroeting (een naam van 20 tekens mag breken) en je avatar. */
 .home-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }

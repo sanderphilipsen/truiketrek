@@ -24,6 +24,12 @@ public static class QuizDay
     /// <summary>Vandaag volgens de klok van dit toestel, in Belgische tijd (enkel voor weergave op de client).</summary>
     public static DateOnly Today() => DateOf(DateTimeOffset.UtcNow);
 
+    /// <summary>Hoelang nog tot de volgende daily (middernacht Belgische tijd), volgens de klok van dit toestel; enkel voor weergave.</summary>
+    public static TimeSpan UntilTomorrow() => StartOfDayUtc(Today().AddDays(1)) - DateTime.UtcNow;
+
+    /// <summary>Het uur nu in België (0-23), volgens de klok van dit toestel; enkel voor weergave.</summary>
+    public static int HourNow() => ToBrussels(DateTime.UtcNow).Hour;
+
     /// <summary>
     /// Zonder tijdzonedata valt de browser terug op de lokale tijd, zoals vroeger. De server faalt dan bij het opstarten:
     /// stil op de machinetijd draaien zou de daily op het verkeerde uur laten wisselen.

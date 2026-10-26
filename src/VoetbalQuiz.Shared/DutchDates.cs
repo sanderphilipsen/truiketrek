@@ -31,6 +31,13 @@ public static class DutchDates
         return $"{moment.Day} {Month(moment.Month)} {moment.Year}";
     }
 
+    /// <summary>Een aftelling in gewone woorden: "5u 12m", "34 min", en onder een minuut "1 min" (nooit "0 min").</summary>
+    public static string Countdown(TimeSpan left)
+    {
+        var minutes = Math.Max(1, (int)Math.Ceiling(left.TotalMinutes));
+        return minutes < 60 ? $"{minutes} min" : $"{minutes / 60}u {minutes % 60:00}m";
+    }
+
     /// <summary>Achtervoegsel van een rangtelwoord in cijfers: 1ste, 2de, 8ste, 19de, 20ste, 100ste, 101ste, 102de, 108ste.</summary>
     public static string OrdinalSuffix(int n)
     {

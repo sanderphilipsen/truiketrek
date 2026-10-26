@@ -39,7 +39,7 @@ public class ApiClient(HttpClient http)
     public static string TrainingRun(int runId) => $"api/training/runs/{runId}";
 
     public Task<DailyOverview> GetDailyAsync(int? specialId = null) => GetOverviewAsync(Quiz(specialId));
-    /// <summary>Je plaats van vandaag en die bij je vorige bezoek; de server onthoudt dit bezoek (enkel Home roept dit op).</summary>
+    /// <summary>Je plaats van vandaag en die bij je vorige bezoek; de server onthoudt dit bezoek (Home en het eindscherm van de daily roepen dit op).</summary>
     public Task<DailyRank> VisitDailyRankAsync() => PostAsync<DailyRank>("api/daily/rank", null);
 
     /// <summary>Overzicht van een reeks; <paramref name="quiz"/> is <see cref="Quiz"/> of <see cref="TrainingRun"/>.</summary>

@@ -4,6 +4,7 @@
 @inject AuthState Auth
 @inject GoldenBallState GoldenBall
 @inject IJSRuntime JS
+@inject NavigationManager Nav
 @implements IDisposable
 
 <PageTitle>Truitje Trek – Voetbalquiz</PageTitle>
@@ -173,16 +174,34 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
                 <Icon Name="trophy" Class="sb-icon" />
                 <span aria-hidden="true">@RankText</span>
             </a>
-            <a class="home-fact" href="statistieken" aria-label="@StreakLabel">
+            @{ var atRisk = StreakAtRisk(answered); }
+            <a class="home-fact @(atRisk ? "warn" : "")" href="statistieken" aria-label="@(atRisk ? $"{StreakLabel}. Speel vandaag nog om je reeks te houden" : StreakLabel)">
                 <Icon Name="flame" Class="sb-icon" />
-                <span aria-hidden="true">@StreakText</span>
+                <span aria-hidden="true">@(atRisk ? $"{StreakText}: speel vandaag nog" : StreakText)</span>
             </a>
         </div>
-        @* De enige gele knop op Home, tenzij de special na de daily de hoofdactie is. *@
-        <a class="btn home-daily-play @(SpecialIsMain ? "" : "primary")" href="@(next is null ? "daily" : $"vraag/{next.Number}")">
-            @(next is null ? "Bekijk je score" : started ? $"Verder met vraag {next.Number}" : "Start de daily")
-            <span aria-hidden="true">›</span>
-        </a>
+        @if (next is not null)
+        {
+            @* De enige gele knop op Home, tenzij de special na de daily de hoofdactie is. *@
+            <a class="btn home-daily-play @(SpecialIsMain ? "" : "primary")" href="vraag/@next.Number">
+                @(started ? $"Verder met vraag {next.Number}" : "Start de daily")
+                <span aria-hidden="true">›</span>
+            </a>
+        }
+        else
+        {
+            @* Klaar: een rustig resultaat met de aftelling naar morgen. De gele knop gaat naar wat de academie aanraadt,
+               tenzij de special nog open staat (dan is die de hoofdactie). *@
+            <p class="home-daily-next">Nieuwe daily over @DutchDates.Countdown(QuizDay.UntilTomorrow()) · <a href="daily">je score</a></p>
+            @if (!SpecialIsMain && _suggestion is { } s)
+            {
+                <button type="button" class="btn primary home-daily-play" @onclick="() => StartTrainingAsync(s.Day)" disabled="@_startingTraining">
+                    <Icon Name="graduation-cap" />
+                    <span>@(s.Revenge ? "Revanche" : "Bijspelen"): @Training.Title(s.Day) <small>· telt niet mee</small></span>
+                    <span aria-hidden="true">›</span>
+                </button>
+            }
+        }
     }
 </section>;
 
@@ -193,6 +212,9 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
         : "Klassement: nog geen plaats vandaag";
 
     private int Streak => _rank?.Streak ?? 0;
+
+    /// <summary>'s Avonds, met een reeks en nog geen vraag gespeeld vandaag: je reeks loopt om middernacht af (zoals de pushmelding van 19u).</summary>
+    private bool StreakAtRisk(int answered) => Streak > 0 && answered == 0 && QuizDay.HourNow() >= 18;
     private string StreakText => Streak switch { 0 => "start je reeks", 1 => "1 dag op rij", var s => $"{s} dagen op rij" };
     private string StreakLabel => Streak switch
     {
@@ -302,16 +324,45 @@ else if (TopReady && ActiveSpecial is { } active && active.Id != HeroSpecial?.Id
     {
         try
         {
-            _daily = await Api.GetDailyAsync();
-            _dailyError = null;
-            if (_daily.Questions.Count > 0 && _daily.Questions.All(q => q.Status == QuestionStatus.Answered))
+            var daily = await Api.GetDailyAsync();
+            if (daily.Questions.Count > 0 && daily.Questions.All(q => q.Status == QuestionStatus.Answered))
+            {
                 await RememberIntroHiddenAsync(); // eerste daily gespeeld: de uitleg is niet meer nodig
+                await LoadSuggestionAsync(); // vóór de tegel verschijnt, zodat de knop er niet achteraf onder schuift
+            }
+            _daily = daily;
+            _dailyError = null;
         }
         catch (Exception ex) when (ex is ApiException or HttpRequestException)
         {
             _dailyError = ex is ApiException api ? api.Message : "De daily kon niet geladen worden. Controleer je verbinding.";
         }
         StateHasChanged();
+    }
+
+    // Na de daily: wat de academie aanraadt (een gemiste dag of een revanche). Een extraatje: lukt het niet, dan geen knop.
+    private TrainingSuggestion? _suggestion;
+    private bool _startingTraining;
+
+    private async Task LoadSuggestionAsync()
+    {
+        try { _suggestion = (await Api.GetTrainingArchiveAsync()).Suggestion; }
+        catch (Exception ex) when (ex is ApiException or HttpRequestException) { _suggestion = null; }
+    }
+
+    private async Task StartTrainingAsync(TrainingDay day)
+    {
+        _startingTraining = true;
+        try
+        {
+            var run = day.Special is { } sp ? await Api.StartTrainingSpecialRunAsync(sp.Id) : await Api.StartTrainingRunAsync(day.Date);
+            Nav.NavigateTo($"academie/poging/{run.Id}/vraag/1");
+        }
+        catch (Exception ex) when (ex is ApiException or HttpRequestException)
+        {
+            // Niet gelukt (bv. de dag zit intussen in een special): dan naar de academie zelf.
+            Nav.NavigateTo("academie");
+        }
     }
 
     private async Task LoadSpecialsAsync()

@@ -117,3 +117,17 @@
 button.choice:active { transform: scale(.97); }
 .choice.right { border-color: var(--ok); background: var(--success-bg); }
 .choice.wrong { border-color: var(--fail); background: var(--error-bg); }
+
+/* Laden: het vraagscherm in skeletvorm (klok en opgave) in plaats van een spinner, zodat er niets verspringt. */
+.question-loading .stake-row { align-items: center; }
+.question-loading .sk-points { width: 72px; height: 2.3rem; }
+.question-loading .sk-clock { width: 3.2em; height: 1.9rem; }
+.question-loading-body { padding: 16px; }
+
+/* "Zo werkt het": een type dat je op dit toestel nog niet speelde, vóór de klok start. */
+.howto { padding: 16px; }
+.howto-type { display: flex; gap: 12px; align-items: flex-start; margin-top: 12px; }
+.howto-type .sb-icon { font-size: 1.6rem; flex: none; margin-top: 2px; }
+.howto-type b { display: block; font-size: 1.05rem; }
+.howto-type p { margin: 4px 0 0; line-height: 1.45; }
+.howto-note { margin: 14px 0 0; font-size: .9rem; }

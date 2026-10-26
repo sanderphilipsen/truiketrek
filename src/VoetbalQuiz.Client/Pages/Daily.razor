@@ -34,8 +34,23 @@ else
         }
         else
         {
-            <p class="done">Klaar voor vandaag.</p>
-            <a class="btn" href="klassement">Klassement</a>
+            @* Het slot van de dag: je plaats en je reeks als scorebordcijfers, je beste dag, en wanneer de volgende daily er is. *@
+            <div class="daily-end">
+                <a class="daily-end-fact" href="klassement" aria-label="@RankLabel">
+                    <span class="sb-digits" aria-hidden="true">@RankDigits</span>
+                    <small aria-hidden="true">@RankCaption</small>
+                </a>
+                <a class="daily-end-fact" href="statistieken" aria-label="@StreakLabel">
+                    <span class="sb-digits" aria-hidden="true"><Icon Name="flame" /> @(_rank?.Streak ?? 0)</span>
+                    <small aria-hidden="true">@((_rank?.Streak ?? 0) == 1 ? "dag op rij" : "dagen op rij")</small>
+                </a>
+            </div>
+            @if (BestDayText is { } best)
+            {
+                <p class="daily-end-best @(IsBestDay ? "is-best" : "")">@best</p>
+            }
+            <a class="btn primary big" href="klassement">Klassement</a>
+            <p class="muted daily-end-next">Nieuwe daily over @DutchDates.Countdown(QuizDay.UntilTomorrow())</p>
             <RewardPopup Kicker="Daily voltooid!" />
         }
     </section>
@@ -60,15 +75,51 @@ else
     private DailyOverview? _overview;
     private string? _error;
 
+    // Enkel als de daily klaar is: je plaats en reeks, en je beste dag. Extraatjes: lukt het niet, dan tonen we ze niet.
+    private DailyRank? _rank;
+    private int? _bestDay;
+
     protected override async Task OnInitializedAsync()
     {
         try
         {
-            _overview = await Api.GetDailyAsync();
+            var overview = await Api.GetDailyAsync();
+            if (overview.Questions.Count > 0 && overview.Questions.All(q => q.Status == QuestionStatus.Answered))
+                await Task.WhenAll(LoadRankAsync(), LoadBestDayAsync());
+            _overview = overview; // pas nu: zo verschijnt het eindscherm in één keer
             await Auth.RefreshAsync(); // level kan gestegen zijn
         }
         catch (ApiException ex) { _error = ex.Message; }
     }
+
+    private async Task LoadRankAsync()
+    {
+        try { _rank = await Api.VisitDailyRankAsync(); }
+        catch (Exception ex) when (ex is ApiException or HttpRequestException) { _rank = null; }
+    }
+
+    private async Task LoadBestDayAsync()
+    {
+        try { _bestDay = (await Api.GetStatsAsync()).Me.BestDay; }
+        catch (Exception ex) when (ex is ApiException or HttpRequestException) { _bestDay = null; }
+    }
+
+    private DailyRank? TodayRank => _rank is { } r && _overview is { } d && r.Date == d.Date ? r : null;
+    private string RankDigits => TodayRank is { Rank: { } p } ? $"{p}{DutchDates.OrdinalSuffix(p)}" : "–";
+    private string RankCaption => TodayRank is { Rank: not null } r ? $"van {r.Players} vandaag" : "klassement";
+    private string RankLabel => TodayRank is { Rank: { } p } r
+        ? $"Klassement: je staat {p}{DutchDates.OrdinalSuffix(p)} van {r.Players} vandaag" : "Klassement";
+    private string StreakLabel => (_rank?.Streak ?? 0) switch
+    {
+        1 => "Statistieken: 1 dag op rij gespeeld",
+        var s => $"Statistieken: {s} dagen op rij gespeeld",
+    };
+
+    // De beste dag telt vandaag al mee: gelijk aan vandaag (en meer dan 0) is een nieuw record.
+    private bool IsBestDay => _bestDay is { } best && _overview is { TotalPoints: > 0 } d && d.TotalPoints >= best;
+    private string? BestDayText => _bestDay is not ({ } best and > 0) || _overview is null ? null
+        : IsBestDay ? "Je beste dag ooit!"
+        : $"Je beste dag: {best} punten";
 
     private static string CssFor(QuestionSummary q) => QuestionDisplay.ListCss(q);
 }
