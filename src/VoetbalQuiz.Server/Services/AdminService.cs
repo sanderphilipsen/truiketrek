@@ -156,12 +156,15 @@ public class AdminService(QuizDbContext db, QuestionPicker picker, TimeProvider 
     }
 
     /// <summary>Alle geregistreerde spelers: wie het laatst online was eerst, wie nog nooit gezien is onderaan (nieuwste eerst).</summary>
-    public async Task<List<AdminUserItem>> UsersAsync()
+    public async Task<List<AdminUserItem>> UsersAsync(IReadOnlyCollection<string>? adminNames = null)
     {
         var users = await db.Users.Where(u => u.DeletedAt == null)
-            .Select(u => new AdminUserItem(u.UserName!, u.AvatarId, u.CreatedAt, u.LastSeenAt, u.DeletionRequestedAt)).ToListAsync();
+            .Select(u => new AdminUserItem(u.UserName!, u.AvatarId, u.CreatedAt, u.LastSeenAt, u.DeletionRequestedAt,
+                u.Email, u.PasswordHash != null, db.UserLogins.Any(l => l.UserId == u.Id), false)).ToListAsync();
         // In het geheugen sorteren: PostgreSQL zet null bij aflopend sorteren vooraan, SQLite achteraan.
-        return users.OrderByDescending(u => u.LastSeenAt ?? DateTime.MinValue).ThenByDescending(u => u.CreatedAt).ToList();
+        return users
+            .Select(u => u with { IsAdmin = adminNames?.Contains(u.UserName, StringComparer.OrdinalIgnoreCase) == true })
+            .OrderByDescending(u => u.LastSeenAt ?? DateTime.MinValue).ThenByDescending(u => u.CreatedAt).ToList();
     }
 
     // ---------- Weekplanning ----------

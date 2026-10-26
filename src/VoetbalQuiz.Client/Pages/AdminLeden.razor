@@ -2,6 +2,7 @@
 @attribute [Authorize]
 @inject ApiClient Api
 @inject AuthState Auth
+@inject IJSRuntime JS
 
 <PageTitle>Leden – Bestuurskamer</PageTitle>
 <ConfirmSheet @ref="_confirm" />
@@ -50,38 +51,169 @@
                                 <b>@u.UserName</b>
                                 <small>Aangevraagd op @MemberSince(u.DeletionRequestedAt!.Value)</small>
                             </div>
-                            <button class="btn small danger" @onclick="() => DeleteAsync(u.UserName)" disabled="@_deleting">Verwijderen</button>
+                            <button class="btn small danger" @onclick="() => DeleteAsync(u.UserName)" disabled="@_busy">Verwijderen</button>
                         </div>
                     }
                 </div>
-                @if (_deleteError is not null) { <p class="error" role="alert">@_deleteError</p> }
             </section>
         }
 
+        @* Tik op een lid voor de details: e-mail, hoe die aanmeldt, wanneer precies online, en de acties. *@
         <section class="card">
             <h2>Alle leden</h2>
+            <input class="member-search" type="search" placeholder="Zoek op naam of e-mail…" aria-label="Zoek een lid"
+                   @bind="_search" @bind:event="oninput" />
+            @if (_actionError is not null && _open is null) { <p class="error" role="alert">@_actionError</p> }
+            @if (_deleted is not null) { <p class="success" role="status">Het account van @_deleted is verwijderd.</p> }
             <div class="admin-list">
-                @foreach (var u in _users)
+                @foreach (var u in Filtered())
                 {
-                    <a class="admin-row-card plain" href="speler/@Uri.EscapeDataString(u.UserName)">
-                        <Avatar Id="@u.AvatarId" User="@u.UserName" Size="36" />
-                        <div class="table-info">
-                            <b>@u.UserName</b>
-                            <small>Lid sinds @MemberSince(u.CreatedAt)</small>
-                        </div>
-                        <small class="last-seen">@LastSeen(u.LastSeenAt, now)</small>
-                    </a>
+                    var open = _open == u.UserName;
+                    <div class="member @(open ? "open" : "")">
+                        <button class="admin-row-card plain member-head" aria-expanded="@(open ? "true" : "false")" @onclick="() => Toggle(u.UserName)">
+                            <Avatar Id="@u.AvatarId" User="@u.UserName" Size="36" />
+                            <div class="table-info">
+                                <b>@u.UserName @if (u.IsAdmin) { <span class="member-tag">admin</span> }</b>
+                                <small class="member-mail">@(u.Email ?? "geen e-mail")</small>
+                            </div>
+                            <small class="last-seen">@LastSeen(u.LastSeenAt, now)</small>
+                        </button>
+                        @if (open)
+                        {
+                            <div class="member-detail">
+                                @if (_editing)
+                                {
+                                    <form class="stack member-edit" @onsubmit="() => SaveAsync(u)">
+                                        <label>Gebruikersnaam
+                                            <input @bind="_editName" autocomplete="off" maxlength="20" required disabled="@u.IsAdmin" />
+                                            @if (u.IsAdmin) { <small class="muted">De naam van een admin pas je aan in de configuratie.</small> }
+                                        </label>
+                                        <label>E-mail
+                                            <input type="email" @bind="_editEmail" autocomplete="off" required />
+                                        </label>
+                                        @if (_actionError is not null) { <p class="error" role="alert">@_actionError</p> }
+                                        <div class="member-actions">
+                                            <button class="btn small primary" disabled="@_busy">Opslaan</button>
+                                            <button type="button" class="btn small" @onclick="() => _editing = false">Annuleren</button>
+                                        </div>
+                                    </form>
+                                }
+                                else
+                                {
+                                <dl>
+                                    <dt>E-mail</dt>
+                                    <dd>@if (u.Email is { } mail) { <a href="mailto:@mail">@mail</a> } else { <span class="muted">geen</span> }</dd>
+                                    <dt>Aanmelden</dt>
+                                    <dd>@Login(u)</dd>
+                                    <dt>Lid sinds</dt>
+                                    <dd>@MemberSince(u.CreatedAt)</dd>
+                                    <dt>Laatst online</dt>
+                                    <dd>@(u.LastSeenAt is { } seen ? $"{Moment(seen)} ({DutchDates.Ago(seen, now)})" : "nog niet gezien")</dd>
+                                </dl>
+
+                                @if (_reset?.UserName == u.UserName)
+                                {
+                                    <div class="success stack" role="status">
+                                        <span>Tijdelijk wachtwoord: <code>@_reset.TemporaryPassword</code></span>
+                                        <small>Je ziet het maar één keer. Geef het door; de speler kiest daarna zelf een nieuw via de Spelersfiche.</small>
+                                        <button type="button" class="btn small" @onclick="CopyPasswordAsync">@(_copied ? "Gekopieerd" : "Kopieer wachtwoord")</button>
+                                        @if (_copyFailed) { <small class="muted">Kopiëren lukt hier niet: selecteer het wachtwoord hierboven.</small> }
+                                    </div>
+                                }
+                                @if (_saved) { <p class="success" role="status">Opgeslagen.</p> }
+                                @if (_actionError is not null) { <p class="error" role="alert">@_actionError</p> }
+
+                                <div class="member-actions">
+                                    <a class="btn small" href="speler/@Uri.EscapeDataString(u.UserName)">Profiel</a>
+                                    <button class="btn small" @onclick="() => StartEdit(u)" disabled="@_busy">Naam of e-mail aanpassen</button>
+                                    <button class="btn small" @onclick="() => ResetAsync(u)" disabled="@_busy">Wachtwoord resetten</button>
+                                    @if (!u.IsAdmin)
+                                    {
+                                        <button class="btn small danger" @onclick="() => DeleteAsync(u.UserName)" disabled="@_busy">Verwijderen</button>
+                                    }
+                                </div>
+                                }
+                            </div>
+                        }
+                    </div>
                 }
             </div>
+            @if (!Filtered().Any()) { <p class="muted">Niemand gevonden voor "@_search".</p> }
         </section>
     }
 </AdminGuard>
 
 @code {
     private List<AdminUserItem>? _users;
-    private string? _error, _deleteError;
-    private bool _deleting;
+    private string? _error, _actionError, _open, _deleted;
+    private string _search = "", _editName = "", _editEmail = "";
+    private ResetPasswordResult? _reset;
+    private bool _busy, _copied, _copyFailed, _editing, _saved;
     private ConfirmSheet _confirm = null!;
+
+    private IEnumerable<AdminUserItem> Filtered() =>
+        string.IsNullOrWhiteSpace(_search)
+            ? _users!
+            : _users!.Where(u => u.UserName.Contains(_search.Trim(), StringComparison.OrdinalIgnoreCase)
+                || u.Email?.Contains(_search.Trim(), StringComparison.OrdinalIgnoreCase) == true);
+
+    private void Toggle(string userName)
+    {
+        _open = _open == userName ? null : userName;
+        (_actionError, _deleted, _editing, _saved) = (null, null, false, false);
+        if (_reset?.UserName != _open) _reset = null;
+    }
+
+    private void StartEdit(AdminUserItem u)
+    {
+        (_editing, _saved, _actionError, _reset) = (true, false, null, null);
+        (_editName, _editEmail) = (u.UserName, u.Email ?? "");
+    }
+
+    private async Task SaveAsync(AdminUserItem u)
+    {
+        var newName = _editName.Trim();
+        if (newName != u.UserName && !await _confirm.AskAsync($"{u.UserName} hernoemen naar {newName}?",
+                $"De speler meldt voortaan aan met \"{newName}\" (of het e-mailadres). Klassementen en uitslagen volgen de nieuwe naam.",
+                "Hernoemen", danger: false))
+            return;
+
+        (_busy, _actionError) = (true, null);
+        try
+        {
+            await Api.EditUserAsync(u.UserName, newName, _editEmail.Trim());
+            _users = await Api.GetAdminUsersAsync();
+            // Open blijven op dezelfde speler, ook als de naam veranderde.
+            _open = _users.FirstOrDefault(x => string.Equals(x.UserName, newName, StringComparison.OrdinalIgnoreCase))?.UserName;
+            (_editing, _saved) = (false, true);
+        }
+        catch (ApiException ex) { _actionError = ex.Message; }
+        finally { _busy = false; }
+    }
+
+    private async Task ResetAsync(AdminUserItem u)
+    {
+        var text = u.HasPassword
+            ? "Het huidige wachtwoord werkt daarna niet meer. Je krijgt één keer een tijdelijk wachtwoord te zien om door te geven."
+            : "Deze speler meldt aan met Google en heeft nog geen wachtwoord. Je zet er een tijdelijk bij; Google blijft ook werken.";
+        if (!await _confirm.AskAsync($"Wachtwoord van {u.UserName} resetten?", text, "Wachtwoord resetten", danger: false))
+            return;
+
+        (_busy, _actionError, _reset, _copied, _copyFailed) = (true, null, null, false, false);
+        try
+        {
+            _reset = await Api.ResetUserPasswordAsync(u.UserName);
+            _users = await Api.GetAdminUsersAsync();
+        }
+        catch (ApiException ex) { _actionError = ex.Message; }
+        finally { _busy = false; }
+    }
+
+    private async Task CopyPasswordAsync()
+    {
+        _copied = await JS.InvokeAsync<bool>("truitje.copy", _reset!.TemporaryPassword);
+        _copyFailed = !_copied;
+    }
 
     private async Task DeleteAsync(string userName)
     {
@@ -90,15 +222,15 @@
                 "Account verwijderen"))
             return;
 
-        _deleting = true;
-        _deleteError = null;
+        (_busy, _actionError, _deleted) = (true, null, null);
         try
         {
             await Api.DeleteUserAsync(userName);
+            (_open, _reset, _deleted) = (null, null, userName);
             _users = await Api.GetAdminUsersAsync();
         }
-        catch (ApiException ex) { _deleteError = ex.Message; }
-        finally { _deleting = false; }
+        catch (ApiException ex) { _actionError = ex.Message; }
+        finally { _busy = false; }
     }
 
     protected override async Task OnInitializedAsync()
@@ -113,6 +245,17 @@
         var d = DateOnly.FromDateTime(utc.ToLocalTime());
         return $"{d.Day} {DutchDates.Month(d.Month)} {d.Year}";
     }
+
+    /// <summary>"26 oktober 2026 om 14:05" in lokale tijd.</summary>
+    private static string Moment(DateTime utc) => $"{MemberSince(utc)} om {utc.ToLocalTime():HH:mm}";
+
+    private static string Login(AdminUserItem u) => (u.HasPassword, u.HasGoogle) switch
+    {
+        (true, true) => "wachtwoord en Google",
+        (false, true) => "Google",
+        (true, false) => "wachtwoord",
+        _ => "geen (kan niet aanmelden)",
+    };
 
     /// <summary>"online zonet", "online 3 uur geleden", …; zonder datum is de speler niet meer gezien sinds we dit bijhouden.</summary>
     private static string LastSeen(DateTime? utc, DateTime now) =>

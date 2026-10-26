@@ -94,6 +94,8 @@ public class ApiClient(HttpClient http)
         PostAsync<ResetPasswordResult>("api/admin/users/reset-password", new ResetPasswordRequest(userName));
     public Task<AdminDashboard> GetAdminDashboardAsync() => GetAsync<AdminDashboard>("api/admin/dashboard");
     public Task<List<AdminUserItem>> GetAdminUsersAsync() => GetAsync<List<AdminUserItem>>("api/admin/users");
+    public async Task EditUserAsync(string userName, string newUserName, string email) =>
+        await EnsureOkAsync(await http.PostAsJsonAsync("api/admin/users/edit", new EditUserRequest(userName, newUserName, email)));
     public async Task DeleteUserAsync(string userName) =>
         await EnsureOkAsync(await http.PostAsJsonAsync("api/admin/users/delete", new DeleteUserRequest(userName)));
     public Task<PlayerCounts> GetPlayerCountsAsync() => GetAsync<PlayerCounts>("api/admin/players/counts");

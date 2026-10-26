@@ -69,6 +69,16 @@ public sealed class PasswordResetTests : IDisposable
     }
 
     [Fact]
+    public async Task A_deleted_account_stays_closed()
+    {
+        var user = new AppUser { UserName = "verwijderd",DeletedAt = DateTime.UtcNow, LockoutEnabled = true, LockoutEnd = DateTimeOffset.MaxValue };
+        Assert.True((await _users.CreateAsync(user)).Succeeded);
+
+        Assert.Null(await _reset.ResetAsync(user.UserName));
+        Assert.True(await _users.IsLockedOutAsync(user));
+    }
+
+    [Fact]
     public async Task Unknown_user_gives_null() =>
         Assert.Null(await _reset.ResetAsync("bestaat-niet"));
 

@@ -254,3 +254,21 @@ button.template { border: 0; cursor: pointer; font: inherit; }
 .toggle:checked { background: var(--ok); box-shadow: none; }
 .toggle:checked::after { transform: translateX(18px); background: #fff; }
 @media (prefers-reduced-motion: reduce) { .toggle, .toggle::after { transition: none; } }
+
+/* ---------- Admin: leden ---------- */
+.member-search { width: 100%; margin-top: 6px; }
+.member { border-radius: 12px; }
+.member.open { background: var(--admin-inset); box-shadow: inset 0 0 0 1px var(--sb-line); }
+.member-head { width: 100%; font: inherit; text-align: left; cursor: pointer; }
+.member.open .member-head { border-color: transparent; }
+.member-mail { overflow-wrap: anywhere; }
+.member-tag {
+    display: inline-block; margin-left: 4px; padding: 1px 6px; border-radius: 6px; font-size: .72rem; font-weight: 600;
+    vertical-align: middle; border: 1px solid var(--sb-digit); color: var(--sb-digit);
+}
+.member-detail { display: grid; gap: 10px; padding: 4px 12px 12px; }
+.member-detail dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 4px 12px; margin: 0; font-size: .9rem; }
+.member-detail dt { color: var(--muted); }
+.member-detail dd { margin: 0; overflow-wrap: anywhere; }
+.member-detail code { font-size: 1rem; user-select: all; }
+.member-actions { display: flex; flex-wrap: wrap; gap: 8px; }

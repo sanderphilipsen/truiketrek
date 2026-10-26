@@ -88,6 +88,7 @@ builder.Services.AddScoped<MonthRankingService>();
 builder.Services.AddScoped<GoldenBallService>();
 builder.Services.AddScoped<AdminService>();
 builder.Services.AddScoped<PasswordResetService>();
+builder.Services.AddScoped<MemberEditService>();
 builder.Services.AddScoped<AccountDeletionService>();
 builder.Services.AddScoped<ProgressService>();
 builder.Services.AddScoped<FeedbackService>();

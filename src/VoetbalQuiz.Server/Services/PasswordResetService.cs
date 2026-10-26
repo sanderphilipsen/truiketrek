@@ -18,7 +18,8 @@ public class PasswordResetService(UserManager<AppUser> users)
     public async Task<ResetPasswordResult?> ResetAsync(string? userName)
     {
         var user = await users.FindByNameAsync(userName?.Trim() ?? "");
-        if (user is null) return null;
+        // Een verwijderd account blijft dicht: een reset zou anders het slot opheffen.
+        if (user is null || user.DeletedAt is not null) return null;
 
         var password = RandomNumberGenerator.GetString(Alphabet, Length);
         var token = await users.GeneratePasswordResetTokenAsync(user);

@@ -29,8 +29,12 @@ public record PlayerCounts(int Review, int Approved, int Rejected);
 /// <summary>Hoeveel spelers er geregistreerd zijn en hoeveel er de laatste 24 uur en 7 dagen online waren.</summary>
 public record UserCounts(int Total, int ActiveDay, int ActiveWeek);
 
-/// <summary>Een geregistreerde speler in het admin-paneel. LastSeenAt (UTC) is null als die nog nooit gezien is.</summary>
-public record AdminUserItem(string UserName, string? AvatarId, DateTime CreatedAt, DateTime? LastSeenAt, DateTime? DeletionRequestedAt = null);
+/// <summary>
+/// Een geregistreerde speler in het admin-paneel. LastSeenAt (UTC) is null als die nog nooit gezien is.
+/// HasPassword/HasGoogle: hoe de speler aanmeldt. Een admin kan je niet verwijderen.
+/// </summary>
+public record AdminUserItem(string UserName, string? AvatarId, DateTime CreatedAt, DateTime? LastSeenAt, DateTime? DeletionRequestedAt = null,
+    string? Email = null, bool HasPassword = false, bool HasGoogle = false, bool IsAdmin = false);
 
 /// <summary>Startscherm van het admin-paneel: wat vraagt aandacht?</summary>
 public record AdminDashboard(

@@ -201,7 +201,7 @@ public static class AccountEndpoints
     private static string ReturnQuery(string? terug, char separator = '?') =>
         ReturnPath.Safe(terug) is { Length: > 0 } safe ? separator + "terug=" + Uri.EscapeDataString(safe) : "";
 
-    private static string Translate(IEnumerable<IdentityError> errors) =>
+    internal static string Translate(IEnumerable<IdentityError> errors) =>
         string.Join(" ", errors.Select(e => e.Code switch
         {
             "DuplicateUserName" => "Die gebruikersnaam is al bezet.",

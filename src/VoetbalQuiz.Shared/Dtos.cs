@@ -20,6 +20,9 @@ public record ProfileInfo(
 
 /// <summary>Een admin verwijdert het account van een speler die daarom vroeg.</summary>
 public record DeleteUserRequest(string UserName);
+
+/// <summary>Een admin past de gebruikersnaam en/of het e-mailadres van een speler aan.</summary>
+public record EditUserRequest(string UserName, string NewUserName, string Email);
 public record ErrorResponse(string Message);
 
 /// <summary>
