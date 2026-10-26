@@ -60,7 +60,7 @@ else if (_tab == Tab.Vandaag)
         else
         {
             <LeaderboardList Entries="@_today.Entries.Select(e => new LeaderboardList.Row(e.Rank, e.UserName, e.AvatarId, e.Points, e.IsMe,
-                                 Sub: $"{e.CorrectAnswers} juist")).ToList()" />
+                                 Sub: CorrectLabel(e))).ToList()" />
         }
     }
 }
@@ -209,6 +209,14 @@ else
             if (tab == _tab && !HasData) _error = ex.Message;
         }
     }
+
+    // Deels juist (bv. een artikel van De Zondag met een gat fout) telt apart, anders lijkt het of niemand iets vond.
+    private static string CorrectLabel(LeaderboardEntry e) => (e.CorrectAnswers, e.PartialAnswers) switch
+    {
+        (_, 0) => $"{e.CorrectAnswers} juist",
+        (0, var p) => $"{p} deels juist",
+        var (c, p) => $"{c} juist · {p} deels",
+    };
 
     private bool HasData => _tab switch { Tab.Maand => Ranking is not null, Tab.Online => _online is not null, _ => _today is not null };
 

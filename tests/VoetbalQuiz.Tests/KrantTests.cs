@@ -278,6 +278,20 @@ public sealed class KrantTests : IDisposable
     }
 
     [Fact]
+    public async Task The_day_leaderboard_counts_a_partly_filled_article_as_partly_correct()
+    {
+        await ToSundayAsync();
+        await _t.Quiz.StartAsync(_me, 1);
+        await _t.Quiz.GuessAsync(_me, 1, "1|Vertonghen");
+        await _t.Quiz.GiveUpAsync(_me, 1);
+        await _t.Quiz.StartAsync(_me, 2);
+        await _t.Quiz.GiveUpAsync(_me, 2); // niets gevonden: fout, niet deels juist
+
+        var me = Assert.Single((await _t.Results.GetDailyLeaderboardAsync(_me)).Entries);
+        Assert.Equal((0, 1), (me.CorrectAnswers, me.PartialAnswers));
+    }
+
+    [Fact]
     public async Task A_played_article_keeps_its_gaps_in_the_admin()
     {
         await ToSundayAsync();

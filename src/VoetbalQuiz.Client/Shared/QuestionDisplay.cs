@@ -63,13 +63,13 @@ public static class QuestionDisplay
     };
 
     /// <summary>
-    /// Het teken in een vragenlijst (daily, special, academie): ✓ juist, ½ deels juist (een deelscore bij een type met
-    /// deelpunten, zie <see cref="QuestionRules.PartialScores"/>), ✗ fout.
+    /// Het teken in een vragenlijst (daily, special, academie): ✓ juist, "deels" deels juist (een deelscore bij een type
+    /// met deelpunten, zie <see cref="QuestionRules.PartialScores"/>), ✗ fout.
     /// </summary>
     public static (string Symbol, string Label) Mark(QuestionSummary q) => q switch
     {
         { Correct: true } => ("✓", "juist"),
-        { Partial: true } => ("½", "deels juist"),
+        { Partial: true } => ("deels", "deels juist"),
         _ => ("✗", "fout"),
     };
 

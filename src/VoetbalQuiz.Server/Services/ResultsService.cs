@@ -19,7 +19,7 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
     /// <summary>Totaal van één gebruiker op één dag.</summary>
     private record DayTotal(
         string UserId, string UserName, int ChallengeId, DateOnly Date,
-        int Points, int Correct, int Wrong, DateTime FinishedAt);
+        int Points, int Correct, int Wrong, DateTime FinishedAt, int Partial = 0);
 
     /// <summary>Beantwoorde vragen. Specials tellen standaard niet mee: de daily-klassementen blijven apart.</summary>
     private Task<List<Row>> RowsAsync(Expression<Func<Attempt, bool>> filter, bool includeSpecials = false) =>
@@ -36,7 +36,8 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
     private static IEnumerable<DayTotal> DayTotals(IEnumerable<Row> rows) =>
         rows.GroupBy(r => (r.UserId, r.ChallengeId)).Select(g => new DayTotal(
             g.Key.UserId, g.First().UserName, g.Key.ChallengeId, g.First().Date,
-            g.Sum(r => r.Points), g.Count(r => r.Correct), g.Sum(r => r.WrongGuesses), g.Max(r => r.AnsweredAt)));
+            g.Sum(r => r.Points), g.Count(r => r.Correct), g.Sum(r => r.WrongGuesses), g.Max(r => r.AnsweredAt),
+            g.Count(r => QuestionRules.IsPartial(r.Correct, r.Points, r.Type))));
 
     /// <summary>
     /// Volgorde van een dag (zie <see cref="DayScore"/>): punten, dan meer juist, dan minder fout,
@@ -266,7 +267,7 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
         var ranked = RankDay(DayTotals(await RowsAsync(a => a.DailyQuestion.DailyChallenge.Date == today)));
         var cards = await UserCardsAsync();
         var entries = ranked.Select((t, i) => new LeaderboardEntry(
-            i + 1, t.UserName, cards[t.UserId].AvatarId, cards[t.UserId].Level, t.Points, 1, t.Correct, 0, t.UserId == userId)).ToList();
+            i + 1, t.UserName, cards[t.UserId].AvatarId, cards[t.UserId].Level, t.Points, 1, t.Correct, 0, t.UserId == userId, t.Partial)).ToList();
         return new Leaderboard("Vandaag", $"Top 3 van de dag krijgt +{MonthRules.PodiumBonus[0]} / +{MonthRules.PodiumBonus[1]} / +{MonthRules.PodiumBonus[2]} in het maandklassement.", entries);
     }
 
@@ -276,7 +277,7 @@ public class ResultsService(QuizDbContext db, TimeProvider clock, IMemoryCache c
         var ranked = RankDay(DayTotals(await RowsAsync(a => a.DailyQuestion.DailyChallenge.SpecialEventId == specialId, includeSpecials: true)));
         var cards = await UserCardsAsync();
         var entries = ranked.Select((t, i) => new LeaderboardEntry(
-            i + 1, t.UserName, cards[t.UserId].AvatarId, cards[t.UserId].Level, t.Points, 1, t.Correct, 0, t.UserId == userId)).ToList();
+            i + 1, t.UserName, cards[t.UserId].AvatarId, cards[t.UserId].Level, t.Points, 1, t.Correct, 0, t.UserId == userId, t.Partial)).ToList();
         return new Leaderboard("Klassement", $"Top 3 krijgt na afloop +{MonthRules.PodiumBonus[0]} / +{MonthRules.PodiumBonus[1]} / +{MonthRules.PodiumBonus[2]} in het maandklassement.", entries);
     }
 

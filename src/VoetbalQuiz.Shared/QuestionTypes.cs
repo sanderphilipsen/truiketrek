@@ -279,10 +279,13 @@ public static class QuestionRules
     /// Types met deelpunten: de vraag is zelden helemaal juist, maar wat je vindt, telt. Alle solo-types
     /// (<see cref="QuestionTypeInfo.Alone"/>: De Zondag, Detectivedag, de kaart) plus opstelling en counter.
     /// Hun punten tellen mee voor de XP ("Juiste antwoorden") ook als de vraag niet volledig juist is, en de dag- en
-    /// special-overzichten tonen een deelscore als deels juist (½) in plaats van fout.
+    /// special-overzichten tonen een deelscore als "deels" in plaats van fout, en het dagklassement telt ze apart als deels juist.
     /// </summary>
     public static bool PartialScores(QuestionType type) =>
         QuestionTypes.Get(type).Alone || type is QuestionType.Opstelling or QuestionType.Counter;
+
+    /// <summary>Niet helemaal juist, maar wel punten bij een type met deelpunten (<see cref="PartialScores"/>): deels juist, geen fout.</summary>
+    public static bool IsPartial(bool correct, int points, QuestionType type) => !correct && points > 0 && PartialScores(type);
 
     /// <summary>
     /// Kaart: elke kaart heeft precies zoveel spelden, in elk land (10 clubs van een competitie, geen volledige reeks).

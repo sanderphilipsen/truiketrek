@@ -74,7 +74,7 @@ public record QuestionSummary(
     /// deels juist, geen fout.
     /// </summary>
     [System.Text.Json.Serialization.JsonIgnore]
-    public bool Partial => Correct == false && Points > 0 && QuestionRules.PartialScores(Type);
+    public bool Partial => Correct == false && QuestionRules.IsPartial(false, Points ?? 0, Type);
 }
 
 /// <summary>Huidige toestand van één vraag zoals de server die ziet.</summary>
@@ -173,7 +173,9 @@ public record AnswerResult(
 // Leaderboard
 public record LeaderboardEntry(
     int Rank, string UserName, string? AvatarId, int Level, int Points,
-    int DaysPlayed, int CorrectAnswers, int DaysWon, bool IsMe);
+    int DaysPlayed, int CorrectAnswers, int DaysWon, bool IsMe,
+    // Deels juist (QuestionRules.IsPartial): bv. een artikel van De Zondag met een paar gaten fout.
+    int PartialAnswers = 0);
 public record Leaderboard(string Title, string? Note, List<LeaderboardEntry> Entries);
 
 // Statistieken
