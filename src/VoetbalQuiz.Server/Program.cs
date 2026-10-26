@@ -76,7 +76,8 @@ builder.Services.AddSingleton(TimeProvider.System);
 // Op Azure staat /home/data buiten de app-map en overleeft het een deploy; lokaal is het een bestand naast het project.
 builder.Services.AddSingleton(sp => new MaintenanceNotice(
     builder.Configuration["Maintenance:File"] is { Length: > 0 } file ? Path.Combine(builder.Environment.ContentRootPath, file) : null,
-    sp.GetRequiredService<TimeProvider>()));
+    sp.GetRequiredService<TimeProvider>(),
+    builder.Environment.IsDevelopment() ? builder.Configuration["Sfeer:Forceer"] : null));
 builder.Services.AddScoped<QuestionPicker>();
 builder.Services.AddScoped<QuizService>();
 builder.Services.AddScoped<TrainingService>();

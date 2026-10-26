@@ -27,9 +27,10 @@ public record ErrorResponse(string Message);
 
 /// <summary>
 /// Toestand van de server: <paramref name="UpdateAt"/> (UTC) is gezet zolang er zo een update komt. Aan
-/// <paramref name="Version"/> ziet het deployscript dat de nieuwe versie draait.
+/// <paramref name="Version"/> ziet het deployscript dat de nieuwe versie draait. <paramref name="Sfeer"/>: de seizoenssfeer
+/// van vandaag voor de hele app (zie <see cref="SfeerKalender"/>), null op een gewone dag.
 /// </summary>
-public record ServerStatus(DateTime? UpdateAt, string? Version = null);
+public record ServerStatus(DateTime? UpdateAt, string? Version = null, string? Sfeer = null);
 
 /// <summary>Wat je bijkreeg sinds de vorige beloningspopup (na een daily, special of online wedstrijd).</summary>
 public record RewardSummary(LevelInfo Before, LevelInfo After, List<XpPart> Gained, List<BadgeState> NewBadges)

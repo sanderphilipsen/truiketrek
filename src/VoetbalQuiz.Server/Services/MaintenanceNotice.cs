@@ -8,8 +8,9 @@ namespace VoetbalQuiz.Server.Services;
 /// Er komt zo een update. Het deployscript (scripts/deploy-azure.ps1) zet vóór het publiceren een bestand op de server
 /// en haalt het weg zodra de nieuwe versie draait. Het bestand staat buiten de app-map, zodat de deploy het niet wist.
 /// Zolang het er staat, is de app dicht en start niemand een nieuwe vraag: een herstart zou de klok laten doorlopen.
+/// <paramref name="forcedSfeer"/>: enkel lokaal (Development, Sfeer:Forceer) een sfeer tonen op een andere dag, om ze te bekijken.
 /// </summary>
-public class MaintenanceNotice(string? file, TimeProvider clock)
+public class MaintenanceNotice(string? file, TimeProvider clock, string? forcedSfeer = null)
 {
     /// <summary>Een vergeten bestand (bv. een afgebroken deploy) blokkeert niet eeuwig.</summary>
     public static readonly TimeSpan MaxAge = TimeSpan.FromMinutes(30);
@@ -33,7 +34,7 @@ public class MaintenanceNotice(string? file, TimeProvider clock)
         }
     }
 
-    public ServerStatus Status() => new(UpdateAt(), Version);
+    public ServerStatus Status() => new(UpdateAt(), Version, forcedSfeer ?? SfeerKalender.Op(QuizClock.Today(clock)));
 
     /// <summary>Het deployscript geeft elke publicatie een eigen versie mee (zie scripts/deploy-azure.ps1).</summary>
     private static readonly string? Version = typeof(MaintenanceNotice).Assembly

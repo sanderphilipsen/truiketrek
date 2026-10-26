@@ -112,7 +112,7 @@
     {
       "name": "voetbalquiz-halloween",
       "runtimeExecutable": "pwsh",
-      "runtimeArgs": ["-NoProfile", "-Command", "$env:ASPNETCORE_ENVIRONMENT='Development'; $env:ASPNETCORE_URLS='http://localhost:5216'; $env:Admins__0='proefhalloween'; $env:ConnectionStrings__Quiz=((Get-Content src/VoetbalQuiz.Server/appsettings.Development.json | ConvertFrom-Json).ConnectionStrings.Quiz -replace 'Database=voetbalquiz;','Database=voetbalquiz_halloween;'); dotnet run --project src/VoetbalQuiz.Server -c Halloween --no-launch-profile"],
+      "runtimeArgs": ["-NoProfile", "-Command", "$env:ASPNETCORE_ENVIRONMENT='Development'; $env:ASPNETCORE_URLS='http://localhost:5216'; $env:Admins__0='proefhalloween'; $env:Sfeer__Forceer='halloween'; $env:ConnectionStrings__Quiz=((Get-Content src/VoetbalQuiz.Server/appsettings.Development.json | ConvertFrom-Json).ConnectionStrings.Quiz -replace 'Database=voetbalquiz;','Database=voetbalquiz_halloween;'); dotnet run --project src/VoetbalQuiz.Server -c Halloween --no-launch-profile"],
       "port": 5216
     }
   ]
