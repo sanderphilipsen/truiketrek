@@ -746,6 +746,17 @@ public sealed class KaartTests : IDisposable
     }
 
     [Fact]
+    public async Task All_clubs_right_earns_cartograaf_but_not_groundhopper()
+    {
+        await PlanKaartAsync();
+        await PlayAsync(1, s => Right(s));
+        var profile = await _t.Progress.GetProfileAsync(_me, "sander");
+        Assert.Contains(profile.Badges, b => b.Id == "cartograaf" && b.Earned);
+        Assert.Contains(profile.Badges, b => b.Id == "groundhopper" && !b.Earned);
+        Assert.Contains(profile.Badges, b => b.Id == "solist" && b.Progress == $"1/{QuestionTypes.All.Count(t => t.Alone)}");
+    }
+
+    [Fact]
     public void Every_solo_type_counts_as_a_full_day_of_questions()
     {
         // De Krant (1 vraag) en de kaart (2 vragen) tellen elk samen als een volle dag; een gewone vraag telt als één.

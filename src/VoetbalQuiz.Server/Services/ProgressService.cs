@@ -14,7 +14,9 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
         int Level, int GoldenBalls, int GoldenBallStreak, int SilverBalls,
         int TypesPlayed, int ExactYears, int FastSnelvuur, int NietBijHits, int FirstClubHits, int EmojiHits,
         int FullLineups, int MonthPodiums, int OnlineWinStreak, bool FullWeek, int RedDevilHits, int ChampionsHits,
-        int CleanDays, int TotalPoints, int CorrectTotal, int Stubborn, int LastSecond, int BigTableWins, int Rating);
+        int CleanDays, int TotalPoints, int CorrectTotal, int Stubborn, int LastSecond, int BigTableWins, int Rating,
+        int FullArticles, int CasesSolved, int PerfectCases, int FullClubMaps, int FullStadiumMaps, int StrongLists,
+        int SoloTypesPlayed, int PartialAnswers, int BigCounters);
 
     /// <summary>Icon is de naam van een lijnicoon in de client (Shared/Icon.razor), geen emoji.</summary>
     private record BadgeDef(string Id, string Icon, string Name, string Description, BadgeTier Tier, Func<Facts, int> Value, int Goal);
@@ -55,6 +57,17 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
         new("emoji-expert", "smiley-wink", "Emoji-expert", "25 emoji-raadsels opgelost", BadgeTier.Zilver, f => f.EmojiHits, 25),
         new("bondscoach", "clipboard-text", "Bondscoach", "Vul een opstelling volledig aan", BadgeTier.Brons, f => f.FullLineups, 1),
         new("trainer-van-het-jaar", "strategy", "Trainer van het jaar", "10 opstellingen volledig aangevuld", BadgeTier.Goud, f => f.FullLineups, 10),
+        new("dodelijke-counter", "person-simple-run", "Dodelijke counter", $"Raad minstens 20 van de {QuestionRules.CounterPlayers} spelers in één Counter", BadgeTier.Zilver, f => f.BigCounters, 1),
+
+        // Solodagen (De Zondag, Detectivedag, Kaart, Lijst)
+        new("solist", "medal", "Solist", $"Speel elk van de {QuestionTypes.All.Count(t => t.Alone)} solodagen", BadgeTier.Zilver, f => f.SoloTypesPlayed, QuestionTypes.All.Count(t => t.Alone)),
+        new("primeur", "newspaper", "Primeur", "Vul een artikel van De Zondag volledig juist in", BadgeTier.Brons, f => f.FullArticles, 1),
+        new("hoofdredacteur", "pencil-simple", "Hoofdredacteur", "25 artikels van De Zondag volledig juist", BadgeTier.Goud, f => f.FullArticles, 25),
+        new("speurneus", "magnifying-glass", "Speurneus", "Los een zaak van de Detectivedag op", BadgeTier.Brons, f => f.CasesSolved, 1),
+        new("sherlock", "detective", "Sherlock", "10 zaken opgelost zonder extra getuige en zonder foute beschuldiging", BadgeTier.Goud, f => f.PerfectCases, 10),
+        new("cartograaf", "map-trifold", "Cartograaf", $"Alle {QuestionRules.KaartPins} clubs van een kaart juist", BadgeTier.Zilver, f => f.FullClubMaps, 1),
+        new("groundhopper", "flag-banner", "Groundhopper", $"Alle {QuestionRules.KaartPins} stadions van een kaart juist", BadgeTier.Zilver, f => f.FullStadiumMaps, 1),
+        new("lijstjesmaker", "list-numbers", "Lijstjesmaker", "Vind minstens driekwart van een Lijst", BadgeTier.Zilver, f => f.StrongLists, 1),
 
         // Thema's
         new("rode-duivels-fan", "heart", "Rode Duivels-fan", "50 juiste antwoorden over de Rode Duivels", BadgeTier.Zilver, f => f.RedDevilHits, 50),
@@ -93,6 +106,7 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
         new("topdag-plus", "sun", "Sterrendag", "Haal 900 punten op één dag", BadgeTier.Goud, f => f.BestDay, 900),
         new("doorzetter", "hand-fist", "Doorzetter", "Toch nog juist na 3 of meer foute pogingen", BadgeTier.Brons, f => f.Stubborn, 1),
         new("op-de-valreep", "timer", "Op de valreep", "10 keer juist in de allerlaatste seconden van Wie ben ik?", BadgeTier.Brons, f => f.LastSecond, 10),
+        new("schot-op-doel", "crosshair", "Schot op doel", "25 keer deels juist: punten, ook al was niet alles juist", BadgeTier.Brons, f => f.PartialAnswers, 25),
     ];
 
     // ---------- Profiel ----------
@@ -171,6 +185,7 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
                 a.DailyQuestion.DailyChallenge.Date,
                 Special = a.DailyQuestion.DailyChallenge.SpecialEventId != null,
                 a.DailyQuestion.Type,
+                a.DailyQuestion.Part,
                 PlayerTags = a.DailyQuestion.Player != null ? a.DailyQuestion.Player.Tags : null,
                 ItemTags = a.DailyQuestion.QuizItem != null ? a.DailyQuestion.QuizItem.Tags : null,
                 a.Points, a.Correct, a.WrongGuesses, a.StartedAt, a.AnsweredAt,
@@ -249,7 +264,16 @@ public class ProgressService(QuizDbContext db, TimeProvider clock, ResultsServic
             attempts.Count(a => a.Type == QuestionType.WieBenIk && a.Correct
                 && (a.AnsweredAt!.Value - a.StartedAt).TotalSeconds >= GameRules.TimeLimitSeconds - GameRules.LastChanceSeconds),
             bigTableWins,
-            rating);
+            rating,
+            Hits(QuestionType.Krant, p => p >= QuestionTypes.Get(QuestionType.Krant).MaxPoints),
+            Hits(QuestionType.Detective),
+            Hits(QuestionType.Detective, p => p >= QuestionTypes.Get(QuestionType.Detective).MaxPoints),
+            attempts.Count(a => a.Type == QuestionType.Kaart && a.Part == QuestionRules.KaartClubsPart && a.Points >= QuestionRules.KaartPartPoints),
+            attempts.Count(a => a.Type == QuestionType.Kaart && a.Part == QuestionRules.KaartStadiumsPart && a.Points >= QuestionRules.KaartPartPoints),
+            attempts.Count(a => a.Type == QuestionType.Lijst && a.Points * 4 >= QuestionTypes.Get(QuestionType.Lijst).MaxPoints * 3),
+            attempts.Select(a => a.Type).Distinct().Count(t => QuestionTypes.Get(t).Alone),
+            attempts.Count(a => QuestionRules.IsPartial(a.Correct, a.Points, a.Type)),
+            attempts.Count(a => a.Type == QuestionType.Counter && a.Points >= QuestionRules.CounterPoints(20)));
     }
 
     /// <summary>Zeven dagen op rij, van maandag tot en met zondag.</summary>
